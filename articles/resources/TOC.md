@@ -1,0 +1,11 @@
+# [FAQ](../bot-service-resources-bot-framework-faq.md)
+# [サポートを受ける](../bot-service-resources-links-help.md)
+# [識別子のガイド](../bot-service-resources-identifiers-guide.md)
+# [App Insights キー](../bot-service-resources-app-insights-keys.md)
+# [User-Agent 要求](../bot-service-resources-user-agent.md)
+# [Bot レビュー ガイドライン](../bot-service-review-guidelines.md)
+# [Bot Framework アクティビティの仕様](../bot-service-activity-spec.md)
+# [Bot Service のコンプライアンス](../v4sdk/bot-service-compliance.md)
+# トラブルシューティング
+## [一般的な問題のトラブルシューティング](../bot-service-troubleshoot-general-problems.md)
+## [認証に関する問題のトラブルシューティング](../bot-service-troubleshoot-authentication-problems.md)

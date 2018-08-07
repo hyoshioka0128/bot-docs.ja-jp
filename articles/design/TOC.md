@@ -1,0 +1,11 @@
+# [ボット設計の原則](../bot-service-design-principles.md)
+# [最初の相互作用](../bot-service-design-first-interaction.md)
+# [設計フローと制御フロー](../bot-service-design-conversation-flow.md)
+# [ナビゲーション](../bot-service-design-navigation.md)
+# [UX 要素](../bot-service-design-user-experience.md)
+# パターン
+## [タスクの自動化](../bot-service-design-pattern-task-automation.md)
+## [ナレッジ ベース](../bot-service-design-pattern-knowledge-base.md)
+## [人へのハンドオフ](../bot-service-design-pattern-handoff-human.md)
+## [アプリでのボット](../bot-service-design-pattern-embed-app.md)
+## [Web サイトでのボット](../bot-service-design-pattern-embed-web-site.md)
