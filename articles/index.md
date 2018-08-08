@@ -8,14 +8,17 @@ ms.topic: landing-page
 layout: LandingPage
 ms.prod: bot-framework
 ms.date: 05/03/2018
-ms.openlocfilehash: 2264f714b28b52691da2ee0d421506b408a43ef3
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6759a870538265fa9f8ae089486946b8fe648649
+ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116420"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39514992"
 ---
 ::: moniker range="azure-bot-service-3.0"
+
+> [!NOTE]
+> このトピックは SDK v3 (安定版) リリースに適用されます。 SDK v4 のプレリリース バージョンのドキュメントは、[こちら](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0)にあります。
 
 <div class="content">
     <h1>Azure Bot Service のドキュメント</h1>
@@ -90,10 +93,12 @@ ms.locfileid: "39116420"
 
 ::: moniker range="azure-bot-service-4.0"
 
+> [!NOTE] 
+> このトピックは V4 SDK コンテンツ向けのプレリリース資料であり、変更されることがあります。 V3 SDK (安定版) コンテンツは、[こちら](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-3.0)にあります。
+
 <div class="content">
     <h1>Azure Bot Service のドキュメント</h1>
     <div class="intro" style="min-width: 200px">
-        <p><b> [このトピックはプレリリース資料であり、変更されることがあります。]</b></p>
         <p>Azure Bot Service では、ボット開発専用の統合環境が提供され、インテリジェント ボットのビルド、接続、テスト、デプロイ、管理をすべて一元化して行えます。 Azure Bot Service は、C#、JavaScript、Python、Java のサポートを使用して Bot Builder SDK を活用します。 クイックスタート、チュートリアル、およびサンプルを使用して、Bot Service の使用方法を学習してください。
 </p>
 </div>
