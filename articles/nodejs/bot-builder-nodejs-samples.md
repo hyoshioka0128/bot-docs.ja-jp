@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0eb14f4bf52a293d3405762c786259f771aecad6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 43c178c4bbdf0bb04384bb8ada397066e6f7dd12
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303116"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574618"
 ---
 # <a name="bot-builder-sdk-for-nodejs-samples"></a>Bot Builder SDK for Node.js のサンプル
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 これらのサンプルでは、Bot Builder SDK for Node.js 内の機能を活用する方法を示す、タスクに焦点をおいたボットを説明します。 サンプルを利用することで、豊富な機能を備えた優れたボットの作成が迅速に開始できるようになります。
 

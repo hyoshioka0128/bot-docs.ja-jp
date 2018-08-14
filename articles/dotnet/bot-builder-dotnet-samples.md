@@ -7,16 +7,18 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/03/2018
-ms.openlocfilehash: 7e19ec2c3e523003c0831544e42eeb88765d8317
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: 129c3a2b92297980e6b5e209f6e7f400a854d3a1
+ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352861"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39515072"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
 # <a name="bot-builder-sdk-for-net-samples"></a>Bot Builder SDK for .NET のサンプル
+
+[!INCLUDE [pre-release-label](~/includes/pre-release-label-v3.md)]
 
 これらのサンプルでは、Bot Builder SDK for .NET 内の機能を活用する方法を示す、タスクに焦点をおいたボットを説明します。 サンプルを利用することで、豊富な機能を備えた優れたボットの作成が迅速に開始できるようになります。
 
