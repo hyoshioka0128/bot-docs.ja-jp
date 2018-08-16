@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0dc869aa1464c086b6596ee83d8e6e488d8a8a55
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 4e0bde9d05ed49f6674b2d721e07235b26c5cea4
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302529"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574758"
 ---
 # <a name="enterprise-productivity-bot-scenario"></a>Enterprise Productivity ボットのシナリオ
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Enterprise ボットは、Office 365 カレンダーやその他のサービスとボットを統合することによって生産性を向上させる方法を示しています。
 
 多数のウィンドウを開かずに迅速に顧客情報にアクセスできるようにすることが Enterprise Productivity ボットの目的です。 単純なチャット コマンドを使用して、営業担当者は顧客を検索し、次回の予約を Graph API と Office 365 で確認できます。 そこから、Dynamics CRM に格納されている顧客固有の情報にアクセスし、案件を取得したり、新たに作成したりすることができます。

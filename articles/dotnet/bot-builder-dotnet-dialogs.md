@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: aa56a91d2246b5d81462dbf3483d04252e0ec45b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: eb99be4699bba71a1fdc55bab19d035e4e31f536
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302292"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574558"
 ---
 # <a name="dialogs-in-the-bot-builder-sdk-for-net"></a>Bot Builder SDK for .NET のダイアログ
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-dialogs.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-dialog-overview.md)
@@ -106,7 +109,7 @@ Bot Builder では非同期通信の処理に C# の機能を使用するため�
 `IDialogStack.Call<R>` と `IDialogStack.Done<R>` を使用すると、アクティブ ダイアログのスタックを明示的に管理できます。一方、これらの fluent [Chain][chain] メソッドを使用すると、アクティブ ダイアログのスタックを暗黙的に管理することができます。
 
 
-|           方法            |  Type   |                                 メモ                                  |
+|           方法            |  type   |                                 メモ                                  |
 |-----------------------------|---------|------------------------------------------------------------------------|
 |     Chain.Select<T, R>      |  LINQ   |           LINQ クエリ構文の "select" と "let" をサポートします。            |
 |  Chain.SelectMany<T, C, R>  |  LINQ   |            LINQ クエリ構文の連続する "from" をサポートします。            |
