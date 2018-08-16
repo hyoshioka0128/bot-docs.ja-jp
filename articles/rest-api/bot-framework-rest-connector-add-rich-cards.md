@@ -1,0 +1,273 @@
+---
+title: メッセージにリッチ カード添付ファイルを追加する | Microsoft Docs
+description: Bot Connector サービスを使用して、メッセージにリッチ カードを追加する方法について説明します。
+author: RobStand
+ms.author: kamrani
+manager: kamrani
+ms.topic: article
+ms.prod: bot-framework
+ms.date: 12/13/2017
+ms.openlocfilehash: 04f70777003ef5298de264f5ee8685b3a5005395
+ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39303329"
+---
+# <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
+> [!div class="op_single_selector"]
+> - [.NET](../dotnet/bot-builder-dotnet-add-rich-card-attachments.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-send-rich-cards.md)
+> - [REST](../rest-api/bot-framework-rest-connector-add-rich-cards.md)
+
+通常、ボットとチャネルが交換するのはテキスト文字列ですが、添付ファイルの交換もサポートされる一部のチャネルでは、ボットはよりリッチなメッセージをユーザーに送信できます。 たとえば、ボットは、リッチ カードとメディア添付ファイル (画像、動画、音声、ファイルなど) を送信できます。 この記事では、Bot Connector サービスを使用してメッセージにリッチ カード添付ファイルを追加する方法について説明します。
+
+> [!NOTE]
+> メッセージにメディア添付ファイルを追加する方法については、「[Add media attachments to messages](bot-framework-rest-connector-add-media-attachments.md)」 (メッセージにメディア添付ファイルを追加する) を参照してください。
+
+## <a id="types-of-cards"></a> リッチ カードの種類
+
+リッチ カードは、タイトル、説明、リンク、およびイメージから構成されます。 メッセージには、リスト形式またはカルーセル形式で表示される複数のリッチ カードを含めることができます。
+Bot Framework では、現在 8 種類のリッチ カードがサポートされています。 
+
+| カードの種類 | 説明 |
+|----|----|
+| <a href="/adaptive-cards/get-started/bots">AdaptiveCard</a> | テキスト、音声、イメージ、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。 [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。  |
+| [AnimationCard][animationCard] | アニメーション GIF または短いビデオを再生できるカード。 |
+| [AudioCard][audioCard] | オーディオ ファイルを再生できるカード。 |
+| [HeroCard][heroCard] | 通常 1 つの大きなイメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
+| [ThumbnailCard][thumbnailCard] | 通常 1 つのサムネイル イメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
+| [ReceiptCard][receiptCard] | ボットからユーザーに受信確認を提供できるようにするカード。 通常は、受信確認に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。 |
+| [SigninCard][signinCard] | ボットでユーザーのサインインを要求できるようにするカード。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つまたは複数のボタンが含まれます。 |
+| [VideoCard][videoCard] | ビデオを再生できるカード。 |
+
+> [!TIP]
+> チャネルでサポートされているリッチ カードの種類を特定し、チャネルによってリッチ カードがどのようにレンダリングされるかを確認するには、[Channel Inspector][ChannelInspector] に関するページを参照してください。 カードのコンテンツに対する制限事項 (ボタンの最大数やタイトルの最大長など) については、チャネルのドキュメントを参照してください。
+
+## <a name="process-events-within-rich-cards"></a>リッチ カード内のイベントを処理する
+
+リッチ カード内のイベントを処理するには、[CardAction][CardAction] オブジェクトを使用して、ユーザーがボタンをクリックするか、カードのセクションをタップしたときのアクションを指定します。 各 [CardAction][CardAction] オブジェクトには、次のプロパティが含まれています。
+
+| プロパティ | 型 | 説明 | 
+|----|----|----|
+| type | 文字列 | アクションの種類 (下の表に示されている値のいずれか) |
+| title | 文字列 | ボタンのタイトル |
+| image | 文字列 | ボタン用のイメージ URL |
+| value | 文字列 | 指定された種類のアクションを実行するために必要な値 |
+
+> [!NOTE]
+> アダプティブ カード内のボタンは、`CardAction` オブジェクトではなく、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>によって定義されているスキーマを使用して作成されます。 アダプティブ カードにボタンを追加する方法の例については、「[メッセージにアダプティブ カードを追加する](#adaptive-card)」を参照してください。
+
+次の表では、[CardAction][CardAction] オブジェクトの `type` プロパティの有効値と、各種類の `value` プロパティの期待されるコンテンツを説明します。
+
+| type | value | 
+|----|----|
+| openUrl | 組み込みのブラウザーで開かれる URL |
+| imBack | (ボタンをクリックまたはカードをタップしたユーザーから) ボットに送信されるメッセージのテキスト。 会話の参加者すべてが、会話をホストしているクライアント アプリケーションを介して、(ユーザーからボットに送信される) このメッセージを見ることができます。 |
+| postBack | (ボタンをクリックまたはカードをタップしたユーザーから) ボットに送信されるメッセージのテキスト。 クライアント アプリケーションによっては、このテキストは、メッセージ フィードに表示される場合があります。そこでは、会話のすべての参加者がそのテキストを見ることができます。 |
+| call | 電話の呼び出し先であり、**tel:123123123123** の形式となります。 |
+| playAudio | 再生されるオーディオの URL |
+| playVideo | 再生されるビデオの URL |
+| showImage | 表示されるイメージの URL |
+| downloadFile | ダウンロードされるファイルの URL |
+| signin | 開始される OAuth フローの URL |
+
+## <a name="add-a-hero-card-to-a-message"></a>メッセージにヒーロー カードを追加する
+
+メッセージにリッチ カード添付ファイルを追加するには、最初に、メッセージに追加する[カードの種類](#types-of-cards)に対応するオブジェクトを作成します。 次に、[Attachment][Attachment] オブジェクトを作成し、その `contentType` プロパティをカードのメディアの種類に設定し、その `content` プロパティをカードを表すように作成したオブジェクトに設定します。 メッセージの `attachments` 配列内に [Attachment][Attachment] オブジェクトを指定します。
+
+> [!TIP]
+> 通常、リッチ カード添付ファイルを含むメッセージには `text` を指定しません。
+
+一部のチャネルでは、メッセージ内の `attachments` 配列に複数のリッチ カードを追加できます。 この機能は、複数のオプションをユーザーに提供するシナリオで役立ちます。 たとえば、ユーザーがホテルの部屋を予約できるボットの場合は、利用可能な部屋の種類を示すリッチ カードの一覧をユーザーに表示できます。 各カードには、部屋の種類に対応する写真とアメニティの一覧を含めることができ、ユーザーは、カードをタップするかボタンをクリックすることで部屋の種類を選択できます。
+
+> [!TIP]
+> 複数のリッチ カードをリスト形式で表示するには、[Activity][Activity] オブジェクトの `attachmentLayout` プロパティを "list" に設定します。 複数のリッチ カードをカルーセル形式で表示するには、[Activity][Activity] オブジェクトの `attachmentLayout` プロパティを "carousel" に設定します。 カルーセル形式がチャンネルでサポートされていない場合は、`attachmentLayout` プロパティに "carousel" を指定した場合でも、リッチ カードはリスト形式で表示されます。
+
+次の例に、1 つのヒーロー カード添付ファイルを含むメッセージを送信する要求を示します。 この要求の例では、`https://smba.trafficmanager.net/apis` はベース URI を表しています。ボットが発行する要求のベース URI は異なることがあります。 ベース URI の設定の詳細については、「[API リファレンス](bot-framework-rest-connector-api-reference.md#base-uri)」を参照してください。
+
+```http
+POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723 
+Authorization: Bearer ACCESS_TOKEN
+Content-Type: application/json
+```
+
+```json
+{
+    "type": "message",
+    "from": {
+        "id": "12345678",
+        "name": "sender's name"
+    },
+    "conversation": {
+        "id": "abcd1234",
+        "name": "conversation's name"
+    },
+    "recipient": {
+        "id": "1234abcd",
+        "name": "recipient's name"
+    },
+    "attachments": [
+        {
+            "contentType": "application/vnd.microsoft.card.hero",
+            "content": {
+                "title": "title goes here",
+                "subtitle": "subtitle goes here",
+                "text": "descriptive text goes here",
+                "images": [
+                    {
+                        "url": "http://aka.ms/Fo983c",
+                        "alt": "picture of a duck",
+                        "tap": {
+                            "type": "playAudio",
+                            "value": "url to an audio track of a duck call goes here"
+                        }
+                    }
+                ],
+                "buttons": [
+                    {
+                        "type": "playAudio",
+                        "title": "Duck Call",
+                        "value": "url to an audio track of a duck call goes here"
+                    },
+                    {
+                        "type": "openUrl",
+                        "title": "Watch Video",
+                        "image": "http://aka.ms/Fo983c",
+                        "value": "url goes here of the duck in flight"
+                    }
+                ]
+            }
+        }
+    ],
+    "replyToId": "5d5cdc723"
+}
+```
+
+## <a id="adaptive-card"></a> メッセージにアダプティブ カードを追加する
+
+アダプティブ カードには、テキスト、音声、イメージ、ボタン、および入力フィールドの任意の組み合わせを含めることができます。 アダプティブ カードは、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>に指定された JSON 形式を使用して作成されます。これにより、カードのコンテンツと形式の完全な制御が可能になります。 
+
+<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a> サイト内の情報を活用して、アダプティブ カードのスキーマを理解し、アダプティブ カードの要素について調べてください。また、さまざまな構成や複雑さを備えたカードの作成に使用できる JSON のサンプルもご覧ください。 さらに、Interactive Visualizer を使用して、アダプティブ カードのペイロードを設計し、カードの出力をプレビューできます。
+
+次の例に、カレンダー アラーム用の 1 つのアダプティブ カードを含むメッセージを送信する要求を示します。 この要求の例では、`https://smba.trafficmanager.net/apis` はベース URI を表しています。ボットが発行する要求のベース URI は異なることがあります。 ベース URI の設定の詳細については、「[API リファレンス](bot-framework-rest-connector-api-reference.md#base-uri)」を参照してください。
+
+```http
+POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723 
+Authorization: Bearer ACCESS_TOKEN
+Content-Type: application/json
+```
+
+```json
+{
+    "type": "message",
+    "from": {
+        "id": "12345678",
+        "name": "sender's name"
+    },
+    "conversation": {
+        "id": "abcd1234",
+        "name": "conversation's name"
+    },
+    "recipient": {
+        "id": "1234abcd",
+        "name": "recipient's name"
+    },
+    "attachments": [
+        {
+            "contentType": "application/vnd.microsoft.card.adaptive",
+            "content": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "Adaptive Card design session",
+                        "size": "large",
+                        "weight": "bolder"
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": "Conf Room 112/3377 (10)"
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": "12:30 PM - 1:30 PM"
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": "Snooze for"
+                    },
+                    {
+                        "type": "Input.ChoiceSet",
+                        "id": "snooze",
+                        "style": "compact",
+                        "choices": [
+                            {
+                                "title": "5 minutes",
+                                "value": "5",
+                                "isSelected": true
+                            },
+                            {
+                                "title": "15 minutes",
+                                "value": "15"
+                            },
+                            {
+                                "title": "30 minutes",
+                                "value": "30"
+                            }
+                        ]
+                    }
+                ],
+                "actions": [
+                    {
+                        "type": "Action.Http",
+                        "method": "POST",
+                        "url": "http://foo.com",
+                        "title": "Snooze"
+                    },
+                    {
+                        "type": "Action.Http",
+                        "method": "POST",
+                        "url": "http://foo.com",
+                        "title": "I'll be late"
+                    },
+                    {
+                        "type": "Action.Http",
+                        "method": "POST",
+                        "url": "http://foo.com",
+                        "title": "Dismiss"
+                    }
+                ]
+            }
+        }
+    ],
+    "replyToId": "5d5cdc723"
+}
+```
+
+結果として生成されるカードには、3 つのブロック (テキスト、入力フィールド (選択リスト)、および 3 つのボタン) が含まれています。
+
+![アダプティブ カードのカレンダー アラーム](../media/adaptive-card-reminder.png)
+
+
+## <a name="additional-resources"></a>その他のリソース
+
+- [メッセージを作成する](bot-framework-rest-connector-create-messages.md)
+- [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
+- [メッセージにメディア添付ファイルを追加する](bot-framework-rest-connector-add-media-attachments.md)
+- [Channel Inspector][ChannelInspector]
+- <a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>
+
+[ChannelInspector]: ../bot-service-channel-inspector.md
+
+[animationCard]: bot-framework-rest-connector-api-reference.md#animationcard-object
+[audioCard]: bot-framework-rest-connector-api-reference.md#audiocard-object
+[heroCard]: bot-framework-rest-connector-api-reference.md#herocard-object
+[thumbnailCard]: bot-framework-rest-connector-api-reference.md#thumbnailcard-object
+[receiptCard]: bot-framework-rest-connector-api-reference.md#receiptcard-object
+[signinCard]: bot-framework-rest-connector-api-reference.md#signincard-object
+[videoCard]: bot-framework-rest-connector-api-reference.md#videocard-object
+
+[CardAction]: bot-framework-rest-connector-api-reference.md#cardaction-object
+[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
+[Attachment]: bot-framework-rest-connector-api-reference.md#attachment-object
