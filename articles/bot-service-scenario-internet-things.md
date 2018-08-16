@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3583c4382a9262b959b31d5a9a1b7b1b97fc8a04
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3b65f323427760fa43586f471aefb6811ef3e675
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301828"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574525"
 ---
 # <a name="internet-of-things-iot-bot-scenario"></a>モノのインターネット (IoT) ボットのシナリオ
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 このモノのインターネット (IoT) ボットによって、音声または対話型チャット コマンドを使用して、Philips Hue の照明などの自宅周辺のデバイスを簡単に制御できます。
 
 人は自分のものに話しかけるのを好みます。 最初のテレビ リモコンが出現した日以来、移動せずに環境に影響を与えることが人々のお気に入りになっています。 この IoT ボットを使用すると、簡単なチャット コマンドまたは音声によって Philips Hue を管理できます。 さらに、チャットを使用した場合、ユーザーは選択する色に関連した視覚的な選択肢が与えられます。
@@ -48,4 +51,4 @@ Philips Hue に接続されている電球とブリッジによって、照明�
 IFTTT は無料の Web ベース サービスで、ユーザーはこれを使ってアプレットと呼ばれる単純な条件付きステートメントのチェーンを作成できます。 ボットからアプレットをトリガーし、自分の代わりに作業させることができます。 照明のオンとオフ、シーンの変更などに使用可能な事前定義済みの Hue アプレットが数多くあります。
 
 ### <a name="application-insights"></a>Application Insights
-Application Insights では、アプリケーションのパフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報の取得が支援されます。 事前設定なしで、ボットが期待通りに動作し可用性が確保されるように、多彩なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードが用意されています。 問題が発生しているかどうかをすばやく確認し、根本原因分析を行って、問題を検出し、修正できます。
+Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報を得ることができます。 事前設定なしで、ボットが期待通りに動作し可用性が確保されるように、多彩なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードが用意されています。 問題が発生しているかどうかをすばやく確認し、根本原因分析を行って、問題を検出し、修正できます。

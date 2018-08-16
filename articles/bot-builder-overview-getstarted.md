@@ -8,14 +8,17 @@ ms.topic: get-started-article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 208bd5a49400f9e9ff230dafb6dd20c36d50dfad
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 21186c5d3b0769311e4703ca1dab2f48a0a0081a
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300988"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574888"
 ---
 # <a name="develop-bots-with-bot-builder"></a>Bot Builder を使用したボットの開発
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Bot Builder には、SDK、ライブラリ、サンプルと、ボットの構築およびデバッグに役立つツールが用意されています。 Bot Service を使用してボットを構築する際、そのボットは Bot Builder SDK によって支援されます。 Bot Builder SDK を使用すると、C# または Node.js を使ってゼロからボットを作成することもできます。 Bot Builder には、ボットをテストする Bot Framework Emulator や、さまざまなチャネルでボットのユーザー エクスペリエンスをプレビューする Channel Inspector が含まれます。
 
 必要な任意のプログラミング言語を使用してボットをビルドする場合は、REST API を使用できます。
