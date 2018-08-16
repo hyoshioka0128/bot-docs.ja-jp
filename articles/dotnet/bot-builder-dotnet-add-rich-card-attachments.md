@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4552fd8a38468b000837ef0f580d3a0e504a882b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 9eb07a4ac63816b84830956bca0c3a3910669e0d
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302585"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574538"
 ---
-# <a name="add-rich-card-attachments-to-messages"></a>メッセージへのリッチ カード添付ファイルの追加
+# <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-rich-card-attachments.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-rich-cards.md)
@@ -48,15 +51,15 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 リッチ カード内のイベントを処理するには、`CardAction` オブジェクトを定義して、ユーザーがボタンをクリックするか、またはカードのセクションをタップしたときのアクションを指定します。 各 `CardAction` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | Type | 説明 | 
+| プロパティ | type | 説明 | 
 |----|----|----|
-| Type | 文字列 | アクションの種類 (次の表で指定された値のいずれか 1 つ) |
+| type | 文字列 | アクションの種類 (下の表に示されている値のいずれか) |
 | タイトル | 文字列 | ボタンのタイトル |
 | イメージ | 文字列 | ボタン用のイメージ URL |
-| 値 | 文字列 | 指定された種類のアクションを実行するのに必要な値 |
+| 値 | 文字列 | 指定された種類のアクションを実行するために必要な値 |
 
 > [!NOTE]
-> アダプティブ カード内のボタンを作成するには、`CardAction` オブジェクトではなく、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>によって定義されているスキーマが使用されます。 アダプティブ カードにボタンを追加する方法の例については、「[Add an Adaptive Card to a message](#adaptive-card)」(メッセージにアダプティブ カードを追加する) を参照してください。
+> アダプティブ カード内のボタンは、`CardAction` オブジェクトではなく、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>によって定義されているスキーマを使用して作成されます。 アダプティブ カードにボタンを追加する方法の例については、「[Add an Adaptive Card to a message](#adaptive-card)」(メッセージにアダプティブ カードを追加する) を参照してください。
 
 次の表では、`CardAction.Type` において有効な値を一覧すると共に、種類ごとに `CardAction.Value` の想定される内容を説明します。
 

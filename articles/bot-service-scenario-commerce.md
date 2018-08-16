@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b809e98ec971abaac98fd33c4fb2c285baca898f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 15745bc25013df2fd18b0a2045ae2314d6c361e2
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303804"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574858"
 ---
 # <a name="commerce-bot-scenario"></a>コマース ボットのシナリオ
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 [コマース ボット](bot-service-scenario-commerce.md)のシナリオでは、ホテルのコンシェルジュ サービスなど、従来の電子メールおよび電話によるインタラクションを置換するボットについて説明します。 ボットは、Cognitive Services を活用し、バックエンド サービスとの統合から収集したコンテキストを踏まえて、テキストや音声による顧客の要求に対する処理を改善します。
 
 ![Application Bot のダイアグラム](~/media/scenarios/bot-service-scenario-commerce-bot.png)

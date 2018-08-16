@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 6/22/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e8c927ce49a2d8aecf0113a09cbedcf1135a8380
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6154ac5c77f818192503e5586986b37062b105bf
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302780"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574526"
 ---
 # <a name="migrate-your-bot-to-azure"></a>ボットを Azure に移行する
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
 
 [Bot Framework Portal](http://dev.botframework.com) で作成された **Azure Bot Service (プレビュー)** ボットはすべて、Azure の新しい Bot Service に移行する必要があります。 このサービスは 2017 年 12 月に一般公開 (GA) となりました。 
 

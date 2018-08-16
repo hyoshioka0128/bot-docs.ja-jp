@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7c85227d062f32f9f1e8096f1dad83c09ed85a9f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 43eb8e25e2a17e1d6b1d30e767dd15569fcad78b
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303457"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574868"
 ---
 # <a name="information-bot-scenario"></a>Information ボットのシナリオ
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 この Information ボットは、Cognitive Services QnA Maker を使用してナレッジ セットや FAQ で定義された質問に回答したり、Azure Search を使用してより結論が出にくい質問に回答したりできます。
 
 情報は多くの場合、検索によって容易に取り出せる SQL Server のような構造化データ ストアに格納されています。 単純な会話コマンドによって顧客の注文状況を調べることを考えます。 Cognitive Services QnA Maker を使用して、顧客の検索、顧客の最新注文の確認といった、一連の有効な検索オプションがユーザーに提示されます。QnA 形式を定義することで、Azure Search によって強化され、SQL Database に格納されたデータを参照できる質問をユーザーが容易に作成できます。

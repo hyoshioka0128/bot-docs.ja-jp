@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 5/10/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 62ff445e4aabf2afd41cc4bf1f15badb3f47e945
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: a5c55d4437033968f9c08ed49c07b9586cb9b7d8
+ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304137"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39514972"
 ---
 # <a name="ask-the-user-questions"></a>ユーザーに質問する
+
+[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
 
 ボットは、基本的に、ユーザーとの会話で構成されます。 この会話は、短い場合やより複雑な場合、質問をする場合や質問に答える場合など、[多くの形式](bot-builder-conversations.md)を取ることができます。 会話の構成要素はいくつかの要因に依存しますが、それらはすべて会話を必要とします。
 
@@ -252,7 +254,7 @@ server.post('/api/messages', (req, res) => {
 
 ここまで、ウォーターフォール ダイアログの動作やその構築方法を説明してきたので、テーブルの予約を目的にしたより複雑なダイアログを試してみましょう。
 
-テーブル予約の要求を管理するには、4 つの手順を使用して**ウォーターフォール** ダイアログを定義する必要があります。 この会話では、`TextPrompt` に加えて `DatetimePrompt` と `NumberPrompt` も使用します。
+テーブル予約の要求を管理するには、4 つの手順を使用して**ウォーターフォール** ダイアログを定義する必要があります。 この会話では、`TextPrompt` に加えて、`DatetimePrompt` と `NumberPrompt` も使用します。
 
 
 
@@ -485,7 +487,7 @@ server.post('/api/messages', (req, res) => {
 });
 ```
 
-実行時には、ユーザーが文字列 `reserve table` を含むメッセージを送信するたびに、ボットは `reserveTable` の会話を開始します。
+実行時に、ユーザーが文字列 `reserve table` を含むメッセージを送信するたびに、ボットによって `reserveTable` 会話が開始されます。
 
 ---
 

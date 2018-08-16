@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/03/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e1b25a3b5c090cbb13b4c27279745a81da64e6c4
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 30a0c463698d9ab7e3b2b0f9ddb0e872f007d1d8
+ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302577"
+ms.lasthandoff: 08/04/2018
+ms.locfileid: "39515042"
 ---
 # <a name="add-media-to-messages"></a>メッセージにメディアを追加する
 
@@ -79,8 +79,7 @@ await context.sendActivity(imageOrVideoMessage);
 
 ```javascript
 // require MessageFactory and CardFactory from botbuilder.
-const {MessageFactory} = require('botbuilder');
-const {CardFactory} = require('botbuilder');
+const {MessageFactory, CardFactory} = require('botbuilder');
 
 let messageWithCarouselOfCards = MessageFactory.list([
     CardFactory.heroCard('title1', ['imageUrl1'], ['button1']),
@@ -158,7 +157,7 @@ await context.sendActivity(message);
 
 正常に機能させるために、カード上のクリック可能な各アイテムにアクションの種類を割り当てます。 次の表では、カード アクション オブジェクトの type プロパティについて有効な値を示すと共に、種類ごとに value プロパティの想定される内容を説明します。
 
-| Type | 値 |
+| type | 値 |
 | :---- | :---- |
 | openUrl | 組み込みのブラウザーで開かれる URL。 URL を開くことで、タップまたはクリックに応答します。 |
 | imBack | (ボタンをクリックまたはカードをタップしたユーザーから) ボットに送信されるメッセージのテキスト。 会話の参加者すべてが、会話をホストしているクライアント アプリケーションを介して、このメッセージ (ユーザーからボットへの) を表示することができます。 |
@@ -461,8 +460,7 @@ await context.SendActivity(activity);
 
 ```javascript
 // require MessageFactory and CardFactory from botbuilder.
-const {MessageFactory} = require('botbuilder');
-const {CardFactory} = require('botbuilder');
+const {MessageFactory, CardFactory} = require('botbuilder');
 
 //  init message object
 let messageWithCarouselOfCards = MessageFactory.carousel([

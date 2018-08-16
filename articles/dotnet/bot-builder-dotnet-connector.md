@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c8919712331a5f78bdbc35f28adeab966435d737
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2a5c9dcad0d9fd70caaf28ff7ac95830bd47e2d6
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302548"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574598"
 ---
 # <a name="send-and-receive-activities"></a>アクティビティを送受信する
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Bot Framework Connector では、ボットで Skype、電子メール、Slack などの複数のチャネルとの間で通信できるようにする単一の REST API が用意されています。 これにより、ボットからチャネルおよびチャネルからボットにメッセージを返信することで、ボットとユーザー間の通信が容易になります。 
 
@@ -65,7 +67,7 @@ Connector では、[Activity](bot-builder-dotnet-activities.md) オブジェク�
 > [!NOTE]
 > Bot Framework では、ボットで送信できるメッセージ数の制限を指定していません。 しかし、ほとんどのチャネルでは、ボットが短時間で多数のメッセージを送信しないように、調整制限を強制します。 さらに、ボットで立て続けに複数のメッセージを送信する場合は、チャネルでは適切な順序でメッセージがレンダリングされない可能性があります。
 
-## <a name="start-a-conversation"></a>会話の開始
+## <a name="start-a-conversation"></a>会話を開始する
 
 ご利用のボットで 1 人または複数のユーザーと会話を開始する必要がある場合があります。 `ConversationAccount` オブジェクトを取得するために、`CreateDirectConversation` メソッド (単一ユーザーとのプライベート会話の場合) または `CreateConversation` メソッド (複数のユーザーとのグループ会話の場合) のいずれかを呼び出すことで、会話を開始することができます。 次に、メッセージを作成し、`SendToConversation` メソッドを呼び出すことによって送信します。 `CreateDirectConversation` メソッドまたは `CreateConversation` メソッドのいずれかを使用するには、まず (前のメッセージから保持している場合、キャッシュから取得できる) ターゲット チャネルのサービス URL を使用することによって、[コネクタ クライアントを作成](#create-a-connector-client)する必要があります。 
 

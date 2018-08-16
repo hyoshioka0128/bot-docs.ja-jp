@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 286d7057afb28983964ef992de2c11cebd74e0da
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: ab1f0b938703f404417e48520467dc75b9f0717d
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302817"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574838"
 ---
 # <a name="bot-service-templates"></a>Bot Service テンプレート
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 Bot Service には、ボットの作成を開始するために役立つ 5 つのテンプレートが含まれています。 これらのテンプレートでは、すばやく開始するのに役立つ、すぐに使用できる完全に機能するボットが提供されます。 [ボットを作成する](bot-service-quickstart.md)ときに、ご自分のボット用のテンプレートと SDK 言語を選択します。
 
 各テンプレートでは、ボットのコア機能に基づく開始点が提供されます。 

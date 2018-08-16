@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a97d21e64ce12f6158f276889762a73ac2aff49b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 00ea81558bf4b8206dc6142ab26e47e3652be563
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304385"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574548"
 ---
 # <a name="create-messages"></a>メッセージの作成
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 ボットは、**メッセージ** [アクティビティ](bot-builder-dotnet-activities.md)を送信してユーザーに情報を伝達し、同様にユーザーからの**メッセージ** アクティビティも受信します。 プレーン テキストだけで構成されているシンプルなメッセージもあれば、[読み上げテキスト](bot-builder-dotnet-text-to-speech.md)、[推奨されるアクション](bot-builder-dotnet-add-suggested-actions.md)、[メディアの添付ファイル](bot-builder-dotnet-add-media-attachments.md)、[リッチ カード](bot-builder-dotnet-add-rich-card-attachments.md)、[チャネル固有のデータ](bot-builder-dotnet-channeldata.md)など、よりリッチなコンテンツを含むメッセージもあります。 
 
@@ -47,7 +49,7 @@ ms.locfileid: "39304385"
 
 | プロパティ | 説明 | 
 |----|----|
-| Type | エンティティの種類 ("mention") | 
+| type | エンティティの種類 ("mention") | 
 | Mentioned | どのユーザーがメンションされたかを示す `ChannelAccount` オブジェクト | 
 | Text | メンション自体を表す `Activity.Text` プロパティ内のテキスト (空または null 値の可能性があります) |
 
@@ -66,7 +68,7 @@ ms.locfileid: "39304385"
 
 | プロパティ | 説明 | 
 |----|----|
-| Type | エンティティの種類 ("Place") |
+| type | エンティティの種類 ("Place") |
 | Address | 説明または `PostalAddress` オブジェクト (将来) | 
 | ジオ (主要地域)  | GeoCoordinates | 
 | HasMap | 地図の URL または `Map` オブジェクト (将来) |
@@ -76,7 +78,7 @@ ms.locfileid: "39304385"
 
 | プロパティ | 説明 | 
 |----|----|
-| Type | エンティティの種類 ("GeoCoordinates") |
+| type | エンティティの種類 ("GeoCoordinates") |
 | Name | 場所の名前 |
 | Longitude | 場所の経度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
 | Latitude | 場所の緯度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7fdcd6e0e56ef11cd887b9d5493fd0b25c23cf89
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 8ba63ad99c772c7cf5884180a62244e0dfe11db2
+ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300668"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39574908"
 ---
 # <a name="global-message-handlers-using-scorables"></a>scorable を使用したグローバル メッセージ ハンドラー
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 ユーザーは、ボットが別の応答を期待しているときに、会話の途中で "ヘルプ"、"キャンセル"、"やり直し" などの言葉を使用してボット内の特定の機能にアクセスしようとします。 scorable ダイアログを使用して、このような要求を適切に処理するようにボットを設計できます。
 
