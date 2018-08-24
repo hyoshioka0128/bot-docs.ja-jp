@@ -4,7 +4,9 @@
 # [App Insights キー](../bot-service-resources-app-insights-keys.md)
 # [User-Agent 要求](../bot-service-resources-user-agent.md)
 # [Bot レビュー ガイドライン](../bot-service-review-guidelines.md)
-# [Bot Framework アクティビティの仕様](../bot-service-activity-spec.md)
+# [Bot Framework のアクティビティ スキーマ](https://github.com/Microsoft/BotBuilder/blob/hub/specs/botframework-activity/botframework-activity.md)
+# [Bot Framework のカード スキーマ](https://github.com/Microsoft/BotBuilder/blob/hub/specs/botframework-activity/botframework-cards.md)
+# [Bot Framework のトランスクリプト スキーマ](https://github.com/Microsoft/BotBuilder/blob/hub/specs/transcript/transcript.md)
 # [Bot Service のコンプライアンス](../v4sdk/bot-service-compliance.md)
 # トラブルシューティング
 ## [一般的な問題のトラブルシューティング](../bot-service-troubleshoot-general-problems.md)
