@@ -1,9 +1,9 @@
 # [Azure Bot Service のドキュメント](index.md)
 # 概要
-## [Azure Bot Service のドキュメント](bot-service-overview-introduction.md)
+## [Azure Bot Service について](bot-service-overview-introduction.md)
 # クイック スタート
-## [Bot Service でのボットの作成](~/bot-service-quickstart.md)
-## Bot Builder SDK でのボットのビルド
+## [Azure Bot Service を使用してボットを作成する](~/bot-service-quickstart.md)
+## ボットをローカルで作成する
 ### [.NET](dotnet/bot-builder-dotnet-quickstart.md)
 ### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
 ### [Node.js](nodejs/bot-builder-nodejs-quickstart.md)
