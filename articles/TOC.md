@@ -48,7 +48,7 @@
 ## [管理](manage/TOC.md)
 ## 開発
 ### [メッセージの送信](v4sdk/bot-builder-howto-send-messages.md)
-### [メディア添付ファイルの追加](v4sdk/bot-builder-howto-add-media-attachments.md)
+### [メッセージにメディアを追加する](v4sdk/bot-builder-howto-add-media-attachments.md)
 ### [メッセージへの入力ヒントの追加](v4sdk/bot-builder-howto-add-input-hints.md)
 ### [メッセージへの推奨されるアクションの追加](v4sdk/bot-builder-howto-add-suggested-actions.md)
 ### [ユーザー入力を収集するために独自のプロンプトを作成する](v4sdk/bot-builder-primitive-prompts.md)
