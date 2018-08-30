@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: cf8da2240df7edbb6ea8c858829e71089b7e72cb
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 565f71dee4269ecd67dabe18af57e36defcfb3fc
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304153"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756624"
 ---
 # <a name="activities-overview"></a>アクティビティの概要
 
@@ -28,7 +28,6 @@ Bot Connector サービスは、[Activity][Activity] オブジェクトを渡す
 | conversationUpdate | ボットが会話に追加されたこと、他のメンバーが会話に追加された、または会話から削除されたこと、会話のメタデータが変更されたことを示します。 |
 | contactRelationUpdate | ユーザーの連絡先リストに対してボットが追加または削除されたことを示します。 |
 | typing | 会話の相手側のユーザーまたはボットが応答をコンパイルしていることを示します。 | 
-| ping | ボットのエンドポイントがアクセス可能かどうかを判断しようとしていることを表します。 | 
 | deleteUserData | ボットに保存されている可能性のあるユーザー データを削除するようにユーザーが要求したことをボットに示します。 |
 | endOfConversation | 会話の終了を示します。 |
 
@@ -52,10 +51,6 @@ Bot Connector サービスは、[Activity][Activity] オブジェクトを渡す
 ## <a name="typing"></a>typing
 
 ボットは **typing** アクティビティを受信して、ユーザーが応答を入力中であることを示します。 ボットは、**typing** アクティビティを送信して、要求を満たすため、または応答をコンパイルするためにボットが動作中であることをユーザーに示すことがあります。 
-
-## <a name="ping"></a>ping
-
-ボットは **ping** アクティビティを受信して、エンドポイントにアクセス可能かどうかを判断します。 ボットは、HTTP 状態コード 200 (OK)、403 (許可されていません) または 401 (権限がありません) で応答する必要があります。
 
 ## <a name="deleteuserdata"></a>deleteUserData
 

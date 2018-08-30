@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f7fe3181a4c361b47a7ef6fbdf815b4c495c6f76
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 834702024c99873ca9f0bbedb53a24a16ba55878
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574638"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756593"
 ---
 # <a name="activities-overview"></a>アクティビティの概要
 
@@ -31,7 +31,6 @@ ms.locfileid: "39574638"
 | [conversationUpdate](#conversationupdate) | IConversationUpdateActivity | ボットが会話に追加されたこと、他のメンバーが会話に追加された、または会話から削除されたこと、会話のメタデータが変更されたことを示します。 |
 | [contactRelationUpdate](#contactrelationupdate) | IContactRelationUpdateActivity | ユーザーの連絡先リストに対してボットが追加または削除されたことを示します。 |
 | [typing](#typing) | ITypingActivity | 会話の相手側のユーザーまたはボットが応答をコンパイルしていることを示します。 | 
-| [ping](#ping) | 該当なし | ボットのエンドポイントがアクセス可能かどうかを判断しようとしていることを表します。 | 
 | [deleteUserData](#deleteuserdata) | 該当なし | ボットに保存されている可能性のあるユーザー データを削除するようにユーザーが要求したことをボットに示します。 |
 | [endOfConversation](#endofconversation) | IEndOfConversationActivity | 会話の終了を示します。 |
 | [event](#event) | IEventActivity | ボットに送信される、ユーザーに表示されない通信を表します。 |
@@ -62,10 +61,6 @@ ms.locfileid: "39574638"
 ## <a name="typing"></a>typing
 
 ボットは **typing** アクティビティを受信して、ユーザーが応答を入力中であることを示します。 ボットは、**typing** アクティビティを送信して、要求を満たすため、または応答をコンパイルするためにボットが動作中であることをユーザーに示すことがあります。 
-
-## <a name="ping"></a>ping
-
-ボットは **ping** アクティビティを受信して、エンドポイントにアクセス可能かどうかを判断します。 ボットは、HTTP 状態コード 200 (OK)、403 (許可されていません) または 401 (権限がありません) で応答する必要があります。
 
 ## <a name="deleteuserdata"></a>deleteUserData
 
