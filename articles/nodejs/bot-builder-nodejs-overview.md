@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 41c276186f08e9997497e5649a6566954f0c8079
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 24da2cc90908a1f22bee9d2cd007607b116ac2cc
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304569"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904205"
 ---
 # <a name="bot-builder-sdk-for-nodejs"></a>Bot Builder SDK for Node.js
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-overview.md)
@@ -44,7 +46,7 @@ Bot Builder SDK for Node.js に慣れていない方は、「[主要な概念](b
 
 ## <a name="get-samples"></a>サンプルを入手する
 
-[Bot Builder SDK for Node.js サンプル](bot-builder-nodejs-samples.md)では、Bot Builder SDK for Node.js 内の機能を活用する方法を示す、タスクに焦点をおいたボットを説明します。 サンプルを利用することで、豊富な機能を備えた優れたボットのビルドが迅速に開始できるようになります。
+[Bot Builder SDK for Node.js サンプル](bot-builder-nodejs-samples.md)では、Bot Builder SDK for Node.js 内の機能を活用する方法を示す、タスクに焦点をおいたボットを説明します。 サンプルを利用することで、豊富な機能を備えた優れたボットの作成が迅速に開始できるようになります。
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]

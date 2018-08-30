@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 255248449ab7adb6512db93ece51389d65c01dee
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: eed4ac20664d15fbc40969551a1f23fc91b4f120
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301964"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906226"
 ---
 # <a name="real-time-media-calling-with-skype"></a>Skype によるリアルタイム メディア通話
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Real-Time Media Platform for Bots は、リアルタイムの音声、ビデオ、および画面共有方式を実現することで、ボットとユーザーの対話方法に新たな領域を追加しています。 これは、説得力のある対話的なエンターテイメント、教育、および支援型のボットを作成する機能を提供します。 ユーザーは Skype を使用して、リアルタイム メディアのボットと通信します。
 

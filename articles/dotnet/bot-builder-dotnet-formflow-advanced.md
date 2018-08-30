@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8860c6b3fa0eaaf9f9bfc92984a501c066f2fe5c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6637876b016b8680fe722602f530a0c6b0ddfc5a
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300705"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905406"
 ---
 # <a name="advanced-features-of-formflow"></a>FormFlow の高度な機能
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 「[Basic features of FormFlow](bot-builder-dotnet-formflow.md)」(FormFlow の基本的機能) では、ごく般的なユーザー エクスペリエンスを提供する基本的な FormFlow 実装について説明しています。 FormFlow を使用してさらにカスタマイズされたユーザー エクスペリエンスを提供するために、フォームの初期状態を指定し、フィールド間の相互依存関係を管理してユーザー入力を処理するビジネス ロジックを追加しすることができます。また、プロンプトのカスタマイズ、テンプレートのオーバーライド、省略可能なフィールドの指定、ユーザー入力の照合、ユーザー入力の検証を行う属性を使用できます。 
 
@@ -65,7 +67,7 @@ For sandwich toppings you have selected Avocado, Banana Peppers, Cucumbers, Gree
 
 以下の C# 属性をクラスに追加して、FormFlow ダイアログの動作をカスタマイズすることができます。
 
-| 属性 | 目的 |
+| Attribute | 目的 |
 |----|----| 
 | [Describe][describeAttribute] | テンプレートやカードにフィールドや値を表示する方法を変更します |
 | [Numeric][numericAttribute] | 数値フィールドの許容値を制限します |

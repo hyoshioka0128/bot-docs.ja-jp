@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b737b11db3876d8b98cbd9f46f6e23f8b8564244
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 67dc8a196393458b37bb6447ceaa8f36a28a564a
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304204"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905933"
 ---
 # <a name="recognize-user-intent-from-message-content"></a>メッセージの内容からユーザーの意図を認識する
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 ボットがユーザーからメッセージを受信すると、ボットは**認識エンジン**を使用してメッセージを検証し、意図を判断することができます。 意図は、メッセージから、呼び出すダイアログへのマッピングを提供します。 この記事では、正規表現を使用して、またはメッセージの内容を検査することによって意図を認識する方法について説明します。 たとえば、ボットは正規表現を使用して、メッセージに "help" という単語が含まれているかどうかチェックし、ヘルプ ダイアログを呼び出すことができます。 ボットはユーザー メッセージのプロパティをチェックすることもできます。たとえば、ユーザーがテキストではなく画像を送信したかどうか確認し、画像処理ダイアログを呼び出すことができます。 
 

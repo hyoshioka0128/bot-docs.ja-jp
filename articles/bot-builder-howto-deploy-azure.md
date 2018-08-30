@@ -8,14 +8,16 @@ manager: kamrani
 ms.topic: get-started-article
 ms.prod: bot-framework
 ms.date: 05/14/2018
-ms.openlocfilehash: 70a3b7f093bb80dd16c854c65331c141fbba3725
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f3e5ed5b14ffb81c597b10aeac45854464bad8b0
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303825"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905594"
 ---
 # <a name="deploy-your-bot-to-azure"></a>使用するボットを Azure にデプロイする
+
+[!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
 
 ご自分のボットを作成し、ローカルで検証したら、それを Azure にプッシュすることで、どこからでもアクセスできるようにすることができます。 そのためには、まず App Service でボットを Azure にデプロイし、次に Azure Bot Service の Bot Channels Registration アイテムを使用してご自分のボットを構成します。
 
@@ -71,7 +73,7 @@ Visual Studio を使用して、Azure 内でリソースを作成し、ご自分
 
 10. 開発およびテストの場合は F0 価格レベルを選択できます。
 
-11. ご自分のボットの URL を入力します。 必ず、HTTPS で始めて、/api/messages を追加します。たとえば、https://yourbotname.azurewebsites.net/api/messages のようになります。
+11. ご自分のボットの URL を入力します。 必ず、HTTPS で始めて、/api/messages を追加します。たとえば、 https://yourbotname.azurewebsites.net/api/messages のようになります。
 
 12. ここで、[Application Insights] をオフにします。
 

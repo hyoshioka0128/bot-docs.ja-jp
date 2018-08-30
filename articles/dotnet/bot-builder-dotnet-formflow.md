@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f38424c2fa86fd4456ab6f8dee81bde71bfd6753
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: cf3d69f7941d8c3177788bd00e4b58416a71cf5e
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301764"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904626"
 ---
 # <a name="basic-features-of-formflow"></a>FormFlow の基本的機能
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 [ダイアログ](bot-builder-dotnet-dialogs.md)は非常に強力で柔軟性がありますが、サンドイッチの注文などのガイド付きの会話を処理するには、多大な労力を必要とすることがあります。 会話の各ポイントには、次に起こることについての多くの可能性があります。 たとえば、あいまいさの排除やヘルプの提供を必要とする場合もあれば、前に戻ったり、進行状況を示したりすることが必要な場合もあります。 Bot Builder SDK for .NET 内で **FormFlow** を使用することで、このようなガイド付きの会話を管理するプロセスを大幅に簡素化できます。 
 

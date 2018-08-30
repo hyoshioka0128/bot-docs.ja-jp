@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a7f6e3f186e0c4b9f6096cad72a91ef6f3fdffd4
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 03478431822c8be0e696577a18a2e693d441509b
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303868"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904553"
 ---
 # <a name="define-a-form-using-json-schema"></a>JSON スキーマによるフォームの定義
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 FormFlow を使用してボットを作成するときに [C# クラス](bot-builder-dotnet-formflow.md#create-class)を使ってフォームを定義する場合、フォームは、C# の型の静的定義から派生します。 代わりに、<a href="http://json-schema.org/documentation.html" target="_blank">JSON スキーマ</a>を使用してフォームを定義することもできます。 JSON スキーマを使用して定義したフォームは純粋にデータ ドリブンです。スキーマを更新するだけで、フォームを (したがってボットの動作も) 変更できます。 
 
@@ -43,8 +45,8 @@ FormFlow では、いくつかの追加プロパティをサポートするよ�
 | プロパティ | 値 |
 |----|----|
 | OnCompletion | フォームを完了処理するための C# スクリプト (引数 `(IDialogContext context, JObject state)` を使用)。 |
-| 参照 | スクリプトに含める参照。 たとえば、「`[assemblyReference, ...]`」のように入力します。 パスは、絶対パスか、現在のディレクトリから見た相対パスにする必要があります。 既定では、スクリプトには `Microsoft.Bot.Builder.dll` が含まれます。 |
-| インポートする | スクリプトに含めるインポート。 たとえば、「`[import, ...]`」のように入力します。 既定では、スクリプトには `Microsoft.Bot.Builder`、`Microsoft.Bot.Builder.Dialogs`、`Microsoft.Bot.Builder.FormFlow`、`Microsoft.Bot.Builder.FormFlow.Advanced`、`System.Collections.Generic`、`System.Linq` の名前空間が含まれます。 |
+| 参照 | スクリプトに含める参照。 たとえば、「 `[assemblyReference, ...]` 」のように入力します。 パスは、絶対パスか、現在のディレクトリから見た相対パスにする必要があります。 既定では、スクリプトには `Microsoft.Bot.Builder.dll` が含まれます。 |
+| インポートする | スクリプトに含めるインポート。 たとえば、「 `[import, ...]` 」のように入力します。 既定では、スクリプトには `Microsoft.Bot.Builder`、`Microsoft.Bot.Builder.Dialogs`、`Microsoft.Bot.Builder.FormFlow`、`Microsoft.Bot.Builder.FormFlow.Advanced`、`System.Collections.Generic`、`System.Linq` の名前空間が含まれます。 |
 
 ### <a name="additional-properties-at-the-root-of-the-schema-or-as-peers-of-the-type-property"></a>スキーマのルートに置かれる、または type プロパティのピアとなる追加プロパティ
 
@@ -68,10 +70,10 @@ JSON スキーマでテンプレートおよびプロンプトを指定するに
 |    用語     |       `[string,...]`        |                  フィールド値を照合するための正規表現 (TermsAttribute で説明)。                  |
 |  MaxPhrase   |             int             |                  `Language.GenerateTerms(string, int)` で用語を処理して、展開します。                   |
 |    値    | `{ string: {Describe:string |                                  object, Terms:[string, ...], MaxPhrase}, ...}`                                  |
-|    アクティブ    |           script (スクリプト)            | フィールド、メッセージ、確認がアクティブかどうかをテストするための C# スクリプト (引数 `(JObject state)->bool` を使用)。  |
-|   検証   |           script (スクリプト)            |      フィールド値を検証するための C# スクリプト (引数 `(JObject state, object value)->ValidateResult` を使用)。      |
-|    Define    |           script (スクリプト)            |        フィールドを動的に定義するための C# スクリプト (引数 `(JObject state, Field<JObject> field)` を使用)。        |
-|     次へ     |           script (スクリプト)            | フィールドに入力した後の次のステップを判別するための C# スクリプト (引数 `(object value, JObject state)` を使用)。 |
+|    アクティブ    |           script            | フィールド、メッセージ、確認がアクティブかどうかをテストするための C# スクリプト (引数 `(JObject state)->bool` を使用)。  |
+|   検証   |           script            |      フィールド値を検証するための C# スクリプト (引数 `(JObject state, object value)->ValidateResult` を使用)。      |
+|    Define    |           script            |        フィールドを動的に定義するための C# スクリプト (引数 `(JObject state, Field<JObject> field)` を使用)。        |
+|     次へ     |           script            | フィールドに入力した後の次のステップを判別するための C# スクリプト (引数 `(object value, JObject state)` を使用)。 |
 |    実装する前    |          `[confirm          |                                                  message, ...]`                                                  |
 |    実装した後     |          `[confirm          |                                                  message, ...]`                                                  |
 | 依存関係 |        [string, ...]        |                           このフィールド、メッセージ、確認が依存するフィールド。                           |

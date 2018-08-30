@@ -8,15 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: aff2509a426fb42f136fb9d2b4a2df9ec1accda0
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 1c6b01b1cab9165b1513bfda5af182f27635290e
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303913"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904384"
 ---
 # <a name="send-a-typing-indicator"></a>入力インジケーターの送信 
 
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 ユーザーはメッセージに対するタイムリーな応答を期待しています。 ボットがユーザーからの指示を受け取ったということをユーザーに表示することなく、サーバーの呼び出しやクエリの実行などの実行時間の長いタスクを実行すると、ユーザーはしびれを切らして追加のメッセージを送信したり、単にボットが壊れていると推測する可能性があります。
 多くのチャネルは、メッセージが受信され、処理中であることをユーザに示す入力表示の送信をサポートします。

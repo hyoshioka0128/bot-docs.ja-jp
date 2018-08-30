@@ -8,23 +8,25 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9d3e1c315399ce3cadc6371ceb93055c836590a6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e326147f32161c2e99dacdfa24ff41080a9b33e9
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304108"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906236"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-nodejs"></a>Node.js 用の Azure Cosmos DB によるカスタム状態データの管理
 
-この記事では、ボットの状態データを保存および管理するための Cosmos DB ストレージを実装します。 ボットで使用される既定の Connector State Service は、運用環境用ではありません。 GitHub で利用可能な [Azure 拡張機能](https://www.npmjs.com/package/botbuilder-azure)を使用するか、自分で選択したデータ ストレージ プラットフォームを使用してカスタム状態クライアントを実装するかのいずれかが必要です。 カスタム状態ストレージを使用する理由のいくつかを次に示します。
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-- State API のスループットに優れる (パフォーマンスをより強力に制御できる)
+この記事では、ボットの状態データを保存および管理するための Cosmos DB ストレージを実装します。 ボットで使用される既定の Connector State Service は、運用環境用ではありません。 GitHub で利用可能な [Azure 拡張機能](https://www.npmjs.com/package/botbuilder-azure)を使用するか、自分で選択したデータ ストレージ プラットフォームを使用してカスタム状態クライアントを実装する必要があります。 カスタム状態ストレージを使用する理由のいくつかを次に示します。
+
+- State API のスループットが高い (パフォーマンスをより強力に制御できる)
 - geo 分布に伴う待ち時間が少ない
 - データの格納場所を制御できる (例: 米国西部と米国東部)
-- 状態データそのものへのアクセス
-- 状態データの DB がその他のボットと共有されない
-- 32 kb を超えるデータを格納できる
+- 実際の状態データにアクセスできる
+- 状態データのデータベースが他のボットと共有されない
+- 32 KB を超えるデータを格納できる
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,12 +37,12 @@ ms.locfileid: "39304108"
 ## <a name="create-azure-account"></a>Azure アカウントの作成
 Azure アカウントを持っていない場合は、[こちら](https://azure.microsoft.com/en-us/free/)をクリックして、無料アカウントにサインアップしてください。
 
-## <a name="set-up-the-azure-cosmos-db-database"></a>Azure Cosmos DB データベースの設定
-1. Azure Portal にログインし、**[新規]** をクリックして新しい *Azure Cosmos DB* データベースを作成します。 
+## <a name="set-up-the-azure-cosmos-db-database"></a>Azure Cosmos DB データベースを設定する
+1. Azure Portal にログインしたら、**[新規]** をクリックして新しい *Azure Cosmos DB* データベースを作成します。 
 2. **[データベース]** をクリックします。 
 3. **[Azure Cosmos DB]** を見つけて、**[作成]** をクリックします。
-4. フィールドに入力します。 **[API]** フィールドで、**[SQL (DocumentDB)]** を選択します。 すべてのフィールドに入力した後、画面下部にある **[作成]** ボタンをクリックし、新しいデータベースをデプロイします。 
-5. 新しいデータベースをデプロイしたら、その新しいデータベースに移動します。 **[アクセス キー]** をクリックして、キーと接続文字列を検索します。 ボットはこの情報を使用して、状態データを保存するストレージ サービスを呼び出します。
+4. フィールドに入力します。 **[API]** フィールドで、**[SQL (DocumentDB)]** を選択します。 すべてのフィールドに入力した後、画面下部にある **[作成]** ボタンをクリックして、新しいデータベースをデプロイします。 
+5. 新しいデータベースがデプロイされたら、その新しいデータベースに移動します。 **[アクセス キー]** をクリックして、キーと接続文字列を検索します。 ボットはこの情報を使用して、状態データを保存するストレージ サービスを呼び出します。
 
 ## <a name="install-botbuilder-azure-module"></a>botbuilder-azure モジュールのインストール
 
@@ -87,9 +89,9 @@ npm install --save botbuilder-azure
    .set('storage', cosmosStorage);
    ```
 
-エミュレーターでボットをテストする準備が整いました。
+以上で、エミュレーターでボットをテストする準備が整いました。
 
-## <a name="run-your-bot-app"></a>ボット アプリの実行
+## <a name="run-your-bot-app"></a>ボット アプリを実行する
 
 コマンド プロンプトでボットのディレクトリに移動し、次のコマンドを使用してボットを実行します。
 
@@ -101,7 +103,7 @@ node app.js
 
 この時点では、ボットはローカルで実行されています。 エミュレーターを起動し、エミュレーターからボットに接続します。
 
-1. エミュレーターのアドレス バーに <strong>http://localhost:port-number/api/messages</strong> と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 [<strong>Microsoft アプリ ID</strong>] フィールドと [<strong>Microsoft アプリ パスワード</strong>] フィールドは、この時点では空白のままで構いません。 この情報は、後ほど、[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
+1. エミュレーターのアドレス バーに「<strong>http://localhost:port-number/api/messages</strong>」と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 <strong>[Microsoft App ID]\(Microsoft アプリ ID\)</strong> フィールドと <strong>[Microsoft App Password]\(Microsoft アプリ パスワード\)</strong> フィールドは、この時点では空白のままでかまいません。 この情報は、後ほど、[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
 2. **[接続]** をクリックします。
 3. ボットにメッセージを送信して、テストします。 通常どおりにボットと対話してください。 対話が終わったら、**Storage Explorer** に移動し、保存された状態データを表示します。
 

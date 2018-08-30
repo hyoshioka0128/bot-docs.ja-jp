@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/06/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7241b67b582b3e31c1b3c15dc5474e750b7cc558
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e316ff90b68f860274579f06e7196deec364e082
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304396"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905635"
 ---
 # <a name="translate-from-the-users-language-to-make-your-bot-multilingual"></a>ユーザーの言語から翻訳してボットを多言語対応にする
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 ボットは [Microsoft Translator](https://www.microsoft.com/en-us/translator/) を使用して、メッセージをボットが理解できる言語に自動的に翻訳したり、必要に応じて、ボットの応答をユーザーの言語に翻訳し直したりすることができます。
 <!-- 
@@ -54,7 +56,7 @@ botbuilder-ai パッケージを使用して、これらのサービスのいず
 
 ## <a name="configure-translation"></a>翻訳を構成する
 
-トランスレータを単純にボットのミドルウェア スタックに追加することによって、ユーザーからメッセージが受信されるたびにトランスレータを呼び出すようにボットを構成できます。 このミドルウェアは翻訳結果を使用して、コンテキスト オブジェクトによってユーザーのメッセージを変更します。
+トランスレータを単純にボットのミドルウェア スタックに追加することによって、ユーザーからメッセージが受信されるたびにトランスレータを呼び出すようにボットを構成できます。 ミドルウェアでは翻訳結果を使用し、context オブジェクトを使ってユーザーのメッセージを変更します。
 
 
 # <a name="ctabcssetuptranslate"></a>[C#](#tab/cssetuptranslate)

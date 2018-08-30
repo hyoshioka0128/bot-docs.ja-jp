@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 571851001e565dd54d4254b692c9209729bc5432
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: aa20dc396b68ede3271d12a8deab2e673a79d1d1
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303572"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904484"
 ---
 # <a name="prompt-for-user-input"></a>ユーザーに入力を求めるプロンプト
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Bot Builder SDK for Node.js には、ユーザーからの入力の収集を単純にする、組み込みプロンプトのセットがあります。 
 
@@ -159,11 +161,11 @@ bot.dialog('createAlarm', [
 
 `ListStyle` 列挙値は次のとおりです。
 
-| インデックス | 名前 | 説明 |
+| Index | Name | 説明 |
 | ---- | ---- | ---- |
 | 0 | なし | 一覧は表示されません。 これは、一覧がプロンプトの一部として含まれる場合に使用されます。 |
 | 1 | インライン | 選択肢は、次の形式のインラインリストとして表示されます。"1.  赤、2.  緑、3.  青" |
-| 2 | 一覧 | 選択肢は、番号付きリストとして表示されます。 |
+| 2 | list | 選択肢は、番号付きリストとして表示されます。 |
 | 3 | ボタン | 選択肢は、ボタンをサポートするチャネルでは、ボタンとして表示されます。 その他のチャネルでは、テキストとして表示されます。 |
 | 4 | 自動 | スタイルは、チャネルとオプションの数に基づいて自動的に選択されます。 | 
 

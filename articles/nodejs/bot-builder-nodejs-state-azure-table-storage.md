@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c77b07801b8eb0168ac3e09d7b271ddfb17a04ac
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 84fdbecfe59db49e2e88567a6c942c300ea226a2
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302281"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904362"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-nodejs"></a>Node.js 用 Azure Table Storage を使用したカスタム状態データの管理
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 この記事では、ボットの状態データを保存および管理するための Azure Table Storage を実装します。 ボットで使用される既定の Connector State Service は、運用環境用ではありません。 GitHub で利用可能な [Azure 拡張機能](https://www.npmjs.com/package/botbuilder-azure)を使用するか、自分で選択したデータ ストレージ プラットフォームを使用してカスタム状態クライアントを実装する必要があります。 カスタム状態ストレージを使用する理由のいくつかを次に示します。
 
@@ -109,7 +111,7 @@ node app.js
 
 この時点では、ボットはローカルで実行されています。 エミュレーターを起動し、エミュレーターからボットに接続します。
 
-1. エミュレーターのアドレス バーに「<strong>http://localhost:port-number/api/messages</strong>」と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 <strong>[Microsoft App ID]\(Microsoft アプリ ID\)</strong> フィールドと <strong>[Microsoft App Password]\(Microsoft アプリ パスワード\)</strong> フィールドは、この時点では空白のままでかまいません。 この情報は、後で[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
+1. エミュレーターのアドレス バーに「<strong>http://localhost:port-number/api/messages</strong>」と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 <strong>[Microsoft App ID]\(Microsoft アプリ ID\)</strong> フィールドと <strong>[Microsoft App Password]\(Microsoft アプリ パスワード\)</strong> フィールドは、この時点では空白のままでかまいません。 この情報は、後ほど、[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
 2. **[接続]** をクリックします。
 3. ボットにメッセージを送信して、テストします。 通常どおりにボットと対話してください。 対話が終わったら、**Storage Explorer** に移動し、保存された状態データを表示します。
 

@@ -9,16 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/22/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8e08ac4721ee78bbd5d13dac09d9e505d3a1b134
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: 278005c25e98c7c5b7d523030846909aed830224
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39304660"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905355"
 ---
 # <a name="activity-processing"></a>アクティビティの処理
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 ボットとユーザーの間では、アクティビティを介して情報の交換が行われます。 ご利用のボット アプリケーションによって受信された各アクティビティはボット アダプターに渡されます。次に、このボット アダプターから、アクティビティ情報がご利用のボルト ロジックに渡され、最終的に応答がユーザーに送信されます。
 

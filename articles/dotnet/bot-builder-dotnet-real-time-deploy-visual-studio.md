@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4ef96c82229d44a88e6063c64cd435cf7127a4b3
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: add83b0534ff950e9e7dd5c97a970d251b9c8fea
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301833"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904118"
 ---
 # <a name="deploy-a-real-time-media-bot-from-visual-studio-to-azure"></a>Visual Studio から Azure へのリアルタイム メディア ボットのデプロイ
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 リアルタイム メディア ボットは、"IaaS" Azure 仮想マシンまたは "クラシック" Azure クラウド サービスのいずれかでホストできます。 この記事では、Visual Studio の組み込みの発行機能を使用して、Azure クラウド サービス worker ロールでホストされているボットを Visual Studio からデプロイする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件

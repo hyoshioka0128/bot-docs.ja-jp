@@ -9,16 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 5/10/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a5c55d4437033968f9c08ed49c07b9586cb9b7d8
-ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
+ms.openlocfilehash: 7546b46a0bbca86665538b47e8f7b05d5812a920
+ms.sourcegitcommit: 44f100a588ffda19c275b118f4f97029f12d1449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39514972"
+ms.lasthandoff: 08/26/2018
+ms.locfileid: "42928320"
 ---
 # <a name="ask-the-user-questions"></a>ユーザーに質問する
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 ボットは、基本的に、ユーザーとの会話で構成されます。 この会話は、短い場合やより複雑な場合、質問をする場合や質問に答える場合など、[多くの形式](bot-builder-conversations.md)を取ることができます。 会話の構成要素はいくつかの要因に依存しますが、それらはすべて会話を必要とします。
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 02/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3df88215141fa513fb2b97b8f13d1cc358660d86
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: ba16adebe6bbb9b79949cd9842e975e35c3f2aa6
+ms.sourcegitcommit: d486dd088b87a44fc8142f7a08877ff993861a42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300865"
+ms.lasthandoff: 08/26/2018
+ms.locfileid: "42928411"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-python"></a>Bot Builder SDK for Python を使用したボットの作成
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -143,8 +143,6 @@ python main.py
 エミュレーターに「**Hello**」(こんにちは) と入力すると、ボットは「**You said "Hello"**」("こんにちは" と言いましたね) と応答します。
 
 ## <a name="next-steps"></a>次の手順
-
-次に、ボットとそのしくみを説明する概念をご覧ください。
 
 > [!div class="nextstepaction"]
 > [ボットの基本的な概念](../v4sdk/bot-builder-basics.md)

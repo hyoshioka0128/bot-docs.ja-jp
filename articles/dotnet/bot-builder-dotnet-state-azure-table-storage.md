@@ -7,20 +7,23 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e2d8e6a5a390a27b61b11ad22f07ce0ab95f1686
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e5ff23caa1bdb1158ab19fa7c66e1fe4f6899f49
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303916"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905115"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-net"></a>.NET 用 Azure Table Storage を使用したカスタム状態データの管理
-この記事では、ボットの状態データを保存および管理するための Azure Table Storage ストレージを実装します。 ボットで使用される既定の Connector State Service は、運用環境用ではありません。 GitHub で利用可能な [Azure 拡張機能](https://github.com/Microsoft/BotBuilder-Azure)を使用するか、自分で選択したデータ ストレージ プラットフォームを使用してカスタム状態クライアントを実装するかのいずれかが必要です。 カスタム状態ストレージを使用する理由のいくつかを次に示します。
- - State API のスループットに優れる (パフォーマンスをより強力に制御できる)
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
+この記事では、ボットの状態データを保存および管理するための Azure Table Storage ストレージを実装します。 ボットで使用される既定の Connector State Service は、運用環境用ではありません。 GitHub で利用可能な [Azure 拡張機能](https://github.com/Microsoft/BotBuilder-Azure)を使用するか、自分で選択したデータ ストレージ プラットフォームを使用してカスタム状態クライアントを実装する必要があります。 カスタム状態ストレージを使用する理由のいくつかを次に示します。
+ - State API のスループットが高い (パフォーマンスをより強力に制御できる)
  - geo 分布に伴う待ち時間が少ない
- - データの格納場所を制御する
- - 状態データそのものへのアクセス
- - 32 kb を超えるデータを格納できる
+ - データの格納場所を制御できる
+ - 実際の状態データにアクセスできる
+ - 32 KB を超えるデータを格納できる
 
 ## <a name="prerequisites"></a>前提条件
 必要なものは次のとおりです。
@@ -31,10 +34,10 @@ ms.locfileid: "39303916"
  - [Bot Framework Emulator](https://emulator.botframework.com/)
  - [Azure Storage Explorer](http://storageexplorer.com/)
  
-## <a name="create-azure-account"></a>Azure アカウントの作成
+## <a name="create-azure-account"></a>Azure アカウントを作成する
 Azure アカウントを持っていない場合は、[こちら](https://azure.microsoft.com/en-us/free/)をクリックして、無料アカウントにサインアップしてください。
 
-## <a name="set-up-the-azure-table-storage-service"></a>Azure Table Storage サービスの設定
+## <a name="set-up-the-azure-table-storage-service"></a>Azure Table Storage サービスを設定する
 1. Azure portal にログインし、**[新規]** をクリックして新しい Azure Table Storage サービスを作成します。 
 2. Azure Table を実装する**ストレージ アカウント**を検索します。 
 3. フィールドに入力し、画面下部にある **[作成]** ボタンをクリックし、新しいストレージ サービスをデプロイします。 新しいストレージ サービスがデプロイされると、利用可能な機能とオプションが表示されます。
@@ -93,11 +96,11 @@ using Microsoft.Bot.Builder.Dialogs.Internals;
 Global.asax.cs ファイルを保存します。
 
 ## <a name="run-your-bot-app"></a>ボット アプリの実行
-Visual Studio でボットを実行すると、追加したコードによって Azure にカスタム **botdata** テーブルが作成されます。
+Visual Studio でボットを実行すると、追加したコードによって Azure 内にカスタム **botdata** テーブルが作成されます。
 
 ## <a name="connect-your-bot-to-the-emulator"></a>ボットをエミュレーターに接続する
-この時点では、ボットはローカルで実行されています。 次に、エミュレーターを起動し、エミュレーターのボットに接続します。
-1. アドレス バーに http://localhost:port-number/api/messages と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 [<strong>Microsoft アプリ ID</strong>] フィールドと [<strong>Microsoft アプリ パスワード</strong>] フィールドは、この時点では空白のままで構いません。 この情報は、後ほど、[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
+この時点では、ボットはローカルで実行されています。 次に、エミュレーターを起動し、ボットをエミュレーターに接続します。
+1. アドレス バーに http://localhost:port-number/api/messages と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 <strong>[Microsoft アプリ ID]</strong> フィールドと <strong>[Microsoft アプリ パスワード]</strong> フィールドは、この時点では空白のままで構いません。 この情報は、後ほど、[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
 2. **[接続]** をクリックします。 
 3. エミュレーターでいくつかのメッセージを入力して、ボットをテストします。 
 
@@ -108,7 +111,7 @@ Visual Studio でボットを実行すると、追加したコードによって
 この記事では、ボットのデータを保存および管理するために Azure Table Storage を実装しました。 次に、ダイアログを使用して会話フローをモデル化する方法について学びます。
 
 > [!div class="nextstepaction"]
-> [会話フローの管理](bot-builder-dotnet-manage-conversation-flow.md)
+> [会話フローを管理する](bot-builder-dotnet-manage-conversation-flow.md)
 
 
 ## <a name="additional-resources"></a>その他のリソース

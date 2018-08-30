@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: be5018b43a8a015ed763d69a0448e264c5a9fe87
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 4203e9d7a9c5c8e6ab068def879747a4c6158367
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304561"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904046"
 ---
 # <a name="send-and-receive-attachments"></a>添付ファイルを送受信する
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-media-attachments.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-receive-attachments.md)

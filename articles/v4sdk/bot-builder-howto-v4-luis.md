@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/30/17
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9a04a73e8ac8716ec528586e069aa2d16d90e28f
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: 88651a2c86698d55e3a429d7ea62662976d2115f
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39304657"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906166"
 ---
 # <a name="using-luis-for-language-understanding"></a>言語理解のための LUIS の使用
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 ユーザーの真意を会話と文脈から理解する能力は難しいタスクかもしれませんが、より自然な会話の印象をボットに与えることができます。 そうした能力は LUIS と呼ばれる Language Understanding によって実現され、ボットがユーザーのメッセージの意図を認識できるように、ユーザーがより自然な言葉を使用できるように、また、会話フローがより適切に管理されるようになります。 LUIS とボットの統合についてさらなる背景情報が必要な場合は、「[language understanding for bots](./bot-builder-concept-LUIS.md)」(ボットのための言語理解) を参照してください。 
 

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8f58c8d0b884e929c575e01aa5e0fee5c21ea4e6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f9af8cbbc5f457d5e8684ad57bb147f9d42a62c7
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303585"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905146"
 ---
 # <a name="support-localization"></a>ローカライズをサポートする
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Bot Builder には、複数の言語でユーザーとコミュニケ―ションできるボットを構築するための豊富なローカライズ システムが含まれています。 ボットのすべてのプロンプトは、ボットのディレクトリ構造内に格納されている JSON ファイルを使用してローカライズできます。 LUIS などのシステムを使用して自然言語処理を実行する場合は、ボットがサポートする言語ごとに個別のモデルが提供されるように [LuisRecognizer][LUISRecognizer] を構成できます。ユーザーの優先ロケールと一致するモデルは、SDK によって自動的に選択されます。
 

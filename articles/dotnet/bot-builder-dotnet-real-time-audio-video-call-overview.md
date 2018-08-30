@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3e990da2abcb63c695cc79d5d8d9af40d8966cfa
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 35aca6f5f50602d0a90c41997eff2e8b1d2cdb4e
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302612"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905614"
 ---
 # <a name="build-a-real-time-media-bot-for-skype"></a>Skype 用のリアルタイム メディア ボットのビルド
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 ボット用のリアルタイム メディア プラットフォームは、ボットがフレーム単位で音声/動画コンテンツを送受信することを可能にする高度な機能です。 ボットには、音声、動画、画面共有のリアルタイム モダリティに "raw" アクセスできます。 この記事では、音声/動画の呼び出しボットをビルドし、リアルタイム モダリティにアクセスすることの概要を示します。
 

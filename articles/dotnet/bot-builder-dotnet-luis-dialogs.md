@@ -8,22 +8,26 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b98eea6bdae097beec85e93301e5380a1de991c3
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: fc260f34f28e406dc88dd5b688d84cd79c7e9449
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303241"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905954"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>LUIS を使用して意図とエンティティを認識する 
 
-この記事では、ノート記録ボットの例を使用して、自然言語入力に対するボットの適切な応答を Language Understanding ([LUIS][LUIS]) が支援するしくみを示します。 ボットはユーザーの**意図**を識別することによって、ユーザーが何をしたいかを検出します。 この意図は音声またはテキスト入力 (または**発話**) から決定されます。 意図は、ボットが実行するアクションに発話をマップします。 たとえば、ノート記録ボットは `Notes.Create` 意図を認識して、ノートを作成するための機能を呼び出します。 ボットは、発話の中の重要な言葉である**エンティティ**を抽出する必要もあります。 ノート記録ボットの例では、`Notes.Title` エンティティは各ノートのタイトルを識別します。
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
+この記事では、メモ作成ボットの例を使用して、自然言語入力に対してボットが適切に応答するのに Language Understanding ([LUIS][LUIS]) がどのように役立つかを示します。 ボットではユーザーの**意図**を識別することで、ユーザーが何をしたいかを検出します。 この意図は音声またはテキスト入力 (または**発話**) から決定されます。 意図は、ボットが実行するアクションに発話をマップします。 たとえば、ノート記録ボットは `Notes.Create` 意図を認識して、ノートを作成するための機能を呼び出します。 ボットは、発話の中の重要な言葉である**エンティティ**を抽出する必要もあります。 メモ作成ボットの例では、`Notes.Title` エンティティによって各メモのタイトルが識別されます。
 
 ## <a name="create-a-language-understanding-bot-with-bot-service"></a>Bot Service での Language Understanding ボットの作成
 
-1. [Azure portal](https://portal.azure.com) のメニュー ブレードで、**[新しいリソースの作成]** を選択し、**[すべて表示]** をクリックします。<!-- Start with the steps in [Create a bot with Bot Service](../bot-service-quickstart.md) to start creating a new bot service.  -->
+1. [Azure Portal](https://portal.azure.com) のメニュー ブレードで、**[新しいリソースの作成]** を選択し、**[すべて表示]** をクリックします。
 
-    ![新しいリソースの作成](../media/bot-builder-dotnet-use-luis/bot-service-creation.png)
+<!-- Start with the steps in [Create a bot with Bot Service](../bot-service-quickstart.md) to start creating a new bot service.  -->
+
+    ![Create new resource](../media/bot-builder-dotnet-use-luis/bot-service-creation.png)
 
 2. 検索ボックスで、**Web アプリ ボット**を検索します。 
 
@@ -52,11 +56,11 @@ ms.locfileid: "39303241"
 
 ボットが "あいさつにリーチしました。 hello と言いました" と言って応答します。 これにより、ご自身のメッセージはボットによって受信され、そのボットが作成した既定の LUIS アプリに渡されたことが確認されます。 この既定の LUIS アプリによって、あいさつの意図が検出されました。
 
-## <a name="modify-the-luis-app"></a>LUIS アプリの修正
+## <a name="modify-the-luis-app"></a>LUIS アプリを変更する
 
-Azure へのログインに使用するものと同じアカウントを使用して [https://www.luis.ai](https://www.luis.ai) にログインします。 **[My apps]\(マイ アプリ\)** をクリックします。 アプリの一覧から、ボット サービスの作成時に **[ボット サービス]** ブレードの **[アプリ名]** で指定した名前で始まるアプリを探します。 
+Azure へのログインに使用するものと同じアカウントを使用して、[https://www.luis.ai](https://www.luis.ai) にログインします。 **[My apps]\(マイ アプリ\)** をクリックします。 アプリの一覧で、ボット サービスの作成時に **[ボット サービス]** ブレードの **[アプリ名]** で指定した名前で始まるアプリを探します。 
 
-LUIS アプリには当初、Cancel、Greeting、Help、および None の 4 つの意図があります。 <!-- picture -->
+LUIS アプリは 4 つの意図 (Cancel、Greeting、Help、None) で始まります。 <!-- picture -->
 
 次の手順では、Note.Create、Note.ReadAloud、および Note.Delete の各意図を追加します。 
 
@@ -81,7 +85,7 @@ LUIS アプリには当初、Cancel、Greeting、Help、および None の 4 つ
 
      ![LUIS アプリに表示される意図](../media/bot-builder-dotnet-use-luis/luis-intent-list.png)
 
-3. 右上の **[トレーニング]** ボタンをクリックしてアプリをトレーニングします。
+3. 右上の **[トレーニング]** ボタンをクリックして、ご利用のアプリをトレーニングします。
 4. 上部のナビゲーション バーの **[PUBLISH]\(発行\)** をクリックして、**[発行]** ページを開きます。 **[Publish to production slot]\(運用スロットに発行\)** ボタンをクリックします。 発行に成功した後、**[Publish App]\(アプリの発行\)** ページの **[エンドポイント]** 列に表示されている URL を、リソース名 Starter_Key で始まる行にコピーします。 後からボットのコードで使用するために、この URL を保存しておきます。 URL の形式は次の例のようになります。`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=`
 
 ## <a name="modify-the-bot-code"></a>ボット コードの変更
@@ -362,8 +366,8 @@ Note.Create 意図を処理するには、次のコードを `BasicLuisDialog` �
 
 ## <a name="test-the-bot"></a>ボットのテスト
 
-Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** をクリックしてボットをテストします。 「Create a note」、「read my notes」、「delete notes」のようなメッセージを入力してみます。
-   ![Web チャットでのノート ボットのテスト](../media/bot-builder-dotnet-use-luis/bot-service-test-notebot.png)
+Azure Portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** をクリックしてボットをテストします。 「Create a note」、「read my notes」、「delete notes」のようなメッセージを入力してみます。
+   ![Web チャットでメモ ボットをテストする](../media/bot-builder-dotnet-use-luis/bot-service-test-notebot.png)
 
 > [!TIP]
 > 意図またはエンティティがボットによって必ずしも正しく認識されない場合は、発話の例をさらに追加して、LUIS アプリをトレーニングすることで、そのパフォーマンスを向上させます。 お使いのボットのコードを変更せずに、ご自身の LUIS アプリを再トレーニングできます。 [発話の例の追加](/azure/cognitive-services/LUIS/add-example-utterances)に関するページ、および[ご自身の LUIS アプリのトレーニングとテスト](/azure/cognitive-services/LUIS/train-test)に関するページをご覧ください。
@@ -383,7 +387,7 @@ Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 ## <a name="additional-resources"></a>その他のリソース
 
 - [ダイアログ](bot-builder-dotnet-dialogs.md)
-- [ダイアログで会話フローを管理する](bot-builder-dotnet-manage-conversation-flow.md)
+- [ダイアログを使用して会話フローを管理する](bot-builder-dotnet-manage-conversation-flow.md)
 - <a href="https://www.luis.ai" target="_blank">LUIS</a>
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET リファレンス</a>
 

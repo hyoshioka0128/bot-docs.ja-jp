@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d24e43a3f48db024ab55c2089acbc42edebab929
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3ad843530b70b75a6db728a399a315534d2234ac
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303892"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904195"
 ---
 # <a name="customize-a-form-using-formbuilder"></a>FormBuilder によるフォームのカスタマイズ
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 「[FormFlow の基本的機能](bot-builder-dotnet-formflow.md)」は、非常に汎用的なユーザー エクスペリエンスを提供する基本的な FormFlow 実装について説明し、「[FormFlow の高度な機能](bot-builder-dotnet-formflow-advanced.md)」は、ビジネス ロジックと属性を使用してユーザー エクスペリエンスをカスタマイズする方法について説明しています。 この記事では、フォームがステップを実行するシーケンスを指定し、フィールド値、確認、およびメッセージを動的に定義することにより、[FormBuilder][formBuilder] を使用してユーザー エクスペリエンスをさらにカスタマイズする方法を説明します。 
 

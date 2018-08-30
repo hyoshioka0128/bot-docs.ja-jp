@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 331effc0bf604388995288e5d7c3ca9d54537f94
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 376982396ac11cbcf54f26255235b3779e0e1c26
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301451"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905714"
 ---
 # <a name="secure-your-bot"></a>ボットのセキュリティ保護
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 Bot Framework Connector サービスを使用して、さまざまな通信チャネル (Skype、SMS、電子メールなど) にボットを接続できます。 この記事では、HTTPS と Bot Framework 認証を使用して、ボットをセキュリティで保護する方法について説明します。
 

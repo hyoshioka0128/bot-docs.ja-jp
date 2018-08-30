@@ -7,15 +7,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b99dc4cd9011871d52479ade92968ebb29c8c73f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: cb64d25582589b7bcbbe715cb4288cf56ac93e1c
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303633"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906084"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-net"></a>.NET 用の Azure Cosmos DB を使用してカスタム状態データを管理する
-この記事では、ボットの状態データを保存および管理するための Azure Cosmos DB ストレージを実装します。 ボットで使用される既定の Connector State Service は、運用環境用ではありません。 GitHub で入手できる [Azure 拡張機能](https://github.com/Microsoft/BotBuilder-Azure)を使用するか、自分で選択したデータ ストレージ プラットフォームを使用してカスタム状態クライアントを実装する必要があります。 カスタム状態ストレージを使用する理由のいくつかを次に示します。
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
+この記事では、ボットの状態データを保存および管理するための Azure Cosmos DB ストレージを実装します。 ボットで使用される既定の Connector State Service は、運用環境用ではありません。 GitHub で利用可能な [Azure 拡張機能](https://github.com/Microsoft/BotBuilder-Azure)を使用するか、自分で選択したデータ ストレージ プラットフォームを使用してカスタム状態クライアントを実装する必要があります。 カスタム状態ストレージを使用する理由のいくつかを次に示します。
  - State API のスループットが高い (パフォーマンスをより強力に制御できる)
  - geo 分布に伴う待ち時間が少ない
  - データの格納場所を制御できる
@@ -46,7 +49,7 @@ Azure アカウントを持っていない場合は、[こちら](https://azure.
    - Microsoft.Bot.Builder.Azure
    - Autofac.WebApi2
 
-## <a name="add-connection-string"></a>接続文字列を追加する 
+## <a name="add-connection-string"></a>接続文字列の追加 
 Web.config ファイルに次のエントリを追加します。
 ```XML
 <add key="DocumentDbUrl" value="Your DocumentDB URI"/>
@@ -104,7 +107,7 @@ Visual Studio でボットを実行すると、追加したコードによって
 
 ## <a name="connect-your-bot-to-the-emulator"></a>ボットをエミュレーターに接続する
 この時点では、ボットはローカルで実行されています。 次に、エミュレーターを起動し、ボットをエミュレーターに接続します。
-1. アドレス バーに http://localhost:port-number/api/messages と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 <strong>[Microsoft アプリ ID]</strong> フィールドと <strong>[Microsoft アプリ パスワード]</strong> フィールドは、この時点では空白のままで構いません。 この情報は、後で[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
+1. アドレス バーに http://localhost:port-number/api/messages と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 <strong>[Microsoft アプリ ID]</strong> フィールドと <strong>[Microsoft アプリ パスワード]</strong> フィールドは、この時点では空白のままで構いません。 この情報は、後ほど、[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
 2. **[接続]** をクリックします。 
 3. エミュレーターでいくつかのメッセージを入力して、ボットをテストします。 
 

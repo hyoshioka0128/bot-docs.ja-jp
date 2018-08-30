@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9c1a0944a24af3f2a51a90818890c50edfe139d4
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 82a4d0843a9aaab25779d833f2b1b1d2ab2516c2
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303004"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905104"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>LUIS を使用して意図とエンティティを認識する 
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 この記事では、メモ作成ボットの例を使用して、自然言語入力に対してボットが適切に応答するのに Language Understanding ([LUIS][LUIS]) がどのように役立つかを示します。 ボットではユーザーの**意図**を識別することで、ユーザーが何をしたいかを検出します。 この意図は音声またはテキスト入力 (または**発話**) から決定されます。 意図により、ダイアログの呼び出しなど、ボットで行われるアクションに発話がマップされます。 ボットでは、発話の中の重要な言葉である**エンティティ**を抽出する必要もあります。 場合によっては、エンティティで意図を満たす必要があります。 メモ作成ボットの例では、`Notes.Title` エンティティによって各メモのタイトルが識別されます。
 

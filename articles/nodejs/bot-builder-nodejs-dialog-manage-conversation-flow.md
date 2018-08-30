@@ -8,21 +8,24 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d6c8ad06b9fb198e684deae26e9cbad05a86a611
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 656b6304a576c553db948a348b1c6d8c3fc5ae71
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304028"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905666"
 ---
-# <a name="manage-conversation-flow-with-dialogs"></a>ダイアログで会話フローを管理する
+# <a name="manage-conversation-flow-with-dialogs"></a>ダイアログを使用して会話フローを管理する
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
-会話フローの管理は、ボットを構築する上で重要なタスクです。 ボットは、主要なタスクを的確に実行し、中断を適切に処理できなければなりません。 Bot Builder SDK for Node.js を使用することで、ダイアログを使用して会話フローを管理することができます。
+会話フローの管理は、ボットを構築する上で最も重要なタスクです。 ボットは、主要なタスクを的確に実行し、中断を適切に処理できなければなりません。 Bot Builder SDK for Node.js を使用することで、ダイアログを使用して会話フローを管理することができます。
 
-ダイアログは、プログラム内の関数のようなものです。 これは、一般的に特定の操作を実行するように設計されており、必要に応じて何度でも呼び出すことができます。 複数のダイアログを連動させて、ボットで処理するほぼすべての会話フローを処理することができます。 Bot Builder SDK for Node.js には、[プロンプト](bot-builder-nodejs-dialog-prompt.md)と[ウォーターフォール](bot-builder-nodejs-dialog-waterfall.md)のような組み込み機能があり、会話の流れを管理するのに役立ちます。
+ダイアログは、プログラム内の関数のようなものです。 それは、一般的に特定の操作を実行するように設計されており、必要に応じて何度でも呼び出すことができます。 複数のダイアログを連動させて、ボットで処理するほぼすべての会話フローを処理することができます。 Bot Builder SDK for Node.js には、[プロンプト](bot-builder-nodejs-dialog-prompt.md)と[ウォーターフォール](bot-builder-nodejs-dialog-waterfall.md)のような組み込み機能があり、会話の流れを管理するのに役立ちます。
 
 この記事では、ダイアログを使用してボットに中断を処理させたり適切にフローを再開させたりすることのできる、簡単な会話フローと複雑な会話フローの両方を管理する方法について、いくつかの例で説明します。 例は、次のシナリオに基づいています。 
 
@@ -94,7 +97,7 @@ var bot = new builder.UniversalBot(connector, [..waterfall steps..]).set('storag
 この例では、ボットは `Prompts.text()` を使用して、ユーザーからの自由形式の応答をテキスト形式で要求します。 ユーザーは任意のテキストで応答することができ、ボットは応答を処理する方法を決定する必要があります。 `Prompts.time()` は [Chrono](https://github.com/wanasit/chrono) ライブラリを使用して文字列から日付と時刻の情報を解析します。 これにより、ボットは日付と時刻を指定するための自然言語をより理解することができます。 たとえば、「2017 年 6 月 6 日の午後 9 時」、「今日の午後 7 時 30 分」、「次の月曜日の午後 6 時」といった具合です。
 
 > [!TIP] 
-> ユーザーが入力する時刻は、ボットをホストするサーバーのタイム ゾーンに基づいて UTC 時刻に変換されます。 サーバーはユーザーと異なるタイム ゾーンにある場合があるため、必ずタイム ゾーンを考慮してください。 日付と時刻をユーザーのローカル時刻に変換するには、所属するタイム ゾーンをユーザーに確認することを検討してください。
+> ユーザーが入力する時刻は、ボットをホストするサーバーのタイム ゾーンに基づいて UTC 時刻に変換されます。 サーバーは、ユーザーとは別のタイム ゾーンに配置されている場合があるため、必ずタイム ゾーンを考慮してください。 日付と時刻をユーザーのローカル時刻に変換するには、所属するタイム ゾーンをユーザーに確認することを検討してください。
 
 ## <a name="manage-a-conversation-flow-with-multiple-dialogs"></a>複数のダイアログで会話フローを管理する
 

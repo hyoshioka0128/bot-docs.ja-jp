@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: bb0ac4b8e3fa34ec8863bb323ae968db37972a6f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 587e21049ed8c9c3259f04f929784153d06db40c
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301876"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904226"
 ---
 # <a name="localize-form-content"></a>フォームの内容をローカライズする
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 フォームのローカライズ言語は、現在のスレッドの [CurrentUICulture](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentuiculture(v=vs.110).aspx) と [CurrentCulture](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentculture(v=vs.110).aspx) によって決まります。 既定では、カルチャは現在のメッセージの **Locale** フィールドから取得されますが、その既定動作をオーバーライドできます。 ボットの作成方法に応じて、最大 3 つの異なるソースからローカライズされた情報を取得できます。
 

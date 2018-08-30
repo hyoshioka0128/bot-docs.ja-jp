@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/02/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ca4714d3b3988fd08021f55a4905d9426996b7eb
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3b618bfb7cd1a462390aee4d564778c8ec0a7247
+ms.sourcegitcommit: d486dd088b87a44fc8142f7a08877ff993861a42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301908"
+ms.lasthandoff: 08/26/2018
+ms.locfileid: "42928431"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-java"></a>Bot Builder SDK for Java を使用したボットの作成
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -153,20 +153,18 @@ Maven を使用している場合は、このリポジトリのサンプル フ�
 この時点では、ボットはローカルで実行されています。
 次に、エミュレーターを起動し、エミュレーターのボットに接続します。
 
-1. エミュレータの [ようこそ] タブにある **[新しいボット構成を作成する]** リンクをクリックします。 
+1. エミュレーターの [ようこそ] タブにある **[新しいボット構成を作成する]** リンクをクリックします。 
 
 2. **ボット名**を入力してから、ボット コードへのディレクトリ パスを入力します。 ボットの構成ファイルはこのパスに保存されます。
 
 3. **[エンドポイント URL]** フィールドに `http://localhost:port-number/api/messages` と入力します。*port-number* は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。
 
-4. **[接続]** をクリックしてボットに接続します。 **[Microsoft アプリ ID]** と **[Microsoft アプリ パスワード]** を指定する必要はありません。 これらのフィールドは、この時点では空白のままで構いません。 この情報は、後ほどボットを登録するときに取得します。
+4. **[接続]** をクリックしてボットに接続します。 **[Microsoft アプリ ID]** と **[Microsoft アプリ パスワード]** を指定する必要はありません。 現段階では、これらのフィールドは空白のままにしておくことができます。 この情報は、後ほど、ボットを登録するときに取得します。
 
 ### <a name="interact-with-your-bot"></a>ボットでのやり取り
 ボットに「Hi」と送信すると、ボットはそのメッセージを再現して返します。
 
 ## <a name="next-steps"></a>次の手順
-
-次に、ボットとそのしくみを説明する概念をご覧ください。
 
 > [!div class="nextstepaction"]
 > [ボットの基本的な概念](../v4sdk/bot-builder-basics.md)

@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 10c1cb240a22c1c16dd0d946ee55531d514f332e
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 86f70fd66f1bc2261339cbe0590061913b51ddbc
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303188"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904440"
 ---
 # <a name="save-user-state-data"></a>ユーザー状態データを保存する
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 ユーザーがボットから入力を求められている場合、何らかの形式のストレージに情報の一部を保持したいと考えるのではないでしょうか。 Bot Builder SDK を使用すると、*メモリ内ストレージ*、*ファイル ストレージ*、データベース ストレージ (*CosmosDB* または *SQL*) を使用してユーザー入力を格納することができます。 
 

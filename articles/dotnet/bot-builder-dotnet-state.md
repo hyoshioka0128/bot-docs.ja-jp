@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b218ae4ffd2ffbfe9144b4143f2600be15d688dd
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3a924503ecadc9f56fa2543881c116f7fbbb4d9a
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301761"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904330"
 ---
 # <a name="manage-state-data"></a>状態データの管理
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-state.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-state.md)
@@ -24,7 +27,7 @@ ms.locfileid: "39301761"
 
 ## <a name="in-memory-data-storage"></a>インメモリ データ ストレージ
 
-インメモリ データストレージはテスト専用です。 このストレージは揮発性であり、一時的なものです。 ボットが再起動されるたびにデータが消去されます。 テストのためにインメモリ ストレージを使用するには、以下を行う必要があります。 
+メモリ内データ ストレージはテスト専用です。 このストレージは揮発性であり、一時的なものです。 ボットが再起動されるたびにデータが消去されます。 テストのためにインメモリ ストレージを使用するには、以下を行う必要があります。 
 
 次の NuGet パッケージをインストールします。 
 - Microsoft.Bot.Builder.Azure

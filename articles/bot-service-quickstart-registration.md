@@ -8,16 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6a32bc5712937c615962e4f6edfc7ea691d3ec39
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: dc8b2723119a03e533f19dbf36446b7dbe0957df
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574978"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906136"
 ---
 # <a name="register-a-bot-with-bot-service"></a>ボットを Bot Service に登録する
 
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 
 他の場所でホストされているボットが既にあり、Bot Service を使用して他のチャンネルに接続する場合は、ボットを Bot Service に登録する必要があります。 このトピックでは、**Bot Channels Registration** ボット サービスを作成して、ボットを Bot Service に登録する方法について説明します。
 

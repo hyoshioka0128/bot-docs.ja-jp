@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 71e04d2c76d6bff22352c6b4e90aae933f209638
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 091c90da9b14c0abe70d08f45f528a3cce818cef
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303276"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904036"
 ---
 # <a name="requirements-and-considerations-for-real-time-media-bots"></a>リアルタイム メディア ボットの要件と考慮事項
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 メッセージング ボットと IVR 通話ボット開発に適用されるすべてのガイダンスが、リアルタイム メディア ボットの構築に同じように適用されるわけではありません。 この記事では、リアルタイム メディア ボットを開発するためのいくつかの重要な要件と考慮事項について説明します。 
 

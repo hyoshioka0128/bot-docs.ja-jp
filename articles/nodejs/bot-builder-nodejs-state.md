@@ -8,23 +8,26 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1001f1aa2fe76127073551e98548fc20ef9e1bd7
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: cdd35bc5b487b5bf0d49006cf168f2541e17a057
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302804"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904374"
 ---
-# <a name="manage-state-data"></a>状態データを管理する
+# <a name="manage-state-data"></a>状態データの管理
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-state.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-state.md)
 
 [!INCLUDE [State concept overview](../includes/snippet-dotnet-concept-state.md)]
 
-## <a name="in-memory-data-storage"></a>メモリ内データ ストレージ
+## <a name="in-memory-data-storage"></a>インメモリ データ ストレージ
 
-メモリ内データ ストレージはテスト専用です。 このストレージは一時的なものであり、変わる場合があります。 ボットの再起動ごとにデータがクリアされます。 メモリ内ストレージをテスト目的で使用するには、2 つの作業を行う必要があります。 最初に、メモリ内ストレージの新しいインスタンスを作成します。
+メモリ内データ ストレージはテスト専用です。 このストレージは揮発性であり、一時的なものです。 ボットの再起動ごとにデータがクリアされます。 メモリ内ストレージをテスト目的で使用するには、2 つの作業を行う必要があります。 最初に、メモリ内ストレージの新しいインスタンスを作成します。
 
 ```javascript
 var inMemoryStorage = new builder.MemoryBotStorage();
@@ -42,7 +45,7 @@ var bot = new builder.UniversalBot(connector, [..waterfall steps..])
 
 ## <a name="manage-custom-data-storage"></a>カスタム データ ストレージを管理する
 
-運用環境におけるパフォーマンスおよびセキュリティ上の理由により、独自のデータ ストレージを実装するか、次のデータ ストレージ オプションのいずれかの実装を検討することができます。
+運用環境でのパフォーマンスとセキュリティ上の理由から、独自のデータ ストレージを実装するか、次のデータ ストレージ オプションのいずれかを実装することを検討できます。
 
 1. [Cosmos DB を使用して状態データを管理する](bot-builder-nodejs-state-azure-cosmosdb.md)
 
@@ -197,7 +200,7 @@ session.dialogData = {};
 > [会話フローを管理する](bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
 ## <a name="additional-resources"></a>その他のリソース
-- [ユーザーに入力を求める](bot-builder-nodejs-dialog-prompt.md)
+- [ユーザーに入力を要求する](bot-builder-nodejs-dialog-prompt.md)
 
 [userDataURL]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
 [conversationDataURL]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#conversationdata

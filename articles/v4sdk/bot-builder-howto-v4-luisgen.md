@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 5/16/17
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6a88b0a7f44f43d0676ba88314fbba7c486e6be4
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 07f4ad7d53c456de53be196977458a3d8b03c6f0
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301604"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906196"
 ---
 # <a name="extract-intents-and-entities-using-luisgen"></a>LUISGen を使用した意図とエンティティの抽出
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 LUIS アプリでは、意図の認識に加え、ユーザーの要求を満たすための重要な単語であるエンティティを抽出することもできます。 たとえば、レストランの予約の例では、LUIS アプリはユーザーのメッセージからグループの人数、予約日、レストランの場所などを抽出できます。 
 
@@ -82,7 +84,7 @@ public _Entities Entities;
 > LUIS では、ユーザーの発話内で、指定された種類の複数のエンティティが検出される可能性があるため、エンティティの種類はすべて配列です。 たとえば、ユーザーが "make reservations for 5pm tomorrow and 9pm next Saturday" と言った場合、`datetime` の結果で "5pm tomorrow" と "9pm next Saturday" の両方が返されます。
 >
 
-|エンティティ | Type | 例 | メモ |
+|エンティティ | type | 例 | メモ |
 |-------|-----|------|---|
 |partySize| string[]| `four` 人のパーティ| 単純なエンティティでは文字列が認識されます。 この例では、Entities.partySize[0] は `"four"` です。
 |Datetime| [DateTimeSpec](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.ai.luis.datetimespec?view=botbuilder-4.0.0-alpha)[]| `9pm tomorrow` に予約| 各 **DateTimeSpec** オブジェクトには、**timex** 形式で指定された時刻の使用可能な値が含まれた timex フィールドがあります。 timex の詳細については、 http://www.timeml.org/publications/timeMLdocs/timeml_1.2.1.html#timex3 を参照してください。認識を実行するライブラリの詳細については、 https://github.com/Microsoft/Recognizers-Text を参照してください。

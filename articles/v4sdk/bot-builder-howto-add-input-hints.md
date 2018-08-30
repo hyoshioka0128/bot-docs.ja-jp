@@ -7,20 +7,20 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 04/04/2018
+ms.date: 08/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ac18b57b7c738e1f15776bfb87bfaf27c3b719d8
-ms.sourcegitcommit: b45e16cac2febb7034da4ccd3af3bd7e6f430c31
+ms.openlocfilehash: 02c6cf56a0c1161fa0393880810c1481c5eb2461
+ms.sourcegitcommit: f89ed979eb6321232fb21100ef376d9b0d5113c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39469299"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42914632"
 ---
 # <a name="add-input-hints-to-messages"></a>メッセージへの入力ヒントの追加
 
 [!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
 
-メッセージの入力ヒントを指定することにより、メッセージがクライアントに配信された後、ボットがユーザー入力を受け付けるか、期待するか、または無視するかを指示できます。 多くのチャネルでは、これによってクライアントが適宜、ユーザー入力コントロールの状態を設定できます。 たとえば、ボットがユーザーの入力を無視していることをメッセージの入力ヒントが示している場合、クライアントはマイクを閉じて入力ボックスを無効にし、ユーザーが入力を提供するのを防ぐことができます。
+メッセージの入力ヒントを指定すれば、メッセージがクライアントに配信された後、ボットがユーザー入力を受け付けるか、期待するか、無視するかを示すことができます。 多くのチャネルでは、これによってクライアントが適宜、ユーザー入力コントロールの状態を設定できます。 たとえば、ボットがユーザーの入力を無視していることをメッセージの入力ヒントが示している場合、クライアントはマイクを閉じて入力ボックスを無効にし、ユーザーが入力を提供するのを防ぐことができます。
 
 入力ヒントに必要なライブラリが含まれていることを確認してください。
 
@@ -94,7 +94,7 @@ await context.sendActivity(basicMessage);
 
 ## <a name="ignoring-input"></a>入力の無視
 
-ボットがユーザーから入力を受け取る準備ができていないことを示すには、メッセージの入力ヒントを _ignoring input_ に設定します。 多くのチャネルでは、これによってクライアントの入力ボックスが無効になり、マイクが閉じられます。 次のコードは、ボットがユーザーの入力を無視していることを示すメッセージを作成します。
+ボットがユーザーから入力を受け取る準備ができていないことを示すには、メッセージの入力ヒントを _ignoring input_ に設定します。 多くのチャネルでは、これによってクライアントの入力ボックスが無効になり、マイクが閉じられます。 次のコード例は、ボットがユーザーの入力を無視していることを示すメッセージを作成します。
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 
@@ -117,7 +117,7 @@ await context.sendActivity(basicMessage);
 
 ## <a name="default-values-for-input-hint"></a>入力ヒントの既定値
 
-メッセージの入力ヒントを設定しない場合、Bot Builder SDK が次のロジックを使用して自動的に設定します。
+メッセージの入力ヒントを設定しない場合、Bot Builder SDK が次のロジックを使用して自動的に入力ヒントを設定します。
 
 - ボットがプロンプトを送信する場合、メッセージの入力ヒントは、ボットが入力を期待している (**expecting input**) ことを指定します。</li>
 - ボットが単一のメッセージを送信する場合、メッセージの入力ヒントは、ボットが入力を受け付けている (**accepting input**) ことを指定します。</li>

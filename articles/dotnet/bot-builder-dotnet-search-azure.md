@@ -8,21 +8,24 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c8eb1f300dbf1ad8efd9f683a2776958558ca2f2
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 5d6c5200fc10bb7c49df7515440daac351640ae0
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304201"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904953"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Azure Search を使用してデータドリブン エクスペリエンスを作成する 
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-search-azure.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-search-azure.md)
 
 ボットに [Azure Search](https://azure.microsoft.com/en-us/services/search/) を追加すると、ユーザーが大量のコンテンツ間を移動し、データドリブン探索エクスペリエンスを作成できるように支援できます。
 
-Azure Search は、キーワード検索、組み込みの言語機能、カスタム スコアリング、ファセット ナビゲーションなど多くの機能を提供する Azure サービスです。 Azure Search はまた、Azure SQL DB、DocumentDB、Blob Storage、Table Storage など、さまざまなソースのコンテンツのインデックスを作成することもできます。 これは他のデータ ソースの "プッシュ" インデックス作成をサポートしており、PDF、Office ドキュメント、および非構造化データが含まれたその他の形式を開くことができます。 収集されると、これらのコンテンツは、後でボットがクエリを実行できる Azure Search インデックスに移動されます。
+Azure Search は、キーワード検索、組み込みの言語機能、カスタム スコアリング、ファセット ナビゲーションなど多くの機能を提供する Azure サービスです。 Azure Search はまた、Azure SQL DB、DocumentDB、Blob Storage、Table Storage など、さまざまなソースのコンテンツのインデックスを作成することもできます。 これは他のデータ ソースの "プッシュ" インデックス作成をサポートしており、PDF、Office ドキュメント、および非構造化データが含まれたその他の形式を開くことができます。 収集されると、これらのコンテンツは Azure Search によってインデックス化され、ボットが照会できるようになります。
 
 
 ## <a name="prerequisites"></a>前提条件

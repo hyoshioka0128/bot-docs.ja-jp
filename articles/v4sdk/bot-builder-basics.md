@@ -9,16 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 48c32a1dd1c43bbb84c0f771be7dff691f0996ec
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: 34564b411f911ae82197d5a34cb954a103abe70b
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39304633"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905416"
 ---
 # <a name="basic-bot-structure"></a>基本的なボットの構造
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Azure Bot Service および Bot Builder SDK は、ボットの構築とデバッグに役立つライブラリ、サンプル、およびツールを提供します。 しかし、それらの詳細を論じる前に、ボットの基本構造と、各要素の連携のしくみを理解することが重要です。 これらの概念は、どのプログラミング言語を選択するかにかかわらず適用されます。 より詳細なコンテンツへのリンクも提供していますが、この記事では、ボットの動作方法に関する最初の心構えの枠組みを提供します。
 

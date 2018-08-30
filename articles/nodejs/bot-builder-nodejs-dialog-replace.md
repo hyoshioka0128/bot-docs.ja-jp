@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d1a2eca2ebdfccf6dacdf773c48c8b41444559ca
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 4343e9742d6bfabeab1ccb6a96f0d379d824125e
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301732"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905736"
 ---
 # <a name="replace-dialogs"></a>ダイアログの置換
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 ダイアログを置換する機能は、ユーザー入力を検証したり、会話中にアクションを繰り返したりする必要がある場合に便利です。 Bot Builder SDK for Node.js では、[`session.replaceDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog) メソッドを使用してダイアログを置換できます。 このメソッドを使用すると、呼び出し元に戻らずに、現在のダイアログを終了して、新しいダイアログに置き換えることができます。 
 

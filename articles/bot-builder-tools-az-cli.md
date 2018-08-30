@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/25/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 20258949cd8ea403e5cc9bf774d6a3b7c1e86e7e
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: 1eb47e76ef1bd6765d5ba93c27b97a8d9e6143db
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352901"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905306"
 ---
 # <a name="create-bots-with-azure-cli"></a>Azure CLI を使用したボットの作成
+
+[!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
 
 [ボット ビルダー ツール](https://github.com/microsoft/botbuilder-tools)は、コマンド ラインから直接ボットのリソースを管理してやり取りできる新しいツールセットです。 
 
@@ -37,7 +39,7 @@ ms.locfileid: "39352901"
 
 ## <a name="1-enable-azure-cli"></a>1.Azure CLI を有効にする
 
-他の Azure リソースと同じように、[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) を使用してボットを管理できるようになりました。 Azure CLI を有効にするには、次の手順を完了します。
+他の Azure リソースと同じように、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用してボットを管理できるようになりました。 Azure CLI を有効にするには、次の手順を完了します。
 
 1. Azure CLI をまだお持ちでない場合は、[ダウンロード](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)します。 
 
@@ -64,7 +66,7 @@ az login
 ![Azure Bot CLI](media/bot-builder-tools/az-cli-bot.png)
 
 
- Azure CLI コマンドの完全な一覧については、[こちら](https://docs.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest)をクリックしてください。
+ Azure CLI コマンドの完全な一覧については、[こちら](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)をクリックしてください。
 
 
 ## <a name="2-create-a-new-bot-from-azure-cli"></a>2.Azure CLI から新しいボットを作成する
@@ -83,7 +85,7 @@ az bot [command]
 | show |既存のボット リソースを表示します|
 | update| 既存のボット サービスを更新します|
 
-CLI から新しいボットを作成するには、既存の[リソース グループ](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)を選択するか、新規に作成する必要があります。 
+CLI から新しいボットを作成するには、既存の[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を選択するか、新規に作成する必要があります。 
 
 ```azurecli
 az bot create --resource-group "my-resource-group" --name "my-bot-name" --kind "my-resource-type" --description "description-of-my-bot"
@@ -183,7 +185,7 @@ az bot show -n my-bot-name -g my-resource-group --msbot | msbot connect azure --
 > すべてのボット ビルダー ツールには、グローバル ヘルプ コマンドが含まれており、コマンド ラインから **-h** または **--help** を入力してアクセスできます。 このコマンドは、任意のアクションからいつでも使用できます。実行すると、使用可能なオプションとその説明が表示されます。
 
 ### <a name="ludown"></a>LUDown
-[LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/Ludown) を使用すると、**.lu** ファイルを使用してボットの強力な言語コンポーネントを記述して作成することができます。 新しい .lu ファイルは、LUDown ツールが使用して、対象サービスに固有の .json ファイルを出力するマークダウン形式の一種です。 現時点では、.lu ファイルを使用して、新しい [LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-get-started-create-app) アプリケーションまたは [QnA](https://qnamaker.ai/Documentation/CreateKb) ナレッジ ベースをそれぞれ異なる形式を使用して作成することができます。 LUDown は npm モジュールとして使用でき、お使いのコンピューターにグローバルにインストールすることで使用できます。
+[LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/Ludown) を使用すると、**.lu** ファイルを使用してボットの強力な言語コンポーネントを記述して作成することができます。 新しい .lu ファイルは、LUDown ツールが使用して、対象サービスに固有の .json ファイルを出力するマークダウン形式の一種です。 現時点では、.lu ファイルを使用して、新しい [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) アプリケーションまたは [QnA](https://qnamaker.ai/Documentation/CreateKb) ナレッジ ベースをそれぞれ異なる形式を使用して作成することができます。 LUDown は npm モジュールとして使用でき、お使いのコンピューターにグローバルにインストールすることで使用できます。
 
 ```shell
 npm install -g ludown
@@ -193,9 +195,9 @@ LUDown ツールは、LUIS と QnA の両方の新しい .json モデルを作�
 
 ### <a name="creating-a-luis-application-with-ludown"></a>LUDown を使用して LUIS アプリケーションを作成する
 
-LUIS ポータルから行うのと同じように、LUIS アプリケーションの[意図](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents)と[エンティティ](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-entities)を定義することができます。 
+LUIS ポータルから行うのと同じように、LUIS アプリケーションの[意図](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents)と[エンティティ](https://docs.microsoft.com/azure/cognitive-services/luis/add-entities)を定義することができます。 
 
-`# \<intent-name\>` は、新しい意図の定義セクションを説明します。 それ以降の行には、その意図を説明する[発話](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-example-utterances)が含まれます。
+`# \<intent-name\>` は、新しい意図の定義セクションを説明します。 それ以降の行には、その意図を説明する[発話](https://docs.microsoft.com/azure/cognitive-services/luis/add-example-utterances)が含まれます。
 
 たとえば、次のように、1 つの .lu ファイルに複数の LUIS 意図を作成できます。 
 
@@ -225,7 +227,7 @@ please help
     this-is-the-answer
     ```
   ```
-LUDown ツールでは、質問と回答が自動的に QnA Maker の JSON ファイルに分けられます。この JSON ファイルを使用して、新しい[QnaMaker.ai](http://qnamaker.ai) ナレッジ ベースを作成することができます。
+LUDown ツールでは、質問と回答が自動的に QnA Maker の JSON ファイルに分けられます。この JSON ファイルを使用して、新しい [QnaMaker.ai](http://qnamaker.ai) ナレッジ ベースを作成することができます。
 
   ```ludown
   ### ? How do I change the default message for QnA Maker?
