@@ -8,14 +8,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 45f138d53ebf12325e17659148f2a95ebabfe1dd
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 7f94ea05fcccfe7bdeb1dec187d735cef28b1d7c
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301496"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905396"
 ---
-# <a name="add-rich-card-attachments-to-messages"></a>メッセージへのリッチ カード添付ファイルの追加
+# <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-rich-card-attachments.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-rich-cards.md)
@@ -34,7 +38,7 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 | [ヒーロー カード][heroCard] | 通常 1 つの大きな画像、1 つ以上のボタン、およびテキストが含まれるカード。 |
 | [サムネイル カード][thumbnailCard] | 通常 1 つのサムネイル画像、1 つ以上のボタン、およびテキストが含まれるカード。|
 | [領収書カード][receiptCard] | ボットが領収書をユーザーに提供できるようにするカード。 通常は、領収書に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。 |
-| [サインイン カード][signinCard] | ボットでユーザーのサインインを要求できるようにするカード。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つ以上のボタンが含まれます。 |
+| [サインイン カード][signinCard] | ボットでユーザーのサインインを要求できるようにするカード。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つまたは複数のボタンが含まれます。 |
 | [動画カード][videoCard] | 動画を再生できるカード。 |
 
 ## <a name="send-a-carousel-of-hero-cards"></a>ヒーロー カードのカルーセルを送信する
@@ -154,7 +158,7 @@ Bot Framework では、ボットからの複数のメッセージが順不同で
 
 Node.js を使用してアダプティブ カードを作成するには、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a> サイト内の情報を活用して、アダプティブ カードのスキーマを理解し、アダプティブ カードの要素について調べてください。また、さまざまな構成や複雑さを備えたカードの作成に使用できる JSON のサンプルもご覧ください。 さらに、対話型のビジュアライザーを使用すると、アダプティブ カード ペイロードを設計し、カードの出力をプレビューできます。
 
-次のコード例は、カレンダー アラーム用のアダプティブ カードが含まれるメッセージを作成する方法を示しています。 
+次のコード例では、カレンダー アラーム用のアダプティブ カードが含まれるメッセージを作成する方法を示します。 
 
 [!code-javascript[Add Adaptive Card attachment](../includes/code/node-send-card-buttons.js#addAdaptiveCardAttachment)]
 

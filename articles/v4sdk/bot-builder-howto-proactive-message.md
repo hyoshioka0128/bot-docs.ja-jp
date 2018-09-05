@@ -1,5 +1,5 @@
 ---
-title: プロアクティブ メッセージングの使用方法 | Microsoft Docs
+title: プロアクティブ メッセージを送信する | Microsoft Docs
 description: ボットでメッセージをプロアクティブに送信する方法について説明します。
 keywords: プロアクティブ メッセージ
 author: jonathanfingold
@@ -9,14 +9,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/01/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fd53a897d9847432fd337402d40edfcd6f4ff061
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: c22ce6a35d4d49506360a78a439f15137c429d9d
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303129"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905136"
 ---
-# <a name="how-to-use-proactive-messaging"></a>プロアクティブ メッセージングの使用方法
+# <a name="send-proactive-messages"></a>プロアクティブ メッセージを送信する 
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+
 
 多くの場合、ボットは_リアクティブ メッセージ_を送信しますが、[プロアクティブ メッセージ](bot-builder-proactive-messages.md)を送信できる必要が生じることもあります。 
 
@@ -120,7 +123,7 @@ public void ConfigureServices(IServiceCollection services)
 
 開始しているジョブは単純な 5 秒間のタイマーであり、その後、プロアクティブ メッセージを送信することで完了します。
 - アダプターの会話続行メソッドへの呼び出しが、ボットによって開始される新しいターンを作成します。
-- このターンには独自のターン コンテキストがあり、そこから状態に関する情報を取得します。
+- このターンには独自の[ターン コンテキスト](bot-builder-concept-activity-processing.md#turn-context)があり、そこから状態に関する情報を取得します。
 - このコンテキストを使用して、ユーザーにプロアクティブ メッセージを送信します。
 
 

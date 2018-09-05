@@ -6,13 +6,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 05/03/2018
-ms.openlocfilehash: e59f9b10686b10ae821b8c4bf259a1fc301ac702
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 08/28/2018
+ms.openlocfilehash: 63aa65e2591d9f98d763863d8d4d56cd0df185ea
+ms.sourcegitcommit: f667ce3f1635ebb2cb19827016210a88c8e45d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301226"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43142428"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework についてよく寄せられる質問
 
@@ -50,20 +50,34 @@ Bot Framework は、Skype や他の多くのチャンネル向けに、高品質
 
 I/O サービスを提供するために、Bot Framework では、お客様が使用したチャット サービスからボットに、メッセージとメッセージのコンテンツ (お客様の ID を含む) を送信します。
 
+### <a name="can-i-host-my-bot-on-my-own-servers"></a>自分のサーバー上でボットをホストできますか?
+はい。 お使いのボットはインターネット上のあらゆる場所でホストできます。 これには、ご自身のサーバー、Azure、またはその他の任意のデータセンターが含まれます。 唯一の要件は、パブリックにアクセスできる HTTPS エンドポイントがボットによって公開されている必要があることです。
+
 ### <a name="how-do-you-ban-or-remove-bots-from-the-service"></a>Microsoft はどのようにしてボットを禁止したり、サービスからボットを削除したりするのですか?
 
 ユーザーは、ディレクトリ内のボットの連絡先カードを使用して、不正な動作をするボットを報告できます。 開発者がサービスに参加するには、Microsoft サービス利用規約に従う必要があります。
 
-### <a name="which-specific-urls-do-i-need-to-whitelist-in-my-corporate-firewall-to-access-bot-services"></a>ボット サービスにアクセスするために、会社のファイアウォールでホワイトリストに登録する必要がある URL を教えてください。
-
-会社のファイアウォールでは、次の URL をホワイトリストに登録する必要があります。
+### <a name="which-specific-urls-do-i-need-to-whitelist-in-my-corporate-firewall-to-access-bot-framework-services"></a>Bot Framework サービスにアクセスするために、会社のファイアウォールでホワイトリストに登録する必要がある URL を教えてください。
+お客様のボットからインターネットへの送信トラフィックをブロックしているファイアウォールがある場合は、そのファイアウォールで次の URL をホワイトリストに登録する必要があります。
 - login.botframework.com (Bot 認証)
 - login.microsoftonline.com (Bot 認証)
 - westus.api.cognitive.microsoft.com (Luis.ai の NLP 統合用)
 - state.botframework.com (プロトタイプ作成用のボット状態ストレージ)
 - cortanabfchanneleastus.azurewebsites.net (Cortana チャンネル)
 - cortanabfchannelwestus.azurewebsites.net (Cortana チャンネル)
-- *.botFramework.com (チャンネル)
+- *.botframework.com (チャンネル)
+
+### <a name="can-i-block-all-traffic-to-my-bot-except-traffic-from-the-bot-connector-service"></a>Bot Connector サービスからのトラフィックを除く、自分のボットへのすべてのトラフィックをブロックできますか?
+いいえ。 このような IP アドレスまたは DNS ホワイトリスト登録は実用的ではありません。 Bot Framework Connector サービスは、世界規模の Azure データセンターでホストされ、Azure IP の一覧が常に変わっています。 特定の IP アドレスのホワイトリスト登録が有効なのは 1 日で、翌日に Azure IP アドレスが変わると無効になります。
+ 
+### <a name="what-keeps-my-bot-secure-from-clients-impersonating-the-bot-framework-connector-service"></a>自分のボットは、Bot Framework Connector サービスを偽装するクライアントからどのように保護されますか?
+1. お使いのボットへのすべての要求に付いているセキュリティ トークンでは ServiceUrl がエンコードされています。つまり、攻撃者がトークンにアクセスしても、会話を新しい ServiceUrl にリダイレクトすることはできません。 これは、SDK のすべての実装によって適用され、Microsoft の認証[参考](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector)資料に記載されています。
+
+2. 受信トークンが欠落しているか、形式に誤りがある場合、Bot Framework SDK の応答ではトークンが生成されません。 これにより、ボットが正しく構成されていない場合に発生する損害が制限されます。
+3. ボット内で、トークンで提供される ServiceUrl を手動で確認できます。 これにより、サービス トポロジの変更が発生した場合にボットが脆弱になります。したがって、これは可能ですが、お勧めしません。
+
+
+これらはボットからインターネットへの送信接続であることに注意してください。 ボットへの通信に Bot Framework Connector サービスによって使用される IP アドレスまたは DNS 名の一覧はありません。 受信 IP アドレスのホワイトリスト登録はサポートされていません。
 
 ## <a name="rate-limiting"></a>レート制限
 ### <a name="what-is-rate-limiting"></a>レート制限とは何ですか?

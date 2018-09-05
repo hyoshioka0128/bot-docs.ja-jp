@@ -7,14 +7,14 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 04/03/2018
+ms.date: 08/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 30a0c463698d9ab7e3b2b0f9ddb0e872f007d1d8
-ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
+ms.openlocfilehash: 5883b31df95da26fa0432f4cfe195f12fc3089ad
+ms.sourcegitcommit: 86ddf3ebe6cc3385d1c4d30b971ac9c3e1fc5a77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39515042"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43055996"
 ---
 # <a name="add-media-to-messages"></a>メッセージにメディアを追加する
 
@@ -233,8 +233,13 @@ await context.sendActivity(hero);
 ---
 
 ## <a name="send-an-adaptive-card"></a>アダプティブ カードを送信する
+ユーザーとの通信に、テキスト、画像、動画、オーディオ、ファイルなど、多彩なメッセージを送信するために、アダプティブ カードと MessageFactory が使用されます。 ただし、これには違いがいくつかあります。 
 
-アダプティブ カードは添付ファイルとして送信することもできます。 現在、すべてのチャネルでアダプティブ カードがサポートされているわけではありません。 チャネルでのアダプティブ カードのサポートに関する最新情報については、<a href="http://adaptivecards.io/visualizer/">アダプティブ カード ビジュアライザー</a>に関するページを参照してください。
+まず、アダプティブ カードをサポートするのは一部のチャネルのみで、サポートしていないチャネルでは、アダプティブ カードが部分的にしかサポートされない可能性があります。 たとえば、Facebook でアダプティブ カードを送信する場合、テキストと画像は適切に機能しますが、ボタンは機能しません。 MessageFactory は、作成手順を自動化するための、Bot Builder SDK 内の単なるヘルパー クラスであり、ほとんどのチャネルでサポートされています。 
+
+また、アダプティブ カードではカード形式でメッセージが配信され、チャネルによって、カードのレイアウトが決まります。 MessageFactory によって配信されるメッセージの形式はチャネルによって異なり、アダプティブ カードが添付ファイルに含まれていない限り、必ずしもカード形式であるとは限りません。 
+
+チャネルでのアダプティブ カードのサポートに関する最新情報については、<a href="http://adaptivecards.io/visualizer/">アダプティブ カード ビジュアライザー</a>に関するページを参照してください。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 アダプティブ カードを使用するには、必ず `Microsoft.AdaptiveCards` NuGet パッケージを追加してください。

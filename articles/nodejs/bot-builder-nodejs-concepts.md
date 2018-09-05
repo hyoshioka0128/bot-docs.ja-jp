@@ -8,14 +8,17 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e276b7f3f4cc46e0978b3ee182b8251e39b86ead
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: fd81b9dfe5d3e16096ffd6ab25c1ee23ff77f79f
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302588"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904930"
 ---
 # <a name="key-concepts-in-the-bot-builder-sdk-for-nodejs"></a>Bot Builder SDK for Node.js の主要概念
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-concepts.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-concepts.md)
@@ -42,8 +45,9 @@ Connector ではボットからチャネルに送信されるメッセージの�
 ## <a name="dialogs"></a>ダイアログ
 ダイアログは、ご利用のボット内で会話ロジックを整理するのに役立つと共に、[会話フローを設計する](../bot-service-design-conversation-flow.md)上での基礎となります。 ダイアログの概要については、[ダイアログを使用した会話の管理](bot-builder-nodejs-dialog-manage-conversation.md)に関するページを参照してください。
 
-## <a name="actions"></a>アクション
-会話フロー中に任意のタイミングで発生するキャンセル要求やヘルプ要求などの割り込みを処理できるようにご自分のボットを設計する必要があります。 Bot Builder SDK for Node.js では、キャンセルやその他のダイアログの呼び出しのようなアクションをトリガーするグローバル メッセージ ハンドラーが提供されています。 [triggerAction][triggerAction] ハンドラーの使用方法を示す例については、「<!--[Handling cancel](bot-builder-nodejs-manage-conversation-flow.md#handling-cancel), [Confirming interruptions](bot-builder-nodejs-manage-conversation-flow.md#confirming-interruptions) and-->[Handle user actions](bot-builder-nodejs-dialog-actions.md)」(ユーザー アクションを処理する) を参照してください。
+## <a name="actions"></a>Actions
+会話フロー中に任意のタイミングで発生するキャンセル要求やヘルプ要求などの割り込みを処理できるようにご自分のボットを設計する必要があります。 Bot Builder SDK for Node.js では、キャンセルやその他のダイアログの呼び出しのようなアクションをトリガーするグローバル メッセージ ハンドラーが提供されています。 [triggerAction][triggerAction] ハンドラーの使用方法を示す例については、「[ユーザー アクションを処理する](bot-builder-nodejs-dialog-actions.md)」を参照してください。
+<!--[Handling cancel](bot-builder-nodejs-manage-conversation-flow.md#handling-cancel), [Confirming interruptions](bot-builder-nodejs-manage-conversation-flow.md#confirming-interruptions) and-->
 
 
 ## <a name="recognizers"></a>認識エンジン

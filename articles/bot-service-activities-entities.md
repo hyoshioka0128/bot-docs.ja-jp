@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/01/2018
-ms.openlocfilehash: 984c0d59c0c80bb53c8cef42db79d444d85941f3
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: 8f4b6c27fc28e4cf3b800dad11c3e6bd58561387
+ms.sourcegitcommit: 0b2be801e55f6baa048b49c7211944480e83ba95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352941"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43115067"
 ---
 # <a name="entities-and-activity-types"></a>エンティティとアクティビティの種類
 
@@ -33,7 +33,7 @@ ms.locfileid: "39352941"
 
 | プロパティ | 説明 |
 |----|----|
-| Type | エンティティの種類 ("mention") |
+| type | エンティティの種類 ("mention") |
 | Mentioned | メンションされたユーザーを示すチャネル アカウント オブジェクト | 
 | Text | メンション自体を表す *activity.text* プロパティ内のテキスト (空または null 値の可能性があります) |
 
@@ -71,7 +71,7 @@ place オブジェクトには、次のプロパティが含まれています�
 
 | プロパティ | 説明 |
 |----|----|
-| Type | エンティティの種類 ("Place") |
+| type | エンティティの種類 ("Place") |
 | Address | 説明または住所オブジェクト (将来) |
 | ジオ (主要地域)  | GeoCoordinates |
 | HasMap | 地図の URL または地図オブジェクト (将来) |
@@ -81,7 +81,7 @@ geoCoordinates オブジェクトには、次のプロパティが含まれて�
 
 | プロパティ | 説明 |
 |----|----|
-| Type | エンティティの種類 ("GeoCoordinates") |
+| type | エンティティの種類 ("GeoCoordinates") |
 | Name | 場所の名前 |
 | Longitude | 場所の経度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 | Longitude | 場所の緯度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
@@ -226,7 +226,7 @@ if(context.activity.type === 'message'){
 
 ## <a name="messagereaction"></a>messageReaction
 
-一部のチャネルは、ユーザーが既存のアクティビティに反応したときに、メッセージ反応アクティビティをボットに送信します。 たとえば、ユーザーがメッセージの "いいね！" ボタンをクリックしたような場合です。 応答対象プロパティは、ユーザーが反応したアクティビティを示します。
+一部のチャネルは、ユーザーが既存のアクティビティに反応したときに、メッセージ反応アクティビティをボットに送信します。 たとえば、ユーザーがメッセージの "いいね！" ボタンをクリックしたような場合です。 replyToId プロパティは、ユーザーが反応したアクティビティを示します。
 
 メッセージ反応アクティビティは、チャネルで定義されている任意の数のメッセージ反応の種類に対応することができます。 たとえば、チャネルは反応の種類として "Like" や "PlusOne" を送信できます。
 

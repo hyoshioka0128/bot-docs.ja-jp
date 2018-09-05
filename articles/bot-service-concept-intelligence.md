@@ -1,5 +1,5 @@
 ---
-title: Cognitive Services を使用してボットにインテリジェンスを追加する | Microsoft Docs
+title: Cognitive Services | Microsoft Docs
 description: Microsoft Cognitive Services を使って、ボットをより便利で魅力的にするために、人工知能を追加する方法について説明します。
 keywords: 言語の理解, ナレッジ抽出, 音声認識, Web 検索
 author: RobStand
@@ -8,14 +8,14 @@ manager: rstand
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/17/2017
-ms.openlocfilehash: 168e538720423721a21b720b811d559d8c811adb
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 85b3c86582ce1d653159e0d36516b4a90f5a3220
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574578"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756729"
 ---
-# <a name="add-intelligence-to-bots-with-cognitive-services"></a>Cognitive Services を使用してボットにインテリジェンスを追加する
+# <a name="cognitive-services"></a>Cognitive Services
 
 コンピューター ビジョン、音声、自然言語処理、ナレッジ抽出、Web 検索の分野の専門家が開発する強力な AI アルゴリズムのコレクションは増加を続けており、Microsoft Cognitive Services により、それを利用することができるようになります。 このサービスにより、多岐にわたる AI ベースのタスクが単純化され、ほんのわずかなコード行で最新のインテリジェンス テクノロジを簡単にボットに追加できます。 この API は最新の言語とプラットフォームの大部分に統合されています。 また、API は絶えず改良と学習を続けて賢くなっているため、いつでも最新の機能をご利用になれます。 
 

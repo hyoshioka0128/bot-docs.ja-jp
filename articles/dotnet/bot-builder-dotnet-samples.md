@@ -7,18 +7,18 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/03/2018
-ms.openlocfilehash: 129c3a2b92297980e6b5e209f6e7f400a854d3a1
-ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
+ms.openlocfilehash: 7aff56dfc60d9d5cce42a5b6a2624c1364ff1b72
+ms.sourcegitcommit: 44f100a588ffda19c275b118f4f97029f12d1449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39515072"
+ms.lasthandoff: 08/26/2018
+ms.locfileid: "42928380"
 ---
-::: moniker range="azure-bot-service-3.0"
-
 # <a name="bot-builder-sdk-for-net-samples"></a>Bot Builder SDK for .NET のサンプル
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label-v3.md)]
+::: moniker range="azure-bot-service-3.0"
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 これらのサンプルでは、Bot Builder SDK for .NET 内の機能を活用する方法を示す、タスクに焦点をおいたボットを説明します。 サンプルを利用することで、豊富な機能を備えた優れたボットの作成が迅速に開始できるようになります。
 
@@ -89,10 +89,10 @@ Bot Builder SDK for .NET を使用して作成されたサンプル ボットは
 ::: moniker-end
 
 ::: moniker range="azure-bot-service-4.0"
-# <a name="bot-builder-sdk-v4-net-samples"></a>Bot Builder SDK v4 .NET のサンプル
+
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-これらのサンプルでは、Bot Builder SDK for .NET 内の機能を活用する方法を示す、タスクに焦点をおいたボットを説明します。 サンプルを利用することで、豊富な機能を備えた優れたボットの作成が迅速に開始できるようになります。 
+これらのサンプルでは、Bot Builder SDK v4 for .NET 内の機能を活用する方法を示す、タスクに焦点をおいたボットについて説明します。 サンプルを利用することで、豊富な機能を備えた優れたボットの作成が迅速に開始できるようになります。 
 
 注: SDK v4 については精力的に開発を進めているところであるため、実験目的でのみのご使用となります。 
 

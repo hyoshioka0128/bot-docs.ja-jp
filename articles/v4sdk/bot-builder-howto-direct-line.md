@@ -1,5 +1,5 @@
 ---
-title: Direct Line ボットおよびクライアントを作成する方法 | Microsoft Docs
+title: Direct Line ボットおよびクライアントを作成する | Microsoft Docs
 description: Bot Builder SDK for .NET V4 を使用して Direct Line ボットおよびクライアントを作成する方法について説明します。
 keywords: direct line ボット, direct line クライアント, カスタム チャネル, コンソールベース, 発行
 author: v-royhar
@@ -9,14 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/16/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ac96e35763d690c91e6584ff9a840b490e0a32cd
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 23380231c15c40875f78921f72bcf9d57effb3bf
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300908"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905232"
 ---
-# <a name="how-to-create-a-direct-line-bot-and-client"></a>Direct Line ボットおよびクライアントを作成する方法
+# <a name="create-a-direct-line-bot-and-client"></a>Direct Line ボットおよびクライアントを作成する
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Microsoft Bot Framework Direct Line ボットは、独自の設計のカスタム クライアントで機能するボットです。 Direct Line ボットは通常のボットとよく似ています。 どちらも用意されているチャネルを使用する必要はありません。
 
@@ -189,9 +191,6 @@ namespace DirectLineBotSample
                     break;
 
                 case ActivityTypes.Typing:
-                    break;
-
-                case ActivityTypes.Ping:
                     break;
 
                 case ActivityTypes.DeleteUserData:

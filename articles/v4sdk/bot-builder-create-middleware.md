@@ -9,20 +9,22 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6bc73b2886374fbb50d8257c387df54f21a12ed7
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b774f2de5856e6001d1b75c47b92aff6399d8fe3
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303196"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42904352"
 ---
-# <a name="write-your-own-middleware"></a>独自のミドルウェアを作成する
+# <a name="create-your-own-middleware"></a>独自のミドルウェアを作成する
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 ミドルウェアを使用すると、ご利用のボット向けに豊富なプラグインを作成することができ、それらは他でも使用することができます。 ここでは、基本的なミドルウェアの追加および実装の方法と、そのしくみについて紹介します。 v4 SDK には、状態管理、LUIS、QnAMaker、翻訳などの目的に対する何らかのミドルウェアが用意されています。 詳細については、[.NET](https://github.com/Microsoft/botbuilder-dotnet) 用または [JavaScript](https://github.com/Microsoft/botbuilder-js) 用の Bot Builder SDK を参照してください。
 
 ## <a name="adding-middleware"></a>ミドルウェアの追加
 
-基本的な HelloBot サンプルに基づく次の例では、2 つの異なるミドルウェアが、それらの各クラスの新しいインスタンスと共に Microsoft のサービスに追加されています。
+[作業開始](~/bot-service-quickstart.md)エクスペリエンスで作成された基本的なボット サンプルに基づく次の例では、2 つの異なるミドルウェアが、それらの各クラスの新しいインスタンスと共に Microsoft のサービスに追加されています。
 
 > [!IMPORTANT]
 > それらがオプションに追加される順番によって、それらが実行される順番が決まることにご注意ください。 ミドルウェアを複数使用する場合に、それがどのように機能するかを必ず検討してください。

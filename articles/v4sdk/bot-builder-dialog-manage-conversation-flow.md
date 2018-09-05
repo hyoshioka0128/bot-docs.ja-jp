@@ -1,75 +1,97 @@
 ---
-title: ダイアログを使用して会話フローを管理する | Microsoft Docs
-description: Bot Builder SDK for Node.js でダイアログを使用して会話フローを管理する方法について説明します。
-keywords: 会話フロー, ダイアログ, プロンプト, ウォーターフォール, ダイアログ セット
+title: ダイアログを使用して単純な会話フローを管理する | Microsoft Docs
+description: Bot Builder SDK for Node.js でダイアログを使用して単純な会話フローを管理する方法について説明します。
+keywords: 単純な会話フロー, ダイアログ, プロンプト, ウォーターフォール, ダイアログ セット
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 5/8/2018
+ms.date: 8/2/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 99184ba71072c159c598c7f68289c42a51926795
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 77162601f542e6faa8908bc71abc971eb99fcc93
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302204"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756378"
 ---
-# <a name="manage-conversation-flow-with-dialogs"></a>ダイアログを使用して会話フローを管理する
+# <a name="manage-simple-conversation-flow-with-dialogs"></a>ダイアログを使用して単純な会話フローを管理する
+
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
+ダイアログ ライブラリを使用して、単純な会話フローと複雑な会話フローの両方を管理できます。 単純な会話フローでは、ユーザーは "*ウォーターフォール*" の最初のステップから始め、最後のステップまで進むと会話のやり取りが終了します。 ダイアログでは、ダイアログの一部を分岐およびループできる[複雑な会話フロー](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)を処理することもできます。
 
-会話フローの管理は、ボットを構築する上で最も重要なタスクです。 Bot Builder SDK では、**ダイアログ**を使用して会話フローを管理できます。
+<!-- TODO: We need a dialogs conceptual topic to link to, so we can reference that here, in place of describing what they are and what their features are in a how-to topic. -->
 
-ダイアログは、プログラムの関数に似ています。 それは、一般的に特定の操作を実行するように設計されており、必要に応じて何度でも呼び出すことができます。 複数のダイアログを連鎖させて、ボットで処理するほぼすべての会話フローを処理できます。 Bot Builder SDK の**ダイアログ** ライブラリには、**プロンプト**や**ウォーターフォール**などの組み込み機能があり、ダイアログを通して会話の流れを管理するのに役立ちます。 プロンプト ライブラリは、さまざまな種類の情報をユーザーに確認するために使用できる多様なプロンプトを提供します。 ウォーターフォールは、複数のステップを 1 つのシーケンスに結合する方法を提供します。
+<!-- TODO: This paragraph belongs in a conceptual topic. -->ダイアログは、プログラムの関数に似ています。 通常、特定の操作を特定の順序で実行するように設計されており、必要に応じて何度でも呼び出すことができます。 ダイアログを使用することで、ボット開発者は会話フローを導くことができます。 複数のダイアログを連鎖させて、ボットで処理するほぼすべての会話フローを処理できます。 Bot Builder SDK の**ダイアログ** ライブラリには、会話フローの管理に役立つ "_プロンプト_" や "_ウォーターフォール ダイアログ_" などの組み込み機能があります。 プロンプトを使用すると、ユーザーにさまざまな種類の情報を要求できます。 ウォーターフォールを使用すると、複数のステップを 1 つのシーケンスに結合できます。
 
-この記事では、ダイアログ オブジェクトを作成し、プロンプトとウォーターフォール ステップをダイアログ セットに追加して、単純な会話フローと複雑な会話フローの両方を管理する方法を示します。 
+この記事では、"_ダイアログ セット_" を使用して、プロンプトとウォーターフォール ステップの両方を含む会話フローを作成します。 2 つのサンプル ダイアログがあります。 1 つ目は、ユーザー入力を必要としない操作を実行するワンステップ ダイアログです。 2 つ目は、ユーザーに情報の入力を求める複数ステップ ダイアログです。
 
 ## <a name="install-the-dialogs-library"></a>ダイアログ ライブラリをインストールする
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+基本的な EchoBot テンプレートから始めます。 手順については、[.NET のクイック スタート](~/dotnet/bot-builder-dotnet-quickstart.md)をご覧ください。
+
 ダイアログを使用するには、プロジェクトまたはソリューション用の `Microsoft.Bot.Builder.Dialogs` NuGet パッケージをインストールします。
-次に、コード ファイル内でステートメントを使用して、そのダイアログ ライブラリを参照します。 例: 
+次に、必要に応じてコード ファイル内の using ステートメントでダイアログ ライブラリを参照します。
 
 ```csharp
 using Microsoft.Bot.Builder.Dialogs;
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 `botbuilder-dialogs` ライブラリは、NPM からダウンロードできます。 `botbuilder-dialogs` ライブラリをインストールするには、次の NPM コマンドを実行します。
 
 ```cmd
-npm install --save botbuilder-dialogs
+npm install --save botbuilder-dialogs@preview
 ```
 
-**ダイアログ**をボットで使用するには、それをボット コードに含めます。 例: 
-
-**app.js**
+ボットで**ダイアログ**を使用するには、**app.js** ファイルに次のコードを追加します。
 
 ```javascript
 const botbuilder_dialogs = require('botbuilder-dialogs');
 ```
+
 ---
 
 ## <a name="create-a-dialog-stack"></a>ダイアログ スタックを作成する
+
+この最初の例では、2 つの数値を加算し、結果を表示できるワンステップ ダイアログを作成します。
 
 ダイアログを使用するには、まず "*ダイアログ セット*" を作成する必要があります。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 `Microsoft.Bot.Builder.Dialogs` ライブラリには、`DialogSet` クラスがあります。
-名前付きのダイアログと一連のダイアログ をダイアログ セットに追加し、後で名前でアクセスできます。
+**AdditionDialog** クラスを作成し、必要な using ステートメントを追加します。
+名前付きダイアログと一連のダイアログをダイアログ セットに追加し、後で名前でアクセスできます。
 
 ```csharp
-IDialog dialog = null;
-// Initialize dialog.
-
-DialogSet dialogs = new DialogSet();
-dialogs.Add("dialog name", dialog);
+using Microsoft.Bot.Builder.Dialogs;
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+**DialogSet** からクラスを派生させ、このダイアログ セットのダイアログと入力情報の識別に使用する ID とキーを定義します。
+
+```csharp
+/// <summary>Defines a simple dialog for adding two numbers together.</summary>
+public class AdditionDialog : DialogSet
+{
+    /// <summary>The ID of the main dialog in the set.</summary>
+    public const string Main = "additionDialog";
+
+    /// <summary>Defines the IDs of the input arguments.</summary>
+    public struct Inputs
+    {
+        public const string First = "first";
+        public const string Second = "second";
+    }
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 `botbuilder-dialogs` ライブラリには、`DialogSet` クラスがあります。
 この **DialogSet** クラスは、**ダイアログ スタック**を定義し、そのスタックを管理するための単純なインターフェイスを表示します。
@@ -82,26 +104,26 @@ const dialogs = new botbuilder_dialogs.DialogSet();
 ```
 
 上の呼び出しは、`dialogStack` という名前の既定の**ダイアログ スタック**を持つ **DialogSet** を作成します。
-スタックに名前を付ける場合は、パラメーターとして **DialogSet()** に渡すことができます。 次に例を示します。
+スタックに名前を付ける場合は、パラメーターとして **DialogSet()** に渡すことができます。 例: 
 
 ```javascript
 const dialogs = new botbuilder_dialogs.DialogSet("myStack");
 ```
+
 ---
 
-ダイアログの作成は、このセットにダイアログの定義を追加するだけのことです。 ダイアログは、_begin_ または _replace_ メソッドを呼び出してそれをダイアログ スタックにプッシュするまでは実行されません。 
+ダイアログの作成は、このセットにダイアログの定義を追加するだけのことです。 ダイアログは、_begin_ または _replace_ メソッドを呼び出してそれをダイアログ スタックにプッシュするまでは実行されません。
 
-ダイアログの名前 (たとえば `addTwoNumbers`) は、それぞれのダイアログ セット内で一意である必要があります。 各セットに、必要な数のダイアログを定義できます。
+ダイアログの名前 (たとえば `addTwoNumbers`) は、それぞれのダイアログ セット内で一意である必要があります。 各セットに、必要な数のダイアログを定義できます。 複数のダイアログ セットを作成し、それらをシームレスに連携させる場合は、[モジュラー ボット ロジックの作成](bot-builder-compositcontrol.md)に関する記事をご覧ください。
 
 ダイアログ ライブラリは、次のダイアログを定義します。
--   **プロンプト** ダイアログ。このダイアログは、少なくとも 2 つの関数を使用します。1 つはユーザーに入力を求め、1 つはその入力を処理します。
-    **ウォーターフォール** モデルを使用して、これらを一続きにすることができます。
--   **ウォーターフォール** ダイアログ。次々に実行される "_ウォーターフォール ステップ_" シーケンスを定義します。
-    ウォーターフォール ダイアログに 1 つのステップのみを設定できます。この場合、ダイアログは、単純なワンステップ ダイアログとみなすことができます。
+
+* **プロンプト** ダイアログ。このダイアログは、少なくとも 2 つの関数を使用します。1 つはユーザーに入力を求め、1 つはその入力を処理します。 **ウォーターフォール** モデルを使用して、これらを一続きにすることができます。
+* **ウォーターフォール** ダイアログ。次々に実行される "_ウォーターフォール ステップ_" シーケンスを定義します。 ウォーターフォール ダイアログに 1 つのステップのみを設定できます。この場合、ダイアログは、単純なワンステップ ダイアログとみなすことができます。
 
 ## <a name="create-a-single-step-dialog"></a>シングル ステップ ダイアログを作成する
 
-シングル ステップ ダイアログは、1 往復の会話フローをキャプチャするために役立ちます。 次の例は、ユーザーが "1 + 2" のように発話したかどうかを検出し、`addTwoNumbers` ダイアログを開始して "1 + 2 = 3" で応答できるボットを作成します。 
+シングル ステップ ダイアログは、1 往復の会話フローをキャプチャするために役立ちます。 次の例は、ユーザーが "1 + 2" のように発話したかどうかを検出し、`addTwoNumbers` ダイアログを開始して "1 + 2 = 3" で応答できるボットを作成します。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -111,135 +133,140 @@ const dialogs = new botbuilder_dialogs.DialogSet("myStack");
 
 このステップは、渡されたダイアログの引数に、加算される数値を表す `first` プロパティと `second` プロパティ が含まれているとみなします。
 
-EchoBot テンプレートから始めます。 コードに bot クラスを追加して、コンストラクターにダイアログを追加します。
+**AdditionDialog** クラスに次のコンストラクターを追加します。
+
 ```csharp
-public class EchoBot : IBot
+/// <summary>Defines the steps of the dialog.</summary>
+public AdditionDialog()
 {
-    private DialogSet _dialogs;
-
-    public EchoBot()
+    Add(Main, new WaterfallStep[]
     {
-        _dialogs = new DialogSet();
-        _dialogs.Add("addTwoNumbers", new WaterfallStep[]
-        {              
-            async (dc, args, next) =>
-            {
-                double sum = (double)args["first"] + (double)args["second"];
-                await dc.Context.SendActivity($"{args["first"]} + {args["second"]} = {sum}");
-                await dc.End();
-            }
-        });
-    }
+        async (dc, args, next) =>
+        {
+            // Get the input from the arguments to the dialog and add them.
+            var x =(double)args[Inputs.First];
+            var y =(double)args[Inputs.Second];
+            var sum = x + y;
 
-    // The rest of the class definition is omitted here but would include OnTurn()
+            // Display the result to the user.
+            await dc.Context.SendActivity($"{x} + {y} = {sum}");
+
+            // End the dialog.
+            await dc.End();
+        }
+    });
 }
-
 ```
 
 ### <a name="pass-arguments-to-the-dialog"></a>ダイアログに引数を渡す
 
+ボット コードで using ステートメントを更新します。
+
+```cs
+using Microsoft.Bot;
+using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Core.Extensions;
+using Microsoft.Bot.Schema;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+```
+
+加算ダイアログのクラスに静的プロパティを追加します。
+
+```cs
+private static AdditionDialog AddTwoNumbers { get; } = new AdditionDialog();
+```
+
 ボットの `OnTurn` メソッド内からダイアログを呼び出すには、`OnTurn` を、以下を含むように変更します。
+
 ```cs
 public async Task OnTurn(ITurnContext context)
 {
-    // This bot is only handling Messages
-    if (context.Activity.Type == ActivityTypes.Message)
+    // Handle any message activity from the user.
+    if (context.Activity.Type is ActivityTypes.Message)
     {
-        // Get the conversation state from the turn context
-        var state = context.GetConversationState<EchoState>();
+        // Get the conversation state from the turn context.
+        var conversationState = context.GetConversationState<ConversationData>();
 
-        // create a dialog context
-        var dialogCtx = _dialogs.CreateContext(context, state);
+        // Generate a dialog context for the addition dialog.
+        var dc = AddTwoNumbers.CreateContext(context, conversationState.DialogState);
 
-        // Bump the turn count. 
-        state.TurnCount++;
-
-        await dialogCtx.Continue();
-        if (!context.Responded)
+        // Call a helper function that identifies if the user says something
+        // like "2 + 3" or "1.25 + 3.28" and extract the numbers to add.
+        if (TryParseAddingTwoNumbers(context.Activity.Text, out double first, out double second))
         {
-            // Call a helper function that identifies if the user says something 
-            // like "2 + 3" or "1.25 + 3.28" and extract the numbers to add            
-            if (TryParseAddingTwoNumbers(context.Activity.Text, out double first, out double second))
-            { 
-                var dialogArgs = new Dictionary<string, object>
-                {
-                    ["first"] = first,
-                    ["second"] = second
-                };                        
-                await dialogCtx.Begin("addTwoNumbers", dialogArgs);
-            }
-            else
+            // Start the dialog, passing in the numbers to add.
+            var args = new Dictionary<string, object>
             {
-                // Echo back to the user whatever they typed.
-                await context.SendActivity($"Turn: {state.TurnCount}. You said '{context.Activity.Text}'");
-            }
+                [AdditionDialog.Inputs.First] = first,
+                [AdditionDialog.Inputs.Second] = second
+            };
+            await dc.Begin(AdditionDialog.Main, args);
+        }
+        else
+        {
+            // Echo back to the user whatever they typed.
+            await context.SendActivity($"You said '{context.Activity.Text}'");
         }
     }
 }
 ```
 
-bot クラスにヘルパー関数を追加します。 このヘルパー関数は、単純な正規表現を使用して、ユーザーのメッセージが 2 つの数値を加算する要求であるかどうかを検出します。
+ボット クラスに **TryParseAddingTwoNumbers** ヘルパー関数を追加します。 このヘルパー関数は、単純な正規表現を使用して、ユーザーのメッセージが 2 つの数値を加算する要求であるかどうかを検出します。
 
 ```cs
-// Recognizes if the message is a request to add 2 numbers, in the form: number + number, 
-// where number may have optionally have a decimal point.: 1 + 1, 123.99 + 45, 0.4+7. 
+// Recognizes if the message is a request to add 2 numbers, in the form: number + number,
+// where number may have optionally have a decimal point.: 1 + 1, 123.99 + 45, 0.4+7.
 // For the sake of simplicity it doesn't handle negative numbers or numbers like 1,000 that contain a comma.
 // If you need more robust number recognition, try System.Recognizers.Text
-public bool TryParseAddingTwoNumbers(string message, out double first, out double second)
+public static bool TryParseAddingTwoNumbers(string message, out double first, out double second)
 {
     // captures a number with optional -/+ and optional decimal portion
     const string NUMBER_REGEXP = "([-+]?(?:[0-9]+(?:\\.[0-9]+)?|\\.[0-9]+))";
+
     // matches the plus sign with optional spaces before and after it
     const string PLUSSIGN_REGEXP = "(?:\\s*)\\+(?:\\s*)";
+
     const string ADD_TWO_NUMBERS_REGEXP = NUMBER_REGEXP + PLUSSIGN_REGEXP + NUMBER_REGEXP;
+
     var regex = new Regex(ADD_TWO_NUMBERS_REGEXP);
     var matches = regex.Matches(message);
-    var succeeded = false;
+
     first = 0;
     second = 0;
-    if (matches.Count == 0)
-    {
-        succeeded = false;
-    }
-    else
+    if (matches.Count > 0)
     {
         var matched = matches[0];
-        if ( System.Double.TryParse(matched.Groups[1].Value, out first) 
-            && System.Double.TryParse(matched.Groups[2].Value, out second))
+        if (double.TryParse(matched.Groups[1].Value, out first)
+            && double.TryParse(matched.Groups[2].Value, out second))
         {
-            succeeded = true;
-        } 
+            return true;
+        }
     }
-    return succeeded;
+    return false;
 }
 ```
 
-EchoBot テンプレートを使用している場合は、**EchoState.cs** 内の `EchoState` クラス を次のように変更します。
+EchoBot テンプレートを使用している場合は、**EchoState** クラスの名前を **ConversationData** に変更し、以下を含むように変更します。
 
 ```cs
+using System.Collections.Generic;
+
 /// <summary>
 /// Class for storing conversation state.
-/// This bot only stores the turn count in order to echo it to the user
 /// </summary>
-public class EchoState: Dictionary<string, object>
+public class ConversationData
 {
-    private const string TurnCountKey = "TurnCount";
-    public EchoState()
-    {
-        this[TurnCountKey] = 0;            
-    }
-
-    public int TurnCount
-    {
-        get { return (int)this[TurnCountKey]; }
-        set { this[TurnCountKey] = value; }
-    }
+    /// <summary>Property for storing dialog state.</summary>
+    public Dictionary<string, object> DialogState { get; set; } = new Dictionary<string, object>();
 }
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 「[Create a bot with the Bot Builder SDK v4](../javascript/bot-builder-javascript-quickstart.md)」(Bot Builder SDK v4 を使用してボットを作成する) で説明されている JS テンプレートから始めます。 **app.js** に、`botbuilder-dialogs` を要求するステートメントを追加します。
+
 ```js
 const {DialogSet} = require('botbuilder-dialogs');
 ```
@@ -266,42 +293,44 @@ server.post('/api/messages', (req, res) => {
     // Route received activity to adapter for processing
     adapter.processActivity(req, res, async (context) => {
         const isMessage = context.activity.type === 'message';
+        // State will store all of your information
+        const convoState = conversationState.get(context);
+        const dc = dialogs.createContext(context, convoState);
+
         if (isMessage) {
-            const state = conversationState.get(context);
-            const count = state.count === undefined ? state.count = 0 : ++state.count;
-
-            // create a dialog context
-            const dc = dialogs.createContext(context, state);
-
-            // MatchesAdd2Numbers checks if the message matches a regular expression
+            // TryParseAddingTwoNumbers checks if the message matches a regular expression
             // and if it does, returns an array of the numbers to add
-            var numbers = await MatchesAdd2Numbers(context.activity.text); 
+            var numbers = await TryParseAddingTwoNumbers(context.activity.text); 
             if (numbers != null && numbers.length >=2 )
-            {    
+            {
                 await dc.begin('addTwoNumbers', numbers);
             }
             else {
                 // Just echo back the user's message if they're not adding numbers
-                return context.sendActivity(`Turn ${count}: You said "${context.activity.text}"`); 
-            }           
-        } else {
+                const count = (convoState.count === undefined ? convoState.count = 0 : ++convoState.count);
+                return context.sendActivity(`Turn ${count}: You said "${context.activity.text}"`);
+            }
+        }
+        else {
             return context.sendActivity(`[${context.activity.type} event detected]`);
         }
+
         if (!context.responded) {
             await dc.continue();
             // if the dialog didn't send a response
             if (!context.responded && isMessage) {
-                await dc.context.sendActivity(`Hi! I'm the add 2 numbers bot. Say something like "what's 1+2?"`);
+                await dc.context.sendActivity(`Hi! I'm the add 2 numbers bot. Say something like "What's 2+3?"`);
             }
         }
     });
 });
+
 ```
 
 **app.js** にヘルパー関数を追加します。 このヘルパー関数は、単純な正規表現を使用して、ユーザーのメッセージが 2 つの数値を加算する要求であるかどうかを検出します。 正規表現が一致する場合は、加算する数値を格納する配列を返します。
 
 ```javascript
-async function MatchesAdd2Numbers(message) {
+async function TryParseAddingTwoNumbers(message) {
     const ADD_NUMBERS_REGEXP = /([-+]?(?:[0-9]+(?:\.[0-9]+)?|\.[0-9]+))(?:\s*)\+(?:\s*)([-+]?(?:[0-9]+(?:\.[0-9]+)?|\.[0-9]+))/i;
     let matched = ADD_NUMBERS_REGEXP.exec(message);
     if (!matched) {
@@ -323,149 +352,61 @@ Bot Framework Emulator でボットを実行し、試しに "what's 1+1?" など
 
 ![ボットを実行する](./media/how-to-dialogs/bot-output-add-numbers.png)
 
-
-
 ## <a name="using-dialogs-to-guide-the-user-through-steps"></a>ダイアログを使用してユーザーにステップを案内する
+
+この次の例では、ユーザーに情報の入力を求める複数ステップ ダイアログを作成します。
+
+### <a name="create-a-dialog-with-waterfall-steps"></a>ウォーターフォール ステップを持つダイアログを作成する
+
+**ウォーターフォール**はダイアログ特有の実装であり、ユーザーから情報を収集したり、一連のタスクをユーザーに案内したりするときに最も一般的に使用されます。 タスクは関数の配列として実装され、最初の関数の結果が次の関数の入力として渡され、以下同様に処理されます。 各関数は、通常は、プロセス全体の 1 つのステップを表します。 各ステップで、ボットは、[ユーザーに入力を要求](bot-builder-prompts.md)し、応答を待ち、結果を次のステップに渡します。
+
+たとえば、次のコード サンプルでは、**ウォーター フォール**の 3 つのステップを表す配列内に 3 つの関数を定義しています。 各プロンプトの後、ボットはユーザーの入力を確認しますが、入力は保存しませんでした。 ユーザー入力を保持する場合、詳細については、「[ユーザー データを保持する](bot-builder-tutorial-persist-user-inputs.md)」をご覧ください｡
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-### <a name="create-a-composite-dialog"></a>複合ダイアログを作成する
-
-次のスニペットは、botbuilder-dotnet リポジトリの[Microsoft.Bot.Samples.Dialog.Prompts](https://github.com/Microsoft/botbuilder-dotnet/tree/master/samples/MIcrosoft.Bot.Samples.Dialog.Prompts) コード サンプルの一部です。
-
-Startup.cs で:
-1.  ボットの名前を `DialogContainerBot` に変更します。
-1.  ボットの会話状態用のプロパティ バッグとして、単純なディクショナリを使用します。
+ここでは、あいさつダイアログのコンストラクターを示しています。**GreetingDialog** は **DialogSet** から派生しています。**Inputs.Text** には **TextPrompt** オブジェクトに使用する ID が含まれ、**Main** にはあいさつダイアログ自体の ID が含まれます。
 
 ```csharp
-public void ConfigureServices(IServiceCollection services)
+public GreetingDialog()
 {
-    services.AddBot<DialogContainerBot>(options =>
+    // Include a text prompt.
+    Add(Inputs.Text, new TextPrompt());
+
+    // Define the dialog logic for greeting the user.
+    Add(Main, new WaterfallStep[]
     {
-        options.CredentialProvider = new ConfigurationCredentialProvider(Configuration);
-        options.Middleware.Add(new ConversationState<Dictionary<string, object>>(new MemoryStorage()));
+        async (dc, args, next) =>
+        {
+            // Ask for their name.
+            await dc.Prompt(Inputs.Text, "What is your name?");
+        },
+        async (dc, args, next) =>
+        {
+            // Get the prompt result.
+            var name = args["Text"] as string;
+
+            // Acknowledge their input.
+            await dc.Context.SendActivity($"Hi, {name}!");
+
+            // Ask where they work.
+            await dc.Prompt(Inputs.Text, "Where do you work?");
+        },
+        async (dc, args, next) =>
+        {
+            // Get the prompt result.
+            var work = args["Text"] as string;
+
+            // Acknowledge their input.
+            await dc.Context.SendActivity($"{work} is a fun place.");
+
+            // End the dialog.
+            await dc.End();
+        }
     });
 }
 ```
 
-`EchoBot` の名前を `DialogContainerBot` に変更します。
-
-`DialogContainerBot.cs` で、プロファイル ダイアログ用のクラスを定義します。
-
-```csharp
-public class ProfileControl : DialogContainer
-{
-    public ProfileControl()
-        : base("fillProfile")
-    {
-        Dialogs.Add("fillProfile", 
-            new WaterfallStep[]
-            {
-                async (dc, args, next) =>
-                {
-                    dc.ActiveDialog.State = new Dictionary<string, object>();
-                    await dc.Prompt("textPrompt", "What's your name?");
-                },
-                async (dc, args, next) =>
-                {
-                    dc.ActiveDialog.State["name"] = args["Value"];
-                    await dc.Prompt("textPrompt", "What's your phone number?");
-                },
-                async (dc, args, next) =>
-                {
-                    dc.ActiveDialog.State["phone"] = args["Value"];
-                    await dc.End(dc.ActiveDialog.State);
-                }
-            }
-        );
-        Dialogs.Add("textPrompt", new Builder.Dialogs.TextPrompt());
-    }
-}
-```
-
-次に、ボット定義内で、ボットのメイン ダイアログ用のフィールドを宣言し、ボットのコンストラクター内で初期化します。
-ボットのメイン ダイアログに、プロファイル ダイアログが含まれます。
-
-```csharp
-private DialogSet _dialogs;
-
-public DialogContainerBot()
-{
-    _dialogs = new DialogSet();
-
-    _dialogs.Add("getProfile", new ProfileControl());
-    _dialogs.Add("firstRun",
-        new WaterfallStep[]
-        {
-            async (dc, args, next) =>
-            {
-                    await dc.Context.SendActivity("Welcome! We need to ask a few questions to get started.");
-                    await dc.Begin("getProfile");
-            },
-            async (dc, args, next) =>
-            {
-                await dc.Context.SendActivity($"Thanks {args["name"]} I have your phone number as {args["phone"]}!");
-                await dc.End();
-            }
-        }
-    );
-}
-```
-
-ボットの `OnTurn` メソッドで:
--   会話を始めるときに、ユーザーにあいさつします。
--   ユーザーからメッセージを取得するたびに、メイン ダイアログを初期化して _continue_ します。
-
-    ダイアログが応答を生成しない場合は、ダイアログが既に完了しているか、まだ開始されていないとみなし、セット内のダイアログの名前を指定して、ダイアログを _begin_ します。
-
-```csharp
-public async Task OnTurn(ITurnContext turnContext)
-{
-    try
-    {
-        switch (turnContext.Activity.Type)
-        {
-            case ActivityTypes.ConversationUpdate:
-                foreach (var newMember in turnContext.Activity.MembersAdded)
-                {
-                    if (newMember.Id != turnContext.Activity.Recipient.Id)
-                    {
-                        await turnContext.SendActivity("Hello and welcome to the Composite Control bot.");
-                    }
-                }
-                break;
-
-            case ActivityTypes.Message:
-                var state = ConversationState<Dictionary<string, object>>.Get(turnContext);
-                var dc = _dialogs.CreateContext(turnContext, state);
-
-                await dc.Continue();
-
-                if (!turnContext.Responded)
-                {
-                    await dc.Begin("firstRun");
-                }
-
-                break;
-        }
-    }
-    catch (Exception e)
-    {
-        await turnContext.SendActivity($"Exception: {e.Message}");
-    }
-}
-
-```
-
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
-
-### <a name="create-a-dialog-with-waterfall-steps"></a>ウォーターフォール ステップを持つダイアログを作成する
-
-会話は、ユーザーとボットの間で交わされる一連のメッセージで構成されます。 ボットの目的が一連のステップを通してユーザーを誘導することにある場合は、**ウォーターフォール** モデルを使用して会話のステップを定義できます。
-
-**ウォーターフォール**はダイアログ特有の実装であり、ユーザーから情報を収集したり、一連のタスクをユーザーに案内したりするときに最も一般的に使用されます。 タスクは関数の配列として実装され、最初の関数の結果が次の関数の入力として渡され、以下同様に処理されます。 各関数は、通常は、プロセス全体の 1 つのステップを表します。 各ステップで、ボットは、[ユーザーに入力を要求](bot-builder-prompts.md)し、応答を待ち、結果を次のステップに渡します。
-
-たとえば、次のコード サンプルは、**ウォーター フォール**の 3 つのステップを表す 3 つの関数を配列内に定義します。
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // Greet user:
@@ -490,269 +431,174 @@ dialogs.add('greetings',[
 dialogs.add('textPrompt', new botbuilder_dialogs.TextPrompt());
 ```
 
+---
+
 **ウォーター フォール** ステップのシグネチャは以下のとおりです。
 
 | パラメーター | 説明 |
-| ---- | ----- |
-| `context` | ダイアログのコンテキスト。 |
+| :---- | :----- |
+| `dc` | ダイアログのコンテキスト。 |
 | `args` | 省略可能。ステップに渡される引数が含まれます。 |
-| `next` | 省略可能。ウォーターフォールの次のステップに進むことを許可するメソッド。 このメソッドを呼び出すときに、*args* 引数を指定して、ウォーターフォール内の次のステップに引数を渡すことができます。 |
+| `next` | 省略可能。プロンプトなしでウォーターフォールの次のステップに進むことを可能にするメソッド。 このメソッドを呼び出すときに、*args* 引数を指定できます。これにより、ウォーターフォールの次のステップに引数を渡すことができます。 |
 
-各ステップは、戻る前に次のメソッドのいずれかを呼び出す必要があります。*next()*、*dialogs.prompt()*、*dialogs.end()*、*dialogs.begin()*、または *Promise.resolve()*。これ以外の場合、ボットはそのステップでスタックします。 つまり、関数がこれらのメソッドのいずれかを返さない場合、ユーザーがボットにメッセージを送信するたびに、すべてのユーザー入力でこのステップが再実行されます。
+各ステップでは、制御を戻す前に、*next()* デリゲートまたはダイアログ コンテキスト メソッドのいずれか (*begin*、*end*、*prompt*、または *replace*) を呼び出す必要があります。そうしないと、ボットはそのステップで停止します。 つまり、関数がこれらのメソッドのいずれかで終了しない場合、ユーザーがボットにメッセージを送信するたびに、すべてのユーザー入力によってこのステップが再実行されます。
 
-ウォーター フォールの終わりに達したときのベスト プラクティスは、ダイアログをスタックから取り出すことができるように、`end()` メソッドで戻ることです。 詳細については、「[ダイアログを開始する](#end-a-dialog)」セクションを参照してください。 同様に、あるステップから次のステップに進むには、ウォーターフォール ステップをプロンプトで終了するか、`next()` 関数を明示的に呼び出して、ウォーターフォールを進める必要があります。 
+ウォーターフォールの終わりに達したら、ダイアログをスタックから取り出すことができるように、_end_ メソッドで制御を戻すのがベスト プラクティスです。 詳細については、後述の「[ダイアログを終了する](#end-a-dialog)」ご覧ください。 同様に、あるステップから次のステップに進むには、ウォーターフォール ステップをプロンプトで終了するか、_next_ デリゲートを明示的に呼び出してウォーターフォールを進める必要があります。
 
-### <a name="start-a-dialog"></a>ダイアログを開始する
+## <a name="start-a-dialog"></a>ダイアログを開始する
 
-ダイアログを開始するには、開始する *dialogId* を、`begin()` メソッド、`prompt()` メソッド、または `replace()` メソッドに渡します。 **begin** メソッドは、スタックの一番上にダイアログをプッシュし、**replace** メソッドは、現在のダイアログをスタックから取り出し、置き換えるダイアログをスタックにプッシュします。
+ダイアログを開始するには、開始する *dialogId* を、ダイアログ コンテキストの _begin_、_prompt_、または _replace_ メソッドに渡します。 _begin_ メソッドは、スタックの一番上にダイアログをプッシュします。_replace_ メソッドは、現在のダイアログをスタックから取り出し、置き換えるダイアログをスタックにプッシュします。
 
 引数を指定しないでダイアログを開始するには:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// Start the greetings dialog.
+await dc.Begin("greetings");
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // Start the 'greetings' dialog.
 await dc.begin('greetings');
 ```
 
+---
+
 引数を指定してダイアログを開始するには:
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// Start the greetings dialog, passing in a property bag.
+await dc.Begin("greetings", args);
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
-// Start the 'greetings' dialog with the 'userName' passed in. 
+// Start the 'greetings' dialog with the 'userName' passed in.
 await dc.begin('greetings', userName);
 ```
 
+---
+
 **プロンプト** ダイアログ開始するには:
 
-```javascript
-// Start a 'choicePrompt' dialog with choices passed in as an array of colors to choose from.
-await dc.prompt('choicePrompt', `choice: select a color`, ['red', 'green', 'blue']);
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+ここでは、**Inputs.Text** には、同じダイアログ セット内の **TextPrompt** の ID が含まれます。
+
+```csharp
+// Ask a user for their name.
+await dc.Prompt(Inputs.Text, "What is your name?");
 ```
 
-開始するプロンプトの種類によっては、プロンプトの引数のシグネチャが異なる可能性があります。 **DialogSet.prompt** メソッドはヘルパー メソッドです。 このメソッドは引数を受け取り、プロンプト用の適切なオプションを作成した後、**begin** メソッドを呼び出してプロンプト ダイアログを開始します。
-
-スタック上のダイアログを置き換えるには:
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-// End the current dialog and start the 'mainMenu' dialog.
-await dc.replace('mainMenu'); // Can optionally passed in an 'args' as the second argument.
+// Ask a user for their name.
+await dc.prompt('textPrompt', "What is your name?");
 ```
 
-**replace()** メソッドの使い方の詳細については、「[ダイアログを繰り返す](#repeat-a-dialog)」セクションと「[ダイアログをループさせる](#dialog-loops)」セクションを参照してください。
+---
+
+開始するプロンプトの種類によっては、プロンプトの引数のシグネチャが異なる可能性があります。 **DialogSet.prompt** メソッドはヘルパー メソッドです。 このメソッドは引数を受け取り、プロンプト用の適切なオプションを作成した後、**begin** メソッドを呼び出してプロンプト ダイアログを開始します。 プロンプトの詳細については、[ユーザーへの入力の要求](bot-builder-prompts.md)に関する記事をご覧ください。
 
 ## <a name="end-a-dialog"></a>ダイアログを終了する
 
-ダイアログは、スタックから取り出し、親ダイアログに省略可能な結果を返すことで終了します。 親ダイアログには、返された結果を使用して呼び出される **Dialog.resume()** メソッドがあります。
+_end_ メソッドは、スタックからダイアログを取り出し、親ダイアログに省略可能な結果を返してダイアログを終了します。
 
-ベスト プラクティスは、ダイアログの終わりに `end()` メソッドを明示的に呼び出すことです。ただし、ウォーターフォールの終わりに達すると、ダイアログは自動的にスタックから取り出されるため、これは必須ではありません。
+ダイアログの終わりに _end_ メソッドを明示的に呼び出すのがベスト プラクティスです。ただし、ウォーターフォールの終わりに達すると、ダイアログは自動的にスタックから取り出されるため、これは必須ではありません。
 
 ダイアログを終了するには:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// End the current dialog by popping it off the stack.
+await dc.End();
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // End the current dialog by popping it off the stack
 await dc.end();
 ```
 
-親ダイアログに渡される省略可能な引数を使用してダイアログを終了するには:
+---
+
+ダイアログを終了し、親ダイアログに情報を返すには、プロパティ バッグ引数を含めます。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// End the current dialog and return information to the parent dialog.
+await dc.end(new Dictionary<string, object>
+    {
+        ["property1"] = value1,
+        ["property2"] = value2
+    });
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // End the current dialog and pass a result to the parent dialog
-await dc.end(result);
+await dc.end({
+    "property1": value1,
+    "property2": value2
+});
 ```
 
-または、resolved promise を返すことによって、ダイアログを終了することもできます。
+---
 
-```javascript
-await Promise.resolve();
+## <a name="clear-the-dialog-stack"></a>ダイアログ スタックをクリアする
+
+スタックからすべてのダイアログを取り出す場合は、_end all_ メソッドを呼び出すことで、ダイアログ スタックをクリアできます。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// Pop all dialogs from the current stack.
+await dc.EndAll();
 ```
 
-`Promise.resolve()` を呼び出すと、ダイアログが終了し、スタックから取り出されます。 ただし、このメソッドでは、親ダイアログを呼び出して実行が再開されることはありません。 `Promise.resolve()` への呼び出し後、実行は停止され、ボットは、ユーザーがボットのメッセージを送信したときに離れた親ダイアログを再開します。 これは、ダイアログを終了するための理想的なユーザー エクスペリエンスにならない場合があります。 ボットがユーザーとの対話を続行できるように、`end()` または `replace()` のどちらかを使用してダイアログを終了することを検討してください。
-
-### <a name="clear-the-dialog-stack"></a>ダイアログ スタックをクリアする
-
-スタックからすべてのダイアログを取り出す場合は、`dc.endAll()` メソッドを呼び出すことで、ダイアログ スタックをクリアできます。
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // Pop all dialogs from the current stack.
 await dc.endAll();
 ```
 
-### <a name="repeat-a-dialog"></a>ダイアログを繰り返す
+---
 
-ダイアログを繰り返すには、`dialogs.replace()` メソッドを使用します。
+## <a name="repeat-a-dialog"></a>ダイアログを繰り返す
+
+ダイアログを繰り返すには、_replace_ メソッドを使用します。 ダイアログ コンテキストの *replace* メソッドは、現在のダイアログをスタックから取り出し、置き換えるダイアログをスタックの一番上にプッシュしてそのダイアログを開始します。 これは、[複雑な会話フロー](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)を処理する優れた方法であり、メニューを管理する優れた手法でもあります。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// End the current dialog and start the main menu dialog.
+await dc.Replace("mainMenu");
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // End the current dialog and start the 'mainMenu' dialog.
-await dc.replace('mainMenu'); 
+await dc.replace('mainMenu');
 ```
-
-メイン メニューを既定で表示する場合は、次の手順で `mainMenu` ダイアログを作成できます。
-
-```javascript
-// Display a menu and ask user to choose a menu item. Direct user to the item selected.
-dialogs.add('mainMenu', [
-    async function(dc){
-        await dc.context.sendActivity("Welcome to Contoso Hotel and Resort.");
-        await dc.prompt('choicePrompt', "How may we serve you today?", ['Order Dinner', 'Reserve a table']);
-    },
-    async function(dc, result){
-        if(result.value.match(/order dinner/ig)){
-            await dc.begin('orderDinner');
-        }
-        else if(result.value.match(/reserve a table/ig)){
-            await dc.begin('reserveTable');
-        }
-        else {
-            // Repeat the menu
-            await dc.replace('mainMenu');
-        }
-    },
-    async function(dc, result){
-        // Start over
-        await dc.endAll().begin('mainMenu');
-    }
-]);
-
-dialogs.add('choicePrompt', new botbuilder_dialogs.ChoicePrompt());
-```
-
-このダイアログは、`ChoicePrompt` を使用してメニューを表示し、ユーザーがオプションを選択するまで待機します。 ユーザーが `Order Dinner` または `Reserve a table` のいずれかを選択すると、選択に合ったサイアログが開始され、タスクが完了したら、最後のステップでダイアログを終了する代わりに、ダイアログそのものを繰り返します。
-
-### <a name="dialog-loops"></a>ダイアログをループさせる
-
-`replace()` メソッドの別の使用方法は、ループをエミュレートすることです。 たとえば、次のシナリオがあるとします。 ユーザーが複数のメニュー アイテムをカートに追加できるようにする場合は、ユーザーが注文を完了するまで、メニューの選択をループさせることができます。
-
-```javascript
-// Order dinner:
-// Help user order dinner from a menu
-
-var dinnerMenu = {
-    choices: ["Potato Salad - $5.99", "Tuna Sandwich - $6.89", "Clam Chowder - $4.50", 
-        "More info", "Process order", "Cancel", "Help"],
-    "Potato Salad - $5.99": {
-        Description: "Potato Salad",
-        Price: 5.99
-    },
-    "Tuna Sandwich - $6.89": {
-        Description: "Tuna Sandwich",
-        Price: 6.89
-    },
-    "Clam Chowder - $4.50": {
-        Description: "Clam Chowder",
-        Price: 4.50
-    }
-
-}
-
-// The order cart
-var orderCart = {
-    orders: [],
-    total: 0,
-    clear: function(dc) {
-        this.orders = [];
-        this.total = 0;
-        dc.context.activity.conversation.orderCart = null;
-    }
-};
-
-dialogs.add('orderDinner', [
-    async function (dc){
-        await dc.context.sendActivity("Welcome to our Dinner order service.");
-        orderCart.clear(dc); // Clears the cart.
-
-        await dc.begin('orderPrompt'); // Prompt for orders
-    },
-    async function (dc, result) {
-        if(result == "Cancel"){
-            await dc.end();
-        }
-        else { 
-            await dc.prompt('numberPrompt', "What is your room number?");
-        }
-    },
-    async function(dc, result){
-        await dc.context.sendActivity(`Thank you. Your order will be delivered to room ${result} within 45 minutes.`);
-        await dc.end();
-    }
-]);
-
-// Helper dialog to repeatedly prompt user for orders
-dialogs.add('orderPrompt', [
-    async function(dc){
-        await dc.prompt('choicePrompt', "What would you like?", dinnerMenu.choices);
-    },
-    async function(dc, choice){
-        if(choice.value.match(/process order/ig)){
-            if(orderCart.orders.length > 0) {
-                // Process the order
-                // ...
-                await dc.end();
-            }
-            else {
-                await dc.context.sendActivity("Your cart was empty. Please add at least one item to the cart.");
-                // Ask again
-                await dc.replace('orderPrompt');
-            }
-        }
-        else if(choice.value.match(/cancel/ig)){
-            orderCart.clear(context);
-            await dc.context.sendActivity("Your order has been canceled.");
-            await dc.end(choice.value);
-        }
-        else if(choice.value.match(/more info/ig)){
-            var msg = "More info: <br/>Potato Salad: contains 330 calaries per serving. <br/>"
-                + "Tuna Sandwich: contains 700 calaries per serving. <br/>" 
-                + "Clam Chowder: contains 650 calaries per serving."
-            await dc.context.sendActivity(msg);
-            
-            // Ask again
-            await dc.replace('orderPrompt');
-        }
-        else if(choice.value.match(/help/ig)){
-            var msg = `Help: <br/>To make an order, add as many items to your cart as you like then choose the "Process order" option to check out.`
-            await dc.context.sendActivity(msg);
-            
-            // Ask again
-            await dc.replace('orderPrompt');
-        }
-        else {
-            var choice = dinnerMenu[choice.value];
-
-            // Only proceed if user chooses an item from the menu
-            if(!choice){
-                await dc.context.sendActivity("Sorry, that is not a valid item. Please pick one from the menu.");
-                
-                // Ask again
-                await dc.replace('orderPrompt');
-            }
-            else {
-                // Add the item to cart
-                orderCart.orders.push(choice);
-                orderCart.total += dinnerMenu[choice.value].Price;
-
-                await dc.context.sendActivity(`Added to cart: ${choice.value}. <br/>Current total: $${orderCart.total}`);
-
-                // Ask again
-                await dc.replace('orderPrompt');
-            }
-        }
-    }
-]);
-
-// Define prompts
-// Generic prompts
-dialogs.add('textPrompt', new botbuilder_dialogs.TextPrompt());
-dialogs.add('numberPrompt', new botbuilder_dialogs.NumberPrompt());
-dialogs.add('dateTimePrompt', new botbuilder_dialogs.DatetimePrompt());
-dialogs.add('choicePrompt', new botbuilder_dialogs.ChoicePrompt());
-
-```
-
-上のサンプル コードは、メインの `orderDinner` ダイアログが、`orderPrompt` という名前のヘルパー ダイアログを使用して、ユーザーの選択を処理することを示しています。 `orderPrompt` ダイアログは、メニューを表示し、ユーザーにアイテムを選択するように依頼し、アイテムをカートに追加し、再度選択するように促します。 これにより、ユーザーは、複数のアイテムを注文に追加できます。 ダイアログのループは、ユーザーが `Process order` または `Cancel` を選択するまで続きます。 その時点で、実行が親ダイアログ (例: `orderDinner`) に戻ります。 `orderDinner` ダイアログは、ユーザーが注文を進める場合は、最後のハウス キーピング処理を実行します。そうでない場合は、実行を終了し、親ダイアログ (例: `mainMenu`) に実行を戻します。 `mainMenu` ダイアログは、最後のステップの実行を続行します。それは、メイン メニューの選択肢を再表示することです。
 
 ---
 
 ## <a name="next-steps"></a>次の手順
 
-**ダイアログ**、**プロンプト**、および**ウォーターフォール** を使用して会話フローを管理する方法を学習したので、ボットのメイン ロジックである `dialogs` オブジェクトにすべてをまとめる代わりに、ダイアログをモジュール化されたタスクに分割する方法を確認できます。
+ここでは、単純な会話フローを管理する方法を説明しました。次に、_replace_ メソッドを活用して複雑な会話フローを処理する方法を見てみましょう。
 
 > [!div class="nextstepaction"]
-> [複合コントロールを使用してモジュラー化されたボットのロジックを作成する](bot-builder-compositcontrol.md)
+> [複雑な会話フローを管理する](bot-builder-dialog-manage-complex-conversation-flow.md)

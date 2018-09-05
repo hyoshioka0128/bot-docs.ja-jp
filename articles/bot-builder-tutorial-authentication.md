@@ -8,17 +8,13 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 7/2/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6d2e22bdfaa9fc4e3ce55bc1dd969921e90c87cc
-ms.sourcegitcommit: 97bb24f15041caccef4ca5736aa14f144881e0c6
+ms.openlocfilehash: ca9ccb0f0425bd0cabf1ce7ef236acb7a008aefe
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39567511"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905913"
 ---
-# <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
-
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
-
 このチュートリアルでは、Azure Bot Service の新しいボット認証機能を使用します。提供される機能を利用することで、Azure AD (Azure Active Directory)、GitHub、Uber などの各種 ID プロバイダーにユーザーを認証するボットを容易に開発できます。 またこれらの更新は、一部クライアント用の_マジック コード検証_を排除することによって、ユーザー エクスペリエンスの向上に向けて前進します。
 
 これ以前は、ボットにおいて、OAuth コントローラーとログイン リンクを含め、ターゲット クライアントの ID とシークレットを保存し、ユーザー トークン管理を実行する必要がありました。
@@ -48,7 +44,7 @@ OAuth コントローラーのホスティングやトークンのライフサ�
 > [!NOTE]
 > 認証機能は Node.js と BotBuilder v3 の組み合わせでも動作します。 ただし、この記事ではサンプルの C#コードのみを扱います。
 
-追加情報とサポートについては、「[Bot Framework のその他のリソース](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-links-help)」を参照してください。
+追加情報とサポートについては、「[Bot Framework のその他のリソース](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help)」を参照してください。
 
 ## <a name="overview"></a>概要
 
@@ -90,7 +86,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
    1. **[アプリケーションの種類]** を **[Web アプリ/API]** に設定します。
    1. **[サインオン URL]** を `https://token.botframework.com/.auth/web/redirect` に設定します。
    1. **Create** をクリックしてください。
-      - 作成されると、**[Registered app]\(登録済みアプリ\)** ブレードに表示されます。
+      - 作成されると、**[登録済みのアプリ]** ウィンドウに表示されます。
       - **[アプリケーション ID]** の値をメモします。 後でこれを _[クライアント ID]_ として入力します。
 1. **[設定]** をクリックしてアプリケーションを構成します。
 1. **[キー]** をクリックして **[キー]** パネルを開きます。
@@ -178,7 +174,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 #### <a name="to-register-an-azure-ad-v2-application"></a>Azure AD v2 アプリケーションを登録するには
 
-1. [Azure Portal](http://portal.azure.com/) で、ボットの [Bot Channels Registration]\(ボット チャネル登録\) ブレードに移動します。
+1. [Azure Portal](http://portal.azure.com/) で、ボットの [Bot Channels Registration]\(ボット チャネル登録\) ページに移動します。
 1. **[設定]** をクリックします。
 1. ページ下部付近の **[OAuth Connection Settings]\(OAuth 接続設定\)** で、**[設定の追加]** をクリックします。
 1. 次のようにフォームに入力します。
@@ -205,7 +201,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 #### <a name="to-test-your-connection"></a>接続をテストするには
 
 1. 作成した接続を開きます。
-1. **[Service Provider Connection Setting]\(サービス プロバイダー接続設定\)** ブレードの上部にある **[Test Connection]\(接続のテスト\)** をクリックします。
+1. **[Service Provider Connection Setting]\(サービス プロバイダー接続設定\)** ウィンドウの上部にある **[Test Connection]\(接続のテスト\)** をクリックします。
 1. 初回は新しいブラウザー タブが開き、アプリが要求しているアクセス許可の一覧が表示され、承認を求められます。
 1. **[Accept]\(受け入れる\)** をクリックします。
 1. **[Test Connection to `<your-connection-name>' Succeeded]\('<接続名>' へのテスト接続は成功しました\)** ページにリダイレクトされます。

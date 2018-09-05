@@ -8,34 +8,37 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/8/2018
-ms.openlocfilehash: 09568fca31649880df0f5b4fbc47f50288e907cb
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6e661d030f49cb8004f122de72de7514e804cb9c
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301186"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905541"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
 # <a name="design-and-control-conversation-flow"></a>会話フローの設計と制御
 
+[!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
+
 従来のアプリケーションの場合、ユーザー インターフェイス (UI) とは一連の画面のことです。 
 1 つのアプリや Web サイト上で、必要に応じて 1 つ以上の画面を使用し、ユーザーと情報を交換できます。 
 多くのアプリケーションでは、起動するとまずメイン画面が表示され、ユーザーはそこに表示されたナビゲーションから別の画面に移動して、新しい注文を開始したり、製品を参照したり、ヘルプを検索したりします。
 
-アプリや Web サイトと同様、ボットにも UI がありますが、ボットの UI は画面ではなく**ダイアログ**で構成されます。 
+アプリや Web サイトと同様、ボットにも UI がありますが、ボットの UI は画面ではなく**ダイアログ**で構成されます。 ダイアログは、会話内でご自身の場所を保持したり、必要に応じてユーザーに入力を求めたり、入力の検証を実行したりするときに役立ちます。 これらは、複数ターンの会話やシンプルな "フォーム ベース" の情報コレクションを管理して、航空券の予約などのアクティビティを実行するうえで有効です。
+
 ボットの開発者は、ダイアログを使用してボットの様々な機能領域を論理的に分離し、会話フローをガイドすることができます。 たとえば、あるダイアログには、ユーザーが製品を参照できるようにするためのロジックを実装し、別のダイアログには、ユーザーが新しい注文を作成できるようにするためのロジックを実装するといったことが可能です。 
 
 ダイアログにグラフィカル インターフェイスを使用するかどうかは任意です。 ボタン、テキスト、およびその他の要素を含めることもできますし、完全に音声ベースにすることもできます。 また、ダイアログには、他のダイアログを呼び出したり、ユーザー入力を処理するなど、タスクを実行するためのアクションを含めることもできます。
 
 ## <a name="using-dialogs-to-manage-conversation-flow"></a>ダイアログを使用した会話フローの管理
 
-[!INCLUDE [Dialog flow example](~/includes/snippet-dotnet-manage-conversation-flow-intro.md)]
+[!INCLUDE [Dialog flow example](./includes/snippet-dotnet-manage-conversation-flow-intro.md)]
 
 ダイアログと Bot Builder SDK を使用して会話フローを管理するための詳しいチュートリアルについては、次の記事をご覧ください。
 
-- [ダイアログで会話フローを管理する (.NET)](~/dotnet/bot-builder-dotnet-manage-conversation-flow.md)
-- [ダイアログで会話フローを管理する (Node.js)](~/nodejs/bot-builder-nodejs-manage-conversation-flow.md)
+- [ダイアログで会話フローを管理する (.NET)](./dotnet/bot-builder-dotnet-manage-conversation-flow.md)
+- [ダイアログで会話フローを管理する (Node.js)](./nodejs/bot-builder-nodejs-manage-conversation-flow.md)
 
 ## <a name="dialog-stack"></a>ダイアログ スタック
 
@@ -57,7 +60,7 @@ ms.locfileid: "39301186"
 人間は "スタック" に基づいてやりとりをするわけではないからです。 ユーザーが心変わりすることは頻繁に起こりえます。 
 次の例を考えてみます。 
 
-![ボット](~/media/bot-service-design-conversation-flow/stack-issue.png)
+![ボット](./media/bot-service-design-conversation-flow/stack-issue.png)
 
 ダイアログのスタックがボットによって論理的に構築されていても、ユーザーは現在の操作とまったく違うことををしようとしたり、現在のトピックとは関係のない質問をしてくる場合があります。 
 上記の例で言うと、はい/いいえの応答を返すはずの流れにおいて、ユーザーが逆に質問をしてきています。 
@@ -67,12 +70,12 @@ ms.locfileid: "39301186"
 - ユーザーがこれまでに行ったことをすべて無視し、ダイアログ スタック全体をリセットした後、ユーザーの質問に答えることで最初からやり直す。 
 - ユーザーの質問に答えた後、はい/いいえの質問に戻り、そこから再開する。 
 
-この質問に対する*正解*はありません。なぜなら、どのようなシナリオが想定されるかや、ユーザーがボットにどのような応答を期待するかによって、最良の対応方法は変わってくるからです。 
+この質問に 1 つの "*正解*" はありません。なぜなら、どのようなシナリオが想定されるか、またはユーザーがボットにどのような応答を期待するかによって、最良の対応方法は変わってくるからです。 しかし、会話が複雑になると、**ダイアログ**の管理は困難になります。 分岐が複雑な場合は、ユーザーの会話を追跡するための独自の制御ロジックを作成する方が簡単なことがあります。
 
 ## <a name="next-steps"></a>次の手順
 
 ダイアログ間でのユーザーの移動を管理し、ユーザーが (シナリオとは違った方法であっても) 目標を達成できるように会話フローを設計することは、ボット設計の基本的な課題です。 
-[次の記事](~/bot-service-design-navigation.md)では、ナビゲーション設計に関する一般的な落とし穴と、そのような失敗を回避するための戦略について説明します。 
+[次の記事](./bot-service-design-navigation.md)では、ナビゲーション設計に関する一般的な落とし穴と、そのような失敗を回避するための戦略について説明します。 
 
 ::: moniker-end
 
@@ -96,7 +99,7 @@ ms.locfileid: "39301186"
 
 これらのモジュールは、自由形式のフローからシーケンシャルなフローに至るまで、任意の方法で構築できます。 Bot Builder SDK では、ボットに必要な会話フローを自由に構築するできるよう、複数のライブラリが提供されています。 たとえば、`prompts` ライブラリを使用すればユーザーに入力を求めることができますし、`waterfall` ライブラリを使用すれば、一連の質問/回答ペアを定義することができます。また、`dialog control` ライブラリを使用すれば、会話フローのロジックをモジュール化することができます。これらのライブラリはすべて、`dialogs` オブジェクトを通じて相互に関連付けられています。 それでは、モジュールを `dialogs` として実装し、会話フローを設計および管理する方法についてもう少し詳しく見ていきながら、そのフローを従来のアプリケーション フローと比較してみましょう。
 
-![ボット](~/media/designing-bots/core/dialogs-screens.png)
+![ボット](./media/designing-bots/core/dialogs-screens.png)
 
 従来のアプリケーションでは、すべての操作が**メイン画面**から開始されます。
 この例では、まず**メイン画面**が**新規注文画面**を呼び出します。
@@ -119,7 +122,7 @@ ms.locfileid: "39301186"
 人間は手続き型の `dialogs` を通じてやりとりを行うわけではないからです。 ユーザーが心変わりすることは頻繁に起こりえます。 
 次の例を考えてみます。 
 
-![ボット](~/media/bot-service-design-conversation-flow/stack-issue.png)
+![ボット](./media/bot-service-design-conversation-flow/stack-issue.png)
 
 ボットが手続き型で設計されていても、ユーザーは現在の操作とまったく違うことををしようとしたり、現在のトピックとは関係のない質問をしてくる場合があります。 
 上記の例で言うと、はい/いいえの応答を返すはずの流れにおいて、ユーザーが逆に質問をしてきています。 

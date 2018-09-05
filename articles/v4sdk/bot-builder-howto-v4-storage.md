@@ -1,5 +1,5 @@
 ---
-title: データを格納する | Microsoft Docs
+title: ストレージに直接書き込む | Microsoft Docs
 description: Bot Builder SDK for .NET の V4 でストレージに直接書き込む方法について説明します。
 keywords: ストレージ, 読み取りと書き込み, メモリ ストレージ, eTag
 author: DeniseMak
@@ -9,14 +9,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/2/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 653ec6a1983dd59c485a91b2c08ea07d9f2a34c8
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 76f8976aefe3d4fefcffc46e691dbd0b35e41ec7
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302828"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756765"
 ---
-# <a name="save-data-directly-to-storage"></a>データをストレージに直接保存する
+# <a name="write-directly-to-storage"></a>ストレージに直接書き込む
 
 <!--
  Note for V4: You can write directly to storage without using the state manager. Therefore, this topic isn't called "managing state". State is in a separate topic.

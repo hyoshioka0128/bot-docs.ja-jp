@@ -9,16 +9,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9986ac7d46acfa94694456d653b91dd66c1f55f0
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: d8201da0fb406f30888dfaa4ff6017f125990104
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39304652"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905376"
 ---
 # <a name="middleware"></a>ミドルウェア
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 ミドルウェアとは単に、アダプターとボット ロジックの間に位置し、初期化中にアダプターのミドルウェア コレクションに追加されるクラスのことです。 SDK を使用すると、独自のミドルウェアを記述したり、他のユーザーによって作成されたミドルウェアの再利用可能なコンポーネントを追加したりできます。 ミドルウェアでは何ができるのでしょうか?  ほとんど何でもできます...ボットを出入りするすべてのアクティビティはミドルウェアを通って流れます。
 
@@ -36,7 +36,7 @@ ms.locfileid: "39304652"
 
 ### <a name="modifying-or-enhancing-the-turn-context"></a>ターン コンテキストの変更または強化
 
-アクティビティで提供されるものよりも多くの情報をボットが持っている場合、特定の会話の有用性が大きく向上します。 この場合のミドルウェアは、それまでに持っていた会話状態情報に注目し、外部データ ソースをクエリし、実行をボット ロジックに渡す前にそれをコンテキスト オブジェクトに追加することができます。
+アクティビティで提供されるものよりも多くの情報をボットが持っている場合、特定の会話の有用性が大きく向上します。 この場合のミドルウェアは、それまでに持っていた会話状態情報に注目し、外部データ ソースをクエリし、実行をボット ロジックに渡す前にそれを[ターン コンテキスト](bot-builder-concept-activity-processing.md#turn-context) オブジェクトに追加することができます。
 たとえばミドルウェアは、会話の ID や状態などの会話の詳細を識別した後、ディレクトリ サービスに情報を問い合わせることができます。 ミドルウェアは、その外部クエリから受け取ったユーザー オブジェクトをコンテキスト オブジェクトに追加してそれを渡すことで、ユーザーに関してより多くのデータを提供し、ボットがより適切に要求を処理することを可能にします。
 
 ミドルウェアは上記の両方の用途に分類されることもあれば、まったく別の用途に分類されることもあります。すべては、ボットをどのように構造化したいのか、またボットが何を達成しようとしているのかによって決まります。

@@ -1,5 +1,5 @@
 ---
-title: イベント ハンドラー | Microsoft Docs
+title: イベント ハンドラーの使用 | Microsoft Docs
 description: イベント ハンドラーの使用方法を理解します。
 author: ivorb
 ms.author: v-ivorb
@@ -8,14 +8,16 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 06/14/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0c054b8f4209004806e4564be45e83bdf3a8ec25
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 36bd2638c599de1662a37dd85790b6126184d51b
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303641"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905691"
 ---
-# <a name="event-handlers"></a>イベント ハンドラー
+# <a name="using-event-handlers"></a>イベント ハンドラーの使用
+
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 イベント ハンドラーは、[ターン](bot-builder-basics.md#defining-a-turn)内の今後のアクティビティ イベントに追加できる関数です。 これらのアクティビティは、`SendActivity`、`UpdateActivity`、および`DeleteActivity` であり、それぞれに独自のハンドラーがあります。 これらのハンドラーは、現在のコンテキスト オブジェクトに対して、その種類の今後のすべてのアクティビティに関して何かを行う必要がある場合に便利です。
 

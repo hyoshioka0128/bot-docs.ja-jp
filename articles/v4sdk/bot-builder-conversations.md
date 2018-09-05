@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/11/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 679109cad2f7b0c0c5826a47884b98e1149cb380
-ms.sourcegitcommit: f95702d27abbd242c902eeb218d55a72df56ce56
+ms.openlocfilehash: 32486cb024dfe852a7478ccba4a0eedc476431b0
+ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39304636"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42795031"
 ---
 # <a name="conversation-flow"></a>会話フロー
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -52,7 +52,7 @@ The EchoBot sample in the BotBuilder SDK is a single-turn bot. Here are other ex
 
 ![1 ターンのお天気ボット](./media/concept-conversation/weather-single-turn.png)
 
-お天気ボットは 1 ターンのフローを持ち、ユーザーに天気予報を提供するだけであり、都市や日付を尋ねて処理を前後することはありません。 天気予報を表示するすべてのロジックは、ボットが受信したばかりのメッセージに基づいています。 会話の各ターンでボットはターン コンテキストを受け取り、ボットはそれを使って、次に行う処理や、会話がどのように進むかを決定できます。 
+お天気ボットは 1 ターンのフローを持ち、ユーザーに天気予報を提供するだけであり、都市や日付を尋ねて処理を前後することはありません。 天気予報を表示するすべてのロジックは、ボットが受信したばかりのメッセージに基づいています。 会話の各ターンでボットは[ターン コンテキスト](bot-builder-concept-activity-processing.md#turn-context)を受け取り、ボットはそれを使って、次に行う処理や、会話がどのように進むかを決定できます。 
 
 ## <a name="multiple-turns"></a>複数ターン
 
@@ -84,7 +84,7 @@ The EchoBot sample in the BotBuilder SDK is a single-turn bot. Here are other ex
 
 ### <a name="recognize-intent"></a>意図の認識
 
-Bot Builder SDK は、各受信メッセージを処理して意図を判断する_認識エンジン_を提供するので、ボットは適切な会話フローを開始できます。 認識エンジンは、_receive コールバック_の前にユーザーからのメッセージの内容を見て意図を判断した後、receive コールバック内でターン コンテキスト オブジェクトを使用して、**最上位の意図**としてターン コンテキスト オブジェクトに保存された意図をボットに返します。 
+Bot Builder SDK は、各受信メッセージを処理して意図を判断する_認識エンジン_を提供するので、ボットは適切な会話フローを開始できます。 認識エンジンは、"_receive コールバック_" の前にユーザーからのメッセージの内容を見て意図を判断した後、receive コールバック内でターン コンテキスト オブジェクトを使用して、**最上位の意図**として[ターン コンテキスト](bot-builder-concept-activity-processing.md#turn-context) オブジェクトに保存された意図をボットに返します。 
 
 **最上位の意図**を判断する認識エンジンは、正規表現、Language Understanding (LUIS)、または、ミドルウェアとして開発するその他のロジックを単純に使用できます。 認識エンジンの例を以下に示します。
    

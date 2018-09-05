@@ -1,5 +1,5 @@
 ---
-title: 会話とユーザーのプロパティを使用して状態を保存する | Microsoft Docs
+title: 会話とユーザー状態を管理する | Microsoft Docs
 description: Bot Builder SDK for .NET の V4 を使用してデータを保存および取得する方法について説明します。
 keywords: 会話状態, ユーザー状態, 状態ミドルウェア, 会話フロー, File Storage, Azure Table Storage
 author: ivorb
@@ -9,14 +9,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/03/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 16df371b1cabb4b3eb47d1f491a5d45e26627d38
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: a74c52af0ca56b62491ca3aa39d09885c2540c18
+ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352851"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42795211"
 ---
-# <a name="save-state-using-conversation-and-user-properties"></a>会話とユーザーのプロパティを使用して状態を保存する
+# <a name="manage-conversation-and-user-state"></a>会話とユーザー状態を管理する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -30,6 +30,16 @@ SDK で会話またはユーザーのプロパティ ストアを使用するに
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 `ConversationState` の初期化方法については、Microsoft.Bot.Samples.EchoBot-AspNetCore サンプルの `Startup.cs` をご覧ください。
+
+このコードに必要なライブラリ:
+
+```csharp
+using Microsoft.Bot.Builder.BotFramework;
+using Microsoft.Bot.Builder.Core.Extensions;
+using Microsoft.Bot.Builder.Integration.AspNet.Core;
+```
+
+`ConversationState` の初期化:
 
 ```csharp
 services.AddBot<EchoBot>(options =>
@@ -304,7 +314,7 @@ server.post('/api/messages', (req, res) => {
 
 ---
 
-または、ダイアログの "_ウォーターフォール_" モデルを使用します。 ダイアログは会話の状態を自動的に追跡するので、ユーザーは状態を追跡するためのフラグを作成する必要はありません。 詳細については、「[ダイアログで会話フローを管理する](bot-builder-dialog-manage-conversation-flow.md)」を参照してください。
+または、ダイアログの "_ウォーターフォール_" モデルを使用します。 ダイアログは会話の状態を自動的に追跡するので、ユーザーは状態を追跡するためのフラグを作成する必要はありません。 詳細については、[ダイアログを使用した簡単な会話の管理](bot-builder-dialog-manage-conversation-flow.md)に関するページをご覧ください。
 
 ## <a name="file-storage"></a>File Storage
 
@@ -465,5 +475,5 @@ BotBuilder SDK によって、`$type` フィールドと `eTag` フィールド�
 ストレージの背景の詳細については、[Bot Builder SDK でのストレージ](bot-builder-storage-concept.md)に関するページをご覧ください
 
 <!-- Links -->
-[AzureStorageEmulator]: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator
-[AzureStorageExplorer]: https://azure.microsoft.com/en-us/features/storage-explorer/
+[AzureStorageEmulator]: https://docs.microsoft.com/azure/storage/common/storage-use-emulator
+[AzureStorageExplorer]: https://azure.microsoft.com/features/storage-explorer/

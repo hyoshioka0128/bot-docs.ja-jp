@@ -1,5 +1,5 @@
 ---
-title: Web チャット チャンネルで音声認識を有効にする | Microsoft Docs
+title: Web チャットで音声認識を有効にする | Microsoft Docs
 description: Web チャット チャンネルに接続されたボットの Web チャット コントロールで音声認識を有効にする方法について説明します。
 keywords: 音声認識, web チャット, 音声, マイク, オーディオ
 author: DeniseMak
@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 37e18f49eb55fcb7d0bf94e96051479753eec8aa
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2499197d82b618d7a535efca78f98ce260dd15a7
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301585"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756715"
 ---
-# <a name="how-to-enable-speech-in-web-chat"></a>Web チャットで音声認識を有効にする方法
+# <a name="enable-speech-in-web-chat"></a>Web チャットで音声認識を有効にする
 Web チャット コントロールで音声インターフェイスを有効にすることができます。 ユーザーは、Web チャット コントロールのマイクを使って音声インターフェイスと対話します。
 
 ![Web チャットの音声認識のサンプル](~/media/bot-service-channel-webchat/webchat-sample-speech.png)

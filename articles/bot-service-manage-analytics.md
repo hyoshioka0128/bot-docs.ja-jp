@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 503e9b2231b198346f5a7cd767a1e6a866e9e5b3
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3b0032db8e99c75ec8697f79a78cd6b0bd915db9
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301881"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756572"
 ---
 # <a name="bot-analytics"></a>ボットの分析
 Analytics は [Application Insights](/azure/application-insights/app-insights-analytics) の拡張機能です。 Application Insights では、トラフィック、待ち時間、統合などの**サービス レベル**およびインストルメンテーションのデータが提供されます。 Analytics では、ユーザー、メッセージ、チャネル データに関する**会話レベル**のレポートが提供されます。
@@ -40,7 +40,7 @@ Analytics にアクセスするには、開発者ポータルでボットを開�
 全体の期間を変更すると、それに応じてグラフの時間増分 (X 軸) が変化することに注意してください。
 
 ### <a name="grand-totals"></a>総計
-指定した期間内のアクティブ ユーザーおよび送受信されたメッセージの総数です。
+指定した期間内のアクティブ ユーザーおよび送受信されたアクティビティの総数です。
 ダッシュ `--` はアクティビティがなかったことを示します。
 
 ### <a name="retention"></a>保持
@@ -60,14 +60,14 @@ Analytics にアクセスするには、開発者ポータルでボットを開�
 * 折れ線グラフでは、特定の時点でボットにアクセスしていたユーザーの数が示されます。
 * 折れ線グラフの凡例では、各チャネルを表す色が示され、指定期間中のユーザーの合計数が含まれます。
 
-### <a name="messages"></a>メッセージ
-メッセージ グラフでは、指定期間内に各チャネルを使用して送受信されたメッセージの数が追跡されます。
+### <a name="activities"></a>アクティビティ
+アクティビティ グラフでは、指定期間内に各チャネルを使用して送受信されたアクティビティの数が追跡されます。
 
-![メッセージ グラフ](~/media/analytics-messages.png)
+![アクティビティ グラフ](~/media/analytics-activities.png)
 
-* 割合のグラフでは、各チャネル経由で通信されたメッセージの割合が示されます。
-* 折れ線グラフでは、指定期間内に送受信されたメッセージの数が示されます。
-* 折れ線グラフの凡例では、各チャネルを表す線の色と、指定期間中にそのチャネルで送受信されたメッセージの合計数が示されます。 
+* 割合のグラフでは、各チャネル経由で通信されたアクティビティの割合が示されます。
+* 折れ線グラフでは、指定期間内に送受信されたアクティビティの数が示されます。
+* 折れ線グラフの凡例では、各チャネルを表す線の色と、指定期間中にそのチャネルで送受信されたアクティビティの合計数が示されます。 
 
 ## <a name="enable-analytics"></a>分析を有効にする
 Application Insights を有効にして構成するまで、Analytics は使用できません。 Application Insights は、有効にするとすぐにデータの収集を始めます。 たとえば、6 か月前から動いているボットに対して 1 週間前に Application Insights を有効にした場、1 週間分のデータが収集されています。

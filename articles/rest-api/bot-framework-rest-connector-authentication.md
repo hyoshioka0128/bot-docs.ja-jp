@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 53643f21e2cf1ebdfd84caed38f8f84c330ef71b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 998586820a0489bc4cca1d25b53cb6ac8162c452
+ms.sourcegitcommit: 0b2be801e55f6baa048b49c7211944480e83ba95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302820"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43115047"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -24,7 +24,7 @@ ms.locfileid: "39302820"
 [Bot Builder SDK for .NET](../dotnet/bot-builder-dotnet-overview.md) または [Bot Builder SDK for Node.js](../nodejs/index.md) をお使いの場合、この記事で説明するセキュリティ プロシージャは SDK によって自動的に実装されるため、お客様が実装する必要はありません。 [登録](../bot-service-quickstart-registration.md)の際にご利用のボットのために取得した AppID とパスワードを使用してプロジェクトを設定するだけで、あとは SDK によって処理されます。
 
 > [!WARNING]
-> 2016 年 12 月、Bot Framework セキュリティ プロトコル v3.1 には、トークンの作成と検証の際に使用されるいくつかの値に変更が加えられました。 2017 年の冬までに Bot Framework セキュリティ プロトコル v3.2 が登場し、再度、トークンの作成と検証の際に使用される値に変更が加えられる予定です。
+> 2016 年 12 月、Bot Framework セキュリティ プロトコル v3.1 には、トークンの作成と検証の際に使用されるいくつかの値に変更が加えられました。 2017 年の冬に Bot Framework セキュリティ プロトコル v3.2 が登場し、トークンの作成と検証の際に使用される値に変更が加えられました。
 > 詳細については、「[Security protocol changes](#security-protocol-changes)」 (セキュリティ プロトコルの変更) を参照してください。
 
 ## <a name="authentication-technologies"></a>認証テクノロジ
@@ -232,7 +232,7 @@ payload:
 ## <a id="emulator-to-bot"></a> Bot Framework Emulator からご利用のボットへの要求を認証する
 
 > [!WARNING]
-> 2017 年の冬までに、Bot Framework セキュリティ プロトコルの v3.2 が登場する予定です。 この新しいバージョンでは、Bot Framework Eumaltor とご利用のボットの間で交換されるトークンに、新しい "issuer" 値が追加されます。 この変更に備えるために、v3.1 と v3.2 の両方について issuer 値を確認する方法を以下の手順に示します。 
+> 2017 年の冬に、Bot Framework セキュリティ プロトコルの v3.2 が登場しました。 この新しいバージョンでは、Bot Framework Eumaltor とご利用のボットの間で交換されるトークンに、新しい "issuer" 値が追加されます。 この変更に備えるために、v3.1 と v3.2 の両方について issuer 値を確認する方法を以下の手順に示します。 
 
 [Bot Framework Emulator](../bot-service-debug-emulator.md) は、ご利用のボットの機能をテストするために使用できるデスクトップ ツールです。 Bot Framework Emulator では、上記の説明と同じ[認証テクノロジ](#authentication-technologies)が使用されますが、実際の Bot Connector サービスを偽装することはできません。 代わりに、ボットによって作成されるものと同じトークンを作成するためにエミュレーターをご利用のボットに接続するときには、ご自身が指定する Microsoft AppID と Microsoft AppPassword が使用されます。 エミュレーターからご利用のボットに要求が送信されるときは、要求の `Authorization` ヘッダー内に JWT トークンが指定されるため、実質的にボット独自の資格情報を使用して要求が認証されます。 
 

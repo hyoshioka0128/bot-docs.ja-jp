@@ -1,5 +1,5 @@
 ---
-title: ボットのテストとデバッグ | Microsoft Docs
+title: テストとデバッグのガイドライン | Microsoft Docs
 description: ご利用のボットをテストおよびデバッグする方法について説明します。
 keywords: テストの原則, モック要素, FAQ, テスト レベル
 author: ivorb
@@ -9,16 +9,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/09/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ea1c458e98f67f76c56fdd70595307a0e0252c1d
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: caa424ed0ea0944805836739ed48a7a61f78d21c
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300924"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42905261"
 ---
-# <a name="testing-and-debugging-your-bot"></a>ボットのテストとデバッグ
+# <a name="testing-and-debugging-guidelines"></a>テストとデバッグのガイドライン
 
-ボットは複雑なアプリで、さまざまなパーツが多数連携しています。 他の複雑なアプリと同様、これにより興味深いバグがいくつか発生したり、お使いのボットが期待どおりに動作しなかったりします。
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+
+ボットは様々なパーツが連携する複雑なアプリです。 他の複雑なアプリと同様、これにより興味深いバグがいくつか発生したり、お使いのボットが期待どおりに動作しなかったりします。
 
 お使いのボットのテストと、それ以降のデバッグは、場合によっては難しい作業になる可能性があります。 開発者それぞれが独自のやり方でそのタスクを実行しています。以下のガイドラインでは、大部分のボットに適用できる推奨事項を紹介します。
 

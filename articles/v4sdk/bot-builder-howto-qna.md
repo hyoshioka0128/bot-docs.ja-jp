@@ -1,5 +1,5 @@
 ---
-title: QnA Maker の使用 | Microsoft Docs
+title: QnA Maker を使用して質問に回答する | Microsoft Docs
 description: ボットで QnA Maker を使用する方法について説明します。
 keywords: 質問と回答, QnA, FAQ, ミドルウェア
 author: ivorb
@@ -9,16 +9,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 78bc2c849a2c1900da33c7419693a7ff84c43cb0
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: 7dd973e2b5a151e754925e6f19c6e4f82507f745
+ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352951"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42906176"
 ---
-# <a name="how-to-use-qna-maker"></a>QnA Maker を使用する方法
+# <a name="use-qna-maker-to-answer-questions"></a>QnA Maker を使用して質問に回答する
 
-簡単な質問と回答のサポートをボットに追加するには、[QnA Maker](https://qnamaker.ai/) サービスを使用できます。
+
+簡単な質問と回答のサポートをボットに追加するには、[QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/home) サービスを使用できます。
+
 
 独自の QnA Maker サービスを作成するときの基本的な要件の 1 つは、質問と回答でサービスをシードすることです。 多くの場合、質問と回答は、FAQ や他のドキュメントなどのコンテンツに既に存在しています。 また、より自然な会話になるように質問に対する回答をカスタマイズしたいこともあります。 
 

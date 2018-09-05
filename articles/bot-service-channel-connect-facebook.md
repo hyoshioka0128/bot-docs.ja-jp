@@ -7,21 +7,19 @@ ms.author: RobStand
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: 0a9ad7d51234b417d5d0f27dbcffe4ce839ba94a
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 08/16/2018
+ms.openlocfilehash: 7fbff06966ac64260244e8af375aaa6f8f945fcd
+ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301206"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42756759"
 ---
 # <a name="connect-a-bot-to-facebook-messenger"></a>Facebook Messenger にボットを接続する
 
 Facebook Messenger 向けの開発の詳細については、[Messenger プラットフォームのドキュメント](https://developers.facebook.com/docs/messenger-platform)を参照してください。 Facebook の[プレリリースのガイドライン](https://developers.facebook.com/docs/messenger-platform/product-overview/launch#app_public)、[クイック スタート](https://developers.facebook.com/docs/messenger-platform/guides/quick-start)、および[設定ガイド](https://developers.facebook.com/docs/messenger-platform/guides/setup)を参照してください。
 
 Facebook Messenger を使用して通信するようにボットを構成するには、Facebook ページで Facebook Messenger を有効にしてから、ボットをアプリに接続します。
-
-[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 > [!NOTE]
 > Facebook の UI は、使用しているバージョンによって多少異なる場合があります。
@@ -72,7 +70,7 @@ Messenger セクションの **[Token Generation]\(トークンの生成\)** パ
 
 ## <a name="provide-webhook-callback-url-and-verify-token"></a>Webhook のコールバック URL を指定し、トークンを確認する
 
-[Bot Framework Portal](https://dev.botframework.com/) に戻ります。 ボットを開き、**[チャンネル]** タブをクリックし、**[Facebook Messenger]** をクリックします。
+[Azure portal](https://portal.azure.com/) で、ボットを開いて、**[チャンネル]** タブをクリックし、**[Facebook Messenger]** をクリックします。
 
 * ポータルの **[コールバックの URL]** と **[トークンの確認]** の値をコピーします。
 
@@ -93,7 +91,7 @@ Messenger セクションの **[Token Generation]\(トークンの生成\)** パ
 
 ## <a name="provide-facebook-credentials"></a>Facebook の資格情報を入力する
 
-Bot Framework Portal で、Facebook Messenger からコピーした**ページ ID**、**アプリ ID**、**アプリ シークレット**、および**ページ アクセス トークン**を貼り付けます。
+Azure portal で、前に Facebook Messenger からコピーした **Facebook アプリ ID**、**Facebook アプリ シークレット**、**ページ ID**、および**ページ アクセス トークン**の各値を貼り付けます。 複数の Facebook ページで同じボットを使用するには、追加のページ ID とアクセス トークンを追加します。
 
 ![資格情報を入力する](~/media/channels/fb-credentials2.png)
 
@@ -110,3 +108,6 @@ Facebook には、基本アプリ設定ページの [Privacy Policy URL]\(プラ
 
 レビューが正常に完了したら、[App Dashboard]\(アプリ ダッシュボード\) の [App Review]\(アプリ レビュー\) でアプリを [Public]\(パブリック\) に設定します。
 このボットに関連付けられた Facebook ページが発行されていることを確認します。 [Pages settings]\(ページ設定\) に状態が表示されます。
+
+> [!NOTE]
+> Facebook Workplace を使用することもできます。 これを有効にするには、ご自身の Workplace 用の[カスタム統合](https://developers.facebook.com/docs/workplace/custom-integrations-new)を作成し、そのアプリ ID、アプリ シークレット、およびアクセス トークンを使用します。 従来のページ ID ではなく、その [About] ページの統合名の後に続く番号を使用します。 Webhook には、Azure に示されている資格情報を使用して接続できます。

@@ -1,5 +1,5 @@
 ---
-title: ユーザーによる割り込みの処理 | Microsoft Docs
+title: ユーザーによる割り込みを処理する | Microsoft Docs
 description: ユーザーによる割り込みを処理し、会話フローを転送する方法について説明します。
 keywords: 割り込む, 割り込み, トピックの切り替え, 中断
 author: v-ducvo
@@ -10,14 +10,14 @@ ms.prod: bot-framework
 ms.date: 04/17/2018
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 651a7410893f7a66f5941121edc7b34055807ba7
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: fff4f8e2a4d2d86cf440bee7ab40216e93a8c8c5
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301261"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756749"
 ---
-# <a name="handle-user-interrupt"></a>ユーザーによる割り込みの処理
+# <a name="handle-user-interruptions"></a>ユーザーによる割り込みを処理する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -29,17 +29,19 @@ ms.locfileid: "39301261"
 
 手続き型会話フローに含まれるコア ステップに従うようにユーザーを導く必要があり、こうしたステップと異なるユーザー アクションはすべて、割り込みになる可能性があります。 通常のフローには、予測できる割り込みがいくつかあります。
 
-**レストラン予約**: レストラン予約ボットのコア ステップには、ユーザーに日時、人数、および予約名を聞く、といった動作があります。 このプロセスでは、次のような割り込みを予測できます。 
- * `cancel`: プロセスを終了する。
- * `help`: このプロセスに関する追加ガイダンスを提供する。
- * `more info`: ヒント/提案、または別の予約方法を提供する (連絡先の電子メール アドレス、電話番号など)。
- * `show list of available tables`:(そのようなオプションがある場合) ユーザーが希望する日時に予約できるレストランの一覧を表示する。
+**レストラン予約**: レストラン予約ボットのコア ステップには、ユーザーに日時、人数、および予約名を聞く、といった動作があります。 このプロセスでは、次のような割り込みを予測できます。
 
-**ディナーの注文**: ディナー注文ボットのコア ステップには、メニュー項目の一覧を示す、ユーザーが自分のカートに項目を追加できるようにする、などの動作があります。 このプロセスでは、次のような割り込みを予測できます。 
- * `cancel`: 注文の処理を終了する。
- * `more info`: 各メニュー項目の食に関する詳細情報を提供する。
- * `help`: システムの使用方法に関するヘルプを提供する。
- * `process order`: 注文を処理する。
+* `cancel`: プロセスを終了する。
+* `help`: このプロセスに関する追加ガイダンスを提供する。
+* `more info`: ヒント/提案、または別の予約方法を提供する (連絡先の電子メール アドレス、電話番号など)。
+* `show list of available tables`:(そのようなオプションがある場合) ユーザーが希望する日時に予約できるレストランの一覧を表示する。
+
+**ディナーの注文**: ディナー注文ボットのコア ステップには、メニュー項目の一覧を示す、ユーザーが自分のカートに項目を追加できるようにする、などの動作があります。 このプロセスでは、次のような割り込みを予測できます。
+
+* `cancel`: 注文の処理を終了する。
+* `more info`: 各メニュー項目の食に関する詳細情報を提供する。
+* `help`: システムの使用方法に関するヘルプを提供する。
+* `process order`: 注文を処理する。
 
 これらの情報は、**推奨されるアクション**の一覧またはヒントとしてユーザーに示すことができます。これによりユーザーは少なくともどのコマンドがボットによって認識され、ユーザーが送信できるかを把握できます。
 
@@ -71,7 +73,7 @@ public class dinnerMenu
 
 ```javascript
 var dinnerMenu = {
-    choices: ["Potato Salad - $5.99", "Tuna Sandwich - $6.89", "Clam Chowder - $4.50", 
+    choices: ["Potato Salad - $5.99", "Tuna Sandwich - $6.89", "Clam Chowder - $4.50",
             "more info", "Process order", "Cancel"],
     "Potato Salad - $5.99": {
         Description: "Potato Salad",
@@ -140,13 +142,13 @@ dialogs.Add("orderPrompt", new WaterfallStep[]
 
         if(response == "process order")
         {
-            try 
+            try
             {
                 var order = convo["order"];
 
                 await dc.Context.SendActivity("Order is on it's way!");
-                
-                // In production, you may want to store something more helpful, 
+
+                // In production, you may want to store something more helpful,
                 // such as send order off to be made
                 (order as Orders).processOrder = true;
 
@@ -191,13 +193,13 @@ dialogs.Add("orderPrompt", new WaterfallStep[]
         }
         else
         {
-            // Unlikely to get past the prompt verification, but this will catch 
+            // Unlikely to get past the prompt verification, but this will catch
             // anything that isn't a valid menu choice
             if(!dinnerMenu.dinnerChoices.ContainsKey(response))
             {
                 await dc.Context.SendActivity("Sorry, that is not a valid item. " +
                     "Please pick one from the menu.");
-    
+
                 // Ask again
                 await dc.Replace("orderPrompt");
             }
@@ -267,14 +269,14 @@ dialogs.add('orderPrompt', [
                 + "Tuna Sandwich: contains 700 calaries per serving. <br/>" 
                 + "Clam Chowder: contains 650 calaries per serving."
             await dc.context.sendActivity(msg);
-            
+
             // Ask again
             await dc.replace('orderPrompt');
         }
         else if(choice.value.match(/help/ig)){
             var msg = `Help: <br/>To make an order, add as many items to your cart as you like then choose the "Process order" option to check out.`
             await dc.context.sendActivity(msg);
-            
+
             // Ask again
             await dc.replace('orderPrompt');
         }
@@ -284,7 +286,7 @@ dialogs.add('orderPrompt', [
             // Only proceed if user chooses an item from the menu
             if(!choice){
                 await dc.context.sendActivity("Sorry, that is not a valid item. Please pick one from the menu.");
-                
+
                 // Ask again
                 await dc.replace('orderPrompt');
             }
@@ -311,17 +313,20 @@ dialogs.add('orderPrompt', [
 すべての割り込みを予期することは無理ですが、ご自身のボットが処理できるようにプログラミングできる割り込みのパターンはいくつかあります。
 
 ### <a name="switching-topic-of-conversations"></a>会話のトピックの切り替え
+
 ユーザーがある会話の途中で、別の会話に切り替えたくなったらどうなるでしょうか。 たとえば、お使いのボットでレストランの予約と、ディナーの注文ができるとします。
-_レストラン予約_フローで、ユーザーは "予約の人数は何人ですか" という質問に答えず、"ディナーを注文する" というメッセージを送信します。 この場合、ユーザーは途中で気が変わり、ディナー注文の会話に参加したくなったのです。 この割り込みはどのように処理すべきでしょうか。 
+_レストラン予約_フローで、ユーザーは "予約の人数は何人ですか" という質問に答えず、"ディナーを注文する" というメッセージを送信します。 この場合、ユーザーは途中で気が変わり、ディナー注文の会話に参加したくなったのです。 この割り込みはどのように処理すべきでしょうか。
 
 トピックをディナー注文フローに切り替えることも、元の話題にとどまり、人数を答える必要があることをユーザーに伝え、入力を促すこともできます。 トピックを切り替えることを許可する場合は、ユーザーが中断した場所から後で作業を続行できるように操作内容を保存するか、入力されたすべての情報を削除するかを決めなければなりません。削除した場合、ユーザーは次回予約するときに、すべての操作を最初からやり直す必要があります。 ユーザー状態データの管理の詳細については、「[Save state using conversation and user properties (会話およびユーザー プロパティを使用した状態の保存)](bot-builder-howto-v4-state.md)」を参照してください。
 
 ### <a name="apply-artificial-intelligence"></a>人工知能を適用する
-予想外の割り込みの場合は、ユーザーの意図の推測を試みることができます。 これを行うには、QnAMaker、LUIS、ご自身のカスタム ロジックなどの AI サービスを使用します。そして、ユーザーが求めているものに関するボットの推測を提案します。 
+
+予想外の割り込みの場合は、ユーザーの意図の推測を試みることができます。 これを行うには、QnAMaker、LUIS、ご自身のカスタム ロジックなどの AI サービスを使用します。そして、ユーザーが求めているものに関するボットの推測を提案します。
 
 たとえば、レストラン予約フローの途中で、ユーザーが "ハンバーガーを注文したい" と言ったとします。 これは、ボットがこの会話フローから処理方法を判断できるものではありません。 現在のフローは注文とは何の関係もありません。ボットのもう一方の会話コマンドは "ディナーを注文" です。このため、ボットでは、この入力をどのように処理すべきかを判断できません。 たとえば、LUIS を適用すると、ユーザーが食べ物を注文したがっていることが認識されるようにモデルをトレーニングできます (例: LUIS で "orderFood" 意図を返すことができます)。 これにより、"食べ物を注文されたいようですね。 ディナー注文プロセスに切り替えますか" という応答を、ボットで返すことができます。 LUIS のトレーニングとユーザー意図の検出の詳細については、[言語理解のための LUIS の使用](bot-builder-howto-v4-luis.md)に関するページをご覧ください。
 
 ### <a name="default-response"></a>既定の応答
+
 その他すべてが失敗した場合は、何も行わない、あるいは何が起こっているかとユーザーに思わせたままにするのではなく、汎用的な既定の応答を送信できます。 既定の応答では、ユーザーが本来の会話に戻ることができるように、ボットで認識されるコマンドをユーザーに伝える必要があります。
 
 ボット ロジックの末尾にあるコンテキスト**応答**フラグでは、ターンの途中にボットによってユーザーに何か送り返されていないかどうかを確認することができます。 ボットによってユーザーの入力が処理されているにもかかわらず、応答がない場合は、ボットではその入力の扱い方を判断できない可能性があります。 この場合は、それをキャッチして、既定のメッセージをユーザーに送信できます。
@@ -347,4 +352,3 @@ if (!context.responded) {
 ```
 
 ---
-

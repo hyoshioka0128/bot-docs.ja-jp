@@ -1,5 +1,5 @@
 ---
-title: LUIS や QnA Maker 向け ディスパッチ ツールの使用 | Microsoft Docs
+title: ディスパッチ ツールを使用して複数の LUIS と QnA サービスを統合する | Microsoft Docs
 description: ボットで LUIS や QnA Maker を使用する方法について説明します。
 keywords: Luis, QnA, ディスパッチ ツール, 複数のサービス
 author: DeniseMak
@@ -7,18 +7,18 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 04/25/2018
+ms.date: 08/27/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d3c9355a0e87d31029b92614dc182f3d7010c736
-ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
+ms.openlocfilehash: 02dffcdd8cb4fd27f59fa8a763d7f2027aa0bcf2
+ms.sourcegitcommit: 0b2be801e55f6baa048b49c7211944480e83ba95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39514942"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43115037"
 ---
-## <a name="integrate-multiple-luis-apps-and-qna-services-with-the-dispatch-tool"></a>ディスパッチ ツールを使用して複数の LUIS アプリと QnA サービスを統合する
+# <a name="integrate-multiple-luis-and-qna-services-with-the-dispatch-tool"></a>ディスパッチ ツールを使用して複数の LUIS と QnA サービスを統合する
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 このチュートリアルでは、ディスパッチ ツールによって生成された LUIS モデルを使用して、ボットを複数の Language Understanding (LUIS) アプリおよび QnAMaker サービスと統合する方法について説明します。 
 
@@ -30,20 +30,22 @@ ms.locfileid: "39514942"
 | LUIS アプリ | Weather | Weather.GetForecast および Weather.GetCondition の各意図を認識します。|
 | QnAMaker サービス | FAQ  | ホーム オートメーション照明システムに関する質問への回答を提供します |
 
-まずアプリとサービスを作成してから、それらを統合しましょう。
-
-> [!NOTE]
-> Dispatch がアプリに正常にアクセスできるよう、3 つのアプリすべてを同じ Azure の場所内に作成する必要があります。 下記の Dispatch コードの例では、場所の例として West US を使用しています。
+まず、アプリとサービスを作成し、ディスパッチ ツールを使用して、それらを統合しましょう。
 
 ## <a name="create-the-luis-apps"></a>LUIS アプリの作成
 
-LUIS アプリ HomeAutomation および Weather を作成する最も速い方法は、[homeautomation.json][HomeAutomationJSON] および [weather.json][WeatherJSON] ファイルをダウンロードすることです。 次に、[LUIS Web サイト](https://www.luis.ai/home)にアクセスしてサインインします。 **[My Apps]\(マイ アプリ\)** > **[Import new app]\(新しいアプリのインポート\)** をクリックし、homeautomation.json ファイルを選択します。 新しいアプリに `homeautomation` という名前を付けます。 **[My Apps]\(マイ アプリ\)** > **[Import new app]\(新しいアプリのインポート\)** をクリックし、weather.json ファイルを選択します。 このもう 1 つの新しいアプリに `weather` という名前を付けます。
+LUIS アプリ *HomeAutomation* および *Weather* を作成する最も速い方法は、[homeautomation.json][HomeAutomationJSON] および [weather.json][WeatherJSON] ファイルをダウンロードすることです。 その後、次の手順に従って、その 2 つの LUIS アプリをインポートします。
+
+1. [LUIS Web サイト](https://www.luis.ai/home)に移動してサインインします。 
+2. **[マイ アプリ]** ページで、**[Import new app]\(新しいアプリのインポート\)** をクリックします。
+   1. *homeautomation* アプリについては、**homeautomation.json** ファイルを選択し、"homeautomation" という名前を付けます。 **[完了]** をクリックして、アプリをインポートします。 アプリがインポートされたら、**[発行]** をクリックして、アプリを発行します。
+   1. *weather* アプリについては、**weather.json** ファイルを選択し、"weather" という名前を付けます。 **[完了]** をクリックして、アプリをインポートします。 アプリがインポートされたら、**[発行]** をクリックして、アプリを発行します。
 
 ## <a name="create-the-qna-cognitive-service-in-azure"></a>Azure での QnA Cognitive Service の作成
 
-QnA Maker のサービスは、Azure の Cognitive Service と、Cognitive Service を使用して発行する Q&A ペアのナレッジ ベースの 2 つの部分で構成されます。
+QnA Maker のサービスは、Azure の Cognitive Service と、Cognitive Service を使用して発行する Q&A ペアのナレッジ ベースの 2 つの部分で構成されます。 ご自身のナレッジベースを作成するとき、この手順で作成した **Azure サービス名**を選択することで、それを Azure サービスにリンクできます。
 
-Azure で Cognitive Service を作成するには、Azure portal (https://portal.azure.com) にログインして次の手順を実行します。
+Azure で Cognitive Service を作成するには、[Azure portal](https://portal.azure.com) にログインして、次の手順を実行します。
 
 1. **[すべてのサービス]** をクリックします。
 1. `Cognitive` を検索して **Cognitive Services** を選択します。
@@ -63,39 +65,54 @@ Azure で Cognitive Service を作成するには、Azure portal (https://portal
     * 使用するアプリケーションの名前を入力します。既定の `SmartLightQnA` のままにします。
     * Web サイトの場所を選択します。`West US` を使用します。
     * App Insights を有効にする既定の設定のままにします。
-    * App Insights の場所を選択します。`West US 2` を使用します。
+    * App Insights の場所を選択します。`West US` を使用します。
     * **[作成]** をクリックして QnA Maker サービスを作成します。
     * Azure でサービスが作成され、デプロイが開始します。
 
 1. サービスがデプロイされたら、通知を表示して **[リソースに移動]** をクリックし、サービスのブレードに移動します。
 1. **[キー]** をクリックしてキーを取得します。
 
-    * サービスの名前と最初のキーをコピーします。 これらはこの後の手順で必要になります。
+    * サービスの名前と最初のキーをコピーします。 この名前は、サービスが、お使いのナレッジ ベースにリンクされるように、KB を作成する際に使用する必要があります。 また、以下のディスパッチャーの手順の YOUR-AZURE-QNA-SUBSCRIPTION-KEY の代わりに、このキーを使用します。
     * サービスを中断しなくても一度に 1 つのキーを再生成できるよう、2 つのキーを取得します。
 
 ## <a name="create-and-publish-the-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの作成と発行
 
-[QnA Maker Web サイト](https://qnamaker.ai)にアクセスしてサインインします。 **[ナレッジ ベースの作成]** を選択し、"FAQ" という名前の新しいナレッジ ベースを作成します。 **[ファイルの選択]** ボタンをクリックし、[サンプル TSV ファイル][FAQ_TSV]をアップロードします。 **[作成]** をクリックし、サービスが作成されたら **[発行]** をクリックします。
+KB を作成するには、以下の手順を実行します。
+
+1. [QnA Maker Web サイト](https://qnamaker.ai)にアクセスしてサインインします。 
+1. **[ナレッジ ベースの作成]** をクリックし、新しいナレッジ ベースを作成します。 Cognitive Service は既に Azure に作成済みのため、**手順 1.** はスキップできます。
+1. **手順 2.** では、**[Azure QnA service]\(Azure QnA サービス\)** フィールドに対して、Azure に作成した Cognitive Service 名を選択します。 これにより、この KB が、Azure で作成したサービスに関連付けられます。
+1. **手順 3.** では、この KB に "FAQ" という名前を付けます。 
+1. **手順 4.** では、KB にこの [サンプル TSV ファイル][FAQ_TSV]を設定します。 または、Web ページのコンテンツを使用します。 その場合は、リンクを **URL** フィールドに貼り付けます。
+1. **手順 5.** では、**[Create your KB]\(KB の作成\)** をクリックして、KB を作成します。
+
+KB が作成されたら、その KB を**発行**して、KB ID とエンドポイントを取得する必要があります。 これらは、このプロセスの後半で必要になります。
+
 
 ## <a name="use-the-dispatch-tool-to-create-the-dispatcher-luis-app"></a>ディスパッチ ツールを使用してディスパッチャー LUIS アプリを作成する
+これで 2 つの LUIS アプリと 1 つの KB が作成されました。次は、ディスパッチ ツールを使用して、これらを結合して 1 つの LUIS アプリを生成しましょう。 
 
-次に、作成した各サービスを結合する LUIS アプリを作成しましょう。
+### <a name="step-1-install-the-dispatch-tool"></a>手順 1: ディスパッチ ツールをインストールする
 
-Node.js コマンド プロンプトで次のコマンドを実行して[ディスパッチ ツール][DispatchTool]をインストールします。
+**コマンド プロンプト** ウィンドウを開き、ディスパッチャー プロジェクトに移動します。 次に、以下の NPM コマンドを実行して、[ディスパッチ ツール][DispatchTool]をインストールします。
 
-```
+```cmd
 npm install -g botdispatch
 ```
 
-次のコマンドを実行して、`CombineWeatherAndLights` という名前のディスパッチ ツールを初期化します。 `"YOUR-LUIS-AUTHORING-KEY"` の部分はご自身の [LUIS オーサリング キー](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-concept-keys)に置き換えます。
+### <a name="step-2-initialize-the-dispatch-tool"></a>手順 2: ディスパッチ ツールを初期化する
 
-```
+次のコマンドを実行して、`CombineWeatherAndLights` という名前でディスパッチ ツールを初期化します。 以下のコマンド ラインの `"YOUR-LUIS-AUTHORING-KEY"` の部分はご自身の [LUIS オーサリング キー](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-concept-keys)で置き換えます。
+
+```cmd
 dispatch init -name CombineWeatherAndLights -luisAuthoringKey "YOUR-LUIS-AUTHORING-KEY" -luisAuthoringRegion westus
 ```
 
-作成した各 LUIS アプリの LUIS アプリ ID を取得します。 各アプリの ID は [LUIS サイト](https://www.luis.ai/home)の **[My Apps]\(マイ アプリ\)** にあります。アプリ名をクリックし、**[設定]** をクリックしてアプリケーション ID を表示します。 
+### <a name="step-3-add-apps-to-dispatcher"></a>手順 3: アプリをディスパッチャーに追加する
 
-次に、作成した各 LUIS アプリの `dispatch add` コマンドを実行します。
+作成した LUIS アプリごとに、LUIS アプリ ID を取得します。 各アプリの ID は [LUIS サイト](https://www.luis.ai/home)の **[My Apps]\(マイ アプリ\)** にあります。アプリ名をクリックし、**[設定]** をクリックして**アプリケーション ID** を表示します。 **手順 2.** で取得した "*LUIS オーサリング キー*" と同じものを使用します。
+
+作成した LUIS アプリごとに次のコマンドを実行します (例: **homeautomation** および **weather**)。 以下に示す該当するコマンドの該当する ID を置き換えてください。
 
 ```
 dispatch add -type luis -id "HOMEAUTOMATION-APP-ID" -name homeautomation -version 0.1 -key "YOUR-LUIS-AUTHORING-KEY"
@@ -103,19 +120,21 @@ dispatch add -type luis -id "WEATHER-APP-ID" -name weather -version 0.1 -key "YO
 
 ```
 
-作成した QnA Maker サービスの `dispatch add` コマンドを実行します。 `-key` パラメーターは、Azure portal で取得し、[Azure で QnA Cognitive Service を作成する](./bot-builder-tutorial-dispatch.md#create-the-qna-cognitive-service-in-azure)手順を完了するときに保存したキーにしてください。
+次に、以下のコマンドを実行して、QnAMaker KB を追加します。 このコマンドで、`QNA-KB-ID` は、KB を発行した後に提供された KB ID を指します。また、`YOUR-AZURE-QNA-SUBSCRIPTION-KEY` は、Azure で作成した Cognitive Service から取得したキーを指します。
 
 ```
-dispatch add -type qna -id "QNA-KB-ID" -name faq -key "YOUR-QNA-SUBSCRIPTION-KEY"
+dispatch add -type qna -id "QNA-KB-ID" -name faq -key "YOUR-AZURE-QNA-SUBSCRIPTION-KEY"
 ```
 
-`dispatch create` を実行します。
+### <a name="step-4-create-the-dispatcher-luis-app"></a>手順 4: ディスパッチャー LUIS アプリを作成する
+
+すべてのアプリがディスパッチ ツールに追加されたら、次のコマンドを実行して、ディスパッチ アプリを作成します。 ディスパッチ ファイルを調べる必要がある場合は、拡張子が **.dispatch** のファイルに情報があります。
 
 ```
 dispatch create
 ```
 
-**CombineWeatherAndLights** という名前のディスパッチャー LUIS アプリが作成されます。 [https://www.luis.ai/home](https://www.luis.ai/home) で新しいアプリを確認できます。 
+このコマンドにより、**CombineWeatherAndLights** という名前のディスパッチャー LUIS アプリが作成されます。 [https://www.luis.ai/home](https://www.luis.ai/home) で新しいアプリを確認できます。 
 
 ![LUIS.ai でのディスパッチャー アプリ](media/tutorial-dispatch/dispatch-app-in-luis.png)
 
@@ -123,7 +142,7 @@ dispatch create
 
 ![LUIS.ai でのディスパッチャーの意図](media/tutorial-dispatch/dispatch-intents-in-luis.png)
 
-**[Train]\(トレーニング\)** ボタンをクリックして LUIS アプリをトレーニングし、**[PUBLISH]\(発行\)** タブを使用して[発行](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp)します。 **[設定]** をクリックして、ボットで使用する新しいアプリの ID をコピーします。
+**[Train]\(トレーニング\)** ボタンをクリックして LUIS アプリをトレーニングし、**[PUBLISH]\(発行\)** タブを使用して[発行](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp)します。 **[設定]** をクリックして、新しいアプリの ID をコピーします。 この ID は、ボットがこのアプリに接続する際に必要になります。
 
 ## <a name="create-the-bot"></a>ボットの作成
 
@@ -162,7 +181,7 @@ Bot Builder SDK に含まれているサンプルを出発点として使用で�
 | `Luis-ModelId-HomeAutomation` | homeautomation.json から作成したアプリのアプリ ID  | 
 | `Luis-ModelId-Weather` | weather.json から作成したアプリのアプリ ID | 
 | `QnAMaker-Endpoint-Url` | プレビューの QnA Maker サービスでは、これを https://westus.api.cognitive.microsoft.com/qnamaker/v2.0 に設定してください。 <br/>新しい (GA) QnA Maker サービスでは、これを https://YOUR-QNA-SERVICE-NAME.azurewebsites.net/qnamaker に設定します。|
-| `QnAMaker-SubscriptionKey` | QnA Maker サブスクリプション キー。 | 
+| `QnAMaker-SubscriptionKey` | ご自身の Azure QnA Maker サブスクリプション キー。 | 
 | `QnAMaker-KnowledgeBaseId` | [QnAMaker ポータル](https://qnamaker.ai)で作成するナレッジ ベースの ID。| 
 
 
@@ -316,9 +335,15 @@ private static async Task<(IEnumerable<string> intents, IEnumerable<string> enti
 
 # <a name="javascripttabjsbotconfig"></a>[JavaScript](#tab/jsbotconfig)
 
-[Dispatch ボット サンプル][DispatchBotJs]のコードから始めます。 **app.js** を開き、必要に応じて、作成した LUIS アプリの ID で `appId` フィールドを置き換えます。 `appId` フィールドを元のままにする場合、デモ用に作成されたパブリック LUIS アプリを使用することになります。
+[Dispatch ボット サンプル][DispatchBotJs]のコードから始めます。 **app.js** を開き、必要に応じて、作成した LUIS アプリの ID で `appId` フィールドを置き換えます。 `appId` フィールドを元のままにする場合、デモ用に作成されたパブリック LUIS アプリを使用することになります。 `LUIS_SUBSCRIPTION_KEY` については、LUIS アプリの [発行] ページにあります。 そのページ上の [エンドポイント] リンク内に埋め込まれています。
 
 ```javascript
+// Packages
+const { BotFrameworkAdapter, MemoryStorage, ConversationState } = require('botbuilder');
+const { restify } = require('restify');
+const { LuisRecognizer, QnAMaker } = require('botbuilder-ai');
+const { DialogSet } = require('botbuilder-dialogs');
+
 // Create LuisRecognizers and QnAMaker
 // The LUIS applications are public, meaning you can use your own subscription key to test the applications.
 // For QnAMaker, users are required to create their own knowledge base.

@@ -1,5 +1,5 @@
 ---
-title: ダイアログ コンテナーを使用したモジュラー ボット ロジックの作成 |Microsoft Docs
+title: 統合された一連のダイアログを作成する | Microsoft Docs
 description: Bot Builder SDK for Node.js および C# でダイアログ コンテナーを使用して、ボット ロジックをモジュール化する方法について説明します。
 keywords: 複合コントロール、モジュラー ボット ロジック
 author: v-ducvo
@@ -9,14 +9,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/27/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2441a32167618ebb08e6a43d68d74076c3351d8f
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 93037d70a33d66269f3a79ce7e2a55900d25a6a9
+ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303921"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42795201"
 ---
-# <a name="create-modular-bot-logic-with-a-dialog-container"></a>ダイアログ コンテナーを使用したモジュラー ボット ロジックの作成
+# <a name="create-an-integrated-set-of-dialogs"></a>統合された一連のダイアログを作成する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -74,7 +74,7 @@ public class UserInfo
 ```
 
 ボットのターン内で、ダイアログ セットの `CreateContext` メソッドはダイアログの状態を確立します。
-このメソッドは、パラメーターとしてターン コンテキストと状態オブジェクトを使用します。
+このメソッドは、パラメーターとして[ターン コンテキスト](bot-builder-concept-activity-processing.md#turn-context)と状態オブジェクトを使用します。
 
 ダイアログの場合、この状態オブジェクトは `IDictionary<string, object>` インターフェイスを実装する必要があります。 このボットはダイアログ状態を格納するためだけに会話状態を使用しているので、会話状態クラスは単純な辞書になります。
 
@@ -104,7 +104,7 @@ public class ConversationInfo : Dictionary<string, object> { }
 1. 滞在を希望する部屋を尋ねます。
 1. 確認メッセージを送信し、ダイアログを完了します。
 
-ダイアログとウォーターフォールの詳細については、「[Use dialogs to manage conversation flow (ダイアログを使用した会話フローの管理)](bot-builder-dialog-manage-conversation-flow.md)」を参照してください。
+ダイアログとウォーターフォールの詳細については、[ダイアログを使用した単純な会話フローの管理](bot-builder-dialog-manage-conversation-flow.md)に関するページをご覧ください。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

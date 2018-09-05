@@ -1,5 +1,5 @@
 ---
-title: Bot Service のソース コードをダウンロードと再デプロイを行う | Microsoft Docs
+title: ボットのソース コードをダウンロードして再デプロイする | Microsoft Docs
 description: Bot Service のダウンロードと発行を行う方法について説明します。
 keywords: ソース コードのダウンロード, 再デプロイ, デプロイ, zip ファイル, 発行
 author: v-ducvo
@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/08/2018
-ms.openlocfilehash: 6d76388712ffeff94c56ba89b4bf4f4831caf45c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b77e096d28f51f605db9c49d36e796553f9293ef
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303321"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756454"
 ---
-# <a name="download-and-redeploy-bot-service-source-code"></a>Bot Service のソース コードのダウンロードと再デプロイを行う
+# <a name="download-and-redeploy-bot-source-code"></a>ボットのソース コードをダウンロードして再デプロイする
 
 Bot Service では、ボット用のソース プロジェクト全体をダウンロードできます。 これにより、好みの IDE を使用して、ボットに関する作業をローカルで実行できます。 変更が完了したら、変更を Azure に発行できます。 
 

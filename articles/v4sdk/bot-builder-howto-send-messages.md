@@ -1,5 +1,5 @@
 ---
-title: Bot Builder SDK でメッセージを送信する | Microsoft Docs
+title: メッセージを送信する | Microsoft Docs
 description: Bot Builder SDK 内でメッセージを送信する方法について説明します。
 keywords: メッセージを送信する, メッセージ アクティビティ, シンプル テキスト メッセージ, 音声, 音声メッセージ
 author: ivorb
@@ -7,18 +7,20 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 04/04/2018
+ms.date: 08/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b854eeb4ecb45a875ab3be5d867333cd63babffd
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b56ad56e19691cfbd7b39606832ed10fce951aa3
+ms.sourcegitcommit: f89ed979eb6321232fb21100ef376d9b0d5113c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302796"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42914592"
 ---
-# <a name="sending-messages"></a>メッセージを送信する
+# <a name="send-messages"></a>メッセージを送信する
 
-ボットでユーザーと通信し、同様にボットで通信を受け取る主要な方法は、**メッセージ** アクティビティを利用することです。 メッセージにはプレーンテキストで構成されている単純なものもあれば、カードや添付など、よりリッチなコンテンツが含まれるものもあります。 ボットのターン ハンドラーでは、ユーザーからメッセージを受け取ります。そこからユーザーに応答を送信できます。 ターン コンテキスト オブジェクトによって、ユーザーにメッセージを戻すためのメソッドが与えられます。 一般的なアクティビティ処理に関する詳細については、「[アクティビティの処理](bot-builder-concept-activity-processing.md)」を参照してください。
+[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+
+ボットでユーザーと通信し、同様にボットで通信を受け取る主要な方法は、**メッセージ** アクティビティを利用することです。 メッセージにはプレーンテキストで構成されている単純なものもあれば、カードや添付など、よりリッチなコンテンツが含まれるものもあります。 ボットのターン ハンドラーでは、ユーザーからメッセージを受け取ります。そこからユーザーに応答を送信できます。 [ターン コンテキスト](bot-builder-concept-activity-processing.md#turn-context) オブジェクトによって、ユーザーにメッセージを戻すためのメソッドが与えられます。 一般的なアクティビティ処理に関する詳細については、「[アクティビティの処理](bot-builder-concept-activity-processing.md)」を参照してください。
 
 この記事では、単純なテキストと音声メッセージを送信する方法について説明します。 よりリッチなコンテンツを送信する場合、[リッチ メディア添付ファイルを追加する](bot-builder-howto-add-media-attachments.md)方法をご覧ください。 プロンプト オブジェクトを使用する方法の詳細について、[ユーザーに入力を求める](bot-builder-prompts.md)方法をご覧ください。
 

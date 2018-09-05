@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 2f688b9c80e762b93c2eba8f4671ff1760f624f9
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3569e3bfbb3be51cf9023b4686ed4693e90ed50c
+ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303593"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42795181"
 ---
 # <a name="api-reference---direct-line-api-11"></a>API リファレンス - Direct Line API 1.1
 
@@ -21,13 +21,13 @@ ms.locfileid: "39303593"
 
 Direct Line API 1.1 を使用することで、クライアント アプリケーションとボットの通信を有効にできます。 Direct Line API 1.1 では、HTTPS で業界標準の REST および JSON を使用します。
 
-## <a name="base-uri"></a>基本 URI
+## <a name="base-uri"></a>ベース URI
 
 Direct Line API 1.1 にアクセスするには、すべての API 要求用の次の基本 URI を使用します。
 
 `https://directline.botframework.com`
 
-## <a name="headers"></a>ヘッダー
+## <a name="headers"></a>headers
 
 標準 HTTP 要求ヘッダーに加えて、Direct Line API 要求には、要求を発行しているクライアントを認証するシークレットまたはトークンを指定する `Authorization` ヘッダーを含める必要があります。 `Authorization` ヘッダーは、"Bearer" スキームまたは "BotConnector" スキームを使用して指定できます。 
 
@@ -55,12 +55,13 @@ Authorization: BotConnector SECRET_OR_TOKEN
 | 401 | クライアントは要求を行うことを許可されていません。 多くの場合、この状態コードの原因は、`Authorization` ヘッダーが見つからないか、形式が正しくないことです。 |
 | 403 | 要求された操作の実行がクライアントに許可されていません。 多くの場合、この状態コードの原因は、`Authorization` ヘッダーに無効なトークンまたはシークレットが指定されていることです。 |
 | 404 | 要求されたリソースが見つかりませんでした。 通常、この状態コードは、要求 URI が無効であることを示します。 |
-| 500 | Direct Line サービス内で内部サーバー エラーが発生したか、ボット内でエラーが発生しました。 ボットにメッセージを POST したときに 500 エラーが発生した場合、そのエラーはボット内のエラーによってトリガーされた可能性があります。 **これは一般的なエラー コードです。** |
+| 500 | Direct Line サービス内で内部サーバー エラーが発生しました |
+| 502 | ボット内でエラーが発生しました。ボットが利用できないか、ボットからエラーが返されました。  **これは一般的なエラー コードです。** |
 
 ## <a name="token-operations"></a>トークンの操作 
 クライアントが 1 つの会話にアクセスするために使用できるトークンを作成または更新するには、次の操作を使用します。
 
-| 操作 | 説明 |
+| Operation | 説明 |
 |----|----|
 | [トークンの生成](#generate-token) | 新しい会話用のトークンを生成します。 | 
 | [トークンの更新](#refresh-token) | トークンを更新します。 | 
@@ -90,7 +91,7 @@ GET /api/tokens/{conversationId}/renew
 ## <a name="conversation-operations"></a>会話操作 
 ボットとの会話を開いてクライアントとボット間でメッセージを交換するには、次の操作を使用します。
 
-| 操作 | 説明 |
+| Operation | 説明 |
 |----|----|
 | [会話の開始](#start-conversation) | ボットと新しい会話を開きます。 | 
 | [Get Messages](#get-messages) | ボットからメッセージを受信します。 |
@@ -153,14 +154,14 @@ Direct Line 1.1 スキーマは、次のオブジェクトを含む Bot Framewor
 
 クライアントがボットに送信するメッセージ、またはボットから受信するメッセージを定義します。
 
-| プロパティ | 型 | 説明 |
+| プロパティ | type | 説明 |
 |----|----|----|
-| **id** | string | メッセージを一意に識別する ID (Direct Line によって割り当てられます)。 | 
-| **conversationId** | string | 会話を識別する ID。  | 
-| **created** | string | メッセージの作成日時。<a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a> で表わされます。 | 
-| **from** | string | メッセージの送信者であるユーザーを識別する ID。 クライアントは、メッセージを作成するときに、このプロパティを安定したユーザー ID に設定する必要があります。 Direct Line はユーザー ID が指定されない場合はそれを割り当てますが、通常は、これによって予期しない動作が発生します。 | 
-| **text** | string | ユーザーからボットに、またはボットからユーザーに送信されるメッセージのテキスト。 | 
-| **channelData** | object | チャネル固有のコンテンツを格納するオブジェクト。 一部のチャネルには、添付ファイル スキーマでは表現できない追加情報を必要とする機能があります。 そのような場合は、このプロパティを、チャネルのドキュメントで定義されているチャネル固有のコンテンツに設定します。 このデータは、クライアントとボット間で変更されずに送信されます。 このプロパティは、複雑なオブジェクトが設定されるか、空のままにしておく必要があります。 文字列、数値、またはその他の単純型を設定しないでください。 | 
+| **id** | 文字列 | メッセージを一意に識別する ID (Direct Line によって割り当てられます)。 | 
+| **conversationId** | 文字列 | 会話を識別する ID。  | 
+| **created** | 文字列 | メッセージの作成日時。<a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a> で表わされます。 | 
+| **from** | 文字列 | メッセージの送信者であるユーザーを識別する ID。 クライアントは、メッセージを作成するときに、このプロパティを安定したユーザー ID に設定する必要があります。 Direct Line はユーザー ID が指定されない場合はそれを割り当てますが、通常は、これによって予期しない動作が発生します。 | 
+| **text** | 文字列 | ユーザーからボットに、またはボットからユーザーに送信されるメッセージのテキスト。 | 
+| **channelData** | オブジェクト | チャネル固有のコンテンツを格納するオブジェクト。 一部のチャネルには、添付ファイル スキーマでは表現できない追加情報を必要とする機能があります。 そのような場合は、このプロパティを、チャネルのドキュメントで定義されているチャネル固有のコンテンツに設定します。 このデータは、クライアントとボット間で変更されずに送信されます。 このプロパティは、複雑なオブジェクトが設定されるか、空のままにしておく必要があります。 文字列、数値、またはその他の単純型を設定しないでください。 | 
 | **images** | string[] | メッセージに含まれているイメージの URL を格納する文字列の配列。 この配列内の文字列は、相対 URL である場合があります。 この配列内の任意の文字列が "http" または "https" で始まっていない場合は、文字列の前に `https://directline.botframework.com` を追加して、完全な URL 形式にします。 | 
 | **attachments** | [Attachment](#attachment-object)[] | メッセージに含まれるイメージ以外の添付ファイルを表す **Attachment** オブジェクトの配列。 配列内の各オブジェクトには、`url` プロパティと `contentType` プロパティが格納されます。 クライアントがボットから受信するメッセージでは、`url` プロパティは、相対 URL を指定している場合があります。 `url` プロパティの値が "http" または "https" で始まっていない場合は、文字列の前に `https://directline.botframework.com` を追加して、完全な URL 形式にします。 | 
 
@@ -195,42 +196,42 @@ Direct Line 1.1 スキーマは、次のオブジェクトを含む Bot Framewor
 ### <a name="messageset-object"></a>MessageSet オブジェクト 
 メッセージのセットを定義します。<br/><br/>
 
-| プロパティ | 型 | 説明 |
+| プロパティ | type | 説明 |
 |----|----|----|
 | **messages** | [Message](#message-object)[] | **Message** オブジェクトの配列。 |
-| **watermark** | string | セット内のメッセージの最大ウォーターマーク。 クライアントは、`watermark` を使用して、[ボットからメッセージを取得](bot-framework-rest-direct-line-1-1-receive-messages.md)したときに認識した最新のメッセージを示すことができます。 |
+| **watermark** | 文字列 | セット内のメッセージの最大ウォーターマーク。 クライアントは、`watermark` を使用して、[ボットからメッセージを取得](bot-framework-rest-direct-line-1-1-receive-messages.md)したときに認識した最新のメッセージを示すことができます。 |
 
 ### <a name="attachment-object"></a>Attachment オブジェクト
 イメージ以外の添付ファイルを定義します。<br/><br/> 
 
-| プロパティ | 型 | 説明 |
+| プロパティ | type | 説明 |
 |----|----|----|
-| **contentType** | string | 添付ファイル内のコンテンツのメディアの種類。 |
-| **URL** | string | 添付ファイルのコンテンツの URL。 |
+| **contentType** | 文字列 | 添付ファイル内のコンテンツのメディアの種類。 |
+| **URL** | 文字列 | 添付ファイルのコンテンツの URL。 |
 
 ### <a name="conversation-object"></a>Conversation オブジェクト
 Direct Line 会話を定義します。<br/><br/>
 
-| プロパティ | 型 | 説明 |
+| プロパティ | type | 説明 |
 |----|----|----|
-| **conversationId** | string | 指定されたトークンが有効な会話を一意に識別する ID。 |
+| **conversationId** | 文字列 | 指定されたトークンが有効な会話を一意に識別する ID。 |
 | **token** | 文字列 | 指定された会話で有効なトークン。 |
-| **expires_in** | 数値 | トークンの有効期限が切れるまでの秒数。 |
+| **expires_in** | number | トークンの有効期限が切れるまでの秒数。 |
 
 ### <a name="error-object"></a>Error オブジェクト
 エラーを定義します。<br/><br/> 
 
-| プロパティ | 型 | 説明 |
+| プロパティ | type | 説明 |
 |----|----|----|
-| **code** | string | エラー コード。 次の値のいずれか。**MissingProperty**、**MalformedData****NotFound****ServiceError****Internal****InvalidRange****NotSupported****NotAllowed****BadCertificate** |
-| **message** | string | エラーの説明。 |
+| **code** | 文字列 | エラー コード。 次の値のいずれか。**MissingProperty**、**MalformedData****NotFound****ServiceError****Internal****InvalidRange****NotSupported****NotAllowed****BadCertificate** |
+| **message** | 文字列 | エラーの説明。 |
 | **statusCode** | number | 状態コード。 |
 
 ### <a name="errormessage-object"></a>ErrorMessage オブジェクト
 標準化されたメッセージ エラー ペイロード。<br/><br/> 
 
 
-|        プロパティ        |          型          |                                 説明                                 |
+|        プロパティ        |          type          |                                 説明                                 |
 |------------------------|------------------------|-----------------------------------------------------------------------------|
 | <strong>error</strong> | [エラー](#error-object) | エラーに関する情報を含む <strong>Error</strong> オブジェクト。 |
 

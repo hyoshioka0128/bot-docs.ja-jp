@@ -1,5 +1,5 @@
 ---
-title: ユーザー入力を翻訳してボットを多言語対応にする | Microsoft Docs
+title: ユーザー入力を翻訳する | Microsoft Docs
 description: ユーザー入力をボットのネイティブ言語に自動的に翻訳し、ユーザーの言語に翻訳し直す方法。
 keywords: 翻訳, 翻訳する, 多言語, microsoft translator
 author: DeniseMak
@@ -9,18 +9,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/06/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 13139755989afccd85b2e09267dc42619ec1f83c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6304e328e523e73894473620fc1fb7656a8776bf
+ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301516"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42756577"
 ---
-# <a name="translate-user-input-to-make-your-bot-multilingual"></a>ユーザー入力を翻訳してボットを多言語対応にする
+# <a name="translate-user-input"></a>ユーザー入力を翻訳する 
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-ボットでは、[Microsoft Translator](https://www.microsoft.com/en-us/translator/) を使用して、メッセージをボットが理解できる言語に自動的に翻訳できます。また、必要に応じて、ボットの応答をユーザーの言語に翻訳し直すこともできます。 ボットに翻訳機能を追加することで、ボットのコア プログラミングの重要な部分を変更せずに、より多くのユーザーを獲得できます。
+ボットは [Microsoft Translator](https://www.microsoft.com/en-us/translator/) を使用して、メッセージをボットが理解できる言語に自動的に翻訳したり、必要に応じて、ボットの応答をユーザーの言語に翻訳し直したりすることができます。 ボットに翻訳機能を追加することで、ボットのコア プログラミングの重要な部分を変更せずに、より多くのユーザーを獲得できます。
 <!-- 
 - [Get a Text Services key](#get-a-text-services-key)
 - [Installing Packages](#installing-packages)
@@ -34,9 +34,9 @@ ms.locfileid: "39301516"
 
 まず、Translator Text サービスを使用するためのキーが必要です。 Azure portal で[無料試用版キー](https://www.microsoft.com/en-us/translator/trial.aspx#get-started)を取得できます。
 
-## <a name="installing-packages"></a>パッケージをインストールする
+## <a name="installing-packages"></a>パッケージのインストール
 
-ボットに翻訳機能を追加するために必要なパッケージを用意する必要があります。
+ボットに翻訳を追加するために必要なパッケージが揃っていることを確認してください。
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 
@@ -103,11 +103,11 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!TIP] 
-> Bot Builder SDK では、ユーザーから送信されたメッセージに基づいてユーザーの言語を自動的に検出します。 この機能をオーバーライドするには、追加のコールバック パラメーターを指定して、ユーザーの言語を検出および変更するための独自のロジックを追加します。  
+> BotBuilder SDK は、ユーザーが送信したメッセージに基づいてユーザーの言語を自動的に検出します。 この機能をオーバーライドするには、追加のコールバック パラメーターを指定して、ユーザーの言語を検出および変更するための独自のロジックを追加できます。  
 
 
 
-`EchoBot.cs` 内のコードを見てみましょう。このコードでは、"You sent" の後にユーザーの発言を追加して送信します。
+`EchoBot.cs` 内のコードを見てみましょう。ここでは、"You sent" の後にユーザーが話した内容を送信しています。
 
 ```cs
 using Microsoft.Bot.Builder;
@@ -145,7 +145,7 @@ namespace Microsoft.Bot.Samples
 }
 ```
 
-翻訳ミドルウェアを追加するときに、省略可能なパラメーターによって、応答をユーザーの言語に翻訳し直すかどうかを指定します。 `Startup.cs` では、`false` が指定されているので、ユーザー メッセージがボットの言語に翻訳されるだけです。
+翻訳ミドルウェアを追加する場合は、省略可能なパラメーターで、応答をユーザーの言語に翻訳し直すかどうかを指定します。 `Startup.cs` では、ユーザー メッセージを単純にボットの言語に翻訳するために `false` を指定しました。
 
 ```cs
 // The first parameter is a list of languages the bot recognizes
@@ -199,18 +199,18 @@ server.post('/api/messages', (req, res) => {
 
 ---
 
-## <a name="run-the-bot-and-see-translated-input"></a>ボットを実行して翻訳された入力を確認する
+## <a name="run-the-bot-and-see-translated-input"></a>ボットを実行し、翻訳された入力を確認する
 
-ボットを実行し、他の言語でいくつかのメッセージを入力します。 ボットによってユーザー メッセージが翻訳され、応答で翻訳が示されていることがわかります。
+ボットを実行し、他の言語でいくつかのメッセージを入力します。 ボットがユーザー メッセージを翻訳し、その翻訳を応答で示していることが分かります。
 
-![ボットによって言語が検出され、入力が翻訳される](./media/how-to-bot-translate/bot-detects-language-translates-input.png)
+![ボットが言語を検出し、入力を翻訳する](./media/how-to-bot-translate/bot-detects-language-translates-input.png)
 
 
 
 
 ## <a name="invoke-logic-in-the-bots-native-language"></a>ボットのネイティブ言語でロジックを呼び出す
 
-次に、英単語をチェックするロジックを追加します。 ユーザーが別の言語で "ヘルプ" または "キャンセル" と言った場合、ボットはそれを英語に翻訳し、英単語の "help" または "cancel" をチェックするロジックが呼び出されます。
+次に、英単語をチェックするロジックを追加します。 ユーザーが別の言語で "help" または "cancel" と言った場合、ボットはそれを英語に翻訳し、英単語 "help" または "cancel" をチェックするロジックが呼び出されます。
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 `EchoBot.cs` で、ボットの `OnTurn` メソッドのメッセージ アクティビティの `case` ステートメントを更新します。
@@ -237,13 +237,13 @@ if (context.activity.type === 'message') {
 
 ---
 
-![ボットによってフランス語のヘルプが検出される](./media/how-to-bot-translate/bot-detects-help-french.png)
+![ボットがフランス語のヘルプを検出する](./media/how-to-bot-translate/bot-detects-help-french.png)
 
 
 
 ## <a name="translate-replies-back-to-the-users-language"></a>応答をユーザーの言語に翻訳し直す
 
-最後のコンストラクター パラメーターを `true` に設定することで、応答をユーザーの言語に翻訳し直すこともできます。
+最後のコンストラクター パラメーターを `true` に設定することによって、応答をユーザーの言語に翻訳し直すこともできます。
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 `Startup.cs` で、`ConfigureServices` メソッドの次の行を更新します。
@@ -270,9 +270,9 @@ adapter.use(languageTranslator);
 
 ## <a name="run-the-bot-to-see-replies-in-the-users-language"></a>ボットを実行してユーザーの言語での応答を確認する
 
-ボットを実行し、他の言語でいくつかのメッセージを入力します。 ユーザーの言語が検出され、応答が翻訳されていることがわかります。
+ボットを実行し、他の言語でいくつかのメッセージを入力します。 ユーザーの言語が検出され、応答が翻訳されていることが分かります。
 
-![ボットによって言語が検出され、応答が翻訳される](./media/how-to-bot-translate/bot-detects-language-translates-response.png)
+![ボットが言語を検出し、応答を翻訳する](./media/how-to-bot-translate/bot-detects-language-translates-response.png)
 
 
 ## <a name="adding-logic-for-detecting-or-changing-the-user-language"></a>ユーザーの言語を検出または変更するためのロジックを追加する
@@ -280,7 +280,7 @@ adapter.use(languageTranslator);
 Bot Bilder SDK によってユーザーの言語が自動的に検出されるようにするのではなく、コールバックを提供して、ユーザーの言語を特定したり、ユーザーの言語が変更されたときに判断したりする独自のロジックを追加できます。
 
 
-次の例では、`CheckUserChangedLanguage` コールバックによって、特定のユーザー メッセージがチェックされ、言語が変更されます。 
+次の例では、`CheckUserChangedLanguage` コールバックが、言語を変更する特定のユーザー メッセージをチェックしています。 
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 `Startup.cs` で、翻訳ミドルウェアにコールバックを追加します。
@@ -394,7 +394,7 @@ server.post('/api/messages', (req, res) => {
 
 ## <a name="combining-luis-or-qna-with-translation"></a>LUIS または QnA を翻訳と組み合わせる
 
-ボットで LUIS や QnA Maker などの他のサービスと翻訳を組み合わせる場合は、まず翻訳ミドルウェアを追加します。これにより、ボットのネイティブ言語を必要とする他のミドルウェアに渡す前にメッセージが翻訳されます。
+ボットで翻訳を LUIS や QnA maker などの他のサービスと組み合わせる場合は、ボットのネイティブ言語を想定している他のミドルウェアに渡される前にメッセージが翻訳されるように、最初に翻訳ミドルウェアを追加します。
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 ```cs
@@ -418,7 +418,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-ボット コードでは、LUIS の結果は、ボットのネイティブ言語に既に翻訳されている入力に基づいています。 LUIS アプリの結果を確認するために、ボット コードを次のように変更してみてください。
+ボット コードでは、LUIS の結果は、既にボットのネイティブ言語に翻訳された入力に基づいています。 LUIS アプリの結果をチェックするようにボット コードを変更してみてください。
 
 ```cs
 public async Task OnTurn(ITurnContext context)
@@ -484,8 +484,8 @@ server.post('/api/messages', (req, res) => {
 
 ---
 
-## <a name="bypass-translation-for-specified-patterns"></a>指定したパターンの翻訳を省略する
-固有名詞など、ボットで翻訳する必要のない特定の単語が存在する場合があります。 翻訳する必要のないパターンを示す正規表現を指定できます。 たとえば、ユーザーがボットのネイティブ言語以外の言語で「私の名前は...です」と言ったときに、名前が翻訳されないようにする場合は、パターンを使用してこれを指定できます。
+## <a name="bypass-translation-for-specified-patterns"></a>指定されたパターンの翻訳をバイパスする
+固有名詞など、ボットに翻訳させたくない特定の単語が存在することがあります。 翻訳するべきではないパターンを示す正規表現を指定できます。 たとえば、ユーザーがボットのネイティブ以外の言語で "私の名前は ..." と話したときに、その名前が翻訳されないようにする場合は、パターンを使用してそれを指定できます。
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 Startup.cs
@@ -520,24 +520,24 @@ adapter.use(languageTranslator);
 
 ---
 
-![ボットでパターンの翻訳を省略する](./media/how-to-bot-translate/bot-no-translate-name-fr.png)
+![ボットがパターンの翻訳をバイパスする](./media/how-to-bot-translate/bot-no-translate-name-fr.png)
 
 ## <a name="localize-dates"></a>日付をローカライズする
 
-日付をローカライズする必要がある場合は、`LocaleConverterMiddleware` を追加します。 たとえば、ボットで `MM/DD/YYYY` 形式の日付が想定されており、他のロケールのユーザーが `DD/MM/YYYY` 形式で日付を入力する可能性があることがわかっている場合は、ロケール コンバーター ミドルウェアによって、日付をボットで想定されている形式に自動的に変換できます。
+日付をローカライズする必要がある場合は、`LocaleConverterMiddleware` を追加できます。 たとえば、ボットは形式 `MM/DD/YYYY` の日付を想定しているが、他のロケールのユーザーが形式 `DD/MM/YYYY` の日付を入力する可能性があることが分かっている場合は、ロケール コンバーター ミドルウェアで日付をボットか想定している形式に自動的に変換できます。
 
 > [!NOTE]
-> ロケール コンバーター ミドルウェアは、日付のみを変換することを目的としています。 翻訳ミドルウェアの結果は認識されません。 翻訳ミドルウェアを使用している場合は、ロケール コンバーターとどのように組み合わせるかに注意してください。 翻訳ミドルウェアでは、テキスト形式の一部の日付は他のテキスト入力と共に翻訳されますが、日付は翻訳されません。
+> ロケール コンバーター ミドルウェアは、日付のみを変換することを目的にしています。 翻訳ミドルウェアの結果は認識していません。 翻訳ミドルウェアを使用している場合は、それをロケール コンバーターとどのように組み合わせるかに注意してください。 翻訳ミドルウェアは、テキスト形式の一部の日付を他のテキスト入力と共に翻訳しますが、日付は翻訳しません。
 
-たとえば、次の画像は、英語からフランス語への翻訳後に、ユーザー入力をエコー バックするボットを示しています。 このボットでは、`LocaleConverterMiddleware` を使用せずに `TranslationMiddleware` を使用しています。
+たとえば、次の図は、英語からフランス語に翻訳した後にユーザー入力をエコー バックするボットを示しています。 ここでは、`LocaleConverterMiddleware` を使用せずに `TranslationMiddleware` を使用しています。
 
-![日付を変換せずに日付を翻訳するボット](./media/how-to-bot-translate/locale-date-before.png)
+![日付の変換なしで日付を翻訳しているボット](./media/how-to-bot-translate/locale-date-before.png)
 
-次の画像は、`LocaleConverterMiddleware` が追加された場合の同じボットを示しています。
+次は、`LocaleConverterMiddleware` が追加された場合の同じボットを示しています。
 
-![日付を変換せずに日付を翻訳するボット](./media/how-to-bot-translate/locale-date-after.png)
+![日付の変換なしで日付を翻訳しているボット](./media/how-to-bot-translate/locale-date-after.png)
 
-ロケール コンバーターは、英語、フランス語、ドイツ語、中国語のロケールをサポートできます。 <!-- TODO: ADD DETAIL ABOUT SUPPORTED LOCALES -->
+ロケール コンバーターは、英語、フランス語、ドイツ語、および中国語のロケールをサポートできます。 <!-- TODO: ADD DETAIL ABOUT SUPPORTED LOCALES -->
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 Startup.cs
