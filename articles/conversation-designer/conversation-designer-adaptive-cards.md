@@ -7,12 +7,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 ROBOTS: NoIndex, NoFollow
-ms.openlocfilehash: 01f52a6aa6e2c9fc3d2613ff03386a7d87e64a3a
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2dec87fbdce1cc556c15f7220200da98a4496513
+ms.sourcegitcommit: a2f3d87c0f252e876b3e63d75047ad1e7e110b47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303812"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42928217"
 ---
 # <a name="configure-adaptive-cards"></a>アダプティブ カードの構成
 > [!IMPORTANT]
@@ -24,18 +24,16 @@ Conversation Designer は、ボットでアダプティブ カードを作成、
 
 アダプティブ カードは、さまざまな重要な場所で定義できます。
 
-- タスクの[アクション](conversation-designer-tasks.md)に対する単純な応答。
+- タスクのアクションに対する単純な応答。
 - ダイアログのフィードバック状態。
 - ダイアログのプロンプト状態。 プロンプトには別のカードが存在する場合があることに注意してください。1 つは応答用で、もう 1 つは再プロンプト用です。
 
 アダプティブのカードを定義するには、関連するエディターに移動します。 いずれかの既存のアダプティブ カード テンプレートを参照して選択するか、JSON コード エディターを使って独自に作成します。 
 
-<!--TODO: Insert screenshot -->
-
 カードを作成する際には、オーサリング ポータルにカードの高度なプレビューが表示されます。
 
 > [!NOTE]
-> アダプティブ カードの機能は、そのまま継続して開発できます。 現時点では、すべてのチャネルがすべてのアダプティブ カードの機能をサポートしているわけではありません。 各チャネル機能でサポートされている機能については、「[チャネルの状態](/adaptive-cards/get-started/bots#channel-status)」セクションを参照してください。
+> アダプティブ カードの機能は、そのまま継続して開発できます。 現時点では、すべてのチャネルがすべてのアダプティブ カードの機能をサポートしているわけではありません。 各チャネル機能でサポートされている機能については、「チャネルの状態」セクションを参照してください。
 
 ## <a name="input-form"></a>入力フォーム
 
@@ -74,13 +72,7 @@ Conversation Designer は、ボットでアダプティブ カードを作成、
 * `entityName` は、カード内のエンティティを使用します。
 * `responseTemplateName` は、カード内の単純な応答テンプレートや条件付き応答テンプレートを使用します。
 
-<!--
-# Binding form flow input fields to bot entities
-TODO: fill this out based on design/ implementation -->
-
-<!-- ## Adaptive Card schema
-
-You can learn more about adaptive cards here  TODO: Insert link to adaptive cards schema documentation -->
+アダプティブ カードの詳細については、こちらをご覧ください  TODO: アダプティブ カード スキーマ ドキュメントへのリンクの挿入 -->
 
 ## <a name="sample-adaptive-card-payload"></a>アダプティブ カードのペイロードのサンプル
 
@@ -149,6 +141,3 @@ You can learn more about adaptive cards here  TODO: Insert link to adaptive card
 }
 ```
 
-## <a name="next-step"></a>次のステップ
-> [!div class="nextstepaction"]
-> [チャネルへの接続](conversation-designer-deploy.md)
