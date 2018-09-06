@@ -24,7 +24,7 @@ Bot Framework ポータル内の Web チャット チャンネルには、Web �
 
 [!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
-## <a id="step-1">ボットの秘密鍵を取得する</a>
+## <a id="step-1"></a>ボットの秘密鍵を取得する
 
 1. [Azure portal](http://portal.azure.com) でボットを開き、**[チャンネル]** ブレードをクリックします。
 
