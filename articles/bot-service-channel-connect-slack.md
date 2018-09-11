@@ -39,7 +39,7 @@ Slack にログインし、[Slack アプリケーションを作成](https://api
 
 1. **[OAuth & Permissions]\(OAuth とアクセス許可\)** タブを選択します。
 2. **[Add a new Redirect URL]\(新しいリダイレクト URL の追加\)** をクリックします。
-3. 「https://slack.botframework.com」を入力します。
+3. 「 https://slack.botframework.com 」を入力します。
 4. **[追加]** をクリックします。
 5. **[Save URLs]\(URL の保存\)** をクリックします。
 
