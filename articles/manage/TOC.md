@@ -1,9 +1,4 @@
 # [ボットの管理](../bot-service-manage-overview.md)
-# 構築
-## [オンライン コード エディターでボットを編集する](../bot-service-build-online-code-editor.md)
-## [ボットのソース コードのダウンロードと再デプロイを行う](../bot-service-build-download-source-code.md)
-## [継続的デプロイを設定する](../bot-service-build-continuous-deployment.md)
-# [Web チャットでのテスト](../bot-service-manage-test-webchat.md)
 # [ボットの分析](../bot-service-manage-analytics.md)
 # チャンネル
 ## [ボットをチャネルに接続する](../bot-service-manage-channels.md)
@@ -12,9 +7,8 @@
 ## [Skype for Business](../bot-service-channel-connect-skypeforbusiness.md)
 ## [Direct Line](../bot-service-channel-connect-directline.md)
 ## [Microsoft Teams](https://msdn.microsoft.com/en-us/microsoft-teams/bots)
-## Web チャット
-### [ボットを Web チャットに接続する](../bot-service-channel-connect-webchat.md)
-### [Web チャットで音声認識を有効にする](../bot-service-channel-connect-webchat-speech.md)
+## [ボットを Web チャットに接続する](../bot-service-channel-connect-webchat.md)
+## [Web チャットで音声認識を有効にする](../bot-service-channel-connect-webchat-speech.md)
 ## [電子メール](../bot-service-channel-connect-email.md)
 ## [GroupMe](../bot-service-channel-connect-groupme.md) 
 ## [Facebook](../bot-service-channel-connect-facebook.md) 
@@ -22,10 +16,7 @@
 ## [Slack](../bot-service-channel-connect-slack.md) 
 ## [Telegram](../bot-service-channel-connect-telegram.md) 
 ## [Twilio](../bot-service-channel-connect-twilio.md)
-## [ボット機能のプレビュー](../bot-service-channel-inspector.md)
 # [設定を構成する](../bot-service-manage-settings.md)
 # [音声プライミングを構成する](../bot-service-manage-speech-priming.md)
 # [Azure Bot Service によるボットの登録](../bot-service-quickstart-registration.md)
 # [ボットの移行](../bot-service-migrate-bot.md)
-# [ボットを Azure にデプロイする](../bot-builder-howto-deploy-azure.md)
-

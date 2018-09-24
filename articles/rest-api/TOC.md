@@ -1,6 +1,8 @@
-# [Bot Framework REST API](bot-framework-rest-overview.md)
-# [REST を使用したボットの作成](~/rest-api/bot-framework-rest-connector-quickstart.md)
-# [主要な概念](bot-framework-rest-connector-concepts.md)
+# Bot Framework REST API
+## [概要](bot-framework-rest-overview.md)
+## [主要な概念](bot-framework-rest-connector-concepts.md)
+## [REST を使用したボットの作成](~/rest-api/bot-framework-rest-connector-quickstart.md)
+## [API リファレンス](bot-framework-rest-connector-api-reference.md)
 # コネクタ
 ## [認証](bot-framework-rest-connector-authentication.md)
 ## [アクティビティの概要](bot-framework-rest-connector-activities.md)
@@ -20,7 +22,7 @@
 ## [会話への再接続](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)
 ## [ボットへのアクティビティの送信](bot-framework-rest-direct-line-3-0-send-activity.md)
 ## [ボットからのアクティビティの受信](bot-framework-rest-direct-line-3-0-receive-activities.md)
-## [会話の終了](bot-framework-rest-direct-line-3-0-end-conversation.md)
+## [会話を終了する](bot-framework-rest-direct-line-3-0-end-conversation.md)
 ## [API リファレンス](bot-framework-rest-direct-line-3-0-api-reference.md)
 # ダイレクト ライン API 1.1
 ## [主要な概念](bot-framework-rest-direct-line-1-1-concepts.md)
