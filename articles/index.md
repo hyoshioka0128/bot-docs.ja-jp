@@ -7,23 +7,23 @@ manager: kamrani
 ms.topic: landing-page
 layout: LandingPage
 ms.prod: bot-framework
-ms.date: 05/03/2018
-ms.openlocfilehash: 6759a870538265fa9f8ae089486946b8fe648649
-ms.sourcegitcommit: 9a38d76afb0e82fdccc1f36f9b1a65042671e538
+ms.date: 09/17/2018
+ms.openlocfilehash: 737cd0f2f39ff512f82d4ea8611098fa265e4776
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39514992"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46706998"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
 > [!NOTE]
-> このトピックは SDK v3 (安定版) リリースに適用されます。 SDK v4 のプレリリース バージョンのドキュメントは、[こちら](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0)にあります。
+> このトピックは、前のバージョンの SDK (v3) に適用されます。 現在のバージョンの SDK (v4) のドキュメントは、[こちら](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0)にあります。
 
 <div class="content">
     <h1>Azure Bot Service のドキュメント</h1>
     <div class="intro" style="min-width: 200px">
-        <p>Bot Service では、ボット開発専用の統合環境が提供され、インテリジェント ボットのビルド、接続、テスト、デプロイ、管理をすべて一元化して行えます。 Bot Service は、.NET と Node.js のサポートを使用して Bot Builder SDK を活用します。 クイックスタート、チュートリアル、およびサンプルを使用して、Bot Service の使用方法を学習してください。</p>
+        <p>Bot Service では、ボット開発専用の統合環境が提供され、インテリジェント ボットのビルド、接続、テスト、デプロイ、管理をすべて一元化して行えます。 Azure Bot Service では、.NET と Node.js をサポートする Bot Builder SDK を活用しています。 クイックスタート、チュートリアル、およびサンプルを使用して、Bot Service の使用方法を学習してください。</p>
     </div>
 <h2 style="margin-top: 18px; margin-bottom: 0px;">5 分間のクイック スタート</h2>
 <div class="ico48Case">
@@ -94,18 +94,24 @@ ms.locfileid: "39514992"
 ::: moniker range="azure-bot-service-4.0"
 
 > [!NOTE] 
-> このトピックは V4 SDK コンテンツ向けのプレリリース資料であり、変更されることがあります。 V3 SDK (安定版) コンテンツは、[こちら](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-3.0)にあります。
+> このトピックは、現在のバージョンの SDK (v4) を対象としています。 前のバージョンの SDK (v3) のドキュメントは、[こちら](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-3.0)にあります。
 
 <div class="content">
     <h1>Azure Bot Service のドキュメント</h1>
     <div class="intro" style="min-width: 200px">
-        <p>Azure Bot Service では、ボット開発専用の統合環境が提供され、インテリジェント ボットのビルド、接続、テスト、デプロイ、管理をすべて一元化して行えます。 Azure Bot Service は、C#、JavaScript、Python、Java のサポートを使用して Bot Builder SDK を活用します。 クイックスタート、チュートリアル、およびサンプルを使用して、Bot Service の使用方法を学習してください。
+        <p>Azure Bot Service では、ボット開発専用の統合環境が提供され、インテリジェント ボットのビルド、接続、テスト、デプロイ、管理をすべて一元化して行えます。 Azure Bot Service では、C# と JavaScript をサポートする Bot Builder SDK を活用しています。 クイックスタート、チュートリアル、およびサンプルを使用して、Bot Service の使用方法を学習してください。
 </p>
 </div>
 
 <h2 style="margin-top: 18px; margin-bottom: 0px;">5 分間のクイック スタート</h2>
 <p style="margin-top: 6px; margin-bottom: 6px;"></p>
 <div class="ico48Case">
+    <div class="ico48Link">
+        <a href="/bot-framework/bot-service-quickstart">
+            <img src="v4sdk/media/logo_bot.svg" alt="">
+            <span>Azure</span>
+        </a>
+    </div>
     <div class="ico48Link">
         <a href="/bot-framework/dotnet/bot-builder-dotnet-sdk-quickstart">
             <img src="v4sdk/media/logo_csharp.svg" alt="">
@@ -118,28 +124,10 @@ ms.locfileid: "39514992"
             <span>JavaScript</span>
         </a>
     </div>
-    <div class="ico48Link">
-        <a href="/bot-framework/python/bot-builder-python-quickstart">
-            <img src="v4sdk/media/logo_python.svg" alt="">
-            <span>Python</span>
-        </a>
-    </div>
-    <div class="ico48Link">
-        <a href="/bot-framework/java/bot-builder-java-quickstart">
-            <img src="v4sdk/media/logo_java.svg" alt="">
-            <span>Java</span>
-        </a>
-    </div>
 </div>
- 
+
 <h2 style="margin-top: 36px">ステップバイステップのチュートリアル</h2>
-<p>Azure Bot Service を使用してボットを開発します。</p>
-<ol>
-    <li><a href="/bot-framework/bot-builder-tutorial-waterfall">ユーザーからの質問に回答する</a></li>
-    <li><a href="/bot-framework/bot-builder-tutorial-persist-user-inputs">特定の会話からのユーザー データを保持する</a></li>
-    <li><a href="/bot-framework/bot-builder-howto-translation">ボットを多言語にする</a></li>
-    <li><a href="/bot-framework/bot-builder-tutorial-dispatch">ディスパッチ ツールを使用して複数の LUIS アプリと QnA サービスを統合する</a></li>
-</ol>
+<p><a href="/bot-framework/bot-builder-tutorial-dispatch">ディスパッチ ツールを使用して LUIS アプリと QnA サービスを統合する</a></p>
 
 <h2 style="margin-top: 36px">リファレンス</h2>
 <ul class="panelContent cardsD">
@@ -150,8 +138,7 @@ ms.locfileid: "39514992"
                     <div class="cardText">
                         <h3>API</h3>
                         <p><a href="https://aka.ms/dotnetsdk4">.NET</a></p>
-                        <p><a href="https://aka.ms/jssdk4">JavaScript</a></p>
-                        <p><a href="/bot-framework/rest-api/bot-framework-rest-connector-api-reference">REST</a></p>
+                        <p><a href="https://aka.ms/jssdk4">JavaScript を選択した場合</a></p>
                     </div>
                 </div>
             </div>
@@ -164,9 +151,7 @@ ms.locfileid: "39514992"
                     <div class="cardText">
                         <h3>SDK</h3>
                         <p><a href="https://github.com/Microsoft/botbuilder-dotnet">.NET</a></p>
-                        <p><a href="https://github.com/Microsoft/botbuilder-js">JavaScript</a></p>
-                        <p><a href="https://github.com/Microsoft/botbuilder-python">Python</a></p>
-                        <p><a href="https://github.com/Microsoft/botbuilder-java">Java</a></p>
+                        <p><a href="https://github.com/Microsoft/botbuilder-js">JavaScript を選択した場合</a></p>
                     </div>
                 </div>
             </div>

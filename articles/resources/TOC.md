@@ -1,3 +1,12 @@
+# Enterprise テンプレート
+## [はじめに](../v4sdk/bot-builder-enterprise-template-overview.md)
+## [概要](../v4sdk/bot-builder-enterprise-template-overview-detail.md)
+## [プロジェクトの作成](../v4sdk/bot-builder-enterprise-template-create-project.md)
+## [テンプレートのカスタマイズ](../v4sdk/bot-builder-enterprise-template-customize.md)
+## [テンプレートのデプロイ](../v4sdk/bot-builder-enterprise-template-deployment.md)
+## [Analytics](../v4sdk/bot-builder-enterprise-template-powerbi.md)
+# カスタム アシスタント
+## [概要](../v4sdk/bot-builder-custom-assistant-introduction.md)
 # [FAQ](../bot-service-resources-bot-framework-faq.md)
 # [サポートを受ける](../bot-service-resources-links-help.md)
 # [識別子のガイド](../bot-service-resources-identifiers-guide.md)
