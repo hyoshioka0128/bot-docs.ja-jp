@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 2fbff9c6d7fe1e06fa87e5b2695056dbc1414570
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 62088ecdf2f8402ec5456eea758f5db994de0cf9
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304393"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707318"
 ---
 # <a name="create-messages"></a>メッセージの作成
 
@@ -23,8 +23,6 @@ ms.locfileid: "39304393"
 メッセージ テキストは **plain**、**markdown**、または **xml** を使用して書式設定できます。 `textFormat` プロパティの既定の書式設定は **markdown** で、Markdown 書式設定標準を使用してテキストを解釈します。 テキスト書式のサポートのレベルは、チャネルによって異なります。 使用する機能がターゲットのチャネルでサポートされているかどうかを確認するには、[Channel Inspector][ChannelInspector] を使用して機能をプレビューします。 
 
 [Activity][Activity] オブジェクトの `textFormat` プロパティを使用して、テキストの書式を指定することができます。 たとえば、プレーン テキストのみを含む基本的なメッセージを作成するには、[Activity][Activity] オブジェクトの `textFormat` プロパティを **plain** に設定し、`text` プロパティをメッセージの内容に設定し、`locale` プロパティを送信者のロケールに設定します。 
-
-一般的にサポートされているテキストの書式設定の一覧については、「[Text formatting](../bot-service-channel-inspector.md#text-formatting)」 (テキストの書式設定) を参照してください。
 
 ## <a name="attachments"></a>[添付ファイル]
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 804081e52a03a27da418f549f0fadb6dc8bca52b
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: ebe95791d795b0117da34cc0352847c5f27f837c
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905676"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707298"
 ---
 # <a name="create-messages"></a>メッセージを作成する
 
@@ -68,8 +68,6 @@ session.send(customMessage);
 スコープ内に `session` オブジェクトがない場合は、`bot.send` メソッドを使用して書式設定されたメッセージをユーザーに送信することができます。
 
 メッセージの `textFormat` プロパティを使用して、テキストの書式を指定することができます。 `textFormat` プロパティは、**plain**、**markdown**、**xml** のいずれかに設定できます。 `textFormat` の既定値は **markdown** です。 
-
-一般的にサポートされているテキストの書式設定の一覧については、「[Text formatting](../bot-service-channel-inspector.md#text-formatting)」 (テキストの書式設定) を参照してください。 使用する機能がターゲット チャネルでサポートされていることを確認するには、[Channel Inspector](../bot-service-channel-inspector.md) を使用して、機能をプレビューします。
 
 ## <a name="message-property"></a>メッセージ プロパティ
 

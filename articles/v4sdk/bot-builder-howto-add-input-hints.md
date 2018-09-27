@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 08/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 02c6cf56a0c1161fa0393880810c1481c5eb2461
-ms.sourcegitcommit: f89ed979eb6321232fb21100ef376d9b0d5113c9
+ms.openlocfilehash: acf119a05d4c9f37b74c4fcaf2ad944978504560
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42914632"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707248"
 ---
 # <a name="add-input-hints-to-messages"></a>メッセージへの入力ヒントの追加
 
@@ -24,7 +24,7 @@ ms.locfileid: "42914632"
 
 入力ヒントに必要なライブラリが含まれていることを確認してください。
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# <a name="ctabcs"></a>[C# を選択した場合](#tab/cs)
 
 ```cs
 using Microsoft.Bot.Schema;
@@ -38,7 +38,7 @@ using Microsoft.Bot.Schema;
 using Microsoft.Bot.Builder.Core.Extensions;
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascripttabjs"></a>[JavaScript を選択した場合](#tab/js)
 
 ```javascript
 const {InputHints, MessageFactory} = require('botbuilder');
@@ -50,7 +50,7 @@ const {InputHints, MessageFactory} = require('botbuilder');
 
 ボットが受動的に入力の準備ができているが、ユーザーからの応答を待っていないことを示すには、メッセージの入力ヒントを _accepting input_ に設定します。 多くのチャネルでは、これによってクライアントの入力ボックスが有効になり、マイクは閉じられますがユーザーはまだマイクにアクセスできます。 たとえば、ユーザーがマイクボタンを押し下げたままにすると、Cortana はマイクを開いてユーザーからの入力を受け付けます。 次のコードは、ボットがユーザーの入力を受け付けていることを示すメッセージを作成します。
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# <a name="ctabcs"></a>[C# を選択した場合](#tab/cs)
 
 ```csharp
 var reply = MessageFactory.Text(
@@ -60,7 +60,7 @@ var reply = MessageFactory.Text(
 await context.SendActivity(reply).ConfigureAwait(false);
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascripttabjs"></a>[JavaScript を選択した場合](#tab/js)
 
 ```javascript
 const basicMessage = MessageFactory.text('This is the text that will be displayed.', 'This is the text that will be spoken.', InputHints.AcceptingInput);
@@ -73,7 +73,7 @@ await context.sendActivity(basicMessage);
 
 ボットがユーザーからの応答を待っていることを示すには、メッセージの入力ヒントを _expecting input_ に設定します。 多くのチャネルでは、これによってクライアントの入力ボックスが有効になり、マイクが開きます。 次のコード例は、ボットがユーザーの入力を期待していることを示すメッセージを作成します。
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# <a name="ctabcs"></a>[C# を選択した場合](#tab/cs)
 
 ```csharp
 var reply = MessageFactory.Text(
@@ -83,7 +83,7 @@ var reply = MessageFactory.Text(
 await context.SendActivity(reply).ConfigureAwait(false);
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascripttabjs"></a>[JavaScript を選択した場合](#tab/js)
 
 ```javascript
 const basicMessage = MessageFactory.text('This is the text that will be displayed.', 'This is the text that will be spoken.', InputHints.ExpectingInput);
@@ -96,7 +96,7 @@ await context.sendActivity(basicMessage);
 
 ボットがユーザーから入力を受け取る準備ができていないことを示すには、メッセージの入力ヒントを _ignoring input_ に設定します。 多くのチャネルでは、これによってクライアントの入力ボックスが無効になり、マイクが閉じられます。 次のコード例は、ボットがユーザーの入力を無視していることを示すメッセージを作成します。
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# <a name="ctabcs"></a>[C# を選択した場合](#tab/cs)
 
 ```csharp
 var reply = MessageFactory.Text(
@@ -106,7 +106,7 @@ var reply = MessageFactory.Text(
 await context.SendActivity(reply).ConfigureAwait(false);
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascripttabjs"></a>[JavaScript を選択した場合](#tab/js)
 
 ```javascript
 const basicMessage = MessageFactory.text('This is the text that will be displayed.', 'This is the text that will be spoken.', InputHints.IgnoringInput);
@@ -122,3 +122,4 @@ await context.sendActivity(basicMessage);
 - ボットがプロンプトを送信する場合、メッセージの入力ヒントは、ボットが入力を期待している (**expecting input**) ことを指定します。</li>
 - ボットが単一のメッセージを送信する場合、メッセージの入力ヒントは、ボットが入力を受け付けている (**accepting input**) ことを指定します。</li>
 - ボットが連続したメッセージを送信する場合、最後を除いたすべてのメッセージの入力ヒントはボットが入力を無視している (**ignoring input**) ことを指定し、最後のメッセージの入力ヒントはボットが入力を受け付けている (**accepting input**) ことを指定します。
+

@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 5/16/17
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 07f4ad7d53c456de53be196977458a3d8b03c6f0
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 87ab8d3ceb872cdb0342458b24a9756ccb710fb6
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42906196"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46706988"
 ---
 # <a name="extract-intents-and-entities-using-luisgen"></a>LUISGen を使用した意図とエンティティの抽出
 
@@ -23,14 +23,14 @@ ms.locfileid: "42906196"
 LUIS アプリでは、意図の認識に加え、ユーザーの要求を満たすための重要な単語であるエンティティを抽出することもできます。 たとえば、レストランの予約の例では、LUIS アプリはユーザーのメッセージからグループの人数、予約日、レストランの場所などを抽出できます。 
 
 
-[LUISGen ツール](https://github.com/Microsoft/botbuilder-tools/tree/master/LUISGen)を使用して、ボットのコードで LUIS からエンティティを簡単に抽出できるクラスを生成できます。
+[LUISGen ツール](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen)を使用して、ボットのコードで LUIS からエンティティを簡単に抽出できるクラスを生成できます。
 
 Node.js コマンド ラインで、`luisgen` をグローバル パスにインストールします。
 ```
 npm install -g luisgen
 ```
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# <a name="ctabcs"></a>[C# を選択した場合](#tab/cs)
 
 ## <a name="generate-a-luis-results-class"></a>LUIS 結果クラスを生成する
 

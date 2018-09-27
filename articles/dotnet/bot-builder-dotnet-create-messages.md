@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 00ea81558bf4b8206dc6142ab26e47e3652be563
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: c35e651f674d65728ac93a815cc7116515790f53
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574548"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707878"
 ---
 # <a name="create-messages"></a>メッセージの作成
 
@@ -32,8 +32,6 @@ ms.locfileid: "39574548"
 [!code-csharp[Set message properties](../includes/code/dotnet-create-messages.cs#setBasicProperties)]
 
 メッセージの `TextFormat` プロパティを使用して、テキストの書式を指定することができます。 `TextFormat` プロパティは、**plain**、**markdown**、**xml** のいずれかに設定できます。 `TextFormat` の既定値は **markdown** です。 
-
-一般的にサポートされているテキストの書式設定の一覧については、「[Text formatting](../bot-service-channel-inspector.md#text-formatting)」 (テキストの書式設定) を参照してください。 使用する機能がターゲット チャネルでサポートされていることを確認するには、[Channel Inspector](../bot-service-channel-inspector.md) を使用して、機能をプレビューします。
 
 ## <a name="attachments"></a>[添付ファイル]
 

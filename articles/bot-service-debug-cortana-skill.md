@@ -7,14 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/01/18
-ms.openlocfilehash: 25474f821d64ea50442d9777d8f891124eb27573
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+monikerRange: azure-bot-service-3.0
+ms.openlocfilehash: ceeb854ace1388b6e0435aacc3acf9027763ee73
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301820"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707968"
 ---
 # <a name="test-a-cortana-skill"></a>Cortana スキルのテスト
+
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
  
 Bot Builder SDK を使用して Cortana スキルを構築したら、Cortana からそのスキルを呼び出してテストできます。 次の手順では、Cortana スキルをテストするために必要な手順について説明します。
 
@@ -82,8 +85,7 @@ Cortana スキルの起動に失敗した場合は、次のことを確認して
 Cortana スキルをテストして期待どおりに動作することを確認したら、ベータ テスト担当者のグループにデプロイするか、一般に公開することができます。 詳細については、「[Publishing Cortana Skills (Cortana スキルの公開)][Cortana-Publish]」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
-* [Cortana スキル キット][CortanaGetStarted]
-* [Channel Inspector を使用して機能をプレビューする](bot-service-channel-inspector.md)
+* [Cortana Skills Kit][CortanaGetStarted]
 
 [CortanaGetStarted]: /cortana/getstarted
 

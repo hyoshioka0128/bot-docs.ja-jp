@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 6/22/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 19dc16d6e90192ec758b4b73789d930053ad0462
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 41f3355102147e0d403629f23de79a90ac301209
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905796"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707898"
 ---
 # <a name="migrate-your-bot-to-azure"></a>ボットを Azure に移行する
 
@@ -43,7 +43,7 @@ ms.locfileid: "42905796"
 
 Node.js で作成された Functions ボットは移行前に [Funcpack](https://github.com/Azure/azure-functions-pack) でパッケージ化する必要があります。 プロジェクトは Funcpack でパッケージ化する手順は次のようになります。
 
-1.  コードをローカルにダウンロードしていない場合、[ダウンロード](bot-service-build-download-source-code.md#download-bot-source-code)します。
+1.  コードをローカルにダウンロードしていない場合、[ダウンロード](bot-service-build-download-source-code.md)します。
 2.  **packages.json** の npm パッケージをすべて最新版に更新し、`npm install` を実行します。
 3.  **messages/index.js** を開き、`module.exports = { default: connector.listen() }` を `module.exports = connector.listen();` に変更します。
 4.  npm で `npm install -g azure-functions-pack` を実行し、Funcpack をインストールします。
