@@ -4,16 +4,13 @@
 # クイック スタート
 ## [Azure Bot Service を使用してボットを作成する](~/bot-service-quickstart.md)
 ## ボットをローカルで作成する
-### [.NET](dotnet/bot-builder-dotnet-quickstart.md)
 ### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
-### [Node.js](nodejs/bot-builder-nodejs-quickstart.md)
 ### [JavaScript を選択した場合](javascript/bot-builder-javascript-quickstart.md)
 # チュートリアル
 ## [ディスパッチ ツールと共に LUIS と QnA サービスを使用する](v4sdk/bot-builder-tutorial-dispatch.md)
-## [Azure CLI を使用したボットの作成](bot-builder-tools-az-cli.md)
+## [ボットへの認証の追加](bot-builder-tutorial-authentication.md)
 # サンプル
-## [GitHub のサンプル リポジトリ](bot-builder-samples.md)
-## [Node.js](~/nodejs/bot-builder-nodejs-samples.md)
+## [Samples リポジトリ](https://github.com/Microsoft/BotBuilder-Samples/blob/master/readme.md)
 # 概念
 ## [ボットのしくみ](v4sdk/bot-builder-basics.md)
 ## [ダイアログ ライブラリ](v4sdk/bot-builder-concept-dialog.md)
@@ -50,7 +47,7 @@
 ### [ダイアログのデータを保持する](v4sdk/bot-builder-tutorial-persist-user-inputs.md)
 ### [LUIS を使用した言語の理解](v4sdk/bot-builder-howto-v4-luis.md)
 ### [QnA Maker を使用して質問に回答する](v4sdk/bot-builder-howto-qna.md)
-### [ボットへの認証の追加](bot-builder-tutorial-authentication.md)
+### [ボットへの認証の追加](v4sdk/bot-builder-authentication.md)
 ### [ボット コードをダウンロードして再デプロイする](bot-service-build-download-source-code.md)
 ### [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)
 ### [ローカルのボットを Azure にデプロイする](bot-builder-howto-deploy-azure.md)
