@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: ba5939faf95546b854703978bf7f512e7665eb3b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 09/28/2018
+ms.openlocfilehash: 3e9756f08690820950d0f6d0b8128521cb94f60b
+ms.sourcegitcommit: d4afc924b0e1907c4d6f7a6fc5ac1fe521aeef7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304100"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47447377"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Direct Line API 3.0 の主要な概念
 
@@ -28,7 +28,7 @@ Direct Line の会話はクライアントによって明示的に開かれ、�
 
 ## <a name="sending-messages"></a>メッセージの送信
 
-Direct Line API 3.0 を使用すると、クライアントは `HTTP POST` 要求を発行することでメッセージを送信できます。 クライアントは、要求ごとに 1 つのメッセージを送信できます。 詳細については、「[ボットにアクティビティを送信する](bot-framework-rest-direct-line-3-0-send-activity.md)」を参照してください。
+Direct Line API 3.0 を使用すると、クライアントは `HTTP POST` 要求を発行することでメッセージを送信できます。 クライアントは、要求ごとに 1 つのメッセージを送信できます。 詳しくは、「[ボットにアクティビティを送信する](bot-framework-rest-direct-line-3-0-send-activity.md)」をご覧ください。
 
 ## <a name="receiving-messages"></a>メッセージの受信
 
@@ -46,17 +46,21 @@ Bot Framework では、C# と Node.js からの Direct Line API 3.0 へのアク
 
 C# または Node.js のクライアント ライブラリを使用する代わりに、<a href="https://docs.botframework.com/en-us/restapi/directline3/swagger.json" target="_blank">Direct Line API 3.0 Swagger ファイル</a>を使用して好みの言語で独自のクライアント ライブラリを生成できます。
 
+::: moniker range="azure-bot-service-3.0"
+
 ### <a name="sample-code"></a>サンプル コード
 
-<a href="https://github.com/Microsoft/BotBuilder-Samples" target="_blank">BotBuilder-Samples</a> GitHub リポジトリには、C# と Node.js で Direct Line API 3.0 を使用する方法を示す複数のサンプルが含まれています。
+<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples" target="_blank">BotBuilder-Samples</a> GitHub リポジトリには、C# と Node.js で Direct Line API 3.0 を使用する方法を示す複数のサンプルが含まれています。
 
 | サンプル | Language | 説明 |
 |----|----|----|
-| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-DirectLine" target="_blank">Direct Line Bot のサンプル</a> | C# | Direct Line API を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
-| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-DirectLineWebSockets" target="_blank">Direct Line Bot のサンプル (クライアント WebSocket を使用)</a> | C# | Direct Line API と WebSocket を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
-| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-DirectLine" target="_blank">Direct Line Bot のサンプル</a> | JavaScript | Direct Line API を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
-| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-DirectLineWebSockets" target="_blank">Direct Line Bot のサンプル (クライアント WebSocket を使用)</a> | JavaScript | Direct Line API と WebSocket を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
+| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLine" target="_blank">Direct Line Bot のサンプル</a> | C#の場合 | Direct Line API を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
+| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLineWebSockets" target="_blank">Direct Line Bot のサンプル (クライアント WebSocket を使用)</a> | C#の場合 | Direct Line API と WebSocket を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
+| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/core-DirectLine" target="_blank">Direct Line Bot のサンプル</a> | JavaScript | Direct Line API を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
+| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/core-DirectLineWebSockets" target="_blank">Direct Line Bot のサンプル (クライアント WebSocket を使用)</a> | JavaScript | Direct Line API と WebSocket を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
+
+::: moniker-end
 
 ### <a name="web-chat-control"></a>Web チャット コントロール 
 
-Bot Framework では、Direct Line によって強化されたボットをクライアント アプリケーションに埋め込めるようにするコントロールが提供されています。 詳細については、「<a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">Microsoft Bot Framework WebChat コントロール</a>」を参照してください。
+Bot Framework では、Direct Line によって強化されたボットをクライアント アプリケーションに埋め込めるようにするコントロールが提供されています。 詳細については、<a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">Microsoft Bot Framework WebChat コントロール</a>に関するページを参照してください。

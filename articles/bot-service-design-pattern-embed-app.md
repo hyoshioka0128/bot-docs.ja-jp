@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 08/15/2018
-ms.openlocfilehash: 68d2d4f7a19aecfcb2c630e5e9e55ca5b8a21d89
-ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
+ms.openlocfilehash: 53148b178b937fdee5bde9a47ef016eedbb92da4
+ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42756703"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47403898"
 ---
 # <a name="embed-a-bot-in-an-app"></a>ボットをアプリに埋め込む
 
@@ -62,9 +62,11 @@ public class WebPage : ContentPage
 
 ![バック チャネル](~/media/bot-service-design-pattern-embed-app/xamarin-apps.png)
 
-## <a name="sample-code"></a>サンプル コード
+<!-- TODO: No sample bot available
+## Sample code
 
-(この記事で説明されているように) ボットが実行されるクロスプラットフォーム モバイル アプリを作成する方法を示す完全なサンプルについては、GitHub の <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/capability-BotInApps" target="_blank">アプリ内のボットのサンプル</a>のページをご覧ください。
+For a complete sample that shows how to create a cross-platform mobile app that runs a bot (as described in this article), see the <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/capability-BotInApps" target="_blank">Bot in Apps sample</a> in GitHub.
+-->
 
 ## <a name="additional-resources"></a>その他のリソース
 

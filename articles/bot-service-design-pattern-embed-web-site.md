@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 6aae4e9f6cb6a4e892b8036eafb9489dfaedbb36
-ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
+ms.openlocfilehash: a19145c446c74468cef3ae5d9abf6e90e91196ff
+ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42795098"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47403979"
 ---
 # <a name="embed-a-bot-in-a-website"></a>ボットを Web サイトに埋め込む
 
@@ -30,7 +30,7 @@ Skype Web コントロールは、単に Skype のフロントエンドとして
 
 ## <a name="open-source-web-control"></a>オープン ソース Web コントロール
 
-<a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">オープン ソース Web チャット コントロール</a>は ReactJS に基づいており、Bot Framework との通信には [Direct Line API][directLineAPI] が使用されています。 Web チャット コントロールには、Web チャットを実装するための空白のキャンバスが用意されており、そのチャットの動作と、チャットのユーザー エクスペリエンスをフル コントロールできます。 
+<a href="https://aka.ms/BotFramework-WebChat" target="_blank">オープン ソース Web チャット コントロール</a>は ReactJS に基づいており、Bot Framework との通信には [Direct Line API][directLineAPI] が使用されています。 Web チャット コントロールには、Web チャットを実装するための空白のキャンバスが用意されており、そのチャットの動作と、チャットのユーザー エクスペリエンスをフル コントロールできます。 
 
 "*バックチャネル*" メカニズムにより、コントロールをホストしている Web ページが、ユーザーにはまったく見えないようにボットと直接通信できます。 この機能により、複数の便利なシナリオに対応できます。 
 
@@ -46,7 +46,7 @@ Skype Web コントロールは、単に Skype のフロントエンドとして
 
 ## <a name="sample-code"></a>サンプル コード
 
-<a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">オープン ソース Web チャット コントロール</a>は GitHub で入手できます。 オープン ソース Web チャット コントロールと Bot Builder SDK for Node.js を使用してバックチャネル メカニズムを実装する方法の詳細については、「[Use the backchannel mechanism (バックチャネル メカニズムの使用)](~/nodejs/bot-builder-nodejs-backchannel.md)」を参照してください。
+<a href="https://aka.ms/BotFramework-WebChat" target="_blank">オープン ソース Web チャット コントロール</a>は GitHub で入手できます。 オープン ソース Web チャット コントロールと Bot Builder SDK for Node.js を使用してバックチャネル メカニズムを実装する方法の詳細については、「[Use the backchannel mechanism (バックチャネル メカニズムの使用)](~/nodejs/bot-builder-nodejs-backchannel.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

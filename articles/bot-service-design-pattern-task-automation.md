@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 2/13/2018
-ms.openlocfilehash: 60a3796e255611ff09d5418cdeaa6f363ad8da15
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 3bf6bef805e4a86b6e070693660eb5cb20468ffd
+ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42904968"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404008"
 ---
 # <a name="create-task-automation-bots"></a>タスクの自動化ボットの作成
 
@@ -92,18 +92,20 @@ Contoso 社の経験豊富な開発者である John は、password-reset タス
 
 ## <a name="bot-app-or-website"></a>ボットか、アプリか、Web サイトか
 
-タスクの自動化ボットがアプリまたは Web サイトによく似ているのなら、代わりにアプリや Web サイトだけを構築すればよいのではないか、と考える人がいるかもしれません。 シナリオによっては、ボットではなく、アプリや Web サイトを構築する方が完全に合理的である場合があります。 [Bot Framework Direct Line API][directLineAPI] または <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">Web チャット コントロール</a>を使用して、お使いのボットをアプリに埋め込むでもこともできます。 ボットをアプリのコンテキスト内に実装すれば、充実したアプリ エクスペリエンスと会話エクスペリエンスの両方が 1 か所で実現するためベストです。 
+タスクの自動化ボットがアプリまたは Web サイトによく似ているのなら、代わりにアプリや Web サイトだけを構築すればよいのではないか、と考える人がいるかもしれません。 シナリオによっては、ボットではなく、アプリや Web サイトを構築する方が完全に合理的である場合があります。 [Bot Framework Direct Line API][directLineAPI] または <a href="https://aka.ms/BotFramework-WebChat" target="_blank">Web チャット コントロール</a>を使用して、お使いのボットをアプリに埋め込むでもこともできます。 ボットをアプリのコンテキスト内に実装すれば、充実したアプリ エクスペリエンスと会話エクスペリエンスの両方が 1 か所で実現するためベストです。 
 
 しかし、多くの場合、アプリまたは Web サイトの構築は、ボットを構築するよりも格段に複雑で、コストもかかります。 アプリや Web サイトでは、多くの場合、複数のクライアントとプラットフォームをサポートする必要があり、パッケージ化や展開が面倒で、時間もかかります。アプリをダウンロードしてインストールするというユーザー エクスペリエンスは必ずしも理想的とはいえません。 これらの理由から、当面の問題については、ほとんどの場合、ボットを使用する方がずっと簡単に解決できるのです。 
 
 さらに、ボットは、簡単に展開および拡張できるという自由さも備えています。 たとえば、開発者は、自然言語および音声機能を password-reset ボットに追加することで、音声通話によるボットへのアクセスを可能にできます。また、テキスト メッセージのサポートを追加することもできます。 会社が建物全体にキオスクをセットアップして、password-reset ボットをそのエクスペリエンスに埋め込むこともできます。
 
 ::: moniker range="azure-bot-service-3.0"
-## <a name="sample-code"></a>サンプル コード
+<!-- TODO: SimpleTaskAutomation no longer exists
+## Sample code
 
-Bot Builder SDK for .NET を使用してシンプルなタスク自動化を実装する方法を示す完全なサンプルについては、GitHub で<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/capability-SimpleTaskAutomation" target="_blank">シンプルなタスク自動化のサンプル</a>を参照してください。
+For a complete sample that shows how to implement simple task automation using the Bot Builder SDK for .NET, see the <a href="https://aka.ms/capability-SimpleTaskAutomation" target="_blank">Simple Task Automation sample</a> in GitHub.
 
-Bot Builder SDK for Node.js を使用してシンプルなタスク自動化を実装する方法を示す完全なサンプルについては、GitHub で<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/capability-SimpleTaskAutomation" target="_blank">シンプルなタスク自動化のサンプル</a>を参照してください。
+For a complete sample that shows how to implement simple task automation using the Bot Builder SDK for Node.js, see the <a href="https://aka.ms/capability-SimpleTaskAutomation" target="_blank">Simple Task Automation sample</a> in GitHub.
+-->
 
 ## <a name="additional-resources"></a>その他のリソース
 

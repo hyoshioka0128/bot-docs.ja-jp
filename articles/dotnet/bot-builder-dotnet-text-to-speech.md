@@ -8,14 +8,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a8bc0b68b3dfa63ba4e91103c57d4fac60ddca79
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 55663bb493808d5efce2f25699f9df5aca4db968
+ms.sourcegitcommit: d4afc924b0e1907c4d6f7a6fc5ac1fe521aeef7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574998"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47447337"
 ---
-# <a name="add-speech-to-messages"></a>メッセージへの音声の追加
+# <a name="add-speech-to-messages"></a>メッセージに音声を追加する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
@@ -58,7 +58,7 @@ Bot Builder SDK for .NET を使用すると、音声対応チャネルでボッ�
 
 ## <a name="sample-code"></a>サンプル コード 
 
-Bot Builder SDK for .NET を使用して音声対応ボットを作成する方法を示す完全なサンプルについては、GitHub で<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-RollerSkill" target="_blank">ローラー スキルのサンプル</a>を参照してください。
+Bot Builder SDK for .NET を使用して音声対応ボットを作成する方法を示す完全なサンプルについては、GitHub で<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp" target="_blank">ローラー スキルのサンプル</a>を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
