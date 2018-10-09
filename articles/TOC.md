@@ -19,7 +19,6 @@
 ## [ユーザーの歓迎](v4sdk/bot-builder-welcome-user.md)
 ## [言語の理解](v4sdk/bot-builder-concept-luis.md)
 ## [Bot Service テンプレート](bot-service-concept-templates.md)
-## [Bot Builder を使用した開発](bot-builder-overview-getstarted.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
 ## [ボットの主要シナリオ](bot-service-scenario-overview.md)
 ### [コマース ボット](bot-service-scenario-commerce.md)
