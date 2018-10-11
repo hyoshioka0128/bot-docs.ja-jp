@@ -8,14 +8,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f5cc520704c4bebef6250195fd3e6cbdc3b0be3f
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: c00913c4e6fa7133dad734e69167d2723257f75a
+ms.sourcegitcommit: 6c2426c43cd2212bdea1ecbbf8ed245145b3c30d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574958"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48852307"
 ---
-# <a name="send-proactive-messages"></a>プロアクティブ メッセージの送信
+# <a name="send-proactive-messages"></a>プロアクティブ メッセージを送信する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
@@ -176,7 +176,7 @@ public class SurveyDialog : IDialog<object>
 
 ## <a name="sample-code"></a>サンプル コード
 
-Bot Builder SDK for .NET を使用してプロアクティブ メッセージを送信する方法を示す完全なサンプルについては、GitHub で<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">プロアクティブ メッセージのサンプル</a>を参照してください。 プロアクティブ メッセージのサンプル内で、<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> はアドホック プロアクティブ メッセージを送信する方法を示し、<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages/startNewDialog" target="_blank">startNewDialog</a> はダイアログ ベースのプロアクティブ メッセージを送信する方法を示しています。 
+Bot Builder SDK for .NET を使用してプロアクティブ メッセージを送信する方法を示す完全なサンプルについては、GitHub で<a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">プロアクティブ メッセージのサンプル</a>を参照してください。 プロアクティブ メッセージの例の中では、<a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> がアドホック プロアクティブ メッセージの送信方法を示し、<a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank">startNewDialog</a> がダイアログ ベースのプロアクティブ メッセージの送信方法を示しています。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

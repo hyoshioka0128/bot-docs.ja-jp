@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 08/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: acf119a05d4c9f37b74c4fcaf2ad944978504560
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: fbd3378e5be743b17d1a19db06c69a0d292f1524
+ms.sourcegitcommit: abde9e0468b722892f94caf2029fae165f96092f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707248"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48875669"
 ---
 # <a name="add-input-hints-to-messages"></a>メッセージへの入力ヒントの追加
 
@@ -24,7 +24,7 @@ ms.locfileid: "46707248"
 
 入力ヒントに必要なライブラリが含まれていることを確認してください。
 
-# <a name="ctabcs"></a>[C# を選択した場合](#tab/cs)
+# <a name="ctabcs"></a>[C#](#tab/cs)
 
 ```cs
 using Microsoft.Bot.Schema;
@@ -38,7 +38,7 @@ using Microsoft.Bot.Schema;
 using Microsoft.Bot.Builder.Core.Extensions;
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript を選択した場合](#tab/js)
+# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 ```javascript
 const {InputHints, MessageFactory} = require('botbuilder');
@@ -57,10 +57,10 @@ var reply = MessageFactory.Text(
     "This is the text that will be displayed.",
     "This is the text that will be spoken.",
     InputHints.AcceptingInput);
-await context.SendActivity(reply).ConfigureAwait(false);
+await context.SendActivityAsync(reply).ConfigureAwait(false);
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript を選択した場合](#tab/js)
+# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 ```javascript
 const basicMessage = MessageFactory.text('This is the text that will be displayed.', 'This is the text that will be spoken.', InputHints.AcceptingInput);
@@ -80,10 +80,10 @@ var reply = MessageFactory.Text(
     "This is the text that will be displayed.",
     "This is the text that will be spoken.",
     InputHints.ExpectingInput);
-await context.SendActivity(reply).ConfigureAwait(false);
+await context.SendActivityAsync(reply).ConfigureAwait(false);
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript を選択した場合](#tab/js)
+# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 ```javascript
 const basicMessage = MessageFactory.text('This is the text that will be displayed.', 'This is the text that will be spoken.', InputHints.ExpectingInput);
@@ -103,10 +103,10 @@ var reply = MessageFactory.Text(
     "This is the text that will be displayed.",
     "This is the text that will be spoken.",
     InputHints.IgnoringInput);
-await context.SendActivity(reply).ConfigureAwait(false);
+await context.SendActivityAsync(reply).ConfigureAwait(false);
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript を選択した場合](#tab/js)
+# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 ```javascript
 const basicMessage = MessageFactory.text('This is the text that will be displayed.', 'This is the text that will be spoken.', InputHints.IgnoringInput);

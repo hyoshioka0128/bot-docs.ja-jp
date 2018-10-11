@@ -6,15 +6,17 @@ ms.author: JonathanFingold
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 7/2/2018
+ms.date: 10/04/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 37189bb9efbee5a2ad5f40f58106d4d85eda4473
-ms.sourcegitcommit: bff936a6a3dd5b1bd3ddfeed8bd1023e52929f08
+ms.openlocfilehash: be53d50ebfa7738b37fe9a25941fe29764f18c26
+ms.sourcegitcommit: 6c2426c43cd2212bdea1ecbbf8ed245145b3c30d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312476"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48852197"
 ---
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
 このチュートリアルでは、Azure Bot Service の新しいボット認証機能を使用します。提供される機能を利用することで、Azure AD (Azure Active Directory)、GitHub、Uber などの各種 ID プロバイダーにユーザーを認証するボットを容易に開発できます。 またこれらの更新は、一部クライアント用の_マジック コード検証_を排除することによって、ユーザー エクスペリエンスの向上に向けて前進します。
 
@@ -37,10 +39,10 @@ OAuth コントローラーのホスティングやトークンのライフサ�
 
 | サンプル | BotBuilder のバージョン | 説明 |
 |:---|:---:|:---|
-| [AadV1Bot](https://github.com/Microsoft/BotBuilder/tree/master/CSharp/Samples/AadV1Bot) | v3 | Azure AD v1 エンドポイントを使用して、v3 C# SDK での OAuthCard サポートの例を示します |
-| [AadV2Bot](https://github.com/Microsoft/BotBuilder/tree/master/CSharp/Samples/AadV2Bot) | v3 |  Azure AD v2 エンドポイントを使用して、v3 C# SDK での OAuthCard サポートの例を示します |
-| [GitHubBot](https://github.com/Microsoft/BotBuilder/tree/master/CSharp/Samples/GitHubBot) | v3 |  GitHub を使用して、v3 C# SDK での OAuthCard サポートの例を示します |
-| [BasicOAuth](https://github.com/Microsoft/BotBuilder/tree/master/CSharp/Samples/Microsoft.Bot.Sample.BasicOAuth) | v3 |  v3 C# SDK での OAuth 2.0 サポートの例を示します |
+| [AadV1Bot](https://aka.ms/AadV1Bot) | v3 | Azure AD v1 エンドポイントを使用して、v3 C# SDK での OAuthCard サポートの例を示します |
+| [AadV2Bot](https://aka.ms/AadV2Bot) | v3 |  Azure AD v2 エンドポイントを使用して、v3 C# SDK での OAuthCard サポートの例を示します |
+| [GitHubBot](https://aka.ms/GitHubBot) | v3 |  GitHub を使用して、v3 C# SDK での OAuthCard サポートの例を示します |
+| [BasicOAuth](https://aka.ms/BasicOAuth) | v3 |  v3 C# SDK での OAuth 2.0 サポートの例を示します |
 
 > [!NOTE]
 > 認証機能は Node.js と BotBuilder v3 の組み合わせでも動作します。 ただし、この記事ではサンプルの C#コードのみを扱います。
@@ -360,3 +362,5 @@ else if(message.Type == ActivityTypes.Event)
     }
 }
 ```
+## <a name="additional-resources"></a>その他のリソース
+[Bot Builder SDK](https://github.com/microsoft/botbuilder)
