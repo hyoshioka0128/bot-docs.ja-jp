@@ -1,8 +1,8 @@
 # <a name="implement-channel-specific-functionality"></a>チャネル固有の機能の実装
 
-一部のチャネルには、[メッセージのテキストと添付ファイル](../dotnet/bot-builder-dotnet-create-messages.md)だけでは実装できない機能が用意されています。 チャネル固有の機能を実装するには、`Activity` オブジェクトの `ChannelData` プロパティを使用して、ネイティブのメタデータをチャネルに渡します。 たとえば、お使いのボットで `ChannelData` プロパティを使用して、ステッカーを送信するように Telegram に指示したり、電子メールを送信するように Office365 に指示したりできます。
+一部のチャネルには、メッセージのテキストと添付ファイルを使用するだけでは実装できない機能が用意されています。 チャネル固有の機能を実装するには、アクティビティ オブジェクトの "_チャネル データ_" プロパティを使用して、ネイティブのメタデータをチャネルに渡します。 たとえば、お使いのボットでチャネル データ プロパティを使用して、ステッカーを送信するように Telegram に指示したり、電子メールを送信するように Office365 に指示したりできます。
 
-この記事では、メッセージ アクティビティの `ChannelData` プロパティを使用して、このチャネル固有の機能を実装する方法について説明します。
+この記事では、メッセージ アクティビティのチャネル データ プロパティを使用して、このチャネル固有の機能を実装する方法について説明します。
 
 | チャネル | 機能 |
 |----|----|
@@ -10,37 +10,52 @@
 | Slack | 完全に忠実な Slack メッセージを送信します |
 | Facebook | Facebook 通知をネイティブで送信します |
 | Telegram | 音声メモ、ステッカーの共有など、Telegram 固有のアクションを実行します |
-| Kik | ネイティブ Kik メッセージを送受信します | 
+| Kik | ネイティブ Kik メッセージを送受信します |
 
 > [!NOTE]
-> `Activity` オブジェクトの `ChannelData` プロパティの値は JSON オブジェクトです。 そのため、この記事の例では、さまざまなシナリオにおいて有効な `channelData` JSON プロパティの書式を示します。 .NET を使用して JSON オブジェクトを作成するには、`JObject` (.NET) クラスを使用します。 
+> アクティビティ オブジェクトのチャネル データ プロパティの値は JSON オブジェクトです。
+> そのため、この記事の例では、さまざまなシナリオにおいて有効な `channelData` JSON プロパティの書式を示します。
+> .NET を使用して JSON オブジェクトを作成するには、`JObject` (.NET) クラスを使用します。
 
 ## <a name="create-a-custom-email-message"></a>カスタム電子メール メッセージを作成する
 
-電子メール メッセージを作成するには、`Activity` オブジェクトの `ChannelData` プロパティを、次のプロパティを含む JSON オブジェクトに設定します。 
+電子メール メッセージを作成するには、アクティビティ オブジェクトのチャネル データ プロパティを、以下のプロパティを含む JSON オブジェクトに設定します。
 
 | プロパティ | 説明 |
 |----|----|
+| bccRecipients | メッセージの BCC (ブラインド カーボン コピー) フィールドに追加する、セミコロン (;) 区切りの電子メール アドレスの文字列。 |
+| ccRecipients | メッセージの CC (カーボン コピー) フィールドに追加する、セミコロン (;) 区切りの電子メール アドレスの文字列。 |
 | htmlBody | 電子メール メッセージの本文を指定する HTML ドキュメント。 サポートされている HTML の要素と属性については、チャネルのドキュメントを参照してください。 |
 | importance | 電子メールの重要度レベル。 有効な値は、**high**、**normal**、および **low** です。 既定値は **normal** です。 |
 | subject | 電子メールの件名です。 フィールドの要件については、チャネルのドキュメントを参照してください。 |
+| toRecipients | メッセージの宛先フィールドに追加する、セミコロン (;) 区切りの電子メール アドレスの文字列。 |
 
 > [!NOTE]
-> ボットがユーザーから電子メール チャネル経由で受信したメッセージには、上記で説明した JSON オブジェクトが設定された `ChannelData` プロパティが含まれている可能性があります。
+> ボットがユーザーから電子メール チャネル経由で受信したメッセージには、上記で説明した JSON オブジェクトが設定されたチャネル データ プロパティが含まれている可能性があります。
 
 次のスニペットは、カスタム電子メール メッセージ用の `channelData` プロパティの例を示しています。
 
 ```json
 "channelData": {
-    "htmlBody" : "<html><body style=\"font-family: Calibri; font-size: 11pt;\">This is the email body!</body></html>",
-    "subject":"This is the email subject",
-    "importance":"high"
+    "type": "message",
+    "locale": "en-Us",
+    "channelID": "email",
+    "from": { "id": "mybot@mydomain.com", "name": "My bot"},
+    "recipient": { "id": "joe@otherdomain.com", "name": "Joe Doe"},
+    "conversation": { "id": "123123123123", "topic": "awesome chat" },
+    "channelData":
+    {
+        "htmlBody": "<html><body style = /"font-family: Calibri; font-size: 11pt;/" >This is more than awesome.</body></html>",
+        "subject": "Super awesome message subject",
+        "importance": "high",
+        "ccRecipients": "Yasemin@adatum.com;Temel@adventure-works.com"
+    }
 }
 ```
 
 ## <a name="create-a-full-fidelity-slack-message"></a>完全に忠実な Slack メッセージを作成する
 
-完全に忠実な Slack メッセージを作成するには、`Activity` オブジェクトの `ChannelData` プロパティを、<a href="https://api.slack.com/docs/messages" target="_blank">Slack のメッセージ</a>、<a href="https://api.slack.com/docs/message-attachments" target="_blank">Slack の添付ファイル</a>、<a href="https://api.slack.com/docs/message-buttons" target="_blank">Slack のボタン</a>を指定する JSON オブジェクトに設定します。 
+完全に忠実な Slack メッセージを作成するには、アクティビティ オブジェクトのチャネル データ プロパティを、<a href="https://api.slack.com/docs/messages" target="_blank">Slack のメッセージ</a>、<a href="https://api.slack.com/docs/message-attachments" target="_blank">Slack の添付ファイル</a>、<a href="https://api.slack.com/docs/message-buttons" target="_blank">Slack のボタン</a>を指定する JSON オブジェクトに設定します。
 
 > [!NOTE]
 > Slack メッセージでボタンをサポートするには、Slack チャネルに[お使いのボットを接続](../bot-service-manage-channels.md)するときに、**インタラクティブ メッセージ**を有効にする必要があります。
@@ -100,7 +115,8 @@
 }
 ```
 
-ユーザーが Slack メッセージ内のボタンをクリックすると、お使いのボットに応答メッセージが届きます。このメッセージの `ChannelData` プロパティには `payload` JSON オブジェクトが設定されています。 `payload` オブジェクトによって、元のメッセージのコンテンツが指定され、クリックされたボタンと、そのボタンをクリックしたユーザーが特定されます。 
+ユーザーが Slack メッセージ内のボタンをクリックすると、お使いのボットに応答メッセージが届きます。このメッセージのチャネル データ プロパティには `payload` JSON オブジェクトが設定されています。
+`payload` オブジェクトによって、元のメッセージのコンテンツが指定され、クリックされたボタンと、そのボタンをクリックしたユーザーが特定されます。
 
 このスニペットは、ユーザーが Slack メッセージ内のボタンをクリックしたときに、ボットに届くメッセージ内の `channelData` プロパティの例を示しています。
 
@@ -120,8 +136,8 @@
 }
 ```
 
-お使いのボットでは[通常の方法](../dotnet/bot-builder-dotnet-connector.md#create-reply)でこのメッセージに返信するか、その応答を、`payload` オブジェクトの `response_url` プロパティで指定されているエンドポイントに直接投稿できます。
-応答を `response_url` に投稿するタイミングと方法については、<a href="https://api.slack.com/docs/message-buttons" target="_blank">Slack ボタン</a>に関するページをご覧ください。 
+お使いのボットでは通常の方法でこのメッセージに返信するか、その応答を、`payload` オブジェクトの `response_url` プロパティで指定されているエンドポイントに直接投稿できます。
+応答を `response_url` に投稿するタイミングと方法については、<a href="https://api.slack.com/docs/message-buttons" target="_blank">Slack ボタン</a>に関するページをご覧ください。
 
 動的なボタンの作成には、次のコードを使用できます。
 ```cs
@@ -242,7 +258,7 @@ private async Task DemoMenuAsync(IDialogContext context)
 
 ## <a name="create-a-facebook-notification"></a>Facebook 通知を作成する
 
-Facebook 通知を作成するには、`Activity` オブジェクトの `ChannelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
+Facebook 通知を作成するには、アクティビティ オブジェクトのチャネル データ プロパティを JSON オブジェクトに設定し、以下のプロパティを指定します。
 
 | プロパティ | 説明 |
 |----|----|
@@ -269,7 +285,7 @@ Facebook 通知を作成するには、`Activity` オブジェクトの `Channel
 
 ## <a name="create-a-telegram-message"></a>Telegram メッセージを作成する
 
-音声メモやステッカーの共有など、Telegram 固有のアクションが実装されているメッセージを作成するには、`Activity` オブジェクトの `ChannelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
+音声メモやステッカーの共有など、Telegram 固有のアクションが実装されているメッセージを作成するには、アクティビティ オブジェクトのチャネル データ プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
 
 | プロパティ | 説明 |
 |----|----|
@@ -343,7 +359,7 @@ Facebook 通知を作成するには、`Activity` オブジェクトの `Channel
 
 ## <a name="create-a-native-kik-message"></a>ネイティブ Kik メッセージを作成する
 
-ネイティブ Kik メッセージを作成するには、`Activity` オブジェクトの `ChannelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
+ネイティブ Kik メッセージを作成するには、アクティビティ オブジェクトのチャネル データ プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。
 
 | プロパティ | 説明 |
 |----|----|
@@ -374,9 +390,8 @@ Facebook 通知を作成するには、`Activity` オブジェクトの `Channel
     ]
 }
 ```
- 
+
 ## <a name="additional-resources"></a>その他のリソース
 
-- [アクティビティの概要](../dotnet/bot-builder-dotnet-activities.md)
-- [メッセージの作成](../dotnet/bot-builder-dotnet-create-messages.md)
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
+- [エンティティとアクティビティの種類](../bot-service-activities-entities.md)
+- [Bot Framework のアクティビティ スキーマ](https://github.com/Microsoft/BotBuilder/blob/hub/specs/botframework-activity/botframework-activity.md)

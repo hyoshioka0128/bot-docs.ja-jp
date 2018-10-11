@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 05/03/2018
-ms.openlocfilehash: 7aff56dfc60d9d5cce42a5b6a2624c1364ff1b72
-ms.sourcegitcommit: 44f100a588ffda19c275b118f4f97029f12d1449
+ms.date: 09/13/2018
+ms.openlocfilehash: 9f80fc551cac2f1994b0d398cd640d2ad3d78e61
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2018
-ms.locfileid: "42928380"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707378"
 ---
 # <a name="bot-builder-sdk-for-net-samples"></a>Bot Builder SDK for .NET のサンプル
 
@@ -92,17 +92,12 @@ Bot Builder SDK for .NET を使用して作成されたサンプル ボットは
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-これらのサンプルでは、Bot Builder SDK v4 for .NET 内の機能を活用する方法を示す、タスクに焦点をおいたボットについて説明します。 サンプルを利用することで、豊富な機能を備えた優れたボットの作成が迅速に開始できるようになります。 
+Bot Builder サンプル リポジトリのサンプルでは、.NET 用 SDK で提供される機能の活用方法を示す、タスクに焦点を置いたボットについて説明します。 サンプルを利用することで、豊富な機能を備えた優れたボットの作成が迅速に開始できるようになります。 サンプル リストと追加の情報については、[readme](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md) ファイルを参照してください。
 
-注: SDK v4 については精力的に開発を進めているところであるため、実験目的でのみのご使用となります。 
-
-サンプルを入手するには、Git を使用して [botbuilder-dotnet](https://github.com/Microsoft/botbuilder-dotnet) GitHub リポジトリを複製します。
+サンプルを入手するには、Git を使用して [botbuilder-samples](https://github.com/Microsoft/botbuilder-samples) GitHub リポジトリを複製します。
 ```cmd
 git clone https://github.com/Microsoft/botbuilder-dotnet.git
-cd botbuilder-dotnet\samples-final
 ```
-Bot Builder SDK for .NET を使用して作成されたサンプル ボットは、**samples-final** ディレクトリにまとめられています。
-
 
 ::: moniker-end
 

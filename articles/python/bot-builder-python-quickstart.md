@@ -7,25 +7,27 @@ ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 08/21/2018
+ms.date: 08/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6458bac5140fae14e8925e7af37aa8ac4ef1f1f5
-ms.sourcegitcommit: 7b5675bbf7f1c2432bfc831ee5d627f6e5659e01
+ms.openlocfilehash: 6b63fe2780c51e57ee16c5e3dba5a83f46566157
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43380998"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707284"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-python"></a>Bot Builder SDK for Python を使用したボットの作成
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Bot Builder SDK for Python は、ボットを開発するための使いやすいフレームワークです。 このクイック スタートでは、ボットを構築し、Bot Framework Emulator でテストします。 SDK v4 はプレビュー段階にあります。詳細については、Python [GitHub リポジトリ](https://github.com/Microsoft/botbuilder-python)を参照してください。 
+>[!NOTE] 
+> Python SDK は**プレビュー**段階にあります。詳細については、Python [GitHub リポジトリ](https://github.com/Microsoft/botbuilder-python)を参照してください。 
+
+このクイック スタートでは、ボットを構築し、Bot Framework Emulator でテストします。 
 
 ## <a name="pre-requisite"></a>前提条件
 - [Python 3.6.4](https://www.python.org/downloads/) 
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases)
 
-# <a name="create-a-bot"></a>ボットの作成
+## <a name="create-a-bot"></a>ボットの作成
 main.py ファイルに、次の標準モジュールをインポートします。
 
 ```python
@@ -127,22 +129,20 @@ python main.py
 ```
 ローカル ターミナルに 'Started http server on localhost:9000' (localhost:9000 で http サーバーが開始されました) ローカル ターミナルに、'Started http server on localhost:9000' (localhost:9000 で http サーバーが開始されました) というメッセージが表示されます。
 
-### <a name="start-the-emulator-and-connect-your-bot"></a>エミュレーターの起動とボットの接続
+## <a name="start-the-emulator-and-connect-your-bot"></a>エミュレーターの起動とボットの接続
 
 次に、エミュレーターを起動し、エミュレーターのボットに接続します。
 
+1. エミュレーターの [ようこそ] タブにある **[Open Bot]\(ボットを開く\)** リンクをクリックします。 
+2. プロジェクトを作成したディレクトリにある .bot ファイルを選択します。
 
-1. エミュレーターの [ようこそ] タブにある **[新しいボット構成を作成する]** リンクをクリックします。 
+## <a name="interact-with-your-bot"></a>ボットでのやり取り
 
-2. **ボット名**を入力してから、ボット コードへのディレクトリ パスを入力します。 ボットの構成ファイルはこのパスに保存されます。
+メッセージをボットに送信します。ボットはメッセージで応答します。
+![実行中のエミュレーター](../media/emulator-v4/emulator-running.png)
 
-3. **[エンドポイント URL]** フィールドに `http://localhost:port-number/api/messages` と入力します。*port-number* は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。
-
-4. **[接続]** をクリックしてボットに接続します。 **[Microsoft アプリ ID]** と **[Microsoft アプリ パスワード]** を指定する必要はありません。 現段階では、これらのフィールドは空白のままにしておくことができます。 この情報は、後ほど、ボットを登録するときに取得します。
-
-エミュレーターに「**Hello**」(こんにちは) と入力すると、ボットは「**You said "Hello"**」("こんにちは" と言いましたね) と応答します。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ボットの基本的な概念](../v4sdk/bot-builder-basics.md)
+> [ボットの概念](../v4sdk/bot-builder-basics.md)

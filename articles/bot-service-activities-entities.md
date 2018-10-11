@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 03/01/2018
-ms.openlocfilehash: 8f4b6c27fc28e4cf3b800dad11c3e6bd58561387
-ms.sourcegitcommit: 0b2be801e55f6baa048b49c7211944480e83ba95
+ms.openlocfilehash: f6bf1d99922351a66a4e5401e744fad190746747
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43115067"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389811"
 ---
 # <a name="entities-and-activity-types"></a>エンティティとアクティビティの種類
 
@@ -23,7 +23,7 @@ ms.locfileid: "43115067"
 
 ## <a name="entities"></a>エンティティ
 
-メッセージの *Entities* プロパティは、拡張可能な <a href="http://schema.org/" target="_blank">schema.org</a> オブジェクトの配列であり、チャネルとボットの間で共通のコンテキスト メタデータを交換するために使用します。
+メッセージの "*エンティティ*" プロパティは、拡張可能な <a href="http://schema.org/" target="_blank">schema.org</a> オブジェクトの配列であり、チャネルとボットの間で共通のコンテキスト メタデータを交換するために使用します。
 
 ### <a name="mention-entities"></a>メンション エンティティ
 
@@ -39,13 +39,13 @@ ms.locfileid: "43115067"
 
 このコード例は、メンション エンティティをエンティティ コレクションに追加する方法を示しています。
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# <a name="ctabcs"></a>[C# を選択した場合](#tab/cs)
 [!code-csharp[set Mention](includes/code/dotnet-create-messages.cs#setMention)]
 
 > [!TIP]
 > ユーザーの意図を判断しようとするとき、ボットはメッセージの中でメンションされている部分を無視したい場合があります。 `GetMentions` メソッドを呼び出し、応答で返された `Mention` オブジェクトを評価します。
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascripttabjs"></a>[JavaScript を選択した場合](#tab/js)
 ```javascript
 var entity = context.activity.entities;
 
@@ -89,10 +89,10 @@ geoCoordinates オブジェクトには、次のプロパティが含まれて�
 
 このコード例では、場所エンティティをエンティティ コレクションに追加する方法を示します。
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# <a name="ctabcs"></a>[C# を選択した場合](#tab/cs)
 [!code-csharp[set GeoCoordinates](includes/code/dotnet-create-messages.cs#setGeoCoord)]
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascripttabjs"></a>[JavaScript を選択した場合](#tab/js)
 ```javascript
 var entity = context.activity.entities;
 
@@ -112,7 +112,7 @@ entity = [place];
 
 ### <a name="consume-entities"></a>エンティティの使用
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# <a name="ctabcs"></a>[C# を選択した場合](#tab/cs)
 
 エンティティを使用するには、`dynamic` キーワードまたは厳密に型指定されたクラスを使用します。
 
@@ -124,7 +124,7 @@ entity = [place];
 
 [!code-csharp[examine entity using typed class](includes/code/dotnet-create-messages.cs#examineEntity2)]
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascripttabjs"></a>[JavaScript を選択した場合](#tab/js)
 
 このコード例では、メッセージの `entity` プロパティ内でエンティティを処理する方法を示します。
 
@@ -140,7 +140,7 @@ if (entity[0].type === "GeoCoordinates" && entity[0].latitude > 34) {
 
 このコード例では、**message** 型のアクティビティの処理方法を示します。
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# <a name="ctabcs"></a>[C# を選択した場合](#tab/cs)
 
 ```cs
 if (context.Activity.Type == ActivityTypes.Message){
@@ -148,7 +148,7 @@ if (context.Activity.Type == ActivityTypes.Message){
 }
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascripttabjs"></a>[JavaScript を選択した場合](#tab/js)
 
 ```js
 if(context.activity.type === 'message'){

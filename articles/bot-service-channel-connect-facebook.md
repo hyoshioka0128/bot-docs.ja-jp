@@ -7,13 +7,13 @@ ms.author: RobStand
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 08/16/2018
-ms.openlocfilehash: 7fbff06966ac64260244e8af375aaa6f8f945fcd
-ms.sourcegitcommit: e8c513d3af5f0c514cadcbcd0a737a7393405afa
+ms.date: 09/16/2018
+ms.openlocfilehash: 60e39bb652ab5b7ffeeb5ba53bdf4c82f936553e
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42756759"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707868"
 ---
 # <a name="connect-a-bot-to-facebook-messenger"></a>Facebook Messenger にボットを接続する
 
@@ -78,7 +78,7 @@ Messenger セクションの **[Token Generation]\(トークンの生成\)** パ
 
 1. Facebook メッセンジャーに戻り、**[コールバックの URL]** と **[トークンの確認]** の値を貼り付けます。
 
-2. **[Subscription Fields]\(サブスクリプション フィールド\)** で、*[message\_deliveries]\(メッセージ配信\)*、*[messages]\(メッセージ\)*、*[messaging]\(メッセージング\)\_ オプション*を選択し、*[messaging\_postbacks]\(メッセージングのポストバック\)* を選択します。
+2. **[サブスクリプション フィールド]** で、*[message\_deliveries]*、*[messages]*、*[messaging\_optins]*、*[messaging\_postbacks]* を選択します。
 
 3. **[Verify and Save]\(確認して保存\)** をクリックします。
 

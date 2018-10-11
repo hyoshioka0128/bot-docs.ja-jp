@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/16/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 23380231c15c40875f78921f72bcf9d57effb3bf
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: dee0f9700fefede2a231ff2395e50ff17522806e
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905232"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707398"
 ---
 # <a name="create-a-direct-line-bot-and-client"></a>Direct Line ボットおよびクライアントを作成する
 
@@ -30,7 +30,7 @@ Direct Line クライアントは、目的どおりに作成できます。 Andr
 
 ボットの作成パスは、言語によって異なります。 JavaScript の場合は Azure にボットを作成してからコードを変更し、C# の場合はローカルでボットを作成してから Azure に発行しますが、いずれも有効な方法であり、どちらの言語でも使用できます。 ボットを Azure に発行する方法の詳細については、[Azure のボットを展開する方法](../bot-builder-howto-deploy-azure.md)のページを参照してください。
 
-# <a name="ctabcscreatebot"></a>[C#](#tab/cscreatebot)
+# <a name="ctabcscreatebot"></a>[C# を選択した場合](#tab/cscreatebot)
 
 ### <a name="create-the-solution-in-visual-studio"></a>Visual Studio でソリューションを作成する
 
@@ -384,7 +384,7 @@ Microsoft Azure でボットを作成するには:
 
 1. 値が一致しない場合は、新しいパスワードを生成し、その値を **appsettings.json** ファイルの **"MicrosoftAppPassword"** フィールドに保存します。
 
-# <a name="javascripttabjscreatebot"></a>[JavaScript](#tab/jscreatebot)
+# <a name="javascripttabjscreatebot"></a>[JavaScript を選択した場合](#tab/jscreatebot)
 
 ### <a name="create-web-app-bot-on-microsoft-azure"></a>Microsoft Azure で Web App Bot を作成する
 
@@ -492,14 +492,14 @@ server.post('/api/messages', (req, res) => {
 
 ```
 
-準備ができたら、Azure にソースを発行できます。 [Azure にボットを発行する方法については、こちらの手順を実行してください](../bot-service-build-download-source-code.md#publish-node-bot-source-code-to-azure)
+準備ができたら、Azure にソースを発行できます。 Azure にボットを発行する方法については、[こちら](../bot-service-build-download-source-code.md)の手順を実行してください
 
 ---
 
 
 ## <a name="create-the-console-client-app"></a>コンソール クライアント アプリを作成する
 
-# <a name="ctabcsclientapp"></a>[C#](#tab/csclientapp)
+# <a name="ctabcsclientapp"></a>[C# を選択した場合](#tab/csclientapp)
 
 コンソール クライアント アプリケーションは 2 つのスレッドで動作します。 プライマリ スレッドはユーザー入力を受け付け、ボットにメッセージを送信します。 セカンダリ スレッドは、1 秒に 1 回ボットをポーリングし、ボットからのメッセージがあれば取得し、受信したメッセージを表示します。
 
@@ -699,7 +699,7 @@ namespace DirectLineClientSample
 
 準備が完了したことを確認するために、**F6** キーを押してプロジェクトをビルドします。 警告やエラーは表示されないはずです。
 
-# <a name="javascripttabjsclientapp"></a>[JavaScript](#tab/jsclientapp)
+# <a name="javascripttabjsclientapp"></a>[JavaScript を選択した場合](#tab/jsclientapp)
 
 ### <a name="create-a-direct-line-client"></a>Direct Line クライアントを作成する 
 
@@ -896,7 +896,7 @@ Direct Line チャネルを構成するには:
 
 ## <a name="run-the-client-app"></a>クライアント アプリの実行
 
-# <a name="ctabcsrunclient"></a>[C#](#tab/csrunclient)
+# <a name="ctabcsrunclient"></a>[C# を選択した場合](#tab/csrunclient)
 
 ボットは、Direct Line コンソール クライアント アプリケーションと通信できるようになりました。 コンソール アプリを実行するには、次の手順を実行します。
 
@@ -924,7 +924,7 @@ Direct Line チャネルを構成するには:
 
 1. その他の任意のメッセージを入力すると、ボットは「You said」(と言いましたね) と入力したメッセージを引用符で囲んで応答します。
 
-# <a name="javascripttabjsrunclient"></a>[JavaScript](#tab/jsrunclient)
+# <a name="javascripttabjsrunclient"></a>[JavaScript を選択した場合](#tab/jsrunclient)
 
 サンプルを実行するには、DirectLineClient アプリを実行する必要があります。
 

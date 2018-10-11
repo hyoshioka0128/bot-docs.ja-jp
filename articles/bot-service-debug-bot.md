@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 07/13/2018
-ms.openlocfilehash: 5e7fc6fa4fbce9b13d74d5dc7877de44840c51e6
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.openlocfilehash: 73cf6cedecd9acaef828bd41f4fccdaad2ae5731
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352881"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707168"
 ---
 # <a name="debug-a-bot-service-bot"></a>Bot Service のボットをデバッグする
 
@@ -27,7 +27,7 @@ JavaScript で記述されたボットをデバッグするには、このセク
 
 JavaScript のボットをデバッグする前に、次のタスクを完了する必要があります。
 
-- ボットのソース コードを (Azure から) ダウンロードします (「[Download bot source code](bot-service-build-download-source-code.md?#download-bot-source-code)」(ボットのソース コードをダウンロードする) を参照)。
+- [ボットのソース コードのダウンロード](bot-service-build-download-source-code.md)に関するページの説明のとおり、(Azure から) ボットのソース コードをダウンロードします。
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) をダウンロードしてインストールします。
 - <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a> などのコード エディターをダウンロードしてインストールします。
 
@@ -72,7 +72,7 @@ C# で記述されたボットをデバッグするには、このセクショ�
 
 Web アプリの C# ボットをデバッグする前に、次のタスクを完了する必要があります。
 
-- ボットのソース コードを (Azure から) ダウンロードします (「[Download bot source code](bot-service-build-download-source-code.md?#download-bot-source-code)」(ボットのソース コードをダウンロードする) を参照)。
+- [ボットのソース コードのダウンロード](bot-service-build-download-source-code.md)に関するページの説明のとおり、(Azure から) ボットのソース コードをダウンロードします。
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) をダウンロードしてインストールします。
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> (Community Edition 以上) をダウンロードしてインストールします。
 
@@ -146,13 +146,6 @@ Visual Studio 2017 でブレークポイントを使用してコードをデバ�
 さらに、コンソール ウィンドウでログの詳細を表示できます。
 
 ![コンソール ウィンドウ](~/media/bot-service-debug-bot/csharp-azureservice-debug-debughostlogging.png)
-
-::: moniker-end
-::: moniker range="azure-bot-service-4.0" 
-
-## <a id="debug-csharp-serverless"></a> 従量課金プランの C\# Functions ボットをデバッグする
-
-Bot Builder SDK V4 用の Functions ボットは近日公開予定です。
 
 ::: moniker-end
 

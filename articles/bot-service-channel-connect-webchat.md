@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: b560f9f43fc596bc8062676136819922d227d37b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: b5a9d20c058fe425d727bf2e39597e7dd29ec077
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301266"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389631"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>ボットを Web チャットに接続する
 Bot Service を使用して[ボットを作成](bot-service-quickstart.md)すると、Web チャット チャンネルが自動的に構成されます。 Web チャット チャンネルには、ユーザーが Web ページで直接ボットと対話できるようにする、Web チャット コントロールが含まれています。
@@ -52,7 +52,7 @@ Bot Framework ポータル内の Web チャット チャンネルには、Web �
 
 2. **GET** 要求への応答には、**iframe** 内で Web チャット コントロールをレンダリングして会話を開始する際に使用できるトークンが含まれています (トークンは引用符で囲まれています)。 トークンは 1 つの会話でのみ有効です。別の会話を開始するには、新しいトークンを生成する必要があります。
 
-3. Bot Framework ポータル内の Web チャット チャンネルからコピーした `iframe` **埋め込みコード**内で (前述の[手順 1.](#step-1) を参照)、`s=` パラメーターを `t=` に変更し、"YOUR_SECRET_HERE" をトークンに置き換えます。 
+3. Bot Framework ポータル内の Web チャット チャンネルからコピーした `iframe` **埋め込みコード**内で (上の「[ボットの秘密鍵を取得する](#step-1)」を参照)、`s=` パラメーターを `t=` に変更し、"YOUR_SECRET_HERE" をトークンに置き換えます。
 
 > [!NOTE]
 > トークンは、有効期限が切れる前に自動的に更新されます。 
@@ -109,7 +109,7 @@ Bot Framework ポータル内の Web チャット チャンネルには、Web �
 
 `iframe` タグ内でシークレットを指定して、Web サイトにボットを埋め込むには、次の手順に従います。
 
-1. Bot Framework ポータル内の Web チャット チャンネルから `iframe` **埋め込みコード**をコピーします (前述の[手順 1.](#step-1) を参照)。
+1. Bot Framework ポータル内の Web チャット チャンネルから `iframe` **埋め込みコード**をコピーします (上の「[ボットの秘密鍵を取得する](#step-1)」を参照)。
 
 2. その**埋め込みコード**内で、"YOUR_SECRET_HERE" を、同じページからコピーした**秘密鍵**の値に置き換えます。
 

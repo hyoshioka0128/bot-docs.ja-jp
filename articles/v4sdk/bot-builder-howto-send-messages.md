@@ -9,14 +9,14 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 08/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b56ad56e19691cfbd7b39606832ed10fce951aa3
-ms.sourcegitcommit: f89ed979eb6321232fb21100ef376d9b0d5113c9
+ms.openlocfilehash: 075e9b3a41462bfbb1398bd72840cc7e50d3cfca
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42914592"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707518"
 ---
-# <a name="send-messages"></a>メッセージを送信する
+# <a name="send-text-and-spoken-messages"></a>テキストと音声メッセージの送信
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -28,7 +28,7 @@ ms.locfileid: "42914592"
 
 単純なテキスト メッセージを送信するには送信する文字列をアクティビティとして指定します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
 
 ボットの **OnTurn** メソッドで、ターン コンテキスト オブジェクトの **SendActivity** メソッドを使用し、メッセージ応答を 1 つ送信します。 オブジェクトの **SendActivities** メソッドを使用し、一度に複数の応答を送信することもできます。
 
@@ -36,7 +36,7 @@ ms.locfileid: "42914592"
 await context.SendActivity("Greetings from sample message.");
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
 
 ボットのターン ハンドラーで、ターン コンテキスト オブジェクトの **sendActivity** メソッドを使用し、メッセージ応答を 1 つ送信します。 オブジェクトの **sendActivities** メソッドを使用し、一度に複数の応答を送信することもできます。
 
@@ -53,7 +53,7 @@ await context.sendActivity("Greetings from sample message.");
 > [!NOTE]
 > 音声に対応していないチャネルについては、音声コンテンツは無視されます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
 
 オプションの **speak** パラメーターを使用し、応答の一部として音声テキストを提供します。
 
@@ -63,7 +63,7 @@ await context.SendActivity(
     "This is the text to be spoken.");
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
 
 音声を追加するには、メッセージをビルドする `Microsoft.Bot.Builder.MessageFactory` が必要です。 `MessageFactory` は[リッチ メディア](bot-builder-howto-add-media-attachments.md)で使用されることが多く、リッチ メディアではもう少し多く説明されますが、ここでは単純にそれを必要とし、使用します。
 
