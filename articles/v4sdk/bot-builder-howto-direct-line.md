@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 4/16/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dee0f9700fefede2a231ff2395e50ff17522806e
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 81b6f1f9373c18bd3aedb393cfc4966587bf24cb
+ms.sourcegitcommit: 6c2426c43cd2212bdea1ecbbf8ed245145b3c30d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707398"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48852207"
 ---
 # <a name="create-a-direct-line-bot-and-client"></a>Direct Line ボットおよびクライアントを作成する
 
@@ -30,7 +30,7 @@ Direct Line クライアントは、目的どおりに作成できます。 Andr
 
 ボットの作成パスは、言語によって異なります。 JavaScript の場合は Azure にボットを作成してからコードを変更し、C# の場合はローカルでボットを作成してから Azure に発行しますが、いずれも有効な方法であり、どちらの言語でも使用できます。 ボットを Azure に発行する方法の詳細については、[Azure のボットを展開する方法](../bot-builder-howto-deploy-azure.md)のページを参照してください。
 
-# <a name="ctabcscreatebot"></a>[C# を選択した場合](#tab/cscreatebot)
+# <a name="ctabcscreatebot"></a>[C#](#tab/cscreatebot)
 
 ### <a name="create-the-solution-in-visual-studio"></a>Visual Studio でソリューションを作成する
 
@@ -52,6 +52,7 @@ Visual Studio 2015 以降で Direct Line ボットのソリューションを作
     - Microsoft.Bot.Builder
     - Microsoft.Bot.Builder.Core.Extensions
     - Microsoft.Bot.Builder.Integration.AspNet.Core
+    - Microsoft.Rest.ClientRuntime
     - Newtonsoft.Json
 
 ### <a name="create-the-appsettingsjson-file"></a>appsettings.json ファイルを作成する
@@ -384,7 +385,7 @@ Microsoft Azure でボットを作成するには:
 
 1. 値が一致しない場合は、新しいパスワードを生成し、その値を **appsettings.json** ファイルの **"MicrosoftAppPassword"** フィールドに保存します。
 
-# <a name="javascripttabjscreatebot"></a>[JavaScript を選択した場合](#tab/jscreatebot)
+# <a name="javascripttabjscreatebot"></a>[JavaScript](#tab/jscreatebot)
 
 ### <a name="create-web-app-bot-on-microsoft-azure"></a>Microsoft Azure で Web App Bot を作成する
 
@@ -699,7 +700,7 @@ namespace DirectLineClientSample
 
 準備が完了したことを確認するために、**F6** キーを押してプロジェクトをビルドします。 警告やエラーは表示されないはずです。
 
-# <a name="javascripttabjsclientapp"></a>[JavaScript を選択した場合](#tab/jsclientapp)
+# <a name="javascripttabjsclientapp"></a>[JavaScript](#tab/jsclientapp)
 
 ### <a name="create-a-direct-line-client"></a>Direct Line クライアントを作成する 
 
@@ -924,7 +925,7 @@ Direct Line チャネルを構成するには:
 
 1. その他の任意のメッセージを入力すると、ボットは「You said」(と言いましたね) と入力したメッセージを引用符で囲んで応答します。
 
-# <a name="javascripttabjsrunclient"></a>[JavaScript を選択した場合](#tab/jsrunclient)
+# <a name="javascripttabjsrunclient"></a>[JavaScript](#tab/jsrunclient)
 
 サンプルを実行するには、DirectLineClient アプリを実行する必要があります。
 
