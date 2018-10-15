@@ -1,7 +1,22 @@
-**アドホック型のプロアクティブ メッセージ**は、最も単純な種類のプロアクティブ メッセージです。 ボットは会話が開始されると単純に会話にメッセージを差し挟みます。つまり、ユーザーが現在、ボットと別の話題で会話中であり、話題を変えるつもりがない場合でも考慮しません。 
+**アドホック型のプロアクティブ メッセージ**は、最も単純な種類のプロアクティブ メッセージです。
+ボットは会話が開始されると単純に会話にメッセージを差し挟みます。つまり、ユーザーが現在、ボットと別の話題で会話中であり、話題を変えるつもりがない場合でも考慮しません。
 
-**ダイアログベースのプロアクティブ メッセージ**は、アドホック型プロアクティブ メッセージよりも複雑です。 この種のプロアクティブ メッセージを会話に差し挟む前に、ボットは既存の会話のコンテキストを識別し、そのメッセージによる中断後に会話を再開する方法 (または再開するかどうか) を判断する必要があります。 
+通知をより円滑に処理するには、会話フローに通知を統合するための他の方法を検討してください (会話の状態にフラグを設定する方法や、通知をキューに追加する方法など)。
 
-たとえば、特定の時刻にアンケートを開始する必要があるボットを考えてみましょう。 その時刻になると、ボットはユーザーとの既存の会話を停止し、ユーザーを `SurveyDialog` にリダイレクトします。 `SurveyDialog` がダイアログ スタックの最上位に追加され、会話を制御します。 ユーザーが `SurveyDialog` ですべての必須タスクを終了すると、`SurveyDialog` が閉じられ、前のダイアログに制御が戻ります。ここで、ユーザーは以前の話題を続行できます。
+<!--Snip
+A **dialog-based proactive message** is more complex than an ad hoc proactive message. 
+Before it can inject this type of proactive message into the conversation, 
+the bot must identify the context of the existing conversation and decide how (or if)
+it will resume that conversation after the message interrupts. 
 
-ダイアログベースのプロアクティブ メッセージでは、単純な通知以上のことが行われます。 この通知を送信する際に、ボットは既存の会話の話題を変更します。 次にボットは、後でその会話を再開するか、またはダイアログ スタックをリセットしてその会話を完全に破棄するかを決定する必要があります。 
+For example, consider a bot that needs to initiate a survey at a given point in time. 
+When that time arrives, the bot stops the existing conversation with the user and 
+redirects the user to a `SurveyDialog`. 
+The `SurveyDialog` is added to the top of the dialog stack and takes control of the conversation. 
+When the user finishes all required tasks at the `SurveyDialog`, the `SurveyDialog` closes,
+ returning control to the previous dialog, where the user can continue with the prior topic of conversation.
+
+A dialog-based proactive message is more than just simple notification. 
+In sending the notification, the bot changes the topic of the existing conversation. 
+It then must decide whether to resume that conversation later, or to abandon that conversation altogether by resetting the dialog stack. 
+/Snip-->
