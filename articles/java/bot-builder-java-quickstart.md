@@ -7,30 +7,26 @@ ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 05/02/2018
+ms.date: 08/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3b618bfb7cd1a462390aee4d564778c8ec0a7247
-ms.sourcegitcommit: d486dd088b87a44fc8142f7a08877ff993861a42
+ms.openlocfilehash: bcfc1c76199d8bc729376bbbfe229b0781eb82ab
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2018
-ms.locfileid: "42928431"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707238"
 ---
-# <a name="create-a-bot-with-the-bot-builder-sdk-for-java"></a>Bot Builder SDK for Java を使用したボットの作成
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
-
-Bot Builder SDK for Java では、Java 開発者がボットを作成するための手慣れた方法を提供しています。 SDK v4 はプレビュー段階にあります。詳細については、Java [GitHub リポジトリ](https://github.com/Microsoft/botbuilder-java)を参照してください。
-
-> [!NOTE]
-> コード サンプルおよびドキュメントでは現在、Java バージョン 1.8 を対象にしています。
+# <a name="create-a-bot-with-the-bot-builder-sdk-for-java"></a>Bot Builder SDK for Java を使用したボットの作成 
+> [!NOTE] 
+> Java SDK v4 は**プレビュー**段階にあります。 詳細については、Java [GitHub リポジトリ](https://github.com/Microsoft/botbuilder-java)を参照してください。 コード サンプルおよびドキュメントでは現在、Java バージョン 1.8 を対象にしています。
 
 ## <a name="getting-started"></a>Getting Started (概要)
 
-v4 SDK は、一連の[ライブラリ](https://github.com/Microsoft/botbuilder-java/tree/master/libraries)で構成されています。 ローカルに作成するには、「[Building the SDK](https://github.com/Microsoft/botbuilder-java/wiki/building-the-sdk)」(SDK を作成する) を参照してください。
+Java SDK v4 は、一連の[ライブラリ](https://github.com/Microsoft/botbuilder-java/tree/master/libraries)で構成されています。 ローカルに作成するには、「[Building the SDK](https://github.com/Microsoft/botbuilder-java/wiki/building-the-sdk)」(SDK を作成する) を参照してください。
 
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) をインストールします
 
-### <a name="create-echobot"></a>EchoBot を作成する
+## <a name="create-echobot"></a>EchoBot を作成する
 
 App.java ファイルに、以下を追加します。
 
@@ -146,25 +142,21 @@ public class App {
 }
 ```
 
-Maven を使用している場合は、このリポジトリのサンプル フォルダーから pom.xml ファイルをコピーできます。 実行可能ファイルの実行を開始すると、Bot Framework Emulator が起動されます。
+Maven を使用している場合は、このリポジトリのサンプル フォルダーから pom.xml ファイルをコピーできます。 実行可能ファイルを実行します。 この時点では、ボットはローカルで実行されています。
 
-### <a name="start-the-emulator-and-connect-your-bot"></a>エミュレーターの起動とボットの接続
+## <a name="start-the-emulator-and-connect-your-bot"></a>エミュレーターの起動とボットの接続
 
-この時点では、ボットはローカルで実行されています。
 次に、エミュレーターを起動し、エミュレーターのボットに接続します。
 
-1. エミュレーターの [ようこそ] タブにある **[新しいボット構成を作成する]** リンクをクリックします。 
+1. エミュレーターの [ようこそ] タブにある **[Open Bot]\(ボットを開く\)** リンクをクリックします。 
+2. プロジェクトを作成したディレクトリにある .bot ファイルを選択します。
 
-2. **ボット名**を入力してから、ボット コードへのディレクトリ パスを入力します。 ボットの構成ファイルはこのパスに保存されます。
+## <a name="interact-with-your-bot"></a>ボットでのやり取り
 
-3. **[エンドポイント URL]** フィールドに `http://localhost:port-number/api/messages` と入力します。*port-number* は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。
-
-4. **[接続]** をクリックしてボットに接続します。 **[Microsoft アプリ ID]** と **[Microsoft アプリ パスワード]** を指定する必要はありません。 現段階では、これらのフィールドは空白のままにしておくことができます。 この情報は、後ほど、ボットを登録するときに取得します。
-
-### <a name="interact-with-your-bot"></a>ボットでのやり取り
-ボットに「Hi」と送信すると、ボットはそのメッセージを再現して返します。
+メッセージをボットに送信します。ボットはメッセージで応答します。
+![実行中のエミュレーター](../media/emulator-v4/emulator-running.png)
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ボットの基本的な概念](../v4sdk/bot-builder-basics.md)
+> [ボットの概念](../v4sdk/bot-builder-basics.md)

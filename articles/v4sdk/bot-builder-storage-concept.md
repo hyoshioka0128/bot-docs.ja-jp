@@ -1,21 +1,18 @@
 ---
-title: 状態とストレージ | Microsoft Docs
-description: 状態マネージャー、会話状態、およびユーザー状態の Bot Builder SDK 内での意味について説明します。
-keywords: LUIS, 会話状態, ユーザー状態, ストレージ, 状態の管理
-author: DeniseMak
-ms.author: v-demak
-manager: kamrani
-ms.topic: article
-ms.prod: bot-framework
-ms.date: 02/15/2018
-monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e25ecec3aec1cdebe3b9eae4bff0d3c434cb610b
-ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
+redirect_url: /bot-framework/bot-builder-howto-v4-state
+ms.openlocfilehash: e5da105e32ae748383d376f90afd9aebbf4c7aa5
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42756483"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46708118"
 ---
+<a name="--"></a><!--
+---
+title: 状態とストレージ | Microsoft Docs description: 状態マネージャー、会話状態、およびユーザー状態の Bot Builder SDK 内での意味について説明します。
+keywords: LUIS, 会話状態, ユーザー状態, ストレージ, 状態の管理 author: DeniseMak ms.author: v-demak manager: kamrani ms.topic: article ms.prod: bot-framework ms.date: 02/15/2018 monikerRange: 'azure-bot-service-4.0'
+---
+
 # <a name="state-and-storage"></a>状態とストレージ
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -37,30 +34,32 @@ You can also store *user state* that persists after a conversation ends. For exa
 <!-- You should generally avoid saving state using a global variable or function closures.
 Doing so will create issues when you want to scale out your bot. Instead, use the conversation state and user state middleware that the BotBuilder SDK provides --> 
 
+<!--
+## Types of underlying storage
 
-## <a name="types-of-underlying-storage"></a>基盤となるストレージの種類
+The SDK provides bot state manager middleware to persist conversation and user state. State can be accessed using the bot's context. This state manager can use Azure Table Storage, file storage, or memory storage as the underlying data storage. You can also create your own storage components for your bot.
 
-SDK は、会話とユーザーの状態を保持するためのボット状態マネージャー ミドルウェアを提供します。 状態にはボットのコンテキストを使用してアクセスできます。 この状態マネージャーは、基盤となるデータ ストレージとして Azure Table Storage、ファイル ストレージ、またはメモリ ストレージを使用できます。 独自のストレージ コンポーネントをボット用に作成することもできます。
-
-Azure Table Storage を使用して構築するボットは、複数のコンピュート ノード間でステートレスかつスケーラブルな設計にすることができます。
+Bots built using Azure Table Storage can be designed to be stateless and scalable across multiple compute nodes.
 
 > [!NOTE] 
-> ファイル ストレージとメモリ ストレージはノード間でスケーリングしません。
+> File and memory storage won't scale across nodes.
 
-## <a name="writing-directly-to-storage"></a>ストレージへの直接書き込み
+## Writing directly to storage
 
-Bot Builder SDK を使用して、ミドルウェアやボット コンテキストは使用せずに、ストレージのデータを直接読み書きすることもできます。 ボットの会話フローの外にあるソースからのデータをボットが使用する場合は、この方法が適切な可能性があります。
+You can also use the Bot Builder SDK to read and write data directly to storage, without using middleware or without using the bot context. This can be appropriate to data that your bot uses, that comes from a source outside your bot's conversation flow.
 
-たとえば、ユーザーが天気予報を尋ねるボットで、外部データベースからの読み取りによって指定日の天気予報を取得するとします。 天気データベースの内容はユーザーの情報または会話のコンテキストに依存しないため、状態マネージャーを使用する代わりに、単純にストレージから予報を直接読み取ることができます。  例については「[ストレージに直接書き込む方法](bot-builder-howto-v4-storage.md)」を参照してください。
+For example, let's say your bot allows the user to ask for the weather report, and your bot retrieves the weather report for a specified date, by reading it from an external database. The content of the weather database isn't dependent on user information or the conversation context, so you could just read it directly from storage instead of using the state manager.  See [How to write directly to storage](bot-builder-howto-v4-storage.md) for an example.
 
-## <a name="next-steps"></a>次の手順
+## Next steps
 
-次に、アクティビティが処理されるしくみの詳細と、ボットでアクティビティに応答する方法を理解しましょう。
+Next, lets get into how activities are processed, in depth, and how we respond to them.
 
 > [!div class="nextstepaction"]
-> [アクティビティの処理](bot-builder-concept-activity-processing.md)
+> [Activity Processing](bot-builder-concept-activity-processing.md)
 
-## <a name="additional-resources"></a>その他のリソース
+## Additional resources
 
-- [How to save state](bot-builder-howto-v4-state.md)(状態を保存する方法)
-- [ストレージに直接書き込む方法](bot-builder-howto-v4-storage.md)
+- [How to save state](bot-builder-howto-v4-state.md)
+- [How to write directly to storage](bot-builder-howto-v4-storage.md)
+
+-->

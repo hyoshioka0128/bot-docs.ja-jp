@@ -7,17 +7,18 @@ ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 08/13/2018
-ms.openlocfilehash: e62d57a39c87e9de32a1a492b2dc1386d6574fd3
-ms.sourcegitcommit: bff936a6a3dd5b1bd3ddfeed8bd1023e52929f08
+ms.date: 09/18/2018
+ms.openlocfilehash: e676a9bf2c9dac46d728f8a37d87eae6e56df341
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312496"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46707688"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
-# <a name="create-a-bot-with-bot-service"></a>Bot Service を使用してボットを作成する
+
+# <a name="create-a-bot-with-azure-bot-service"></a>Azure Bot Service を使用してボットを作成する
 
 [!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
 
@@ -78,7 +79,7 @@ Bot Service は、ボットを開発するための Bot Builder SDK や、ボッ
 
 ::: moniker range="azure-bot-service-4.0"
 
-# <a name="create-a-bot-with-bot-service"></a>Bot Service を使用してボットを作成する
+# <a name="create-a-bot-with-azure-bot-service"></a>Azure Bot Service を使用してボットを作成する
 [!INCLUDE [pre-release-label](includes/pre-release-label.md)]
 
 Azure Bot Service は、ボットを開発するための Bot Builder SDK や、ボットをチャンネルに接続するための Bot Service など、ボットを作成するためのコア コンポーネントを提供します。 このトピックでは、.NET テンプレートまたは Node.js テンプレートのいずれかを選択し、Bot Builder SDK v4 のプレビュー バージョンを使用してボットを作成できます。
@@ -106,7 +107,7 @@ Azure Bot Service は、ボットを開発するための Bot Builder SDK や、
  | **場所** | 既定の場所 | リソース グループの地理的な場所を選択します。 一覧に示されたどの場所を選択しても構いませんが、多くの場合、顧客に最も近い場所を選択するのが最良です。 ボットの作成後に場所を変更することはできません。 |
  | **[価格レベル]** | F0 | 価格レベルを選択します。 価格レベルはいつでも更新できます。 詳細については、[Bot Service の価格](https://azure.microsoft.com/en-us/pricing/details/bot-service/)に関するページをご覧ください。 |
  | **アプリ名** | 一意の名前 | ボットの一意の URL 名。 たとえば、ボットに *myawesomebot* という名前を付けた場合、ボットの URL は `http://myawesomebot.azurewebsites.net` になります。 名前には、英数字とアンダースコアのみを使用する必要があります。 このフィールドは 35 文字に制限されています。 ボットの作成後にアプリ名を変更することはできません。 |
- | **Bot template\(ボット テンプレート\)** | Basic | **[SDK v4]** を選択します。 C# または Node.js のいずれかを選択し、このクイック スタートでは **Basic** テンプレートを選択して、**[選択]** をクリックします。 Basic テンプレートでは、エコー ボットが作成されます。 
+ | **Bot template\(ボット テンプレート\)** | エコー ボット | **[SDK v4]** を選択します。 このクイック スタートでは C# または Node.js のいずれかを選択して、**[選択]** をクリックします。  
  | **App Service プラン/場所** | ご利用の App Service プラン  | [App Service プラン](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/)の場所を選択します。 一覧に示されたどの場所を選択しても構いませんが、多くの場合、顧客に最も近い場所を選択するのが最良です。 |
  | **Azure Storage** | お使いの Azure ストレージ アカウント | 新しいデータ ストレージ アカウントを作成することも、既存のアカウントを使用することもできます。 既定では、ボットは [Table Storage](/azure/storage/common/storage-introduction#table-storage) を使用します。 |
  | **Application Insights** | On | [Application Insights](/bot-framework/bot-service-manage-analytics) を**オン**にするか、**オフ**にするかを決定します。 **[オン]** を選択した場合は、リージョンの場所も指定する必要があります。 一覧に示されたどの場所を選択しても構いませんが、多くの場合、顧客に最も近い場所を選択するのが最良です。 |
@@ -116,12 +117,18 @@ Azure Bot Service は、ボットを開発するための Bot Builder SDK や、
 
 ボットがデプロイされたことを確認するには、**[通知]** をオンにします。 通知が、**[デプロイは進行中です...]** から **[デプロイメントに成功しました]** に変わります。 **[リソースに移動]** ボタンをクリックして、ボットのリソース ブレードを開きます。
 
+ボットが作成されたので、Web チャットでテストします。 
+
 ## <a name="test-the-bot"></a>ボットのテスト
-ボットが作成されたので、[Web チャット](bot-service-manage-test-webchat.md)でテストします。 メッセージを入力すると、ボットが応答します。
+**[Bot Management]\(ボットの管理\)** セクションで、**[Test in Web Chat]\(Web チャットでのテスト\)** をクリックします。 Azure Bot Service で Web チャット コントロールを読み込み、ボットに接続します。 
+
+![Azure の Web チャットでのテスト](~/media/azure-bot-quickstarts/azure-webchat-test.png)
+
+メッセージを入力すると、ボットが応答します。
 
 ## <a name="next-steps"></a>次の手順
 
-このトピックでは、Bot Service を使用して **Basic** Web App Bot を作成する方法を学習し、Azure 内で組み込みの Web チャット コントロールを使用してボットの機能を検証しました。 次に、ボットを管理し、そのソース コードの操作を開始する方法を確認しましょう。
+このトピックでは、Azure Bot Service を使用して**エコー** Web App Bot を作成する方法を学習し、組み込みの Web チャット コントロールを使用してボットの機能を検証しました。 次に、ボットを管理し、そのソース コードの操作を開始する方法を確認しましょう。
 
 > [!div class="nextstepaction"]
 > [ボットの管理](bot-service-manage-overview.md)

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: a8c3d4fb469ce7c52dfffbcfc3a17e08c167ea66
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 53ad7069f8ec8e7757c7ee4ea1a517d44436b8e9
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303492"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389671"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>ボットを Office 365 の電子メールに接続する
 
@@ -67,7 +67,7 @@ AAD に代わる任意のベンダーを使用するフェデレーション認�
 ::: moniker-end
 
 ::: moniker range="azure-bot-service-4.0"
-`channelData` の使用方法の詳細については、[Node.js](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-ChannelData) のサンプルまたは [.NET](~/v4sdk/bot-builder-channeldata.md) のドキュメントをご覧ください。
+`channelData` を使用する方法について詳しくは、[チャネル固有の機能を実装する方法](~/v4sdk/bot-builder-channeldata.md)に関する記事をご覧ください。
 ::: moniker-end
 
 ## <a name="additional-resources"></a>その他のリソース

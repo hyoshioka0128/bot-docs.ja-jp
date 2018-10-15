@@ -1,31 +1,30 @@
 ---
 title: Bot Builder SDK 内での会話 | Microsoft Docs
 description: Bot Builder SDK 内での会話について説明します。
-keywords: 会話フロー, 意図の認識, 1 ターン, 複数ターン
+keywords: 会話フロー, 意図の認識, 1 ターン, 複数ターン, ボットの会話
 author: jonathanfingold
 ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 04/11/2018
+ms.date: 09/01/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 32486cb024dfe852a7478ccba4a0eedc476431b0
-ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
+ms.openlocfilehash: 65d6edf123dac2e237ddde4fbe8b37c6913434ae
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42795031"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46706958"
 ---
 # <a name="conversation-flow"></a>会話フロー
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-ボットは会話型のユーザー インターフェイスと考えることができるので、会話フローはユーザーとやり取りする方法であり、さまざまな形態をとることができます。 正しい会話フローの構築は、ユーザーの対話とボットのパフォーマンスの向上に寄与します。
+ボットの会話フローを設計するには、ユーザーがボットに何か言ったときにボットがどのように応答するかを決定する必要があります。 ボットはまず、ユーザーからのメッセージに基づいてタスクまたは会話トピックを認識します。 ユーザーのメッセージに関連付けられたタスクまたはトピック ("*意図*" とも呼びます) を決定するために、ボットはユーザーのメッセージのテキストから単語またはパターンを探したり、[Language Understanding](bot-builder-concept-luis.md) や [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview) のようなサービスを利用したりできます。
 
-ボットの会話フローを設計するには、ユーザーがボットに何か言ったときにボットがどのように応答するかを決定する必要があります。 ボットはまず、ユーザーからのメッセージに基づいてタスクまたは会話トピックを認識します。 ユーザーのメッセージに関連付けられたタスクまたはトピック (*意図*とも呼びます) を決定するために、ボットはユーザーのメッセージのテキストから単語またはパターンを探したり、[Language Understanding (LUIS)](bot-builder-concept-luis.md) や QnA Maker のようなサービスを利用したりできます。 
+ボットがユーザーの意図を認識すると、シナリオに応じて、ボットは 1 回の返信でユーザーの要求を満足して 1 ターンで会話を完了する場合もあれば、数ターン必要な場合もあります。 複数ターンの会話フローの場合、Bot Builder SDK は、会話を追跡するための[状態管理](./bot-builder-howto-v4-state.md)、情報を尋ねるための[プロンプト](bot-builder-prompts.md)、および、会話フローをカプセル化するための[ダイアログ](bot-builder-dialog-manage-conversation-flow.md)を提供します。
 
-ボットがユーザーの意図を認識すると、シナリオに応じて、ボットは 1 回の返信でユーザーの要求を満足して 1 ターンで会話を完了する場合もあれば、数ターン必要な場合もあります。 複数ターンの会話フローの場合、Bot Builder SDK は、会話を追跡するための[状態管理](./bot-builder-howto-v4-state.md)、情報を尋ねるための[プロンプト](bot-builder-prompts.md)、および、会話フローをカプセル化するための[ダイアログ](bot-builder-dialog-manage-conversation-flow.md)を提供します。 
+複数のサブシステムを持つ複雑なボットでは、ボットのサブコンポーネントごとに 1 つずつ、複数のサービスを使用して意図を認識する場合があります。 会話のサブシステムを 1 つのボットに結合する場合、[ディスパッチ ツール](bot-builder-tutorial-dispatch.md)は複数のサービスの結果を 1 か所で取得します。
 
-複数のサブシステムを持つ複雑なボットでは、ボットのサブコンポーネントごとに 1 つずつ、複数のサービスを使用して意図を認識する場合があります。 会話のサブシステムを 1 つのボットに結合する場合、[ディスパッチ ツール](bot-builder-tutorial-dispatch.md)は複数のサービスの結果を 1 か所で取得します。 
 <!-- 
 A conversation identifies a series of activities sent between a bot and a user on a specific channel and represents an interaction between one or more bots and either a _direct_ conversation with a specific user or a _group_ conversation with multiple users.
 A bot communicates with a user on a channel by receiving activities from, and sending activities to the user.
@@ -39,60 +38,48 @@ A bot communicates with a user on a channel by receiving activities from, and se
 
 ## <a name="single-turn-conversation"></a>1 ターンの会話
 
-最も単純な会話フローは 1 ターンです。 1 ターンのフローでは、ボットはそのタスクを 1 ターンで終了し、これはユーザーからの 1 つのメッセージとボットからの 1 会の返信で構成されます。 
+最も単純な会話フローは 1 ターンです。 1 ターンのフローでは、ボットはそのタスクを 1 ターンで終了し、これはユーザーからの 1 つのメッセージとボットからの 1 会の返信で構成されます。
 
+<!-- The following isn't always true, it's a generalization -->
 
-
-<!-- 
-The EchoBot sample in the BotBuilder SDK is a single-turn bot. Here are other examples of single turn conversation flow:
-* A bot for getting the weather report, that just tells the user what the weather is, when they say "What's the weather?".
-* An IoT bot that responds to "turn on the lights" by calling an IoT service. -->
-
-<!-- The following isn't always true, it's a generalization --> 最も単純な種類の 1 ターンのボットでは、会話の状態を追跡する必要はありません。 メッセージを受信するたびに、ボットは現在の受信メッセージのコンテキストのみに基づいて応答し、過去の会話ターンの知識はありません。
+最も単純な種類の 1 ターンのボットでは、会話の状態を追跡する必要はありません。 メッセージを受信するたびに、ボットは現在の受信メッセージのコンテキストのみに基づいて応答し、過去の会話ターンの知識はありません。
 
 ![1 ターンのお天気ボット](./media/concept-conversation/weather-single-turn.png)
 
-お天気ボットは 1 ターンのフローを持ち、ユーザーに天気予報を提供するだけであり、都市や日付を尋ねて処理を前後することはありません。 天気予報を表示するすべてのロジックは、ボットが受信したばかりのメッセージに基づいています。 会話の各ターンでボットは[ターン コンテキスト](bot-builder-concept-activity-processing.md#turn-context)を受け取り、ボットはそれを使って、次に行う処理や、会話がどのように進むかを決定できます。 
+お天気ボットは 1 ターンのフローを持つ可能性があり、ユーザーに天気予報を提供するだけです。都市や日付を尋ねて処理を前後することはありません。 天気予報を表示するすべてのロジックは、ボットが受信したばかりのメッセージに基づいています。 会話の各ターンでボットは[ターン コンテキスト](bot-builder-concept-activity-processing.md#turn-context)を受け取り、ボットはそれを使って、次に行う処理や、会話がどのように進むかを決定できます。
 
 ## <a name="multiple-turns"></a>複数ターン
 
 ほとんどの種類の会話は 1 ターンでは完了できないため、ボットは複数ターンの会話フローを持つこともあります。 複数の会話ターンが必要なシナリオには、次のようなものがあります。
 
- * タスクを完了するために必要な追加情報をユーザーに問い合わせるボット。 ボットは、タスクを完了するためのパラメーターが全部揃っているかどうかを追跡する必要があります。
- * 注文などのプロセスで、ステップ形式でユーザーを案内するボット。 ボットは、ステップのシーケンス内でのユーザーの位置を追跡する必要があります。
+* タスクを完了するために必要な追加情報をユーザーに問い合わせるボット。 ボットは、タスクを完了するためのパラメーターが全部揃っているかどうかを追跡する必要があります。
+* 注文などのプロセスで、ステップ形式でユーザーを案内するボット。 ボットは、ステップのシーケンス内でのユーザーの位置を追跡する必要があります。
 
-たとえば、お天気ボットが複数ターンのフローを持つのは、「天気はどうですか?」という質問に対するボットの応答で 都市を尋ねるような場合です。
+たとえば、お天気ボットが複数ターンのフローを持つ可能性があるのは、「天気はどうですか?」という質問に対するボットの応答で 都市を尋ねるような場合です。
 
 ![複数ターンのお天気ボット](./media/concept-conversation/weather-multi-turn.png)
 
 都市を尋ねるボットのプロンプトにユーザーが応答し、ボットが「シアトル」を受け取った場合、現在のメッセージが前のプロンプトへの応答、かつ天気を取得する要求の一部であることを理解するためには、何らかの保存済みコンテキストをボットが持っている必要があります。 複数ターンのボットは、新しいメッセージに適切に応答するために状態を追跡します。
 
-<!--
-```
-// TBD: snippet showing receiving message and using ConversationProperties
-```
--->
-
-状態管理の概要については「[Managing state](bot-builder-storage-concept.md)」(状態の管理) を、例については「[How to use user and conversation properties](bot-builder-howto-v4-state.md)」(ユーザーと会話のプロパティの使用方法) を参照してください。
+詳細については、[会話とユーザー状態を管理する方法](bot-builder-howto-v4-state.md)に関するページを参照してください。
 
 > [!NOTE]
-> REST API クライアントとの複数ターン会話では、たとえばデータベースまたはテーブル ストレージで、独自の状態を追跡する必要があります。 
+> REST API クライアントとの複数ターン会話では、たとえばデータベースまたはテーブル ストレージで、独自の状態を追跡する必要があります。
 
 ## <a name="conversation-topics"></a>会話トピック
 
-複数の種類のタスクを処理するためにボットを設計することができます。 たとえば、ユーザーに挨拶したり、注文したり、キャンセルしたり、ヘルプを取得したりするためのさまざまな会話フローを提供するボットを作成できます。 さまざまなタスクまたは会話トピックの会話間でこの切り替えを処理する 1 つの方法は、現在のメッセージから意図 (ユーザーがしたいこと) を認識することです。 
+複数の種類のタスクを処理するためにボットを設計することができます。 たとえば、ユーザーに挨拶したり、注文したり、注文をキャンセルしたり、ヘルプを取得したりするためのさまざまな会話フローを提供するボットを作成できます。 さまざまなタスクまたは会話トピックの会話間でこの切り替えを処理する 1 つの方法は、現在のメッセージから意図 (ユーザーがしたいこと) を認識することです。
 
 ### <a name="recognize-intent"></a>意図の認識
 
-Bot Builder SDK は、各受信メッセージを処理して意図を判断する_認識エンジン_を提供するので、ボットは適切な会話フローを開始できます。 認識エンジンは、"_receive コールバック_" の前にユーザーからのメッセージの内容を見て意図を判断した後、receive コールバック内でターン コンテキスト オブジェクトを使用して、**最上位の意図**として[ターン コンテキスト](bot-builder-concept-activity-processing.md#turn-context) オブジェクトに保存された意図をボットに返します。 
+Bot Builder SDK は、メッセージを処理して意図を判断する "_認識エンジン_" を提供するので、ボットは適切な会話フローを開始できます。 ユーザーの意図をメッセージの内容から判断するには、認識エンジンの _recognize_ 非同期メソッドを呼び出します。 次に、結果に対して _get top scoring intent_ メソッドを呼び出して、認識エンジンの最上位の予測を取得できます。
 
-**最上位の意図**を判断する認識エンジンは、正規表現、Language Understanding (LUIS)、または、ミドルウェアとして開発するその他のロジックを単純に使用できます。 認識エンジンの例を以下に示します。
-   
-* ユーザーが「ヘルプ」という単語を言うたびにそれを検出するために、正規表現を使用して認識エンジンをセットアップします。
-* Language Understanding (LUIS) と、ユーザーがヘルプを求める方法の例を使用してサービスをトレーニングし、それを "Help" の意図にマップします。
-* 受信アクティビティを検査し、別の言語のメッセージを検出するたびに "translate" の意図を返す、独自の認識エンジン ミドルウェアを作成します。
+認識エンジンでは、正規表現、Language Understanding、または開発するその他のロジックを使用できます。 使用可能な認識エンジンの例を次に示します。
 
-詳細については、「[Language Understanding with LUIS](bot-builder-concept-luis.md)」(LUIS による言語の理解) を参照してください。 <!-- TODO: ADD THIS TOPIC OR SNIPPET-->
+* QnA Maker を使用して、サポート技術情報で取り上げられている質問をユーザーが行うタイミングを検出する認識エンジン
+* Language Understanding (LUIS) と、ユーザーがヘルプを求める方法の例を使用してサービスをトレーニングし、それを `Help` の意図にマップする認識エンジン
+* 正規表現を使用してコマンドを検索するカスタム認識エンジン
+* サービスを使用して入力を変換するカスタム認識エンジン
 
 ### <a name="consider-how-to-interrupt-conversation-flow-or-change-topics"></a>会話フローを中断またはトピックを変更する方法の検討
 
@@ -110,59 +97,36 @@ Bot Builder SDK は、各受信メッセージを処理して意図を判断す�
 * ユーザーの以前の行動をすべて無視し、フロー スタック全体をリセットし、ユーザーの質問に答えようとすることによって最初から始めます。
 * ユーザーの質問に答えようとし、そのはい/いいえの質問に戻って、そこから再開することを試みます。
 
-この質問に対する正解はありません。なぜなら、シナリオの詳細や、ボットの応答に対するユーザーの妥当な期待によって、最良の解決策が変わってくるからです。 詳細については、「[ユーザーによる割り込みの処理](bot-builder-howto-handle-user-interrupt.md)」を参照してください。
-
-> [!TIP]
-> Bot Builder SDK for Node.Js を使用する場合、[ダイアログ](bot-builder-dialog-manage-conversation-flow.md)を使用して会話のフローを管理できます。
+この質問に対する正解はありません。なぜなら、シナリオの詳細や、ボットの応答に対するユーザーの妥当な期待によって、最良の解決策が変わってくるからです。 会話フローを管理するには、[ダイアログを使用する](bot-builder-dialog-manage-conversation-flow.md)方法と[割り込みを処理する](bot-builder-howto-handle-user-interrupt.md)方法に関するページを参照してください。
 
 ## <a name="conversation-lifetime"></a>会話の有効期間
 
 <!-- Note: these activities are dependent on whether the channel actually sends them. Also, we should add links --> ボットは、ボットが会話に追加されたり、他のメンバーが会話に追加または会話から削除されたり、会話メタデータが変更されたりするたびに、_会話更新_アクティビティを受信します。
 ユーザーに挨拶したり、自己紹介をしたりすることで、ボットを会話更新アクティビティに反応させることが必要な場合があります。
 
-ボットは、ユーザーが会話を終了したことを示す_会話終了_アクティビティを受信します。 ボットは、_会話終了_アクティビティを送信して、会話を終了していることをユーザーに示すことができます。 会話についての情報を保存している場合、会話が終了したらその情報を消去することができます。
+ボットは、ユーザーが会話を終了したことを示す_会話終了_アクティビティを受信します。 ボットは、"_会話終了_" アクティビティを送信して、会話を終了していることを示すことができます。
+会話についての情報を保存している場合、会話が終了したらその情報を消去することができます。
 
-<!--  Types of conversations
+<!--  Types of conversations -->
 
-Your bot can support multi-turn interactions where it prompts users for multiple peices of information. It can be focused on a very specific task or support multiple types of tasks. 
-The Bot Builder SDK has some built-in support for Language Understatnding (LUIS) and QnA Maker for adding natural language "question and answer" features to your bot.
+ボットは、複数ターンの対話をサポートします。このような対話では、ボットが複数の情報をユーザーに尋ねます。 ボットは限られた 1 つのタスクに集中するか、または複数の種類のタスクをサポートできます。
+Bot Builder SDK には、自然言語の "質問と回答" 機能をボットに追加するための Language Understanding (LUIS) および QnA Maker のサポートが組み込まれています。
 
-<!--TODO: Add with links when these topics are available:
-[Conversation flow] and other design articles.
-[Using recognizers] [Using state and storage] and other how tos.
--->
 ## <a name="conversations-channels-and-users"></a>会話、チャネル、ユーザー
 
 会話は特定のユーザーとの_直接_会話と、複数のユーザーとの_グループ_会話のどちらかです。
 ボットは、ユーザーとの間でアクティビティを送受信することで、チャネルのユーザーとコミュニケーションを取ります。
 
-- 各ユーザーにはチャネルごとに一意の ID があります。
-- 各会話にはチャネルごとに一意の ID があります。
-- チャネルは会話を開始するときに会話 ID を設定します。
-- ボットは会話を開始できません。ただし、会話 ID を取得した後であれば、その会話を再開できます。
-- すべてのチャネルが、グループ会話をサポートするわけではありません。
+* 各ユーザーにはチャネルごとに一意の ID があります。
+* 各会話にはチャネルごとに一意の ID があります。
+* チャネルは会話を開始するときに会話 ID を設定します。
+* ボットは会話を開始できません。ただし、会話 ID を取得した後であれば、その会話を再開できます。
+* すべてのチャネルが、グループ会話をサポートするわけではありません。
 
 ## <a name="next-steps"></a>次の手順
 
-以上に挙げたような複雑な会話では、1 ターンよりも長い期間にわたって情報を保持できる必要があります。 次は、状態とストレージについて理解しましょう。
-
 > [!div class="nextstepaction"]
-> [状態とストレージ](bot-builder-storage-concept.md)
+> [ダイアログを使用して単純な会話フローを管理する](bot-builder-dialog-manage-conversation-flow.md)
 
 <!-- In addition, your bot can send activities back to the user, either _proactively_, in response to internal logic, or _reactively_, in response to an activity from the user or channel.-->
 <!--TODO: Link to messaging how tos.-->
-
-<!--  TODO: Change to next steps, one for each of LUIS and State
-## See also
-
-- Activities
-- Adapter
-- Context
-- Proactive messaging
-- State
--->
-
-[QnAMaker]:(bot-builder-luis-and-qna.md#using-qna-maker)
-
-<!-- TODO: Update when the Dispatch concept is pushed -->
-[Dispatch]:(bot-builder-concept-luis.md)

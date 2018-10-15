@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 2e0b85af834bc92a9da8c9f9be2794da88c2b3bc
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: ba2aec255cf160a72c11c3ddfda021baae304568
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301191"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389641"
 ---
 # <a name="configure-speech-priming"></a>音声プライミングを構成する
 
@@ -26,6 +26,9 @@ ms.locfileid: "39301191"
 
 > [!IMPORTANT]
 > 音声プライミングは、Cortana チャネルまたは Web チャット チャネル用に構成されたボットにのみ適用されます。
+
+> [!IMPORTANT]
+> プライミングは米国リージョン以外の LUIS アプリ (eu.luis.ai、au.luis.ai など) ではサポートされていません。
 
 ## <a name="change-the-list-of-luis-apps-your-bot-uses"></a>ボットが使用する LUIS アプリの一覧を変更する
 

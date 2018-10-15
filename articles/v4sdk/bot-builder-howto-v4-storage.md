@@ -1,155 +1,117 @@
 ---
 title: ストレージに直接書き込む | Microsoft Docs
-description: Bot Builder SDK for .NET の V4 でストレージに直接書き込む方法について説明します。
+description: Bot Builder SDK for .NET でストレージに直接書き込む方法について説明します。
 keywords: ストレージ, 読み取りと書き込み, メモリ ストレージ, eTag
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 05/2/18
+ms.date: 09/14/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 76f8976aefe3d4fefcffc46e691dbd0b35e41ec7
-ms.sourcegitcommit: 1abc32353c20acd103e0383121db21b705e5eec3
+ms.openlocfilehash: 0bbb507484840ab1fb0dc7c209b5d7ca8e9c9cfb
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42756765"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46708148"
 ---
 # <a name="write-directly-to-storage"></a>ストレージに直接書き込む
 
-<!--
- Note for V4: You can write directly to storage without using the state manager. Therefore, this topic isn't called "managing state". State is in a separate topic.
- ## Manage state data by writing directly to storage
--->
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-ストレージ オブジェクトを直接読み書きすることにより、コンテキスト オブジェクトまたはミドルウェアを使わずに、ストレージに直接書き込むことができます。
+ミドルウェアまたはコンテキスト オブジェクトを使用せずに、ストレージ オブジェクトに対して直接読み取りや書き込みを行うことができます。 ボットの会話フローの外にあるソースからのデータをボットが使用する場合は、この方法が適切な可能性があります。 たとえば、ユーザーが天気予報を尋ねるボットで、外部データベースからの読み取りによって指定日の天気予報を取得するとします。 天気データベースの内容はユーザーの情報または会話のコンテキストに依存しないため、状態マネージャーを使用する代わりに、単純にストレージから予報を直接読み取ることができます。 この記事のコード例では、**メモリ ストレージ**、**Cosmos DB**、**Blob Storage**、および **Azure Blob Transcript Store** を使用してストレージに対するデータの読み取りや書き込みを行う方法を示します。 
 
-このコード例では、ストレージのデータを読み書きする方法を示します。 この例ではストレージはファイルですが、ストレージ オブジェクトを初期化して代わりに Azure Table Storage のメモリ ストレージを使うように、コードを簡単に変更できます。 
+## <a name="prerequisites"></a>前提条件
+- Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/en-us/free/)アカウントを作成してください。
+- Bot Framework [Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) をインストールします。
 
-# <a name="ctabcsharpechorproperty"></a>[C#](#tab/csharpechorproperty)
-オブジェクトを定義し、`IStorage.Write` と `IStorage.Read` を使って状態を保存および取得します。 
+## <a name="memory-storage"></a>メモリ ストレージ
 
-次のサンプルでは、ユーザーからのすべてのメッセージをリストに追加します。 リストを含むデータ構造は、ユーザーが `FileStorage` コンストラクターに指定したディレクトリ内のファイルに保存されます。
+メモリ ストレージに対するデータの読み取りや書き込みを行うボットを最初に作成します。 メモリ ストレージはテストにのみ使用され、実稼働を目的としたものではありません。 ボットを発行する前に、ストレージを Cosmos DB または Blob Storage に設定してください。
 
-BotBuilder V4 SDK の EchoBot Visual Studio テンプレートを使って始めます。
-`EchoBot.cs` ファイルを編集します。 次の using ステートメントを追加し、`EchoBot` クラスの定義を置き換えます。
+#### <a name="build-a-basic-bot"></a>基本のボットを作成する
+
+このトピックの残りの部分では、エコー ボットについては取り上げません。 [C#](../dotnet/bot-builder-dotnet-sdk-quickstart.md) または [JS](../javascript/bot-builder-javascript-quickstart.md) でボットを作成できます。 Bot Framework Emulator を使用して、ボットへの接続、対話、およびテストが可能です。 次のサンプルでは、ユーザーからのすべてのメッセージをリストに追加します。 リストを含むデータ構造はストレージに保存されます。
+
+# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
 
 ```csharp
+using System;
+using System.Threading.Tasks;
+using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.TraceExtensions;
+using Microsoft.Bot.Builder.Azure;
+using Microsoft.Bot.Schema;
 using System.Collections.Generic;
 using System.Linq;
-```
+using System.Threading;
 
-```csharp
-// In the constructor initialize file storage
-public class EchoBot : IBot
+// Create local Memory Storage.
+private static readonly MemoryStorage _myStorage = new MemoryStorage();
+
+// Create cancellation token (used by Async Write operation).
+public CancellationToken cancellationToken { get; private set; }
+
+// Class for storing a log of utterances (text of messages) as a list.
+public class UtteranceLog : IStoreItem
 {
-    private readonly FileStorage _myStorage;
+     // A list of things that users have said to the bot
+     public List<string> UtteranceList { get; } = new List<string>();
 
-    public EchoBot()
-    {
-        _myStorage = new FileStorage(System.IO.Path.GetTempPath());
-    }
+     // The number of conversational turns that have occurred        
+     public int TurnNumber { get; set; } = 0;
 
-    // Add a class for storing a log of utterances (text of messages) as a list
-    public class UtteranceLog : IStoreItem
-    {
-        // A list of things that users have said to the bot
-        public List<string> UtteranceList { get; private set; } = new List<string>();
-
-        // The number of conversational turns that have occurred        
-        public int TurnNumber { get; set; } = 0;
-
-        public string eTag { get; set; } = "*";
-    }
-
-    // Replace the OnTurn in EchoBot.cs with the following:
-    public async Task OnTurn(ITurnContext context)
-    {
-        var activityType = context.Activity.Type;
-
-        await context.SendActivity($"Activity type: {context.Activity.Type}.");
-
-        if (activityType == ActivityTypes.Message)
-        {
-            // *********** begin (create or add to log of messages)
-            var utterance = context.Activity.Text;
-            bool restartList = false;
-
-            if (utterance.Equals("restart"))
-            {
-                restartList = true;
-            }
-
-            // Attempt to read the existing property bag
-            UtteranceLog logItems = null;
-            try
-            {
-                logItems = _myStorage.Read<UtteranceLog>("UtteranceLog").Result?.FirstOrDefault().Value;
-            }
-            catch (System.Exception ex)
-            {
-                await context.SendActivity(ex.Message);
-            }
-
-            // If the property bag wasn't found, create a new one
-            if (logItems is null)
-            {
-                try
-                {
-                    // add the current utterance to a new object.
-                    logItems = new UtteranceLog();
-                    logItems.UtteranceList.Add(utterance);
-
-                    await context.SendActivity($"The list is now: {string.Join(", ",logItems.UtteranceList)}");
-
-                    var changes = new KeyValuePair<string, object>[]
-                    {
-                        new KeyValuePair<string, object>("UtteranceLog", logItems)
-                    };
-                    await _myStorage.Write(changes);
-                }
-                catch (System.Exception ex)
-                {
-                    await context.SendActivity(ex.Message);
-                }
-            }
-            // logItems.ContainsKey("UtteranceLog") == true, we were able to read a log from storage
-            else
-            {
-                // Modify its property
-                if (restartList)
-                {
-                    logItems.UtteranceList.Clear();
-                }
-                else
-                {
-                    logItems.UtteranceList.Add(utterance);
-                    logItems.TurnNumber++;
-                }
-
-                await context.SendActivity($"The list is now: {string.Join(", ", logItems.UtteranceList)}");
-
-                var changes = new KeyValuePair<string, object>[]
-                {
-                        new KeyValuePair<string, object>("UtteranceLog", logItems)
-                };
-                await _myStorage.Write(changes);
-            }
-        }
-
-        return;
-    }
+     // Create concurrency control where this is used.
+     public string ETag { get; set; } = "*";
 }
+
+// Every Conversation turn for our Bot calls this method.
+public async Task OnTurnAsync(ITurnContext context)
+{
+     
+     var activityType = context.Activity.Type;
+     // See if activity type for this turn is a message from the user.
+     if (activityType == ActivityTypes.Message)
+     {
+         var utterance = context.Activity.Text;
+         UtteranceLog logItems = null;
+          
+         // see if there are previous messages saved in sstorage.
+         string[] utteranceList = { "UtteranceLog" };
+         logItems = _myStorage.ReadAsync<UtteranceLog>(utteranceList).Result?.FirstOrDefault().Value;
+
+         // If no stored messages were found, create and store a new entry.
+         if (logItems is null)
+         {
+             logItems = new UtteranceLog();
+         }
+         
+         // add new message to list of messages to display.
+         logItems.UtteranceList.Add(utterance);
+         // increment turn counter.
+         logItems.TurnNumber++;
+         
+         // show user new list of saved messages.
+         await context.SendActivityAsync($"The list is now: {string.Join(", ", logItems.UtteranceList)}");
+         
+         // Create Dictionary object to hold new list of messages.
+         {
+             changes.Add("UtteranceLog", logItems);
+          };
+          
+          // Save new list to your Storage.
+          await _myStorage.WriteAsync(changes,cancellationToken);
+     }
+     return;
+}
+
 ```
-# <a name="javascripttabjsechoproperty"></a>[JavaScript](#tab/jsechoproperty)
 
-次のサンプルでは、ユーザーからのすべてのメッセージをリストに追加します。 リストを含むデータ構造は、ユーザーが `FileStorage` コンストラクターに指定したディレクトリ内のファイルに保存されます。
+# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
 
-次のコードを `app.js` に貼り付けます。
-``` javascript
-const { BotFrameworkAdapter, FileStorage, MemoryStorage, ConversationState, BotStateSet } = require('botbuilder');
+```javascript
+const { BotFrameworkAdapter, ConversationState, BotStateSet, MemoryStorage } = require('botbuilder');
 const restify = require('restify');
 
 // Create server.
@@ -164,12 +126,13 @@ const adapter = new BotFrameworkAdapter({
     appPassword: process.env.MICROSOFT_APP_PASSWORD
 });
 
-// Add storage.
-var storage = new FileStorage("C:/temp");
-const conversationState = new ConversationState(storage);
-adapter.use(new BotStateSet(conversationState));
+// Add memory storage.
+var storage = new MemoryStorage();
 
-// Listen for incoming activities.
+const conversationState = new ConversationState(storage);
+adapter.use(conversationState);
+
+// Listen for incoming activity .
 server.post('/api/messages', (req, res) => {
     // Route received activity to adapter for processing.
     adapter.processActivity(req, res, async (context) => {
@@ -177,36 +140,7 @@ server.post('/api/messages', (req, res) => {
             const state = conversationState.get(context);
             const count = state.count === undefined ? state.count = 0 : ++state.count;
 
-            let utterance = context.activity.text;
-            let storeItems = await storage.read(["UtteranceLog"])
-            try {
-                // check result
-                var utteranceLog = storeItems["UtteranceLog"];
-                
-                if (typeof (utteranceLog) != 'undefined') {
-                    // log exists so we can write to it
-                    storeItems["UtteranceLog"].UtteranceList.push(utterance);
-                    
-                    await storage.write(storeItems)
-                    try {
-                        context.sendActivity('Successful write.');
-                    } catch (err) {
-                        context.sendActivity(`Srite failed of UtteranceLog: ${err}`);
-                    }
-
-                } else {
-                    context.sendActivity(`need to create new utterance log`);
-                    storeItems["UtteranceLog"] = { UtteranceList: [`${utterance}`], "eTag": "*" }
-                    await storage.write(storeItems)
-                    try {
-                        context.sendActivity('Successful write.');
-                    } catch (err) {
-                        context.sendActivity(`Write failed: ${err}`);
-                    }
-                }
-            } catch (err) {
-                context.sendActivity(`Read rejected. ${err}`);
-            };
+            await logMessageText(storage, context);
 
             await context.sendActivity(`${count}: You said "${context.activity.text}"`);
         } else {
@@ -214,263 +148,504 @@ server.post('/api/messages', (req, res) => {
         }
     });
 });
+
+async function logMessageText(storage, context) {
+    let utterance = context.activity.text;
+    try {
+        // Read from the storage.
+        let storeItems = await storage.read(["UtteranceLog"])
+        // Check the result.
+        var utteranceLog = storeItems["UtteranceLog"];
+
+        if (typeof (utteranceLog) != 'undefined') {
+            // The log exists so we can write to it.
+            storeItems["UtteranceLog"].UtteranceList.push(utterance);
+
+            try {
+                await storage.write(storeItems)
+                context.sendActivity('Successful write to utterance log.');
+            } catch (err) {
+                context.sendActivity(`Write failed of UtteranceLog: ${err}`);
+            }
+
+         } else {
+            context.sendActivity(`need to create new utterance log`);
+            storeItems["UtteranceLog"] = { UtteranceList: [`${utterance}`], "eTag": "*" }
+
+            try {
+                await storage.write(storeItems)
+                context.sendActivity('Successful write to log.');
+            } catch (err) {
+                context.sendActivity(`Write failed: ${err}`);
+            }
+        }
+    } catch (err) {
+        context.sendActivity(`Read rejected. ${err}`);
+    };
+}
+```
+
+---
+
+### <a name="start-your-bot"></a>ボットの起動
+ボットをローカルで実行します。
+
+### <a name="start-the-emulator-and-connect-your-bot"></a>エミュレーターの起動とボットの接続
+次に、エミュレーターを起動し、エミュレーターのボットに接続します。
+
+1. エミュレーターの [ようこそ] タブにある **[Open Bot]\(ボットを開く\)** リンクをクリックします。 
+2. プロジェクトを作成したディレクトリにある .bot ファイルを選択します。
+
+### <a name="interact-with-your-bot"></a>ボットでのやり取り
+メッセージをボットに送信します。ボットは受信したメッセージを表示します。
+![実行中のエミュレーター](../media/emulator-v4/emulator-running.png)
+
+ 
+## <a name="using-cosmos-db"></a>Cosmos DB の使用
+メモリ ストレージを使用しているので、Azure Cosmos DB を使用するようにコードを更新します。 Cosmos DB は、Microsoft のグローバル分散型マルチモデル データベースです。 Azure Cosmos DB では、Azure のリージョンをいくつでもまたいでスループットとストレージを柔軟かつ個別にスケーリングすることができます。 このサービスは包括的なサービス レベル アグリーメント (SLA) により、スループット、待機時間、可用性、一貫性が保証されています。 
+
+### <a name="set-up"></a>セットアップ
+ボットで Cosmos DB を使用するには、コードに取り組む前に、いくつかの設定を行う必要があります。
+
+#### <a name="create-your-database-account"></a>データベース アカウントの作成
+1. 新しいブラウザー ウィンドウで、[Azure Portal](http://portal.azure.com) にサインインします。
+2. **[リソースの作成]、[データベース]、[Azure Cosmos DB]** の順にクリックします。
+3. **[新規アカウント] ページ**の **[ID]** フィールドに一意の名前を指定します。 **[API]** として **[SQL]** を選択し、**[サブスクリプション]**、**[場所]**、および **[リソース グループ]** に情報を指定します。
+4. **[Create]** をクリックします。
+
+アカウントの作成には数分かかります。 ポータルに " Azure Cosmos DB アカウントが作成されました" ページが表示されるまで待機します。
+
+##### <a name="add-a-collection"></a>コレクションの追加
+1. **[設定]、[新しいコレクション]** の順にクリックします。 **[コレクションの追加]** 領域が右端に表示されます。表示するには、右にスクロールする必要がある場合があります。
+
+![Cosmos DB コレクションの追加](./media/add_database_collection.png)
+
+2. 新しいデータベース コレクションは "bot-cosmos-sql-db" です。コレクション ID は "bot-storage" になります。 これらの値は、以降に示すコード例で使用します。
+
+![Cosmos DB](./media/cosmos-db-sql-database.png)
+
+3. データベース設定の **[キー]** タブで、エンドポイント URI とキーが利用可能になります。 これらの値は、この記事の後半のコードの構成で必要になります。 
+
+![Cosmos DB のキー](./media/comos-db-keys.png)
+
+#### <a name="add-configuration-information"></a>構成情報の追加
+Cosmos DB ストレージを追加するための構成データは短くシンプルなものであり、ボットがより複雑になった場合でも、同じ方法を使用して構成設定を追加できます。 この例では、上記の例の Cosmos DB データベースとコレクションの名前を使用します。
+
+# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+
+```csharp
+private const string CosmosServiceEndpoint = "<your-cosmos-db-URI>";
+private const string CosmosDBKey = "<your-cosmos-db-account-key>";
+private const string CosmosDBDatabaseName = "bot-cosmos-sql-db";
+private const string CosmosDBCollectionName = "bot-storage";
+```
+
+
+# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+
+`.env` ファイルに以下の情報を追加します。 
+ 
+```javascript
+ACTUAL_SERVICE_ENDPOINT=<your database URI>
+ACTUAL_AUTH_KEY=<your database key>
+DATABASE=Tasks
+COLLECTION=Items
 ```
 ---
 
-## <a name="manage-concurrency-using-etags"></a>eTag を使用して同時実行を管理する
+#### <a name="installing-packages"></a>パッケージのインストール
+Cosmos DB に必要なパッケージがあることを確認します。
 
-前の例では、`eTag` プロパティを `*` に設定しました。 ストア オブジェクトの `eTag` (エンティティ タグ) メンバーは、同時実行を管理するためのものです。 `eTag` は、自分のボットが書き込んでいるストレージ内のオブジェクトをボットの別のインスタンスが変更した場合の対処方法を示します。 
+# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+
+```powershell
+Install-Package Microsoft.Bot.Builder.Azure
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+
+npm を使用して、botbuilder-azure への参照をプロジェクトで追加します。
+
+
+```powershell
+npm install --save botbuilder-azure 
+```
+
+.env 構成ファイルを使用するには、ボットに追加のパッケージが含まれている必要があります。 最初に、dotnet パッケージを npm から取得します。
+
+```powershell
+npm install --save dotenv
+```
+
+---
+
+### <a name="implementation"></a>実装 
+
+# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+
+次のサンプル コードは、上記の[メモリ ストレージ](#memory-storage)のサンプルと同じボット コードを使用して実行されます。
+次のコード スニペットは、ローカルのメモリ ストレージを置き換える "_myStorage_" に対する Cosmos DB ストレージの実装を示しています。 
+
+```csharp
+using Microsoft.Bot.Builder.Azure;
+
+// Create access to Cosmos DB storage.
+// Replaces Memory Storage with reference to Cosmos DB.
+private static readonly CosmosDbStorage _myStorage = new CosmosDbStorage(new CosmosDbStorageOptions
+{
+   AuthKey = CosmosDBKey,
+   CollectionId = CosmosDBCollectionName,
+   CosmosDBEndpoint = new Uri(CosmosServiceEndpoint),
+   DatabaseId = CosmosDBDatabaseName,
+});
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+
+次のサンプル コードは[メモリ ストレージ](#memory-storage)と似ていますが、わずかに変更されています。
+
+botbuilder-azure の `CosmosDbStorage` が必要です。また、`.env` ファイルを読み取るように dotenv を構成します。
+
+**app.js**
+```javascript
+const { CosmosDbStorage } = require("botbuilder-azure");
+require('dotenv').config()
+```
+
+メモリ ストレージを Cosmos DB への参照に置き換えます。
+
+```javascript
+//Add CosmosDB 
+const storage = new CosmosDbStorage({
+    serviceEndpoint: process.env.ACTUAL_SERVICE_ENDPOINT, 
+    authKey: process.env.ACTUAL_AUTH_KEY, 
+    databaseId: process.env.DATABASE,
+    collectionId: process.env.COLLECTION
+})
+
+const conversationState = new ConversationState(storage);
+adapter.use(conversationState);
+```
+
+---
+
+## <a name="start-your-bot"></a>ボットの起動
+ボットをローカルで実行します。
+
+## <a name="start-the-emulator-and-connect-your-bot"></a>エミュレーターの起動とボットの接続
+次に、エミュレーターを起動し、エミュレーターのボットに接続します。
+
+1. エミュレーターの [ようこそ] タブにある **[Open Bot]\(ボットを開く\)** リンクをクリックします。 
+2. プロジェクトを作成したディレクトリにある .bot ファイルを選択します。
+
+## <a name="interact-with-your-bot"></a>ボットでのやり取り
+メッセージをボットに送信します。ボットは受信したメッセージを表示します。
+![実行中のエミュレーター](../media/emulator-v4/emulator-running.png)
+
+
+### <a name="view-your-data"></a>データの表示
+ボットを実行して情報を保存したら、Azure portal の **[データ エクスプローラー]** タブの下にその情報を表示できます。 
+
+![データ エクスプローラーの例](./media/data_explorer.PNG)
+
+### <a name="manage-concurrency-using-etags"></a>eTag を使用して同時実行を管理する
+ボット コード例では、各 `IStoreItem` の `eTag` プロパティを `*` に設定します。 ストア オブジェクトの `eTag` (エンティティ タグ) メンバーは、コンカレンシーを管理するために Cosmos DB 内で使用されます。 `eTag` は、自分のボットが書き込んでいる同じストレージ内のオブジェクトをボットの別のインスタンスが変更した場合の対処方法をデータベースに通知します。 
 
 <!-- define optimistic concurrency -->
 
-### <a name="last-write-wins---allow-overwrites"></a>最後の書き込みが有効 - 上書きを許可する
+#### <a name="last-write-wins---allow-overwrites"></a>最後の書き込みが有効 - 上書きを許可する
+`eTag` プロパティの値にアスタリスク (`*`) を指定すると、最後の書き込みが有効であることを示します。 新しいデータ ストアを作成するときは、プロパティの `eTag` を `*` に設定して、以前に保存したことのないデータを書き込んでいること、または以前に保存されたすべてのプロパティを最後の書き込みで上書きすることを示します。 コンカレンシーがボットにとって問題にならない場合は、書き込んでいるすべてのデータについて `eTag` プロパティを `*` に設定して上書きを許可します。
 
-前に書き込まれたデータをボットの他のインスタンスが上書きするのを許可するには、eTag を `*` に設定します。 `eTag` プロパティの値にアスタリスク (`*`) を指定すると、最後の書き込みが有効であることを示します。 新しいデータ ストアを作成するときは、プロパティの `eTag` を `*` に設定して、以前に保存したことのないデータを書き込んでいること、または以前に保存されたすべてのプロパティを最後の書き込みで上書きすることを示します。 同時実行がボットにとって問題にならない場合は、書き込んでいるすべてのデータについて `eTag` プロパティを `*` に設定して上書きを許可します。
+#### <a name="maintain-concurrency-and-prevent-overwrites"></a>同時実行を維持して上書きを禁止する
+データを Cosmos DB に保存する際に、プロパティへの同時アクセスを禁止し、変更をボットの別のインスタンスによって上書きされないようにする場合は、`*` 以外の値を `eTag` に使います。 ボットが状態データを保存しようとして、`eTag` がストレージ内の `eTag` と同じ値でない場合、ボットは `etag conflict key=` というメッセージのエラー応答を受け取ります。 <!-- To control concurrency of data that is stored using `IStorage`, the BotBuilder SDK checks the entity tag (ETag) for `Storage.Write()` requests. -->
 
-このコードの例を次に示します。
-
-# <a name="ctabcsetagoverwrite"></a>[C#](#tab/csetagoverwrite)
-前に定義した `UtteranceLog` クラスを使います。
-```csharp
-// Add the current utterance to a new object and save it to storage.
-logItems = new UtteranceLog();
-logItems.UtteranceList.Add(utterance);
-logItems.eTag = "*";
-
-var changes = new KeyValuePair<string, object>[]
-{
-    new KeyValuePair<string, object>("UtteranceLog", logItems)
-};
-await _myStorage.Write(changes);
-
-```
-# <a name="javascripttabjstagoverwrite"></a>[JavaScript](#tab/jstagoverwrite)
-新しい発話をログに追加し、上書きを許可します。
-
-```javascript
-storeItems["UtteranceLog"] = { UtteranceList: [`${utterance}`], "eTag": "*" }
-await storage.write(storeItems)
-```
----
-
-### <a name="maintain-concurrency-and-prevent-overwrites"></a>同時実行を維持して上書きを禁止する
-プロパティへの同時アクセスを禁止し、変更をボットの別のインスタンスによって上書きされないようにする場合は、`*` 以外の値を `eTag` に使います。 ボットが状態データを保存しようとして、`eTag` がストレージ内の値と同じでない場合、ボットは `etag conflict key=` というメッセージのエラー応答を受け取ります。 <!-- To control concurrency of data that is stored using `IStorage`, the BotBuilder SDK checks the entity tag (ETag) for `Storage.Write()` requests. -->
-
-既定では、ストアはボットがストレージ オブジェクトを書き込むたびにその項目の `eTag` プロパティが等しいかどうかを確認し、各書き込みの後で新しい一意の値に更新します。 書き込みの `eTag` プロパティがストレージの `eTag` と一致しない場合は、別のボットまたはスレッドがデータを変更したことを意味します。 
+既定では、Cosmos DB ストアはボットがストレージ オブジェクトを書き込むたびにその項目の `eTag` プロパティが等しいかどうかを確認し、各書き込みの後で新しい一意の値に更新します。 書き込みの `eTag` プロパティがストレージの `eTag` と一致しない場合は、別のボットまたはスレッドがデータを変更したことを意味します。 
 
 たとえば、保存されたメモをボットで編集しますが、ボットの別のインスタンスが行った変更を上書きしないようにする必要があるものとします。 ボットの別のインスタンスが編集を行った場合は、ユーザーに最新の更新でバージョンを編集させます。
 
-# <a name="ctabcsetag"></a>[C#](#tab/csetag)
+# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+
 最初に、`IStoreItem` を実装するクラスを作成します。
+
 ```csharp
 public class Note : IStoreItem
 {
     public string Name { get; set; }
     public string Contents { get; set; }
-    public string eTag { get; set; }
+    public string ETag { get; set; }
 }
 ```
-次に、ストレージ オブジェクトを作成することによって最初のメモを作成し、オブジェクトをストアに追加します。
-```csharp
-// create a note for the first time, with a non-null, non-* eTag.
-var note = new Note { Name = "Shopping List", Contents = "eggs", eTag = "x" };
 
-var changes = new KeyValuePair<string, object>[]
-{
-    new KeyValuePair<string, object>("Note", note)
-};
-await NoteStore.Write(changes);
-```
-後でメモにアクセスして更新し、ストアから読み取ったその `eTag` を維持します。
+次に、ストレージ オブジェクトを作成することによって最初のメモを作成し、オブジェクトをストアに追加します。
+
 ```csharp
-var note = NoteStore.Read<Note>("Note").Result.FirstOrDefault().Value;
+// create a note for the first time, with a non-null, non-* ETag.
+var note = new Note { Name = "Shopping List", Contents = "eggs", ETag = "x" };
+
+var changes = Dictionary<string, object>();
+{
+    changes.Add("Note", note);
+};
+await NoteStore.WriteAsync(changes, cancellationToken);
+```
+
+後でメモにアクセスして更新し、ストアから読み取ったその `eTag` を維持します。
+
+```csharp
+var note = NoteStore.ReadAsync<Note>("Note").Result?.FirstOrDefault().Value;
 
 if (note != null)
 {
     note.Contents += ", bread";
-    var changes = new KeyValuePair<string, object>[]
+    var changes = new Dictionary<string, object>();
     {
-        new KeyValuePair<string, object>("Note1", note)
+         changes.Add("Note1", note);
     };
-    await NoteStore.Write(changes);
+    await NoteStore.WriteAsync(changes, cancellationToken);
 }
 ```
+
 変更を書き込む前にストアのメモが更新されていた場合、`Write` の呼び出しでは例外がスローされます。
 
-# <a name="javascripttabjsetag"></a>[JavaScript](#tab/jsetag)
 
-最初に、`myNote` オブジェクトを作成します。
+# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+
+データ ストアにサンプルのメモを書き込むヘルパー関数をボットの末尾に追加します。
+最初に、`myNoteData` オブジェクトを作成します。
+
 ```javascript
-var myNote = {
-    name: "Shopping List",
-    contents: "eggs",
-    eTag: "*"
+// Helper function for writing a sample note to a data store
+async function createSampleNote(storage, context) {
+    var myNoteData = {
+        name: "Shopping List",
+        contents: "eggs",
+        // If any Note file is already stored, the eTag field
+        // must be set to "*" in order to allow writing without first reading the stored eTag
+        // otherwise you'll likely get an exception indicating an eTag conflict. 
+        eTag: "*"
+    }
 }
 ```
-次に、`changes` オブジェクトを初期化し、"*メモ*" をそれに追加してから、ストレージに書き込みます。
+
+`createSampleNote` ヘルパー関数内で、`changes` オブジェクトを初期化し、"*メモ*" をそれに追加してから、ストレージに書き込みます。
 
 ```javascript
-// Write a note
+// Write the note data to the "Note" key
 var changes = {};
-changes["Note"] = myNote;
-await storage.write(changes);
-```
-後でメモにアクセスして更新し、ストアから読み取ったその `eTag` を維持します。
-```javascript
-// Read in a note
-var note = await storage.read(["Note"]);
+changes["Note"] = myNoteData;
+// Creates a file named Note, if it doesn't already exist.
+// specifying eTag= "*" will overwrite any existing contents.
+// The act of writing to the file automatically updates the eTag property
+// The first time you write to Note, the eTag is changed from *, and file contents will become:
+//    {"name":"Shopping List","contents":"eggs","eTag":"1"}
 try {
-    // Someone has updated the note. Need to update our local instance to match
-    if(myNote.eTag != note.eTag){
-        myNote = note;
-    }
-
-    // Add any updates to the note and write back out
-    myNote.contents += ", bread";   // Add to the note
-    changes["Note"] = note;
-    await storage.write(changes); // Write the changes back to storage
-    try {
-        context.sendActivity('Successful write.');
-    } catch (err) {
-        context.sendActivity(`Write failed: ${err}`);
-    }
-}
-catch (err) {
-    context.sendActivity(`Unable to read the Note: ${err}`);
+    await storage.write(changes);
+    await context.sendActivity('Successful created a note.');
+} catch (err) {
+    await context.sendActivity(`Could not create note: ${err}`);
 }
 ```
-変更を書き込む前にストアのメモが更新されていた場合、`Write` の呼び出しでは例外がスローされます。
+
+次に、メモに後からアクセスして更新するために、ユーザーが "メモの更新" を入力するとアクセス可能な別のヘルパー関数を作成します。
+
+```javascript
+async function updateSampleNote(storage, context) {
+    try {
+        // Read in a note
+        var note = await storage.read(["Note"]);
+        console.log(`note.eTag=${note["Note"].eTag}\n note=${JSON.stringify(note)}`);
+        // update the note that we just read
+        note["Note"].contents += ", bread";
+        console.log(`Updated note=${JSON.stringify(note)}`);
+
+        try {
+            await storage.write(note); // Write the changes back to storage
+            await context.sendActivity('Successfully updated to note.');
+        } catch (err) {            console.log(`Write failed: ${err}`);
+        }
+    }
+    catch (err) {
+        await context.sendActivity(`Unable to read the Note: ${err}`);
+    }
+}
+```
+
+変更を書き込む前にストアのメモが更新されていた場合、`write` の呼び出しでは例外がスローされます。
 
 ---
 
 同時実行を維持するには、常にストレージからプロパティを読み取った後、読み取ったプロパティを変更して、`eTag` が維持されるようにします。 ストアからユーザー データを読み取る場合、応答には eTag プロパティが含まれます。 データを変更して更新後のデータをストアに書き込む場合、要求に含まれる eTag プロパティでは、前に読み取ったのと同じ値が指定されている必要があります。 ただし、`eTag` を `*` に設定してオブジェクトを書き込むと、書き込みで他の変更を上書きできます。
 
-<!-- If the ETag specified in your `Storage.Write()` request matches the current value in the store, the server will save the data and specify a new eTag value in the body of the response, that indicates that the data has been updated. If the ETag specified in your Storage.Write() request does not match the current value in the store, the bot responds with an error indicating an eTag conflict, to indicate that the user's data in the store has changed since you last saved or retrieved it. -->
+## <a name="using-blob-storage"></a>Blob Storage の使用 
+Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 BLOB ストレージは、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
 
-<!-- TODO: new snippet -->
+### <a name="create-your-blob-storage-account"></a>Blob Storage アカウントの作成
+ボットで Blob Storage を使用するには、コードに取り組む前に、いくつかの設定を行う必要があります。
+1. 新しいブラウザー ウィンドウで、[Azure Portal](http://portal.azure.com) にサインインします。
+2. **[リソースの作成]、[Storage]、[ストレージ アカウント - Blob、File、Table、Queue]** の順にクリックします。
+3. **[新規アカウント] ページ**で、ストレージ アカウントの **[名前]** を入力し、**[アカウントの種類]** として **[Blob ストレージ]** を選択し、**[場所]**、**[リソース グループ]**、および **[サブスクリプション]** の情報を指定します。  
+4. **[Create]** をクリックします。
 
-<!-- jf: I think this section can be cut entirely.
+![Blob Storage の作成](./media/create-blob-storage.png)
 
-## Save a conversation reference using storage
+#### <a name="add-configuration-information"></a>構成情報の追加
 
-You can use IStorage to save BotBuilder SDK objects as well as user-defined data. This code snippet uses `Storage.Write()` to save a ConversationReference object for use in sending a proactive message later.
+上記のボットの Blob Storage の構成に必要な Blob Storage キーを検索します。
+1. Azure portal で、Blob Storage アカウントを開き、**[設定]、[アクセス キー]** の順に選択します。
 
-# [C#](#tab/csharpwriteconvref)
+![Blob Storage キーの検索](./media/find-blob-storage-keys.png)
+
+ここでは 2 つのキーを使用して、Blob Storage アカウントへのアクセス権をコードに提供します。
+
+# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+
 ```csharp
-            var reference = context.ConversationReference;
-            var userId = reference.User.Id;
+using Microsoft.Bot.Builder.Azure;
+```
 
-            // save the ConversationReference to a global variable of this class
-            conversationReference = reference;
+"_myStorage_" が既存の Blob Storage アカウントを指すようにコード行を更新します。
 
-            StoreItems storeItems = new StoreItems();
-            StoreItem conversationReferenceToStore = new StoreItem();
-            // set the eTag to "*" to indicate you're overwriting previous data
-            conversationReferenceToStore.eTag = "*";
-            conversationReferenceToStore.Add("ref", reference);
-            storeItems[$"ConversationReference/{userId}"] = conversationReferenceToStore;
+```csharp
+private static readonly AzureBlobStorage _myStorage = new AzureBlobStorage("<your-blob-storage-account-string>", "<your-blob-storage-container-name>");
+```
 
-            await storage.Write(storeItems).ConfigureAwait(false);
+# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+```javascript
+const mystorage = new BlobStorage({
+   <youy_containerName>,
+   <your_storageAccountOrConnectionString>,
+   <your_storageAccessKey>
+})
+```
+---
 
-            SubscribeUser(userId);
+Blob Storage アカウントを指すように "_myStorage_" が設定されると、ボット コードは Blob Storage からデータを保存および取得するようになります。
 
-            await context.SendActivity("Thank You! We will message you shortly.");
-        }
+## <a name="start-your-bot"></a>ボットの起動
+ボットをローカルで実行します。
 
-public void SubscribeUser(string userId)
+## <a name="start-the-emulator-and-connect-your-bot"></a>エミュレーターの起動とボットの接続
+次に、エミュレーターを起動し、エミュレーターのボットに接続します。
+
+1. エミュレーターの [ようこそ] タブにある **[Open Bot]\(ボットを開く\)** リンクをクリックします。 
+2. プロジェクトを作成したディレクトリにある .bot ファイルを選択します。
+
+## <a name="interact-with-your-bot"></a>ボットでのやり取り
+メッセージをボットに送信します。ボットは受信したメッセージを表示します。
+![実行中のエミュレーター](../media/emulator-v4/emulator-running.png)
+
+### <a name="view-your-data"></a>データの表示
+ボットを実行して情報を保存したら、Azure portal の **[ストレージ エクスプローラー]** タブの下にその情報を表示できます。
+
+## <a name="blob-transcript-storage"></a>Blob トランスクリプト ストレージ
+Azure Blob トランスクリプト ストレージには、特殊なストレージ オプションが用意されています。このオプションを使用すると、記録されたトランスクリプトの形式でユーザーの会話を簡単に保存および取得できます。 Azure Blob トランスクリプト ストレージは、ボットのパフォーマンスをデバッグする際に、調べるユーザー入力を自動的にキャプチャする場合には特に便利です。
+
+### <a name="set-up"></a>セットアップ
+Azure Blob トランスクリプト ストレージでは、上記の「_Blob Storage アカウントの作成_」および「_構成情報の追加_」の手順に従って作成したのと同じ Blob Storage アカウントを使用できます。 ここでは、新しい BLOB コンテナーである "_mybottranscripts_" を追加しました。 
+
+### <a name="implementation"></a>実装 
+次のコードでは、トランスクリプト ストレージのポインターである "_myTranscripts_" を新しい Azure Blob トランスクリプト ストレージ アカウントに接続します。 トランスクリプト ストレージのポインターである "_myTranscripts_" を接続する単一行
+
+```csharp
+using Microsoft.Bot.Builder.Azure;
+private readonly AzureBlobTranscriptStore _myTranscripts = new AzureBlobTranscriptStore("<your-blob-storage-account-string>", "<your-blob-storage-account-name>");
+```
+
+### <a name="store-user-conversations-in-azure-blob-transcripts"></a>Azure Blob トランスクリプトへのユーザーの会話の保存
+BLOB コンテナーでトランスクリプトを保存できるようになったら、ボットとユーザーの会話の保持を開始できます。 このような会話を後からデバッグ ツールとして使用しすると、ユーザーがボットとどのようにやり取りするかを確認できます。 次のコードでは、後から確認するためにユーザーの会話の入力を保持します。
+
+
+```csharp
+/// <summary>
+/// Every Conversation turn for our EchoBot will call this method. 
+/// </summary>
+/// <param name="context">Turn scoped context containing all the data needed
+/// for processing this conversation turn. </param>        
+public async Task OnTurnAsync(ITurnContext context, CancellationToken cancellationToken = default(CancellationToken))
 {
-    CreateContextForUserAsync(userId, async (ITurnContext context) =>
+    var activityType = context.Activity.Type;
+
+    await context.SendActivityAsync($"Activity type: {context.Activity.Type}.");
+
+    // This bot is processing Messages
+    if (activityType == ActivityTypes.Message)
     {
-        await context.SendActivity("You've been notified.");
-        await Task.Delay(2000);
-    });
-                
-}
+        // save user input into bot transcript storage for later debugging and review.
+        await _myTranscripts.LogActivityAsync(context.Activity);
 ```
-# [JavaScript](#tab/jswriteconvref)
-```javascript
-const { MemoryStorage } = require('botbuilder');
 
-const storage = new MemoryStorage();
 
-// Listen for incoming activity 
-server.post('/api/messages', (req, res) => {
-    // Route received activity to adapter for processing
-    adapter.processActivity(req, res, async (context) => {
-        if (context.activity.type === 'message') {
-            const utterances = (context.activity.text || '').trim().toLowerCase()
-            if (utterances === 'subscribe') {
-                const reference = context.activity;
-                const userId = reference.id;
-                const changes = {};
-                changes['reference/' + userId] = reference;
-                await storage.write(changes)
-                await subscribeUser(userId)
-                await context.sendActivity(`Thank You! We will message you shortly.`);
-               
-            } else{
-                await context.sendActivity("Say 'subscribe'");
-            }
-    
-        }
-    });
-});
-```
----
+### <a name="find-all-stored-transcripts-for-your-channel"></a>チャネルに対して保存されているすべてのトランスクリプトの検索
+保存したデータの内容を確認するために、次のコードを使用して、保存したすべてのトランスクリプトの "_ConversationID_" をプログラムによって検索できます。 ボット エミュレーターを使用してコードをテストする場合に "_やり直す_" を選択すると、新しいトランスクリプトが新しい "_ConversationID_" で開始します。
 
-To read the saved object from storage, call `Storage.Read()`.
-
-# [C#](#tab/csharpread)
 ```csharp
+List<string> storedTranscripts = new List<string>();
+PagedResult<Transcript> pagedResult = null;
+var pageSize = 0;
+do
+{
+    pagedResult = await _myTranscripts.ListTranscriptsAsync("emulator", pagedResult?.ContinuationToken);
+    
+    // transcript item contains ChannelId, Created, Id.
+    // save the converasationIds (Id) found by "ListTranscriptsAsync" to a local list.
+    foreach (var item in pagedResult.Items)
+    {
+         // Make sure we store an unescaped conversationId string.
+         var strConversationId = item.Id;
+         storedTranscripts.Add(Uri.UnescapeDataString(strConversationId));
+    }
+} while (pagedResult.ContinuationToken != null);
+```
 
 
-        private async void CreateContextForUserAsync(String userId,Func<ITurnContext, Task> onReady)
+### <a name="retrieve-user-conversations-from-azure-blob-transcript-storage"></a>Azure Blob トランスクリプト ストレージからのユーザーの会話の取得
+ボット対話のトランスクリプトが Azure Blob Transcript Store に保存されたら、それらをプログラムによって取得し、AzureBlobTranscriptStorage メソッドである "_GetTranscriptActivities_" を使用してテストまたはデバッグできます。 次のコード スニペットでは、保存された各トランスクリプトから過去 24 時間以内に受信して保存されたユーザー入力のトランスクリプトをすべて取得します。
+
+
+```csharp
+var numTranscripts = storedTranscripts.Count();
+for (int i = 0; i < numTranscripts; i++)
+{
+    PagedResult<IActivity> pagedActivities = null;
+    do
+    {
+        string thisConversationId = storedTranscripts[i];
+        // Find all inputs in the last 24 hours.
+        DateTime yesterday = DateTime.Now.AddDays(-1);
+        // Retrieve iActivities for this transcript.
+        pagedActivities = await _myTranscripts.GetTranscriptActivitiesAsync("emulator", thisConversationId, pagedActivities?.ContinuationToken, yesterday);
+        foreach (var item in pagedActivities.Items)
         {
-            var referenceKey = $"ConversationReference/{userId}";
-            
-            ConversationReference localRef = null;
-            StoreItems conversationReferenceFromStorage = await storage.Read(referenceKey);
-            foreach (var item in conversationReferenceFromStorage)
-            {
-                StoreItem value = item.Value as StoreItem;
-                localRef = value["ref"];
-            }
-            
-            await bot.CreateContext(this.conversationReference, onReady);
-
-        }
-```
-# [JavaScript](#tab/jsread)
-```javascript
-async function subscribeUser(userId) {
-    setTimeout(() => {
-        createContextForUser(userId, (context) => {
-            context.sendActivity("You have been notified");
-        })
-    }, 2000);
-}
-
-async function createContextForUser(userId, callback) {
-    const referenceKey = 'reference/' + userId;
-    var rows = await storage.read([referenceKey])
-    var reference = await rows[referenceKey]
-    await callback(adapter.createContext(reference))
-          
+            // View as message and find value for key "text" :
+            var thisMessage = item.AsMessageActivity();
+            var userInput = thisMessage.Text;
+         }
+    } while (pagedActivities.ContinuationToken != null);
 }
 ```
----
 
--->
+### <a name="remove-stored-transcripts-from-azure-blob-transcript-storage"></a>保存されたトランスクリプトの Azure Blob トランスクリプト ストレージからの削除
+ユーザー入力データを使用したボットのテストまたはデバッグが完了したら、保存されたトランスクリプトをプログラムによって Azure Blob Transcript Store から削除できます。 次のコード スニペットでは、保存されたトランスクリプトをボットの Transcript Store からすべて削除します。
+
+
+```csharp
+for (int i = 0; i < numTranscripts; i++)
+{
+   // Remove all stored transcripts except the last one found.
+   if (i > 0)
+   {
+       string thisConversationId = storedTranscripts[i];    
+       await _myTranscripts.DeleteTranscriptAsync("emulator", thisConversationId);
+    }
+}
+```
+
+
+次に示すリンク先には、[Azure Blob トランスクリプト ストレージ](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.azure.azureblobtranscriptstore)に関するその他の情報が記載されています。  
 
 ## <a name="next-steps"></a>次の手順
-
 ストレージを直接読み書きする方法がわかったので、状態マネージャーを使ってそれを行う方法を確認してください。
 
 > [!div class="nextstepaction"]
 > [会話とユーザーのプロパティを使用して状態を保存する](bot-builder-howto-v4-state.md)
-
-## <a name="additional-resources"></a>その他のリソース
-
-- [概念: Bot Builder SDK でのストレージ](bot-builder-storage-concept.md)
-
 

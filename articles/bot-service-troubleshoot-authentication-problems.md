@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
-ms.openlocfilehash: a64edda73832f4d3fff49b08b5eaf6792c021ece
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 5373b18ce5c11dae4e971cb1a70307ae2901ad36
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303337"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389661"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Bot Framework 認証のトラブルシューティング
 
@@ -25,10 +25,10 @@ ms.locfileid: "39303337"
 
 ボットのセキュリティは、Bot Framework にボットを登録するときに取得する **Microsoft アプリ ID** と **Microsoft アプリ パスワード**によって構成されます。 これらの値は、通常、ボットの構成ファイル内に指定され、Microsoft アカウント サービスからアクセス トークンを取得するために使用されます。 
 
-[ボットの登録](~/bot-service-quickstart-registration.md)をまだ行っていない場合は、それを実行して認証のために使用できる**Microsoft アプリ ID** と **Microsoft アプリ パスワード**を取得してください。 
+まだ行っていない場合は、[ボットを Azure にデプロイ](~/bot-builder-howto-deploy-azure.md)し、認証のために使用できる **Microsoft アプリ ID** と **Microsoft アプリ パスワード**を取得してください。 
 
 > [!NOTE]
-> ボットの **AppID** と **AppPassword** を見つけるには、「[MicrosoftAppID and MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」(MicrosoftAppID と MicrosoftAppPassword) を参照してください。
+> デプロイ済みのボットの **AppID** と **AppPassword** を見つける方法については、「[MicrosoftAppID と MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」をご覧ください。
 
 ## <a name="step-1-disable-security-and-test-on-localhost"></a>手順 1: セキュリティを無効にし、localhost 上でテストする
 

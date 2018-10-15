@@ -6,29 +6,29 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: 648a2e3be901bfa82d84423358fa7df32d403391
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 09/26/2018
+ms.openlocfilehash: 410f50f02dcea2bb64ccf0389e20f5cb76e2fd6b
+ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302812"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47389841"
 ---
 # <a name="troubleshooting-general-problems"></a>一般的な問題のトラブルシューティング
 以下のよく寄せられる質問は、一般的なボット開発や運用上の問題のトラブルシューティングに役立ちます。
 
 ## <a name="how-can-i-troubleshoot-issues-with-my-bot"></a>ボットに関する問題をトラブルシューティングするにはどうすればよいですか。
 
-1. [Visual Studio Code](debug-bots-locally-vscode.md) または Visual Studio を使用して、ご利用のボットのソース コードをデバッグします。
+1. [Visual Studio Code](debug-bots-locally-vscode.md) または [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017) を使用して、ご利用のボットのソース コードをデバッグします。
 2. ボットをクラウドにデプロイする前に、[エミュレーター](bot-service-debug-emulator.md)を使用してテストします。
-3. Azure などのクラウド ホスティング プラットフォームにボットをデプロイし、<a href="https://dev.botframework.com" target="_blank">Bot Framework ポータル</a>のボットのダッシュボードで組み込み Web チャット コントロールを使用して、ボットへの接続をテストします。 Azure にデプロイした後でボットに関する問題が発生した場合は、「[Visual Studio を使用した Azure App Service のトラブルシューティング](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-bot-service-troubleshoot-visual-studio/)」というガイドの使用を検討してください。
+3. Azure などのクラウド ホスティング プラットフォームにボットをデプロイし、<a href="https://dev.botframework.com" target="_blank">Bot Framework ポータル</a>のボットのダッシュボードで組み込み Web チャット コントロールを使用して、ボットへの接続をテストします。 Azure にデプロイした後でボットに関する問題が発生した場合は、「[Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/)」(Azure のトラブルシューティングとサポートについて理解する) のブログ記事を参考にしてください。
 4. [認証][TroubleshootingAuth]を考えられる問題から除外します。
 5. Skype でボットをテストします。 これは、エンド ツー エンド ユーザー エクスペリエンスを確認するのに役立ちます。
 6. ダイレクト ラインや Web チャットなど、追加の認証要件があるチャネルでのボットのテストを検討してください。
 
 ## <a name="how-can-i-troubleshoot-authentication-issues"></a>認証に関する問題をトラブルシューティングするにはどうすればよいですか。
 
-ボットの認証に関する問題のトラブルシューティングの詳細については、「[Troubleshooting Bot Framework authentication][TroubleshootingAuth]」 (Bot Framework 認証のトラブルシューティング) を参照してください。
+ボットの認証に関する問題のトラブルシューティングについて詳しくは、Bot Framework 認証の[トラブルシューティング][TroubleshootingAuth]に関する記事をご覧ください。
 
 ## <a name="im-using-the-bot-builder-sdk-for-net-how-can-i-troubleshoot-issues-with-my-bot"></a>Bot Builder SDK for .NET を使用しています。 ボットに関する問題をトラブルシューティングするにはどうすればよいですか。
 
@@ -91,7 +91,7 @@ Bot Framework や多くのチャネルでは、[Markdown](https://en.wikipedia.o
 
 ## <a name="how-do-identifiers-work-in-the-bot-framework"></a>Bot Framework では識別子はどのように動作しますか。
 
-Bot Framework の識別子の詳細については、[Bot Framework の識別子に関するガイド][BotFrameworkIDGuide]を参照してください。
+Bot Framework の識別子について詳しくは、Bot Framework の[識別子に関するガイド][BotFrameworkIDGuide]をご覧ください。
 
 ## <a name="how-can-i-get-access-to-the-user-id"></a>ユーザー ID にアクセスするにはどうすればよいですか。
 
@@ -107,7 +107,7 @@ Kik の開発中のボットは 50 人のサブスクライバーが利用でき
 
 ## <a name="how-can-i-use-authenticated-services-from-my-bot"></a>自分のボットから認証済みのサービスを使用するにはどうすればよいですか。
 
-Azure Active Directory 認証の場合は、[BotAuth NuGet](https://www.nuget.org/packages/BotAuth) ライブラリの使用を検討してください。 Facebook 認証の例については、GitHub の [Bot Builder SDK for .NET のサンプル](https://github.com/Microsoft/BotBuilder/tree/master/CSharp/Samples)を参照してください。 
+Azure Active Directory の認証については、認証の追加に関する記事 ([V3](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-3.0&tabs=csharp) | [V4](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-4.0&tabs=csharp)) をご覧ください。 
 
 > [!NOTE] 
 > 認証およびセキュリティ機能をご自分のボットに追加する場合は、コードで実装するパターンが、ご利用のアプリケーションに適したセキュリティ標準に準拠していることを確認する必要があります。
@@ -141,7 +141,7 @@ Skype、Facebook、Slack などの他のチャネルでは、ボットで事前�
 
 ## <a name="how-can-i-send-proactive-messages-to-the-user"></a>ユーザーにプロアクティブ メッセージを送信するにはどうすればよいですか。
 
-プロアクティブ メッセージを送信する方法を示す例については、GitHub の BotBuilder-Samples リポジトリ内にある [C# のサンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages)と [Node.js のサンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages)を参照してください。
+プロアクティブ メッセージを送信する方法を示す例については、GitHub の BotBuilder-Samples リポジトリ内にある [C# の V4 のサンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/16.proactive-messages)と [Node.js の V4 のサンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/16.proactive-messages)をご覧ください。
 
 ## <a name="how-can-i-reference-non-serializable-services-from-my-c-dialogs"></a>自分の C# ダイアログから非シリアル化可能なサービスを参照するにはどうすればよいですか。
 
@@ -151,6 +151,8 @@ Skype、Facebook、Slack などの他のチャネルでは、ボットで事前�
 * [NonSerialized](https://msdn.microsoft.com/en-us/library/system.nonserializedattribute(v=vs.110).aspx) および [OnDeserialized](https://msdn.microsoft.com/en-us/library/system.runtime.serialization.ondeserializedattribute(v=vs.110).aspx) 属性を使用して、逆シリアル化時に依存関係を復元します。 これは最もシンプルなソリューションです。
 * シリアル化されなくなるため、その依存関係は格納しないでください。 このソリューションは、技術的には実行可能ですがお勧めしません。
 * リフレクション シリアル化サロゲートを使用します。 このソリューションは、場合によっては実行できない可能性があり、シリアル化が過剰になるリスクがあります。
+
+::: moniker range="azure-bot-service-3.0"
 
 ## <a name="where-is-conversation-state-stored"></a>会話状態はどこに格納されるのですか。
 
@@ -169,7 +171,9 @@ Bot Builder SDK for .NET または Bot Builder SDK for Node.js を使用して�
 * 言語 (Node.js または C#) 層で Builder インターフェイスを使用します。
 
 > [!IMPORTANT]
-> Bot Framework State Service API を運用環境で使用することはお勧めしません。将来のリリースで非推奨となる可能性があります。 テストが目的の場合はメモリ内ストレージを使用するようにご利用のボット コードを更新し、運用ボットの場合はいずれかの **Azure 拡張機能**を使用することをお勧めします。 詳細については、[.NET](~/dotnet/bot-builder-dotnet-state.md) または [Node](~/nodejs/bot-builder-nodejs-state.md) の実装に関する「**状態データの管理**」トピックを参照してください。
+> Bot Framework State Service API を運用環境で使用することはお勧めしません。将来のリリースで非推奨となる可能性があります。 テストが目的の場合はメモリ内ストレージを使用するようにボット コードを更新し、運用ボットの場合はいずれかの **Azure 拡張機能**を使用することをお勧めします。 詳細については、[.NET](~/dotnet/bot-builder-dotnet-state.md) または [Node](~/nodejs/bot-builder-nodejs-state.md) の実装に関する「**状態データの管理**」トピックを参照してください。
+
+::: moniker-end
 
 ## <a name="what-is-an-etag--how-does-it-relate-to-bot-data-bag-storage"></a>ETag とは何ですか。  ボット データ バッグ ストレージにどのように関連しますか。
 
@@ -186,7 +190,11 @@ Bot Builder SDK for .NET または Bot Builder SDK for Node.js を使用して�
 
 ## <a name="how-can-i-fix-precondition-failed-412-or-conflict-409-errors"></a>"前提条件が満たされていません" (412) エラーや "競合" (409) エラーを解決するにはどうすればよいですか。
 
-これらのエラーは、ご利用のボットで同じ会話に対する複数のメッセージが一度に処理されていることを示します。 正確に順序付けされたメッセージを必要とするサービスにご利用のボットが接続されている場合は、メッセージが並列処理されないように、会話状態のロックを検討する必要があります。 Bot Builder SDK for .NET では、メモリ内セマフォで単一の会話の処理をペシミスティックにシリアル化するためのメカニズム (`IScope` を実装するクラス `LocalMutualExclusion`) が提供されます。 会話アドレスで範囲指定された、Redis リースを使用するようにこの実装を拡張できます。
+これらのエラーは、ご利用のボットで同じ会話に対する複数のメッセージが一度に処理されていることを示します。 正確に順序付けされたメッセージを必要とするサービスにご利用のボットが接続されている場合は、メッセージが並列処理されないように、会話状態のロックを検討する必要があります。 
+
+::: moniker range="azure-bot-service-3.0"
+
+Bot Builder SDK for .NET では、メモリ内セマフォで単一の会話の処理をペシミスティックにシリアル化するためのメカニズム (`IScope` を実装するクラス `LocalMutualExclusion`) が提供されます。 会話アドレスで範囲指定された、Redis リースを使用するようにこの実装を拡張できます。
 
 ご利用のボットが外部サービスに接続されていない場合、または同じ会話からのメッセージの並列処理が受け入れられる場合は、このコードを追加して、Bot State API で発生する競合をすべて無視することができます。 これにより、最後の返信で会話状態を設定することができます。
 
@@ -199,15 +207,18 @@ builder
     .InstancePerLifetimeScope();
 builder.Update(Conversation.Container);
 ```
+::: moniker-end
 
 ## <a name="is-there-a-limit-on-the-amount-of-data-i-can-store-using-the-state-api"></a>State API を使用して格納できるデータの量に制限はありますか。
 
 はい。各状態ストア (つまり、ユーザー、会話、およびプライベート ボット データ バッグ) には、最大 64 KB のデータを含めることができます。 詳細については、「[状態データを管理する][StateAPI]」を参照してください。
 
+::: moniker range="azure-bot-service-3.0"
+
 ## <a name="how-do-i-version-the-bot-data-stored-through-the-state-api"></a>State API を使用して格納されたボット データはどのようにバージョン管理するのですか。
 
 > [!IMPORTANT]
-> Bot Framework State Service API を運用環境で使用することはお勧めしません。将来のリリースで非推奨となる可能性があります。 テストが目的の場合はメモリ内ストレージを使用するようにご利用のボット コードを更新し、運用ボットの場合はいずれかの **Azure 拡張機能**を使用することをお勧めします。 詳細については、[.NET](~/dotnet/bot-builder-dotnet-state.md) または [Node](~/nodejs/bot-builder-nodejs-state.md) の実装に関する「**状態データの管理**」トピックを参照してください。
+> Bot Framework State Service API を運用環境や v4 ボットで使用することは推奨されていません。将来のリリースで完全に非推奨となる可能性があります。 テストが目的の場合はメモリ内ストレージを使用するようにボット コードを更新し、運用ボットの場合はいずれかの **Azure 拡張機能**を使用することをお勧めします。 詳しくは、「[状態データの管理](v4sdk/bot-builder-howto-v4-state.md)」のトピックをご覧ください。
 
 State サービスでは、会話のダイアログの進行状況を保持することができるため、ユーザーは後でボットでの会話に戻ることができます。位置がわからなくなることはありません。 これを保持するため、ボットのコードの変更時に、State API を使用して格納されたボット データ プロパティ バッグが自動的にクリアになることはありません。 変更されたコードが以前のバージョンのコードと互換性があるかどうかに基づいて、ボット データをクリアするかどうかを決定する必要があります。 
 
@@ -216,6 +227,8 @@ State サービスでは、会話のダイアログの進行状況を保持す�
 
 > [!NOTE]
 > シリアル化形式の変更により、あるいはコードの変更が多すぎるために、ダイアログ スタックが正しく逆シリアル化できない場合は、会話状態がリセットされます。
+
+::: moniker-end
 
 ## <a name="what-are-the-possible-machine-readable-resolutions-of-the-luis-built-in-date-time-duration-and-set-entities"></a>LUIS の組み込みの日付、時刻、期間、およびセット エンティティのコンピューターで読み取り可能な解決策として何が考えられますか。
 

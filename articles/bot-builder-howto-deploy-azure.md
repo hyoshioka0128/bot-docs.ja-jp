@@ -7,23 +7,22 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: get-started-article
 ms.prod: bot-framework
-ms.date: 05/14/2018
-ms.openlocfilehash: f3e5ed5b14ffb81c597b10aeac45854464bad8b0
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.date: 09/19/2018
+ms.openlocfilehash: 1503d5e349839de6f3403ad9b769c7eb0ae41e78
+ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905594"
+ms.lasthandoff: 09/23/2018
+ms.locfileid: "46706968"
 ---
 # <a name="deploy-your-bot-to-azure"></a>使用するボットを Azure にデプロイする
 
-[!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
+[!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
 
-ご自分のボットを作成し、ローカルで検証したら、それを Azure にプッシュすることで、どこからでもアクセスできるようにすることができます。 そのためには、まず App Service でボットを Azure にデプロイし、次に Azure Bot Service の Bot Channels Registration アイテムを使用してご自分のボットを構成します。
+ご自分のボットを作成し、ローカルで検証したら、それを Azure にプッシュすることで、どこからでもアクセスできるようにすることができます。 C# ボットの場合は、Visual Studio または Azure CLI を使用してボットを Azure に発行できます。 
 
 ## <a name="publish-from-visual-studio"></a>Visual Studio から発行する
-
-Visual Studio を使用して、Azure 内でリソースを作成し、ご自分のコードを発行します。
+最初に、App Service で Visual Studio から Azure にボットをデプロイします。 次に、Bot Channels Registration を使用して Azure Bot Service でボットを構成します。
 
 [ソリューション エクスプローラー] ウィンドウで、ご利用のプロジェクトのノードを右クリックし、[発行] を選択します。
 
@@ -127,13 +126,16 @@ Visual Studio を使用して、Azure 内でリソースを作成し、ご自分
 ## <a name="test-your-bot-in-production"></a>ご利用のボットを運用環境でテストする
 この時点では、組み込みの Web チャット クライアントを使用して、ご利用のボットを Azure からテストすることができます。
 
-1. ポータル内で、ご利用のリソース グループに戻ります。
+1. Azure portal 内で、ご利用のリソース グループに戻ります。
 
-2. ご利用のボット登録を開きます。
+2. ご利用のボットを開きます。
 
-3. [Bot management]\(ボット管理\) で、[Test in Web Chat]\(Web チャットでのテスト\) を選択します。
+3. **[Bot management]\(ボット管理\)** で、**[Test in Web Chat]\(Web チャットでのテスト\)** を選択します。
 
 ![Web チャットでのテスト](media/azure-bot-quickstarts/getting-started-test-webchat.png)
 
 4. `Hi` のようなメッセージを入力し、Enter キーを押します。 ボットから `Turn 1: You sent Hi` がエコーで返されます。
 
+## <a name="next-steps"></a>次の手順
+> [!div class="nextstepaction"]
+> [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)
