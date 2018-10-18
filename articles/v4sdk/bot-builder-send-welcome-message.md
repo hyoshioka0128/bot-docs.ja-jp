@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 53a701d4ccb861685b67258bd6c51f2bf6e62099
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 2d32e618325e9ddc4abb5c3b42114c86c7644001
+ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46708788"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49315138"
 ---
 # <a name="send-welcome-message-to-users"></a>ユーザーへのウェルカム メッセージの送信
 
@@ -26,7 +26,7 @@ ms.locfileid: "46708788"
 
 次の例では、新しい_会話更新_アクティビティを待機し、会話に参加したユーザーに応じてウェルカム メッセージを 1 回だけ送信し、ユーザーの最初の会話入力を無視するための、プロンプト ステータス フラグを設定します。 次のコードでは、[GitHub](https://github.com/Microsoft/BotBuilder-Samples/) リポジトリのウェルカム サンプルを使用しています。
 
-## <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 以下のすべての C# コード サンプルをサポートするために、次のライブラリ セットを使用します
 
@@ -47,7 +47,7 @@ using Microsoft.Bot.Schema;
 /// In this example, we are tracking if the bot has replied to customer first interaction.
 public class WelcomeUserState
 {
-    public bool DidBotWelcomedUser { get; set; } = false;
+    public bool DidBotWelcomeUser { get; set; } = false;
 }
 
 /// Initializes a new instance of the <see cref="WelcomeUserStateAccessors"/> class.
@@ -58,7 +58,7 @@ public class WelcomeUserStateAccessors
         this.UserState = userState ?? throw new ArgumentNullException(nameof(userState));
     }
 
-    public IStatePropertyAccessor<bool> DidBotWelcomedUser { get; set; }
+    public IStatePropertyAccessor<bool> DidBotWelcomeUser { get; set; }
 
     public UserState UserState { get; }
 }
@@ -92,7 +92,7 @@ public WelcomeUserBot(WelcomeUserStateAccessors statePropertyAccessor)
 public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = new CancellationToken())
 {
     // Use state accessor to extract the didBotWelcomeUser flag
-    var didBotWelcomeUser = await _welcomeUserStateAccessors.DidBotWelcomedUser.GetAsync(turnContext, () => false);
+    var didBotWelcomeUser = await _welcomeUserStateAccessors.DidBotWelcomeUser.GetAsync(turnContext, () => false);
 
     if (turnContext.Activity.Type == ActivityTypes.Message)
     {
@@ -101,7 +101,7 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
         if (didBotWelcomeUser == false)
         {
             // Update user state flag to reflect bot handled first user interaction.
-            await _welcomeUserStateAccessors.DidBotWelcomedUser.SetAsync(turnContext, true);
+            await _welcomeUserStateAccessors.DidBotWelcomeUser.SetAsync(turnContext, true);
             await _welcomeUserStateAccessors.UserState.SaveChangesAsync(turnContext);
 
             // the channel should sends the user name in the 'From' object
@@ -136,7 +136,7 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
 }
 ```
 
-## <a name="javascripttabjs"></a>[JavaScript を選択した場合](#tab/js)
+## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 この JavaScript コードは、ユーザーが追加されたときにウェルカム メッセージを送信します。 これは、会話アクティビティをチェックし、会話に新しいメンバーが追加されたことを確認することで実行されます。
 
@@ -146,7 +146,7 @@ const { ActivityTypes } = require('botbuilder');
 const { CardFactory } = require('botbuilder');
 
 // Welcomed User property name
-const WELCOMED_USER = 'DidBotWelcomedUser';
+const WELCOMED_USER = 'DidBotWelcomeUser';
 
 class MainDialog {
     constructor (userState) {
@@ -160,13 +160,13 @@ class MainDialog {
         // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
         if (turnContext.activity.type === ActivityTypes.Message) 
         {
-            // Read UserState. If the 'DidBotWelcomedUser' does not exist (first time ever for a user)
+            // Read UserState. If the 'DidBotWelcomeUser' does not exist (first time ever for a user)
             // set the default to false.
-            let didBotWelcomedUser = await this.welcomedUserPropery.get(turnContext, false);
+            let didBotWelcomeUser = await this.welcomedUserPropery.get(turnContext, false);
 
             // Your bot should proactively send a welcome message to a personal chat the first time
             // (and only the first time) a user initiates a personal chat with your bot.
-            if (didBotWelcomedUser === false) 
+            if (didBotWelcomeUser === false) 
             {
                 // The channel should send the user name in the 'From' object
                 let userName = turnContext.activity.from.name;
@@ -221,13 +221,13 @@ module.exports = MainDialog;
 
 ユーザーがすべてのチャネルで良好なエクスペリエンスを得られるようにするため、初期プロンプトを設定して無効な応答の処理を回避し、ユーザーの応答から検索するキーワードを設定します。
 
-## <a name="ctabcsharpmulti"></a>[C# を選択した場合](#tab/csharpmulti)
+## <a name="ctabcsharpmulti"></a>[C#](#tab/csharpmulti)
 
 ```csharp
 public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = new CancellationToken())
 {
     // Use state accessor to extract the didBotWelcomeUser flag
-    var didBotWelcomeUser = await _welcomeUserStateAccessors.DidBotWelcomedUser.GetAsync(turnContext, () => false);
+    var didBotWelcomeUser = await _welcomeUserStateAccessors.DidBotWelcomeUser.GetAsync(turnContext, () => false);
 
     if (turnContext.Activity.Type == ActivityTypes.Message)
     {
@@ -278,7 +278,7 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
 
 ```
 
-## <a name="javascripttabjsmulti"></a>[JavaScript を選択した場合](#tab/jsmulti)
+## <a name="javascripttabjsmulti"></a>[JavaScript](#tab/jsmulti)
 
 ``` javascript
 class MainDialog 
@@ -292,7 +292,7 @@ class MainDialog
             
             // Previous Code Sample
             
-            if (didBotWelcomedUser === false) 
+            if (didBotWelcomeUser === false) 
             {
                 // Previous Code Sample
             }
@@ -327,7 +327,7 @@ class MainDialog
 
 ユーザーにあいさつをするもう 1 つの方法として、アダプティブ カード グリーティングがあります。 アダプティブ カード グリーティングについて詳しくは、「[アダプティブ カードを送信する](./bot-builder-howto-add-media-attachments.md)」をご覧ください。
 
-## <a name="ctabcsharpwelcomeback"></a>[C# を選択した場合](#tab/csharpwelcomeback)
+## <a name="ctabcsharpwelcomeback"></a>[C#](#tab/csharpwelcomeback)
 
 ```csharp
 // Sends an adaptive card greeting.
@@ -370,7 +370,7 @@ switch (text)
 ```
 
 
-## <a name="javascripttabjswelcomeback"></a>[JavaScript を選択した場合](#tab/jswelcomeback)
+## <a name="javascripttabjswelcomeback"></a>[JavaScript](#tab/jswelcomeback)
 
 まず、ボットの Imports の下にある _index.js_ の先頭に、アダプティブ カードを追加します。
 
