@@ -5,7 +5,7 @@
 ## [Azure Bot Service を使用してボットを作成する](~/bot-service-quickstart.md)
 ## ボットをローカルで作成する
 ### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
-### [JavaScript を選択した場合](javascript/bot-builder-javascript-quickstart.md)
+### [JavaScript](javascript/bot-builder-javascript-quickstart.md)
 # チュートリアル
 ## [ディスパッチ ツールと共に LUIS と QnA サービスを使用する](v4sdk/bot-builder-tutorial-dispatch.md)
 ## [ボットへの認証の追加](bot-builder-tutorial-authentication.md)
@@ -44,6 +44,7 @@
 ### [ダイアログを使用して複雑な会話フローを管理する](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
 ### [ユーザーによる割り込みの処理](v4sdk/bot-builder-howto-handle-user-interrupt.md)
 ### [ダイアログのデータを保持する](v4sdk/bot-builder-tutorial-persist-user-inputs.md)
+### [統合された一連のダイアログを作成する](v4sdk/bot-builder-compositcontrol.md)
 ### [LUIS を使用した言語の理解](v4sdk/bot-builder-howto-v4-luis.md)
 ### [QnA Maker を使用して質問に回答する](v4sdk/bot-builder-howto-qna.md)
 ### [ボットへの認証の追加](v4sdk/bot-builder-authentication.md)
