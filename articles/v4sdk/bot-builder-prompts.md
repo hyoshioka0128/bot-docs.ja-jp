@@ -9,18 +9,18 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 9/25/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27066f76db29a82b4ab9dd75bf5eee01dcce3116
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 16ef274bc7e8301825e574c566a49d53f01115c1
+ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389711"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49383127"
 ---
 # <a name="prompt-users-for-input-using-the-dialogs-library"></a>ダイアログ ライブラリを使用してユーザーに入力を求める
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-質問を投稿することで情報を収集することは、ボットがユーザーとやり取りする主な手段の 1 つです。 これは、[turn context](bot-builder-concept-activity-processing.md#turn-context) オブジェクトの _send activity_ メソッドを使用して、その後次の受信メッセージを応答として処理することで、直接行うことができます。 ただし、Bot Builder SDK には、簡単に質問をして、その応答が特定のデータ型と一致するかカスタム検証ルールを満たすように設計されたメソッドを提供する、**ダイアログ** ライブラリが用意されています。 このトピックでは、**プロンプト**を使用してこれを達成し、ユーザーに入力を求める方法について説明します。
+質問を投稿することで情報を収集することは、ボットがユーザーとやり取りする主な手段の 1 つです。 これは、[turn context](~/v4sdk/bot-builder-basics.md#defining-a-turn) オブジェクトの _send activity_ メソッドを使用して、その後次の受信メッセージを応答として処理することで、直接行うことができます。 ただし、Bot Builder SDK には、簡単に質問をして、その応答が特定のデータ型と一致するかカスタム検証ルールを満たすように設計されたメソッドを提供する、**ダイアログ** ライブラリが用意されています。 このトピックでは、**プロンプト**を使用してこれを達成し、ユーザーに入力を求める方法について説明します。
 
 この記事では、ダイアログ内でプロンプトを使用する方法について説明します。 一般的なダイアログの使用に関する情報については、[ダイアログを使用した単純な会話フローの管理](bot-builder-dialog-manage-conversation-flow.md)に関するページをご覧ください。
 
@@ -41,7 +41,7 @@ ms.locfileid: "47389711"
 
 **botbuilder-dialogs** パッケージをボットに追加することで**ダイアログ** ライブラリを取得できます。 ダイアログについては、[ダイアログを使用した単純な会話フローの管理](bot-builder-dialog-manage-conversation-flow.md)に関するページで取り上げますが、Microsoft ではプロンプトにダイアログを使用します。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 NuGet から **Microsoft.Bot.Builder.Dialogs** パッケージをインストールします。
 
@@ -129,34 +129,45 @@ using Microsoft.Bot.Builder.Dialogs;
     }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-NPM からダイアログ パッケージをインストールします。
+Echo テンプレートを使用して JavaScript ボットを作成します。 詳しくは、[JavaScript のクイック スタート](../javascript/bot-builder-javascript-quickstart.md)を参照してください。
+
+npm からダイアログ パッケージをインストールします。
 
 ```cmd
 npm install --save botbuilder-dialogs
 ```
 
-ボットで**ダイアログ**を使用するには、それをボット コードに含めます。
+**ダイアログ**をボットで使用するには、それをボット コードに含めます。
 
-app.js ファイルで、次を追加します。
+1. **bot.js** ファイルに次のコードを追加します。
 
-```javascript
-// Import components from the dialogs library.
-const { DialogSet } = require("botbuilder-dialogs");
-// Import components from the main Bot Builder library.
-const { ConversationState, MemoryStorage } = require('botbuilder');
+    ```javascript
+    // Import components from the dialogs library.
+    const { DialogSet, TextPrompt, WaterfallDialog } = require("botbuilder-dialogs");
 
-// Set up a memory storage system to store information.
-const storage = new MemoryStorage();
-// We'll use ConversationState to track the state of the dialogs.
-const conversationState = new ConversationState(storage);
-// Create a property used to track state.
-const dialogState = conversationState.createProperty('dialogState');
+    // Name for the dialog state property accessor.
+    const DIALOG_STATE_PROPERTY = 'dialogState';
 
-// Create a dialog set to control our prompts, store the state in dialogState
-const dialogs = new DialogSet(dialogState);
-```
+    // Define the names for the prompts and dialogs for the dialog set.
+    const TEXT_PROMPT = 'textPrompt';
+    const MAIN_DIALOG = 'mainDialog';
+    ```
+
+    "_ダイアログ セット_" には、このボットのダイアログが格納されます。ここでは、"_テキスト プロンプト_" を使用してユーザーに入力を求めます。 また、ダイアログ セットがその状態を追跡するために使用できるダイアログ状態プロパティ アクセサーも必要になります。
+
+1. ボットのコンストラクター コードを更新します。 これにはすぐに別のコードを追加します。
+
+    ```javascript
+      constructor(conversationState) {
+        // Track the conversation state object.
+        this.conversationState = conversationState;
+
+        // Create a state property accessor for the dialog set.
+        this.dialogState = conversationState.createProperty(DIALOG_STATE_PROPERTY);
+    }
+    ```
 
 ---
 
@@ -168,7 +179,7 @@ const dialogs = new DialogSet(dialogState);
 
 たとえば、次のダイアログでは、ユーザーに名前の入力を求め、その応答を使用してユーザーにあいさつします。 最初のターンでは、ユーザーに名前の入力を要求します。 ユーザーの応答は 2 番目のステップの関数にパラメーターとして渡され、その関数が入力を処理してパーソナライズされたあいさつを送信します。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ダイアログで使用する各プロンプトにも名前が表示されます。その名前はプロンプトにアクセスする目的でダイアログまたはボットにより使用されます。 以上のすべてのサンプルで、プロンプト ID を定数として公開しています。
 
@@ -212,44 +223,62 @@ const dialogs = new DialogSet(dialogState);
     }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-TextPrompt クラスをアプリにインポートします。
+1. ボットのコンストラクター内で、ダイアログ セットを作成して、テキスト プロンプトとウォーターフォール ダイアログを追加します。
 
-```javascript
-const { TextPrompt } = require("botbuilder-dialogs");
-```
+    ```javascript
+    // Create the dialog set, and add the prompt and the waterfall dialog.
+    this.dialogs = new DialogSet(this.dialogState)
+        .add(new TextPrompt(TEXT_PROMPT))
+        .add(new WaterfallDialog(MAIN_DIALOG, [
+            async (step) => {
+                // The results of this prompt will be passed to the next step.
+                return await step.prompt(TEXT_PROMPT, 'What is your name?');
+            },
+            async (step) => {
+                // The result property contains the result from the previous step.
+                const userName = step.result;
+                await step.context.sendActivity(`Hi ${userName}!`);
+                return await step.endDialog();
+            }
+        ]));
+    ```
 
-新しいプロンプトを作成し、それをダイアログ セットに追加します。
+1. そのダイアログを実行するようにボットのターン ハンドラーを更新します。
 
-```javascript
-// Greet user:
-// Ask for the user name and then greet them by name.
-dialogs.add(new TextPrompt('textPrompt'));
-dialogs.add('greetings', [
-    async function (step){
-        // the results of this prompt will be passed to the next step
-        return await step.prompt('textPrompt', 'What is your name?');
-    },
-    async function(step) {
-        // step.result is the result of the prompt defined above
-        const userName = step.result;
-        await step.context.sendActivity(`Hi ${userName}!`);
-        return await step.endDialog();
+    ```javascript
+    async onTurn(turnContext) {
+        // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
+        if (turnContext.activity.type === ActivityTypes.Message) {
+            // Create a dialog context for the dialog set.
+            const dc = await this.dialogs.createContext(turnContext);
+            // Continue the dialog if it's active.
+            await dc.continueDialog();
+            if (!turnContext.responded) {
+                // Otherwise, start the dialog.
+                await dc.beginDialog(MAIN_DIALOG);
+            }
+        } else {
+            // Send a default message for activity types that we don't handle.
+            await turnContext.sendActivity(`[${turnContext.activity.type} event detected]`);
+        }
+        // Save state changes
+        await this.conversationState.saveChanges(turnContext);
+        }
     }
-]);
-```
+    ```
 
 ---
 
 > [!NOTE]
-> ダイアログを開始するには、ダイアログ コンテキストを取得し、その _begin_ メソッドを使用します。 詳細については、[ダイアログを使用した単純な会話フローの管理](./bot-builder-dialog-manage-conversation-flow.md)に関するページをご覧ください。
+> ダイアログを開始するには、ダイアログ コンテキストを取得し、その _begin dialog_ メソッドを使用します。 詳細については、[ダイアログを使用した単純な会話フローの管理](./bot-builder-dialog-manage-conversation-flow.md)に関するページをご覧ください。
 
 ## <a name="reusable-prompts"></a>再利用可能プロンプト
 
 プロンプトは、同じ種類の回答であれば別の質問をするのに再利用できます。 たとえば、前出のサンプル コードではテキスト プロンプトが定義され、それを利用してユーザーに名前を求めました。 その同じプロンプトを利用し、「職場はどこですか」など、ユーザーに別のテキスト文字列を求めることもできます。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 この例では、テキスト プロンプト *name* の ID はコードの明瞭化の役には立ちません。 ただし、プロンプト ID を任意の ID にすることが可能であることを示すよい例です。
 
@@ -278,39 +307,38 @@ dialogs.add('greetings', [
     }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+ボットのコンストラクターで、2 番目の質問をするようにウォーターフォールを変更します。
 
 ```javascript
-// Greet user:
-// Ask for the user name and then greet them by name.
-// Ask them where they work.
-dialogs.add(new TextPrompt('textPrompt'));
-dialogs.add('greetings',[
-    async function (step){
-        // Use the textPrompt to ask for a name.
-        return await step.prompt('textPrompt', 'What is your name?');
+// Create the dialog set, and add the prompt and the waterfall dialog.
+this.dialogs = new DialogSet(this.dialogState)
+    .add(new TextPrompt(TEXT_PROMPT))
+    .add(new WaterfallDialog(MAIN_DIALOG, [
+    async (step) => {
+        // Ask the user for their name.
+        return await step.prompt(TEXT_PROMPT, 'What is your name?');
     },
-    async function (step){
+    async (step) => {
+        // Acknowledge their response and ask for their place of work.
         const userName = step.result;
-        await step.context.sendActivity(`Hi ${ userName }!`);
-
-        // Now, reuse the same prompt to ask them where they work.
-        return await step.prompt('textPrompt', 'Where do you work?');
+        return await step.prompt(TEXT_PROMPT, `Hi ${userName}; where do you work?`);
     },
-    async function(step) {
+    async (step) => {
+        // Acknowledge their response and exit the dialog.
         const workPlace = step.result;
-        await step.context.sendActivity(`${ workPlace } is a cool place!`);
-
+        await step.context.sendActivity(`${workPlace} is a cool place!`);
         return await step.endDialog();
     }
-]);
+    ]));
 ```
 
 ---
 
 複数の異なるプロンプトを使用する必要がある場合は、それぞれのプロンプトに一意の *dialogId* を指定します。 ダイアログ セットに追加される各ダイアログまたはプロンプトには一意の ID が必要です。 同じ種類の**プロンプト** ダイアログを複数作成することもできます。 たとえば、上記の例には 2 つの **TextPrompt** ダイアログを作成できます。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 _dialogs.Add(new WaterfallDialog("details", waterfallSteps));
@@ -318,12 +346,22 @@ _dialogs.Add(new TextPrompt("name"));
 _dialogs.Add(new TextPrompt("workplace"));
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+たとえば、
 
 ```javascript
-dialogs.add(new TextPrompt('namePrompt'));
-dialogs.add(new TextPrompt('workPlacePrompt'));
+.add(new TextPrompt(TEXT_PROMPT))
 ```
+
+を次のコードに置き換えることができます。
+
+```javascript
+.add(new TextPrompt('namePrompt'))
+.add(new TextPrompt('workPlacePrompt'))
+```
+
+次に、それぞれの名前でこれらのプロンプトを使用するように、それぞれのウォーターフォールのステップを更新します。
 
 ---
 
@@ -335,9 +373,9 @@ dialogs.add(new TextPrompt('workPlacePrompt'));
 
 再プロンプト文字列の指定は、数値の求めに対して "明日" が回答されるなどの解析できない形式であるか、入力で検証基準を満たせないときなどの、ユーザー入力がプロンプトを満たせない場合に便利です。 数値を求めるプロンプトでは、"twelve" や "4 分の 1"、"12" や "0.25" など、さまざまな入力を解釈できます。
 
-ローカルは、特定のプロンプト (**NumberPrompt** など) におけるオプションのパラメーターです。 これは、プロンプトの入力をより正確に解析するのに役立つことがありますが、必須ではありません。
+ロケールは、特定のプロンプト (**NumberPrompt** など) におけるオプションのパラメーターです。 これは、プロンプトの入力をより正確に解析するのに役立つことがありますが、必須ではありません。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 次のコードでは、既存のダイアログ セット **_dialogs** に数値を求めるプロンプトが追加されます。
 
@@ -357,24 +395,42 @@ return await stepContext.PromptAsync(
     cancellationToken);
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+ダイアログ ライブラリから `NumberPrompt` クラスをインポートします。
 
 ```javascript
-// Import the NumberPrompt class from the dialog library.
 const { NumberPrompt } = require("botbuilder-dialogs");
+```
 
-// Add a NumberPrompt to our dialog set and give it the ID numberPrompt.
-dialogs.add(new NumberPrompt('numberPrompt'));
+ウォーターフォール ダイアログで数値を求めるプロンプトを使用し、初期プロンプト文字列と再試行プロンプト文字列の両方を指定します。
 
-// Call the numberPrompt dialog with the (optional) retryPrompt parameter.
-await dc.prompt('numberPrompt', 'How many people in your party?', { retryPrompt: `Sorry, please specify the number of people in your party.` })
+```javascript
+// Create the dialog set, and add the prompt and the waterfall dialog.
+this.dialogs = new DialogSet(this.dialogState)
+    .add(new NumberPrompt('partySize'))
+    .add(new WaterfallDialog(MAIN_DIALOG, [
+    async (step) => {
+        // Ask the user for their party size.
+        return await step.prompt('partySize', {
+            prompt: 'How many people in your party?',
+            retryPrompt: 'Sorry, please specify the number of people in your party.'
+        });
+    },
+    async (step) => {
+        // Acknowledge their response and exit the dialog.
+        const partySize = step.result;
+        await step.context.sendActivity(`That's a party of ${partySize}, thanks.`);
+        return await step.endDialog();
+    }
+]));
 ```
 
 ---
 
 選択プロンプトには追加の必須のパラメーターがあります。ユーザーが利用できる選択肢の一覧です。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 **ChoicePrompt** を使用して一連の選択肢から選択するようにユーザーに求めるとき、その一連の選択肢を含むプロンプトを提供する必要があります。これは **PromptOptions** オブジェクト内で提供します。 ここでは、**ChoiceFactory** を使用し、選択肢の一覧を適切な形式に変換しています。
 
@@ -393,22 +449,37 @@ private static async Task<DialogTurnResult> FavoriteColorAsync(WaterfallStepCont
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+ダイアログ ライブラリから `NumberPrompt` クラスをインポートします。
 
 ```javascript
-// Import the ChoicePrompt class into your app from the dialogs library.
 const { ChoicePrompt } = require("botbuilder-dialogs");
 ```
 
-```javascript
-// Add a ChoicePrompt to the dialog set and give it an ID of choicePrompt.
-dialogs.add(new ChoicePrompt('choicePrompt'));
-```
+ウォーターフォール ダイアログで選択プロンプトを使用し、使用可能な選択肢を指定します。
 
 ```javascript
-// Call the choicePrompt into action, passing in an array of options.
+// Create the dialog set, and add the prompt and the waterfall dialog.
 const list = ['green', 'blue', 'red', 'yellow'];
-await dc.prompt('choicePrompt', 'Please make a choice', list, { retryPrompt: 'Please choose a color.' });
+this.dialogs = new DialogSet(this.dialogState)
+    .add(new ChoicePrompt('choicePrompt'))
+    .add(new WaterfallDialog(MAIN_DIALOG, [
+    async (step) => {
+        // Ask the user for their party size.
+        return await step.prompt('choicePrompt', {
+            prompt: 'Please choose a color:',
+            retryPrompt: 'Sorry, please choose a color from the list.',
+            choices: list
+        });
+    },
+    async (step) => {
+        // Acknowledge their response and exit the dialog.
+        const choice = step.result;
+        await step.context.sendActivity(`That's ${choice.value}, thanks.`);
+        return await step.endDialog();
+    }
+]));
 ```
 
 ---
@@ -417,7 +488,7 @@ await dc.prompt('choicePrompt', 'Please make a choice', list, { retryPrompt: 'Pl
 
 **ウォーターフォール**の次のステップに値を返す前にプロンプトの応答を検証できます。 たとえば、**6** から **20** までの数値範囲内で **NumberPrompt** を検証する目的で、次のような検証関数を追加できます。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ダイアログ セットにプロンプトを追加して検証関数を追加したときの変更点
 
@@ -441,38 +512,55 @@ private Task<bool> PartySizeValidatorAsync(PromptValidatorContext<int> promptCon
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+プロンプトを作成するときに検証メソッドを追加します。
 
 ```javascript
-// Customized prompts with validations
-// A number prompt with validation for valid party size within a range.
-dialogs.add(new NumberPrompt('partySizePrompt', async (promptContext) => {
-    // Check to make sure a value was recognized.
-    if (promptContext.recognized.succeeded) {
-        const value = promptContext.recognized.value;
-        try {
-            if (value < 6 ) {
-                throw new Error('Party size too small.');
-            } else if (value > 20) {
-                throw new Error('Party size too big.')
-            } else {
-                return true; // Indicate that this is a valid value.
+// Create the dialog set, and add the prompt and the waterfall dialog.
+this.dialogs = new DialogSet(this.dialogState)
+    .add(new NumberPrompt('partySizePrompt', async (promptContext) =>                                                 {
+        // Check to make sure a value was recognized.
+        if (promptContext.recognized.succeeded) {
+            const value = promptContext.recognized.value;
+            try {
+                if (value < 6) {
+                    throw new Error('Party size too small.');
+                } else if (value > 20) {
+                    throw new Error('Party size too big.')
+                } else {
+                    return true; // Indicate that this is a valid value.
+                }
+            } catch (err) {
+                await promptContext.context.sendActivity(`${err.message} <br/>Please provide a valid number between 6 and 20.`);
+                return false; // Indicate that this is invalid.
             }
-        } catch (err) {
-            await promptContext.context.sendActivity(`${ err.message } <br/>Please provide a valid number between 6 and 20.`);
-            return false; // Indicate that this is invalid.
+        } else {
+            return false;
         }
-    } else {
-        return false;
-    }
-}));
+    }))
+    .add(new WaterfallDialog(MAIN_DIALOG, [
+        async (step) => {
+            // Ask the user for their party size.
+            return await step.prompt('partySizePrompt', {
+                prompt: 'How large is your party?',
+                retryPrompt: 'Sorry, please specify a size between 6 and 20.'
+            });
+        },
+        async (step) => {
+            // Acknowledge their response and exit the dialog.
+            const size = step.result;
+            await step.context.sendActivity(`That's a party of ${size}, thanks.`);
+            return await step.endDialog();
+        }
+    ]));
 ```
 
 ---
 
 同様に、将来の日付と時刻に対する **DatetimePrompt** 応答を検証する場合、次のような検証ロジックを使用できます。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
     private Task<bool> DateTimeValidatorAsync(PromptValidatorContext<IList<DateTimeResolution>> prompt, CancellationToken cancellationToken)
@@ -503,30 +591,45 @@ _dialogs.Add(new DateTimePrompt("date", DateTimeValidatorAsync));
 
 その他の例は Microsoft の[サンプル リポジトリ](https://aka.ms/bot-samples-readme)にあります。
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const { DateTimePrompt } = require("botbuilder-dialogs");
+```
 
 ```JavaScript
-// A date and time prompt with validation for date/time in the future.
-dialogs.add(new atetimePrompt('dateTimePrompt', async (promptContext) => {
-    if (promptContext.recognized.succeeded) {
-        const values = promptContext.recognized.value;
+// Create the dialog set, and add the prompt and the waterfall dialog.
+this.dialogs = new DialogSet(this.dialogState)
+    .add(new DateTimePrompt('dateTimePrompt', async (promptContext) => {
         try {
-            if (values.length < 0) { throw new Error('missing time') }
-            if (values[0].type !== 'date') { throw new Error('unsupported type') }
+            if (!promptContext.recognized.succeeded) { throw new Error('Value not recognized.') }
+            const values = promptContext.recognized.value;
+            if (!Array.isArray(values) || values.length < 0) { throw new Error('Value missing.'); }
+            if ((values[0].type !== 'datetime') && (values[0].type !== 'date')) { throw new Error('Unsupported type.'); }
+            const now = new Date();
             const value = new Date(values[0].value);
-            if (value.getTime() < new Date().getTime()) { throw new Error('in the past') }
+            if (value.getTime() < now.getTime()) { throw new Error('Value in the past.') }
 
             // update the return value of the prompt to be a real date object
-            promptContext.recognized.value = value;
-            return true; // indicate valid 
+            promptContext.recognized.value = [value];
+            return true; // indicate valid
         } catch (err) {
-            await promptContext.context.sendActivity(`Please enter a valid time in the future like "tomorrow at 9am".`);
+            await promptContext.context.sendActivity(`${err} Please specify a date or a date and time in the future, like tomorrow at 9am.`);
             return false; // indicate invalid
         }
-    } else {
-        return false;
-    }
-}));
+    }))
+    .add(new WaterfallDialog(MAIN_DIALOG, [
+        async (step) => {
+            // Ask the user for their party size.
+            return await step.prompt('dateTimePrompt', 'When would you like to schedule that for?');
+        },
+        async (step) => {
+            // Acknowledge their response and exit the dialog.
+            const time = step.result;
+            await step.context.sendActivity(`That's ${time}, thanks.`);
+            return await step.endDialog();
+        }
+    ]));
 ```
 
 その他の例は Microsoft の[サンプル リポジトリ](https://aka.ms/bot-samples-readme)にあります。
@@ -549,3 +652,6 @@ dialogs.add(new atetimePrompt('dateTimePrompt', async (promptContext) => {
 ## <a name="next-steps"></a>次の手順
 
 これでプロンプトでユーザーに入力を求める方法がわかりました。次に、ダイアログを利用してさまざまな会話フローを管理することでボット コードとユーザー エクスペリエンスを強化しましょう。
+
+> [!div class="nextstepaction"]
+> [ダイアログを使用して単純な会話フローを管理する](bot-builder-dialog-manage-conversation-flow.md)

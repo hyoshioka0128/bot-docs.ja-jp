@@ -10,12 +10,12 @@ ms.prod: bot-framework
 ms.date: 09/19/2018
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: af79bb40e3d24557fd898fa0a0ca2ef7b0286af4
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: bef0d5f3220cd818767f4eead5c5f4a09d047c26
+ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707548"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49383157"
 ---
 # <a name="language-understanding"></a>Language Understanding
 
@@ -56,11 +56,11 @@ ms.locfileid: "46707548"
 
 ## <a name="how-your-bot-gets-messages-from-luis"></a>ボットが LUIS からメッセージを受け取るしくみ
 
-LUIS の設定と接続が完了すると、ボットから LUIS アプリにメッセージを送信できます。LUIS アプリは意図とエンティティを含む JSON 応答を返します。 次に、ボットの "_ターン ハンドラー_" で[ターン コンテキスト](bot-builder-concept-activity-processing.md#turn-context)を使用して、LUIS 応答内の意図に基づいて会話フローをルーティングすることができます。 
+LUIS の設定と接続が完了すると、ボットから LUIS アプリにメッセージを送信できます。LUIS アプリは意図とエンティティを含む JSON 応答を返します。 次に、ボットの "_ターン ハンドラー_" で[ターン コンテキスト](~/v4sdk/bot-builder-basics.md#defining-a-turn)を使用して、LUIS 応答内の意図に基づいて会話フローをルーティングすることができます。 
 
 ![意図とエンティティがボットに渡されるしくみ](./media/cognitive-services-add-bot-language/cognitive-services-luis-message-flow-bot-code.png)
 
-ボットで LUIS アプリの使用を開始するには、[Language Understanding での LUIS の使用][luis-v4-how-to]に関するページを参照してください。
+ボットで LUIS アプリの使用を開始するには、[Language Understanding での LUIS の使用](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0)に関するページを参照してください。
 
 ## <a name="best-practices-for-language-understanding"></a>Language Understanding のベスト プラクティス
 
@@ -99,7 +99,7 @@ LUIS アプリでは、ユーザーから送信されたメッセージを確認
 
 ## <a name="use-luis-to-improve-speech-recognition"></a>LUIS を使用して音声認識を向上させる
 
-ユーザーが話しかけるボットの場合、LUIS と統合することで、音声をテキストに変換するときに誤解される可能性がある単語をボットが識別するのに役立ちます。  たとえば、チェスのシナリオで、ユーザーが "Move knight to A 7 (ナイトを A 7 に移動)" と言ったとします。 そのユーザーの意図に対するコンテキストがなければ、その発話は "Move night 287 (ナイトを 287 に移動)" と認識される可能性があります。 チェスの駒と座標を表すエンティティを作成し、それらを発話でラベル付けすることで、それらを識別するための音声認識のコンテキストを提供します。 Bing Speech と統合されている Bot Framework チャネル (Web チャット、Bot Framework エミュレーター、Cortana など) を使用して、[音声認識の準備を有効][speechrecognitionpriming]にすることができます。  
+ユーザーが話しかけるボットの場合、LUIS と統合することで、音声をテキストに変換するときに誤解される可能性がある単語をボットが識別するのに役立ちます。  たとえば、チェスのシナリオで、ユーザーが "Move knight to A 7 (ナイトを A 7 に移動)" と言ったとします。 そのユーザーの意図に対するコンテキストがなければ、その発話は "Move night 287 (ナイトを 287 に移動)" と認識される可能性があります。 チェスの駒と座標を表すエンティティを作成し、それらを発話でラベル付けすることで、それらを識別するための音声認識のコンテキストを提供します。 Bing Speech と統合されている Bot Framework チャネル (Web チャット、Bot Framework エミュレーター、Cortana など) を使用して、[音声認識の準備を有効](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-speech-priming?view=azure-bot-service-4.0)にすることができます。  
 
 ## <a name="additional-resources"></a>その他のリソース
 詳細については、[Cognitive Services](https://docs.microsoft.com/en-us/azure/cognitive-services/) のドキュメントを参照してください。

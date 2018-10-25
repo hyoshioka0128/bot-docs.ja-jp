@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9636b1c88bd99b94f3bf266a3a321d8f6e2747d4
-ms.sourcegitcommit: 87b5b0ca9b0d5e028ece9f7cc4948c5507062c2b
+ms.openlocfilehash: 5f00dd3666a0ebe300ec7c1e98baae020f603175
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47029790"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326439"
 ---
 # <a name="enterprise-bot-template"></a>Enterprise Bot Template 
 
@@ -24,7 +24,7 @@ ms.locfileid: "47029790"
 
 このテンプレートにより、新しいボット プロジェクトの作成が大幅に簡略化されます。 このテンプレートでは、[Bot Builder SDK v4](https://github.com/Microsoft/botbuilder) と [Bot Builder ツール](https://github.com/Microsoft/botbuilder-tools)を活用して、次の機能を追加設定なしで使用できます。
 
-Feature | 説明 |
+機能 | 説明 |
 ------------ | -------------
 紹介メッセージ | 会話の開始時に流れる、アダプティブ カードの紹介メッセージ。 ボットの機能について説明し、最初の質問をガイドするボタンを提供します。 開発者は必要に応じてこれをカスタマイズできます。
 自動化された入力インジケーター  | 会話中に視覚的な入力インジケーターを送信します。長時間実行される操作においては繰り返されます。

@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/26/2018
-ms.openlocfilehash: 410f50f02dcea2bb64ccf0389e20f5cb76e2fd6b
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 42273044cd1e32a3c78fa7fb1b83beac061ce0b8
+ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389841"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49383177"
 ---
 # <a name="troubleshooting-general-problems"></a>一般的な問題のトラブルシューティング
 以下のよく寄せられる質問は、一般的なボット開発や運用上の問題のトラブルシューティングに役立ちます。
@@ -39,10 +39,7 @@ Visual Studio 2017 で、**[デバッグ]** > **[Windows]** > **[例外設定]**
 Visual Studio で、[マイ コードのみ](https://msdn.microsoft.com/en-us/library/dn457346.aspx)をデバッグするかどうかを選択できます。 完全な呼び出し履歴を調べることで、問題に関する詳細な分析情報が得られる場合があります。
 
 **すべてのダイアログ メソッドの最後が、次のメッセージを処理するプランであることを確認します。**  
-すべての `IDialog` メソッドは、`IDialogStack.Call`、`IDialogStack.Wait`、または `IDialogStack.Done` で完了する必要があります。 これらの `IDialogStack` メソッドは、すべての `IDialog` メソッドに渡される `IDialogContext` を介して公開されます。 `IDialogStack.Forward` を呼び出し、`PromptDialog` 静的メソッドを介してシステム プロンプトを使用することで、これらの実装内のメソッドのいずれが呼び出されます。
-
-**すべてのダイアログがシリアル化可能であることを確認します。**  
-これは、`IDialog` 実装で `[Serializable]` 属性を使用するのと同じぐらい簡単です。 しかし、変数をキャプチャするために外部の環境を参照する場合は、匿名メソッド クロージャはシリアル化できないことに注意してください。 Bot Framework ではリフレクション ベースのシリアル化サロゲートがサポートされており、シリアル化可能としてマークされていない型をシリアル化するのに役立ちます。
+すべてのダイアログ ステップは、ウォーターフォールの次のステップにフィードされるか、現在のダイアログを終了してスタックから取り出す必要があります。 ステップが正しく処理されない場合、会話は期待どおりに続きません。 ダイアログの詳細については、[ダイアログ](v4sdk/bot-builder-concept-dialog.md)の概念に関する記事を参照してください。
 
 ## <a name="why-doesnt-the-typing-activity-do-anything"></a>入力しても何も行われないのはなぜですか。
 一部のチャネルでは、クライアントでの一時的な入力の更新がサポートされていません。
@@ -54,7 +51,14 @@ Visual Studio で、[マイ コードのみ](https://msdn.microsoft.com/en-us/li
 ## <a name="what-causes-an-error-with-http-status-code-429-too-many-requests"></a>HTTP 状態コード 429 "要求が多すぎます" のエラーの原因は何ですか。
 
 HTTP 状態コード 429 のエラー応答は、一定時間に発行された要求が多すぎることを示します。 応答の本文には問題の説明が含まれています。また、要求間の最低限必要な間隔が示されている場合があります。 このエラーのソースの 1 つとして、[ngrok](https://ngrok.com/) が考えられます。 無料プランを利用しており、ngrok の制限に達している場合は、Web サイトの料金と制限のページに移動して、他の[オプション](https://ngrok.com/product#pricing)を確認してください。 
- 
+
+## <a name="why-arent-my-bot-messages-getting-received-by-the-user"></a>ボット メッセージがユーザーによって受信されないのはなぜですか。
+
+応答で生成されるメッセージ アクティビティは正しくアドレス指定されている必要があります。そうでないと、意図した宛先にメッセージが届きません。 ほとんどの場合、これを明示的に処理する必要はありません。メッセージ アクティビティのアドレス指定は SDK によって処理されます。 
+
+"アクティビティを正しくアドレス指定する" とは、適切な "*会話の参照*" の詳細と共に、送信者と受信者に関する詳細を含めることを意味します。 ほとんどの場合、メッセージ アクティビティは到着したものに応答して送信されます。 そのため、アドレス指定の詳細は、インバウンド アクティビティから取得できます。 
+
+トレースまたは監査ログを調べると、メッセージが正しくアドレス指定されているかどうかを確認できます。 メッセージが正しくアドレス指定されていない場合は、ボットにブレークポイントを設定し、メッセージに対して ID が設定される場所を確認します。
 
 ## <a name="how-can-i-run-background-tasks-in-aspnet"></a>ASP.NET でバックグラウンド タスクを実行するにはどうすればよいですか。 
 
@@ -77,7 +81,7 @@ Bot Framework では、メッセージの順序が可能な限り保持されま
 
 ## <a name="how-can-i-intercept-all-messages-between-the-user-and-my-bot"></a>ユーザーと自分のボット間のすべてのメッセージをインターセプトするにはどうすればよいですか。
 
-Bot Builder SDK for .NET を使用することで、`Autofac` 依存関係挿入コンテナーに対して `IPostToBot` および `IBotToUser` インターフェイスの実装を提供することができます。 Bot Builder SDK for Node.js を使用すれば、ほぼ同じ目的でミドルウェアを利用できます。 [BotBuilder Azure](https://github.com/Microsoft/BotBuilder-Azure) リポジトリには、C# および Node.js のライブラリが含まれており、Azure テーブルにこのデータが記録されます。
+Bot Builder SDK for .NET を使用することで、`Autofac` 依存関係挿入コンテナーに対して `IPostToBot` および `IBotToUser` インターフェイスの実装を提供することができます。 任意の言語に Bot Builder SDK を使用すれば、ほぼ同じ目的でミドルウェアを利用できます。 [BotBuilder Azure](https://github.com/Microsoft/BotBuilder-Azure) リポジトリには、C# および Node.js のライブラリが含まれており、Azure テーブルにこのデータが記録されます。
 
 ## <a name="why-are-parts-of-my-message-text-being-dropped"></a>メッセージ テキストの部分がドロップされるのはなぜですか。
 
@@ -127,6 +131,8 @@ Skype、Facebook、Slack などの他のチャネルでは、ボットで事前�
 ## <a name="what-causes-the-direct-line-30-service-to-respond-with-http-status-code-502-bad-gateway"></a>ダイレクト ライン 3.0 サービスから HTTP 状態コード 502 "ゲートウェイが不適切です" という応答が返される原因は何ですか。
 ご利用のボットに接続しようとしたときに、要求が正常に完了しない場合は、ダイレクト ライン 3.0 から HTTP 状態コード 502 が返されます。 このエラーは、ボットからエラーが返されたか、要求がタイムアウトになったことを示します。ご利用のボットで生成されたエラーの詳細については、<a href="https://dev.botframework.com" target="_blank">Bot Framework ポータル</a>内のボットのダッシュボードに移動して、影響を受けるチャネルに関する "問題" リンクをクリックしてください。 ご利用のボットに対して Application Insights が構成されている場合は、そこで詳細なエラー情報を見つけることもできます。 
 
+::: moniker range="azure-bot-service-3.0"
+
 ## <a name="what-is-the-idialogstackforward-method-in-the-bot-builder-sdk-for-net"></a>Bot Builder SDK for .NET の IDialogStack.Forward メソッドとは何ですか。
 
 `IDialogStack.Forward` の主な目的は、既存の子ダイアログを再利用することです。このダイアログは多くの場合、"リアクティブ" であり、(`IDialog.StartAsync` の) 子ダイアログは `ResumeAfter` ハンドラーがあるオブジェクト `T` を待機します。 特に、`IMessageActivity` `T` を待機する子ダイアログがある場合、`IDialogStack.Forward` メソッドを使用して、着信 `IMessageActivity` (親ダイアログで既に受信されている) を転送できます。 たとえば、着信 `IMessageActivity` を `LuisDialog` に転送するには、`IDialogStack.Forward` を呼び出して `LuisDialog` をダイアログ スタックにプッシュし、次のメッセージの待機がスケジュールされるまで `LuisDialog.StartAsync` でコードを実行し、転送された `IMessageActivity` ですぐにその待機が満たされるようにします。
@@ -134,6 +140,8 @@ Skype、Facebook、Slack などの他のチャネルでは、ボットで事前�
 `T` は通常、`IMessageActivity` です。これは、`IDialog.StartAsync` が一般的にその種のアクティビティを待機するように構成されるためです。 既存の `LuisDialog` にメッセージを転送する前に、何らかの処理のためにユーザーからのメッセージをインターセプトするメカニズムとして、`LuisDialog` に対して `IDialogStack.Forward` を使用することができます。 また、その目的で `DispatchDialog` と `ContinueToNextGroup` を使用することもできます。
 
 `StartAsync` によってスケジュールされる最初の `ResumeAfter` ハンドラー (`LuisDialog.MessageReceived` など) で、転送された項目が見つかります。
+
+::: moniker-end
 
 ## <a name="what-is-the-difference-between-proactive-and-reactive"></a>"プロアクティブ" と "リアクティブ" の違いは何ですか。
 
@@ -177,13 +185,13 @@ Bot Builder SDK for .NET または Bot Builder SDK for Node.js を使用して�
 
 ## <a name="what-is-an-etag--how-does-it-relate-to-bot-data-bag-storage"></a>ETag とは何ですか。  ボット データ バッグ ストレージにどのように関連しますか。
 
-[ETag](https://en.wikipedia.org/wiki/HTTP_ETag) は、[オプティミスティック同時実行制御](https://en.wikipedia.org/wiki/Optimistic_concurrency_control)のためのメカニズムです。 ボット データ バッグ ストレージでは ETag を使用して、データ更新の競合を防ぎます。 HTTP 状態コード 412 "前提条件が満たされていません" という ETag エラーは、そのボット データ バッグに対して現在実行されている "読み取り/変更/書き込み" シーケンスが複数あることを示します。
+[ETag](https://en.wikipedia.org/wiki/HTTP_ETag) は、[オプティミスティック コンカレンシー](https://en.wikipedia.org/wiki/Optimistic_concurrency_control)のためのメカニズムです。 ボット データ バッグ ストレージでは ETag を使用して、データ更新の競合を防ぎます。 HTTP 状態コード 412 "前提条件が満たされていません" という ETag エラーは、そのボット データ バッグに対して現在実行されている "読み取り/変更/書き込み" シーケンスが複数あることを示します。
 
 ダイアログ スタックおよび状態は、ボット データ バッグに格納されます。 たとえば、ご利用のボットで、該当する会話の新しいメッセージの受信時に前のメッセージがまだ処理されている場合、"前提条件が満たされていません" という ETag エラーが表示されることがあります。
 
 ## <a name="what-causes-an-error-with-http-status-code-412-precondition-failed-or-http-status-code-409-conflict"></a>HTTP 状態コード 412 "前提条件が満たされていません" または HTTP 状態コード 409 "競合" のエラーの原因は何ですか。
 
-コネクタの `IBotState` サービスを使用して、ボット データ バッグ (ユーザー ボット データ バッグや会話ボット データ バッグなど。また、プライベート ボット データ バッグにダイアログ スタックの "制御フロー" 状態が含まれている場合は、プライベート ボット データ バッグ) が格納されます。 `IBotState` サービスでの同時実行制御は、ETag を使用してオプティミスティック同時実行制御によって管理されます。 "読み取り/変更/書き込み" シーケンス時に (単一ボット データ バッグへの同時更新により) 更新の競合が発生した場合は、次のようになります。
+コネクタの `IBotState` サービスを使用して、ボット データ バッグ (ユーザー ボット データ バッグや会話ボット データ バッグなど。また、プライベート ボット データ バッグにダイアログ スタックの "制御フロー" 状態が含まれている場合は、プライベート ボット データ バッグ) が格納されます。 `IBotState` サービスでのコンカレンシー制御は、ETag を使用してオプティミスティック コンカレンシーによって管理されます。 "読み取り/変更/書き込み" シーケンス時に (単一ボット データ バッグへの同時更新により) 更新の競合が発生した場合は、次のようになります。
 
 * ETag が保持されている場合、HTTP 状態コード 412 "前提条件が満たされていません" のエラーは `IBotState` サービスからスローされます。 これは、Bot Builder SDK for .NET での既定の動作です。
 * Etag が保持されていない (つまり、ETag が `\*`に設定されている) 場合、"最後の書き込みが有効" ポリシーが有効になり、"前提条件が満たされていません" エラーを防ぐことはできますが、データ損失のリスクがあります。 これは、Bot Builder SDK for Node.js での既定の動作です。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a4ac88872e11cd32a9de96d52dcf9e917bb3488f
-ms.sourcegitcommit: 87b5b0ca9b0d5e028ece9f7cc4948c5507062c2b
+ms.openlocfilehash: 0f4c5e0db9dae86f81414ccd9bbb1e5de4dce624
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47029800"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326399"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Enterprise Bot Template - ボットのデプロイ
 
@@ -97,7 +97,7 @@ msbot ツールに、場所や SKU など、デプロイ計画の概要が表示
 
 ## <a name="testing"></a>テスト
 
-完了後、開発環境内でボット プロジェクトを実行し、Bot Framework Emulator を開きます。 Emulator 内で、[ファイル] メニューから [Open Bot]\(ボットを開く\) を選択し、対象の .bot ファイルがあるディレクトリに移動します。
+完了後、開発環境内でボット プロジェクトを実行し、Bot Framework Emulator を開きます。 エミュレーター内で、[ファイル] メニューから [Open Bot]\(ボットを開く\) を選択し、対象の .bot ファイルがあるディレクトリに移動します。
 
 その後、「```hi```」と入力してすべて機能していることを確認します。
 
@@ -152,4 +152,4 @@ MainDialog コンストラクターで、次のように `SignInDialog` を登�
 
 ## <a name="customize-your-bot"></a>ボットをカスタマイズする
 
-追加設定なしにボットがデプロイされたことを確認した後は、シナリオとニーズに合わせてボットをカスタマイズできます。 続けて[ボットをカスタマイズ](bot-builder-enterprise-template-customize.md)してください。
+ボットを (追加設定なしで) デプロイした後は、シナリオやニーズに応じてボットをカスタマイズできます。 続けて[ボットをカスタマイズ](bot-builder-enterprise-template-customize.md)してください。

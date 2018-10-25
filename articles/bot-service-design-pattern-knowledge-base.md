@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: dd8869c26a87718177462db2508e41aa82810e21
-ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
+ms.openlocfilehash: ab7e6a8e6bbb2cf12fca0371f2de561f4fb47fd8
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404078"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326529"
 ---
 # <a name="design-knowledge-bots"></a>ナレッジ ボットを設計する
 
@@ -129,7 +129,7 @@ Search、QnA Maker、LUIS はそれだけでも強力なツールですが、そ
 2. LUIS を最初に呼び出し、特定のしきい値スコアを満たす意図がない場合、つまり "None" 意図がトリガーされる場合は、QnA Maker を呼び出します。 または、"QnAIntent" にマップする QnA 質問の例を LUIS モデルにフィードして、QnA Maker に対する LUIS 意図を作成します。 
 3. QnA Maker を最初に呼び出し、特定のしきい値スコアを満たす回答がない場合、LUIS を呼び出します。 
 
-Bot Builder SDK では、LUIS と QnA Maker の組み込みサポートが提供されます。 これにより、LUIS と QnA Maker を使ってダイアログをトリガーしたり、質問に自動的に応答することができ、いずれかのツールへのカスタム呼び出しを実装する必要はありません。 詳細については、「[Bot Service templates](bot-service-concept-templates.md)」(Bot Service テンプレート) をご覧ください。
+Bot Builder SDK では、LUIS と QnA Maker の組み込みサポートが提供されます。 これにより、LUIS と QnA Maker を使ってダイアログをトリガーしたり、質問に自動的に応答することができ、いずれかのツールへのカスタム呼び出しを実装する必要はありません。 詳細については、[Bot Builder ディスパッチ ツールのチュートリアル](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0)を参照してください。
 
 > [!TIP]
 > LUIS、QnA Maker、Azure Search の組み合わせを実装する場合は、各ツールで入力をテストして、各モデルのしきい値スコアを決定します。 LUIS、QnA Maker、Azure Search はそれぞれ異なるスコアリング条件を使ってスコアを生成するので、これらのツールによって生成されたスコアを直接比較することはできません。 さらに、LUIS と QnA Maker はスコアを正規化します。 LUIS モデルで "良" と見なされた特定のスコアが、別のモデルではそうならない可能性があります。 

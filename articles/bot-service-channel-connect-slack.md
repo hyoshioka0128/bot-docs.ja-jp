@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 56fe0af4d34e6e0aa4bc420112c541a410aa1301
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e2176d3eb5584a1d9a234d4ab94c69451f0db6ef
+ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301892"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49315228"
 ---
 # <a name="connect-a-bot-to-slack"></a>ボットを Slack に接続する
 
@@ -21,7 +21,7 @@ Slack メッセージング アプリを使用して、複数のユーザーと�
 
 ## <a name="create-a-slack-application-for-your-bot"></a>ボット用の Slack アプリケーションを作成する
 
-Slack にログインし、[Slack アプリケーションを作成](https://api.slack.com/applications/new)します。
+[Slack](https://slack.com/signin) にログインし、[[create a Slack application]\(Slack アプリケーションの作成\)](https://api.slack.com/apps) チャネルに移動します。
 
 ![ボットを設定する](~/media/channels/slack-NewApp.png)
 
@@ -63,23 +63,23 @@ Slack にログインし、[Slack アプリケーションを作成](https://api
 以下の手順に従って、ボットの 6 つの特定のイベントをサブスクライブします。 ボットのイベントをサブスクライブすると、指定した URL でのユーザー アクティビティがアプリに通知されます。
 
 > [!TIP]
-> ボット ハンドルはボットのプロパティです。 ボットのハンドルを調べるには、[https://dev.botframework.com/bots](https://dev.botframework.com/bots) にアクセスして、ボットを選択し、**[設定]** をクリックします。
+> ボット ハンドルはボットの名前です。 ボットのハンドルを調べるには、[https://dev.botframework.com/bots](https://dev.botframework.com/bots) にアクセスして、ボットを選択し、ボットの名前を記録します。
 
 1. **[Event Subscriptions]\(イベント サブスクリプション\)** タブを選択します。
 2. **[Enable Events]\(イベントを有効にする\)** をクリックして **[On]\(オン\)** にします。
-3. **[Request URL]\(要求 URL\)** に次の URL を入力します。ただし、`{YourBotHandle}` は実際のボット ハンドルに置き換えます。
+3. **[Request URL]\(要求 URL\)** に次の URL を入力します。ただし、`{YourBotHandle}` は実際のボット ハンドルに置き換えます。 このチュートリアルで使用するボット ハンドルは、testChannels です。
         `https://slack.botframework.com/api/Events/{YourBotHandle}`
-4. **[Subscribe to Bot Events]\(ボット イベントのサブスクライブ\)** で、**[Add Bot User Event]\(ボット ユーザー イベントの追加\)** をクリックします。
-5. イベントの一覧で、**[Add Bot User Event]\(ボット ユーザー イベントの追加\)** をクリックして、次の 6 つのイベント タイプを選択します。
+4. **[Subscribe to Workspace Events]\(ワークスペースのイベントをサブスクライブ\)** で、**[Add Workspace Event]\(ワークスペース イベントの追加\)** をクリックします。
+5. イベントの一覧で、次の 6 つのイベント タイプを選択します。
     * `member_joined_channel`
     * `member_left_channel`
     * `message.channels`
     * `message.groups`
     * `message.im`
     * `message.mpim`
-6. **[変更を保存]** をクリックします。
 
-![イベントをサブスクライブする](~/media/channels/slack-EnableEvents.png)
+![イベントをサブスクライブする](~/media/channels/slack-SubscribeEvents.png)
+6. **[変更を保存]** をクリックします。
 
 ## <a name="add-and-configure-interactive-messages-optional"></a>対話型メッセージを追加して構成する (省略可能)
 
@@ -87,7 +87,7 @@ Slack にログインし、[Slack アプリケーションを作成](https://api
 
 1. **[Interactive Components]\(対話型コンポーネント\)** タブを選択し、**[Enable Interactive Components]\(対話型コンポーネントを有効にする\)** をクリックします。
 2. **[Request URL]\(要求 URL\)** として「`https://slack.botframework.com/api/Actions`」と入力します。
-3. **[Enable Interactive Messages]\(対話型メッセージを有効にする\)** ボタンをクリックし、**[Save changes]\(変更を保存\)** ボタンをクリックします。
+3. **[Save changes]\(変更の保存\)** ボタンをクリックします。
 
 ![メッセージを有効にする](~/media/channels/slack-MessageURL.png)
 
@@ -103,7 +103,7 @@ Slack ボットの構成に必要なクライアント ID、クライアント �
 別のブラウザー ウィンドウで、Bot Framework サイト (`https://dev.botframework.com/`) に戻ります。
 
 1. **[My bots]\(マイ ボット\)** を選択し、Slack に接続するボットを選択します。
-2. **[Add a channel]\(チャネルの追加\)** セクションで、Slack アイコンをクリックします。
+2. **[チャネル]** セクションで、Slack アイコンをクリックします。
 3. **[Enter your Slack credentials]\(Slack 資格情報の入力\)** セクションで、Slack の Web サイトからコピーしたアプリの資格情報を適切なフィールドに貼り付けます。
 4. **[Landing Page URL]\(ランディング ページの URL\)** は省略可能です。 省略しても変更してもかまいません。
 5. **[Save]** をクリックします。
@@ -124,7 +124,7 @@ Slack ボットの構成に必要なクライアント ID、クライアント �
 置き換える URL を取得するには、次の手順のようにします。
 
 1. [https://dev.botframework.com/bots](https://dev.botframework.com/bots) で、対象のボットをクリックします。
-2. **[CHANNELS]\(チャネル\)** をクリックし、**[Slack]** というエントリを右クリックして、**[Copy link]\(リンクのコピー\)** をクリックします。 この URL がクリップボードにコピーされます。
+2. **[チャネル]** をクリックし、**[Slack]** というエントリを右クリックして、**[Copy link]\(リンクのコピー\)** をクリックします。 この URL がクリップボードにコピーされます。
 3. この URL をクリップボードから Slack ボタンの HTML に貼り付けます。 この URL で、このボットに対して Slack によって提供される href の値を置き換えます。
 
 承認されたユーザーは、この変更した HTML で提供される **[Add to Slack]\(Slack に追加\)** ボタンをクリックして、Slack からボットにアクセスできます。

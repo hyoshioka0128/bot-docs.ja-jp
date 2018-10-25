@@ -6,21 +6,22 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: f67c7ba658923873470e9653b38cd63fd1068491
-ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
+ms.openlocfilehash: 7af27340f92e3768bc00125205d5040fe3ea4d32
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49315118"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998229"
 ---
 # <a name="connect-a-bot-to-skype-for-business"></a>ボットを Skype for Business に接続する
 
 Skype for Business Online を使うと、インスタント メッセージング、電話、およびビデオ通話で同僚やビジネス パートナーと接続することができます。 ユーザーが Skype for Business のインターフェイスを介して検出およびやり取りできるボットを構築すると、この機能を拡張することができます。
 
 > [!NOTE]
-> 現在、Skype for Business Bot Framework チャネルは Skype for Business Online でサポートされています。 Skype for Business Server 2015 はサポートされていません。 
+> 現在、Skype for Business Bot Framework チャネルは Skype for Business Online でサポートされています。 Skype for Business Server 2015 はサポートされていません。 
 
 ## <a name="enable-the-channel"></a>チャネルの有効化
 

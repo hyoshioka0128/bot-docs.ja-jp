@@ -5,25 +5,22 @@ author: matthewshim-ms
 ms.author: v-shimma
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
-ms.date: 04/25/2018
+ms.service: bot-service
+ms.subservice: tools
+ms.date: 08/31/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1eb47e76ef1bd6765d5ba93c27b97a8d9e6143db
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: b614b11852516ec8dd426d210aacc85a0f39c813
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905306"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999419"
 ---
 # <a name="create-bots-with-azure-cli"></a>Azure CLI を使用したボットの作成
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
 
-[ボット ビルダー ツール](https://github.com/microsoft/botbuilder-tools)は、コマンド ラインから直接ボットのリソースを管理してやり取りできる新しいツールセットです。 
-
-このチュートリアルでは、次の操作方法について説明します。
-
-- Azure CLI のボット拡張機能を有効にする
+このチュートリアルで学習する内容は次のとおりです。 
 - Azure CLI を使用して新しいボットを作成する 
 - 開発用にローカル コピーをダウンロードする
 - 新しい MSBot ツールを使用して、すべてのボット リソース情報を格納する
@@ -33,45 +30,34 @@ ms.locfileid: "42905306"
 
 ## <a name="prerequisites"></a>前提条件
 
-コマンド ラインからこれらのツールを有効にするには、お使いのコンピューターに Node.js がインストールされている必要があります。 
-
+コマンド ラインからこれらのツールを使用するには、お使いのマシンに Node.js がインストールされている必要があります。 
 - [Node.js (v8.5 以上)](https://nodejs.org/en/)
 
-## <a name="1-enable-azure-cli"></a>1.Azure CLI を有効にする
+## <a name="1-install-tools"></a>1.ツールをインストールする
+1. 最新バージョンの Azure CLI を[インストール](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)します。
+2. Bot Builder ツールを[インストール](https://aka.ms/botbuilder-tools-readme)します。
 
-他の Azure リソースと同じように、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用してボットを管理できるようになりました。 Azure CLI を有効にするには、次の手順を完了します。
-
-1. Azure CLI をまだお持ちでない場合は、[ダウンロード](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)します。 
-
-2. 次のコマンドを入力して、Azure Bot Extension 配布パッケージをダウンロードします。
-
-```azurecli
-az extension add -n botservice
-```
+他の Azure リソースと同じように、Azure CLI を使用してボットを管理できるようになりました。
 
 >[!TIP]
 > Azure Bot Extension では現在、v3 ボットのみをサポートしています。
   
-3. 次のコマンドを実行して Azure CLI に[ログイン](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
+3. 次のコマンドを実行して Azure CLI にログインします。
 
 ```azurecli
 az login
 ```
-一意の一時的な認証コードの入力が求められます。 サインインするには、Web ブラウザーを使用して Microsoft [デバイスのログイン](https://microsoft.com/devicelogin)にアクセスし、CLI から提供されたコードを貼り付けて続行します。 
+ブラウザー ウィンドウが開いて、サインインできます。 サインインすると、次のメッセージが表示されます。
 
-![MS デバイスのログイン](media/bot-builder-tools/ms-device-login.png)
+![MS デバイスのログイン](media/bot-builder-tools/az-browser-login.png)
 
-正常にログインすると、アカウントとリソースの管理に使用できるオプションの一覧と共に、Azure CLI のようこそ画面が表示されます。
+コマンド ライン ウィンドウに次の情報が表示されます。
 
-![Azure Bot CLI](media/bot-builder-tools/az-cli-bot.png)
-
-
- Azure CLI コマンドの完全な一覧については、[こちら](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)をクリックしてください。
-
+![Azure ログイン コマンド](media/bot-builder-tools/az-login-command.png)
 
 ## <a name="2-create-a-new-bot-from-azure-cli"></a>2.Azure CLI から新しいボットを作成する
 
-Azure CLI と新しいボット拡張機能を使用すると、コマンド ラインから新しいボットを完全に作成できます。 
+Azure CLI を使用して、コマンド ラインから新しいボットを完全に作成できます。 
 
 ```azurecli
 az bot [command]
@@ -88,11 +74,11 @@ az bot [command]
 CLI から新しいボットを作成するには、既存の[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を選択するか、新規に作成する必要があります。 
 
 ```azurecli
-az bot create --resource-group "my-resource-group" --name "my-bot-name" --kind "my-resource-type" --description "description-of-my-bot"
+az bot create --resource-group "my-resource-group" --name "my-bot-name" --kind "my-resource-type" --version v3 --description "description-of-my-bot"
 ```
-要求が成功すると、確認メッセージが表示されます。
+`--kind` に使用できる値は `function, registration, webapp`、`--version` に使用できる値は `v3, v4` です。  要求が成功すると、確認メッセージが表示されます。
 ```
-obtained msa app id and password. Provisioning bot now.
+Obtained msa app id and password. Provisioning bot now.
 ```
 
 > [!TIP]
@@ -116,35 +102,30 @@ Azure のリソース グループに新しいエコー ボットがプロビジ
 
 ## <a name="3-download-the-bot-locally"></a>手順 3.ボットをローカルにダウンロードする
 
-新しいボットのソース コードをダウンロードするには、2 つの方法があります。
-- Azure Portal からダウンロードする。
-- 新しい Azure CLI を使用してダウンロードする。
+ソース コードをダウンロードするには、2 とおりの方法があります。
+- Azure portal から
+- 新しい Azure CLI を使用
 
-ポータルからボットのソース コードをダウンロードするには、単純にボット リソースを選択して、[Bot management]\(ボット管理\) の下で **[ビルド]** を選択します。 ボットのソース コードをローカルで管理または取得するために使用できる異なるオプションがいくつかあります。 
+[Azure portal](http://portal.azure.com) からボットのソース コードをダウンロードするには、単純にボット リソースを選択して、ボット管理の **[ビルド]** を選択します。 ボットのソース コードをローカルで管理または取得するために使用できる異なるオプションがいくつかあります。
 
 ![Azure Portal のボットのダウンロード](media/bot-builder-tools/az-portal-manage-code.png)
 
-CLI を使用してボットのソースをダウンロードするには、次のコマンドを入力します。 ボットは、サブディレクトリにダウンロードされます。 サブディレクトリがまだない場合は、このコマンドにより作成されます。
+CLI を使用してボットのソースをダウンロードするには、次のコマンドを入力します。 ボットはローカルにダウンロードされます。
 
 ```azurecli
 az bot download --name "my-bot-name" --resource-group "my-resource-group"
 ```
-ただし、ボットをダウンロードするディレクトリを指定することもできます。
-例: 
 
 ![CLI のダウンロード コマンド](media/bot-builder-tools/cli-bot-download-command.png)
 
-![CLI のボットのダウンロード](media/bot-builder-tools/cli-bot-download.png)
-
-上記のコマンドを使用すると、ボットのソース コードを指定した場所に直接ダウンロードすることができ、ローカルでボットの開発ができるようになります。
-
-
 ## <a name="4-store-your-bot-information-with-msbot"></a>4.MSBot を使用してボット情報を保存する
 
-新しい [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/MSBot) ツールを使用すると、ボットが使用するさまざまなサービスに関するメタデータをすべて 1 か所に保存する **.bot** ファイルを作成することができます。 このファイルを使用すると、CLI からこれらのサービスにボットを接続することもできます。 このツールは、npm モジュールとして使用できます。インストールして実行するには、次のコマンドを使用します。
+新しい MSBot ツールを使用すると、**.bot ファイル**を作成できます。これにより、ボットが使用するさまざまなサービスに関するすべてのメタデータを 1 か所に格納できます。 このファイルを使用すると、CLI からこれらのサービスにボットを接続することもできます。 MSBot ツールはいくつかのコマンドをサポートしています。詳細については、[readme](https://aka.ms/botbuilder-tools-msbot-readme) ファイルを参照してください。 
+
+MSBot をインストールするには、次のコマンドを実行します。
 
 ```shell
-npm install -g msbot 
+npm install -g msbot
 ```
 
 ボット ファイルを作成するには、CLI から「**msbot init**」を入力し、続けてボットの名前とターゲット URL エンドポイントを入力します。次に例を示します。
@@ -152,6 +133,7 @@ npm install -g msbot
 ```shell
 msbot init --name name-of-my-bot --endpoint http://localhost:bot-port-number/api/messages
 ```
+
 ボットをサービスに接続するには、CLI で「**msbot connect**」を入力し、続けて該当するサービスを入力します。
 
 ```shell
@@ -166,36 +148,39 @@ msbot connect service-type
 | qna     |ボットを QnA ナレッジ ベースに接続します|
 |help [cmd]  |[cmd] のヘルプを表示します|
 
+サポートされているサービスの完全な一覧については、[readme](https://aka.ms/botbuilder-tools-msbot-readme) ファイルを参照してください。
+
 ### <a name="connect-your-bot-to-abs-with-the-bot-file"></a>.bot ファイルを使用してボットを ABS に接続する
 
-MSBot ツールをインストールすると、az bot **show** コマンドを実行することで、ボットを Azure Bot Service 内の既存のリソース グループに簡単に接続することができます。 
+MSBot ツールをインストールすると、az bot **show** コマンドを実行することで、ボットを Azure Bot Service 内の既存のリソース グループに簡単に接続することができます。
 
 ```azurecli
 az bot show -n my-bot-name -g my-resource-group --msbot | msbot connect azure --stdin
 ```
 
-これにより、ターゲット リソース グループから現在のエンドポイント、MSA appID とパスワードが取得され、それに応じて .bot ファイル内の情報が更新されます。 
+これにより、ターゲット リソース グループから現在のエンドポイント、MSA appID とパスワードが取得され、それに応じて .bot ファイル内の情報が更新されます。
 
 
 ## <a name="5-manage-update-or-create-luis-and-qna-services-with--new-botbuilder-tools"></a>5.新しいボット ビルダー ツールを使用して LUIS および QnA サービスを管理、更新、または作成する
 
-[ボット ビルダー ツール](https://github.com/microsoft/botbuilder-tools)は、コマンド ラインから直接ボットのリソースを管理してやり取りできる新しいツールセットです。 
+[ボット ビルダー ツール](https://aka.ms/botbuilder-tools)は、コマンド ラインから直接ボットのリソースを管理してやり取りできる新しいツールセットです。
 
 >[!TIP]
 > すべてのボット ビルダー ツールには、グローバル ヘルプ コマンドが含まれており、コマンド ラインから **-h** または **--help** を入力してアクセスできます。 このコマンドは、任意のアクションからいつでも使用できます。実行すると、使用可能なオプションとその説明が表示されます。
 
 ### <a name="ludown"></a>LUDown
-[LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/Ludown) を使用すると、**.lu** ファイルを使用してボットの強力な言語コンポーネントを記述して作成することができます。 新しい .lu ファイルは、LUDown ツールが使用して、対象サービスに固有の .json ファイルを出力するマークダウン形式の一種です。 現時点では、.lu ファイルを使用して、新しい [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) アプリケーションまたは [QnA](https://qnamaker.ai/Documentation/CreateKb) ナレッジ ベースをそれぞれ異なる形式を使用して作成することができます。 LUDown は npm モジュールとして使用でき、お使いのコンピューターにグローバルにインストールすることで使用できます。
+
+[LUDown](https://aka.ms/botbuilder-ludown) を使用すると、**.lu** ファイルを使用してボットの強力な言語コンポーネントを記述して作成することができます。 新しい .lu ファイルは、LUDown ツールが使用して、対象サービスに固有の .json ファイルを出力するマークダウン形式の一種です。 現時点では、.lu ファイルを使用して、新しい [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) アプリケーションまたは [QnA](https://qnamaker.ai/Documentation/CreateKb) ナレッジ ベースをそれぞれ異なる形式を使用して作成することができます。 LUDown は npm モジュールとして使用でき、お使いのコンピューターにグローバルにインストールすることで使用できます。
 
 ```shell
 npm install -g ludown
 ```
-LUDown ツールは、LUIS と QnA の両方の新しい .json モデルを作成するために使用できます。  
 
+LUDown ツールは、LUIS と QnA の両方の新しい .json モデルを作成するために使用できます。  
 
 ### <a name="creating-a-luis-application-with-ludown"></a>LUDown を使用して LUIS アプリケーションを作成する
 
-LUIS ポータルから行うのと同じように、LUIS アプリケーションの[意図](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents)と[エンティティ](https://docs.microsoft.com/azure/cognitive-services/luis/add-entities)を定義することができます。 
+LUIS ポータルから行うのと同じように、LUIS アプリケーションの[意図](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents)と[エンティティ](https://docs.microsoft.com/azure/cognitive-services/luis/add-entities)を定義することができます。
 
 `# \<intent-name\>` は、新しい意図の定義セクションを説明します。 それ以降の行には、その意図を説明する[発話](https://docs.microsoft.com/azure/cognitive-services/luis/add-example-utterances)が含まれます。
 
@@ -296,7 +281,7 @@ ludown parse ToQna --in ludown-file-name.lu
 
 ### <a name="connect-to-luis-from-the-cli"></a>CLI から LUIS に接続する 
 
-新しいツール セットには、LUIS リソースを個別に管理できるようにする [LUIS 拡張機能](https://github.com/Microsoft/botbuilder-tools/tree/master/LUIS)が含まれています。 これは、ダウンロード可能な npm モジュールとして使用できます。
+新しいツール セットには、LUIS リソースを個別に管理できるようにする [LUIS 拡張機能](https://aka.ms/botbuilder-luis-cli)が含まれています。 これは、ダウンロード可能な npm モジュールとして使用できます。
 
 ```shell
 npm install -g luis-apis
@@ -324,7 +309,7 @@ luis import application --in luis-app.json | msbot connect luis --stdin
 
 ### <a name="connect-to-qna-from-the-cli"></a>CLI から QnA に接続する
 
-新しいツール セットには、LUIS リソースを個別に管理できるようにする [QnA 拡張機能](https://github.com/Microsoft/botbuilder-tools/tree/master/QnAMaker)が含まれています。 これは、ダウンロード可能な npm モジュールとして使用できます。
+新しいツール セットには、LUIS リソースを個別に管理できるようにする [QnA 拡張機能](https://aka.ms/botbuilder-tools-qnaMaker)が含まれています。 これは、ダウンロード可能な npm モジュールとして使用できます。
 
 ```shell
 npm install -g qnamaker
@@ -351,10 +336,5 @@ az bot publish --name "my-bot-name" --resource-group "my-resource-group"
 ```
 
 ## <a name="references"></a>参照
-- [ボット ビルダー ツールのソース コード](https://github.com/Microsoft/botbuilder-tools)
-- [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/MSBot)
-- [ChatDown](https://github.com/Microsoft/botbuilder-tools/tree/master/Chatdown)
-- [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/ludown)
+- [Bot Builder ツール](https://aka.ms/botbuilder-tools-readme)
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
-
-
