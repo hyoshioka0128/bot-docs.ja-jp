@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/30/2018
-ms.openlocfilehash: 6e694ce8b54ebd2405d7496d333c2bb27eb344f1
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: d8239f4139d27fd12507fed2cae45c67849ffe74
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301817"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326360"
 ---
 # <a name="connect-a-bot-to-cortana"></a>ボットを Cortana に接続する
 
@@ -32,28 +32,23 @@ Cortana チャンネルを追加するには、[Azure portal](https://portal.azu
 | **[スキル] アイコン** | スキルが呼び出されたときに Cortana のキャンバスに表示されるアイコン。 これは、スキルを発見可能な場所 (Microsoft Store など) でも使用されます  (最大 32 KB、PNG のみ)。|
 | **[表示名]** | Cortana スキルの名前は、ビジュアル UI の上部に表示されます  (最大 30 文字)。 |
 | **呼び出し名** | スキルを呼び出すときにユーザーが呼びかける名前です。 3 つ以下の単語で構成され、発音が簡単なものにする必要があります。 この名前の選択方法の詳細については、「[Invocation Name Guidelines (呼び出し名ガイドライン)][invocation]」をご覧ください。|
-| **説明** | Cortana スキルの説明。 これは、スキルを発見可能な場所 (Microsoft Store など) で使用されます。 |
-| **簡単な説明** | スキルの機能の簡単な説明。Cortana のノートブックでスキルの説明に使用されます。 |
+
+![既定の設定](~/media/channels/cortana-defaultsettings.png)
 
 ## <a name="general-bot-information"></a>ボットの一般情報
 
 **[Manage user identity through connected services]\(接続済みサービスによるユーザー ID の管理\)** セクションで、オプションをクリックして有効にします。 フォームに入力します。
 
-アスタリスク (*) が付いているフィールドはすべて必須です。 ボットを Cortana に接続するには、Bot Framework 上でボットを公開しておく必要があります。
+アスタリスク (*) が付いているフィールドはすべて必須です。 ボットを Cortana に接続するには、事前に Azure に発行する必要があります。
 
-![一般情報を入力する](~/media/channels/cortana-details.png)
+![ユーザー ID の管理、パート 1](~/media/channels/cortana-manageidentity-1.png)
+![ユーザー ID の管理、パート 2](~/media/channels/cortana-manageidentity-2.png)
 
-### <a name="sign-in-at-invocation"></a>[Sign in at invocation]\(呼び出し時にサインインする\)
+### <a name="when-should-cortana-prompt-for-a-user-to-sign-in"></a>[When should Cortana prompt for a user to sign in]\(Cortana がユーザーにサインインを要求するタイミング\)
 
-ユーザーがスキルを呼び出したときに、Cortana でユーザーをサインインさせる場合は、このオプションを選択します。
+ユーザーがスキルを呼び出したときに Cortana でユーザーにサインインする場合は、**[Sign in at invocation]\(呼び出し時にサインインする\)** を選択します。
 
-### <a name="sign-in-when-required"></a>[Sign in when required]\(必要に応じてサインインする\)
-
-Bot Framework のサインイン カードを使用してユーザーをサインインさせる場合は、このオプションを選択します。 通常、このオプションは、認証が必要な機能を使用する場合にのみユーザーをサインインさせる場合に使用します。 サインイン カードが添付ファイルとして含まれたメッセージがスキルから送信されると、Cortana はサインイン カードを無視し、アカウントの接続設定を使用して承認フローを実行します。
-
-### <a name="connected-service-icon"></a>[Connected service icon]\(接続済みサービス アイコン\)
-
-ユーザーがスキルにサインインするときに表示するアイコン。
+Bot Service サインイン カードを使用してユーザーにサインインする場合は、**[Sign in when required]\(必要に応じてサインインする\)** を選択します。 通常、このオプションは、認証が必要な機能を使用するときにのみユーザーにサインインする場合に使用します。 サインイン カードが添付ファイルとして含まれたメッセージがスキルから送信されると、Cortana はサインイン カードを無視し、アカウントの接続設定を使用して認可フローを実行します。
 
 ### <a name="account-name"></a>アカウント名
 
@@ -71,13 +66,17 @@ Bot Framework のサインイン カードを使用してユーザーをサイ�
 
 `https://login.microsoftonline.com/common/oauth2/v2.0/authorize` を設定します。
 
+### <a name="token-options"></a>[Token options]\(トークン オプション\)
+
+**[POST]** を選択します。
+
 ### <a name="grant-type"></a>[付与タイプ]
 
-コード付与フローを使用するには、[承認コード] を選択します。 暗黙的フローを使用するには、[暗黙] を選択します。
+コード付与フローを使用するには、**[承認コード]** を選択します。暗黙的フローを使用するには、**[暗黙]** を選択します。
 
 ### <a name="token-url"></a>[トークンURL]
 
-[承認コード] を選択した場合は、`https://login.microsoftonline.com/common/oauth2/v2.0/token` に設定します。
+**[承認コード]** 付与タイプの場合は、`https://login.microsoftonline.com/common/oauth2/v2.0/token` に設定します。
 
 ### <a name="client-secretpassword-for-third-party-services"></a>[Client secret/password for third party services]\(サード パーティ サービスのクライアント シークレット/パスワード\)
 
@@ -85,23 +84,23 @@ Bot Framework のサインイン カードを使用してユーザーをサイ�
 
 ### <a name="client-authentication-scheme"></a>[Client authentication scheme]\(クライアント認証方式\)
 
-[HTTP Basic] を選択します。
+**[HTTP 基本]** を選択します。
 
-### <a name="token-options"></a>[Token options]\(トークン オプション\)
+### <a name="internet-access-required-to-authenticate-users"></a>[Internet access required to authenticate users]\(ユーザー認証にインターネット アクセスが必要\)
 
-[POST] に設定します。
+オフのままにしておきます。
 
 ### <a name="request-user-profile-data-optional"></a>[Request user profile data]\(ユーザー プロファイル データを要求する\) (省略可能)
 
-Cortana では、さまざまな種類のユーザー プロファイル情報へのアクセスを提供します。この情報を使用して、特定のユーザー向けにボットをカスタマイズできます。 たとえば、スキルがユーザーの名前と場所にアクセスできる場合は、「Kamran さん、こんにちは。ワシントン州ベルビューで楽しい 1 日をお過ごしください」といったカスタム応答を使用できます。
+Cortana では、さまざまな種類のユーザー プロファイル情報へのアクセスを提供します。この情報を使用して、特定のユーザー向けにボットをカスタマイズできます。 たとえば、スキルがユーザーの名前と場所にアクセスできる場合は、"Kamran さん、こんにちは。ワシントン州ベルビューで楽しい 1 日をお過ごしください" といったカスタム応答を使用できます。
 
-**[Add a user profile request]\(ユーザー プロファイル要求の追加\)** リンクをクリックし、ドロップダウン リストから必要なユーザー プロファイル情報を選択します。 ボットのコードからこの情報にアクセスする際に使用するフレンドリ名を追加します。
+**[Add a user profile request]\(ユーザー プロファイル要求の追加\)** をクリックし、ドロップダウン リストから必要なユーザー プロファイル情報を選択します。 ボットのコードからこの情報にアクセスする際に使用するフレンドリ名を追加します。
 
-### <a name="save-skill"></a>スキルを保存する
+### <a name="deploy-on-cortana"></a>[Deploy on Cortana]\(Cortana にデプロイする\)
 
-Cortana スキルの登録フォームへの入力が完了したら、[保存] をクリックして接続を完了します。 これにより、ボットの [チャンネル] ブレードに戻るので、ボットが Cortana に接続されていることを確認できます。
+Cortana スキルの登録フォームへの入力が完了したら、**[Deploy on Cortana]\(Cortana にデプロイする\)** をクリックして接続を完了します。 これにより、ボットの [チャンネル] ブレードに戻るので、ボットが Cortana に接続されていることを確認できます。
 
-この時点で、ボットは Cortana スキルとしてアカウントに自動的にデプロイされています。
+この時点で、ボットは Cortana スキルとしてお使いのアカウントにデプロイされています。
 
 ## <a name="next-steps"></a>次の手順
 

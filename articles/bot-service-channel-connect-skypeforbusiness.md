@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 8210f08ce3a14b9abb2638ef8be4b8b418dd69f7
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f67c7ba658923873470e9653b38cd63fd1068491
+ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303828"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49315118"
 ---
 # <a name="connect-a-bot-to-skype-for-business"></a>ボットを Skype for Business に接続する
 
@@ -29,7 +29,7 @@ Skype for Business Online を使うと、インスタント メッセージン�
 ボットと Skype for Business Online の接続は、Skype for Business テナントの**テナント管理者**が実行します。
 
 ## <a name="next-steps"></a>次の手順
-* [ボットと Skype for Business を接続する](https://msdn.microsoft.com/en-us/skype/Skype-For-Business-Bot-Framework/docs/overview)
+* [Skype for Business Bot Framework](https://msdn.microsoft.com/en-us/skype/Skype-For-Business-Bot-Framework/docs/overview)
 
 
 

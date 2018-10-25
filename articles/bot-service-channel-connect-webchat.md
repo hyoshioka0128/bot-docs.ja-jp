@@ -7,32 +7,33 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: b5a9d20c058fe425d727bf2e39597e7dd29ec077
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.date: 10/10/2018
+ms.openlocfilehash: 6e81b51243afc15714653aed7b9ca6513314071c
+ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389631"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49315158"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>ボットを Web チャットに接続する
+
+[!INCLUDE pre-release-label]
+
 Bot Service を使用して[ボットを作成](bot-service-quickstart.md)すると、Web チャット チャンネルが自動的に構成されます。 Web チャット チャンネルには、ユーザーが Web ページで直接ボットと対話できるようにする、Web チャット コントロールが含まれています。
 
-![Web チャットのサンプル](~/media/bot-service-channel-webchat/webchat-sample.png)
+![Web チャットのサンプル](./media/bot-service-channel-webchat/create-a-bot.png)
 
 Bot Framework ポータル内の Web チャット チャンネルには、Web チャット コントロールを Web ページに埋め込むために必要なものがすべて含まれています。 Web チャット コントロールを使用するために必要なのは、ボットの秘密鍵を取得し、コントロールを Web ページに埋め込むことだけです。
-
-[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 ## <a id="step-1"></a>ボットの秘密鍵を取得する
 
 1. [Azure portal](http://portal.azure.com) でボットを開き、**[チャンネル]** ブレードをクリックします。
 
 2. **[Web チャット]** チャンネルの **[編集]** をクリックします。  
-![Web チャット チャンネル](~/media/bot-service-channel-webchat/bot-service-channel-list.png)
+![Web チャット チャンネル](./media/bot-service-channel-webchat/bot-service-channel-list.png)
 
 3. **[Secret keys]\(秘密鍵\)** で、最初の鍵の **[表示]** をクリックします。  
-![秘密鍵](~/media/bot-service-channel-webchat/secret-key.png)
+![秘密鍵](./media/bot-service-channel-webchat/secret-key.png)
 
 4. **秘密鍵**と**埋め込みコード**をコピーします。
 
@@ -127,8 +128,8 @@ Bot Framework ポータル内の Web チャット チャンネルには、Web �
 <iframe style="height:480px; width:402px" src="... SEE ABOVE ..."></iframe>
 ```
 
-![チャット コントロール クライアント](~/media/chatwidget-client.png)
+![チャット コントロール クライアント](./media/chatwidget-client.png)
 
 ## <a name="additional-resources"></a>その他のリソース
 
-GitHub で Web チャット コントロールの[ソース コードをダウンロード](https://github.com/Microsoft/BotFramework-WebChat)できます。
+GitHub で Web チャット コントロールの[ソース コードをダウンロード](https://aka.ms/BotFramework-WebChat-V4)できます。

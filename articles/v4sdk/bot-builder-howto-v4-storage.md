@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/14/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0bbb507484840ab1fb0dc7c209b5d7ca8e9c9cfb
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 3c28ad1fd14fab90c558ece4736423be2cabd78b
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46708148"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326549"
 ---
 # <a name="write-directly-to-storage"></a>ストレージに直接書き込む
 
@@ -34,7 +34,7 @@ ms.locfileid: "46708148"
 
 このトピックの残りの部分では、エコー ボットについては取り上げません。 [C#](../dotnet/bot-builder-dotnet-sdk-quickstart.md) または [JS](../javascript/bot-builder-javascript-quickstart.md) でボットを作成できます。 Bot Framework Emulator を使用して、ボットへの接続、対話、およびテストが可能です。 次のサンプルでは、ユーザーからのすべてのメッセージをリストに追加します。 リストを含むデータ構造はストレージに保存されます。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 using System;
@@ -108,7 +108,7 @@ public async Task OnTurnAsync(ITurnContext context)
 
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const { BotFrameworkAdapter, ConversationState, BotStateSet, MemoryStorage } = require('botbuilder');
@@ -231,7 +231,7 @@ async function logMessageText(storage, context) {
 #### <a name="add-configuration-information"></a>構成情報の追加
 Cosmos DB ストレージを追加するための構成データは短くシンプルなものであり、ボットがより複雑になった場合でも、同じ方法を使用して構成設定を追加できます。 この例では、上記の例の Cosmos DB データベースとコレクションの名前を使用します。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 private const string CosmosServiceEndpoint = "<your-cosmos-db-URI>";
@@ -241,7 +241,7 @@ private const string CosmosDBCollectionName = "bot-storage";
 ```
 
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 `.env` ファイルに以下の情報を追加します。 
  
@@ -256,13 +256,13 @@ COLLECTION=Items
 #### <a name="installing-packages"></a>パッケージのインストール
 Cosmos DB に必要なパッケージがあることを確認します。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```powershell
 Install-Package Microsoft.Bot.Builder.Azure
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 npm を使用して、botbuilder-azure への参照をプロジェクトで追加します。
 
@@ -281,7 +281,7 @@ npm install --save dotenv
 
 ### <a name="implementation"></a>実装 
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 次のサンプル コードは、上記の[メモリ ストレージ](#memory-storage)のサンプルと同じボット コードを使用して実行されます。
 次のコード スニペットは、ローカルのメモリ ストレージを置き換える "_myStorage_" に対する Cosmos DB ストレージの実装を示しています。 
@@ -300,7 +300,7 @@ private static readonly CosmosDbStorage _myStorage = new CosmosDbStorage(new Cos
 });
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 次のサンプル コードは[メモリ ストレージ](#memory-storage)と似ていますが、わずかに変更されています。
 
@@ -348,7 +348,7 @@ adapter.use(conversationState);
 
 ![データ エクスプローラーの例](./media/data_explorer.PNG)
 
-### <a name="manage-concurrency-using-etags"></a>eTag を使用して同時実行を管理する
+### <a name="manage-concurrency-using-etags"></a>eTag を使用してコンカレンシーを管理する
 ボット コード例では、各 `IStoreItem` の `eTag` プロパティを `*` に設定します。 ストア オブジェクトの `eTag` (エンティティ タグ) メンバーは、コンカレンシーを管理するために Cosmos DB 内で使用されます。 `eTag` は、自分のボットが書き込んでいる同じストレージ内のオブジェクトをボットの別のインスタンスが変更した場合の対処方法をデータベースに通知します。 
 
 <!-- define optimistic concurrency -->
@@ -356,14 +356,14 @@ adapter.use(conversationState);
 #### <a name="last-write-wins---allow-overwrites"></a>最後の書き込みが有効 - 上書きを許可する
 `eTag` プロパティの値にアスタリスク (`*`) を指定すると、最後の書き込みが有効であることを示します。 新しいデータ ストアを作成するときは、プロパティの `eTag` を `*` に設定して、以前に保存したことのないデータを書き込んでいること、または以前に保存されたすべてのプロパティを最後の書き込みで上書きすることを示します。 コンカレンシーがボットにとって問題にならない場合は、書き込んでいるすべてのデータについて `eTag` プロパティを `*` に設定して上書きを許可します。
 
-#### <a name="maintain-concurrency-and-prevent-overwrites"></a>同時実行を維持して上書きを禁止する
+#### <a name="maintain-concurrency-and-prevent-overwrites"></a>コンカレンシーを維持して上書きを禁止する
 データを Cosmos DB に保存する際に、プロパティへの同時アクセスを禁止し、変更をボットの別のインスタンスによって上書きされないようにする場合は、`*` 以外の値を `eTag` に使います。 ボットが状態データを保存しようとして、`eTag` がストレージ内の `eTag` と同じ値でない場合、ボットは `etag conflict key=` というメッセージのエラー応答を受け取ります。 <!-- To control concurrency of data that is stored using `IStorage`, the BotBuilder SDK checks the entity tag (ETag) for `Storage.Write()` requests. -->
 
 既定では、Cosmos DB ストアはボットがストレージ オブジェクトを書き込むたびにその項目の `eTag` プロパティが等しいかどうかを確認し、各書き込みの後で新しい一意の値に更新します。 書き込みの `eTag` プロパティがストレージの `eTag` と一致しない場合は、別のボットまたはスレッドがデータを変更したことを意味します。 
 
 たとえば、保存されたメモをボットで編集しますが、ボットの別のインスタンスが行った変更を上書きしないようにする必要があるものとします。 ボットの別のインスタンスが編集を行った場合は、ユーザーに最新の更新でバージョンを編集させます。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 最初に、`IStoreItem` を実装するクラスを作成します。
 
@@ -408,7 +408,7 @@ if (note != null)
 変更を書き込む前にストアのメモが更新されていた場合、`Write` の呼び出しでは例外がスローされます。
 
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 データ ストアにサンプルのメモを書き込むヘルパー関数をボットの末尾に追加します。
 最初に、`myNoteData` オブジェクトを作成します。
@@ -474,7 +474,7 @@ async function updateSampleNote(storage, context) {
 
 ---
 
-同時実行を維持するには、常にストレージからプロパティを読み取った後、読み取ったプロパティを変更して、`eTag` が維持されるようにします。 ストアからユーザー データを読み取る場合、応答には eTag プロパティが含まれます。 データを変更して更新後のデータをストアに書き込む場合、要求に含まれる eTag プロパティでは、前に読み取ったのと同じ値が指定されている必要があります。 ただし、`eTag` を `*` に設定してオブジェクトを書き込むと、書き込みで他の変更を上書きできます。
+コンカレンシーを維持するには、常にストレージからプロパティを読み取った後、読み取ったプロパティを変更して、`eTag` が維持されるようにします。 ストアからユーザー データを読み取る場合、応答には eTag プロパティが含まれます。 データを変更して更新後のデータをストアに書き込む場合、要求に含まれる eTag プロパティでは、前に読み取ったのと同じ値が指定されている必要があります。 ただし、`eTag` を `*` に設定してオブジェクトを書き込むと、書き込みで他の変更を上書きできます。
 
 ## <a name="using-blob-storage"></a>Blob Storage の使用 
 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 BLOB ストレージは、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
@@ -497,19 +497,20 @@ Azure Blob Storage は、Microsoft のクラウド用オブジェクト スト�
 
 ここでは 2 つのキーを使用して、Blob Storage アカウントへのアクセス権をコードに提供します。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 using Microsoft.Bot.Builder.Azure;
 ```
-
 "_myStorage_" が既存の Blob Storage アカウントを指すようにコード行を更新します。
 
 ```csharp
+
+
 private static readonly AzureBlobStorage _myStorage = new AzureBlobStorage("<your-blob-storage-account-string>", "<your-blob-storage-container-name>");
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 ```javascript
 const mystorage = new BlobStorage({
    <youy_containerName>,
@@ -544,36 +545,71 @@ Azure Blob トランスクリプト ストレージには、特殊なストレ�
 Azure Blob トランスクリプト ストレージでは、上記の「_Blob Storage アカウントの作成_」および「_構成情報の追加_」の手順に従って作成したのと同じ Blob Storage アカウントを使用できます。 ここでは、新しい BLOB コンテナーである "_mybottranscripts_" を追加しました。 
 
 ### <a name="implementation"></a>実装 
-次のコードでは、トランスクリプト ストレージのポインターである "_myTranscripts_" を新しい Azure Blob トランスクリプト ストレージ アカウントに接続します。 トランスクリプト ストレージのポインターである "_myTranscripts_" を接続する単一行
+次のコードでは、トランスクリプト ストレージのポインターである "_transcriptStore_" を新しい Azure BLOB トランスクリプト ストレージ アカウントに接続します。 ここに示されているユーザーの会話を格納するソース コードは、[会話履歴](https://aka.ms/bot-history-sample-code)サンプルに基づいています。 
 
 ```csharp
+// In Startup.cs
 using Microsoft.Bot.Builder.Azure;
-private readonly AzureBlobTranscriptStore _myTranscripts = new AzureBlobTranscriptStore("<your-blob-storage-account-string>", "<your-blob-storage-account-name>");
+
+// Enable the conversation transcript middleware.
+blobStore = new AzureBlobTranscriptStore(blobStorageConfig.ConnectionString, storageContainer);
+var transcriptMiddleware = new TranscriptLoggerMiddleware(blobStore);
+options.Middleware.Add(transcriptMiddleware);
+
+// In ConversationHistoryBot.cs
+using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Azure;
+using Microsoft.Bot.Connector;
+using Microsoft.Bot.Schema;
+
+private readonly AzureBlobTranscriptStore _transcriptStore;
+
+/// <param name="transcriptStore">Injected via ASP.NET dependency injection.</param>
+public ConversationHistoryBot(AzureBlobTranscriptStore transcriptStore)
+{
+    _transcriptStore = transcriptStore ?? throw new ArgumentNullException(nameof(transcriptStore));
+}
+
 ```
 
 ### <a name="store-user-conversations-in-azure-blob-transcripts"></a>Azure Blob トランスクリプトへのユーザーの会話の保存
-BLOB コンテナーでトランスクリプトを保存できるようになったら、ボットとユーザーの会話の保持を開始できます。 このような会話を後からデバッグ ツールとして使用しすると、ユーザーがボットとどのようにやり取りするかを確認できます。 次のコードでは、後から確認するためにユーザーの会話の入力を保持します。
+BLOB コンテナーでトランスクリプトを保存できるようになったら、ボットとユーザーの会話の保持を開始できます。 このような会話を後からデバッグ ツールとして使用しすると、ユーザーがボットとどのようにやり取りするかを確認できます。 次のコードは、activity.text が入力メッセージ _!history_ を受け取ったときにユーザー会話の入力を保持します。
 
 
 ```csharp
 /// <summary>
 /// Every Conversation turn for our EchoBot will call this method. 
 /// </summary>
-/// <param name="context">Turn scoped context containing all the data needed
+/// <param name="turnContext">A <see cref="ITurnContext"/> containing all the data needed
 /// for processing this conversation turn. </param>        
-public async Task OnTurnAsync(ITurnContext context, CancellationToken cancellationToken = default(CancellationToken))
+public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
 {
-    var activityType = context.Activity.Type;
-
-    await context.SendActivityAsync($"Activity type: {context.Activity.Type}.");
-
-    // This bot is processing Messages
-    if (activityType == ActivityTypes.Message)
+    var activity = turnContext.Activity;
+    if (activity.Type == ActivityTypes.Message)
     {
-        // save user input into bot transcript storage for later debugging and review.
-        await _myTranscripts.LogActivityAsync(context.Activity);
-```
+        if (activity.Text == "!history")
+        {
+           // Download the activities from the Transcript (blob store) when a request to upload history arrives.
+           var connectorClient = turnContext.TurnState.Get<ConnectorClient>(typeof(IConnectorClient).FullName);
+           // Get all the message type activities from the Transcript.
+           string continuationToken = null;
+           var count = 0;
+           do
+           {
+               var pagedTranscript = await _transcriptStore.GetTranscriptActivitiesAsync(activity.ChannelId, activity.Conversation.Id);
+               var activities = pagedTranscript.Items
+                  .Where(a => a.Type == ActivityTypes.Message)
+                  .Select(ia => (Activity)ia)
+                  .ToList();
+               
+               var transcript = new Transcript(activities);
 
+               await connectorClient.Conversations.SendConversationHistoryAsync(activity.Conversation.Id, transcript, cancellationToken: cancellationToken);
+
+               continuationToken = pagedTranscript.ContinuationToken;
+           }
+           while (continuationToken != null);
+```
 
 ### <a name="find-all-stored-transcripts-for-your-channel"></a>チャネルに対して保存されているすべてのトランスクリプトの検索
 保存したデータの内容を確認するために、次のコードを使用して、保存したすべてのトランスクリプトの "_ConversationID_" をプログラムによって検索できます。 ボット エミュレーターを使用してコードをテストする場合に "_やり直す_" を選択すると、新しいトランスクリプトが新しい "_ConversationID_" で開始します。
@@ -584,7 +620,7 @@ PagedResult<Transcript> pagedResult = null;
 var pageSize = 0;
 do
 {
-    pagedResult = await _myTranscripts.ListTranscriptsAsync("emulator", pagedResult?.ContinuationToken);
+    pagedResult = await _transcriptStore.ListTranscriptsAsync("emulator", pagedResult?.ContinuationToken);
     
     // transcript item contains ChannelId, Created, Id.
     // save the converasationIds (Id) found by "ListTranscriptsAsync" to a local list.
@@ -596,7 +632,6 @@ do
     }
 } while (pagedResult.ContinuationToken != null);
 ```
-
 
 ### <a name="retrieve-user-conversations-from-azure-blob-transcript-storage"></a>Azure Blob トランスクリプト ストレージからのユーザーの会話の取得
 ボット対話のトランスクリプトが Azure Blob Transcript Store に保存されたら、それらをプログラムによって取得し、AzureBlobTranscriptStorage メソッドである "_GetTranscriptActivities_" を使用してテストまたはデバッグできます。 次のコード スニペットでは、保存された各トランスクリプトから過去 24 時間以内に受信して保存されたユーザー入力のトランスクリプトをすべて取得します。
@@ -635,7 +670,7 @@ for (int i = 0; i < numTranscripts; i++)
    if (i > 0)
    {
        string thisConversationId = storedTranscripts[i];    
-       await _myTranscripts.DeleteTranscriptAsync("emulator", thisConversationId);
+       await _transcriptStore.DeleteTranscriptAsync("emulator", thisConversationId);
     }
 }
 ```
