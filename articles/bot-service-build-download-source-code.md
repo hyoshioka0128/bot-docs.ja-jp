@@ -6,14 +6,15 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 09/26/2018
-ms.openlocfilehash: ee7a7a9f1b4c06f8ad762f750099383e218d98f2
-ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
+ms.openlocfilehash: afb1c4a0e766df7ac2d122b3c7ca4e7959871dbb
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326429"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997279"
 ---
 # <a name="download-and-redeploy-bot-code"></a>ボット コードをダウンロードして再デプロイする
 Azure Bot Service では、お客様のボットのソース プロジェクト全体をダウンロードできるので、好みの IDE を使用してローカルで作業できます。 コードの更新が完了したら、変更を再び Azure portal に発行することができます。 ここでは、Azure portal と `az` cli を使用してコードをダウンロードする方法について説明します。 また、Visual Studio と `az` cli ツールを使用して、更新されたボット コードを再デプロイする方法についても説明します。 お客様にとって最適な方法を選択できます。
