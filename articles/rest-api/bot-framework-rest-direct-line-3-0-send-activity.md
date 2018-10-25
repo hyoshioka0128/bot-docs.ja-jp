@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3f881f353f04be95ce3785c2fd82b724dd58cb88
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 290a2733b96a458eb3529b0b0854703631e05f22
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302801"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000039"
 ---
 # <a name="send-an-activity-to-the-bot"></a>ボットにアクティビティを送信する
 
@@ -62,11 +63,11 @@ HTTP/1.1 200 OK
 
 Direct Line 会話にメッセージを投稿するための合計時間は次を足したものになります。
 
-- クライアントから Direct Line サービスまで移動する HTTP 要求の通過時間
+- HTTP 要求がクライアントから Direct Line サービスに至るための移動時間
 - Direct Line 内の内部処理時間 (通常、120 ミリ秒未満)
-- Direct Line サービスからのボットまでの通過時間
+- Direct Line サービスからボットまでの移動時間
 - ボット内の処理時間
-- クライアントに戻る HTTP 応答の通過時間
+- HTTP 応答がクライアントに戻るための移動時間
 
 ## <a name="send-attachments-to-the-bot"></a>ボットに添付ファイルを送信する
 
@@ -78,7 +79,7 @@ Direct Line 会話にメッセージを投稿するための合計時間は次�
 
 ## <a id="upload-attachments"></a> アップロードで添付ファイルを送信する
 
-クライアントから送信する画像や文書がデバイスにあるが、それらのファイルに対応する URL がないことがしばしばあります。 そのような場合、クライアントでは、アップロードでボットに添付ファイルを送信する `POST /v3/directline/conversations/{conversationId}/upload` 要求を発行できます。 要求の形式とコンテンツは、クライアントから [1 つの添付ファイルを送信する](#upload-one-attachment)か、[複数の添付ファイルを送信する](#upload-multiple-attachments)かによって変わります。
+クライアントから送信する画像や文書がデバイスにあるものの、それらのファイルに対応する URL がないことがしばしばあります。 そのような場合、クライアントでは、アップロードでボットに添付ファイルを送信する `POST /v3/directline/conversations/{conversationId}/upload` 要求を発行できます。 要求の形式とコンテンツは、クライアントから [1 つの添付ファイルを送信する](#upload-one-attachment)か、[複数の添付ファイルを送信する](#upload-multiple-attachments)かによって変わります。
 
 ### <a id="upload-one-attachment"></a> アップロードで 1 つの添付ファイルを送信する
 
@@ -96,7 +97,7 @@ Content-Disposition: ATTACHMENT_INFO
 
 この要求 URI で、**{conversationId}** を会話の ID に置換し、**{userId}** をメッセージを送信するユーザーの ID に置換します。 `userId` パラメーターは必須です。 要求ヘッダーで、`Content-Type` を設定して添付ファイルの種類を指定し、`Content-Disposition` を設定して添付ファイルのファイル名を指定します。
 
-次のスニペットは、添付ファイル (1 つ) 送信要求と応答の例を示しています。
+次のスニペットは、(単一の) 添付ファイル送信要求と応答の例を示しています。
 
 #### <a name="request"></a>Request
 
@@ -127,11 +128,11 @@ HTTP/1.1 200 OK
 
 ### <a id="upload-multiple-attachments"></a> アップロードで複数の添付ファイルを送信する
 
-アップロードで複数の添付ファイルを送信するには、`/v3/directline/conversations/{conversationId}/upload` エンドポイントにマルチパート要求を`POST`。 要求の `Content-Type` ヘッダーを `multipart/form-data` に設定し、各パートの `Content-Type` ヘッダーと `Content-Disposition` ヘッダーを含め、各添付ファイルの種類とファイル名を指定します。 要求 URI で、メッセージを送信するユーザーの ID に `userId` パラメーターを設定します。 
+アップロードで複数の添付ファイルを送信するには、`/v3/directline/conversations/{conversationId}/upload` エンドポイントに対して、マルチパート要求の `POST` を実行します。 要求の `Content-Type` ヘッダーを `multipart/form-data` に設定し、パートごとに `Content-Type` ヘッダーと `Content-Disposition` ヘッダーを含めて各添付ファイルの種類とファイル名を指定します。 要求 URI で、メッセージを送信するユーザーの ID に `userId` パラメーターを設定します。 
 
 `Content-Type` ヘッダー値 `application/vnd.microsoft.activity` を指定するパートを追加することで、要求内に [Activity](bot-framework-rest-connector-api-reference.md#activity-object) オブジェクトを含めることができます。 要求にアクティビティが含まれる場合、ペイロードの他のパートで指定される添付ファイルが添付ファイルとして送信前にそのアクティビティに追加されます。 要求にアクティビティが含まれない場合、指定の添付ファイルが送信されるコンテナーとして空のアクティビティが作成されます。
 
-次のスニペットは、添付ファイル (複数) 送信要求と応答の例を示しています。 この例では、いくつかのテキストと 1 つの画像添付ファイルが含まれるメッセージが要求により送信されます。 パートを要求に追加し、このメッセージに複数の添付ファイルを含めることができます。
+次のスニペットは、添付ファイル (複数) 送信要求と応答の例を示しています。 この例では、要求により、テキストと 1 つの画像添付ファイルが含まれるメッセージが送信されます。 要求にさらにパートを追加して、このメッセージに複数の添付ファイルを含めることができます。
 
 #### <a name="request"></a>Request
 

@@ -5,15 +5,16 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3a924503ecadc9f56fa2543881c116f7fbbb4d9a
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: deb8361a5cca2f37840abb1180c2de571ee08143
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42904330"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999759"
 ---
 # <a name="manage-state-data"></a>状態データの管理
 
@@ -149,7 +150,7 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 
 [!code-csharp[Set state property](../includes/code/dotnet-state.cs#setProperty2)]
 
-## <a name="handle-concurrency-issues"></a>同時実行の問題に対処する
+## <a name="handle-concurrency-issues"></a>コンカレンシーの問題に対処する
 
 ボットの 別のインスタンスがデータを変更していた場合、ボットが状態データを保存しようとすると、HTTP 状態コード **412 Precondition Failed** でエラー応答が返されることがあります。 次のコード例に示すように、このシナリオを考慮してボットを設計できます。
 

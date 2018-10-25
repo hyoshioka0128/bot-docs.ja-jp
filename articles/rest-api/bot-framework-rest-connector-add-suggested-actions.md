@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d162bdd3f34848b16380317c776f445bc4611157
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 298a827af880223f80cee1876eaea745c6a4a88e
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303225"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000079"
 ---
 # <a name="add-suggested-actions-to-messages"></a>メッセージへの推奨されるアクションの追加
 > [!div class="op_single_selector"]
@@ -77,11 +78,11 @@ Content-Type: application/json
 }
 ```
 
-推奨されるアクションのいずれかのユーザーがタップすると、対応するアクションの `value` を含むメッセージがユーザーからボットに届きます。
+ユーザーが推奨されるアクションのいずれかをタップすると、対応するアクションの `value` を含むメッセージがユーザーからボットに送信されます。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [メッセージを作成する](bot-framework-rest-connector-create-messages.md)
+- [メッセージの作成](bot-framework-rest-connector-create-messages.md)
 - [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
 
 [channelInspector]: ../bot-service-channel-inspector.md

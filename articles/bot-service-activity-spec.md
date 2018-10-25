@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 03/07/2018
-ms.openlocfilehash: 0406d489f7d1e27131b4b01411e86850ca4a17b8
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 06e2289dd0176364467d34846ffa7716483f6578
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39300708"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000409"
 ---
 # <a name="bot-framework----activity"></a>Bot Framework -- Activity
 
@@ -95,10 +96,10 @@ channel
 受信者
 > アクティビティを受信するソフトウェア。
 
-エンドポイント
+endpoint
 > ボットやチャネルがアクティビティを受信できる、プログラムでアドレス指定可能な場所。
 
-アドレス
+address
 > ユーザーまたはボットに連絡できる識別子またはアドレス。
 
 フィールド
@@ -134,7 +135,7 @@ channel
 
 `R2006`: 受信者は、理解できない種類のイベントを受け入れるべきです (SHOULD)。
 
-### <a name="type"></a>Type
+### <a name="type"></a>type
 
 `type` フィールドは、各アクティビティの意味を制御します。また、慣例により、短い文字列 (例: "`message`") です。 送信者は、独自のアプリケーションレイヤーの型を定義できますが、今後定義される値と衝突する可能性の低い値を選択することをお勧めします。 送信者が型の値として URI を使用する場合、等価性を確立するために URI のラダー比較を実装すべきではありません (SHOULD NOT)。
 
@@ -416,7 +417,7 @@ channel
 
 連絡関係の更新アクティビティは、`contactRelationUpdate` の `type` 値で識別されます。
 
-### <a name="action"></a>アクション
+### <a name="action"></a>Action
 
 `action` フィールドは、連絡先関係の更新アクティビティの意味を表します。 `action` フィールドの値は文字列です。 `add` および `remove` の値のみが定義されています。これは、`from` および `recipient` フィールドのユーザー/ボット間のリレーションシップを示します。
 
@@ -492,7 +493,7 @@ channel
 
 `R5100`: `value` フィールドは、イベント名で定義されている場合、欠落していても空であっても構いません (MAY)。
 
-`R5101`: イベント アクティビティの拡張機能では、`value` フィールドのスキーマを理解するために、アクティビティの `type` および `name` フィールド以外の情報を使用することを受信者に要求すべきではありません (SHOULD NOT)。
+`R5101`: イベント アクティビティの拡張機能は、`value` フィールドのスキーマを理解するために、アクティビティの `type` および `name` フィールド以外の情報を使用することを受信者に必須にすべきではありません (SHOULD NOT)。
 
 ### <a name="relates-to"></a>関連付け先
 
@@ -544,7 +545,7 @@ channel
 
 `R5701`: ボットがチャネルにインストールされるとき、またはボットがチャネルから削除されるとき、チャネルは、インストール アクティビティを送信すべきではありません (SHOULD NOT)。
 
-### <a name="action"></a>アクション
+### <a name="action"></a>Action
 
 `action` フィールドは、インストールの更新アクティビティの意味を表します。 `action` フィールドの値は文字列です。 `add` および `remove` の値のみが定義されています。
 
@@ -660,7 +661,7 @@ channel
 
 チャネルは、各アクションがユーザー エクスペリエンスでどのように表示されるかを決定します。 ほとんどの場合、カードはクリック可能です。 つまり、音声入力で選択することができます。 チャネルが対話型のアクティベーション エクスペリエンスを提供しない場合 (たとえば、SMS を介して対話する場合など)、チャネルはアクティベーションをまったくサポートしない可能性があります。 アクションのレンダリング方法の決定は、このドキュメントの他の箇所 (たとえば、カード形式内、[推奨されるアクション](#suggested-actions)の定義内) に記載されている標準の要件によって制御されます。
 
-#### <a name="type"></a>Type
+#### <a name="type"></a>type
 
 `type` フィールドは、ボタンの意味とボタンが有効なときの動作を表します。 `type` フィールドの値は、慣例により、短い文字列 (例: "`openUrl`") です。 各アクションの種類に固有の要件については、以降のセクションを参照してください。
 
@@ -944,7 +945,7 @@ channel
 
 既存のエンティティ型をアクティビティのエンティティ形式にプロジェクションするパーティは、`type` フィールド名との競合と、IRI とエンティティ スキーマ間のバインドの一部としてシリアル化要件 `R2001` との非互換を解決することをお勧めします。
 
-#### <a name="type"></a>Type
+#### <a name="type"></a>type
 
 `type` フィールドは必須であり、エンティティの意味と形状を定義します。 `type` は、[IRIs](https://tools.ietf.org/html/rfc3987) [[3](#references)] を含むように意図されていますが、「[付録 I](#appendix-ii---non-iri-entity-types)」に定義されている非 IRI エンティティ型に少数があります。
 
@@ -970,7 +971,7 @@ channel
 
 `R7711`: `to` フィールドに無効な ID が含まれている場合、それらの値は無視すべきです (SHOULD)。
 
-#### <a name="actions"></a>アクション
+#### <a name="actions"></a>Actions
 
 `actions` フィールドには、表示されるアクションの単純なリストが含まれています。 各 `actions` リスト要素の値は、`cardAction` 型の複合オブジェクトです。
 
@@ -978,7 +979,7 @@ channel
 
 メッセージの反応は、ソーシャル インタラクション ("いいね!"、"+1" など) を表します。 現在、メッセージの反応は 1 つのフィールド (`type` フィールド) のみを伝達しています。
 
-#### <a name="type"></a>Type
+#### <a name="type"></a>type
 
 `type` フィールドは、ソーシャル インタラクションの種類を表します。 `type` フィールドの値は文字列であり、その意味はインタラクションが発生するチャネルによって定義されます。 `like` や `+1` などの一般的な値ですが、規則ではなく規約によって統一されています。
 
@@ -1006,11 +1007,11 @@ channel
 
 アクティビティ [エンティティ](#entity)は、ユーザーの場所や使用しているメッセージング アプリのバージョンなど、アクティビティに関する追加のメタデータを伝達します。 アクティビティの種類は、IRI であるように意図されていますが、少数の非 IRI 名が一般的に使用されます。 この付録は、サポートされている非 IRI エンティティ型を網羅した一覧です。
 
-| Type           | 相当する URI                          | 説明               |
+| type           | 相当する URI                          | 説明               |
 | -------------- | --------------------------------------- | ------------------------- |
 | GeoCoordinates | https://schema.org/GeoCoordinates       | Schema.org GeoCoordinates |
 | Mention        | https://botframework.com/schema/mention | @-mention                 |
-| Place          | https://schema.org/Place                | Schema.org の場所          |
+| 場所          | https://schema.org/Place                | Schema.org の場所          |
 | Thing          | https://schema.org/Thing                | Schema.org のもの          |
 | clientInfo     | 該当なし                                     | Skype クライアント情報         |
 
@@ -1050,7 +1051,7 @@ clientInfo エンティティには、ユーザーのメッセージを送信す
 
 [呼び出しアクティビティ](#invoke-activity)は、Bot Framework チャネルでサポートされているプロトコル内でのみ使用するように設計されています (つまり、汎用的な拡張メカニズムではありません)。 この付録には、このアクティビティを使用するすべての Bot Framework プロトコルの一覧が記載されています。
 
-## <a name="payments"></a>支払い
+## <a name="payments"></a>入金額
 
 Bot Framework の支払いプロトコルでは、呼び出しを使用して送料と税率を計算し、完了した支払いの確実な確認を伝達します。
 

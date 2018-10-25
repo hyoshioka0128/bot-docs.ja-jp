@@ -5,15 +5,15 @@ author: BrianRandell
 ms.author: v-brra
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3b65f323427760fa43586f471aefb6811ef3e675
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 0cdade289bc7474a3d2597ae54fd2c355a7969f9
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574525"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49996999"
 ---
 # <a name="internet-of-things-iot-bot-scenario"></a>モノのインターネット (IoT) ボットのシナリオ
 
@@ -51,4 +51,4 @@ Philips Hue に接続されている電球とブリッジによって、照明�
 IFTTT は無料の Web ベース サービスで、ユーザーはこれを使ってアプレットと呼ばれる単純な条件付きステートメントのチェーンを作成できます。 ボットからアプレットをトリガーし、自分の代わりに作業させることができます。 照明のオンとオフ、シーンの変更などに使用可能な事前定義済みの Hue アプレットが数多くあります。
 
 ### <a name="application-insights"></a>Application Insights
-Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報を得ることができます。 事前設定なしで、ボットが期待通りに動作し可用性が確保されるように、多彩なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードが用意されています。 問題が発生しているかどうかをすばやく確認し、根本原因分析を行って、問題を検出し、修正できます。
+Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報を得ることができます。 すぐに使用できる、多機能なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードによって、ボットの可用性が保たれ、期待どおりに動作していることを確認できます。 問題が発生しているかどうかをすばやく確認し、根本原因分析を行って、問題を検出し、修正できます。

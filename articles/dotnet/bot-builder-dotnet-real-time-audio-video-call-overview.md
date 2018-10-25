@@ -5,15 +5,16 @@ author: MalarGit
 ms.author: malarch
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 35aca6f5f50602d0a90c41997eff2e8b1d2cdb4e
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 6ceeca9adc9cad9e60a73c1c7c91bea43b97fdd9
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905614"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997930"
 ---
 # <a name="build-a-real-time-media-bot-for-skype"></a>Skype 用のリアルタイム メディア ボットのビルド
 
@@ -34,7 +35,7 @@ ms.locfileid: "42905614"
 
 * ボット サービスには、一般に認められている証明書機関が発行した証明書を与える必要があります。 証明書の拇印をボットの Cloud Service 構成に保管し、サービスの起動中に読み込む必要があります。
 
-* パブリックの<a href="/azure/cloud-services/cloud-services-enable-communication-role-instances#instance-input-endpoint">インスタンス入力エンドポイント</a>をプロビジョニングする必要があります。 これによって、ボットのサービスの仮想マシン (VM) インスタンスごとに一意のパブリック ポートが割り当てられます。 このポートは、Skype 呼び出しクラウドと通信する目的でリアルタイム メディア プラットフォームによって使用されます。
+* パブリックの<a href="/azure/cloud-services/cloud-services-enable-communication-role-instances#instance-input-endpoint">インスタンス入力エンドポイント</a>をプロビジョニングする必要があります。 これによって、ボットのサービスの仮想マシン (VM) インスタンスごとに一意のパブリック ポートが割り当てられます。 このポートは、Skype 呼び出しクラウドと通信する目的でリアルタイム メディア プラットフォームによって使用されます。
   ```xml
   <InstanceInputEndpoint name="InstanceMediaControlEndpoint" protocol="tcp" localPort="20100">
     <AllocatePublicPortFrom>
@@ -65,12 +66,12 @@ ms.locfileid: "42905614"
   </NetworkConfiguration>
   ```
 
-* サービス インスタンス起動中、スクリプト `MediaPlatformStartupScript.bat` (Nuget パッケージの一部として提供される) は昇格された特権でスタートアップ タスクとして実行する必要があります。 スクリプト実行は、プラットフォームの初期化メソッドが呼び出される前に完了する必要があります。 
+* サービス インスタンス起動中、スクリプト `MediaPlatformStartupScript.bat` (Nuget パッケージの一部として提供される) は昇格された特権でスタートアップ タスクとして実行する必要があります。 スクリプト実行は、プラットフォームの初期化メソッドが呼び出される前に完了する必要があります。 
 
 ```xml
 <Startup>
-<Task commandLine="MediaPlatformStartupScript.bat" executionContext="elevated" taskType="simple" />      
-</Startup> 
+<Task commandLine="MediaPlatformStartupScript.bat" executionContext="elevated" taskType="simple" />      
+</Startup> 
 ```
 
 ## <a name="initialize-the-media-platform-on-service-startup"></a>サービス起動時にメディア プラットフォームを初期化する
@@ -237,25 +238,25 @@ private Task OnIncomingCallReceived(RealTimeMediaIncomingCallEvent incomingCallE
 `AnswerAppHostedMedia` アクションが完了すると、`OnAnswerAppHostedMediaCompleted` が発生します。 `AnswerAppHostedMediaOutcomeEvent` の `Outcome` プロパティによって成功または失敗が示されます。 呼び出しを確立できない場合、ボットでは、呼び出しのために作成された AudioSocket オブジェクトと VideoSocket オブジェクトを破棄する必要があります。
 
 ## <a name="receive-audio-media"></a>音声メディアを受信する
-音声を受信する機能を付けて `AudioSocket` が作成された場合、音声のフレームが受信されるたびに `AudioMediaReceived` イベントが呼び出されます。 音声コンテンツを調達している可能性があるピアに関係なく、ボットでは、毎秒約 50 回このイベントを処理することが予想されます (音声がピアから受信されない場合、コンフォート ノイズ バッファーがローカルで生成されるため)。 音声コンテンツの各パケットが `AudioMediaBuffer` オブジェクトで届けられます。 このオブジェクトには、復号された音声コンテンツを含む、ネイティブでヒープを割り当てたメモリ バッファーのポインターが含まれます。 
+音声を受信する機能を付けて `AudioSocket` が作成された場合、音声のフレームが受信されるたびに `AudioMediaReceived` イベントが呼び出されます。 音声コンテンツを調達している可能性があるピアに関係なく、ボットでは、毎秒約 50 回このイベントを処理することが予想されます (音声がピアから受信されない場合、コンフォート ノイズ バッファーがローカルで生成されるため)。 音声コンテンツの各パケットが `AudioMediaBuffer` オブジェクトで届けられます。 このオブジェクトには、復号された音声コンテンツを含む、ネイティブでヒープを割り当てたメモリ バッファーのポインターが含まれます。 
 
 ```cs
 void OnAudioMediaReceived(
-            object sender,
-            AudioMediaReceivedEventArgs args)
+            object sender,
+            AudioMediaReceivedEventArgs args)
 {
-   var buffer = args.Buffer;
+   var buffer = args.Buffer;
 
    // native heap-allocated memory containing decoded content
-   IntPtr rawData = buffer.Data;            
+   IntPtr rawData = buffer.Data;            
 }
 ```
 
-イベント ハンドラーはすぐに戻る必要があります。 アプリケーションでは、非同期で処理するように `AudioMediaBuffer` を待ち行列に入れることをお勧めします。 `OnAudioMediaReceived` イベントはリアルタイム メディア プラットフォームによってシリアル化されます (つまり、現在のイベントが戻るまで次のイベントは発生しません)。 `AudioMediaBuffer` が使用されたら、基礎となっているアンマネージド メモリをメディア プラットフォームで回収できるように、アプリケーションでバッファーの Dispose メソッドを呼び出す必要があります。 
+イベント ハンドラーはすぐに戻る必要があります。 アプリケーションでは、非同期で処理するように `AudioMediaBuffer` を待ち行列に入れることをお勧めします。 `OnAudioMediaReceived` イベントはリアルタイム メディア プラットフォームによってシリアル化されます (つまり、現在のイベントが戻るまで次のイベントは発生しません)。 `AudioMediaBuffer` が使用されたら、基礎となっているアンマネージド メモリをメディア プラットフォームで回収できるように、アプリケーションでバッファーの Dispose メソッドを呼び出す必要があります。 
 
 ```cs
-   // release/dispose buffer when done 
-   buffer.Dispose();
+   // release/dispose buffer when done 
+   buffer.Dispose();
 ```
 
 > [!IMPORTANT]
@@ -269,15 +270,15 @@ void OnAudioMediaReceived(
 
 ```cs
 void AudioSocket_OnSendStatusChanged(
-             object sender,
-             AudioSendStatusChangedEventArgs args)
+             object sender,
+             AudioSendStatusChangedEventArgs args)
 {
     switch (args.MediaSendStatus)
     {
     case MediaSendStatus.Active:
-        // notify bot to begin sending audio 
+        // notify bot to begin sending audio 
         break;
-     
+     
     case MediaSendStatus.Inactive:
         // notify bot to stop sending audio
         break;
@@ -294,19 +295,19 @@ void AudioSocket_OnSendStatusChanged(
 
 ```cs
 void VideoSocket_OnSendStatusChanged(
-            object sender,
-            VideoSendStatusChangedEventArgs args)
+            object sender,
+            VideoSendStatusChangedEventArgs args)
 {
     VideoFormat preferredVideoFormat;
 
     switch (args.MediaSendStatus)
     {
     case MediaSendStatus.Active:
-        // notify bot to begin sending audio 
+        // notify bot to begin sending audio 
         // bot is recommended to use this format for sourcing video content.
         preferredVideoFormat = args.PreferredVideoSourceFormat;
         break;
-     
+     
     case MediaSendStatus.Inactive:
         // notify bot to stop sending audio
         break;

@@ -6,14 +6,14 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 09/18/2018
-ms.openlocfilehash: 45c89c911106d5b6a1e250f6e6ab3d472c90ab92
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 62cbbcc560e049776b8aa891c167b9a6eaba3264
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707988"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997799"
 ---
 # <a name="set-up-continuous-deployment"></a>Azure App Service での GIT による継続的なデプロイ
 コードが **GitHub** または **Azure DevOps (旧称 Visual Studio Team Services)** にチェックインされる場合は、継続的デプロイを使用して、コードの変更をソース リポジトリから Azure に自動的にデプロイします。 このトピックでは、**GitHub** および **Azure DevOps** に対して継続的デプロイを設定する方法を説明します。

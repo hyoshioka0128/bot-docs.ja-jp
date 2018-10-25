@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3cb6f552bee4857d3562e637b2a5728b30ac48a5
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: d69013c721552483cfd38b204936cb1c7f508f82
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301588"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49996899"
 ---
 # <a name="implement-channel-specific-functionality"></a>チャネル固有の機能の実装
 
@@ -271,7 +272,7 @@ Facebook 通知を作成するには、[Activity][Activity] オブジェクト�
 ## <a name="additional-resources"></a>その他のリソース
 
 - [アクティビティの概要](bot-framework-rest-connector-activities.md)
-- [メッセージを作成する](bot-framework-rest-connector-create-messages.md)
+- [メッセージの作成](bot-framework-rest-connector-create-messages.md)
 - [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Channel Inspector を使用して機能をプレビューする](../bot-service-channel-inspector.md)
 

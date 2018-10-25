@@ -6,15 +6,16 @@ author: v-royhar
 ms.author: v-royhar
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 4/16/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 81b6f1f9373c18bd3aedb393cfc4966587bf24cb
-ms.sourcegitcommit: 6c2426c43cd2212bdea1ecbbf8ed245145b3c30d
+ms.openlocfilehash: c13733af0f6b26654952a0aab190f6d8cb06d059
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48852207"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999979"
 ---
 # <a name="create-a-direct-line-bot-and-client"></a>Direct Line ボットおよびクライアントを作成する
 
@@ -500,7 +501,7 @@ server.post('/api/messages', (req, res) => {
 
 ## <a name="create-the-console-client-app"></a>コンソール クライアント アプリを作成する
 
-# <a name="ctabcsclientapp"></a>[C# を選択した場合](#tab/csclientapp)
+# <a name="ctabcsclientapp"></a>[C#](#tab/csclientapp)
 
 コンソール クライアント アプリケーションは 2 つのスレッドで動作します。 プライマリ スレッドはユーザー入力を受け付け、ボットにメッセージを送信します。 セカンダリ スレッドは、1 秒に 1 回ボットをポーリングし、ボットからのメッセージがあれば取得し、受信したメッセージを表示します。
 
@@ -897,7 +898,7 @@ Direct Line チャネルを構成するには:
 
 ## <a name="run-the-client-app"></a>クライアント アプリの実行
 
-# <a name="ctabcsrunclient"></a>[C# を選択した場合](#tab/csrunclient)
+# <a name="ctabcsrunclient"></a>[C#](#tab/csrunclient)
 
 ボットは、Direct Line コンソール クライアント アプリケーションと通信できるようになりました。 コンソール アプリを実行するには、次の手順を実行します。
 

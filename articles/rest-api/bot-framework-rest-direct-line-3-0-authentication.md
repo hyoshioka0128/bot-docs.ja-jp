@@ -5,16 +5,17 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 18a5815a96e2052a54c48f6af211d8b28e20d983
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 96f2963604d12c9c9e235288ad4df25924f45af4
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302201"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998011"
 ---
-# <a name="authentication"></a>認証
+# <a name="authentication"></a>Authentication
 
 クライアントは、Direct Line API 3.0 に対する要求を、[Bot Framework Portal](../bot-service-channel-connect-directline.md) の Direct Line チャネル構成ページから取得する**シークレット**を使用するか、ランタイム時に取得する**トークン**を使用して認証できます。 シークレットまたはトークンは、次の書式で各要求の `Authorization` ヘッダー内に指定する必要があります。 
 
@@ -52,14 +53,14 @@ Authorization: Bearer SECRET
 
 以下のスニペットは、トークン生成要求と応答の例を示しています。
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
 ```http
 POST https://directline.botframework.com/v3/directline/tokens/generate
 Authorization: Bearer RCurR_XV9ZA.cwA.BKA.iaJrC8xpy8qbOF5xnR2vtCX7CZj0LdjAPGfiCpg4Fv0
 ```
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 
 要求が成功した場合、応答には、1 つの会話で有効な `token` と、このトークンの有効期限が切れるまでの秒数を示す `expires_in` 値が含まれます。 トークンを有効のままにするには、有効期限が切れる前に[トークンを更新する](#refresh-token)必要があります。
 
@@ -80,7 +81,7 @@ HTTP/1.1 200 OK
 
 トークンの生成操作 (`POST /v3/directline/tokens/generate`) と[会話の開始](bot-framework-rest-direct-line-3-0-start-conversation.md)操作 (`POST /v3/directline/conversations`) は、どちらの操作も、1 つの会話にアクセスするために使用できる `token` を返すという点で類似しています。 ただし、会話の開始操作とは異なり、トークンの生成操作では、会話は開始されず、ボットへの接触は行われず、WebSocket のストリーミング URL は作成されません。 
 
-トークンをクライアントに配布し、クライアントに会話を開始してほしい場合は、トークンの生成操作を使用します。 会話をすぐに開始するつもりの場合は、[会話の開始操作](bot-framework-rest-direct-line-3-0-start-conversation.md)を使用します。
+トークンをクライアントに配布し、クライアントに会話を開始してほしい場合は、トークンの生成操作を使用します。 会話をすぐに開始するつもりの場合は、[会話の開始](bot-framework-rest-direct-line-3-0-start-conversation.md)操作を使用します。
 
 ## <a id="refresh-token"></a> Direct Line トークンを更新する
 
@@ -95,14 +96,14 @@ Authorization: Bearer TOKEN_TO_BE_REFRESHED
 
 以下のスニペットは、トークン更新要求と応答の例を示しています。
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
 ```http
 POST https://directline.botframework.com/v3/directline/tokens/refresh
 Authorization: Bearer CurR_XV9ZA.cwA.BKA.iaJrC8xpy8qbOF5xnR2vtCX7CZj0LdjAPGfiCpg4Fv0y8qbOF5xPGfiCpg4Fv0y8qqbOF5x8qbOF5xn
 ```
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 
 要求が成功した場合、応答には、前のトークンと同じ会話で有効な、新しい `token` と、新しいトークンの有効期限が切れるまでの秒数を示す `expires_in` 値が含まれます。 新しいトークンを有効のままにするには、有効期限が切れる前に[トークンを更新する](#refresh-token)必要があります。
 

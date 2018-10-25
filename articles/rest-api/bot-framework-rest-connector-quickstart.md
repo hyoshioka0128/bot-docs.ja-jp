@@ -5,20 +5,21 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3baf5bde772e67084a6046a8d2a8e7d631b245f6
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 57babac9594118c12805ff9023cf7086e526a273
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301740"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997941"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Bot Connector サービスでのボットの作成
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-quickstart.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-quickstart.md)
-> - [ボット サービス](../bot-service-quickstart.md)
+> - [Bot Service](../bot-service-quickstart.md)
 > - [REST](../rest-api/bot-framework-rest-connector-quickstart.md)
 
 Bot Connector サービスを使用すると、お使いのボットで、業界標準の HTTPS 経由 REST および JSON を使用して、<a href="https://dev.botframework.com/" target="_blank">Bot Framework Portal</a> で構成されたチャネルとメッセージ交換できます。 このチュートリアルでは、Bot Framework からアクセス トークンを取得し、Bot Connector サービスを使用してユーザーとメッセージを交換する手順について説明します。

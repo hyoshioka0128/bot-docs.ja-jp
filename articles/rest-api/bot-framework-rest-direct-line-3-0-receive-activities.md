@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 2993b75a26ed987a472c241133a62727e3b285d2
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: c2d4b9a8e2b8ffc1656df44e04ee1bde912e36ea
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303497"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998159"
 ---
 # <a name="receive-activities-from-the-bot"></a>ボットからアクティビティを受信する
 
@@ -24,7 +25,7 @@ WebSocket のストリーミング はメッセージを効率的にクライア
 
 WebSocket と HTTP GET は、どちらも、すべての[アクティビティの種類](bot-framework-rest-connector-activities.md)を利用できるわけではありません。 次の表で、Direct Line プロトコルを使用するクライアントで利用可能なさまざまな種類のアクティビティについて説明します。
 
-| アクティビティの種類 | 利用可用性 | 
+| アクティビティの種類 | 可用性 | 
 |----|----|
 | message | HTTP GET と WebSocket |
 | typing | WebSocket のみ |
@@ -104,14 +105,14 @@ Websocket を使用できないクライアント、または会話の履歴を�
 
 以下のスニペットは、会話アクティビティ取得要求と応答の例を示しています。 会話アクティビティ取得応答には、[ActivitySet](bot-framework-rest-direct-line-3-0-api-reference.md#activityset-object) のプロパティとして `watermark` が含まれます。 クライアントは、アクティビティが返らなくなるまで `watermark` 値を進めることで、入手できるアクティビティをすべて取得する必要があります。
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
 ```http
 GET https://directline.botframework.com/v3/directline/conversations/abc123/activities?watermark=0001a-94
 Authorization: Bearer RCurR_XV9ZA.cwA.BKA.iaJrC8xpy8qbOF5xnR2vtCX7CZj0LdjAPGfiCpg4Fv0
 ```
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 
 ```http
 HTTP/1.1 200 OK

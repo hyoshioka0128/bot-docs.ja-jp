@@ -6,15 +6,16 @@ author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 9/25/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c70711d747e9646acf63b6ee206d0b8db25ef202
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 07035c8f0dfc7473192d8c51667ed1f5cefbc555
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389689"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999399"
 ---
 # <a name="manage-simple-conversation-flow-with-dialogs"></a>ダイアログを使用して単純な会話フローを管理する
 
@@ -32,11 +33,11 @@ ms.locfileid: "47389689"
 
 ダイアログの概要については、「[ダイアログ ライブラリ](bot-builder-concept-dialog.md)」と「[ダイアログの状態](bot-builder-dialog-state.md)」をご覧ください。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ダイアログ全般を使用するには、プロジェクトまたはソリューション用の `Microsoft.Bot.Builder.Dialogs` NuGet パッケージをインストールする必要があります。
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ダイアログ全般を使用するには、NPM からダウンロード可能な `botbuilder-dialogs` ライブラリが必要です。
 
@@ -54,7 +55,7 @@ ms.locfileid: "47389689"
 
 このサンプルは、ダイアログ で収集された情報をそのまま、ユーザーのプロファイルに書き込みます。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 このサンプルでは、ウォーターフォール ダイアログがボット ファイル内で定義されています。
 
@@ -259,7 +260,7 @@ await _accessors.ConversationState.SaveChangesAsync(turnContext, false, cancella
 await _accessors.UserState.SaveChangesAsync(turnContext, false, cancellationToken);
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 このサンプルでは、ウォーターフォール ダイアログが **bot.js** ファイル内で定義されています。
 

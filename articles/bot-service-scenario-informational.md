@@ -5,15 +5,15 @@ author: BrianRandell
 ms.author: v-brra
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 43eb8e25e2a17e1d6b1d30e767dd15569fcad78b
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 22902f1f590661c0973d7f0427b13ee45f0d7227
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574868"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998989"
 ---
 # <a name="information-bot-scenario"></a>Information ボットのシナリオ
 
@@ -48,7 +48,7 @@ Information ボットでは、次のコンポーネントを使用します。
 -   Application Insights
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
-Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。 また Azure AD は、世界中の数多くの組織が使用する卓越した ID 管理ソリューションとすばやく簡単に統合できるため、ボット開発者がボットの構築に集中することを可能にします。 独自の複雑な認証および認可システムを実装しなくても、Azure AD アプリを定義することによって、ボットおよびボットが公開するデータに誰がアクセスできるかを制御できます。
+Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。 また、Azure AD は世界中の数多くの組織が使用する卓越した ID 管理ソリューションとすばやく簡単に統合できるため、ボット開発者はボットの構築に集中することができます。 独自の複雑な認証および認可システムを実装しなくても、Azure AD アプリを定義することによって、ボットおよびボットが公開するデータに誰がアクセスできるかを制御できます。
 
 ### <a name="cognitive-services-qna-maker"></a>Cognitive Services: QnA Maker
 Cognitive Services QnA Maker は、ユーザーがボットからクエリできる FAQ データ ソースを提供するために役立ちます。 さまざまなシステムに格納された膨大な量の情報にアプローチする際、情報のソースとセットをユーザーが絞り込めるようにすることは有用です。 単一の SQL データベースに膨大な量の情報が含まれていて、自由形式の検索を適用するとあまりにも多くの情報が返される可能性があります。 最初に QnA Maker を使用してボット ユーザーのためのロードマップを定義し、Azure Search によって取得できるインテリジェントな質問の作成方法を習得させることができます。
@@ -57,7 +57,7 @@ Cognitive Services QnA Maker は、ユーザーがボットからクエリでき
 Azure Search はアプリ向けのクラウド検索サービスであり、迅速に検索インデックスを構築して稼働させることができます。 Microsoft Azure で稼働するため、使用量の需要に応じてスケールアップとスケールダウンを簡単に行えます。 検索ランキングの高度な制御によって検索結果をビジネス目標に結び付け、データベースに隠れたデータを表出させることができます。
 
 ### <a name="application-insights"></a>Application Insights
-Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる知見を得ることができます。 事前の設定なしで、さまざまな機能を持つパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードによって、ボットの可用性が保たれ、期待通りに動作していることを確認できます。 問題が発生していることをすばやく確認し、根本原因を分析して、問題を検出し、修正できます。
+Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報を得ることができます。 すぐに使用できる、多機能なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードによって、ボットの可用性が保たれ、期待どおりに動作していることを確認できます。 問題の発生をすばやく確認し、根本原因を分析して、問題個所を特定し、修正することができます。
 
 ## <a name="next-steps"></a>次の手順
 次に、モノのインターネット (IoT) ボットのシナリオを理解します。

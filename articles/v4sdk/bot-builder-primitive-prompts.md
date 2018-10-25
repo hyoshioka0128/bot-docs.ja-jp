@@ -6,15 +6,16 @@ author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 7/20/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3014e6cd8b18ab44ff343373a034c392e44bca1d
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 0b563197c111a37cf2f0f14fef183d52f38cca66
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707368"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999165"
 ---
 # <a name="prompt-users-for-input-using-your-own-prompts"></a>独自のプロンプトを使用してユーザーに入力を求める
 
@@ -32,7 +33,7 @@ ms.locfileid: "46707368"
 
 これらの状態によって、現在進行中のトピックとプロンプトが追跡されます。 クラウドにデプロイしたときに、これらのフラグが想定どおりに機能するように、[会話の状態](bot-builder-howto-v4-state.md)にフラグを保存します。 
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 状態を追跡するために 2 つのクラスを作成します。 **TopicState** では会話のプロンプトの進行状況を追跡し、**UserProfile** ではユーザーが指定する情報を追跡します。 この情報は、この後の手順でボットの[状態](bot-builder-howto-v4-state.md)に保存します。
 
@@ -69,7 +70,7 @@ public class UserProfile
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 **app.js**
 
@@ -107,7 +108,7 @@ const userProfile = await userProfile.get(context, {  // Define the user's profi
 
 ボット コードを次に示し、次のセクションで詳しく説明します。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ASP.NET Core では、最初にボットと依存関係の挿入を設定する必要があります。
 
@@ -348,7 +349,7 @@ public class PrimitivePromptsBot : IBot
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 **app.js**
 
@@ -465,7 +466,7 @@ server.post('/api/messages', (req, res) => {
 
 次のサンプルでは、`RecognizeNumber` の使用方法のみを示しています。 ライブラリの他の Recognizer メソッドの使用方法の詳細については、その[リポジトリのドキュメント](https://github.com/Microsoft/Recognizers-Text/blob/master/README.md)をご覧ください。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 **Microsoft.Recognizers.Text.Number** ライブラリを使用するには、NuGet パッケージを含めて、そのパッケージを using ステートメントに追加します。
 
@@ -509,7 +510,7 @@ private async Task<bool> ValidatePartySize(ITurnContext context, string value)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 **認識エンジン** ライブラリを使用するには、**app.js** で要求します。
 
@@ -546,7 +547,7 @@ async function validatePartySize(context, input){
 
 プロンプトに対するユーザーの応答を処理する場合は、次のプロンプトに進む前に検証関数を呼び出します。 検証に失敗した場合は、もう一度その質問を繰り返します。
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 if (topicState.Prompt == "partySize")
@@ -570,7 +571,7 @@ if (topicState.Prompt == "partySize")
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript を選択した場合](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 **app.js**
 

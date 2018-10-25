@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3569e3bfbb3be51cf9023b4686ed4693e90ed50c
-ms.sourcegitcommit: ee63d9dc1944a6843368bdabf5878950229f61d0
+ms.openlocfilehash: 3607957cd5cb8738e8268ece6eba4417250bc596
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42795181"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997961"
 ---
 # <a name="api-reference---direct-line-api-11"></a>API リファレンス - Direct Line API 1.1
 
@@ -156,11 +157,11 @@ Direct Line 1.1 スキーマは、次のオブジェクトを含む Bot Framewor
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **id** | 文字列 | メッセージを一意に識別する ID (Direct Line によって割り当てられます)。 | 
-| **conversationId** | 文字列 | 会話を識別する ID。  | 
-| **created** | 文字列 | メッセージの作成日時。<a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a> で表わされます。 | 
-| **from** | 文字列 | メッセージの送信者であるユーザーを識別する ID。 クライアントは、メッセージを作成するときに、このプロパティを安定したユーザー ID に設定する必要があります。 Direct Line はユーザー ID が指定されない場合はそれを割り当てますが、通常は、これによって予期しない動作が発生します。 | 
-| **text** | 文字列 | ユーザーからボットに、またはボットからユーザーに送信されるメッセージのテキスト。 | 
+| **id** | string | メッセージを一意に識別する ID (Direct Line によって割り当てられます)。 | 
+| **conversationId** | string | 会話を識別する ID。  | 
+| **created** | string | メッセージの作成日時。<a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a> で表わされます。 | 
+| **from** | string | メッセージの送信者であるユーザーを識別する ID。 クライアントは、メッセージを作成するときに、このプロパティを安定したユーザー ID に設定する必要があります。 Direct Line はユーザー ID が指定されない場合はそれを割り当てますが、通常は、これによって予期しない動作が発生します。 | 
+| **text** | string | ユーザーからボットに、またはボットからユーザーに送信されるメッセージのテキスト。 | 
 | **channelData** | オブジェクト | チャネル固有のコンテンツを格納するオブジェクト。 一部のチャネルには、添付ファイル スキーマでは表現できない追加情報を必要とする機能があります。 そのような場合は、このプロパティを、チャネルのドキュメントで定義されているチャネル固有のコンテンツに設定します。 このデータは、クライアントとボット間で変更されずに送信されます。 このプロパティは、複雑なオブジェクトが設定されるか、空のままにしておく必要があります。 文字列、数値、またはその他の単純型を設定しないでください。 | 
 | **images** | string[] | メッセージに含まれているイメージの URL を格納する文字列の配列。 この配列内の文字列は、相対 URL である場合があります。 この配列内の任意の文字列が "http" または "https" で始まっていない場合は、文字列の前に `https://directline.botframework.com` を追加して、完全な URL 形式にします。 | 
 | **attachments** | [Attachment](#attachment-object)[] | メッセージに含まれるイメージ以外の添付ファイルを表す **Attachment** オブジェクトの配列。 配列内の各オブジェクトには、`url` プロパティと `contentType` プロパティが格納されます。 クライアントがボットから受信するメッセージでは、`url` プロパティは、相対 URL を指定している場合があります。 `url` プロパティの値が "http" または "https" で始まっていない場合は、文字列の前に `https://directline.botframework.com` を追加して、完全な URL 形式にします。 | 
@@ -199,23 +200,23 @@ Direct Line 1.1 スキーマは、次のオブジェクトを含む Bot Framewor
 | プロパティ | type | 説明 |
 |----|----|----|
 | **messages** | [Message](#message-object)[] | **Message** オブジェクトの配列。 |
-| **watermark** | 文字列 | セット内のメッセージの最大ウォーターマーク。 クライアントは、`watermark` を使用して、[ボットからメッセージを取得](bot-framework-rest-direct-line-1-1-receive-messages.md)したときに認識した最新のメッセージを示すことができます。 |
+| **watermark** | string | セット内のメッセージの最大ウォーターマーク。 クライアントは、`watermark` を使用して、[ボットからメッセージを取得](bot-framework-rest-direct-line-1-1-receive-messages.md)したときに認識した最新のメッセージを示すことができます。 |
 
 ### <a name="attachment-object"></a>Attachment オブジェクト
 イメージ以外の添付ファイルを定義します。<br/><br/> 
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **contentType** | 文字列 | 添付ファイル内のコンテンツのメディアの種類。 |
-| **URL** | 文字列 | 添付ファイルのコンテンツの URL。 |
+| **contentType** | string | 添付ファイル内のコンテンツのメディアの種類。 |
+| **URL** | string | 添付ファイルのコンテンツの URL。 |
 
 ### <a name="conversation-object"></a>Conversation オブジェクト
 Direct Line 会話を定義します。<br/><br/>
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **conversationId** | 文字列 | 指定されたトークンが有効な会話を一意に識別する ID。 |
-| **token** | 文字列 | 指定された会話で有効なトークン。 |
+| **conversationId** | string | 指定されたトークンが有効な会話を一意に識別する ID。 |
+| **token** | string | 指定された会話で有効なトークン。 |
 | **expires_in** | number | トークンの有効期限が切れるまでの秒数。 |
 
 ### <a name="error-object"></a>Error オブジェクト
@@ -223,8 +224,8 @@ Direct Line 会話を定義します。<br/><br/>
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **code** | 文字列 | エラー コード。 次の値のいずれか。**MissingProperty**、**MalformedData****NotFound****ServiceError****Internal****InvalidRange****NotSupported****NotAllowed****BadCertificate** |
-| **message** | 文字列 | エラーの説明。 |
+| **code** | string | エラー コード。 次の値のいずれか。**MissingProperty**、**MalformedData****NotFound****ServiceError****Internal****InvalidRange****NotSupported****NotAllowed****BadCertificate** |
+| **message** | string | エラーの説明。 |
 | **statusCode** | number | 状態コード。 |
 
 ### <a name="errormessage-object"></a>ErrorMessage オブジェクト
@@ -233,5 +234,5 @@ Direct Line 会話を定義します。<br/><br/>
 
 |        プロパティ        |          type          |                                 説明                                 |
 |------------------------|------------------------|-----------------------------------------------------------------------------|
-| <strong>error</strong> | [エラー](#error-object) | エラーに関する情報を含む <strong>Error</strong> オブジェクト。 |
+| <strong>error</strong> | [Error](#error-object) | エラーに関する情報を含む <strong>Error</strong> オブジェクト。 |
 

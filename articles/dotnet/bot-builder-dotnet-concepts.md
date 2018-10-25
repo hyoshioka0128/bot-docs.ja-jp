@@ -5,15 +5,16 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 34a4cb3623c4265b062eb66ebfb2180551ac1985
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 3b01a0e672b2c020462289384ddf68aafedf5314
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574568"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997259"
 ---
 # <a name="key-concepts-in-the-bot-builder-sdk-for-net"></a>Bot Builder SDK for .NET の主要概念
 
@@ -47,7 +48,7 @@ Bot Builder SDK for .NET では、[Builder][builderLibrary] ライブラリを�
 
 Bot Builder SDK for .NET 内の [FormFlow](bot-builder-dotnet-formflow.md) を使用すると、ユーザーから情報を収集するボットを効率的に構築できます。 たとえば、サンドイッチの注文を取るボットは、パンの種類、トッピングの選択、サイズなど、ユーザーから情報をいくつか収集する必要があります。 基本的なガイドラインを指定すると、このようなガイド付きの会話を管理するために必要なダイアログを FormFlow で自動的に生成することができます。
 
-## <a name="state"></a>State
+## <a name="state"></a>州
 
 [!INCLUDE [State concept overview](../includes/snippet-dotnet-concept-state.md)]
 

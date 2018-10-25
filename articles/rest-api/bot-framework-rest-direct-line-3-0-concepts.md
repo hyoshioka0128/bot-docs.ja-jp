@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 09/28/2018
-ms.openlocfilehash: 3e9756f08690820950d0f6d0b8128521cb94f60b
-ms.sourcegitcommit: d4afc924b0e1907c4d6f7a6fc5ac1fe521aeef7e
+ms.openlocfilehash: 8c63893704f513a420220a47528bada5c4f845d3
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47447377"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999709"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Direct Line API 3.0 の主要な概念
 
@@ -54,8 +55,8 @@ C# または Node.js のクライアント ライブラリを使用する代わ�
 
 | サンプル | Language | 説明 |
 |----|----|----|
-| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLine" target="_blank">Direct Line Bot のサンプル</a> | C#の場合 | Direct Line API を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
-| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLineWebSockets" target="_blank">Direct Line Bot のサンプル (クライアント WebSocket を使用)</a> | C#の場合 | Direct Line API と WebSocket を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
+| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLine" target="_blank">Direct Line Bot のサンプル</a> | C# | Direct Line API を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
+| <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLineWebSockets" target="_blank">Direct Line Bot のサンプル (クライアント WebSocket を使用)</a> | C# | Direct Line API と WebSocket を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
 | <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/core-DirectLine" target="_blank">Direct Line Bot のサンプル</a> | JavaScript | Direct Line API を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
 | <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/core-DirectLineWebSockets" target="_blank">Direct Line Bot のサンプル (クライアント WebSocket を使用)</a> | JavaScript | Direct Line API と WebSocket を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
 

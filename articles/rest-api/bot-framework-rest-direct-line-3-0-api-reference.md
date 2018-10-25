@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 2e47591b04a91ce02cfeb6bd6485080426d201b5
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: d69f1f658520790ff429ecd25a190319e321164d
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39301865"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998109"
 ---
 # <a name="api-reference---direct-line-api-30"></a>API リファレンス - Direct Line API 3.0
 
@@ -125,7 +126,7 @@ POST /v3/directline/tokens/refresh
 | [アクティビティの送信](#send-an-activity) | ボットにアクティビティを送信します。 | 
 | [ファイルのアップロードと送信](#upload-send-files) | ファイルを添付ファイルとしてアップロードして送信します。 |
 
-### <a name="start-conversation"></a>会話の開始
+### <a name="start-conversation"></a>会話を開始する
 ボットと新しい会話を開きます。 
 ```http 
 POST /v3/directline/conversations
@@ -191,20 +192,20 @@ Direct Line 3.0 スキーマには、[Bot Framework v3 スキーマ](bot-framewo
 ### <a name="activityset-object"></a>ActivitySet オブジェクト 
 アクティビティのセットを定義します。<br/><br/>
 
-| プロパティ | Type | 説明 |
+| プロパティ | type | 説明 |
 |----|----|----|
 | **activities** | [Activity](bot-framework-rest-connector-api-reference.md#activity-object)[] | **Activity** オブジェクトの配列です。 |
-| **watermark** | 文字列 | セット内のアクティビティの最大ウォーターマークです。 クライアントは、[ボットからアクティビティを取得する](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get)際、または[新しい WebSocket ストリーム URL を生成する](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)際に、`watermark` 値を使用して、直近に認識したメッセージを示すことができます。 |
+| **watermark** | string | セット内のアクティビティの最大ウォーターマークです。 クライアントは、[ボットからアクティビティを取得する](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get)際、または[新しい WebSocket ストリーム URL を生成する](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)際に、`watermark` 値を使用して、直近に認識したメッセージを示すことができます。 |
 
 ### <a name="conversation-object"></a>Conversation オブジェクト
 Direct Line 会話を定義します。<br/><br/>
 
-| プロパティ | Type | 説明 |
+| プロパティ | type | 説明 |
 |----|----|----|
-| **conversationId** | 文字列 | 指定されたトークンが有効な会話を一意に識別する ID。 |
+| **conversationId** | string | 指定されたトークンが有効な会話を一意に識別する ID。 |
 | **expires_in** | number | トークンの有効期限が切れるまでの秒数。 |
-| **streamUrl** | 文字列 | 会話のメッセージ ストリームの URL。 |
-| **token** | 文字列 | 指定された会話で有効なトークン。 |
+| **streamUrl** | string | 会話のメッセージ ストリームの URL。 |
+| **token** | string | 指定された会話で有効なトークン。 |
 
 ### <a name="activities"></a>アクティビティ
 

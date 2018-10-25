@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 04f70777003ef5298de264f5ee8685b3a5005395
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: e38bb7ca93c5fc4174d67d1c5ebb0655eef68653
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303329"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997922"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
 > [!div class="op_single_selector"]
@@ -38,7 +39,7 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 | [HeroCard][heroCard] | 通常 1 つの大きなイメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
 | [ThumbnailCard][thumbnailCard] | 通常 1 つのサムネイル イメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
 | [ReceiptCard][receiptCard] | ボットからユーザーに受信確認を提供できるようにするカード。 通常は、受信確認に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。 |
-| [SigninCard][signinCard] | ボットでユーザーのサインインを要求できるようにするカード。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つまたは複数のボタンが含まれます。 |
+| [SignInCard][signinCard] | ボットでユーザーのサインインを要求できるようにするカード。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つまたは複数のボタンが含まれます。 |
 | [VideoCard][videoCard] | ビデオを再生できるカード。 |
 
 > [!TIP]
@@ -48,12 +49,12 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 リッチ カード内のイベントを処理するには、[CardAction][CardAction] オブジェクトを使用して、ユーザーがボタンをクリックするか、カードのセクションをタップしたときのアクションを指定します。 各 [CardAction][CardAction] オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | 型 | 説明 | 
+| プロパティ | type | 説明 | 
 |----|----|----|
-| type | 文字列 | アクションの種類 (下の表に示されている値のいずれか) |
-| title | 文字列 | ボタンのタイトル |
-| image | 文字列 | ボタン用のイメージ URL |
-| value | 文字列 | 指定された種類のアクションを実行するために必要な値 |
+| type | string | アクションの種類 (下の表に示されている値のいずれか) |
+| title | string | ボタンのタイトル |
+| image | string | ボタン用のイメージ URL |
+| value | string | 指定された種類のアクションを実行するために必要な値 |
 
 > [!NOTE]
 > アダプティブ カード内のボタンは、`CardAction` オブジェクトではなく、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>によって定義されているスキーマを使用して作成されます。 アダプティブ カードにボタンを追加する方法の例については、「[メッセージにアダプティブ カードを追加する](#adaptive-card)」を参照してください。
@@ -63,9 +64,9 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 | type | value | 
 |----|----|
 | openUrl | 組み込みのブラウザーで開かれる URL |
-| imBack | (ボタンをクリックまたはカードをタップしたユーザーから) ボットに送信されるメッセージのテキスト。 会話の参加者すべてが、会話をホストしているクライアント アプリケーションを介して、(ユーザーからボットに送信される) このメッセージを見ることができます。 |
-| postBack | (ボタンをクリックまたはカードをタップしたユーザーから) ボットに送信されるメッセージのテキスト。 クライアント アプリケーションによっては、このテキストは、メッセージ フィードに表示される場合があります。そこでは、会話のすべての参加者がそのテキストを見ることができます。 |
-| call | 電話の呼び出し先であり、**tel:123123123123** の形式となります。 |
+| imBack | (ボタンをクリックまたはカードをタップしたユーザーから) ボットに送信されるメッセージのテキスト。 会話の参加者すべてが、会話をホストしているクライアント アプリケーションを介して、このメッセージ (ユーザーからボットへの) を表示することができます。 |
+| postBack | (ボタンをクリックまたはカードをタップしたユーザーから) ボットに送信されるメッセージのテキスト。 クライアント アプリケーションによっては、このテキストがメッセージ フィードに表示される場合があります。そこでは、会話の参加者のすべてにそのテキストが表示されます。 |
+| 以下を呼び出します。 | 電話の呼び出し先であり、**tel:123123123123** の形式となります。 |
 | playAudio | 再生されるオーディオの URL |
 | playVideo | 再生されるビデオの URL |
 | showImage | 表示されるイメージの URL |
@@ -252,9 +253,9 @@ Content-Type: application/json
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [メッセージを作成する](bot-framework-rest-connector-create-messages.md)
+- [メッセージの作成](bot-framework-rest-connector-create-messages.md)
 - [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
-- [メッセージにメディア添付ファイルを追加する](bot-framework-rest-connector-add-media-attachments.md)
+- [メッセージへのメディア添付ファイルの追加](bot-framework-rest-connector-add-media-attachments.md)
 - [Channel Inspector][ChannelInspector]
 - <a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>
 

@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 91385fa3e8ae1410679ca5274e40db7fe38bafea
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2aac000b7e8dd52b00659ffecde5184df6c29991
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304220"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998689"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
 > [!div class="op_single_selector"]
@@ -20,7 +21,7 @@ ms.locfileid: "39304220"
 > - [Node.js](../nodejs/bot-builder-nodejs-text-to-speech.md)
 > - [REST](../rest-api/bot-framework-rest-connector-text-to-speech.md)
 
-Cortana などの音声対応チャネルのボットを構築している場合は、ボットが読み上げるテキストを指定するメッセージを構成できます。 また、ボットがユーザー入力を受け付けるか、想定しているか、または無視するかどうかを示す[入力ヒント](bot-framework-rest-connector-add-input-hints.md)を指定することによって、クライアントのマイクの状態に影響を与えようと試みることもできます。
+Cortana などの音声対応チャネルのボットを作成している場合は、ボットが読み上げるテキストを指定するメッセージを構成できます。 また、[入力ヒント](bot-framework-rest-connector-add-input-hints.md)を指定して、ボットがユーザー入力を受け入れるか、期待するか、無視するかを示し、クライアントのマイクの状態に影響を与えることを試すこともできます。
 
 ## <a name="specify-text-to-be-spoken-by-your-bot"></a>ボットが読み上げるテキストを指定する
 
@@ -58,7 +59,7 @@ Content-Type: application/json
 
 ## <a name="input-hints"></a>入力ヒント
 
-音声対応チャネル上でメッセージを送信する場合は、ボットがユーザー入力を受け付けるか、想定しているか、または無視するかどうかを示す入力ヒントも含めることによって、クライアントのマイクの状態に影響を与えようと試みることができます。 詳細については、「[メッセージへの入力ヒントの追加](bot-framework-rest-connector-add-input-hints.md)」を参照してください。
+音声対応チャネルでメッセージを送信する場合、ボットがユーザー入力を受け付けるか、期待するか、無視するかを示すための入力ヒントを含めることによっても、クライアントのマイクの状態に影響を与えることを試すことができます。 詳細については、「[メッセージへの入力ヒントの追加](bot-framework-rest-connector-add-input-hints.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

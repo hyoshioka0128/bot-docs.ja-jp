@@ -5,15 +5,16 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9eb07a4ac63816b84830956bca0c3a3910669e0d
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: f5687cc7faf4201485ced9535f2e98b0b4c2225a
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574538"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998179"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
 
@@ -35,14 +36,14 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 | カードの種類 | 説明 |
 |----|----|
-| <a href="/adaptive-cards/get-started/bots">アダプティブ カード</a> | テキスト、音声、イメージ、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。 [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。  |
-| [アニメーション カード][animationCard] | アニメーション GIF または短いビデオを再生できるカード。 |
+| <a href="/adaptive-cards/get-started/bots">アダプティブ カード</a> | テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。 [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。  |
+| [アニメーション カード][animationCard] | アニメーション Gif または短い動画を再生できるカード。 |
 | [オーディオ カード][audioCard] | オーディオ ファイルを再生できるカード。 |
-| [ヒーロー カード][heroCard] | 通常 1 つの大きなイメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
-| [サムネイル カード][thumbnailCard] | 通常 1 つのサムネイル イメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
-| [受信確認カード][receiptCard] | ボットからユーザーに受信確認を提供できるようにするカード。 通常は、受信確認に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。 |
+| [ヒーロー カード][heroCard] | 通常 1 つの大きな画像、1 つ以上のボタン、およびテキストが含まれるカード。 |
+| [サムネイル カード][thumbnailCard] | 通常 1 つのサムネイル画像、1 つ以上のボタン、およびテキストが含まれるカード。 |
+| [領収書カード][receiptCard] | ボットが領収書をユーザーに提供できるようにするカード。 通常は、受信確認に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。 |
 | [サインイン カード][signinCard] | ボットでユーザーのサインインを要求できるようにするカード。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つまたは複数のボタンが含まれます。 |
-| [ビデオ カード][videoCard] | ビデオを再生できるカード。 |
+| [動画カード][videoCard] | ビデオを再生できるカード。 |
 
 > [!TIP]
 > 複数のリッチ カードをリスト形式で表示するには、アクティビティの `AttachmentLayout` プロパティを "list" に設定します。 複数のリッチ カードをカルーセル形式で表示するには、アクティビティの `AttachmentLayout` プロパティを "carousel" に設定します。 カルーセル形式がチャネルでサポートされていない場合、`AttachmentLayout` プロパティに "carousel" が指定されていたとしても、リッチ カードはリスト形式で表示されます。
@@ -53,10 +54,10 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 | プロパティ | type | 説明 | 
 |----|----|----|
-| type | 文字列 | アクションの種類 (下の表に示されている値のいずれか) |
-| タイトル | 文字列 | ボタンのタイトル |
-| イメージ | 文字列 | ボタン用のイメージ URL |
-| 値 | 文字列 | 指定された種類のアクションを実行するために必要な値 |
+| type | string | アクションの種類 (下の表に示されている値のいずれか) |
+| タイトル | string | ボタンのタイトル |
+| イメージ | string | ボタン用のイメージ URL |
+| 値 | string | 指定された種類のアクションを実行するために必要な値 |
 
 > [!NOTE]
 > アダプティブ カード内のボタンは、`CardAction` オブジェクトではなく、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>によって定義されているスキーマを使用して作成されます。 アダプティブ カードにボタンを追加する方法の例については、「[Add an Adaptive Card to a message](#adaptive-card)」(メッセージにアダプティブ カードを追加する) を参照してください。
@@ -117,7 +118,7 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 [!code-csharp[Add Adaptive Card attachment](../includes/code/dotnet-add-attachments.cs#addAdaptiveCardAttachment)]
 
-結果として生成されるカードには、テキスト、入力フィールド (選択リスト)、および 3 つのボタンの 3 つのブロックが含まれています。
+結果のカードには、3 つのブロック (テキスト、入力フィールド (選択リスト)、および 3 つのボタン) が含まれています。
 
 ![アダプティブ カードのカレンダー アラーム](../media/adaptive-card-reminder.png)
 
