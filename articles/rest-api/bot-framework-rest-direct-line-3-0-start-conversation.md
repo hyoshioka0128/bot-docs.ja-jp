@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: ead16c0ff41ae93daff8952ca135fa0771bbbe78
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6754935070fefb890c3d5b7bd90f1c1a4c5d401d
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302188"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000299"
 ---
 # <a name="start-a-conversation"></a>会話を開始する
 
@@ -29,14 +30,14 @@ Authorization: Bearer SECRET_OR_TOKEN
 
 以下のスニペットは、会話の開始要求と応答の例を示しています。
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
 ```http
 POST https://directline.botframework.com/v3/directline/conversations
 Authorization: Bearer RCurR_XV9ZA.cwA.BKA.iaJrC8xpy8qbOF5xnR2vtCX7CZj0LdjAPGfiCpg4Fv0y8qbOF5xPGfiCpg4Fv0y8qqbOF5x8qbOF5xn
 ```
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 
 要求が成功すると、応答には、会話の ID、トークン、トークンの有効期限が切れるまでの秒数を示す値、およびクライアントが [WebSocket ストリーム経由でアクティビティを受信する](bot-framework-rest-direct-line-3-0-receive-activities.md#connect-via-websocket)ために使用できるストリーム URL が含まれます。
 
@@ -63,7 +64,7 @@ HTTP/1.1 201 Created
 
 会話の開始操作 (`POST /v3/directline/conversations`) と[トークンの生成](bot-framework-rest-direct-line-3-0-authentication.md#generate-token)操作 (`POST /v3/directline/tokens/generate`) は、どちらの操作も、1 つの会話にアクセスするために使用できる `token` を返すという点で類似しています。 ただし、会話の開始操作は、会話の開始、ボットとの接触、および WebSocket stream URL の作成も行いますが、トークンの生成操作はこれらの操作を行いません。 
 
-会話をすぐに開始するつもりの場合は、会話の開始操作を使用します。 トークンをクライアントに配布し、クライアントに会話を開始してほしい場合は、[トークンの生成](bot-framework-rest-direct-line-3-0-authentication.md#generate-token)操作を使用します。 
+会話をすぐに開始するつもりの場合は、会話の開始操作を使用します。 トークンをクライアントに配布し、クライアントからの会話の開始を求める場合は、[トークンの生成](bot-framework-rest-direct-line-3-0-authentication.md#generate-token)操作を使用してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

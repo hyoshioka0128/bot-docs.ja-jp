@@ -5,15 +5,16 @@ author: DucVo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 365513c6370025fda807bfc8266ba68f329ceb88
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 26f6e9520fe5d2ebb83ceb4e6a497a35e9d2611f
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905703"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999259"
 ---
 # <a name="handle-user-actions"></a>ユーザー アクションを処理する
 
@@ -31,7 +32,7 @@ ms.locfileid: "42905703"
 
 ダイアログにアタッチできるアクションの種類を次の表に一覧で示します。 各アクション名のリンクをクリックすると、そのアクションについて詳しく説明したセクションに移動します。
 
-| アクションを表示します。 | Scope (スコープ) | 説明 |
+| Action | Scope (スコープ) | 説明 |
 |------|------| ---- |
 | [triggerAction](#bind-a-triggeraction) | グローバル | ダイアログ スタックをクリアし、それ自体をスタックの底にプッシュするアクションをダイアログにバインドします。 この既定の動作を上書きするには、`onSelectAction` オプションを使用します。 |
 | [customAction](#bind-a-customaction) | グローバル | ダイアログ スタックに影響を与えずに情報を処理したり、アクションを実行したりできるカスタム アクションをボットにバインドします。 このアクションの機能をカスタマイズするには、`onSelectAction` オプションを使用します。 |

@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d9f1821767e5bd26c9a8bfdf3927f257077f0e79
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6679afa688917bdf3d558d5ed47717ee30d0e52e
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303332"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999359"
 ---
 # <a name="receive-messages-from-the-bot"></a>ボットからメッセージを受信する
 
@@ -27,14 +28,14 @@ ms.locfileid: "39303332"
 
 以下のスニペットは、メッセージ取得要求と応答の例を示しています。 メッセージ取得応答には、[MessageSet](bot-framework-rest-direct-line-1-1-api-reference.md#messageset-object) のプロパティとして、`watermark` が含まれます。 クライアントは、メッセージが返らなくなるまで `watermark` 値を進めることで、入手できるメッセージをすべて取得する必要があります。 
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
 ```http
 GET https://directline.botframework.com/api/conversations/abc123/messages?watermark=0001a-94
 Authorization: Bearer RCurR_XV9ZA.cwA.BKA.iaJrC8xpy8qbOF5xnR2vtCX7CZj0LdjAPGfiCpg4Fv0
 ```
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 
 ```http
 HTTP/1.1 200 OK
@@ -75,5 +76,5 @@ Direct Line は潜在的なタイミングのギャップを伴うマルチパ�
 
 - [主要な概念](bot-framework-rest-direct-line-1-1-concepts.md)
 - [認証](bot-framework-rest-direct-line-1-1-authentication.md)
-- [会話を開始する](bot-framework-rest-direct-line-1-1-start-conversation.md)
+- [会話の開始](bot-framework-rest-direct-line-1-1-start-conversation.md)
 - [メッセージをボットに送信する](bot-framework-rest-direct-line-1-1-send-message.md)

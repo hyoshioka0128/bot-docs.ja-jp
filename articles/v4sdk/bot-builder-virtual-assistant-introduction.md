@@ -5,15 +5,15 @@ author: darrenj
 ms.author: darrenj
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 13/12/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 075c090571eb7a45efc57b915a4bc912fc9c55df
-ms.sourcegitcommit: 87b5b0ca9b0d5e028ece9f7cc4948c5507062c2b
+ms.openlocfilehash: e93f7d24396b4e35fc81960d42148dd8942362d7
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47029854"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998969"
 ---
 # <a name="virtual-assistant-solution-overview"></a>仮想アシスタント ソリューションの概要
 
@@ -32,7 +32,7 @@ Microsoft では、製品の機能をお客様が制御できるようにする�
 
 仮想アシスタントは、[Enterprise Template](./bot-builder-enterprise-template-overview.md) の機能をベースに構築されています。このテンプレートは、複数言語の基本会話インテント、ディスパッチ、QnA、会話インサイトなど、会話型エクスペリエンスを提供するための基本的な機能を提供するものです。 現時点では、次のアシスタント関連機能が提供されており、追加の機能も計画されてします。今後、お客様やパートナーと緊密に連携しながら、ロードマップを公開していく予定です。
 
-Feature | 説明 |
+機能 | 説明 |
 ------------ | -------------
 オンボード | サンプルのオンボード フローでは、ユーザーへのあいさつや初期情報の収集が可能です。
 イベント処理アーキテクチャ | 仮想アシスタントのコンテキスト内にあるイベントを使用して、アシスタントをホストしているクライアント アプリケーション (Web ブラウザー、自動車用デバイス、スピーカーなどのアプリ) から、ユーザーやデバイス イベントの情報をやり取りしたり、イベントを受信して操作を実行することができます。

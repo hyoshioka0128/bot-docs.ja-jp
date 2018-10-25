@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 66c6bc20013ff2de82e29af76e9c99898c8b13d9
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: cee7e79190d967590296ccbcfec7a112f2ae8588
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303217"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998594"
 ---
 # <a name="add-input-hints-to-messages"></a>メッセージへの入力ヒントの追加
 > [!div class="op_single_selector"]
@@ -20,7 +21,7 @@ ms.locfileid: "39303217"
 > - [Node.js](../nodejs/bot-builder-nodejs-send-input-hints.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-input-hints.md)
 
-メッセージの入力ヒントを指定することにより、メッセージがクライアントに配信された後、ボットがユーザー入力を受け付けるか、期待するか、または無視するかを指示できます。 多くのチャネルでは、これによってクライアントが適宜、ユーザー入力コントロールの状態を設定できます。 たとえば、ボットがユーザーの入力を無視していることをメッセージの入力ヒントが示している場合、クライアントはマイクを閉じて入力ボックスを無効にし、ユーザーが入力を提供するのを防ぐことができます。
+メッセージの入力ヒントを指定すれば、メッセージがクライアントに配信された後、ボットがユーザー入力を受け付けるか、期待するか、無視するかを示すことができます。 多くのチャネルでは、これによってクライアントが適宜、ユーザー入力コントロールの状態を設定できます。 たとえば、ボットがユーザーの入力を無視していることをメッセージの入力ヒントが示している場合、クライアントはユーザーが入力を提供できないよう、マイクを閉じて入力ボックスを無効にすることができます。
 
 ## <a name="accepting-input"></a>入力の受け付け
 

@@ -6,15 +6,16 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 08/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fbd3378e5be743b17d1a19db06c69a0d292f1524
-ms.sourcegitcommit: abde9e0468b722892f94caf2029fae165f96092f
+ms.openlocfilehash: d55accd5ad9ad7db12d0b0e6865e04dcf7718110
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48875669"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49996740"
 ---
 # <a name="add-input-hints-to-messages"></a>メッセージへの入力ヒントの追加
 
@@ -50,7 +51,7 @@ const {InputHints, MessageFactory} = require('botbuilder');
 
 ボットが受動的に入力の準備ができているが、ユーザーからの応答を待っていないことを示すには、メッセージの入力ヒントを _accepting input_ に設定します。 多くのチャネルでは、これによってクライアントの入力ボックスが有効になり、マイクは閉じられますがユーザーはまだマイクにアクセスできます。 たとえば、ユーザーがマイクボタンを押し下げたままにすると、Cortana はマイクを開いてユーザーからの入力を受け付けます。 次のコードは、ボットがユーザーの入力を受け付けていることを示すメッセージを作成します。
 
-# <a name="ctabcs"></a>[C# を選択した場合](#tab/cs)
+# <a name="ctabcs"></a>[C#](#tab/cs)
 
 ```csharp
 var reply = MessageFactory.Text(
@@ -73,7 +74,7 @@ await context.sendActivity(basicMessage);
 
 ボットがユーザーからの応答を待っていることを示すには、メッセージの入力ヒントを _expecting input_ に設定します。 多くのチャネルでは、これによってクライアントの入力ボックスが有効になり、マイクが開きます。 次のコード例は、ボットがユーザーの入力を期待していることを示すメッセージを作成します。
 
-# <a name="ctabcs"></a>[C# を選択した場合](#tab/cs)
+# <a name="ctabcs"></a>[C#](#tab/cs)
 
 ```csharp
 var reply = MessageFactory.Text(
@@ -96,7 +97,7 @@ await context.sendActivity(basicMessage);
 
 ボットがユーザーから入力を受け取る準備ができていないことを示すには、メッセージの入力ヒントを _ignoring input_ に設定します。 多くのチャネルでは、これによってクライアントの入力ボックスが無効になり、マイクが閉じられます。 次のコード例は、ボットがユーザーの入力を無視していることを示すメッセージを作成します。
 
-# <a name="ctabcs"></a>[C# を選択した場合](#tab/cs)
+# <a name="ctabcs"></a>[C#](#tab/cs)
 
 ```csharp
 var reply = MessageFactory.Text(

@@ -5,15 +5,16 @@ author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: abs
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dc8b2723119a03e533f19dbf36446b7dbe0957df
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: dfc90f4c4c6e3ad00899569f667b5d3d88dcf042
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42906136"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999959"
 ---
 # <a name="register-a-bot-with-bot-service"></a>ボットを Bot Service に登録する
 
@@ -49,7 +50,7 @@ Bot Service 機能を使用できるようにするには、**Bot Channels Regis
    |         <strong>サブスクリプション</strong>          |        該当するサブスクリプション        |                                                                                使用する Azure サブスクリプションを選択します。                                                                                 |
    |        <strong>リソース グループ</strong>         |         myResourceGroup         |                                 新しい[リソース グループ](/azure/azure-resource-manager/resource-group-overview#resource-groups)を作成することも、既存のグループを選択することもできます。                                  |
    |                    Location                    |             米国西部             |                                                        ボットがデプロイされている場所の近く、またはボットがアクセスする他のサービスの近くの場所を選択します。                                                         |
-   |         <strong>価格レベル</strong>          |               F0                |             価格レベルを選択します。 価格レベルはいつでも更新できます。 詳細については、[Bot Service の価格](https://azure.microsoft.com/en-us/pricing/details/bot-service/)に関するページをご覧ください。              |
+   |         <strong>[価格レベル]</strong>          |               F0                |             価格レベルを選択します。 価格レベルはいつでも更新できます。 詳細については、[Bot Service の価格](https://azure.microsoft.com/en-us/pricing/details/bot-service/)に関するページをご覧ください。              |
    |      <strong>[Messaging endpoint]\(メッセージング エンドポイント\)</strong>       |               URL               |                                                                               ボットのメッセージング エンドポイントの URL を入力します。                                                                                |
    |     <strong>Application Insights</strong>      |               On                | [Application Insights](bot-service-manage-analytics.md) を<strong>オン</strong>にするか、<strong>オフ</strong>にするかを決定します。 <strong>[オン]</strong> を選択した場合は、リージョンの場所も指定する必要があります。 |
    | <strong>Microsoft App ID and password\(Microsoft アプリ ID とパスワード\)</strong> | アプリ ID とパスワードの自動作成 |              Microsoft アプリ ID とパスワードを手動で入力する必要がある場合は、このオプションを使用します。 それ以外の場合は、ボット作成プロセスで新しい Microsoft アプリ ID とパスワードが自動的に作成されます。               |

@@ -5,15 +5,15 @@ author: BrianRandell
 ms.author: v-brra
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 15745bc25013df2fd18b0a2045ae2314d6c361e2
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: f880bc9a424fd9905f7e4ced25e97e2c37155072
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574858"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49996829"
 ---
 # <a name="commerce-bot-scenario"></a>コマース ボットのシナリオ
 
@@ -45,13 +45,13 @@ ms.locfileid: "39574858"
 -   Application Insights
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
-Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。 また Azure AD は、世界中の数多くの組織が使用する卓越した ID 管理ソリューションとすばやく簡単に統合できるため、ボット開発者がボットの構築に集中することを可能にします。 Azure AD では、Google、Facebook、Microsoft アカウントなどの外部 ID を使用して個人を識別できる B2C コネクタがサポートされています。 Azure AD を使うと、ユーザーの資格情報管理が不要になり、ボットのソリューションに集中できるようになります。ボットのユーザーとアプリケーションによって公開されている正しいデータを関連付けることができるのは皆さんであることを把握しているからです。
+Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。 また、Azure AD は世界中の数多くの組織が使用する卓越した ID 管理ソリューションとすばやく簡単に統合できるため、ボット開発者はボットの構築に集中することができます。 Azure AD では、Google、Facebook、Microsoft アカウントなどの外部 ID を使用して個人を識別できる B2C コネクタがサポートされています。 Azure AD を使うと、ユーザーの資格情報管理が不要になり、ボットのソリューションに集中できるようになります。ボットのユーザーとアプリケーションによって公開されている正しいデータを関連付けることができるのは皆さんであることを把握しているからです。
 
 ### <a name="cognitive-services-luis"></a>Cognitive Services: LUIS
 Cognitive Services ファミリ テクノロジのメンバーである Language Understanding (LUIS) を使うと、アプリに機械学習の力を追加することができます。 現時点で、LUIS はいくつかの言語をサポートしており、それを使って人がやりたいことをボットに解釈させることができます。 LUIS を統合する際は、意図を明示し、ボットが解釈するエンティティを定義します。 続いて、発話の例を使ってトレーニングを行い、ボットがこれらの意図やエンティティを解釈できるようにします。 この統合は、ボットができるだけ柔軟に特定の会話ニーズに対応できるように、フレーズ リストや正規表現機能を使用して調整することができます。
 
 ### <a name="application-insights"></a>Application Insights
-Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる知見を得ることができます。 事前の設定なしで、さまざまな機能を持つパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードによって、ボットの可用性が保たれ、期待通りに動作していることを確認できます。 問題が発生していることをすばやく確認し、根本原因を分析して、問題を検出し、修正できます。
+Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報を得ることができます。 すぐに使用できる、多機能なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードによって、ボットの可用性が保たれ、期待どおりに動作していることを確認できます。 問題の発生をすばやく確認し、根本原因を分析して、問題個所を特定し、修正することができます。
 
 ## <a name="next-steps"></a>次の手順
 次に、Cortana スキル ボットのシナリオについて説明します。

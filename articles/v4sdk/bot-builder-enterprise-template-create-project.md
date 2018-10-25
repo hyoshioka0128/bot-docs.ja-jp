@@ -5,15 +5,15 @@ author: darrenj
 ms.author: darrenj
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2c6736cc8aa607da73c392b04ea894a19c86ff29
-ms.sourcegitcommit: 87b5b0ca9b0d5e028ece9f7cc4948c5507062c2b
+ms.openlocfilehash: fc7b168cc8c509b81539682a3717b54ed5c2109c
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47029780"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997119"
 ---
 # <a name="enterprise-bot-template---creating-a-new-project"></a>Enterprise Bot Template - 新しいプロジェクトの作成
 
@@ -52,4 +52,4 @@ Enterprise Bot Template は、**V4** バージョンの SDK を対象に、.NET 
 > この手順は必ず実行する必要があります。これを実行しないと、ボットの初期化と LUIS の依存関係が機能しません。
 ## <a name="customize-your-bot"></a>ボットのカスタマイズ
 
-ボットを (追加設定なしで) デプロイした後は、シナリオやニーズに応じてボットをカスタマイズできます。 「[Customize the Bot](bot-builder-enterprise-template-customize.md)」(ボットのカスタマイズ) から作業を行ってください。
+ボットを (追加設定なしで) デプロイした後は、シナリオやニーズに応じてボットをカスタマイズできます。 続けて[ボットをカスタマイズ](bot-builder-enterprise-template-customize.md)してください。

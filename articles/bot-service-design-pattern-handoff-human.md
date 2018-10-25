@@ -5,14 +5,14 @@ author: matvelloso
 ms.author: mateusv
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: f786f79011da5e50b37f9797dca694f0e132296c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6b50df60c3a8165198e8f9a55964f2f596d62406
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302364"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998729"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>会話をボットから人間に移行する
 

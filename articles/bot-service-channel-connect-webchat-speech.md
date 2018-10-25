@@ -6,15 +6,16 @@ author: DeniseMak
 ms.author: v-demak
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 563fdd480ac5165d5301faa3ed43af3118d2f7d7
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: f98391f05e962bfc8846818d8a236d16846c8c5c
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707478"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997061"
 ---
 # <a name="enable-speech-in-web-chat"></a>Web チャットで音声認識を有効にする
 Web チャット コントロールで音声インターフェイスを有効にすることができます。 ユーザーは、Web チャット コントロールのマイクを使って音声インターフェイスと対話します。
@@ -54,7 +55,7 @@ Web チャットで音声認識機能を有効にするには、Web チャット
    | s | Direct Line シークレット。 Direct Line シークレットを取得する方法については、「[Connect a bot to Direct Line (ボットを Direct Line に接続する)](bot-service-channel-connect-directline.md)」をご覧ください。 |
    | t | Direct Line トークン。 このトークンを生成する方法については、「[Generate a Direct Line token (Direct Line トークンを生成する)](rest-api/bot-framework-rest-direct-line-3-0-authentication.md)」をご覧ください。 |
    | domain | 省略可能。 代替 Direct Line エンドポイントの URL。  |
-   | webSocket | 省略可能。 WebSocket を使用してメッセージを受信するには、"true" に設定します。 既定値は `false`です。 |
+   | webSocket | 省略可能。 WebSocket を使用してメッセージを受信するには、"true" に設定します。 既定値は `false` です。 |
    | userid | 省略可能。 ボット ユーザーのID。  |
    | username | 省略可能。 ボット ユーザーのユーザー名。  |
    | botid | 省略可能。 ボットの ID。 |

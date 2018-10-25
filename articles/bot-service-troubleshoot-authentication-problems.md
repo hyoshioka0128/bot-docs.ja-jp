@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/17
-ms.openlocfilehash: 5373b18ce5c11dae4e971cb1a70307ae2901ad36
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 9e86ea0fb677105be920e031979980baf479e42f
+ms.sourcegitcommit: abde9e0468b722892f94caf2029fae165f96092f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389661"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48875729"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Bot Framework 認証のトラブルシューティング
 
@@ -41,7 +41,9 @@ ms.locfileid: "47389661"
 
 ボットのセキュリティを無効にするには、その構成設定を編集して、アプリ ID とパスワードを削除します。 
 
-Bot Builder SDK for .NET を使用している場合は、Web.config ファイル内の次の値を編集します。
+::: moniker range="azure-bot-service-3.0"
+
+Bot Builder SDK for .NET を使用している場合は、Web.config ファイル内の次の設定を編集します。 
 
 ```xml
 <appSettings>
@@ -58,6 +60,32 @@ var connector = new builder.ChatConnector({
   appPassword: null
 });
 ```
+
+::: moniker-end
+
+::: moniker range="azure-bot-service-4.0"
+
+Bot Builder SDK for .NET を使用している場合は、`appsettings.config` ファイル内の次の設定を編集します。
+
+```xml
+<appSettings>
+  <add key="MicrosoftAppId" value="" />
+  <add key="MicrosoftAppPassword" value="" />
+</appSettings>
+```
+
+Bot Builder SDK for Node.js を使用している場合は、次の値を編集します (または該当する環境変数を更新します)。
+
+```javascript
+const adapter = new BotFrameworkAdapter({
+    appId: null,
+    appPassword: null
+});
+```
+
+構成に `.bot` ファイルを使用している場合は、`appId` と `appPassword` を `""` に更新できます。
+
+::: moniker-end
 
 ### <a name="test-your-bot-on-localhost"></a>ボットを localhost 上でテストする 
 
@@ -115,7 +143,7 @@ curl -k -X POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/t
 
 ボットのセキュリティは、ボットが localhost 上でのみ実行される場合でも、Microsoft のサービスに依存します。 ボットのセキュリティを有効にするには、その構成設定を編集して、[手順 2](#step-2) で確認したアプリ ID とパスワードの値を入力します。
 
-Bot Builder SDK for .NET を使用している場合は、Web.config ファイルに次の値を入力します。
+Bot Builder SDK for .NET を使用している場合は、`.bot` ファイルまたは `appsettings.config` ファイルに次の設定を入力します。
 
 ```xml
 <appSettings>

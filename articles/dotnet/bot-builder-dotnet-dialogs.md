@@ -5,15 +5,16 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: eb99be4699bba71a1fdc55bab19d035e4e31f536
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 943b206e4991c52f22928d2113977249ff9d9e04
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574558"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997579"
 ---
 # <a name="dialogs-in-the-bot-builder-sdk-for-net"></a>Bot Builder SDK for .NET のダイアログ
 
@@ -50,9 +51,9 @@ Bot Builder SDK for .NET では、[Builder][builderLibrary] ライブラリを�
 
 ### <a name="implementation-details"></a>実装の詳細 
 
-Bot Builder では非同期通信の処理に C# の機能を使用するため、`Post` メソッドは `async` とマークされています。 このメソッドは、渡されたメッセージに返信する役割を持つタスクを表す `Task` オブジェクトを返します。 例外がある場合、このメソッドによって返される `Task` に例外情報が含まれます。 
+Bot Builder では非同期通信の処理に C# の機能を使用するため、`Post` メソッドは `async` とマークされています。 これは、渡されたメッセージに返信する役割を持つタスクを表す `Task` オブジェクトを返します。 例外がある場合、このメソッドによって返される `Task` に例外情報が含まれます。 
 
-`Conversation.SendAsync` メソッドは、Bot Builder SDK for .NET を使用してダイアログを実装するための重要な要素です。 このメソッドは、<a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank">依存関係逆転の原則</a>に従い、次のステップを実行します。
+`Conversation.SendAsync` メソッドは、Bot Builder SDK for .NET を使用してダイアログを実装するための重要な要素です。 これは、<a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank">依存関係逆転の原則</a>に従い、次のステップを実行します。
 
 1. 必要なコンポーネントをインスタンス化する  
 2. `IBotDataStore` からの会話状態 (ダイアログ スタックとスタック内の各ダイアログの状態) を逆シリアル化する
@@ -68,7 +69,7 @@ Bot Builder では非同期通信の処理に C# の機能を使用するため�
 
 ## <a name="echo-bot-with-state-example"></a>状態を使用するエコー ボットの例
 
-この次の例は、表記の例にダイアログの状態を追跡する機能を追加したものです。 次のサンプル コードに示すように、`EchoDialog` クラスが更新されると、ボットは、ユーザーから送信された各メッセージに対し、数字 (`count`) に続けてテキスト "You said:" がプレフィックスとして付加されたユーザーのメッセージを単にエコー バックして応答します。 ボットは、ユーザーがカウントをリセットするまで、返信ごとに `count` の増分を続けます。
+この次の例は、上記の例にダイアログの状態を追跡する機能を追加したものです。 次のサンプル コードに示すように、`EchoDialog` クラスが更新されると、ボットは、ユーザーから送信された各メッセージに対し、数字 (`count`) に続けてテキスト "You said:" がプレフィックスとして付加されたユーザーのメッセージをエコー バックして応答します。 ボットは、ユーザーがカウントをリセットするまで、返信ごとに `count` の増分を続けます。
 
 ### <a name="messagescontrollercs"></a>MessagesController.cs 
 
@@ -109,7 +110,7 @@ Bot Builder では非同期通信の処理に C# の機能を使用するため�
 `IDialogStack.Call<R>` と `IDialogStack.Done<R>` を使用すると、アクティブ ダイアログのスタックを明示的に管理できます。一方、これらの fluent [Chain][chain] メソッドを使用すると、アクティブ ダイアログのスタックを暗黙的に管理することができます。
 
 
-|           方法            |  type   |                                 メモ                                  |
+|           方法            |  Type   |                                 メモ                                  |
 |-----------------------------|---------|------------------------------------------------------------------------|
 |     Chain.Select<T, R>      |  LINQ   |           LINQ クエリ構文の "select" と "let" をサポートします。            |
 |  Chain.SelectMany<T, C, R>  |  LINQ   |            LINQ クエリ構文の連続する "from" をサポートします。            |

@@ -5,15 +5,16 @@ author: BrianRandell
 ms.author: v-brra
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 049dffd2adc700323bec943e090d369a14ff696b
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: 7676b7bd75a45130b62c1a691499095d6ba07291
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574848"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000229"
 ---
 # <a name="cortana-skills-bot-scenario"></a>Cortana スキル ボットのシナリオ
 
@@ -48,7 +49,7 @@ Cortana ボットでは、次のコンポーネントを使用します。
 これで Cortana スキルを作成して、ボットにサポートを追加できるようになりました。 Cortana の新機能 (スキルと呼ばれます) を構築するには、Cortana スキル キットを使用します。 スキルとは、Cortana がより多くのことを実行できるようにするコンストラクトです。 ボットと統合するスキルを構築して、Cortana がタスクを完了したり、作業を実行したりできるようにします。 Cortana は、呼び出しプロセスの一環として、ユーザーに関する情報を (ユーザーの同意を得て) 実行時にスキルに渡します。スキルは、それに応じてそのエクスペリエンスをカスタマイズできます。 Cortana のコンテキストの知識によって、ボットは便利になり、その分さらに賢くなります。 呼び出された特定の種類のスキルによって Cortana のインターフェイスが操作され、スキルとエンドユーザーの間で会話ができます。 公開されると、ユーザーは、Windows 10 Anniversary Update 以降 (デスクトップおよびモバイル)、iOS、および Android 用の Cortana でスキルを表示して使用できます。
 
 ### <a name="application-insights"></a>Application Insights
-Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報を得ることができます。 事前設定なしで、ボットが期待通りに動作し可用性が確保されるように、多彩なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードが用意されています。 問題が発生していることをすばやく確認し、根本原因を分析して、問題を検出し、修正できます。
+Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報を得ることができます。 すぐに使用できる、多機能なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードによって、ボットの可用性が保たれ、期待どおりに動作していることを確認できます。 問題の発生をすばやく確認し、根本原因を分析して、問題個所を特定し、修正することができます。
 
 ## <a name="next-steps"></a>次の手順
 次に、Enterprise Productivity ボットのシナリオについて説明します。

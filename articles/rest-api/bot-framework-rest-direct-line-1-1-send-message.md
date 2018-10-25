@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3bc56d08f45ffd1e389a2dca1868a788d65e087e
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 360ec3a6a6c9a3be16370aaf445f24a237a702e3
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303897"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998019"
 ---
 # <a name="send-a-message-to-the-bot"></a>メッセージをボットに送信する
 
@@ -56,7 +57,7 @@ HTTP/1.1 204 No Content
 Direct Line 会話にメッセージを POST するための合計時間は次を足したものになります。
 
 - HTTP 要求がクライアントから Direct Line サービスに至るための移動時間
-- Direct Line 内の内部処理時間 (通常は 120 ミリ秒未満)
+- Direct Line 内の内部処理時間 (通常、120 ミリ秒未満)
 - Direct Line サービスからボットまでの移動時間
 - ボット内の処理時間
 - HTTP 応答がクライアントに戻るための移動時間
@@ -160,5 +161,5 @@ HTTP/1.1 204 No Content
 
 - [主要な概念](bot-framework-rest-direct-line-1-1-concepts.md)
 - [認証](bot-framework-rest-direct-line-1-1-authentication.md)
-- [会話を開始する](bot-framework-rest-direct-line-1-1-start-conversation.md)
+- [会話の開始](bot-framework-rest-direct-line-1-1-start-conversation.md)
 - [ボットからメッセージを受け取る](bot-framework-rest-direct-line-1-1-receive-messages.md)
