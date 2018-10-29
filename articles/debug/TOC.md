@@ -1,4 +1,5 @@
 # [Bot Service のデバッグ](../bot-service-debug-bot.md)
 # [テストとデバッグのガイドライン](../v4sdk/bot-builder-testing-debugging.md)
 # [Bot Framework Emulator を使用したデバッグ](../bot-service-debug-emulator.md)
+# [トランスクリプト ファイルを使用したテストとデバッグ](../v4sdk/bot-builder-debug-transcript.md)
 # [Cortana スキルのテスト](../bot-service-debug-cortana-skill.md)
