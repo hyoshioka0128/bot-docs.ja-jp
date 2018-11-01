@@ -86,7 +86,7 @@ LUIS アプリは 4 つの意図 (Cancel、Greeting、Help、None) で始まり�
 
 
 3.  右上の **[トレーニング]** ボタンをクリックして、ご利用のアプリをトレーニングします。
-4.  上部のナビゲーション バーの **[PUBLISH]\(発行\)** をクリックして、**[発行]** ページを開きます。 **[Publish to production slot]\(運用スロットに発行\)** ボタンをクリックします。 発行が正常に行われた後、**[Publish App]\(アプリの発行\)** ページの **[エンドポイント]** 列 (リソース名 Starter_Key で始まる行) に表示されている URL に、LUIS アプリがデプロイされます。 URL の形式は次の例のようになります。`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=` この URL のアプリ ID およびサブスクリプション キーは、**[アプリ サービスの設定] > [ApplicationSettings] > [アプリ設定]** の LuisAppId および LuisAPIKey と同じです。
+4.  上部のナビゲーション バーの **[PUBLISH]\(発行\)** をクリックして、**[発行]** ページを開きます。 **[Publish to production slot]\(運用スロットに発行\)** ボタンをクリックします。 発行が正常に行われた後、**[Publish App]\(アプリの発行\)** ページの **[エンドポイント]** 列 (リソース名 Starter_Key で始まる行) に表示されている URL に、LUIS アプリがデプロイされます。 URL の形式は次の例のようになります。`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=` この URL のアプリ ID およびサブスクリプション キーは、** [アプリ サービスの設定] > [ApplicationSettings] > [アプリ設定] ** の LuisAppId および LuisAPIKey と同じです。
 
 
 ## <a name="modify-the-bot-code"></a>ボット コードの変更

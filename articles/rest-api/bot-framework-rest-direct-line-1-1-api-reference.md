@@ -224,7 +224,7 @@ Direct Line 会話を定義します。<br/><br/>
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **code** | string | エラー コード。 次の値のいずれか。**MissingProperty**、**MalformedData****NotFound****ServiceError****Internal****InvalidRange****NotSupported****NotAllowed****BadCertificate** |
+| **code** | string | エラー コード。 次の値のいずれか。**MissingProperty**、**MalformedData**、**NotFound**、**ServiceError**、**Internal**、**InvalidRange**、**NotSupported**、**NotAllowed**、**BadCertificate** |
 | **message** | string | エラーの説明。 |
 | **statusCode** | number | 状態コード。 |
 
