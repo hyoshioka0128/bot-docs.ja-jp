@@ -6,44 +6,47 @@ author: RobStand
 ms.author: RobStand
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: f9abc3ad8de2c766abc3bf3b8df9f540f261a733
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 3072694307ace7c8821fd9e61fe8204acca97efb
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39303484"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49996730"
 ---
 # <a name="connect-a-bot-to-kik"></a>ボットを Kik に接続する
 
 Kik メッセージング アプリを使用して、複数のユーザーとコミュニケーションするようにボットを構成できます。
 
-[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
-
 ## <a name="install-kik-on-your-phone"></a>Kik を携帯電話にインストールする
 
-Kik を携帯電話にインストールしていない場合は、携帯電話のアプリ ストアまたは <a href="https://www.kik.com/" target="_blank">Kik Web サイト</a>からインストールできます。
+Kik を携帯電話にインストールしていない場合は、携帯電話のアプリ ストアまたは <a href="https://www.kik.com/" target="_blank">Kik Web サイト</a>からインストールしてください。 既存の Kik ユーザー アカウントを使用するか、または新しいアカウントにサインアップする必要があります。
+
+![Kik サインアップ](./media/channels/kik-signup.png)
 
 ## <a name="log-into-the-dev-portal-with-your-mobile-phone"></a>携帯電話でデベロッパー ポータルにログインする
 
-携帯電話で <a href="https://dev.kik.com" target="_blank">Kik ポータルにログイン</a>します。
+携帯電話を使用して、<a href="https://dev.kik.com" target="_blank">Kik ポータルにログイン</a>します。 _[Open this page in "Kik"?]\("Kik" でこのページを開きますか?\)_ と表示されたら、 **[Open]\(開く\)** を選択します。 
+
+![Kik 開発ポータル](./media/channels/kik-dev-portal.png)
 
 ## <a name="follow-the-bot-setup-process"></a>ボット設定プロセスに従う
 
-ボットに名前を付けます。
+ボットの名前を指定します。
 
-![ボットの設定](~/media/channels/kik-phone.png)
+![ボットを設定する](./media/channels/kik-phone.png)
 
 ## <a name="gather-credentials"></a>資格情報を収集する
 
 [Configuration]\(構成\) タブで、**[Name]\(名前\)** と **[API key]\(API キー\)** をコピーします。
 
-![ボットの情報のコピー](~/media/channels/kik-configure.png)
+![ボットの情報のコピー](./media/channels/kik-configure.png)
 
 ## <a name="submit-credentials"></a>資格情報を送信する
 
-![資格情報の貼り付け](~/media/channels/kik-creds.png)
+![資格情報の貼り付け](./media/channels/kik-creds.png)
 
 **[Submit Kik Credentials]\(KiK 資格情報の送信\)** をクリックします。
 

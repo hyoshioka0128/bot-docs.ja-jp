@@ -6,15 +6,16 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 09/18/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 21f864ba6f5beba5205e860f4a56697997048dfb
-ms.sourcegitcommit: 6c2426c43cd2212bdea1ecbbf8ed245145b3c30d
+ms.openlocfilehash: 972df2a12ffa7901ed4e4ecf14ce99233293c5a2
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48852297"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997709"
 ---
 # <a name="manage-conversation-and-user-state"></a>会話とユーザー状態を管理する
 
@@ -58,7 +59,7 @@ public class UserProfile
 `TopicState` クラスには会話内のどこにいるかをトラックするフラグが用意されており、会話状態を使用してそれを格納します。 プロンプトは "askName" として初期化され、会話を開始します。 ボットがユーザーからの応答を受け取ると、プロンプトは "askNumber" として再定義されて次の会話を開始します。 `UserProfile` クラスは、ユーザーの名前と電話番号をトラックし、それをユーザー状態に格納します。
 
 ### <a name="property-accessors"></a>プロパティ アクセサー
-この例における `EchoBotAccessors` クラスはシングルトンとして作成され、依存関係の挿入を通じて `class EchoWithCounterBot : IBot` コンストラクターに渡されます。 `EchoBotAccessors` クラスのコンストラクターは、`EchoBotAccessors` クラスの新しいインスタンスを初期化します。 これには `ConversationState`、`UserState`、および関連付けられた `IStatePropertyAccessor` が含まれます。 `conversationState` オブジェクトはトピック状態と、ユーザー プロファイル情報を格納する `userState` オブジェクトを格納します。 `ConversationState` オブジェクトと `UserState` オブジェクトは Startup.cs ファイル内に作成されます。 会話状態オブジェクトとユーザー状態オブジェクトは、会話とユーザー スコープにおけるすべてを保持する場所です。 
+この例における `EchoBotAccessors` クラスはシングルトンとして作成され、依存関係の挿入を通じて `class EchoWithCounterBot : IBot` コンストラクターに渡されます。 `EchoBotAccessors` クラスには、`ConversationState`、`UserState` および関連付けられた `IStatePropertyAccessor` が含まれます。 `conversationState` オブジェクトはトピック状態と、ユーザー プロファイル情報を格納する `userState` オブジェクトを格納します。 `ConversationState` オブジェクトと `UserState` オブジェクトは、後で Startup.cs ファイル内に作成されます。 会話状態オブジェクトとユーザー状態オブジェクトは、会話とユーザー スコープにおけるすべてを保持する場所です。 
 
 以下に示すように、コンストラクターを更新して `UserState` を追加しました。
 ```csharp
@@ -121,17 +122,17 @@ services.AddSingleton<EchoBotAccessors>(sp =>
 services.AddSingleton<EchoBotAccessors>(sp =>
 {
    ...
-    var accessors = new BotAccessors(conversationState, userState)
+    var accessors = new EchoBotAccessors(conversationState, userState)
     {
-        TopicState = conversationState.CreateProperty<TopicState>("TopicState"),
-        UserProfile = userState.CreateProperty<UserProfile>("UserProfile"),
+        TopicState = conversationState.CreateProperty<TopicState>(EchoBotAccessors.TopicStateName),
+        UserProfile = userState.CreateProperty<UserProfile>(EchoBotAccessors.UserProfileName),
      };
 
      return accessors;
  });
 ```
 
-会話状態とユーザー状態は `services.AddSingleton` コード ブロックを介してシングルトンにリンクされ、`var accessors = new BotAccessor(conversationState, userState)` で始まるコード内の状態ストア アクセサーを介して保存されます。
+会話状態とユーザー状態は `services.AddSingleton` コード ブロックを介してシングルトンにリンクされ、`var accessors = new EchoBotAccessor(conversationState, userState)` で始まるコード内の状態ストア アクセサーを介して保存されます。
 
 ### <a name="use-conversation-and-user-state-properties"></a>会話とユーザーの状態プロパティを使用する 
 `EchoWithCounterBot : IBot` クラスの `OnTurnAsync` ハンドラーで、ユーザーに名前、その後電話番号を求めるようにコードを変更します。 会話内でどこにいるかをトラックするには、TopicState で定義した Prompt プロパティを使用します。 このプロパティは初期化された "askName" でした。 ユーザー名を取得した後は、それを "askNumber" に設定し、UserName をユーザーが入力した名前に設定します。 電話番号を取得した後は、会話の最後であるため、確認メッセージを送信し、プロンプトを 'confirmation' に設定します。

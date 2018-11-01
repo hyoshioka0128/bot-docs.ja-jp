@@ -6,15 +6,16 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 08/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5b7faaae63bdc084dac570cb33ebbc755ccbcc19
-ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
+ms.openlocfilehash: 2e2c5f54d4ca077ad2b916787613f782779707ac
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49383117"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49996789"
 ---
 # <a name="send-text-and-spoken-messages"></a>テキストと音声メッセージの送信
 
@@ -30,10 +31,10 @@ ms.locfileid: "49383117"
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-ボットの **OnTurn** メソッドで、ターン コンテキスト オブジェクトの **SendActivity** メソッドを使用し、メッセージ応答を 1 つ送信します。 オブジェクトの **SendActivities** メソッドを使用し、一度に複数の応答を送信することもできます。
+ボットの **OnTurn** メソッドで、ターン コンテキスト オブジェクトの **SendActivityAsync** メソッドを使用し、メッセージ応答を 1 つ送信します。 オブジェクトの **SendActivitiesAsync** メソッドを使用し、一度に複数の応答を送信することもできます。
 
 ```cs
-await context.SendActivity("Greetings from sample message.");
+await context.SendActivityAsync("Greetings from sample message.");
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -58,7 +59,7 @@ await context.sendActivity("Greetings from sample message.");
 オプションの **speak** パラメーターを使用し、応答の一部として音声テキストを提供します。
 
 ```cs
-await context.SendActivity(
+await context.SendActivityAsync(
     "This is the text to be displayed.",
     "This is the text to be spoken.");
 ```

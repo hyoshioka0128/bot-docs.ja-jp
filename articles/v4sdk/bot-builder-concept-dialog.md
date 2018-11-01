@@ -6,15 +6,16 @@ author: johnataylor
 ms.author: johtaylo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 9/22/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2cf5da32b563c310ee201090c938da9ff410a70c
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 45bca42ddce527826d2723bc9a20a3c3e6c5aebe
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46708861"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998609"
 ---
 # <a name="dialogs-library"></a>ダイアログ ライブラリ
 
@@ -29,7 +30,7 @@ ms.locfileid: "46708861"
 - ContinueDialog
 - ResumeDialog
 
-実行時には、Dialogs クラスと DialogContext クラスが連携して、アクティビティを処理するための適切なダイアログ ボックスを選択します。 DialogContext クラスは、維持されているダイアログ スタックと、受信されたアクティビティ、および DialogSet クラスを相互に関連付けます。 DialogSet には、ボットから呼び出せるダイアログが保持されます。
+実行時には、Dialogs クラスと DialogContext クラスが連携して、アクティビティを処理するための適切なダイアログが選択されます。 DialogContext クラスは、維持されているダイアログ スタックと、受信されたアクティビティ、および DialogSet クラスを相互に関連付けます。 DialogSet には、ボットから呼び出せるダイアログが保持されます。
 
 DialogContext のインターフェイスには、ダイアログの開始と続行という基本概念が反映されます。 アプリケーションの一般的なパターンとして、最初は必ず ContinueDialog が呼び出されます。 スタックが存在しない場合は、ActiveDialog もないので、アプリケーションは DialogContext に対して BeginDialog を呼び出し、選択したダイアログを開始します。 これにより、対応するダイアログ エントリが DialogSet からスタックへとプッシュされます(厳密には、ダイアログの ID がスタックに追加されます)。その後、特定のダイアログ オブジェクトに対する BeginDialog の呼び出しが委任されます。 ActiveDialog がある場合は、そのダイアログの ContinueDialog に対する呼び出しが委任され、維持中のプロパティがそのダイアログに関連付けられます。
 

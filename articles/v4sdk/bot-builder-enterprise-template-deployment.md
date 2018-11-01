@@ -5,15 +5,15 @@ author: darrenj
 ms.author: darrenj
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0f4c5e0db9dae86f81414ccd9bbb1e5de4dce624
-ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
+ms.openlocfilehash: 32be8e2a4047c3c25dcdf2598eea3a7bbd12fbcc
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326399"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999029"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Enterprise Bot Template - ボットのデプロイ
 
@@ -30,7 +30,7 @@ ms.locfileid: "49326399"
 npm install -g ludown luis-apis qnamaker botdispatch msbot luisgen chatdown
 ```
 
-- Azure コマンド ライン ツール (CLI) を[こちら](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest)からインストールする
+- Azure コマンド ライン ツール (CLI) を[こちら](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest)からインストールする。 Azure Bot Service コマンド ライン (CLI) ツールを既にインストールしてある場合は、現在のバージョンをアンインストールしたうえで新しいバージョンをインストールして、最新のバージョンに更新してください。
 
 - Bot Service の AZ 拡張機能をインストールする
 ```shell
@@ -101,6 +101,8 @@ msbot ツールに、場所や SKU など、デプロイ計画の概要が表示
 
 その後、「```hi```」と入力してすべて機能していることを確認します。
 
+Bot Framework Emulator に問題がある場合、まずは最新の Bot Framework Emulator を使用していることを確かめてください。 古いバージョンのエミュレーターが正しく更新されていない場合は、エミュレーターをアンインストールしてインストールし直します。
+
 ## <a name="deploy-to-azure"></a>[Deploy to Azure (Azure へのデプロイ)]
 
 テストはエンド ツー エンドでローカルで実行できます。 追加テストを行うボットを Azure にデプロイする準備ができたら、次のコマンドを使用してソース コードを公開できます。これは、ソース コードの更新をプッシュするときにいつでも実行できます。
@@ -123,7 +125,7 @@ MainDialog コンストラクターで、次のように `SignInDialog` を登�
 
 次のコードを目的の場所にあるコード内に追加し、簡単なログイン フローをテストします。
     
-`var signInResult = await dc.BeginAsync(SignInDialog.Name);`
+`var signInResult = await dc.BeginDialogAsync(nameof(SignInDialog));`
 
 ### <a name="content-moderation"></a>コンテンツ モデレート
 

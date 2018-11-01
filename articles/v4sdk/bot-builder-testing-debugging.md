@@ -6,15 +6,15 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 04/09/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4195ae016513c809e4677879e0abe1b2bf8d799e
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 27516a73f625eea9c6d2cf8a09234f4068d380e3
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389781"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997459"
 ---
 # <a name="testing-and-debugging-guidelines"></a>テストとデバッグのガイドライン
 
@@ -50,7 +50,8 @@ ms.locfileid: "47389781"
 
 ### <a name="level-2-use-a-direct-line-client"></a>レベル 2: ダイレクト ライン クライアントの使用
 
-お使いのボットが意図したとおりに動作するように見えるのを確認したら、次はそのボットをチャネルに接続します。 これを行うには、ご自身のボットをステージング サーバーに展開し、そのボットの接続先となる <!--IBTODO [Direct Line client](bot-builder-howto-direct-line.md)--> ダイレクト ライン クライアントを作成します。
+お使いのボットが意図したとおりに動作するように見えるのを確認したら、次はそのボットをチャネルに接続します。 これを行うには、ご自身のボットをステージング サーバーに展開し、そのボットの接続先となる独自のダイレクト ライン クライアントを作成します。
+<!--IBTODO [Direct Line client](bot-builder-howto-direct-line.md)-->
 
 独自のクライアントを作成すると、チャネルの内部動作を定義できるほか、ご自身のボットが特定のアクティビティの交換に対してどのように応答するかを具体的にテストできます。 そのクライアントに接続されたら、テストを実行してボットの状態を設定し、お使いの機能を確認します。 お使いのボットで音声などの機能が使用されている場合は、これらのチャネルを使用して、その機能を確認する手段を提供できます。
 

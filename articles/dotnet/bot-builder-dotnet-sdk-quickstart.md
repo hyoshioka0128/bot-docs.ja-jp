@@ -6,15 +6,16 @@ author: kamrani
 ms.author: kamrani
 manager: kamrani
 ms.topic: get-started-article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 09/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5f3a02783242697fccf267bef2d56ed453880c67
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 32743e895f2390fe018dc3801ed5b8a67b32a8cc
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707978"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999379"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-net"></a>Bot Builder SDK for .NET を使用したボットの作成
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -30,12 +31,12 @@ ms.locfileid: "46707978"
 ## <a name="create-a-bot"></a>ボットの作成
 前提条件セクションでダウンロードした BotBuilderVSIX.vsix テンプレートをインストールします。 
 
-Visual Studio で、新しいボット プロジェクトを作成します。
+Visual Studio で、Bot Builder エコー ボット V4 テンプレートを使用して、新しいボット プロジェクトを作成します。
 
 ![Visual Studio プロジェクト](../media/azure-bot-quickstarts/bot-builder-dotnet-project.png)
 
 > [!TIP] 
-> 必要に応じて、[NuGet パッケージ](https://docs.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-in-visual-studio)を更新します。
+> 必要に応じて、プロジェクトのビルドの種類を ``.Net Core 2.1`` に変更します。必要に応じて、[NuGet パッケージ](https://docs.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-in-visual-studio)を更新します。
 
 テンプレートのおかげで、プロジェクトには、このクイック スタートでボットを作成するのに必要なすべてのコードが含まれています。 実際には、追加のコードを記述する必要はありません。
 
@@ -53,7 +54,11 @@ Visual Studio で、新しいボット プロジェクトを作成します。
 ## <a name="interact-with-your-bot"></a>ボットでのやり取り
 
 メッセージをボットに送信します。ボットはメッセージで応答します。
+
 ![実行中のエミュレーター](../media/emulator-v4/emulator-running.png)
+
+> [!NOTE]
+> メッセージを送信できない場合は、ngrok がシステム上の必要な権限をまだ取得していないため、マシンの再起動が必要になることがあります (この操作は一度だけ実行する必要があります)。
 
 ## <a name="next-steps"></a>次の手順
 

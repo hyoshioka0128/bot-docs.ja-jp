@@ -6,15 +6,16 @@ author: dashel
 ms.author: dashel
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 09/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2d32e618325e9ddc4abb5c3b42114c86c7644001
-ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
+ms.openlocfilehash: 09ace7b625fe0c66b3ba853249ef5bfc9c32084b
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49315138"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998529"
 ---
 # <a name="send-welcome-message-to-users"></a>ユーザーへのウェルカム メッセージの送信
 
@@ -24,7 +25,7 @@ ms.locfileid: "49315138"
 
 ## <a name="same-welcome-for-different-channels"></a>複数のチャネルに同じウェルカム メッセージを使用する
 
-次の例では、新しい_会話更新_アクティビティを待機し、会話に参加したユーザーに応じてウェルカム メッセージを 1 回だけ送信し、ユーザーの最初の会話入力を無視するための、プロンプト ステータス フラグを設定します。 次のコードでは、[GitHub](https://github.com/Microsoft/BotBuilder-Samples/) リポジトリのウェルカム サンプルを使用しています。
+次の例では、新しい_会話更新_アクティビティを待機し、会話に参加したユーザーに応じてウェルカム メッセージを 1 回だけ送信し、ユーザーの最初の会話入力を無視するための、プロンプト ステータス フラグを設定します。 下のコード例では、GitHub リポジトリにある [C#](https://aka.ms/bot-welcome-sample-cs) 用および [JS](https://aka.ms/bot-welcome-sample-js) 用の各ウェルカム ユーザー サンプルを使用しています。
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -176,6 +177,16 @@ class MainDialog {
                 // Set the flag indicating the bot handled the user's first message.
                 await this.welcomedUserPropery.set(turnContext, true);
             }
+            . . .
+            
+            // Save state changes
+            await this.userState.saveChanges(turnContext);
+        } else if (turnContext.activity.type === ActivityTypes.ConversationUpdate) {
+            // Send greeting when users are added to the conversation.
+            await this.sendWelcomeMessage(turnContext);
+        } else {
+            // Generic message for all other activities
+            await turnContext.sendActivity(`[${ turnContext.activity.type } event detected]`);
         }
     }
     

@@ -5,18 +5,22 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: ac984609acfdd8f85088bd47ccded1f45e953b2c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f0985f28fd1744bcfb6bf5cea1c2230254670e01
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39302825"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000209"
 ---
 # <a name="end-a-conversation"></a>会話を終了する
 
 クライアントまたはボットは、**endOfConversation** [アクティビティ](bot-framework-rest-connector-activities.md)を送信することによって、Direct Line 会話の終了を通知することができます。 
+
+> [!NOTE] 
+> endOfConversation イベントは Cortana チャネルでのみサポートされ、他のチャネルではこの機能は実装されません。 endOfConversation アクティビティに対する反応がどのようなものになるかは、チャネルごとに決定されます。 DirectLine クライアントを設計している場合は、既に終了した会話にボットがアクティビティを送信したときにエラーを生成するなど、クライアントが適切に動作するよう更新します。
 
 ## <a name="send-an-endofconversation-activity"></a>endOfConversation アクティビティを送信する
 
@@ -60,4 +64,4 @@ HTTP/1.1 200 OK
 
 - [主要な概念](bot-framework-rest-direct-line-3-0-concepts.md)
 - [認証](bot-framework-rest-direct-line-3-0-authentication.md)
-- [ボットにアクティビティを送信する](bot-framework-rest-direct-line-3-0-send-activity.md)
+- [ボットへのアクティビティの送信](bot-framework-rest-direct-line-3-0-send-activity.md)
