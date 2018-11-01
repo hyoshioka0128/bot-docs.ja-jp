@@ -28,7 +28,6 @@
 ### [モノのインターネット ボット](bot-service-scenario-internet-things.md)
 # 操作方法
 ## [Design (デザイン)](design/TOC.md)
-## [管理](manage/TOC.md)
 ## 開発
 ### [ユーザーへのウェルカム メッセージの送信](v4sdk/bot-builder-send-welcome-message.md)
 ### [テキストと音声メッセージの送信](v4sdk/bot-builder-howto-send-messages.md)
@@ -48,13 +47,15 @@
 ### [LUIS を使用した言語の理解](v4sdk/bot-builder-howto-v4-luis.md)
 ### [QnA Maker を使用して質問に回答する](v4sdk/bot-builder-howto-qna.md)
 ### [ボットへの認証の追加](v4sdk/bot-builder-authentication.md)
-### [ボット コードをダウンロードして再デプロイする](bot-service-build-download-source-code.md)
-### [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)
-### [ローカルのボットを Azure にデプロイする](bot-builder-howto-deploy-azure.md)
 ### [チャネル固有の機能の実装](v4sdk/bot-builder-channeldata.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
 ## [デバッグ](debug/TOC.md)
+## デプロイ
+### [ボット コードをダウンロードして再デプロイする](bot-service-build-download-source-code.md)
+### [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)
+### [ローカルのボットを Azure にデプロイする](bot-builder-howto-deploy-azure.md)
+## [管理](manage/TOC.md)
 # リファレンス
 ## [Bot Builder ツール](bot-builder-tools.md)
 ## [.NET SDK v4](https://aka.ms/dotnetsdk4)

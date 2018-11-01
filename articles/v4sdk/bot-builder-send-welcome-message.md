@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/23/2018
+ms.date: 10/31/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 09ace7b625fe0c66b3ba853249ef5bfc9c32084b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f5549385106cab890269e9a5fafacc00dc331520
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998529"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736610"
 ---
 # <a name="send-welcome-message-to-users"></a>ユーザーへのウェルカム メッセージの送信
 
@@ -26,6 +26,8 @@ ms.locfileid: "49998529"
 ## <a name="same-welcome-for-different-channels"></a>複数のチャネルに同じウェルカム メッセージを使用する
 
 次の例では、新しい_会話更新_アクティビティを待機し、会話に参加したユーザーに応じてウェルカム メッセージを 1 回だけ送信し、ユーザーの最初の会話入力を無視するための、プロンプト ステータス フラグを設定します。 下のコード例では、GitHub リポジトリにある [C#](https://aka.ms/bot-welcome-sample-cs) 用および [JS](https://aka.ms/bot-welcome-sample-js) 用の各ウェルカム ユーザー サンプルを使用しています。
+
+[!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

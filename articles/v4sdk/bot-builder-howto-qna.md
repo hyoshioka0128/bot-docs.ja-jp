@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 10/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3d488cc2bb61ef460ed45707596cb7db9e6c23e8
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 4558a90b7d205d416657450224e2ab4892586b25
+ms.sourcegitcommit: 6ed90a4c90add925a0a865be1127041b7775fd3d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999086"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234465"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>QnA Maker を使用して質問に回答する
 
@@ -68,7 +68,7 @@ npm install --save botbuilder-ai
 3. 次のコマンドを実行してメタデータをダウンロードし、ボットの構成ファイルに追加します。
 
     ```shell
-    qnamaker get kb --kbId <your-kb-id> --msbot | msbot connect qna --stdin [--secret <your-secret>]
+    qnamaker get kb --kbId <your-kb-id> --msbot | msbot connect qna --stdin [ --secret <your-secret>]
     ```
 構成ファイルを暗号化した場合、ファイルを更新するためには秘密鍵を指定する必要があります。
 
