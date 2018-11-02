@@ -889,9 +889,9 @@ address
 * `type` ("`payment`")
 * `title`
 * `image`
-* `value` (複合型の [Payment Request](#payment-request))
+* `value` (複合型の [支払要求](#payment-request))
 
-`R7450`: 送信者は、型 [Payment Request](#payment-request) の複合オブジェクトを `payment` アクションの `value` フィールドに含める必要があります (MUST)。
+`R7450`: 送信者は、型 [支払要求](#payment-request) の複合オブジェクトを `payment` アクションの `value` フィールドに含める必要があります (MUST)。
 
 `R7451`: チャネルは、`value` フィールドが欠落しているか、種類が[支払要求](#payment-request)の複合オブジェクトではない `payment` アクションを拒否する必要があります (MUST)。
 
