@@ -47,6 +47,7 @@
 ### [LUIS を使用した言語の理解](v4sdk/bot-builder-howto-v4-luis.md)
 ### [QnA Maker を使用して質問に回答する](v4sdk/bot-builder-howto-qna.md)
 ### [ボットへの認証の追加](v4sdk/bot-builder-authentication.md)
+### [ボットのカスタム ストレージの実装](v4sdk/bot-builder-custom-storage.md)
 ### [チャネル固有の機能の実装](v4sdk/bot-builder-channeldata.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
