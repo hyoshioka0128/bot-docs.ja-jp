@@ -1,5 +1,5 @@
 ---
-title: プリミティブなプロンプトを使用して会話フローを管理する | Microsoft Docs
+title: ユーザー入力を収集するために独自のプロンプトを作成する | Microsoft Docs
 description: Bot Builder SDK でプリミティブなプロンプトを使用して会話フローを管理する方法について説明します。
 keywords: 会話フロー, プロンプト
 author: v-ducvo
@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 7/20/2018
+ms.date: 10/20/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0b563197c111a37cf2f0f14fef183d52f38cca66
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 019902cbb42d8a583e9912804684d1d9a6539a59
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999165"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736640"
 ---
-# <a name="prompt-users-for-input-using-your-own-prompts"></a>独自のプロンプトを使用してユーザーに入力を求める
+# <a name="create-your-own-prompts-to-gather-user-input"></a>ユーザー入力を収集するために独自のプロンプトを作成する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 

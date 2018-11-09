@@ -7,13 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 10/08/2018
-ms.openlocfilehash: 3ca80439a44ac7e715d19f8e47683ac9b5a5721a
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 10/31/2018
+ms.openlocfilehash: 616c3bfd5fcb36c06f4e2acf032ba3cf5fc125d3
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998879"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736700"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -89,14 +89,15 @@ Azure Bot Service には、インテリジェントなボットの作成、テ�
 ボットは、ファイルの読み取りと書き込み、データベースや API の使用、一般的な計算タスクの実行といった、他の種類のソフトウェアと同じ操作を実行できます。 ボットの特徴は、人と人のコミュニケーションによく見られるメカニズムを使用する点にあります。 
 
 ボットは、通常、次のコンポーネントで構成されています。
-* Web サーバー (ほとんどの場合、パブリック インターネット上で利用可能な Web サーバー)
-* Bot Builder SDK と Bot Builder ツール (ボットを開発するためのインターフェイスを提供します)
-* Azure Cognitive Service 
-* Azure Storage
+
+- Web サーバー (ほとんどの場合、パブリック インターネット上で利用可能な Web サーバー)
+- Bot Builder SDK と Bot Builder ツール (ボットを開発するためのインターフェイスを提供します)
+- Azure Cognitive Services
+- Azure Storage
 
 ## <a name="building-a-bot"></a>ボットの作成 
 
-Azure Bot Service は、このプロセスを容易にするために、統合された一連のツールとサービスを提供します。 開発者は好みの開発環境やコマンド ライン ツールを選び、C#、JavaScript、または Typescript を使ってボットを作成できます (Java と Python も利用できるようになります)。ボット開発の各ステージのためにツールが用意されており、ボットを作成して作業を始めるためにご使用いただけます。
+Azure Bot Service は、このプロセスを容易にするために、統合された一連のツールとサービスを提供します。 開発者は好みの開発環境やコマンド ライン ツールを選んで、ボットを作成できます。 C#、JavaScript、および TypeScript 用の SDK が存在します  (Java と Python 用の SDK は現在開発中です)。ボット開発のさまざまなステージ用にツールが用意されており、ボットの設計と構築に役立てることができます。
 
 ![ボットの概要](media/bot-service-overview.png) 
 

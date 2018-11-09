@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 6ee7120536d42257dde2ed1411df32d807268e33
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3e99828e7c26b10c39bef4c8db79f92ff5f2b30c
+ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000021"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50134712"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>ボットを Bot Framework API v3 にアップグレードする
 
@@ -23,53 +23,73 @@ Build 2016 で、Microsoft は Microsoft Bot Framework と Bot Connector API の
 
 ## <a name="step-1-get-your-app-id-and-password-from-the-bot-framework-portal"></a>手順 1: Bot Framework ポータルからアプリ ID とパスワードを取得する
 
-[Bot Framework ポータル](https://dev.botframework.com/)にサインインし、**[My bots]\(マイ ボット\)** をクリックしてボットを選択してから、そのダッシュボードを開きます。 次に、ページの右上隅の近くにある **[SETTINGS]\(設定\)** リンクをクリックします。 
+[Bot Framework ポータル](https://dev.botframework.com/)にサインインし、**[My bots]\(マイ ボット\)** をクリックしてボットを選択してから、そのダッシュボードを開きます。 次に、ページ左側の **[ボット管理]** の下にある **[設定]** リンクをクリックします。 
 
-設定ページの **[Configuration]\(構成\)** セクション内で、**[App ID]\(アプリ ID\)** フィールドの内容を調べ、**[App ID]\(アプリ ID\)** フィールドが既に設定されているかどうかに応じて次の手順に進みます。
+設定ページの **[構成]** セクション内で、**[Microsoft App ID]\(Microsoft アプリ ID\)** フィールドの内容を調べ、次の手順に進みます。
 
-### <a name="case-1-app-id-field-is-already-populated"></a>ケース 1: [App ID]\(アプリ ID\) フィールドが既に設定されている
+<!-- TODO: Remove this 
+### Case 1: App ID field is already populated
 
-**[App ID]\(アプリ ID\)** フィールドが既に設定されている場合は、次の手順を実行します。
+If the **App ID** field is already populated, complete these steps:
+-->
 
 1. **[Manage Microsoft App ID and password]\(Microsoft アプリ ID とパスワードの管理\)** をクリックします。  
-![構成](~/media/upgrade/manage-app-id.png)
+![構成](./media/upgrade/manage-app-id.png)
 
 2. **[Generate New Password]\(新しいパスワードを生成\)** をクリックします。  
-![新しいパスワードを生成](~/media/upgrade/generate-new-password.png)
+![新しいパスワードを生成](./media/upgrade/generate-new-password.png)
 
 3. 新しいパスワードと MSA アプリ ID をコピーして保存します。これらの値は、後で必要になります。  
-![新しいパスワード](~/media/upgrade/new-password-generated.png)
+![新しいパスワード](./media/upgrade/new-password-generated.png)
 
-### <a name="case-2-app-id-field-is-empty"></a>ケース 2: [App ID]\(アプリ ID\) フィールドが空である
+こちらの[手順](https://blog.botframework.com/2018/07/03/find-your-azure-bots-appid-and-appsecret/)に従って、ご自身の **Microsoft アプリ ID とパスワード**を取得する別の方法を実行することもできます。
 
-**[App ID]\(アプリ ID\)** フィールドが空である場合は、次の手順を実行します。
+<!-- TODO: These steps are no longer valid. AppID will always be generated, confirmed with Support Engineers
+### Case 2: App ID field is empty
 
-1. **[Create Microsoft App ID and password]\(Microsoft アプリ ID とパスワードの作成\)** をクリックします。  
-   ![アプリ ID とパスワードの作成](~/media/upgrade/generate-appid-and-password.png)
+If the **App ID** field is empty, complete these steps:
+
+1. Click **Create Microsoft App ID and password**.  
+   ![Create App ID and password](~/media/upgrade/generate-appid-and-password.png)
    > [!IMPORTANT]
-   > まだ **[Version 3.0]\(バージョン 3.0\)** ボタンを選択しないでください。 この操作は、[ボット コードを更新](#update-code)した後で行います。</div>
+   > Do not select the **Version 3.0** radio button yet. You will do this later, after you have [updated your bot code](#update-code).</div>
 
-2. **[Generate a password to continue]\(パスワードを生成して続行する\)** をクリックします。  
-   ![アプリのパスワードを生成する](~/media/upgrade/generate-a-password-to-continue.png)
+2. Click **Generate a password to continue**.  
+   ![Generate app password](~/media/upgrade/generate-a-password-to-continue.png)
 
-3. 新しいパスワードと MSA アプリ ID をコピーして保存します。これらの値は、後で必要になります。  
-   ![新しいパスワード](~/media/upgrade/new-password-generated.png)
+3. Copy and save the new password along with the MSA App Id; you will need these values in the future.  
+   ![New password](~/media/upgrade/new-password-generated.png)
 
-4. **[Finish and go back to Bot Framework]\(終了してボットのフレームワークに戻る\)** をクリックします。  
-   ![終了してポータルに戻る](~/media/upgrade/finish-and-go-back-to-bot-framework.png)
+4. Click **Finish and go back to Bot Framework**.  
+   ![Finish and go back to Portal](~/media/upgrade/finish-and-go-back-to-bot-framework.png)
 
-5. Bot Framework ポータルのボット設定ページに戻り、ページの一番下までスクロールして、**[Save changes]\(変更を保存\)** をクリックします。  
-   ![変更を保存](~/media/upgrade/save-changes.png)
+5. Back on the bot settings page in the Bot Framework Portal, scroll to the bottom of the page and click **Save changes**.  
+   ![Save changes](~/media/upgrade/save-changes.png)
+-->
 
-## <a id="update-code"></a> 手順 2: ボット コードをバージョン 3.0 に更新する
+## <a id="update-code"></a> 手順 2: ボット コードをバージョン 4.0 に更新する
 
-ボット コードをバージョン 3.0 に更新するには、次の手順に従います。
+V1 のボットは互換性がなくなりました。 お使いのボットを更新するには、V3 で新しいボットを作成する必要があります。 使用中の古いコードを保持する必要がある場合は、そのコードを手動で移行する必要があります。
 
-1. ボットの言語用の [Bot Builder SDK](https://github.com/Microsoft/BotBuilder) の最新バージョンに更新します。
-2. 以下のガイダンスに従って、必要な変更が適用されるようにコードを更新します。
-3. [Bot Framework Emulator](~/bot-service-debug-emulator.md) を使用してボットをローカルでテストし、その後クラウドでテストします。
+最も簡単な解決策は、ご自身のボットを新しい [SDK](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0) で再作成し、デプロイすることです。 
 
-以降のセクションでは、API v1 と API v3 の主な違いについて説明します。 コードを API v3 に更新した後、Bot Framework ポータルで[ボット設定を更新](#step-3)することで、アップグレード プロセスを完了することができます。
+使用中の古いコードを保持するには、次の手順に従ってください。
+
+1. 新しいボット アプリケーションを作成します。
+2. 古いコードを新しいボット アプリケーションにコピーします。
+3. NuGet パッケージ マネージャーを使用して、SDK を最新バージョンにアップグレードします。
+4. 表示されたすべてのエラーを修正し、新しい [SDK](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0) を参照します。
+5. 次の[手順](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0)に従って、ご自身のボットを Azure にデプロイします
+
+<!-- TODO: Remove outdated code 
+To update your bot code to version 3.0, complete these steps:
+
+1. Update to the latest version of the [Bot Builder SDK](https://github.com/Microsoft/BotBuilder) for your bot's language.
+2. Update your code to apply the necessary changes, according the guidance below.
+3. Use the [Bot Framework Emulator](~/bot-service-debug-emulator.md) to test your bot locally and then in the cloud.
+
+The following sections describe the key differences between API v1 and API v3. After you have updated your code to API v3, you can finish the upgrade process by [updating your bot settings](#step-3) in the Bot Framework Portal.
+-->
 
 ### <a name="botbuilder-and-connector-are-now-one-sdk"></a>BotBuilder と Connector が 1 つの SDK に
 
@@ -143,21 +163,23 @@ Bot Framework API v3 では、認証プロパティを以下のキーで **Web.C
 - `MicrosoftAppID`
 - `MicrosoftAppPassword`
 
-## <a id="step-3"></a> 手順 3: Bot Framework ポータルでボット設定を更新する
+## <a id="step-3"></a> 手順 3: ご自身の更新ボットを Azure にデプロイする。
 
-ボット コードを API v3 にアップグレードしてクラウドにデプロイした後、次の手順を実行してアップグレード プロセスを完了します。 
+ご自身のボット コードを API v3 にアップグレードしたら、こちらの[手順](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0)に従って、そのボットを Azure にデプロイします。 V1 はサポートされていないため、Azure サービスにデプロイされたすべてのボットで V3 API が自動的に使用されます。
 
-1. [Bot Framework ポータル](https://dev.botframework.com/)にサインインします。
+<!-- TODO: Documentation set for removal 
+1. Sign in to the [Bot Framework Portal](https://dev.botframework.com/).
 
-2. **[My bots]\(マイ ボット\)** をクリックし、ボットを選択してダッシュボードを開きます。 
+2. Click **My bots** and select your bot to open its dashboard. 
 
-3. ページの右上隅の近くにある **[SETTINGS]\(設定\)** リンクをクリックします。 
+3. Click the **SETTINGS** link that is located near the top-right corner of the page. 
 
-4. **[Configuration]\(構成\)** セクション内の **[Version 3.0]\(バージョン 3.0\)** で、ボットのエンドポイントを **[Messaging endpoint]\(メッセージング エンドポイント\)** フィールドに貼り付けます。  
-![バージョン 3 の構成](~/media/upgrade/paste-new-v3-enpoint-url.png)
+4. Under **Version 3.0** within the **Configuration** section, paste your bot's endpoint into the **Messaging endpoint** field.  
+![Version 3 configuration](~/media/upgrade/paste-new-v3-enpoint-url.png)
 
-5. **[Version 3.0]\(バージョン 3.0\)** ボタンを選択します。  
-![バージョン 3.0 を選択する](~/media/upgrade/switch-to-v3-endpoint.png)
+5. Select the **Version 3.0** radio button.  
+![Select version 3.0](~/media/upgrade/switch-to-v3-endpoint.png)
 
-6. ページの下部までスクロールし、**[Save changes]\(変更の保存\)** をクリックします。  
-![変更を保存](~/media/upgrade/save-changes.png)
+6. Scroll to the bottom of the page and click **Save changes**.  
+![Save changes](~/media/upgrade/save-changes.png)
+-->

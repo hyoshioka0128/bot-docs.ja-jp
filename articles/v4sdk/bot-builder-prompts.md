@@ -1,6 +1,6 @@
 ---
-title: ダイアログ ライブラリを使用してユーザーに入力を求める | Microsoft Docs
-description: Bot Builder SDK for Node.js で、ダイアログ ライブラリを使用してユーザーに入力を求める方法について説明します。
+title: ユーザー入力を収集するためにダイアログ ライブラリを使用する | Microsoft Docs
+description: Bot Builder SDK で、ダイアログ ライブラリを使用してユーザーに入力を求める方法について説明します。
 keywords: プロンプト, ダイアログ, AttachmentPrompt, ChoicePrompt, ConfirmPrompt, DatetimePrompt, NumberPrompt, TextPrompt, 再プロンプト, 検証
 author: v-ducvo
 ms.author: v-ducvo
@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 9/25/2018
+ms.date: 10/25/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bd1fe8516cddaf2b75d3c11b469e372265b59be3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 9b668ed67c34dcd0f8618852375e684b23e34408
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997629"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736690"
 ---
-# <a name="prompt-users-for-input-using-the-dialogs-library"></a>ダイアログ ライブラリを使用してユーザーに入力を求める
+# <a name="use-dialog-library-to-gather-user-input"></a>ユーザー入力を収集するためにダイアログ ライブラリを使用する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 

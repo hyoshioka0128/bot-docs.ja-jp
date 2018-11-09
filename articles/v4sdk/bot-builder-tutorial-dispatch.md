@@ -1,5 +1,5 @@
 ---
-title: ディスパッチ ツールを使用して複数の LUIS と QnA サービスを統合する | Microsoft Docs
+title: ディスパッチ ツールで LUIS と QnA サービスを使用する | Microsoft Docs
 description: ボットで LUIS や QnA Maker を使用する方法について説明します。
 keywords: Luis, QnA, ディスパッチ ツール, 複数のサービス
 author: DeniseMak
@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/09/2018
+ms.date: 10/31/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e59a7fd86e3802ea23d59a439165a194314639f8
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 4d029dc7361ac8a7fadb61141faf60d8a62eab3c
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997399"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736680"
 ---
-# <a name="integrate-multiple-luis-and-qna-services-with-the-dispatch-tool"></a>ディスパッチ ツールを使用して複数の LUIS と QnA サービスを統合する
+# <a name="use-luis-and-qna-services-with-the-dispatch-tool"></a>ディスパッチ ツールで LUIS と QnA サービスを使用する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -31,7 +31,9 @@ ms.locfileid: "49997399"
 | LUIS アプリ | Weather | 位置データを含む Weather.GetForecast および Weather.GetCondition の各意図を認識します。|
 | QnAMaker サービス | FAQ  | ボットに関するいくつかの簡単な質問への回答を提供します。 |
 
-この記事のコードは **NLP と Dispatch** のサンプル ([C#](https://aka.ms/dispatch-sample-cs)<!-- | [JS](https://aka.ms/dispatch-sample-js)-->) から取得されています。
+この記事のコードは **NLP と Dispatch** のサンプル ([C#](https://aka.ms/dispatch-sample-cs)) から取得されています。
+
+<!-- | [JS](https://aka.ms/dispatch-sample-js)-->
 
 言語サービスの概要については、「[Language Understanding (言語の理解)](bot-builder-concept-luis.md)」を参照してください。 これらをボットに実装する手順については、[LUIS](bot-builder-howto-v4-luis.md) と [QnA Maker](bot-builder-howto-qna.md) に関するハウツー記事を参照してください。
 

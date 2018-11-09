@@ -7,20 +7,22 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dbf2fd06d76b3e79fbcdd30891807ea71329bffd
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 914c33033be3fe35db7cae6d54b5835cb032a5fd
+ms.sourcegitcommit: 984705927561cc8d6a84f811ff24c8c71b71c76b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999059"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50965690"
 ---
 # <a name="localize-form-content"></a>フォームの内容をローカライズする
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-フォームのローカライズ言語は、現在のスレッドの [CurrentUICulture](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentuiculture(v=vs.110).aspx) と [CurrentCulture](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentculture(v=vs.110).aspx) によって決まります。 既定では、カルチャは現在のメッセージの **Locale** フィールドから取得されますが、その既定動作をオーバーライドできます。 ボットの作成方法に応じて、最大 3 つの異なるソースからローカライズされた情報を取得できます。
+フォームのローカライズ言語は、現在のスレッドの [CurrentUICulture](https://msdn.microsoft.com/library/system.threading.thread.currentuiculture(v=vs.110).aspx) と [CurrentCulture](https://msdn.microsoft.com/library/system.threading.thread.currentculture(v=vs.110).aspx) によって決まります。
+既定では、カルチャは現在のメッセージの **Locale** フィールドから取得されますが、その既定動作をオーバーライドできます。
+ボットの作成方法に応じて、最大 3 つの異なるソースからローカライズされた情報を取得できます。
 
 - **PromptDialog** および **FormFlow** に組み込まれているローカライズ
 - フォームの静的な文字列に対してユーザーが生成するリソース ファイル
@@ -28,7 +30,10 @@ ms.locfileid: "49999059"
 
 ## <a name="generate-a-resource-file-for-the-static-strings-in-your-form"></a>フォーム内の静的な文字列のリソース ファイルを生成する
 
-フォームの静的な文字列には、フォームが C# クラスの情報から生成する文字列と、ユーザーがプロンプト、テンプレート、メッセージ、または確認として指定する文字列が含まれます。 組み込まれているテンプレートから生成される文字列は、既にローカライズされているため、静的な文字列とは見なされません。 フォーム内の文字列の多くは自動的に生成されるので、通常の C# リソース文字列を直接使用することはできません。 代わりに、`IFormBuilder.SaveResources` を呼び出すか、または BotBuilder SDK for .NET に含まれる **RView** ツールを使用して、フォーム内の静的文字列のリソース ファイルを生成できます。
+フォームの静的な文字列には、フォームが C# クラスの情報から生成する文字列と、ユーザーがプロンプト、テンプレート、メッセージ、または確認として指定する文字列が含まれます。
+組み込まれているテンプレートから生成される文字列は、既にローカライズされているため、静的な文字列とは見なされません。
+フォーム内の文字列の多くは自動的に生成されるので、通常の C# リソース文字列を直接使用することはできません。
+代わりに、`IFormBuilder.SaveResources` を呼び出すか、または BotBuilder SDK for .NET に含まれる **RView** ツールを使用して、フォーム内の静的文字列のリソース ファイルを生成できます。
 
 ### <a name="use-iformbuildersaveresources"></a>IFormBuilder.SaveResources を使用する
 
@@ -36,7 +41,9 @@ ms.locfileid: "49999059"
 
 ### <a name="use-rview"></a>RView を使用する
 
-もう 1 つの方法として、BotBuilder SDK for .NET に含まれる <a href="https://github.com/Microsoft/BotBuilder/tree/master/CSharp/Tools/RView" target="_blank">RView</a> ツールを使用することで、.dll または .exe に基づくリソース ファイルを生成できます。 .resx ファイルを生成するには、**rview** を実行して、静的フォーム構築メソッドを含むアセンブリとそのメソッドへのパスを指定します。 次のスニペットでは、**RView** を使用して `Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.resx` リソース ファイルを生成する方法を示します。 
+もう 1 つの方法として、BotBuilder SDK for .NET に含まれる <a href="https://aka.ms/v3-cs-RView-library" target="_blank">RView</a> ツールを使用することで、.dll または .exe に基づくリソース ファイルを生成できます。
+.resx ファイルを生成するには、**rview** を実行して、静的フォーム構築メソッドを含むアセンブリとそのメソッドへのパスを指定します。
+次のスニペットでは、**RView** を使用して `Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.resx` リソース ファイルを生成する方法を示します。
 
 ```csharp
 rview -g Microsoft.Bot.Sample.AnnotatedSandwichBot.dll Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.BuildForm
@@ -83,7 +90,7 @@ rview -g Microsoft.Bot.Sample.AnnotatedSandwichBot.dll Microsoft.Bot.Sample.Anno
 
 ### <a name="localize-resource-files"></a>リソース ファイルをローカライズする 
 
-リソース ファイルをプロジェクトに追加した後、<a href="https://developer.microsoft.com/en-us/windows/develop/multilingual-app-toolkit" target="_blank">多言語アプリ ツールキット (MAT)</a> を使用してリソース ファイルをローカライズできます。 **MAT** をインストールした後、以下の手順に従ってプロジェクトで MAT を有効にします。
+リソース ファイルをプロジェクトに追加した後、<a href="https://developer.microsoft.com/windows/develop/multilingual-app-toolkit" target="_blank">多言語アプリ ツールキット (MAT)</a> を使用してリソース ファイルをローカライズできます。 **MAT** をインストールした後、以下の手順に従ってプロジェクトで MAT を有効にします。
 
 1. Visual Studio のソリューション エクスプローラーでプロジェクトを選択します。
 2. **[ツール]**、**[Multilingual App Toolkit]\(多言語アプリ ツールキット\)**、**[有効にする]** の順にクリックします。

@@ -1,19 +1,19 @@
 ---
 title: API リファレンス | Microsoft Docs
 description: Bot Connector サービスと Bot State サービスのヘッダー、操作、オブジェクト、およびエラーについて説明します。
-author: RobStand
-ms.author: kamrani
+author: ivorb
+ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: cd4a0dd73feb18aa6f82699a51ab086c55c5d2cf
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 10/24/2018
+ms.openlocfilehash: 18f353ce6535dd56ca7a581776fdfab822555f2d
+ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998312"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50134742"
 ---
 # <a name="api-reference"></a>API リファレンス
 
@@ -130,6 +130,7 @@ Authorization: Bearer ACCESS_TOKEN
 | [会話に送信する](#send-to-conversation) | 指定された会話の最後にアクティビティ (メッセージ) を送信します。 | 
 | [アクティビティに返信する](#reply-to-activity) | 指定されたアクティビティへの返信として、指定された会話にアクティビティ (メッセージ) を送信します。 | 
 | [会話のメンバーを取得する](#get-conversation-members) | 指定された会話のメンバーを取得します。 |
+| [会話のページングされたメンバーを取得する](#get-conversation-paged-members) | 指定された会話のメンバーを一度に 1 ページずつ取得します。 |
 | [アクティビティのメンバーを取得する](#get-activity-members) | 指定された会話内の指定されたアクティビティのメンバーを取得します。 | 
 | [アクティビティを更新する](#update-activity) | 既存のアクティビティを更新します。 | 
 | [アクティビティを削除する](#delete-activity) | 既存のアクティビティを削除します。 | 
@@ -178,6 +179,17 @@ GET /v3/conversations/{conversationId}/members
 |----|----|
 | **要求本文** | 該当なし |
 | **戻り値** | [ChannelAccount](#channelaccount-object) オブジェクトの配列 | 
+
+### <a name="get-conversation-paged-members"></a>会話のページングされたメンバーを取得する
+指定された会話のメンバーを一度に 1 ページずつ取得します。
+```http
+GET /v3/conversations/{conversationId}/pagedmembers
+```
+
+| | |
+|----|----|
+| **要求本文** | 該当なし |
+| **戻り値** | [ChannelAccount](#channelaccount-object) オブジェクトの配列と、さらに値を取得するときに使用できる継続トークン|
 
 ### <a name="get-activity-members"></a>アクティビティのメンバーを取得する
 指定された会話内の指定されたアクティビティのメンバーを取得します。
@@ -386,7 +398,7 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | [ThumbnailCard オブジェクト](#thumbnailcard-object) | サムネイル画像、タイトル、テキスト、アクションの各ボタンを持つカードを定義します。 |
 | [ThumbnailUrl オブジェクト](#thumbnailurl-object) | 画像のソース URL を定義します。 |
 | [VideoCard オブジェクト](#videocard-object) | ビデオを再生できるカードを定義します。 |
-
+| [SemanticAction オブジェクト](#semanticaction-object) | プログラムによるアクションへの参照を定義します。 |
 
 ### <a name="activity-object"></a>Activity オブジェクト
 ボットとユーザーの間で交換されるメッセージを定義します。<br/><br/> 
@@ -423,6 +435,7 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | **topicName** | string | アクティビティが属する会話のトピック。 |
 | **type** | string | アクティビティの種類。 次の値のいずれか: **contactRelationUpdate**、**conversationUpdate**、**deleteUserData**、**message**、**typing**、**endOfConversation**。 アクティビティの種類の詳細については、「[Activities overview](bot-framework-rest-connector-activities.md)」(アクティビティの概要) を参照してください。 |
 | **value** | オブジェクト | 拡張可能な値。 |
+| **semanticAction** |[SemanticAction](#semanticaction-object) | プログラムによるアクションへの参照を表す **SemanticAction** オブジェクト。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -852,5 +865,15 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 | **text** | string | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
 | **title** | string | カードのタイトル。 |
 | **value** | オブジェクト | このカードの補助パラメーター|
+
+<a href="#objects">スキーマの表に戻る</a>
+
+### <a name="semanticaction-object"></a>SemanticAction オブジェクト
+プログラムによるアクションへの参照を定義します。<br/><br/>
+
+| プロパティ | type | 説明 |
+|----|----|----|
+| **id** | string | このアクションの ID |
+| **entities** | [エンティティ](#entity-object) | このアクションに関連付けられているエンティティ |
 
 <a href="#objects">スキーマの表に戻る</a>

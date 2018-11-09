@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 32be8e2a4047c3c25dcdf2598eea3a7bbd12fbcc
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 06e91d4b7d320078e83c3523e1326b82ee3fe759
+ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999029"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50134702"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Enterprise Bot Template - ボットのデプロイ
 
@@ -21,6 +21,8 @@ ms.locfileid: "49999029"
 > このトピックは、SDK の v4 バージョンに適用されます。 
 
 ## <a name="prerequisites"></a>前提条件
+
+- [.NET Core](https://www.microsoft.com/net/download) が最新バージョンに更新されていることを確認する。
 
 - [Node パッケージ マネージャー](https://nodejs.org/en/)がインストールされていることを確認する。
 
@@ -40,7 +42,7 @@ az extension add -n botservice
 ## <a name="configuration"></a>構成
 
 - LUIS のオーサリング キーを取得する
-   - デプロイする予定のリージョンの正しい LUIS ポータルについては、[こちら](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions)のドキュメント ページをご覧ください。 
+   - デプロイする予定のリージョンの正しい LUIS ポータルについては、[こちら](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions)のドキュメント ページをご覧ください。 www.luis.ai は米国リージョンを指し、このポータルから取得したオーサリング キーはヨーロッパのデプロイでは動作しないことに注意してください。
    - サインインした後は、右上隅にある自分の名前をクリックします。
    - [設定] を選択し、次の手順に備えてオーサリング キーをメモします。
 
@@ -68,13 +70,13 @@ Enterprise Template Bot のエンド ツー エンドの操作には、次の依
 
 > デプロイ後、作成したサービスの価格レベルを確認し、シナリオに合わせて調整します。
 
-作成したプロジェクト内の README.md には、作成したボット名とジェネリック バージョンで更新された msbot クローン サービスのコマンド ラインのサンプルが含まれています。以下にそれを示します。 前の手順からオーサリング キーが更新されていることを確認し、使用する Azure データセンターの場所 (米国西部、西ヨーロッパなど) を選択します。
-
-> 前の手順で取得した LUIS のオーサリング キーが、以下で指定するリージョンのキーであることを確認します。
+作成したプロジェクト内の README.md には、作成したボット名とジェネリック バージョンで更新された msbot クローン サービスのコマンド ラインのサンプルが含まれています。以下にそれを示します。 前の手順からオーサリング キーが更新されていることを確認し、使用する Azure データセンターの場所 (米国西部、西ヨーロッパなど) を選択します。 前の手順で取得した LUIS のオーサリング キーが、以下で指定するリージョン (luis.ai の場合は米国西部、eu.luis.ai の場合は西ヨーロッパなど) のキーであることを確認します
 
 ```shell
-msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "westus"
+msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "YOUR_REGION"
 ```
+
+> 一部のユーザーについては既知の問題があり、デプロイを実行するときに `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again` というエラーが発生する可能性があります。 この場合は、 https://apps.dev.microsoft.com を参照し、ApplicationID とパスワード/シークレットを取得する新しいアプリケーションを手動で作成してください。 上記の msbot クローン サービス コマンドを実行するときに、2 つの新しい引数 `appId` および `appSecret` を指定して、取得した値を渡します。
 
 msbot ツールに、場所や SKU など、デプロイ計画の概要が表示されます。 続行する前に確認してください。
 

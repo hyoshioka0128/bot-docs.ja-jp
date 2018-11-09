@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/18/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 972df2a12ffa7901ed4e4ecf14ce99233293c5a2
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 2a3709111b048730805b5578306c669591122dda
+ms.sourcegitcommit: 633008f8db06f1bb5be7bacdb7dd8de6f8165328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997709"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50753610"
 ---
 # <a name="manage-conversation-and-user-state"></a>会話とユーザー状態を管理する
 
@@ -63,8 +63,6 @@ public class UserProfile
 
 以下に示すように、コンストラクターを更新して `UserState` を追加しました。
 ```csharp
-using EchoBotWithCounter;
-
 public EchoBotAccessors(ConversationState conversationState, UserState userState)
 {
     ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
@@ -138,8 +136,6 @@ services.AddSingleton<EchoBotAccessors>(sp =>
 `EchoWithCounterBot : IBot` クラスの `OnTurnAsync` ハンドラーで、ユーザーに名前、その後電話番号を求めるようにコードを変更します。 会話内でどこにいるかをトラックするには、TopicState で定義した Prompt プロパティを使用します。 このプロパティは初期化された "askName" でした。 ユーザー名を取得した後は、それを "askNumber" に設定し、UserName をユーザーが入力した名前に設定します。 電話番号を取得した後は、会話の最後であるため、確認メッセージを送信し、プロンプトを 'confirmation' に設定します。
 
 ```csharp
-using EchoBotWithCounter;
-
 if (turnContext.Activity.Type == ActivityTypes.Message)
 {
     // Get the conversation state from the turn context.
@@ -305,7 +301,7 @@ if (turnContext.activity.type === 'message') {
     
 }
 else {
-    await turnContext.sendActivity(`[${context.activity.type} event detected]`);
+    await turnContext.sendActivity(`[${turnContext.activity.type} event detected]`);
 }
 ```
 
@@ -322,8 +318,9 @@ else {
 
 ### <a name="interact-with-your-bot"></a>ボットでのやり取り
 
-メッセージをボットに送信します。ボットはメッセージで応答します。
-![実行中のエミュレーター](../media/emulator-v4/emulator-running.png)
+お使いのボットに "Hi" というメッセージを送信すると、そのボットによって、名前と電話番号を指定するように求められます。 その情報の入力後、ボットにより確認メッセージが送信されます。 操作を続行すると、ボットによって同じサイクルがもう一度繰り返されます。
+
+![実行中のエミュレーター](../media/emulator-v4/emulator-running-manage-state.png)
 
 状態を自身で管理することを選択した場合は、[独自のプロンプトで会話フローを管理する](bot-builder-primitive-prompts.md)方法に関する記事をご覧ください。 または、ウォーターフォール ダイアログを使用します。 ダイアログは会話の状態を自動的に追跡するので、ユーザーは状態を追跡するためのフラグを作成する必要はありません。 詳しくは、[ダイアログを使用した簡単な会話の管理](bot-builder-dialog-manage-conversation-flow.md)に関する記事をご覧ください。
 

@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 9/26/2018
+ms.date: 10/31/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fde88929c688c25d473ce8242ebfd5d44dc3a22f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f86c666b7a8ff754681a7eca7005fc42676705fc
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998129"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736710"
 ---
 # <a name="understanding-how-bots-work"></a>ボットのしくみについて
 
@@ -41,7 +41,7 @@ ms.locfileid: "49998129"
 
 ### <a name="defining-a-turn"></a>ターンの定義
 
-ここで扱うボットに関して、アクティビティの到着に関連したあらゆる処理の説明に、ターンという言葉が使用されています。 
+人が会話するときは、通常、代わる代わる順番に話します。 ボットの場合、一般的には、ボットがユーザー入力に反応します。 Bot Builder SDK では、"_ターン_" は、ボットがユーザーから受信するアクティビティと、ボットが即時応答としてユーザーに送り返すアクティビティで構成されています。 ターンは、特定のアクティビティの到着に関連付けられた処理として考えることができます。
 
 "*ターン コンテキスト*" オブジェクトは、アクティビティに関する情報 (送信者と受信者やチャネル、アクティビティの処理に必要なその他のデータなど) を提供します。 また、ターン中に、ボットの各種レイヤーの境界を越えて情報を追加することもできます。
 
@@ -75,8 +75,7 @@ ms.locfileid: "49998129"
 
 このことはまた、独立したアクティビティ呼び出しでは、タスク間で複雑さが異なる場合は特に、応答の順序が保証されないことも意味しています。 ご利用のボットで受信アクティビティに対する応答を複数作成できる場合は、ユーザーが応答を受け取る順番に関係なく、それらの応答が意味を成すことを確認します。 その唯一の例外は、"*アクティビティの送信*" メソッドです。このメソッドでは、一連のアクティビティを順序付けして送信することができます。
 
-> [!IMPORTANT]
-> プライマリ ボット ターンが完了すると、それを処理していたスレッドによってコンテキスト オブジェクトの破棄処理が行われます。 **いずれのアクティビティ呼び出しに対しても必ず `await` を実行**します。これにより、プライマリ スレッドでは生成されたアクティビティで待機してから、その処理が終了され、ターン コンテキストの破棄が行われます。 そうしないと、応答 (そのハンドラーも含まれる) にかなりの時間がかかり、コンテキスト オブジェクトに基づいた処理が試みられた場合、`Context was disposed` エラーが返されることがあります。 
+[!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
 ## <a name="response-event-handlers"></a>応答イベント ハンドラー
 
@@ -92,6 +91,8 @@ ms.locfileid: "49998129"
 ## <a name="bot-structure"></a>ボットの構造
 
 カウンター付きのエコー ボット ([C#](https://aka.ms/EchoBotWithStateCSharp) | [JS](https://aka.ms/EchoBotWithStateJS)) のサンプルを見て、ボットの主要な要素を確認してみましょう。
+
+[!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 

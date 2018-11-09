@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: tools
-ms.date: 08/31/2018
+ms.date: 10/31/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b614b11852516ec8dd426d210aacc85a0f39c813
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 8a59c0a8b7ee664cdb38ab9d0cb186114938d73f
+ms.sourcegitcommit: 782b3a2e788c25effd7d150a070bd2819ea92dad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999419"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50743666"
 ---
 # <a name="create-bots-with-azure-cli"></a>Azure CLI を使用したボットの作成
 
@@ -74,9 +74,11 @@ az bot [command]
 CLI から新しいボットを作成するには、既存の[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を選択するか、新規に作成する必要があります。 
 
 ```azurecli
-az bot create --resource-group "my-resource-group" --name "my-bot-name" --kind "my-resource-type" --version v3 --description "description-of-my-bot"
+az bot create --resource-group "my-resource-group" --name "my-bot-name" --kind "my-resource-type" --version v3 --description "description-of-my-bot" --lang "programming-language"
 ```
-`--kind` に使用できる値は `function, registration, webapp`、`--version` に使用できる値は `v3, v4` です。  要求が成功すると、確認メッセージが表示されます。
+`--kind` に使用できる値は `function, registration, webapp`、`--version` に使用できる値は `v3, v4` です。  `--lang` 引数を指定しないと、.NET ボットが作成されます。 ノードのボットを作成するには、`Node` を使用します。
+
+要求が成功すると、確認メッセージが表示されます。
 ```
 Obtained msa app id and password. Provisioning bot now.
 ```
@@ -91,11 +93,6 @@ Obtained msa app id and password. Provisioning bot now.
 > az account list
 > ```
 
-既定では、新しい .NET ボットが作成されます。 **--lang** 引数を使用して言語を指定することで、プラットフォーム SDK を指定できます。 現時点では、ボットの拡張機能パッケージでは、C# および Node.js ボットの SDK がサポートされています。 たとえば、**Node.js ボットを作成**するには、次のようにします。
-
-```azurecli
-az bot create --resource-group "my-resource-group" --name "my-bot-name" --kind "my-resource-type" --description "description-of-my-bot" --lang Node 
-```
 Azure のリソース グループに新しいエコー ボットがプロビジョニングされます。それをテストするには、Web アプリ ボット ビューのボット管理ヘッダーの下で **[Test in Web Chat]\(Web チャットでのテスト\)** を選択するだけです。 
 
 ![Azure のエコー ボット](media/bot-builder-tools/az-echo-bot.png) 

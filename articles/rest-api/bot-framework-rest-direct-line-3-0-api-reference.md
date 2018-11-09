@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d69f1f658520790ff429ecd25a190319e321164d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 36a95ec60af117a9a13843dc078bd9bd5cfde635
+ms.sourcegitcommit: 6ed90a4c90add925a0a865be1127041b7775fd3d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998109"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234475"
 ---
 # <a name="api-reference---direct-line-api-30"></a>API リファレンス - Direct Line API 3.0
 
@@ -223,5 +223,6 @@ Direct Line 会話を定義します。<br/><br/>
 - `from` プロパティには、クライアントによって選択されたユーザー ID を指定する必要があります。
 - 添付ファイルには、既存のリソースの URL や、Direct Line 添付ファイル エンドポイントを通じてアップロードされた URL を含めることができます。
 - `channelData` プロパティは変更せずに保持されます。
+- JSON にシリアル化されている場合、アクティビティの合計サイズは 300,000 文字以内にする必要があります。
 
 クライアントでは、要求ごとにアクティビティを 1 つ[送信](bot-framework-rest-direct-line-3-0-send-activity.md)できます。 
