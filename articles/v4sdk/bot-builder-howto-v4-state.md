@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/18/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 30ce9c9ff5c458758a4cc9612b8f9947fa12734c
-ms.sourcegitcommit: 782b3a2e788c25effd7d150a070bd2819ea92dad
+ms.openlocfilehash: 2a3709111b048730805b5578306c669591122dda
+ms.sourcegitcommit: 633008f8db06f1bb5be7bacdb7dd8de6f8165328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743656"
+ms.locfileid: "50753610"
 ---
 # <a name="manage-conversation-and-user-state"></a>会話とユーザー状態を管理する
 
@@ -319,7 +319,8 @@ else {
 ### <a name="interact-with-your-bot"></a>ボットでのやり取り
 
 お使いのボットに "Hi" というメッセージを送信すると、そのボットによって、名前と電話番号を指定するように求められます。 その情報の入力後、ボットにより確認メッセージが送信されます。 操作を続行すると、ボットによって同じサイクルがもう一度繰り返されます。
-![実行中のエミュレーター](../media/emulator-v4/emulator-running.png)
+
+![実行中のエミュレーター](../media/emulator-v4/emulator-running-manage-state.png)
 
 状態を自身で管理することを選択した場合は、[独自のプロンプトで会話フローを管理する](bot-builder-primitive-prompts.md)方法に関する記事をご覧ください。 または、ウォーターフォール ダイアログを使用します。 ダイアログは会話の状態を自動的に追跡するので、ユーザーは状態を追跡するためのフラグを作成する必要はありません。 詳しくは、[ダイアログを使用した簡単な会話の管理](bot-builder-dialog-manage-conversation-flow.md)に関する記事をご覧ください。
 
