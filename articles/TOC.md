@@ -13,11 +13,10 @@
 ## [GitHub のサンプル リポジトリ](https://github.com/Microsoft/BotBuilder-Samples/blob/master/readme.md)
 # 概念
 ## [ボットのしくみ](v4sdk/bot-builder-basics.md)
-## [ダイアログ ライブラリ](v4sdk/bot-builder-concept-dialog.md)
-## [ダイアログの状態](v4sdk/bot-builder-dialog-state.md)
 ## [ミドルウェア](v4sdk/bot-builder-concept-middleware.md)
-## [ユーザーの歓迎](v4sdk/bot-builder-welcome-user.md)
-## [言語の理解](v4sdk/bot-builder-concept-luis.md)
+## [ダイアログ ライブラリについて](v4sdk/bot-builder-concept-dialog.md)
+## [ダイアログの状態について](v4sdk/bot-builder-dialog-state.md)
+<!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Bot Service テンプレート](bot-service-concept-templates.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
 ## [ボットの主要シナリオ](bot-service-scenario-overview.md)
@@ -26,31 +25,31 @@
 ### [Enterprise Productivity ボット](bot-service-scenario-enterprise-productivity.md)
 ### [Information ボット](bot-service-scenario-informational.md)
 ### [モノのインターネット ボット](bot-service-scenario-internet-things.md)
-# 操作方法
+# 操作方法 
 ## [Design (デザイン)](design/TOC.md)
 ## 開発
+<!-- ## [Best practice for welcoming the user](v4sdk/bot-builder-welcome-user.md) -->
+### [テキスト メッセージを送受信する](v4sdk/bot-builder-howto-send-messages.md)
+### [メッセージにメディアを追加する](v4sdk/bot-builder-howto-add-media-attachments.md)
+### [入力にボタンを使用する](v4sdk/bot-builder-howto-add-suggested-actions.md)
 ### [ユーザーへのウェルカム メッセージの送信](v4sdk/bot-builder-send-welcome-message.md)
-### [テキストと音声メッセージの送信](v4sdk/bot-builder-howto-send-messages.md)
-### [メッセージにメディア添付ファイルを含める](v4sdk/bot-builder-howto-add-media-attachments.md)
-### [メッセージへの入力ヒントの追加](v4sdk/bot-builder-howto-add-input-hints.md)
-### [ユーザーへのアクションの提案](v4sdk/bot-builder-howto-add-suggested-actions.md)
-<!-- ### [Save user input](v4sdk/bot-builder-primitive-prompts.md) -->
-### [状態の管理](v4sdk/bot-builder-howto-v4-state.md) 
-### [メッセージをユーザーに事前に送信する](v4sdk/bot-builder-howto-proactive-message.md)
-### [言語理解機能の追加](v4sdk/bot-builder-howto-v4-luis.md)
+<!-- ## [Add input hints to messages](v4sdk/bot-builder-howto-add-input-hints.md) -->
+### [ボットから通知を取得する](v4sdk/bot-builder-howto-proactive-message.md)
+<!-- ## [Save user input](v4sdk/bot-builder-primitive-prompts.md) -->
+### [ユーザーと会話データを保存する](v4sdk/bot-builder-howto-v4-state.md) 
+### [ボットに自然言語の理解を追加する](v4sdk/bot-builder-howto-v4-luis.md)
 ### [QnA Maker を使用してユーザーの質問に回答する](v4sdk/bot-builder-howto-qna.md)
 ### ダイアログ ライブラリを使用した会話の管理 
 #### [ユーザー入力の収集](v4sdk/bot-builder-prompts.md)
-#### [連続して行われる基本的な会話フローの実装](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
+#### [連続して行われる会話フローの実装](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
 #### [ブランチとループを使用して高度な会話フローを作成する](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
 #### [ユーザーによる割り込みの処理](v4sdk/bot-builder-howto-handle-user-interrupt.md)
-#### [ダイアログのデータを保持する](v4sdk/bot-builder-tutorial-persist-user-inputs.md)
+#### [ユーザー データを保持する](v4sdk/bot-builder-tutorial-persist-user-inputs.md)
 #### [ダイアログの再利用](v4sdk/bot-builder-compositcontrol.md)
 ### [ストレージに直接書き込む](v4sdk/bot-builder-howto-v4-storage.md)
 ### [ボットへの認証の追加](v4sdk/bot-builder-authentication.md)
 ### [ボットのカスタム ストレージの実装](v4sdk/bot-builder-custom-storage.md)
 ### [CLI ツールを使用したボットの管理](bot-builder-tools.md)
-### [チャネル固有の機能の実装](v4sdk/bot-builder-channeldata.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
 ## [デバッグ](debug/TOC.md)
@@ -66,9 +65,4 @@
 ## [.NET SDK v3](/dotnet/api/?view=botbuilder-3.12.2.4)
 ## [Node.js SDK v3](https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html)
 ## [エンティティとアクティビティの種類](bot-service-activities-entities.md)
-# 関連項目
-## [Web Apps](https://docs.microsoft.com/azure/app-service/)
-## [関数](https://docs.microsoft.com/azure/azure-functions/)
-## [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
-## [Application Insights](https://docs.microsoft.com/azure/azure-monitor/)
 # [リソース](resources/TOC.md)
