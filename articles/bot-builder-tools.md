@@ -1,45 +1,25 @@
 ---
-title: Bot Builder ツールを使用してボットを管理する
+title: CLI ツールを使用したボットの管理
 description: Bot Builder ツールを使用すると、コマンド ラインから直接、ボットのリソースを管理できます。
-keywords: botbuilder テンプレート, ludown, qna, luis, msbot
+keywords: botbuilder テンプレート, ludown, qna, luis, msbot, 管理, cli, .bot, ボット
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: tools
-ms.date: 09/18/2018
+ms.date: 11/07/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ef57cdf6a202679f9fc3a83e3e44640b43adb67f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 357f9fdc3da4c703dbcd5c1fa347176002006567
+ms.sourcegitcommit: a54a70106b9fdf278fd7270b25dd51c9bd454ab1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998362"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51273109"
 ---
-# <a name="bot-builder-tools"></a>Bot Builder ツール
+# <a name="manage-bots-using-cli-tools"></a>CLI ツールを使用したボットの管理
 
-Bot Builder [ツール][cliTools]は、計画、ビルド、テスト、発行、接続、評価の各フェーズを含むエンド ツー エンドのボット開発ワークフローに対応しています。 これらのツールが開発サイクルの各フェーズでどのように役立つかを見ていきましょう。
-
-[プラン](#plan)
-- まず、ボットの[設計ガイドライン](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-design-principles)でベスト プラクティスを確認する
-- [Chatdown](#create-mock-conversations-using-chatdown) ツールを使用して模擬会話を作成する
-
-[ビルド](#build)
-- [Ludown](#bootstrap-language-understanding-with-ludown) を使用して言語の理解を行う
-- [MSBot](#keep-track-of-service-references-using-bot-file) を使用してサービス参照を追跡する
-- [LUIS CLI](#create-and-manage-luis-applications-using-luis-cli) を使用して LUIS アプリケーションを作成、管理する
-- [QnA Maker CLI](#create-qna-maker-kb-using-qna-maker-cli) を使用して QnA Maker KB を作成する
-- [Dispatch CLI](#create-dipsatch-model-using-dispatch-cli) を使用してディスパッチ モデルを作成する
-
-[Test](#test)
-- [Bot Framework Emulator V4](https://aka.ms/bot-framework-emulator-v4-overview) を使用してボットをテストする
-
-[[発行]](#publish)
-- [Azure CLI][azureCli] を使用して、ボットの作成、ダウンロード、Azure Bot Service への発行を行う
-
-[接続](#configure-channels)
-- [Azure CLI][azureCli] を使用してボットを Azure Bot Service チャネルに接続する
+Bot Builder ツールは、計画、ビルド、テスト、発行、接続、評価の各フェーズを含むエンド ツー エンドのボット開発ワークフローに対応しています。 これらのツールが開発サイクルの各フェーズでどのように役立つかを見ていきましょう。
 
 ## <a name="plan"></a>プラン
 
@@ -165,10 +145,9 @@ ludown parse ToLuis --in <luFile>
 ludown parse ToQna --in <luFile> 
 ```
 
-その結果として生成される JSON ファイルは、LUIS または QnA のそれぞれのポータルを通じて、または新しい CLI ツールを使用して使用することができます。
+その結果として生成される JSON ファイルは、LUIS または QnA のそれぞれのポータルを通じて、または新しい CLI ツールを使用して使用することができます。 詳細については、[LUdown CLI][ludown] の GitHub リポジトリを参照してください。
 
-詳細については、[LUdown CLI][ludown] の GitHub リポジトリを参照してください。
-## <a name="track-service-references-using-bot-file"></a>.bot ファイルを使用してサービス参照を追跡する
+### <a name="track-service-references-using-bot-file"></a>.bot ファイルを使用してサービス参照を追跡する
 
 新しい [MSBot][msbotCli] ツールを使用すると、**.bot** ファイルを作成できます。これにより、ボットが使用するさまざまなサービスに関するすべてのメタデータを 1 か所に格納できます。 このファイルを使用すると、CLI からこれらのサービスにボットを接続することもできます。 このツールは、npm モジュールとして使用できます。インストールして実行するには、次のコマンドを使用します。
 
@@ -189,7 +168,7 @@ msbot connect [Service]
 
 サポートされるサービスの一覧を取得するには、[readme][msbotCli] ファイルを参照してください。
 
-## <a name="create-and-manage-luis-applications-using-luis-cli"></a>LUIS CLI を使用して LUIS アプリケーションを作成、管理する
+### <a name="create-and-manage-luis-applications-using-luis-cli"></a>LUIS CLI を使用して LUIS アプリケーションを作成、管理する
 
 新しいツール セットには、LUIS リソースを個別に管理できるようにする [LUIS 拡張機能][luisCli]が含まれています。 これは、ダウンロード可能な npm モジュールとして使用できます。
 
@@ -215,7 +194,7 @@ luis import application --in luis-app.json | msbot connect luis --stdin
 ```
 詳細については、[LUIS CLI][luisCli] の GitHub リポジトリを参照してください。
 
-## <a name="create-qna-maker-kb-using-qna-maker-cli"></a>QnA Maker CLI を使用して QnA Maker KB を作成する
+### <a name="create-qna-maker-kb-using-qna-maker-cli"></a>QnA Maker CLI を使用して QnA Maker KB を作成する
 
 新しいツール セットには、LUIS リソースを個別に管理できるようにする [QnA 拡張機能][qnaCli]が含まれています。 これは、ダウンロード可能な npm モジュールとして使用できます。
 
@@ -230,7 +209,7 @@ qnamaker create --in qnaKB.json --msbot | msbot connect qna --stdin
 
 詳細については、[QnA Maker CLI][qnaCli] の GitHub リポジトリを参照してください。
 
-## <a name="create-dispatch-model-using-dispatch-cli"></a>Dispatch CLI を使用してディスパッチ モデルを作成する
+### <a name="create-dispatch-model-using-dispatch-cli"></a>Dispatch CLI を使用してディスパッチ モデルを作成する
 
 Dispatch は、複数のボット モジュール (LUIS モデル、QnA ナレッジ ベースなど) 間で意図をディスパッチするのに使用される LUIS モデルを作成、評価するためのツールです (ディスパッチにファイルの種類として追加)。
 
@@ -253,12 +232,14 @@ dispatch create -b <YOUR-BOT-FILE> | msbot connect dispatch --stdin
 
 ## <a name="publish"></a>[発行]
 
-[Azure CLI][azureCli] を使用して、ボットの[作成](#create-azure-bot-service-bot)、[ダウンロード](#download-azure-bot-service-bot)、Azure Bot Service への[発行](#publish-azure-bot-service-bot)を行うことができます。 次を使用して、ボットの拡張機能をインストールします。 
+Azure CLI を使用して、ボットの作成、ダウンロード、Azure Bot Service への発行を行うことができます。 次を使用して、ボットの拡張機能をインストールします。 
 ```shell
 az extension add -n botservice
 ```
 
-## <a name="create-azure-bot-service-bot"></a>Azure Bot Service のボットを作成する
+### <a name="create-azure-bot-service-bot"></a>Azure Bot Service のボットを作成する
+
+注: 最新バージョンの `az cli` を使用する必要があります。 MSBot ツールで機能するように、az cli をアップグレードしてください。 
 
 次を使用して、Azure アカウントにログインします。 
 ```shell
@@ -322,7 +303,7 @@ Group
 ```
 
 ## <a name="additional-information"></a>追加情報
-- [Bot Builder ツール][cliTools]
+- [GitHub 上の Bot Builder ツール][cliTools]
 
 <!-- Footnote links -->
 

@@ -1,5 +1,5 @@
 ---
-title: 使用するボットを Azure にデプロイする | Microsoft Docs
+title: 使用する C# ボットを Azure にデプロイする | Microsoft Docs
 description: 使用するボットを Azure クラウドにデプロイします。
 keywords: ボットをデプロイ, Azure のデプロイ, ボット チャネルの登録, Visual Studio を発行
 author: ivorb
@@ -8,22 +8,24 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 09/19/2018
-ms.openlocfilehash: 5f3fc43bed16d50c347d4e07a9154dfd307f0dc0
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 11/05/2018
+ms.openlocfilehash: f30a038c6bc5e435ade421e24b05d0b31a143538
+ms.sourcegitcommit: 9acac75f85d36c81b8bf4edec916dd0b52a4a5c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999369"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51028739"
 ---
-# <a name="deploy-your-bot-to-azure"></a>使用するボットを Azure にデプロイする
+# <a name="deploy-your-c-bot-to-azure"></a>C# のボットを Azure にデプロイする
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
 
-ご自分のボットを作成し、ローカルで検証したら、それを Azure にプッシュすることで、どこからでもアクセスできるようにすることができます。 C# ボットの場合は、Visual Studio または Azure CLI を使用してボットを Azure に発行できます。 
+ご自分のボットを作成し、ローカルでテストしたら、それを Azure に発行することで、どこからでもアクセスできるようにすることができます。
 
 ## <a name="publish-from-visual-studio"></a>Visual Studio から発行する
 最初に、App Service で Visual Studio から Azure にボットをデプロイします。 次に、Bot Channels Registration を使用して Azure Bot Service でボットを構成します。
+
+**注: Visual Studio プロジェクト名にスペースが含まれる場合、以下に説明するデプロイ手順は機能しません。**
 
 [ソリューション エクスプローラー] ウィンドウで、ご利用のプロジェクトのノードを右クリックし、[発行] を選択します。
 

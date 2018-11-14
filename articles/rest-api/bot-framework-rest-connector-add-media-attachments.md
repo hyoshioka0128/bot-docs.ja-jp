@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: 2a2cc13020c87616799ee768fbab6e72ab81cc8b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 10/25/2018
+ms.openlocfilehash: eb08ca3b560f5058526387c71eca4b790d033a1e
+ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997639"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916809"
 ---
 # <a name="add-media-attachments-to-messages"></a>メッセージへのメディア添付ファイルの追加
 > [!div class="op_single_selector"]
@@ -126,6 +126,7 @@ Content-Type: application/json
         "title": "Allegro in C Major",
         "subtitle": "Allegro Duet",
         "text": "No Image, No Buttons, Autoloop, Autostart, Sharable",
+        "duration": "PT2M55S",
         "media": [
           {
             "url": "https://contoso.com/media/AllegrofromDuetinCMajor.mp3"
@@ -175,9 +176,7 @@ Content-Type: application/json
 - [メッセージの作成](bot-framework-rest-connector-create-messages.md)
 - [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
 - [メッセージへのリッチ カードの追加](bot-framework-rest-connector-add-rich-cards.md)
-- [Channel Inspector][ChannelInspector]
-
-[ChannelInspector]: ../bot-service-channel-inspector.md
+- [Bot Framework のカード スキーマ](https://aka.ms/botSpecs-cardSchema)
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object
 [Attachment]: bot-framework-rest-connector-api-reference.md#attachment-object
