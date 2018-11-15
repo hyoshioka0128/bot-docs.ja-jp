@@ -8,28 +8,28 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/23/2018
+ms.date: 11/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 32743e895f2390fe018dc3801ed5b8a67b32a8cc
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 77e24d58fb377ec2390671517204526bf076f78e
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999379"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645542"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-net"></a>Bot Builder SDK for .NET を使用したボットの作成
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-このクイック スタートでは、C# テンプレートを使用してボットを構築し、Bot Framework Emulator でテストします。 
+このクイック スタートでは、C# テンプレートを使用してボットを構築し、Bot Framework Emulator でテストします。
 
 ## <a name="prerequisites"></a>前提条件
 - Visual Studio [2017](https://www.visualstudio.com/downloads)
 - [C#](https://botbuilder.myget.org/feed/aitemplates/package/vsix/BotBuilderV4.fbe0fc50-a6f1-4500-82a2-189314b7bea2) 用 Bot Builder SDK v4 テンプレート
-- Bot Framework [Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases)
+- Bot Framework [Emulator](https://aka.ms/Emulator-wiki-getting-started)
 - [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) および [C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index) での非同期プログラミングに関する知識
 
 ## <a name="create-a-bot"></a>ボットの作成
-前提条件セクションでダウンロードした BotBuilderVSIX.vsix テンプレートをインストールします。 
+前提条件セクションでダウンロードした BotBuilderVSIX.vsix テンプレートをインストールします。
 
 Visual Studio で、Bot Builder エコー ボット V4 テンプレートを使用して、新しいボット プロジェクトを作成します。
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/26/2018
-ms.openlocfilehash: afb1c4a0e766df7ac2d122b3c7ca4e7959871dbb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 19dd474c16224cc811a214acea6e9cb51da95b3f
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997279"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332766"
 ---
 # <a name="download-and-redeploy-bot-code"></a>ボット コードをダウンロードして再デプロイする
 Azure Bot Service では、お客様のボットのソース プロジェクト全体をダウンロードできるので、好みの IDE を使用してローカルで作業できます。 コードの更新が完了したら、変更を再び Azure portal に発行することができます。 ここでは、Azure portal と `az` cli を使用してコードをダウンロードする方法について説明します。 また、Visual Studio と `az` cli ツールを使用して、更新されたボット コードを再デプロイする方法についても説明します。 お客様にとって最適な方法を選択できます。
@@ -39,14 +39,14 @@ C# ボットの場合は、次に示すように `appsettings.json` ファイル
   "botFileSecret": "ukxxxxxxxxxxxs="
 }
 ```
-`botFilePath` は、ボットの名前を参照します。単に "yourbasicBot.bot" をお客様独自のボット名に置き換えてください。 `botFileSecret` キーを取得するには、ボットのキーの生成について、[ボット ファイルの暗号化](https://aka.ms/bot-file-encryption)に関する記事を参照してください。
-
 
 node.js ボットをお持ちの場合は、次のエントリが含まれている `.env` ファイルを追加します。
 ```
 botFilePath=yourbasicBot.bot
 botFileSecret=ukxxxxxxxxxxxxs=
 ```
+
+`botFilePath` は、ボットの名前を参照します。単に "yourbasicBot.bot" をお客様独自のボット名に置き換えてください。 `botFileSecret` キーを取得するには、ボットのキーの生成について、[ボット ファイルの暗号化](https://aka.ms/bot-file-encryption)に関する記事を参照してください。
 
 次に、既存のソース ファイルを編集するか、プロジェクトに新しいソース ファイルを追加して、ソースを変更します。 エミュレーターを使用してコードをテストします。 変更したコードを Azure portal に再デプロイする準備ができたら、次の手順に従います。
 

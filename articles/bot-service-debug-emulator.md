@@ -7,20 +7,20 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 09/20/2018
-ms.openlocfilehash: b1a20875eb25cbf4a07d8a96d79eed665b26157b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 11/13/2018
+ms.openlocfilehash: f3a6a57a5fd01061493e5c216875f0c4210483f6
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996799"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645612"
 ---
 # <a name="debug-with-the-emulator"></a>エミュレーターを使用したデバッグ
 
 Bot Framework Emulator は、ローカルでもリモートでも、ボットをテストし、デバッグできるデスクトップ アプリケーションです。 このエミュレーターを使用し、ボットとチャットしたり、ボットが送受信するメッセージを検査したりできます。 このエミュレーターでは、Web チャット UI に表示されるときと同じようにメッセージが表示され、ボットとメッセージを交換するときの JSON の要求と応答がログに記録されます。 自分のボットをクラウドにデプロイする前に、エミュレーターを使用してローカルで実行し、テストしてください。 まだ Azure Bot Service で[作成](./bot-service-quickstart.md)していない場合でも、何らかのチャネルで実行するように構成していない場合でも、エミュレーターを使用して自分のボットをテストできます。
 
 ## <a name="prerequisites"></a>前提条件
-- [エミュレーター](https://github.com/Microsoft/BotFramework-Emulator/releases)をインストールする
+- [エミュレーター](https://aka.ms/Emulator-wiki-getting-started)をインストールする
 - [ngrok][ngrokDownload] トンネリング ソフトウェアをインストールする
 
 ## <a name="connect-to-a-bot-running-on-localhost"></a>localhost で実行されているボットに接続する

@@ -41,8 +41,8 @@
 ### [ボットに自然言語の理解を追加する](v4sdk/bot-builder-howto-v4-luis.md)
 ### [QnA Maker を使用してユーザーの質問に回答する](v4sdk/bot-builder-howto-qna.md)
 ### ダイアログ ライブラリを使用した会話の管理 
-#### [ユーザー入力の収集](v4sdk/bot-builder-prompts.md)
 #### [連続して行われる会話フローの実装](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
+#### [ダイアログ プロンプトを使用してユーザー入力を収集する](v4sdk/bot-builder-prompts.md)
 #### [ブランチとループを使用して高度な会話フローを作成する](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
 #### [ユーザーによる割り込みの処理](v4sdk/bot-builder-howto-handle-user-interrupt.md)
 #### [ユーザー データを保持する](v4sdk/bot-builder-tutorial-persist-user-inputs.md)
