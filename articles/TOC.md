@@ -34,7 +34,7 @@
 ### [メッセージにメディアを追加する](v4sdk/bot-builder-howto-add-media-attachments.md)
 ### [ユーザー アクションをガイドするボタンを追加する](v4sdk/bot-builder-howto-add-suggested-actions.md)
 ### [ユーザーと会話データを保存する](v4sdk/bot-builder-howto-v4-state.md) 
-### [ユーザーに入力を要求する](v4sdk/bot-builder-primitive-prompts.md) 
+### [ユーザーに入力を求める](v4sdk/bot-builder-primitive-prompts.md) 
 ### [ユーザーへのウェルカム メッセージの送信](v4sdk/bot-builder-send-welcome-message.md)
 <!-- ## [Add input hints to messages](v4sdk/bot-builder-howto-add-input-hints.md) -->
 ### [ボットから通知を取得する](v4sdk/bot-builder-howto-proactive-message.md)
