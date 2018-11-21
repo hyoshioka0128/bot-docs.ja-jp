@@ -1,5 +1,5 @@
 ---
-title: メッセージへの推奨されるアクションの追加 | Microsoft Docs
+title: 入力にボタンを使用する | Microsoft Docs
 description: Bot Builder SDK for JavaScript を使用してメッセージ内で推奨されるアクションを送信する方法について説明します。
 keywords: 推奨されるアクション, ボタン, 追加の入力
 author: Kaiqb
@@ -8,24 +8,24 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 03/13/2018
+ms.date: 11/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 88186d3c6c925220fba099a5983c86b305f2dcae
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 5e97bc4a991a9c9b27e9c14eb44f5fd1e230985f
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997102"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332792"
 ---
-# <a name="add-suggested-actions-to-messages"></a>メッセージへの推奨されるアクションの追加
+# <a name="use-button-for-input"></a>入力にボタンを使用する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-[!include[Introduction to suggested actions](../includes/snippet-suggested-actions-intro.md)] 
+お使いのボットに、ユーザーがタップして入力できるボタンを表示させることができます。 ボタンを使用すると、キーボードを使って返信を入力することなく、ユーザーが質問に回答したり、ボタンをタップするだけで選択したりできるため、ユーザー エクスペリエンスが向上します。 (タップされた後でも表示されたままとなり、ユーザーがアクセスできる) リッチ カード内に表示されるボタンとは異なり、推奨される操作ウィンドウ内に表示されるボタンは、ユーザーが選択を行った後は表示されなくなります。 このため、ユーザーが会話内の古いボタンをタップすることを防ぎ、(お客様はそのシナリオの責任を負う必要がないため) ボット開発が簡略化されます。 
 
-## <a name="send-suggested-actions"></a>推奨されるアクションの送信
+## <a name="suggest-action-using-button"></a>ボタンを使用した推奨されるアクション
 
-会話の 1 つのターンでユーザーに表示される推奨アクション (「クイック返信」とも呼ばれます) のリストを作成できます。 
+"*推奨されるアクション*" では、お使いのボットにボタンを表示させることができます。 会話の 1 つのターンでユーザーに表示される推奨アクション (「クイック返信」とも呼ばれます) のリストを作成できます。 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

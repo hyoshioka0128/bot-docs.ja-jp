@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b9c8a0bc04cfcf96f6c81b624464e9698eab1699
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ea507bbdf916ff1955aea0db17b765791432f430
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998965"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645582"
 ---
 # <a name="enterprise-bot-template---customize-your-bot"></a>Enterprise Bot Template - ボットのカスタマイズ
 
@@ -108,7 +108,28 @@ Enterprise Template 用の既存の LUIS モデルを更新するには、次の
     dispatch refresh -bot "YOURBOT.bot" -secret YOURSECRET
 ```
 
-## <a name="adding-a-new-dialog"></a>新しいダイアログの追加 
+### <a name="adding-an-additional-qnamaker-knowledgebase"></a>追加の QnAMaker ナレッジベースの追加
+
+シナリオによっては、追加の QnAMaker ナレッジベースをお使いのボットに追加したくなることがあります。その場合は、次の手順を実行します。
+
+1. 次のコマンドを使用して、JSON ファイルから新しい QnAMaker ナレッジベースを作成します。これは、お使いのアシスタント ディレクトリで実行されます
+```shell
+qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOURBOT.bot" --secret YOURSECRET
+```
+2. 次のコマンドを実行してディスパッチ モデルを更新し、変更を反映します
+```shell
+dispatch refresh --bot "YOURBOT.bot" --secret YOURSECRET
+```
+3. 厳密に型指定されたディスパッチ クラスを更新し、新しい QnA ソースを反映します
+```shell
+msbot get dispatch --bot "YOURBOT.bot" | luis export version --stdin > dispatch.json
+luisgen dispatch.json -cs Dispatch -o Dialogs\Shared
+```
+4.  提供された例に従って、ご自身の新しい QnA ソースに対応するディスパッチ意図が含まれるように、`Dialogs\Main\MainDialog.cs` ファイルを更新します。
+
+お使いのボットの一部として、複数の QnA ソースを活用できるようになりました。
+
+## <a name="adding-a-new-dialog"></a>新しいダイアログの追加
 
 新しいダイアログをボットに追加するには、まず Dialogs の下に新しいフォルダーを作成し、そのクラスが `EnterpriseDialog` から派生していることを確認する必要があります。 その後、ダイアログ インフラストラクチャを接続する必要があります。 オンボード ダイアログは、この操作の簡単な例として参考にできます。次に示すのは、コードの抜粋と手順の概要です。
 

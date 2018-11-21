@@ -8,24 +8,38 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/31/2018
+ms.date: 11/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b3582d962911b6024062942a6d9f6ff1efab4022
-ms.sourcegitcommit: a54a70106b9fdf278fd7270b25dd51c9bd454ab1
+ms.openlocfilehash: 25745d380e53173c4dc67d280c120ced5845078b
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51273089"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332916"
 ---
 # <a name="send-welcome-message-to-users"></a>ユーザーへのウェルカム メッセージの送信
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-以前の記事「[ユーザーの歓迎](./bot-builder-welcome-user.md)」では、ユーザーとボットの最初のやり取りを気持ちの良いのものにするための、さまざまなベスト プラクティスについて説明しました。 この記事では、前回のトピックをさらに発展させて、ボットのユーザーを歓迎するのに役立つ短いコード サンプルを紹介します。
+ボットを作成する主な目的は、有意義な会話によってユーザー エンゲージメントを高めることです。 この目標を達成するための効果的な方法の 1 つは、ユーザーが最初にアクセスした瞬間から、ボットの主な目的と機能 (ボットが作られた理由) をユーザーがわかるようにすることです。 この記事では、ボットのユーザーを歓迎するのに役立つコード サンプルを紹介します。
 
 ## <a name="same-welcome-for-different-channels"></a>複数のチャネルに同じウェルカム メッセージを使用する
+ウェルカム メッセージは、ユーザーがボットと最初にやり取りしたときに生成する必要があります。 そのためには、ボットのアクティビティ タイプと、新規の接続を監視します。 新規接続が検出されたときには、チャネルによって、最大 2 つの会話更新アクティビティが生成されます。
 
-次の例では、新しい_会話更新_アクティビティを待機し、会話に参加したユーザーに応じてウェルカム メッセージを 1 回だけ送信し、ユーザーの最初の会話入力を無視するための、プロンプト ステータス フラグを設定します。 下のコード例では、GitHub リポジトリにある [C#](https://aka.ms/bot-welcome-sample-cs) 用および [JS](https://aka.ms/bot-welcome-sample-js) 用の各ウェルカム ユーザー サンプルを使用しています。
+- 1 つは、ボットが会話に接続したときに生成されます。
+- もう 1 つは、ユーザーが会話に参加したときに生成されます。
+
+新しい会話更新が検出されるごとにウェルカム メッセージを生成するという方法をとりたくなるかもしれませんが、その方法だと、ボットがさまざまなチャネルからアクセスされた場合に、予期しない結果を招く恐れがあります。
+
+チャネルによっては、ユーザーがそのチャネルに最初に接続したときに会話更新を 1 回生成し、ユーザーからの最初の入力メッセージが受信された後に、もう 1 つの会話更新を生成する場合もあります。 また、ユーザーがチャネルに最初に接続したときに、これら両方のアクティビティを生成するチャネルもあります。 単に会話更新イベントを監視し、2 つの会話更新アクティビティを使ってチャネルにウェルカム メッセージを表示した場合、ユーザーへのメッセージは次のように表示されるかもしれません。
+
+![重複したウェルカム メッセージ](./media/double_welcome_message.png)
+
+このようにメッセージが重複するのを避けるには、2 番目の会話更新イベントについてのみ、最初のウェルカム メッセージを生成するようにします。 2 番目のイベントは、次の両方が発生したときに検出されるようにします。
+- 会話更新イベントが発生した。
+- 新しいメンバー (ユーザー) が会話に追加された。
+
+次の例では、新しい "*会話更新アクティビティ*" を待ち、会話に参加したユーザーに応じてウェルカム メッセージを 1 回だけ送信し、ユーザーの最初の会話入力を無視するための、プロンプト状態フラグを設定します。 [[C#](https://aka.ms/bot-welcome-sample-cs) または [JS](https://aka.ms/bot-welcome-sample-js)] の完全なソース コードを GitHub からダウンロードできます。
 
 [!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
@@ -231,8 +245,7 @@ module.exports = MainDialog;
 ---
 
 ## <a name="discard-initial-user-input"></a>最初のユーザー入力を無視する
-
-ユーザーがすべてのチャネルで良好なエクスペリエンスを得られるようにするため、初期プロンプトを設定して無効な応答の処理を回避し、ユーザーの応答から検索するキーワードを設定します。
+また、ユーザーの入力内容が有用な情報かどうかを考えることも重要です。これもやはり、チャネルによって状況が変わってきます。 ユーザーがすべてのチャネルで良好なエクスペリエンスを得られるようにするため、初期プロンプトを設定して無効な応答の処理を回避し、ユーザーの応答から検索するキーワードを設定します。
 
 ## <a name="ctabcsharpmulti"></a>[C#](#tab/csharpmulti)
 
@@ -363,12 +376,12 @@ private static async Task SendIntroCardAsync(ITurnContext turnContext, Cancellat
 }
 ```
 
-次に、下記の await コマンドを使用してカードを送信します。 このコマンドを、ボットの _switch (text)_ _case "hel 内に配置します
+次に、下記の await コマンドを使用してカードを送信します。 このコマンドを、ボットの _switch (text) case "help"_ 内に配置します。
 
 ```csharp
 switch (text)
 {
-    case "hello":
+    case "hello":"
     case "hi":
         await turnContext.SendActivityAsync($"You said {text}.", cancellationToken: cancellationToken);
         break;

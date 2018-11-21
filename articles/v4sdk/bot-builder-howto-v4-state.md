@@ -1,5 +1,5 @@
 ---
-title: 会話とユーザー状態を管理する | Microsoft Docs
+title: ユーザーおよび会話データを保存する | Microsoft Docs
 description: Bot Builder SDK for .NET を使用して状態データを保存および取得する方法について説明します。
 keywords: 会話状態, ユーザー状態, 会話フロー
 author: ivorb
@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/18/18
+ms.date: 11/14/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2a3709111b048730805b5578306c669591122dda
-ms.sourcegitcommit: 633008f8db06f1bb5be7bacdb7dd8de6f8165328
+ms.openlocfilehash: 5698c50b167e7162ef6910b7c428dab5ceb51d0e
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50753610"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645642"
 ---
-# <a name="manage-conversation-and-user-state"></a>会話とユーザー状態を管理する
+# <a name="save-user-and-conversation-data"></a>ユーザーおよび会話データを保存する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -308,7 +308,9 @@ else {
 ---
 
 ## <a name="start-your-bot"></a>ボットの起動
-ボットをローカルで実行します。
+- JavaScript の場合: ターミナルまたはコマンド プロンプトで、ボット用に作成したディレクトリに変更し、`npm start` でボットを起動します。 この時点では、ボットはローカルで実行されています。
+
+- C# ボットの場合: Visual Studio を使用して、お使いのボットをローカルで実行します。 実行ボタンをクリックすると、Visual Studio によってアプリケーションが構築され、localhost に配置されます。その後、Web ブラウザーが起動されアプリケーションの ``default.htm`` ページが表示されます。 この時点では、ボットはローカルで実行されています。
 
 ### <a name="start-the-emulator-and-connect-your-bot"></a>エミュレーターの起動とボットの接続
 次に、エミュレーターを起動し、エミュレーターのボットに接続します。

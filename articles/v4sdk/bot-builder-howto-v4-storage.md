@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/14/18
+ms.date: 11/13/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9e63390d157c75e1079654549831cf4936c62710
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 803574e5d224b0556162fd677145d29cafa2cab1
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997989"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645682"
 ---
 # <a name="write-directly-to-storage"></a>ストレージに直接書き込む
 
@@ -25,7 +25,7 @@ ms.locfileid: "49997989"
 
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/en-us/free/)アカウントを作成してください。
-- Bot Framework [Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) をインストールします。
+- Bot Framework [Emulator](https://aka.ms/Emulator-wiki-getting-started) のインストール
 
 ## <a name="memory-storage"></a>メモリ ストレージ
 

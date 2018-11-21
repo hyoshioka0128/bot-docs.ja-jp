@@ -1,5 +1,5 @@
 ---
-title: 言語理解のための LUIS の使用 | Microsoft Docs
+title: ボットに自然言語の理解を追加する | Microsoft Docs
 description: 自然言語理解のための LUIS を Bot Builder SDK と共に使用する方法について説明します。
 keywords: Language Understanding, LUIS, 意図, 認識エンジン, エンティティ, ミドルウェア
 author: ivorb
@@ -8,20 +8,20 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 10/12/18
+ms.date: 11/08/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 395db5e1913b840340e5887cf09e6c59f90742a4
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: eab8e2f9d437748d0bb0fefd31c03c8fb350c6b1
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997669"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645702"
 ---
-# <a name="using-luis-for-language-understanding"></a>言語理解のための LUIS の使用
+# <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-ユーザーの真意を会話と文脈から理解する能力は難しいタスクかもしれませんが、より自然な会話の印象をボットに与えることができます。 そうした能力は LUIS と呼ばれる Language Understanding によって実現され、ボットがユーザーのメッセージの意図を認識できるように、ユーザーがより自然な言葉を使用できるように、また、会話フローがより適切に管理されるようになります。 LUIS とボットの統合についてさらなる背景情報が必要な場合は、「[language understanding for bots](./bot-builder-concept-LUIS.md)」(ボットのための言語理解) を参照してください。
+ユーザーの真意を会話と文脈から理解する能力は難しいタスクかもしれませんが、より自然な会話の印象をボットに与えることができます。 そうした能力は LUIS と呼ばれる Language Understanding によって実現され、ボットがユーザーのメッセージの意図を認識できるように、ユーザーがより自然な言葉を使用できるように、また、会話フローがより適切に管理されるようになります。 LUIS の詳細な背景情報が必要な場合は、ボットの [Language Understanding](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/what-is-luis) に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 このトピックでは、LUIS を使用して数種類の意図を認識する単純なボットの設定手順について説明します。 この記事のコードは、LUIS による NLP の [C#](https://aka.ms/cs-luis-sample) サンプルおよび [JavaScript](https://aka.ms/js-luis-sample) サンプルをベースにしています。
@@ -253,7 +253,7 @@ LUIS アプリの作成手順と **.bot** ファイルの更新手順を終え�
 }
 ```
 
-**index.js** ファイルで構成情報を読み取って、LUIS サービスを生成し、ボットを初期化します。
+**bot.js** ファイルで構成情報を読み取って、LUIS サービスを生成し、ボットを初期化します。
 `LUIS_CONFIGURATION` の値は、お客様の構成ファイルにある LUIS アプリの名前に更新してください。
 
 ```javascript

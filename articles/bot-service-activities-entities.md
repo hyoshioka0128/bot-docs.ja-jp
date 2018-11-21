@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: d2f4692580843f530641827707d250fa726830e3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d329fcbe5b4a34cb3e9c1fbf0160c5248020a508
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000399"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332966"
 ---
 # <a name="entities-and-activity-types"></a>エンティティとアクティビティの種類
 
@@ -177,13 +177,19 @@ if(context.activity.type === 'message'){
 ## <a name="message"></a>message
 
 <!-- Only the last link is different. -->
+
 ::: moniker range="azure-bot-service-3.0"
+
 ボットは、メッセージ アクティビティを送信してユーザーに情報を伝達し、ユーザーからメッセージ アクティビティを受信します。
-プレーン テキストだけで構成されているシンプルなメッセージもあれば、[読み上げテキスト](v4sdk/bot-builder-howto-send-messages.md#send-a-spoken-message)、[推奨されるアクション](v4sdk/bot-builder-howto-add-suggested-actions.md)、[メディアの添付ファイル](v4sdk/bot-builder-howto-add-media-attachments.md)、[リッチ カード](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card)、[チャネル固有のデータ](~/dotnet/bot-builder-dotnet-channeldata.md)など、よりリッチなコンテンツを含むメッセージもあります。
+プレーン テキストだけで構成されているシンプルなメッセージもあれば、読み上げテキスト、[推奨されるアクション](v4sdk/bot-builder-howto-add-suggested-actions.md)、[メディアの添付ファイル](v4sdk/bot-builder-howto-add-media-attachments.md)、[リッチ カード](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card)、[チャネル固有のデータ](~/dotnet/bot-builder-dotnet-channeldata.md)など、よりリッチなコンテンツを含むメッセージもあります。
+
 ::: moniker-end
+
 ::: moniker range="azure-bot-service-4.0"
+
 ボットは、メッセージ アクティビティを送信してユーザーに情報を伝達し、ユーザーからメッセージ アクティビティを受信します。
-プレーン テキストだけで構成されているシンプルなメッセージもあれば、[読み上げテキスト](v4sdk/bot-builder-howto-send-messages.md#send-a-spoken-message)、[推奨されるアクション](v4sdk/bot-builder-howto-add-suggested-actions.md)、[メディアの添付ファイル](v4sdk/bot-builder-howto-add-media-attachments.md)、[リッチ カード](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card)、[チャネル固有のデータ](~/v4sdk/bot-builder-channeldata.md)など、よりリッチなコンテンツを含むメッセージもあります。
+プレーン テキストだけで構成されているシンプルなメッセージもあれば、読み上げテキスト、[推奨されるアクション](v4sdk/bot-builder-howto-add-suggested-actions.md)、[メディアの添付ファイル](v4sdk/bot-builder-howto-add-media-attachments.md)、[リッチ カード](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card)、[チャネル固有のデータ](~/v4sdk/bot-builder-channeldata.md)など、よりリッチなコンテンツを含むメッセージもあります。
+
 ::: moniker-end
 
 ## <a name="contactrelationupdate"></a>contactRelationUpdate
@@ -237,6 +243,7 @@ if(context.activity.type === 'message'){
 ボットは、入力中アクティビティを送信して、要求を満たしたり応答を作成したりするための作業を行っていることをユーザーに示すことができます。
 
 ::: moniker range="azure-bot-service-3.0"
+
 ## <a name="additional-resources"></a>その他のリソース
 
 - <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>

@@ -1,23 +1,23 @@
 ---
-title: プロアクティブ メッセージングの使用方法 | Microsoft Docs
-description: ボットを使用してプロアクティブ メッセージを送信する方法について説明します。
-keywords: プロアクティブ メッセージ
+title: ボットから通知を取得する | Microsoft Docs
+description: 通知メッセージを送信する方法について説明します
+keywords: プロアクティブ メッセージ, 通知メッセージ, ボットの通知,
 author: jonathanfingold
 ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/27/2018
+ms.date: 11/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 032d7027db3ce83c54bbacf913c2021a22c3f356
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: fac1e026ac92fcbe1b5c5bb9363c29e1d9e9b02a
+ms.sourcegitcommit: b6327fa0b4547556d2d45d8910796e0c02948e43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997589"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51681589"
 ---
-# <a name="how-to-use-proactive-messaging"></a>プロアクティブ メッセージングの使用方法
+# <a name="get-notification-from-a-bot"></a>ボットから通知を取得する
 
 [!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
 
@@ -38,111 +38,67 @@ ms.locfileid: "49997589"
 
 通知をより円滑に処理するには、会話フローに通知を統合するための他の方法を検討してください (会話の状態にフラグを設定する方法や、通知をキューに追加する方法など)。
 
-## <a name="prerequisites"></a>前提条件
+### <a name="prerequisites"></a>前提条件
+- **プロアクティブ メッセージ サンプル**のコピー ([C#](https://aka.ms/proactive-sample-cs) または [JS](https://aka.ms/proactive-sample-js))。
+- JS の場合は、Node.js 用の [Bot Builder](https://www.npmjs.com/package/botbuilder) をインストールします
 
-プロアクティブ メッセージを送信するには、ボットが有効なアプリ ID とパスワードを持っている必要があります。 ただし、エミュレーターでのローカル テストでは、プレースホルダー アプリ ID を使用できます。
 
-ボットで使用するアプリ ID とパスワードを取得するには、[Azure portal](https://portal.azure.com) にログインして、**Bot Channels Registration** リソースを作成します。 テストの目的で、ボット用のこのアプリ ID とパスワードを Azure にデプロイせずに、ローカルで使用することができます。
+### <a name="about-the-sample-code"></a>サンプル コードについて
 
-> [!TIP]
-> サブスクリプションがない場合は、<a href="https://azure.microsoft.com/en-us/free/" target="_blank">無料アカウント</a>に登録できます。
+プロアクティブ メッセージのサンプルでは、所要時間が不確定なユーザー タスクをモデル化します。 ボットはタスクに関する情報を格納し、タスクが完了したら戻ることをユーザーに通知して、会話を続行することができます。 タスクが完了すると、ボットは確認メッセージを元の会話にプロアクティブに送信します。
 
-### <a name="required-libraries"></a>必要なライブラリ
+#### <a name="define-job-data-and-state"></a>ジョブのデータと状態を定義する
 
-いずれかの BotBuilder テンプレートから開始する場合、必要なライブラリは自動的にインストールされます。 これらは、プロアクティブ メッセージングに必要な固有の BotBuilder ライブラリです。
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-**Microsoft.Bot.Builder.Integration.AspNet.Core** NuGet パッケージ  (これをインストールすると、**Microsoft.Bot.Builder** パッケージもインストールされます)。
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-**Microsoft.Bot.Builder** npm パッケージ。
-
----
-
-## <a name="notes-on-the-sample-code"></a>サンプル コードに関する注意事項
-
-この記事のコードは、プロアクティブ メッセージのサンプル ([C#](https://aka.ms/proactive-sample-cs) | [JS](https://aka.ms/proactive-sample-js)) から取得したものです。
-
-このサンプルでは、所要時間が不確定なユーザー タスクをモデル化します。 ボットはタスクに関する情報を格納し、タスクが完了したら戻ることをユーザーに通知して、会話を続行することができます。 タスクが完了すると、ボットは確認メッセージを元の会話にプロアクティブに送信します。
-
-## <a name="define-job-data-and-state"></a>ジョブのデータと状態を定義する
-
-このシナリオでは、さまざまな会話でさまざまなユーザーが作成できる任意のジョブを追跡しています。 会話の参照やジョブ識別子など、各ジョブに関する情報を格納する必要があります。
-
-- プロアクティブ メッセージを適切な会話に送信できるようにするために、会話の参照が必要です。
-- ジョブを識別するための手段が必要です。 この例では、単純なタイムスタンプを使用します。
-- 会話の状態やユーザーの状態とは別に、ジョブの状態を格納する必要があります。
+このシナリオでは、さまざまな会話でさまざまなユーザーが作成できる任意のジョブを追跡しています。 会話の参照やジョブ識別子など、各ジョブに関する情報を格納する必要があります。 次が必要です。
+- プロアクティブ メッセージを適切な会話に送信できるようにするための会話の参照。
+- ジョブを識別する手段。 この例では、単純なタイムスタンプを使用します。
+- 会話の状態やユーザーの状態とは別に、ジョブの状態を格納すること。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ジョブ データとジョブの状態に関するクラスを定義する必要があります。 ボットを登録し、ジョブのログ用に状態プロパティのアクセサーを設定する必要もあります。
 
-### <a name="define-a-class-for-job-data"></a>ジョブ データに関するクラスを定義する
+#### <a name="define-a-class-for-job-data"></a>ジョブ データに関するクラスを定義する
 
-**JobLog** クラスは、ジョブ番号 (タイムスタンプ) によってインデックス付けされたジョブ データを追跡します。 ジョブ データはディクショナリの内部クラスとして定義されます。
+`JobLog` クラスは、ジョブ番号 (タイムスタンプ) によってインデックス付けされたジョブ データを追跡します。 `JobLog` クラスは、未処理のすべてのジョブを追跡します。  各ジョブは一意のキーによって識別されます。 `Job data` はジョブの状態を記述し、ディクショナリの内部クラスとして定義されます。
 
 ```csharp
-/// <summary>Contains a dictionary of job data, indexed by job number.</summary>
-/// <remarks>The JobLog class tracks all the outstanding jobs.  Each job is
-/// identified by a unique key.</remarks>
 public class JobLog : Dictionary<long, JobLog.JobData>
 {
-    /// <summary>Describes the state of a job.</summary>
     public class JobData
     {
-        /// <summary>Gets or sets the time-stamp for the job.</summary>
-        /// <value>
-        /// The time-stamp for the job when the job needs to fire.
-        /// </value>
+        // Gets or sets the time-stamp for the job.
         public long TimeStamp { get; set; } = 0;
 
-        /// <summary>Gets or sets a value indicating whether indicates whether the job has completed.</summary>
-        /// <value>
-        /// A value indicating whether indicates whether the job has completed.
-        /// </value>
+        // Gets or sets a value indicating whether indicates whether the job has completed.
         public bool Completed { get; set; } = false;
 
-        /// <summary>
-        /// Gets or sets the conversation reference to which to send status updates.
-        /// </summary>
-        /// <value>
-        /// The conversation reference to which to send status updates.
-        /// </value>
+        // Gets or sets the conversation reference to which to send status updates.
         public ConversationReference Conversation { get; set; }
     }
 }
 ```
 
-### <a name="define-a-state-middleware-class"></a>状態ミドルウェア クラスを定義する
+#### <a name="define-a-state-middleware-class"></a>状態ミドルウェア クラスを定義する
 
 **JobState** クラスは、会話の状態やユーザーの状態とは別に、ジョブの状態を管理します。
 
 ```csharp
 using Microsoft.Bot.Builder;
 
-/// <summary>A <see cref="BotState"/> for managing bot state for "bot jobs".</summary>
-/// <remarks>Independent from both <see cref="UserState"/> and <see cref="ConversationState"/> because
-/// the process of running the jobs and notifying the user interacts with the
-/// bot as a distinct user on a separate conversation.</remarks>
+/// A BotState for managing bot state for "bot jobs".
 public class JobState : BotState
 {
-    /// <summary>The key used to cache the state information in the turn context.</summary>
+    // The key used to cache the state information in the turn context.
     private const string StorageKey = "ProactiveBot.JobState";
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="JobState"/> class.</summary>
-    /// <param name="storage">The storage provider to use.</param>
+    // Initializes a new instance of the JobState class.
     public JobState(IStorage storage)
         : base(storage, StorageKey)
     {
     }
 
-    /// <summary>Gets the storage key for caching state information.</summary>
-    /// <param name="turnContext">A <see cref="ITurnContext"/> containing all the data needed
-    /// for processing this conversation turn.</param>
-    /// <returns>The storage key.</returns>
+    // Gets the storage key for caching state information.
     protected override string GetStorageKey(ITurnContext turnContext) => StorageKey;
 }
 ```
@@ -150,24 +106,6 @@ public class JobState : BotState
 ### <a name="register-the-bot-and-required-services"></a>ボットと必要なサービスを登録する
 
 **Startup.cs** ファイルは、ボットおよび関連するサービスを登録します。
-
-1. 一連の using ステートメントは、次の名前空間の参照まで拡張されます。
-
-    ```csharp
-    using System;
-    using System.Linq;
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Bot.Builder;
-    using Microsoft.Bot.Builder.Integration;
-    using Microsoft.Bot.Builder.Integration.AspNet.Core;
-    using Microsoft.Bot.Configuration;
-    using Microsoft.Bot.Connector.Authentication;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Options;
-    ```
 
 1. `ConfigureServices` メソッドは、エラー処理や状態管理も含め、ボットを登録します。 また、ボットのエンドポイント サービスやジョブの状態のアクセサーも登録します。
 
@@ -233,20 +171,12 @@ public class JobState : BotState
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-### <a name="set-up-the-server-code"></a>サーバー コードを設定する
-
-**index.js** ファイルは次の処理を実行します。
-
-- 必要なパッケージとサービスを含める
+**index.js** ファイルのコードは、次の処理を実行します。
 - ボットのクラスと **.bot** ファイルを参照する
-- HTTP サーバーを作成する
-- ボット アダプターとストレージ オブジェクトを作成する
+- HTTP サーバー、ボット アダプター、およびストレージ オブジェクトを作成する
 - ボットを作成してサーバーを起動し、ボットにアクティビティを渡す
 
 ```javascript
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
 const restify = require('restify');
 const path = require('path');
 
@@ -329,24 +259,15 @@ adapter.onTurnError = async (context, error) => {
 
 ---
 
-<!--TODO: (Post-Ignite) -- link to a second topic on how to write a job completion DirectLine client that will generate appropriate job completed event activities.-->
+### <a name="define-the-bot"></a>ボットを定義する
 
-## <a name="define-the-bot"></a>ボットを定義する
-
-ユーザーはボットにジョブの作成と実行を依頼できます。 ジョブの完了時に、個別のジョブ サービスでボットに通知できます。
-
-ボットは次のように設計されています。
+ユーザーはボットにジョブの作成と実行を依頼できます。 ジョブの完了時に、個別のジョブ サービスでボットに通知できます。 ボットは次のように設計されています。
 
 - ユーザーからの `run` または `run job` メッセージに応答して、ジョブを作成します。
 - ユーザーからの `show` または `show jobs` メッセージに応答して、登録済みのすべてのジョブを表示します。
 - 完了したジョブを識別する _job completed_ イベントに応答して、ジョブを完了します。
 - `done <jobIdentifier>` メッセージに応答して、ジョブの完了イベントをシミュレートします。
 - ジョブの完了時に、元の会話を使用してユーザーにプロアクティブ メッセージを送信します。
-
-イベント アクティビティをボットに送信できるシステムの実装方法については取り上げません。
-<!--TODO: DirectLine--Add back in once the DirectLine topic is added back to the TOC.
-See [how to create a Direct Line bot and client](bot-builder-howto-direct-line.md) for information on how to do so.
--->
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -356,29 +277,19 @@ See [how to create a Direct Line bot and client](bot-builder-howto-direct-line.m
 - ターン ハンドラー
 - ジョブの作成と完了のためのメソッド
 
-### <a name="declare-the-class"></a>クラスを宣言する
+#### <a name="declare-the-class"></a>クラスを宣言する
 
 ```csharp
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Configuration;
-using Microsoft.Bot.Schema;
-
 namespace Microsoft.BotBuilderSamples
 {
-    /// <summary>
-    /// For each interaction from the user, an instance of this class is called.
-    /// This is a Transient lifetime service.  Transient lifetime services are created
-    /// each time they're requested. For each Activity received, a new instance of this
-    /// class is created. Objects that are expensive to construct, or have a lifetime
-    /// beyond the single Turn, should be carefully managed.
-    /// </summary>
+    // For each interaction from the user, an instance of this class is called.
+    // This is a Transient lifetime service.  Transient lifetime services are created
+    // each time they're requested. For each Activity received, a new instance of this
+    // class is created. Objects that are expensive to construct, or have a lifetime
+    // beyond the single Turn, should be carefully managed.
     public class ProactiveBot : IBot
     {
-        /// <summary>The name of events that signal that a job has completed.</summary>
+        // The name of events that signal that a job has completed.
         public const string JobCompleteEventName = "jobComplete";
 
         public const string WelcomeText = "Type 'run' or 'run job' to start a new job.\r\n" +
@@ -388,7 +299,7 @@ namespace Microsoft.BotBuilderSamples
 }
 ```
 
-### <a name="add-initialization-code"></a>初期化コードを追加する
+#### <a name="add-initialization-code"></a>初期化コードを追加する
 
 ```csharp
 private readonly JobState _jobState;
@@ -407,14 +318,13 @@ public ProactiveBot(JobState jobState, EndpointService endpointService)
 private string AppId { get; }
 ```
 
-### <a name="add-a-turn-handler"></a>ターン ハンドラーを追加する
+#### <a name="add-a-turn-handler"></a>ターン ハンドラーを追加する
 
 すべてのボットにターン ハンドラーを実装する必要があります。 アダプターはアクティビティをこのメソッドに転送します。
 
 ```csharp
 public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
 {
-    // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
     if (turnContext.Activity.Type != ActivityTypes.Message)
     {
         // Handle non-message activities.
@@ -537,7 +447,7 @@ private async Task OnSystemActivityAsync(ITurnContext turnContext)
 }
 ```
 
-### <a name="add-job-creation-and-completion-methods"></a>ジョブの作成と完了のメソッドを追加する
+#### <a name="add-job-creation-and-completion-methods"></a>ジョブの作成と完了のメソッドを追加する
 
 ジョブを開始するために、ボットはジョブを作成して、そのジョブに関する情報と現在の会話をジョブ ログに記録します。 ボットは任意の会話でジョブ完了イベントを受け取ると、そのジョブ ID を検証したうえで、ジョブを完了するコードを呼び出します。
 
@@ -602,7 +512,7 @@ private BotCallbackHandler CreateCallback(JobLog.JobData jobInfo)
 - ターン ハンドラー
 - ジョブの作成と完了のためのメソッド
 
-### <a name="declare-the-class-and-add-initialization-code"></a>クラスを宣言して初期化コードを追加する
+#### <a name="declare-the-class-and-add-initialization-code"></a>クラスを宣言して初期化コードを追加する
 
 ```javascript
 const { ActivityTypes, TurnContext } = require('botbuilder');
@@ -633,7 +543,7 @@ function isEmpty(obj) {
 module.exports.ProactiveBot = ProactiveBot;
 ```
 
-### <a name="the-turn-handler"></a>ターン ハンドラー
+#### <a name="the-turn-handler"></a>ターン ハンドラー
 
 `onTurn` メソッドと `showJobs` メソッドは、`ProactiveBot` クラス内で定義されます。 `onTurn` はユーザーからの入力を処理します。 また、仮想ジョブ フルフィルメント システムからのイベント アクティビティも受け取ります。 `showJobs` はジョブ ログを書式設定して送信します。
 
@@ -695,7 +605,7 @@ async showJobs(turnContext) {
 }
 ```
 
-### <a name="logic-to-start-a-job"></a>ジョブを開始するためのロジック
+#### <a name="logic-to-start-a-job"></a>ジョブを開始するためのロジック
 
 `createJob` メソッドは、`ProactiveBot` クラス内で定義されます。 これは、ユーザーに対して新しいジョブを作成してログ記録します。 理論上は、この情報をジョブ フルフィルメント システムにも転送します。
 
@@ -738,7 +648,7 @@ async createJob(turnContext) {
 }
 ```
 
-### <a name="logic-to-complete-a-job"></a>ジョブを完了するためのロジック
+#### <a name="logic-to-complete-a-job"></a>ジョブを完了するためのロジック
 
 `completeJob` メソッドは、`ProactiveBot` クラス内で定義されます。 これは、何らかのブックキーピングを実行し、ユーザーに対して、ジョブが完了したというプロアクティブ メッセージを (そのユーザーの元の会話内で) 送信します。
 
@@ -783,7 +693,7 @@ async completeJob(turnContext, jobIdNumber) {
 
 ---
 
-## <a name="test-your-bot"></a>ボットをテストする
+### <a name="test-your-bot"></a>ボットをテストする
 
 ボットをローカルで構築して実行し、 2 つのエミュレーター ウィンドウを開きます。
 

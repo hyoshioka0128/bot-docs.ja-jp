@@ -1,7 +1,7 @@
 ---
-title: ユーザー入力を収集するためにダイアログ ライブラリを使用する | Microsoft Docs
+title: ダイアログ プロンプトを使用してユーザー入力を収集する | Microsoft Docs
 description: Bot Builder SDK で、ダイアログ ライブラリを使用してユーザーに入力を求める方法について説明します。
-keywords: プロンプト, ダイアログ, AttachmentPrompt, ChoicePrompt, ConfirmPrompt, DatetimePrompt, NumberPrompt, TextPrompt, 再プロンプト, 検証
+keywords: プロンプト, プロンプト, ユーザー入力, ダイアログ, AttachmentPrompt, ChoicePrompt, ConfirmPrompt, DatetimePrompt, NumberPrompt, TextPrompt, 再プロンプト, 検証
 author: JonathanFingold
 ms.author: v-jofing
 manager: kamrani
@@ -10,22 +10,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 150d5f0a68d897ac278026a7cf36609aca05bb80
-ms.sourcegitcommit: 984705927561cc8d6a84f811ff24c8c71b71c76b
+ms.openlocfilehash: ec0cc5e942ed66c8683f8b0cc92ba7df2e36db42
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50965720"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645672"
 ---
-# <a name="use-dialog-library-to-gather-user-input"></a>ユーザー入力を収集するためにダイアログ ライブラリを使用する
+# <a name="gather-user-input-using-a-dialog-prompt"></a>ダイアログ プロンプトを使用してユーザー入力を収集する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 質問を投稿することで情報を収集することは、ボットがユーザーとやり取りする主な手段の 1 つです。 これは、[turn context](~/v4sdk/bot-builder-basics.md#defining-a-turn) オブジェクトの _send activity_ メソッドを使用して、その後次の受信メッセージを応答として処理することで、直接行うことができます。 ただし、Bot Builder SDK には、質問しやすくし、応答が特定のデータ型と一致するか、カスタム検証ルールを満たすように設計されたメソッドを提供する、[ダイアログ ライブラリ](bot-builder-concept-dialog.md) が用意されています。 このトピックでは、ユーザーに入力を求めるプロンプト オブジェクトを使用してこれを実現する方法について詳しく説明します。
-
-この記事では、プロンプトを作成し、ダイアログ内からプロンプトを呼び出す方法について説明します。
-ダイアログを使用せずに入力を求める方法については、[独自のプロンプトを使用してユーザーに入力を求める](bot-builder-primitive-prompts.md)方法に関する記事をご覧ください。
-一般的なダイアログの使用方法については、[ダイアログを使用した単純な会話フローの管理](bot-builder-dialog-manage-conversation-flow.md)に関する記事をご覧ください。
 
 ## <a name="prompt-types"></a>プロンプトの種類
 
@@ -431,13 +427,6 @@ constructor(conversationState) {
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
-/// <summary>Validates whether the party size is appropriate to make a reservation.</summary>
-/// <param name="promptContext">The validation context.</param>
-/// <param name="cancellationToken">A cancellation token that can be used by other objects
-/// or threads to receive notice of cancellation.</param>
-/// <returns>A task that represents the work queued to execute.</returns>
-/// <remarks>Reservations can be made for groups of 6 to 20 people.
-/// If the task is successful, the result indicates whether the input was valid.</remarks>
 private async Task<bool> PartySizeValidatorAsync(
     PromptValidatorContext<int> promptContext,
     CancellationToken cancellationToken)
@@ -469,7 +458,7 @@ private async Task<bool> PartySizeValidatorAsync(
 
 ```javascript
 async partySizeValidator(promptContext) {
-    // Check whether the input could be recognized as an integer.
+    // Check whether the input could be recognized as date.
     if (!promptContext.recognized.succeeded) {
         await promptContext.context.sendActivity(
             "I'm sorry, I do not understand. Please enter the number of people in your party.");
@@ -503,13 +492,8 @@ async partySizeValidator(promptContext) {
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
-/// <summary>Validates whether the reservation date is appropriate.</summary>
-/// <param name="promptContext">The validation context.</param>
-/// <param name="cancellationToken">A cancellation token that can be used by other objects
-/// or threads to receive notice of cancellation.</param>
-/// <returns>A task that represents the work queued to execute.</returns>
-/// <remarks>Reservations must be made at least an hour in advance.
-/// If the task is successful, the result indicates whether the input was valid.</remarks>
+// Validates whether the reservation date is appropriate.
+// Reservations must be made at least an hour in advance.
 private async Task<bool> DateValidatorAsync(
     PromptValidatorContext<IList<DateTimeResolution>> promptContext,
     CancellationToken cancellationToken = default(CancellationToken))
@@ -584,12 +568,7 @@ return false;
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
-/// <summary>First step of the main dialog: prompt for party size.</summary>
-/// <param name="stepContext">The context for the waterfall step.</param>
-/// <param name="cancellationToken">A cancellation token that can be used by other objects
-/// or threads to receive notice of cancellation.</param>
-/// <returns>A task that represents the work queued to execute.</returns>
-/// <remarks>If the task is successful, the result contains information from this step.</remarks>
+// First step of the main dialog: prompt for party size.
 private async Task<DialogTurnResult> PromptForPartySizeAsync(
     WaterfallStepContext stepContext,
     CancellationToken cancellationToken = default(CancellationToken))
@@ -605,13 +584,8 @@ private async Task<DialogTurnResult> PromptForPartySizeAsync(
         cancellationToken);
 }
 
-/// <summary>Second step of the main dialog: record the party size and prompt for the
-/// reservation date.</summary>
-/// <param name="stepContext">The context for the waterfall step.</param>
-/// <param name="cancellationToken">A cancellation token that can be used by other objects
-/// or threads to receive notice of cancellation.</param>
-/// <returns>A task that represents the work queued to execute.</returns>
-/// <remarks>If the task is successful, the result contains information from this step.</remarks>
+// Second step of the main dialog: record the party size and prompt for the
+// reservation date.
 private async Task<DialogTurnResult> PromptForReservationDateAsync(
     WaterfallStepContext stepContext,
     CancellationToken cancellationToken = default(CancellationToken))
@@ -631,12 +605,7 @@ private async Task<DialogTurnResult> PromptForReservationDateAsync(
         cancellationToken);
 }
 
-/// <summary>Third step of the main dialog: return the collected party size and reservation date.</summary>
-/// <param name="stepContext">The context for the waterfall step.</param>
-/// <param name="cancellationToken">A cancellation token that can be used by other objects
-/// or threads to receive notice of cancellation.</param>
-/// <returns>A task that represents the work queued to execute.</returns>
-/// <remarks>If the task is successful, the result contains information from this step.</remarks>
+// Third step of the main dialog: return the collected party size and reservation date.
 private async Task<DialogTurnResult> AcknowledgeReservationAsync(
     WaterfallStepContext stepContext,
     CancellationToken cancellationToken = default(CancellationToken))
@@ -822,8 +791,6 @@ async onTurn(turnContext) {
 
 ---
 
-その他の例は Microsoft の[サンプル リポジトリ](https://aka.ms/bot-samples-readme)にあります。
-
 同様の手法を使用し、あらゆる種類のプロンプトの回答を検証できます。
 
 ## <a name="handling-prompt-results"></a>プロンプトの結果の処理
@@ -834,19 +801,10 @@ async onTurn(turnContext) {
 * 情報をダイアログの状態にキャッシュし (ウォーターフォール ステップ コンテキストの _values_ プロパティの値の設定など)、ダイアログの終了時に収集した情報を返します。
 * 情報をボットの状態に保存します。 この場合、ボットの状態プロパティ アクセサーにアクセスできるようにダイアログを設計する必要があります。
 
-これらのシナリオに対応するトピックとサンプルについては、その他のリソースをご覧ください。
-
 ## <a name="additional-resources"></a>その他のリソース
-
-* [単純な会話フローを管理する](bot-builder-dialog-manage-conversation-flow.md)
-* [複雑な会話フローを管理する](bot-builder-dialog-manage-complex-conversation-flow.md)
-* [統合された一連のダイアログを作成する](bot-builder-compositcontrol.md)
-* [ダイアログのデータを保持する](bot-builder-tutorial-persist-user-inputs.md)
-* **マルチターン プロンプト**のサンプル ([C#](https://aka.ms/cs-multi-prompts-sample) | [JS](https://aka.ms/js-multi-prompts-sample))
+複数のプロンプトの詳細については、[[C#](https://aka.ms/cs-multi-prompts-sample) または [JS](https://aka.ms/js-multi-prompts-sample)] のサンプルを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-これでプロンプトでユーザーに入力を求める方法がわかりました。次に、ダイアログを利用してさまざまな会話フローを管理することでボット コードとユーザー エクスペリエンスを強化しましょう。
-
 > [!div class="nextstepaction"]
-> [複雑な会話フローを管理する](bot-builder-dialog-manage-complex-conversation-flow.md)
+> [連続して行われる基本的な会話フローの実装](bot-builder-dialog-manage-conversation-flow.md)

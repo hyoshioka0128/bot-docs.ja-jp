@@ -1,5 +1,5 @@
 ---
-title: ダイアログを使用して複雑な会話フローを管理する | Microsoft Docs
+title: ブランチとループを使用して高度な会話フローを作成する | Microsoft Docs
 description: Bot Builder SDK for Node.js でダイアログを使用して複雑な会話フローを管理する方法について説明します。
 keywords: 複雑な会話フロー, 繰り返し, ループ, メニュー, ダイアログ, プロンプト, ウォーターフォール, ダイアログ セット
 author: v-ducvo
@@ -8,24 +8,24 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/03/2018
+ms.date: 11/03/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bbb038554801f4585cbc1e3186d139232405b47d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 9605a2f078be753023e6d178247a211ace107873
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999829"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51333026"
 ---
-# <a name="manage-complex-conversation-flows-with-dialogs"></a>ダイアログを使用して複雑な会話フローを管理する
+# <a name="create-advance-conversation-flow-using-branches-and-loops"></a>ブランチとループを使用して高度な会話フローを作成する
 
 [!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
 
-前回の記事では、ダイアログ ライブラリを使用して単純な会話を管理する方法を紹介しました。 [単純な会話フロー](bot-builder-dialog-manage-conversation-flow.md)では、ユーザーは "*ウォーターフォール*" の最初のステップから始め、最後のステップまで進むと会話のやり取りが終了します。 この記事では、ダイアログを使用して、分岐およびループできる部分を含むより複雑な会話を管理します。 そのために、ダイアログ コンテキストとウォーターフォール ステップ コンテキストに定義されているさまざまなメソッドを使用し、ダイアログを構成する要素間で引数の受け渡しを行います。
+前回の記事では、ダイアログ ライブラリを使用して単純な会話を管理する方法を紹介しました。 [連続して行われる会話フロー](bot-builder-dialog-manage-conversation-flow.md)では、ユーザーは "*ウォーターフォール*" の最初のステップから始め、最後のステップまで進むと会話のやり取りが終了します。 この記事では、ダイアログを使用して、分岐およびループできる部分を含むより複雑な会話を管理します。 そのために、ダイアログ コンテキストとウォーターフォール ステップ コンテキストに定義されているさまざまなメソッドを使用し、ダイアログを構成する要素間で引数の受け渡しを行います。
 
 ダイアログの背景情報について詳しくは、「[ダイアログ ライブラリ](bot-builder-concept-dialog.md)」を参照してください。
 
-"*ダイアログ スタック*" をより細かく制御できるように、**ダイアログ** ライブラリには _replace dialog_ メソッドが用意されています。 このメソッドを使用すると、会話の状態とフローを維持したまま、現在アクティブなダイアログと別のダイアログとを入れ替えることができます。 _begin dialog_ メソッドと _replace dialog_ メソッドで分岐とループを必要に応じて使えば、より複雑な対話を作成することができます。 会話の複雑さが増してウォーターフォール ダイアログの管理が難しくなった場合は、[コンポーネント ダイアログ](bot-builder-compositcontrol.md)を使用する方法や、基本 `Dialog` クラスをベースにカスタムのダイアログ管理クラスを作成する方法について調べてみてください。
+"*ダイアログ スタック*" をより細かく制御できるように、**ダイアログ** ライブラリには _replace dialog_ メソッドが用意されています。 このメソッドを使用すると、会話の状態とフローを維持したまま、現在アクティブなダイアログと別のダイアログとを入れ替えることができます。 _begin dialog_ メソッドと _replace dialog_ メソッドで分岐とループを必要に応じて使えば、より複雑な対話を作成することができます。 会話の複雑さが増してウォーターフォール ダイアログの管理が難しくなった場合は、[ダイアログの再利用](bot-builder-compositcontrol.md)を調べるか、基本 `Dialog` クラスをベースにカスタムのダイアログ管理クラスを作成してください。
 
 この記事で作成するサンプル ダイアログは、ホテルのレストランのテーブル予約とルーム サービスへの食事の注文という一般的なホテル サービスを利用する際にゲストが利用できるホテル コンシェルジュ ボットを想定しています。  これらの機能はそれぞれ、ダイアログ セット内のダイアログとして、それらを相互に関連付けるメニューと共に作成されます。
 
