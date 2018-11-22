@@ -14,9 +14,9 @@
 # 概念
 ## [ボットのしくみ](v4sdk/bot-builder-basics.md)
 ## [ボット ファイルでボット リソースを管理する](v4sdk/bot-file-basics.md)
+## [状態の管理](v4sdk/bot-builder-concept-state.md)
 ## [ミドルウェア](v4sdk/bot-builder-concept-middleware.md)
-## [ダイアログ ライブラリについて](v4sdk/bot-builder-concept-dialog.md)
-## [ダイアログの状態について](v4sdk/bot-builder-dialog-state.md)
+## [ダイアログ ライブラリ](v4sdk/bot-builder-concept-dialog.md)
 <!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Bot Service テンプレート](bot-service-concept-templates.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
