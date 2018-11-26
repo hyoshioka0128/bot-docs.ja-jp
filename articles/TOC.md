@@ -13,10 +13,10 @@
 ## [GitHub のサンプル リポジトリ](https://github.com/Microsoft/BotBuilder-Samples/blob/master/readme.md)
 # 概念
 ## [ボットのしくみ](v4sdk/bot-builder-basics.md)
-## [ボット ファイルでボット リソースを管理する](v4sdk/bot-file-basics.md)
 ## [状態の管理](v4sdk/bot-builder-concept-state.md)
-## [ミドルウェア](v4sdk/bot-builder-concept-middleware.md)
 ## [ダイアログ ライブラリ](v4sdk/bot-builder-concept-dialog.md)
+## [ミドルウェア](v4sdk/bot-builder-concept-middleware.md)
+## [.bot ファイルでリソースを管理する](v4sdk/bot-file-basics.md)
 <!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Bot Service テンプレート](bot-service-concept-templates.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
