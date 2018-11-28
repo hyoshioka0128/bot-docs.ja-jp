@@ -8,45 +8,30 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/13/2018
+ms.date: 11/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 06eb7d80ca8baa91c619b31dc61c7f78856a3b7c
-ms.sourcegitcommit: 873361802bd1802f745544ba903aecf658cce639
+ms.openlocfilehash: e774d6360968e5059588dbdb476cfd1f35fb464e
+ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51611049"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52288831"
 ---
 # <a name="implement-sequential-conversation-flow"></a>連続して行われる会話フローの実装
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-ダイアログ ライブラリを使用して、単純な会話フローと複雑な会話フローを管理できます。
+ダイアログ ライブラリを使用して、単純な会話フローと複雑な会話フローを管理できます。 単純なインタラクションでは、ボットは決まった一連のステップを順番に実行していき、最後に会話が終了します。 この記事では "_ウォーターフォール ダイアログ_"、いくつかの "_プロンプト_"、および "_ダイアログ セット_" を使用して、ユーザーに一連の質問を行う単純なインタラクションを作成します。
 
-単純なインタラクションでは、ボットは決まった一連のステップを順番に実行していき、最後に会話が終了します。
-この記事では "_ウォーターフォール ダイアログ_"、いくつかの "_プロンプト_"、および "_ダイアログ セット_" を使用して、ユーザーに一連の質問を行う単純なインタラクションを作成します。
-**マルチターン プロンプト**の [[C#](https://aka.ms/cs-multi-prompts-sample) | [JS](https://aka.ms/js-multi-prompts-sample)] のサンプルからコードを作成します。
+## <a name="prerequisites"></a>前提条件
+- [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download)
+- この記事のコードは、**multi-turn-prompt** サンプルをベースにしています。 サンプルのコピー ([C#](https://aka.ms/cs-multi-prompts-sample) または [JS](https://aka.ms/js-multi-prompts-sample)) が必要になります。
+- [ボットの基本](bot-builder-basics.md)、[ダイアログ ライブラリ](bot-builder-concept-dialog.md)、[ダイアログの状態](bot-builder-dialog-state.md)、および [.bot](bot-file-basics.md) ファイルに関する知識。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-ダイアログ全般を使用するには、プロジェクトまたはソリューション用の `Microsoft.Bot.Builder.Dialogs` NuGet パッケージをインストールする必要があります。
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-ダイアログ全般を使用するには、npm からダウンロード可能な `botbuilder-dialogs` ライブラリが必要です。
-
-このパッケージをインストールし、依存関係として保存するには、プロジェクトのディレクトリに移動し、このコマンドを使用します。
-
-```shell
-npm install botbuilder-dialogs --save
-```
-
----
 以降のセクションで示す手順は、ほとんどのボットで単純なダイアログを実装するときに使用できます。
 
 ## <a name="configure-your-bot"></a>ボットを構成する
-
-状態プロパティ アクセサーがダイアログ セットに割り当てられている必要があります。ボットはこれを使用して[ダイアログ状態](bot-builder-dialog-state.md)を管理します。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -132,7 +117,7 @@ const bot = new MultiTurnBot(conversationState, userState);
 
 ## <a name="update-the-bot-turn-handler-to-call-the-dialog"></a>ダイアログを呼び出すようにボットのターン ハンドラーを更新する
 
-ダイアログを実行するには、ボットのターン ハンドラーで、ボットのダイアログが含まれるダイアログ セットに対して、ダイアログ コンテキストを作成する必要があります  (ボットでは複数のダイアログ セットを定義できますが、一般的には、ボットに対して 1 つだけ定義します。 「[ダイアログ ライブラリ](bot-builder-concept-dialog.md)」では、ダイアログの重要な側面について説明しています)。
+ダイアログを実行するには、ボットのターン ハンドラーで、ボットのダイアログが含まれるダイアログ セットに対して、ダイアログ コンテキストを作成する必要があります  ボットでは複数のダイアログ セットを定義できますが、一般的には、お使いのボットに対して 1 つだけ定義します。 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -228,8 +213,6 @@ async onTurn(turnContext) {
 
 状態管理オブジェクトのキャッシュのプロパティ値は、状態プロパティ アクセサーの _get_ メソッドおよび _set_ メソッドによって取得および設定されます。 キャッシュはターンで状態プロパティの値が最初に要求されたときに設定されますが、明示的に保持する必要があります。 この両方の状態プロパティに対する変更を保持するには、対応する状態管理オブジェクトの _save changes_  メソッドを呼び出します。
 
-詳細については、「[ダイアログの状態](bot-builder-dialog-state.md)」を参照してください。
-
 ## <a name="initialize-your-bot-and-define-your-dialog"></a>ボットを初期化してダイアログを定義する
 
 簡単な会話は、ユーザーに対する一連の質問としてモデル化されます。 C# と JavaScript の各バージョンでは若干手順が異なります。
@@ -260,7 +243,7 @@ async onTurn(turnContext) {
 ご自身のウォーターフォール ステップを定義するときに覚えておく必要があることを次に示します。
 
 * 各ボット ターンにはユーザーからの入力が反映され、ボットからの応答が続きます。 したがって、ウォーターフォール ステップの最後にユーザーに入力を求め、その回答は次のウォーターフォール ステップで受け取ります。
-* 各プロンプトは事実上、プロンプトを表す 2 つのステップから成るダイアログであり、"有効な" 入力を受け取るまでループします  (プロンプトの種類ごとに組み込みの検証を使用することも、独自のカスタム検証をプロンプトに追加することもできます。 詳細については、[ユーザー入力の取得](bot-builder-prompts.md)に関するページをご覧ください)。
+* 各プロンプトは事実上、プロンプトを表す 2 つのステップから成るダイアログであり、"有効な" 入力を受け取るまでループします  
 
 このサンプルでは、ダイアログはボット ファイル内で定義され、ボットのコンストラクターで初期化されます。
 
@@ -528,7 +511,7 @@ async displayProfile(step) {
 
 ## <a name="test-your-dialog"></a>ダイアログをテストする
 
-ボットをローカルでビルドして実行し、[エミュレーター](../bot-service-debug-emulator.md)を使って操作します。
+ご自身のボットをローカルでビルドして実行し、エミュレーターを使って操作します。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -551,6 +534,9 @@ async displayProfile(step) {
    * ボットによって 1 ステップの `hello_user` ダイアログが開始され、収集されたデータの情報が表示された後、すぐに終了します。
 
 ---
+
+## <a name="additional-resources"></a>その他のリソース
+ここで示すように、プロンプトの種類ごとに組み込みの検証を使用することも、独自のカスタム検証をプロンプトに追加することもできます。 詳細については、[ダイアログ プロンプトを使用したユーザー入力の収集](bot-builder-prompts.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

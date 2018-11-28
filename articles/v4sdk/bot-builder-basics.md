@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 852740695f4d5719ba4dc4cc3d49c6820d95b3ef
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: 15cd6c998abf37b1c7b9a9e2659b7390370f7f10
+ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51333006"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51715126"
 ---
 # <a name="how-bots-work"></a>ボットのしくみ
 
@@ -64,16 +64,16 @@ ms.locfileid: "51333006"
 ミドルウェアは、他のメッセージング ミドルウェアとよく似ています。連続する一連のコンポーネントで構成され、各コンポーネントが順に実行されるため、それぞれがアクティビティで動作できます。 ミドルウェア パイプラインの最終ステージは、アプリケーションがアダプターに登録したボット クラスでターン ハンドラーを呼び出すコールバック (C# の場合は `OnTurnAsync`、JS の場合は `onTurn`) 関数です。 ターン ハンドラーはその引数としてターン コンテキストを受け取り、通常はターン ハンドラー関数の内部で実行されているアプリケーション ロジックによってインバウンド アクティビティの内容を処理して、1 つ以上のアクティビティを応答として生成し、ターン コンテキストの "*アクティビティの送信*" 関数を使用してそれらを送信します。 ターン コンテキストで "*アクティビティの送信*" を呼び出すと、ミドルウェア コンポーネントがアウトバウンド アクティビティで呼び出されます。 ミドルウェア コンポーネントは、ボットのターン ハンドラー関数の前後で実行されます。 実行は本質的に入れ子なっているため、マトリョーシカ人形のようであると言われることもあります。 ミドルウェアの詳細については、[ミドルウェアに関するトピック](~/v4sdk/bot-builder-concept-middleware.md)を参照してください。
 
 ## <a name="bot-structure"></a>ボットの構造
+以降のセクションでは、ボットの主な要素について説明します。
 
-カウンター付きのエコー ボット ([C#](https://aka.ms/EchoBotWithStateCSharp) | [JS](https://aka.ms/EchoBotWithStateJS)) のサンプルを見て、ボットの主要な要素を確認してみましょう。
-
-[!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
+### <a name="prerequisites"></a>前提条件
+- **EchoBotWithCounter** サンプルのコピー ([C#](https://aka.ms/EchoBotWithStateCSharp) または [JS](https://aka.ms/EchoBotWithStateJS))。 ここでは関連するコードのみを示していますが、サンプルを参照することで完全なソース コードを確認できます。
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 
-ボットは、一種の [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.1) Web アプリケーションです。 [ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/index?view=aspnetcore-2.1&tabs=aspnetcore2x) の基礎に関する記事を見ると、**Program.cs** や **Startup.cs** などのファイルにあるのと同様のコードが確認できます。 これらのファイルはすべての Web アプリに必須で、ボット固有のものではありません。 これらの一部のファイルに含まれるコードはここにコピーされていませんが、お客様は [C# echobot-with-counter](https://aka.ms/EchoBot-With-Counter) サンプルを参照することができます。
+ボットは、一種の [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.1) Web アプリケーションです。 [ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/index?view=aspnetcore-2.1&tabs=aspnetcore2x) の基礎に関する記事を見ると、**Program.cs** や **Startup.cs** などのファイルにあるのと同様のコードが確認できます。 これらのファイルはすべての Web アプリに必須で、ボット固有のものではありません。 
 
-### <a name="echowithcounterbotcs"></a>EchoWithCounterBot.cs
+### <a name="bot-logic"></a>ボット ロジック
 
 ボットのメイン ロジックは、`IBot` インターフェイスから派生した `EchoWithCounterBot` クラスに定義されます。 `IBot` には、`OnTurnAsync` というメソッドが 1 つだけ定義されています。 お客様のアプリケーションでは、このメソッドを実装する必要があります。 受信アクティビティに関する情報は、`OnTurnAsync` の turnContext から得られます。 受信アクティビティは、インバウンド HTTP 要求に相当します。 アクティビティにはさまざまな種類があるため、まず、お客様のボットがメッセージを受信したかどうかを確認します。 それがメッセージである場合は、ターン コンテキストから会話の状態を取得して、ターン カウンターをインクリメントし、新しいターン カウンターの値を会話の状態として保持します。 さらに、SendActivityAsync 呼び出しを使用してユーザーにメッセージを返します。 送信アクティビティは、アウトバウンド HTTP 要求に相当します。
 
@@ -105,9 +105,9 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
 }
 ```
 
-### <a name="startupcs"></a>Startup.cs
+### <a name="set-up-services"></a>サービスのセットアップ
 
-`ConfigureServices` メソッドでは、接続済みサービスを [.bot](bot-builder-basics.md#the-bot-file) ファイルから読み込み、会話のターン中に発生したエラーをキャッチしてログに記録します。さらに、資格情報プロバイダーを設定し、会話データをメモリに格納するための会話の状態オブジェクトを作成します。
+startup.cs ファイルの `ConfigureServices` メソッドでは、接続済みサービスを [.bot](bot-builder-basics.md#the-bot-file) ファイルから読み込み、会話のターン中に発生したエラーをキャッチしてログに記録します。さらに、資格情報プロバイダーを設定し、会話データをメモリに格納するための会話の状態オブジェクトを作成します。
 
 ```csharp
 services.AddBot<EchoWithCounterBot>(options =>
@@ -162,10 +162,9 @@ services.AddBot<EchoWithCounterBot>(options =>
 });
 ```
 
-また、`EchoBotAccessors` の作成と登録も行います。これは、**EchoBotStateAccessors.cs** ファイルに定義され、ASP.NET Core の依存関係挿入フレームワークを使用して、パブリック `EchoWithCounterBot` コンストラクターに渡されます。
+`ConfigureServices` メソッドでは、`EchoBotAccessors` の作成と登録も行います。このアクセサーは、**EchoBotStateAccessors.cs** ファイルで定義され、ASP.NET Core の依存関係挿入フレームワークを使用して、パブリック `EchoWithCounterBot` コンストラクターに渡されます。
 
 ```csharp
-// Create and register state accessors.
 // Accessors created here are passed into the IBot-derived class on every turn.
 services.AddSingleton<EchoBotAccessors>(sp =>
 {
@@ -187,7 +186,7 @@ services.AddSingleton<EchoBotAccessors>(sp =>
 
 `Configure` メソッドでは、ご自身のアプリで Bot Framework とその他のいくつかのファイルが使用されることを指定します。これにより、アプリの構成が完了します。 Bot Framework を使用するすべてのボットで、その構成の呼び出しが必要です。 `ConfigureServices` と `Configure` は、アプリの起動時にランタイムによって呼び出されます。
 
-### <a name="counterstatecs"></a>CounterState.cs
+### <a name="manage-state"></a>状態の管理
 
 このファイルには、現在の状態を維持するために、お客様のボットによって使用されるシンプルなクラスが含まれます。 これには、お客様のカウンターのインクリメントに使用する `int` のみが含まれます。
 
@@ -198,7 +197,7 @@ public class CounterState
 }
 ```
 
-### <a name="echobotaccessorscs"></a>EchoBotAccessors.cs
+### <a name="accessor-class"></a>アクセサー クラス
 
 `EchoBotAccessors` クラスは、`Startup` クラスにシングルトンとして作成され、IBot 派生クラスに渡されます。 例では、 `public class EchoWithCounterBot : IBot`が使用されます。 このアクセサーは、ボットで会話データを保持する際に使用されます。 `EchoBotAccessors` のコンストラクターには、Startup.cs ファイルに作成された会話オブジェクトが渡されます。
 
@@ -401,7 +400,7 @@ exports.EchoBot = EchoBot;
 
 ---
 
-### <a name="the-bot-file"></a>ボット ファイル
+## <a name="the-bot-file"></a>ボット ファイル
 
 **.bot** ファイルには、エンドポイント、アプリ ID、パスワードなどの情報のほか、ボットによって使用されるサービスの参照が格納されます。 このファイルは、テンプレートからボットの作成を開始すると、自動的に作成されますが、エミュレーターまたはその他のツールを使用して、独自のものを作成することもできます。 [エミュレーター](../bot-service-debug-emulator.md)を使ってボットをテストするときに、使用する .bot ファイルを指定できます。
 
@@ -425,7 +424,7 @@ exports.EchoBot = EchoBot;
 
 ## <a name="additional-resources"></a>その他のリソース
 
-状態管理の詳細については、[会話とユーザー状態を管理する方法](bot-builder-howto-v4-state.md)に関するページを参照してください。
+リソースの管理におけるボット ファイルの役割について理解するには、[ボット ファイル](bot-file-basics.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

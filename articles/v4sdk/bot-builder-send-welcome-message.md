@@ -8,20 +8,24 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 25745d380e53173c4dc67d280c120ced5845078b
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: eb62df9bd1f74ab6de9b67fe352b1af4620a6bc6
+ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332916"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51715106"
 ---
 # <a name="send-welcome-message-to-users"></a>ユーザーへのウェルカム メッセージの送信
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 ボットを作成する主な目的は、有意義な会話によってユーザー エンゲージメントを高めることです。 この目標を達成するための効果的な方法の 1 つは、ユーザーが最初にアクセスした瞬間から、ボットの主な目的と機能 (ボットが作られた理由) をユーザーがわかるようにすることです。 この記事では、ボットのユーザーを歓迎するのに役立つコード サンプルを紹介します。
+
+## <a name="prerequisites"></a>前提条件
+- [ボットの基本](bot-builder-basics.md)を理解する。 
+- **ウェルカム サンプル**のコピー ([C#](https://aka.ms/proactive-sample-cs) または [JS](https://aka.ms/proactive-sample-js))。 サンプルのコードは、ウェルカム メッセージの送信方法を説明するために使用されます。
 
 ## <a name="same-welcome-for-different-channels"></a>複数のチャネルに同じウェルカム メッセージを使用する
 ウェルカム メッセージは、ユーザーがボットと最初にやり取りしたときに生成する必要があります。 そのためには、ボットのアクティビティ タイプと、新規の接続を監視します。 新規接続が検出されたときには、チャネルによって、最大 2 つの会話更新アクティビティが生成されます。
@@ -39,25 +43,13 @@ ms.locfileid: "51332916"
 - 会話更新イベントが発生した。
 - 新しいメンバー (ユーザー) が会話に追加された。
 
-次の例では、新しい "*会話更新アクティビティ*" を待ち、会話に参加したユーザーに応じてウェルカム メッセージを 1 回だけ送信し、ユーザーの最初の会話入力を無視するための、プロンプト状態フラグを設定します。 [[C#](https://aka.ms/bot-welcome-sample-cs) または [JS](https://aka.ms/bot-welcome-sample-js)] の完全なソース コードを GitHub からダウンロードできます。
+次の例では、新しい "*会話更新アクティビティ*" を待ち、会話に参加したユーザーに応じてウェルカム メッセージを 1 回だけ送信し、ユーザーの最初の会話入力を無視するための、プロンプト状態フラグを設定します。 
 
 [!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-以下のすべての C# コード サンプルをサポートするために、次のライブラリ セットを使用します
-
-```csharp
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Schema;
-```
-
-まずは、会話内の特定のユーザーの状態オブジェクトと、そのアクセサーを作成する必要があります。
+会話に参加している特定のユーザーの状態オブジェクトと、そのアクセサーを作成する必要があります。
 
 ```csharp
 /// The state object is used to keep track of various state related to a user in a conversation.
@@ -428,6 +420,8 @@ switch (text)
 }
 ```
 ---
+## <a name="test-the-bot"></a>ボットのテスト
+ボットを実行およびテストする手順については、[README](https://github.com/Microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/03.welcome-user/readme.md) ファイルを参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/8/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 713a53947a8ea6681f1793f9796a86c6d8014e29
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: bd431da58d13f3024617900bbeabd8007a2e3bb8
+ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332926"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52288802"
 ---
 # <a name="middleware"></a>ミドルウェア
 
@@ -83,6 +83,16 @@ SDK は受信および送信アクティビティを記録できるログ記録�
 
 それぞれの新しいアクティビティには、新しいスレッドが与えられ、それぞれ対応するスレッドで実行されることに留意してください。 アクティビティを処理するスレッドが作成されると、そのアクティビティ用のハンドラー リストが、その新しいスレッドにコピーされます。 そのポイントより後に追加されたハンドラーは、その特定のアクティビティ イベントに対して実行されません。
 コンテキスト オブジェクトに登録されたハンドラーは、アダプターがミドルウェア パイプラインを管理する場合とよく似た方法で処理されます。 具体的には、ハンドラーはそれらが追加された順に呼び出され、next デリゲートを呼び出すと、次に登録されているイベント ハンドラーに制御が渡されます。 次のデリゲートがハンドラーによって呼び出されない場合、後続のイベント ハンドラーは呼び出されません。イベントは短絡状態となり、アダプターからチャネルに応答は送信されません。
+
+## <a name="handling-state-in-middleware"></a>ミドルウェアでの状態の処理
+
+状態を保存する一般的な方法は、ターン ハンドラーの最後に、変更の保存メソッドを呼び出すというものです。 この呼び出しに焦点を当てた図を次に示します。
+
+![状態ミドルウェアの問題](media/bot-builder-dialog-state-problem.png)
+
+このアプローチの問題は、ボットのターン ハンドラーが戻った後に発生する、カスタム ミドルウェアで行われた状態の更新が永続ストレージに保存されないことです。 これを解決するには、変更の保存メソッドへの呼び出しを、カスタム ミドルウェアの完了後に移動するか (AutoSaveChangesMiddleware をミドルウェア スタックの最初に追加)、少なくとも、状態を更新する可能性があるミドルウェアの前に移動します。 実行は次のようになります。
+
+![状態ミドルウェアの解決策](media/bot-builder-dialog-state-solution.png)
 
 ## <a name="additional-resources"></a>その他のリソース
 Bot Builder SDK [[C#](https://github.com/Microsoft/botbuilder-dotnet/blob/master/libraries/Microsoft.Bot.Builder/TranscriptLoggerMiddleware.cs) | [JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/transcriptLogger.ts)] に実装されているトランスクリプト ロガー ミドルウェアもご覧ください。

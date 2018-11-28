@@ -1,22 +1,18 @@
 ---
-title: ユーザーに質問する | Microsoft Docs
-description: Bot Builder SDK で、ウォーターフォール モデルを使用してユーザーに複数の入力を要求する方法について説明します。
-keywords: ウォーターフォール、ダイアログ、質問する、プロンプト
-author: v-ducvo
-ms.author: v-ducvo
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 5/10/2018
-monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 84c86e9cc295cd2a1dce0857fa7ab629c219dab1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+redirect_url: /bot-framework/bot-builder-prompts
+ms.openlocfilehash: e7cfbad19290b3ef61d40dc90493db8f530a9a4e
+ms.sourcegitcommit: 4661b9bb31d74731dbbb16e625be088b44ba5899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997479"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51826939"
 ---
+<a name="--"></a><!--
+---
+title: ユーザーに質問する | Microsoft Docs description: Bot Builder SDK で、ウォーターフォール モデルを使用してユーザーに複数の入力を要求する方法について説明します。
+keywords: ウォーターフォール, ダイアログ, 質問する, プロンプト author: v-ducvo ms.author: v-ducvo manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 5/10/2018 monikerRange: 'azure-bot-service-4.0'
+---
+
 # <a name="ask-the-user-questions"></a>ユーザーに質問する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -500,3 +496,5 @@ server.post('/api/messages', (req, res) => {
 
 > [!div class="nextstepaction"]
 > [ユーザー データを保持する](bot-builder-tutorial-persist-user-inputs.md)
+
+-->

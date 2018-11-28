@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 09/18/2018
-ms.openlocfilehash: b5b02773ab71801132f2a73f81123588e7ddfcdb
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.date: 11/15/2018
+ms.openlocfilehash: 3c5b12bb804477ae41cf70d2ce955066801f5916
+ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645692"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51715136"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -85,17 +85,17 @@ Bot Service は、ボットを開発するための Bot Builder SDK や、ボッ
 
 Azure Bot Service は、ボットを開発するための Bot Builder SDK や、ボットをチャンネルに接続するための Bot Service など、ボットを作成するためのコア コンポーネントを提供します。 このトピックでは、.NET テンプレートまたは Node.js テンプレートのいずれかを選択し、Bot Builder SDK v4 を使用してボットを作成できます。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
-[Azure Portal](http://portal.azure.com) にログインします。
+## <a name="prerequisites"></a>前提条件
+- [Azure](http://portal.azure.com) アカウント
 
-> [!TIP]
-> サブスクリプションがない場合は、<a href="https://azure.microsoft.com/en-us/free/" target="_blank">無料アカウント</a>に登録できます。
+### <a name="create-a-new-bot-service"></a>新しいボット サービスを作成する
 
-## <a name="create-a-new-bot-service"></a>新しいボット サービスを作成する
+1. [Azure Portal](http://portal.azure.com/) にログインします。
+1. Azure portal の左上隅にある **[新しいリソースの作成]** リンクをクリックし、**[AI + Machine Learning]** > **[Web App Bot]** を選択します。 
 
-1. Azure portal の左上隅にある **[新しいリソースの作成]** リンクをクリックし、**[AI + Machine Learning] > [Web App Bot]** を選択します。 
+![ボットを作成する](~/media/azure-bot-quickstarts/abs-create-blade.png)
 
-2. **Web App Bot** に関する情報が含まれた新しいブレードが開きます。  
+2. **Web App Bot** に関する情報が含まれた "*新しいブレード*" が開きます。  
 
 3. **[Bot Service]** ブレードで、画像の下の表に示すように、ボットに関する必要な情報を入力します。  <br/>
  ![Web App Bot の作成ブレード](~/media/azure-bot-quickstarts/sdk-create-bot-service-blade.png)
@@ -132,6 +132,6 @@ Azure Bot Service は、ボットを開発するための Bot Builder SDK や、
 このトピックでは、Azure Bot Service を使用して**エコー** Web App Bot を作成する方法を学習し、組み込みの Web チャット コントロールを使用してボットの機能を検証しました。 次に、ボットを管理し、そのソース コードの操作を開始する方法を確認しましょう。
 
 > [!div class="nextstepaction"]
-> [ボットの管理](bot-service-manage-overview.md)
+> [ボットのしくみ](~/v4sdk/bot-builder-basics.md)
 
 ::: moniker-end
