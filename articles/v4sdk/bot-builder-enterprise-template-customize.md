@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ea507bbdf916ff1955aea0db17b765791432f430
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: 319700f8b7b236ce74058bac5fabb84f21e04d69
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645582"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452014"
 ---
 # <a name="enterprise-bot-template---customize-your-bot"></a>Enterprise Bot Template - ボットのカスタマイズ
 
@@ -36,7 +36,13 @@ ms.locfileid: "51645582"
     | - CognitiveModels     
         | - LUIS            // .LU file containing base conversational intents (Greeting, Help, Cancel)
         | - QnA             // .LU file containing example QnA items
-    | - DeploymentScripts   // msbot clone recipe for deployment
+    | - DeploymentScripts   // msbot clone recipes for deployment
+        | - de              // Deployment files for German
+        | - en              // Deployment files for English        
+        | - es              // Deployment files for Spanish
+        | - fr              // Deployment files for French
+        | - it              // Deployment files for Italian
+        | - zh              // Deployment files for Chinese
     | - Dialogs             // All Bot dialogs sit under this folder
         | - Main            // Root Dialog for all messages
             | - MainDialog.cs       // Dialog Logic
@@ -69,26 +75,26 @@ Visual Studio のリソース エディター (下記) で応答を変更すれ�
 
 ## <a name="updating-your-cognitive-models"></a>コグニティブ モデルの更新
 
-Enterprise Template には、既定で 2 つのコグニティブ モデルが用意されています。サンプルの FAQ QnAMaker ナレッジ ベースと、一般インテント (あいさつ、ヘルプ、キャンセルなど) に対応した LUIS モデルです。 これらのモデルは、ニーズに応じてカスタマイズできます。 また、新しい LUIS モデルや QnAMaker ナレッジ ベースを追加して、機能を拡張することもできます。
+Enterprise Template には、サンプルの FAQ QnA Maker ナレッジ ベースと、一般的な意図 (あいさつ、ヘルプ、キャンセルなど) に対応した LUIS モデルの 2 つのコグニティブ モデルが、既定で用意されています。 これらのモデルは、ニーズに応じてカスタマイズできます。 また、新しい LUIS モデルや QnA Maker ナレッジ ベースを追加して、ボットの機能を拡張することもできます。
 
 ### <a name="updating-an-existing-luis-model"></a>既存の LUIS モデルの更新
 Enterprise Template 用の既存の LUIS モデルを更新するには、次の手順を実行します。
 1. [LUIS ポータル](http://luis.ai)にアクセスするか、CLI ツール [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) と [Luis](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) を使用して、LUIS モデルに変更を加えます。 
 2. 次のコマンドを実行してディスパッチ モデルを更新し、変更を反映します (適切なメッセージ ルーティングを確保します)。
 ```shell
-    dispatch refresh --bot "YOURBOT.bot" --secret YOURSECRET
+    dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
 ```
 3. 更新された各モデルについて、プロジェクトのルートから次のコマンドを実行し、関連付けられている LuisGen クラスを更新します。 
 ```shell
     luis export version --appId [LUIS_APP_ID] --versionId [LUIS_APP_VERSION] --authoringKey [YOUR_LUIS_AUTHORING_KEY] | luisgen --cs [CS_FILE_NAME] -o "\Dialogs\Shared\Resources"
 ```
 
-### <a name="updating-an-existing-qnamaker-knowledge-base"></a>既存の QnAMaker ナレッジ ベースの更新
-既存の QnAMaker ナレッジ ベースを更新するには、以下の手順を実行します。
-1. CLI ツール [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) および [QnAMaker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) を使用するか、[QnAMaker ポータル](https://qnamaker.ai)にアクセスして、QnAMaker ナレッジ ベースに変更を加えます。
+### <a name="updating-an-existing-qna-maker-knowledge-base"></a>既存の QnA Maker ナレッジ ベースの更新
+既存の QnA Maker ナレッジ ベースを更新するには、以下の手順を実行します。
+1. [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) および [QnA Maker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) CLI ツールまたは [QnA Maker ポータル](https://qnamaker.ai)を使用して、ご自身の QnA Maker ナレッジ ベースに変更を加えます。
 2. 次のコマンドを実行してディスパッチ モデルを更新し、変更を反映します (適切なメッセージ ルーティングを確保します)。
 ```shell
-    dispatch refresh --bot "YOURBOT.bot" --secret YOURSECRET
+    dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
 ```
 
 ### <a name="adding-a-new-luis-model"></a>新しい LUIS モデルの追加
@@ -101,28 +107,28 @@ Enterprise Template 用の既存の LUIS モデルを更新するには、次の
 ```
 3. 次のコマンドを使用して、新しい LUIS モデルをディスパッチャーに追加します
 ```shell
-    dispatch add -t luis -id YOUR_LUIS_APPID -bot "YOURBOT.bot" -secret YOURSECRET
+    dispatch add -t luis -id LUIS_APP_ID -bot "YOUR_BOT.bot" -secret YOURSECRET
 ```
 4. 次のコマンドを使用してディスパッチ モデルを更新し、LUIS モデルの変更を反映します
 ```shell
-    dispatch refresh -bot "YOURBOT.bot" -secret YOURSECRET
+    dispatch refresh -bot "YOUR_BOT.bot" -secret YOUR_SECRET
 ```
 
-### <a name="adding-an-additional-qnamaker-knowledgebase"></a>追加の QnAMaker ナレッジベースの追加
+### <a name="adding-an-additional-qna-maker-knowledge-base"></a>他の QnA Maker ナレッジ ベースの追加
 
-シナリオによっては、追加の QnAMaker ナレッジベースをお使いのボットに追加したくなることがあります。その場合は、次の手順を実行します。
+シナリオによっては、追加の QnA Maker ナレッジベースをお使いのボットに追加したくなることがあります。その場合は、次の手順を実行します。
 
-1. 次のコマンドを使用して、JSON ファイルから新しい QnAMaker ナレッジベースを作成します。これは、お使いのアシスタント ディレクトリで実行されます
+1. 次のコマンドを使用して、JSON ファイルから新しい QnA Maker ナレッジ ベースを作成します。このコマンドは、お使いのアシスタント ディレクトリで実行します
 ```shell
-qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOURBOT.bot" --secret YOURSECRET
+qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOUR_BOT.bot" --secret YOURSECRET
 ```
 2. 次のコマンドを実行してディスパッチ モデルを更新し、変更を反映します
 ```shell
-dispatch refresh --bot "YOURBOT.bot" --secret YOURSECRET
+dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
 ```
 3. 厳密に型指定されたディスパッチ クラスを更新し、新しい QnA ソースを反映します
 ```shell
-msbot get dispatch --bot "YOURBOT.bot" | luis export version --stdin > dispatch.json
+msbot get dispatch --bot "YOUR_BOT.bot" | luis export version --stdin > dispatch.json
 luisgen dispatch.json -cs Dispatch -o Dialogs\Shared
 ```
 4.  提供された例に従って、ご自身の新しい QnA ソースに対応するディスパッチ意図が含まれるように、`Dialogs\Main\MainDialog.cs` ファイルを更新します。
@@ -141,52 +147,57 @@ luisgen dispatch.json -cs Dispatch -o Dialogs\Shared
 - InitialDialogId を、コンポーネントで最初に実行するダイアログに設定します
 
 ```
-InitialDialogId = nameof(OnboardingDialog);
+    InitialDialogId = nameof(OnboardingDialog);
 
-var onboarding = new WaterfallStep[]
-{
-    AskForName,
-    AskForEmail,
-    AskForLocation,
-    FinishOnboardingDialog,
-};
+    var onboarding = new WaterfallStep[]
+    {
+        AskForName,
+        AskForEmail,
+        AskForLocation,
+        FinishOnboardingDialog,
+    };
 
-AddDialog(new WaterfallDialog(InitialDialogId, onboarding));
-AddDialog(new TextPrompt(NamePrompt));
-AddDialog(new TextPrompt(EmailPrompt));
-AddDialog(new TextPrompt(LocationPrompt));
+    AddDialog(new WaterfallDialog(InitialDialogId, onboarding));
+    AddDialog(new TextPrompt(DialogIds.NamePrompt));
+    AddDialog(new TextPrompt(DialogIds.EmailPrompt));
+    AddDialog(new TextPrompt(DialogIds.LocationPrompt));
 ```
 
 次に、応答を処理するためのテンプレート マネージャーを作成する必要があります。 新しいクラスを作成し、TemplateManager を継承します。この操作の例は OnboardingResponses.cs ファイルで示されています。次に示すのはその抜粋です。
 
-```
-public const string _namePrompt = "namePrompt";
-public const string _haveName = "haveName";
-public const string _emailPrompt = "emailPrompt";
-      
-private static LanguageTemplateDictionary _responseTemplates = new LanguageTemplateDictionary
-{
-    ["default"] = new TemplateIdMap
-    {
-        {
-            _namePrompt,
-            (context, data) => OnboardingStrings.NAME_PROMPT
-        },
-        {
-            _haveName,
-            (context, data) => string.Format(OnboardingStrings.HAVE_NAME, data.name)
-        },
-        {
-            _emailPrompt,
-            (context, data) => OnboardingStrings.EMAIL_PROMPT
-        },
+```    
+ ["default"] = new TemplateIdMap
+            {
+                { ResponseIds.EmailPrompt,
+                    (context, data) =>
+                    MessageFactory.Text(
+                        text: OnboardingStrings.EMAIL_PROMPT,
+                        ssml: OnboardingStrings.EMAIL_PROMPT,
+                        inputHint: InputHints.ExpectingInput)
+                },
+                { ResponseIds.HaveEmailMessage,
+                    (context, data) =>
+                    MessageFactory.Text(
+                        text: string.Format(OnboardingStrings.HAVE_EMAIL, data.email),
+                        ssml: string.Format(OnboardingStrings.HAVE_EMAIL, data.email),
+                        inputHint: InputHints.IgnoringInput)
+                },
+                { ResponseIds.HaveLocationMessage,
+                    (context, data) =>
+                    MessageFactory.Text(
+                        text: string.Format(OnboardingStrings.HAVE_LOCATION, data.Name, data.Location),
+                        ssml: string.Format(OnboardingStrings.HAVE_LOCATION, data.Name, data.Location),
+                        inputHint: InputHints.IgnoringInput)
+                },
+                
+                ...
 ```
 
 応答をレンダリングするには、テンプレート マネージャー インスタンスを使用し、プロンプトの `ReplyWith` または `RenderTemplate` を使用して、それらの応答にアクセスします。 次に示すのは例です。
 
 ```
-Prompt = await _responder.RenderTemplate(sc.Context, "en", OnboardingResponses._namePrompt),
-await _responder.ReplyWith(sc.Context, OnboardingResponses._haveName, new { name });
+Prompt = await _responder.RenderTemplate(sc.Context, sc.Context.Activity.Locale, OnboardingResponses.ResponseIds.NamePrompt)
+await _responder.ReplyWith(sc.Context, OnboardingResponses.ResponseIds.HaveNameMessage, new { name });
 ```
 
 ダイアログ インフラストラクチャの最後の構成要素として、ダイアログのみをスコープとした State クラスを作成します。 新しいクラスを作成し、`DialogState` から派生していることを確認します
@@ -195,4 +206,3 @@ await _responder.ReplyWith(sc.Context, OnboardingResponses._haveName, new { name
 
 ## <a name="conversational-insights-using-powerbi-dashboard-and-application-insights"></a>PowerBI ダッシュ ボードと Application Insights を使用した会話型インサイト
 - 会話型インサイトの取得を開始するには、「[Enterprise Bot Template - PowerBI ダッシュ ボードと Application Insights を使用した会話型分析](bot-builder-enterprise-template-powerbi.md)」から続行してください。
-

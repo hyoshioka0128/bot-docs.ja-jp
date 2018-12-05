@@ -1,333 +1,398 @@
 ---
 title: ユーザーおよび会話データを保存する | Microsoft Docs
-description: Bot Builder SDK for .NET を使用して状態データを保存および取得する方法について説明します。
-keywords: 会話状態, ユーザー状態, 会話フロー
+description: Bot Builder SDK を使用して状態データを保存および取得する方法について説明します。
+keywords: 会話状態, ユーザー状態, 会話, 状態の保存, ボットの状態の管理
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/14/18
+ms.date: 11/26/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5698c50b167e7162ef6910b7c428dab5ceb51d0e
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: 8f979aed3bc1c4bb4c74629bcffb258e139ce77d
+ms.sourcegitcommit: bcde20bd4ab830d749cb835c2edb35659324d926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645642"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52338555"
 ---
 # <a name="save-user-and-conversation-data"></a>ユーザーおよび会話データを保存する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-ボットを適切に設計するための鍵は、メッセージ交換のコンテキストを追跡することです。そうすることで、以前の質問に対する回答などの事柄をボットで記憶することができます。 ボットの使用目的によっては、会話の有効期間よりも長い間、状態を追跡または情報を保存することが必要な場合もあります。 ボットの*状態*は、受信メッセージに適切に応答するためにボットが記憶する情報です。 Bot Builder SDK は、ユーザーまたは会話に関連付けられたオブジェクトとして状態データを保存および取得するための 2 つのクラスを提供します。
+ボットは本質的にステートレスです。 いったんご自身のボットがデプロイされると、ターンをまたいで、そのボットを同じプロセスやマシンで実行することはできません。 しかし、お使いのボットでは、会話のコンテキストの追跡が必要になることがあります。これにより、自身の動作を管理し、以前の質問に対する回答を記憶できるようになります。 SDK の状態とストレージの機能を使用すると、状態をお使いのボットに追加できます。
 
-- **会話状態**は、ボットがユーザーと交わしている現在の会話をボットが追跡するために役立ちます。 ボットがステップのシーケンスを完了する、または会話トピックを切り替える必要がある場合、会話プロパティを使用してシーケンス内のステップを管理、または現在のトピックを追跡することができます。 
+## <a name="prerequisites"></a>前提条件
 
-- **ユーザー状態**は、ユーザーの以前の会話がどこで中断されたかを判断したり、戻ってきたユーザーにそのユーザーの名前を使って挨拶したりするなど、さまざまな目的で使用できます。 ユーザーの設定を保存すると、次回チャットするときにその情報を使用して会話をカスタマイズできます。 たとえば、ユーザーが関心を持っているトピックに関するニュース記事についてユーザーに通知したり、予約が利用可能になった場合にユーザーに通知したりできます。 
+- [ボットの基本](bot-builder-basics.md)、およびボットによる[状態の管理](bot-builder-concept-state.md)方法に関する知識が必要です。
+- この記事のコードは、**StateBot** サンプルをベースにしています。 サンプルのコピー ([C#](https://github.com/Microsoft/BotFramework-Samples/tree/master/SDKV4-Samples/dotnet_core/StateBot) または [JS]()) が必要になります。
+- ボットをローカルでテストするための [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started)。
 
-`ConversationState` と `UserState` は状態クラスであり、格納されたオブジェクトの有効期間とスコープをコントロールするポリシーによって `BotState` クラスが特殊化されたものです。 状態を格納する必要があるコンポーネントは、型を持つプロパティを作成および登録し、プロパティ アクセサーを使用して状態にアクセスします。 ボットの状態マネージャーはメモリ ストレージ、CosmosDB、Blob Storage を使用できます。 
+## <a name="about-the-sample-code"></a>サンプル コードについて
 
-> [!NOTE] 
-> ボットの状態マネージャーは、詳細設定、ユーザー名、または最後に指示したものを格納しますが、重要なビジネス データを格納するためには使用しないでください。 重要なデータについては、独自のストレージ コンポーネントを作成するか、[ストレージ](bot-builder-howto-v4-storage.md)に直接書き込んでください。
-> メモリ内データ ストレージはテスト専用です。 このストレージは揮発性であり、一時的なものです。 ボットの再起動ごとにデータがクリアされます。
+この記事では、お使いのボットの状態管理における構成の側面について説明します。 状態を追加するには、状態のプロパティ、状態管理、およびストレージを構成してから、これらをボットで使用します。
 
-## <a name="using-conversation-state-and-user-state-to-direct-conversation-flow"></a>会話状態とユーザー状態を使用して会話フローを制御する
-会話フローの設計では、状態フラグを定義して会話フローを制御すると便利です。 フラグは、単純なブール型でも、現在のトピックの名前を含む型でもかまいません。 フラグは、会話内での現在位置を追跡するのに役立ちます。 たとえば、ブール型のフラグはユーザーが会話中であるかどうかを示す一方で、トピック名のプロパティは現在どの会話に参加しているかを示すことができます。
+- 各 "_状態プロパティ_" には、お使いのボットの状態情報が含まれています。
+- 各状態プロパティ アクセサーを使用すると、関連付けられている状態プロパティの値を取得または設定できます。
+- 各状態管理オブジェクトによって、関連付けられている状態情報の、ストレージからの読み取りと書き込みが自動化されます。
+- ストレージ レイヤーは、インメモリ ストレージ (テスト用) や Azure Cosmos DB ストレージ (実稼働用) など、状態のバッキング ストレージに接続されます。
 
+ボットは、状態プロパティ アクセサーを使用して構成する必要があります。アクティビティの処理中、このアクセサーを使って、実行時に状態を取得および設定できます。 状態プロパティ アクセサーは状態管理オブジェクトを使用して作成され、状態管理オブジェクトはストレージ レイヤーを使用して作成されます。 そこで、ストレージ レベルから説明を始め、上位レベルへと進んでいきます。
 
+## <a name="configure-storage"></a>ストレージの構成
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-### <a name="conversation-and-user-state"></a>会話状態とユーザー状態
-このハウツーの開始点として、[カウンター付きのエコー ボットのサンプル](https://aka.ms/EchoBot-With-Counter)を使用できます。 まず、以下に示すように `TopicState` クラスを作成して、`TopicState.cs` 内の会話の現在のトピックを管理します。
+このボットはデプロイする予定がないため、"_メモリ ストレージ_" を使用します。次の手順で、これを使用して、ユーザー状態と会話状態の両方を構成します。
+
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Startup.cs** で、ストレージ レイヤーを構成します。
 
 ```csharp
-public class TopicState
+public void ConfigureServices(IServiceCollection services)
 {
-   public string Prompt { get; set; } = "askName";
-}
-``` 
-次に、`UserProfile` クラスを `UserProfile.cs` に作成してユーザー状態を管理します。
-```csharp
-public class UserProfile
-{
-    public string UserName { get; set; }
-    public string TelephoneNumber { get; set; }
-}
-``` 
-`TopicState` クラスには会話内のどこにいるかをトラックするフラグが用意されており、会話状態を使用してそれを格納します。 プロンプトは "askName" として初期化され、会話を開始します。 ボットがユーザーからの応答を受け取ると、プロンプトは "askNumber" として再定義されて次の会話を開始します。 `UserProfile` クラスは、ユーザーの名前と電話番号をトラックし、それをユーザー状態に格納します。
-
-### <a name="property-accessors"></a>プロパティ アクセサー
-この例における `EchoBotAccessors` クラスはシングルトンとして作成され、依存関係の挿入を通じて `class EchoWithCounterBot : IBot` コンストラクターに渡されます。 `EchoBotAccessors` クラスには、`ConversationState`、`UserState` および関連付けられた `IStatePropertyAccessor` が含まれます。 `conversationState` オブジェクトはトピック状態と、ユーザー プロファイル情報を格納する `userState` オブジェクトを格納します。 `ConversationState` オブジェクトと `UserState` オブジェクトは、後で Startup.cs ファイル内に作成されます。 会話状態オブジェクトとユーザー状態オブジェクトは、会話とユーザー スコープにおけるすべてを保持する場所です。 
-
-以下に示すように、コンストラクターを更新して `UserState` を追加しました。
-```csharp
-public EchoBotAccessors(ConversationState conversationState, UserState userState)
-{
-    ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
-    UserState = userState ?? throw new ArgumentNullException(nameof(userState));
+    // ...
+    IStorage storage = new MemoryStorage();
+    // ...
 }
 ```
-`TopicState` アクセサーと `UserProfile` アクセサー用の一意の名前を作成します。
-```csharp
-public static string UserProfileName { get; } = $"{nameof(EchoBotAccessors)}.UserProfile";
-public static string TopicStateName { get; } = $"{nameof(EchoBotAccessors)}.TopicState";
-```
-次に、2 つのアクセサーを定義します。 1 つ目は会話のトピックを格納し、2 つ目はユーザーの名前を電話番号を格納します。
-```csharp
-public IStatePropertyAccessor<TopicState> TopicState { get; set; }
-public IStatePropertyAccessor<UserProfile> UserProfile { get; set; }
-```
 
-ConversationState を取得するプロパティは既に定義されていますが、以下に示すように `UserState` を追加する必要があります。
-```csharp
-public ConversationState ConversationState { get; }
-public UserState UserState { get; }
-```
-変更を行った後に、ファイルを保存します。 次に、Startup クラスを更新して `UserState` オブジェクトを作成し、ユーザー スコープにおけるすべてを保持します。 `ConversationState` は既に存在しています。 
-```csharp
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-services.AddBot<EchoWithCounterBot>(options =>
-{
-    ...
-
-    IStorage dataStore = new MemoryStorage();
-    
-    var conversationState = new ConversationState(dataStore);
-    options.State.Add(conversationState);
-        
-    var userState = new UserState(dataStore);  
-    options.State.Add(userState);
-});
-```
-行 `options.State.Add(ConversationState);` と `options.State.Add(userState);` はそれぞれ会話状態とユーザー状態を追加します。 次に状態アクセサーを作成して登録します。 ここで作成されたアクセサーは、ターンごとに IBot 派生クラスに渡されます。 以下に示すように、コードを変更してユーザー状態を追加します。
-```csharp
-services.AddSingleton<EchoBotAccessors>(sp =>
-{
-   ...
-    var userState = options.State.OfType<UserState>().FirstOrDefault();
-    if (userState == null)
-    {
-        throw new InvalidOperationException("UserState must be defined and added before adding user-scoped state accessors.");
-    }
-   ...
- });
-```
-
-次に、`TopicState` と `UserProfile` を使用して 2 つのアクセサーを作成し、依存関係の挿入を通じて `class EchoWithCounterBot : IBot` クラスに渡します。
-```csharp
-services.AddSingleton<EchoBotAccessors>(sp =>
-{
-   ...
-    var accessors = new EchoBotAccessors(conversationState, userState)
-    {
-        TopicState = conversationState.CreateProperty<TopicState>(EchoBotAccessors.TopicStateName),
-        UserProfile = userState.CreateProperty<UserProfile>(EchoBotAccessors.UserProfileName),
-     };
-
-     return accessors;
- });
-```
-
-会話状態とユーザー状態は `services.AddSingleton` コード ブロックを介してシングルトンにリンクされ、`var accessors = new EchoBotAccessor(conversationState, userState)` で始まるコード内の状態ストア アクセサーを介して保存されます。
-
-### <a name="use-conversation-and-user-state-properties"></a>会話とユーザーの状態プロパティを使用する 
-`EchoWithCounterBot : IBot` クラスの `OnTurnAsync` ハンドラーで、ユーザーに名前、その後電話番号を求めるようにコードを変更します。 会話内でどこにいるかをトラックするには、TopicState で定義した Prompt プロパティを使用します。 このプロパティは初期化された "askName" でした。 ユーザー名を取得した後は、それを "askNumber" に設定し、UserName をユーザーが入力した名前に設定します。 電話番号を取得した後は、会話の最後であるため、確認メッセージを送信し、プロンプトを 'confirmation' に設定します。
-
-```csharp
-if (turnContext.Activity.Type == ActivityTypes.Message)
-{
-    // Get the conversation state from the turn context.
-    var convo = await _accessors.TopicState.GetAsync(turnContext, () => new TopicState());
-    
-    // Get the user state from the turn context.
-    var user = await _accessors.UserProfile.GetAsync(turnContext, () => new UserProfile());
-    
-    // Ask user name. The Prompt was initialiazed as "askName" in the TopicState.cs file.
-    if (convo.Prompt == "askName")
-    {
-        await turnContext.SendActivityAsync("What is your name?");
-        
-        // Set the Prompt to ask the next question for this conversation
-        convo.Prompt = "askNumber";
-        
-        // Set the property using the accessor
-        await _accessors.TopicState.SetAsync(turnContext, convo);
-        
-        //Save the new prompt into the conversation state.
-        await _accessors.ConversationState.SaveChangesAsync(turnContext);
-    }
-    else if (convo.Prompt == "askNumber")
-    {
-        // Set the UserName that is defined in the UserProfile class
-        user.UserName = turnContext.Activity.Text;
-        
-        // Use the user name to prompt the user for phone number
-        await turnContext.SendActivityAsync($"Hello, {user.UserName}. What's your telephone number?");
-        
-        // Set the Prompt now that we have collected all the data
-        convo.Prompt = "confirmation";
-                 
-        await _accessors.TopicState.SetAsync(turnContext, convo);
-        await _accessors.ConversationState.SaveChangesAsync(turnContext);
-
-        await _accessors.UserProfile.SetAsync(turnContext, user);
-        await _accessors.UserState.SaveChangesAsync(turnContext);
-    }
-    else if (convo.Prompt == "confirmation")
-    { 
-        // Set the TelephoneNumber that is defined in the UserProfile class
-        user.TelephoneNumber = turnContext.Activity.Text;
-
-        await turnContext.SendActivityAsync($"Got it, {user.UserName}. I'll call you later.");
-
-        // reset initial prompt state
-        convo.Prompt = "askName"; // Reset for a new conversation.
-        
-        await _accessors.TopicState.SetAsync(turnContext, convo);
-        await _accessors.ConversationState.SaveChangesAsync(turnContext);
-    }
-}
-```   
-
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
-
-### <a name="conversation-and-user-state"></a>会話状態とユーザー状態
-
-このハウツーの開始点として、[カウンター付きのエコー ボットのサンプル](https://aka.ms/EchoBot-With-Counter-JS)を使用できます。 このサンプルは既に `ConversationState` を使用してメッセージの数を格納しています。 `TopicStates` オブジェクトを追加して会話状態をトラックし、`UserState` を追加して `userProfile` オブジェクト内のユーザー状態をトラックする必要があります。 
-
-メインのボットの `index.js` ファイルで、`UserState` を要求のリストに追加します。
-
-**index.js**
+ご自身の **index.js** ファイルで、ストレージ レイヤーを構成します。
 
 ```javascript
-// Import required bot services. See https://aka.ms/bot-services to learn more about the different parts of a bot.
+// Define state store for your bot.
+const memoryStorage = new MemoryStorage();
+```
+
+---
+
+## <a name="create-state-management-objects"></a>状態管理オブジェクトを作成する
+
+"_ユーザー_" 状態と "_会話_" 状態の両方を追跡し、次の手順ではこれらを使用して、"_状態プロパティ アクセサー_" を作成します。
+
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Startup.cs** で、ご自身の状態管理オブジェクトを作成するときに、ストレージ レイヤーを参照します。
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // ...
+    ConversationState conversationState = new ConversationState(storage);
+    UserState userState = new UserState(storage);
+    // ...
+}
+```
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**index.js** ファイルで、`UserState` を require ステートメントに追加します。
+
+```javascript
 const { BotFrameworkAdapter, MemoryStorage, ConversationState, UserState } = require('botbuilder');
 ```
 
-次に、`MemoryStorage` をストレージ プロバイダーとして使用して `UserState` を作成し、その後それを `MainDialog` クラスの 2 番目の引数として渡します。
-
-**index.js**
+次に、会話およびユーザーの状態管理オブジェクトを作成するときに、ストレージ レイヤーを参照します。
 
 ```javascript
-// Create conversation state with in-memory storage provider. 
+// Create conversation and user state with in-memory storage provider.
 const conversationState = new ConversationState(memoryStorage);
 const userState = new UserState(memoryStorage);
-// Create the main bot.
-const bot = new EchBot(conversationState, userState);
 ```
 
-`bot.js` ファイルで、`userState` を 2 番目の引数として受け入れるようにコンストラクターを更新します。 次に、`topicState` プロパティを `conversationState` から作成し、`userProfile` プロパティを `userState` から作成します。
+---
 
-**bot.js**
+## <a name="create-state-property-accessors"></a>状態プロパティ アクセサーを作成する
+
+状態プロパティを "_宣言_" するには、まず状態管理オブジェクトのいずれかを使用して、状態プロパティ アクセサーを作成します。 次の情報を追跡するようにボットを構成します。
+
+- ユーザーの名前。これはユーザー状態で定義します。
+- ユーザーに対して、ユーザー名と、ユーザーが送信したメッセージに関する追加情報の入力を求めるかどうか。
+
+ボットは、アクセサーを使用して、ターン コンテキストから状態プロパティを取得します。
+
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+最初に、それぞれの状態の種類で、管理する必要があるすべての情報が格納されるようにクラスを定義します。
+
+- ボットによって収集されるユーザー情報を表す `UserProfile` クラス。
+- いつメッセージが到着し、誰がそのメッセージを送信したかを追跡する `ConversationData` クラス。
+
+```csharp
+// Defines a state property used to track information about the user.
+public class UserProfile
+{
+    public string Name { get; set; }
+}
+```
+
+```csharp
+// Defines a state property used to track conversation data.
+public class ConversationData
+{
+    // The time-stamp of the most recent incoming message.
+    public string Timestamp { get; set; }
+
+    // The ID of the user's channel.
+    public string ChannelId { get; set; }
+
+    // Track whether we have already asked the user's name
+    public bool PromptedUserForName { get; set; } = false;
+}
+```
+
+次に、ボット インスタンスの構成に必要な状態管理情報が格納されるクラスを定義します。
+
+```csharp
+public class StateBotAccessors
+{
+    public StateBotAccessors(ConversationState conversationState, UserState userState)
+    {
+        ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
+        UserState = userState ?? throw new ArgumentNullException(nameof(userState));
+    }
+  
+    public static string UserProfileName { get; } = "UserProfile";
+
+    public static string ConversationDataName { get; } = "ConversationData";
+
+    public IStatePropertyAccessor<UserProfile> UserProfileAccessor { get; set; }
+
+    public IStatePropertyAccessor<ConversationData> ConversationDataAccessor { get; set; }
+  
+    public ConversationState ConversationState { get; }
+  
+    public UserState UserState { get; }
+}
+```
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+状態管理オブジェクトをボットのコンストラクターに直接渡して、ボットが自身で状態プロパティ アクセサーを作成できるようにします。
+
+**index.js** で、ボットを作成するときに、状態管理オブジェクトを指定します。
 
 ```javascript
-const TOPIC_STATE = 'topic';
-const USER_PROFILE = 'user';
+// Create the bot.
+const myBot = new MyBot(conversationState, userState);
+```
 
-constructor (conversationState, userState) {
-    // creates a new state accessor property.see https://aka.ms/about-bot-state-accessors to learn more about the bot state and state accessors 
+**bot.js** で、状態の管理と追跡に必要な識別子を定義します。
+
+```javascript
+// The accessor names for the conversation data and user profile state property accessors.
+const CONVERSATION_DATA_PROPERTY = 'conversationData';
+const USER_PROFILE_PROPERTY = 'userProfile';
+```
+
+---
+
+## <a name="configure-your-bot"></a>ボットを構成する
+
+状態プロパティ アクセサーを定義して、ボットを構成する準備ができました。
+会話フローの状態プロパティ アクセサーには、会話の状態管理オブジェクトを使用します。
+ユーザー プロファイルの状態プロパティ アクセサーには、ユーザーの状態管理オブジェクトを使用します。
+
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Startup.cs** で、バンドルされている状態プロパティと管理オブジェクトを提供するように ASP.NET を構成します。 これは、ASP.NET Core の依存関係挿入フレームワークを介して、ボットのコンストラクターから取得されます。
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // ...
+    services.AddSingleton<StateBotAccessors>(sp =>
+    {
+        // Create the custom state accessor.
+        return new StateBotAccessors(conversationState, userState)
+        {
+            ConversationDataAccessor = conversationState.CreateProperty<ConversationData>(StateBotAccessors.ConversationDataName),
+            UserProfileAccessor = userState.CreateProperty<UserProfile>(StateBotAccessors.UserProfileName),
+        };
+    });
+}
+```
+
+ボットのコンストラクターでは、ASP.NET によってボットが作成されるときに `CustomPromptBotAccessors` オブジェクトが提供されます。
+
+```csharp
+// Defines a bot for filling a user profile.
+public class CustomPromptBot : IBot
+{
+    private readonly StateBotAccessors _accessors;
+
+    public StateBot(StateBotAccessors accessors, ILoggerFactory loggerFactory)
+    {
+        // ...
+        accessors = accessors ?? throw new System.ArgumentNullException(nameof(accessors));
+    }
+
+    // The bot's turn handler and other supporting code...
+}
+```
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+(**bot.js** ファイルの) ボットのコンストラクターで、状態プロパティ アクセサーを作成し、ボットに追加します。 また、状態管理オブジェクトへの参照も追加します。これらは、加えた状態変更を保存するうえで必要です。
+
+```javascript
+constructor(conversationState, userState) {
+    // Create the state property accessors for the conversation data and user profile.
+    this.conversationData = conversationState.createProperty(CONVERSATION_DATA_PROPERTY);
+    this.userProfile = userState.createProperty(USER_PROFILE_PROPERTY);
+
+    // The state management objects for the conversation and user state.
     this.conversationState = conversationState;
-    this.topicState = this.conversationState.createProperty(TOPIC_STATE);
-
-    // User state
     this.userState = userState;
-    this.userProfile = this.userState.createProperty(USER_PROFILE);
-}
-```
-
-### <a name="use-conversation-and-user-state-properties"></a>会話とユーザーの状態プロパティを使用する
-
-`MainDialog` クラスの `onTurn` ハンドラーで、ユーザーに名前、その後電話番号を求めるようにコードを変更します。 会話内でどこにいるかをトラックするには、`topicState` で定義した `prompt` プロパティを使用します。 このプロパティは "askName" に初期化されます。 ユーザー名を取得した後は、それを "askNumber" に設定し、UserName をユーザーが入力した名前に設定します。 電話番号を取得した後は、会話の最後であるため、確認メッセージを送信し、プロンプトを `undefined` に設定します。
-
-**dialogs/mainDialog/index.js**
-
-```javascript
-// see https://aka.ms/about-bot-activity-message to learn more about the message and other activity types
-if (turnContext.activity.type === 'message') {
-    // read from state and set default object if object does not exist in storage.
-    let topicState = await this.topicState.get(turnContext, {
-        //Define the topic state object
-        prompt: "askName"
-    });
-    let userProfile = await this.userProfile.get(turnContext, {  
-        // Define the user's profile object
-        "userName": "",
-        "telephoneNumber": ""
-    });
-
-    if(topicState.prompt == "askName"){
-        await turnContext.sendActivity("What is your name?");
-
-        // Set next prompt state
-        topicState.prompt = "askNumber";
-
-        // Update state
-        await this.topicState.set(turnContext, topicState);
-    }
-    else if(topicState.prompt == "askNumber"){
-        // Set the UserName that is defined in the UserProfile class
-        userProfile.userName = turnContext.activity.text;
-
-        // Use the user name to prompt the user for phone number
-        await turnContext.sendActivity(`Hello, ${userProfile.userName}. What's your telephone number?`);
-
-        // Set next prompt state
-        topicState.prompt = "confirmation";
-
-        // Update states
-        await this.topicState.set(turnContext, topicState);
-        await this.userProfile.set(turnContext, userProfile);
-    }
-    else if(topicState.prompt == "confirmation"){
-        // Set the phone number
-        userProfile.telephoneNumber = turnContext.activity.text;
-
-        // Sent confirmation
-        await turnContext.sendActivity(`Got it, ${userProfile.userName}. I'll call you later.`)
-
-        // reset initial prompt state
-        topicState.prompt = "askName"; // Reset for a new conversation
-
-        // Update states
-        await this.topicState.set(turnContext, topicState);
-        await this.userProfile.set(turnContext, userProfile);
-    }
-    
-    // Save state changes to storage
-    await this.conversationState.saveChanges(turnContext);
-    await this.userState.saveChanges(turnContext);
-    
-}
-else {
-    await turnContext.sendActivity(`[${turnContext.activity.type} event detected]`);
 }
 ```
 
 ---
 
-## <a name="start-your-bot"></a>ボットの起動
-- JavaScript の場合: ターミナルまたはコマンド プロンプトで、ボット用に作成したディレクトリに変更し、`npm start` でボットを起動します。 この時点では、ボットはローカルで実行されています。
+## <a name="access-state-from-your-bot"></a>お使いのボットから状態にアクセスする
 
-- C# ボットの場合: Visual Studio を使用して、お使いのボットをローカルで実行します。 実行ボタンをクリックすると、Visual Studio によってアプリケーションが構築され、localhost に配置されます。その後、Web ブラウザーが起動されアプリケーションの ``default.htm`` ページが表示されます。 この時点では、ボットはローカルで実行されています。
+前のセクションでは、状態プロパティ アクセサーをボットに追加するための、初期化時の手順について説明しました。
+これらのアクセサーを実行時に使用すると、状態情報を読み書きできます。
 
-### <a name="start-the-emulator-and-connect-your-bot"></a>エミュレーターの起動とボットの接続
-次に、エミュレーターを起動し、エミュレーターのボットに接続します。
+1. 状態プロパティを使用する前に、各アクセサーを使用してストレージからプロパティを読み込んだうえで状態キャッシュから取得します。
+   - そのアクセサーを使用して状態プロパティを取得するたびに、既定値を提供する必要があります。 そうしないと、null 値エラーが発生することがあります。
+1. ターン ハンドラーを終了する前に、次を行います。
+   1. アクセサーの _set_ メソッドを使用して、ボット状態に変更をプッシュします。
+   1. 状態管理オブジェクトの _save changes_ メソッドを使用して、それらの変更をストレージに書き込みます。
 
-1. エミュレーターの [ようこそ] タブにある **[Open Bot]\(ボットを開く\)** リンクをクリックします。 
-2. Visual Studio ソリューションを作成したディレクトリにある .bot ファイルを選択します。
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-### <a name="interact-with-your-bot"></a>ボットでのやり取り
+```csharp
+// The bot's turn handler.
+public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
+{
+    if (turnContext.Activity.Type == ActivityTypes.Message)
+    {
+        // Get the state properties from the turn context.
+        UserProfile userProfile =
+            await _accessors.UserProfileAccessor.GetAsync(turnContext, () => new UserProfile());
+        ConversationData conversationData =
+            await _accessors.ConversationDataAccessor.GetAsync(turnContext, () => new ConversationData());
 
-お使いのボットに "Hi" というメッセージを送信すると、そのボットによって、名前と電話番号を指定するように求められます。 その情報の入力後、ボットにより確認メッセージが送信されます。 操作を続行すると、ボットによって同じサイクルがもう一度繰り返されます。
+        if (string.IsNullOrEmpty(userProfile.Name))
+        {
+            // First time around this is set to false, so we will prompt user for name.
+            if (conversationData.PromptedUserForName)
+            {
+                // Set the name to what the user provided
+                userProfile.Name = turnContext.Activity.Text?.Trim();
 
-![実行中のエミュレーター](../media/emulator-v4/emulator-running-manage-state.png)
+                // Acknowledge that we got their name.
+                await turnContext.SendActivityAsync($"Thanks {userProfile.Name}.");
 
-状態を自身で管理することを選択した場合は、[独自のプロンプトで会話フローを管理する](bot-builder-primitive-prompts.md)方法に関する記事をご覧ください。 または、ウォーターフォール ダイアログを使用します。 ダイアログは会話の状態を自動的に追跡するので、ユーザーは状態を追跡するためのフラグを作成する必要はありません。 詳しくは、[ダイアログを使用した簡単な会話の管理](bot-builder-dialog-manage-conversation-flow.md)に関する記事をご覧ください。
+                // Reset the flag to allow the bot to go though the cycle again.
+                conversationData.PromptedUserForName = false;
+            }
+            else
+            {
+                // Prompt the user for their name.
+                await turnContext.SendActivityAsync($"What is your name?");
 
-## <a name="next-steps"></a>次の手順
-状態を使用してストレージのボット データを読み書きする方法がわかったので、ストレージを直接読み書きする方法を確認してください。
+                // Set the flag to true, so we don't prompt in the next turn.
+                conversationData.PromptedUserForName = true;
+            }
+
+            // Save user state and save changes.
+            await _accessors.UserProfileAccessor.SetAsync(turnContext, userProfile);
+            await _accessors.UserState.SaveChangesAsync(turnContext);
+        }
+        else
+        {
+            // Add message details to the conversation data.
+            conversationData.Timestamp = turnContext.Activity.Timestamp.ToString();
+            conversationData.ChannelId = turnContext.Activity.ChannelId.ToString();
+
+            // Display state data
+            await turnContext.SendActivityAsync($"{userProfile.Name} sent: {turnContext.Activity.Text}");
+            await turnContext.SendActivityAsync($"Message received at: {conversationData.Timestamp}");
+            await turnContext.SendActivityAsync($"Message received from: {conversationData.ChannelId}");
+        }
+
+        // Update conversation state and save changes.
+        await _accessors.ConversationDataAccessor.SetAsync(turnContext, conversationData);
+        await _accessors.ConversationState.SaveChangesAsync(turnContext);
+    }
+}
+```
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+// The bot's turn handler.
+async onTurn(turnContext) {
+    if (turnContext.activity.type === ActivityTypes.Message) {
+        // Get the state properties from the turn context.
+        const userProfile = await this.userProfile.get(turnContext, {});
+        const conversationData = await this.conversationData.get(
+            turnContext, { promptedForUserName: false });
+
+        if (!userProfile.name) {
+            // First time around this is undefined, so we will prompt user for name.
+            if (conversationData.promptedForUserName) {
+                // Set the name to what the user provided.
+                userProfile.name = turnContext.activity.text;
+
+                // Acknowledge that we got their name.
+                await turnContext.sendActivity(`Thanks ${userProfile.name}.`);
+
+                // Reset the flag to allow the bot to go though the cycle again.
+                conversationData.promptedForUserName = false;
+            } else {
+                // Prompt the user for their name.
+                await turnContext.sendActivity('What is your name?');
+
+                // Set the flag to true, so we don't prompt in the next turn.
+                conversationData.promptedForUserName = true;
+            }
+            // Save user state and save changes.
+            await this.userProfile.set(turnContext, userProfile);
+            await this.userState.saveChanges(turnContext);
+        } else {
+            // Add message details to the conversation data.
+            conversationData.timestamp = turnContext.activity.timestamp.toLocaleString();
+            conversationData.channelId = turnContext.activity.channelId;
+
+            // Display state data.
+            await turnContext.sendActivity(`${userProfile.name} sent: ${turnContext.activity.text}`);
+            await turnContext.sendActivity(`Message received at: ${conversationData.timestamp}`);
+            await turnContext.sendActivity(`Message received from: ${conversationData.channelId}`);
+        }
+        // Update conversation state and save changes.
+        await this.conversationData.set(turnContext, conversationData);
+        await this.conversationState.saveChanges(turnContext);
+    }
+}
+```
+
+---
+
+## <a name="test-the-bot"></a>ボットのテスト
+
+1. ご自身のマシンを使ってローカルでサンプルを実行します。 手順については、README ファイルで [C#](https://github.com/Microsoft/BotFramework-Samples/tree/master/SDKV4-Samples/dotnet_core/StateBot) または [JS](https://github.com/Microsoft/BotFramework-Samples/tree/master/SDKV4-Samples/js/stateBot) サンプルを参照してください。
+1. 次に示すように、エミュレーターを使用してボットをテストします。
+
+![状態テストのボットのサンプル](media/state-bot-testing-emulator.png)
+
+## <a name="additional-resources"></a>その他のリソース
+
+**プライバシー:** ユーザーの個人データを格納する場合は、[一般データ保護規則](https://blog.botframework.com/2018/04/23/general-data-protection-regulation-gdpr)に関するコンプライアンスを確保する必要があります。
+
+**状態管理:** すべての状態管理呼び出しが非同期で行われます。これらの呼び出しは既定で Last-Writer-Wins です。 実際の場面では、状態の取得、設定、および保存は、ご自身のボット内で、できるだけ近いタイミングで行う必要があります。
+
+**重要なビジネス データ:** ボットの状態には、詳細設定、ユーザー名、または最後に指示したものを格納しますが、重要なビジネス データを格納するためには使用しないでください。 重要なデータについては、[独自のストレージ コンポーネントを作成](bot-builder-custom-storage.md)するか、[ストレージ](bot-builder-howto-v4-storage.md)に直接書き込んでください。
+
+**Recognizer-Text:** サンプルでは、ユーザー入力の解析および検証に Microsoft/Recognizers-Text ライブラリが使用されます。 詳細については、[概要](https://github.com/Microsoft/Recognizers-Text#microsoft-recognizers-text-overview)に関するページを参照してください。
+
+## <a name="next-step"></a>次のステップ
+
+ボット データをストレージに読み書きできるように状態を構成する方法がわかりました。次は、ユーザーに一連の質問を行い、その回答を検証して、入力を保存する方法を確認しましょう。
 
 > [!div class="nextstepaction"]
-> [ストレージに直接書き込む方法](bot-builder-howto-v4-storage.md)。
+> [ユーザー入力を収集するために独自のプロンプトを作成する](bot-builder-primitive-prompts.md)。

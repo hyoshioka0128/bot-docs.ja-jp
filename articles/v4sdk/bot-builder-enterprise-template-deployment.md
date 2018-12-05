@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a286d9d77869899854cebde38483026475c5e622
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: c7977400a53af916217e595dda8e9c9a0ff85496
+ms.sourcegitcommit: 958a28bbab7dd29b384bb2e2d58d866e88f53316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645592"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52500667"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Enterprise Bot Template - ボットのデプロイ
 
@@ -29,7 +29,7 @@ ms.locfileid: "51645592"
 - Azure Bot Service コマンド ライン (CLI) ツールをインストールする。 以前にツールを使用したことがある場合でも、最新バージョンであることを確認するために、これを行うことが重要です。
 
 ```shell
-npm install -g ludown luis-apis qnamaker botdispatch msbot luisgen chatdown
+npm install -g ludown luis-apis qnamaker botdispatch msbot chatdown
 ```
 
 - Azure コマンド ライン ツール (CLI) を[こちら](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest)からインストールする。 Azure Bot Service コマンド ライン (CLI) ツールを既にインストールしてある場合は、現在のバージョンをアンインストールしたうえで新しいバージョンをインストールして、最新のバージョンに更新してください。
@@ -37,6 +37,12 @@ npm install -g ludown luis-apis qnamaker botdispatch msbot luisgen chatdown
 - Bot Service の AZ 拡張機能をインストールする
 ```shell
 az extension add -n botservice
+```
+
+- LUISGen ツールをインストールする
+
+```shell
+dotnet tool install -g luisgen
 ```
 
 ## <a name="configuration"></a>構成
@@ -48,7 +54,7 @@ az extension add -n botservice
 
 ## <a name="deployment"></a>Deployment
 
->複数の Azure サブスクリプションを持っており、そのデプロイで正しいサブスクリプションが選択されていることを確認するには、続行する前に次のコマンドを実行します。
+> 複数の Azure サブスクリプションを持っており、そのデプロイで正しいサブスクリプションが選択されていることを確認するには、続行する前に次のコマンドを実行します。
 
  お使いの Azure アカウントへのブラウザーのログイン手順に従います。
 ```shell
@@ -66,14 +72,14 @@ Enterprise Template Bot のエンド ツー エンドの操作には、次の依
 - Azure Cognitive Services - QnA Maker (Azure Search、Azure Web アプリを含む)
 - Azure Cognitive Services - Content Moderator (省略可能な手動の手順)
 
-新しいボット プロジェクトには、`msbot clone services` コマンドを使用して対象の Azure サブスクリプションに上記すべてのサービスのデプロイを自動化し、プロジェクト内の .bot ファイルがそれらすべてのサービス (ボットのシームレスな操作を可能にするキーなど) に更新されるようにする、デプロイ用のレシピが用意されています。
+新しいボット プロジェクトには、`msbot clone services` コマンドを使用して対象の Azure サブスクリプションに上記すべてのサービスのデプロイを自動化し、プロジェクト内の .bot ファイルがそれらすべてのサービス (ボットのシームレスな操作を可能にするキーなど) に更新されるようにする、デプロイ用のレシピが用意されています。 また、中国語、英語、フランス語、ドイツ語、イタリア語、およびスペイン語についても、複数の構成オプションがあります。
 
 > デプロイ後、作成したサービスの価格レベルを確認し、シナリオに合わせて調整します。
 
-作成したプロジェクト内の README.md には、作成したボット名とジェネリック バージョンで更新された msbot クローン サービスのコマンド ラインのサンプルが含まれています。以下にそれを示します。 前の手順からオーサリング キーが更新されていることを確認し、使用する Azure データセンターの場所 (米国西部、西ヨーロッパなど) を選択します。 前の手順で取得した LUIS のオーサリング キーが、以下で指定するリージョン (luis.ai の場合は米国西部、eu.luis.ai の場合は西ヨーロッパなど) のキーであることを確認します
+作成したプロジェクト内の README.md には、作成したボット名とジェネリック バージョンで更新された `msbot clone services` クローン サービスのコマンド ラインのサンプルが含まれています。以下にそれを示します。 前の手順からオーサリング キーが更新されていることを確認し、使用する Azure データセンターの場所 (米国西部、西ヨーロッパなど) を選択します。 前の手順で取得した LUIS のオーサリング キーが、以下で指定するリージョン (luis.ai の場合は米国西部、eu.luis.ai の場合は西ヨーロッパなど) のキーであることを確認します。 最後に、使用する言語のフォルダーを参照します (例: `DeploymentScripts\en`)。
 
 ```shell
-msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "YOUR_REGION"
+msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\LOCALE_FOLDER" --location "REGION"
 ```
 
 > 一部のユーザーについては既知の問題があり、デプロイを実行するときに `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again` というエラーが発生する可能性があります。 この場合は、 https://apps.dev.microsoft.com を参照し、ApplicationID とパスワード/シークレットを取得する新しいアプリケーションを手動で作成してください。 上記の msbot クローン サービス コマンドを実行するときに、2 つの新しい引数 `appId` および `appSecret` を指定して、取得した値を渡します。 解析の問題が発生しないように、シークレットは必ず二重引用符で囲んでください (例: `-appSecret "YOUR_SECRET"`)
@@ -82,15 +88,15 @@ msbot ツールに、場所や SKU など、デプロイ計画の概要が表示
 
 ![デプロイの確認](./media/enterprise-template/EnterpriseBot-ConfirmDeployment.png)
 
->デプロイ完了後、後続の手順で必要になるため、提供された .bot ファイルのシークレットを**必ず**メモしてください。
+>デプロイ完了後、後続の手順で必要になるため、提供された .bot ファイルのシークレットを**必ず**メモしてください。 `msbot secret --clear --secret YOUR_BOT_SECRET` を実行して、ボット ファイルからシークレットを削除し、ご自身のボットを運用環境にリリースする準備ができるまで、開発を簡素化することもできます。 `msbot secret --new` を実行して、新しいシークレットを生成します。
 
 - `appsettings.json` ファイルを新しく作成された .bot ファイル名と .bot ファイルのシークレットで更新します。
 - 次のコマンドを実行し、対象の Application Insights インスタンスの InstrumentationKey を取得して、`appsettings.json` ファイル内の InstrumentationKey キーを更新します。
 
-`msbot list --bot YOURBOTFILE.bot --secret "YOUR_BOT_SECRET"`
+`msbot list --bot YOUR_BOT_FILE.bot --secret "YOUR_BOT_SECRET"`
 
         {
-          "botFilePath": ".\\YOURBOTFILE.bot",
+          "botFilePath": ".\\YOUR_BOT_FILE.bot",
           "botFileSecret": "YOUR_BOT_SECRET",
           "ApplicationInsights": {
             "InstrumentationKey": "YOUR_INSTRUMENTATION_KEY"
@@ -119,15 +125,15 @@ az bot publish -g YOUR_BOT_NAME -n YOUR_BOT_NAME --proj-file YOUR_BOT_NAME.cspro
 
 ### <a name="authentication"></a>Authentication
 
-認証を有効にするには、Azure portal のボットの [設定] 内で、[Authentication Connection Name]\(認証の接続名\) を構成した後に、次の手順を実行します。 追加情報はこちらの[ドキュメント](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-3.0)で確認できます。
+認証を有効にするには、Azure portal のボットの [設定] 内で、[Authentication Connection Name]\(認証の接続名\) を構成した後に、次の手順を実行します。 追加情報はこちらの[ドキュメント](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-authentication?view=azure-bot-service-4.0&tabs=csharp)で確認できます。
 
-MainDialog コンストラクターで、次のように `SignInDialog` を登録します。
+MainDialog コンストラクターで、次のように `AuthenticationDialog` を登録します。
     
-`AddDialog(new SignInDialog(_services.AuthConnectionName));`
+`AddDialog(new AuthenticationDialog(_services.AuthConnectionName));`
 
 次のコードを目的の場所にあるコード内に追加し、簡単なログイン フローをテストします。
     
-`var signInResult = await dc.BeginDialogAsync(nameof(SignInDialog));`
+`var authResult = await dc.BeginDialogAsync(nameof(AuthenticationDialog));`
 
 ### <a name="content-moderation"></a>コンテンツ モデレート
 

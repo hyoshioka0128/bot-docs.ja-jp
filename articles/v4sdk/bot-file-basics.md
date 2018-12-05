@@ -1,5 +1,5 @@
 ---
-title: ボット ファイルでボット リソースを管理する | Microsoft Docs
+title: .bot ファイルでリソースを管理する | Microsoft Docs
 description: ボット ファイルの目的と用途について説明します。
 keywords: ボット ファイル, .bot, .bot ファイル, msbot, ボット リソース, ボット リソースの管理
 author: ivorb
@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/13/2018
+ms.date: 11/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0ff3f0e68d58a8768bb785a88ee7664ab430e453
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: 276b553a6990ed286acbf073825afa7c4656de32
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645632"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452024"
 ---
-# <a name="manage-bot-resources-with-a-bot-file"></a>ボット ファイルでボット リソースを管理する
+# <a name="manage-resources-with-a-bot-file"></a>.bot ファイルでリソースを管理する
 
 ボットでは、通常、[LUIS.ai](https://luis.ai)、[QnaMaker.ai](https://qnamaker.ai) などのさまざまなサービスが多数使用されます。 ボットを開発しているときに、使用中のサービスに関するメタデータを格納する統一された場所がありません。  これでは、ボットの全体像を確認するためのツールを構築することができません。
 
@@ -45,15 +45,14 @@ ms.locfileid: "51645632"
 ## <a name="what-does-a-bot-file-look-like"></a>ボット ファイルの外観 
 [.bot](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/docs/sample-bot-file.json) ファイルのサンプルを確認してください。
 .bot ファイルの暗号化と復号化の詳細については、「[Bot Secrets (ボット シークレット)](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/docs/bot-file-encryption.md)」を参照してください。
-## <a name="why-do-i-need-a-bot-file"></a>ボット ファイルが必要な理由
 
+## <a name="why-do-i-need-a-bot-file"></a>ボット ファイルが必要な理由
 .bot ファイルは、Bot Builder SDK でボットを作成するための要件では**ありません**。 appsettings.json、web.config、env、keyvault など、ボットが依存するサービス参照やキーの追跡に適していると思われる任意のメカニズムは、引き続き使用できます。 Emulator を使用してボットをテストするには、.bot ファイルが必要です。 幸いにも、Emulator でテスト用 .bot ファイルを作成することができます。 それには、Emulator を起動して、ウェルカム ページで **[新しいボット構成を作成する]** リンクをクリックします。 表示されたダイアログ ボックスで、**ボット名**と**エンドポイント URL** を入力します。 次に、接続します。
 
 .bot ファイルを使用するメリットは以下のとおりです。
 - 使用する言語やプラットフォームに関係なくリソースを格納する標準的な方法が提供されます。   
 - Bot Framework Emulator と CLI ツールが、(.bot ファイルの) 一貫性のある形式で接続済みサービスの追跡機能を使用し、こうした機能と適切に連携します 
 - 明確に定義されたスキーマ (.bot ファイル) がないと、サービスの作成および管理に関連した洗練されたツール ソリューションが難しくなります。  
-
 
 ## <a name="using-bot-file-in-your-bot-builder-sdk-bot"></a>Bot Builder SDK ボットでの .bot ファイルの使用
 .bot ファイルを使用すると、お使いのボットのコードでサービス構成情報を取得できます。 [C#](https://www.nuget.org/packages/Microsoft.Bot.Configuration) と [JS](https://www.npmjs.com/package/botframework-config) で使用できる BotFramework 構成ライブラリは、ボット ファイルを読み込むときに役に立ち、適切なサービス構成情報を照会および取得するための複数のメソッドをサポートしています。

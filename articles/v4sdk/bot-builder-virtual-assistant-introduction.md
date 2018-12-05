@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 13/12/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e93f7d24396b4e35fc81960d42148dd8942362d7
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3a3074ff9e8de36d7a7cf7b86fef62979bc53fa8
+ms.sourcegitcommit: 958a28bbab7dd29b384bb2e2d58d866e88f53316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998969"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52500651"
 ---
 # <a name="virtual-assistant-solution-overview"></a>仮想アシスタント ソリューションの概要
 
@@ -24,7 +24,7 @@ Microsoft では、製品の機能をお客様が制御できるようにする�
 
 仮想アシスタント機能の使用範囲は幅広く、通常は、エンド ユーザーに広範な機能を提供できます。 開発者の生産性を高め、再利用可能な会話エクスペリエンスの高度なエコシステムを構築できるようにするため、Microsoft では、再利用可能な会話スキルの初期サンプルを開発者に提供しています。 これらのスキルを会話アプリケーションに追加すれば、目的地の検索や、カレンダー、タスク、メールの操作など、さまざまなシナリオでの会話エクスペリエンスを強化できます。 スキルは、複数の言語に対応した言語モデルと、ダイアログ、およびコードで構成されており、完全にカスタマイズ可能です。
 
-現在、初期プレビューを進めており、オープンソースのリポジトリを通じて初期のお客様やパートナーと緊密に連携しながら、初期段階のエクスペリエンスを開発し、数か月以内にリリースすることを目指しています。
+現在、オープンソースのリポジトリを通じて初期のお客様やパートナーと緊密に連携しながら、初期段階のエクスペリエンスを開発しています。
 
 ![仮想アシスタントの図](./media/enterprise-template/customassistantdiagram.jpg)
 
@@ -97,5 +97,5 @@ Microsoft の仮想アシスタント アーキテクチャは柔軟性に優れ
 
 ## <a name="getting-started"></a>Getting Started (概要)
 
-現在、初期プレビューを進めており、オープンソースのリポジトリを通じて初期のお客様やパートナーと緊密に連携しながら、初期段階のエクスペリエンスを開発し、数か月以内にリリースすることを目指しています。 ご希望のシナリオを登録し、ソリューションの利用を申し込むには、[こちらのフォーム](https://aka.ms/customassistantpreviewform)に必要事項を入力してください。後ほど、Microsoft からご連絡を差し上げます。
+仮想アシスタント ソリューションは[こちらの GitHub リポジトリ](https://github.com/Microsoft/AI/tree/master/solutions/Virtual-Assistant)から入手でき、仮想アシスタント チームによって定期的に更新されています。 このリポジトリから詳細なドキュメントを入手することもできます。問題点やフィードバックは、GitHub フィードバック メカニズムを通じて直接お寄せください。 重要なシナリオに関する説明をご希望の方は、[こちらのフォーム](https://aka.ms/customassistantpreviewform)に必要事項を入力してください。後ほど、Microsoft からご連絡を差し上げます。
 
