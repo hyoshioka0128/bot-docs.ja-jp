@@ -55,9 +55,9 @@
 ### [Node.js](nodejs/TOC.md)
 ## [デバッグ](debug/TOC.md)
 ## デプロイ
-### [ボット コードをダウンロードして再デプロイする](bot-service-build-download-source-code.md)
+### [ボットを Azure にデプロイする](bot-builder-howto-deploy-azure.md)
+<!-- ### [Download and redeploy bot code](bot-service-build-download-source-code.md) -->
 ### [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)
-### [C# のボットを Azure にデプロイする](bot-builder-howto-deploy-azure.md)
 ## [管理](manage/TOC.md)
 # リファレンス
 ## [.NET SDK v4](https://aka.ms/dotnetsdk4)
