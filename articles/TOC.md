@@ -55,7 +55,8 @@
 ### [Node.js](nodejs/TOC.md)
 ## [デバッグ](debug/TOC.md)
 ## デプロイ
-### [ボットを Azure にデプロイする](bot-builder-howto-deploy-azure.md)
+### [Azure CLI を使用してボットをデプロイする](bot-builder-deploy-az-cli.md)
+### [Visual Studio を使用して C# ボットをデプロイする](bot-builder-howto-deploy-azure.md)
 <!-- ### [Download and redeploy bot code](bot-service-build-download-source-code.md) -->
 ### [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)
 ## [管理](manage/TOC.md)
