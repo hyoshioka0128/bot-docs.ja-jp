@@ -10,7 +10,8 @@
 ## [複数の LUIS と QnA モデルを使用する](v4sdk/bot-builder-tutorial-dispatch.md)
 ## [ボットへの認証の追加](bot-builder-tutorial-authentication.md)
 # サンプル
-## [GitHub のサンプル リポジトリ](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md)
+## [GitHub の botbuilder-samples リポジトリ](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md)
+## [botbuilder-samples リポジトリからボットをデプロイする](bot-builder-deploy-samples.md)
 # 概念
 ## [ボットのしくみ](v4sdk/bot-builder-basics.md)
 ## [状態の管理](v4sdk/bot-builder-concept-state.md)
