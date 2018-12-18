@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9d8caf19a98fb595e4b1e27b0635d2a752b88390
-ms.sourcegitcommit: bbfb171f515c50a3c8bba5ca898daf25cf764378
+ms.openlocfilehash: a8a0976e6f553e52e13ae13bbb719dd7bdead8f6
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2018
-ms.locfileid: "52293604"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010544"
 ---
 # <a name="gather-user-input-using-a-dialog-prompt"></a>ダイアログ プロンプトを使用してユーザー入力を収集する
 
@@ -168,7 +168,7 @@ public DialogPromptBot(DialogPromptBotAccessors accessors, ILoggerFactory logger
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-コンストラクターで、状態アクセサー プロパティを作成します。 
+コンストラクターで、状態アクセサー プロパティを作成します。
 
 ```javascript
 constructor(conversationState) {
@@ -192,6 +192,7 @@ constructor(conversationState) {
 ```
 
 次に、ウォーターフォール ダイアログのステップを定義し、セットに追加します。
+
 ```javascript
     // ...
     this.dialogSet.add(new WaterfallDialog(RESERVATION_DIALOG, [
@@ -207,7 +208,7 @@ constructor(conversationState) {
 
 ### <a name="implement-dialog-steps"></a>ダイアログ ステップを実装する
 
-メインのボット ファイルで、ウォーターフォール ダイアログの各ステップを実装します。 プロンプトが追加されたら、ウォーターフォール ダイアログの 1 つのステップでプロンプトを呼び出し、次のダイアログ ステップでプロンプトの結果を取得します。 ウォーターフォール ステップ内からプロンプトを呼び出すには、"_ウォーターフォール ステップ コンテキスト_" オブジェクトの _prompt_ メソッドを呼び出します。 最初のパラメーターは、使用するプロンプトの ID です。2 番目のパラメーターには、プロンプトのオプション (ユーザーに入力を求める際に使用するテキストなど) が含まれます。     
+メインのボット ファイルで、ウォーターフォール ダイアログの各ステップを実装します。 プロンプトが追加されたら、ウォーターフォール ダイアログの 1 つのステップでプロンプトを呼び出し、次のダイアログ ステップでプロンプトの結果を取得します。 ウォーターフォール ステップ内からプロンプトを呼び出すには、"_ウォーターフォール ステップ コンテキスト_" オブジェクトの _prompt_ メソッドを呼び出します。 最初のパラメーターは、使用するプロンプトの ID です。2 番目のパラメーターには、プロンプトのオプション (ユーザーに入力を求める際に使用するテキストなど) が含まれます。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -250,6 +251,7 @@ private async Task<DialogTurnResult> PromptForLocationAsync(WaterfallStepContext
         cancellationToken);
 }
 ```
+
 前述の例は、3 つのプロパティをすべて指定して、選択プロンプトを使用する方法を示しています。 `PromptForLocationAsync` メソッドは、ウォーターフォール ダイアログのステップとして使用されます。ダイアログ セットには、ウォーターフォール ダイアログと、`locationPrompt` という ID の選択プロンプトが含まれます。
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -291,8 +293,6 @@ _prompt_ メソッドの 2 番目のパラメーターは、_prompt options_ オ
 再試行プロンプトを指定すると、ユーザーの入力が、プロンプトで解析できない形式であるか (数値プロンプトに対して「tomorrow」と入力された場合など)、検証基準を満たしていないために、検証に失敗する場合に役立ちます。 再試行プロンプトが指定されていない場合、プロンプトでは、最初のプロンプト アクティビティを使用してユーザーに再度入力を求めます。
 
 選択プロンプトの場合、使用可能な選択肢のリストを常に提供する必要があります。
-
-
 
 ## <a name="custom-validation"></a>カスタム検証
 
@@ -470,14 +470,13 @@ async dateValidator(promptContext) {
    1. アクティブなダイアログの次のステップに制御が移ります。これがプロンプトの 2 番目のターンになります。
    1. プロンプトによってユーザーの入力が検証されます。
 
-      
 **プロンプトの結果の処理**
 
 プロンプトの結果の処理は、ユーザーにその情報を要求した理由によって異なります。 次のオプションがあります。
 
-* ユーザーが確認または選択プロンプトに応答する場合など、情報を使用してダイアログのフローを制御します。
-* 情報をダイアログの状態にキャッシュし (ウォーターフォール ステップ コンテキストの _values_ プロパティの値の設定など)、ダイアログの終了時に収集した情報を返します。
-* 情報をボットの状態に保存します。 この場合、ボットの状態プロパティ アクセサーにアクセスできるようにダイアログを設計する必要があります。 
+- ユーザーが確認または選択プロンプトに応答する場合など、情報を使用してダイアログのフローを制御します。
+- 情報をダイアログの状態にキャッシュし (ウォーターフォール ステップ コンテキストの _values_ プロパティの値の設定など)、ダイアログの終了時に収集した情報を返します。
+- 情報をボットの状態に保存します。 この場合、ボットの状態プロパティ アクセサーにアクセスできるようにダイアログを設計する必要があります。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -600,17 +599,17 @@ async onTurn(turnContext) {
 
 ---
 
-
-
 同様の手法を使用し、あらゆる種類のプロンプトの回答を検証できます。
 
 ## <a name="test-your-bot"></a>ボットをテストする
+
 1. ご自身のマシンを使ってローカルでサンプルを実行します。 手順については、README ファイルで [C#](https://aka.ms/dialog-prompt-cs) または [JS](https://aka.ms/dialog-prompt-js) を参照してください。
 2. エミュレーターを起動し、次に示すように、メッセージを送信してボットをテストします。
 
 ![ダイアログ プロンプト サンプルをテストする](~/media/emulator-v4/test-dialog-prompt.png)
 
 ## <a name="additional-resources"></a>その他のリソース
+
 お使いのターン ハンドラーからプロンプトを直接呼び出すには、[C# ](https://aka.ms/cs-prompt-validation-sample) または [JS](https://aka.ms/js-prompt-validation-sample) の _prompt-validations_ サンプルを参照してください。
 
 ダイアログ ライブラリには、ユーザーの代わりに別のアプリケーションにアクセスするときに使用する "_OAuth トークン_" を取得するための "_OAuth プロンプト_" も含まれています。 認証の詳細については、お使いのボットに[認証を追加する](bot-builder-authentication.md)方法に関する記事をご覧ください。

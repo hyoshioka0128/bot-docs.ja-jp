@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 940dba389205ff339b80f741b8a8aec87ff54f1d
-ms.sourcegitcommit: bcde20bd4ab830d749cb835c2edb35659324d926
+ms.openlocfilehash: bf7d6a574cc4e63d22e3f34462a1ec00dbdac75e
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52338565"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010543"
 ---
 # <a name="managing-state"></a>状態の管理
 
@@ -27,7 +27,11 @@ Web アプリと同様、ボットは本質的にはステートレスです。�
 
 状態を維持すると、お使いのボットは、ユーザーまたは会話に関する特定の情報を記憶することで、より有意義な会話ができるようになります。 たとえば、前にユーザーと話したことがある場合は、ユーザーに関する以前の情報を保存できるため、その内容については再度尋ねる必要がありません。 また、状態によって現在のターンよりも長くデータが保持されるため、お使いのボットには、一連のマルチターンの会話にわたって情報が保持されます。
 
-状態はボットと深く関連しているので、ここではその使用について、ストレージ レイヤー、状態管理、状態プロパティ アクセサーという観点から説明します。
+状態はボットと深く関連しているので、ここではその使用について、ストレージ レイヤー、状態管理 (以下の図に示すボットの状態に含まれる)、状態プロパティ アクセサーという観点から説明します。 この図は、これらのレイヤー間で行われる相互作用シーケンスの一部を示しています。実線の矢印はメソッドの呼び出しを、破線の矢印は応答 (戻り値の有無に関係なく) を表しています。
+
+![ボットの状態](media/bot-builder-state.png)
+
+この図のフローについては、次のセクションでレイヤーごとに詳しく説明します。
 
 ## <a name="storage-layer"></a>ストレージ レイヤー
 

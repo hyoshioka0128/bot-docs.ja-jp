@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/8/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dacf952e6554eb76e0a41418791fb954e82d4f38
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 1bfa180967c55aac6012e02887ac2893947263f9
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452064"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010587"
 ---
 # <a name="middleware"></a>ミドルウェア
 
@@ -78,7 +78,7 @@ SDK は受信および送信アクティビティを記録できるログ記録�
 ## <a name="response-event-handlers"></a>応答イベント ハンドラー
 アプリケーションおよびミドルウェア ロジックに加えて、応答ハンドラー (イベント ハンドラーやアクティビティ イベント ハンドラーと呼ばれることもある) をコンテキスト オブジェクトに追加することもできます。 これらのハンドラーは、実際の応答が実行される前に、現在のコンテキスト オブジェクト上で関連する応答が発生したときに呼び出されます。 これらのハンドラーは、実際のイベントの前または後で、現在の応答の残りの部分でその種類のすべてのアクティビティのために何かを行う必要があることがわかっているときに便利です。
 
-> [!WARNING] 
+> [!WARNING]
 > アクティビティ応答メソッドを、そのそれぞれの応答イベント ハンドラー内から呼び出さないように注意してください。たとえば、send activity メソッドを on send activity ハンドラー内から呼び出さないようにしてください。 それを行うと、無限ループが生成される可能性があります。
 
 それぞれの新しいアクティビティには、新しいスレッドが与えられ、それぞれ対応するスレッドで実行されることに留意してください。 アクティビティを処理するスレッドが作成されると、そのアクティビティ用のハンドラー リストが、その新しいスレッドにコピーされます。 そのポイントより後に追加されたハンドラーは、その特定のアクティビティ イベントに対して実行されません。
@@ -90,9 +90,11 @@ SDK は受信および送信アクティビティを記録できるログ記録�
 
 ![状態ミドルウェアの問題](media/bot-builder-dialog-state-problem.png)
 
-このアプローチの問題は、ボットのターン ハンドラーが戻った後に発生する、カスタム ミドルウェアで行われた状態の更新が永続ストレージに保存されないことです。 これを解決するには、変更の保存メソッドへの呼び出しを、カスタム ミドルウェアの完了後に移動するか (AutoSaveChangesMiddleware をミドルウェア スタックの最初に追加)、少なくとも、状態を更新する可能性があるミドルウェアの前に移動します。 実行は次のようになります。
+このアプローチの問題は、ボットのターン ハンドラーが戻った後に発生する、カスタム ミドルウェアで行われた状態の更新が永続ストレージに保存されないことです。 これを解決するには、変更の保存メソッドへの呼び出しを、カスタム ミドルウェアの完了後に移動するか ("_変更の自動保存_" ミドルウェアのインスタンスをミドルウェア スタックの最初に追加)、少なくとも、状態を更新する可能性があるミドルウェアの前に移動します。 実行は次のようになります。
 
 ![状態ミドルウェアの解決策](media/bot-builder-dialog-state-solution.png)
+
+更新する必要がある状態管理オブジェクトを "_ボット状態セット_" オブジェクトに追加し、変更の自動保存ミドルウェアを作成するときに使用します。
 
 ## <a name="additional-resources"></a>その他のリソース
 Bot Builder SDK [[C#](https://github.com/Microsoft/botbuilder-dotnet/blob/master/libraries/Microsoft.Bot.Builder/TranscriptLoggerMiddleware.cs) | [JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/transcriptLogger.ts)] に実装されているトランスクリプト ロガー ミドルウェアもご覧ください。

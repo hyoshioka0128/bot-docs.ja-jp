@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/11/2018
-ms.openlocfilehash: 58c8145d359d292dd33972a3dd59af997e7b8393
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f52c8fd668299486eccda3920181df971f475a90
+ms.sourcegitcommit: 75f32b3325dd0fc4d8128dee6c22ebf91e5785b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999509"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53120659"
 ---
 # <a name="connect-a-bot-to-skype"></a>ボットを Skype に接続する
 
@@ -51,6 +51,9 @@ Skype チャネルを追加するには、[Azure portal](https://portal.azure.co
 このセクションでは、ボットの公開設定を構成します。 * が付いているフィールドはすべて必須フィールドです。
 
 **プレビュー**のボットは 100 連絡先に制限されます。 100 を超える連絡先が必要な場合は、確認用にボットを送信します。 **[確認用に送信]** をクリックすると、ボットは Skype で受け付けられた場合に自動的に検索可能になります。 要求が受け付けられない場合、受け付けられるために必要な変更が通知されます。
+
+> [!TIP]
+> 確認用にボットを送信する場合、受け付けられるには、[skype の認定チェックリスト](https://github.com/Microsoft/skype-dev-bots/blob/master/certification/CHECKLIST.md)を満たす必要があることに注意してください。
 
 構成が完了したら、**[保存]** をクリックして**サービス利用規約**に同意します。 ボットに Skype チャネルが追加されました。
 

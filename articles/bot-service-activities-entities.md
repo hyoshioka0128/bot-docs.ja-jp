@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: d329fcbe5b4a34cb3e9c1fbf0160c5248020a508
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: 818017a81b497b13ee181dbb6b87c03a0182736d
+ms.sourcegitcommit: 75f32b3325dd0fc4d8128dee6c22ebf91e5785b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332966"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53120679"
 ---
 # <a name="entities-and-activity-types"></a>エンティティとアクティビティの種類
 
@@ -173,6 +173,11 @@ if(context.activity.type === 'message'){
 | [invoke](#invoke) | IInvokeActivity (C#) <br> Activity (JS) | ボットに送信される、特定の操作の実行を要求する通信を表します。 このアクティビティの種類は、Microsoft Bot Framework による内部使用のために予約されてます。 |
 | [messageReaction](#messagereaction) | IMessageReactionActivity (C#) <br> Activity (JS) | ユーザーが既存のアクティビティに反応したことを示します。 たとえば、ユーザーがメッセージの "いいね！" ボタンをクリックしたような場合です。 |
 | [typing](#typing) | ITypingActivity (C#) <br> Activity (JS) | 会話の相手側のユーザーまたはボットが応答をコンパイルしていることを示します。 |
+| messageUpdate | IMessageUpdateActivity (C#) <br> Activity (JS) | 会話内の以前のメッセージ アクティビティを更新する要求を示します。 |
+| messageDelete | IMessageDeleteActivity (C#) <br> Activity (JS) | 会話内の以前のメッセージ アクティビティを削除する要求を示します。 |
+| suggestion | ISuggestionActivity (C#) <br> Activity (JS) | 別の特定のアクティビティについての受信者にする個人的な提案を示します。 |
+| trace | ITraceActivity (C#) <br> Activity (JS) | ログに記録された会話のトランスクリプトにボットから内部情報を記録できるアクティビティ。 |
+| handoff | IHandoffActivity (C#) <br> Activity (JS) | 会話の制御権が移転されているか、会話の制御権の移転を求める要求。 |
 
 ## <a name="message"></a>message
 

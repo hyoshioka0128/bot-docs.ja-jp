@@ -8,17 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/10/2018
-ms.openlocfilehash: 1658a5cd8ba3fc4e9c34849e1550f64461ced292
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 12/04/2018
+ms.openlocfilehash: 6c3cc52514988172e5c2cc85168aef401fbc1f22
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000149"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010497"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>ボットを Web チャットに接続する
 
-[!INCLUDE pre-release-label]
+[!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
 
 Bot Service を使用して[ボットを作成](bot-service-quickstart.md)すると、Web チャット チャンネルが自動的に構成されます。 Web チャット チャンネルには、ユーザーが Web ページで直接ボットと対話できるようにする、Web チャット コントロールが含まれています。
 
@@ -61,7 +61,7 @@ Bot Framework ポータル内の Web チャット チャンネルには、Web �
 
 ##### <a name="example-request"></a>要求の例
 
-```requestGET https://webchat.botframework.com/api/tokens Authorization: BotConnector YOUR_SECRET_HERE
+```requestGET https://webchat.botframework.com/api/tokens Authorization:BotConnector YOUR_SECRET_HERE
 ```
 
 ##### Example response 

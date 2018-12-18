@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 10/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 14a56749c68cfe89ed4a0da3c046a39a8e0783fe
-ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
+ms.openlocfilehash: 27e0b54b4e790e76c55deb858e50d8c81507443a
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916789"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010597"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
 
@@ -41,9 +41,8 @@ OAuth コントローラーのホスティングやトークンのライフサ�
 
 | サンプル | BotBuilder のバージョン | 説明 |
 |:---|:---:|:---|
-| [C# Auth](http://aka.ms/v4csharpauth) | v4 | v4 C# SDK での OAuthCard サポートの例を示します |
-| [C# Auth Graph](http://aka.ms/v4csharpauthgraph) | v4 |  AAD と Microsoft Graph API を使用して、v4 C# SDK での OAuthCard サポートの例を示します |
-| [Node Auth](http://aka.ms/v4cnodeauth) | v4 |  v4 Node (JavaScript) SDK での OAuthCard サポートの例を示します |
+| **ボット認証** ([C#](https://aka.ms/v4cs-bot-auth-sample) / [JS](https://aka.ms/v4js-bot-auth-sample)) | v4 | OAuthCard サポートの例を示します |
+| **ボット認証 MSGraph** ([C#](https://aka.ms/v4cs-auth-msgraph-sample) / [JS](https://aka.ms/v4js-auth-msgraph-sample)) | v4 |  OAuth 2 を使用した Microsoft Graph API サポートの例を示します。 |
 
 > [!NOTE]
 > 認証機能は BotBuilder v3 でも使用できます。 ただしこの記事では、サンプル v4 コードのみを扱います。
@@ -52,7 +51,7 @@ OAuth コントローラーのホスティングやトークンのライフサ�
 
 ## <a name="overview"></a>概要
 
-このチュートリアルでは、Azure AD v1 または v2 トークンを使用して Microsoft Graph に接続するサンプル ボットを作成します。 このプロセスの一環として、GitHub リポジトリのコードを使用します。このチュートリアルでは、ボット アプリケーションを含めた設定方法について説明します。
+このチュートリアルでは、Azure AD v1 または v2 トークンを使用して Microsoft Graph に接続するサンプル ボットを作成します。 このプロセスの一環として、[Microsoft/BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples) GitHub リポジトリのコードを使用します。このチュートリアルでは、ボット アプリケーションを含めた設定方法について説明します。
 
 - **ボットと認証アプリケーションの作成**
 - **ボットのサンプル コードの準備**
@@ -208,7 +207,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 1. **[Service Provider Connection Setting]\(サービス プロバイダー接続設定\)** ウィンドウの上部にある **[Test Connection]\(接続のテスト\)** をクリックします。
 1. 初回は新しいブラウザー タブが開き、アプリが要求しているアクセス許可の一覧が表示され、承認を求められます。
 1. **[Accept]\(受け入れる\)** をクリックします。
-1. **[Test Connection to `<your-connection-name>' Succeeded]\('<接続名>' へのテスト接続は成功しました\)** ページにリダイレクトされます。
+1. **[Test Connection to <your-connection-name> Succeeded]\(<接続名> へのテスト接続は成功しました\)** ページにリダイレクトされます。
 
 ## <a name="prepare-the-bot-sample-code"></a>ボットのサンプル コードの準備
 
@@ -228,7 +227,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
     > [!IMPORTANT]
     > シークレットに含まれる文字によっては、パスワードを XML でエスケープすることが必要な場合があります。 たとえば、アンパサンド (&) は `&amp;` のようにエンコードする必要があります。
 
-    ```xml
+    ```json
     {
         "name": "BotAuthentication",
         "secretKey": "",

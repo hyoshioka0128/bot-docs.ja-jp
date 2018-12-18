@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/26/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8f979aed3bc1c4bb4c74629bcffb258e139ce77d
-ms.sourcegitcommit: bcde20bd4ab830d749cb835c2edb35659324d926
+ms.openlocfilehash: 8c3aad54a9e80e8a046a6e31a5109a1de8c61a8b
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52338555"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010507"
 ---
 # <a name="save-user-and-conversation-data"></a>ユーザーおよび会話データを保存する
 
@@ -386,7 +386,7 @@ async onTurn(turnContext) {
 
 **状態管理:** すべての状態管理呼び出しが非同期で行われます。これらの呼び出しは既定で Last-Writer-Wins です。 実際の場面では、状態の取得、設定、および保存は、ご自身のボット内で、できるだけ近いタイミングで行う必要があります。
 
-**重要なビジネス データ:** ボットの状態には、詳細設定、ユーザー名、または最後に指示したものを格納しますが、重要なビジネス データを格納するためには使用しないでください。 重要なデータについては、[独自のストレージ コンポーネントを作成](bot-builder-custom-storage.md)するか、[ストレージ](bot-builder-howto-v4-storage.md)に直接書き込んでください。
+**重要なビジネス データ:** ボットの状態には、詳細設定、ユーザー名、またはユーザーが行った最後の指示を格納しますが、重要なビジネス データを格納するためには使用しないでください。 重要なデータについては、[独自のストレージ コンポーネントを作成](bot-builder-custom-storage.md)するか、[ストレージ](bot-builder-howto-v4-storage.md)に直接書き込んでください。
 
 **Recognizer-Text:** サンプルでは、ユーザー入力の解析および検証に Microsoft/Recognizers-Text ライブラリが使用されます。 詳細については、[概要](https://github.com/Microsoft/Recognizers-Text#microsoft-recognizers-text-overview)に関するページを参照してください。
 

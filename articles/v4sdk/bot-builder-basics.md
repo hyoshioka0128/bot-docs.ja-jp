@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 15cd6c998abf37b1c7b9a9e2659b7390370f7f10
-ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
+ms.openlocfilehash: c4d4879f7ad127838de9d2563dee8f8d7320d61e
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51715126"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010577"
 ---
 # <a name="how-bots-work"></a>ボットのしくみ
 
@@ -424,9 +424,6 @@ exports.EchoBot = EchoBot;
 
 ## <a name="additional-resources"></a>その他のリソース
 
-リソースの管理におけるボット ファイルの役割について理解するには、[ボット ファイル](bot-file-basics.md)に関するページをご覧ください。
-
-## <a name="next-steps"></a>次の手順
-
-> [!div class="nextstepaction"]
-> [ボットを作成する](~/bot-service-quickstart.md)
+- ボットにおける状態の役割を理解するには、「[状態の管理](bot-builder-concept-state.md)」を参照してください。
+- リソースの管理におけるボット ファイルの役割について理解するには、「[.bot ファイルでリソースを管理する](bot-file-basics.md)」を参照してください。
+- ボットを初めて作成するには、[Azure Bot Service の使用](../bot-service-quickstart.md)、[C# の使用](../dotnet/bot-builder-dotnet-sdk-quickstart.md)、または [JavaScript の使用](../javascript/bot-builder-javascript-quickstart.md)のいずれかのクイック スタートを参照してください。
