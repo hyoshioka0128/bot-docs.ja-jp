@@ -2,20 +2,20 @@
 title: ユーザーへのウェルカム メッセージの送信 | Microsoft Docs
 description: ボットでユーザーへの歓迎メッセージを表示する方法について説明します。
 keywords: 概要, 開発, ユーザー エクスペリエンス, ようこそ, パーソナライズされたエクスペリエンス, C#, JS, ウェルカム メッセージ, ボット, あいさつ, グリーティング
-author: dashel
-ms.author: dashel
+author: DanDev33
+ms.author: v-dashel
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/15/2018
+ms.date: 12/20/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 02fb57d5d766ddd72c2dcface673c5c6355cf184
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 7e6ea963ce018833b362be3f413f15da4d4bf658
+ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452034"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735942"
 ---
 # <a name="send-welcome-message-to-users"></a>ユーザーへのウェルカム メッセージの送信
 
@@ -25,7 +25,7 @@ ms.locfileid: "52452034"
 
 ## <a name="prerequisites"></a>前提条件
 - [ボットの基本](bot-builder-basics.md)を理解する。 
-- **ウェルカム サンプル**のコピー ([C#](https://aka.ms/proactive-sample-cs) または [JS](https://aka.ms/proactive-sample-js))。 サンプルのコードは、ウェルカム メッセージの送信方法を説明するために使用されます。
+- **ウェルカム サンプル**のコピー ([C#](https://aka.ms/bot-welcome-sample-cs) または [JS](https://aka.ms/bot-welcome-sample-js))。 サンプルのコードは、ウェルカム メッセージの送信方法を説明するために使用されます。
 
 ## <a name="same-welcome-for-different-channels"></a>複数のチャネルに同じウェルカム メッセージを使用する
 ウェルカム メッセージは、ユーザーがボットと最初にやり取りしたときに生成する必要があります。 そのためには、ボットのアクティビティ タイプと、新規の接続を監視します。 新規接続が検出されたときには、チャネルによって、最大 2 つの会話更新アクティビティが生成されます。
@@ -421,7 +421,7 @@ switch (text)
 ```
 ---
 ## <a name="test-the-bot"></a>ボットのテスト
-ボットを実行およびテストする手順については、[README](https://github.com/Microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/03.welcome-user/readme.md) ファイルを参照してください。 
+ボットを実行およびテストする手順については、[README](https://aka.ms/bot-welcome-sample-cs) ファイルを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
