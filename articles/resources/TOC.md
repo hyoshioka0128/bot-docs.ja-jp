@@ -19,4 +19,6 @@
 # [Bot Service のコンプライアンス](../v4sdk/bot-service-compliance.md)
 # トラブルシューティング
 ## [一般的な問題のトラブルシューティング](../bot-service-troubleshoot-general-problems.md)
+## [ボット構成の問題のトラブルシューティング](../bot-service-troubleshoot-bot-configuration.md)
+## [HTTP 500 エラーのトラブルシューティング](../bot-service-troubleshoot-500-errors.md)
 ## [認証に関する問題のトラブルシューティング](../bot-service-troubleshoot-authentication-problems.md)

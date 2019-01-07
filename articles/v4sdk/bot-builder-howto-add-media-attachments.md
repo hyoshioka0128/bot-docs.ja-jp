@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/25/2018
+ms.date: 12/17/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fcbe28110ec71da7263d125e79ca59d15efa9d5f
-ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
+ms.openlocfilehash: fd908335c69aab7c8b68925b8ecdece79e89ab4b
+ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916779"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735962"
 ---
 # <a name="add-media-to-messages"></a>メッセージにメディアを追加する
 
@@ -60,7 +60,9 @@ await turnContext.SendActivityAsync(reply, cancellationToken);
 
 ```javascript
 const { ActionTypes, ActivityTypes, CardFactory } = require('botbuilder');
+
 // Call function to get an attachment.
+const reply = { type: ActivityTypes.Message };
 reply.attachments = [this.getInternetAttachment()];
 reply.text = 'This is an internet attachment.';
 // Send the activity to the user.
@@ -130,30 +132,32 @@ const card = CardFactory.heroCard('', undefined,
 buttons, { text: 'You can upload an image or select one of the following choices.' });
 
 // add card to Activity.
+const reply = { type: ActivityTypes.Message };
 reply.attachments = [card];
 
 // Send hero card to the user.
 await turnContext.sendActivity(reply);
 ```
+
 ---
 
 ## <a name="process-events-within-rich-cards"></a>リッチ カード内のイベントを処理する
 
-リッチ カード内のイベントを処理するには、_カード アクション_ オブジェクトを使用して、ユーザーがボタンをクリックするか、またはカードのセクションをタップしたときのアクションを指定します。
+リッチ カード内のイベントを処理するには、_カード アクション_ オブジェクトを使用して、ユーザーがボタンをクリックするか、またはカードのセクションをタップしたときのアクションを指定します。 各カード アクションには _type_ と _value_ があります。
 
-正常に機能させるために、カード上のクリック可能な各アイテムにアクションの種類を割り当てます。 次の表では、カード アクション オブジェクトの type プロパティについて有効な値を示すと共に、種類ごとに value プロパティの想定される内容を説明します。
+正常に機能させるために、カード上のクリック可能な各アイテムにアクションの種類を割り当てます。 この表では、使用できるアクションの種類と、関連付けられている value プロパティに含める内容を一覧にまとめ、説明しています。
 
-| type | 値 |
-| :---- | :---- |
-| openUrl | 組み込みのブラウザーで開かれる URL。 URL を開くことで、タップまたはクリックに応答します。 |
-| imBack | (ボタンをクリックまたはカードをタップしたユーザーから) ボットに送信されるメッセージのテキスト。 会話の参加者すべてが、会話をホストしているクライアント アプリケーションを介して、このメッセージ (ユーザーからボットへの) を表示することができます。 |
-| postBack | (ボタンをクリックまたはカードをタップしたユーザーから) ボットに送信されるメッセージのテキスト。 クライアント アプリケーションによっては、このテキストがメッセージ フィードに表示される場合があります。そこでは、会話の参加者のすべてにそのテキストが表示されます。 |
-| 以下を呼び出します。 | 電話の呼び出し先であり、`tel:123123123123` の形式となります。呼び出しを開始することで、タップまたはクリックに応答します。|
-| playAudio | 再生されるオーディオの URL。 オーディオを再生することで、タップまたはクリックに応答します。 |
-| playVideo | 再生されるビデオの URL。 ビデオを再生することで、タップまたはクリックに応答します。 |
-| showImage | 表示されるイメージの URL。 イメージを表示することで、タップまたはクリックに応答します。 |
-| downloadFile | ダウンロードされるファイルの URL。  ファイルをダウンロードすることで、タップまたはクリックに応答します。 |
-| signin | 開始される OAuth フローの URL。 サインインを開始することで、タップまたはクリックに応答します。 |
+| type | 説明 | 値 |
+| :---- | :---- | :---- |
+| openUrl | 組み込みのブラウザーで URL を開きます。 | 開く URL。 |
+| imBack | ボットにメッセージを送信し、目に見える応答をチャットに投稿します。 | 送信するメッセージのテキスト。 |
+| postBack | ボットにメッセージを送信します。目に見える応答はチャットに投稿できません。 | 送信するメッセージのテキスト。 |
+| 以下を呼び出します。 | 電話を発信します。 | 電話の発信先 (形式は `tel:123123123123`)。 |
+| playAudio | オーディオを再生します。 | 再生するオーディオの URL。 |
+| playVideo | ビデオを視聴します。 | 再生するビデオの URL。 |
+| showImage | 画像を表示します。 | 表示する画像の URL。 |
+| downloadFile | ファイルをダウンロードします。 | ダウンロードするファイルの URL。 |
+| signin | OAuth サインイン プロセスを開始します。 | 開始する OAuth フローの URL。 |
 
 ## <a name="hero-card-using-various-event-types"></a>さまざまな種類のイベントを使用するヒーロー カード
 
@@ -360,5 +364,5 @@ await context.sendActivity(messageWithCarouselOfCards);
 
 カードのスキーマの詳細については、[Bot Framework のカード スキーマ](https://aka.ms/botSpecs-cardSchema)に関するページを参照してください。
 
-サンプル コードについては、こちら (カード: [C#](https://aka.ms/bot-cards-sample-code)/[JS](https://aka.ms/bot-cards-js-sample-code)、アダプティブ カード: [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code)、添付ファイル: [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-sample-code-js)、推奨されるアクション: [C#](https://aka.ms/SuggestedActionsCSharp)/[JS](https://aka.ms/SuggestedActionsJS)) を参照してください。
+サンプル コードが用意されています。カードについては[C#](https://aka.ms/bot-cards-sample-code)/[JS](https://aka.ms/bot-cards-js-sample-code)、アダプティブ カードについては[C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code)、添付については、[C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-sample-code-js)、推奨されるアクションについては[C#](https://aka.ms/SuggestedActionsCSharp)/[JS](https://aka.ms/SuggestedActionsJS) を参照してください。
 その他のサンプルについては、[GitHub](https://aka.ms/bot-samples-readme) の Bot Builder サンプル リポジトリを参照してください。

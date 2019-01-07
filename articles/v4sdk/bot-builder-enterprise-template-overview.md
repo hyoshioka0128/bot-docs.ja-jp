@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 43bc3c7606a12084690d71f8b6ea2dc3b2e5984d
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 3abfb82f555f458bc9cdd5125fafa1cfa70921cb
+ms.sourcegitcommit: 66769e697d94f7bf5e0441dfacf2c0e3768845ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52451994"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654963"
 ---
 # <a name="enterprise-bot-template"></a>Enterprise Bot Template 
 
@@ -34,10 +34,10 @@ ms.locfileid: "52451994"
 不適切なコンテンツまたは PII (個人を特定できる情報) の検出  |ミドルウェア コンポーネントの [Content Moderator](https://azure.microsoft.com/en-us/services/cognitive-services/content-moderator/) の使用を通じて、受信した会話の中の不適切なコンテンツや PII データを特定します。
 トランスクリプト  | Azure Storage に格納されているすべての会話のトランスクリプト
 ディスパッチャー | 指定の発話を LUIS とコードで処理するか、QnA Maker に渡す必要があるかを特定する、統合された[ディスパッチ](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) モデル。
-QnA Maker の統合  | [QnA Maker](https://www.qnamaker.ai) との統合により、既存のデータ ソース (PDF マニュアルなど) を活用するナレッジ ベースから、一般的な質問に回答します。
+QnA Maker の統合  | [QnA Maker](https://www.qnamaker.ai) との統合により、既存のデータ ソース (PDF マニュアルなど) を活用するナレッジ ベースから、一般的な質問に回答します。 一般的なクエリに対する標準的な回答を提供するために、QnA Maker の chit-chat モデルも含まれています ([詳細](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base))。
 会話の分析情報  | [Application Insights](https://azure.microsoft.com/en-gb/services/application-insights/) との統合により、すべての会話からテレメトリを収集し、PowerBI ダッシュボードのサンプルを活用して、会話エクスペリエンスの分析を開始できます。
 
-また、そのボットで要求されるすべての Azure リソース (ボットの登録、Azure App Service、LUIS、QnA Maker、Content Moderator、CosmosDB、Azure Storage、Application Insights) の自動デプロイも行われます。 さらに、基本意図のテストとルーティングを即座に行えるように、ベースとなる LUIS、QnA Maker、ディスパッチ モデルが作成およびトレーニングを経て公開されています。
+さらに、ボットに必要なすべての Azure リソースの自動デプロイも行われます(ボットの登録、Azure App Service、LUIS、QnA Maker、Content Moderator、CosmosDB、Azure Storage、Application Insights)。 さらに、基本意図のテストとルーティングを即座に行えるように、ベースとなる LUIS、QnA Maker、ディスパッチ モデルが作成およびトレーニングを経て公開されています。
 
 テンプレートを作成し、デプロイ手順を実行後、F5 キーを押して最初から最後まで通してテストを実行できます。 これにより、会話エクスペリエンスの取り組みをどこから開始したらよいかについて堅固な基盤が提供され、かつては数日を要していた各プロジェクトの労力を減らし、会話の品質基準を上げることができます。
 

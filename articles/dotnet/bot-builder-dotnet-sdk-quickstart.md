@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/13/2018
+ms.date: 11/19/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 20a7dad4398874febfbd71024cd68763107f7bd8
-ms.sourcegitcommit: 0b421ff71617f03faf55ea175fb91d1f9e348523
+ms.openlocfilehash: d40b203ccd044992c026a592d5f86b0881754a41
+ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53286628"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735922"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-net"></a>Bot Builder SDK for .NET を使用したボットの作成
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -59,6 +59,10 @@ Visual Studio で、Bot Builder エコー ボット V4 テンプレートを使�
 
 > [!NOTE]
 > メッセージを送信できない場合は、ngrok がシステム上の必要な権限をまだ取得していないため、マシンの再起動が必要になることがあります (この操作は一度だけ実行する必要があります)。
+
+## <a name="additional-resources"></a>その他のリソース
+
+リモートでホストされているボットに接続する方法については、[トンネリング (ngrok)](https://github.com/Microsoft/BotFramework-Emulator/wiki/Tunneling-(ngrok)) に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

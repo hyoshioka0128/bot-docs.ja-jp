@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/28/2018
-ms.openlocfilehash: 2a78ec6f8c453bfcfa3b6aba0d73257f35db76b8
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 660c10c400bb68e807f39eb1b7ccc38f500991e6
+ms.sourcegitcommit: 0f65857943d318da48df0a8654cde53e9a699116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997219"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53389315"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework についてよく寄せられる質問
 
@@ -26,6 +26,38 @@ ms.locfileid: "49997219"
 ### <a name="what-is-the-v4-sdk"></a>v4 SDK とは何ですか?
 Bot Builder v4 SDK は、以前の Bot Builder SDK から得たフィードバックと知識を基に構築されています。 ボットの構成要素の豊富なコンポーネント化を可能にしながら、適切なレベルの抽象化が導入されます。 簡単なボットから始め、モジュール式の拡張可能なフレームワークを使用してボットを高度化していくことができます。 GitHub で SDK の [FAQ](https://github.com/Microsoft/botbuilder-dotnet/wiki/FAQ) をご覧ください。
 
+## <a name="bot-framework-sdk-version-3-lifetime-support"></a>Bot Framework SDK バージョン 3 のライフタイム サポート 
+SDK V3 ボットは Azure Bot Service によって引き続き実行およびサポートされます。  他のフレームワークと同様に、Bot Framework SDK V4 のリリース以降も、セキュリティ、優先度の高いバグ修正、およびコネクタ/プロトコル レイヤーの更新を含む SDK V3 のサポートを継続します。  v3 のサポートは 2019 年まで継続されます。
+
+### <a name="what-is-microsoft-plan-for-supporting-existing-v3-bots-what-happens-to-my-v3-bots-will-my-v3-bots-stop-working"></a>既存の V3 ボットをサポートするために Microsoft はどのような計画を立てていますか? 自作の V3 ボットはどうなりますか? 自作の V3 ボットは動作しなくなりますか?
+SDK V3 ボットは Azure Bot Service によって引き続き実行およびサポートされます。  他のフレームワークと同様に、Bot Framework SDK V4 のリリース以降も、セキュリティ、優先度の高いバグ修正、およびコネクタ/プロトコル レイヤーの更新を含む SDK V3 のサポートを継続します。  v3 のサポートは 2019 年まで継続されます。
+- Azure Bot Service と Bot Framework V3 はどちらも GA (一般公開) 製品であり、完全にサポートされています。 基となる Bot Framework プロトコルとコネクタ ライブラリは変更されておらず、V3 SDK と V4 SDK の間で共有されています。  
+- Bot Framework (BotBuilder) V3 SDK で作成されたボットは、引き続き 2019 年までサポートされます。 
+- お客様は、Azure portal または Azure CLI ツールを使用して V3 ボットを引き続き作成できます。
+
+### <a name="what-happens-to-my-bot-written-to-rest--bot-framework-protocol-31"></a>REST & Bot Framework Protocol 3.1 に書き込まれたボットはどうなりますか?
+- Azure Bot Service と Bot Framework V3 はどちらも GA (一般公開) 製品であり、完全にサポートされています。
+- Bot Framework プロトコルは変更されておらず、V3 SDK と V4 SDK の間で共有されています。  
+
+### <a name="will-there-be-more-updates-additional-development-for-the-v3-sdk-or-just-bugfixes"></a>V3 SDK 用に更新プログラムのリリース、追加の開発は行われますか? それともバグ修正のみですか?  
+- V3 の更新には、軽微な機能強化 (主にコネクタ レイヤー) と、セキュリティと優先度の高いバグの修正を含める予定です。  
+- V3 の更新プログラムは、年に 2 回と、バグ修正や必要なプロトコルの変更に基づいて必要に応じてリリースされる予定です。 
+- 現在の計画では、C# および JavaScript SDK 用の NuGet および NPM に対してマイナーおよびパッチ バージョンの V3 を公開します。
+
+### <a name="why-v4-is-not-backwards-compatible-with-v3"></a>V4 が V3 と下位互換性がないのはなぜですか?
+- プロトコル レベルでは、会話型アプリ (ボットとも呼ばれます) と別のチャネル間の通信には、V3 と V4 の間で同じ Bot Framework Activity プロトコルが使用されます。 同じ基となる Azure Bot Service (AZURE BOT SERVICE) インフラストラクチャが V3 と V4 の両方のボットをサポートしています。
+- Bot Framework SDK V4 にはモジュール式で拡張可能な SDK アーキテクチャを使用した会話中心の開発環境が提供されるため、開発者は堅牢で洗練されたチャット アプリケーションを作成することができます。 V4 の拡張可能な設計は、お客様からのフィードバックに基づいています。つまり、SDK V3 のダイアログ モデルとプリミティブは統一的ではなく、拡張性に制約があります。  
+
+### <a name="what-is-the-general-migration-strategy-i-have-a-v3-bot-how-can-i-migrate-it-to-v4-can-i-migrate-my-v3-bot-to-v4"></a>全般的な移行戦略について教えてください。 V3 ボットを持っていますが、どうすれば V4 に移行できますか? V3 ボットは V4 に移行できますか?
+- 現時点では、SDK V3 で作成されたボットの SDK V4 への移行に関するヘルプは、ドキュメントとサンプルの形式で提供する予定です。 現時点では、V3 ビルド ボットを V4 ボット内で機能できるようにする SDK V3 互換レイヤーを SDK V4 で提供する予定はありません。 
+- 運用中の Bot Framework SDK V3 ボットが既にある場合でも心配は無用です。当面の間はそのまま機能します。 
+- Bot Framework SDK V4 は、非常に成功した V3 SDK の進化版です。 V4 は、V3 ボットが新しい V4 SDK 上で動作しなくなる重大な変更を含むメジャー バージョン リリースです。 
+
+### <a name="should-i-build-new-a-bot-using-v3-or-v4"></a>V3 または V4 を使用して新しいボットをビルドする必要はありますか?
+- 新しい会話型エクスペリエンスのために、Bot Framework SDK V4 を使用して新しいボットを始めることをお勧めします。
+- Bot Framework SDK V3 に既に慣れ親しんでいる場合は、新しいバージョンと、新しい [Bot Framework SDK V4](http://aka.ms/botframeowrkoverview) で提供される機能の学習には時間がかかります。
+- 運用中の Bot Framework SDK V3 ボットが既にある場合でも心配は無用です。当面の間はそのまま機能します。
+- Azure portal と Azure コマンド ラインを使用すると、Bot Framework SDK V4 ボットと以前の V3 ボットを作成できます。 
 
 ## <a name="channels"></a>チャンネル
 ### <a name="when-will-you-add-more-conversation-experiences-to-the-bot-framework"></a>Bot Framework にさらに多くの会話エクスペリエンスが追加されるのはいつですか?

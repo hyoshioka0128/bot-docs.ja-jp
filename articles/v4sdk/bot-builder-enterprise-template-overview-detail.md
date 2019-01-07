@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3b4c16478e9d6f4f1c1a33315fb8c6c772c37b71
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: b337614b37142dc15f6cf085388dace9f4b7cafe
+ms.sourcegitcommit: 66769e697d94f7bf5e0441dfacf2c0e3768845ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645622"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654973"
 ---
 # <a name="enterprise-template---detailed-overview"></a>Enterprise テンプレート - 詳細な概要
 
@@ -32,9 +32,9 @@ Enterprise ボット テンプレートでは、Microsoft が会話エクスペ�
 
 すべてのボットは、会話での基本レベルの言語理解に対応する必要があります。 すべてのボットが簡単に対応すべき基本的なことの例としては、あいさつがあります。 通常、開発者は最初にこれらの基本的な意図を作成して、初期トレーニング データを提供する必要があります。 Enterprise ボット テンプレートには、お客様が利用を開始するためのサンプル LU ファイルが用意されているので、プロジェクトごとに毎回それらを作成する必要がなく、すぐに基本レベルの機能を使用できます。
 
-LU ファイルには、英語、フランス語、イタリア語、ドイツ語、スペイン語で以下の意図が用意されています。
+LU ファイルには、英語、中国語、フランス語、イタリア語、ドイツ語、スペイン語で以下の意図が用意されています。
 
-> Greeting、Help、Cancel、Restart、Escalate、ConfirmYes、ConfirmNo、ConfirmMore、Next、Goodbye
+> Cancel、Confirm、Escalate、FinishTask、GoBack、Help、Reject、Repeat、SelectAny、SelectItem、SelectNone、ShowNext、ShowPrevious、StartOver、Stop
 
 [LU](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) 形式はマークダウンと類似していて、変更とソース管理を容易に行えます。 次に .LU ファイルを LUIS モデルに変換するために [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) ツールが使用されます。そしてこの LUIS モデルは、ポータルまたは関連付けられた [LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) CLI (コマンド ライン) ツールを使用してお客様の LUIS サブスクリプションに発行できます。
 
@@ -67,7 +67,7 @@ Enterprise ボット テンプレートを使用して作成された各プロ�
 - LUIS モデルと QnA Maker の発話がわずかに重複することがあり、そのようなときには、QnA Maker に転送されるはずの質問の処理を LUIS が試行するかもしれないという、想定外の動作が引き起こされる可能性がありました。
 - 2 つ以上の LUIS モデルがあった場合は、ボットによって各モデルが呼び出され、特定の発話の送信先を特定するためになんらかの意図評価比較が実行される必要がありました。 共通のベースライン スコアがないため、モデル間の比較が効果的に機能せず、ユーザー エクスペリエンスの低下を招いていました。
 
-[ディスパッチャー](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig)では、構成された各 LUIS モデルから発話を、QnA Maker から質問を抽出して、一元的なディスパッチ LUIS モデルを作成することで、この問題をうまく解決できます。
+[Dispatcher](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) では、構成された各 LUIS モデルから発話を、QnA Maker から質問を抽出して、一元的なディスパッチ LUIS モデルを作成することで、この問題をうまく解決できます。
 
 これにより、与えられた発話を処理すべき LUIS モデルまたはコンポーネントをボットが速やかに特定できるほか、QnA Maker のデータが以前のように単に意図なし、とされるのではなく、意図処理の最上位レベルで検討されるようになります。
 
@@ -75,8 +75,8 @@ Enterprise ボット テンプレートを使用して作成された各プロ�
 
 ディスパッチャーは、Enterprise ボット テンプレートを使用して作成された各プロジェクトのコアとして使用されます。 ディスパッチ モデルは、ターゲットが LUIS モデルと QnA のいずれであるかを特定するために `MainDialog` クラス内で使用されます。 LUIS の場合は、セカンダリ LUIS モデルが呼び出され、通常どおり意図とエンティティが返されます。
 
-## <a name="qnamaker"></a>QnA Maker
+## <a name="qna-maker"></a>QnA Maker
 
 [QnA Maker](https://www.qnamaker.ai/) には、開発者以外のユーザーが質問と回答のペアという形式で一般的な知識のキュレーションを行える機能があります。 この知識は、FAQ データ ソースと製品マニュアルからインポートできるほか、QnA Maker ポータル内で対話形式でインポートできます。
 
-一連の QnA エントリのサンプルは、CogSvcModels の QnA フォルダー内の [LU](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) ファイル形式で提供されます。 次に、デプロイ スクリプトの一部として [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) が使用され、QnA Maker JSON ファイルが作成されます。そして、[QnA Maker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) CLI (コマンド ライン) ツールによってこれが使用され、項目が QnA Maker ナレッジベースに発行されます。
+CognitiveModels の QnA フォルダーには、[LU](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) ファイル形式の 2 つの QnA Maker モデルの例が用意されています。1 つは FAQ 用、もう 1 つは chit-chat 用です。 次に、デプロイ スクリプトの一部として [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) が使用され、QnA Maker JSON ファイルが作成されます。そして、[QnA Maker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) CLI (コマンド ライン) ツールによってこれが使用され、項目が QnA Maker ナレッジベースに発行されます。

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a8a0976e6f553e52e13ae13bbb719dd7bdead8f6
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: 4acb12a5e06032db898a651c6c8bf1dae06765ef
+ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010544"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735972"
 ---
 # <a name="gather-user-input-using-a-dialog-prompt"></a>ダイアログ プロンプトを使用してユーザー入力を収集する
 
@@ -313,6 +313,32 @@ prompt validator context には、次のプロパティが含まれます。
 | _値_ | 認識エンジンからの戻り値。 必要に応じて、検証コードでこの値を変更できます。 |
 
 ### <a name="implement-validation-code"></a>検証コードを実装する
+
+ボットのコンストラクターで、初期化時にカスタム検証をプロンプトに関連付けます。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+// ...
+_dialogSet = new DialogSet(_accessors.DialogStateAccessor);
+_dialogSet.Add(new NumberPrompt<int>(PartySizePrompt, PartySizeValidatorAsync));
+_dialogSet.Add(new ChoicePrompt(LocationPrompt));
+_dialogSet.Add(new DateTimePrompt(ReservationDatePrompt, DateValidatorAsync));
+// ...
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+// ...
+this.dialogSet = new DialogSet(this.dialogStateAccessor);
+this.dialogSet.add(new NumberPrompt(PARTY_SIZE_PROMPT, this.partySizeValidator));
+this.dialogSet.add(new ChoicePrompt (LOCATION_PROMPT));
+this.dialogSet.add(new DateTimePrompt(RESERVATION_DATE_PROMPT, this.dateValidator));
+// ...
+```
+
+---
 
 **パーティの人数の検証コントロール**
 
