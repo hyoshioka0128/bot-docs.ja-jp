@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 73e19047ea64839f52bb20ea1eceee93803210bc
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: 88208a2f5b0eb88d3b2964e63a21585484166d73
+ms.sourcegitcommit: 2d84d5d290359ac3cfb8c8f977164f799666f1ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645489"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54152175"
 ---
 # <a name="enterprise-bot-template---conversational-analytics-using-powerbi-dashboard-and-application-insights"></a>Enterprise Bot Template - PowerBI ダッシュボードと Application Insights を使用した会話型分析
 
@@ -24,19 +24,10 @@ ms.locfileid: "51645489"
 
 このテレメトリは、Azure portal の [Application Insights] ブレード内で、Log Analytics を使用して表示できます。 また、PowerBI で同じテレメトリを使用して、ボットの使用状況に関する一般的なビジネス インサイトを取得することもできます。
 
-サンプルの PowerBI ダッシュボードは、作成したプロジェクトの PowerBI フォルダーにあります。 これはあくまでサンプルであり、独自のインサイトの作成方法を示すために提供されているものです。 これらの視覚化機能は、今後強化されていく予定です。 
+PowerBI ダッシュボードの例は、[会話型 AI テレメトリ](https://aka.ms/botPowerBiTemplate)に関するページにあります。 
 
-## <a name="getting-started"></a>Getting Started (概要)
+これはあくまでサンプルであり、独自のインサイトの作成方法を示すために提供されているものです。 これらの視覚化機能は、今後強化されていく予定です。 
 
-- PowerBI Desktop を[こちら](https://powerbi.microsoft.com/en-us/desktop/)からダウンロードします
- 
-- ボットで使用する Application Insights リソースの ```Application Id``` を取得します。 これは、[Application Insights Azure] ブレードの [構成] セクションにある [API アクセス] ページに移動して取得できます。
-
-ソリューションの [PowerBI] フォルダー内にある PowerBI テンプレート ファイルをダブルクリックすると、 前の手順で取得した ```Application Id``` の入力を求めるメッセージが表示されます。 メッセージが表示されたら、Azure サブスクリプションの資格情報を使用して認証を完了します (場合によっては、[組織アカウント] をクリックしてサインインする必要があります)。
-
-これで、ダッシュボードが Application Insights インスタンスにリンクされます。メッセージが送受信が完了すると、ダッシュボードに最初のインサイトが表示されます。
-
->なお、センチメントの視覚化データは表示されません。現在のところ、デプロイ スクリプトでは、LUIS モデルの発行時にセンチメントは有効化されません。 LUIS モデルを[再発行](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-publish-app)してセンチメントを有効にすれば、視覚化データを表示できます。
 
 ## <a name="middleware-processing"></a>ミドルウェアの処理
 
@@ -55,11 +46,13 @@ QnAMaker クラスと LuisRecognizer クラスのテレメトリ ラッパーは
     - ActivityId
     - Channel
     - FromId
-    - Conversationid
+    - FromName
+    - ConversationId
     - ConversationName
     - Locale
-    - UserName
     - Text
+    - RecipientId
+    - RecipientName
 ```
   
 ```
@@ -67,10 +60,12 @@ QnAMaker クラスと LuisRecognizer クラスのテレメトリ ラッパーは
     - ActivityId,
     - Channel
     - RecipientId
-    - Conversationid
+    - ConversationId
     - ConversationName
     - Locale
-    - ReceipientName
+    - RecipientId
+    - RecipientName
+    - ReplyToId
     - Text
 ```
 
@@ -83,6 +78,7 @@ QnAMaker クラスと LuisRecognizer クラスのテレメトリ ラッパーは
     - SentimentScore
     - ConversationId
     - Question
+    - DialogId
 ```
 
 ```
@@ -90,8 +86,8 @@ QnAMaker クラスと LuisRecognizer クラスのテレメトリ ラッパーは
     - ActivityId
     - ConversationId
     - OriginalQuestion
-    - UserName
-    - QnAItemFound
+    - FromName
+    - ArticleFound
     - Question
     - Answer
     - Score

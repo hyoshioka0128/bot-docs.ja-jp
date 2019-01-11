@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c7977400a53af916217e595dda8e9c9a0ff85496
-ms.sourcegitcommit: 958a28bbab7dd29b384bb2e2d58d866e88f53316
+ms.openlocfilehash: 622d5b4924a4739900659d6be8eebd1888191eab
+ms.sourcegitcommit: ddc8c116887ada67642d49ee5166e7f1ae287263
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52500667"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114886"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Enterprise Bot Template - ボットのデプロイ
 
@@ -34,10 +34,7 @@ npm install -g ludown luis-apis qnamaker botdispatch msbot chatdown
 
 - Azure コマンド ライン ツール (CLI) を[こちら](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest)からインストールする。 Azure Bot Service コマンド ライン (CLI) ツールを既にインストールしてある場合は、現在のバージョンをアンインストールしたうえで新しいバージョンをインストールして、最新のバージョンに更新してください。
 
-- Bot Service の AZ 拡張機能をインストールする
-```shell
-az extension add -n botservice
-```
+> msbot 4.3.2 以降で AZ CLI の唯一の前提条件は、AZ CLI バージョン 2.0.53 以上がインストールされていることです。 botservice 拡張機能もインストールされている場合は、"az extension remove - name botservice" を使用してこれを削除してください。
 
 - LUISGen ツールをインストールする
 
@@ -111,7 +108,7 @@ msbot ツールに、場所や SKU など、デプロイ計画の概要が表示
 
 Bot Framework Emulator に問題がある場合、まずは最新の Bot Framework Emulator を使用していることを確かめてください。 古いバージョンのエミュレーターが正しく更新されていない場合は、エミュレーターをアンインストールしてインストールし直します。
 
-## <a name="deploy-to-azure"></a>[Deploy to Azure (Azure へのデプロイ)]
+## <a name="deploy-to-azure"></a>Deploy to Azure (Azure へのデプロイ)
 
 テストはエンド ツー エンドでローカルで実行できます。 追加テストを行うボットを Azure にデプロイする準備ができたら、次のコマンドを使用してソース コードを公開できます。これは、ソース コードの更新をプッシュするときにいつでも実行できます。
 

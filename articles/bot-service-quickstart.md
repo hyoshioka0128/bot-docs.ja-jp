@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 11/15/2018
-ms.openlocfilehash: 3c5b12bb804477ae41cf70d2ce955066801f5916
-ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
+ms.date: 01/08/2019
+ms.openlocfilehash: fd852a75b911f57743b40d252b24c6ef33b0420d
+ms.sourcegitcommit: ddc8c116887ada67642d49ee5166e7f1ae287263
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51715136"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114896"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -81,6 +81,7 @@ Bot Service は、ボットを開発するための Bot Builder SDK や、ボッ
 ::: moniker range="azure-bot-service-4.0"
 
 # <a name="create-a-bot-with-azure-bot-service"></a>Azure Bot Service を使用してボットを作成する
+
 [!INCLUDE [pre-release-label](includes/pre-release-label.md)]
 
 Azure Bot Service は、ボットを開発するための Bot Builder SDK や、ボットをチャンネルに接続するための Bot Service など、ボットを作成するためのコア コンポーネントを提供します。 このトピックでは、.NET テンプレートまたは Node.js テンプレートのいずれかを選択し、Bot Builder SDK v4 を使用してボットを作成できます。
@@ -126,6 +127,15 @@ Azure Bot Service は、ボットを開発するための Bot Builder SDK や、
 ![Azure の Web チャットでのテスト](./media/azure-bot-quickstarts/azure-webchat-test.png)
 
 メッセージを入力すると、ボットが応答します。
+
+## <a name="download-code"></a>コードをダウンロードする
+コードをダウンロードして、ローカルで操作することができます。 
+1. **[ボット管理]** セクションで **[ビルド]** をクリックします。 
+1. 右側のウィンドウで **[ボットのソース コードをダウンロードする]** リンクをクリックします。 
+1. 指示に従ってコードをダウンロードし、フォルダーを解凍します。
+
+ダウンロードしたコードは暗号化された [.bot ファイル](./v4sdk/bot-file-basics.md)を使用します。 appsettings.json ファイルまたは .env ファイル内の `botFilePath` と `botFileSecret` のエントリを更新する必要があります。 
+そのためには、Azure portal に移動します。 ポータルでボットを選択し、**[アプリ サービスの設定]** セクションで **[アプリケーション設定]** をクリックします。 **[アプリケーション設定]** ウィンドウに `botFilePath` と `botFileSecret` の値が表示されます。 これらの値をコピーし、.env または appsettings.json ファイルを更新します。 
 
 ## <a name="next-steps"></a>次の手順
 
