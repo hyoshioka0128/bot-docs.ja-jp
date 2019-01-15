@@ -9,12 +9,12 @@ layout: LandingPage
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/27/2018
-ms.openlocfilehash: ec7a21e790c945b261e7381ec76298460fa079ee
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 905b8592ebbc3fb4344af60b6bcbb219d0a2ee70
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000259"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224317"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -24,7 +24,7 @@ ms.locfileid: "50000259"
 <div class="content">
     <h1>Azure Bot Service のドキュメント</h1>
     <div class="intro" style="min-width: 200px">
-        <p>Bot Service では、ボット開発専用の統合環境が提供され、インテリジェント ボットのビルド、接続、テスト、デプロイ、管理をすべて一元化して行えます。 Azure Bot Service では、.NET と Node.js をサポートする Bot Builder SDK を活用しています。 クイック スタートやサンプルを使用して、Bot Service の使用方法を学習してください。</p>
+        <p>Bot Service では、ボット開発専用の統合環境が提供され、インテリジェント ボットのビルド、接続、テスト、デプロイ、管理をすべて一元化して行えます。 Azure Bot Service では、.NET と Node.js をサポートする Bot Framework SDK を活用しています。 クイック スタートやサンプルを使用して、Bot Service の使用方法を学習してください。</p>
     </div>
 <h2 style="margin-top: 18px; margin-bottom: 0px;">5 分間のクイック スタート</h2>
 <div class="ico48Case">
@@ -73,7 +73,7 @@ ms.locfileid: "50000259"
 <div class="content">
     <h1>Azure Bot Service のドキュメント</h1>
     <div class="intro" style="min-width: 200px">
-        <p>Azure Bot Service では、ボット開発専用の統合環境が提供され、インテリジェント ボットのビルド、接続、テスト、デプロイ、管理をすべて一元化して行えます。 Azure Bot Service では、C# と JavaScript をサポートする Bot Builder SDK を活用しています。 クイックスタート、チュートリアル、およびサンプルを使用して、Bot Service の使用方法を学習してください。
+        <p>Azure Bot Service では、ボット開発専用の統合環境が提供され、インテリジェント ボットのビルド、接続、テスト、デプロイ、管理をすべて一元化して行えます。 Azure Bot Service では、C# と JavaScript をサポートする Bot Framework SDK を活用します。 クイックスタート、チュートリアル、およびサンプルを使用して、Bot Service の使用方法を学習してください。
 </p>
 </div>
 

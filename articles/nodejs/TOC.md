@@ -1,4 +1,4 @@
-# [Bot Builder SDK for Node.js](bot-builder-nodejs-overview.md)
+# [Bot Framework SDK for Node.js](bot-builder-nodejs-overview.md)
 # [主要な概念](bot-builder-nodejs-concepts.md)
 # ダイアログ
 ## [ダイアログの概要](bot-builder-nodejs-dialog-overview.md)

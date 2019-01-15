@@ -1,4 +1,4 @@
-# [Bot Builder SDK for .NET](bot-builder-dotnet-overview.md)
+# [Bot Framework SDK for .NET](bot-builder-dotnet-overview.md)
 # [主要な概念](bot-builder-dotnet-concepts.md)
 # メッセージとアクティビティ
 ## [アクティビティの概要](bot-builder-dotnet-activities.md)
