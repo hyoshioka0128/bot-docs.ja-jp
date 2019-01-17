@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 622d5b4924a4739900659d6be8eebd1888191eab
-ms.sourcegitcommit: ddc8c116887ada67642d49ee5166e7f1ae287263
+ms.openlocfilehash: e557b359da09615d2998c4c729f57ffb9faf0de1
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54114886"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224967"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Enterprise Bot Template - ボットのデプロイ
 
@@ -42,10 +42,16 @@ npm install -g ludown luis-apis qnamaker botdispatch msbot chatdown
 dotnet tool install -g luisgen
 ```
 
+- LUISGen ツールをインストールする
+
+```shell
+dotnet tool install -g luisgen
+```
+
 ## <a name="configuration"></a>構成
 
 - LUIS のオーサリング キーを取得する
-   - デプロイする予定のリージョンの正しい LUIS ポータルについては、[こちら](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions)のドキュメント ページをご覧ください。  www.luis.ai は米国リージョンを指し、このポータルから取得したオーサリング キーはヨーロッパのデプロイでは動作しないことに注意してください。
+   - デプロイする予定のリージョンの正しい LUIS ポータルについては、[こちら](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions)のドキュメント ページをご覧ください。 www.luis.ai は米国リージョンを指し、このポータルから取得したオーサリング キーはヨーロッパのデプロイでは動作しないことに注意してください。
    - サインインした後は、右上隅にある自分の名前をクリックします。
    - [設定] を選択し、次の手順に備えてオーサリング キーをメモします。
 
