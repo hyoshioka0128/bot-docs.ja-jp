@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f98391f05e962bfc8846818d8a236d16846c8c5c
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: cdb512b0efe111870b34c440f978105786b6f36a
+ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997061"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54202578"
 ---
 # <a name="enable-speech-in-web-chat"></a>Web チャットで音声認識を有効にする
 Web チャット コントロールで音声インターフェイスを有効にすることができます。 ユーザーは、Web チャット コントロールのマイクを使って音声インターフェイスと対話します。
@@ -66,7 +66,7 @@ Web チャットで音声認識機能を有効にするには、Web チャット
 カスタマイズにより、次のいずれかの方法で音声認識機能を追加できます。
 
 * **ブラウザーが提供する音声認識** - Web ブラウザーに組み込まれた音声認識機能を使用します。 現時点では、この機能は Chrome ブラウザーでのみ使用できます。
-* **Bing Speech Service の使用** - Bing Speech Service を使用して、音声認識と音声合成を提供できます。 音声認識機能へのこのアクセス方法は、さまざまなブラウザーでサポートされています。 この場合、ブラウザー上ではなく、サーバー上で処理が行われます。
+<!--* **Use Bing Speech service** - You can use the Bing Speech service to provide speech recognition and synthesis. This way of access speech functionality is supported by a variety of browsers. In this case, the processing is done on a server instead of on the browser.-->
 * **カスタム音声認識サービスの作成** - 独自のカスタム音声認識コンポーネントと音声合成コンポーネントを作成できます。
 
 ### <a name="browser-provided-speech"></a>ブラウザーが提供する音声認識
@@ -80,23 +80,23 @@ Web チャットで音声認識機能を有効にするには、Web チャット
 
 [!code-js[Specify speech options to use in-browser speech (JavaScript)](./includes/code/bot-service-channel-connect-webchat-speech.js#BrowserSpeech)]
 
-### <a name="bing-speech-service"></a>Bing Speech Service
+<!--### Bing Speech service
 
-次のコードでは、Bing Speech Service を使用する音声認識エンジンと音声合成コンポーネントをインスタンス化します。 音声の認識と生成はサーバー上で実行されます。 このメカニズムは複数のブラウザーでサポートされています。 
+The following code instantiates speech recognizer and speech synthesis components that use the Bing Speech service. The recognition and generation of speech is performed on the server. This mechanism is supported in multiple browsers. 
 
 > [!TIP]
-> Bing Speech Service を使用する場合、音声認識の準備を使用してボットの音声認識の精度を向上させることができます。 詳細については、[Bot Framework における音声認識サポート](https://blog.botframework.com/2017/06/26/Speech-To-Text)に関するブログ記事をご覧ください。
+> You can use speech recognition priming to improve your bot's speech recognition accuracy if you use the Bing Speech service. For more information, check out the [Speech Support in Bot Framework](https://blog.botframework.com/2017/06/26/Speech-To-Text) blog post.
 
 [!code-js[Specify speech options to use the Bing Speech API (JavaScript)](./includes/code/bot-service-channel-connect-webchat-speech.js#BingSpeech)]
 
-#### <a name="use-the-bing-speech-service-with-a-token"></a>トークンを使って Bing Speech Service を使用する
+#### Use the Bing Speech service with a token
 
-トークンを使用して、Cognitive Services の音声認識を有効にすることもできます。 トークンは、API キーを使用して、セキュリティで保護されたバックエンドで生成されます。
+You also have the option to enable Cognitive Services speech recognition using a token. The token is generated in a secure back end using your API key.
 
-次のコード例は、API キーが公開されないように、セキュリティで保護されたバックエンドからトークンを取得する方法を示しています。
+The following example code shows how the token fetch is done from a secure back end to avoid exposing the API key.
 
 [!code-js[Fetch a token to use with the Bing Speech API (JavaScript)](./includes/code/bot-service-channel-connect-webchat-speech.js#FetchToken)]
-
+-->
 ### <a name="custom-speech-service"></a>カスタム音声認識サービス
 
 ISpeechRecognizer を実装した独自のカスタム音声認識や、ISpeechSynthesis を実装したカスタム音声合成を提供することもできます。 
