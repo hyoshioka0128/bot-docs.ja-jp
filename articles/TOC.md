@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 73149f8137144ee34c1ab1e8fc6a645d1405b694
+ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360762"
+---
 # [Azure Bot Service のドキュメント](index.md)
 # 概要
 ## [Azure Bot Service について](bot-service-overview-introduction.md)
@@ -7,7 +15,8 @@
 ### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
 ### [JavaScript](javascript/bot-builder-javascript-quickstart.md)
 # チュートリアル
-## [複数の LUIS と QnA モデルを使用する](v4sdk/bot-builder-tutorial-dispatch.md)
+## [基本ボットの作成とデプロイ](v4sdk/bot-builder-tutorial-basic-deploy.md)
+## [QnA Maker の追加とボットの再デプロイ](v4sdk/bot-builder-tutorial-add-qna.md)
 ## [ボットへの認証の追加](bot-builder-tutorial-authentication.md)
 # サンプル
 ## [GitHub の botbuilder-samples リポジトリ](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md)
@@ -41,6 +50,7 @@
 ### [ボットから通知を取得する](v4sdk/bot-builder-howto-proactive-message.md)
 ### [ボットに自然言語の理解を追加する](v4sdk/bot-builder-howto-v4-luis.md)
 ### [QnA Maker を使用してユーザーの質問に回答する](v4sdk/bot-builder-howto-qna.md)
+### [複数の LUIS と QnA モデルを使用する](v4sdk/bot-builder-tutorial-dispatch.md)
 ### ダイアログ ライブラリを使用した会話の管理 
 #### [連続して行われる会話フローの実装](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
 #### [ダイアログ プロンプトを使用してユーザー入力を収集する](v4sdk/bot-builder-prompts.md)
