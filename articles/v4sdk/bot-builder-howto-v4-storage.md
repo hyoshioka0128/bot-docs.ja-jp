@@ -1,6 +1,6 @@
 ---
 title: ストレージに直接書き込む | Microsoft Docs
-description: Bot Builder SDK for .NET でストレージに直接書き込む方法について説明します。
+description: Bot Framework SDK for .NET でストレージに直接書き込む方法について説明します。
 keywords: ストレージ, 読み取りと書き込み, メモリ ストレージ, eTag
 author: DeniseMak
 ms.author: v-demak
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/13/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 803574e5d224b0556162fd677145d29cafa2cab1
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: cd1f8270acf426c84d64efef796b7a007c49c2c1
+ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645682"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360792"
 ---
 # <a name="write-directly-to-storage"></a>ストレージに直接書き込む
 
@@ -217,12 +217,12 @@ async function logMessageText(storage, context) {
 アカウントの作成には数分かかります。 ポータルに " Azure Cosmos DB アカウントが作成されました" ページが表示されるまで待機します。
 
 ##### <a name="add-a-collection"></a>コレクションの追加
-1. **[設定]、[新しいコレクション]** の順にクリックします。 **[コレクションの追加]** 領域が右端に表示されます。表示するには、右にスクロールする必要がある場合があります。
+1. **[設定]、[新しいコレクション]** の順にクリックします。 **[コレクションの追加]** 領域が右端に表示されます。表示するには、右にスクロールする必要がある場合があります。 Cosmos DB が最近更新されたため、_/id_ でパーティション キーを 1 つ必ず追加します。このキーにより、クロス パーティション クエリのエラーが回避されます。
 
 ![Cosmos DB コレクションの追加](./media/add_database_collection.png)
 
 2. 新しいデータベース コレクションは "bot-cosmos-sql-db" です。コレクション ID は "bot-storage" になります。 これらの値は、以降に示すコード例で使用します。
-
+ -
 ![Cosmos DB](./media/cosmos-db-sql-database.png)
 
 3. データベース設定の **[キー]** タブで、エンドポイント URI とキーが利用可能になります。 これらの値は、この記事の後半のコードの構成で必要になります。 
@@ -597,7 +597,7 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
            var count = 0;
            do
            {
-               var pagedTranscript = await _transcriptStore.GetTranscriptActivitiesAsync(activity.ChannelId, activity.Conversation.Id);
+               var pagedTranscript = await _transcriptStore.GetTranscriptActivitiesAsync(activity.ChannelId, activity.Conversation.Id, continuationToken);
                var activities = pagedTranscript.Items
                   .Where(a => a.Type == ActivityTypes.Message)
                   .Select(ia => (Activity)ia)

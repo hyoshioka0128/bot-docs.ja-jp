@@ -1,6 +1,6 @@
 ---
 title: ユーザー アクションを処理する | Microsoft Docs
-description: Builder SDK for Node.js を使用して、特定のキーワードを含むユーザー入力をボットが聞き取って処理できるようにすることで、ユーザー アクションを処理する方法について説明します。
+description: Bot Framework SDK for Node.js を使用して、特定のキーワードを含むユーザー入力をボットが聞き取って処理できるようにすることで、ユーザー アクションを処理する方法について説明します。
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 26f6e9520fe5d2ebb83ceb4e6a497a35e9d2611f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 7ca595b1c24769addfbdf7975c48d3a052c4a2de
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999259"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54226007"
 ---
 # <a name="handle-user-actions"></a>ユーザー アクションを処理する
 
@@ -236,7 +236,7 @@ bot.dialog('orderDinner', [
 
 ### <a name="bind-an-endconversationaction"></a>endConversationAction のバインド
 
-`endConversationAction` をバインドすると、ダイアログに登録されます。 トリガーされると、このアクションはユーザーとの会話を終了します。 このアクションをトリガーすることは、[endConversation](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#endconversation) メソッドの呼び出しに似ています。 会話が終了すると、Bot Builder SDK for Node.js はダイアログ スタックと保持されていた状態データをクリアします。 保持される状態データの詳細については、「[状態データの管理](bot-builder-nodejs-state.md)」を参照してください。
+`endConversationAction` をバインドすると、ダイアログに登録されます。 トリガーされると、このアクションはユーザーとの会話を終了します。 このアクションをトリガーすることは、[endConversation](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#endconversation) メソッドの呼び出しに似ています。 会話が終了すると、Bot Framework SDK for Node.js はダイアログ スタックと保持されていた状態データをクリアします。 保持される状態データの詳細については、「[状態データの管理](bot-builder-nodejs-state.md)」を参照してください。
 
 次のコード スニペットは、[endConversationAction][endConversationAction] をダイアログにバインドする方法を示しています。
 

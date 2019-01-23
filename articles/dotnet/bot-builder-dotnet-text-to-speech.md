@@ -1,6 +1,6 @@
 ---
-title: メッセージへの音声の追加 | Microsoft Docs
-description: Bot Builder SDK for .NET を使用してメッセージに音声を追加する方法について説明します。
+title: メッセージに音声を追加する | Microsoft Docs
+description: Bot Framework SDK for .NET を使用してメッセージに音声を追加する方法について説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dc542c7e85b3a79e1071edebea65d93c99742beb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3eef1ec583764449554a223ec9dc339ff505ace6
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000361"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225597"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
 
@@ -27,9 +27,9 @@ ms.locfileid: "50000361"
 
 Cortana などの音声対応チャネルのボットを作成している場合は、ボットが読み上げるテキストを指定するメッセージを構成できます。 また、[入力ヒント](bot-builder-dotnet-add-input-hints.md)を指定して、ボットがユーザー入力を受け入れるか、期待するか、無視するかを示し、クライアントのマイクの状態に影響を与えることを試すこともできます。
 
-## <a name="specify-text-to-be-spoken-by-your-bot"></a>ボットが読み上げるテキストの指定
+## <a name="specify-text-to-be-spoken-by-your-bot"></a>ボットが読み上げるテキストを指定する
 
-Bot Builder SDK for .NET を使用すると、音声対応チャネルでボットが読み上げるテキストを指定する方法は複数あります。 [メッセージ][IMessageActivity]の `Speak` プロパティを設定することや、`IDialogContext.SayAsync()` メソッドを呼び出すこと、組み込みプロンプトを使用してメッセージを送信する場合はプロンプト オプション `speak` および `retrySpeak` を指定することができます。
+Bot Framework SDK for .NET を使用すると、音声対応チャネルでボットが読み上げるテキストを指定する方法は複数あります。 [メッセージ][IMessageActivity]の `Speak` プロパティを設定することや、`IDialogContext.SayAsync()` メソッドを呼び出すこと、組み込みプロンプトを使用してメッセージを送信する場合はプロンプト オプション `speak` および `retrySpeak` を指定することができます。
 
 ### <a id="message-speak"></a> IMessageActivity.Speak
 
@@ -59,7 +59,7 @@ Bot Builder SDK for .NET を使用すると、音声対応チャネルでボッ�
 
 ## <a name="sample-code"></a>サンプル コード 
 
-Bot Builder SDK for .NET を使用して音声対応ボットを作成する方法を示す完全なサンプルについては、GitHub で<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp" target="_blank">ローラー スキルのサンプル</a>を参照してください。
+Bot Framework SDK for .NET を使用して音声対応ボットを作成する方法を示す完全なサンプルについては、GitHub で<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp" target="_blank">ローラー スキルのサンプル</a>を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

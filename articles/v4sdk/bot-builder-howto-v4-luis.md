@@ -1,6 +1,6 @@
 ---
 title: ボットに自然言語の理解を追加する | Microsoft Docs
-description: 自然言語理解のための LUIS を Bot Builder SDK と共に使用する方法について説明します。
+description: 自然言語理解のための LUIS を Bot Framework SDK と共に使用する方法について説明します。
 keywords: Language Understanding, LUIS, 意図, 認識エンジン, エンティティ, ミドルウェア
 author: ivorb
 ms.author: v-ivorb
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 11/28/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a512cb92f35374b457c4d4cef05667edbd8d2f1f
-ms.sourcegitcommit: 892bf81d306ba607c293ee8639d5c6b66ab3710a
+ms.openlocfilehash: 77dbf8658030a18596507129c88156601d4272e5
+ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52460011"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54298309"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 
@@ -33,7 +33,7 @@ LUIS ポータルにサインインして、ご自身のバージョンのサン
 
 1. **[Import new app]\(新しいアプリのインポート\)** を選択します。 
 1. **[Choose App file (JSON format)...]\(アプリ ファイル (JSON 形式) を選択...\)** をクリックします。 
-1. サンプルの `CognitiveModels` フォルダーにある `reminders.json` ファイルを選択します。 **[Optional Name]\(オプション名\)** に「**LuisBot**」と入力します。 このファイルには、Calendar_Add、Calendar_Find、None の 3 つの意図が含まれています。 これらの意図を使って、ユーザーがどのようなつもりでボットに送メッセージを信しているのかを把握します。 エンティティを含める必要がある場合は、この記事の最後にある[省略可能なセクション](#optional---extract-entities)を参照してください。
+1. サンプルの `CognitiveModels` フォルダーにある `reminders.json` ファイルを選択します。 **[Optional Name]\(オプション名\)** に「**LuisBot**」と入力します。 このファイルには、次の 3 つの意図が含まれています:Calendar_Add、Calendar_Find、None。 これらの意図を使って、ユーザーがどのようなつもりでボットに送メッセージを信しているのかを把握します。 エンティティを含める必要がある場合は、この記事の最後にある[省略可能なセクション](#optional---extract-entities)を参照してください。
 1. アプリを[トレーニング](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-how-to-train)します。
 1. アプリを*運用*環境に[発行](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp)します。
 
@@ -185,7 +185,7 @@ public class LuisBot : IBot
 `LUIS_CONFIGURATION` の値は、お客様の構成ファイルにある LUIS アプリの名前に更新してください。
 
 ```javascript
-// Language Understanding (LUIS) service name as defined in the .bot file.YOUR_LUIS_APP_NAME is "LuisBot" in the C# code.
+// Language Understanding (LUIS) service name as defined in the .bot file.YOUR_LUIS_APP_NAME is "LuisBot" in the JavaScript code.
 const LUIS_CONFIGURATION = '<YOUR_LUIS_APP_NAME>';
 
 // Get endpoint and LUIS configurations by service name.
@@ -375,7 +375,7 @@ LUIS エンティティを使うと、標準の意図とは異なる物事やイ
 
 ### <a name="prerequisites"></a>前提条件
 
-このサンプルでエンティティを使用するには、エンティティを含む LUIS アプリを作成する必要があります。 上記のセクションの手順に従って [LUIS アプリを作成](#create-a-luis-app-in-the-luis-portal)してください。ただし、LUIS アプリのビルドには、`reminders.json` ファイルではなく [reminders-with-entities.json](https://github.com/Microsoft/BotFramework-Samples/tree/master/SDKV4-Samples/dotnet_core/nlp-with-luis) ファイルを使用します。 このファイルには、同じ意図のほか、Appointment、Meeting、Schedule という 3 つのエンティティが用意されています。 これらのエンティティは、LUIS が対象ユーザーのメッセージの意図を判断するときに役立ちます。 
+このサンプルでエンティティを使用するには、エンティティを含む LUIS アプリを作成する必要があります。 上記のセクションの手順に従って [LUIS アプリを作成](#create-a-luis-app-in-the-luis-portal)してください。ただし、LUIS アプリのビルドには、`reminders.json` ファイルではなく [reminders-with-entities.json](https://github.com/Microsoft/BotFramework-Samples/tree/master/SDKV4-Samples/dotnet_core/nlp-with-luis) ファイルを使用します。 このファイルでは、同じ意図の他に、次の 3 つのエンティティが提供されています:Appointment、Meeting、Schedule。 これらのエンティティは、LUIS が対象ユーザーのメッセージの意図を判断するときに役立ちます。 
 
 ### <a name="extract-and-display-entities"></a>エンティティを抽出して表示する
 次の省略可能なコードをこのサンプル アプリに追加することで、ユーザーの意図を識別できるようにエンティティが LUIS によって使用されているときに、エンティティ情報を抽出して表示できます。 

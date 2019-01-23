@@ -1,7 +1,7 @@
 ---
 title: .NET を使用して Cortana スキルを構築する | Microsoft Docs
-description: Bot Builder SDK for .NET で Cortana スキルを構築するための主要概念について説明します。
-keywords: Bot Framework, Cortana スキル, 音声, .NET, Bot Builder, SDK, 主な概念, 主要概念
+description: Bot Framework SDK for .NET で Cortana スキルを構築するための主要概念について説明します。
+keywords: Bot Framework, Cortana スキル, 音声, .NET, SDK, 主な概念, 主要概念
 author: DeniseMak
 manager: kamrani
 ms.topic: article
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 030d17fa25a436ee8e8a1d093924e61f12e14e18
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 98fc10a806a4c8d1a4d6563934d92b0e0cdbb771
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998313"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224777"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Cortana スキルを使用した音声認識ボットの作成
 
@@ -25,7 +25,7 @@ ms.locfileid: "49998313"
 > - [Node.js](../nodejs/bot-builder-nodejs-cortana-skill.md)
 
 
-Bot Builder SDK for .NET で音声認識ボットを作成できます。そのためには、これを Cortana スキルとして Cortana チャネルに接続します。 
+Bot Framework SDK for .NET で音声認識ボットを作成できます。そのためには、これを Cortana スキルとして Cortana チャネルに接続します。 
 
 
 > [!TIP]
@@ -38,7 +38,7 @@ Bot Framework を使用して Cortana スキルを作成する場合、Cortana �
 
 ## <a name="adding-speech-to-your-bot"></a>ボットに音声を追加する
 
-ボットからの音声メッセージは、音声合成マークアップ言語 (SSML) として表されます。 Bot Builder SDK を使用すると、ボットが表示する内容だけでなく、話す内容も制御できるよう、応答に SSML を含めることができます。  また、ボットがユーザーの入力を受け入れるか、期待しているか、無視しているかを指定して、Cortana のマイクの状態を制御することもできます。
+ボットからの音声メッセージは、音声合成マークアップ言語 (SSML) として表されます。 Bot Framework SDK を使用すると、ボットが表示する内容だけでなく、話す内容も制御できるよう、応答に SSML を含めることができます。  また、ボットがユーザーの入力を受け入れるか、期待しているか、無視しているかを指定して、Cortana のマイクの状態を制御することもできます。
 
 `IMessageActivity` オブジェクトの `Speak` プロパティを設定して、Cortana が話すメッセージを指定します。 プレーン テキストを指定すると、Cortana はその単語の発音方法を決定します。 
 
@@ -96,7 +96,7 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
 -->
 
 
-## <a name="sample-rollerskill"></a>サンプル: RollerSkill
+## <a name="sample-rollerskill"></a>サンプル:RollerSkill
 以下のセクションで取り上げるコードは、サイコロを振る Cortana のサンプル スキルのものです。 [BotBuilder-Samples リポジトリ](https://github.com/Microsoft/BotBuilder-Samples/)から、ボットのコード全体をダウンロードしてください。
 
 Cortana に向かって[呼び出し名][InvocationNameGuidelines]を話しかけて、スキルを呼び出します。 Roller スキルの場合、[ボットを Cortana チャネルに追加し][CortanaChannel]、それを Cortana スキルとして登録した後、Cortana に「Ask Roller」(Roller に頼んで) または「Ask Roller to roll dice」(サイコロを振るよう Roller に頼んで) と話しかけると、これを呼び出せます。
@@ -335,7 +335,7 @@ Cortana に向かって[呼び出し名][InvocationNameGuidelines]を話しか�
 * [Cortana のカード設計のベスト プラクティス][CardDesign]
 * [Cortana デベロッパー センター][CortanaDevCenter]
 * [Cortana のテストとデバッグのベスト プラクティス][Cortana-TestBestPractice]
-* <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET リファレンス</a>
+* <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>
 
 [CortanaGetStarted]: /cortana/getstarted
 [BFPortal]: https://dev.botframework.com/

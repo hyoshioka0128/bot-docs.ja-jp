@@ -1,6 +1,6 @@
 ---
 title: 状態データの管理 | Microsoft Docs
-description: Bot Builder SDK for .NET を使用して状態データを保存および取得する方法について説明します。
+description: Bot Framework SDK for .NET を使用して状態データを保存および取得する方法について説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: deb8361a5cca2f37840abb1180c2de571ee08143
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3ee3af72d1c03faf485a64adb8d9fa2548f5d99d
+ms.sourcegitcommit: 3cc768a8e676246d774a2b62fb9c688bbd677700
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999759"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54323668"
 ---
 # <a name="manage-state-data"></a>状態データの管理
 
@@ -84,9 +84,9 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 | `GetConversationData` | 会話 | 指定されたチャネル上の会話の、以前に保存された状態データを取得します。 |
 | `GetPrivateConversationData` | ユーザーおよび会話 | 指定されたチャネル上の会話内のユーザーの、以前に保存された状態データを取得します。 |
 | `SetUserData` | User | 指定されたチャネル上のユーザーの状態データを保存します。 |
-| `SetConversationData` | 会話 | 指定されたチャネル上の会話の状態データを保存します。 <br/><br/>**注**: `SetConversationData` メソッドを使用して保存されたデータは `DeleteStateForUser` メソッドでは削除されないため、このメソッドを使用してユーザーの個人を特定できる情報 (PII) を保存しないでください。 |
+| `SetConversationData` | 会話 | 指定されたチャネル上の会話の状態データを保存します。 <br/><br/>**メモ**:`SetConversationData` メソッドを使用して保存されたデータは `DeleteStateForUser` メソッドでは削除されないため、このメソッドを使用してユーザーの個人を特定できる情報 (PII) を保存しないでください。 |
 | `SetPrivateConversationData` | ユーザーおよび会話 | 指定されたチャネル上の会話内のユーザーの状態データを保存します。 |
-| `DeleteStateForUser` | User | `SetUserData` メソッドまたは `SetPrivateConversationData` メソッドを使用して以前に保存されたユーザーの状態データを削除します。 <br/><br/>**注**: ボットでは、ユーザーの連絡先リストからボットが削除されたことを示す [deleteUserData](bot-builder-dotnet-activities.md#deleteuserdata) 型のアクティビティまたは [contactRelationUpdate](bot-builder-dotnet-activities.md#contactrelationupdate) 型のアクティビティを受信したら、このメソッドを呼び出す必要があります。 |
+| `DeleteStateForUser` | User | `SetUserData` メソッドまたは `SetPrivateConversationData` メソッドを使用して以前に保存されたユーザーの状態データを削除します。 <br/><br/>**メモ**:ボットでは、ユーザーの連絡先リストからボットが削除されたことを示す [deleteUserData](bot-builder-dotnet-activities.md#deleteuserdata) 型のアクティビティまたは [contactRelationUpdate](bot-builder-dotnet-activities.md#contactrelationupdate) 型のアクティビティを受信したら、このメソッドを呼び出す必要があります。 |
 
 ボットが "**Set...Data**" メソッドのいずれかを使用して状態データを保存すると、ボットが同じコンテキストで受信する今後のメッセージにそのデータが含まれるようになります。データには、対応する "**Get...Data**" メソッドを使用してアクセスできます。
 
@@ -103,53 +103,6 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 > [!NOTE]
 > Bot Framework 状態データ ストアを使用するのではなく、独自のデータベースに状態データを保存する場合でも、これらのプロパティ値をキーとして使用できます。
 
-## <a id="state-client"></a>状態クライアントを作成する
-
-`StateClient` オブジェクトを使用すると、Bot Builder SDK for .NET を使用して状態データを管理できます。 状態データを管理する同じコンテキストに属しているメッセージにアクセスできる場合は、`Activity` オブジェクトに対して `GetStateClient` メソッドを呼び出すことで状態クライアントを作成できます。
-
-[!code-csharp[Get State client](../includes/code/dotnet-state.cs#getStateClient1)]
-
-状態データを管理する同じコンテキストに属しているメッセージにアクセスできない場合は、`StateClient` クラスの新しいインスタンスを作成するだけで、状態クライアントを作成できます。 次の例では、`microsoftAppId` と `microsoftAppPassword` は、[ボット作成](../bot-service-quickstart.md)プロセス中に取得したボットの Bot Framework 認証資格情報です。
-
-> [!NOTE]
-> ボットの **AppID** と **AppPassword** を確認する方法については、「[MicrosoftAppID and MicrosoftAppPassword (MicrosoftAppID と MicrosoftAppPassword)](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」をご覧ください。
-
-[!code-csharp[Get State client](../includes/code/dotnet-state.cs#getStateClient2)]
-
-> [!NOTE]
-> 既定の状態クライアントは、中央のサービスに保存されます。 一部のチャネルでは、そのチャネル内でホストされている状態 API を使用できるので、チャネルが提供する準拠ストアに状態データを保存できます。
-
-## <a name="get-state-data"></a>状態データを取得する
-
-各 "**Get...Data**" メソッドは、指定されたユーザー/会話の状態データを含む `BotData` オブジェクトを返します。 `BotData` オブジェクトから特定のプロパティ値を取得するには、`GetProperty` メソッドを呼び出します。 
-
-次のコード例は、ユーザー データから型指定されたプロパティを取得する方法を示しています。 
-
-[!code-csharp[Get state property](../includes/code/dotnet-state.cs#getProperty1)]
-
-次のコード例は、ユーザー データ内の複合型からプロパティを取得する方法を示しています。
-
-[!code-csharp[Get state property](../includes/code/dotnet-state.cs#getProperty2)]
-
-"**Get...Data**" メソッド呼び出しで指定されたユーザー/会話の状態データが存在しない場合、返される `BotData` オブジェクトには次のプロパティ値が含まれます。 
-- `BotData.Data` = null
-- `BotData.ETag` = "*"
-
-## <a name="save-state-data"></a>状態データを保存する
-
-状態データを保存するには、まず、適切な "**Get...Data**" メソッドを呼び出して `BotData` オブジェクトを取得します。次に、更新するプロパティごとに `SetProperty` メソッドを呼び出して更新し、適切な "**Set...Data**" メソッドを呼び出してオブジェクトを保存します。 
-
-> [!NOTE]
-> チャネル上のユーザーごと、チャネル上の会話ごと、チャネル上の会話のコンテキスト内のユーザーごとに、最大 32 キロバイトのデータを保存できます。 
-
-次のコード例は、型指定されたプロパティをユーザー データに保存する方法を示しています。
-
-[!code-csharp[Set state property](../includes/code/dotnet-state.cs#setProperty1)]
-
-次のコード例は、プロパティをユーザー データ内の複合型に保存する方法を示しています。 
-
-[!code-csharp[Set state property](../includes/code/dotnet-state.cs#setProperty2)]
-
 ## <a name="handle-concurrency-issues"></a>コンカレンシーの問題に対処する
 
 ボットの 別のインスタンスがデータを変更していた場合、ボットが状態データを保存しようとすると、HTTP 状態コード **412 Precondition Failed** でエラー応答が返されることがあります。 次のコード例に示すように、このシナリオを考慮してボットを設計できます。
@@ -159,6 +112,6 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 ## <a name="additional-resources"></a>その他のリソース
 
 - [Bot Framework トラブルシューティング ガイド](../bot-service-troubleshoot-general-problems.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET リファレンス</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>
 
 [Activity]: https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html

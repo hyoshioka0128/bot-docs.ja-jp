@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: e3833595003edda46a6ffd1d508237262aad94e1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 20ca2864b6498b0d80bea13ce97ffffc4cf1f22d
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999229"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225927"
 ---
 # <a name="integrate-your-bot-with-a-web-browser"></a>ボットを Web ブラウザーと統合する
 
@@ -73,7 +73,7 @@ Office 365 でユーザーの予定表を読み取る機能、またはユーザ
 
 ### <a id="website-signal-to-bot"></a>Web サイトがボットに "シグナル" で通知する方法
 
-ボットによって、ユーザーがクリックして Web サイトのフローを開始する[ハイパーリンクが生成](#generate-hyperlink)されるとき、そのハイパーリンクには、通常、チャネル内の会話 ID、チャネル ID、ユーザー ID などの現在の会話のコンテキストに関する、ターゲット URL 上の querystring パラメーター経由の情報が含まれています。 その後、Web サイトでは、この情報を使って、そのユーザーまたは会話に関する状態変数が、Bot Builder SDK または REST API を使用して読み書きされます。 Web サイトのフローが完了したことを、Web サイトがボットに "シグナル" で通知する方法の例については、上記の[手順 6](#signal-to-bot) を参照してください。
+ボットによって、ユーザーがクリックして Web サイトのフローを開始する[ハイパーリンクが生成](#generate-hyperlink)されるとき、そのハイパーリンクには、通常、チャネル内の会話 ID、チャネル ID、ユーザー ID などの現在の会話のコンテキストに関する、ターゲット URL 上の querystring パラメーター経由の情報が含まれています。 その後、Web サイトでは、この情報を使って、そのユーザーまたは会話に関する状態変数が、Bot Framework SDK または REST API を使用して読み書きされます。 Web サイトのフローが完了したことを、Web サイトがボットに "シグナル" で通知する方法の例については、上記の[手順 6](#signal-to-bot) を参照してください。
 
 ## <a name="sample-code"></a>サンプル コード
 

@@ -1,6 +1,6 @@
 ---
 title: プロアクティブ メッセージを送信する | Microsoft Docs
-description: Bot Builder SDK for Node.js を使用して、現在の会話フローをプロアクティブ メッセージで中断する方法について説明します
+description: Bot Framework SDK for Node.js を使用して、現在の会話フローをプロアクティブ メッセージで中断する方法について説明します
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4ca33d59c967bc4eebc2f88fa4ddd67a9a6af6d7
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 8ca8043c5680a993fa27e2febb9740206691884c
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997159"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225577"
 ---
 # <a name="send-proactive-messages"></a>プロアクティブ メッセージを送信する
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "49997159"
 
 ## <a name="send-an-ad-hoc-proactive-message"></a>アドホック プロアクティブ メッセージを送信する
 
-次のサンプル コードは、Bot Builder SDK for Node.js を使用して、アドホック プロアクティブ メッセージを送信する方法を示しています。
+次のサンプル コードは、Bot Framework SDK for Node.js を使用して、アドホック プロアクティブ メッセージを送信する方法を示しています。
 
 アドホック メッセージをユーザーに送信できるようにするには、ボットは、現在の会話からユーザーに関する情報を収集して保存しておく必要があります。 メッセージの **address** プロパティには、ボットが後でユーザーにアドホック メッセージを送信するために必要なすべての情報が含まれます。 
 
@@ -71,7 +71,7 @@ function sendProactiveMessage(address) {
 
 ## <a name="send-a-dialog-based-proactive-message"></a>ダイアログ ベースのプロアクティブ メッセージを送信する
 
-次のサンプル コードは、Bot Builder SDK for Node.js を使用して、ダイアログ ベースのプロアクティブ メッセージを送信する方法を示しています。 完全な作業例は、[Microsoft/BotBuilder-Samples/Node/core-proactiveMessages/startNewDialog](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog) フォルダーで見つけることができます。
+次のサンプル コードは、Bot Framework SDK for Node.js を使用して、ダイアログ ベースのプロアクティブ メッセージを送信する方法を示しています。 完全な作業例は、[Microsoft/BotBuilder-Samples/Node/core-proactiveMessages/startNewDialog](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog) フォルダーで見つけることができます。
 
 ダイアログ ベースのアドホック メッセージをユーザーに送信できるようにするには、ボットは、現在の会話からの情報の収集 (および保存) を行っておく必要があります。 `session.message.address` オブジェクトには、ボットがダイアログ ベースのプロアクティブ メッセージをユーザーに送信するために必要なすべての情報が含まれます。 
 
@@ -122,7 +122,7 @@ bot.dialog('survey', function (session, args, next) {
 
 ## <a name="sample-code"></a>サンプル コード
 
-Bot Builder SDK for Node.js を使用してプロアクティブ メッセージを送信する方法を示す完全なサンプルについては、GitHub で<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages" target="_blank">プロアクティブ メッセージの例</a>を参照してください。 プロアクティブ メッセージの例の中では、<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> がアドホック プロアクティブ メッセージの送信方法を示し、<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog" target="_blank">startNewDialog</a> がダイアログ ベースのプロアクティブ メッセージの送信方法を示しています。
+Bot Framework SDK for Node.js を使用してプロアクティブ メッセージを送信する方法を示す完全なサンプルについては、GitHub で<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages" target="_blank">プロアクティブ メッセージの例</a>を参照してください。 プロアクティブ メッセージの例の中では、<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> がアドホック プロアクティブ メッセージの送信方法を示し、<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog" target="_blank">startNewDialog</a> がダイアログ ベースのプロアクティブ メッセージの送信方法を示しています。
 
 ## <a name="additional-resources"></a>その他のリソース
 

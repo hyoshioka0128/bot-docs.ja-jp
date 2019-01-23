@@ -1,6 +1,6 @@
 ---
 title: ユーザーに入力を求めるプロンプト | Microsoft Docs
-description: Bot Builder SDK for Node.js でプロンプトを使用してユーザー入力を収集する方法について説明します。
+description: Bot Framework SDK for Node.js でプロンプトを使用してユーザー入力を収集する方法について説明します。
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,18 +9,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0926c15d2c62bfa74ddb465d8c816dee7c8fb576
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 0ee70c1e775780bf884c4237e47cff4edb8934a9
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52451974"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224787"
 ---
 # <a name="prompt-for-user-input"></a>ユーザーに入力を求めるプロンプト
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Bot Builder SDK for Node.js には、ユーザーからの入力の収集を単純にする、組み込みプロンプトのセットがあります。 
+Bot Framework SDK for Node.js には、ユーザーからの入力の収集を単純にする、組み込みプロンプトのセットがあります。 
 
 "*プロンプト*" は、ボットがユーザーからの入力を必要とするときに常に使用されます。 ウォーターフォールの中でプロンプトを連鎖させて使用することで、一連の入力をユーザーに求めることができます。 プロンプトと[ウォーターフォール](bot-builder-nodejs-dialog-waterfall.md)を併用することで、ボットの[会話フローを管理](bot-builder-nodejs-manage-conversation-flow.md)できます。 
 
@@ -74,7 +74,7 @@ bot.dialog('askName', [
 ```
 
 ## <a name="prompt-types"></a>プロンプトの種類
-Bot Builder SDK for Node.js には、さまざまな種類の組み込みプロンプトが含まれています。 
+Bot Framework SDK for Node.js には、さまざまな種類の組み込みプロンプトが含まれています。 
 
 |**プロンプトの種類**     | **説明** |     
 | ------------------ | --------------- |

@@ -1,6 +1,6 @@
 ---
 title: Skype で音声通話を行う | Microsoft Docs
-description: Bot Builder SDK for .NET を使用して、Skype で音声通話を行う方法について説明します。
+description: Bot Framework SDK for .NET を使用して、Skype で音声通話を行う方法について説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0d0489c23cd24a7323ba0160d5e8e5e914be3011
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 72b2c42acb4743c67c63f158fa37c2bdd0e09ab9
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998855"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224422"
 ---
 # <a name="conduct-audio-calls-with-skype"></a>Skype で音声通話を行う
 
@@ -22,7 +22,7 @@ ms.locfileid: "49998855"
 
 [!INCLUDE [Introduction to conducting audio calls](../includes/snippet-audio-call-intro.md)]
 
-音声通話をサポートするボットのアーキテクチャは、一般的なボットのアーキテクチャとよく似ています。 次のコード サンプルは、Bot Builder SDK for .NET を使用して Skype での音声通話に対するサポートを有効にする方法を示しています。 
+音声通話をサポートするボットのアーキテクチャは、一般的なボットのアーキテクチャとよく似ています。 次のコード サンプルは、Bot Framework SDK for .NET を使用して Skype での音声通話に対するサポートを有効にする方法を示しています。 
 
 ## <a name="enable-support-for-audio-calls"></a>音声通話のサポートの有効化
 
@@ -169,9 +169,9 @@ private async Task OnRecordCompleted(RecordOutcomeEvent recordOutcomeEvent)
 
 ## <a name="sample-code"></a>サンプル コード
 
-Bot Builder SDK for .NET を使用して Skype で音声通話をサポートする方法を示す完全なサンプルについては、GitHub の「<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">Skype Calling Bot sample (Skype Calling Bot のサンプル)</a>」を参照してください。
+Bot Framework SDK for .NET を使用して Skype で音声通話をサポートする方法を示す完全なサンプルについては、GitHub の「<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">Skype Calling Bot sample (Skype Calling Bot のサンプル)</a>」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET リファレンス</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">Skype Calling Bot のサンプル (GitHub)</a>

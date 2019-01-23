@@ -1,6 +1,6 @@
 ---
 title: Azure Search を使用してデータドリブン エクスペリエンスを作成する | Microsoft Docs
-description: Azure Search を使用してデータドリブン エクスペリエンスを作成し、ユーザーが Bot Builder SDK for Node.js および Azure Search を使用してボット内の大量のコンテンツ間を移動できるように支援する方法について説明します。
+description: Azure Search を使用してデータドリブン エクスペリエンスを作成し、ユーザーが Bot Framework SDK for Node.js および Azure Search を使用してボット内の大量のコンテンツ間を移動できるように支援する方法について説明します。
 author: matthewshim-ms
 ms.author: v-shimma
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 204fb5d8f4838c78d771bfad5c0ed6511b27932b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ac4597e93f8cdaa4c9b015a4136ab09e9b7adc95
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999999"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224717"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Azure Search を使用してデータドリブン エクスペリエンスを作成する 
 
@@ -85,7 +85,7 @@ bot.library(SearchLibrary.create({
 
 ## <a name="create-a-search-dialog"></a>検索ダイアログを作成する
 
-必要に応じて、ダイアログを自由に構成することができます。 Azure Search ダイアログを設定するための唯一の要件は、`SearchLibrary` オブジェクトから `.begin` メソッドを呼び出し、Bot Builder SDK によって生成された `session` オブジェクトを渡すことです。 
+必要に応じて、ダイアログを自由に構成することができます。 Azure Search ダイアログを設定するための唯一の要件は、`SearchLibrary` オブジェクトから `.begin` メソッドを呼び出し、Bot Framework SDK によって生成された `session` オブジェクトを渡すことです。 
 
 ```javascript
 function (session) {
@@ -151,7 +151,7 @@ function searchHitAsCard(showSave, searchHit) {
 
 ## <a name="sample-code"></a>サンプル コード
 
-Bot Builder SDK for Node.js を使用してボットで Azure Search をサポートする方法を示す 2 つの完全なサンプルについては、GitHub の[不動産ボットのサンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/RealEstateBot)または[求人情報ボットのサンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/JobListingBot)を参照してください。 
+Bot Framework SDK for Node.js を使用してボットで Azure Search をサポートする方法を示す 2 つの完全なサンプルについては、GitHub の[不動産ボットのサンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/RealEstateBot)または[求人情報ボットのサンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-Search/JobListingBot)を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

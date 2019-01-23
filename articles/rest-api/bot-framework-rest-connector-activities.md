@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: b246e9e07243e4064f92e72ee3909541f642714e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: db09888c5f782b065ff6bd108ce93379cd42527a
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999929"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317682"
 ---
 # <a name="activities-overview"></a>アクティビティの概要
 
-Bot Connector サービスは、[Activity][Activity] オブジェクトを渡すことによって、ボットとチャンネル (ユーザー) 間で情報を交換します。 アクティビティの最も一般的な種類は **message** ですが、さまざまな種類の情報をボットまたはチャネルに伝達するために使用できる他のアクティビティの種類もあります。 
+Bot Connector サービスでは、[Activity][Activity] オブジェクトを渡すことによって、ボットとチャンネル (ユーザー) 間で情報が交換されます。 最も一般的なアクティビティの種類は**メッセージ**ですが、ボットまたはチャネルにさまざまな種類の情報を通信するために使用できる他のアクティビティの種類も存在します。 
 
 ## <a name="activity-types-in-the-bot-connector-service"></a>Bot Connector サービスのアクティビティの種類
 

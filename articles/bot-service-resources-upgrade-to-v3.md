@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3e99828e7c26b10c39bef4c8db79f92ff5f2b30c
-ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
+ms.openlocfilehash: 8d9b2ea2e2133c86428b537427433f9dd15216ee
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50134712"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225947"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>ボットを Bot Framework API v3 にアップグレードする
 
@@ -21,7 +21,7 @@ Build 2016 で、Microsoft は Microsoft Bot Framework と Bot Connector API の
 
 2016 年 7 月、Bot Framework API v3 がリリースされ、Bot Framework API v1 は非推奨になりました。 API v1 を使用するボットは、Skype では 2016 年 12 月に機能しなくなり、他のすべてのチャネルでは 2017 年 2 月 23 日に機能しなくなりました。 API v1 を使用して作成したボットを再度機能させるには、この記事の手順に従って API v3 にアップグレードする必要があります。 アップグレードのプロセス全体を確実に理解するために、この記事を通読してから、作業を開始してください。 
 
-## <a name="step-1-get-your-app-id-and-password-from-the-bot-framework-portal"></a>手順 1: Bot Framework ポータルからアプリ ID とパスワードを取得する
+## <a name="step-1-get-your-app-id-and-password-from-the-bot-framework-portal"></a>手順 1:Bot Framework ポータルからアプリ ID とパスワードを取得する
 
 [Bot Framework ポータル](https://dev.botframework.com/)にサインインし、**[My bots]\(マイ ボット\)** をクリックしてボットを選択してから、そのダッシュボードを開きます。 次に、ページ左側の **[ボット管理]** の下にある **[設定]** リンクをクリックします。 
 
@@ -67,7 +67,7 @@ If the **App ID** field is empty, complete these steps:
    ![Save changes](~/media/upgrade/save-changes.png)
 -->
 
-## <a id="update-code"></a> 手順 2: ボット コードをバージョン 4.0 に更新する
+## <a id="update-code"></a>手順 2: ボット コードをバージョン 4.0 に更新する
 
 V1 のボットは互換性がなくなりました。 お使いのボットを更新するには、V3 で新しいボットを作成する必要があります。 使用中の古いコードを保持する必要がある場合は、そのコードを手動で移行する必要があります。
 
@@ -84,7 +84,7 @@ V1 のボットは互換性がなくなりました。 お使いのボットを�
 <!-- TODO: Remove outdated code 
 To update your bot code to version 3.0, complete these steps:
 
-1. Update to the latest version of the [Bot Builder SDK](https://github.com/Microsoft/BotBuilder) for your bot's language.
+1. Update to the latest version of the [Bot Framework SDK](https://github.com/Microsoft/BotBuilder) for your bot's language.
 2. Update your code to apply the necessary changes, according the guidance below.
 3. Use the [Bot Framework Emulator](~/bot-service-debug-emulator.md) to test your bot locally and then in the cloud.
 
@@ -93,10 +93,10 @@ The following sections describe the key differences between API v1 and API v3. A
 
 ### <a name="botbuilder-and-connector-are-now-one-sdk"></a>BotBuilder と Connector が 1 つの SDK に
 
-複数の NuGet パッケージ (または NPM モジュール) を使用して Builder 用と Connector 用の個別の SDK をインストールする代わりに、単一の Bot Builder SDK で両方のライブラリを取得できるようになりました。
+複数の NuGet パッケージ (または NPM モジュール) を使用して Builder 用と Connector 用の個別の SDK をインストールする代わりに、単一の Bot Framework SDK で両方のライブラリを取得できるようになりました。
 
-- Bot Builder SDK for .NET: `Microsoft.Bot.Builder` NuGet パッケージ
-- Bot Builder SDK for Node.js: `botbuilder` NPM モジュール
+- Bot Framework SDK for .NET:`Microsoft.Bot.Builder` NuGet パッケージ
+- Bot Framework SDK for Node.js:`botbuilder` NPM モジュール
 
 スタンドアロンの `Microsoft.Bot.Connector` SDK は非推奨になり、今後は保守されません。
 
@@ -163,7 +163,7 @@ Bot Framework API v3 では、認証プロパティを以下のキーで **Web.C
 - `MicrosoftAppID`
 - `MicrosoftAppPassword`
 
-## <a id="step-3"></a> 手順 3: ご自身の更新ボットを Azure にデプロイする。
+## <a id="step-3"></a> 手順 3:自分の更新ボットを Azure にデプロイする。
 
 ご自身のボット コードを API v3 にアップグレードしたら、こちらの[手順](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0)に従って、そのボットを Azure にデプロイします。 V1 はサポートされていないため、Azure サービスにデプロイされたすべてのボットで V3 API が自動的に使用されます。
 

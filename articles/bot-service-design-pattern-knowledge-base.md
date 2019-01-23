@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 12/13/2017
-ms.openlocfilehash: e228209b4d239a05f9c76203e9fd2fb342c14d36
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 6820815f251c38c59391f1e0e7719e52a375ed48
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999289"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224907"
 ---
 # <a name="design-knowledge-bots"></a>ナレッジ ボットを設計する
 
@@ -130,16 +130,16 @@ Search、QnA Maker、LUIS はそれだけでも強力なツールですが、そ
 2. LUIS を最初に呼び出し、特定のしきい値スコアを満たす意図がない場合、つまり "None" 意図がトリガーされる場合は、QnA Maker を呼び出します。 または、"QnAIntent" にマップする QnA 質問の例を LUIS モデルにフィードして、QnA Maker に対する LUIS 意図を作成します。 
 3. QnA Maker を最初に呼び出し、特定のしきい値スコアを満たす回答がない場合、LUIS を呼び出します。 
 
-Bot Builder SDK では、LUIS と QnA Maker の組み込みサポートが提供されます。 これにより、LUIS と QnA Maker を使ってダイアログをトリガーしたり、質問に自動的に応答することができ、いずれかのツールへのカスタム呼び出しを実装する必要はありません。 詳細については、[Bot Builder ディスパッチ ツールのチュートリアル](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0)を参照してください。
+Bot Framework SDK では、LUIS と QnA Maker の組み込みサポートが提供されます。 これにより、LUIS と QnA Maker を使ってダイアログをトリガーしたり、質問に自動的に応答することができ、いずれかのツールへのカスタム呼び出しを実装する必要はありません。 詳しくは、[ディスパッチ ツールのチュートリアル](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0)に関する記事をご覧ください。
 
 > [!TIP]
 > LUIS、QnA Maker、Azure Search の組み合わせを実装する場合は、各ツールで入力をテストして、各モデルのしきい値スコアを決定します。 LUIS、QnA Maker、Azure Search はそれぞれ異なるスコアリング条件を使ってスコアを生成するので、これらのツールによって生成されたスコアを直接比較することはできません。 さらに、LUIS と QnA Maker はスコアを正規化します。 LUIS モデルで "良" と見なされた特定のスコアが、別のモデルではそうならない可能性があります。 
 
 ## <a name="sample-code"></a>サンプル コード
 
-- Bot Builder SDK for .NET を使用して基本的なナレッジ ボットを作成する方法がわかるサンプルについては、GitHub の<a href="https://aka.ms/qna-with-appinsights" target="_blank">ナレッジ ボットのサンプル</a>をご覧ください。 
+- Bot Framework SDK for .NET を使用して基本的なナレッジ ボットを作成する方法がわかるサンプルについては、GitHub の<a href="https://aka.ms/qna-with-appinsights" target="_blank">ナレッジ ボットのサンプル</a>をご覧ください。 
 <!-- TODO: Do not have a current bot sample to work with this
-- For a sample that shows how to create more complex knowledge bots using the Bot Builder SDK for .NET, see the <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search" target="_blank">Search-powered Bots sample</a> in GitHub.
+- For a sample that shows how to create more complex knowledge bots using the Bot Framework SDK for .NET, see the <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search" target="_blank">Search-powered Bots sample</a> in GitHub.
 -->
 
 [qnamakerTemplate]: https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle

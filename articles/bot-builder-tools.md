@@ -1,6 +1,6 @@
 ---
 title: CLI ツールを使用したボットの管理
-description: Bot Builder ツールを使用すると、コマンド ラインから直接、ボットのリソースを管理できます。
+description: Bot Framework ツールを使用すると、コマンド ラインから直接、ボットのリソースを管理できます
 keywords: botbuilder テンプレート, ludown, qna, luis, msbot, 管理, cli, .bot, ボット
 author: ivorb
 ms.author: v-ivorb
@@ -10,16 +10,16 @@ ms.service: bot-service
 ms.subservice: tools
 ms.date: 11/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5ffaf9a946e1a540b82819b7f745200f47384819
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: f9eafa708be2ce597ec2679fb6975d7da71951ea
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645662"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225877"
 ---
 # <a name="manage-bots-using-cli-tools"></a>CLI ツールを使用したボットの管理
 
-Bot Builder ツールは、計画、ビルド、テスト、発行、接続、評価の各フェーズを含むエンド ツー エンドのボット開発ワークフローに対応しています。 これらのツールが開発サイクルの各フェーズでどのように役立つかを見ていきましょう。
+Bot Framework ツールは、計画、ビルド、テスト、発行、接続、評価の各フェーズを含むエンド ツー エンドのボット開発ワークフローに対応しています。 これらのツールが開発サイクルの各フェーズでどのように役立つかを見ていきましょう。
 
 ## <a name="plan"></a>プラン
 
@@ -60,7 +60,6 @@ user: thanks
 bot:
 Here's a form for you
 [Attachment=card.json adaptivecard]
-
 ```
 
 ### <a name="create-a-transcript-file-from-chat-file"></a>.chat ファイルからトランスクリプト ファイルを作成する
@@ -98,30 +97,33 @@ LUIS ポータルから行うのと同じように、LUIS アプリケーショ�
 
 .lu ファイル形式では、次の表記を使用して、QnA ペアもサポートしています。 
 
-```LUDown
+~~~LUDown
 > comment
 ### ? question ?
   ```markdown
     answer
   ```
+~~~
 
 LUDown ツールでは、質問と回答が自動的に QnA Maker の JSON ファイルに分けられます。この JSON ファイルを使用して、新しい [QnaMaker.ai](http://qnamaker.ai) ナレッジ ベースを作成することができます。
 
-```LUDown
+~~~LUDown
 ### ? How do I change the default message for QnA Maker?
   ```markdown
   You can change the default message if you use the QnAMakerDialog. 
-  See [this link](https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle) for details. 
+  See [this link](https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle) for details.
   ```
+~~~
 
 また、同じ回答に対して複数の質問を追加することもできます。これは、1 つの回答に対して質問のバリエーションを新しい行で追加するだけでできます。
 
-```LUDown
+~~~LUDown
 ### ? What is your name?
 - What should I call you?
   ```markdown
     I'm the echoBot! Nice to meet you.
   ```
+~~~
 
 ### <a name="generate-json-models-with-ludown"></a>LUDown を使用して .json モデルを生成する
 
@@ -230,23 +232,39 @@ dispatch create -b <YOUR-BOT-FILE> | msbot connect dispatch --stdin
 
 Bot Framework [Emulator](bot-service-debug-emulator.md) は、ボット開発者がローカル ホストで、またはトンネルを介したリモート実行時にボットをテストおよびデバッグできるデスクトップ アプリケーションです。
 
-## <a name="publish"></a>[発行]
+## <a name="publish"></a>発行
 
-Azure CLI を使用して、ボットの作成、ダウンロード、Azure Bot Service への発行を行うことができます。 次を使用して、ボットの拡張機能をインストールします。 
+Azure CLI を使用して、ボットの作成、ダウンロード、Azure Bot Service への発行を行うことができます。
+
+msbot 4.3.2 以降では、Azure CLI バージョン 2.0.53 以降が必要です。 botservice 拡張機能をインストールした場合は、次のコマンドでそれを削除します。
+
 ```shell
-az extension add -n botservice
+az extension remove --name botservice
 ```
 
 ### <a name="create-azure-bot-service-bot"></a>Azure Bot Service のボットを作成する
 
-注: 最新バージョンの `az cli` を使用する必要があります。 MSBot ツールで機能するように、az cli をアップグレードしてください。 
+注:最新バージョンの `az cli` を使用する必要があります。 MSBot ツールで機能するように、az cli をアップグレードしてください。
 
-次を使用して、Azure アカウントにログインします。 
+次を使用して、Azure アカウントにログインします。
+
 ```shell
 az login
 ```
 
-ログインすると、次を使用して新しい Azure Bot Service のボットを作成できます。 
+ボットを公開するリソース グループがまだ存在しない場合は、作成します。
+
+```shell
+az group create --name <resource-group-name> --location <geographic-location> --verbose
+```
+
+| オプション | 説明 |
+|:---|:---|
+| --name | リソース グループの一意名。 名前にスペースやアンダースコアを含めないでください。 |
+| --location | リソース グループの作成に使用する地理的な場所。 たとえば、`eastus`、`westus`、`westus2` などです。 場所の一覧を取得するには `az account list-locations` を使用します。 |
+
+その後、ボットを公開するボット リソースを作成します。
+
 ```shell
 az bot create [options]
 ```
@@ -303,7 +321,7 @@ Group
 ```
 
 ## <a name="additional-information"></a>追加情報
-- [GitHub 上の Bot Builder ツール][cliTools]
+- [GitHub の Bot Framework ツール][cliTools]
 
 <!-- Footnote links -->
 

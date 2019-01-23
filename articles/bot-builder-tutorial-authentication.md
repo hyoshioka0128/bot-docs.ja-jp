@@ -6,14 +6,15 @@ ms.author: JonathanFingold
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
+ROBOTS: NOINDEX
 ms.date: 10/04/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9b9a3594e3a1f6a93ce3d9b3314880c78b88a9c5
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 33c6f22696038ed5e9d2ae09ad2ec99d401f6a60
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998909"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317712"
 ---
 [!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
 
@@ -32,7 +33,7 @@ OAuth コントローラーのホスティングやトークンのライフサ�
 - チャネルの機能向上によって新しい WebChat や DirectLineJS ライブラリなどの新しい認証機能がサポートされ、6 桁のマジック コード検証の必要性を排除。
 - Azure Portal で各種 OAuth アイデンティティ プロバイダーへの接続設定を追加、削除、および構成する機能の向上。
 - Azure AD (v1 と v2 の両エンドポイント) や GitHub など、すぐに利用できる各種アイデンティティ プロバイダーのサポート。
-- C# および Node.js の Bot Builder SDK の更新により、トークンの取得、OAuthCard の作成、TokenResponse イベントの処理が可能に。
+- C# および Node.js の Bot Framework SDK の更新により、トークンの取得、OAuthCard の作成、TokenResponse イベントの処理が可能に。
 - Azure AD (v1 と v2 のエンドポイント) と GitHub に認証するボットの作成方法のサンプル。
 
 この記事の手順を応用して、このような機能を既存のボットに追加することができます。 以下は、新しい認証機能の例を示すサンプル ボットです
@@ -317,7 +318,7 @@ private async Task SendOAuthCardAsync(IDialogContext context, Activity activity)
 
 ### <a name="wait-for-a-tokenresponseevent"></a>TokenResponseEvent の待機
 
-このコードでは、ボットのダイアログ クラスが `TokenResponseEvent` を待機しています (これが Dialog スタックにルーティングされるしくみの詳細は後述)。 `WaitForToken` メソッドはまず、このイベントが送信されたかどうかを判断します。 送信された場合、そのイベントはボットによって使用できます。 送信されていない場合、`WaitForToken` メソッドはボットに送信された任意のテキストを引数に取って `GetUserTokenAsync` に渡します。 この理由は、(WebChat のような) 一部のクライアントはマジック コード検証コードを必要とせず、`TokenResponseEvent` でトークンを直接送信できるからです。 それ以外のクライアントでは、引き続きマジック コードが必要です (Facebook や Slack など)。 Azure Bot Service はこれらのクライアントに 6 桁のマジック コードを提示し、ユーザーにはこのコードをチャット ウィンドウに入力するよう求めます。 理想的ではありませんが、これは "フォールバック" 動作であるため、`WaitForToke`n がコードを受け取った場合、ボットはこのコードを Azure Bot Service に送信してトークンを再取得できます。 この呼び出しも失敗した場合、エラーを報告するか、または何か別の処理を実行することができます。 ただし、ほとんどの場合、この時点でボットはユーザー トークンを取得しています。
+このコードでは、ボットのダイアログ クラスが `TokenResponseEvent` を待機しています (これが Dialog スタックにルーティングされるしくみの詳細は後述)。 `WaitForToken` メソッドはまず、このイベントが送信されたかどうかを判断します。 送信された場合、そのイベントはボットによって使用できます。 送信されていない場合、`WaitForToken` メソッドはボットに送信された任意のテキストを引数に取って `GetUserTokenAsync` に渡します。 この理由は、(WebChat のような) 一部のクライアントはマジック コード検証コードを必要とせず、`TokenResponseEvent` でトークンを直接送信できるからです。 それ以外のクライアントでは、引き続きマジック コードが必要です (Facebook や Slack など)。 Azure Bot Service はこれらのクライアントに 6 桁のマジック コードを提示し、ユーザーにはこのコードをチャット ウィンドウに入力するよう求めます。 理想的ではありませんが、これは "フォールバック" 動作であるため、`WaitForToken` がコードを受け取った場合、ボットはこのコードを Azure Bot Service に送信してトークンを再取得できます。 この呼び出しも失敗した場合、エラーを報告するか、または何か別の処理を実行することができます。 ただし、ほとんどの場合、この時点でボットはユーザー トークンを取得しています。
 
 **MessageController.cs** ファイルを見ると、このタイプの `Event` アクティビティもダイアログ スタックにルーティングされることが分かります。
 
@@ -363,4 +364,4 @@ else if(message.Type == ActivityTypes.Event)
 }
 ```
 ## <a name="additional-resources"></a>その他のリソース
-[Bot Builder SDK](https://github.com/microsoft/botbuilder)
+[Bot Framework SDK](https://github.com/microsoft/botbuilder)

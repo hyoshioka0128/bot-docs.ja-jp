@@ -1,6 +1,6 @@
 ---
 title: 添付ファイルを送受信する | Microsoft Docs
-description: Bot Builder SDK for Node.js を使用して添付ファイルを含むメッセージを送受信する方法について説明します。
+description: Bot Framework SDK for Node.js を使用して添付ファイルを含むメッセージを送受信する方法について説明します。
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 41e1e9e6fe59f00b8b8c873c2dd5fd2d698dabcb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 1911a5b0f8e8f8b53de6f661c0a939767df1efbb
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998189"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224697"
 ---
 # <a name="send-and-receive-attachments"></a>添付ファイルを送受信する
 
@@ -27,8 +27,8 @@ ms.locfileid: "49998189"
 
 ユーザーとボットの間のメッセージ交換には、イメージ、ビデオ、オーディオ、ファイルなどのメディア添付ファイルを含めることができます。 送信できる添付ファイルの種類はチャネルによって異なりますが、以下に基本的な種類を示します。
 
-* **メディアおよびファイル**: **contentType** に [IAttachment オブジェクト][IAttachment]の MIME の種類を設定し、ファイルへのリンクを **contentUrl** に渡すことで、イメージ、オーディオ、ビデオなどのファイルを送信することができます。
-* **カード**: **contentType** に目的のカードの種類を設定し、カードの JSON を渡すことで、視覚的に優れた一連のカード<!-- and custom keyboards -->を送信することができます。 **HeroCard** などのリッチ カード ビルダー クラスを使用する場合、添付ファイルは自動的に追加されます。 この例については、「[リッチ カードを送信する](bot-builder-nodejs-send-rich-cards.md)」をご覧ください。
+* **メディアおよびファイル**:**contentType** に [IAttachment オブジェクト][IAttachment]の MIME の種類を設定し、ファイルへのリンクを **contentUrl** に渡すことで、イメージ、オーディオ、ビデオなどのファイルを送信することができます。
+* **カード**:**contentType** に目的のカードの種類を設定し、カードの JSON を渡すことで、視覚的に優れた一連のカード<!-- and custom keyboards -->を送信することができます。 **HeroCard** などのリッチ カード ビルダー クラスを使用する場合、添付ファイルは自動的に追加されます。 この例については、「[リッチ カードを送信する](bot-builder-nodejs-send-rich-cards.md)」をご覧ください。
 
 ## <a name="add-a-media-attachment"></a>メディア添付ファイルの追加
 メッセージ オブジェクトは、[IMessage][IMessage] のインスタンスである必要があります。これは、イメージなどの添付ファイルを含めたい場合、ユーザーにオブジェクトとしてメッセージを送信する際にとても便利です。 JSON オブジェクト形式でメッセージを送信するには、[session.send()][SessionSend] メソッドを使用します。 

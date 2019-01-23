@@ -1,6 +1,6 @@
 ---
 title: LUIS を使用して意図とエンティティを認識する | Microsoft Docs
-description: ボットと LUIS を統合し、Bot Builder SDK for Node.js を使用してダイアログをトリガーすることで、ユーザーの意図を検出して適切に応答します。
+description: ボットと LUIS を統合し、Bot Framework SDK for Node.js を使用してダイアログをトリガーすることで、ユーザーの意図を検出して適切に応答します。
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5df1352241485bf95a46fa981b9b16c3cb7e3925
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: acdc6053f7d666c2f086dca554efafc93c8af769
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998699"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225287"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>LUIS を使用して意図とエンティティを認識する 
 
@@ -59,7 +59,7 @@ ms.locfileid: "49998699"
 
 Azure へのログインに使用するものと同じアカウントを使用して、[https://www.luis.ai](https://www.luis.ai) にログインします。 **[My apps]\(マイ アプリ\)** をクリックします。 アプリの一覧で、ボット サービスの作成時に **[ボット サービス]** ブレードの **[アプリ名]** で指定した名前で始まるアプリを探します。 
 
-LUIS アプリは 4 つの意図 (Cancel、Greeting、Help、None) で始まります。 <!-- picture -->
+LUIS アプリは次の 4 つの意図で始まります:Cancel、Greeting、Help、None。 <!-- picture -->
 
 次の手順では、Note.Create、Note.ReadAloud、および Note.Delete の各意図を追加します。 
 

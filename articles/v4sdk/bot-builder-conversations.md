@@ -1,6 +1,6 @@
 ---
-title: Bot Builder SDK 内での会話 | Microsoft Docs
-description: Bot Builder SDK 内での会話について説明します。
+title: Bot Framework SDK 内での会話 | Microsoft Docs
+description: Bot Framework SDK 内での会話について説明します。
 keywords: 会話フロー, 意図の認識, 1 ターン, 複数ターン, ボットの会話
 author: jonathanfingold
 ms.author: jonathanfingold
@@ -10,19 +10,19 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/01/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 19f0b67454a8c0a4bf171579f8e481e630db83ac
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: b94150e168942370a38d39742157e57d0118f0eb
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998919"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225085"
 ---
 # <a name="conversation-flow"></a>会話フロー
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 ボットの会話フローを設計するには、ユーザーがボットに何か言ったときにボットがどのように応答するかを決定する必要があります。 ボットはまず、ユーザーからのメッセージに基づいてタスクまたは会話トピックを認識します。 ユーザーのメッセージに関連付けられたタスクまたはトピック ("*意図*" とも呼びます) を決定するために、ボットはユーザーのメッセージのテキストから単語またはパターンを探したり、[Language Understanding](bot-builder-concept-luis.md) や [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview) のようなサービスを利用したりできます。
 
-ボットがユーザーの意図を認識すると、シナリオに応じて、ボットは 1 回の返信でユーザーの要求を満足して 1 ターンで会話を完了する場合もあれば、数ターン必要な場合もあります。 複数ターンの会話フローの場合、Bot Builder SDK は、会話を追跡するための[状態管理](./bot-builder-howto-v4-state.md)、情報を尋ねるための[プロンプト](bot-builder-prompts.md)、および、会話フローをカプセル化するための[ダイアログ](bot-builder-dialog-manage-conversation-flow.md)を提供します。
+ボットがユーザーの意図を認識すると、シナリオに応じて、ボットは 1 回の返信でユーザーの要求を満足して 1 ターンで会話を完了する場合もあれば、数ターン必要な場合もあります。 複数ターンの会話フローの場合、Bot Framework SDK では、会話を追跡するための[状態管理](./bot-builder-howto-v4-state.md)、情報を尋ねるための[プロンプト](bot-builder-prompts.md)、および、会話フローをカプセル化するための[ダイアログ](bot-builder-dialog-manage-conversation-flow.md)が提供されます。
 
 複数のサブシステムを持つ複雑なボットでは、ボットのサブコンポーネントごとに 1 つずつ、複数のサービスを使用して意図を認識する場合があります。 会話のサブシステムを 1 つのボットに結合する場合、[ディスパッチ ツール](bot-builder-tutorial-dispatch.md)は複数のサービスの結果を 1 か所で取得します。
 
@@ -73,7 +73,7 @@ A bot communicates with a user on a channel by receiving activities from, and se
 
 ### <a name="recognize-intent"></a>意図の認識
 
-Bot Builder SDK は、メッセージを処理して意図を判断する "_認識エンジン_" を提供するので、ボットは適切な会話フローを開始できます。 ユーザーの意図をメッセージの内容から判断するには、認識エンジンの _recognize_ 非同期メソッドを呼び出します。 次に、結果に対して _get top scoring intent_ メソッドを呼び出して、認識エンジンの最上位の予測を取得できます。
+Bot Framework SDK では、メッセージを処理して意図を判断する "_認識エンジン_" が提供されているので、ボットで適切な会話フローを開始できます。 ユーザーの意図をメッセージの内容から判断するには、認識エンジンの _recognize_ 非同期メソッドを呼び出します。 次に、結果に対して _get top scoring intent_ メソッドを呼び出して、認識エンジンの最上位の予測を取得できます。
 
 認識エンジンでは、正規表現、Language Understanding、または開発するその他のロジックを使用できます。 使用可能な認識エンジンの例を次に示します。
 
@@ -111,7 +111,7 @@ Bot Builder SDK は、メッセージを処理して意図を判断する "_認�
 <!--  Types of conversations -->
 
 ボットは、複数ターンの対話をサポートします。このような対話では、ボットが複数の情報をユーザーに尋ねます。 ボットは限られた 1 つのタスクに集中するか、または複数の種類のタスクをサポートできます。
-Bot Builder SDK には、自然言語の "質問と回答" 機能をボットに追加するための Language Understanding (LUIS) および QnA Maker のサポートが組み込まれています。
+Bot Framework SDK には、自然言語の "質問と回答" 機能をボットに追加するための Language Understanding (LUIS) および QnA Maker のサポートが組み込まれています。
 
 ## <a name="conversations-channels-and-users"></a>会話、チャネル、ユーザー
 

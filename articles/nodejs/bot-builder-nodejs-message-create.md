@@ -1,6 +1,6 @@
 ---
 title: メッセージを作成する | Microsoft Docs
-description: Bot Builder SDK for Node.js を使用したメッセージの作成方法を学習します。
+description: Bot Framework SDK for Node.js を使用したメッセージの作成方法を学習します。
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8011611aa11e81cf322ba841f616fa2797038e84
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3a4f9e1dc3c5598c3aa79996b01f11e8b1339fe2
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998169"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225217"
 ---
 # <a name="create-messages"></a>メッセージを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "49998169"
 
 ## <a name="default-message-handler"></a>既定のメッセージ ハンドラー
 
-Bot Builder SDK for Node.js には、[`session`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html) オブジェクトに組み込まれている既定のメッセージ ハンドラーが付属しています。 このメッセージ ハンドラーを使用すると、ボットとユーザー間でテキスト メッセージの送受信を行うことができます。
+Bot Framework SDK for Node.js には、[`session`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html) オブジェクトに組み込まれている既定のメッセージ ハンドラーが付属しています。 このメッセージ ハンドラーを使用すると、ボットとユーザー間でテキスト メッセージの送受信を行うことができます。
 
 ### <a name="send-a-text-message"></a>テキスト メッセージの送信
 
@@ -88,12 +88,12 @@ session.send(customMessage);
 | [`compose(prompts:string[], ...args:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#compose) | ユーザーに対して複雑なランダム化された応答を作成します。 |
 | [`entities(list:Object[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#entities) | ボットまたはユーザーに渡される構造化されたオブジェクト。 |
 | [`inputHint(hint:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#inputhint) | ボットがさらなる入力を想定しているかどうかをユーザーに知らせるために送信されるヒント。 送信メッセージのこの値は、組み込みのプロンプトによって自動的に入力されます。 |
-| [`localTimeStamp((optional)time:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#localtimestamp) | メッセージが送信されたときのローカル時刻 (クライアントまたはボットによって設定、例: 2016-09-23T13:07:49.4714686-07:00)。 |
+| [`localTimeStamp((optional)time:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#localtimestamp) | メッセージが送信されたときのローカル時刻 (クライアントまたはボットによって設定、例:2016-09-23T13:07:49.4714686-07:00)。 |
 | [`originalEvent(event:any)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#originalevent) | 受信メッセージのチャネルの元の形式またはネイティブ形式のメッセージ。 |
 | [`sourceEvent(map:ISourceEventMap)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#sourceevent) | カスタムの添付ファイルのようなソース固有のイベント データを渡すために使用できる送信メッセージ。 |
 | [`speak(ssml:TextType, ...args:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#speak) | メッセージの音声フィールドを*音声合成マークアップ言語 (SSML)* として設定します。 これはサポートされているデバイスで、ユーザーに対して読み上げられます。 |
 | [`suggestedActions(suggestions:ISuggestedActions `&#124;` IIsSuggestedActions)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#suggestedactions) | ユーザーに送信する省略可能な推奨されるアクション。 推奨されるアクションは、推奨されるアクションをサポートするチャネルでのみ表示されます。 |
-| [`summary(text:TextType, ...argus:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#summary) | フォールバックとして、およびメッセージのコンテンツの短い説明 (例: 最近の会話のリスト) として表示されるテキスト。 |
+| [`summary(text:TextType, ...argus:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#summary) | フォールバックとして、およびメッセージのコンテンツの短い説明として表示されるテキスト (例:最近の会話のリスト)。 |
 | [`text(text:TextType, ...args:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#text) | メッセージ テキストを設定します。 |
 | [`textFormat(style:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#textformat) | テキスト形式を設定します。 既定の形式は **markdown** です。 |
 | [`textLocale(locale:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#textlocale) | メッセージの対象言語を設定します。 |

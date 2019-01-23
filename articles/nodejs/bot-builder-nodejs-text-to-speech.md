@@ -1,6 +1,6 @@
 ---
-title: メッセージへの音声の追加 | Microsoft Docs
-description: Bot Builder SDK for Node.js を使用してメッセージに音声を追加する方法について説明します。
+title: メッセージに音声を追加する | Microsoft Docs
+description: Bot Framework SDK for Node.js を使用してメッセージに音声を追加する方法について説明します。
 author: v-ducvo
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3c17097197ba4b6ed0523d84a81974d9cc9fe3b5
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f7e68b9ab6ef1fca189108ed4117c0ab17f4d9f2
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999135"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224297"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
 
@@ -27,9 +27,9 @@ ms.locfileid: "49999135"
 
 Cortana などの音声対応チャネルのボットを作成している場合は、ボットが読み上げるテキストを指定するメッセージを構成できます。 また、[入力ヒント](bot-builder-nodejs-send-input-hints.md)を指定して、ボットがユーザー入力を受け入れるか、期待するか、無視するかを示し、クライアントのマイクの状態に影響を与えることを試すこともできます。
 
-## <a name="specify-text-to-be-spoken-by-your-bot"></a>ボットが読み上げるテキストの指定
+## <a name="specify-text-to-be-spoken-by-your-bot"></a>ボットが読み上げるテキストを指定する
 
-Bot Builder SDK for Node.js を使用すると、音声対応チャネルでボットが読み上げるテキストを指定する方法は複数あります。 `IMessage.speak` プロパティを設定し、`session.send()` メソッド、`session.say()` メソッド (表示テキスト、音声テキスト、オプションを指定するパラメーターを渡す)、または組み込みプロンプト (オプション `speak` と `retrySpeak` を指定する) を使用してメッセージを送信することができます。
+Bot Framework SDK for Node.js を使用すると、音声対応チャネルでボットが読み上げるテキストを指定する方法は複数あります。 `IMessage.speak` プロパティを設定し、`session.send()` メソッド、`session.say()` メソッド (表示テキスト、音声テキスト、オプションを指定するパラメーターを渡す)、または組み込みプロンプト (オプション `speak` と `retrySpeak` を指定する) を使用してメッセージを送信することができます。
 
 ### <a id="message-speak"></a> IMessage.speak 
 
@@ -72,13 +72,13 @@ Bot Builder SDK for Node.js を使用すると、音声対応チャネルでボ�
 
 ## <a name="sample-code"></a>サンプル コード 
 
-Bot Builder SDK for .NET を使用して音声対応ボットを作成する方法を示す完全なサンプルについては、GitHub の「<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Roller sample (Roller のサンプル)</a>」を参照してださい。
+Bot Framework SDK for .NET を使用して音声対応ボットを作成する方法を示す完全なサンプルについては、GitHub の「<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Roller sample (Roller のサンプル)</a>」を参照してださい。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">音声合成マークアップ言語 (SSML)</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Roller のサンプル (GitHub)</a>
-- [Bot Builder SDK for Node.js リファレンス][SDKReference]
+- [Bot Framework SDK for Node.js リファレンス][SDKReference]
 
 [SDKReference]: https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html
 

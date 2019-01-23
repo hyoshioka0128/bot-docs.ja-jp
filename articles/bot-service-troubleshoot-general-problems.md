@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 09/26/2018
-ms.openlocfilehash: 3d9c41d0c0c51d00dc5ce86dfb774228e53ff3a3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 34a23910c76a22fe39d1ce5457bb74dd285ca939
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999069"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225523"
 ---
 # <a name="troubleshooting-general-problems"></a>一般的な問題のトラブルシューティング
 以下のよく寄せられる質問は、一般的なボット開発や運用上の問題のトラブルシューティングに役立ちます。
@@ -21,7 +21,7 @@ ms.locfileid: "49999069"
 
 1. [Visual Studio Code](debug-bots-locally-vscode.md) または [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017) を使用して、ご利用のボットのソース コードをデバッグします。
 2. ボットをクラウドにデプロイする前に、[エミュレーター](bot-service-debug-emulator.md)を使用してテストします。
-3. Azure などのクラウド ホスティング プラットフォームにボットをデプロイし、<a href="https://dev.botframework.com" target="_blank">Bot Framework ポータル</a>のボットのダッシュボードで組み込み Web チャット コントロールを使用して、ボットへの接続をテストします。 Azure にデプロイした後でボットに関する問題が発生した場合は、「[Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/)」(Azure のトラブルシューティングとサポートについて理解する) のブログ記事を参考にしてください。
+3. Azure などのクラウド ホスティング プラットフォームにボットをデプロイし、<a href="https://dev.botframework.com" target="_blank">Bot Framework ポータル</a>のボットのダッシュボードで組み込み Web チャット コントロールを使用して、ボットへの接続をテストします。 Azure にデプロイした後でボットに関する問題が発生した場合は、次のブログ記事を参考にしてください:「[Understanding Azure troubleshooting and support (Azure のトラブルシューティングとサポートについて理解する)](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/)」。
 4. [認証][TroubleshootingAuth]を考えられる問題から除外します。
 5. Skype でボットをテストします。 これは、エンド ツー エンド ユーザー エクスペリエンスを確認するのに役立ちます。
 6. ダイレクト ラインや Web チャットなど、追加の認証要件があるチャネルでのボットのテストを検討してください。
@@ -30,7 +30,7 @@ ms.locfileid: "49999069"
 
 ボットの認証に関する問題のトラブルシューティングについて詳しくは、Bot Framework 認証の[トラブルシューティング][TroubleshootingAuth]に関する記事をご覧ください。
 
-## <a name="im-using-the-bot-builder-sdk-for-net-how-can-i-troubleshoot-issues-with-my-bot"></a>Bot Builder SDK for .NET を使用しています。 ボットに関する問題をトラブルシューティングするにはどうすればよいですか。
+## <a name="im-using-the-bot-framework-sdk-for-net-how-can-i-troubleshoot-issues-with-my-bot"></a>Bot Framework SDK for .NET を使用しています。 ボットに関する問題をトラブルシューティングするにはどうすればよいですか。
 
 **例外を探します。**  
 Visual Studio 2017 で、**[デバッグ]** > **[Windows]** > **[例外設定]** の順に移動します。 **[例外設定]** ウィンドウで、**[Common Language Runtime Exceptions]\(共通言語ランタイム例外\)** の横にある **[スローされたときに中断]** チェック ボックスをオンにします。 スローされた例外やハンドルされない例外がある場合にも、出力ウィンドウに診断の出力が表示されることがあります。
@@ -81,7 +81,7 @@ Bot Framework では、メッセージの順序が可能な限り保持されま
 
 ## <a name="how-can-i-intercept-all-messages-between-the-user-and-my-bot"></a>ユーザーと自分のボット間のすべてのメッセージをインターセプトするにはどうすればよいですか。
 
-Bot Builder SDK for .NET を使用することで、`Autofac` 依存関係挿入コンテナーに対して `IPostToBot` および `IBotToUser` インターフェイスの実装を提供することができます。 任意の言語に Bot Builder SDK を使用すれば、ほぼ同じ目的でミドルウェアを利用できます。 [BotBuilder Azure](https://github.com/Microsoft/BotBuilder-Azure) リポジトリには、C# および Node.js のライブラリが含まれており、Azure テーブルにこのデータが記録されます。
+Bot Framework SDK for .NET を使用することで、`Autofac` 依存関係挿入コンテナーに対して `IPostToBot` および `IBotToUser` インターフェイスの実装を提供することができます。 任意の言語に Bot Framework SDK を使用すれば、ほぼ同じ目的でミドルウェアを利用できます。 [BotBuilder Azure](https://github.com/Microsoft/BotBuilder-Azure) リポジトリには、C# および Node.js のライブラリが含まれており、Azure テーブルにこのデータが記録されます。
 
 ## <a name="why-are-parts-of-my-message-text-being-dropped"></a>メッセージ テキストの部分がドロップされるのはなぜですか。
 
@@ -133,7 +133,7 @@ Skype、Facebook、Slack などの他のチャネルでは、ボットで事前�
 
 ::: moniker range="azure-bot-service-3.0"
 
-## <a name="what-is-the-idialogstackforward-method-in-the-bot-builder-sdk-for-net"></a>Bot Builder SDK for .NET の IDialogStack.Forward メソッドとは何ですか。
+## <a name="what-is-the-idialogstackforward-method-in-the-bot-framework-sdk-for-net"></a>Bot Framework SDK for .NET の IDialogStack.Forward メソッドとは何ですか。
 
 `IDialogStack.Forward` の主な目的は、既存の子ダイアログを再利用することです。このダイアログは多くの場合、"リアクティブ" であり、(`IDialog.StartAsync` の) 子ダイアログは `ResumeAfter` ハンドラーがあるオブジェクト `T` を待機します。 特に、`IMessageActivity` `T` を待機する子ダイアログがある場合、`IDialogStack.Forward` メソッドを使用して、着信 `IMessageActivity` (親ダイアログで既に受信されている) を転送できます。 たとえば、着信 `IMessageActivity` を `LuisDialog` に転送するには、`IDialogStack.Forward` を呼び出して `LuisDialog` をダイアログ スタックにプッシュし、次のメッセージの待機がスケジュールされるまで `LuisDialog.StartAsync` でコードを実行し、転送された `IMessageActivity` ですぐにその待機が満たされるようにします。
 
@@ -166,7 +166,7 @@ Skype、Facebook、Slack などの他のチャネルでは、ボットで事前�
 
 ユーザー、会話、プライベート会話プロパティ バッグのデータは、コネクタの `IBotState` インターフェイスを使用して格納されます。 各プロパティ バッグは、ボットの ID で範囲指定されます。 ユーザー プロパティ バッグはユーザー ID で、会話プロパティ バッグは会話 ID でキー付けされます。プライベート会話プロパティ バッグはユーザー ID と会話 ID の両方でキー付けされます。 
 
-Bot Builder SDK for .NET または Bot Builder SDK for Node.js を使用してボットを作成する場合、ダイアログ スタックとダイアログ データの両方が、プライベート会話プロパティ バッグにエントリとして自動的に格納されます。 C# 実装ではバイナリ シリアル化が使用され、Node.js 実装では JSON シリアル化が使用されます。
+Bot Framework SDK for .NET または Bot Framework SDK for Node.js を使用してボットを作成する場合、ダイアログ スタックとダイアログ データの両方が、プライベート会話プロパティ バッグにエントリとして自動的に格納されます。 C# 実装ではバイナリ シリアル化が使用され、Node.js 実装では JSON シリアル化が使用されます。
 
 `IBotState` REST インターフェイスは 2 つのサービスによって実装されます。
 
@@ -193,8 +193,8 @@ Bot Builder SDK for .NET または Bot Builder SDK for Node.js を使用して�
 
 コネクタの `IBotState` サービスを使用して、ボット データ バッグ (ユーザー ボット データ バッグや会話ボット データ バッグなど。また、プライベート ボット データ バッグにダイアログ スタックの "制御フロー" 状態が含まれている場合は、プライベート ボット データ バッグ) が格納されます。 `IBotState` サービスでのコンカレンシー制御は、ETag を使用してオプティミスティック コンカレンシーによって管理されます。 "読み取り/変更/書き込み" シーケンス時に (単一ボット データ バッグへの同時更新により) 更新の競合が発生した場合は、次のようになります。
 
-* ETag が保持されている場合、HTTP 状態コード 412 "前提条件が満たされていません" のエラーは `IBotState` サービスからスローされます。 これは、Bot Builder SDK for .NET での既定の動作です。
-* Etag が保持されていない (つまり、ETag が `\*`に設定されている) 場合、"最後の書き込みが有効" ポリシーが有効になり、"前提条件が満たされていません" エラーを防ぐことはできますが、データ損失のリスクがあります。 これは、Bot Builder SDK for Node.js での既定の動作です。
+* ETag が保持されている場合、HTTP 状態コード 412 "前提条件が満たされていません" のエラーは `IBotState` サービスからスローされます。 これは、Bot Framework SDK for .NET での既定の動作です。
+* Etag が保持されていない (つまり、ETag が `\*`に設定されている) 場合、"最後の書き込みが有効" ポリシーが有効になり、"前提条件が満たされていません" エラーを防ぐことはできますが、データ損失のリスクがあります。 これは、Bot Framework SDK for Node.js での既定の動作です。
 
 ## <a name="how-can-i-fix-precondition-failed-412-or-conflict-409-errors"></a>"前提条件が満たされていません" (412) エラーや "競合" (409) エラーを解決するにはどうすればよいですか。
 
@@ -202,7 +202,7 @@ Bot Builder SDK for .NET または Bot Builder SDK for Node.js を使用して�
 
 ::: moniker range="azure-bot-service-3.0"
 
-Bot Builder SDK for .NET では、メモリ内セマフォで単一の会話の処理をペシミスティックにシリアル化するためのメカニズム (`IScope` を実装するクラス `LocalMutualExclusion`) が提供されます。 会話アドレスで範囲指定された、Redis リースを使用するようにこの実装を拡張できます。
+Bot Framework SDK for .NET では、メモリ内セマフォで単一の会話の処理をペシミスティックにシリアル化するためのメカニズム (`IScope` を実装するクラス `LocalMutualExclusion`) が提供されます。 会話アドレスで範囲指定された、Redis リースを使用するようにこの実装を拡張できます。
 
 ご利用のボットが外部サービスに接続されていない場合、または同じ会話からのメッセージの並列処理が受け入れられる場合は、このコードを追加して、Bot State API で発生する競合をすべて無視することができます。 これにより、最後の返信で会話状態を設定することができます。
 
@@ -231,7 +231,7 @@ builder.Update(Conversation.Container);
 State サービスでは、会話のダイアログの進行状況を保持することができるため、ユーザーは後でボットでの会話に戻ることができます。位置がわからなくなることはありません。 これを保持するため、ボットのコードの変更時に、State API を使用して格納されたボット データ プロパティ バッグが自動的にクリアになることはありません。 変更されたコードが以前のバージョンのコードと互換性があるかどうかに基づいて、ボット データをクリアするかどうかを決定する必要があります。 
 
 * ご利用のボットの開発時に会話のダイアログ スタックと状態を手動でリセットする場合は、` /deleteprofile` コマンドを使用して状態データを削除することができます。 必ず、このコマンドの先頭にスペースを挿入し、チャネルで解釈されないようにしてください。
-* ご利用のボットが運用環境にデプロイされたら、ボット データのバージョンを管理し、バージョンをバンプする場合に、関連付けられている状態データがクリアされるようにすることができます。 Bot Builder SDK for Node.js では、ミドルウェアを使用して、このようにすることができます。Bot Builder SDK for .NET では、`IPostToBot` 実装を使用して行うことができます。
+* ご利用のボットが運用環境にデプロイされたら、ボット データのバージョンを管理し、バージョンをバンプする場合に、関連付けられている状態データがクリアされるようにすることができます。 Bot Framework SDK for Node.js では、ミドルウェアを使用して、このようにすることができます。Bot Framework SDK for .NET では、`IPostToBot` 実装を使用して行うことができます。
 
 > [!NOTE]
 > シリアル化形式の変更により、あるいはコードの変更が多すぎるために、ダイアログ スタックが正しく逆シリアル化できない場合は、会話状態がリセットされます。
@@ -248,11 +248,11 @@ State サービスでは、会話のダイアログの進行状況を保持す�
 
 ## <a name="how-can-i-use-more-than-one-luis-model"></a>複数の LUIS モデルを使用するにはどうすればよいですか。
 
-Bot Builder SDK for Node.js と the Bot Builder SDK for .NET の両方で、単一の LUIS 意図ダイアログからの複数の LUIS モデルの呼び出しがサポートされています。 以下の点に注意してください。
+Bot Framework SDK for Node.js と Bot Framework SDK for .NET の両方で、単一の LUIS 意図ダイアログからの複数の LUIS モデルの呼び出しがサポートされています。 以下の点に注意してください。
 
 * 複数の LUIS モデルを使用する場合、LUIS モデルに含まれる意図のセットが重複していないことが前提となります。
 * 複数の LUIS モデルを使用する場合、複数のモデル間で "最も一致する意図" を選択するために、さまざまなモデルからのスコアを比較できることが前提となります。
-* 複数の LUIS モデルを使用することは、意図が 1 つのモデルと一致した場合に、他のモデルの "none" 意図にも厳密に一致することを意味します。 この場合、"none" 意図の選択を回避することができます。Bot Builder SDK for Node.js では、この問題を回避するために、"none" 意図のスコアが自動的に下げられます。
+* 複数の LUIS モデルを使用することは、意図が 1 つのモデルと一致した場合に、他のモデルの "none" 意図にも厳密に一致することを意味します。 この場合、"none" 意図の選択を回避することができます。Bot Framework SDK for Node.js では、この問題を回避するために、"none" 意図のスコアが自動的に下げられます。
 
 ## <a name="where-can-i-get-more-help-on-luis"></a>LUIS の詳細情報はどこで入手できますか。
 
@@ -305,8 +305,8 @@ Azure Bot Service ボットを作成するためのアクセス許可は、Azure
 
 ## <a name="where-can-i-get-more-help"></a>詳細情報はどこで入手できますか。
 
-* [Stack Overflow](https://stackoverflow.com/questions/tagged/botframework) で既に回答済みの質問の情報を利用するか、`botframework` タグを使用してご自分の質問を投稿します。 Stack Overflow には、わかりやすいタイトル、完全かつ簡潔な問題の説明、問題を再現するのに十分な詳細情報を必要とするなどのガイドラインが含まれていることに注意してください。 機能要求や非常に多くの質問はトピックから外れています。新しいユーザーは、[Stack Overflow ヘルプ センター](https://stackoverflow.com/help/how-to-ask)にアクセスして詳細を確認する必要があります。
-* Bot Builder SDK での既知の問題に関する情報を確認する場合や、新しい問題を報告する場合は、GitHub の [BotBuilder に関する問題](https://github.com/Microsoft/BotBuilder/issues)を参照してください。
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/botframework) で既に回答済みの質問の情報を利用するか、`botframework` タグを使用してご自分の質問を投稿します。 Stack Overflow には、わかりやすいタイトル、完全かつ簡潔な問題の説明、問題を再現するのに十分な詳細情報を必要とするなどのガイドラインが含まれていることに注意してください。 機能要求や非常に広範な質問はトピックから外れています。新しいユーザーは、[Stack Overflow ヘルプ センター](https://stackoverflow.com/help/how-to-ask)にアクセスして詳細を確認する必要があります。
+* Bot Framework SDK での既知の問題に関する情報を確認する場合や、新しい問題を報告する場合は、GitHub の [BotBuilder に関する問題](https://github.com/Microsoft/BotBuilder/issues)を参照してください。
 * [Gitter](https://gitter.im/Microsoft/BotBuilder) の BotBuilder コミュニティ ディスカッションの情報を活用します。
 
 

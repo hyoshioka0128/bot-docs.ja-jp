@@ -8,13 +8,14 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 12/17/2018
-ms.openlocfilehash: 831268b1ddc711963c20ca9c99b333f070a6100c
-ms.sourcegitcommit: 8c10aa7372754596a3aa7303a3a893dd4939f7e9
+ms.date: 01/15/2019
+monikerRange: azure-bot-service-4.0
+ms.openlocfilehash: 78e960357d6c4dc1c9751a9921a2338f552738b0
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654327"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317617"
 ---
 # <a name="deploy-bots-from-botbuilder-samples-repo"></a>botbuilder-samples リポジトリからボットをデプロイする
 
@@ -35,14 +36,18 @@ ms.locfileid: "53654327"
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 - [.NET Core SDK](https://dotnet.microsoft.com/download) v2.2 以降をインストールします。 `dotnet --version` を使って、使用中のバージョンを確認します。
 - 最新バージョンの [Azure CLI ツール](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)をインストールします。 `az --version` を使って、使用中のバージョンを確認します。
-- `az` ツールの最新の `botservice` 拡張機能をインストールします。
-  - 最初に、`az extension remove -n botservice` コマンドを使用して古いバージョンを削除します。 次に、`az extension add -n botservice` コマンドを使用して最新バージョンをインストールします。
 - 最新バージョンの [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/MSBot) ツールをインストールします。
   - 複製操作に LUIS または Dispatch のリソースが含まれる場合、[LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS#installation) が必要になります。
   - 複製操作に QnA Maker のリソースが含まれる場合、[QnA Maker CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker#as-a-cli) が必要になります。
 - [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started) をインストールします。
 - [ngrok](https://github.com/Microsoft/BotFramework-Emulator/wiki/Tunneling-%28ngrok%29) をインストールして構成します。
 - [.bot](v4sdk/bot-file-basics.md) ファイルの知識。
+
+msbot 4.3.2 以降では、Azure CLI バージョン 2.0.54 以降が必要です。 botservice 拡張機能をインストールした場合は、次のコマンドでそれを削除します。
+
+```cmd
+az extension remove --name botservice
+```
 
 ### <a name="c"></a>C\#
 
@@ -152,13 +157,13 @@ Copy this secret and use it to open the <file.bot> the first time.`
 Azure でボット コードを更新するときに、`msbot clone services` コマンドを使用しないでください。 次に示すように、`az bot publish` コマンドを使用する必要があります。
 
 ```cmd
-az bot publish --name "<your-azure-bot-name>" --proj-file "<your-proj-file>" --resource-group "<azure-resource-group>" --code-dir "<folder>" --verbose --version v4
+az bot publish --name "<your-azure-bot-name>" --proj-name "<your-proj-name>" --resource-group "<azure-resource-group>" --code-dir "<folder>" --verbose --version v4
 ```
 
 | 引数        | 説明 |
 |----------------  |-------------|
 | `name`      | ボットが最初に Azure にデプロイされたときに使用した名前。|
-| `proj-file` | C# ボットの場合は、.csproj ファイルです。 JS/TS bot の場合は、ローカルのボットのスタートアップ プロジェクトのファイル名 (index.js や index.ts など) です。|
+| `proj-name` | C# の場合は、公開する必要があるスタートアップ プロジェクト ファイル名 (.csproj は含めません) を使用します。 (例: `EnterpriseBot`)。 Node.js の場合は、ボットのメイン エントリ ポイントを使用します。 たとえば、「 `index.js` 」のように入力します。 |
 | `resource-group` | `msbot clone services` コマンドで使用した Azure リソース グループ。|
 | `code-dir`  | ローカルのボットのフォルダーへのポインター。|
 

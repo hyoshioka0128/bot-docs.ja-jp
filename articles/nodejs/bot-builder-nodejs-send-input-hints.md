@@ -1,6 +1,6 @@
 ---
 title: メッセージへの入力ヒントの追加 | Microsoft Docs
-description: Bot Builder SDK for .NET を使用してメッセージに入力ヒントを追加する方法について説明します。
+description: Bot Framework SDK for .NET を使用してメッセージに入力ヒントを追加する方法について説明します。
 author: v-ducvo
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8c09ab3c0f863171697bc8026155003274bfc382
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: fa5e2a151bc0b41f160d0b71cb97e24fe1efacaa
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999099"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225797"
 ---
 # <a name="add-input-hints-to-messages"></a>メッセージへの入力ヒントの追加
 
@@ -47,7 +47,7 @@ ms.locfileid: "49999099"
 
 ## <a name="default-values-for-input-hint"></a>入力ヒントの既定値
 
-メッセージの入力ヒントを設定しない場合、Bot Builder SDK が次のロジックを使用して自動的に入力ヒントを設定します。 
+メッセージの入力ヒントを設定しない場合、Bot Framework SDK が次のロジックを使用して自動的に入力ヒントを設定します。 
 
 - ボットがプロンプトを送信する場合、メッセージの入力ヒントは、ボットが**入力を期待している**ことを指定します。</li>
 - ボットが単一のメッセージを送信する場合、メッセージの入力ヒントは、ボットが**入力を受け付けている**ことを指定します。</li>
@@ -56,7 +56,7 @@ ms.locfileid: "49999099"
 ## <a name="additional-resources"></a>その他のリソース
 
 - [メッセージへの音声の追加](bot-builder-nodejs-text-to-speech.md)
-- [Bot Builder SDK for Node.js リファレンス][SDKReference]
+- [Bot Framework SDK for Node.js リファレンス][SDKReference]
 
 [SDKReference]: https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html
 

@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 82541c4ac0848c3e995ab3ad1ed874436072fe63
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 211800211b422bb9c90c00705585be89737c77a9
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998089"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225557"
 ---
 # <a name="recognize-user-intent-from-message-content"></a>メッセージの内容からユーザーの意図を認識する
 
@@ -57,11 +57,11 @@ ms.locfileid: "49998089"
 
 ## <a name="disambiguate-between-multiple-intents"></a>複数の意図間のあいまいさ排除
 
-ボットは複数の認識エンジンを登録できます。 カスタム認識エンジンの例では、各意図に数値のスコアを割り当てる必要があります。 これが行われるのは、ボットに複数の認識エンジンが存在する場合があり、複数の認識エンジンによって返された意図間のあいまいさを排除する組み込みのロジックを Bot Builder SDK が提供するからです。 意図に割り当てられるスコアは通常は 0.0 ～ 1.0 ですが、特定の意図が常に Bot Builder SDK のあいまいさ排除ロジックによって選ばれることを保証するために、1.1 より大きい意図をカスタム認識エンジンで定義することができます。 
+ボットは複数の認識エンジンを登録できます。 カスタム認識エンジンの例では、各意図に数値のスコアを割り当てる必要があります。 これが行われるのは、ボットに複数の認識エンジンが存在する場合があり、複数の認識エンジンによって返された意図間のあいまいさを排除する組み込みのロジックを Bot Framework SDK が提供するからです。 意図に割り当てられるスコアは通常は 0.0 ～ 1.0 ですが、特定の意図が常に Bot Framework SDK のあいまいさ排除ロジックによって選ばれることを保証するために、1.1 より大きい意図をカスタム認識エンジンで定義することができます。 
 
 既定では、認識エンジンは並列実行されますが、[IIntentRecognizerSetOptions][IntentRecognizerSetOptions] で recognizeOrder を設定し、1.0 のスコアを与える意図をボットが検出したらすぐにプロセスを終了させることができます。
 
-Bot Builder SDK には、[IDisambiguateRouteHandler][IDisambiguateRouteHandler] を実装することによってカスタムのあいまいさ排除ロジックをボットで提供する方法を示す[サンプル][DisambiguationSample]が含まれています。
+Bot Framework SDK には、[IDisambiguateRouteHandler][IDisambiguateRouteHandler] を実装することによってカスタムのあいまいさ排除ロジックをボットで提供する方法を示す[サンプル][DisambiguationSample]が含まれています。
 
 ## <a name="next-steps"></a>次の手順
 正規表現を使用してメッセージの内容を検査するロジックは、ボットの会話フローが拡張可能である場合は特に、複雑になる可能性があります。 ユーザーからのより多様なテキストおよび音声入力をボットが処理できるよう、[LUIS][LUIS] のような意図認識サービスを使用して、自然言語の理解をボットに追加することができます。

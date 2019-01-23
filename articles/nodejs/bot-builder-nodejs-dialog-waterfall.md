@@ -1,6 +1,6 @@
 ---
 title: ウォーターフォールを使用した会話のステップの定義 | Microsoft Docs
-description: Bot Builder SDK for Node.js でウォーターフォールを使用して会話のステップを定義する方法について説明します。
+description: Bot Framework SDK for Node.js でウォーターフォールを使用して会話のステップを定義する方法について説明します。
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2fa857e57d5be4751476874b8c193c7053a1bf39
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 526091d61f10ac0c241b994aa3ea99c1d2a70074
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000279"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225327"
 ---
 # <a name="define-conversation-steps-with-waterfalls"></a>ウォーターフォールを使用した会話のステップの定義
 
@@ -45,7 +45,7 @@ bot.dialog('greetings', [
 ]);
 ```
 
-これを可能にしているのが、プロンプトの使用です。 Bot Builder SDK for Node.js には、ユーザーにさまざまな種類の情報を要求するための各種の組み込み[プロンプト](bot-builder-nodejs-dialog-prompt.md)が用意されています。
+これを可能にしているのが、プロンプトの使用です。 Bot Framework SDK for Node.js には、ユーザーにさまざまな種類の情報を要求するための各種の組み込み[プロンプト](bot-builder-nodejs-dialog-prompt.md)が用意されています。
 
 次のサンプル コードは、プロンプトを使用して 4 ステップのウォーターフォール全体でユーザーからさまざまな情報を収集するダイアログを示しています。
 
@@ -164,16 +164,16 @@ bot.dialog('ensureProfile', [
 
 ウォーターフォールを使用して作成したダイアログは明示的に終了する必要があります。そうでないと、ボットはウォーターフォールを無制限に繰り返します。 ウォーターフォールは、次のメソッドのいずれかを使用して終了できます。
 
-* `session.endDialog`: 呼び出し元のダイアログに返すデータがない場合は、このメソッドを使用してウォーターフォールを終了します。
+* `session.endDialog`:呼び出し元のダイアログに返すデータがない場合は、このメソッドを使用してウォーターフォールを終了します。
 
-* `session.endDialogWithResult`: 呼び出し元のダイアログに返すデータがある場合は、このメソッドを使用してウォーターフォールを終了します。 返される `response` 引数は、JSON オブジェクトまたは任意の JavaScript プリミティブ データ型です。 例: 
+* `session.endDialogWithResult`:呼び出し元のダイアログに返すデータがある場合は、このメソッドを使用してウォーターフォールを終了します。 返される `response` 引数は、JSON オブジェクトまたは任意の JavaScript プリミティブ データ型です。 例: 
   ```javascript
   session.endDialogWithResult({
     response: { name: session.dialogData.name, company: session.dialogData.company }
   });
   ```
 
-* `session.endConversation`: ウォーターフォールの終了が会話の終了を表す場合は、このメソッドを使用してウォーターフォールを終了します。
+* `session.endConversation`:ウォーターフォールの終了が会話の終了を表す場合は、このメソッドを使用してウォーターフォールを終了します。
 
 これらの 3 つのメソッドのいずれかを使用してウォーターフォールを終了する代わりに、`endConversationAction` トリガーをダイアログにアタッチすることができます。 例: 
 

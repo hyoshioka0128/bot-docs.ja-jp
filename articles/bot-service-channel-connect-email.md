@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/10/2018
-ms.openlocfilehash: 93270dd6211d8aef1ff44fb8e272855df2058b8a
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: bd18edb87cdff502ed66177f92f88a8488135431
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997209"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225707"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>ボットを Office 365 の電子メールに接続する
 
@@ -76,11 +76,11 @@ AAD に代わる任意のベンダーを使用するフェデレーション認�
 <!-- Put whole list in monikers, even though it's just the second item that needs to be different. -->
 ::: moniker range="azure-bot-service-3.0"
 * ボットを[チャネル](~/bot-service-manage-channels.md)に接続する
-* Bot Builder SDK for .NET を使用して[チャネル固有の機能を実装する](dotnet/bot-builder-dotnet-channeldata.md)
+* Bot Framework SDK for .NET を使用して[チャネル固有の機能を実装する](dotnet/bot-builder-dotnet-channeldata.md)
 * [Channel Inspector](bot-service-channel-inspector.md) を使用して、チャネルがボット アプリケーションの特定の機能を提供する方法を確認する
 ::: moniker-end
 ::: moniker range="azure-bot-service-4.0"
 * ボットを[チャネル](~/bot-service-manage-channels.md)に接続する
-* Bot Builder SDK for .NET を使用して[チャネル固有の機能を実装する](~/v4sdk/bot-builder-channeldata.md)
+* Bot Framework SDK for .NET を使用して[チャネル固有の機能を実装する](~/v4sdk/bot-builder-channeldata.md)
 * [Channel Inspector](bot-service-channel-inspector.md) を使用して、チャネルがボット アプリケーションの特定の機能を提供する方法を確認する
 ::: moniker-end

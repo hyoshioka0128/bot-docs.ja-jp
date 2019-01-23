@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB を使用したカスタム状態データの管理 | Microsoft Docs
-description: Bot Builder SDK for Node.js で Azure Cosmos DB を使用して状態データを保存および取得する方法を説明します。
+title: Azure Cosmos DB を使用してカスタム状態データを管理する | Microsoft Docs
+description: Bot Framework SDK for Node.js で Azure Cosmos DB を使用して状態データを保存および取得する方法を説明します。
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0c0d91a7ec9fd1d72c7c51c042b0f52e28798778
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 92672e9d9ca9949da1ce4741bdc71bc809d982f7
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998119"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224517"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-nodejs"></a>Node.js 用の Azure Cosmos DB によるカスタム状態データの管理
 
@@ -24,7 +24,7 @@ ms.locfileid: "49998119"
 
 - State API のスループットが高い (パフォーマンスをより強力に制御できる)
 - geo 分布に伴う待ち時間が少ない
-- データの格納場所を制御できる (例: 米国西部と米国東部)
+- データの格納場所を制御できる (例:米国西部と米国東部)
 - 実際の状態データにアクセスできる
 - 状態データのデータベースが他のボットと共有されない
 - 32 KB を超えるデータを格納できる

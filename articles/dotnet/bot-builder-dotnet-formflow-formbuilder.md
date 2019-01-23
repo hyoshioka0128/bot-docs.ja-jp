@@ -1,6 +1,6 @@
 ---
 title: FormBuilder によるフォームのカスタマイズ | Microsoft Docs
-description: Bot Builder SDK for .NET の FormBuilder を使用して、会話のフローとコンテンツを動的に変更およびカスタマイズする方法について説明します。
+description: Bot Framework SDK for .NET の FormBuilder を使用して、会話のフローとコンテンツを動的に変更およびカスタマイズする方法について説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1c4e60f76ecebfa01664500b8343d60ccff0064c
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 8a13358afca190606e235475a58f6aedd146fee5
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997699"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225407"
 ---
 # <a name="customize-a-form-using-formbuilder"></a>FormBuilder によるフォームのカスタマイズ
 
@@ -86,7 +86,7 @@ FormBuilder を使用して、フィールド値、確認、およびメッセ�
 - [フォーム コンテンツのローカライズ](bot-builder-dotnet-formflow-localize.md)
 - [JSON スキーマによるフォームの定義](bot-builder-dotnet-formflow-json-schema.md)
 - [パターン言語によるユーザー エクスペリエンスのカスタマイズ](bot-builder-dotnet-formflow-pattern-language.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET リファレンス</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>
 
 [formBuilder]: /dotnet/api/microsoft.bot.builder.formflow.formbuilder-1
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3abfb82f555f458bc9cdd5125fafa1cfa70921cb
-ms.sourcegitcommit: 66769e697d94f7bf5e0441dfacf2c0e3768845ea
+ms.openlocfilehash: a0b56b77990c095d1cf8bb28235d06444837d164
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654963"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224599"
 ---
 # <a name="enterprise-bot-template"></a>Enterprise Bot Template 
 
@@ -22,7 +22,7 @@ ms.locfileid: "53654963"
 
 質の高い会話エクスペリエンスを作成するには、基礎となる一連の機能が必要です。 優れた会話エクスペリエンスのビルドの成功をサポートするために、Enterprise Bot Template を作成しました。 このテンプレートは、会話エクスペリエンスのビルドを通じて特定されたベスト プラクティスとサポートするコンポーネントを、すべて 1 つにまとめたものです。 
 
-このテンプレートにより、新しいボット プロジェクトの作成が大幅に簡略化されます。 このテンプレートでは、[Bot Builder SDK v4](https://github.com/Microsoft/botbuilder) と [Bot Builder ツール](https://github.com/Microsoft/botbuilder-tools)を活用して、次の機能を追加設定なしで使用できます。
+このテンプレートにより、新しいボット プロジェクトの作成が大幅に簡略化されます。 このテンプレートでは、[Bot Framework SDK v4](https://github.com/Microsoft/botbuilder) と [Bot Framework ツール](https://github.com/Microsoft/botbuilder-tools)を活用して、次の機能を追加設定なしで使用できます。
 
 機能 | 説明 |
 ------------ | -------------

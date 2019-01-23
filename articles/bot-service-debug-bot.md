@@ -3,18 +3,18 @@ title: ボットをデバッグする | Microsoft Docs
 description: Bot Service を使用して作成されたボットをデバッグする方法について説明します。
 author: v-ducvo
 ms.author: v-ducvo
-keywords: Bot Builder SDK, ボットのデバッグ, ボットのテスト, ボット エミュレーター, エミュレーター
+keywords: Bot Framework SDK, ボットのデバッグ, ボットのテスト, ボット エミュレーター, エミュレーター
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/13/2018
-ms.openlocfilehash: fcda5c57a96b6f93aad965e868c824577616f630
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: b445ce7796c3f7f3180b15fd6dfac1ef82b808ae
+ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452044"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54298299"
 ---
 # <a name="debug-a-bot"></a>ボットをデバッグする
 
@@ -32,6 +32,7 @@ ms.locfileid: "52452044"
 1. エミュレーターを起動し、ボットのエンドポイントに接続します (例: **http://localhost:3978/api/messages**)。 初めてボットを実行する場合は、**[File]\(ファイル\) > [New Bot]\(新しいボット\)** をクリックして、画面の指示に従います。 それ以外の場合は、**[File]\(ファイル\) > [Open Bot]\(ボットを開く\)** をクリックして既存のボットを開きます。 このボットはお使いのコンピューターでローカルに実行されているため、**[MSA app ID]\(MSA アプリ ID\)** と **[MSA app password]\(MSA アプリ パスワード\)** フィールドは空白のままでかまいません。 詳細については、[エミュレーターを使用したデバッグ](bot-service-debug-emulator.md)に関するページをご覧ください。
 1. エミュレーターからボットにメッセージを送信します (例: "Hi" というメッセージを送信)。 
 1. エミュレーター ウィンドウの右側にある **[Inspector]\(インスペクター\)** パネルと **[ログ]** パネルを使用して、ボットをデバッグします。 たとえば、いずれかのメッセージ バブル (下のスクリーンショットでは "Hi" メッセージ バブル) をクリックすると、そのメッセージの詳細が **[Inspector]\(インスペクター\)** パネルに表示されます。 これを使って、エミュレーターとボットの間でメッセージが交換されるときに、要求と応答を確認できます。 または、**[ログ]** パネルでいずれかのリンクされたテキストをクリックすると、**[Inspector]\(インスペクター\)** パネルに詳細が表示されます。
+
 
    ![エミュレーターの [Inspector]\(インスペクター\) パネル](~/media/bot-service-debug-bot/emulator_inspector.png)
 

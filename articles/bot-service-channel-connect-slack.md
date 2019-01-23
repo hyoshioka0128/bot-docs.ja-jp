@@ -2,19 +2,19 @@
 title: ボットを Slack に接続する | Microsoft Docs
 description: ボットの Slack への接続を構成する方法について説明します。
 keywords: ボットの接続, ボット チャネル, Slack ボット, Slack メッセージング アプリ
-author: RobStand
-ms.author: kamrani
+author: JonathanFingold
+ms.author: v-jofing
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: f69cfa4c67a1f628d835f0d96903065b8b033d32
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 01/09/2019
+ms.openlocfilehash: 3573103e1d1c55e3ad648ad68d84674a98b397f7
+ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000129"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54202564"
 ---
 # <a name="connect-a-bot-to-slack"></a>ボットを Slack に接続する
 
@@ -68,9 +68,11 @@ Slack メッセージング アプリを使用して、複数のユーザーと�
 
 1. **[Event Subscriptions]\(イベント サブスクリプション\)** タブを選択します。
 2. **[Enable Events]\(イベントを有効にする\)** をクリックして **[On]\(オン\)** にします。
-3. **[Request URL]\(要求 URL\)** に次の URL を入力します。ただし、`{YourBotHandle}` は実際のボット ハンドルに置き換えます。 このチュートリアルで使用するボット ハンドルは、testChannels です。
-        `https://slack.botframework.com/api/Events/{YourBotHandle}`
-4. **[Subscribe to Workspace Events]\(ワークスペースのイベントをサブスクライブ\)** で、**[Add Workspace Event]\(ワークスペース イベントの追加\)** をクリックします。
+3. **[要求 URL]** に「`https://slack.botframework.com/api/Events/{YourBotHandle}`」と入力します。`{YourBotHandle}` は、中かっこを除いたボット ハンドルです。 この例で使用されるボット ハンドルは **ContosoBot** です。
+
+   ![イベントをサブスクライブする: 上](~/media/channels/slack-SubscribeEvents-a.png)
+
+4. **[Subscribe to Bot Events]\(ボット イベントのサブスクライブ\)** で、**[Add Bot User Event]\(ボット ユーザー イベントの追加\)** をクリックします。
 5. イベントの一覧で、次の 6 つのイベント タイプを選択します。
     * `member_joined_channel`
     * `member_left_channel`
@@ -79,8 +81,11 @@ Slack メッセージング アプリを使用して、複数のユーザーと�
     * `message.im`
     * `message.mpim`
 
-![イベントをサブスクライブする](~/media/channels/slack-SubscribeEvents.png)
+   ![イベントをサブスクライブする: 中](~/media/channels/slack-SubscribeEvents-b.png)
+
 6. **[変更を保存]** をクリックします。
+
+   ![イベントをサブスクライブする: 下](~/media/channels/slack-SubscribeEvents-c.png)
 
 ## <a name="add-and-configure-interactive-messages-optional"></a>対話型メッセージを追加して構成する (省略可能)
 

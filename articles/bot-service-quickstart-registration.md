@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dfc90f4c4c6e3ad00899569f667b5d3d88dcf042
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a5cb6431988e65a4fa4a889f3095404622d51626
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999959"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224447"
 ---
 # <a name="register-a-bot-with-bot-service"></a>ボットを Bot Service に登録する
 
@@ -49,7 +49,7 @@ Bot Service 機能を使用できるようにするには、**Bot Channels Regis
    |           <strong>ボット名</strong>            |     ボットの表示名     |                                                  チャンネルとディレクトリに表示されるボットの表示名。 この名前はいつでも変更できます。                                                  |
    |         <strong>サブスクリプション</strong>          |        該当するサブスクリプション        |                                                                                使用する Azure サブスクリプションを選択します。                                                                                 |
    |        <strong>リソース グループ</strong>         |         myResourceGroup         |                                 新しい[リソース グループ](/azure/azure-resource-manager/resource-group-overview#resource-groups)を作成することも、既存のグループを選択することもできます。                                  |
-   |                    Location                    |             米国西部             |                                                        ボットがデプロイされている場所の近く、またはボットがアクセスする他のサービスの近くの場所を選択します。                                                         |
+   |                    場所                    |             米国西部             |                                                        ボットがデプロイされている場所の近く、またはボットがアクセスする他のサービスの近くの場所を選択します。                                                         |
    |         <strong>[価格レベル]</strong>          |               F0                |             価格レベルを選択します。 価格レベルはいつでも更新できます。 詳細については、[Bot Service の価格](https://azure.microsoft.com/en-us/pricing/details/bot-service/)に関するページをご覧ください。              |
    |      <strong>[Messaging endpoint]\(メッセージング エンドポイント\)</strong>       |               URL               |                                                                               ボットのメッセージング エンドポイントの URL を入力します。                                                                                |
    |     <strong>Application Insights</strong>      |               On                | [Application Insights](bot-service-manage-analytics.md) を<strong>オン</strong>にするか、<strong>オフ</strong>にするかを決定します。 <strong>[オン]</strong> を選択した場合は、リージョンの場所も指定する必要があります。 |
@@ -74,12 +74,12 @@ MicrosoftAppPassword を生成するには、次の手順を実行します。
 
 ## <a name="update-the-bot"></a>ボットを更新する
 
-Bot Builder SDK for Node.js を使用している場合は、次の環境変数を設定します。
+Bot Framework SDK for Node.js を使用している場合は、次の環境変数を設定します。
 
 * MICROSOFT_APP_ID
 * MICROSOFT_APP_PASSWORD
 
-Bot Builder SDK for .NET を使用している場合は、web.config ファイルに次のキー値を設定します。
+Bot Framework SDK for .NET を使用している場合は、web.config ファイルに次のキー値を設定します。
 
 * MicrosoftAppId
 * MicrosoftAppPassword

@@ -1,6 +1,6 @@
 ---
-title: Bot Builder SDK for Node.js | Microsoft Docs
-description: 強力で使いやすいボット構築フレームワーク、Bot Builder SDK for Node.js について説明します。
+title: Bot Framework SDK for Node.js | Microsoft Docs
+description: 強力で使いやすいボット構築フレームワーク、Bot Framework SDK for Node.js について説明します。
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,14 +9,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 67acd4d8b24b88ac705f997357166a3fdb9f26c0
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 2e25237b616810f5ef10442fec41834568afcb59
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997179"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224744"
 ---
-# <a name="bot-builder-sdk-for-nodejs"></a>Bot Builder SDK for Node.js
+# <a name="bot-framework-sdk-for-nodejs"></a>Bot Framework SDK for Node.js
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
@@ -25,10 +25,10 @@ ms.locfileid: "49997179"
 > - [Node.js](../nodejs/bot-builder-nodejs-overview.md)
 > - [REST](../rest-api/bot-framework-rest-overview.md)
 
-Bot Builder SDK for Node.js は、強力で使いやすいフレームワークで、Node.js 開発者がボットを作成するための手慣れた方法を提供しています。
+Bot Framework SDK for Node.js は、強力で使いやすいフレームワークであり、Node.js 開発者がボットを作成するための手慣れた方法を提供しています。
 これを使用して、単純なメッセージから自由形式の会話まで、さまざまな会話型ユーザー インターフェイスを構築できます。
 
-ボットの会話のロジックは、Web サービスとしてホストします。 Bot Builder SDK では、<a href="http://restify.com">Restify</a> という、Web サービスを構築するための一般的なフレームワークを使用して、ボットの Web サーバーを作成します。 SDK は <a href="http://expressjs.com/">Express</a> と互換性があり、その他の Web アプリ フレームワークを適応させて使用することも可能です。 
+ボットの会話のロジックは、Web サービスとしてホストします。 Bot Framework SDK では、<a href="http://restify.com">Restify</a> という、Web サービスを構築するための一般的なフレームワークを使用して、ボットの Web サーバーを作成します。 SDK は <a href="http://expressjs.com/">Express</a> と互換性があり、その他の Web アプリ フレームワークを適応させて使用することも可能です。 
 
 この SDK を使用すると、SDK の次の機能を利用できます。 
 
@@ -41,13 +41,13 @@ Bot Builder SDK for Node.js は、強力で使いやすいフレームワーク�
 
 初めてボットを作成する場合は、プロジェクトの設定、SDK のインストール、初めてのボットを実行の手順を詳しく説明した内容を参照して、[Node.js で初めてのボットを作成](bot-builder-nodejs-quickstart.md)してください。 
 
-Bot Builder SDK for Node.js に慣れていない方は、「[主要な概念](bot-builder-nodejs-concepts.md)」を参照して Bot Builder SDK の主要なコンポーネントを理解します。
+Bot Framework SDK for Node.js に慣れていない方は、「[主要な概念](bot-builder-nodejs-concepts.md)」を参照して Bot Framework SDK の主要なコンポーネントを理解できます。
 
 ボットが最上位ユーザーのシナリオに確実に対応できるようにするには、「[設計原則](../bot-service-design-principles.md)」や「[パターンの検討](../bot-service-design-pattern-task-automation.md)」を確認します。
 
 ## <a name="get-samples"></a>サンプルを入手する
 
-[Bot Builder SDK for Node.js サンプル](bot-builder-nodejs-samples.md)では、Bot Builder SDK for Node.js 内の機能を活用する方法を示す、タスクに焦点をおいたボットを説明します。 サンプルを利用することで、豊富な機能を備えた優れたボットの作成が迅速に開始できるようになります。
+「[Bot Framework SDK for Node.js サンプル](bot-builder-nodejs-samples.md)」では、Bot Framework SDK for Node.js 内の機能を活用する方法を示す、タスクに焦点をおいたボットを説明します。 サンプルを利用することで、豊富な機能を備えた優れたボットの作成が迅速に開始できるようになります。
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
@@ -55,7 +55,7 @@ Bot Builder SDK for Node.js に慣れていない方は、「[主要な概念](b
 
 ## <a name="additional-resources"></a>その他のリソース
 
-タスクに焦点をおいた以下のハウツー ガイドでは、Bot Builder SDK for Node.js のさまざまな機能について説明しています。
+タスクに焦点をおいた以下のハウツー ガイドでは、Bot Framework SDK for Node.js のさまざまな機能について説明しています。
 
 * [メッセージに応答する](bot-builder-nodejs-use-default-message-handler.md)
 * [ユーザー アクションを処理する](bot-builder-nodejs-dialog-actions.md)
@@ -65,7 +65,7 @@ Bot Builder SDK for Node.js に慣れていない方は、「[主要な概念](b
 * [ユーザー データを保存する](bot-builder-nodejs-save-user-data.md)
 
 
-Bot Builder SDK for Node.js に関する問題が発生した場合や提案がある場合は、[サポート](../bot-service-resources-links-help.md)に関する記事で利用可能なリソースの一覧をご覧ください。 
+Bot Framework SDK for Node.js に関する問題が発生した場合や提案がある場合は、[サポート](../bot-service-resources-links-help.md)に関する記事で利用可能なリソースの一覧をご覧ください。 
 
 
 [DesignGuide]: ../bot-service-design-principles.md 

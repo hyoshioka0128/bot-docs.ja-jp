@@ -1,6 +1,6 @@
 ---
 title: ダイアログの置換 | Microsoft Docs
-description: Bot Builder SDK for Node.js を使用して会話フローの入力と管理を再確認するためのダイアログを置換する方法を説明します。
+description: Bot Framework SDK for Node.js を使用して会話フローの入力と管理を再確認するためのダイアログを置換する方法を説明します。
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,22 +9,22 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 30ac28f5ce700829b8c382c49905883ffa45da29
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 58d2c3fc4a1fb266b74402541fc937f0b52fa189
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000059"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224987"
 ---
 # <a name="replace-dialogs"></a>ダイアログの置換
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-ダイアログを置換する機能は、ユーザー入力を検証したり、会話中にアクションを繰り返したりする必要がある場合に便利です。 Bot Builder SDK for Node.js では、[`session.replaceDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog) メソッドを使用してダイアログを置換できます。 このメソッドを使用すると、呼び出し元に戻らずに、現在のダイアログを終了して、新しいダイアログに置き換えることができます。 
+ダイアログを置換する機能は、ユーザー入力を検証したり、会話中にアクションを繰り返したりする必要がある場合に便利です。 Bot Framework SDK for Node.js では、[`session.replaceDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog) メソッドを使用してダイアログを置換できます。 このメソッドを使用すると、呼び出し元に戻らずに、現在のダイアログを終了して、新しいダイアログに置き換えることができます。 
 
 ## <a name="create-custom-prompts-to-validate-input"></a>カスタム プロンプトを作成して入力を検証する
 
-Bot Builder SDK for Node.js には、`Prompts.time` や `Prompts.choice` など、一部の種類の[プロンプト](bot-builder-nodejs-dialog-prompt.md)に対する入力検証が含まれています。 `Prompts.text` に応答して受信するテキスト入力を検証するには、独自の検証ロジックとカスタム プロンプトを作成する必要があります。 
+Bot Framework SDK for Node.js には、`Prompts.time` や `Prompts.choice` など、一部の種類の[プロンプト](bot-builder-nodejs-dialog-prompt.md)に対する入力検証が含まれています。 `Prompts.text` に応答して受信するテキスト入力を検証するには、独自の検証ロジックとカスタム プロンプトを作成する必要があります。 
 
 定義する特定の値、パターン、範囲、または条件に準拠する必要がある場合に、入力を検証することもできます。 入力の検証に失敗した場合、ボットでは、`session.replaceDialog` メソッドを使って、情報をもう一度入力するようユーザーに求めることができます。
 

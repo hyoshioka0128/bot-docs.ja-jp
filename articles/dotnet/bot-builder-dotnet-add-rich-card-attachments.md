@@ -1,6 +1,6 @@
 ---
-title: メッセージへのリッチ カード添付ファイルの追加 | Microsoft Docs
-description: Bot Builder SDK for .NET を使用してメッセージにリッチなカードを追加する方法について説明します。
+title: メッセージにリッチ カード添付ファイルを追加する | Microsoft Docs
+description: Bot Framework SDK for .NET を使用してメッセージにリッチなカードを追加する方法について説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f5687cc7faf4201485ced9535f2e98b0b4c2225a
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 5a6fc63005797a1c645de7506a8f15df2dcd0557
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998179"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317677"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
 
@@ -54,10 +54,10 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 | プロパティ | type | 説明 | 
 |----|----|----|
-| type | string | アクションの種類 (下の表に示されている値のいずれか) |
-| タイトル | string | ボタンのタイトル |
-| イメージ | string | ボタン用のイメージ URL |
-| 値 | string | 指定された種類のアクションを実行するために必要な値 |
+| type | 文字列 | アクションの種類 (下の表に示されている値のいずれか) |
+| タイトル | 文字列 | ボタンのタイトル |
+| イメージ | 文字列 | ボタン用のイメージ URL |
+| 値 | 文字列 | 指定された種類のアクションを実行するために必要な値 |
 
 > [!NOTE]
 > アダプティブ カード内のボタンは、`CardAction` オブジェクトではなく、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>によって定義されているスキーマを使用して作成されます。 アダプティブ カードにボタンを追加する方法の例については、「[Add an Adaptive Card to a message](#adaptive-card)」(メッセージにアダプティブ カードを追加する) を参照してください。
@@ -112,7 +112,7 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 アダプティブ カードには、テキスト、音声、イメージ、ボタン、および入力フィールドの任意の組み合わせを含めることができます。 アダプティブ カードは、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>で指定された JSON 形式を使用して作成されます。これにより、カードのコンテンツと形式の完全な制御が可能になります。 
 
-.NET を使用してアダプティブ カードを作成するには、`Microsoft.AdaptiveCards` NuGet パッケージをインストールします。 次に、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a> サイト内の情報を活用して、アダプティブ カードのスキーマを理解し、アダプティブ カードの要素について調べてください。また、さまざまな構成や複雑さを備えたカードの作成に使用できる JSON のサンプルもご覧ください。 さらに、対話型のビジュアライザーを使用すると、アダプティブ カード ペイロードを設計し、カードの出力をプレビューできます。
+.NET を使用してアダプティブ カードを作成するには、`AdaptiveCards` NuGet パッケージをインストールします。 次に、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a> サイト内の情報を活用して、アダプティブ カードのスキーマを理解し、アダプティブ カードの要素について調べてください。また、さまざまな構成や複雑さを備えたカードの作成に使用できる JSON のサンプルもご覧ください。 さらに、対話型のビジュアライザーを使用すると、アダプティブ カード ペイロードを設計し、カードの出力をプレビューできます。
 
 次のコード例では、カレンダー アラーム用のアダプティブ カードが含まれるメッセージを作成する方法を示します。 
 

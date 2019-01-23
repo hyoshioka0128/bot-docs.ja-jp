@@ -1,6 +1,6 @@
 ---
 title: ダイアログの再利用 | Microsoft Docs
-description: Bot Builder SDK for Node.js および C# でダイアログ コンテナーを使用して、ボット ロジックをモジュール化する方法について説明します。
+description: Bot Framework SDK for Node.js および C# でダイアログ コンテナーを使用して、ボット ロジックをモジュール化する方法について説明します。
 keywords: 複合コントロール、モジュラー ボット ロジック
 author: v-ducvo
 ms.author: v-ducvo
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5e1ddbef6181e265213ffa1fdcb65909e524be51
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: 3f4b2dd49b738132affd19fea8fd5dbfbd6ff99e
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332996"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224567"
 ---
 # <a name="reuse-dialogs"></a>ダイアログの再利用
 

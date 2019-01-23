@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/20/2018
-ms.openlocfilehash: 18350c7ea6fb7390796567b1754cd88be6b9be61
-ms.sourcegitcommit: 561185b9c83f3e082e8b7aba1122b1706e431540
+ms.openlocfilehash: 8a3ff4a30e3041937ba831efc237343c9aa27e62
+ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2018
-ms.locfileid: "53785415"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54202548"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>ボット構成の問題のトラブルシューティング
 
@@ -28,7 +28,7 @@ ms.locfileid: "53785415"
 
 ![Web チャットでのテスト](./media/test-in-webchat.png)
 
-ボットが、想定されている出力で応答する場合は、「[ボットが Web チャットで機能しない](#bot-does-not-work-in-web-chat)」に進みます。 それ以外の場合は、「[ボットが Web チャットでは機能するが他のチャネルでは機能しない](#bot-works-in-web-chat-but-not-in-other-channels)」に進みます。
+ボットが想定されている出力で応答しない場合は、「[ボットが Web チャットで機能しない](#bot-does-not-work-in-web-chat)」に進みます。 それ以外の場合は、「[ボットが Web チャットでは機能するが他のチャネルでは機能しない](#bot-works-in-web-chat-but-not-in-other-channels)」に進みます。
 
 ## <a name="bot-does-not-work-in-web-chat"></a>ボットが Web チャットで機能しない
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/19/2018
-ms.openlocfilehash: 79c37a48f9312d60b61124e15780fe46236aa0c7
-ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
+ms.openlocfilehash: ae019f7da32969821db0c59a4710e32b57623b14
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735982"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224493"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -36,7 +36,7 @@ ms.locfileid: "53735982"
 
 [!INCLUDE [Dialog flow example](./includes/snippet-dotnet-manage-conversation-flow-intro.md)]
 
-ダイアログと Bot Builder SDK を使用して会話フローを管理するための詳しいチュートリアルについては、次の記事をご覧ください。
+ダイアログと Bot Framework SDK を使用して会話フローを管理するための詳しいチュートリアルについては、次の記事をご覧ください。
 
 - [ダイアログで会話フローを管理する (.NET)](./dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 - [ダイアログで会話フローを管理する (Node.js)](./nodejs/bot-builder-nodejs-manage-conversation-flow.md)
@@ -99,7 +99,7 @@ ms.locfileid: "53735982"
 
 手続き型の会話フローでは、質問の順序を定義することにより、ボットがそのとおりの順序で質問を発するようにします。 開発者は、質問を複数の論理*モジュール*にまとめてコードを一元化しながら、会話の流れを制御できるようにします。 たとえば、あるモジュールには、ユーザーが製品を参照できるようにするためのロジックを実装し、別のモジュールには、ユーザーが新しい注文を作成できるようにするためのロジックを実装するといったことが可能です。
 
-これらのモジュールは、自由形式のフローからシーケンシャルなフローに至るまで、任意の方法で構築できます。 Bot Builder SDK では、ボットに必要な会話フローを自由に構築するできるよう、複数のライブラリが提供されています。 たとえば、`prompts` ライブラリを使用すればユーザーに入力を求めることができますし、`waterfall` ライブラリを使用すれば、一連の質問/回答ペアを定義することができます。また、`dialog control` ライブラリを使用すれば、会話フローのロジックをモジュール化することができます。これらのライブラリはすべて、`dialogs` オブジェクトを通じて相互に関連付けられています。 それでは、モジュールを `dialogs` として実装し、会話フローを設計および管理する方法についてもう少し詳しく見ていきながら、そのフローを従来のアプリケーション フローと比較してみましょう。
+これらのモジュールは、自由形式のフローからシーケンシャルなフローに至るまで、任意の方法で構築できます。 Bot Framework SDK では、ボットに必要な会話フローを自由に構築するできるよう、複数のライブラリが提供されています。 たとえば、`prompts` ライブラリを使用すればユーザーに入力を求めることができますし、`waterfall` ライブラリを使用すれば、一連の質問/回答ペアを定義することができます。また、`dialog control` ライブラリを使用すれば、会話フローのロジックをモジュール化することができます。これらのライブラリはすべて、`dialogs` オブジェクトを通じて相互に関連付けられています。 それでは、モジュールを `dialogs` として実装し、会話フローを設計および管理する方法についてもう少し詳しく見ていきながら、そのフローを従来のアプリケーション フローと比較してみましょう。
 
 ![ボット](./media/designing-bots/core/dialogs-screens.png)
 

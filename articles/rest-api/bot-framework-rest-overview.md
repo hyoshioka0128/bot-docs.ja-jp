@@ -1,5 +1,5 @@
 ---
-title: Bot Builder REST API | Microsoft Docs
+title: Bot Framework REST API | Microsoft Docs
 description: ボットとボットに接続するクライアントを作成するために使用可能な Bot Framework REST API の概要について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 632d0b1e603445954eb4894fcfc256d5ac738539
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: eace4852feaadcc180f7329261990fc8eaf7f522
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998439"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224267"
 ---
 # <a name="bot-framework-rest-apis"></a>Bot Framework REST API
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ Bot Framework REST API を使用すると、<a href="https://dev.botframework.co
 Bot Connector サービスを使用して任意のプログラミング言語でボットを作成し、Bot Framework Portal で構成されたチャネルを使ってメッセージをやり取りできます。 
 
 > [!TIP]
-> Bot Framework には、C# または Node.js のいずれかでボットをビルドするのに使用できるクライアント ライブラリが用意されています。 C# を使用してボットをビルドするには、[Bot Builder SDK for C#](../dotnet/bot-builder-dotnet-overview.md) をご利用ください。 Node.js を使用してボッドをビルドするには、[Bot Builder SDK for Node.js](../nodejs/index.md) をご利用ください。 
+> Bot Framework には、C# または Node.js のいずれかでボットをビルドするのに使用できるクライアント ライブラリが用意されています。 C# を使用してボットをビルドするには、[Bot Framework SDK for C#](../dotnet/bot-builder-dotnet-overview.md) をご利用ください。 Node.js を使用してボッドをビルドするには、[Bot Framework SDK for Node.js](../nodejs/index.md) をご利用ください。 
 
 Bot Connector サービスを使用したボットの作成の詳細については、「[Key concepts](bot-framework-rest-connector-concepts.md)」 (重要な概念) を参照してください。
 

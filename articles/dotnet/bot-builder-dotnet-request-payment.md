@@ -1,6 +1,6 @@
 ---
 title: 支払いを要求する | Microsoft Docs
-description: Bot Builder SDK for .NET を使用して支払い要求を送信する方法について説明します。
+description: Bot Framework SDK for .NET を使用して支払い要求を送信する方法について説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b3d1a1cea450d1fe821a90951a7a319ca863dfed
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f9e693d8bd5aad03930259422939f5572a22ff0a
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997689"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225457"
 ---
 # <a name="request-payment"></a>支払いの要求
 
@@ -24,11 +24,11 @@ ms.locfileid: "49997689"
 > - [.NET](../dotnet/bot-builder-dotnet-request-payment.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-request-payment.md)
 
-ボットでユーザーがアイテムを購入できるようになっている場合、[リッチ カード](bot-builder-dotnet-add-rich-card-attachments.md)に特殊な種類のボタンを含めて、支払いを要求することができます。 この記事では、Bot Builder SDK for .NET を使用して支払い要求を送信する方法について説明します。
+ボットでユーザーがアイテムを購入できるようになっている場合、[リッチ カード](bot-builder-dotnet-add-rich-card-attachments.md)に特殊な種類のボタンを含めて、支払いを要求することができます。 この記事では、Bot Framework SDK for .NET を使用して支払い要求を送信する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Bot Builder SDK for .NET を使用して支払い要求を送信するには、次の前提条件のタスクを完了しておく必要があります。
+Bot Framework SDK for .NET を使用して支払い要求を送信するには、次の前提条件のタスクを完了しておく必要があります。
 
 ### <a name="update-webconfig"></a>Web.config の更新
 
@@ -126,5 +126,5 @@ Bot Builder SDK for .NET を使用して支払い要求を送信するには、�
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/sample-payments" target="_blank">支払いボット サンプル</a>
 - [アクティビティの概要](bot-builder-dotnet-activities.md)
 - [メッセージへのリッチ カードの追加](bot-builder-dotnet-add-rich-card-attachments.md)
-- <a href="http://www.w3.org/Payments/" target="_blank">W3C での Web ペイメント</a> 
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET リファレンス</a>
+- <a href="http://www.w3.org/Payments/" target="_blank">W3C での Web 支払い</a> 
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>

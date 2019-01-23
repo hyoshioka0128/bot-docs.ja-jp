@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/22/2018
-ms.openlocfilehash: f5ca01b592266d005c8f000e2351ddcf812acb6d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a00e1d0d70e48b1af9cf10fd4e47ea86ae4908e9
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997385"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224257"
 ---
 # <a name="connect-a-bot-to-channels"></a>ボットをチャネルに接続する
 
 チャネルは、ボットと通信アプリ間の接続です。 ボットを使えるようにしたいチャネルに接続するようにボットを構成します。 Azure portal 経由で構成される Bot Framework サービスは、ボットをこれらのチャネルに接続し、ボットとユーザーの間の通信を容易にします。 [Cortana](bot-service-channel-connect-cortana.md)、[Facebook Messenger](bot-service-channel-connect-facebook.md)、[Kik](bot-service-channel-connect-kik.md)、[Slack](bot-service-channel-connect-slack.md) など、人気のあるさまざまなサービスに接続できます。 [Skype](https://dev.skype.com/bots) と Web チャットは、あらかじめ構成されています。 Bot Connector サービスに付属する標準チャネルに加えて、ダイレクト ラインをチャネルとして使用して、ボットを独自のクライアント アプリケーションに接続することもできます。
 
-Bot Framework サービスを使用すると、ボットがチャネルに送信するメッセージを正規化することによって、チャネルにとらわれない方法でボットを開発できます。 これを行うには、メッセージを Bot Builder スキーマからチャネルのスキーマに変換する必要があります。 ただし、チャネルが Bot Builder スキーマのすべての側面をサポートしているわけではない場合、サービスはメッセージをチャネルがサポートしている形式に変換しようとします。 たとえば、アクション ボタンが含まれたカードを含むメッセージをボットが SMS チャネルに送信した場合、コネクタはそのカードをイメージとして送信し、アクションをそのメッセージのテキスト内にリンクとして含める可能性があります。
+Bot Framework サービスを使用すると、ボットがチャネルに送信するメッセージを正規化することによって、チャネルにとらわれない方法でボットを開発できます。 これを行うには、メッセージを Bot Framework スキーマからチャネルのスキーマに変換する必要があります。 ただし、チャネルで Bot Framework スキーマのすべての側面がサポートされているわけではない場合、サービスによってチャネルでサポートされている形式へのメッセージの変換が試みられます。 たとえば、アクション ボタンが含まれたカードを含むメッセージをボットが SMS チャネルに送信した場合、コネクタはそのカードをイメージとして送信し、アクションをそのメッセージのテキスト内にリンクとして含める可能性があります。
 
 
 

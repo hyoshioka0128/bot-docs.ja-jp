@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: tools
 ms.date: 10/31/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8a59c0a8b7ee664cdb38ab9d0cb186114938d73f
-ms.sourcegitcommit: 782b3a2e788c25effd7d150a070bd2819ea92dad
+ms.openlocfilehash: 4b09ca152f99faa66d2da55ebeb93fb9cce090db
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743666"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317692"
 ---
 # <a name="create-bots-with-azure-cli"></a>Azure CLI を使用したボットの作成
 
@@ -35,7 +35,7 @@ ms.locfileid: "50743666"
 
 ## <a name="1-install-tools"></a>1.ツールをインストールする
 1. 最新バージョンの Azure CLI を[インストール](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)します。
-2. Bot Builder ツールを[インストール](https://aka.ms/botbuilder-tools-readme)します。
+2. Bot Framework Tools を[インストール](https://aka.ms/botbuilder-tools-readme)します。
 
 他の Azure リソースと同じように、Azure CLI を使用してボットを管理できるようになりました。
 
@@ -64,12 +64,12 @@ az bot [command]
 ```
 |コマンド|  |
 |----|----|
-| create      |リソースを追加します|
-| 削除     |リソースを複製します|
-| ダウンロード   | ボットのソース コードをダウンロードします|
-| [発行]   |既存のボット サービスに発行します|
-| show |既存のボット リソースを表示します|
-| update| 既存のボット サービスを更新します|
+| create      |新しいボットを作成します|
+| 削除     |既存のボットを削除します|
+| ダウンロード   |既存のボットをダウンロードします|
+| [発行]   |ボットの関連付けられているアプリ サービスに公開します|
+| show |既存のボットを取得します|
+| update|既存のボットを更新します|
 
 CLI から新しいボットを作成するには、既存の[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を選択するか、新規に作成する必要があります。 
 
@@ -160,10 +160,10 @@ az bot show -n my-bot-name -g my-resource-group --msbot | msbot connect azure --
 
 ## <a name="5-manage-update-or-create-luis-and-qna-services-with--new-botbuilder-tools"></a>5.新しいボット ビルダー ツールを使用して LUIS および QnA サービスを管理、更新、または作成する
 
-[ボット ビルダー ツール](https://aka.ms/botbuilder-tools)は、コマンド ラインから直接ボットのリソースを管理してやり取りできる新しいツールセットです。
+[Bot Framework Tools](https://aka.ms/botbuilder-tools) は、コマンド ラインから直接ボットのリソースを管理してやり取りできる新しいツールセットです。
 
 >[!TIP]
-> すべてのボット ビルダー ツールには、グローバル ヘルプ コマンドが含まれており、コマンド ラインから **-h** または **--help** を入力してアクセスできます。 このコマンドは、任意のアクションからいつでも使用できます。実行すると、使用可能なオプションとその説明が表示されます。
+> すべての Bot Framework ツールには、グローバル ヘルプ コマンドが含まれており、コマンド ラインから **-h** または **--help** を入力してアクセスできます。 このコマンドは、任意のアクションからいつでも使用できます。実行すると、使用可能なオプションとその説明が表示されます。
 
 ### <a name="ludown"></a>LUDown
 
@@ -333,5 +333,5 @@ az bot publish --name "my-bot-name" --resource-group "my-resource-group"
 ```
 
 ## <a name="references"></a>参照
-- [Bot Builder ツール](https://aka.ms/botbuilder-tools-readme)
+- [Bot Framework Tools](https://aka.ms/botbuilder-tools-readme)
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)

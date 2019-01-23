@@ -1,6 +1,6 @@
 ---
-title: メッセージへのリッチ カード添付ファイルの追加 | Microsoft Docs
-description: Bot Builder SDK for Node.js を使用して魅力的な対話型リッチ カードを送信する方法について説明します。
+title: メッセージにリッチ カード添付ファイルを追加する | Microsoft Docs
+description: Bot Framework SDK for Node.js を使用して魅力的な対話型リッチ カードを送信する方法について説明します。
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 12d18e83064cdf8ce43a662198a2fa94eb995b3b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: e3bf4a6868702f24af08e69d5f07c036082ec3b6
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000089"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225237"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
 

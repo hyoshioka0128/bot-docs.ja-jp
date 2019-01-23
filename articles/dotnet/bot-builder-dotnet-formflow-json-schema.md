@@ -1,6 +1,6 @@
 ---
 title: JSON スキーマと FormFlow を使用したフォームの定義 | Microsoft Docs
-description: Bot Builder SDK for .NET で JSON スキーマと FormFlow を使用してフォームを定義する方法を説明します。
+description: Bot Framework SDK for .NET で JSON スキーマと FormFlow を使用してフォームを定義する方法を説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8bcc957dbe2d69790cdfa7c2d7c377ed28b5fa12
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d84252281baa57a15b093cfd0ba92fe5fe422027
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000329"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225857"
 ---
 # <a name="define-a-form-using-json-schema"></a>JSON スキーマによるフォームの定義
 
@@ -68,7 +68,7 @@ JSON スキーマでテンプレートおよびプロンプトを指定するに
 |--------------|-----------------------------|------------------------------------------------------------------------------------------------------------------|
 |   Datetime   |            bool             |                                  フィールドが `DateTime` フィールドかどうかを示します。                                  |
 |   Describe   |      文字列またはオブジェクト       |                  フィールドの説明 ([DescribeAttribute][describeAttribute] で説明)。                  |
-|    用語     |       `[string,...]`        |                  フィールド値を照合するための正規表現 (TermsAttribute で説明)。                  |
+|    Terms     |       `[string,...]`        |                  フィールド値を照合するための正規表現 (TermsAttribute で説明)。                  |
 |  MaxPhrase   |             int             |                  `Language.GenerateTerms(string, int)` で用語を処理して、展開します。                   |
 |    値    | `{ string: {Describe:string |                                  object, Terms:[string, ...], MaxPhrase}, ...}`                                  |
 |    アクティブ    |           script            | フィールド、メッセージ、確認がアクティブかどうかをテストするための C# スクリプト (引数 `(JObject state)->bool` を使用)。  |
@@ -317,7 +317,7 @@ JSON スキーマを使用した FormFlow を実装するには、`FormBuilderJs
 - [FormBuilder によるフォームのカスタマイズ](bot-builder-dotnet-formflow-formbuilder.md)
 - [フォーム コンテンツのローカライズ](bot-builder-dotnet-formflow-localize.md)
 - [パターン言語によるユーザー エクスペリエンスのカスタマイズ](bot-builder-dotnet-formflow-pattern-language.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET リファレンス</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>
 
 [numericAttribute]: /dotnet/api/microsoft.bot.builder.formflow.numericattribute
 

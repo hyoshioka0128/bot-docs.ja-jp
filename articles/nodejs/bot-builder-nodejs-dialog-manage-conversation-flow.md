@@ -1,6 +1,6 @@
 ---
-title: ダイアログで会話フローを管理する | Microsoft Docs
-description: Bot Builder SDK for Node.js のダイアログを使用してボットとユーザー間の会話を管理する方法について説明します。
+title: ダイアログを使用して会話フローを管理する | Microsoft Docs
+description: Bot Framework SDK for Node.js のダイアログを使用してボットとユーザー間の会話を管理する方法について説明します。
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 133f085a857d1bb8bf7622e7adab19374902327d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 96c28101c3ea72c70c6ad53b06306f4ea00b2929
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997769"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225607"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>ダイアログを使用して会話フローを管理する
 
@@ -24,9 +24,9 @@ ms.locfileid: "49997769"
 > - [.NET](../dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
-会話フローの管理は、ボットを構築する上で最も重要なタスクです。 ボットは、主要なタスクを的確に実行し、中断を適切に処理できなければなりません。 Bot Builder SDK for Node.js を使用することで、ダイアログを使用して会話フローを管理することができます。
+会話フローの管理は、ボットを構築する上で最も重要なタスクです。 ボットは、主要なタスクを的確に実行し、中断を適切に処理できなければなりません。 Bot Framework SDK for Node.js を使用することで、ダイアログを使用して会話フローを管理することができます。
 
-ダイアログは、プログラム内の関数のようなものです。 それは、一般的に特定の操作を実行するように設計されており、必要に応じて何度でも呼び出すことができます。 複数のダイアログを連動させて、ボットで処理するほぼすべての会話フローを処理することができます。 Bot Builder SDK for Node.js には、[プロンプト](bot-builder-nodejs-dialog-prompt.md)と[ウォーターフォール](bot-builder-nodejs-dialog-waterfall.md)のような組み込み機能があり、会話の流れを管理するのに役立ちます。
+ダイアログは、プログラムの関数に似ています。 それは、一般的に特定の操作を実行するように設計されており、必要に応じて何度でも呼び出すことができます。 複数のダイアログを連鎖させて、ボットで処理するほぼすべての会話フローを処理できます。 Bot Framework SDK for Node.js には、[プロンプト](bot-builder-nodejs-dialog-prompt.md)と[ウォーターフォール](bot-builder-nodejs-dialog-waterfall.md)のような組み込み機能があり、会話の流れを管理するのに役立ちます。
 
 この記事では、ダイアログを使用してボットに中断を処理させたり適切にフローを再開させたりすることのできる、簡単な会話フローと複雑な会話フローの両方を管理する方法について、いくつかの例で説明します。 例は、次のシナリオに基づいています。 
 
@@ -95,10 +95,10 @@ var bot = new builder.UniversalBot(connector, [..waterfall steps..]).set('storag
 
 この例の各ステップでは、プロンプトを使用して、ユーザー入力を要求しています。 プロンプトは、ユーザー入力を要求し、応答を待ってから、ウォーターフォールの次のステップへの応答を返す特殊な種類のダイアログです。 ボットで使用できるさまざまな種類のプロンプトについては、[ユーザーに入力を要求する](bot-builder-nodejs-dialog-prompt.md)を参照してください。
 
-この例では、ボットは `Prompts.text()` を使用して、ユーザーからの自由形式の応答をテキスト形式で要求します。 ユーザーは任意のテキストで応答することができ、ボットは応答を処理する方法を決定する必要があります。 `Prompts.time()` は [Chrono](https://github.com/wanasit/chrono) ライブラリを使用して文字列から日付と時刻の情報を解析します。 これにより、ボットは日付と時刻を指定するための自然言語をより理解することができます。 たとえば、「2017 年 6 月 6 日の午後 9 時」、「今日の午後 7 時 30 分」、「次の月曜日の午後 6 時」といった具合です。
+この例では、ボットは `Prompts.text()` を使用して、ユーザーからの自由形式の応答をテキスト形式で要求します。 ユーザーは任意のテキストで応答することができ、ボットは応答を処理する方法を決定する必要があります。 `Prompts.time()` は [Chrono](https://github.com/wanasit/chrono) ライブラリを使用して文字列から日付と時刻の情報を解析します。 これにより、ボットは日付と時刻を指定するための自然言語をより理解することができます。 例: "2017 年 6 月 6 日の午後 9 時"、"今日の午後 7 時 30 分"、"次の月曜日の午後 6 時" といった具合です。
 
 > [!TIP] 
-> ユーザーが入力する時刻は、ボットをホストするサーバーのタイム ゾーンに基づいて UTC 時刻に変換されます。 サーバーは、ユーザーとは別のタイム ゾーンに配置されている場合があるため、必ずタイム ゾーンを考慮してください。 日付と時刻をユーザーのローカル時刻に変換するには、所属するタイム ゾーンをユーザーに確認することを検討してください。
+> ユーザーが入力した時刻は、ボットがホストされているサーバーのタイム ゾーンに基づいて UTC 時間に変換されます。 サーバーは、ユーザーとは別のタイム ゾーンに配置されている場合があるため、必ずタイム ゾーンを考慮してください。 日付と時刻をユーザーのローカル時刻に変換するには、所属するタイム ゾーンをユーザーに確認することを検討してください。
 
 ## <a name="manage-a-conversation-flow-with-multiple-dialogs"></a>複数のダイアログで会話フローを管理する
 
@@ -174,7 +174,7 @@ bot.dialog('askForReserverName', [
 
 一連のタスクにユーザーを誘導する過程で、ユーザーが質問をしたり、回答前に別の情報を要求したりする場合、そうした要求をどのように処理しますか? たとえば、ユーザーが会話に入っている状況に関係なく、ユーザーが「ヘルプ」、「サポート」、または「キャンセル」を入力した場合、ボットはどのように応答しますか? ユーザーがステップに関する別の情報が必要である場合はどうなりますか? ユーザーの気が変わり、現在のタスクを破棄して全く別のタスクを開始する場合はどうなりますか?
 
-Bot Builder SDK for Node.js は、ボットが現在のダイアログのスコープのグローバル コンテキスト内またはローカル コンテキスト内の特定の入力をリッスンできるようにします。 こうした入力は[アクション](bot-builder-nodejs-dialog-actions.md)と呼ばれ、アクションによってボットは `matches` 句に基づいてユーザー入力をリッスンすることができます。 特定のユーザー入力にどのように対応するかを決定するのはボット次第です。
+Bot Framework SDK for Node.js により、ボットでは現在のダイアログのスコープのグローバル コンテキスト内またはローカル コンテキスト内の特定の入力をリッスンできます。 こうした入力は[アクション](bot-builder-nodejs-dialog-actions.md)と呼ばれ、アクションによってボットは `matches` 句に基づいてユーザー入力をリッスンすることができます。 特定のユーザー入力にどのように対応するかを決定するのはボット次第です。
 
 ### <a name="handle-global-action"></a>グローバル アクションを処理する
 

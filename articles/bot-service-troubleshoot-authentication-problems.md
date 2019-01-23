@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/17
-ms.openlocfilehash: 0fdd196716c0fffb36583c0df894481b032dd83e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 2335ac34292e224f44a09820574f3bd9de00eda4
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999411"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224657"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Bot Framework 認証のトラブルシューティング
 
@@ -30,7 +30,7 @@ ms.locfileid: "49999411"
 > [!NOTE]
 > デプロイ済みのボットの **AppID** と **AppPassword** を見つける方法については、「[MicrosoftAppID と MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」をご覧ください。
 
-## <a name="step-1-disable-security-and-test-on-localhost"></a>手順 1: セキュリティを無効にし、localhost 上でテストする
+## <a name="step-1-disable-security-and-test-on-localhost"></a>手順 1:セキュリティを無効にし、localhost 上でテストする
 
 この手順では、セキュリティが無効なときに、ボットが localhost 上でアクセス可能であり、機能することを確認します。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "49999411"
 
 ::: moniker range="azure-bot-service-3.0"
 
-Bot Builder SDK for .NET を使用している場合は、Web.config ファイル内の次の設定を編集します。 
+Bot Framework SDK for .NET を使用している場合は、Web.config ファイル内の次の設定を編集します。 
 
 ```xml
 <appSettings>
@@ -52,7 +52,7 @@ Bot Builder SDK for .NET を使用している場合は、Web.config ファイ�
 </appSettings>
 ```
 
-Bot Builder SDK for Node.js を使用している場合は、次の値を編集します (または該当する環境変数を更新します)。
+Bot Framework SDK for Node.js を使用している場合は、次の値を編集します (または該当する環境変数を更新します)。
 
 ```javascript
 var connector = new builder.ChatConnector({
@@ -65,16 +65,18 @@ var connector = new builder.ChatConnector({
 
 ::: moniker range="azure-bot-service-4.0"
 
-Bot Builder SDK for .NET を使用している場合は、`appsettings.config` ファイル内の次の設定を編集します。
+Bot Framework SDK for .NET を使用している場合は、`.bot` ファイル内の次の設定を編集します。
 
-```xml
-<appSettings>
-  <add key="MicrosoftAppId" value="" />
-  <add key="MicrosoftAppPassword" value="" />
-</appSettings>
+```json
+"services": [
+  {
+    "appId": "<your app ID>",
+    "appPassword": "<your app password>",
+  }
+]
 ```
 
-Bot Builder SDK for Node.js を使用している場合は、次の値を編集します (または該当する環境変数を更新します)。
+Bot Framework SDK for Node.js を使用している場合は、次の値を編集します (または該当する環境変数を更新します)。
 
 ```javascript
 const adapter = new BotFrameworkAdapter({
@@ -108,7 +110,7 @@ const adapter = new BotFrameworkAdapter({
 * エミュレーター設定で、**[Microsoft アプリ ID]** フィールドと **[Microsoft アプリ パスワード]** フィールドの値が指定されている。 どちらのフィールドも、空にする必要があります。
 * ボットのセキュリティが無効になっていない。 ボットのアプリ ID とパスワードの値が、両方とも指定されていないことを[確認](#disable-security-localhost)します。
 
-## <a id="step-2"></a> 手順 2: ボットのアプリ ID とパスワードを確認する
+## <a id="step-2"></a>手順 2: ボットのアプリ ID とパスワードを確認する
 
 この手順では、ボットが認証のために使用するアプリ ID とパスワードが有効であることを確認します  (これらの値がわからない場合は、今すぐ[取得](#PW)してください)。 
 
@@ -120,6 +122,9 @@ const adapter = new BotFrameworkAdapter({
 これらの手順は、[cURL](https://curl.haxx.se/download.html) を使用して Microsoft ログイン サービスに HTTP 要求を発行する方法について説明しています。 Postman などの別のツールを使用できますが、要求が Bot Framework の[認証プロトコル](~/rest-api/bot-framework-rest-connector-authentication.md)に準拠していることを確認してください。
 
 ボットのアプリ ID とパスワードが有効であることを確認するには、**cURL** を使用して次の要求を発行します。`APP_ID` と `APP_PASSWORD` を、ボットのアプリ ID とパスワードに置き換えてください。
+
+> [!TIP]
+> パスワードには、次の呼び出しを無効にする特殊文字が含まれている場合があります。 その場合は、パスワードを URL エンコードに変換してみてください。
 
 ```cmd
 curl -k -X POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token -d "grant_type=client_credentials&client_id=APP_ID&client_secret=APP_PASSWORD&scope=https%3A%2F%2Fapi.botframework.com%2F.default"
@@ -135,15 +140,15 @@ curl -k -X POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/t
 
 要求に対してエラーを受信した場合は、その応答をしらべて、エラーの原因を識別します。 応答でアプリ ID またはパスワードが無効であることが示された場合は、Bot Framework Portal から[正しい値を取得](#PW)し、新しい値で要求を再発行し、それらが有効であることを確認します。 
 
-## 手順 3: セキュリティを有効にし、localhost 上でテストする<a id="step-3"></a>
+## 手順 3:セキュリティを有効にし、localhost 上でテストする<a id="step-3"></a>
 
 この時点で、セキュリティが無効なときに、ボットが localhost 上でアクセス可能であり、機能すること、およびボットが認証のために使用するアプリ ID とパスワードが有効であることが確認されています。 この手順では、セキュリティが有効なときに、ボットが localhost 上でアクセス可能であり、機能することを確認します。
 
 ### <a id="enable-security-localhost"></a> セキュリティ チェックを有効にする
 
-ボットのセキュリティは、ボットが localhost 上でのみ実行される場合でも、Microsoft のサービスに依存します。 ボットのセキュリティを有効にするには、その構成設定を編集して、[手順 2](#step-2) で確認したアプリ ID とパスワードの値を入力します。
+ボットのセキュリティは、ボットが localhost 上でのみ実行される場合でも、Microsoft のサービスに依存します。 ボットのセキュリティを有効にするには、その構成設定を編集して、[手順 2](#step-2) で確認したアプリ ID とパスワードの値を入力します。  さらに、パッケージが最新の状態であること (具体的には `System.IdentityModel.Tokens.Jwt` と `Microsoft.IdentityModel.Tokens`) を確認します。
 
-Bot Builder SDK for .NET を使用している場合は、`.bot` ファイルまたは `appsettings.config` ファイルに次の設定を入力します。
+Bot Framework SDK for .NET を使用している場合は、`appsettings.config` ファイルでこれらの設定を指定するか、または `.bot` ファイルで対応する値を指定します。
 
 ```xml
 <appSettings>
@@ -152,7 +157,7 @@ Bot Builder SDK for .NET を使用している場合は、`.bot` ファイルま
 </appSettings>
 ```
 
-Bot Builder SDK for Node.js を使用している場合は、次の設定を入力します (または該当する環境変数を更新します)。
+Bot Framework SDK for Node.js を使用している場合は、次の設定を入力します (または該当する環境変数を更新します)。
 
 ```javascript
 var connector = new builder.ChatConnector({
@@ -162,7 +167,7 @@ var connector = new builder.ChatConnector({
 ```
 
 > [!NOTE]
-> ボットの **AppID** と **AppPassword** を見つけるには、「[MicrosoftAppID and MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」(MicrosoftAppID と MicrosoftAppPassword) を参照してください。
+> 自分のボットの **AppID** と **AppPassword** を見つける方法については、「[MicrosoftAppID and MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」(MicrosoftAppID と MicrosoftAppPassword) を参照してください。
 
 ### <a name="test-your-bot-on-localhost"></a>ボットを localhost 上でテストする 
 
@@ -186,7 +191,7 @@ var connector = new builder.ChatConnector({
 * エミュレーター設定で、**[Microsoft アプリ ID]** フィールドと **[Microsoft アプリ パスワード]** に有効な値が含まれていない。 両方のフィールドには、[手順 2](#step-2) で確認した該当する値を入力する必要があります。
 * ボットのセキュリティが有効になっていない。 ボットの構成設定にアプリ ID とパスワードの両方の値が指定されていることを[確認](#enable-security-localhost)します。
 
-## 手順 4: ボットをクラウドでテストする<a id="step-4"></a>
+## 手順 4:ボットをクラウドでテストする<a id="step-4"></a>
 
 この時点で、セキュリティが無効なときに、ボットが localhost 上でアクセス可能であり、機能すること、ボットのアプリ ID とパスワードが有効であること、およびセキュリティが有効なときに、ボットが localhost 上でアクセス可能であり、機能することを確認しています。 この手順では、ボットをクラウドにデプロイし、セキュリティが有効なクラウドでボットがアクセス可能であり、機能することを確認します。 
 

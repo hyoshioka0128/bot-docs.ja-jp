@@ -1,6 +1,6 @@
 ---
 title: FormFlow の基本的機能 | Microsoft Docs
-description: Bot Builder SDK for .NET 内で FormFlow を使用して会話フローを導く方法について説明します。
+description: Bot Framework SDK for .NET 内で FormFlow を使用して会話フローを導く方法について説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,18 +9,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f5b36e1f916539b78f9bdcdd0970317db723f408
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 710a8ce315faa02a72eaeb753c44b9b212524ec3
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000379"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224677"
 ---
 # <a name="basic-features-of-formflow"></a>FormFlow の基本的機能
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-[ダイアログ](bot-builder-dotnet-dialogs.md)は非常に強力で柔軟性がありますが、サンドイッチの注文などのガイド付きの会話を処理するには、多大な労力を必要とすることがあります。 会話の各ポイントには、次に起こることについての多くの可能性があります。 たとえば、あいまいさの排除やヘルプの提供を必要とする場合もあれば、前に戻ったり、進行状況を示したりすることが必要な場合もあります。 Bot Builder SDK for .NET 内で **FormFlow** を使用することで、このようなガイド付きの会話を管理するプロセスを大幅に簡素化できます。 
+[ダイアログ](bot-builder-dotnet-dialogs.md)は非常に強力で柔軟性がありますが、サンドイッチの注文などのガイド付きの会話を処理するには、多大な労力を必要とすることがあります。 会話の各ポイントには、次に起こることについての多くの可能性があります。 たとえば、あいまいさの排除やヘルプの提供を必要とする場合もあれば、前に戻ったり、進行状況を示したりすることが必要な場合もあります。 Bot Framework SDK for .NET 内で **FormFlow** を使用することで、このようなガイド付きの会話を管理するプロセスを大幅に簡素化できます。 
 
 FormFlow では、指定したガイドラインに基づいて、ガイド付きの会話を管理するために必要なダイアログが自動的に生成されます。 FormFlow を使用すると、ダイアログを独自に作成して管理することによって得られる柔軟性が損なわれますが、FormFlow を使用してガイド付きの会話を設計すると、ボットの開発に要する時間を大幅に短縮できます。 さらに、FormFlow で生成されたダイアログと他の種類のダイアログを組み合わせてボットを作成することもできます。 たとえば、FormFlow ダイアログではユーザーを誘導してフォームを完成させるプロセスを進め、[LuisDialog][LuisDialog] ではユーザー入力を評価して意図を判断することができます。
 
@@ -34,7 +34,7 @@ FormFlow を使用してボットを作成するには、ボットがユーザ�
 - 浮動小数点 (float、double)
 - String
 - Datetime
-- 列挙型
+- Enumeration
 - 列挙型のリスト
 
 どのデータ型も Null 許容にすることができます。これを使用して、フィールドに値がないことをモデル化できます。 フォーム フィールドが Null 許容ではない列挙型プロパティに基づいている場合、列挙型の値 **0** は **null** を表す (つまり、フィールドに値がないことを示す) ので、列挙値は **1** から開始する必要があります。 FormFlow では、プロパティの他のすべての型とメソッドは無視されます。
@@ -323,7 +323,7 @@ FormFlow により、ダイアログの開発が簡素化されます。 FormFlo
 - [フォーム コンテンツのローカライズ](bot-builder-dotnet-formflow-localize.md)
 - [JSON スキーマによるフォームの定義](bot-builder-dotnet-formflow-json-schema.md)
 - [パターン言語によるユーザー エクスペリエンスのカスタマイズ](bot-builder-dotnet-formflow-pattern-language.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET リファレンス</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>
 
 [LuisDialog]: /dotnet/api/microsoft.bot.builder.dialogs.luisdialog-1
 

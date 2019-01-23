@@ -1,6 +1,6 @@
 ---
 title: アクティビティを送受信する | Microsoft Docs
-description: Bot Builder SDK for .NET を介してコネクタ サービスを使用することで、さまざまなチャネルとの間でユーザーと情報を交換する方法について説明します。
+description: Bot Framework SDK for .NET を介してコネクタ サービスを使用することで、さまざまなチャネルとの間でユーザーと情報を交換する方法について説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 393490fd97ce0d09b4087ad7598ee30b0fdc8c0e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 0407ec0d90c58e10aa14616e2aa9205bb8840d55
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997789"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225227"
 ---
 # <a name="send-and-receive-activities"></a>アクティビティを送受信する
 
@@ -22,10 +22,10 @@ ms.locfileid: "49997789"
 
 Bot Framework Connector では、ボットで Skype、電子メール、Slack などの複数のチャネルとの間で通信できるようにする単一の REST API が用意されています。 これにより、ボットからチャネルおよびチャネルからボットにメッセージを返信することで、ボットとユーザー間の通信が容易になります。 
 
-この記事では、ボットとチャネル上のユーザーとの間で情報を交換するために、Bot Builder SDK for .NET を介して Connector を使用する方法について説明します。 
+この記事では、ボットとチャネル上のユーザーとの間で情報を交換するために、Bot Framework SDK for .NET を介して Connector を使用する方法について説明します。 
 
 > [!NOTE]
-> この記事に示されている技術を排他的に使用することによってボットを作成できるときに、Bot Builder SDK では、[ダイアログ](bot-builder-dotnet-dialogs.md)などの追加機能、および会話のフローと状態を管理するプロセスを効率的にできる [FormFlow](bot-builder-dotnet-formflow.md) が提供され、言語の理解などの認識サービスをよりシンプルにすることができます。
+> この記事に示されている技術を排他的に使用することによってボットを作成できるときに、Bot Framework SDK では、[ダイアログ](bot-builder-dotnet-dialogs.md)などの追加機能、および会話のフローと状態を管理するプロセスを効率的にできる [FormFlow](bot-builder-dotnet-formflow.md) が提供され、言語の理解などの認識サービスをよりシンプルにすることができます。
 
 ## <a name="create-a-connector-client"></a>コネクタ クライアントを作成する
 
@@ -44,7 +44,7 @@ Connector では、[Activity](bot-builder-dotnet-activities.md) オブジェク�
 
 ボットで Connector からアクティビティを受信すると、受信するアクティビティの `Recipient` プロパティでその会話内のボットの ID が指定されます。 一部のチャネル (例: Slack) では会話に追加されるときにボットに新しい ID を割り当てるため、ボットは常にその返信内の `From` プロパティの値として、受信アクティビティの `Recipient` プロパティの値を使用する必要があります。
 
-自分で最初から送信の `Activity` オブジェクトを作成して初期化することもできますが、Bot Builder SDK には返信を作成するよりも簡単な方法が用意されています。 受信アクティビティの `CreateReply` メソッドを使用することで、返信にメッセージ テキストを簡単に指定し、自動的に作成された `Recipient`、`From`、`Conversation` プロパティと共に送信アクティビティが作成されます。
+自分で最初から送信の `Activity` オブジェクトを作成して初期化することもできますが、Bot Framework SDK には返信を作成するよりも簡単な方法が用意されています。 受信アクティビティの `CreateReply` メソッドを使用することで、返信にメッセージ テキストを簡単に指定し、自動的に作成された `Recipient`、`From`、`Conversation` プロパティと共に送信アクティビティが作成されます。
 
 [!code-csharp[Create reply](../includes/code/dotnet-send-and-receive.cs#createReply)]
 
@@ -87,7 +87,7 @@ Connector では、[Activity](bot-builder-dotnet-activities.md) オブジェク�
 
 - [アクティビティの概要](bot-builder-dotnet-activities.md)
 - [メッセージの作成](bot-builder-dotnet-create-messages.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET リファレンス</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>
 - <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
 - <a href="/dotnet/api/microsoft.bot.connector.connectorclient" target="_blank">ConnectorClient クラス</a>
 

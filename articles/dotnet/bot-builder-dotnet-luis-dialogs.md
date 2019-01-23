@@ -1,6 +1,6 @@
 ---
 title: LUIS を使用して意図とエンティティを認識する | Microsoft Docs
-description: Bot Builder SDK for .NET の LUIS ダイアログを使用して、ボットが自然言語を理解できるようにする方法について説明します。
+description: Bot Framework SDK for .NET の LUIS ダイアログを使用して、ボットが自然言語を理解できるようにする方法について説明します。
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ec3c93bfca1ec8554655934d9165e436d88b9466
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 26b23c9beda872b71defd779563531328b63a0c8
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997729"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225377"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>LUIS を使用して意図とエンティティを認識する 
 
@@ -59,7 +59,7 @@ ms.locfileid: "49997729"
 
 Azure へのログインに使用するものと同じアカウントを使用して、[https://www.luis.ai](https://www.luis.ai) にログインします。 **[My apps]\(マイ アプリ\)** をクリックします。 アプリの一覧で、ボット サービスの作成時に **[ボット サービス]** ブレードの **[アプリ名]** で指定した名前で始まるアプリを探します。 
 
-LUIS アプリは 4 つの意図 (Cancel、Greeting、Help、None) で始まります。 <!-- picture -->
+LUIS アプリは次の 4 つの意図で始まります:Cancel、Greeting、Help、None。 <!-- picture -->
 
 次の手順では、Note.Create、Note.ReadAloud、および Note.Delete の各意図を追加します。 
 
@@ -388,7 +388,7 @@ Azure Portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 - [ダイアログ](bot-builder-dotnet-dialogs.md)
 - [ダイアログを使用して会話フローを管理する](bot-builder-dotnet-manage-conversation-flow.md)
 - <a href="https://www.luis.ai" target="_blank">LUIS</a>
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET リファレンス</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>
 
 [LUIS]: https://www.luis.ai/
 [NotesSample]: https://github.com/Microsoft/BotFramework-Samples/tree/master/docs-samples/CSharp/Simple-LUIS-Notes-Sample

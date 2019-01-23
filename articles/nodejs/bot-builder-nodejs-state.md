@@ -1,6 +1,6 @@
 ---
-title: 状態データを管理する | Microsoft Docs
-description: Bot Builder SDK for Node.js を使用して、状態データを保存および取得する方法について説明します。
+title: 状態データの管理 | Microsoft Docs
+description: Bot Framework SDK for Node.js を使用して、状態データを保存および取得する方法について説明します。
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 519f188a29db2b9b37061ee0eff5361a63d2acac
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 6d653e47d2e906c6306134804c7731b374d830ba
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999989"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225007"
 ---
 # <a name="manage-state-data"></a>状態データの管理
 
@@ -56,7 +56,7 @@ var bot = new builder.UniversalBot(connector, [..waterfall steps..])
 
 ## <a name="storage-containers"></a>ストレージ コンテナー
 
-Bot Builder SDK for Node.js では、`session` オブジェクトにより、状態データを格納するための以下のプロパティが公開されます。
+Bot Framework SDK for Node.js では、`session` オブジェクトにより、状態データを格納するための以下のプロパティが公開されます。
 
 | プロパティ | スコープ | 説明 |
 | ---- | ---- | ---- |
@@ -129,7 +129,7 @@ session.userdata.start = startDate.toISOString();
 
 ### <a name="saving-data"></a>データの保存
 
-各ストレージ コンテナーで作成されているデータは、コンテナーが保存されるまでメモリに残ります。 Bot Builder SDK for Node.js では、`ChatConnector` サービスにデータがバッチで送信され、送信するメッセージがある場合は保存されます。 いずれのメッセージも送信せずにストレージ コンテナーに存在するデータを保存する場合は、[`save`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#save) メソッドを手動で呼び出すことができます。 `save` メソッドを呼び出さない場合、ストレージ コンテナーに存在するデータはバッチ処理の一環として保持されます。
+各ストレージ コンテナーで作成されているデータは、コンテナーが保存されるまでメモリに残ります。 Bot Framework SDK for Node.js では、`ChatConnector` サービスにデータがバッチで送信され、送信するメッセージがある場合は保存されます。 いずれのメッセージも送信せずにストレージ コンテナーに存在するデータを保存する場合は、[`save`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#save) メソッドを手動で呼び出すことができます。 `save` メソッドを呼び出さない場合、ストレージ コンテナーに存在するデータはバッチ処理の一環として保持されます。
 
 ```javascript
 session.userData.favoriteColor = "Red";

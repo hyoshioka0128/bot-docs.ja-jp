@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/26/2018
+ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 62cf3663a6e1c9b9321d7b74393b95e4a2ed3a69
-ms.sourcegitcommit: fd7781a06303fee5f39a253da5b3a3818d54b2ba
+ms.openlocfilehash: c798c26f108458e1caeb16aa22c02c6e7c70fb61
+ms.sourcegitcommit: 3cc768a8e676246d774a2b62fb9c688bbd677700
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53806773"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54323658"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -41,7 +41,7 @@ ms.locfileid: "53806773"
 
  ### <a name="create-your-bot-using-service-ui"></a>サービス UI を使用してボットを作成する
  
-手動でボットの作成を始めるには、GitHub の [BotFramework-Samples](https://github.com/Microsoft/BotFramework-Samples) リポジトリにある 4 つのファイル [home-automation.json](https://aka.ms/dispatch-home-automation-json)、[weather.json](https://aka.ms/dispatch-weather-json)、[nlp-with-dispatchDispatch.json](https://aka.ms/dispatch-dispatch-json)、[QnAMaker.tsv](https://aka.ms/dispatch-qnamaker-tsv) をローカル フォルダーにダウンロードします。
+手作業でのボットの作成を始めるには、GitHub の [BotFramework-Samples](https://aka.ms/botdispatchgitsamples) リポジトリにある 4 つのファイル [home-automation.json](https://aka.ms/dispatch-home-automation-json)、[weather.json](https://aka.ms/dispatch-weather-json)、[nlp-with-dispatchDispatch.json](https://aka.ms/dispatch-dispatch-json)、[QnAMaker.tsv](https://aka.ms/dispatch-qnamaker-tsv) をローカル フォルダーにダウンロードします。1 つの方法としては、上で示した GitHub リポジトリのリンクを開き、**BotFramework-Samples** をクリックしてから、リポジトリをローカル マシンに "複製またはダウンロード" します。 これらのファイルは、前提条件で説明されているサンプルとは異なるリポジトリにあることに注意してください。
 
 ### <a name="manually-create-luis-apps"></a>LUIS アプリを手動で作成する
 
@@ -494,7 +494,10 @@ async onTurn(turnContext) {
 
 上記の 2 つのアクションのどちらでも、ボットからユーザーに '回答が見つかりません' というメッセージが返される回数を減らすことができます。 
 
-## <a name="additional-resources"></a>その他のリソース 
+## <a name="additional-resources"></a>その他のリソース
+
+**LUIS モデルを更新するか、新しく作成する:** このサンプルは、事前構成済みの LUIS モデルが基になっています。 このモデルの更新または新しい LUIS モデルの作成に役立つ追加情報については、[こちら](https://aka.ms/create-luis-model#updating-your-cognitive-models
+)をご覧ください。
 
 **リソースを削除する:** このサンプルでは、次の手順を使用して削除できるアプリケーションとリソースが多数作成されますが、"*他のアプリやサービス*" が依存しているリソースは削除しないでください。 
 

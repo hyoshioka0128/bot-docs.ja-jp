@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: e11b99aeb8475ff27304c57c515e02a5c031e4ea
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 03c7e1316e463caf84b8dfd503e1502bb66469e6
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998381"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224847"
 ---
 # <a name="embed-a-bot-in-a-website"></a>ボットを Web サイトに埋め込む
 
@@ -47,7 +47,7 @@ Skype Web コントロールは、単に Skype のフロントエンドとして
 
 ## <a name="sample-code"></a>サンプル コード
 
-<a href="https://aka.ms/BotFramework-WebChat" target="_blank">オープン ソース Web チャット コントロール</a>は GitHub で入手できます。 オープン ソース Web チャット コントロールと Bot Builder SDK for Node.js を使用してバックチャネル メカニズムを実装する方法の詳細については、「[Use the backchannel mechanism (バックチャネル メカニズムの使用)](~/nodejs/bot-builder-nodejs-backchannel.md)」を参照してください。
+<a href="https://aka.ms/BotFramework-WebChat" target="_blank">オープン ソース Web チャット コントロール</a>は GitHub で入手できます。 オープン ソース Web チャット コントロールと Bot Framework SDK for Node.js を使用してバックチャネル メカニズムを実装する方法の詳細については、「[バックチャネル メカニズムの使用](~/nodejs/bot-builder-nodejs-backchannel.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

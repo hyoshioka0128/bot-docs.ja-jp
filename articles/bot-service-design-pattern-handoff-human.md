@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 6b50df60c3a8165198e8f9a55964f2f596d62406
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f18b375a1e4ebcf06d00d045e383db8b05fb5111
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998729"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225737"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>会話をボットから人間に移行する
 
@@ -74,7 +74,7 @@ ms.locfileid: "49998729"
 
 ## <a name="sample-code"></a>サンプル コード
 
-Bot Builder SDK for Node.js を使用してボットから人間に会話を引き継ぐ方法を示す完全なサンプルについては、GitHub の <a href="https://github.com/palindromed/Bot-HandOff" target="_blank">Bot-HandOff サンプル</a>を参照してください。
+Bot Framework SDK for Node.js を使用してボットから人間に会話を引き継ぐ方法を示す完全なサンプルについては、GitHub の <a href="https://github.com/palindromed/Bot-HandOff" target="_blank">Bot-HandOff サンプル</a>を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

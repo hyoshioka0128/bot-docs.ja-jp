@@ -1,16 +1,16 @@
 ---
 redirect_url: /bot-framework/bot-builder-howto-v4-state
-ms.openlocfilehash: cdbe139f6b901cf812356358deecc61394eae2a5
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a0d2b1295be1271e827d617ad09878ee8cfcd356
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998899"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54223917"
 ---
 <a name="--"></a><!--
 ---
-title: 状態とストレージ | Microsoft Docs description: 状態マネージャー、会話状態、およびユーザー状態の Bot Builder SDK 内での意味について説明します。
-keywords: LUIS, 会話状態, ユーザー状態, ストレージ, 状態の管理 author: DeniseMak ms.author: v-demak manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 02/15/2018 monikerRange: 'azure-bot-service-4.0'
+title:状態とストレージ | Microsoft Docs description:状態マネージャー、会話状態、およびユーザー状態の Bot Framework SDK 内での意味について説明します。
+keywords:LUIS, 会話状態, ユーザー状態, ストレージ, 状態の管理 author:DeniseMak ms.author: v-demak manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date:02/15/2018 monikerRange: 'azure-bot-service-4.0'
 ---
 
 # <a name="state-and-storage"></a>状態とストレージ
@@ -18,7 +18,7 @@ keywords: LUIS, 会話状態, ユーザー状態, ストレージ, 状態の管�
 
 ボットを適切に設計するための鍵は、メッセージ交換のコンテキストを追跡することです。そうすることで、以前の質問に対する回答などの事柄をボットで記憶することができます。
 ボットの使用目的によっては、会話の有効期間よりも長い間、状態を追跡または情報を保存することが必要な場合もあります。
-ボットの*状態*は、受信メッセージに適切に応答するためにボットが記憶する情報です。 Bot Builder SDK は、ユーザーまたは会話に関連付けられたオブジェクトとして状態データを保存および取得するためのクラスを提供します。
+ボットの*状態*は、受信メッセージに適切に応答するためにボットが記憶する情報です。 Bot Framework SDK では、ユーザーまたは会話に関連付けられたオブジェクトとして状態データを保存および取得するためのクラスが提供されます。
 
 * **会話プロパティ**は、ボットがユーザーと交わしている現在の会話をボットが追跡するために役立ちます。 ボットがステップのシーケンスを完了する、または会話トピックを切り替える必要がある場合、会話プロパティを使用してシーケンス内のステップを管理、または現在のトピックを追跡することができます。 会話プロパティには現在の会話の状態が反映されるため、通常は、会話の終了時、ボットが "_会話終了_" アクティビティを受信したときにプロパティをクリアします。
 * **ユーザー プロパティ**は、ユーザーの以前の会話がどこで中断されたかを判断したり、戻ってきたユーザーにそのユーザーの名前を使って挨拶したりするなど、さまざまな目的で使用できます。 ユーザーの設定を保存すると、次回チャットするときにその情報を使用して会話をカスタマイズできます。 たとえば、ユーザーが関心を持っているトピックに関するニュース記事についてユーザーに通知したり、予定が利用可能になった場合にユーザーに通知したりできます。 ボットが_ユーザー データの削除_アクティビティを受信した場合は、ユーザー プロパティをクリアしてください。
@@ -46,7 +46,7 @@ Bots built using Azure Table Storage can be designed to be stateless and scalabl
 
 ## Writing directly to storage
 
-You can also use the Bot Builder SDK to read and write data directly to storage, without using middleware or without using the bot context. This can be appropriate to data that your bot uses, that comes from a source outside your bot's conversation flow.
+You can also use the Bot Framework SDK to read and write data directly to storage, without using middleware or without using the bot context. This can be appropriate to data that your bot uses, that comes from a source outside your bot's conversation flow.
 
 For example, let's say your bot allows the user to ask for the weather report, and your bot retrieves the weather report for a specified date, by reading it from an external database. The content of the weather database isn't dependent on user information or the conversation context, so you could just read it directly from storage instead of using the state manager.  See [How to write directly to storage](bot-builder-howto-v4-storage.md) for an example.
 

@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/28/2018
-ms.openlocfilehash: 660c10c400bb68e807f39eb1b7ccc38f500991e6
-ms.sourcegitcommit: 0f65857943d318da48df0a8654cde53e9a699116
+ms.openlocfilehash: 9b77f05b77017b17ba63e83fa2a8b58e483f9bf8
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53389315"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225807"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework についてよく寄せられる質問
 
@@ -24,7 +24,7 @@ ms.locfileid: "53389315"
 会話ユーザー インターフェイス (CUI) が登場しましたが、現時点では、新しい会話型エクスペリエンスを構築したり、ユーザーが楽しめる会話型インターフェイスで既存のアプリケーションやサービスを利用できるようにするために必要な専門知識やツールを持っている開発者はほとんどいません。 Microsoft は、開発者が優れたボットを作成し、Microsoft のプレミア チャンネル上など、ユーザーが会話する場所にボットを接続することを容易にするために、Bot Framework を開発しました。
 
 ### <a name="what-is-the-v4-sdk"></a>v4 SDK とは何ですか?
-Bot Builder v4 SDK は、以前の Bot Builder SDK から得たフィードバックと知識を基に構築されています。 ボットの構成要素の豊富なコンポーネント化を可能にしながら、適切なレベルの抽象化が導入されます。 簡単なボットから始め、モジュール式の拡張可能なフレームワークを使用してボットを高度化していくことができます。 GitHub で SDK の [FAQ](https://github.com/Microsoft/botbuilder-dotnet/wiki/FAQ) をご覧ください。
+Bot Framework v4 SDK は、以前の Bot Framework SDK から得たフィードバックと知識を基に構築されています。 ボットの構成要素の豊富なコンポーネント化を可能にしながら、適切なレベルの抽象化が導入されます。 簡単なボットから始め、モジュール式の拡張可能なフレームワークを使用してボットを高度化していくことができます。 GitHub で SDK の [FAQ](https://github.com/Microsoft/botbuilder-dotnet/wiki/FAQ) をご覧ください。
 
 ## <a name="bot-framework-sdk-version-3-lifetime-support"></a>Bot Framework SDK バージョン 3 のライフタイム サポート 
 SDK V3 ボットは Azure Bot Service によって引き続き実行およびサポートされます。  他のフレームワークと同様に、Bot Framework SDK V4 のリリース以降も、セキュリティ、優先度の高いバグ修正、およびコネクタ/プロトコル レイヤーの更新を含む SDK V3 のサポートを継続します。  v3 のサポートは 2019 年まで継続されます。
@@ -73,7 +73,7 @@ Microsoft では、チャンネルの追加など、Bot Framework を継続的�
 
 Bot Framework は、Skype や他の多くのチャンネル向けに、高品質でパフォーマンスと応答性に優れたスケーラブルなボットを作成、接続、展開できるように設計されています。 SDK を使用して、(会話エクスペリエンスで今日のボットの対話の大半を占める) テキスト/SMS、画像、ボタン、およびカード対応のボットや、豊富なオーディオ/動画エクスペリエンスなどの Skype 固有のボットの対話を作成できます。
 
-優れたボットが既にあり、Skype の対象ユーザーを獲得したい場合は、Bot Builder for REST API を使用して Skype (またはサポートされている任意のチャンネル) に簡単に接続できます (インターネットにアクセス可能な REST エンドポイントがある場合)。
+優れたボットが既にあり、Skype の対象ユーザーを獲得したい場合は、Bot Framework for REST API を使用して Skype (またはサポートされている任意のチャンネル) に簡単に接続できます (インターネットにアクセス可能な REST エンドポイントがある場合)。
 
 ## <a name="security-and-privacy"></a>セキュリティとプライバシー
 ### <a name="do-the-bots-registered-with-the-bot-framework-collect-personal-information-if-yes-how-can-i-be-sure-the-data-is-safe-and-secure-what-about-privacy"></a>Bot Framework に登録されているボットは個人情報を収集するのでしょうか。 収集する場合、データの安全とセキュリティを確保するにはどうすればよいですか?  プライバシーはどうですか?

@@ -1,6 +1,6 @@
 ---
 title: Node.js を使用して Cortana スキルを構築する | Microsoft Docs
-description: Bot Builder SDK for Node.js で Cortana スキルを構築するための主要概念について説明します。
+description: Bot Framework SDK for Node.js で Cortana スキルを構築するための主要概念について説明します。
 keywords: Bot Framework, Cortana スキル, 音声, Node.js, Bot Builder, SDK, 主な概念, 主要概念
 author: DeniseMak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 99254c5f2de8b524212d8f6a268dbc37c128ab5e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 909294243abe00ac95e8f5d89d6babc2edc4f994
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996476"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225687"
 ---
 # <a name="key-concepts-for-building-a-bot-for-cortana-skills-using-nodejs"></a>Node.js を使用して Cortana スキル用のボットを構築するための主要概念
  
@@ -23,7 +23,7 @@ ms.locfileid: "49996476"
 > [!NOTE]
 > この記事は暫定的コンテンツであり、更新されます。
 
-この記事では、Bot Builder SDK for Node.js で Cortana スキルを構築するための主な概念を紹介します。 
+この記事では、Bot Framework SDK for Node.js で Cortana スキルを構築するための主な概念を紹介します。 
 
 ## <a name="what-is-a-cortana-skill"></a>Cortana スキルとは
 Cortana スキルは、Windows 10 に組み込まれているのと同様に、Cortana クライアントを使用して呼び出すことができるボットです。 ユーザーは、ボットに関連付けられている何らかのキーワードまたはフレーズを発話することで、ボットを起動します。 Bot Framework Portal を使用して、ボットの起動に使用するキーワードを構成できます。 
@@ -62,28 +62,28 @@ Agent: **Okay**, what's next?
 着地の度合いは、最も弱いものから最も強いものの順に、以下のようになります。
 1. 持続的な関心
 2. 次を示唆する発言
-3. 確認: 最小限の応答やあいづち: "はい"、"ええ"、"わかりました"、"いいですね"
-4. デモンストレーション: 再構成、補完によって理解を示す。
-5. ディスプレイ: 全部または一部を繰り返す。
+3. 確認:最小限の応答やあいづち: "はい"、"ええ"、"わかりました"、"いいですね"
+4. デモンストレーション:再構成、補完によって理解を示す。
+5. ディスプレイ:全部または一部を繰り返す。
 
 #### <a name="acknowledgement-and-next-relevant-contribution"></a>確認と、次を示唆する発言
 ユーザー: ...5 月に出張する必要があります。
-エージェント: **では**、5 月何日に出張しますか。
-ユーザー: そうですね、12 日から 15 日までです。
-エージェント: **では**、どの都市に出張しますか。
+エージェント:**では**、5 月何日に出張しますか。
+ユーザー:そうですね、12 日から 15 日までです。
+エージェント:**では**、どの都市に出張しますか。
 
 #### <a name="grounding-by-demonstration"></a>デモンストレーションによる着地
 ユーザー: ...5 月に出張する必要があります。
-エージェント: では、5 月**何日**に出張しますか。
-ユーザー: そうですね、12 日から 15 日までです。
-エージェント: **では**、どの都市に出張しますか。
+エージェント:では、5 月**何日**に出張しますか。
+ユーザー:そうですね、12 日から 15 日までです。
+エージェント:**では**、どの都市に出張しますか。
 
 
 ### <a name="closure"></a>クロージャ
 
 アクションを実行しているボットは、正常なパフォーマンスの証拠を提示する必要があります。
 また、失敗や理解を示すことも重要です。 
-* 非音声クロージャ: エレベーターのボタンを押すと、ライトが点灯する
+* 非音声クロージャ:エレベーターのボタンを押すと、ライトが点灯する。
 2 段階のプロセス:
 * プレゼンテーション 
 * 承認

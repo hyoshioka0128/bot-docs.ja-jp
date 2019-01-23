@@ -1,16 +1,16 @@
 ---
 redirect_url: /bot-framework/bot-builder-prompts
-ms.openlocfilehash: e7cfbad19290b3ef61d40dc90493db8f530a9a4e
-ms.sourcegitcommit: 4661b9bb31d74731dbbb16e625be088b44ba5899
+ms.openlocfilehash: d45ec888a0082ee17718c93fc34a3df99431a254
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51826939"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225417"
 ---
 <a name="--"></a><!--
 ---
-title: ユーザーに質問する | Microsoft Docs description: Bot Builder SDK で、ウォーターフォール モデルを使用してユーザーに複数の入力を要求する方法について説明します。
-keywords: ウォーターフォール, ダイアログ, 質問する, プロンプト author: v-ducvo ms.author: v-ducvo manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 5/10/2018 monikerRange: 'azure-bot-service-4.0'
+title:ユーザーに質問する | Microsoft Docs description:Bot Framework SDK で、ウォーターフォール モデルを使用してユーザーに複数の入力を要求する方法について説明します。
+keywords: ウォーターフォール, ダイアログ, 質問する, プロンプト author: v-ducvo ms.author: v-ducvo manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date:5/10/2018 monikerRange: 'azure-bot-service-4.0'
 ---
 
 # <a name="ask-the-user-questions"></a>ユーザーに質問する

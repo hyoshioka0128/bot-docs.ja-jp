@@ -1,6 +1,6 @@
 ---
 title: ダイアログの概要 | Microsoft Docs
-description: Bot Builder SDK for .NET 内でダイアログを使用して会話をモデル化し、会話フローを管理する方法を説明します。
+description: Bot Framework SDK for .NET 内でダイアログを使用して会話をモデル化し、会話フローを管理する方法を説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,14 +9,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 943b206e4991c52f22928d2113977249ff9d9e04
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3089e7a073f6a6d9af3a3720954af3a915106888
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997579"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224997"
 ---
-# <a name="dialogs-in-the-bot-builder-sdk-for-net"></a>Bot Builder SDK for .NET のダイアログ
+# <a name="dialogs-in-the-bot-framework-sdk-for-net"></a>Bot Framework SDK for .NET のダイアログ
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
@@ -24,9 +24,9 @@ ms.locfileid: "49997579"
 > - [.NET](../dotnet/bot-builder-dotnet-dialogs.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-dialog-overview.md)
 
-Bot Builder SDK for .NET を使用してボットを作成する場合、ダイアログを使用して会話をモデル化し、[会話フロー](../bot-service-design-conversation-flow.md)を管理できます。 各ダイアログは、`IDialog` を実装する C# クラスに独自の状態をカプセル化する抽象化です。 ダイアログは、他のダイアログと組み合わせて最大限に再利用することができます。ダイアログ コンテキストは、任意の時点における会話内のアクティブな[ダイアログのスタック](../bot-service-design-conversation-flow.md#dialog-stack)を保持します。 
+Bot Framework SDK for .NET を使用してボットを作成する場合、ダイアログを使用して会話をモデル化し、[会話フロー](../bot-service-design-conversation-flow.md)を管理できます。 各ダイアログは、`IDialog` を実装する C# クラスに独自の状態をカプセル化する抽象化です。 ダイアログは、他のダイアログと組み合わせて最大限に再利用することができます。ダイアログ コンテキストは、任意の時点における会話内のアクティブな[ダイアログのスタック](../bot-service-design-conversation-flow.md#dialog-stack)を保持します。 
 
-ダイアログを構成する会話はコンピューター間で移植可能です。これにより、ボットの実装をスケーリングすることができます。 Bot Builder SDK for .NET でダイアログを使用すると、会話状態 (ダイアログ スタックとスタック内の各ダイアログの状態) が、ユーザーが選択した[状態データ](bot-builder-dotnet-state.md) ストレージに自動的に格納されます。 これにより、ボットのサービス コードをステートレスにすることができます。これは、Web サーバーのメモリにセッション状態を保存する必要のない Web アプリケーションと似ています。 
+ダイアログを構成する会話はコンピューター間で移植可能です。これにより、ボットの実装をスケーリングすることができます。 Bot Framework SDK for .NET でダイアログを使用すると、会話状態 (ダイアログ スタックとスタック内の各ダイアログの状態) が、ユーザーが選択した[状態データ](bot-builder-dotnet-state.md) ストレージに自動的に格納されます。 これにより、ボットのサービス コードをステートレスにすることができます。これは、Web サーバーのメモリにセッション状態を保存する必要のない Web アプリケーションと似ています。 
 
 ## <a name="echo-bot-example"></a>エコー ボットの例
 
@@ -37,7 +37,7 @@ Bot Builder SDK for .NET を使用してボットを作成する場合、ダイ�
 
 ### <a name="messagescontrollercs"></a>MessagesController.cs 
 
-Bot Builder SDK for .NET では、[Builder][builderLibrary] ライブラリを使用してダイアログを実装できます。 関連するクラスにアクセスするには、`Dialogs` 名前空間をインポートします。
+Bot Framework SDK for .NET では、[Builder][builderLibrary] ライブラリを使用してダイアログを実装できます。 関連するクラスにアクセスするには、`Dialogs` 名前空間をインポートします。
 
 [!code-csharp[Using statement](../includes/code/dotnet-dialogs.cs#usingStatement)]
 
@@ -53,7 +53,7 @@ Bot Builder SDK for .NET では、[Builder][builderLibrary] ライブラリを�
 
 Bot Builder では非同期通信の処理に C# の機能を使用するため、`Post` メソッドは `async` とマークされています。 これは、渡されたメッセージに返信する役割を持つタスクを表す `Task` オブジェクトを返します。 例外がある場合、このメソッドによって返される `Task` に例外情報が含まれます。 
 
-`Conversation.SendAsync` メソッドは、Bot Builder SDK for .NET を使用してダイアログを実装するための重要な要素です。 これは、<a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank">依存関係逆転の原則</a>に従い、次のステップを実行します。
+`Conversation.SendAsync` メソッドは、Bot Framework SDK for .NET を使用してダイアログを実装するための重要な要素です。 これは、<a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank">依存関係逆転の原則</a>に従い、次のステップを実行します。
 
 1. 必要なコンポーネントをインスタンス化する  
 2. `IBotDataStore` からの会話状態 (ダイアログ スタックとスタック内の各ダイアログの状態) を逆シリアル化する
@@ -81,7 +81,7 @@ Bot Builder では非同期通信の処理に C# の機能を使用するため�
 
 ## <a name="dialog-context"></a>ダイアログ コンテキスト
 
-各ダイアログ メソッドに渡される `IDialogContext` インターフェイスは、ダイアログが状態を保存してチャネルと通信するために必要なサービスへのアクセスを提供します。 `IDialogContext` インターフェイスには、[Internals.IBotData][iBotData]、[Internals.IBotToUser][iBotToUser]、[Internals.IDialogStack][iDialogStack] という 3 つのインターフェイスが含まれます。 
+各ダイアログ メソッドに渡される `IDialogContext` インターフェイスは、ダイアログが状態を保存してチャネルと通信するために必要なサービスへのアクセスを提供します。 `IDialogContext` インターフェイスは、次の 3 つのインターフェイスで構成されます:[Internals.IBotData][iBotData]、[Internals.IBotToUser][iBotToUser]、[Internals.IDialogStack][iDialogStack]。 
 
 ### <a name="internalsibotdata"></a>Internals.IBotData
 

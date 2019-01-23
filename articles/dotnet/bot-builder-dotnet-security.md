@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: deb184483bf7e0963f827b20377291ab971c1516
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 455ee87f31e70470d8d118f010c77327347c032d
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997340"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224887"
 ---
 # <a name="secure-your-bot"></a>ボットのセキュリティ保護
 
@@ -31,7 +31,7 @@ Bot Framework [Connector](bot-builder-dotnet-concepts.md#connector) だけがボ
 ボットの web.config ファイルにボットのアプリ ID とパスワードを指定します。 
 
 > [!NOTE]
-> ボットの **AppID** と **AppPassword** を確認する方法については、「[MicrosoftAppID and MicrosoftAppPassword (MicrosoftAppID と MicrosoftAppPassword)](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」をご覧ください。
+> 自分のボットの **AppID** と **AppPassword** を見つける方法については、「[MicrosoftAppID and MicrosoftAppPassword](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」(MicrosoftAppID と MicrosoftAppPassword) を参照してください。
 
 ```xml
 <appSettings>
@@ -40,7 +40,7 @@ Bot Framework [Connector](bot-builder-dotnet-concepts.md#connector) だけがボ
 </appSettings>
 ```
 
-次に、Bot Builder SDK for .NET を使用してボットを作成するときに、`[BotAuthentication]` 属性を使用して認証資格情報を指定します。 
+次に、Bot Framework SDK for .NET を使用してボットを作成するときに、`[BotAuthentication]` 属性を使用して認証資格情報を指定します。 
 
 web.config ファイルに保存されている認証資格情報を使用するには、パラメーターを指定せずに `[BotAuthentication]` を指定します。
 
@@ -52,6 +52,6 @@ web.config ファイルに保存されている認証資格情報を使用する
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [Bot Builder SDK for .NET](bot-builder-dotnet-overview.md)
+- [Bot Framework SDK for .NET](bot-builder-dotnet-overview.md)
 - [Bot Builder SDK for .NET の主要概念](bot-builder-dotnet-concepts.md)
 - [Bot Framework へのボットの登録](~/bot-service-quickstart-registration.md)

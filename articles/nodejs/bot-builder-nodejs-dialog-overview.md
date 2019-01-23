@@ -1,6 +1,6 @@
 ---
 title: ダイアログの概要 | Microsoft Docs
-description: Bot Builder SDK for Node.js 内でダイアログを使用して会話をモデル化し、会話フローを管理する方法を学習します。
+description: Bot Framework SDK for Node.js 内でダイアログを使用して会話をモデル化し、会話フローを管理する方法を学習します。
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,14 +9,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 78f1660aaa91888655515d3402c8ad7702a5b6f6
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: dfa52914b3f0a2e81f4ff3a2f90c7404bfe53d4a
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997129"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225997"
 ---
-# <a name="dialogs-in-the-bot-builder-sdk-for-nodejs"></a>Bot Builder SDK for Node.js のダイアログ
+# <a name="dialogs-in-the-bot-framework-sdk-for-nodejs"></a>Bot Framework SDK for Node.js のダイアログ
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
@@ -24,13 +24,13 @@ ms.locfileid: "49997129"
 > - [.NET](../dotnet/bot-builder-dotnet-dialogs.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-dialog-overview.md)
 
-Bot Builder SDK for Node.js 内でダイアログを使用すると、会話をモデル化し、会話フローを管理できます。 ボットは会話を通じてユーザーとコミュニケーションを取ります。 会話はダイアログに編成されます。 ダイアログには、ウォーターフォール手順とプロンプトを含めることができます。 ユーザーがボットとやりとりすると、ボットはユーザーのメッセージに応じてさまざまなダイアログの開始、停止、切り替えを行います。 ダイアログのしくみを理解することは、優れたボットを適切に設計し、作成するために重要です。 
+Bot Framework SDK for Node.js 内でダイアログを使用すると、会話をモデル化し、会話フローを管理できます。 ボットは会話を通じてユーザーとコミュニケーションを取ります。 会話はダイアログに編成されます。 ダイアログには、ウォーターフォール手順とプロンプトを含めることができます。 ユーザーがボットとやりとりすると、ボットはユーザーのメッセージに応じてさまざまなダイアログの開始、停止、切り替えを行います。 ダイアログのしくみを理解することは、優れたボットを適切に設計し、作成するために重要です。 
 
 この記事では、ダイアログの概念を紹介します。 この記事を読んだ後は、「[次の手順](#next-steps)」セクションのリンクをたどって、このような概念の理解を深めてください。
 
 ## <a name="conversations-through-dialogs"></a>ダイアログによる会話
 
-Bot Builder SDK for Node.js は、1 つまたは複数のダイアログを介してボットとユーザー間の通信として会話を定義します。 最も基本的なレベルのダイアログは、操作を実行する、またはユーザーから情報を収集する再利用可能なモジュールです。 ボットの複雑なロジックを再利用可能なダイアログ コードにカプセル化することができます。
+Bot Framework SDK for Node.js は、1 つまたは複数のダイアログを介してボットとユーザー間の通信として会話を定義します。 最も基本的なレベルのダイアログは、操作を実行する、またはユーザーから情報を収集する再利用可能なモジュールです。 ボットの複雑なロジックを再利用可能なダイアログ コードにカプセル化することができます。
 
 会話は、さまざまな方法で構成および変更できます。
 

@@ -1,6 +1,6 @@
 ---
 title: ダイアログを使用して会話フローを管理する | Microsoft Docs
-description: ダイアログと Bot Builder SDK for .NET を使用して会話をモデル化し、会話フローを管理する方法について説明します。
+description: ダイアログと Bot Framework SDK for .NET を使用して会話をモデル化し、会話フローを管理する方法について説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 94690f58526e8ee322a73c68136d2b52667e1c89
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d8e482d8f4003ad7bcd807e8fd12e3c68c4ce8c8
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999949"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225897"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>ダイアログを使用して会話フローを管理する
 
@@ -26,7 +26,7 @@ ms.locfileid: "49999949"
 
 [!INCLUDE [Dialog flow example](../includes/snippet-dotnet-manage-conversation-flow-intro.md)]
 
-この記事では、[ダイアログ](bot-builder-dotnet-dialogs.md)と Bot Builder SDK for .NET を使用して、会話フローをモデル化する方法を説明します。 
+この記事では、[ダイアログ](bot-builder-dotnet-dialogs.md)と Bot Framework SDK for .NET を使用して、会話フローをモデル化する方法を説明します。 
 
 ## <a name="invoke-the-root-dialog"></a>ルート ダイアログを呼び出す
 
@@ -129,11 +129,11 @@ private async Task NameDialogResumeAfter(IDialogContext context, IAwaitable<stri
 
 ## <a name="sample-code"></a>サンプル コード 
 
-Bot Builder SDK for .NET でダイアログを使用して会話を管理する方法の完全なサンプルについては、GitHub の <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-BasicMultiDialog" target="_blank">マルチサイアログの基本的なサンプル</a>を参照してください。
+Bot Framework SDK for .NET でダイアログを使用して会話を管理する方法の完全なサンプルについては、GitHub の <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-BasicMultiDialog" target="_blank">マルチサイアログの基本的なサンプル</a>を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - [ダイアログ](bot-builder-dotnet-dialogs.md)
 - [会話フローの設計と制御](../bot-service-design-conversation-flow.md)
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-BasicMultiDialog" target="_blank">マルチダイアログの基本的なサンプル (GitHub)</a>
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET リファレンス</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>

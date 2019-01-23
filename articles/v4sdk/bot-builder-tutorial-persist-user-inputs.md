@@ -1,6 +1,6 @@
 ---
 title: ユーザー データを保持する | Microsoft Docs
-description: Bot Builder SDK で、ユーザー状態データをストレージに保存する方法について説明します。
+description: Bot Framework SDK で、ユーザー状態データをストレージに保存する方法について説明します。
 keywords: ユーザー データを保持する、ストレージ、会話データ
 author: v-ducvo
 ms.author: v-ducvo
@@ -10,18 +10,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/19/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 36e8efefb276e5b9fb45ba6243b1b472476d5046
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 97a89744282ca1e31a99aa0e45345656e43f5cd0
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997949"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225317"
 ---
 # <a name="persist-user-data"></a>ユーザー データを保持する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-ボットがユーザーに入力を要求した場合、それは一部の情報を何らかの形式のストレージに保持する機会になります。 Bot Builder SDK を使用すると、*メモリ内ストレージ*またはデータベース ストレージ (*CosmosDB*など) を使用してユーザー入力を格納することができます。 ボットのテスト中やプロトタイプ中には、主にローカル ストレージ類が使用されます。 ただし、データベース ストレージなどの永続的なストレージ類は運用環境のボットに最適です。
+ボットがユーザーに入力を要求した場合、それは一部の情報を何らかの形式のストレージに保持する機会になります。 Bot Framework SDK を使用すると、"*メモリ内ストレージ*" またはデータベース ストレージ (*CosmosDB*など) を使用してユーザー入力を格納することができます。 ボットのテスト中やプロトタイプ中には、主にローカル ストレージ類が使用されます。 ただし、データベース ストレージなどの永続的なストレージ類は運用環境のボットに最適です。
 
 このトピックでは、ストレージ オブジェクトを定義し、保持できるようにユーザー入力をストレージ オブジェクトに保存する方法を示します。 まだ行っていない場合は、ダイアログを使用してユーザーに名前を要求します。 使用することを選択したストレージの種類には関係なく、それを接続してデータを保存するためのプロセスは同じです。 このトピック内のコードは、データを保持するストレージとして `CosmosDB` を使用します。
 

@@ -1,6 +1,6 @@
 ---
-title: Bot Builder SDK for .NET を使用したメッセージの作成 | Microsoft Docs
-description: Bot Builder SDK for .NET 内の、一般的に使用されるメッセージ プロパティについて説明します。
+title: Bot Framework SDK for .NET を使用したメッセージの作成 | Microsoft Docs
+description: Bot Framework SDK for .NET 内の、一般的に使用されるメッセージ プロパティについて説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,14 +9,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f3f40e41605bfd309d480465a05b91acf5a52d5c
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 96a0c63575b1e77418262a22050013413f39141f
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000389"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225917"
 ---
-# <a name="create-messages"></a>メッセージの作成
+# <a name="create-messages"></a>メッセージを作成する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 

@@ -1,6 +1,6 @@
 ---
 title: メッセージをインターセプトする | Microsoft Docs
-description: Bot Builder SDK for Node.js を使用して、情報交換をインターセプトして処理することで、ログやその他のレコードを作成する方法について説明します。
+description: Bot Framework SDK for Node.js を使用して、情報交換をインターセプトして処理することで、ログやその他のレコードを作成する方法について説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 31380961f117a2b4a3ffaae3c82d682a63001c0c
-ms.sourcegitcommit: 984705927561cc8d6a84f811ff24c8c71b71c76b
+ms.openlocfilehash: b262e936cd48bb73d7b5aa3fa4f7b6318ea7c2a0
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50965680"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225627"
 ---
 # <a name="intercept-messages"></a>メッセージをインターセプトする
 
@@ -28,7 +28,7 @@ ms.locfileid: "50965680"
 
 ## <a name="example"></a>例
 
-次のサンプル コードは、ユーザーとボット間で交換されるメッセージを、Bot Builder SDK for Node.js の**ミドルウェア**の概念を使用してインターセプトする方法を示しています。 
+次のサンプル コードは、ユーザーとボット間で交換されるメッセージを、Bot Framework SDK for Node.js の**ミドルウェア**の概念を使用してインターセプトする方法を示しています。 
 
 最初に、受信メッセージ (`botbuilder`) と送信メッセージ (`send`) 用のハンドラーを構成します。
 
@@ -65,4 +65,4 @@ module.exports = {
 
 ## <a name="sample-code"></a>サンプル コード
 
-Bot Builder SDK for Node.js を使用してメッセージをインターセプトしてログに記録する方法を示す完全なサンプルについては、GitHub で<a href="https://aka.ms/v3-js-capability-middlewareLogging" target="_blank">ミドルウェアとログ記録のサンプル</a>を参照してください。
+Bot Framework SDK for Node.js を使用してメッセージをインターセプトしてログに記録する方法を示す完全なサンプルについては、GitHub で<a href="https://aka.ms/v3-js-capability-middlewareLogging" target="_blank">ミドルウェアとログ記録のサンプル</a>を参照してください。

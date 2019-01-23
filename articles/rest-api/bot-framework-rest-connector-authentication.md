@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 41cc36b7e4abc12bf57df7bf4272dd35031cf251
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 1cb9143e5ab2d5eb7e92e263b838cdd9217492ef
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997999"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225357"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -22,7 +22,7 @@ ms.locfileid: "49997999"
 > [!IMPORTANT]
 > 独自の認証コードを記述する場合は、すべてのセキュリティ プロシージャを正しく実装することが不可欠です。 この記事のすべての手順を実装すれば、攻撃者が、ご利用のボットに送信されたメッセージを読み取ったり、ボットになりすましてメッセージを送信したり、秘密鍵を盗んだりする危険性を軽減できます。 
 
-[Bot Builder SDK for .NET](../dotnet/bot-builder-dotnet-overview.md) または [Bot Builder SDK for Node.js](../nodejs/index.md) をお使いの場合、この記事で説明するセキュリティ プロシージャは SDK によって自動的に実装されるため、お客様が実装する必要はありません。 [登録](../bot-service-quickstart-registration.md)の際にご利用のボットのために取得した AppID とパスワードを使用してプロジェクトを設定するだけで、あとは SDK によって処理されます。
+[Bot Framework SDK for .NET](../dotnet/bot-builder-dotnet-overview.md) または [Bot Framework SDK for Node.js](../nodejs/index.md) をお使いの場合、この記事で説明するセキュリティ プロシージャは SDK によって自動的に実装されるため、お客様が実装する必要はありません。 [登録](../bot-service-quickstart-registration.md)の際にご利用のボットのために取得した AppID とパスワードを使用してプロジェクトを設定するだけで、あとは SDK によって処理されます。
 
 > [!WARNING]
 > 2016 年 12 月、Bot Framework セキュリティ プロトコル v3.1 には、トークンの作成と検証の際に使用されるいくつかの値に変更が加えられました。 2017 年の冬に Bot Framework セキュリティ プロトコル v3.2 が登場し、トークンの作成と検証の際に使用される値に変更が加えられました。
@@ -56,7 +56,7 @@ Authorization: Bearer ACCESS_TOKEN
 > [!IMPORTANT]
 > Bot Framework に[ご利用のボットを登録](../bot-service-quickstart-registration.md)して、その AppID とパスワードを取得する必要があります (この操作をまだ行っていない場合)。 アクセス トークンを要求するには、ボットの AppID とパスワードが必要になります。
 
-### <a name="step-1-request-an-access-token-from-the-msaaad-v2-login-service"></a>手順 1: MSA/AAD v2 ログイン サービスにアクセス トークンを要求する
+### <a name="step-1-request-an-access-token-from-the-msaaad-v2-login-service"></a>手順 1:MSA/AAD v2 ログイン サービスにアクセス トークンを要求する
 
 MSA/AAD v2 ログイン サービスにアクセス トークンを要求するには、次の要求を発行します。**MICROSOFT-APP-ID** および **MICROSOFT-APP-PASSWORD** は、ご利用のボットを Bot Framework に[登録](../bot-service-quickstart-registration.md)したときに取得した AppID とパスワードに置き換えてください。
 
@@ -68,7 +68,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT-APP-PASSWORD&scope=https%3A%2F%2Fapi.botframework.com%2F.default
 ```
 
-### <a name="step-2-obtain-the-jwt-token-from-the-msaaad-v2-login-service-response"></a>手順 2: MSA/AAD v2 ログイン サービスによる応答から JWT トークンを取得する
+### <a name="step-2-obtain-the-jwt-token-from-the-msaaad-v2-login-service-response"></a>手順 2:MSA/AAD v2 ログイン サービスによる応答から JWT トークンを取得する
 
 お使いのアプリケーションが MSA/AAD v2 ログイン サービスによって認証されると、JSON 応答の本体によってご自身のアクセス トークン、トークンのタイプ、トークンの有効期限 (秒単位) が指定されます。 
 
@@ -90,7 +90,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-### <a name="step-3-specify-the-jwt-token-in-the-authorization-header-of-requests"></a>手順 3: 要求の Authorization ヘッダーで JWT トークンを指定する
+### <a name="step-3-specify-the-jwt-token-in-the-authorization-header-of-requests"></a>手順 3:要求の Authorization ヘッダーで JWT トークンを指定する
 
 Bot Connector サービスに API 要求を送信するときは、次の形式を使用して要求の `Authorization` ヘッダーでアクセス トークンを指定する必要があります。
 
@@ -144,7 +144,7 @@ Bot Connector サービスからご利用のボットに要求が送信される
 
 ![Bot Connector からご利用のボットへの呼び出しを認証する](../media/connector/auth_bot_connector_to_bot.png)
 
-### <a id="openid-metadata-document"></a> 手順 2: OpenID メタデータ ドキュメントを取得する
+### <a id="openid-metadata-document"></a>手順 2: OpenID メタデータ ドキュメントを取得する
 
 OpenID メタデータ ドキュメントでは、Bot Connector サービスの有効な署名キーの一覧を含むもう 1 つのドキュメントの場所が指定されます。 OpenID メタデータ ドキュメントを取得するには、次の要求を HTTPS 経由で発行します。
 
@@ -171,7 +171,7 @@ GET https://login.botframework.com/v1/.well-known/openidconfiguration
 }
 ```
 
-### <a id="connector-to-bot-step-3"></a> 手順 3: 有効な署名キーの一覧を取得する
+### <a id="connector-to-bot-step-3"></a> 手順 3:有効な署名キーの一覧を取得する
 
 有効な署名キーの一覧を取得するには、OpenID メタデータ ドキュメントで `jwks_uri` プロパティによって指定されている URL に、HTTPS 経由で `GET` 要求を発行します。 例: 
 
@@ -179,14 +179,14 @@ GET https://login.botframework.com/v1/.well-known/openidconfiguration
 GET https://login.botframework.com/v1/.well-known/keys
 ```
 
-応答の本体には、ドキュメントが [JWK 形式](https://tools.ietf.org/html/rfc7517)で指定されますが、各キーに対応する追加のプロパティ `endorsements` も含まれています。 キーの一覧は比較的安定しており、長期間キャッシュしておくことができます (既定では、Bot Builder SDK の中に 5 日間)。
+応答の本体には、ドキュメントが [JWK 形式](https://tools.ietf.org/html/rfc7517)で指定されますが、各キーに対応する追加のプロパティ `endorsements` も含まれています。 キーの一覧は比較的安定しており、長期間キャッシュしておくことができます (既定では、Bot Framework SDK の中に 5 日間)。
 
 各キーの `endorsements` プロパティには、少なくとも 1 つの保証文字列が含まれており、これを使用することにより、受信した要求の [Activity][Activity] オブジェクト内で `channelId` プロパティによって指定されているチャネル ID が正しいことを検証できます。 保証が必要なチャネル ID の一覧は、各ボット内で設定できます。 既定では、これは公開済みのすべてのチャネル ID の一覧になりますが、ボットの開発者は一部のチャネル ID 値を選択し、何らかの方法でオーバーライドすることができます。 チャネル ID に対して保証が必要な場合は、以下が適用されます。
 
 - ご利用のボットにそのチャネル ID で送信されるすべての [Activity][Activity] オブジェクトには、そのチャネルに対する保証で署名された JWT トークンが付随していることを要件とする必要があります。 
 - 保証が存在しない場合、ご利用のボットは、**HTTP 403 (アクセス不可)** 状態コードを返すことによって要求を拒否する必要があります。
 
-### <a name="step-4-verify-the-jwt-token"></a>手順 4: JWT トークンを検証する
+### <a name="step-4-verify-the-jwt-token"></a>手順 4:JWT トークンを検証する
 
 Bot Connector サービスから送信されたトークンの信頼性を検証するには、要求の `Authorization` ヘッダーからトークンを抽出し、トークンを解析し、その内容を確認して署名を検証する必要があります。 
 
@@ -244,7 +244,7 @@ payload:
 ![Bot Framework Emulator からご利用のボットへの呼び出しを認証する](../media/connector/auth_bot_framework_emulator_to_bot.png)
 
 ---
-### <a name="step-2-get-the-msa-openid-metadata-document"></a>手順 2: MSA OpenID メタデータ ドキュメントを取得する
+### <a name="step-2-get-the-msa-openid-metadata-document"></a>手順 2:MSA OpenID メタデータ ドキュメントを取得する
 
 OpenID メタデータ ドキュメントでは、有効な署名キーの一覧を含むもう 1 つのドキュメントの場所が指定されます。 MSA OpenID メタデータ ドキュメントを取得するには、次の要求を HTTPS 経由で発行します。
 
@@ -264,7 +264,7 @@ GET https://login.microsoftonline.com/botframework.com/v2.0/.well-known/openid-c
 }
 ```
 
-### <a id="emulator-to-bot-step-3"></a> 手順 3: 有効な署名キーの一覧を取得する
+### <a id="emulator-to-bot-step-3"></a> 手順 3:有効な署名キーの一覧を取得する
 
 有効な署名キーの一覧を取得するには、OpenID メタデータ ドキュメントで `jwks_uri` プロパティによって指定されている URL に、HTTPS 経由で `GET` 要求を発行します。 例: 
 
@@ -275,7 +275,7 @@ Host: login.microsoftonline.com
 
 応答の本体には、ドキュメントが [JWK 形式](https://tools.ietf.org/html/rfc7517)で指定されます。 
 
-### <a name="step-4-verify-the-jwt-token"></a>手順 4: JWT トークンを検証する
+### <a name="step-4-verify-the-jwt-token"></a>手順 4:JWT トークンを検証する
 
 エミュレーターから送信されたトークンの信頼性を検証するには、要求の `Authorization` ヘッダーからトークンを抽出し、トークンを解析し、その内容を確認して署名を検証する必要があります。 
 
@@ -323,7 +323,7 @@ payload:
 ## <a name="security-protocol-changes"></a>セキュリティ プロトコルの変更
 
 > [!WARNING]
-> セキュリティ プロトコル v3.0 に対するサポートは、**2017 年 7 月 31 日**で終了します。 独自の認証コード (お使いのボットの作成に Bot Builder SDK を使用していないもの) を作成してある場合は、以下に示す v3.1 の値を使用するようにアプリケーションを更新することにより、セキュリティ プロトコル v3.1 にアップグレードする必要があります。 
+> セキュリティ プロトコル v3.0 に対するサポートは、**2017 年 7 月 31 日**で終了します。 独自の認証コード (お使いのボットの作成に Bot Framework SDK を使用していないもの) を作成してある場合は、以下に示す v3.1 の値を使用するようにアプリケーションを更新することにより、セキュリティ プロトコル v3.1 にアップグレードする必要があります。 
 
 ### <a name="bot-to-connector-authenticationbot-to-connector"></a>[ボットからコネクタへの認証](#bot-to-connector)
 

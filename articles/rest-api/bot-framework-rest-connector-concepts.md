@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 20ae641a23399f5ee10aed9b31c4521f355903cf
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a3d6bd957b835a0b8d86e47595ce28506c32d636
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998959"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224557"
 ---
 # <a name="key-concepts"></a>主要な概念
 
@@ -44,10 +44,10 @@ Bot Connector サービスと Bot State サービスの両方を使用すると�
 
 Bot Framework には、C# または Node.js のいずれかでボットをビルドするのに使用できるクライアント ライブラリが用意されています。 
 
-- C# を使用してボットをビルドするには、[Bot Builder SDK for C#](../dotnet/bot-builder-dotnet-overview.md) をご利用ください。 
-- Node.js を使用してボッドをビルドするには、[Bot Builder SDK for Node.js](../nodejs/index.md) をご利用ください。 
+- C# を使用してボットをビルドするには、[Bot Framework SDK for C#](../dotnet/bot-builder-dotnet-overview.md) をご利用ください。 
+- Node.js を使用してボッドをビルドするには、[Bot Framework SDK for Node.js](../nodejs/index.md) をご利用ください。 
 
-Bot Connector サービスおよび Bot State サービスのモデル化に加えて、各 Bot Builder SDK では、会話ロジック、単純な入力 (はい/いいえ、文字列、数字、列挙など) を求める組み込みのプロンプト、強力な AI フレームワーク (<a href="https://www.luis.ai/" target="_blank">LUIS</a>) の組み込みサポートなどをカプセル化したダイアログを構築するための強力なシステムも提供されています。 
+Bot Connector サービスおよび Bot State サービスのモデル化に加えて、各 Bot Framework SDK では、会話ロジック、単純な入力 (はい/いいえ、文字列、数字、列挙など) を求める組み込みのプロンプト、強力な AI フレームワーク (<a href="https://www.luis.ai/" target="_blank">LUIS</a>) の組み込みサポートなどをカプセル化したダイアログを構築するための強力なシステムも提供されています。 
 
 > [!NOTE]
 > C# SDK または Node.js SDK を使用する代わりに、好みの言語で独自のクライアント ライブラリを <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/ConnectorAPI.json" target="_blank">Bot Connector Swagger ファイル</a>および <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/StateAPI.json" target="_blank">Bot State Swagger ファイル</a>を使用して作成できます。

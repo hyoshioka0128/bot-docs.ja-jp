@@ -1,6 +1,6 @@
 ---
 title: ボットのカスタム ストレージの実装 | Microsoft Docs
-description: Bot Builder SDK v4.0 でカスタム ストレージを構築する方法
+description: Bot Framework SDK v4.0 でカスタム ストレージを構築する方法
 keywords: カスタム, ストレージ, 状態, ダイアログ
 author: johnataylor
 ms.author: johtaylo
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/31/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b005b9f024c5813ba22cd8663c196a8c3a5bb716
-ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
+ms.openlocfilehash: 4503e2953543d2ec9c06e8cd60484a5c87d95987
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50919008"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224007"
 ---
 # <a name="implement-custom-storage-for-your-bot"></a>ボットのカスタム ストレージの実装
 
@@ -25,7 +25,7 @@ ms.locfileid: "50919008"
 
 この記事では、ボットと Azure Bot Service および Store との対話に関するセマンティクスについて説明します。
 
-Bot Builder Framework には既定の実装が含まれています。ほとんどの場合、この実装は多くのアプリケーションのニーズに合致します。これを使用するために行う必要があるのは、数行の初期化コードで各要素をつなぎ合わせることだけです。 サンプルの多くはそれだけを示しています。
+Bot Framework には既定の実装が含まれています。ほとんどの場合、この実装は多くのアプリケーションのニーズに合致します。これを使用するために行う必要があるのは、数行の初期化コードで各要素をつなぎ合わせることだけです。 サンプルの多くはそれだけを示しています。
 
 ただし、ここでの目的は、既定の実装のセマンティクスがアプリケーションで思いどおりに機能しない場合に何をすればよいかについて説明することです。 基本的なポイントは、これはフレームワークであり、動作が固定されているあらかじめ用意されたアプリケーションではないということです。つまり、フレームワーク内の多くのメカニズムの実装は既定の実装にすぎず、唯一の実装ではありません。
 

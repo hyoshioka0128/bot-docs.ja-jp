@@ -9,21 +9,20 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 01/08/2019
-ms.openlocfilehash: fd852a75b911f57743b40d252b24c6ef33b0420d
-ms.sourcegitcommit: ddc8c116887ada67642d49ee5166e7f1ae287263
+ms.openlocfilehash: da809023338847374715f7576481fc8d17a21ded
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54114896"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225397"
 ---
 ::: moniker range="azure-bot-service-3.0"
-
 
 # <a name="create-a-bot-with-azure-bot-service"></a>Azure Bot Service を使用してボットを作成する
 
 [!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
 
-Bot Service は、ボットを開発するための Bot Builder SDK や、ボットをチャンネルに接続するための Bot Framework など、ボットを作成するためのコア コンポーネントを提供します。 Bot Service には、.NET および Node.js をサポートするボットを作成するときに選択できる 5 つのテンプレートが用意されています。 このトピックでは、Bot Service を使用して、Bot Builder SDK を使用する新しいボットを作成する方法について説明します。
+Bot Service では、ボットを開発するための Bot Framework SDK や、ボットをチャンネルに接続するための Bot Framework など、ボットを作成するためのコア コンポーネントが提供されています。 Bot Service には、.NET および Node.js をサポートするボットを作成するときに選択できる 5 つのテンプレートが用意されています。 このトピックでは、Bot Service を使用して、Bot Framework SDK を使用する新しいボットを作成する方法について説明します。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 [Azure Portal](http://portal.azure.com) にログインします。
@@ -84,7 +83,7 @@ Bot Service は、ボットを開発するための Bot Builder SDK や、ボッ
 
 [!INCLUDE [pre-release-label](includes/pre-release-label.md)]
 
-Azure Bot Service は、ボットを開発するための Bot Builder SDK や、ボットをチャンネルに接続するための Bot Service など、ボットを作成するためのコア コンポーネントを提供します。 このトピックでは、.NET テンプレートまたは Node.js テンプレートのいずれかを選択し、Bot Builder SDK v4 を使用してボットを作成できます。
+Azure Bot Service は、ボットを開発するための Bot Framework SDK や、ボットをチャンネルに接続するための Bot Service など、ボットを作成するためのコア コンポーネントを提供します。 このトピックでは、.NET テンプレートまたは Node.js テンプレートのいずれかを選択し、Bot Framework SDK v4 を使用してボットを作成できます。
 
 ## <a name="prerequisites"></a>前提条件
 - [Azure](http://portal.azure.com) アカウント

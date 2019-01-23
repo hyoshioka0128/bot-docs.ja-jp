@@ -1,6 +1,6 @@
 ---
 title: ローカライズをサポートする | Microsoft Docs
-description: Bot Builder SDK for Node.js を使用して、ユーザーの在住地を判別し、ローカライズ機能を有効にする方法について説明します。
+description: Bot Framework SDK for Node.js を使用して、ユーザーの在住地を判別し、ローカライズ機能を有効にする方法について説明します。
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5ac9fabcb0c6626e1b0133b7718b135a88d4c846
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d592aa8b37e1d73e3cf9003209b985b8ca0f03f8
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998065"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224397"
 ---
 # <a name="support-localization"></a>ローカライズをサポートする
 
@@ -98,7 +98,7 @@ bot.use({
 上記のコード スニペットをボットに追加した後、[session.preferredLocale()][preferredLocal] を呼び出すと、検出された言語が自動的に返されます。 `preferredLocale()` の検索順序は次のとおりです。
 1. `session.preferredLocale()` の呼び出しによって保存されたロケール。 この値は、`session.userData['BotBuilder.Data.PreferredLocale']` に格納されます。
 2. `session.message.textLocale` に割り当てられている、検出されたロケール。
-3. ボットの構成済みの既定のロケール (例: 英語 (‘en’))。
+3. ボットの構成済みの既定のロケール (例:英語 (‘en’))。
 
 ボットの既定のロケールは、コンストラクターを使用して構成できます。
 
@@ -111,9 +111,9 @@ var bot = new builder.UniversalBot(connector, {
 ```
 
 ## <a name="localize-prompts"></a>プロンプトをローカライズする
-Bot Builder SDK の既定のローカライズ システムはファイル ベースであり、ボットは、ディスクに格納される JSON ファイルを使用して複数の言語をサポートできます。 既定では、ローカライズ システムは、ボットのプロンプトを **./locale/<IETF TAG>/index.json** ファイルで検索します。このファイルでは、プロンプトを検索するための優先ロケールを表す有効な [IETF 言語タグ][IEFT]は <IETF TAG> です。 
+Bot Framework SDK の既定のローカライズ システムはファイル ベースであり、ボットは、ディスクに格納される JSON ファイルを使用して複数の言語をサポートできます。 既定では、ローカライズ システムは、ボットのプロンプトを **./locale/<IETF TAG>/index.json** ファイルで検索します。このファイルでは、プロンプトを検索するための優先ロケールを表す有効な [IETF 言語タグ][IEFT]は <IETF TAG> です。 
 
-次のスクリーンショットは、3 つの言語 (英語、イタリア語、およびスペイン語) をサポートするボットのディレクトリ構造を示しています。
+以下のスクリーンショットでは、次の 3 つの言語をサポートするボットのディレクトリ構造を示します:英語、イタリア語、スペイン語。
 
 ![3 つのロケール用のディレクトリ構造](../media/locale-dir.png)
 

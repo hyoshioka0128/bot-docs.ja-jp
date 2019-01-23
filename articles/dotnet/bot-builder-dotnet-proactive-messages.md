@@ -1,6 +1,6 @@
 ---
-title: プロアクティブ メッセージの送信 | Microsoft Docs
-description: Bot Builder SDK for .NET を使用してプロアクティブ メッセージを送信する方法について説明します。
+title: プロアクティブ メッセージを送信する | Microsoft Docs
+description: Bot Framework SDK for .NET を使用してプロアクティブ メッセージを送信する方法について説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 201f1aa1aca0d75190335fa114ef8a26caed2a03
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d86ee290ebf33dbfd13017c3fe882ecfdd9102e4
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998351"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225727"
 ---
 # <a name="send-proactive-messages"></a>プロアクティブ メッセージを送信する
 
@@ -30,9 +30,9 @@ ms.locfileid: "49998351"
 
 [!INCLUDE [Introduction to proactive messages - part 2](../includes/snippet-proactive-messages-intro-2.md)]
 
-## <a name="send-an-ad-hoc-proactive-message"></a>アドホック プロアクティブ メッセージの送信
+## <a name="send-an-ad-hoc-proactive-message"></a>アドホック プロアクティブ メッセージを送信する
 
-以下のコード サンプルは、Bot Builder SDK for .NET を使用してアドホック プロアクティブ メッセージを送信する方法を示しています。
+以下のコード サンプルは、Bot Framework SDK for .NET を使用してアドホック プロアクティブ メッセージを送信する方法を示しています。
 
 ユーザーにアドホック メッセージを送信できるようにするには、ボットはまず現在の会話からユーザーに関する情報を収集し、保存する必要があります。 
 
@@ -95,9 +95,9 @@ await connector.Conversations.SendToConversationAsync((Activity)message);
 > [!NOTE]
 > ボットが以前に格納された会話 ID を指定した場合、メッセージは、クライアント上の既存の会話ウィンドウ内のユーザーに配信される可能性があります。 ボットが新しい会話 ID を生成した場合、クライアントが複数の会話ウィンドウをサポートしていれば、メッセージは、クライアント上の新しい会話ウィンドウ内のユーザーに配信されます。 
 
-## <a name="send-a-dialog-based-proactive-message"></a>ダイアログ ベースのプロアクティブ メッセージの送信
+## <a name="send-a-dialog-based-proactive-message"></a>ダイアログ ベースのプロアクティブ メッセージを送信する
 
-以下のコード サンプルは、Bot Builder SDK for .NET を使用してダイアログ ベースのプロアクティブ メッセージを送信する方法を示しています。
+以下のコード サンプルは、Bot Framework SDK for .NET を使用してダイアログ ベースのプロアクティブ メッセージを送信する方法を示しています。
 
 ユーザーにダイアログ ベースのプロアクティブ メッセージを送信できるようにするには、ボットはまず現在の会話から情報を収集し、保存する必要があります。 
 
@@ -177,11 +177,11 @@ public class SurveyDialog : IDialog<object>
 
 ## <a name="sample-code"></a>サンプル コード
 
-Bot Builder SDK for .NET を使用してプロアクティブ メッセージを送信する方法を示す完全なサンプルについては、GitHub で<a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">プロアクティブ メッセージのサンプル</a>を参照してください。 プロアクティブ メッセージの例の中では、<a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> がアドホック プロアクティブ メッセージの送信方法を示し、<a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank">startNewDialog</a> がダイアログ ベースのプロアクティブ メッセージの送信方法を示しています。 
+Bot Framework SDK for .NET を使用してプロアクティブ メッセージを送信する方法を示す完全なサンプルについては、GitHub で<a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">プロアクティブ メッセージのサンプル</a>を参照してください。 プロアクティブ メッセージの例の中では、<a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> がアドホック プロアクティブ メッセージの送信方法を示し、<a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank">startNewDialog</a> がダイアログ ベースのプロアクティブ メッセージの送信方法を示しています。 
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - [会話フローの設計と制御](../bot-service-design-conversation-flow.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET リファレンス</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">プロアクティブ メッセージのサンプル (GitHub)</a>
 

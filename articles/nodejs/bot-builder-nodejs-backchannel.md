@@ -1,6 +1,6 @@
 ---
 title: Web コントロールを使用して情報を交換する | Microsoft Docs
-description: Bot Builder SDK for Node.js を使用して、ボットと Web ページの間で情報を交換する方法について説明します。
+description: Bot Framework SDK for Node.js を使用して、ボットと Web ページの間で情報を交換する方法について説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d2a66955a8691210901ad5f15c9f0419eb88ab77
-ms.sourcegitcommit: 873361802bd1802f745544ba903aecf658cce639
+ms.openlocfilehash: 06fcdd26980b719e7f7db76bc585650176c1d84f
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610999"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225680"
 ---
 # <a name="use-the-backchannel-mechanism"></a>バックチャネル メカニズムの使用
 

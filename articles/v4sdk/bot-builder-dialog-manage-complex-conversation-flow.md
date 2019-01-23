@@ -1,6 +1,6 @@
 ---
 title: ブランチとループを使用して高度な会話フローを作成する | Microsoft Docs
-description: Bot Builder SDK でダイアログを使用して複雑な会話フローを管理する方法について説明します。
+description: Bot Framework SDK でダイアログを使用して複雑な会話フローを管理する方法について説明します。
 keywords: 複雑な会話フロー, 繰り返し, ループ, メニュー, ダイアログ, プロンプト, ウォーターフォール, ダイアログ セット
 author: JonathanFingold
 ms.author: v-jofing
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/28/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: da891fad019fc1725242404905565bb1072f8540
-ms.sourcegitcommit: 4db09039effc5259feba163128f4e9a3ccdd3d0d
+ms.openlocfilehash: 27bcd53e9f3d582a1206c5ed74cc844acab795b4
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585893"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225887"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>ブランチとループを使用して高度な会話フローを作成する
 

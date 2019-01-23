@@ -1,6 +1,6 @@
 ---
 title: グローバル メッセージ ハンドラーの実装 | Microsoft Docs
-description: Bot Builder SDK for .NET を使用して、特定のキーワードを含むユーザー入力をボットがリッスンして処理する方法について説明します。
+description: Bot Framework SDK for .NET を使用して、特定のキーワードを含むユーザー入力をボットがリッスンして処理する方法について説明します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3f180e721dc6ca2cf1ca85f5ff54137f16b36be5
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 86964bc39a95a23f397af649cfac6e2784dd588a
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998369"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224367"
 ---
 # <a name="implement-global-message-handlers"></a>グローバル メッセージ ハンドラーの実装
 
@@ -24,7 +24,7 @@ ms.locfileid: "49998369"
 
 ## <a name="listen-for-keywords-in-user-input"></a>ユーザー入力内のキーワードをリッスンする
 
-次のチュートリアルでは、Bot Builder SDK for .NET を使用してグローバル メッセージ ハンドラーを実装する方法を示します。
+次のチュートリアルでは、Bot Framework SDK for .NET を使用してグローバル メッセージ ハンドラーを実装する方法を示します。
 
 最初に、`Global.asax.cs` を使用して `GlobalMessageHandlersBotModule` を登録します。これは次のように実装されます。 この例で、モジュールは、設定変更要求の管理用 (`SettingsScorable`) とキャンセル要求の管理用 (`CancelScoreable`) の 2 つのスコアラブルを登録します。
 
@@ -92,10 +92,10 @@ protected override async Task PostAsync(IActivity item, string state, Cancellati
 
 ## <a name="sample-code"></a>サンプル コード
 
-Bot Builder SDK for .NET を使用してグローバル メッセージ ハンドラーを実装する方法を示す完全なサンプルについては、GitHub の<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GlobalMessageHandlers" target="_blank">グローバル メッセージ ハンドラーのサンプル</a>を参照してください。
+Bot Framework SDK for .NET を使用してグローバル メッセージ ハンドラーを実装する方法を示す完全なサンプルについては、GitHub の「<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GlobalMessageHandlers" target="_blank">Global Message Handlers sample (グローバル メッセージ ハンドラーのサンプル)</a>」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - [会話フローの設計と制御](../bot-service-design-conversation-flow.md)
-- <a href="/dotnet/api/?view=botbuilder-3.12.2.4" target="_blank">Bot Builder SDK for .NET リファレンス</a>
+- <a href="/dotnet/api/?view=botbuilder-3.12.2.4" target="_blank">Bot Framework SDK for .NET リファレンス</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GlobalMessageHandlers" target="_blank">グローバル メッセージ ハンドラーのサンプル (GitHub)</a>

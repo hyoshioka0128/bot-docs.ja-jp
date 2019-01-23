@@ -1,6 +1,6 @@
 ---
 title: 支払いを要求する | Microsoft Docs
-description: Bot Builder SDK for Node.js を使用して支払い要求を送信する方法について説明します。
+description: Bot Framework SDK for Node.js を使用して支払い要求を送信する方法について説明します。
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5bdb699e242784883f7c1a5dda895a31ff80efb1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 296004c654cfd59de6c245bf9702a80024526140
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999166"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225747"
 ---
 # <a name="request-payment"></a>支払いの要求
 
@@ -24,11 +24,11 @@ ms.locfileid: "49999166"
 > - [.NET](../dotnet/bot-builder-dotnet-request-payment.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-request-payment.md)
 
-ボットでユーザーがアイテムを購入できるようになっている場合、[リッチ カード](bot-builder-nodejs-send-rich-cards.md)に特殊な種類のボタンを含めて、支払いを要求することができます。 この記事では、Bot Builder SDK for Node.js を使用して支払い要求を送信する方法について説明します。
+ボットでユーザーがアイテムを購入できるようになっている場合、[リッチ カード](bot-builder-nodejs-send-rich-cards.md)に特殊な種類のボタンを含めて、支払いを要求することができます。 この記事では、Bot Framework SDK for Node.js を使用して支払い要求を送信する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Bot Builder SDK for Node.js を使用して支払い要求を送信するには、次の前提条件のタスクを完了している必要があります。
+Bot Framework SDK for Node.js を使用して支払い要求を送信するには、次の前提条件のタスクを完了している必要があります。
 
 ### <a name="register-and-configure-your-bot"></a>ボットを登録して構成する
 

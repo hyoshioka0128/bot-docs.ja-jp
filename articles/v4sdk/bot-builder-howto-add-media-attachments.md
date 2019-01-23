@@ -1,6 +1,6 @@
 ---
 title: メッセージにメディアを追加する | Microsoft Docs
-description: Bot Builder SDK を使用してメッセージにメディアを追加する方法について説明します。
+description: Bot Framework SDK を使用してメッセージにメディアを追加する方法について説明します。
 keywords: メディア, メッセージ, イメージ, オーディオ, ビデオ, ファイル, MessageFactory, リッチ カード, メッセージ, アダプティブ カード, ヒーロー カード, 推奨されるアクション
 author: ivorb
 ms.author: v-ivorb
@@ -10,18 +10,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/17/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fd908335c69aab7c8b68925b8ecdece79e89ab4b
-ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
+ms.openlocfilehash: 1ea9daeb35033e49232d64bfe98a223807dabf75
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735962"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317602"
 ---
 # <a name="add-media-to-messages"></a>メッセージにメディアを追加する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-ユーザーとボットの間のメッセージ交換には、イメージ、ビデオ、オーディオ、ファイルなどのメディア添付ファイルを含めることができます。 Bot Builder SDK は、ユーザーにリッチ メッセージを送信するタスクをサポートしています。 チャネル (Facebook、Skype、Slack など) がサポートするリッチ メッセージの種類を確認するには、チャネルのドキュメントで制限事項に関する情報を参照してください。 使用可能なカードの一覧については、[ユーザー エクスペリエンスの設計](../bot-service-design-user-experience.md)に関するページを参照してください。 
+ユーザーとボットの間のメッセージ交換には、イメージ、ビデオ、オーディオ、ファイルなどのメディア添付ファイルを含めることができます。 Bot Framework SDK では、ユーザーにリッチ メッセージを送信するタスクがサポートされています。 チャネル (Facebook、Skype、Slack など) がサポートするリッチ メッセージの種類を確認するには、チャネルのドキュメントで制限事項に関する情報を参照してください。 使用可能なカードの一覧については、[ユーザー エクスペリエンスの設計](../bot-service-design-user-experience.md)に関するページを参照してください。 
 
 ## <a name="send-attachments"></a>添付ファイルを送信する
 
@@ -29,7 +29,8 @@ ms.locfileid: "53735962"
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-`Activity` オブジェクトの `Attachments` プロパティには、メッセージに添付するメディア添付ファイルやリッチ カードを表す `Attachment` オブジェクトが格納されます。 メディア添付ファイルをメッセージに追加するには、`message` アクティビティ用の `Attachment` オブジェクトを作成し、`ContentType`、`ContentUrl`、`Name` の各プロパティを設定します。 `Activity` オブジェクトの `Attachments` プロパティには、メッセージに添付するメディア添付ファイルやリッチ カードを表す `Attachment` オブジェクトが格納されます。 メディア添付ファイルをメッセージに追加するには、`Attachment` メソッドを使用して `message` アクティビティ用の `Attachment` オブジェクトを作成し、`ContentType`、`ContentUrl`、`Name` の各プロパティを設定します。 ここで示すソース コードは、[添付ファイルの処理](https://aka.ms/bot-attachments-sample-code)のサンプルに基づいています。 
+`Activity` オブジェクトの `Attachments` プロパティには、メッセージに添付するメディア添付ファイルやリッチ カードを表す `Attachment` オブジェクトが格納されます。 メディア添付ファイルをメッセージに追加するには、`message` アクティビティ用の `Attachment` オブジェクトを作成し、`ContentType`、`ContentUrl`、`Name` の各プロパティを設定します。
+ここで示すソース コードは、[添付ファイルの処理](https://aka.ms/bot-attachments-sample-code)のサンプルに基づいています。 
 
 ```csharp
 using Microsoft.Bot.Builder;
@@ -219,7 +220,7 @@ await context.sendActivity(hero);
 ## <a name="send-an-adaptive-card"></a>アダプティブ カードを送信する
 ユーザーとの通信に、テキスト、画像、動画、オーディオ、ファイルなど、多彩なメッセージを送信するために、アダプティブ カードと MessageFactory が使用されます。 ただし、これには違いがいくつかあります。 
 
-まず、アダプティブ カードをサポートするのは一部のチャネルのみで、サポートしていないチャネルでは、アダプティブ カードが部分的にしかサポートされない可能性があります。 たとえば、Facebook でアダプティブ カードを送信する場合、テキストと画像は適切に機能しますが、ボタンは機能しません。 MessageFactory は、作成手順を自動化するための、Bot Builder SDK 内の単なるヘルパー クラスであり、ほとんどのチャネルでサポートされています。 
+まず、アダプティブ カードをサポートするのは一部のチャネルのみで、サポートしていないチャネルでは、アダプティブ カードが部分的にしかサポートされない可能性があります。 たとえば、Facebook でアダプティブ カードを送信する場合、テキストと画像は適切に機能しますが、ボタンは機能しません。 MessageFactory は、作成手順を自動化するための、Bot Framework SDK 内の単なるヘルパー クラスであり、ほとんどのチャネルでサポートされています。 
 
 また、アダプティブ カードではカード形式でメッセージが配信され、チャネルによって、カードのレイアウトが決まります。 MessageFactory によって配信されるメッセージの形式はチャネルによって異なり、アダプティブ カードが添付ファイルに含まれていない限り、必ずしもカード形式であるとは限りません。 
 

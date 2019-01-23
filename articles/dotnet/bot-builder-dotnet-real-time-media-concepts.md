@@ -1,6 +1,6 @@
 ---
 title: Skype によるリアルタイムのメディア通話 |Microsoft Docs
-description: Bot Builder SDK for .NET を使用して、Skype でリアルタイムの音声およびビデオでの通話を実行できるボットを作成する場合の、重要な概念について説明します。
+description: Bot Framework SDK for .NET を使用して、Skype でリアルタイムの音声およびビデオでの通話を実行できるボットを作成する場合の、重要な概念について説明します。
 author: ssulzer
 ms.author: ssulzer
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: cf11a68c7ccc404506fdfe01dcf12c7c421f4e2b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 893458a484c0e26545c23016ccbf3049adc61960
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998346"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225257"
 ---
 # <a name="real-time-media-calling-with-skype"></a>Skype によるリアルタイム メディア通話
 
@@ -58,7 +58,7 @@ Real-Time Media Platform for Bots では、ボットが Skype の呼び出し元
 
 リアルタイム メディア ボットを開発するには、Visual Studio プロジェクト内に以下の NuGet パッケージをインストールする必要があります。
 
-- [Bot Builder SDK for .NET](bot-builder-dotnet-overview.md)
+- [Bot Framework SDK for .NET](bot-builder-dotnet-overview.md)
 - [Bot Builder Real-Time Media Calling for .NET](https://www.nuget.org/packages?q=Bot.Builder.RealTimeMediaCalling)
 - [Microsoft.Skype.Bots.Media .NET ライブラリ](https://www.nuget.org/packages?q=Microsoft.Skype.Bots.Media)
 

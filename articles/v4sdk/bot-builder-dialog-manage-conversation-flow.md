@@ -1,6 +1,6 @@
 ---
 title: 連続して行われる会話フローの実装 | Microsoft Docs
-description: Bot Builder SDK for Node.js でダイアログを使用して単純な会話フローを管理する方法について説明します。
+description: Bot Framework SDK for Node.js でダイアログを使用して単純な会話フローを管理する方法について説明します。
 keywords: 単純な会話フロー, 連続して行われる会話フロー, ダイアログ, プロンプト, ウォーターフォール, ダイアログ セット
 author: JonathanFingold
 ms.author: v-jofing
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2264b6927ccb863f153f2feb829cc0fb99c711f7
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 554d040dd4c9d126fa70c24f1af5a1ac97a39204
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452084"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317621"
 ---
 # <a name="implement-sequential-conversation-flow"></a>連続して行われる会話フローの実装
 
@@ -58,7 +58,7 @@ public class MultiTurnPromptsBotAccessors
 }
 ```
 
-`Statup` クラスの `ConfigureServices` メソッドでアクセサー クラスを登録します。
+`Startup` クラスの `ConfigureServices` メソッドでアクセサー クラスを登録します。
 再度、コードの一部のみを呼び出します。
 
 ```csharp

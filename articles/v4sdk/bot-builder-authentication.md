@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 10/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27e0b54b4e790e76c55deb858e50d8c81507443a
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: 3bfbcb27aa6e38792f96e0d3fe042f02f6e11083
+ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010597"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54298319"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
 
@@ -34,7 +34,7 @@ OAuth コントローラーのホスティングやトークンのライフサ�
 - チャネルの機能向上によって新しい WebChat や DirectLineJS ライブラリなどの新しい認証機能がサポートされ、6 桁のマジック コード検証の必要性を排除。
 - Azure Portal で各種 OAuth アイデンティティ プロバイダーへの接続設定を追加、削除、および構成する機能の向上。
 - Azure AD (v1 と v2 の両エンドポイント) や GitHub など、すぐに利用できる各種アイデンティティ プロバイダーのサポート。
-- C# および Node.js の Bot Builder SDK の更新により、トークンの取得、OAuthCard の作成、TokenResponse イベントの処理が可能に。
+- C# および Node.js の Bot Framework SDK の更新により、トークンの取得、OAuthCard の作成、TokenResponse イベントの処理が可能に。
 - Azure AD に対して認証されるボットを作成する方法のサンプル。
 
 この記事の手順を応用して、このような機能を既存のボットに追加することができます。 以下は、新しい認証機能の例を示すサンプル ボットです
@@ -256,7 +256,8 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 1. ボットを開始します (デバッグは任意)。
 1. ページの localhost ポート番号をメモします。 この情報はボットと対話するために必要になります。
 1. エミュレーターを起動します。
-1. ボットに接続します。
+1. ボットに接続します。 認証を使用するときは、ボットの構成で **Microsoft アプリ ID** と **Microsoft アプリ パスワード**が使用されていることを確認します
+1. Azure Bot Service が使用できるようになったときにエミュレーターにトークンを返すことができるように、エミュレーターの設定で、**[Use a sign-in verification code for OAuthCards]\(OAuthCards に対してサインイン検証コードを使用する\)** がオンになっていて、**ngrok** が有効になっていることを確認します。
 
    まだ接続を構成していない場合、アドレスと、ボットの Microsoft アプリ ID およびパスワードを入力します。 ボットの URL に `/api/messages` を追加します。 URL は `http://localhost:portNumber/api/messages` のようになります。
 
@@ -486,4 +487,4 @@ private isTeamsVerificationInvoke(context: TurnContext): boolean {
 その後のボットの呼び出しでは、このサンプル ボットによってトークンが決してキャッシュされないことに注意してください。 これは、ボットがいつでも Azure Bot Service にトークンを要求できるからです。 トークンのライフサイクルの管理やトークンの更新などはすべて Azure Bot Service によって自動的に行われるため、ボットでこれらを行う必要はありません。
 
 ## <a name="additional-resources"></a>その他のリソース
-[Bot Builder SDK](https://github.com/microsoft/botbuilder)
+[Bot Framework SDK](https://github.com/microsoft/botbuilder)

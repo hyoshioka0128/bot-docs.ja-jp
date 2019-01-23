@@ -1,6 +1,6 @@
 ---
 title: Azure Table Storage を使用したカスタム状態データの管理 | Microsoft Docs
-description: Bot Builder SDK for Node.js で Azure Table Storage を使用して状態データを保存および取得する方法について取り上げます。
+description: Bot Framework SDK for Node.js で Azure Table Storage を使用して状態データを保存および取得する方法について取り上げます。
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5bf308c440e08cb3c9d4730212fbba3053de459d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 5c2b8832401ccc9260c9aa872c0848b3a3e8445b
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998341"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225717"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-nodejs"></a>Node.js 用 Azure Table Storage を使用したカスタム状態データの管理
 
@@ -24,7 +24,7 @@ ms.locfileid: "49998341"
 
 - State API のスループットが高い (パフォーマンスをより強力に制御できる)
 - geo 分布に伴う待ち時間が少ない
-- データの格納場所を制御できる (例: 米国西部と米国東部)
+- データの格納場所を制御できる (例:米国西部と米国東部)
 - 実際の状態データにアクセスできる
 - 状態データのデータベースが他のボットと共有されない
 - 32 KB を超えるデータを格納できる

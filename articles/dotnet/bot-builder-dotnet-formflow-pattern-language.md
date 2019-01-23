@@ -1,6 +1,6 @@
 ---
 title: パターン言語によるユーザー エクスペリエンスのカスタマイズ | Microsoft Docs
-description: パターン言語と Bot Builder SDK for .NET を使用した FormFlow プロンプトのカスタマイズ方法や FormFlow テンプレートのオーバーライド方法を学習します。
+description: パターン言語と Bot Framework SDK for .NET を使用した FormFlow プロンプトのカスタマイズ方法や FormFlow テンプレートのオーバーライド方法を学習します。
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: bc0a2819f3adea63b53e464808f3bbaf5b93814a
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f3d46431191638cc41026f6c020a5f04de21ff0d
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998049"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225637"
 ---
 # <a name="customize-user-experience-with-pattern-language"></a>パターン言語によるユーザー エクスペリエンスのカスタマイズ
 
@@ -144,7 +144,7 @@ What kind of sandwich would you like?
 - [FormBuilder によるフォームのカスタマイズ](bot-builder-dotnet-formflow-formbuilder.md)
 - [フォーム コンテンツのローカライズ](bot-builder-dotnet-formflow-localize.md)
 - [JSON スキーマによるフォームの定義](bot-builder-dotnet-formflow-json-schema.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET リファレンス</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>
 
 [promptAttribute]: /dotnet/api/microsoft.bot.builder.formflow.promptattribute
 
