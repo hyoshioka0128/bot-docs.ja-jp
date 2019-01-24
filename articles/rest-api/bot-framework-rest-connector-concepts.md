@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: a3d6bd957b835a0b8d86e47595ce28506c32d636
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 01/16/2019
+ms.openlocfilehash: 7464e6f19ac1cd1a5744af845bd62c3a48cd2eb8
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224557"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453826"
 ---
 # <a name="key-concepts"></a>主要な概念
 
@@ -50,7 +50,7 @@ Bot Framework には、C# または Node.js のいずれかでボットをビル
 Bot Connector サービスおよび Bot State サービスのモデル化に加えて、各 Bot Framework SDK では、会話ロジック、単純な入力 (はい/いいえ、文字列、数字、列挙など) を求める組み込みのプロンプト、強力な AI フレームワーク (<a href="https://www.luis.ai/" target="_blank">LUIS</a>) の組み込みサポートなどをカプセル化したダイアログを構築するための強力なシステムも提供されています。 
 
 > [!NOTE]
-> C# SDK または Node.js SDK を使用する代わりに、好みの言語で独自のクライアント ライブラリを <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/ConnectorAPI.json" target="_blank">Bot Connector Swagger ファイル</a>および <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/StateAPI.json" target="_blank">Bot State Swagger ファイル</a>を使用して作成できます。
+> C# SDK または Node.js SDK を使用する代わりに、好みの言語で独自のクライアント ライブラリを <a href="https://aka.ms/connector-swagger-file" target="_blank">Bot Connector Swagger ファイル</a>および <a href="https://aka.ms/state-swagger-file" target="_blank">Bot State Swagger ファイル</a>を使用して作成できます。
 
 ## <a name="additional-resources"></a>その他のリソース
 
