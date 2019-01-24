@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 11/28/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 77dbf8658030a18596507129c88156601d4272e5
-ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
+ms.openlocfilehash: 4c43426f508d629c325889da6a9f7b06cac7e846
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54298309"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453896"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 
@@ -147,13 +147,13 @@ public void ConfigureServices(IServiceCollection services)
         }
 
         options.CredentialProvider = new SimpleCredentialProvider(endpointService.AppId, endpointService.AppPassword);
-        
+
         // ...
     });
 }
 ```
 
-次に、`Luis.cs` ファイルで、ボットがこの LUIS インスタンスを取得します。
+次に、`LuisBot.cs` ファイルで、ボットがこの LUIS インスタンスを取得します。
 
 ```csharp
 public class LuisBot : IBot

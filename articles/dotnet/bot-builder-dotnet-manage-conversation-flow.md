@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d8e482d8f4003ad7bcd807e8fd12e3c68c4ce8c8
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: cfb849474c23c62a666e013c700b755519c1868a
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225897"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453807"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>ダイアログを使用して会話フローを管理する
 
@@ -129,11 +129,11 @@ private async Task NameDialogResumeAfter(IDialogContext context, IAwaitable<stri
 
 ## <a name="sample-code"></a>サンプル コード 
 
-Bot Framework SDK for .NET でダイアログを使用して会話を管理する方法の完全なサンプルについては、GitHub の <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-BasicMultiDialog" target="_blank">マルチサイアログの基本的なサンプル</a>を参照してください。
+Bot Framework SDK for .NET でダイアログを使用して会話を管理する方法の完全なサンプルについては、GitHub の [マルチサイアログの基本的なサンプル](https://aka.ms/v3cs-MultiDialog-Sample)を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - [ダイアログ](bot-builder-dotnet-dialogs.md)
 - [会話フローの設計と制御](../bot-service-design-conversation-flow.md)
-- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-BasicMultiDialog" target="_blank">マルチダイアログの基本的なサンプル (GitHub)</a>
+- [マルチダイアログの基本的なサンプル (GitHub)](https://aka.ms/v3cs-MultiDialog-Sample)
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>
