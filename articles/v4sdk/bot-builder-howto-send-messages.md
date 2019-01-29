@@ -8,20 +8,22 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/08/2018
+ms.date: 01/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9cfe077c8d8573145625b211c3c1ca05a6a21e19
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: ff52a62353df8983d94bbd09276de4ae94e6535e
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224817"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453876"
 ---
-# <a name="send-and-receive-text-message"></a>テキスト メッセージを送受信する 
+# <a name="send-and-receive-text-message"></a>テキスト メッセージを送受信する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 ボットでユーザーと通信し、同様にボットで通信を受け取る主要な方法は、**メッセージ** アクティビティを利用することです。 メッセージにはプレーンテキストで構成されている単純なものもあれば、カードや添付など、よりリッチなコンテンツが含まれるものもあります。 ボットのターン ハンドラーでは、ユーザーからメッセージを受け取ります。そこからユーザーに応答を送信できます。 ターン コンテキスト オブジェクトによって、ユーザーにメッセージを戻すためのメソッドが与えられます。 この記事では、単純なテキスト メッセージを送信する方法について説明します。
+
+Markdown はほとんどのテキスト フィールドでサポートされていますが、サポート状況はチャネルごとに異なる場合があります。
 
 ## <a name="send-a-text-message"></a>テキスト メッセージの送信
 
@@ -57,12 +59,16 @@ var responseMessage = turnContext.Activity.Text;
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-ボットの `OnTurnAsync` メソッドで、次のコードを使用してメッセージを受信します。 
+ボットの `OnTurnAsync` メソッドで、次のコードを使用してメッセージを受信します。
+
 ```javascript
 let text = turnContext.activity.text;
 ```
+
 ---
 
-
 ## <a name="additional-resources"></a>その他のリソース
-一般的なアクティビティ処理の詳細については、[アクティビティの処理](~/v4sdk/bot-builder-basics.md#the-activity-processing-stack)に関するページをご覧ください。 よりリッチなコンテンツを送信する場合、[リッチ メディア](bot-builder-howto-add-media-attachments.md)添付ファイルを追加する方法をご覧ください。
+
+- 一般的なアクティビティ処理の詳細については、[アクティビティの処理](~/v4sdk/bot-builder-basics.md#the-activity-processing-stack)に関するページをご覧ください。
+- よりリッチなコンテンツを送信する場合、[リッチ メディア](bot-builder-howto-add-media-attachments.md)添付ファイルを追加する方法をご覧ください。
+- 書式設定の詳細については、Bot Framework のアクティビティ スキーマに関するページの[メッセージ アクティビティ](https://aka.ms/botSpecs-activitySchema#message-activity)に関するセクションをご覧ください。

@@ -8,20 +8,20 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/17/2018
+ms.date: 01/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1ea9daeb35033e49232d64bfe98a223807dabf75
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 4805e1a3c86ce28833054ce374a57c5c40b717e1
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317602"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453866"
 ---
 # <a name="add-media-to-messages"></a>メッセージにメディアを追加する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-ユーザーとボットの間のメッセージ交換には、イメージ、ビデオ、オーディオ、ファイルなどのメディア添付ファイルを含めることができます。 Bot Framework SDK では、ユーザーにリッチ メッセージを送信するタスクがサポートされています。 チャネル (Facebook、Skype、Slack など) がサポートするリッチ メッセージの種類を確認するには、チャネルのドキュメントで制限事項に関する情報を参照してください。 使用可能なカードの一覧については、[ユーザー エクスペリエンスの設計](../bot-service-design-user-experience.md)に関するページを参照してください。 
+ユーザーとボットの間のメッセージ交換には、イメージ、ビデオ、オーディオ、ファイルなどのメディア添付ファイルを含めることができます。 Bot Framework SDK では、ユーザーにリッチ メッセージを送信するタスクがサポートされています。 チャネル (Facebook、Skype、Slack など) がサポートするリッチ メッセージの種類を確認するには、チャネルのドキュメントで制限事項に関する情報を参照してください。 使用可能なカードの一覧については、[ユーザー エクスペリエンスの設計](../bot-service-design-user-experience.md)に関するページを参照してください。
 
 ## <a name="send-attachments"></a>添付ファイルを送信する
 
@@ -84,11 +84,11 @@ getInternetAttachment() {
 
 ## <a name="send-a-hero-card"></a>ヒーロー カードを送信する
 
-シンプルなイメージ添付ファイルまたはビデオ添付ファイルだけでなく、**ヒーロー カード**を添付することもできます。これにより、1 つのオブジェクトに含まれるイメージとボタンを結合してユーザーに送信することができます。
+シンプルなイメージ添付ファイルまたはビデオ添付ファイルだけでなく、**ヒーロー カード**を添付することもできます。これにより、1 つのオブジェクトに含まれるイメージとボタンを結合してユーザーに送信することができます。 Markdown はほとんどのテキスト フィールドでサポートされていますが、サポート状況はチャネルごとに異なる場合があります。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-ヒーロー カードとボタンを使用してメッセージを作成するには、`HeroCard` をメッセージに添付します。 ここで示すソース コードは、[添付ファイルの処理](https://aka.ms/bot-attachments-sample-code)のサンプルに基づいています。 
+ヒーロー カードとボタンを使用してメッセージを作成するには、`HeroCard` をメッセージに添付します。 ここで示すソース コードは、[添付ファイルの処理](https://aka.ms/bot-attachments-sample-code)のサンプルに基づいています。
 
 ```csharp
 using Microsoft.Bot.Builder;
@@ -363,7 +363,7 @@ await context.sendActivity(messageWithCarouselOfCards);
 
 ## <a name="additional-resources"></a>その他のリソース
 
-カードのスキーマの詳細については、[Bot Framework のカード スキーマ](https://aka.ms/botSpecs-cardSchema)に関するページを参照してください。
+スキーマの詳細については、「[Bot Framework card schema (Bot Framework のカード スキーマ)](https://aka.ms/botSpecs-cardSchema)」と Bot Framework のアクティビティ スキーマに関するページの「[Message activity (メッセージ アクティビティ)](https://aka.ms/botSpecs-activitySchema#message-activity)」セクションをご覧ください。
 
 サンプル コードが用意されています。カードについては[C#](https://aka.ms/bot-cards-sample-code)/[JS](https://aka.ms/bot-cards-js-sample-code)、アダプティブ カードについては[C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code)、添付については、[C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-sample-code-js)、推奨されるアクションについては[C#](https://aka.ms/SuggestedActionsCSharp)/[JS](https://aka.ms/SuggestedActionsJS) を参照してください。
 その他のサンプルについては、[GitHub](https://aka.ms/bot-samples-readme) の Bot Builder サンプル リポジトリを参照してください。

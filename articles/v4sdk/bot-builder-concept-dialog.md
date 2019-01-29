@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/28/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fc44701d7739ecfca662d27cad4f521caa7f4d6d
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 31a0497f1422cee8c4966e59d94a89ae359a5cb7
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225487"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453936"
 ---
 # <a name="dialogs-library"></a>ダイアログ ライブラリ
 
@@ -131,11 +131,22 @@ ms.locfileid: "54225487"
 
 ### <a name="to-start-a-dialog"></a>ダイアログを開始するには
 
-ダイアログを開始するには、開始する "*ダイアログ ID*" を、ダイアログ コンテキストの *begin dialog*、*prompt*、または *replace dialog* メソッドに渡します。 begin dialog メソッドは、スタックの一番上にダイアログをプッシュします。replace dialog メソッドは、現在のダイアログをスタックから取り出し、置き換えるダイアログをスタックにプッシュします。
+ダイアログを開始するには、開始する "*ダイアログ ID*" を、ダイアログ コンテキストの *begin dialog*、*prompt*、または *replace dialog* メソッドに渡します。
+
+* begin dialog メソッドは、スタックの一番上にダイアログをプッシュします。
+* replace dialog メソッドは、現在のダイアログをスタックから取り除き、それに置き換わるダイアログをスタックにプッシュします。 置き換えられたダイアログは取り消され、そのインスタンスに含まれているすべての情報が破棄されます。
+
+_options_ パラメーターを使用して、ダイアログの新しいインスタンスに情報を渡します。
+新しいダイアログに渡されたオプションには、ダイアログの任意のステップで、ステップ コンテキストの *options* プロパティを通じてアクセスできます。
+コード例の使用方法については、「[ブランチとループを使用して高度な会話フローを作成する](bot-builder-dialog-manage-complex-conversation-flow.md)」を参照してください。
 
 ### <a name="to-continue-a-dialog"></a>ダイアログを続行するには
 
 ダイアログを続行するには、*continue dialog* メソッドを呼び出します。 continue dialog メソッドでは、常に、スタックの最上位のダイアログ (アクティブなダイアログ) を続行します (存在する場合)。 続行したダイアログが終了する場合は、同じターン内の続行する親コンテキストに制御が渡されます。
+
+ターン間の状態を保持するには、ステップ コンテキストの *values* プロパティを使用します。
+先行ターンでこのコレクションに追加された値はすべて、後続のターンで利用できます。
+コード例の使用方法については、「[ブランチとループを使用して高度な会話フローを作成する](bot-builder-dialog-manage-complex-conversation-flow.md)」を参照してください。
 
 ### <a name="to-end-a-dialog"></a>ダイアログを終了するには
 
@@ -152,10 +163,11 @@ end dialog メソッドは、ダイアログ コンテキストのある任意�
 
 ### <a name="repeating-a-dialog"></a>ダイアログの繰り返し
 
-ダイアログを繰り返すには、*replace dialog* メソッドを使用します。 ダイアログ コンテキストの *replace dialog* メソッドは、現在のアクティブダイアログをスタックから取り除き (通常とは違いダイアログを終了しない)、それに置き換わるダイアログをスタックの一番上にプッシュして、そのダイアログを開始します。 この手法は、[複雑な会話フロー](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)を処理する優れた方法であり、メニューを管理する優れた手法でもあります。 このメソッドを使用して、ダイアログをそれ自体に置き換えることでループを作成できます。
+ダイアログをそれ自体と置き換えることで、ループを作成できます。
+この手法は、[複雑な会話フロー](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)を処理する優れた方法であり、メニューを管理する優れた手法でもあります。
 
 > [!NOTE]
-> 現在のダイアログ ボックスの内部状態を維持する必要がある場合は、*replace dialog* メソッドへの呼び出しで、ダイアログの新しいインスタンスに情報を渡した後、ダイアログを適切に初期化する必要があります。 新しいダイアログに渡されたオプションには、ダイアログの任意のステップで、ステップ コンテキストの *options* プロパティを通じてアクセスできます。
+> 現在のダイアログ ボックスの内部状態を維持する必要がある場合は、*replace dialog* メソッドへの呼び出しで、ダイアログの新しいインスタンスに情報を渡した後、ダイアログを適切に初期化する必要があります。
 
 ### <a name="branch-a-conversation"></a>会話の分岐
 

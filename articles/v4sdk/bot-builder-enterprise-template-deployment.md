@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e557b359da09615d2998c4c729f57ffb9faf0de1
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: dd52376e049f1f0e09216e0065ced7443b6eb02a
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224967"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453886"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Enterprise Bot Template - ボットのデプロイ
 
@@ -81,8 +81,10 @@ Enterprise Template Bot のエンド ツー エンドの操作には、次の依
 
 作成したプロジェクト内の README.md には、作成したボット名とジェネリック バージョンで更新された `msbot clone services` クローン サービスのコマンド ラインのサンプルが含まれています。以下にそれを示します。 前の手順からオーサリング キーが更新されていることを確認し、使用する Azure データセンターの場所 (米国西部、西ヨーロッパなど) を選択します。 前の手順で取得した LUIS のオーサリング キーが、以下で指定するリージョン (luis.ai の場合は米国西部、eu.luis.ai の場合は西ヨーロッパなど) のキーであることを確認します。 最後に、使用する言語のフォルダーを参照します (例: `DeploymentScripts\en`)。
 
+> **注** 次の msbot コマンドで、"YOUR-BOT-NAME" にお客様のボット名を指定して Azure サービス名を作成します。 Azure サービス名に使用できる文字は、英小文字、数字、およびダッシュ ("-") です。 ボット名には、アンダースコア ("_") など、アルファベット以外の文字は含めないでください。
+
 ```shell
-msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\LOCALE_FOLDER" --location "REGION"
+msbot clone services --name "YOUR-BOT-NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\LOCALE_FOLDER" --location "REGION"
 ```
 
 > 一部のユーザーについては既知の問題があり、デプロイを実行するときに `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again` というエラーが発生する可能性があります。 この場合は、 https://apps.dev.microsoft.com を参照し、ApplicationID とパスワード/シークレットを取得する新しいアプリケーションを手動で作成してください。 上記の msbot クローン サービス コマンドを実行するときに、2 つの新しい引数 `appId` および `appSecret` を指定して、取得した値を渡します。 解析の問題が発生しないように、シークレットは必ず二重引用符で囲んでください (例: `-appSecret "YOUR_SECRET"`)
@@ -119,7 +121,7 @@ Bot Framework Emulator に問題がある場合、まずは最新の Bot Framewo
 テストはエンド ツー エンドでローカルで実行できます。 追加テストを行うボットを Azure にデプロイする準備ができたら、次のコマンドを使用してソース コードを公開できます。これは、ソース コードの更新をプッシュするときにいつでも実行できます。
 
 ```shell
-az bot publish -g YOUR_BOT_NAME -n YOUR_BOT_NAME --proj-file YOUR_BOT_NAME.csproj --sdk-version v4
+az bot publish -g YOUR-BOT-NAME -n YOUR-BOT-NAME --proj-file YOUR-BOT-NAME.csproj --sdk-version v4
 ```
 
 ## <a name="enabling-more-scenarios"></a>他のシナリオの有効化

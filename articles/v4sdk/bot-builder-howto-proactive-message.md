@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 82811d202e0e20169ae2ebb348949366009d2421
-ms.sourcegitcommit: 4661b9bb31d74731dbbb16e625be088b44ba5899
+ms.openlocfilehash: 7a9a2e4f30d1e9b293e51a921afce57d243376d7
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51826929"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453966"
 ---
 # <a name="get-notification-from-bots"></a>ボットから通知を取得する
 
@@ -38,7 +38,8 @@ ms.locfileid: "51826929"
 通知をより円滑に処理するには、会話フローに通知を統合するための他の方法を検討してください (会話の状態にフラグを設定する方法や、通知をキューに追加する方法など)。
 
 ## <a name="prerequisites"></a>前提条件
-- [ボットの基本](bot-builder-basics.md)を理解する。 
+
+- [ボットの基礎](bot-builder-basics.md)と[状態の管理](bot-builder-concept-state.md)について理解していること。
 - **プロアクティブ メッセージ サンプル**のコピー ([C#](https://aka.ms/proactive-sample-cs) または [JS](https://aka.ms/proactive-sample-js))。 このサンプルは、この記事でプロアクティブ メッセージングを説明するために使用します。 
 
 ## <a name="about-the-sample-code"></a>サンプル コードについて
@@ -48,9 +49,12 @@ ms.locfileid: "51826929"
 ## <a name="define-job-data-and-state"></a>ジョブのデータと状態を定義する
 
 このシナリオでは、さまざまな会話でさまざまなユーザーが作成できる任意のジョブを追跡しています。 会話の参照やジョブ識別子など、各ジョブに関する情報を格納する必要があります。 次が必要です。
+
 - プロアクティブ メッセージを適切な会話に送信できるようにするための会話の参照。
 - ジョブを識別する手段。 この例では、単純なタイムスタンプを使用します。
 - 会話の状態やユーザーの状態とは別に、ジョブの状態を格納すること。
+
+"_ボットの状態_" を拡張して、ボット全体にわたる独自の状態管理オブジェクトを定義します。 Bot Framework では、状態の永続化と取得を行うために、"_ストレージ キー_" とターン コンテキストを使用します。 詳細については、[状態の管理](bot-builder-concept-state.md)に関するページをご覧ください。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -77,7 +81,7 @@ public class JobLog : Dictionary<long, JobLog.JobData>
 }
 ```
 
-### <a name="define-a-state-middleware-class"></a>状態ミドルウェア クラスを定義する
+### <a name="define-a-state-management-class"></a>状態管理クラスを定義する
 
 `JobState` クラスは、会話の状態やユーザーの状態とは別に、ジョブの状態を管理します。
 
@@ -129,11 +133,10 @@ public void ConfigureServices(IServiceCollection services)
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-ボットでは、メッセージ間でダイアログとユーザーの状態を保持する状態ストレージ システムが必要です。この場合、このシステムはメモリ内ストレージ プロバイダーを使用して定義されます。 
+ボットでは、メッセージ間でダイアログとユーザーの状態を保持する状態ストレージ システムが必要です。この場合、このシステムはメモリ内ストレージ プロバイダーを使用して定義されます。
 
 ```javascript
-// index.js 
-
+// index.js
 
 const memoryStorage = new MemoryStorage();
 const botState = new BotState(memoryStorage, () => 'proactiveBot.botState');
@@ -173,8 +176,6 @@ server.post('/api/messages', (req, res) => {
 - ジョブの作成と完了のためのメソッド
 
 ### <a name="declare-the-class"></a>クラスを宣言する
-
-ユーザーからの各操作によって `ProactiveBot` クラスのインスタンスが作成されます。 必要になるたびにサービスが作成されるプロセスは、有効期間が一時的なサービスと呼ばれます。 作成にコストがかかるオブジェクトや、有効期間が 1 回のターンを超えるオブジェクトの管理は慎重に行う必要があります。
 
 ユーザーからの各操作によって `ProactiveBot` クラスのインスタンスが作成されます。 必要になるたびにサービスが作成されるプロセスは、有効期間が一時的なサービスと呼ばれます。 作成にコストがかかるオブジェクトや、有効期間が 1 回のターンを超えるオブジェクトの管理は慎重に行う必要があります。
 

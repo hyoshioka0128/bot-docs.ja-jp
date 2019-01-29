@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/08/2018
+ms.date: 01/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3f4b2dd49b738132affd19fea8fd5dbfbd6ff99e
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 0a931ad73ed4d7a71978555df0e77d6b2bd2dbbc
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224567"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453926"
 ---
 # <a name="reuse-dialogs"></a>ダイアログの再利用
 
@@ -230,6 +230,14 @@ const myBot = new MyBot(conversationState, userState);
 ```
 
 ---
+
+## <a name="about-component-dialogs"></a>コンポーネント ダイアログについて
+
+コンポーネント ダイアログを使用すると、大規模なダイアログ セットをより管理しやすい要素に分割して、特定のシナリオを処理する独立したダイアログを作成できます。 各要素には独自のダイアログ セットがあり、その要素を含むダイアログ セットとの名前の競合を回避しています。
+
+コンポーネント ダイアログにダイアログとプロンプトを追加するには、_add dialog_ メソッドを使用します。
+このメソッドを使用して追加した最初の項目が初期ダイアログとして設定されますが、コンポーネント ダイアログのコンストラクターで _initial dialog_ プロパティを明示的に設定することで、これを変更することができます。
+コンポーネント ダイアログを開始すると、その _initial dialog_ が開始されます。
 
 ## <a name="define-the-check-in-component-dialog"></a>チェックイン コンポーネント ダイアログを定義する
 
@@ -604,9 +612,9 @@ class SetAlarmDialog extends ComponentDialog {
         this.initialDialogId = dialogId;
 
         // Define the prompts used in this conversation flow.
-        this.dialogs.add(new DateTimePrompt('datePrompt'));
+        this.addDialog(new DateTimePrompt('datePrompt'));
 
-        this.dialogs.add(new WaterfallDialog(dialogId, [
+        this.addDialog(new WaterfallDialog(dialogId, [
             async function (step) {
                 step.values.wakeUp = {};
                 if (step.options && step.options.roomNumber) {

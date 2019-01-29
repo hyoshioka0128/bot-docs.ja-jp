@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: tools
 ms.date: 11/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f9eafa708be2ce597ec2679fb6975d7da71951ea
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 07df43111f3b2e57dcf0140f291a771e749de563
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225877"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453857"
 ---
 # <a name="manage-bots-using-cli-tools"></a>CLI ツールを使用したボットの管理
 
@@ -63,6 +63,7 @@ Here's a form for you
 ```
 
 ### <a name="create-a-transcript-file-from-chat-file"></a>.chat ファイルからトランスクリプト ファイルを作成する
+
 Chatdown コマンドは、次のようになります。
 
 ```bash
@@ -72,13 +73,15 @@ chatdown sample.chat > sample.transcript
 これにより、`sample.chat` を使用して `sample.transcript` が出力されます。 詳細については、[Chatdown CLI][chatdown] に関するページを参照してください。
 
 ## <a name="build"></a>構築
+
 ### <a name="create-a-luis-application-with-ludown"></a>LUDown を使用して LUIS アプリケーションを作成する
+
 LUDown ツールは、LUIS と QnA の両方の新しい .json モデルを作成するために使用できます。  
 LUIS ポータルから行うのと同じように、LUIS アプリケーションの[意図](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents)と[エンティティ](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-entities)を定義することができます。
 
 '#\<intent-name\>' には、新しい意図の定義セクションを記述します。 その後の各行は、その意図を表す[発話](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-example-utterances)の一覧です。
 
-たとえば、次のように、1 つの .lu ファイルに複数の LUIS 意図を作成できます。 
+たとえば、次のように、1 つの .lu ファイルに複数の LUIS 意図を作成できます。
 
 ```LUDown
 # Greeting
@@ -95,12 +98,12 @@ LUIS ポータルから行うのと同じように、LUIS アプリケーショ�
 
 ### <a name="create-qna-pairs-with-ludown"></a>LUDown を使用して QnA ペアを作成する
 
-.lu ファイル形式では、次の表記を使用して、QnA ペアもサポートしています。 
+.lu ファイル形式では、次の表記を使用して、QnA ペアもサポートしています。
 
 ~~~LUDown
 > comment
 ### ? question ?
-  ```markdown
+  ```
     answer
   ```
 ~~~
@@ -109,7 +112,7 @@ LUDown ツールでは、質問と回答が自動的に QnA Maker の JSON フ�
 
 ~~~LUDown
 ### ? How do I change the default message for QnA Maker?
-  ```markdown
+  ```
   You can change the default message if you use the QnAMakerDialog. 
   See [this link](https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle) for details.
   ```
@@ -120,14 +123,14 @@ LUDown ツールでは、質問と回答が自動的に QnA Maker の JSON フ�
 ~~~LUDown
 ### ? What is your name?
 - What should I call you?
-  ```markdown
+  ```
     I'm the echoBot! Nice to meet you.
   ```
 ~~~
 
 ### <a name="generate-json-models-with-ludown"></a>LUDown を使用して .json モデルを生成する
 
-.lu 形式で LUIS または QnA の言語コンポーネントを定義すると、LUIS .json、QnA .json または QnA .tsv ファイルに発行できます。 LUDown ツールは、実行すると、同じ作業ディレクトリ内のすべての .lu ファイルを検索して解析します。 LUDown ツールは、.lu ファイルを使用することで、LUIS または QnA のどちらもターゲットにできるため、一般的なコマンド **ludown parse <Service> -- in <luFile>** を使用して、どの言語サービス用に生成するかを指定するだけで済みます。 
+.lu 形式で LUIS または QnA の言語コンポーネントを定義すると、LUIS .json、QnA .json または QnA .tsv ファイルに発行できます。 LUDown ツールは、実行すると、同じ作業ディレクトリ内のすべての .lu ファイルを検索して解析します。 LUDown ツールは、.lu ファイルを使用することで、LUIS または QnA のどちらもターゲットにできるため、一般的なコマンド **ludown parse \<to-service-type> -- in \<lu-file-path>** を使用して、どの言語サービス用に生成するかを指定するだけで済みます。
 
 サンプルの作業ディレクトリには、解析する 2 つの .lu ファイル (LUIS モデルを作成する '1.lu' と QnA ナレッジ ベースを作成する 'qna1.lu') があります。
 
@@ -144,7 +147,7 @@ ludown parse ToLuis --in <luFile>
 同様に、QnA ナレッジ ベースを作成するには、解析の対象を変更するだけです。
 
 ```shell
-ludown parse ToQna --in <luFile> 
+ludown parse ToQna --in <luFile>
 ```
 
 その結果として生成される JSON ファイルは、LUIS または QnA のそれぞれのポータルを通じて、または新しい CLI ツールを使用して使用することができます。 詳細については、[LUdown CLI][ludown] の GitHub リポジトリを参照してください。
@@ -290,10 +293,10 @@ az bot show [options] --msbot | msbot connect bot --stdin
 | --resource-group -g               | リソース グループの名前。 `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。  既定値: build2018。 |
 | --tags                            | ボットに追加する一連のタグ。 |
 
-
 ### <a name="configure-channels"></a>チャネルを構成する
 
-Azure CLI を使用して、ボットのチャネルを管理できます。 
+Azure CLI を使用して、ボットのチャネルを管理できます。
+
 ```shell
 >az bot -h
 Group
@@ -321,7 +324,9 @@ Group
 ```
 
 ## <a name="additional-information"></a>追加情報
+
 - [GitHub の Bot Framework ツール][cliTools]
+- [.lu ファイル形式](https://aka.ms/ludown-file-format)
 
 <!-- Footnote links -->
 
