@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dd52376e049f1f0e09216e0065ced7443b6eb02a
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.openlocfilehash: c9a462c1ff9a1de8bc7929cb11368191aafd031a
+ms.sourcegitcommit: 1ed179ae48bd2e28920a3f1e270e59d15d86fbf7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453886"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54892985"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Enterprise Bot Template - ボットのデプロイ
 
@@ -87,7 +87,10 @@ Enterprise Template Bot のエンド ツー エンドの操作には、次の依
 msbot clone services --name "YOUR-BOT-NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\LOCALE_FOLDER" --location "REGION"
 ```
 
-> 一部のユーザーについては既知の問題があり、デプロイを実行するときに `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again` というエラーが発生する可能性があります。 この場合は、 https://apps.dev.microsoft.com を参照し、ApplicationID とパスワード/シークレットを取得する新しいアプリケーションを手動で作成してください。 上記の msbot クローン サービス コマンドを実行するときに、2 つの新しい引数 `appId` および `appSecret` を指定して、取得した値を渡します。 解析の問題が発生しないように、シークレットは必ず二重引用符で囲んでください (例: `-appSecret "YOUR_SECRET"`)
+> 一部のユーザーについては既知の問題があり、デプロイを実行するときに `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again` というエラーが発生する可能性があります。 この場合は、 https://apps.dev.microsoft.com を参照し、ApplicationID とパスワード/シークレットを取得する新しいアプリケーションを手動で作成してください。 上記の msbot クローン サービス コマンドを実行するときに、2 つの新しい引数 `appId` および `appSecret` を指定して、取得した値を渡します。 シェルによってコマンドと解釈される可能性のある、パスワードの特殊文字をエスケープする必要があります。
+>   - "*Windows コマンド プロンプト*" では、appSecret を二重引用符で囲みます。 例 msbt clone services --name xxxx --luisAuthoringKey xxxx --location xxxx --folder bot.recipt ***--appSecret "!|%gr%"***
+>   - *Windows PowerShell の場合、--% 引数の後に appSecret を渡します。 例 msbot clone services --name xxxx --luisAuthoringKey xxxx --location xxxx --folder bot.recipt ***--% --appSecret "!|%gr%"***
+>   - "*MacOS または Linux*" の場合、appSecret を単一引用符で囲みます。 例 msbot clone services --name xxxx --luisAuthoringKey xxxx --location xxxx --folder bot.recipt ***--appSecret '!|%gr%'***
 
 msbot ツールに、場所や SKU など、デプロイ計画の概要が表示されます。 続行する前に確認してください。
 
