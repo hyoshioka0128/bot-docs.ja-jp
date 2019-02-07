@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/28/2018
-ms.openlocfilehash: 8c63893704f513a420220a47528bada5c4f845d3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 01/06/2019
+ms.openlocfilehash: 94ef9cc221e67f4f3762eb7a1a006a915e3c5307
+ms.sourcegitcommit: fd60ad0ff51b92fa6495b016e136eaf333413512
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999709"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55764100"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Direct Line API 3.0 の主要な概念
 
@@ -45,15 +45,13 @@ Bot Framework では、C# と Node.js からの Direct Line API 3.0 へのアク
 
 - Node.js クライアント ライブラリを使用するには、<a href="https://www.npmjs.com/package/botframework-directlinejs" target="_blank">NPM</a> を使用して `botframework-directlinejs` ライブラリをインストール (またはソースを<a href="https://github.com/Microsoft/BotFramework-DirectLineJS" target="_blank">ダウンロード</a>) してください。
 
-C# または Node.js のクライアント ライブラリを使用する代わりに、<a href="https://docs.botframework.com/en-us/restapi/directline3/swagger.json" target="_blank">Direct Line API 3.0 Swagger ファイル</a>を使用して好みの言語で独自のクライアント ライブラリを生成できます。
-
 ::: moniker range="azure-bot-service-3.0"
 
 ### <a name="sample-code"></a>サンプル コード
 
 <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples" target="_blank">BotBuilder-Samples</a> GitHub リポジトリには、C# と Node.js で Direct Line API 3.0 を使用する方法を示す複数のサンプルが含まれています。
 
-| サンプル | Language | 説明 |
+| サンプル | 言語 | 説明 |
 |----|----|----|
 | <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLine" target="_blank">Direct Line Bot のサンプル</a> | C# | Direct Line API を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
 | <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLineWebSockets" target="_blank">Direct Line Bot のサンプル (クライアント WebSocket を使用)</a> | C# | Direct Line API と WebSocket を使用して相互に通信するサンプル ボットとカスタム クライアント。 |

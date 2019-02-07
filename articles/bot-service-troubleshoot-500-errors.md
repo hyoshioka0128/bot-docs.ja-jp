@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/20/2018
-ms.openlocfilehash: 8ab1cd34f2cc239602db423bccd131d9df39222a
-ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
+ms.openlocfilehash: f86cacce5b25f60010f646cf5989123e3abf3bf2
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53736024"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55711976"
 ---
 # <a name="troubleshoot-http-500-errors"></a>HTTP 500 エラーのトラブルシューティング
 
@@ -28,7 +28,7 @@ Application Insights の基本的なサポートについては、「[Set up App
 
 ## <a name="enable-application-insights-on-nodejs"></a>Node.js で Application Insights を有効にする
 
-Application Insights の基本的なサポートについては、[Application Insights を使用して Node.js サービスとアプリを監視する](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs)方法に関する記事を参照してください。 Bot Framework (v4.2 以降) には、追加レベルの Application Insights テレメトリが用意されていますが、HTTP 500 エラーの診断には必要ありません。
+Application Insights の基本的なサポートについては、[Application Insights を使用して Node.js サービスとアプリを監視する](https://docs.microsoft.com/azure/azure-monitor/learn/nodejs-quick-start)方法に関する記事を参照してください。 Bot Framework (v4.2 以降) には、追加レベルの Application Insights テレメトリが用意されていますが、HTTP 500 エラーの診断には必要ありません。
 
 ## <a name="query-for-exceptions"></a>例外のクエリ
 

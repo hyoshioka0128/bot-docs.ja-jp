@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ef2cb33e8d2ab7d8db291e3c6e051630d6af0394
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 6169ed28fb765e84aaf31cf9e7d2ca404294bcad
+ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224547"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55783361"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Azure Search を使用してデータドリブン エクスペリエンスを作成する 
 
@@ -173,11 +173,10 @@ public class SearchHitStyler : PromptStyler
 
 ## <a name="samples"></a>サンプル
 
-Bot Framework SDK for .NET を使用してボットで Azure Search をサポートする方法を示す 2 つの完全なサンプルについては、GitHub にある[不動産ボット サンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/RealEstateBot)または[求人情報ボット サンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/JobListingBot)を参照してください。 
+Bot Framework SDK for .NET を使用してボットで Azure Search をサポートする方法を示す 2 つの完全なサンプルについては、GitHub にある[不動産ボット サンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/RealEstateBot)または[求人情報ボット サンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/JobListingBot)を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 * [Azure Search][search]
 * [ダイアログの概要](bot-builder-dotnet-dialogs.md)
-* [Azure Search ボット サンプル](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search)
 
 [search]: /azure/search/search-what-is-azure-search
