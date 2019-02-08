@@ -53,6 +53,7 @@
 ### [ストレージに直接書き込む](v4sdk/bot-builder-howto-v4-storage.md)
 ### [ボットへの認証の追加](v4sdk/bot-builder-authentication.md)
 ### [ボットのカスタム ストレージの実装](v4sdk/bot-builder-custom-storage.md)
+### [ボットへのテレメトリの追加](v4sdk/bot-builder-telemetry.md)
 ### [CLI ツールを使用したボットの管理](bot-builder-tools.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
@@ -63,6 +64,7 @@
 <!-- ### [Download and redeploy bot code](bot-service-build-download-source-code.md) -->
 ### [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)
 ## [管理](manage/TOC.md)
+## [移行](v4sdk/migration/TOC.md)
 # リファレンス
 ## [.NET SDK v4](https://aka.ms/dotnetsdk4)
 ## [JavaScript SDK v4](https://aka.ms/jssdk4)

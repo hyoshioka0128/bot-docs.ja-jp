@@ -24,6 +24,7 @@
 ## [ボットからのアクティビティの受信](bot-framework-rest-direct-line-3-0-receive-activities.md)
 ## [会話を終了する](bot-framework-rest-direct-line-3-0-end-conversation.md)
 ## [API リファレンス](bot-framework-rest-direct-line-3-0-api-reference.md)
+## [Swagger ファイル](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-protocol/directline-3.0.json)
 # ダイレクト ライン API 1.1
 ## [主要な概念](bot-framework-rest-direct-line-1-1-concepts.md)
 ## [認証](bot-framework-rest-direct-line-1-1-authentication.md)
@@ -31,3 +32,4 @@
 ## [メッセージをボットに送信する](bot-framework-rest-direct-line-1-1-send-message.md)
 ## [ボットからメッセージを受け取る](bot-framework-rest-direct-line-1-1-receive-messages.md)
 ## [API リファレンス](bot-framework-rest-direct-line-1-1-api-reference.md)
+## [Swagger ファイル](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-protocol/directline-1.1.json)

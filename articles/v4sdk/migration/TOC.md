@@ -1,0 +1,1 @@
+# [同じ .NET Framework プロジェクト内でのボットの移行](conversion-framework.md)
