@@ -59,17 +59,17 @@
 ### [Node.js](nodejs/TOC.md)
 ## [デバッグ](debug/TOC.md)
 ## デプロイ
-### [Azure CLI を使用してボットをデプロイする](bot-builder-deploy-az-cli.md)
-### [Visual Studio を使用して C# ボットをデプロイする](bot-builder-howto-deploy-azure.md)
-<!-- ### [Download and redeploy bot code](bot-service-build-download-source-code.md) -->
-### [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)
+### [ボットを Azure にデプロイする](bot-builder-deploy-az-cli.md)
+<!-- ### [Deploy your C# bot using Visual Studio](bot-builder-howto-deploy-azure.md)
+### [Download and redeploy bot code](bot-service-build-download-source-code.md) 
+### [Set up continuous deployment](bot-service-build-continuous-deployment.md) -->
 ## [管理](manage/TOC.md)
 ## [移行](v4sdk/migration/TOC.md)
 # リファレンス
 ## [.NET SDK v4](https://aka.ms/dotnetsdk4)
 ## [JavaScript SDK v4](https://aka.ms/jssdk4)
 ## [REST](rest-api/TOC.md)
-## [.NET SDK v3](/dotnet/api/?view=botbuilder-3.12.2.4)
+## [.NET SDK v3](/dotnet/api/?view=botbuilder-dotnet-3.0)
 ## [Node.js SDK v3](https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html)
 ## [エンティティとアクティビティの種類](bot-service-activities-entities.md)
 # [リソース](resources/TOC.md)
