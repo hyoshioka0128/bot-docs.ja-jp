@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4a221f6e94324c56f88dd1d4d6851d5cc4d38e6c
-ms.sourcegitcommit: 3cc768a8e676246d774a2b62fb9c688bbd677700
+ms.openlocfilehash: f1e3e3fa05a297aa50a2368a103a7aa00be49009
+ms.sourcegitcommit: fd60ad0ff51b92fa6495b016e136eaf333413512
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54323678"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55764140"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>QnA Maker を使用して質問に回答する
 
@@ -27,24 +27,28 @@ QnA Maker サービスを使用すると、質問と回答のサポートをボ�
 
 ## <a name="prerequisites"></a>前提条件
 - [QnA Maker](https://www.qnamaker.ai/) アカウント
-- この記事のコードは、**QnA Maker** サンプルをベースにしています。 サンプルのコピー ([C#](https://aka.ms/cs-qna) または [JS](https://aka.ms/js-qna-sample)) が必要になります。
+- この記事のコードは、**QnA Maker** サンプルをベースにしています。 [C# サンプル](https://aka.ms/cs-qna)または [Javascript サンプル](https://aka.ms/js-qna-sample)のコピーが必要です。
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download)
 - [ボットの基本](bot-builder-basics.md)、[QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview)、および [.bot](bot-file-basics.md) ファイルの知識。
 
 ## <a name="create-a-qna-maker-service-and-publish-a-knowledge-base"></a>QnA Maker サービスの作成とナレッジ ベースの発行
 1. まず、[QnA Maker サービス](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure)を作成する必要があります。
 1. 次に、プロジェクトの CognitiveModels フォルダーにある `smartLightFAQ.tsv` ファイルを使用して、ナレッジ ベースを作成します。 ご自身の QnA Maker [ナレッジ ベース](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base)を作成、トレーニング、および発行する手順は、QnA Maker のドキュメントに記載されています。 次の手順では、ご自身の KB `qna` に名前を付け、`smartLightFAQ.tsv` ファイルを使用して KB を設定します。
+> 注: この記事は、お客様のユーザーが作成した QnA Maker ナレッジ ベースにアクセスする際にも使用できます。
 
-## <a name="obtain-values-to-connect-to-your-connect-your-bot-to-the-knowledge-base"></a>お使いのボットをナレッジ ベースに接続するための値を取得する
+## <a name="obtain-values-to-connect-your-bot-to-the-knowledge-base"></a>ボットをナレッジ ベースに接続するための値を取得する
 1. [QnA Maker](https://www.qnamaker.ai/) サイトで、目的のナレッジ ベースを選択します。
-1. ナレッジ ベースを開いた状態で **[設定]** を選択します。 "_サービス名_" に表示される値を <your_kb_name> として記録します。
+1. ナレッジ ベースを開いた状態で **[設定]** を選択します。 "_サービス名_" に表示されている値を記録します。 この値は、QnA Maker ポータル インターフェイスを使用するときに、対象となる自分のナレッジ ベースを見つけるのに役立ちます。 この値を使用して、ボット アプリをこのナレッジ ベースに接続するわけではありません。 
 1. 下へスクロールして **[デプロイの詳細]** を探し、次の値を記録します。
-   - POST /knowledgebases/<your_knowledge_base_id>/generateAnswer
-   - Host: <your_hostname>/qnamaker
-   - Authorization:EndpointKey <your_endpoint_key>
+   - POST /knowledgebases/<Your_Knowledge_Base_Id>/getAnswers
+   - Host: <Your_Hostname>/qnamaker
+   - Authorization:EndpointKey <Your_Endpoint_Key>
+   
+この 3 つの値によって、アプリが Azure QnA サービスを介して QnA Maker ナレッジ ベースに接続する際に必要な情報が提供されます。  
 
 ## <a name="update-the-bot-file"></a>.bot ファイルを更新する
-まず、ナレッジ ベースにアクセスするために必要な情報 (ホスト名、エンドポイント キー、ナレッジ ベース ID (KbId) など) を `qnamaker.bot` に追加します。 これらは、QnA Maker でナレッジ ベースの **[設定]** から保存した値です。
+まず、ナレッジ ベースにアクセスするために必要な情報 (ホスト名、エンドポイント キー、ナレッジ ベース ID (KbId) など) を `qnamaker.bot` に追加します。 これらは、QnA Maker でナレッジ ベースの **[設定]** から保存した値です。 
+> 注: 既存のボット アプリケーションに QnA Maker ナレッジ ベースへのアクセスを追加する場合は、次に示すような "type": "qna" セクションを .bot ファイルに必ず追加してください。 このセクション内の "name" 値が、アプリ内からこの情報にアクセスするために必要なキーになります。
 
 ```json
 {
@@ -55,17 +59,16 @@ QnA Maker サービスを使用すると、質問と回答のサポートをボ�
       "name": "development",
       "endpoint": "http://localhost:3978/api/messages",
       "appId": "",
-      "appPassword": ""
-      "id": "25",
-    
+      "appPassword": "",
+      "id": "25"    
     },
     {
       "type": "qna",
       "name": "QnABot",
-      "KbId": "<YOUR_KNOWLEDGE_BASE_ID>",
-      "subscriptionKey": "<Your_Azure_Subscription_Key>", // Used when creating your QnA service.
-      "endpointKey": "<Your_Recorded_Endpoint_Key>",
-      "hostname": "<Your_Recorded_Hostname>",
+      "KbId": "<Your_Knowledge_Base_Id>",
+      "subscriptionKey": "",
+      "endpointKey": "<Your_Endpoint_Key>",
+      "hostname": "<Your_Hostname>",
       "id": "117"
     }
   ],
@@ -75,7 +78,7 @@ QnA Maker サービスを使用すると、質問と回答のサポートをボ�
 ```
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
-次に、BotServices.cs の BotService クラスの新しいインスタンスを初期化します。この初期化により、前述の情報がお使いの .bot ファイルから取得されます。 外部サービスは、BotConfiguration クラスを使用して構成されます。
+次に、**BotServices.cs** の BotService クラスの新しいインスタンスを初期化します。これにより、.bot ファイルから上記の情報が取得されます。 外部サービスは、BotConfiguration クラスを使用して構成されます。
 
 ```csharp
 private static BotServices InitBotServices(BotConfiguration config)
@@ -128,7 +131,7 @@ private static BotServices InitBotServices(BotConfiguration config)
 }
 ```
 
-次に、QnABot.cs で、この QnAMaker インスタンスをボットに渡します。 お客様独自のナレッジ ベースにアクセスする場合は、以下の "_ウェルカム_" メッセージを変更して、お客様のユーザーの役に立つ初期手順を設定します。
+次に、**QnABot.cs** で、この QnAMaker インスタンスをボットに渡します。 お客様独自のナレッジ ベースにアクセスする場合は、以下の "_ウェルカム_" メッセージを変更して、お客様のユーザーの役に立つ初期手順を設定します。 このクラスには、静的変数 _QnAMakerKey_ も定義されています。 これは、QnA Mkaer ナレッジ ベースにアクセスするための接続情報を含む、.bot ファイル内のセクションを参照します。
 
 ```csharp
 public class QnABot : IBot
@@ -155,11 +158,11 @@ public class QnABot : IBot
 
 **index.js** ファイルで、構成情報を読み取って QnA Maker サービスを生成し、ボットを初期化します。
 
-`QNA_CONFIGURATION` の値は、お客様の構成ファイルにあるナレッジ ベースの名前に更新してください。
+`QNA_CONFIGURATION` の値を .bot ファイル内の "name": 値に更新します。 これは、QnA Maker ナレッジ ベースにアクセスするための接続パラメーターを含む、.bot ファイルの "type": "qna" セクションへのキーです。
 
 ```js
-// QnA Maker knowledge base name as specified in .bot file.
-const QNA_CONFIGURATION = '<YOUR_KB_NAME>';
+// Name of the QnA Maker service in the .bot file. 
+const QNA_CONFIGURATION = '<BOT_FILE_NAME>';
 
 // Get endpoint and QnA Maker configurations by service name.
 const endpointConfig = botConfig.findServiceByNameOrId(BOT_CONFIGURATION);
@@ -230,7 +233,7 @@ else
 
 # <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
-**bot.js** ファイルで、ユーザーの入力を QnA Maker サービスの `generateAnswer` メソッドに渡して、ナレッジ ベースから回答を取得します。 お客様独自のナレッジ ベースにアクセスする場合は、以下の "_回答なし_" メッセージと "_ウェルカム_" メッセージを変更して、お客様のユーザーの役に立つ手順を設定します。
+**bot.js** ファイルで、ユーザーの入力を QnA Maker サービスの `getAnswers` メソッドに渡して、ナレッジ ベースから回答を取得します。 お客様独自のナレッジ ベースにアクセスする場合は、以下の "_回答なし_" メッセージと "_ウェルカム_" メッセージを変更して、お客様のユーザーの役に立つ手順を設定します。
 
 ```javascript
 const { ActivityTypes, TurnContext } = require('botbuilder');
@@ -258,7 +261,7 @@ class QnAMakerBot {
         // By checking the incoming Activity type, the bot only calls QnA Maker in appropriate cases.
         if (turnContext.activity.type === ActivityTypes.Message) {
             // Perform a call to the QnA Maker service to retrieve matching Question and Answer pairs.
-            const qnaResults = await this.qnaMaker.generateAnswer(turnContext.activity.text);
+            const qnaResults = await this.qnaMaker.getAnswers(turnContext.activity.text);
 
             // If an answer was received from QnA Maker, send the answer back to the user.
             if (qnaResults[0]) {

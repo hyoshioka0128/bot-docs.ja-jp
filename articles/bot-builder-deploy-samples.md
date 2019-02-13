@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 78e960357d6c4dc1c9751a9921a2338f552738b0
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 3ca8ac4bfe14ed20f11a0ab26d8102ac21e60e2b
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317617"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55711956"
 ---
 # <a name="deploy-bots-from-botbuilder-samples-repo"></a>botbuilder-samples リポジトリからボットをデプロイする
 
@@ -101,6 +101,7 @@ cd <local-bot-folder>
 [MSA](https://en.wikipedia.org/wiki/Microsoft_account) 電子メール アカウントを使用する場合は、`msbot clone services` コマンドで使用する appId と appSecret を作成する必要があります。
 
 - [アプリケーション登録ポータル](https://apps.dev.microsoft.com/)に移動します。 **[アプリの追加]** をクリックしてアプリケーションを登録して、**アプリケーション ID** を作成し、**新しいパスワードを生成**します。
+> 注 - 生成されたパスワードに文字 "|" が含まれている場合、このパスワードは Azure によって拒否されます。 これを解決するには、別の新しいパスワードを生成します。
 - `msbot clone services` コマンドで使用できるように、生成されたアプリケーション ID と新しいパスワードの両方を控えておきます。
 - デプロイするには、ご自身のボットに該当するコマンドを使用します。
 

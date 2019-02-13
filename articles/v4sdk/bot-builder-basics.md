@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a1b155db3ec717a1084ae0e098e8f22997a80b0e
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 70f333cdce15f1d1e908b73d21e706f1af33454b
+ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225937"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55783381"
 ---
 # <a name="how-bots-work"></a>ボットのしくみ
 
@@ -67,7 +67,7 @@ ms.locfileid: "54225937"
 以降のセクションでは、ボットの主な要素について説明します。
 
 ### <a name="prerequisites"></a>前提条件
-- **EchoBotWithCounter** サンプルのコピー ([C#](https://aka.ms/EchoBotWithStateCSharp) または [JS](https://aka.ms/EchoBotWithStateJS))。 ここでは関連するコードのみを示していますが、サンプルを参照することで完全なソース コードを確認できます。
+- **EchoBotWithCounter** サンプルのコピー (**[C#](https://aka.ms/EchoBotWithStateCSharp) または [JS](https://aka.ms/EchoBotWithStateJS)**)。 ここでは関連するコードのみを示していますが、サンプルを参照することで完全なソース コードを確認できます。
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 

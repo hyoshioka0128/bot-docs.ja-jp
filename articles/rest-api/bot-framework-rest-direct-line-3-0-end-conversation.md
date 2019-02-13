@@ -8,19 +8,19 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: f0985f28fd1744bcfb6bf5cea1c2230254670e01
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 438558995f83ade38404856d61ba66ee77480a27
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000209"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55711936"
 ---
 # <a name="end-a-conversation"></a>会話を終了する
 
-クライアントまたはボットは、**endOfConversation** [アクティビティ](bot-framework-rest-connector-activities.md)を送信することによって、Direct Line 会話の終了を通知することができます。 
+**endOfConversation** [アクティビティ](bot-framework-rest-connector-activities.md)は、チャネルまたはボットが会話を終了したことを意味します。 
 
 > [!NOTE] 
-> endOfConversation イベントは Cortana チャネルでのみサポートされ、他のチャネルではこの機能は実装されません。 endOfConversation アクティビティに対する反応がどのようなものになるかは、チャネルごとに決定されます。 DirectLine クライアントを設計している場合は、既に終了した会話にボットがアクティビティを送信したときにエラーを生成するなど、クライアントが適切に動作するよう更新します。
+> **endOfConversation** イベントを送信するチャネルはごく少数に限られており、Cortana チャネルだけがこのイベントを受け入れます。 Direct Line などの他のチャネルはこの機能を実装しておらず、代わりにアクティビティを破棄または転送します。endOfConversation アクティビティへの対応は、チャネルごとに決定されます。 DirectLine クライアントを設計している場合は、既に終了した会話にボットがアクティビティを送信したときにエラーを生成するなど、クライアントが適切に動作するよう更新します。
 
 ## <a name="send-an-endofconversation-activity"></a>endOfConversation アクティビティを送信する
 

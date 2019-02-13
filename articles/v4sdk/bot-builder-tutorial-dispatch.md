@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c798c26f108458e1caeb16aa22c02c6e7c70fb61
-ms.sourcegitcommit: 3cc768a8e676246d774a2b62fb9c688bbd677700
+ms.openlocfilehash: bec6f44db929eab43cfcbbd6b2920b79924b7576
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54323658"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55712006"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -183,7 +183,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 
 ```
-次のコードでは、外部サービスへのボットの参照を初期化します。 たとえば、LUIS および QnaMaker サービスがここで作成されます。 これらの外部サービスは、(お使いの ".bot" ファイルのコンテンツに基づいて) `BotConfiguration` クラスを使用して構成されます。
+次のコードでは、外部サービスへのボットの参照を初期化します。 たとえば、LUIS および QnaMaker サービスがここで作成されます。 これらの外部サービスは、(`.bot` ファイルの内容に基づいて) `BotConfiguration` クラスを使用して構成されます。
 
 ```csharp
 private static BotServices InitBotServices(BotConfiguration config)
@@ -237,7 +237,8 @@ private static BotServices InitBotServices(BotConfiguration config)
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-サンプル コードでは、事前に定義された名前付け定数を使用して、.bot ファイルのさまざまなセクションを識別しています。 _nlp-with-dispatch.bot_ ファイルの元の名前付け例からセクション名を変更した場合は、必ず **bot.js**、**homeAutomation.js**、**qna.js**、または **weather.js** ファイルで関連する定数の宣言を探し、そのエントリを変更後の名前に修正します。  
+サンプル コードでは、定義済みの名前付け定数を使用して、`.bot` ファイルのさまざまなセクションを識別しています。 _nlp-with-dispatch.bot_ ファイルの元の名前付け例からセクション名を変更した場合は、必ず **bot.js**、**homeAutomation.js**、**qna.js**、または **weather.js** ファイルで関連する定数の宣言を探し、そのエントリを変更後の名前に修正します。  
+
 ```javascript
 // In file bot.js
 // this is the LUIS service type entry in the .bot file.
@@ -432,8 +433,11 @@ switch (dispatchTopIntent) {
        await turnContext.sendActivity(`I do not understand that.`);
        await turnContext.sendActivity(`I can help with weather forecast, turning devices on and off and answer general questions like 'hi', 'who are you' etc.`);
  }
+ ```
+
+ `homeAutomation.js`
  
- // In homeAutomation.js
+ ```javascript
  async onTurn(turnContext) {
     // make call to LUIS recognizer to get home automation intent + entities
     const homeAutoResults = await this.luisRecognizer.recognize(turnContext);
@@ -448,8 +452,11 @@ switch (dispatchTopIntent) {
          await turnContext.sendActivity(`HomeAutomation dialog cannot fulfill this request.`);
     }
 }
-    
-// In weather.js
+```
+
+`weather.js`
+
+```javascript
 async onTurn(turnContext) {
    // Call weather LUIS model.
    const weatherResults = await this.luisRecognizer.recognize(turnContext);
@@ -470,8 +477,11 @@ async onTurn(turnContext) {
          wait turnContext.sendActivity(`Weather dialog cannot fulfill this request.`);
    }
 }
-    
-// In qna.js
+```
+
+`qna.js`
+
+```javascript
 async onTurn(turnContext) {
    // Call QnA Maker and get results.
    const qnaResult = await this.qnaRecognizer.generateAnswer(turnContext.activity.text, QNA_TOP_N, QNA_CONFIDENCE_THRESHOLD);

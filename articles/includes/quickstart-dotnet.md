@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 2096aa342fe954b9f9f1d128bc080c0e0e6efdce
-ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360802"
----
 ## <a name="prerequisites"></a>前提条件
 - Visual Studio [2017](https://www.visualstudio.com/downloads)
 - [C#](https://aka.ms/bot-vsix) 用 Bot Framework SDK v4 テンプレート
@@ -15,7 +7,7 @@ ms.locfileid: "54360802"
 ## <a name="create-a-bot"></a>ボットの作成
 前提条件セクションでダウンロードした BotBuilderVSIX.vsix テンプレートをインストールします。
 
-Visual Studio で、Bot Framework Echo Bot V4 テンプレートを使用して、新しいボット プロジェクトを作成します。
+Visual Studio で、**Bot Framework Echo Bot** V4 テンプレートを使用して、新しいボット プロジェクトを作成します。
 
 ![Visual Studio プロジェクト](~/media/azure-bot-quickstarts/bot-builder-dotnet-project.png)
 

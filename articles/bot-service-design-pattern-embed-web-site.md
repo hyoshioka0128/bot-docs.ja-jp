@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 03c7e1316e463caf84b8dfd503e1502bb66469e6
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: f9fa2bee156752f1545d201768040b6106558e01
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224847"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55711836"
 ---
 # <a name="embed-a-bot-in-a-website"></a>ボットを Web サイトに埋め込む
 
@@ -25,7 +25,7 @@ Microsoft では、Skype Web コントロールとオープン ソース Web コ
 
 ## <a name="skype-web-control"></a>Skype Web コントロール
 
-Skype Web コントロールは、基本的には、Web 対応コントロールの Skype クライアントです。 組み込みの Skype 認証により、ボットでユーザーを認証および認識できます。開発者がカスタム コードを記述する必要はありません。 Skype では、Web クライアントで使用されている Microsoft アカウントが自動的に認識されます。 
+[Skype Web コントロール](https://aka.ms/bot-skype-web-control)は、基本的には、Web 対応コントロールの Skype クライアントです。 組み込みの Skype 認証により、ボットでユーザーを認証および認識できます。開発者がカスタム コードを記述する必要はありません。 Skype では、Web クライアントで使用されている Microsoft アカウントが自動的に認識されます。 
 
 Skype Web コントロールは、単に Skype のフロントエンドとして機能するので、ユーザーの Skype クライアントでは、Web コントロールで容易になるすべての会話の完全なコンテキストに、自動的にアクセスすることができます。 Web ブラウザーを閉じた後も、ユーザーは Skype クライアントを使用して引き続きボットを操作できます。 
 
