@@ -8,15 +8,15 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 monikerRange: azure-bot-service-4.0
 templateName: Echo Bot
-ms.openlocfilehash: 265b1a1c779952cc099f426ddff1bb59846667cc
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.openlocfilehash: d6987cbfc5a0cd7f885b511a883b45afc3deb49d
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453956"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971382"
 ---
 # <a name="create-a-bot-with-the-bot-framework-sdk-for-net"></a>Bot Framework SDK for .NET を使用したボットの作成
 
@@ -35,4 +35,5 @@ ms.locfileid: "54453956"
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ボットのしくみ](../v4sdk/bot-builder-basics.md) 
+> [ボットを Azure にデプロイする](../bot-builder-deploy-az-cli.md)
+
