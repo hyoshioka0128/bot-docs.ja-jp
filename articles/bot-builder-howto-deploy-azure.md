@@ -1,21 +1,18 @@
 ---
-title: Visual Studio を使用して C# ボットをデプロイする | Microsoft Docs
-description: 使用するボットを Azure クラウドにデプロイします。
-keywords: ボットのデプロイ, azure のデプロイ, ボットの発行, ボットの az デプロイ, ボットの visual studio デプロイ, msbot 発行, msbot 複製
-author: ivorb
-ms.author: v-ivorb
-manager: kamrani
-ms.topic: get-started-article
-ms.service: bot-service
-ms.subservice: abs
-ms.date: 12/08/2018
-ms.openlocfilehash: eb559418bc2925ec6fb64902086dede50e485414
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+redirect_url: /bot-framework/bot-builder-deploy-az-cli
+ms.openlocfilehash: a300d6602a59c5e7d7cebdf14bb4f720a30ecbf8
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55712016"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971472"
 ---
+<a name="--"></a><!--
+---
+title:Visual Studio を使用して C# ボットをデプロイする | Microsoft Docs description:使用するボットを Azure クラウドにデプロイします。
+keywords: ボットのデプロイ, azure へのデプロイ, ボットの発行, az によるボットのデプロイ, visual studio によるボットのデプロイ, msbot の発行, msbot 複製作成者: ivorb ms.author: v-ivorb マネージャー: kamrani ms.topic: get-started-article ms.service: bot-service ms.subservice: abs ms.date:2019/02/07
+---
+
 # <a name="deploy-your-c-bot-using-visual-studio"></a>Visual Studio を使用して C# ボットをデプロイする
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
@@ -28,7 +25,16 @@ ms.locfileid: "55712016"
 - [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started) をインストールします。
 - [.bot](v4sdk/bot-file-basics.md) ファイルの知識。
 
+
+## <a name="update-bot-file-properties"></a>.bot ファイルのプロパティを更新する
+
+デプロイ プロセスを開始する前に、Visual Studio で .bot ファイルの次のプロパティを更新します。
+- **ビルド アクション: コンテンツ**
+- **出力ディレクトリにコピー: 常にコピーする**
+
+
 ## <a name="deploy-your-bot-in-app-service"></a>App Service でボットをデプロイする
+
 最初に、App Service で Visual Studio から Azure にボットをデプロイします。 次に、Bot Channels Registration を使用して Azure Bot Service でボットを構成します。
 
 **注:Visual Studio プロジェクト名にスペースが含まれる場合、以下に説明するデプロイ手順は機能しません。**
@@ -164,3 +170,4 @@ Azure リソース グループにあまり馴染みがない場合は、こち�
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 > [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)
+-->

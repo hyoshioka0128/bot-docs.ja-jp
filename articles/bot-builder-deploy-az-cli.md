@@ -1,108 +1,177 @@
 ---
-title: Azure CLI を使用してボットをデプロイする | Microsoft Docs
+title: ボットをデプロイする | Microsoft Docs
 description: 使用するボットを Azure クラウドにデプロイします。
-keywords: ボットのデプロイ, azure のデプロイ, ボットの発行, ボットの az デプロイ, ボットの visual studio デプロイ, msbot 発行, msbot 複製
+keywords: ボットのデプロイ, azure へのボットのデプロイ, ボットの発行
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 01/07/2019
-ms.openlocfilehash: 3ebc13cf9e2d111d716d081c36f125d28a441811
-ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
+ms.date: 02/07/2019
+ms.openlocfilehash: b4c3b982bf061b3a24c6d240b05dc40b0cf07816
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360742"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971428"
 ---
-# <a name="deploy-your-bot-using-azure-cli"></a>Azure CLI を使用してボットをデプロイする
+# <a name="deploy-your-bot"></a>ボットをデプロイする 
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
 
 ご自分のボットを作成し、ローカルでテストした後に、それを Azure にデプロイして、どこからでもアクセスできるようにすることができます。 ボットを Azure にデプロイするには、使用するサービスの料金を支払う必要があります。 [課金とコスト管理](https://docs.microsoft.com/en-us/azure/billing/)に関する記事で、Azure の課金の確認、使用量とコストの監視、アカウントとサブスクリプションの管理の方法について説明されています。
 
-この記事では、`az` および `msbot` CLI を使用して Azure に C# ボットと JavaScript ボットをデプロイする方法を紹介します。 ボットのデプロイに必要なものを完全に理解するために、手順を実行する前にこの記事を確認することをお勧めします。
+この記事では、C# ボットと JavaScript ボットを Azure にデプロイする方法を紹介します。 ボットのデプロイに必要なものを完全に理解するために、手順を実行する前にこの記事を確認することをお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
+- 最新バージョンの [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/MSBot) ツールをインストールします。
+- ローカル コンピューター上で開発された [CSharp](./dotnet/bot-builder-dotnet-sdk-quickstart.md) ボットまたは [JavaScript](./javascript/bot-builder-javascript-quickstart.md) ボット。 
+
+## <a name="create-a-web-app-bot-in-azure"></a>Azure に Web App Bot を作成する
+使用するボットが Azure に既に作成されている場合、このセクションは省略可能です。
+
+1. [Azure Portal](https://portal.azure.com) にログインします。
+1. Azure portal の左上隅にある **[新しいリソースの作成]** リンクをクリックし、**[AI + Machine Learning] > [Web App Bot]** を選択します。
+1. Web App Bot に関する情報が含まれた 新しいブレードが開きます。 
+1. **[ボット サービス]** ブレードで、ボットに関する必要な情報を指定します。
+1. **[作成]** をクリックしてサービスを作成し、ボットをクラウドにデプロイします。 このプロセスには数分かかることがあります。
+
+## <a name="download-the-source-code"></a>ソース コードをダウンロードする
+1. **[ボット管理]** セクションで **[ビルド]** をクリックします。
+1. 右側のウィンドウで **[ボットのソース コードをダウンロードする]** リンクをクリックします。
+1. 指示に従ってコードをダウンロードし、フォルダーを解凍します。
+
+## <a name="decrypt-the-bot-file"></a>.bot ファイルの暗号化を解除する
+Azure portal からダウンロードしたソース コードには、暗号化された .bot ファイルが含まれています。 ローカル .bot ファイルに値をコピーするために、ファイルの暗号化を解除する必要があります。  
+
+1. Azure portal で、ボットの Web App Bot リソースを開きます。
+1. ボットの **[アプリケーション設定]** を開きます。
+1. **[アプリケーション設定]** ウィンドウで、**[アプリケーション設定]** まで下へスクロールします。
+1. **botFileSecret** を探してその値をコピーします。
+
+`msbot cli` を使用してファイルの暗号化を解除します。
+```
+msbot secret --bot <name-of-bot-file> --secret "<bot-file-secret>" --clear
+```
+
+## <a name="update-the-bot-file"></a>.bot ファイルを更新する
+暗号化解除した .bot ファイルを開きます。 `services` セクションに表示されているエントリをコピーし、ローカル .bot ファイルに追加します。 例: 
+
+```
+{
+   "type": "endpoint",
+   "name": "production",
+   "endpoint": "https://<something>.azurewebsites.net/api/messages",
+   "appId": "<App Id>",
+   "appPassword": "<App Password>",
+   "id": "2
+}
+```
+
+ファイルを保存します。
+ 
+## <a name="setup-a-repository"></a>リポジトリを設定する
+お好みの Git ソース管理プロバイダーを使用して、Git リポジトリを作成します。 リポジトリにコードをコミットします。
+ 
+## <a name="update-app-settings-in-azure"></a>Azure でアプリ設定を更新する
+1. Azure portal で、ボットの **Web App Bot** リソースを開きます。
+1. ボットの **[アプリケーション設定]** を開きます。
+1. **[アプリケーション設定]** ウィンドウで、**[アプリケーション設定]** まで下へスクロールします。
+1. **botFileSecret** を探してそれを削除します。
+1. リポジトリにチェックインしたファイルと一致するように、ボット ファイルの名前を更新します。
+1. 変更を保存します。
+
+
+## <a name="deploy-using-azure-deployment-center"></a>Azure デプロイ センターを使用してデプロイする
+次に、Git リポジトリを Azure App Services に接続する必要があります。 [継続的デプロイの設定](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment)に関するトピックの指示に従います。 `App Service Kudu build server` を使用してビルドすることをお勧めします。
+
+## <a name="test-your-deployment"></a>デプロイのテスト
+デプロイが成功したら、数秒待ちます。必要に応じて、Web アプリを再起動してキャッシュをクリアします。 Web App Bot ブレードに戻り、Azure portal で提供されている Web チャットを使用してテストします。
+
+## <a name="additional-resources"></a>その他のリソース
+- [継続的なデプロイに関する一般的な問題の調査方法](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
+
+<!--
+
+## Prerequisites
 
 [!INCLUDE [prerequisite snippet](~/includes/deploy/snippet-prerequisite.md)]
 
 
-## <a name="deploy-javascript-and-c-bots-using-az-cli"></a>az cli を使用して JavaScript ボットと C# ボットをデプロイする
+## Deploy JavaScript and C# bots using az cli
 
-ボットの作成とローカルでのテストが完了したので、次は Azure にデプロイします。 これらの手順は、必要な Azure リソースを作成済みであることを前提としています。
+You've already created and tested a bot locally, and now you want to deploy it to Azure. These steps assume that you have created the required Azure resources.
 
 [!INCLUDE [az login snippet](~/includes/deploy/snippet-az-login.md)]
 
-### <a name="create-a-web-app-bot"></a>Web アプリ ボットを作成する
+### Create a Web App Bot
 
-ボットを公開するリソース グループがまだ存在しない場合は、作成します。
+If you don't already have a resource group to which to publish your bot, create one:
 
 [!INCLUDE [az create group snippet](~/includes/deploy/snippet-az-create-group.md)]
 
 [!INCLUDE [az create web app snippet](~/includes/deploy/snippet-create-web-app.md)]
 
-続行する前に、Azure へのログインに使用する電子メール アカウントの種類に基づいて、該当する手順をお読みください。
+Before proceeding, read the instructions that apply to you based on the type of email account you use to log in to Azure.
 
-#### <a name="msa-email-account"></a>MSA 電子メール アカウント
+#### MSA email account
 
-[MSA](https://en.wikipedia.org/wiki/Microsoft_account) 電子メール アカウントを使用している場合は、`az bot create` コマンドを使って、使用するアプリケーション登録ポータルにアプリ ID とアプリ パスワードを作成する必要があります。
+If you are using an [MSA](https://en.wikipedia.org/wiki/Microsoft_account) email account, you will need to create the app ID and app password on the Application Registration Portal to use with `az bot create` command.
 
 [!INCLUDE [create bot msa snippet](~/includes/deploy/snippet-create-bot-msa.md)]
 
-#### <a name="business-or-school-account"></a>職場または学校のアカウント
+#### Business or school account
 
 [!INCLUDE [create bot snippet](~/includes/deploy/snippet-create-bot.md)]
 
-### <a name="download-the-bot-from-azure"></a>Azure からボットをダウンロードする
+### Download the bot from Azure
 
-次に、作成したボットをダウンロードします。 
+Next, download the bot you just created. 
 [!INCLUDE [download bot snippet](~/includes/deploy/snippet-download-bot.md)]
 
-### <a name="decrypt-the-downloaded-bot-file-and-use-in-your-project"></a>ダウンロードした .bot ファイルの暗号化を解除してプロジェクトで使用する
+### Decrypt the downloaded .bot file and use in your project
 
-.bot ファイル内の機密情報は暗号化されています。
+The sensitive information in the .bot file is encrypted.
 
 [!INCLUDE [decrypt bot snippet](~/includes/deploy/snippet-decrypt-bot.md)]
 
-### <a name="update-the-bot-file"></a>.bot ファイルを更新する
+### Update the .bot file
 
-ボットで LUIS、QnA Maker、または Dispatch サービスを使用している場合は、それらへの参照を .bot ファイルに追加する必要があります。 それ以外の場合は、この手順を省略できます。
+If your bot uses LUIS, QnA Maker, or Dispatch services, you will need to add references to them to your .bot file. Otherwise, you can skip this step.
 
-1. 新しい .bot ファイルを使用して、BotFramework エミュレーターでボットを開きます。 ボットがローカルで実行されている必要はありません。
-1. **[BOT EXPLORER]\(ボット エクスプローラー\)** パネルで **[SERVICES]\(サービス\)** セクションを展開します。
-1. LUIS アプリへの参照を追加するには、**[SERVICES]\(サービス\)** の右側にあるプラス記号 (+) をクリックします。
-   1. **[Add Language Understanding (LUIS)]\(Language Understanding (LUIS) の追加\)** を選択します。
-   1. Azure アカウントへのログインを求められたら、ログインします。
-   1. アクセス権を持つ LUIS アプリケーションの一覧が表示されます。 ボット用にいずれかを選択します。
-1. QnA Maker ナレッジ ベースへの参照を追加するには、**[SERVICES]\(サービス\)** の右側にあるプラス記号 (+) をクリックします。
-   1. **[Add QnA Maker]\(QnA Maker の追加\)** を選択します。
-   1. Azure アカウントへのログインを求められたら、ログインします。
-   1. アクセス権を持つナレッジ ベースの一覧が表示されます。 ボット用にいずれかを選択します。
-1. Dispatch モデルへの参照を追加するには、**[SERVICES]\(サービス\)** の右側にあるプラス記号 (+) をクリックします。
-   1. **[Add Dispatch]\(Dispatch の追加\)** を選択します。
-   1. Azure アカウントへのログインを求められたら、ログインします。
-   1. アクセス権を持つ Dispatch モデルの一覧が表示されます。 ボット用にいずれかを選択します。
+1. Open your bot in the BotFramework Emulator, using the new .bot file. The bot does not need to be running locally.
+1. In the **BOT EXPLORER** panel, expand the **SERVICES** section.
+1. To add references to LUIS apps, click the plus-sign (+) to the right of **SERVICES**.
+   1. Select **Add Language Understanding (LUIS)**.
+   1. If it prompts you to log into your Azure account, do so.
+   1. It presents a list of LUIS applications you have access to. Select the ones for your bot.
+1. To add references to a QnA Maker knowledge base, click the plus-sign (+) to the right of **SERVICES**.
+   1. Select **Add QnA Maker**.
+   1. If it prompts you to log into your Azure account, do so.
+   1. It presents a list of knowledge bases you have access to. Select the ones for your bot.
+1. To add references to Dispatch models, click the plus-sign (+) to the right of **SERVICES**.
+   1. Select **Add Dispatch**.
+   1. If it prompts you to log into your Azure account, do so.
+   1. It presents a list of Dispatch models you have access to. Select the ones for your bot.
 
-### <a name="test-your-bot-locally"></a>ボットをローカルでテストする
+### Test your bot locally
 
-この時点で、このボットは以前の .bot ファイルと同じように動作するはずです。 新しい .bot ファイルを使用して、想定どおりに機能することを確認してください。
+At this point, your bot should work the same way it did with the old .bot file. Make sure that it works as expected with the new .bot file.
 
-### <a name="publish-your-bot-to-azure"></a>ボットを Azure に公開する
-
-<!-- TODO: re-encrypt your .bot file? -->
+### Publish your bot to Azure
 
 [!INCLUDE [publish snippet](~/includes/deploy/snippet-publish.md)]
 
-<!-- TODO: If we tell them to re-encrypt, this step is not necessary. -->
 
 [!INCLUDE [clear encryption snippet](~/includes/deploy/snippet-clear-encryption.md)]
 
-## <a name="additional-resources"></a>その他のリソース
+## Additional resources
 
 [!INCLUDE [additional resources snippet](~/includes/deploy/snippet-additional-resources.md)]
 
-## <a name="next-steps"></a>次の手順
+## Next steps
 > [!div class="nextstepaction"]
-> [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)
+> [Set up continous deployment](bot-service-build-continuous-deployment.md)
+
+-->

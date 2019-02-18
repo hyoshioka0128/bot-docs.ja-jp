@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 01/17/2019
-ms.openlocfilehash: 515ef592e4ce7f159890db4cb5f61f97cccf3786
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.date: 02/07/2019
+ms.openlocfilehash: 2648058456677fb009e3fe76c4215f8028aac6bf
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453946"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971512"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Azure Bot Service を使用してボットを作成する
 
@@ -138,10 +138,6 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
 そのためには、Azure portal に移動します。 ポータルでボットを選択し、**[アプリ サービスの設定]** セクションで **[アプリケーション設定]** をクリックします。 **[アプリケーション設定]** ウィンドウに `botFilePath` と `botFileSecret` の値が表示されます。 これらの値をコピーし、.env または appsettings.json ファイルを更新します。 
 
 ## <a name="next-steps"></a>次の手順
-
-このトピックでは、Azure Bot Service を使用して**エコー** Web App Bot を作成する方法を学習し、組み込みの Web チャット コントロールを使用してボットの機能を検証しました。 次に、ボットを管理し、そのソース コードの操作を開始する方法を確認しましょう。
-
-> [!div class="nextstepaction"]
-> [ボットのしくみ](~/v4sdk/bot-builder-basics.md)
+コードをダウンロードしたら、お使いのコンピューターでボットをローカルで引き続き開発できます。 ボットをテストし、ボット コードを Azure portal にアップロードする準備ができたら、デプロイに関するトピックの[リポジトリの設定](./bot-builder-deploy-az-cli.md#setup-a-repository)に関するセクションに記載されている手順に従います。
 
 ::: moniker-end

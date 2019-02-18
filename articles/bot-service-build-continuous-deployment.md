@@ -1,20 +1,17 @@
 ---
-title: Bot Service の継続的配置を構成する | Microsoft Docs
-description: Bot Service のソース管理からの継続的デプロイを設定する方法について説明します。
-keywords: 継続的配置, 公開, デプロイ, Azure portal
-author: ivorb
-ms.author: v-ivorb
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.date: 12/06/2018
-ms.openlocfilehash: ffbc3ef83c8fe1cd6f04697a3fff9e229df9956f
-ms.sourcegitcommit: 080b9633925ffe381f2c3cf11c8f8ca4b37e2046
+redirect_url: /bot-framework/bot-builder-deploy-az-cli
+ms.openlocfilehash: 8149471553658df6778e2983bae114e80c846c9b
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53068715"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971429"
 ---
+<a name="--"></a><!--
+---
+title:Bot Service の継続的デプロイを構成する | Microsoft Docs description:Bot Service のソース管理からの継続的デプロイを設定する方法について説明します。 keywords: 継続的デプロイ, 発行, デプロイ, azure portal 作成者: ivorb ms.author: v-ivorb マネージャー: kamrani ms.topic: article ms.service: bot-service ms.date:2018/12/06
+---
+
 # <a name="set-up-continuous-deployment"></a>Azure App Service での GIT による継続的なデプロイ
 コードが **GitHub** または **Azure DevOps (旧称 Visual Studio Team Services)** にチェックインされる場合は、継続的デプロイを使用して、コードの変更をソース リポジトリから Azure に自動的にデプロイします。 このトピックでは、**GitHub** および **Azure DevOps** に対して継続的デプロイを設定する方法を説明します。
 
@@ -71,3 +68,6 @@ Azure DevOps での継続的デプロイの設定が完了しました。 コミ
 
 ## <a name="additional-information"></a>追加情報
 - Visual Studio Team Services の名称は [Azure DevOps Services](https://docs.microsoft.com/en-us/azure/devops/?view=vsts) に変更されました。
+
+
+-->

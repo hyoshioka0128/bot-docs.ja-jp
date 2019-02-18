@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 10/30/2018
+ms.date: 02/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3bfbcb27aa6e38792f96e0d3fe042f02f6e11083
-ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
+ms.openlocfilehash: c55909afa0a8942a01d3fca0f8a64331bbcdf963
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54298319"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971522"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
 
@@ -51,7 +51,7 @@ OAuth コントローラーのホスティングやトークンのライフサ�
 
 ## <a name="overview"></a>概要
 
-このチュートリアルでは、Azure AD v1 または v2 トークンを使用して Microsoft Graph に接続するサンプル ボットを作成します。 このプロセスの一環として、[Microsoft/BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples) GitHub リポジトリのコードを使用します。このチュートリアルでは、ボット アプリケーションを含めた設定方法について説明します。
+このチュートリアルでは、Azure AD v1 または v2 トークンと、関連付けられている Azure AD アプリを使用して、Microsoft Graph に接続するサンプル ボットを作成します。 このプロセスの一環として、[Microsoft/BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples) GitHub リポジトリのコードを使用します。このチュートリアルでは、ボット アプリケーションを含めた設定方法について説明します。
 
 - **ボットと認証アプリケーションの作成**
 - **ボットのサンプル コードの準備**

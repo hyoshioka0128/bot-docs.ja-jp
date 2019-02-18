@@ -8,30 +8,35 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 02/04/2019
+ms.date: 02/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8bcb2e545cea640f74a37cac20f16b288c690956
-ms.sourcegitcommit: fd60ad0ff51b92fa6495b016e136eaf333413512
+ms.openlocfilehash: 1904bb09d8bd387cc5cec0d85f82df24d1f6ec9d
+ms.sourcegitcommit: 7f418bed4d0d8d398f824e951ac464c7c82b8c3e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55764189"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56240178"
 ---
-# <a name="migrate-a-bot-within-the-same-net-framework-project"></a>同じ .NET Framework プロジェクト内でのボットの移行
+# <a name="migrate-a-net-sdk-v3-bot-to-v4"></a>.NET SDK v3 のボットを v4 に移行する
 
-Bot Framework SDK v4 は、SDK v3 と同じ基になる REST API に基づいています。 ただし、SDK v4 は、開発者がより柔軟にボットを制御できるように、以前のバージョンの SDK をリファクタリングしたものです。 この SDK の主な変更点は次のとおりです。<!--TODO: Replace with a snippet summary of changes that includes a link to the concept topic.-->
+この記事では、_プロジェクトの種類を変換せずに_、v3 の [ContosoHelpdeskChatBot](https://github.com/Microsoft/intelligent-apps/tree/master/ContosoHelpdeskChatBot/ContosoHelpdeskChatBot) を v4 ボットに変換します。 ボットは、.NET Framework プロジェクトのままになります。
+この変換は次の手順に分けられます。
+
+1. NuGet パッケージを更新してインストールする
+1. Global.asax.cs ファイルを更新する
+1. MessagesController クラスを更新する
+1. ダイアログを変換する
+
+<!--TODO: Link to the converted bot...[ContosoHelpdeskChatBot](https://github.com/EricDahlvang/intelligent-apps/tree/v4netframework/ContosoHelpdeskChatBot).-->
+
+Bot Framework SDK v4 は、SDK v3 と同じ基になる REST API に基づいています。 ただし、SDK v4 は、開発者がより柔軟にボットを制御できるように、以前のバージョンの SDK をリファクタリングしたものです。 この SDK の主な変更点は次のとおりです。
 
 - 状態は、状態管理オブジェクトとプロパティ アクセサーを使用して管理されます。
 - ターン ハンドラーの設定とターン ハンドラーへのアクティビティの受け渡しが変更されました。
 - scoreable は存在しなくなりました。 ダイアログに制御を渡す前に、ターン ハンドラー内で "グローバル" コマンドの有無を確認できます。
 - 以前のバージョンのものとは大きく異なる新しい Dialogs ライブラリ。 コンポーネント ダイアログ、ウォーターフォール ダイアログ、v4 用の FormFlow ダイアログのコミュニティ実装を使用して、古いダイアログを新しいダイアログ システムに変換する必要があります。
 
-この記事では、v3 の [ContosoHelpdeskChatBot](https://github.com/Microsoft/intelligent-apps/tree/master/ContosoHelpdeskChatBot/ContosoHelpdeskChatBot) を取り上げ、これを v4 ボットに変換します。 <!--TODO: Link to the converted bot...[ContosoHelpdeskChatBot](https://github.com/EricDahlvang/intelligent-apps/tree/v4netframework/ContosoHelpdeskChatBot).-->プロジェクトの種類は変換せずにボットを変換するので、.NET Framework プロジェクトであることに変わりはありません。 この変換は次の手順に分けられます。
-
-1. NuGet パッケージを更新してインストールする
-1. Global.asax.cs ファイルを更新する
-1. MessagesController クラスを更新する
-1. ダイアログを変換する
+具体的な変更点の詳細については、[.NET SDK v3 と v4 の違い](migration-about.md)に関する記事をご覧ください。
 
 ## <a name="update-and-install-nuget-packages"></a>NuGet パッケージを更新してインストールする
 
@@ -343,7 +348,6 @@ v4 コードに関する注意事項を次に示します。
 - ウォーターフォール ステップには、`DialogContext` から派生した `WaterfallStepContext` パラメーターがあります。
 - 具象ダイアログ クラスおよびプロンプト クラスはすべて抽象 `Dialog` クラスから派生します。
 - コンポーネント ダイアログを作成するときに ID を割り当てます。 ダイアログ セットの各ダイアログには、そのセット内で一意の ID を割り当てる必要があります。
-- 変換後のダイアログを v3 に近いものにするために、拡張メソッド `PostAsync` と `Done` を実装します。 より多くの変換プロセスを軽減するために、拡張メソッドをさらに追加することも、移行後のコードを v4 に近いものにしておくために、これをスキップすることもできます。
 
 ### <a name="update-the-root-dialog"></a>ルート ダイアログを更新する
 
