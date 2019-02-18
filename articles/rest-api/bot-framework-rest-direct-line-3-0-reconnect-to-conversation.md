@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: 812ad04232629e889b0ab5472af07ff986ca787b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 2/09/2019
+ms.openlocfilehash: 45675e612553e79f51edde60eaee6bf14df0e44d
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000309"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971402"
 ---
 # <a name="reconnect-to-a-conversation"></a>会話への再接続
 
@@ -28,7 +28,7 @@ GET https://directline.botframework.com/v3/directline/conversations/{conversatio
 Authorization: Bearer SECRET_OR_TOKEN
 ```
 
-この要求 URI では、**{conversationId}** を会話 ID に、(`watermark` パラメーターが指定されている場合は) **{watermark_value}** を基準値に置き換えてください。 `watermark` パラメーターは省略可能です。 要求 URI で `watermark` パラメーターが指定されている場合、会話は基準値から再生され、メッセージが失われないことが保証されます。 要求 URI で `watermark` パラメーターが省略されている場合は、再接続要求後の受信メッセージのみが再生されます。
+この要求 URI では、**{conversationId}** を会話 ID に、(`watermark` パラメーターが指定されている場合は) **{watermark_value}** を基準値に置き換えてください。  `watermark` パラメーターは省略可能です。 要求 URI で `watermark` パラメーターが指定されている場合、会話は基準値から再生され、メッセージが失われないことが保証されます。 要求 URI で `watermark` パラメーターが省略されている場合は、再接続要求後の受信メッセージのみが再生されます。
 
 次のスニペットは、再接続要求と応答の例を示しています。
 
@@ -59,6 +59,8 @@ HTTP/1.1 200 OK
 ## <a name="reconnect-to-the-conversation"></a>会話に再接続する
 
 クライアントでは、60 秒以内に新しい WebSocket ストリーム URL を使用して、[会話に再接続](bot-framework-rest-direct-line-3-0-receive-activities.md#connect-via-websocket)する必要があります。 この時間内に接続を確立できない場合、クライアントでは別の再接続要求を発行して、新しいストリーム URL を生成する必要があります。
+
+Direct Line 設定で "拡張認証オプション" が有効になっている場合、ユーザー ID が指定されていないことを示す 400 "MissingProperty" エラーが発生することがあります。
 
 ## <a name="additional-resources"></a>その他のリソース
 

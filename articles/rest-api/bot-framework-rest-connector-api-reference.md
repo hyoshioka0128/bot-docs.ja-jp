@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/25/2018
-ms.openlocfilehash: 81192c9b5806d467c2a1fd292ee3d5db539e9ead
-ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
+ms.openlocfilehash: fd98b1bc8c3aa3b2c9fd716289dfd3ce75bec75b
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916869"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971542"
 ---
 # <a name="api-reference"></a>API リファレンス
 
@@ -359,7 +359,7 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 スキーマは、ボットがユーザーとのコミュニケーションに使用できるオブジェクトとそのプロパティを定義します。 
 
-| オブジェクト | 説明 |
+| Object | 説明 |
 | ---- | ---- |
 | [Activity オブジェクト](#activity-object) | ボットとユーザーの間で交換されるメッセージを定義します。 |
 | [AnimationCard オブジェクト](#animationcard-object) | アニメーション GIF または短いビデオを再生できるカードを定義します。 |
@@ -405,35 +405,35 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **action** | string | 適用する、または適用されたアクション。 アクションのコンテキストを決定するには、**type** プロパティを使用します。 たとえば、**type** が **contactRelationUpdate** の場合、**action** プロパティの値は、ユーザーがボットを連絡先リストに追加した場合は **add** になり、ユーザーがボットを連絡先リストから削除した場合は **remove** になります。 |
+| **action** | 文字列 | 適用する、または適用されたアクション。 アクションのコンテキストを決定するには、**type** プロパティを使用します。 たとえば、**type** が **contactRelationUpdate** の場合、**action** プロパティの値は、ユーザーがボットを連絡先リストに追加した場合は **add** になり、ユーザーがボットを連絡先リストから削除した場合は **remove** になります。 |
 | **attachments** | [Attachment](#attachment-object)[] | メッセージに含める追加の情報を定義する **Attachment** オブジェクトの配列。 各添付ファイルは、メディア ファイル (例: オーディオ、ビデオ、画像、ファイル) またはリッチ カードのどちらかにすることができます。 |
-| **attachmentLayout** | string | メッセージに含まれるリッチ カード**添付ファイル**のレイアウト。 次の値のいずれか: **carousel**、**list**。 リッチ カード添付ファイルの詳細については、「[メッセージへのリッチ カード添付ファイルの追加](bot-framework-rest-connector-add-rich-cards.md)」を参照してください。 |
+| **attachmentLayout** | 文字列 | メッセージに含まれるリッチ カード**添付ファイル**のレイアウト。 次の値のいずれか: **carousel**、**list**。 リッチ カード添付ファイルの詳細については、「[メッセージへのリッチ カード添付ファイルの追加](bot-framework-rest-connector-add-rich-cards.md)」を参照してください。 |
 | **channelData** | オブジェクト | チャネル固有のコンテンツを格納するオブジェクト。 一部のチャネルには、添付ファイル スキーマでは表現できない追加情報を必要とする機能があります。 そのような場合は、このプロパティを、チャネルのドキュメントで定義されているチャネル固有のコンテンツに設定します。 詳細については、「[チャネル固有の機能の実装](bot-framework-rest-connector-channeldata.md)」を参照してください。 |
-| **channelId** | string | チャネルを一意に識別する ID。 チャネルによって設定されます。 | 
+| **channelId** | 文字列 | チャネルを一意に識別する ID。 チャネルによって設定されます。 | 
 | **conversation** | [ConversationAccount](#conversationaccount-object) | アクティビティが属する会話を定義する **ConversationAccount** オブジェクト。 |
-| **code** | string | 会話が終了した理由を示すコード。 |
+| **code** | 文字列 | 会話が終了した理由を示すコード。 |
 | **entities** | object[] | メッセージでメンションされたエンティティを表すオブジェクトの配列。 この配列内のオブジェクトは任意の <a href="http://schema.org/" target="_blank">Schema.org</a> オブジェクトです。 たとえば、会話でメンションされた人物を識別する [Mention](#mention-object) オブジェクトや、会話でメンションされた場所を識別する [Place](#place-object) オブジェクトを配列に含めることができます。 |
 | **from** | [ChannelAccount](#channelaccount-object) | メッセージの送信者を指定する **ChannelAccount** オブジェクト。 |
 | **historyDisclosed** | ブール値 | 履歴が公開されているかどうかを示すフラグ。 既定値は **false** です。 |
-| **id** | string | チャネルでのアクティビティを一意に識別する ID。 | 
-| **inputHint** | string | メッセージがクライアントに配信された後、ボットがユーザー入力を受け付けるか、期待するか、または無視するかを示す値。 次の値のいずれか: **acceptingInput**、**expectingInput**、**ignoringInput**。 |
-| **locale** | string | メッセージ内のテキストの表示に使用する言語のロケールで、`<language>-<country>` の形式。 ボットがその言語の表示文字列を指定できるよう、チャネルはこのプロパティを使用してユーザーの言語を指示します。 既定値は **en-US** です。 |
-| **localTimestamp** | string | ローカル タイム ゾーンでメッセージが送信された日時を <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a> 形式で表したもの。 |
+| **id** | 文字列 | チャネルでのアクティビティを一意に識別する ID。 | 
+| **inputHint** | 文字列 | メッセージがクライアントに配信された後、ボットがユーザー入力を受け付けるか、期待するか、または無視するかを示す値。 次の値のいずれか: **acceptingInput**、**expectingInput**、**ignoringInput**。 |
+| **locale** | 文字列 | メッセージ内のテキストの表示に使用する言語のロケールで、`<language>-<country>` の形式。 ボットがその言語の表示文字列を指定できるよう、チャネルはこのプロパティを使用してユーザーの言語を指示します。 既定値は **en-US** です。 |
+| **localTimestamp** | 文字列 | ローカル タイム ゾーンでメッセージが送信された日時を <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a> 形式で表したもの。 |
 | **membersAdded** | [ChannelAccount](#channelaccount-object)[] | 会話に参加したユーザーのリストを表す **ChannelAccount** オブジェクトの配列。 アクティビティの **type** が "conversationUpdate" で、ユーザーが会話に参加した場合にのみ存在します。 | 
 | **membersRemoved** | [ChannelAccount](#channelaccount-object)[] | 会話から退出したユーザーのリストを表す **ChannelAccount** オブジェクトの配列。 アクティビティの **type** が "conversationUpdate" で、ユーザーが会話から退出した場合にのみ存在します。 | 
-| **name** | string | 呼び出す操作の名前またはイベントの名前。 |
+| **name** | 文字列 | 呼び出す操作の名前またはイベントの名前。 |
 | **recipient** | [ChannelAccount](#channelaccount-object) | メッセージの受信者を指定する **ChannelAccount** オブジェクト。 |
 | **relatesTo** | [ConversationReference](#conversationreference-object) | 会話内の特定のポイントを定義する **ConversationReference** オブジェクト。 |
-| **replyToId** | string | このメッセージの返信先メッセージの ID。 ユーザーが送信したメッセージに返信するには、このプロパティをユーザーのメッセージの ID に設定します。 すべてのチャネルがスレッド返信をサポートするわけではありません。 このような場合、チャネルはこのプロパティを無視し、時間順のセマンティクス (タイムスタンプ) を使用してメッセージを会話に追加します。 | 
-| **serviceUrl** | string | チャネルのサービス エンドポイントを指定する URL。 チャネルによって設定されます。 | 
-| **speak** | string | 音声対応チャネルでボットが話すテキスト。 音声、速度、音量、発音、ピッチなど、ボットの音声のさまざまな特性を制御するには、<a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">音声合成マークアップ言語 (SSML)</a> 形式でこのプロパティを指定します。 |
+| **replyToId** | 文字列 | このメッセージの返信先メッセージの ID。 ユーザーが送信したメッセージに返信するには、このプロパティをユーザーのメッセージの ID に設定します。 すべてのチャネルがスレッド返信をサポートするわけではありません。 このような場合、チャネルはこのプロパティを無視し、時間順のセマンティクス (タイムスタンプ) を使用してメッセージを会話に追加します。 | 
+| **serviceUrl** | 文字列 | チャネルのサービス エンドポイントを指定する URL。 チャネルによって設定されます。 | 
+| **speak** | 文字列 | 音声対応チャネルでボットが話すテキスト。 音声、速度、音量、発音、ピッチなど、ボットの音声のさまざまな特性を制御するには、<a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">音声合成マークアップ言語 (SSML)</a> 形式でこのプロパティを指定します。 |
 | **suggestedActions** | [SuggestedActions](#suggestedactions-object) | ユーザーが選択できるオプションを定義する **SuggestedActions** オブジェクト。 |
-| **summary** | string | メッセージに含まれる情報の要約。 たとえば、電子メール チャネルで送信されるメッセージの場合、このプロパティで電子メール メッセージの最初の 50 文字を指定できます。 |
-| **text** | string | ユーザーからボットに、またはボットからユーザーに送信されるメッセージのテキスト。 このプロパティの内容に課される制限については、チャネルのドキュメントを参照してください。 |
-| **textFormat** | string | メッセージの **text** の形式。 次の値のいずれか: **markdown**、**plain**、**xml**。 テキスト形式の詳細については、「[Create messages](bot-framework-rest-connector-create-messages.md)」(メッセージの作成) を参照してください。 |
-| **timestamp** | string | UTC タイム ゾーンでメッセージが送信された日時を <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a> 形式で表したもの。 |
-| **topicName** | string | アクティビティが属する会話のトピック。 |
-| **type** | string | アクティビティの種類。 次の値のいずれか: **contactRelationUpdate**、**conversationUpdate**、**deleteUserData**、**message**、**typing**、**endOfConversation**。 アクティビティの種類の詳細については、「[Activities overview](bot-framework-rest-connector-activities.md)」(アクティビティの概要) を参照してください。 |
+| **summary** | 文字列 | メッセージに含まれる情報の要約。 たとえば、電子メール チャネルで送信されるメッセージの場合、このプロパティで電子メール メッセージの最初の 50 文字を指定できます。 |
+| **text** | 文字列 | ユーザーからボットに、またはボットからユーザーに送信されるメッセージのテキスト。 このプロパティの内容に課される制限については、チャネルのドキュメントを参照してください。 |
+| **textFormat** | 文字列 | メッセージの **text** の形式。 次の値のいずれか: **markdown**、**plain**、**xml**。 テキスト形式の詳細については、「[Create messages](bot-framework-rest-connector-create-messages.md)」(メッセージの作成) を参照してください。 |
+| **timestamp** | 文字列 | UTC タイム ゾーンでメッセージが送信された日時を <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a> 形式で表したもの。 |
+| **topicName** | 文字列 | アクティビティが属する会話のトピック。 |
+| **type** | 文字列 | アクティビティの種類。 値は、**contactRelationUpdate**、**conversationUpdate**、**deleteUserData**、**message**、**typing**、**event**、**endOfConversation** のいずれかです。 アクティビティの種類の詳細については、「[Activities overview](bot-framework-rest-connector-activities.md)」(アクティビティの概要) を参照してください。 |
 | **value** | オブジェクト | 拡張可能な値。 |
 | **semanticAction** |[SemanticAction](#semanticaction-object) | プログラムによるアクションへの参照を表す **SemanticAction** オブジェクト。 |
 
@@ -444,16 +444,16 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **autoloop** | ブール値 | 最後の項目が終了したときにアニメーション GIF のリストをリプレイするかどうかを示すフラグ。 アニメーションを自動的にリプレイするには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true**です。 |
-| **autostart** | ブール値 | カードが表示されたときにアニメーションを自動的に再生するかどうかを示すフラグ。 アニメーションを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true**です。 |
+| **autoloop** | ブール値 | 最後の項目が終了したときにアニメーション GIF のリストをリプレイするかどうかを示すフラグ。 アニメーションを自動的にリプレイするには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **autostart** | ブール値 | カードが表示されたときにアニメーションを自動的に再生するかどうかを示すフラグ。 アニメーションを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **buttons** | [CardAction](#cardaction-object)[] | ユーザーが 1 つ以上のアクションを実行できるようにする **CardAction** オブジェクトの配列。 指定できるボタンの数はチャネルが決定します。 |
-| **duration** | string | メディア コンテンツの長さ ([ISO 8601 の期間の形式](https://www.iso.org/iso-8601-date-and-time-format.html))。 |
+| **duration** | 文字列 | メディア コンテンツの長さ ([ISO 8601 の期間の形式](https://www.iso.org/iso-8601-date-and-time-format.html))。 |
 | **画像** | [ThumbnailUrl](#thumbnailurl-object) | カードに表示する画像を指定する **ThumbnailUrl** オブジェクト。 |
 | **media** | [MediaUrl](#mediaurl-object)[] | 再生するアニメーション GIF のリストを指定する **MediaUrl** オブジェクトの配列。 |
-| **shareable** | ブール値 | アニメーションを他のユーザーと共有できるかどうかを示すフラグ。 アニメーションを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true**です。 |
-| **subtitle** | string | カードのタイトルの下に表示するサブタイトル。 |
-| **text** | string | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
-| **title** | string | カードのタイトル。 |
+| **shareable** | ブール値 | アニメーションを他のユーザーと共有できるかどうかを示すフラグ。 アニメーションを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **subtitle** | 文字列 | カードのタイトルの下に表示するサブタイトル。 |
+| **text** | 文字列 | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
+| **title** | 文字列 | カードのタイトル。 |
 | **value** | オブジェクト | このカードの補助パラメーター |
 
 <a href="#objects">スキーマの表に戻る</a>
@@ -463,11 +463,11 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **contentType** | string | 添付ファイル内のコンテンツのメディアの種類。 メディア ファイルの場合、このプロパティを **image/png**、**audio/wav**、**video/mp4** などの既知のメディア タイプに設定します。 リッチ カードの場合、このプロパティを次のベンダー固有タイプのいずれかに設定します。<ul><li>**application/vnd.microsoft.card.adaptive**: テキスト、音声、画像、ボタン、入力フィールドの任意の組み合わせを含めることができるリッチ カード。 **content** プロパティを <a href="http://adaptivecards.io/documentation/#create-cardschema" target="_blank">AdaptiveCard</a> オブジェクトに設定します。</li><li>**application/vnd.microsoft.card.animation**: アニメーションを再生するリッチ カード。 **content** プロパティを [AnimationCard](#animationcard-object) オブジェクトに設定します。</li><li>**application/vnd.microsoft.card.audio**: オーディオ ファイルを再生するリッチ カード。 **content** プロパティを [AudioCard](#audiocard-object) オブジェクトに設定します。</li><li>**application/vnd.microsoft.card.video**: ビデオを再生するリッチ カード。 **content** プロパティを [VideoCard](#videocard-object) オブジェクトに設定します。</li><li>**application/vnd.microsoft.card.hero**: ヒーロー カード。 **content** プロパティを [HeroCard](#herocard-object) オブジェクトに設定します。</li><li>**application/vnd.microsoft.card.thumbnail**: サムネイル カード。 **content** プロパティを [ThumbnailCard](#thumbnailcard-object) オブジェクトに設定します。</li><li>**application/vnd.microsoft.com.card.receipt**: レシート カード。 **content** プロパティを [ReceiptCard](#receiptcard-object) オブジェクトに設定します。</li><li>**application/vnd.microsoft.com.card.signin**: ユーザー サインイン カード。 **content** プロパティを [SignInCard](#signincard-object) オブジェクトに設定します。</li></ul> |
-| **contentUrl** | string | 添付ファイルのコンテンツの URL。 たとえば、添付ファイルが画像の場合、**contentUrl** を画像の場所を表す URL に設定します。 サポートされているプロトコルは HTTP、HTTPS、File、および Data です。 |
+| **contentType** | 文字列 | 添付ファイル内のコンテンツのメディアの種類。 メディア ファイルの場合、このプロパティを **image/png**、**audio/wav**、**video/mp4** などの既知のメディア タイプに設定します。 リッチ カードの場合、このプロパティを次のベンダー固有タイプのいずれかに設定します。<ul><li>**application/vnd.microsoft.card.adaptive**: テキスト、音声、画像、ボタン、入力フィールドの任意の組み合わせを含めることができるリッチ カード。 **content** プロパティを <a href="http://adaptivecards.io/documentation/#create-cardschema" target="_blank">AdaptiveCard</a> オブジェクトに設定します。</li><li>**application/vnd.microsoft.card.animation**: アニメーションを再生するリッチ カード。 **content** プロパティを [AnimationCard](#animationcard-object) オブジェクトに設定します。</li><li>**application/vnd.microsoft.card.audio**: オーディオ ファイルを再生するリッチ カード。 **content** プロパティを [AudioCard](#audiocard-object) オブジェクトに設定します。</li><li>**application/vnd.microsoft.card.video**: ビデオを再生するリッチ カード。 **content** プロパティを [VideoCard](#videocard-object) オブジェクトに設定します。</li><li>**application/vnd.microsoft.card.hero**: ヒーロー カード。 **content** プロパティを [HeroCard](#herocard-object) オブジェクトに設定します。</li><li>**application/vnd.microsoft.card.thumbnail**: サムネイル カード。 **content** プロパティを [ThumbnailCard](#thumbnailcard-object) オブジェクトに設定します。</li><li>**application/vnd.microsoft.com.card.receipt**: 領収書カード。 **content** プロパティを [ReceiptCard](#receiptcard-object) オブジェクトに設定します。</li><li>**application/vnd.microsoft.com.card.signin**: ユーザー サインイン カード。 **content** プロパティを [SignInCard](#signincard-object) オブジェクトに設定します。</li></ul> |
+| **contentUrl** | 文字列 | 添付ファイルのコンテンツの URL。 たとえば、添付ファイルが画像の場合、**contentUrl** を画像の場所を表す URL に設定します。 サポートされているプロトコルは、HTTP、HTTPS、File、Data です。 |
 | **content** | オブジェクト | 添付ファイルのコンテンツ。 添付ファイルがリッチ カードの場合、このプロパティをリッチ カード オブジェクトに設定します。 このプロパティと **contentUrl** プロパティは相互に排他的です。 |
-| **name** | string | 添付ファイルの名前。 |
-| **thumbnailUrl** | string | より小さな形式の代替 **content** または **contentUrl** の使用をチャネルがサポートしている場合にチャネルが使用できるサムネイル画像の URL。 たとえば、**contentType** を **application/word** に設定し、**contentUrl** を Word 文書の場所に設定する場合、文書を表すサムネイル画像を含めることができます。 チャネルは文書の代わりにサムネイル画像を表示できます。 ユーザーが画像をクリックすると、チャネルは文書を開きます。 |
+| **name** | 文字列 | 添付ファイルの名前。 |
+| **thumbnailUrl** | 文字列 | より小さな形式の代替 **content** または **contentUrl** の使用をチャネルがサポートしている場合にチャネルが使用できるサムネイル画像の URL。 たとえば、**contentType** を **application/word** に設定し、**contentUrl** を Word 文書の場所に設定する場合、文書を表すサムネイル画像を含めることができます。 チャネルは文書の代わりにサムネイル画像を表示できます。 ユーザーが画像をクリックすると、チャネルは文書を開きます。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -476,18 +476,18 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **name** | string | 添付ファイルの名前。 |
-| **originalBase64** | string | 添付ファイルのコンテンツ。 |
-| **thumbnailBase64** | string | 添付ファイルのサムネイル コンテンツ。 |
-| **type** | string | 添付ファイルの Content-Type。 |
+| **name** | 文字列 | 添付ファイルの名前。 |
+| **originalBase64** | 文字列 | 添付ファイルのコンテンツ。 |
+| **thumbnailBase64** | 文字列 | 添付ファイルのサムネイル コンテンツ。 |
+| **type** | 文字列 | 添付ファイルの Content-Type。 |
 
 ### <a name="attachmentinfo-object"></a>AttachmentInfo オブジェクト
 添付ファイルについて説明します。<br/><br/> 
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **name** | string | 添付ファイルの名前。 |
-| **type** | string | 添付ファイルの ContentType。 |
+| **name** | 文字列 | 添付ファイルの名前。 |
+| **type** | 文字列 | 添付ファイルの ContentType。 |
 | **ビュー** | [AttachmentView](#attachmentview-object)[] | 添付ファイルの利用可能なビューを表す **AttachmentView** オブジェクトの配列。 |
 
 <a href="#objects">スキーマの表に戻る</a>
@@ -497,7 +497,7 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **viewId** | string | ビュー ID。 |
+| **viewId** | 文字列 | ビュー ID。 |
 | **サイズ** | number | ファイルのサイズ。 |
 
 <a href="#objects">スキーマの表に戻る</a>
@@ -508,10 +508,10 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **type** | string | 添付ファイルの ContentType。 | 
-| **name** | string | 添付ファイルの名前。 | 
-| **originalBase64** | string | ファイルのオリジナル バージョンの内容を表すバイナリ データ。 |
-| **thumbnailBase64** | string | ファイルのサムネイル バージョンの内容を表すバイナリ データ。 |
+| **type** | 文字列 | 添付ファイルの ContentType。 | 
+| **name** | 文字列 | 添付ファイルの名前。 | 
+| **originalBase64** | 文字列 | ファイルのオリジナル バージョンの内容を表すバイナリ データ。 |
+| **thumbnailBase64** | 文字列 | ファイルのサムネイル バージョンの内容を表すバイナリ データ。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -520,17 +520,17 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **aspect** | string | **image** プロパティで指定されたサムネイルの縦横比。 有効な値は **16:9** および **9:16** です。 |
-| **autoloop** | ブール値 | 最後の項目が終了したときにオーディオ ファイルのリストをリプレイするかどうかを示すフラグ。 オーディオ ファイルを自動的にリプレイするには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true**です。 |
-| **autostart** | ブール値 | カードが表示されたときにオーディオを自動的に再生するかどうかを示すフラグ。 オーディオを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true**です。 |
+| **aspect** | 文字列 | **image** プロパティで指定されたサムネイルの縦横比。 有効な値は **16:9** および **9:16** です。 |
+| **autoloop** | ブール値 | 最後の項目が終了したときにオーディオ ファイルのリストをリプレイするかどうかを示すフラグ。 オーディオ ファイルを自動的にリプレイするには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **autostart** | ブール値 | カードが表示されたときにオーディオを自動的に再生するかどうかを示すフラグ。 オーディオを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **buttons** | [CardAction](#cardaction-object)[] | ユーザーが 1 つ以上のアクションを実行できるようにする **CardAction** オブジェクトの配列。 指定できるボタンの数はチャネルが決定します。 |
-| **duration** | string | メディア コンテンツの長さ ([ISO 8601 の期間の形式](https://www.iso.org/iso-8601-date-and-time-format.html))。 |
+| **duration** | 文字列 | メディア コンテンツの長さ ([ISO 8601 の期間の形式](https://www.iso.org/iso-8601-date-and-time-format.html))。 |
 | **画像** | [ThumbnailUrl](#thumbnailurl-object) | カードに表示する画像を指定する **ThumbnailUrl** オブジェクト。 |
 | **media** | [MediaUrl](#mediaurl-object)[] | 再生するオーディオ ファイルのリストを指定する **MediaUrl** オブジェクトの配列。 |
-| **shareable** | ブール値 | オーディオ ファイルを他のユーザーと共有できるかどうかを示すフラグ。 オーディオを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true**です。 |
-| **subtitle** | string | カードのタイトルの下に表示するサブタイトル。 |
-| **text** | string | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
-| **title** | string | カードのタイトル。 |
+| **shareable** | ブール値 | オーディオ ファイルを他のユーザーと共有できるかどうかを示すフラグ。 オーディオを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **subtitle** | 文字列 | カードのタイトルの下に表示するサブタイトル。 |
+| **text** | 文字列 | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
+| **title** | 文字列 | カードのタイトル。 |
 | **value** | オブジェクト | このカードの補助パラメーター |
 
 <a href="#objects">スキーマの表に戻る</a>
@@ -542,7 +542,7 @@ Bot State サービスを使用して保存される特定の会話のコンテ�
 | プロパティ | type | 説明 |
 |----|----|----|
 | **データ** | オブジェクト | 要求では、Bot State サービスを使用して保存するプロパティと値を指定する JSON オブジェクト。 応答では、Bot State サービスを使用して保存されたプロパティと値を指定する JSON オブジェクト。 | 
-| **eTag** | string | Bot State サービスを使用して保存するデータのコンカレンシーを制御するために使用できるエンティティ タグ値。 詳細については、「[Manage state data](bot-framework-rest-state.md)」(状態データの管理) を参照してください。 | 
+| **eTag** | 文字列 | Bot State サービスを使用して保存するデータのコンカレンシーを制御するために使用できるエンティティ タグ値。 詳細については、「[Manage state data](bot-framework-rest-state.md)」(状態データの管理) を参照してください。 | 
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -551,11 +551,11 @@ Bot State サービスを使用して保存される特定の会話のコンテ�
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **画像** | string | 表示する画像の URL | 
-| **text** | string | アクションのテキスト |
-| **title** | string | ボタンのテキスト。 ボタンのアクションにのみ適用されます。 |
-ボタンを選択します。 ボタンのアクションにのみ適用されます。 |
-| **type** | string | 実行するアクションの種類。 有効な値の一覧については、「[メッセージへのリッチ カード添付ファイルの追加](bot-framework-rest-connector-add-rich-cards.md)」を参照してください。 |
+| **画像** | 文字列 | 表示する画像の URL | 
+| **text** | 文字列 | アクションのテキスト |
+| **title** | 文字列 | ボタンのテキスト。 ボタンのアクションにのみ適用されます。 |
+ ボタンを選択します。 ボタンのアクションにのみ適用されます。 |
+| **type** | 文字列 | 実行するアクションの種類。 有効な値の一覧については、「[メッセージへのリッチ カード添付ファイルの追加](bot-framework-rest-connector-add-rich-cards.md)」を参照してください。 |
 | **value** | オブジェクト | アクションの補助パラメーター。 このプロパティの値は、アクションの **type** によって異なります。 詳細については、「[メッセージへのリッチ カード添付ファイルの追加](bot-framework-rest-connector-add-rich-cards.md)」を参照してください。 |
 
 <a href="#objects">スキーマの表に戻る</a>
@@ -565,9 +565,9 @@ Bot State サービスを使用して保存される特定の会話のコンテ�
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **alt** | string | 画像の説明。 アクセシビリティをサポートするには、説明を含める必要があります。 |
+| **alt** | 文字列 | 画像の説明。 アクセシビリティをサポートするには、説明を含める必要があります。 |
 | **tap** | [CardAction](#cardaction-object) | ユーザーが画像をタップまたはクリックした場合に実行するアクションを指定する **CardAction** オブジェクト。 |
-| **URL** | string | 画像または画像の base64 バイナリのソース URL (例: `data:image/png;base64,iVBORw0KGgo...`)。 |
+| **URL** | 文字列 | 画像または画像の base64 バイナリのソース URL (例: `data:image/png;base64,iVBORw0KGgo...`)。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -576,8 +576,8 @@ Bot State サービスを使用して保存される特定の会話のコンテ�
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **id** | string | チャネルのボットまたはユーザーを一意に識別する ID。 |
-| **name** | string | ボットまたはユーザーの名前。 |
+| **id** | 文字列 | チャネルのボットまたはユーザーを一意に識別する ID。 |
+| **name** | 文字列 | ボットまたはユーザーの名前。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -590,7 +590,7 @@ Bot State サービスを使用して保存される特定の会話のコンテ�
 | **bot** | [ChannelAccount](#channelaccount-object) | ボットを識別する **ChannelAccount** オブジェクト。 |
 | **isGroup** | ブール値 | これがグループ会話であるかどうかを示すフラグ。 これがグループ会話の場合は **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **false** です。 グループ会話を開始するには、チャネルがグループ会話をサポートしている必要があります。 |
 | **members** | [ChannelAccount](#channelaccount-object)[] | 会話のメンバーを識別する **ChannelAccount** オブジェクトの配列。 **isGroup** が **true** に設定されていない限り、このリストには 1 人のユーザーが含まれている必要があります。 このリストには他のボットを含めることができます。 |
-| **topicName** | string | 会話のタイトル。 |
+| **topicName** | 文字列 | 会話のタイトル。 |
 | **activity** | [アクティビティ](#activity-object) | [会話を作成する](#create-conversation)要求で、新しい会話に投稿する最初のメッセージを定義する **Activity** オブジェクト。 |
 
 <a href="#objects">スキーマの表に戻る</a>
@@ -600,10 +600,10 @@ Bot State サービスを使用して保存される特定の会話のコンテ�
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **id** | string | 会話を識別する ID。 ID はチャネルごとに一意です。 チャネルが会話を開始する場合、チャネルがこの ID を設定します。それ以外の場合、このプロパティはボットによって、ボットが会話を開始するときに応答で取得する ID に設定されます (「Starting a conversation」(会話の開始) を参照)。 |
+| **id** | 文字列 | 会話を識別する ID。 ID はチャネルごとに一意です。 チャネルが会話を開始する場合、チャネルがこの ID を設定します。それ以外の場合、このプロパティはボットによって、ボットが会話を開始するときに応答で取得する ID に設定されます (「Starting a conversation」(会話の開始) を参照)。 |
 | **isGroup** | ブール値 | アクティビティが生成された時点で会話に 2 人より多い参加者が含まれているかどうかを示すフラグ。 これがグループ会話の場合は **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **false** です。 |
-| **name** | string | 会話を識別するために使用できる表示名。 |
-| **conversationType** | string | 会話の種類 (グループ、個人など) を区別するチャネルでの会話の種類を示します。 |
+| **name** | 文字列 | 会話を識別するために使用できる表示名。 |
+| **conversationType** | 文字列 | 会話の種類 (グループ、個人など) を区別するチャネルでの会話の種類を示します。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -615,7 +615,7 @@ Bot State サービスを使用して保存される特定の会話のコンテ�
 | **isGroup** | ブール値 | これがグループ会話かどうかを示します。 |
 | **bot** | [ChannelAccount](#channelaccount-object) | 会話でのボットのアドレス。 |
 | **members** | array | 会話に追加するメンバーのリスト。 |
-| **topicName** | string | 会話のトピック タイトル。 このプロパティは、チャネルがサポートしている場合にのみ使用されます。 |
+| **topicName** | 文字列 | 会話のトピック タイトル。 このプロパティは、チャネルがサポートしている場合にのみ使用されます。 |
 | **activity** | [アクティビティ](#activity-object) | (オプション) 新しい会話を作成するときに、このアクティビティを会話の初期メッセージとして使用します。 |
 | **channelData** | オブジェクト | 会話を作成するためのチャネル固有のペイロード。 |
 
@@ -624,11 +624,11 @@ Bot State サービスを使用して保存される特定の会話のコンテ�
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **activityId** | string | このオブジェクトが参照するアクティビティを一意に識別する ID。 | 
+| **activityId** | 文字列 | このオブジェクトが参照するアクティビティを一意に識別する ID。 | 
 | **bot** | [ChannelAccount](#channelaccount-object) | このオブジェクトが参照する会話でボットを識別する **ChannelAccount** オブジェクト。 |
-| **channelId** | string | このオブジェクトが参照する会話でチャネルを一意に識別する ID。 | 
+| **channelId** | 文字列 | このオブジェクトが参照する会話でチャネルを一意に識別する ID。 | 
 | **conversation** | [ConversationAccount](#conversationaccount-object) | このオブジェクトが参照する会話を定義する **ConversationAccount** オブジェクト。 |
-| **serviceUrl** | string | このオブジェクトが参照する会話でチャネルのサービス エンドポイントを指定する URL。 | 
+| **serviceUrl** | 文字列 | このオブジェクトが参照する会話でチャネルのサービス エンドポイントを指定する URL。 | 
 | **user** | [ChannelAccount](#channelaccount-object) | このオブジェクトが参照する会話でユーザーを識別する **ChannelAccount** オブジェクト。 |
 
 <a href="#objects">スキーマの表に戻る</a>
@@ -638,17 +638,17 @@ Bot State サービスを使用して保存される特定の会話のコンテ�
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **activityId** | string | アクティビティの ID。 |
-| **id** | string | リソースの ID。 |
-| **serviceUrl** | string | サービス エンドポイント。 |
+| **activityId** | 文字列 | アクティビティの ID。 |
+| **id** | 文字列 | リソースの ID。 |
+| **serviceUrl** | 文字列 | サービス エンドポイント。 |
 
 ### <a name="error-object"></a>Error オブジェクト
 エラーを定義します。<br/><br/>
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **code** | string | エラー コード。 |
-| **message** | string | エラーの説明。 |
+| **code** | 文字列 | エラー コード。 |
+| **message** | 文字列 | エラーの説明。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -657,7 +657,7 @@ Bot State サービスを使用して保存される特定の会話のコンテ�
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **type** | string | エンティティの種類。 通常は、schema.org からの種類が含まれます。 |
+| **type** | 文字列 | エンティティの種類。 通常は、schema.org からの種類が含まれます。 |
 
 
 ### <a name="errorresponse-object"></a>ErrorResponse オブジェクト
@@ -674,8 +674,8 @@ HTTP API 応答を定義します。<br/><br/>
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **key** | string | ファクトの名前。 例: **Check-in**。 キーは、ファクトの値を表示するときにラベルとして使用されます。 |
-| **value** | string | ファクトの値。 例: **10 October 2016**。 |
+| **key** | 文字列 | ファクトの名前。 例: **Check-in**。 キーは、ファクトの値を表示するときにラベルとして使用されます。 |
+| **value** | 文字列 | ファクトの値。 例: **10 October 2016**。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -685,10 +685,10 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 | プロパティ | type | 説明 |
 |----|----|----|
 | **elevation** | number | 場所の標高。 |
-| **name** | string | 場所の名前。 |
+| **name** | 文字列 | 場所の名前。 |
 | **latitude** | number | 場所の緯度。 |
 | **longitude** | number | 場所の経度。 |
-| **type** | string | このオブジェクトの種類。 常に **GeoCoordinates** に設定します。 |
+| **type** | 文字列 | このオブジェクトの種類。 常に **GeoCoordinates** に設定します。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -699,10 +699,10 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 |----|----|----|
 | **buttons** | [CardAction](#cardaction-object)[] | ユーザーが 1 つ以上のアクションを実行できるようにする **CardAction** オブジェクトの配列。 指定できるボタンの数はチャネルが決定します。 |
 | **images** | [CardImage](#cardimage-object)[] | カードに表示する画像を指定する **CardImage** オブジェクトの配列。 ヒーロー カードには 1 つの画像のみが含まれます。 |
-| **subtitle** | string | カードのタイトルの下に表示するサブタイトル。 |
+| **subtitle** | 文字列 | カードのタイトルの下に表示するサブタイトル。 |
 | **tap** | [CardAction](#cardaction-object) | ユーザーがカードをタップまたはクリックした場合に実行するアクションを指定する **CardAction** オブジェクト。 いずれかのボタンと同じアクションまたは別のアクションを指定できます。 |
-| **text** | string | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
-| **title** | string | カードのタイトル。 |
+| **text** | 文字列 | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
+| **title** | 文字列 | カードのタイトル。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -712,7 +712,7 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **id** | string | リソースを一意に識別する ID。 |
+| **id** | 文字列 | リソースを一意に識別する ID。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -728,8 +728,8 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **profile** | string | メディアのコンテンツを説明するヒント。 |
-| **URL** | string | メディア ファイルのソース URL。 |
+| **profile** | 文字列 | メディアのコンテンツを説明するヒント。 |
+| **URL** | 文字列 | メディア ファイルのソース URL。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -741,8 +741,8 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 |          プロパティ          |                   type                   |                                                                                                                                                                                                                           説明                                                                                                                                                                                                                            |
 |----------------------------|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | <strong>mentioned</strong> | [ChannelAccount](#channelaccount-object) | メンションされたユーザーまたはボットを指定する <strong>ChannelAccount</strong> オブジェクト。 Slack などの一部のチャネルでは会話ごとに名前を割り当てるため、(メッセージの <strong>recipient</strong> プロパティで) メンションされたボットの名前は、ボットの[登録](../bot-service-quickstart-registration.md)時に指定したハンドルとは異なる可能性があることに注意してください。 ただし、両方のアカウント ID は同じになります。 |
-|   <strong>text</strong>    |                  string                  |                                                                                                                         会話でメンションされたユーザーまたはボット。 たとえば、メッセージが「@ColorBot pick me a new color」の場合、このプロパティは <strong>@ColorBot</strong> に設定されます。 すべてのチャネルがこのプロパティを設定するわけではありません。                                                                                                                          |
-|   <strong>type</strong>    |                  string                  |                                                                                                                                                                                                   このオブジェクトの種類。 常に <strong>Mention</strong> に設定します。                                                                                                                                                                                                    |
+|   <strong>text</strong>    |                  文字列                  |                                                                                                                         会話でメンションされたユーザーまたはボット。 たとえば、メッセージが「@ColorBot pick me a new color」の場合、このプロパティは <strong>@ColorBot</strong> に設定されます。 すべてのチャネルがこのプロパティを設定するわけではありません。                                                                                                                          |
+|   <strong>type</strong>    |                  文字列                  |                                                                                                                                                                                                   このオブジェクトの種類。 常に <strong>Mention</strong> に設定します。                                                                                                                                                                                                    |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -751,7 +751,7 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **type** | string | 反応の種類。 |
+| **type** | 文字列 | 反応の種類。 |
 
 ### <a name="place-object"></a>Place オブジェクト
 会話でメンションされた場所を定義します。<br/><br/> 
@@ -761,8 +761,8 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 | **address** | オブジェクト |  場所の所在地。 このプロパティは `string`、または `PostalAddress` 型の複合オブジェクトです。 |
 | **geo** | [GeoCoordinates](#geocoordinates-object) | 場所の地理的座標を指定する **GeoCoordinates** オブジェクト。 |
 | **hasMap** | オブジェクト | 場所の地図。 このプロパティは `string` (URL)、または `Map` 型の複合オブジェクトです。 |
-| **name** | string | 場所の名前。 |
-| **type** | string | このオブジェクトの種類。 常に **Place** に設定します。 |
+| **name** | 文字列 | 場所の名前。 |
+| **type** | 文字列 | このオブジェクトの種類。 常に **Place** に設定します。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -775,10 +775,10 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 | **facts** | [Fact](#fact-object)[] | 購入に関する情報を指定する **Fact** オブジェクトの配列。 たとえば、ホテル宿泊レシートのファクトのリストには、チェックイン日とチェックアウト日が含まれる場合があります。 指定できるファクトの数はチャネルが決定します。 |
 | **items** | [ReceiptItem](#receiptitem-object)[] | 購入したアイテムを指定する **ReceiptItem** オブジェクトの配列 |
 | **tap** | [CardAction](#cardaction-object) | ユーザーがカードをタップまたはクリックした場合に実行するアクションを指定する **CardAction** オブジェクト。 いずれかのボタンと同じアクションまたは別のアクションを指定できます。 |
-| **tax** | string | 購入に適用される税額を指定する通貨形式の文字列。 |
-| **title** | string | レシートの上部に表示されるタイトル。 |
-| **total** | string | 適用されるすべての税金を含めた合計購入価格を指定する通貨形式の文字列。 |
-| **vat** | string | 購入価格に適用される付加価値税 (VAT) の額を指定する通貨形式の文字列。 |
+| **tax** | 文字列 | 購入に適用される税額を指定する通貨形式の文字列。 |
+| **title** | 文字列 | レシートの上部に表示されるタイトル。 |
+| **total** | 文字列 | 適用されるすべての税金を含めた合計購入価格を指定する通貨形式の文字列。 |
+| **vat** | 文字列 | 購入価格に適用される付加価値税 (VAT) の額を指定する通貨形式の文字列。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -788,12 +788,12 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 | プロパティ | type | 説明 |
 |----|----|----|
 | **画像** | [CardImage](#cardimage-object) | 品目の隣に表示するサムネイル画像を指定する **CardImage** オブジェクト。  |
-| **price** | string | すべての購入単位の合計価格を指定する通貨形式の文字列。 |
-| **quantity** | string | 購入単位数を指定する数値の文字列。 |
-| **subtitle** | string | 品目のタイトルの下に表示されるサブタイトル。 |
+| **price** | 文字列 | すべての購入単位の合計価格を指定する通貨形式の文字列。 |
+| **quantity** | 文字列 | 購入単位数を指定する数値の文字列。 |
+| **subtitle** | 文字列 | 品目のタイトルの下に表示されるサブタイトル。 |
 | **tap** | [CardAction](#cardaction-object) | ユーザーが品目をタップまたはクリックした場合に実行するアクションを指定する **CardAction** オブジェクト。 |
-| **text** | string | 品目の説明。 |
-| **title** | string | 品目のタイトル。 |
+| **text** | 文字列 | 品目の説明。 |
+| **title** | 文字列 | 品目のタイトル。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -803,7 +803,7 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 
 |      プロパティ       |  type  |                説明                |
 |---------------------|--------|-------------------------------------------|
-| <strong>id</strong> | string | リソースを一意に識別する ID。 |
+| <strong>id</strong> | 文字列 | リソースを一意に識別する ID。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -813,7 +813,7 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 | プロパティ | type | 説明 |
 |----|----|----|
 | **buttons** | [CardAction](#cardaction-object)[] | ユーザーがサービスにサインインできるようにする **CardAction** オブジェクトの配列。 指定できるボタンの数はチャネルが決定します。 |
-| **text** | string | サインイン カードに含める説明またはプロンプト。 |
+| **text** | 文字列 | サインイン カードに含める説明またはプロンプト。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -834,10 +834,10 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 |----|----|----|
 | **buttons** | [CardAction](#cardaction-object)[] | ユーザーが 1 つ以上のアクションを実行できるようにする **CardAction** オブジェクトの配列。 指定できるボタンの数はチャネルが決定します。 |
 | **images** | [CardImage](#cardimage-object)[] | カードに表示するサムネイル画像を指定する **CardImage** オブジェクトの配列。 指定できるサムネイル画像の数はチャネルが決定します。 |
-| **subtitle** | string | カードのタイトルの下に表示するサブタイトル。 |
+| **subtitle** | 文字列 | カードのタイトルの下に表示するサブタイトル。 |
 | **tap** | [CardAction](#cardaction-object) | ユーザーがカードをタップまたはクリックした場合に実行するアクションを指定する **CardAction** オブジェクト。 いずれかのボタンと同じアクションまたは別のアクションを指定できます。 |
-| **text** | string | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
-| **title** | string | カードのタイトル。 |
+| **text** | 文字列 | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
+| **title** | 文字列 | カードのタイトル。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -846,8 +846,8 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **alt** | string | 画像の説明。 アクセシビリティをサポートするには、説明を含める必要があります。 |
-| **URL** | string | 画像または画像の base64 バイナリのソース URL (例: `data:image/png;base64,iVBORw0KGgo...`)。 |
+| **alt** | 文字列 | 画像の説明。 アクセシビリティをサポートするには、説明を含める必要があります。 |
+| **URL** | 文字列 | 画像または画像の base64 バイナリのソース URL (例: `data:image/png;base64,iVBORw0KGgo...`)。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -856,17 +856,17 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **aspect** | string | ビデオの縦横比 (例: 16:9、4:3)。|
-| **autoloop** | ブール値 | 最後の項目が終了したときにビデオのリストをリプレイするかどうかを示すフラグ。 ビデオを自動的にリプレイするには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true**です。 |
-| **autostart** | ブール値 | カードが表示されたときにビデオを自動的に再生するかどうかを示すフラグ。 ビデオを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true**です。 |
+| **aspect** | 文字列 | ビデオの縦横比 (例: 16:9、4:3)。|
+| **autoloop** | ブール値 | 最後の項目が終了したときにビデオのリストをリプレイするかどうかを示すフラグ。 ビデオを自動的にリプレイするには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **autostart** | ブール値 | カードが表示されたときにビデオを自動的に再生するかどうかを示すフラグ。 ビデオを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **buttons** | [CardAction](#cardaction-object)[] | ユーザーが 1 つ以上のアクションを実行できるようにする **CardAction** オブジェクトの配列。 指定できるボタンの数はチャネルが決定します。 |
-| **duration** | string | メディア コンテンツの長さ ([ISO 8601 の期間の形式](https://www.iso.org/iso-8601-date-and-time-format.html))。 |
+| **duration** | 文字列 | メディア コンテンツの長さ ([ISO 8601 の期間の形式](https://www.iso.org/iso-8601-date-and-time-format.html))。 |
 | **画像** | [ThumbnailUrl](#thumbnailurl-object) | カードに表示する画像を指定する **ThumbnailUrl** オブジェクト。 |
 | **media** | [MediaUrl](#mediaurl-object)[] | 再生するビデオのリストを指定する **MediaUrl** オブジェクトの配列。 |
-| **shareable** | ブール値 | ビデオを他のユーザーと共有できるかどうかを示すフラグ。 ビデオを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true**です。 |
-| **subtitle** | string | カードのタイトルの下に表示するサブタイトル。 |
-| **text** | string | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
-| **title** | string | カードのタイトル。 |
+| **shareable** | ブール値 | ビデオを他のユーザーと共有できるかどうかを示すフラグ。 ビデオを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **subtitle** | 文字列 | カードのタイトルの下に表示するサブタイトル。 |
+| **text** | 文字列 | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
+| **title** | 文字列 | カードのタイトル。 |
 | **value** | オブジェクト | このカードの補助パラメーター|
 
 <a href="#objects">スキーマの表に戻る</a>
@@ -876,7 +876,7 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 
 | プロパティ | type | 説明 |
 |----|----|----|
-| **id** | string | このアクションの ID |
+| **id** | 文字列 | このアクションの ID |
 | **entities** | [エンティティ](#entity-object) | このアクションに関連付けられているエンティティ |
 
 <a href="#objects">スキーマの表に戻る</a>
