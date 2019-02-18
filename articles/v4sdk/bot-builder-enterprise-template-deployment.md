@@ -51,7 +51,7 @@ dotnet tool install -g luisgen
 ## <a name="configuration"></a>構成
 
 - LUIS のオーサリング キーを取得する
-   - デプロイする予定のリージョンの正しい LUIS ポータルについては、[こちら](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions)のドキュメント ページをご覧ください。 www.luis.ai は米国リージョンを指し、このポータルから取得したオーサリング キーはヨーロッパのデプロイでは動作しないことに注意してください。
+   - デプロイする予定のリージョンの正しい LUIS ポータルについては、[こちら](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions)のドキュメント ページをご覧ください。  [www.luis.ai](www.luis.ai) は米国リージョンを指し、このポータルから取得したオーサリング キーはヨーロッパのデプロイでは動作しないことに注意してください。
    - サインインした後は、右上隅にある自分の名前をクリックします。
    - [設定] を選択し、次の手順に備えてオーサリング キーをメモします。
 
