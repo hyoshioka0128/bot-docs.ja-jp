@@ -9,6 +9,7 @@
 ## [概要](../v4sdk/bot-builder-virtual-assistant-introduction.md)
 # [FAQ](../bot-service-resources-bot-framework-faq.md)
 # [サポートを受ける](../bot-service-resources-links-help.md)
+# [チャネル リファレンス](../bot-service-channels-reference.md)
 # [識別子のガイド](../bot-service-resources-identifiers-guide.md)
 # [App Insights キー](../bot-service-resources-app-insights-keys.md)
 # [User-Agent 要求](../bot-service-resources-user-agent.md)

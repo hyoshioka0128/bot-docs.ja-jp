@@ -39,7 +39,7 @@
 ### [ユーザーに入力を求める](v4sdk/bot-builder-primitive-prompts.md) 
 ### [ユーザーへのウェルカム メッセージの送信](v4sdk/bot-builder-send-welcome-message.md)
 <!-- ## [Add input hints to messages](v4sdk/bot-builder-howto-add-input-hints.md) -->
-### [ボットから通知を取得する](v4sdk/bot-builder-howto-proactive-message.md)
+### [ユーザーへのプロアクティブな通知の送信](v4sdk/bot-builder-howto-proactive-message.md)
 ### [ボットに自然言語の理解を追加する](v4sdk/bot-builder-howto-v4-luis.md)
 ### [QnA Maker を使用してユーザーの質問に回答する](v4sdk/bot-builder-howto-qna.md)
 ### [複数の LUIS と QnA モデルを使用する](v4sdk/bot-builder-tutorial-dispatch.md)
