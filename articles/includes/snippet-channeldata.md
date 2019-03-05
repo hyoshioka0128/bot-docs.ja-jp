@@ -1,5 +1,3 @@
-# <a name="implement-channel-specific-functionality"></a>チャネル固有の機能の実装
-
 一部のチャネルには、メッセージのテキストと添付ファイルを使用するだけでは実装できない機能が用意されています。 チャネル固有の機能を実装するには、アクティビティ オブジェクトの "_チャネル データ_" プロパティを使用して、ネイティブのメタデータをチャネルに渡します。 たとえば、お使いのボットでチャネル データ プロパティを使用して、ステッカーを送信するように Telegram に指示したり、電子メールを送信するように Office365 に指示したりできます。
 
 この記事では、メッセージ アクティビティのチャネル データ プロパティを使用して、このチャネル固有の機能を実装する方法について説明します。
@@ -370,6 +368,72 @@ Facebook 通知を作成するには、アクティビティ オブジェクト�
                 }
         }
     ]
+}
+```
+
+## <a name="create-a-line-message"></a>LINE のメッセージを作成する
+
+LINE に固有のメッセージのタイプ (スタンプ、テンプレート、または携帯電話のカメラを開くといった LINE 固有のアクションのタイプ) を実装するメッセージを作成するには、LINE のメッセージのタイプとアクションのタイプを指定する JSON オブジェクトに、アクティビティ オブジェクトのチャネル データ プロパティを設定します。 
+
+| プロパティ | 説明 |
+|----|----|
+| type | LINE のアクションまたはメッセージのタイプ名 |
+
+次の LINE メッセージのタイプがサポートされています。
+* スタンプ
+* イメージマップ 
+* テンプレート (ボタン、確認、カルーセル) 
+* Flex 
+
+次の LINE アクションを、メッセージ タイプ JSON オブジェクトの action フィールドで指定できます。 
+* ポストバック 
+* Message 
+* URI 
+* 日時選択 
+* Camera 
+* カメラロール 
+* Location 
+
+これらの LINE メソッドとそのパラメーターの詳細については、[LINE Bot API のドキュメント](https://developers.line.biz/en/docs/messaging-api/)を参照してください。 
+
+次のスニペットでは、`channelData`チャネル メッセージのタイプを指定するプロパティ`ButtonTemplate`と、3 つのアクション タイプ (カメラ、日時選択、カメラロール) の例を示します。 
+
+```json
+"channelData": { 
+    "type": "ButtonsTemplate", 
+    "altText": "This is a buttons template", 
+    "template": { 
+        "type": "buttons", 
+        "thumbnailImageUrl": "https://example.com/bot/images/image.jpg", 
+        "imageAspectRatio": "rectangle", 
+        "imageSize": "cover", 
+        "imageBackgroundColor": "#FFFFFF", 
+        "title": "Menu", 
+        "text": "Please select", 
+        "defaultAction": { 
+            "type": "uri", 
+            "label": "View detail", 
+            "uri": "http://example.com/page/123" 
+        }, 
+        "actions": [{ 
+                "type": "cameraRoll", 
+                "label": "Camera roll" 
+            }, 
+            { 
+                "type": "camera", 
+                "label": "Camera" 
+            }, 
+            { 
+                "type": "datetimepicker", 
+                "label": "Select date", 
+                "data": "storeId=12345", 
+                "mode": "datetime", 
+                "initial": "2017-12-25t00:00", 
+                "max": "2018-01-24t23:59", 
+                "min": "2017-12-25t00:00" 
+            } 
+        ] 
+    } 
 }
 ```
 

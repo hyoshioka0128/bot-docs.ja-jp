@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 11/28/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4c43426f508d629c325889da6a9f7b06cac7e846
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.openlocfilehash: a30a3f5dfe4693d67a4cd42a50d35893f8888e07
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453896"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591040"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 
@@ -25,7 +25,7 @@ ms.locfileid: "54453896"
 ## <a name="prerequisites"></a>前提条件
 - [luis.ai](https://www.luis.ai) アカウント
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download)
-- この記事のコードは、**LUIS による NLP** のサンプルをベースにしています。 サンプルのコピー ([C#](https://aka.ms/cs-luis-sample) または [JS](https://aka.ms/js-luis-sample)) が必要になります。 
+- この記事のコードは、**LUIS による NLP** のサンプルをベースにしています。 サンプルのコピー ([C# サンプル](https://aka.ms/cs-luis-sample) または [JS サンプル](https://aka.ms/js-luis-sample)) が必要になります。 
 - [ボットの基本](bot-builder-basics.md)、[自然言語処理](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/what-is-luis)、および [.bot](bot-file-basics.md) ファイルに関する知識。
 
 ## <a name="create-a-luis-app-in-the-luis-portal"></a>LUIS ポータルでの LUIS アプリの作成
@@ -84,10 +84,14 @@ LUIS アプリにアクセスするために必要な情報 (アプリケーシ�
 # <a name="ctabcs"></a>[C#](#tab/cs)
 
 ### <a name="configure-your-bot-to-use-your-luis-app"></a>LUIS アプリを使用するためのボットの構成
+NuGet パッケージ **Microsoft.Bot.Builder.AI.Luis** がプロジェクトにインストールされていることを確認します。
 
 次に、`BotServices.cs` の BotService クラスの新しいインスタンスを初期化します。この初期化により、前述の情報が `.bot` ファイルから取得されます。 外部サービスは、`BotConfiguration` クラスを使用して構成されます。
 
 ```csharp
+using Microsoft.Bot.Builder.AI.Luis;
+using Microsoft.Bot.Configuration;
+
 public class BotServices
 {
     // Initializes a new instance of the BotServices class
@@ -131,10 +135,9 @@ public void ConfigureServices(IServiceCollection services)
     var botConfig = BotConfiguration.Load(botFilePath ?? @".\nlp-with-luis.bot", secretKey);
     services.AddSingleton(sp => botConfig ?? throw new InvalidOperationException($"The .bot config file could not be loaded. ({botConfig})"));
 
-    // Initialize Bot Connected Services clients.
+    // Initialize Bot Connected Services client.
     var connectedServices = new BotServices(botConfig);
     services.AddSingleton(sp => connectedServices);
-    services.AddSingleton(sp => botConfig);
 
     services.AddBot<LuisBot>(options =>
     {

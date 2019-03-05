@@ -6,13 +6,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 08/28/2018
-ms.openlocfilehash: 9b77f05b77017b17ba63e83fa2a8b58e483f9bf8
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 02/21/2019
+ms.openlocfilehash: 54be82eb263c2189fd6bb7a0dc4018b9ecf5c2f2
+ms.sourcegitcommit: e41dabe407fdd7e6b1d6b6bf19bef5f7aae36e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225807"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56893502"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework についてよく寄せられる質問
 
@@ -49,9 +49,11 @@ SDK V3 ボットは Azure Bot Service によって引き続き実行およびサ
 - Bot Framework SDK V4 にはモジュール式で拡張可能な SDK アーキテクチャを使用した会話中心の開発環境が提供されるため、開発者は堅牢で洗練されたチャット アプリケーションを作成することができます。 V4 の拡張可能な設計は、お客様からのフィードバックに基づいています。つまり、SDK V3 のダイアログ モデルとプリミティブは統一的ではなく、拡張性に制約があります。  
 
 ### <a name="what-is-the-general-migration-strategy-i-have-a-v3-bot-how-can-i-migrate-it-to-v4-can-i-migrate-my-v3-bot-to-v4"></a>全般的な移行戦略について教えてください。 V3 ボットを持っていますが、どうすれば V4 に移行できますか? V3 ボットは V4 に移行できますか?
-- 現時点では、SDK V3 で作成されたボットの SDK V4 への移行に関するヘルプは、ドキュメントとサンプルの形式で提供する予定です。 現時点では、V3 ビルド ボットを V4 ボット内で機能できるようにする SDK V3 互換レイヤーを SDK V4 で提供する予定はありません。 
-- 運用中の Bot Framework SDK V3 ボットが既にある場合でも心配は無用です。当面の間はそのまま機能します。 
-- Bot Framework SDK V4 は、非常に成功した V3 SDK の進化版です。 V4 は、V3 ボットが新しい V4 SDK 上で動作しなくなる重大な変更を含むメジャー バージョン リリースです。 
+
+- V3 ボットから V4 への移行については、「[Differences between the v3 and v4 .NET SDK (.NET SDK v3 と v4 の違い)](v4sdk/migration/migration-about.md)」を参照してください。
+- 現時点では、SDK V3 で作成されたボットの SDK V4 への移行に関するヘルプは、ドキュメントとサンプルの形式で提供する予定です。 現時点では、V3 ビルド ボットを V4 ボット内で機能できるようにする SDK V3 互換レイヤーを SDK V4 で提供する予定はありません。
+- 運用中の Bot Framework SDK V3 ボットが既にある場合でも心配は無用です。当面の間はそのまま機能します。
+- Bot Framework SDK V4 は、非常に成功した V3 SDK の進化版です。 V4 は、V3 ボットが新しい V4 SDK 上で動作しなくなる重大な変更を含むメジャー バージョン リリースです。
 
 ### <a name="should-i-build-new-a-bot-using-v3-or-v4"></a>V3 または V4 を使用して新しいボットをビルドする必要はありますか?
 - 新しい会話型エクスペリエンスのために、Bot Framework SDK V4 を使用して新しいボットを始めることをお勧めします。

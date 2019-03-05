@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/10/2018
-ms.openlocfilehash: bd18edb87cdff502ed66177f92f88a8488135431
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 02/08/2019
+ms.openlocfilehash: e77f6cddac07cdcc06d6d35cda98544f33dd1d43
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225707"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591183"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>ボットを Office 365 の電子メールに接続する
 
@@ -70,6 +70,10 @@ AAD に代わる任意のベンダーを使用するフェデレーション認�
 ::: moniker range="azure-bot-service-4.0"
 `channelData` を使用する方法について詳しくは、[チャネル固有の機能を実装する方法](~/v4sdk/bot-builder-channeldata.md)に関する記事をご覧ください。
 ::: moniker-end
+
+## <a name="other-considerations"></a>その他の考慮事項
+
+お客様のボットが、受信電子メール メッセージへの応答として 15 秒内に 200 OK の HTTP 状態コードを返さない場合、電子メール チャネルはメッセージを再送信しようとするため、お客様のボットは同じ電子メール メッセージ アクティビティを数回受け取る可能性があります。 詳細については、「**How bots work (ボットのしくみ)**」の「[HTTP details (HTTP の詳細)](v4sdk/bot-builder-basics.md#http-details)」セクション、および[タイムアウト エラーのトラブルシューティング](https://github.com/daveta/analytics/blob/master/troubleshooting_timeout.md)の方法に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

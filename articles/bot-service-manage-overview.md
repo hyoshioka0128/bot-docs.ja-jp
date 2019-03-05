@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: e68db6c1fe9d3d136a8643652df034fb6df2858f
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: fef82d27c6dd4fb61c9a0cf864e76a88128847d7
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645602"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591163"
 ---
 # <a name="manage-a-bot"></a>ボットの管理
 
@@ -46,13 +46,17 @@ ms.locfileid: "51645602"
 
 ![アプリ サービスの設定](~/media/azure-manage-a-bot/app-service-settings.png)
 
-**[アプリケーションの設定]** ブレードには、ボットの環境、ID、Application Insights キー、Microsoft アプリ ID、および Microsoft アプリ パスワードなど、ボットに関する詳細情報が含まれています。
+**[アプリケーションの設定]** ブレードには、ボットの環境、デバッグ設定、アプリケーション設定キー (botFilePath や botFileSecret など)、ボットに関する詳細情報が含まれています。
 
 ### <a name="microsoftappid-and-microsoftapppassword"></a>MicrosoftAppID と MicrosoftAppPassword
 
-お使いのボットの **MicrosoftAppID** は、**[設定]** ブレードで確認できます。 お使いのボットの **MicrosoftAppPassword** は、そのボットを最初に作成したときにのみ表示されます。
+**MicrosoftAppID** と **MicrosoftAppPassword** は、ボットの `.bot` ファイル内に保持されています。 これらを取得するには、ボット ファイルをダウンロードして復号化しますが、これはローカルで ID とパスワードを使用してテストする必要があります。
 
-![Microsoft AppID とパスワード](~/media/azure-manage-a-bot/app-settings.png)
+### <a name="bot-file-path-and-secret"></a>ボットのファイル パスとシークレット
+
+お使いのボットの **botFilePath** と **botFileSecret** は、**[アプリケーションの設定]** ブレードで確認できます。
+
+![Microsoft のボットのファイル パスとシークレット](~/media/azure-manage-a-bot/app-settings.png)
 
 > [!NOTE]
 > **[Bot Channels Registration]\(ボット チャネル登録\)** ボット サービスには *MicrosoftAppID* が付属しますが、この種類のサービスに関連付けられているアプリ サービスがないため、*MicrosoftAppPassword* を確認するための **[アプリケーションの設定]** ブレードは表示されません。 パスワードを取得するには、最初にパスワードの生成を行う必要があります。 **[Bot Channels Registration]\(ボット チャネル登録\)** のパスワードを生成するには、「[Bot Channels Registration password (ボット チャネル登録のパスワード)](bot-service-quickstart-registration.md#bot-channels-registration-password)」を参照してください
