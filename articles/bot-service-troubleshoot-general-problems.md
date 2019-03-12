@@ -6,13 +6,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 09/26/2018
-ms.openlocfilehash: 34a23910c76a22fe39d1ce5457bb74dd285ca939
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 02/26/2019
+ms.openlocfilehash: 48a0a42d193b0e561a484330222217c18a611e8d
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225523"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224950"
 ---
 # <a name="troubleshooting-general-problems"></a>一般的な問題のトラブルシューティング
 以下のよく寄せられる質問は、一般的なボット開発や運用上の問題のトラブルシューティングに役立ちます。
@@ -20,11 +20,12 @@ ms.locfileid: "54225523"
 ## <a name="how-can-i-troubleshoot-issues-with-my-bot"></a>ボットに関する問題をトラブルシューティングするにはどうすればよいですか。
 
 1. [Visual Studio Code](debug-bots-locally-vscode.md) または [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017) を使用して、ご利用のボットのソース コードをデバッグします。
-2. ボットをクラウドにデプロイする前に、[エミュレーター](bot-service-debug-emulator.md)を使用してテストします。
-3. Azure などのクラウド ホスティング プラットフォームにボットをデプロイし、<a href="https://dev.botframework.com" target="_blank">Bot Framework ポータル</a>のボットのダッシュボードで組み込み Web チャット コントロールを使用して、ボットへの接続をテストします。 Azure にデプロイした後でボットに関する問題が発生した場合は、次のブログ記事を参考にしてください:「[Understanding Azure troubleshooting and support (Azure のトラブルシューティングとサポートについて理解する)](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/)」。
-4. [認証][TroubleshootingAuth]を考えられる問題から除外します。
-5. Skype でボットをテストします。 これは、エンド ツー エンド ユーザー エクスペリエンスを確認するのに役立ちます。
-6. ダイレクト ラインや Web チャットなど、追加の認証要件があるチャネルでのボットのテストを検討してください。
+1. ボットをクラウドにデプロイする前に、[エミュレーター](bot-service-debug-emulator.md)を使用してテストします。
+1. Azure などのクラウド ホスティング プラットフォームにボットをデプロイし、<a href="https://dev.botframework.com" target="_blank">Bot Framework ポータル</a>のボットのダッシュボードで組み込み Web チャット コントロールを使用して、ボットへの接続をテストします。 Azure にデプロイした後でボットに関する問題が発生した場合は、次のブログ記事を参考にしてください:「[Understanding Azure troubleshooting and support (Azure のトラブルシューティングとサポートについて理解する)](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/)」。
+1. [認証][TroubleshootingAuth]を考えられる問題から除外します。
+1. Skype でボットをテストします。 これは、エンド ツー エンド ユーザー エクスペリエンスを確認するのに役立ちます。
+1. ダイレクト ラインや Web チャットなど、追加の認証要件があるチャネルでのボットのテストを検討してください。
+1. [ボットをデバッグする](bot-service-debug-bot.md)方法に関する記事、およびそのセクションに示されているデバッグに関するその他の記事をご覧ください。
 
 ## <a name="how-can-i-troubleshoot-authentication-issues"></a>認証に関する問題をトラブルシューティングするにはどうすればよいですか。
 

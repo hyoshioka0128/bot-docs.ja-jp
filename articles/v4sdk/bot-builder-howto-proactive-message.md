@@ -1,5 +1,5 @@
 ---
-title: ボットから通知を取得する | Microsoft Docs
+title: ユーザーへのプロアクティブな通知の送信 | Microsoft Docs
 description: 通知メッセージを送信する方法について説明します
 keywords: プロアクティブ メッセージ, 通知メッセージ, ボットの通知,
 author: jonathanfingold
@@ -10,14 +10,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 780fdb05acf2c81d72aaa6c415bdd9a6b0229082
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+ms.openlocfilehash: 207dfaf71e8af7af3a36e496deb506ff9d0c13c8
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971502"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224890"
 ---
-# <a name="get-notification-from-bots"></a>ボットから通知を取得する
+# <a name="send-proactive-notifications-to-users"></a>ユーザーへのプロアクティブな通知の送信
 
 [!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
 
@@ -64,6 +64,7 @@ ms.locfileid: "55971502"
 
 `JobLog` クラスは、ジョブ番号 (タイムスタンプ) によってインデックス付けされたジョブ データを追跡します。 `JobLog` クラスは、未処理のすべてのジョブを追跡します。  各ジョブは一意のキーによって識別されます。 `JobData` はジョブの状態を記述し、ディクショナリの内部クラスとして定義されます。
 
+**JobLog.cs**
 ```csharp
 public class JobLog : Dictionary<long, JobLog.JobData>
 {
@@ -85,6 +86,7 @@ public class JobLog : Dictionary<long, JobLog.JobData>
 
 `JobState` クラスは、会話の状態やユーザーの状態とは別に、ジョブの状態を管理します。
 
+**JobState.cs**
 ```csharp
 using Microsoft.Bot.Builder;
 
@@ -111,6 +113,7 @@ public class JobState : BotState
 
 `ConfigureServices` メソッドにより、ボットとエンドポイント サービス (エラー処理や状態管理を含む) が登録されます。 また、ジョブの状態のアクセサーも登録されます。
 
+**Startup.cs**
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -135,9 +138,8 @@ public void ConfigureServices(IServiceCollection services)
 
 ボットでは、メッセージ間でダイアログとユーザーの状態を保持する状態ストレージ システムが必要です。この場合、このシステムはメモリ内ストレージ プロバイダーを使用して定義されます。
 
+**index.js**
 ```javascript
-// index.js
-
 const memoryStorage = new MemoryStorage();
 const botState = new BotState(memoryStorage, () => 'proactiveBot.botState');
 
@@ -179,6 +181,7 @@ server.post('/api/messages', (req, res) => {
 
 ユーザーからの各操作によって `ProactiveBot` クラスのインスタンスが作成されます。 必要になるたびにサービスが作成されるプロセスは、有効期間が一時的なサービスと呼ばれます。 作成にコストがかかるオブジェクトや、有効期間が 1 回のターンを超えるオブジェクトの管理は慎重に行う必要があります。
 
+**ProactiveBot.cs**
 ```csharp
 namespace Microsoft.BotBuilderSamples
 {
@@ -196,6 +199,7 @@ namespace Microsoft.BotBuilderSamples
 
 ### <a name="add-initialization-code"></a>初期化コードを追加する
 
+**ProactiveBot.cs**
 ```csharp
 private readonly JobState _jobState;
 private readonly IStatePropertyAccessor<JobLog> _jobLogPropertyAccessor;
@@ -214,6 +218,7 @@ public ProactiveBot(JobState jobState, EndpointService endpointService)
 
 アダプターによってアクティビティがターン ハンドラーに転送されます。ハンドラーにより `Activity` の種類が検査され、適切なメソッドが呼び出されます。 すべてのボットにターン ハンドラーを実装する必要があります。
 
+**ProactiveBot.cs**
 ```csharp
 public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
 {
@@ -305,6 +310,7 @@ private static async Task SendWelcomeMessageAsync(ITurnContext turnContext)
 
 ジョブ完了イベントで、ジョブを完了としてマークし、ユーザーに通知します。
 
+**ProactiveBot.cs**
 ```csharp
 private async Task OnSystemActivityAsync(ITurnContext turnContext)
 {
@@ -339,6 +345,7 @@ private async Task OnSystemActivityAsync(ITurnContext turnContext)
 - continue conversation の呼び出しにより、チャネルはユーザーに依存しないターンを開始するよう求められます。
 - アダプターは、ターン ハンドラーでボットの通常のコールバックの代わりに、関連するコールバックを実行します。 このターンにはそれ自体のターン コンテキストがあり、そこから状態に関する情報を取得して、ユーザーにプロアクティブ メッセージを送信します。
 
+**ProactiveBot.cs**
 ```csharp
 // Creates and "starts" a new job.
 private JobLog.JobData CreateJob(ITurnContext turnContext, JobLog jobLog)
@@ -357,6 +364,7 @@ private JobLog.JobData CreateJob(ITurnContext turnContext, JobLog jobLog)
 
 ### <a name="sends-a-proactive-message-to-the-user"></a>プロアクティブ メッセージをユーザーに送信する
 
+**ProactiveBot.cs**
 ```csharp
 private async Task CompleteJobAsync(
     BotAdapter adapter,
@@ -370,6 +378,7 @@ private async Task CompleteJobAsync(
 
 ### <a name="creates-the-turn-logic-to-use-for-the-proactive-message"></a>プロアクティブ メッセージに使用するターン ロジックを作成する
 
+**ProactiveBot.cs**
 ```csharp
 private BotCallbackHandler CreateCallback(JobLog.JobData jobInfo)
 {
@@ -436,6 +445,7 @@ module.exports.ProactiveBot = ProactiveBot;
 
 `onTurn` メソッドと `showJobs` メソッドは、`ProactiveBot` クラス内で定義されます。 `onTurn` はユーザーからの入力を処理します。 また、仮想ジョブ フルフィルメント システムからのイベント アクティビティも受け取ります。 `showJobs` はジョブ ログを書式設定して送信します。
 
+**bot.js**
 ```javascript
 /**
     *
@@ -498,6 +508,7 @@ async showJobs(turnContext) {
 
 `createJob` メソッドは、`ProactiveBot` クラス内で定義されます。 これは、ユーザーに対して新しいジョブを作成してログ記録します。 理論上は、この情報をジョブ フルフィルメント システムにも転送します。
 
+**bot.js**
 ```javascript
 // Save job ID and conversation reference.
 async createJob(turnContext) {
@@ -541,6 +552,7 @@ async createJob(turnContext) {
 
 `completeJob` メソッドは、`ProactiveBot` クラス内で定義されます。 これは、何らかのブックキーピングを実行し、ユーザーに対して、ジョブが完了したというプロアクティブ メッセージを (そのユーザーの元の会話内で) 送信します。
 
+**bot.js**
 ```javascript
 async completeJob(turnContext, jobIdNumber) {
     // Get the list of jobs from the bot's state property accessor.

@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservices: sdk
-ms.date: 10/18/2018
+ms.date: 2/26/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2c493a27d7829e7c7be21b6ce70cb6f046dad616
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 997ad82e15a0fcd67d47b2fd6495c8e88a5ea127
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452094"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224820"
 ---
 # <a name="debug-your-bot-using-transcript-files"></a>トランスクリプト ファイルを使用してボットをデバッグする
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -65,9 +65,10 @@ Bot Framework Emulator を使用してボット トランスクリプト ファ�
 ご自身のボットのコードとユーザー操作は、さまざまなツールを使ってテストおよびデバッグすることができます。トランスクリプト ファイルと Bot Framework Emulator の併用はその 1 つに過ぎません。 お使いのボットのテストおよびデバッグに使用できる他の方法については、以下に示す他のリソースを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
+
 その他のテストおよびデバッグ情報については、以下を参照してください。
+
 * [ボットのテストとデバッグのガイドライン](./bot-builder-testing-debugging.md)
 * [Bot Framework Emulator でデバッグする](../bot-service-debug-emulator.md)
+* [一般的な問題のトラブルシューティング](../bot-service-troubleshoot-bot-configuration.md)に関する記事、およびそのセクションに示されているトラブルシューティングに関するその他の記事をご覧ください。
 * [Visual Studio でのデバッグ](https://docs.microsoft.com/en-us/visualstudio/debugger/index)
-
-

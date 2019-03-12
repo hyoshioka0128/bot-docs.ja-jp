@@ -6,13 +6,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 12/13/17
-ms.openlocfilehash: 2335ac34292e224f44a09820574f3bd9de00eda4
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 02/26/2019
+ms.openlocfilehash: 780dcf4d9db48f9ef7f5a92180dc13c41cc63305
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224657"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224940"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Bot Framework 認証のトラブルシューティング
 
@@ -227,6 +227,7 @@ Bot Framework では、ボットはインターネットからアクセス可能
 
 上記の手順を完了した後で、問題が発生した場合は、以下を実行できます。
 
+* [ボットをデバッグする](bot-service-debug-bot.md)方法に関する記事、およびそのセクションに示されているデバッグに関するその他の記事をご覧ください。
 * Bot Framework Emulator と <a href="https://ngrok.com/" target="_blank">ngrok</a> を使用して、[クラウド内のボットをデバッグする](~/bot-service-debug-emulator.md)。
 * [Fiddler](https://www.telerik.com/fiddler) などのプロキシ化ツールを使用して、ボットとの間の HTTPS トラフィックを検査する。 *Fiddler はマイクロソフト製品ではありません。*
 * Bot Framework で使用される認証テクノロジーについては、[Bot Connector 認証ガイド][BotConnectorAuthGuide]を参照してください。

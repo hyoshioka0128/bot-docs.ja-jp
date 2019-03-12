@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 02/13/2019
-ms.openlocfilehash: 53889703d58983a87a7a2d16622f1298d56c87db
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.openlocfilehash: 2ee66ac335ab9e34d7a73996d44da939e74d5b87
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591030"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224920"
 ---
 # <a name="deploy-your-bot"></a>ボットをデプロイする
 
@@ -64,12 +64,11 @@ Azure portal からダウンロードしたソース コードには、暗号化
 1. ボットの **[アプリケーション設定]** を開きます。
 1. **[アプリケーション設定]** ウィンドウで、**[アプリケーション設定]** まで下へスクロールします。
 1. **botFileSecret** を探してその値をコピーします。
+1. `msbot cli` を使用してファイルの暗号化を解除します。
 
-`msbot cli` を使用してファイルの暗号化を解除します。
-
-```cmd
-msbot secret --bot <name-of-bot-file> --secret "<bot-file-secret>" --clear
-```
+    ```cmd
+    msbot secret --bot <name-of-bot-file> --secret "<bot-file-secret>" --clear
+    ```
 
 ### <a name="update-your-local-bot-file"></a>ローカル .bot ファイルを更新する
 
@@ -128,18 +127,24 @@ msbot secret --bot <name-of-bot-file> --secret "<bot-file-secret>" --clear
 
 ファイルを保存します。
 
+発行前に、msbot ツールを使用して新しいシークレットを生成し、.bot ファイルを暗号化することができます。 .bot ファイルを再暗号化した場合は、Azure portal でボットの **botFileSecret** を更新して新しいシークレットを含めます。
+
+```cmd
+msbot secret --bot <name-of-bot-file> --new
+```
+
 ### <a name="setup-a-repository"></a>リポジトリを設定する
 
-継続的配置をサポートするには、お好みの Git ソース管理プロバイダーを使用して、Git リポジトリを作成します。 リポジトリにコードをコミットします。 
+継続的配置をサポートするには、お好みの Git ソース管理プロバイダーを使用して、Git リポジトリを作成します。 リポジトリにコードをコミットします。
 
 [リポジトリの準備](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment#prepare-your-repository)に関するページの説明にあるように、リポジトリのルートに適切なファイルがあることを確認してください。
 
 ### <a name="update-app-settings-in-azure"></a>Azure でアプリ設定を更新する
-ローカルのボットでは暗号化された .bot ファイルを使用しませんが、Azure portal は暗号化された .bot ファイルを使用するように構成されています 
+ローカルのボットでは暗号化された .bot ファイルを使用しませんが、Azure portal は暗号化された .bot ファイルを使用するように構成されています。 これを解決するには、Azure のボット設定に保存されている **botFileSecret** を削除します。
 1. Azure portal で、ボットの **Web App Bot** リソースを開きます。
 1. ボットの **[アプリケーション設定]** を開きます。
 1. **[アプリケーション設定]** ウィンドウで、**[アプリケーション設定]** まで下へスクロールします。
-1. **botFileSecret** を探してそれを削除します。
+1. **botFileSecret** を探してそれを削除します。 (.bot ファイルを再暗号化した場合は、**botFileSecret** に新しいシークレットが含まれていることを確認します。この設定を削除**しないでください**。)
 1. リポジトリにチェックインしたファイルと一致するように、ボット ファイルの名前を更新します。
 1. 変更を保存します。
 

@@ -7,14 +7,14 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 04/09/2018
+ms.date: 2/26/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27516a73f625eea9c6d2cf8a09234f4068d380e3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: e0fbf2fe505866ec28385b2be3b9fcd7988be890
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997459"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224930"
 ---
 # <a name="testing-and-debugging-guidelines"></a>テストとデバッグのガイドライン
 
@@ -30,11 +30,11 @@ ms.locfileid: "49997459"
 
 ベスト プラクティスのテストでは、さまざまな角度から適宜説明を進めます。 これには、セキュリティ、統合、形式が正しくない URL、検証のエクスプロイト、HTTP 状態コード、JSON ペイロード、null 値などが含まれることがあります。 ユーザーのプライバシーに影響する情報が、ご利用のボットで処理されている場合、これは特に重要です。
 
-### <a name="level-1-use-mock-elements"></a>レベル 1: モック要素の使用
+### <a name="level-1-use-mock-elements"></a>レベル 1:モック要素の使用
 
 最初のレベルのテストでは、アプリ (ここでは、ご利用のボット) を構成する小さな各部分が、期待どおり正確に動作していることを確認します。 これ行うために、現在のテスト対象以外の部分に対して、モック要素を使用できます。 なお、このレベルは、一般的に単体テストおよび統合テストとして考えることができます。
 
-**モック要素を使用して、個々のセクションをテストする**
+#### <a name="use-mock-elements-to-test-individual-sections"></a>モック要素を使用して個々のセクションをテストする
 
 できるだけ多くの要素のモックを作成すると、テスト対象の各部分をより効果的に分離できます。 モック要素の候補としては、ストレージ、アダプター、ミドルウェア、アクティビティ パイプライン、チャネルなど、お使いのボットに直接含まれないものが挙げられます。 これにより、テスト対象のボットのパーツには関与しないミドルウェアなど、特定の側面を一時的に削除して、各部分を分離できます。 ただし、ミドルウェアをテストする場合は、代わりにお使いのボットのモックを作成することもできます。
 
@@ -42,13 +42,13 @@ ms.locfileid: "49997459"
 
 このレベルでは、お使いのボット内で個別のメソッドと関数を実行する必要があります。 個別のメソッドのテストには、組み込みの単体テストを使用することをお勧めしますが、独自のテスト アプリまたはテスト スイートを使用するか、お使いの IDE 内で手動で実行することもできます。 
 
-**モック要素を使用して、より大きな機能をテストする**
+#### <a name="use-mock-elements-to-test-larger-features"></a>モック要素を使用してより大きな機能をテストする
 
 各メソッドの動作に問題が無ければ、これらのモック要素を使用して、お使いのボット内のより完全な機能をテストします。 ここでは、ユーザーとのやり取りを実現するために、複数のレイヤーがどのように連携しているかを示します。 
 
 これを支援するためのツールがいくつかあります。 たとえば、[Azure Bot Framework エミュレータ―](https://github.com/Microsoft/BotFramework-Emulator)には、ご自身のボットと通信できるようにエミュレートされたチャネルが用意されています。 エミュレーターを使用すると、単体テストや統合テストよりも複雑な状況に対応できるようになるため、次のテスト レベルにまで関係してきます。
 
-### <a name="level-2-use-a-direct-line-client"></a>レベル 2: ダイレクト ライン クライアントの使用
+### <a name="level-2-use-a-direct-line-client"></a>レベル 2:Direct Line クライアントの使用
 
 お使いのボットが意図したとおりに動作するように見えるのを確認したら、次はそのボットをチャネルに接続します。 これを行うには、ご自身のボットをステージング サーバーに展開し、そのボットの接続先となる独自のダイレクト ライン クライアントを作成します。
 <!--IBTODO [Direct Line client](bot-builder-howto-direct-line.md)-->
@@ -57,7 +57,7 @@ ms.locfileid: "49997459"
 
 ここで Azure portal からエミュレーターと Web チャットの両方を使用すると、さまざまなチャネルと対話しているときの、ご利用のボットの動作に関するより詳細な分析情報が得られます。
 
-### <a name="level-3-channel-tests"></a>レベル 3: チャネルのテスト
+### <a name="level-3-channel-tests"></a>レベル 3:チャネルのテスト
 
 お使いのボットの独立したパフォーマンスについて自信を持つことができたら、ボット利用の基盤となるさまざまなチャネルとどのように連携するかを確認することが重要です。 
 
@@ -73,21 +73,21 @@ ms.locfileid: "49997459"
 
 ボットはイベント ドリブン方式のプログラミング パラダイムに従っています。このパラダイムに詳しくない場合、これを合理的に説明するのは困難です。 お使いのボットがステートレスかつマルチ スレッドであり、非同期/待機の呼び出しを処理するという考え方は、予期しないバグにつながることあります。 こうしたボットのデバッグは他のマルチスレッド アプリと同様に動作しますが、ここでは役に立つ提案、ツール、およびリソースをいくつか紹介します。
 
-**エミュレーターを使用したボット アクティビティの理解**
+### <a name="understanding-bot-activities-with-the-emulator"></a>エミュレーターを使用したボット アクティビティの理解
 
 お使いのボットでは、通常の "_メッセージ_" アクティビティだけでなく、さまざまな種類の[アクティビティ](bot-builder-basics.md#the-activity-processing-stack)が処理されます。 [エミュレーター](../bot-service-debug-emulator.md)を使用すると、それがどのようなアクティビティで、いつ発生し、どのような情報が含まれるかを確認できます。 これらのアクティビティを理解すると、ボットのコードを効率的に書いたり、ボットが送受信しているアクティビティが期待どおりのものかを確認したりするうえで役立ちます。
 
-**ユーザーとの対話のトランスクリプトを保存して取得する**
+### <a name="saving-and-retrieving-user-interactions-with-transcripts"></a>ユーザーとの対話のトランスクリプトの保存と取得
 
 Azure BLOB のトランスクリプト ストレージは、ユーザーとボットの間の対話が含まれる[トランスクリプトを格納して保存](bot-builder-howto-v4-storage.md)できる、特殊化されたリソースを提供します。  
 
-さらに、ユーザー入力の対話が格納された後は、Azure の "_ストレージ エクスプローラー"_ を使用して、BLOB のトランスクリプト ストア内に格納されたトランスクリプトに含まれるデータを手動で確認できます。 次の例では、"_mynewtestblobstorage_" の設定から "_ストレージ エクスプローラー_" を開きます。 保存されたユーザー入力を開くには、[BLOB コンテナー] > [ChannelId] > [TranscriptId] > [ConversationId] の順に選択します。
+さらに、ユーザー入力の対話が格納された後は、Azure の "_ストレージ エクスプローラー"_ を使用して、BLOB のトランスクリプト ストア内に格納されたトランスクリプトに含まれるデータを手動で確認できます。 次の例では、"_mynewtestblobstorage_" の設定から "_ストレージ エクスプローラー_" を開きます。 保存されたユーザー入力を開くには、  [BLOB コンテナー] > [ChannelId] > [TranscriptId] > [ConversationId] の順に選択します。
 
 ![Examine_stored_transcript_text](./media/examine_transcript_text_in_azure.png)
 
 これにより、JSON 形式で格納された会話のユーザー入力が開きます。 ユーザー入力はキーとなる "_text_" と共に保持されます。
 
-**ミドルウェアのしくみ**
+### <a name="how-middleware-works"></a>ミドルウェアのしくみ
 
 特に実行の継続やショートサーキットに関して言えば、初めて使う[ミドルウェア](bot-builder-concept-middleware.md)は直感的とは言えないでしょう。 ミドルウェアは、ボット ロジックに実行が渡されるタイミングをディクテーションする `next()` デリゲートへの呼び出しを使用して、ターンの立ち上がりまたは立ち下がりで実行できます。 
 
@@ -97,27 +97,30 @@ Azure BLOB のトランスクリプト ストレージは、ユーザーとボ�
 
 ミドルウェアでショートサーキットが発生するタイミングと理由を理解すると、どのミドルウェアをパイプラインの先頭にするかを指定するときに役立ちます。 また、予期される結果を理解することは、SDK または他の開発者によって提供される組み込みのミドルウェアには特に重要です。 組み込みのミドルウェアを使用する前に、まず独自のミドルウェアを作成して少し実験してみると役立つ場合もあります。
 
-たとえば [QnA Maker](bot-builder-howto-qna.md) は、特定のやり取りを処理し、それを実行するときにパイプラインをショートサーキットするように設計されていますが、その使用方法は最初はわかりにくい可能性があります。
+<!-- Snip: QnA was once implemented as middleware.
+For example [QnA maker](bot-builder-howto-qna.md) is designed to handle certain interactions and short-circuit the pipeline when it does, which can be confusing when first learning how to use it.
+-->
 
-**状態の理解**
+### <a name="understanding-state"></a>状態の理解
 
 特に複雑なタスクの場合、状態を追跡することが、お使いのボットにとっては重要です。 一般的に、ベスト プラクティスは、アクティビティをできるだけ迅速に処理し、状態が永続化されるようにその処理を完了させることです。 複数のアクティビティがほぼ同時にご使用のボットに送信されるため、非同期アーキテクチャが原因で、非常に紛らわしいバグが発生することがあります。
 
 重要なのは、自分が意図したとおりに状態が永続化されているかどうかを確認することです。 永続化の状態が存在する場所によっては、[Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator) および [Azure Table Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator) 用のストレージ エミュレーターが、運用環境のストレージを使用する前にその状態を確認するうえで役立つ場合があります。
 
-**アクティビティ ハンドラーを使用する方法**
+### <a name="how-to-use-activity-handlers"></a>アクティビティ ハンドラーを使用する方法
 
 アクティビティ ハンドラーにより、別の複雑さが生じることがあります。具体的には、各アクティビティが独立したスレッドで実行されます (お使いの言語によっては Web worker で実行されます)。 ご利用のハンドラーが行っている処理によっては、現在の状態が、期待どおりのものではないという問題が発生することがあります。
 
 組み込みの状態はターンの最後に書き込まれますが、そのターンによって生成されたアクティビティはすべて、ターン パイプラインとは無関係に実行されています。 多くの場合、この影響を受けることはありませんが、アクティビティ ハンドラーによって状態が変更された場合は、書き込まれたその状態に、その変更を含める必要があります。 この場合、ターン パイプラインは、アクティビティ上で処理が完了するのを待つことができます。これにより、完了前に、そのターンについて適切な状態が確実に記録されます。
 
-単に _send activity_ メソッド内からそのメソッドを呼び出すと、スレッドの無限フォークが発生するため、ユーザーに何かを出力する場合、_send activity_ メソッドとそのハンドラーにより独自の問題が発生します。 この問題を回避する方法はいくつかあります。たとえば、デバッグ メッセージを送信情報に追加できます。また、コンソールやファイルのような別の場所に書き出して、お使いのボットのクラッシュを避けることもできます。
-
+_send activity_ メソッドとそのハンドラーにより、独自の問題が発生します。 _on send activities_ ハンドラー内から _send activity_ を単に呼び出すと、スレッドの無限フォークが発生します。 この問題を回避する方法はいくつかあります。たとえば、メッセージを送信情報に追加します。また、コンソールやファイルなどの別の場所に書き出してボットのクラッシュを回避します。
 
 ## <a name="additional-resources"></a>その他のリソース
+
 * [Visual Studio でのデバッグ](https://docs.microsoft.com/en-us/visualstudio/debugger/index)
 * Bot Framework のための[デバッグ、トレース、およびプロファイリング](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/)
-* 運用環境のコードに含めたくないメソッドに [ConditionalAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.conditionalattribute?view=netcore-2.0) を使用する 
-* [Fiddler](https://www.telerik.com/fiddler) などのツールを使用してネットワーク トラフィックを確認する 
+* 運用環境のコードに含めたくないメソッドに [ConditionalAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.conditionalattribute?view=netcore-2.0) を使用する
+* [Fiddler](https://www.telerik.com/fiddler) などのツールを使用してネットワーク トラフィックを確認する
 * [ボット ツール リポジトリ](https://github.com/Microsoft/botbuilder-tools)
 * テストに役立つ [Moq](https://github.com/moq/moq4) などのフレームワーク
+* [一般的な問題のトラブルシューティング](../bot-service-troubleshoot-bot-configuration.md)に関する記事、およびそのセクションに示されているトラブルシューティングに関するその他の記事をご覧ください。

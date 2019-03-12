@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/15/2018
+ms.date: 02/25/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dfbc9f4ed0f08c7349d758147460b8268c49e372
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 06982f1790bd573e7300cee249042e6e3d60e912
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225867"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224910"
 ---
 # <a name="managing-state"></a>状態の管理
 
@@ -118,7 +118,8 @@ Bot Framework SDK には、ストレージ レイヤー用の実装がいくつ�
 - アクセサーの *get* メソッド:
   - アクセサーが状態キャッシュにプロパティを要求します。
   - プロパティがキャッシュにある場合は、それを返します。 それ以外の場合は、状態管理オブジェクトから取得します。
-    (まだ状態にない場合は、アクセサーの *get* 呼び出しで指定されたファクトリ メソッドを使用します。) - アクセサーの *set* メソッド:
+    (まだ状態にない場合は、アクセサーの *get* 呼び出しで指定されたファクトリ メソッドを使用します。)
+- アクセサーの *set* メソッド:
   - 新しいプロパティ値で状態キャッシュを更新します。
 - 状態管理オブジェクトの *save changes* メソッド:
   - 状態キャッシュのプロパティへの変更を確認します。

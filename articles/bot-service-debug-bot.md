@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 2/09/2019
-ms.openlocfilehash: 3aae1e212759dd70226fab3b0567ba5b4e345a30
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+ms.date: 2/26/2019
+ms.openlocfilehash: 1e806358ffdba90848f0c8124c8315fd4e2dec76
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971452"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224840"
 ---
 # <a name="debug-a-bot"></a>ボットをデバッグする
 
@@ -131,8 +131,10 @@ Visual Studio 2017 でブレークポイントを使用してコードをデバ�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-運用環境でのボットのデバッグについては、ブログ記事「[Debug any Channel locally using ngrok (ngrok を使用したローカルでのチャネルのデバッグ)](https://blog.botframework.com/2017/10/19/debug-channel-locally-using-ngrok/)」をご覧ください。
+- [一般的な問題のトラブルシューティング](bot-service-troubleshoot-bot-configuration.md)に関する記事、およびそのセクションに示されているトラブルシューティングに関するその他の記事をご覧ください。
+- [ngrok を使用してチャネルをローカルでデバッグする](https://blog.botframework.com/2017/10/19/debug-channel-locally-using-ngrok/)方法に関するブログ記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
+
 > [!div class="nextstepaction"]
-> [トランスクリプト ファイルを使用してお使いのボットをデバッグする](~/v4sdk/bot-builder-debug-transcript.md)。
+> [トランスクリプト ファイルを使用してお使いのボットをデバッグする](v4sdk/bot-builder-debug-transcript.md)。

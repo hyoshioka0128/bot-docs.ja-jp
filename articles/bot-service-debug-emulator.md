@@ -7,13 +7,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/13/2018
-ms.openlocfilehash: f3a6a57a5fd01061493e5c216875f0c4210483f6
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.date: 2/26/2019
+ms.openlocfilehash: 2266dcb936205a20e1d19d97983a3b802fbe2736
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645612"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224870"
 ---
 # <a name="debug-with-the-emulator"></a>エミュレーターを使用したデバッグ
 
@@ -81,7 +81,9 @@ Windows を使用し、ファイアウォールまたはその他のネットワ
 
 Bot Framework Emulator はオープン ソースです。 開発に[貢献][EmulatorGithubContribute]したり、[バグや提案を送信][EmulatorGithubBugs]したりできます。
 
+トラブルシューティングについては、[一般的な問題のトラブルシューティング](bot-service-troubleshoot-bot-configuration.md)に関する記事、およびそのセクションに示されているトラブルシューティングに関するその他の記事をご覧ください。
 
+<!-- Footnote-style URLs -->
 
 [EmulatorGithubContribute]: https://github.com/Microsoft/BotFramework-Emulator/wiki/How-to-Contribute
 [EmulatorGithubBugs]: https://github.com/Microsoft/BotFramework-Emulator/wiki/Submitting-Bugs-%26-Suggestions

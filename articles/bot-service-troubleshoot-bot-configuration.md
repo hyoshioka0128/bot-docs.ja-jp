@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/20/2018
-ms.openlocfilehash: 8a3ff4a30e3041937ba831efc237343c9aa27e62
-ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
+ms.date: 2/26/2019
+ms.openlocfilehash: 53cb392dea5ee0e355451e7455a16512f22ebbaa
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54202548"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224850"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>ボット構成の問題のトラブルシューティング
 
@@ -87,3 +87,7 @@ Bot Framework でサポートされているチャネルの構成手順につい
 一部のチャネルでサービスの中断が発生することがあります。 通常、このような停止が長時間続くことはありません。 ただし、停止が疑われる場合は、チャネルの Web サイトまたはソーシャル メディアで確認してください。
 
 チャネルが停止しているかどうかを判断するもう 1 つの方法は、テスト ボット (単純なエコー ボットなど) を作成してチャネルを追加することです。 テスト ボットが動作するチャネルと動作しないチャネルがある場合、問題の原因が運用環境のボットにないことを示します。
+
+## <a name="additional-resources"></a>その他のリソース
+
+[ボットをデバッグする](bot-service-debug-bot.md)方法に関する記事、およびそのセクションに示されているデバッグに関するその他の記事をご覧ください。
