@@ -8,20 +8,19 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 02/7/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d472cbe7c0235862f8dcff1bcc2d53d977bb7657
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+ms.openlocfilehash: 115c81bef6f555bb3404dfb2249dc751d7eed7e5
+ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971492"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568209"
 ---
 # <a name="enterprise-bot-template---customize-your-bot"></a>Enterprise Bot Template - ボットのカスタマイズ
 
 > [!NOTE]
 > このトピックは、SDK の v4 バージョンに適用されます。 
 
-## <a name="net"></a>.NET
-[こちら](bot-builder-enterprise-template-deployment.md)の説明に従ってデプロイを完了し、Enterprise Bot Template がすべて正常に機能していることを確認したら、シナリオやニーズに応じて、ボットを簡単にカスタマイズできます。 テンプレートの目的は、会話型エクスペリエンスを構築するための強固な基盤を提供することです。
+[こちら](bot-builder-enterprise-template-getting-started.md)の説明に従ってデプロイを完了し、Enterprise Bot Template がすべて正常に機能していることを確認したら、シナリオやニーズに応じて、ボットを簡単にカスタマイズできます。 テンプレートの目的は、会話型エクスペリエンスを構築するための強固な基盤を提供することです。
 
 ## <a name="project-structure"></a>プロジェクト構造
 
@@ -81,56 +80,56 @@ Enterprise Template には、サンプルの FAQ QnA Maker ナレッジ ベー�
 Enterprise Template 用の既存の LUIS モデルを更新するには、次の手順を実行します。
 1. [LUIS ポータル](http://luis.ai)にアクセスするか、CLI ツール [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) と [Luis](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) を使用して、LUIS モデルに変更を加えます。 
 2. 次のコマンドを実行してディスパッチ モデルを更新し、変更を反映します (適切なメッセージ ルーティングを確保します)。
-```shell
+    ```shell
     dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
-```
+    ```
 3. 更新された各モデルについて、プロジェクトのルートから次のコマンドを実行し、関連付けられている LuisGen クラスを更新します。 
-```shell
+    ```shell
     luis export version --appId [LUIS_APP_ID] --versionId [LUIS_APP_VERSION] --authoringKey [YOUR_LUIS_AUTHORING_KEY] | luisgen --cs [CS_FILE_NAME] -o "\Dialogs\Shared\Resources"
-```
+    ```
 
 ### <a name="updating-an-existing-qna-maker-knowledge-base"></a>既存の QnA Maker ナレッジ ベースの更新
 既存の QnA Maker ナレッジ ベースを更新するには、以下の手順を実行します。
 1. [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) および [QnA Maker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) CLI ツールまたは [QnA Maker ポータル](https://qnamaker.ai)を使用して、ご自身の QnA Maker ナレッジ ベースに変更を加えます。
 2. 次のコマンドを実行してディスパッチ モデルを更新し、変更を反映します (適切なメッセージ ルーティングを確保します)。
-```shell
+    ```shell
     dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
-```
+    ```
 
 ### <a name="adding-a-new-luis-model"></a>新しい LUIS モデルの追加
 
 新しい LUIS モデルをプロジェクトに追加する場合は、ボット構成とディスパッチャーを更新して、追加のモデルを認識させる必要があります。 
 1. CLI ツール LuDown/LUIS を使用するか、LUIS ポータルにアクセスして、LUIS モデルを作成します
 2. 次のコマンドを実行して、新しい LUIS アプリを .bot ファイルに接続します。
-```shell
+    ```shell
     msbot connect luis --appId [LUIS_APP_ID] --authoringKey [LUIS_AUTHORING_KEY] --subscriptionKey [LUIS_SUBSCRIPTION_KEY] 
-```
+    ```
 3. 次のコマンドを使用して、新しい LUIS モデルをディスパッチャーに追加します
-```shell
+    ```shell
     dispatch add -t luis -id LUIS_APP_ID -bot "YOUR_BOT.bot" --secret YOURSECRET
-```
+    ```
 4. 次のコマンドを使用してディスパッチ モデルを更新し、LUIS モデルの変更を反映します
-```shell
+    ```shell
     dispatch refresh -bot "YOUR_BOT.bot" --secret YOUR_SECRET
-```
+    ```
 
 ### <a name="adding-an-additional-qna-maker-knowledge-base"></a>他の QnA Maker ナレッジ ベースの追加
 
 シナリオによっては、追加の QnA Maker ナレッジベースをお使いのボットに追加したくなることがあります。その場合は、次の手順を実行します。
 
 1. 次のコマンドを使用して、JSON ファイルから新しい QnA Maker ナレッジ ベースを作成します。このコマンドは、お使いのアシスタント ディレクトリで実行します
-```shell
-qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOUR_BOT.bot" --secret YOURSECRET
-```
+    ```shell
+    qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOUR_BOT.bot" --secret YOURSECRET
+    ```
 2. 次のコマンドを実行してディスパッチ モデルを更新し、変更を反映します
-```shell
-dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
-```
+    ```shell
+    dispatch refresh --bot "YOUR_BOT.bot" --secret YOUR_SECRET
+    ```
 3. 厳密に型指定されたディスパッチ クラスを更新し、新しい QnA ソースを反映します
-```shell
-msbot get dispatch --bot "YOUR_BOT.bot" | luis export version --stdin > dispatch.json
-luisgen dispatch.json -cs Dispatch -o Dialogs\Shared
-```
+    ```shell
+    msbot get dispatch --bot "YOUR_BOT.bot" | luis export version --stdin > dispatch.json
+    luisgen dispatch.json -cs Dispatch -o Dialogs\Shared
+    ```
 4.  提供された例に従って、ご自身の新しい QnA ソースに対応するディスパッチ意図が含まれるように、`Dialogs\Main\MainDialog.cs` ファイルを更新します。
 
 お使いのボットの一部として、複数の QnA ソースを活用できるようになりました。
@@ -203,6 +202,3 @@ await _responder.ReplyWith(sc.Context, OnboardingResponses.ResponseIds.HaveNameM
 ダイアログ インフラストラクチャの最後の構成要素として、ダイアログのみをスコープとした State クラスを作成します。 新しいクラスを作成し、`DialogState` から派生していることを確認します
 
 ダイアログが作成できたら、`AddDialog` を使用して、ダイアログを `MainDialog` コンポーネントに追加する必要があります。 新しいダイアログを使用するには、`RouteAsync` メソッド内から `dc.BeginDialogAsync()` を呼び出します。必要な場合は、適切な LUIS インテントを使用してトリガーします。
-
-## <a name="conversational-insights-using-powerbi-dashboard-and-application-insights"></a>PowerBI ダッシュ ボードと Application Insights を使用した会話型インサイト
-- 会話型インサイトの取得を開始するには、「[Enterprise Bot Template - PowerBI ダッシュ ボードと Application Insights を使用した会話型分析](bot-builder-enterprise-template-powerbi.md)」から続行してください。

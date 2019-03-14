@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: 38b26ed5a50409de64518562faabf532f45c857e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 65de0e4e4be129c9fa467cd8610cf0f0b13e5965
+ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999149"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568179"
 ---
 # <a name="publish-a-bot-to-bot-service"></a>ボットを Bot Service に発行する
 
@@ -34,6 +34,7 @@ C# のボット ソース コードを更新した後は、Visual Studio を使�
 `.PublishSettings` ファイルを使って Visual Studio からの発行を設定するには、次の手順のようにします。
 
 1. Azure portal でお使いの Bot Service をクリックし、**[ビルド]** タブをクリックして、**[Download zip file]\(zip ファイルのダウンロード\)** をクリックします。
+    1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 3. ダウンロードした zip ファイルの内容をローカル フォルダーに抽出します。
 4. エクスプローラーで、ボットの Visual Studio ソリューション (.sln) ファイルを探し、それをダブルクリックします。
 4. Visual Studio で、**[表示]** をクリックして **[ソリューション エクスプローラー]** をクリックします。
@@ -66,6 +67,7 @@ Bot Service の既定の設定では、Azure エディターを使ってブラ�
 Visual Studio Online または GitHub "*以外の*" ソース管理サービスを使う場合は、次の手順のようにします。 Visual Studio Online および GitHub はボットのソース コードを Azure から取り込むので、これら 2 つのサービスのユーザーは次の手順をスキップできます。
 
 3. App Service プランでのボットの場合は、Azure でボットのページを探し、**[ビルド]** タブをクリックし、**[Download source code]\(ソース コードのダウンロード\)** セクションを探して、**[Download zip file]\(zip ファイルのダウンロード\)** をクリックします。
+    1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 1. Azure がサポートするソース管理システムのいずれかで空のリポジトリを作成します。
 
     ![ソース管理システム](~/media/continuous-integration-sourcecontrolsystem.png)
