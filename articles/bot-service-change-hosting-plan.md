@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: aafbfb2a38e2d5370cb2db5721dd7bc130497d74
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: e463b272385b97e630d4087908aa82e23a70fea9
+ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999219"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568189"
 ---
 # <a name="change-the-hosting-plan-for-your-bot-service"></a>Bot Service のホスティング プランを変更する
 
@@ -33,6 +33,7 @@ App Service プランのボットは、Azure Web アプリとして実行しま�
 
 1. Azure ボット内で **[設定]** タブをクリックし、**[継続的デプロイ]** セクションを展開します。  
 2. 青いボタンをクリックして、ボットのソース コードを含む zip ファイルをダウンロードします。  
+    1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
     ![ボットの zip ファイルをダウンロードする](~/media/continuous-deployment-consumption-download.png)
 3. ダウンロードした zip ファイルの内容をローカル フォルダーに抽出します。 
 
