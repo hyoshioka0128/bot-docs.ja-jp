@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/23/2018
+ms.date: 03/11/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fdf0b16cc89b322ffa9d36b5516b09b0338ce9dc
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: db7957c611df4a3010469f86f51184b52d49addb
+ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317572"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58073858"
 ---
 # <a name="manage-resources-with-a-bot-file"></a>.bot ファイルでリソースを管理する
 
@@ -29,7 +29,7 @@ ms.locfileid: "54317572"
 * [**Azure Bot Service**](https://azure.microsoft.com/en-us/services/bot-service/): Azure Bot Service 登録。
 * [**LUIS.AI**](https://www.luis.ai/): LUIS により、ボットが、自然言語を使用するユーザーと通信できるようになります。 
 * [**QnA Maker**](https://qnamaker.ai/): FAQ URL、構造化されたドキュメント、または本文に基づいて、単純な質疑応答ボットを数分でビルド、トレーニング、および公開します。
-* [**ディスパッチ**](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch): 複数のサービスにまたがるディスパッチのモデル。
+* [**ディスパッチ**](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch): 複数のサービスにまたがるディスパッチのモデル。
 * [**Azure Application Insights**](https://azure.microsoft.com/en-us/services/application-insights/): 分析情報とボット分析の実現。
 * [**Azure Blob Storage**](https://azure.microsoft.com/en-us/services/storage/blobs/): ボット状態の保持。 
 * [**Azure Cosmos DB**](https://azure.microsoft.com/en-us/services/cosmos-db/): ボット状態を保持するためのグローバル分散マルチモデル データベース サービス。
