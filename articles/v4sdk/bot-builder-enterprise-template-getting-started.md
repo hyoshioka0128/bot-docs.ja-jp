@@ -59,7 +59,7 @@ Enterprise Template Bot のエンド ツー エンドの操作には、次の Az
 次の手順は、指定されたデプロイ スクリプトを使用してこれらのサービスをデプロイするのに役立ちます。
 
 1. LUIS のオーサリング キーを取得します。
-   - ご自身のデプロイ リージョンの正しい LUIS ポータルについては、[こちら](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions)のドキュメント ページをご覧ください。 www.luis.ai は米国リージョンを指し、このポータルから取得したオーサリング キーはヨーロッパのデプロイでは動作しないことに注意してください。
+   - ご自身のデプロイ リージョンの正しい LUIS ポータルについては、[こちら](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions)のドキュメント ページをご覧ください。 [www.luis.ai](www.luis.ai)は米国リージョンを指し、このポータルから取得したオーサリング キーはヨーロッパのデプロイでは動作しないことに注意してください。
    - サインインした後は、右上隅にある自分の名前をクリックします。
    - **[設定]** を選択し、後で使用できるようにオーサリング キーをメモします。
     
