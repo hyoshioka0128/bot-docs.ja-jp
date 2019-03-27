@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: tools
 ms.date: 03/01/2019
-ms.openlocfilehash: 0fb0f650b44d320d78a0ada5d46105048019964c
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: 28c4ece705c001d5f80fdc877773c03ac400204c
+ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224960"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58073848"
 ---
 # <a name="categorized-activities-by-channel"></a>チャネル別に分類されたアクティビティ
 
@@ -71,7 +71,7 @@ Event.*                    | :white_large_square: | :white_check_mark: | :white_
 Event.CreateConversation   | :white_large_square: | :white_large_square: | :white_large_square:   | :white_large_square: | :white_large_square:  | :white_large_square: | :white_large_square: | :white_large_square:  | :white_large_square:  | :white_large_square:  | :white_large_square:           | :white_large_square:     | :white_large_square:  
 Event.ContinueConversation | :white_large_square: | :white_large_square: | :white_large_square:   | :white_large_square: | :white_large_square:  | :white_large_square: | :white_large_square: | :white_large_square:  | :white_large_square:  | :white_large_square:  | :white_large_square:           | :white_large_square:     | :white_large_square:  
 
-- Event アクティビティは、Direct Line (_Direct Line とも呼ばれます_) の機能拡張メカニズムです。
+- Event アクティビティは、Direct Line ("_Web チャットとも呼ばれます_") の機能拡張メカニズムです。
 - クライアントとサーバーの両方を所有するアプリケーションでは、この Event アクティビティを使用して、サービスを介して独自のイベントをトンネリングできます。
 
 
@@ -85,7 +85,7 @@ Invoke.ComposeResponse     | :x:      | :x:          | :x: | :x:   | :x:       |
 
 - Microsoft Teams では、他の型指定された多数のアクティビティに加え、Teams 固有の Invoke アクティビティがいくつか定義されています。
 - Invoke アクティビティはアプリケーションに固有のものであり、クライアントが定義するものではありません。
-- アクティビティの特定のサブタイプのみを呼び出すという一般的概念はありません。
+- アクティビティの特定のサブタイプを呼び出すという一般的概念はありません。
 - 現在、ボット上で要求/応答動作をトリガーするアクティビティは Invoke だけです。
 
 これは非常に重要です。ダイアログを使用して OAuth プロンプトを動作させる場合、Invoke.TeamsVerification アクティビティをダイアログに転送する必要があります。
