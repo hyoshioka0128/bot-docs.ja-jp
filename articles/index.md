@@ -8,7 +8,13 @@ ms.topic: landing-page
 layout: LandingPage
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 01/16/2019
+ms.date: 03/28/2019
+ms.openlocfilehash: eef74893d4d17536fa8a7c3add15f1fd6a614796
+ms.sourcegitcommit: 54a4382add4756346098b286695a9b4791db7139
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58616958"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -97,8 +103,8 @@ ms.date: 01/16/2019
 </div>
 
 <h2 style="margin-top: 36px">ステップバイステップのチュートリアル</h2>
-<p><a href="/bot-framework/bot-builder-tutorial-basic-deploy">基本ボットの作成とデプロイ</a></p>
-<p><a href="/bot-framework/bot-builder-tutorial-add-qna">QnA Maker の追加とボットの再デプロイ</a></p>
+<p><a href="/bot-framework/bot-builder-tutorial-basic-deploy">1. 基本的なボットを作成してデプロイする</a></p>
+<p><a href="/bot-framework/bot-builder-tutorial-add-qna">2. QnA Maker を追加して、ボットを再デプロイする</a></p>
 <h2 style="margin-top: 36px">リファレンス</h2>
 <ul class="panelContent cardsD">
     <li>

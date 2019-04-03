@@ -7,8 +7,8 @@
 ### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
 ### [JavaScript](javascript/bot-builder-javascript-quickstart.md)
 # チュートリアル
-## [基本ボットの作成とデプロイ](v4sdk/bot-builder-tutorial-basic-deploy.md)
-## [QnA Maker の追加とボットの再デプロイ](v4sdk/bot-builder-tutorial-add-qna.md)
+## [1.基本的なボットを作成してデプロイする](v4sdk/bot-builder-tutorial-basic-deploy.md)
+## [2.QnA Maker を追加して、ボットを再デプロイする](v4sdk/bot-builder-tutorial-add-qna.md)
 ## [ボットへの認証の追加](bot-builder-tutorial-authentication.md)
 # サンプル
 ## [GitHub の botbuilder-samples リポジトリ](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md)
