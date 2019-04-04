@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 02/07/2019
-ms.openlocfilehash: 8df68ccc78e7a0aa064cbfa83967d930f6b44878
-ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
+ms.openlocfilehash: e0d62d4effaf02d52714153f51736e06949a2263
+ms.sourcegitcommit: 53a36af930b3ab754a3e7bc896e3f0a9a734c3e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568259"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58809020"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Azure Bot Service を使用してボットを作成する
 
@@ -134,9 +134,6 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
 1. 右側のウィンドウで **[ボットのソース コードをダウンロードする]** リンクをクリックします。 
 1. 指示に従ってコードをダウンロードし、フォルダーを解凍します。
     1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
-
-ダウンロードしたコードは暗号化された [.bot ファイル](./v4sdk/bot-file-basics.md)を使用します。 appsettings.json ファイルまたは .env ファイル内の `botFilePath` と `botFileSecret` のエントリを更新する必要があります。 
-そのためには、Azure portal に移動します。 ポータルでボットを選択し、**[アプリ サービスの設定]** セクションで **[アプリケーション設定]** をクリックします。 **[アプリケーション設定]** ウィンドウに `botFilePath` と `botFileSecret` の値が表示されます。 これらの値をコピーし、.env または appsettings.json ファイルを更新します。 
 
 ## <a name="next-steps"></a>次の手順
 コードをダウンロードしたら、お使いのコンピューターでボットをローカルで引き続き開発できます。 ボットをテストし、ボット コードを Azure portal にアップロードする準備ができたら、デプロイに関するトピックの[リポジトリの設定](./bot-builder-deploy-az-cli.md#setup-a-repository)に関するセクションに記載されている手順に従います。
