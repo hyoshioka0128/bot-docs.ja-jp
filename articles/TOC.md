@@ -18,7 +18,7 @@
 ## [状態の管理](v4sdk/bot-builder-concept-state.md)
 ## [ダイアログ ライブラリ](v4sdk/bot-builder-concept-dialog.md)
 ## [ミドルウェア](v4sdk/bot-builder-concept-middleware.md)
-## [.bot ファイルでリソースを管理する](v4sdk/bot-file-basics.md)
+## [ボット リソースの管理](v4sdk/bot-file-basics.md)
 <!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Bot Service テンプレート](bot-service-concept-templates.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
