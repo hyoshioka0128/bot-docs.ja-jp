@@ -41,7 +41,7 @@ LINE アプリを介して複数のユーザーと通信できるように、ボ
 
 ## <a name="create-a-messaging-api-channel"></a>メッセージング API チャンネルを作成する
 
-次に、新しい Messaging API チャンネルを作成します。 
+次に、新規に Messaging API チャネルを作成します。 
 
 ![LINE のスクリーンショット (チャンネルの種類)](./media/channels/LINE-channel-type-selection.png)
 
@@ -49,31 +49,31 @@ LINE アプリを介して複数のユーザーと通信できるように、ボ
 
 ![LINE のスクリーンショット (チャンネルの作成)](./media/channels/LINE-create-channel.png)
 
-名前には、"LINE" またはこれに似た文字列を含めることはできません。 必須フィールドに入力し、チャンネルの設定を確認します。
+名前には、"LINE" またはこれに似た文字列を含めることはできません。 必須フィールドに入力し、チャネルの設定を確認します。
 
-![LINE のスクリーンショット (チャンネルの設定)](./media/channels/LINE-screenshot-4.png)
+![LINE のスクリーンショット (チャネルの設定)](./media/channels/LINE-screenshot-4.png)
 
-## <a name="get-necessary-values-from-your-channel-settings"></a>チャンネルの設定から必要な値を取得する
+## <a name="get-necessary-values-from-your-channel-settings"></a>チャネルの設定から必要な値を取得する
 
-チャンネルの設定を確認したら、次のようなページが表示されます。
+チャネルの設定を確認したら、次のようなページが表示されます。
 
-![LINE のスクリーンショット (チャンネルのページ)](./media/channels/LINE-screenshot-5.png)
+![LINE のスクリーンショット (チャネルのページ)](./media/channels/LINE-screenshot-5.png)
 
 作成したチャンネルをクリックしてチャンネルの設定にアクセスし、下にスクロールして **[Basic information]\(基本情報\) > [Channel secret]\(チャネル シークレット\)** を見つけます。 これを一時的にどこかに保存します。 [Available features]\(使用できる機能\) に `PUSH_MESSAGE` が含まれていることを確認します。
 
-![LINE のスクリーンショット (チャンネル シークレット)](./media/channels/LINE-screenshot-6.png)
+![LINE のスクリーンショット (チャネル シークレット)](./media/channels/LINE-screenshot-6.png)
 
 次に、さらに **[Messaging settings]\(メッセージングの設定\)** までスクロールします。 **[Channel access token]\(チャネル アクセス トークン\)** フィールドと、*[issue]\(発行\)* ボタンが見つかります。 そのボタンをクリックしてアクセス トークンを取得し、同じように一時的に保存します。
 
 ![LINE のスクリーンショット (チャンネル トークン)](./media/channels/LINE-screenshot-8.png)
 
-## <a name="connect-your-line-channel-to-your-azure-bot"></a>LINE のチャンネルを Azure ボットに接続する
+## <a name="connect-your-line-channel-to-your-azure-bot"></a>LINE のチャネルを Azure ボットに接続する
 
-[Azure portal](https://portal.azure.com/) にログインしてボットを見つけ、**[チャンネル]** をクリックします。 
+[Azure portal](https://portal.azure.com/) にログインして自身のボットにアクセスし、**[チャネル]** をクリックします。 
 
 ![LINE のスクリーンショット (Azure の設定)](./media/channels/LINE-channel-setting-2.png)
 
-ここで、LINE のチャンネルを選択し、上記のチャンネル シークレットとアクセス トークンを適切なフィールドに貼り付けます。 必ず変更内容を保存してください。
+この中で LINE のチャネルを選択し、上記のチャネル シークレットとアクセス トークンを適切なフィールドに貼り付けます。 変更後、必ず保存をしてください。
 
 Azure から提供されるカスタム Webhook URL をコピーします。
 
@@ -104,11 +104,11 @@ LINE のモバイル アプリで、右端のナビゲーション タブ (3 つ
 
 ![LINE のスクリーンショット (モバイル アプリ)](./media/channels/LINE-screenshot-12.jpg)
 
-Developers Console の QR コードで QR コード リーダーをポイントします。 これで、LINE のモバイル アプリでボットとやり取りして、ボットをテストできるようになりました。
+Developers Console の QR コードに QR コードリーダーをポイントします。 LINE のモバイルアプリでボットとやり取りをしてテストできるようになります。
 
 ### <a name="automatic-messages"></a>自動メッセージ
 
-ボットのテストを開始すると、`conversationUpdate` アクティビティで指定したものではない、予期しないメッセージがボットから送信される場合があります。  次のようなダイアログが表示されることがあります。
+ボットのテストを開始すると、`conversationUpdate` アクティビティで指定したものではない、予期しないメッセージがボットから送信される場合があります。  その場合、次のようなダイアログが表示されます。
 
 ![LINE のスクリーンショット (会話)](./media/channels/LINE-screenshot-conversation.jpg)
 
