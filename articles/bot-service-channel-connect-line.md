@@ -63,7 +63,7 @@ LINE アプリを介して複数のユーザーと通信できるように、ボ
 
 ![LINE のスクリーンショット (チャネル シークレット)](./media/channels/LINE-screenshot-6.png)
 
-次に、さらに **[Messaging settings]\(メッセージングの設定\)** までスクロールします。 **[Channel access token]\(チャネル アクセス トークン\)** フィールドと、*[issue]\(発行\)* ボタンが見つかります。 そのボタンをクリックしてアクセス トークンを取得し、同じように一時的に保存します。
+次に、さらに **[メッセージ送受信設定])** までスクロールします。 **[アクセストークン（ロングターム）]** フィールドと *[再発行]* ボタンがあります。 ボタンをクリックしてアクセストークンを取得し、先ほど同様に一時的に保存します。
 
 ![LINE のスクリーンショット (チャンネル トークン)](./media/channels/LINE-screenshot-8.png)
 
@@ -81,9 +81,9 @@ Azure から提供されるカスタム Webhook URL をコピーします。
 
 ## <a name="configure-line-webhook-settings"></a>LINE の Webhook 設定を構成する
 
-次に、LINE Developers Console に戻って、Azure からコピーした Webhook URL を **[Message settings]\(メッセージの設定\) > [Webhook URL]\(Webhook URL\)** に貼り付け、**[Verify]\(確認\)** をクリックして接続を確認します。 Azure でチャンネルを作成したばかりの場合は、有効になるまでに数分かかることがあります。
+次に、LINE Developers Console に戻って、Azure からコピーした Webhook URL を **[メッセージ送受信設定] > [Webhook URL]** に貼り付け、**[接続確認]** をクリックして接続を確認します。 Azure でチャネルを作成した直後の場合は、有効になるまでに数分かかることがあります。
 
-次に、**[Message settings]\(メッセージの設定\) > [Use webhooks]\(Webhook の使用\)** を有効にします。
+次に **[メッセージ送受信設定] > [Webhook送信] を [利用する]** にします。
 
 > [!IMPORTANT]
 > LINE の Developers Console では、最初に Webhook URL を設定した場合のみ、**[Use webhooks]\(Webhook の使用\) を[Enabled]\(有効\)** に設定できます。 URL を空にしたままで Webhook を有効にすると、UI では有効になったように見えても、有効な状態に設定されません。
@@ -98,7 +98,7 @@ Webhook URL を追加してから Webhook を有効にしたら、このペー�
 
 ### <a name="add-your-bot-to-your-line-mobile-app"></a>ボットを LINE のモバイル アプリに追加する
 
-LINE の Developers Console で、[settings]\(設定\) ページに移動すると、ボットの QR コードが表示されています。 
+LINE の Developers Console で、[チャネル基本設定] ページの下部にボットの QR コードが表示されています。  
 
 LINE のモバイル アプリで、右端のナビゲーション タブ (3 つのドット **[...]**) に移動し、QR コードのアイコンをタップします。 
 
@@ -112,17 +112,17 @@ Developers Console の QR コードに QR コードリーダーをポイント�
 
 ![LINE のスクリーンショット (会話)](./media/channels/LINE-screenshot-conversation.jpg)
 
-これらのメッセージが送信されないようにするには、[Auto-response messages]\(自動応答メッセージ\) をオフにする必要があります。
+これらのメッセージが送信されないようにするには **[LINE@機能の利用] > [自動応答メッセージ] を [利用しない]** に設定する必要があります。
 
 ![LINE のスクリーンショット (自動応答)](./media/channels/LINE-screenshot-10.png)
 
-また、これらのメッセージが表示されるままにすることもできます。 その場合は、[Set message]\(メッセージの設定\) をクリックして、メッセージを編集することをお勧めします。
+また、このメッセージを表示したままにすることもできます。 その場合は、[設定はこちら] をクリックして、メッセージを編集することをお勧めします。
 
 ![LINE のスクリーンショット (自動応答の設定)](./media/channels/LINE-screenshot-11.png)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-* ボットがメッセージにまったく応答しない場合は、Azure portal で、お使いのボットに移動して Web チャットでテストしてみてください。  
-    * そこではボットが機能しているのに LINE では応答しない場合は、LINE の Developers Console を再度読み込んでから、上記の Webhook の手順を繰り返します。 必ず **Webhook URL** を設定してから Webhook を有効にしてください。
-    * ボットで Web チャットがうまくいかない場合は、ボットの問題をデバッグしてから、このページに戻って LINE のチャンネルの構成を完了します。
+* ボットのメッセージに全く応答しない場合は、Azure portal でお使いのボットに移動して **Web チャットでテスト** でテストしてみましょう。  
+    * そこでボットが機能しているのに LINE では応答しない場合は、LINE の Developers Console を再度読み込んでから、上記の Webhook の手順を繰り返します。 必ず **Webhook URL** を設定してから Webhook を有効にしてください。
+    * ボットで **Web チャットでテスト** がうまく動作しない場合は、ボットの問題をデバッグしてから、再度このページで LINE のチャネルの構成を再設定します。
 
