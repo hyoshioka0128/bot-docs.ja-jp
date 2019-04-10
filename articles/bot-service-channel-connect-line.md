@@ -70,11 +70,11 @@ LINE アプリを介して複数のユーザーと通信できるように、ボ
 
 ## <a name="connect-your-line-channel-to-your-azure-bot"></a>LINE のチャネルを Azure ボットに接続する
 
-[Azure portal](https://portal.azure.com/) にログインして自身のボットにアクセスし、**[チャンネル]** をクリックします。 
+[Azure portal](https://portal.azure.com/) にログインして自身のボットにアクセスし、**[チャネル]** をクリックします。  
 
 ![LINE のスクリーンショット (Azure の設定)](./media/channels/LINE-channel-setting-2.png)
 
-この中で LINE のチャンネルを選択し、上記のチャンネル シークレットとアクセス トークンを適切なフィールドに貼り付けます。 変更後、必ず保存をしてください。
+この中で LINE のチャネルを選択し、上記のチャネル シークレットとアクセス トークンを適切なフィールドに貼り付けます。 変更後、必ず保存をしてください。
 
 次に、Azure から提供されるカスタムの Webhook URL をコピーします。
 
@@ -82,7 +82,7 @@ LINE アプリを介して複数のユーザーと通信できるように、ボ
 
 ## <a name="configure-line-webhook-settings"></a>LINE の Webhook 設定を構成する
 
-次に、LINE Developers Console に戻って、Azure からコピーした Webhook URL を **[メッセージ送受信設定] > [Webhook URL]** に貼り付け、**[接続確認]** をクリックして接続を確認します。 Azure でチャンネルを作成した直後の場合は、有効になるまでに数分かかることがあります。
+次に、LINE Developers Console に戻って、Azure からコピーした Webhook URL を **[メッセージ送受信設定] > [Webhook URL]** に貼り付け、**[接続確認]** をクリックして接続を確認します。 Azure でチャネルを作成した直後の場合は、有効になるまでに数分かかることがあります。
 
 次に **[メッセージ送受信設定] > [Webhook送信]** を **[利用する]** にします。
 
@@ -123,7 +123,7 @@ Developers Console の QR コードに QR コードリーダーをポイント�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-* ボットのメッセージに全く応答しない場合は、Azure portal でお使いのボットに移動して **Web チャットでテスト** でテストしてみましょう。  
-    * そこでボットが機能しているのに LINE では応答しない場合は、LINE の Developers Console を再度読み込んでから、上記の Webhook の手順を繰り返します。必ず **Webhook URL** を設定してから Webhook を有効にしてください。
-    * ボットで **Web チャットでテスト** がうまく動作しない場合は、ボットの問題をデバッグしてから、再度このページで LINE のチャンネルの構成を再設定します。
+* ボットのメッセージに全く応答しない場合は、Azure portal でお使いのボットに移動して **Web チャットでテスト** でテストしてみましょう。
+   * そこでボットが機能しているのに LINE では応答しない場合は、LINE の Developers Console を再度読み込んでから、上記の Webhook の手順を繰り返します。必ず **Webhook URL** を設定してから Webhook を有効にしてください。
+   * ボットで **Web チャットでテスト** がうまく動作しない場合は、ボットの問題をデバッグしてから、再度このページで LINE のチャネルの構成を再設定します。
 
