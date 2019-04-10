@@ -39,15 +39,15 @@ LINE アプリを介して複数のユーザーと通信できるように、ボ
 
 ![LINE のスクリーンショット (プロバイダーの作成)](./media/channels/LINE-screenshot-2.png)
 
-## <a name="create-a-messaging-api-channel"></a>メッセージング API チャンネルを作成する
+## <a name="create-a-messaging-api-channel"></a>Messageing API のチャネルを作成する
 
 次に、新規に Messaging API チャネルを作成します。 
 
-![LINE のスクリーンショット (チャンネルの種類)](./media/channels/LINE-channel-type-selection.png)
+![LINE のスクリーンショット (チャネルの種類)](./media/channels/LINE-channel-type-selection.png)
 
-新しい Messaging API チャンネルを作成するには、緑色の四角形をクリックします。
+新規に Messaging API チャネルを作成するには、緑色の四角形をクリックします。
 
-![LINE のスクリーンショット (チャンネルの作成)](./media/channels/LINE-create-channel.png)
+![LINE のスクリーンショット (チャネルの作成)](./media/channels/LINE-create-channel.png)
 
 名前には、"LINE" またはこれに似た文字列を含めることはできません。 必須フィールドに入力し、チャネルの設定を確認します。
 
@@ -100,7 +100,7 @@ Webhook URL を追加してから Webhook を有効にしたら、このペー�
 
 LINE の Developers Console で、[チャネル基本設定] ページの下部にボットの QR コードが表示されています。  
 
-LINE のモバイル アプリで、右端のナビゲーション タブ (3 つのドット **[...]**) に移動し、QR コードのアイコンをタップします。 
+LINE のモバイルアプリで、右端のナビゲーションタブ (3 つのドット **[...]**) に移動し、QR コードのアイコンをタップします。 
 
 ![LINE のスクリーンショット (モバイル アプリ)](./media/channels/LINE-screenshot-12.jpg)
 
