@@ -59,7 +59,7 @@ LINE アプリを介して複数のユーザーと通信できるように、ボ
 
 ![LINE のスクリーンショット (チャネルのページ)](./media/channels/LINE-screenshot-5.png)
 
-作成したチャンネルをクリックしてチャンネルの設定にアクセスし、下にスクロールして **[Basic information]\(基本情報\) > [Channel secret]\(チャネル シークレット\)** を見つけます。 これを一時的にどこかに保存します。 [Available features]\(使用できる機能\) に `PUSH_MESSAGE` が含まれていることを確認します。
+作成したチャネルをクリックしてチャネル基本設定にアクセスし、下にスクロールして **[基本情報] > [Channel Secret]** を見つけます。 これを一時的にどこかに保存します。 また、`PUSH_MESSAGE` [利用可能な機能]  が含まれていることを確認します。
 
 ![LINE のスクリーンショット (チャネル シークレット)](./media/channels/LINE-screenshot-6.png)
 
