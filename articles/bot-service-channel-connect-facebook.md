@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/12/2018
-ms.openlocfilehash: 0932372c5b2bcf574d244cd60d46ef579acbd106
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 57a3efd36ddae5c52a2d791b87ed4fa6a96d5e8a
+ms.sourcegitcommit: 152760771214865b9c7d0ed481acfba05bdc44dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000159"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58655522"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Facebook にボットを接続する
 
@@ -150,6 +150,12 @@ Azure portal で、前に Facebook Workplace からコピーした **Facebook �
 
 ### <a name="make-the-app-public-and-publish-the-page"></a>アプリを発行してページを発行する
 詳細については、「**Facebook Messenger にボットを接続する**」セクションを参照してください。
+
+## <a name="setting-the-api-version"></a>API バージョンを設定する
+
+特定のバージョンの Graph API の廃止に関する Facebook からの通知を受け取った場合、[Facebook 開発者向けページ](https://developers.facebook.com)に移動します。 お使いのボットの **[アプリ設定]** に移動し、**[設定] > [詳細] > [Upgrade API version]\(API バージョンのアップグレード\)** に移動し、**[Upgrade All Calls]\(すべての呼び出しをアップグレード\)** を 3.0 に切り替えます。
+
+![API バージョンのアップグレード](~/media/channels/facebook-version-upgrade.png)
 
 ## <a name="sample-code"></a>サンプル コード
 

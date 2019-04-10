@@ -7,22 +7,20 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 6/22/2017
+ms.date: 3/22/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6a1ae4d0966928a1b95e45ea7bcc62e9c1d14666
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: c6e91ebfe54857f11772bd4a926e3b5b2776c8cc
+ms.sourcegitcommit: 54a4382add4756346098b286695a9b4791db7139
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000069"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58616938"
 ---
 # <a name="migrate-your-bot-to-azure"></a>ボットを Azure に移行する
 
-
-
 [Bot Framework Portal](http://dev.botframework.com) で作成された **Azure Bot Service (プレビュー)** ボットはすべて、Azure の新しい Bot Service に移行する必要があります。 このサービスは 2017 年 12 月に一般公開 (GA) となりました。 
 
-**Teams**、**Skype**、**Cortana** にのみ接続されている登録ボットは移行する必要が*ない*ことにご注意ください。 たとえば、**Facebook** と **Skype** に接続されている登録ボットは移行する*必要があります*が、**Skype** と **Cortana** に接続されている登録ボットは移行する*必要がありません*。
+以下にのみ接続されている登録ボットは移行する "*必要がない*" ことにご注意ください: **Teams**、**Skype**、**Cortana**。 たとえば、**Facebook** と **Skype** に接続されている登録ボットは移行する*必要があります*が、**Skype** と **Cortana** に接続されている登録ボットは移行する*必要がありません*。
 
 > [!IMPORTANT]
 > Node.js で作成された Functions ボットを移行する前に、**Azure Functions Pack** を利用して **node_modules** モジュールをまとめてパッケージ化する必要があります。 パッケージ化により、移行中のパフォーマンスがよくなり、移行後も Functions ボットがより効率的に実行されます。 モジュールをパッケージ化する方法については、「[Package a Functions bot with Funcpack](#package-a-functions-bot-with-funcpack)」(Funcpack で Functions ボットをパッケージ化する) を参照してください。
@@ -52,13 +50,13 @@ Node.js で作成された Functions ボットは移行前に [Funcpack](https:/
 6.  Bot Framework Emulator を使用して Functions ボットを実行することでボットをローカルでテストします。 *funcpack* ボットの実行方法の詳細は[こちら](https://github.com/Azure/azure-functions-pack#how-to-run)にあります。 
 7.  コードを Azure にアップロードします。 必ず `.funcpack` ディレクトリをアップロードします。 **node_modules** ディレクトリをアップロードする必要はありません。
 8. リモート ボットをテストし、予想どおり応答することを確認します。
-9. 上記の手順で[ボットを移行](#migrate-your-bot-to-azure)します。
+9. 上記の手順でボットを移行します。
 
 ## <a name="migration-under-the-hood"></a>移行のしくみ
 
 移行するボットの種類によっては、移行のしくみを理解する上で下の一覧が役立つことがあります。
 
-* **Web アプリ ボット**または **Functions ボット**: この種類のボットの場合、古いボットから新しいボットにソース コード プロジェクトがコピーされます。 ボットのストレージ、Application Insights、LUIS など、その他のリソースはそのまま残ります。 そのような場合、新しいボットには、既存リソースの ID/キー/パスワードのコピーが含まれます。 
+* **Web アプリ ボット**または **Functions ボット**:この種類のボットの場合、古いボットから新しいボットにソース コード プロジェクトがコピーされます。 ボットのストレージ、Application Insights、LUIS など、その他のリソースはそのまま残ります。 そのような場合、新しいボットには、既存リソースの ID/キー/パスワードのコピーが含まれます。 
 * **ボット チャネル登録**: この種類のボットの場合、移行プロセスによって新しい**ボット チャネル登録**が作成され、古いボットからエンドポイントがコピーされます。 
 * 移行するボットの種類に関係なく、移行プロセスによって既存のボットの状態が変更されることはありません。 そのため、必要であれば、安全にロールバックできます。
 * [継続的デプロイ](bot-service-build-continuous-deployment.md)を設定している場合、ソース コントロールが新しいボットに接続されるように、もう一度設定する必要があります。

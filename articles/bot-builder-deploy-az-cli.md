@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 02/13/2019
-ms.openlocfilehash: 8db2f0629b0d95dda0cb5d10dea5c9225e5d8d83
-ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
+ms.date: 04/02/2019
+ms.openlocfilehash: 556c444086fedf6c5be052726d934d9226b4eebb
+ms.sourcegitcommit: f1412178e4766fb6b29f0f33f7eff7cc9d0885cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58073788"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58868032"
 ---
 # <a name="deploy-your-bot"></a>ボットをデプロイする
 
@@ -25,9 +25,8 @@ ms.locfileid: "58073788"
 この記事では、C# ボットと JavaScript ボットを Azure にデプロイする方法を紹介します。 ボットのデプロイに必要なものを完全に理解するために、手順を実行する前にこの記事を確認することをお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
-
-- 最新バージョンの [msbot](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/MSBot) ツールをインストールします。
-- ローカル コンピューター上で開発された [CSharp](./dotnet/bot-builder-dotnet-sdk-quickstart.md) ボットまたは [JavaScript](./javascript/bot-builder-javascript-quickstart.md) ボット。
+- [Azure サブスクリプション](http://portal.azure.com)をお持ちでない場合は、開始する前に無料アカウントを作成してください。
+- ローカル コンピューター上で開発した [**CSharp**](./dotnet/bot-builder-dotnet-sdk-quickstart.md) または [**JavaScript**](./javascript/bot-builder-javascript-quickstart.md) ボット。
 
 ## <a name="1-prepare-for-deployment"></a>1.デプロイの準備をする
 デプロイ プロセスでは、ローカルのボットをデプロイできる、ターゲットとなる Web アプリ ボットが Azure に必要です。 ターゲットの Web アプリ ボットと、Azure で一緒にプロビジョニングされるリソースは、デプロイするローカルのボットによって使用されます。 お持ちのローカルのボットでは、必要な Azure リソースがすべてプロビジョニングされているわけではないため、これが必要になります。 ターゲットの Web アプリ ボットを作成すると、次のリソースが自動的にプロビジョニングされます。
@@ -39,7 +38,7 @@ ms.locfileid: "58073788"
 ターゲットの Web アプリ ボットの作成時に、ボット用のアプリ ID とパスワードも生成されます。 Azure では、アプリ ID とパスワードによって、[サービスの認証と承認](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)がサポートされます。 ローカルのボット コードで使用するために、後ほどこの情報の一部を取得します。 
 
 > [!IMPORTANT]
-> サービスのボット テンプレートの言語は、お客様のボットが記述されている言語と一致する必要があります。
+> Azure portal で使用されているボット テンプレート用のプログラミング言語は、お使いのボットの記述に使用されたプログラミング言語と一致する必要があります。
 
 使用するボットが Azure に既に作成されている場合、新しい Web アプリ ボットの作成は省略できます。
 
@@ -50,92 +49,49 @@ ms.locfileid: "58073788"
 1. **[作成]** をクリックしてサービスを作成し、ボットをクラウドにデプロイします。 このプロセスには数分かかることがあります。
 
 ### <a name="download-the-source-code"></a>ソース コードをダウンロードする
-ターゲットの Web アプリ ボットを作成したら、ボット コードを Azure portal からローカル コンピューターにダウンロードする必要があります。 コードをダウンロードする理由は、[.bot ファイル](./v4sdk/bot-file-basics.md)に含まれるサービス参照を取得することにありますます。 これらのサービス参照は、Web アプリ ボット、App Service プラン、App Service、およびストレージ アカウント用のものです。 
+ターゲットの Web アプリ ボットを作成したら、ボット コードを Azure portal からローカル コンピューターにダウンロードする必要があります。 コードをダウンロードする理由は、appsettings.json または .env ファイル内のサービス参照 (MicrosoftAppID、MicrosoftAppPassword、LUIS、QnA など) を取得するためです。 
 
 1. **[ボット管理]** セクションで **[ビルド]** をクリックします。
 1. 右側のウィンドウで **[ボットのソース コードをダウンロードする]** リンクをクリックします。
 1. 指示に従ってコードをダウンロードし、フォルダーを解凍します。
     1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 
-### <a name="decrypt-the-bot-file"></a>.bot ファイルの暗号化を解除する
+### <a name="update-your-local-appsettingsjson-or-env-file"></a>ローカルの appsettings.json または .env ファイルを更新する
 
-Azure portal からダウンロードしたソース コードには、暗号化された .bot ファイルが含まれています。 ローカル .bot ファイルに値をコピーするために、ファイルの暗号化を解除する必要があります。 暗号化されたものではない、実際のサービス参照をコピーできるようにするために、この手順が必要になります。  
-
-1. Azure portal で、ボットの Web App Bot リソースを開きます。
-1. ボットの **[アプリケーション設定]** を開きます。
-1. **[アプリケーション設定]** ウィンドウで、**[アプリケーション設定]** まで下へスクロールします。
-1. **botFileSecret** を探してその値をコピーします。
-1. `msbot cli` を使用してファイルの暗号化を解除します。
-
-    ```cmd
-    msbot secret --bot <name-of-bot-file> --secret "<bot-file-secret>" --clear
-    ```
-
-### <a name="update-your-local-bot-file"></a>ローカル .bot ファイルを更新する
-
-暗号化解除した .bot ファイルを開きます。 `services` セクションに表示されている**すべて**のエントリをコピーし、ローカル .bot ファイルに追加します。 重複するすべてのサービス エントリまたはサービス ID を解決します。 ご使用のボットで使用する追加のサービス参照は保持します。 例: 
-
-```json
-"services": [
-    {
-        "type": "abs",
-        "tenantId": "<tenant-id>",
-        "subscriptionId": "<subscription-id>",
-        "resourceGroup": "<resource-group-name>",
-        "serviceName": "<bot-service-name>",
-        "name": "<friendly-service-name>",
-        "id": "1",
-        "appId": "<app-id>"
-    },
-    {
-        "type": "blob",
-        "connectionString": "<connection-string>",
-        "tenantId": "<tenant-id>",
-        "subscriptionId": "<subscription-id>",
-        "resourceGroup": "<resource-group-name>",
-        "serviceName": "<blob-service-name>",
-        "id": "2"
-    },
-    {
-        "type": "endpoint",
-        "appId": "",
-        "appPassword": "",
-        "endpoint": "<local-endpoint-url>",
-        "name": "development",
-        "id": "3"
-    },
-    {
-        "type": "endpoint",
-        "appId": "<app-id>",
-        "appPassword": "<app-password>",
-        "endpoint": "<hosted-endpoint-url>",
-        "name": "production",
-        "id": "4"
-    },
-    {
-        "type": "appInsights",
-        "instrumentationKey": "<instrumentation-key>",
-        "applicationId": "<appinsights-app-id>",
-        "apiKeys": {},
-        "tenantId": "<tenant-id>",
-        "subscriptionId": "<subscription-id>",
-        "resourceGroup": "<resource-group>",
-        "serviceName": "<appinsights-service-name>",
-        "id": "5"
-    }
-],
-```
+ダウンロードした appsettings.json または .env ファイルを開きます。 そこに記載されている**すべて**のエントリをコピーして、"_ローカルの_" appsettings.json または .env ファイルに追加します。 重複するすべてのサービス エントリまたはサービス ID を解決します。 ご使用のボットで使用する追加のサービス参照は保持します。
 
 ファイルを保存します。
 
-発行前に、msbot ツールを使用して新しいシークレットを生成し、.bot ファイルを暗号化することができます。 .bot ファイルを再暗号化した場合は、Azure portal でボットの **botFileSecret** を更新して新しいシークレットを含めます。
+### <a name="update-local-bot-code"></a>ローカルのボット コードを更新する
+ローカルの Startup.cs または index.js ファイルを、.bot ファイルではなく、appsettings.json または .env ファイルを使用するように更新します。 .bot は非推奨になっており、Microsoft では、.bot ファイルではなく appsettings.json または .env ファイルを使用するように、VSIX テンプレート、Yeoman ジェネレーター、サンプル、および残りのドキュメントを更新することに取り組んでいます。 それまでの間、お客様はボット コードを変更する必要があります。 
 
-```cmd
-msbot secret --bot <name-of-bot-file> --new
+appsettings.json または .env ファイルから設定を読み取るようにコードを更新します。 
+
+# [<a name="c"></a>C#](#tab/csharp)
+`ConfigureServices` メソッドの場合、ASP.NET Core によって提供される次のような構成オブジェクトを使用します。 
+
+**Startup.cs**
+```csharp
+var appId = Configuration.GetSection("MicrosoftAppId").Value;
+var appPassword = Configuration.GetSection("MicrosoftAppPassword").Value;
+options.CredentialProvider = new SimpleCredentialProvider(appId, appPassword);
 ```
 
-> [!TIP]
-> Visual Studio 内では、.bot ファイルのファイル プロパティで **[出力ディレクトリにコピー]** が *[常にコピーする]* に設定されていることを確認します。
+# [<a name="js"></a>JS](#tab/js)
+
+JavaScript の場合、次のような `process.env` オブジェクトから .env 変数の参照を解除します。
+   
+**index.js**
+
+```js
+const adapter = new BotFrameworkAdapter({
+    appId: process.env.MicrosoftAppId,
+    appPassword: process.env.MicrosoftAppPassword
+});
+```
+---
+
+- ファイルを保存し、自身のボットをテストします。
 
 ### <a name="setup-a-repository"></a>リポジトリを設定する
 
@@ -144,12 +100,11 @@ msbot secret --bot <name-of-bot-file> --new
 [リポジトリの準備](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment#prepare-your-repository)に関するページの説明にあるように、リポジトリのルートに適切なファイルがあることを確認してください。
 
 ### <a name="update-app-settings-in-azure"></a>Azure でアプリ設定を更新する
-ローカルのボットでは暗号化された .bot ファイルを使用しませんが、Azure portal は暗号化された .bot ファイルを使用するように構成されています。 これを解決するには、Azure のボット設定に保存されている **botFileSecret** を削除します。
+ローカルのボットでは暗号化された .bot ファイルが使用されませんが、Azure portal が暗号化された .bot ファイルを使用するように構成されていた場合は "_どうなるでしょうか_"。 これを解決するには、Azure のボット設定に保存されている **botFileSecret** を削除します。
 1. Azure portal で、ボットの **Web App Bot** リソースを開きます。
 1. ボットの **[アプリケーション設定]** を開きます。
 1. **[アプリケーション設定]** ウィンドウで、**[アプリケーション設定]** まで下へスクロールします。
-1. **botFileSecret** を探してそれを削除します。 (.bot ファイルを再暗号化した場合は、**botFileSecret** に新しいシークレットが含まれていることを確認します。この設定を削除**しないでください**。)
-1. リポジトリにチェックインしたファイルと一致するように、ボット ファイルの名前を更新します。
+1. ボットに **botFileSecret** および **botFilePath** エントリがあるかどうか確認します。 ある場合は、これを削除します。
 1. 変更を保存します。
 
 ## <a name="2-deploy-using-azure-deployment-center"></a>2.Azure デプロイ センターを使用してデプロイする
