@@ -9,12 +9,12 @@ layout: LandingPage
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/28/2019
-ms.openlocfilehash: eef74893d4d17536fa8a7c3add15f1fd6a614796
-ms.sourcegitcommit: 54a4382add4756346098b286695a9b4791db7139
+ms.openlocfilehash: 5c6a194c18fff144090c095f9cf01f964a1ad4ce
+ms.sourcegitcommit: 562dd44e38abacaa31427da5675da556a970cf11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58616958"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59477125"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -32,7 +32,7 @@ ms.locfileid: "58616958"
     <div class="ico48Link">
         <a href="/bot-framework/bot-service-quickstart">
             <img src="media/index/azure_portal.png" alt="">
-            <span>Azure Portal</span>
+            <span>Azure ポータル</span>
         </a>
     </div>
 </div>
@@ -52,8 +52,20 @@ ms.locfileid: "58616958"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>言語</h3>
-                        <p><a href="/dotnet/api/?view=botbuilder-3.12.2.4">.NET</a></p>
+                        <h3>API</h3>
+                        <p><a href="https://aka.ms/botconnector-rest-api">REST</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Languages</h3>
+                        <p><a href="https://aka.ms/botframework-v3-cs-sdk">.NET</a></p>
                         <p><a href="https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html">Node.js</a></p>
                     </div>
                 </div>
@@ -85,7 +97,7 @@ ms.locfileid: "58616958"
     <div class="ico48Link">
         <a href="/bot-framework/bot-service-quickstart">
             <img src="media/index/azure_portal.png" alt="">
-            <span>Azure Portal</span>
+            <span>Azure ポータル</span>
         </a>
     </div>
     <div class="ico48Link">
@@ -113,8 +125,7 @@ ms.locfileid: "58616958"
                 <div class="card">
                     <div class="cardText">
                         <h3>API</h3>
-                        <p><a href="https://aka.ms/dotnetsdk4">.NET</a></p>
-                        <p><a href="https://aka.ms/jssdk4">JavaScript</a></p>
+                        <p><a href="https://aka.ms/botconnector-rest-api">REST</a></p>
                     </div>
                 </div>
             </div>
@@ -126,7 +137,7 @@ ms.locfileid: "58616958"
                 <div class="card">
                     <div class="cardText">
                         <h3>SDK</h3>
-                        <p><a href="https://github.com/Microsoft/botbuilder-dotnet">.NET</a></p>
+                        <p><a href="https://aka.ms/botframework-v4-cs-sdk">.NET</a></p>
                         <p><a href="https://github.com/Microsoft/botbuilder-js">JavaScript</a></p>
                     </div>
                 </div>
