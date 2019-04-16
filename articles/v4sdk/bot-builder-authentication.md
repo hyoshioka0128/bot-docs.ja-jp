@@ -7,25 +7,22 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 02/05/2019
+ms.date: 04/09/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c55909afa0a8942a01d3fca0f8a64331bbcdf963
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+ms.openlocfilehash: 27c97d257261a6f3b9d867503aee40382b685e20
+ms.sourcegitcommit: 562dd44e38abacaa31427da5675da556a970cf11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971522"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59477105"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-このチュートリアルでは、Azure Bot Service の新しいボット認証機能を使用します。提供される機能を利用することで、Azure AD (Azure Active Directory)、GitHub、Uber などの各種 ID プロバイダーにユーザーを認証するボットを容易に開発できます。 またこれらの更新は、一部クライアント用の_マジック コード検証_を排除することによって、ユーザー エクスペリエンスの向上に向けて前進します。
+Azure Bot Service および v4 SDK には新しいボット認証機能が追加されています。これにより、Azure AD (Azure Active Directory)、GitHub、Uber などの各種 ID プロバイダーにユーザーを認証するボットを容易に開発できます。 これらの機能は、一部のクライアント用の "_マジック コード検証_" を排除することで、ユーザー エクスペリエンスを向上させることができます。
 
-これ以前は、ボットにおいて、OAuth コントローラーとログイン リンクを含め、ターゲット クライアントの ID とシークレットを保存し、ユーザー トークン管理を実行する必要がありました。
-<!--
-These capabilities were bundled in the BotAuth and AuthBot samples that are on GitHub.
--->
+これ以前は、ボットにおいて、OAuth コントローラーとログイン リンクを含め、ターゲット クライアントの ID とシークレットを保存し、ユーザー トークン管理を実行する必要がありました。 ボットはユーザーに対して Web サイトにサインインするように求め、これによりユーザーの本人確認に使用される "_マジック コード_" が生成されました。
 
 OAuth コントローラーのホスティングやトークンのライフサイクルの管理は、すべて Azure Bot Service によって実行できるようになったため、ボット開発者がこれらを行う必要はなくなりました。
 
@@ -37,70 +34,119 @@ OAuth コントローラーのホスティングやトークンのライフサ�
 - C# および Node.js の Bot Framework SDK の更新により、トークンの取得、OAuthCard の作成、TokenResponse イベントの処理が可能に。
 - Azure AD に対して認証されるボットを作成する方法のサンプル。
 
-この記事の手順を応用して、このような機能を既存のボットに追加することができます。 以下は、新しい認証機能の例を示すサンプル ボットです
-
-| サンプル | BotBuilder のバージョン | 説明 |
-|:---|:---:|:---|
-| **ボット認証** ([C#](https://aka.ms/v4cs-bot-auth-sample) / [JS](https://aka.ms/v4js-bot-auth-sample)) | v4 | OAuthCard サポートの例を示します |
-| **ボット認証 MSGraph** ([C#](https://aka.ms/v4cs-auth-msgraph-sample) / [JS](https://aka.ms/v4js-auth-msgraph-sample)) | v4 |  OAuth 2 を使用した Microsoft Graph API サポートの例を示します。 |
+この記事の手順を応用して、このような機能を既存のボットに追加することができます。 以下のサンプル ボットは、新しい認証機能を示しています。
 
 > [!NOTE]
-> 認証機能は BotBuilder v3 でも使用できます。 ただしこの記事では、サンプル v4 コードのみを扱います。
+> 認証機能は BotBuilder v3 でも使用できます。 ただし、この記事では v4 サンプル コードのみを扱います。
 
-追加情報とサポートについては、「[Bot Framework のその他のリソース](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help)」を参照してください。
+### <a name="about-this-sample"></a>このサンプルについて
 
-## <a name="overview"></a>概要
+Azure ボット リソースを作成する必要があります。また、新しい Azure AD (v1 または v2) アプリケーションを作成して、ボットが Office 365 にアクセスできるようにする必要があります。 そのボット リソースによって、ご自身のボットの資格情報が登録されます。ご自身のボット コードをローカルで実行している場合でも、これらの資格情報は認証機能のテストに必要です。
 
-このチュートリアルでは、Azure AD v1 または v2 トークンと、関連付けられている Azure AD アプリを使用して、Microsoft Graph に接続するサンプル ボットを作成します。 このプロセスの一環として、[Microsoft/BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples) GitHub リポジトリのコードを使用します。このチュートリアルでは、ボット アプリケーションを含めた設定方法について説明します。
+> [!IMPORTANT]
+> Azure でボットを登録すると必ず、Azure AD アプリが割り当てられますが、 このアプリで保護されるのは、チャネルからボットへのアクセスです。
+ユーザーに代わってボットが認証できるようにするアプリケーションごとに、追加の AAD アプリが必要です。
 
-- **ボットと認証アプリケーションの作成**
+この記事では、Azure AD v1 または v2 トークンを使用して Microsoft Graph に接続するサンプル ボットを作成します。 また、関連付けられている Azure AD アプリを作成して登録する方法についても説明します。 このプロセスの一環として、[Microsoft/BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples) GitHub リポジトリのコードを使用します。 この記事では、次のプロセスについて説明します。
+
+- **ご自身のボット リソースの作成**
+- **Azure AD アプリケーションの作成**
+- **Azure AD アプリケーションをボットに登録する**
 - **ボットのサンプル コードの準備**
-- **エミュレーターを使用してボットをテストする**
 
-これらの手順を完了するには、Visual Studio 2017、npm、node、および git がインストールされている必要があります。 また、Azure、OAuth 2.0、およびボット開発についてある程度理解している必要があります。
+手順が終了すると、電子メールのチェックと送信、自分とその上司の情報の表示など、Azure AD アプリケーションに対するいくつかの単純なタスクに応答できるボットが完成します。このボットはローカルで実行されています。 これを行うために、ボットでは Azure AD アプリケーションからのトークンを Microsoft.Graph ライブラリに対して使用します。 OAuth サインイン機能をテストするためにご自身のボットを公開する必要はありませんが、ボットには有効な Azure アプリ ID とパスワードが必要になります。
 
-手順が終了すると、電子メールのチェックと送信、自分とその上司の情報の表示など、Azure AD アプリケーションに対するいくつかの単純なタスクに応答できるボットが完成します。 これを行うために、ボットでは Azure AD アプリケーションからのトークンを Microsoft.Graph ライブラリに対して使用します。
+これらの認証機能は、他の種類のボットとも連動します。 ただし、この記事では登録のみのボットを使用します。
 
-最後のセクションでは、ボット コードの一部を解説します
+### <a name="web-chat-and-direct-line-considerations"></a>Web チャットと Direct Line に関する考慮事項
 
-- **トークン取得フローに関する注意事項**
+<!-- Summarized from: https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features/ -->
 
-## <a name="create-your-bot-and-an-authentication-application"></a>ボットと認証アプリケーションの作成
+Web チャットで Azure Bot Service 認証を使用する場合、考慮すべき重要なセキュリティの問題がいくつかあります。
 
-ボット コードの発行先になる登録ボットを作成する必要があります。また、Azure AD (v1 または v2) アプリケーションを作成し、ボットが Office 365 にアクセスできるようにする必要があります。
+1. 攻撃者が自身を他の誰かであるとボットに思わせる偽装を防ぎます。 Web チャットでは、攻撃者が自分の Web チャット インスタンスのユーザー ID を変えて、他の誰かになりすまします。
 
-> [!NOTE]
-> これらの認証機能は他の種類のボットと連動します。 ただし、このチュートリアルでは登録のみのボットを使用します。
+    これを防ぐために、ユーザー ID を推測できないようにします。 Direct Line チャネルで強化された認証オプションを有効にすると、Azure Bot Service が、ユーザー ID の変更を検出して拒否できます。 Direct Line からのご自身のボットへのメッセージのユーザー ID は、Web チャットを初期化したときに使ったものと必ず同じになります。 この機能では、ユーザー ID は必ず `dl_` で始まる必要があることに注意してください。
 
-### <a name="register-an-application-in-azure-ad"></a>アプリケーションを Azure AD に登録する
+1. 適切なユーザーがサインインしていることを確認します。 ユーザーには、チャネルの ID と ID プロバイダーの ID の 2 つの ID があります。 Web チャットでは、Azure Bot Service によって、サインイン プロセスが必ず Web チャットと同じブラウザー セッションで完了することを保証できます。
 
-Microsoft Graph API や、Azure AD で保護された独自リソースなどに接続するためにボットが使用できる Azure AD アプリケーションが必要です。
+    この保護を有効にするには、ボットの Web チャット クライアントをホストできる信頼されたドメインの一覧を含む Direct Line トークンを使用して、Web チャットを開始します。 次に、Direct Line 構成ページで信頼されているドメイン (origin) の一覧を静的に指定します。
+
+Direct Line の `/v3/directline/tokens/generate` REST エンドポイントを使用してメッセージ交換用のトークンを生成し、要求ペイロードでユーザー ID を指定します。 コード サンプルについては、ブログ記事「[Enhanced Direct Line Authentication Features (強化された Direct Line 認証機能)](https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features/)」を参照してください。
+
+<!-- The eventual article about this should talk about the tokens/generate endpoint and its parameters: user, trustedOrigins, and [maybe] eTag.
+Sample payload
+{
+  "user": {
+    "id": "string",
+    "name": "string",
+    "aadObjectId": "string",
+    "role": "string"
+  },
+  "trustedOrigins": [
+    "string"
+  ],
+  "eTag": "string"
+}
+ -->
+
+## <a name="prerequisites"></a>前提条件
+
+- [ボットの基礎][concept-basics]と[状態の管理][concept-state]に関する知識。
+- Azure と OAuth 2.0 開発の知識。
+- Visual Studio 2017 以降、Node.js、npm、git。
+- 次のいずれかのサンプル。
+
+| サンプル | BotBuilder のバージョン | 対象 |
+|:---|:---:|:---|
+| [**CSharp**][cs-auth-sample] または [**JavaScript**][js-auth-sample] の**ボット認証** | v4 | OAuthCard サポート |
+| [**CSharp**][cs-msgraph-sample] または [**JavaScript**][js-msgraph-sample] の**ボット認証 MSGraph** | v4 |  OAuth 2 を使用した Microsoft Graph API サポート |
+
+## <a name="create-your-bot-resource-on-azure"></a>Azure でご自身のボット リソースを作成する
+
+[Azure Portal](https://portal.azure.com/) を使用して**ボット チャネル登録**を作成します。
+
+## <a name="create-and-register-an-azure-ad-application"></a>Azure AD アプリケーションを作成して登録する
+
+Microsoft Graph API に接続するためにご自身のボットが使用できる Azure AD アプリケーションが必要です。
 
 このボットには Azure AD v1 または v2 エンドポイントを使用できます。
 v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の比較](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare)に関する記事と、[Azure AD v2.0 エンドポイントの概要](https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview)に関する記事を参照してください。
 
-#### <a name="to-create-an-azure-ad-v1-application"></a>Azure AD v1 アプリケーションを作成するには
+### <a name="create-your-azure-ad-application"></a>Azure AD アプリケーションを作成する
 
-1. [Azure portal で Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) に移動します。
-1. **[アプリの登録]** をクリックします。
+次の手順を使用して、新しい Azure AD アプリケーションを作成します。 作成するアプリには v1 または v2 エンドポイントを使用できます。
+
+> [!TIP]
+> 管理者権限があるテナントで Azure AD アプリケーションを作成し、登録する必要があります。
+
+1. Azure portal で [[Azure Active Directory]][azure-aad-blade] パネルを開きます。
+    適切なテナントにいない場合は、**[ディレクトリの切り替え]** をクリックして適切なテナントに切り替えます  (テナントを作成する方法については、[ポータルへのアクセスとテナントの作成](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)に関するページをご覧ください)。
+1. **[アプリの登録]** パネルを開きます。
 1. **[アプリの登録]** パネルで、**[新しいアプリケーションの登録]** をクリックします。
 1. 必須のフィールドに入力してアプリ登録を作成します。
+
    1. アプリケーションに名前を付けます。
    1. **[アプリケーションの種類]** を **[Web アプリ/API]** に設定します。
    1. **[サインオン URL]** を `https://token.botframework.com/.auth/web/redirect` に設定します。
    1. **Create** をクリックしてください。
+
       - 作成されると、**[登録済みのアプリ]** ウィンドウに表示されます。
-      - **[アプリケーション ID]** の値をメモします。 後でこれを _[クライアント ID]_ として入力します。
+      - **[アプリケーション ID]** の値をメモします。 この値は、後で Azure AD アプリケーションをご自身のボットに登録するときに、"_クライアント ID_" として使用します。
+
 1. **[設定]** をクリックしてアプリケーションを構成します。
 1. **[キー]** をクリックして **[キー]** パネルを開きます。
+
    1. **[パスワード]** で、`BotLogin` キーを作成します。
    1. **[期間]** を **[有効期限なし]** に設定します。
-   1. **[保存]** をクリックし、キー値をメモします。 後で_アプリケーション シークレット_にこれを指定します。
+   1. **[保存]** をクリックし、キー値をメモします。 この値は、後で Azure AD アプリケーションをご自身のボットに登録するときに、"_クライアント シークレット_" として使用します。
    1. **[キー]** パネルを閉じます。
+
 1. **[必要なアクセス許可]** をクリックして、**[必要なアクセス許可]** パネルを開きます。
+
    1. **[追加]** をクリックします。
    1. **[API を選択します]** をクリックし、**[Microsoft Graph]** を選択して **[選択]** をクリックします。
-   1. **[アクセス許可の選択]** をクリックします。 アプリケーションで使用するアプリケーションのアクセス許可を選択します。
+   1. **[アクセス許可の選択]** をクリックします。 ご自身のアプリケーションで使用する委任されたアクセス許可を選択します。
 
       > [!NOTE]
       > **[管理者権限が必要]** と表示されているアクセス許可は、ユーザーとテナント管理者の両方がログインすることを要求するため、ボットではこれらのアクセス許可を避けるのが一般的です。
@@ -108,8 +154,8 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
       次の Microsoft Graph 委任アクセス許可を選択します。
       - すべてのユーザーの基本プロファイルの読み取り
       - ユーザーのメールの読み取り
-      - サインインとユーザー プロファイルの読み取り
       - ユーザーとしてのメールの送信
+      - サインインとユーザー プロファイルの読み取り
       - ユーザーの基本プロファイルの表示
       - ユーザーの電子メール アドレスの表示
 
@@ -118,45 +164,18 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 これで、Azure AD v1 アプリケーションが構成されました。
 
-#### <a name="to-create-an-azure-ad-v2-application"></a>Azure AD v2 アプリケーションを作成するには
-
-1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com)に移動します。
-1. **[アプリの追加]** をクリックします
-1. Azure AD アプリに名前を付けて、**[作成]** をクリックします。
-
-    **[アプリケーション ID]** の GUID をメモします。 後でこれを接続設定のクライアント ID として入力します。
-
-1. **[アプリケーション シークレット]** で **[新しいパスワードを生成]** をクリックします。
-
-    ポップアップに表示されているパスワードをメモします。 後でこれを接続設定のクライアント シークレットとして入力します。
-
-1. **[プラットフォーム]** で、**[プラットフォームの追加]** をクリックします。
-1. **[プラットフォームの追加]** ポップアップで、**[Web]** をクリックします。
-    1. **[暗黙的フローを許可する]** はチェックされたままにします。
-    1. **[リダイレクト URL]** に、`https://token.botframework.com/.auth/web/redirect` と入力します。
-    1. **[ログアウト URL]** は空白のままにします。
-1. **[Microsoft Graph のアクセス許可]** で、追加の委任されたアクセス許可を追加できます。
-    - このチュートリアルでは、**Mail.Read**、**Mail.Send**、**openid**、**profile**、**User.Read**、および **User.ReadBasic.All** の各アクセス許可を追加します。
-      接続設定のスコープは、**openid** と、**Mail.Read** のような Azure AD グラフ内のリソースの両方を持っている必要があります。
-    - 選択したアクセス許可をメモします。 後でこれを接続設定のスコープとして入力します。
-
-1. ページの下部にある **[保存]** をクリックします。
-
-### <a name="create-your-bot-on-azure"></a>Azure でのボットの作成
-
-[Azure Portal](https://portal.azure.com/) を使用して**ボット チャネル登録**を作成します。
-
 ### <a name="register-your-azure-ad-application-with-your-bot"></a>Azure AD アプリケーションをボットに登録する
 
-次に、作成した Azure AD アプリケーションをボットに登録します。
+次に、作成した Azure AD アプリケーションをご自身のボットに登録します。
 
-#### <a name="to-register-an-azure-ad-v1-application"></a>Azure AD v1 アプリケーションを登録するには
+# [<a name="azure-ad-v1"></a>Azure AD v1](#tab/aadv1)
 
 1. [Azure Portal](http://portal.azure.com/) で、ボットのリソース ページに移動します。
 1. **[設定]** をクリックします。
 1. ページ下部付近の **[OAuth Connection Settings]\(OAuth 接続設定\)** で、**[設定の追加]** をクリックします。
 1. 次のようにフォームに入力します。
-    1. **[名前]** に、接続の名前を入力します。 ボットのコードで使用します。
+
+    1. **[名前]** に、接続の名前を入力します。 この名前はご自身のボット コードで使用します。
     1. **[サービス プロバイダー]** で、**[Azure Active Directory]** を選択します。 これを選択すると、Azure AD に固有のフィールドが表示されます。
     1. **[クライアント ID]** に、Azure AD v1 アプリケーションの設定時にメモしたアプリケーション ID を入力します。
     1. **[クライアント シークレット]** に、アプリケーションの `BotLogin` キーの設定時にメモしたキーを入力します。
@@ -168,19 +187,19 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
     1. **[リソース URL]** に、「`https://graph.microsoft.com/`」と入力します。
     1. **[スコープ]** は空白のままにします。
+
 1. **[Save]** をクリックします。
 
 > [!NOTE]
 > これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。
 
-ボット コードでこの接続名を使用してユーザー トークンを取得できるようになりました。
-
-#### <a name="to-register-an-azure-ad-v2-application"></a>Azure AD v2 アプリケーションを登録するには
+# [<a name="azure-ad-v2"></a>Azure AD v2](#tab/aadv2)
 
 1. [Azure Portal](http://portal.azure.com/) で、ボットの [Bot Channels Registration]\(ボット チャネル登録\) ページに移動します。
 1. **[設定]** をクリックします。
 1. ページ下部付近の **[OAuth Connection Settings]\(OAuth 接続設定\)** で、**[設定の追加]** をクリックします。
 1. 次のようにフォームに入力します。
+
     1. **[名前]** に、接続の名前を入力します。 ボットのコードで使用します。
     1. **[サービス プロバイダー]** で、**[Azure Active Directory v2]** を選択します。 これを選択すると、Azure AD に固有のフィールドが表示されます。
     1. **[クライアント ID]** に、アプリケーション登録からの Azure AD v2 アプリケーション ID を入力します。
@@ -199,27 +218,37 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 > [!NOTE]
 > これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。
 
-ボット コードでこの接続名を使用してユーザー トークンを取得できるようになりました。
+---
 
-#### <a name="to-test-your-connection"></a>接続をテストするには
+### <a name="test-your-connection"></a>接続をテストする
 
-1. 作成した接続を開きます。
+1. 接続エントリをクリックして、作成した接続を開きます。
 1. **[Service Provider Connection Setting]\(サービス プロバイダー接続設定\)** ウィンドウの上部にある **[Test Connection]\(接続のテスト\)** をクリックします。
 1. 初回は新しいブラウザー タブが開き、アプリが要求しているアクセス許可の一覧が表示され、承認を求められます。
 1. **[Accept]\(受け入れる\)** をクリックします。
-1. **[Test Connection to <your-connection-name> Succeeded]\(<接続名> へのテスト接続は成功しました\)** ページにリダイレクトされます。
+1. **[\<your-connection-name> への接続テストに成功しました]** ページにリダイレクトされます。
+
+ボット コードでこの接続名を使用してユーザー トークンを取得できるようになりました。
 
 ## <a name="prepare-the-bot-sample-code"></a>ボットのサンプル コードの準備
 
 お客様が選択したサンプルに応じて、C# と Node のいずれかを使用して作業することになります。
 
+| サンプル | BotBuilder のバージョン | 対象 |
+|:---|:---:|:---|
+| [**CSharp**][cs-auth-sample] または [**JavaScript**][js-auth-sample] の**ボット認証** | v4 | OAuthCard サポート |
+| [**CSharp**][cs-msgraph-sample] または [**JavaScript**][js-msgraph-sample] の**ボット認証 MSGraph** | v4 |  OAuth 2 を使用した Microsoft Graph API サポート |
+
 1. 上にあるいずれかのサンプルのリンクをクリックして、GitHub リポジトリを複製します。
 1. その特定のボット (C# または Node) を実行する方法について、GitHub の readme ページにある手順に従います。
 1. C# ボット認証サンプルを使用している場合:
+
     1. `AuthenticationBot.cs` ファイルの `ConnectionName` の値は、ボットの OAuth 2.0 接続設定を構成したときに使用した値に設定します。
     1. `BotConfiguration.bot` ファイルの `appId` 値を、お客様のボットのアプリ ID に設定します。
     1. `BotConfiguration.bot` ファイルの `appPassword` 値を、お客様のボットのシークレットに設定します。
+
 1. Node (JS) ボット認証サンプルを使用している場合:
+
     1. `bot.js` ファイルの `CONNECTION_NAME` の値は、ボットの OAuth 2.0 接続設定を構成したときに使用した値に設定します。
     1. `bot-authentication.bot` ファイルの `appId` 値を、お客様のボットのアプリ ID に設定します。
     1. `bot-authentication.bot` ファイルの `appPassword` 値を、お客様のボットのシークレットに設定します。
@@ -298,7 +327,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 このコードでは、ボットはまず、(現在の Activity 送信者によって識別される) ユーザーのトークンと、特定の ConnectionName (構成で使用される接続名) が Azure Bot Service に既に存在しているかどうかのクイック チェックを行います。 Azure Bot Service には、キャッシュされたトークンが既に存在しているか、存在していないかのどちらかです。 GetUserTokenAsync の呼び出しは、このクイック チェックを実行します。 Azure Bot Service にトークンが存在していてそれが返される場合、そのトークンはすぐに使用できます。 Azure Bot Service にトークンが存在しない場合、このメソッドは null を返します。 ボットはこの場合、ユーザーがログインするためのカスタマイズされた OAuthCard を送信できます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# [<a name="c"></a>C#](#tab/csharp)
 
 ```csharp
 // First ask Bot Service if it already has a token for this user
@@ -313,7 +342,7 @@ else
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# [<a name="javascript"></a>JavaScript](#tab/javascript)
 
 ```javascript
 public async getUserToken(context: TurnContext, code?: string): Promise<TokenResponse|undefined> {
@@ -335,7 +364,7 @@ public async getUserToken(context: TurnContext, code?: string): Promise<TokenRes
 
 この呼び出しの最後に、ボットは "トークンの戻りを待つ" 必要があります。 サインインのためにユーザー側で必要な処理が多い可能性があるため、この待機はメインの Activity ストリームで行われます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# [<a name="c"></a>C#](#tab/csharp)
 
 ```csharp
 private async Task SendOAuthCardAsync(ITurnContext turnContext, IMessageActivity message, CancellationToken cancellationToken = default(CancellationToken))
@@ -368,7 +397,7 @@ private async Task SendOAuthCardAsync(ITurnContext turnContext, IMessageActivity
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# [<a name="javascript"></a>JavaScript](#tab/javascript)
 
 ```javascript
 private async sendOAuthCardAsync(context: TurnContext, prompt?: string|Partial<Activity>): Promise<void> {
@@ -400,7 +429,7 @@ private async sendOAuthCardAsync(context: TurnContext, prompt?: string|Partial<A
 
 各サンプルのボット コードを見ると、`Event` アクティビティと `Invoke` アクティビティもダイアログ スタックにルーティングされることがわかります。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# [<a name="c"></a>C#](#tab/csharp)
 
 ```csharp
 // This can be called when the bot receives an Activity after sending an OAuthCard
@@ -448,7 +477,7 @@ private bool IsTeamsVerificationInvoke(ITurnContext turnContext)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# [<a name="javascript"></a>JavaScript](#tab/javascript)
 
 ```javascript
 private async recognizeToken(context: TurnContext): Promise<PromptRecognizerResult<TokenResponse>> {
@@ -486,5 +515,26 @@ private isTeamsVerificationInvoke(context: TurnContext): boolean {
 
 その後のボットの呼び出しでは、このサンプル ボットによってトークンが決してキャッシュされないことに注意してください。 これは、ボットがいつでも Azure Bot Service にトークンを要求できるからです。 トークンのライフサイクルの管理やトークンの更新などはすべて Azure Bot Service によって自動的に行われるため、ボットでこれらを行う必要はありません。
 
-## <a name="additional-resources"></a>その他のリソース
-[Bot Framework SDK](https://github.com/microsoft/botbuilder)
+### <a name="further-reading"></a>参考資料
+
+- 「[Bot Framework のその他のリソース](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help)」に追加サポートのリンクがあります。
+- [Bot Framework SDK](https://github.com/microsoft/botbuilder) のリポジトリでは、Bot Builder SDK に関連付けられているリポジトリ、サンプル、ツール、および仕様の詳細を確認できます。
+
+<!-- Footnote-style links -->
+
+[Azure portal]: https://ms.portal.azure.com
+[azure-aad-blade]: https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview
+[aad-registration-blade]: https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps
+
+[concept-basics]: bot-builder-basics.md
+[concept-state]: bot-builder-concept-state.md
+[concept-dialogs]: bot-builder-concept-dialog.md
+
+[simple-dialog]: bot-builder-dialog-manage-conversation-flow.md
+[dialog-prompts]: bot-builder-prompts.md
+[component-dialogs]: bot-builder-compositcontrol.md
+
+[cs-auth-sample]: https://aka.ms/v4cs-bot-auth-sample
+[js-auth-sample]: https://aka.ms/v4js-bot-auth-sample
+[cs-msgraph-sample]: https://aka.ms/v4cs-auth-msgraph-sample
+[js-msgraph-sample]: https://aka.ms/v4js-auth-msgraph-sample
