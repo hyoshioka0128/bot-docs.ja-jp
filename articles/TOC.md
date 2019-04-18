@@ -9,7 +9,7 @@
 # チュートリアル
 ## [1.基本的なボットを作成してデプロイする](v4sdk/bot-builder-tutorial-basic-deploy.md)
 ## [2.QnA Maker を追加して、ボットを再デプロイする](v4sdk/bot-builder-tutorial-add-qna.md)
-## [ボットに認証を追加する](bot-builder-tutorial-authentication.md)
+## [ボットへの認証の追加](bot-builder-tutorial-authentication.md)
 # サンプル
 ## [GitHub の botbuilder-samples リポジトリ](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md)
 ## [botbuilder-samples リポジトリからボットをデプロイする](bot-builder-deploy-samples.md)
@@ -24,34 +24,34 @@
 ## [Cognitive Services](bot-service-concept-intelligence.md)
 ## [ボットの主要シナリオ](bot-service-scenario-overview.md)
 ### [コマース ボット](bot-service-scenario-commerce.md)
-### [Cortana スキル ボット](bot-service-scenario-cortana-skill.md)
+### [Cortana の Skill ボット](bot-service-scenario-cortana-skill.md)
 ### [Enterprise Productivity ボット](bot-service-scenario-enterprise-productivity.md)
 ### [Information ボット](bot-service-scenario-informational.md)
 ### [モノのインターネット ボット](bot-service-scenario-internet-things.md)
 # 操作方法 
-## [設計](design/TOC.md)
+## [Design (デザイン)](design/TOC.md)
 ## 開発
 <!-- ## [Best practice for welcoming the user](v4sdk/bot-builder-welcome-user.md) -->
 ### [テキスト メッセージを送受信する](v4sdk/bot-builder-howto-send-messages.md)
 ### [メッセージにメディアを追加する](v4sdk/bot-builder-howto-add-media-attachments.md)
 ### [ユーザー アクションをガイドするボタンを追加する](v4sdk/bot-builder-howto-add-suggested-actions.md)
-### [ユーザーおよび会話データを保存する](v4sdk/bot-builder-howto-v4-state.md) 
+### [ユーザーと会話データを保存する](v4sdk/bot-builder-howto-v4-state.md) 
 ### [ユーザーに入力を求める](v4sdk/bot-builder-primitive-prompts.md) 
 ### [ユーザーへのウェルカム メッセージの送信](v4sdk/bot-builder-send-welcome-message.md)
 <!-- ## [Add input hints to messages](v4sdk/bot-builder-howto-add-input-hints.md) -->
 ### [ユーザーへのプロアクティブな通知の送信](v4sdk/bot-builder-howto-proactive-message.md)
 ### [ボットに自然言語の理解を追加する](v4sdk/bot-builder-howto-v4-luis.md)
 ### [QnA Maker を使用してユーザーの質問に回答する](v4sdk/bot-builder-howto-qna.md)
-### [複数の LUIS および QnA モデルを使用する](v4sdk/bot-builder-tutorial-dispatch.md)
+### [複数の LUIS と QnA モデルを使用する](v4sdk/bot-builder-tutorial-dispatch.md)
 ### ダイアログ ライブラリを使用した会話の管理 
 #### [連続して行われる会話フローの実装](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
 #### [ダイアログ プロンプトを使用してユーザー入力を収集する](v4sdk/bot-builder-prompts.md)
 #### [ブランチとループを使用して高度な会話フローを作成する](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
-#### [ユーザーによる割り込みを処理する](v4sdk/bot-builder-howto-handle-user-interrupt.md)
+#### [ユーザーによる割り込みの処理](v4sdk/bot-builder-howto-handle-user-interrupt.md)
 #### [ユーザー データを保持する](v4sdk/bot-builder-tutorial-persist-user-inputs.md)
 #### [ダイアログの再利用](v4sdk/bot-builder-compositcontrol.md)
 ### [ストレージに直接書き込む](v4sdk/bot-builder-howto-v4-storage.md)
-### [ボットに認証を追加する](v4sdk/bot-builder-authentication.md)
+### [ボットへの認証の追加](v4sdk/bot-builder-authentication.md)
 ### [ボットのカスタム ストレージの実装](v4sdk/bot-builder-custom-storage.md)
 ### [ボットへのテレメトリの追加](v4sdk/bot-builder-telemetry.md)
 ### [CLI ツールを使用したボットの管理](bot-builder-tools.md)
@@ -59,7 +59,7 @@
 ### [Node.js](nodejs/TOC.md)
 ## [デバッグ](debug/TOC.md)
 ## デプロイ
-### [使用するボットを Azure にデプロイする](bot-builder-deploy-az-cli.md)
+### [ボットを Azure にデプロイする](bot-builder-deploy-az-cli.md)
 <!-- ### [Deploy your C# bot using Visual Studio](bot-builder-howto-deploy-azure.md)
 ### [Download and redeploy bot code](bot-service-build-download-source-code.md) 
 ### [Set up continuous deployment](bot-service-build-continuous-deployment.md) -->
