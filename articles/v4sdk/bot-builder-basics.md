@@ -10,16 +10,16 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 70f333cdce15f1d1e908b73d21e706f1af33454b
-ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
+ms.openlocfilehash: a7f6c22f35719eacf66598e79df5fe52ff19dd43
+ms.sourcegitcommit: 103aa3316f9ff658cf2b0d341c5e76c3efc581ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55783381"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59540366"
 ---
 # <a name="how-bots-work"></a>ボットのしくみ
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 ボットとは、テキスト、グラフィックス (カード、画像など)、または音声を使用してユーザーが会話形式で対話するアプリです。 ユーザーとボットとの間で行われるすべての対話では、"*アクティビティ*" が発生します。 Facebook、Skype、Slack など、ボットに接続されたユーザーのアプリ ("*チャネル*") とボットとの間でやり取りされる情報は、Azure Bot Service のコンポーネントである Bot Framework Service によって送信されます。 それらによって送信されるアクティビティには、それぞれのチャネルによって付加的な情報が追加される場合があります。 ボットを作成する前に、ユーザーと通信するためにアクティビティ オブジェクトがボットでどのように使用されているかを理解しておくことが大切です。 まずは、単純なエコー ボットを実行するときにやり取りされるアクティビティを見てみましょう。 
 
