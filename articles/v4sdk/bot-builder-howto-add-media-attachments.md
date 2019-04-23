@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/27/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ed723e2caebd7fc085c6f9f2887e277195ee3516
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: aea34c068afa6fef3a701bc1179341ff4861e32a
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224880"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541098"
 ---
 # <a name="add-media-to-messages"></a>メッセージにメディアを追加する
 
@@ -150,7 +150,7 @@ await turnContext.sendActivity(reply);
 
 正常に機能させるために、カード上のクリック可能な各アイテムにアクションの種類を割り当てます。 この表では、使用できるアクションの種類と、関連付けられている value プロパティに含める内容を一覧にまとめ、説明しています。
 
-| type | 説明 | 値 |
+| Type | 説明 | 値 |
 | :---- | :---- | :---- |
 | openUrl | 組み込みのブラウザーで URL を開きます。 | 開く URL。 |
 | imBack | ボットにメッセージを送信し、目に見える応答をチャットに投稿します。 | 送信するメッセージのテキスト。 |
@@ -225,9 +225,9 @@ await context.sendActivity(hero);
 
 また、アダプティブ カードではカード形式でメッセージが配信され、チャネルによって、カードのレイアウトが決まります。 MessageFactory によって配信されるメッセージの形式はチャネルによって異なり、アダプティブ カードが添付ファイルに含まれていない限り、必ずしもカード形式であるとは限りません。 
 
-チャネルでのアダプティブ カードのサポートに関する最新情報については、<a href="http://adaptivecards.io/visualizer/">アダプティブ カード ビジュアライザー</a>に関するページを参照してください。
+チャネルでのアダプティブ カードのサポートに関する最新情報については、<a href="http://adaptivecards.io/designer/">アダプティブ カード デザイナー</a>に関するページをご覧ください。
 
-アダプティブ カードを使用するには、必ず `Microsoft.AdaptiveCards` NuGet パッケージを追加してください。 
+アダプティブ カードを使用するには、必ず `AdaptiveCards` NuGet パッケージを追加してください。 
 
 
 > [!NOTE]

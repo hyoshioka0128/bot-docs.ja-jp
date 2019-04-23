@@ -9,12 +9,12 @@ ms.service: bot-service
 ROBOTS: NOINDEX
 ms.date: 10/04/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 62b5608de20bb89a31106c7e652b20f32b099d15
-ms.sourcegitcommit: 152760771214865b9c7d0ed481acfba05bdc44dc
+ms.openlocfilehash: 54742bdeddee410ec9307157d0dbd34cc4fbe3c8
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58655502"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541078"
 ---
 [!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]  
 
@@ -68,7 +68,7 @@ OAuth コントローラーのホスティングやトークンのライフサ�
 
 ## <a name="create-your-bot-and-an-authentication-application"></a>ボットと認証アプリケーションの作成
 
-ボット コードの発行先になる登録ボットを作成する必要があります。また、Azure AD (v1 または v2) アプリケーションを作成し、ボットが Office 365 にアクセスできるようにする必要があります。
+メッセージング エンドポイントをデプロイされたボットのコードに設定する登録ボットを作成する必要があります。また、Azure AD (v1 または v2) アプリケーションを作成して、ボットが Office 365 にアクセスできるようにする必要があります。
 
 > [!NOTE]
 > これらの認証機能は他の種類のボットと連動します。 ただし、このチュートリアルでは登録のみのボットを使用します。
@@ -234,7 +234,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
     </appSettings>
     ```
 
-    **Microsoft アプリ ID** と **Microsoft アプリ パスワード**の値が分からない場合、Azure Portal でボットに対してプロビジョニングされた Azure アプリ サービスの **ApplicationSettings** を調べます。
+    **Microsoft アプリ ID** と **Microsoft アプリ パスワード**の値を取得する方法がわからない場合は、[bot-channels-registration-password](bot-service-quickstart-registration.md#bot-channels-registration-password) の説明に従って新しいパスワードを作成するか、[find-your-azure-bots-appid-and-appsecret](https://blog.botframework.com/2018/07/03/find-your-azure-bots-appid-and-appsecret) の説明に従って、デプロイの **Bot Channels Registration** でプロビジョニング済みの **Microsoft アプリ ID** と **Microsoft アプリ パスワード**を取得します。
 
     > [!NOTE]
     > ここで、このボット コードを Azure サブスクリプションに発行 (プロジェクトを右クリックして **[発行]** を選択) することもできますが、このチュートリアルでは不要です。 Azure Portal でボットを構成するときに使用したアプリケーションとホスティング プランを使用する発行構成を設定する必要があります。

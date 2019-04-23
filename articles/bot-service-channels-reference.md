@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: tools
 ms.date: 03/01/2019
-ms.openlocfilehash: 28c4ece705c001d5f80fdc877773c03ac400204c
-ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
+ms.openlocfilehash: 28f284e4d69cbef7a1741d298b3ae9e6e127e9dd
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58073848"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541088"
 ---
 # <a name="categorized-activities-by-channel"></a>チャネル別に分類されたアクティビティ
 
@@ -33,7 +33,7 @@ ms.locfileid: "58073848"
 <a name="conversational"></a>会話
 --------------
 
- \                      | Cortana            | Direct Line        | Direct Line (Web チャット) | 電子メール              | Facebook           | GroupMe            | Kik                | Teams              | Slack              | Skype   | Skype Business | Telegram | Twilio  
+ \                      | Cortana            | Direct Line        | Direct Line (Web チャット) | Email              | Facebook           | GroupMe            | Kik                | Teams              | Slack              | Skype   | Skype Business | Telegram | Twilio  
 :---------------------- | :-----:            | :----------------: | :--------------------: |:----:              | :------:           | :-----:            | :-----:            | :---:              | :---:              | :---:   | :------------: | :------: | :----:  
 Message                 | :white_check_mark: | :white_check_mark: | :white_check_mark:     | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark:        | :white_check_mark:  | :white_check_mark: 
 MessageReaction         | :x:                | :x:                | :x:                    | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :x:                | :x:      | :x:             | :x:       | :x:      
@@ -51,7 +51,7 @@ MessageReaction         | :x:                | :x:                | :x:         
 <a name="welcome"></a>ようこそ
 -------
 
- \                         | Cortana            | Direct Line        | Direct Line (Web チャット) | 電子メール   | Facebook             | GroupMe | Kik     | Teams   | Slack   | Skype   | Skype Business | Telegram | Twilio  
+ \                         | Cortana            | Direct Line        | Direct Line (Web チャット) | Email   | Facebook             | GroupMe | Kik     | Teams   | Slack   | Skype   | Skype Business | Telegram | Twilio  
 :----------------------    | :-----:            | :---------:        | :--------------------: |:----:   | :------:             | :-----: | :-----: | :---:   | :---:   | :---:   | :------------: | :------: | :----:  
 ConversationUpdate         | :white_check_mark: | :white_check_mark: | :white_check_mark:     | :x:     | :white_large_square: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:      | :x:             | :white_check_mark:  | :x:     
 ContactRelationUpdate      | :x:                | :x:                | :x:                    | :x:     | :x:                  | :x:      | :x:      | :x:      | :x:      | :white_check_mark: | :white_check_mark:        | :x:       | :x:     
@@ -65,7 +65,7 @@ ContactRelationUpdate      | :x:                | :x:                | :x:      
 <a name="application-extensibility"></a>アプリケーションの機能拡張
 -------------------------
 
- \                      | Cortana            | Direct Line        | Direct Line (Web チャット) | 電子メール   | Facebook | GroupMe | Kik     | Teams   | Slack   | Skype   | Skype Business | Telegram | Twilio  
+ \                      | Cortana            | Direct Line        | Direct Line (Web チャット) | Email   | Facebook | GroupMe | Kik     | Teams   | Slack   | Skype   | Skype Business | Telegram | Twilio  
 :---------------------- | :-----:            | :---------:        | :--------------------: |:----:   | :------: | :-----: | :-----: | :---:   | :---:   | :---:   | :------------: | :------: | :----:  
 Event.*                    | :white_large_square: | :white_check_mark: | :white_check_mark:    | :white_large_square: | :white_large_square:  | :white_large_square: | :white_large_square: | :white_large_square:  | :white_large_square:  | :white_large_square:  | :white_large_square:           | :white_large_square:     | :white_large_square:  
 Event.CreateConversation   | :white_large_square: | :white_large_square: | :white_large_square:   | :white_large_square: | :white_large_square:  | :white_large_square: | :white_large_square: | :white_large_square:  | :white_large_square:  | :white_large_square:  | :white_large_square:           | :white_large_square:     | :white_large_square:  
@@ -78,7 +78,7 @@ Event.ContinueConversation | :white_large_square: | :white_large_square: | :whit
 <a name="microsoft-teams"></a>Microsoft Teams
 ------------------
 
- \                      | Cortana            | Direct Line        | Direct Line (Web チャット) | 電子メール   | Facebook | GroupMe | Kik     | Teams   | Slack   | Skype   | Skype Business | Telegram | Twilio  
+ \                      | Cortana            | Direct Line        | Direct Line (Web チャット) | Email   | Facebook | GroupMe | Kik     | Teams   | Slack   | Skype   | Skype Business | Telegram | Twilio  
 :---------------------- | :-----:            | :---------:        | :--------------------: |:----:   | :------: | :-----: | :-----: | :---:   | :---:   | :---:   | :------------: | :------: | :----:  
 Invoke.TeamsVerification   | :x:      | :x:          | :x: | :x:   | :x:       | :x:      | :x:      | :white_check_mark: | :x:    | :x:    | :x:             | :x:       | :x:     
 Invoke.ComposeResponse     | :x:      | :x:          | :x: | :x:   | :x:       | :x:      | :x:      | :white_check_mark: | :x:    | :x:    | :x:             | :x:       | :x:     
@@ -94,7 +94,7 @@ Invoke.ComposeResponse     | :x:      | :x:          | :x: | :x:   | :x:       |
 <a name="message-update"></a>メッセージの更新
 --------------
 
- \                      | Cortana            | Direct Line        | Direct Line (Web チャット) | 電子メール   | Facebook | GroupMe | Kik     | Teams   | Slack   | Skype   | Skype Business | Telegram | Twilio  
+ \                      | Cortana            | Direct Line        | Direct Line (Web チャット) | Email   | Facebook | GroupMe | Kik     | Teams   | Slack   | Skype   | Skype Business | Telegram | Twilio  
 :---------------------- | :-----:            | :---------:        | :--------------------: |:----:   | :------: | :-----: | :-----: | :---:   | :---:   | :---:   | :------------: | :------: | :----:  
 MessageUpdate | :x:      | :x:          | :x:    | :x: | :x:      | :x:      | :x:  | :white_check_mark: | :white_large_square:  | :x:    | :x:             | :x:       | :x:     
 MessageDelete | :x:      | :x:          | :x:    | :x: | :x:      | :x:      | :x:  | :white_check_mark: | :white_large_square:  | :x:    | :x:             | :x:       | :x:     
@@ -105,7 +105,7 @@ MessageDelete | :x:      | :x:          | :x:    | :x: | :x:      | :x:      | :
 <a name="oauth"></a>OAuth
 -------
 
- \                      | Cortana            | Direct Line        | Direct Line (Web チャット) | 電子メール   | Facebook | GroupMe | Kik     | Teams   | Slack   | Skype   | Skype Business | Telegram | Twilio  
+ \                      | Cortana            | Direct Line        | Direct Line (Web チャット) | Email   | Facebook | GroupMe | Kik     | Teams   | Slack   | Skype   | Skype Business | Telegram | Twilio  
 :---------------------- | :-----:            | :---------:        | :--------------------: |:----:   | :------: | :-----: | :-----: | :---:   | :---:   | :---:   | :------------: | :------: | :----:  
 Event.TokenResponse| :white_large_square:  | :white_check_mark:   | :white_check_mark:    | :x:    | :white_large_square: | :white_large_square: | :white_large_square: | :x:    | :white_large_square: | :white_large_square: | :white_large_square:       | :white_large_square: | :white_large_square: 
 
@@ -115,7 +115,7 @@ Event.TokenResponse| :white_large_square:  | :white_check_mark:   | :white_check
 <a name="uncategorized"></a>未分類 
 -------------
 
- \                      | Cortana  | Direct Line        | Direct Line (Web チャット) | 電子メール | Facebook | GroupMe | Kik     | Teams | Slack | Skype | Skype Business | Telegram | Twilio  
+ \                      | Cortana  | Direct Line        | Direct Line (Web チャット) | Email | Facebook | GroupMe | Kik     | Teams | Slack | Skype | Skype Business | Telegram | Twilio  
 :---------------------- | :-----:  | :---------:        | :--------------------: |:----: | :------: | :-----: | :-----: | :---: | :---: | :---: | :------------: | :------: | :----:  
 EndOfConversation       | :x:      | :white_check_mark: | :white_check_mark:     | :x:   | :x:      | :x:     | :x:     | :x:   | :x:   | :x:   | :x:            | :x:      | :x:     
 InstallationUpdate      | :x:      | :white_check_mark: | :white_check_mark:     | :x:   | :x:      | :x:     | :x:     | :x:   | :x:   | :x:   | :x:            | :x:      | :x:     
@@ -150,7 +150,7 @@ Handoff                 | :x:      | :x:                | :x:                   
 - _Event.CreateConversation_
 - _Event.ContinueConversation_
 
-<a name="email"></a>電子メール
+<a name="email"></a>Email
 -----
 - Message
 
@@ -216,7 +216,7 @@ Handoff                 | :x:      | :x:                | :x:                   
 
 ## <a name="summary-table-all-activities-to-all-channels"></a>すべてのチャネルに対するすべてのアクティビティの概要表
 
- \                         | Cortana              | Direct Line          | Direct Line (Web チャット) | 電子メール                | Facebook             | GroupMe | Kik     | Teams   | Slack   | Skype   | Skype Business | Telegram | Twilio  
+ \                         | Cortana              | Direct Line          | Direct Line (Web チャット) | Email                | Facebook             | GroupMe | Kik     | Teams   | Slack   | Skype   | Skype Business | Telegram | Twilio  
 :----------------------    | :-----:              | :---------:          | :--------------------: |:----:                | :------:             | :-----: | :-----: | :---:   | :---:   | :---:   | :------------: | :------: | :----:  
 Message                    | :white_check_mark:   | :white_check_mark:   | :white_check_mark:     | :white_check_mark:   | :white_check_mark:   | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark:        | :white_check_mark:  | :white_check_mark: 
 MessageReaction            | :x:                  | :x:                  | :x:                    | :x:                  | :x:                  | :x:      | :x:      | :white_check_mark: | :x:      | :x:      | :x:             | :x:       | :x:      

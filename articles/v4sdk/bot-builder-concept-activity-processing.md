@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6ba140324fb6b50c2d6696aae6e4bd3e8824fd96
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: fa243d8cc00fd6fadf7c51668c9e7ba74d0c06e2
+ms.sourcegitcommit: cacd381d185b2b8b7fb99082baf83d9f65dde341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997569"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59508229"
 ---
 # <a name="activity-processing"></a>アクティビティの処理
 
@@ -46,7 +46,7 @@ Bot Connector Service 認証では、JWT (JSON Web Token)`Bearer` トークン�
 * アクティビティ - 会話での要求および応答はすべて、アクティビティの種類です。 このコンテキストでは、受信アクティビティに関する情報 (ルーティング情報を含む)、チャネル、会話、送信者、および受信者に関する情報が提供されます。
 * カスタム情報 - ミドルウェアを実装してボットを拡張するか、またはボット ロジック内でボットを拡張する場合、各ターンで追加の情報を利用可能にすることができます。
 
-またコンテキスト オブジェクトを使用すると、ユーザーに応答を送信できるほか、アダプター<!-- to create a new conversation or continue an existing one-->への参照を取得することができます。
+また、コンテキスト オブジェクトを使用して、ユーザーに応答を送信したり、アダプターへの参照を取得したりすることもできます。<!-- to create a new conversation or continue an existing one-->。
 
 > [!NOTE]
 > アプリケーションとアダプターでは要求は非同期で処理されます。ただし、ビジネス ロジックを、要求-応答で駆動する必要はありません。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: c2d4b9a8e2b8ffc1656df44e04ee1bde912e36ea
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: dd5e81ba3feaba09e60011c138dcbe1537144b5a
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998159"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541008"
 ---
 # <a name="receive-activities-from-the-bot"></a>ボットからアクティビティを受信する
 
@@ -21,7 +21,7 @@ ms.locfileid: "49998159"
 
 ## <a name="websocket-vs-http-get"></a>WebSocket と HTTP GET
 
-WebSocket のストリーミング はメッセージを効率的にクライアントにプッシュし、GET インターフェイスはクライアントがメッセージを明示的に要求できるようにします。 多くの場合、効率の良さから WebSocket メカニズムが推奨されますが、WebSocket を使用できないクライアントまたは会話履歴を取得したいクライアントでは、GET メカニズムが有用です。 
+WebSocket のストリーミング はメッセージを効率的にクライアントにプッシュし、GET インターフェイスはクライアントがメッセージを明示的に要求できるようにします。 多くの場合、効率の良さから WebSocket メカニズムが推奨されますが、WebSocket を使用できないクライアントでは、GET メカニズムが役立ちます。 
 
 WebSocket と HTTP GET は、どちらも、すべての[アクティビティの種類](bot-framework-rest-connector-activities.md)を利用できるわけではありません。 次の表で、Direct Line プロトコルを使用するクライアントで利用可能なさまざまな種類のアクティビティについて説明します。
 
@@ -99,7 +99,7 @@ WebSocket ストリームにはライブ更新とごく最近のメッセージ�
 
 ## <a id="http-get"></a> HTTP GET を使用してアクティビティを取得する
 
-Websocket を使用できないクライアント、または会話の履歴を取得したいクライアントは、`HTTP GET` を使用してアクティビティを取得できます。
+WebSocket を使用できないクライアントは、`HTTP GET` を使用してアクティビティを取得できます。
 
 特定の会話のメッセージを取得するには、`GET` 要求を `/v3/directline/conversations/{conversationId}/activities` エンドポイントに発行します。オプションで、クライアントが認識した最新のメッセージを示す `watermark` パラメーターを指定できます。 
 
@@ -165,7 +165,7 @@ HTTP/1.1 200 OK
 
 - サービス間アプリケーションは、多くの場合、5 秒または 10 秒のポーリング間隔を使用します。
 
-- クライアント向けのアプリケーションは、多くの場合、1 秒のポーリング間隔を使用し、クライアントが送信するすべてのメッセージの後で (ボットの応答を迅速に取得するために) 300 ミリ秒以内に追加要求を発行します。 この 300 ミリ秒の遅延は、ボットの速度と転送時間に基づいて調整する必要があります。
+- 多くの場合、クライアント向けアプリケーションでは 1 秒のポーリング間隔を使用し、(ボットの応答を迅速に取得するために) クライアントが送信する各メッセージの直後に単一の追加要求を発行します。 この遅延は 300 ミリ秒程度ですが、ボットの速度と転送時間に基づいて調整する必要があります。 長時間にわたって 1 秒に 1 回以上の頻度でポーリングを行わないようにしてください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

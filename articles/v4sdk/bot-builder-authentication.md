@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 04/09/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27c97d257261a6f3b9d867503aee40382b685e20
-ms.sourcegitcommit: 562dd44e38abacaa31427da5675da556a970cf11
+ms.openlocfilehash: 1a295f68be626c2d2ef17dcb49b7c7d31ae2cefa
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59477105"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541048"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
 
@@ -49,9 +49,9 @@ Azure ボット リソースを作成する必要があります。また、新�
 
 この記事では、Azure AD v1 または v2 トークンを使用して Microsoft Graph に接続するサンプル ボットを作成します。 また、関連付けられている Azure AD アプリを作成して登録する方法についても説明します。 このプロセスの一環として、[Microsoft/BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples) GitHub リポジトリのコードを使用します。 この記事では、次のプロセスについて説明します。
 
-- **ご自身のボット リソースの作成**
+- **ボット リソースの作成**
 - **Azure AD アプリケーションの作成**
-- **Azure AD アプリケーションをボットに登録する**
+- **ボットへの Azure AD アプリケーションの登録**
 - **ボットのサンプル コードの準備**
 
 手順が終了すると、電子メールのチェックと送信、自分とその上司の情報の表示など、Azure AD アプリケーションに対するいくつかの単純なタスクに応答できるボットが完成します。このボットはローカルで実行されています。 これを行うために、ボットでは Azure AD アプリケーションからのトークンを Microsoft.Graph ライブラリに対して使用します。 OAuth サインイン機能をテストするためにご自身のボットを公開する必要はありませんが、ボットには有効な Azure アプリ ID とパスワードが必要になります。
@@ -168,7 +168,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 次に、作成した Azure AD アプリケーションをご自身のボットに登録します。
 
-# [<a name="azure-ad-v1"></a>Azure AD v1](#tab/aadv1)
+# <a name="azure-ad-v1tabaadv1"></a>[Azure AD v1](#tab/aadv1)
 
 1. [Azure Portal](http://portal.azure.com/) で、ボットのリソース ページに移動します。
 1. **[設定]** をクリックします。
@@ -193,7 +193,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 > [!NOTE]
 > これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。
 
-# [<a name="azure-ad-v2"></a>Azure AD v2](#tab/aadv2)
+# <a name="azure-ad-v2tabaadv2"></a>[Azure AD v2](#tab/aadv2)
 
 1. [Azure Portal](http://portal.azure.com/) で、ボットの [Bot Channels Registration]\(ボット チャネル登録\) ページに移動します。
 1. **[設定]** をクリックします。
@@ -273,7 +273,11 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
     }
     ```
 
-    **Microsoft アプリ ID** と **Microsoft アプリ パスワード**の値が分からない場合、Azure Portal でボットに対してプロビジョニングされた Azure アプリ サービスの **ApplicationSettings** を調べます。
+    **Microsoft アプリ ID** と **Microsoft アプリ パスワード**の値を取得する方法がわからない場合は、次の記事の説明に従って新しいパスワードを作成できます。
+
+    [bot-channels-registration-password](../bot-service-quickstart-registration.md#bot-channels-registration-password)
+
+    または、[find-your-azure-bots-appid-and-appsecret](https://blog.botframework.com/2018/07/03/find-your-azure-bots-appid-and-appsecret) の説明に従って、デプロイの **Bot Channels Registration** でプロビジョニング済みの **Microsoft アプリ ID** と **Microsoft アプリ パスワード**を取得することもできます。
 
     > [!NOTE]
     > ここで、このボット コードを Azure サブスクリプションに発行 (プロジェクトを右クリックして **[発行]** を選択) することもできますが、このチュートリアルでは不要です。 Azure Portal でボットを構成するときに使用したアプリケーションとホスティング プランを使用する発行構成を設定する必要があります。
@@ -327,7 +331,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 このコードでは、ボットはまず、(現在の Activity 送信者によって識別される) ユーザーのトークンと、特定の ConnectionName (構成で使用される接続名) が Azure Bot Service に既に存在しているかどうかのクイック チェックを行います。 Azure Bot Service には、キャッシュされたトークンが既に存在しているか、存在していないかのどちらかです。 GetUserTokenAsync の呼び出しは、このクイック チェックを実行します。 Azure Bot Service にトークンが存在していてそれが返される場合、そのトークンはすぐに使用できます。 Azure Bot Service にトークンが存在しない場合、このメソッドは null を返します。 ボットはこの場合、ユーザーがログインするためのカスタマイズされた OAuthCard を送信できます。
 
-# [<a name="c"></a>C#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 // First ask Bot Service if it already has a token for this user
@@ -342,7 +346,7 @@ else
 }
 ```
 
-# [<a name="javascript"></a>JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 public async getUserToken(context: TurnContext, code?: string): Promise<TokenResponse|undefined> {
@@ -364,7 +368,7 @@ public async getUserToken(context: TurnContext, code?: string): Promise<TokenRes
 
 この呼び出しの最後に、ボットは "トークンの戻りを待つ" 必要があります。 サインインのためにユーザー側で必要な処理が多い可能性があるため、この待機はメインの Activity ストリームで行われます。
 
-# [<a name="c"></a>C#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 private async Task SendOAuthCardAsync(ITurnContext turnContext, IMessageActivity message, CancellationToken cancellationToken = default(CancellationToken))
@@ -397,7 +401,7 @@ private async Task SendOAuthCardAsync(ITurnContext turnContext, IMessageActivity
 }
 ```
 
-# [<a name="javascript"></a>JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 private async sendOAuthCardAsync(context: TurnContext, prompt?: string|Partial<Activity>): Promise<void> {
@@ -429,7 +433,7 @@ private async sendOAuthCardAsync(context: TurnContext, prompt?: string|Partial<A
 
 各サンプルのボット コードを見ると、`Event` アクティビティと `Invoke` アクティビティもダイアログ スタックにルーティングされることがわかります。
 
-# [<a name="c"></a>C#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 // This can be called when the bot receives an Activity after sending an OAuthCard
@@ -477,7 +481,7 @@ private bool IsTeamsVerificationInvoke(ITurnContext turnContext)
 }
 ```
 
-# [<a name="javascript"></a>JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 private async recognizeToken(context: TurnContext): Promise<PromptRecognizerResult<TokenResponse>> {

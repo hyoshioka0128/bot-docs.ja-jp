@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: b3f9a0d2c24809c0814baa9bfb8f993a4ba55ef7
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59551593"
+---
 ## <a name="prerequisites"></a>前提条件
 
 - [Visual Studio Code](https://www.visualstudio.com/downloads)
@@ -11,6 +19,7 @@
 > 下記の Windows ビルド ツールのインストールは、開発用オペレーティング システムとして Windows を使用している場合にのみ必要となります。 一部のインストールでは、restify のインストール手順を実行すると、node-gyp に関するエラーが発生します。
 > 該当する場合は、管理者特権のアクセス許可を使用してこのコマンドを実行してみてください。
 > お使いのシステムに Python が既にインストールされている場合、この呼び出しは終了せずにハングすることもあります。
+
 > ```bash
 > npm install -g windows-build-tools
 > ```

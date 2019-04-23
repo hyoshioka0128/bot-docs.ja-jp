@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/13/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a7d881e5e7748da11ea46721c23c5489597cdc94
-ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
+ms.openlocfilehash: 314a8a55906ec150d001b56c67ffbfe0ae2049f8
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58073828"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541128"
 ---
 # <a name="write-directly-to-storage"></a>ストレージに直接書き込む
 
@@ -587,7 +587,7 @@ Blob Storage アカウントを指すように "_myStorage_" が設定される�
 ボットを実行して情報を保存したら、Azure portal の **[ストレージ エクスプローラー]** タブの下にその情報を表示できます。
 
 ## <a name="blob-transcript-storage"></a>Blob トランスクリプト ストレージ
-Azure Blob トランスクリプト ストレージには、特殊なストレージ オプションが用意されています。このオプションを使用すると、記録されたトランスクリプトの形式でユーザーの会話を簡単に保存および取得できます。 Azure Blob トランスクリプト ストレージは、ボットのパフォーマンスをデバッグする際に、調べるユーザー入力を自動的にキャプチャする場合には特に便利です。
+Azure Blob トランスクリプト ストレージには、特殊なストレージ オプションが用意されています。このオプションを使用すると、記録されたトランスクリプトの形式でユーザーの会話を簡単に保存および取得できます。 Azure Blob トランスクリプト ストレージは、ボットのパフォーマンスをデバッグする際に、調べるユーザー入力を自動的にキャプチャする場合に特に便利です。
 
 ### <a name="set-up"></a>セットアップ
 Azure Blob トランスクリプト ストレージでは、上記の「_Blob Storage アカウントの作成_」および「_構成情報の追加_」の手順に従って作成したのと同じ Blob Storage アカウントを使用できます。 ここでは、新しい BLOB コンテナーである "_mybottranscripts_" を追加しました。 
@@ -621,7 +621,7 @@ public ConversationHistoryBot(AzureBlobTranscriptStore transcriptStore)
 ```
 
 ### <a name="store-user-conversations-in-azure-blob-transcripts"></a>Azure Blob トランスクリプトへのユーザーの会話の保存
-BLOB コンテナーでトランスクリプトを保存できるようになったら、ボットとユーザーの会話の保持を開始できます。 このような会話を後からデバッグ ツールとして使用しすると、ユーザーがボットとどのようにやり取りするかを確認できます。 次のコードは、activity.text が入力メッセージ _!history_ を受け取ったときにユーザー会話の入力を保持します。
+TranscriptLoggerMiddleware が追加されたら、Transcript Store でボットとユーザーの会話が自動的に保持されるようになります。 このような会話を後からデバッグ ツールとして使用しすると、ユーザーがボットとどのようにやり取りするかを確認できます。 次のコードでは、トランスクリプトを取得し、activity.text が入力メッセージ _!history_ を受け取ったときにトランスクリプトを現在の会話に送信します。 注: SendConversationHistoryAsync メソッドは、Direct Line、Web チャット、エミュレーターの各チャネルでサポートされています。
 
 
 ```csharp

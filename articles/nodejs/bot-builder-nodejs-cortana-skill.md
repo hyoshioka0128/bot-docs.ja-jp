@@ -6,14 +6,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e00128ca82ec8b97502d8f2fbf42be10cc91ade6
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 690c456a1baa94eab1f0efbed6ce2c2e1f5cb280
+ms.sourcegitcommit: cacd381d185b2b8b7fb99082baf83d9f65dde341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225303"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59508159"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Cortana スキルを使用した音声認識ボットの作成
 
@@ -58,42 +58,46 @@ Bot Framework を使用して Cortana スキルを作成する場合、Cortana �
 |------|------|
 | **acceptingInput** | ボットは受動的に入力を受け入れる準備ができていますが、応答を待機しているわけではありません。 ユーザーがマイク ボタンを押したままにすると、Cortana はユーザーからの入力を受け入れます。|
 | **expectingInput** | ボットがユーザーからの応答をアクティブに必要としていることを示します。 Cortana はユーザーがマイクに話すのをリッスンします。  |
+||注:ヘッドレス デバイス (ディスプレイのないデバイス) で **expectingInput** を使用_しない_でください。 [Cortana Skills Kit の FAQ](https://review.docs.microsoft.com/en-us/cortana/skills/faq) をご覧ください。|
 | **ignoringInput** | Cortana は入力を無視します。 ボットが要求をアクティブに処理しており、要求が完了するまでユーザーの入力を無視する場合に、このヒントを送信できます。  |
-
 
 以下の例は、Cortana がプレーンテキストまたは SSML を読み取る方法を示しています。
 
 ```javascript
+
 // Have Cortana read plain text
 session.say('This is the text that Cortana displays', 'This is the text that is spoken by Cortana.');
 
 // Have Cortana read SSML
 session.say('This is the text that Cortana displays', '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">This is the text that is spoken by Cortana.</speak>');
+
 ```
 
 以下の例は、ユーザー入力が必要であることを Cortana に知らせる方法を示しています。 マイクは、起動した状態のままになります。
+
 ```javascript
+
 // Add an InputHint to let Cortana know to expect user input
 session.say('Hi there', 'Hi, what’s your name?', {
     inputHint: builder.InputHint.expectingInput
 });
+
 ```
 <!-- TODO: tip about time limit and batching -->
-
 
 ### <a name="prompts"></a>プロンプト
 
 **session.say()** メソッドを使用する方法に加えて、**speak** オプションと **retrySpeak** オプションを使用して、組み込みプロンプトにテキストまたは SSML を渡すことができます。  
 
 ```javascript
+
 builder.Prompts.text(session, 'text based prompt', {                                    
     speak: 'Cortana reads this out initially',                                               
     retrySpeak: 'This message is repeated by Cortana after waiting a while for user input',  
     inputHint: builder.InputHint.expectingInput                                              
 });
+
 ```
-
-
 
 <!-- TODO: Link to SSML library -->
 
@@ -102,6 +106,7 @@ builder.Prompts.text(session, 'text based prompt', {
 **Prompts.choice** は順序で選択項目を指定することをサポートします。 つまり、ユーザーはリスト内の項目を選択するときに「1 番目」、「2 番目」、「3 番目」などと言うことができます。 たとえば、次のプロンプトの場合、ユーザーが Cortana に「2 番目のオプション」と命じると、プロンプトは値 8 を返します。
 
 ```javascript
+
         var choices = [
             { value: '4', action: { title: '4 Sides' }, synonyms: 'four|for|4 sided|4 sides' },
             { value: '8', action: { title: '8 Sides' }, synonyms: 'eight|ate|8 sided|8 sides' },
@@ -111,11 +116,13 @@ builder.Prompts.text(session, 'text based prompt', {
         builder.Prompts.choice(session, 'choose_sides', choices, { 
             speak: speak(session, 'choose_sides_ssml') // use helper function to format SSML
         });
+
 ```
 
 前の例の場合、プロンプトの **speak** プロパティの SSML は、ローカライズされたプロンプト ファイルに格納されている文字列を使用して書式設定されます。ファイルの形式は次のとおりです。 
 
 ```json
+
 {
     "choose_sides": "__Number of Sides__",
     "choose_sides_ssml": [
@@ -124,8 +131,8 @@ builder.Prompts.text(session, 'text based prompt', {
         "All the standard sizes are supported."
     ]
 }
-```
 
+```
 
 その後、ヘルパー関数が、音声合成マークアップ言語 (SSML) ドキュメントの必須のルート要素を作成します。 
 
@@ -153,11 +160,11 @@ module.exports.speak = function (template, params, options) {
 * [ReceiptCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html)
 * [ThumbnailCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html)
 
-これらのカードが Cortana の内部でどのように表示されるかについては、「[カード設計のベスト プラクティス][CardDesign]」を参照してください。 ボットにリッチ カードを追加する方法の例については、「[リッチ カードの送信](bot-builder-nodejs-send-rich-cards.md)」を参照してください。 
+これらのカードが Cortana の内部でどのように表示されるかについては、「[Card design best practices][CardDesign]」(カード設計のベスト プラクティス) を参照してください。 ボットにリッチ カードを追加する方法の例については、「[リッチ カードの送信](bot-builder-nodejs-send-rich-cards.md)」を参照してください。 
 
 次のコードは、Hero カードが含まれるメッセージに **speak** プロパティと **inputHint** プロパティを追加する方法を示しています。
 
-```javascript 
+```javascript
 
 bot.dialog('HelpDialog', function (session) {
     var card = new builder.HeroCard(session)
@@ -172,7 +179,6 @@ bot.dialog('HelpDialog', function (session) {
         .inputHint(builder.InputHint.acceptingInput); // Tell Cortana to accept input
     session.send(msg).endDialog();
 }).triggerAction({ matches: /help/i });
-
 
 /** This helper function builds the required root element of a Speech Synthesis Markup Language (SSML) document. */
 module.exports.speak = function (template, params, options) {
@@ -196,6 +202,7 @@ Cortana に向かって[呼び出し名][InvocationNameGuidelines]を話しか�
 RollerSkill サンプルはまず、利用可能なオプションをユーザーに示すボタンの付いたカードを開きます。
 
 ```javascript
+
 /**
  *   Create your bot with a default message handler that receive messages from the user.
  * - This function is be called anytime the user's utterance isn't
@@ -231,8 +238,6 @@ bot.dialog('HelpDialog', function (session) {
 
 
 ```javascript
-
-
 bot.dialog('CreateGameDialog', [
     function (session) {
         // Initialize game structure.
@@ -293,6 +298,7 @@ bot.dialog('CreateGameDialog', [
     /(roll|role|throw|shoot).*(dice|die|dye|bones)/i,
     /new game/i
  ]});
+
 ```
 
 ### <a name="render-results"></a>結果のレンダリング
@@ -402,6 +408,7 @@ bot.dialog('PlayGameDialog', function (session, args) {
         session.replaceDialog('CreateGameDialog');
     }
 }).triggerAction({ matches: /(roll|role|throw|shoot) again/i });
+
 ```
 
 ## <a name="next-steps"></a>次の手順
@@ -410,7 +417,7 @@ bot.dialog('PlayGameDialog', function (session, args) {
 
 ## <a name="additional-resources"></a>その他のリソース
 * [Cortana Skills Kit][CortanaGetStarted]
-* [メッセージへの音声の追加](bot-builder-nodejs-text-to-speech.md)
+* [メッセージに音声を追加する](bot-builder-nodejs-text-to-speech.md)
 * [SSML リファレンス][SSMLRef]
 * [Cortana の音声設計のベスト プラクティス][VoiceDesign]
 * [Cortana のカード設計のベスト プラクティス][CardDesign]
