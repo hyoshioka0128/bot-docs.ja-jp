@@ -9,10 +9,10 @@ ms.subservice: sdk
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 690c456a1baa94eab1f0efbed6ce2c2e1f5cb280
-ms.sourcegitcommit: cacd381d185b2b8b7fb99082baf83d9f65dde341
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59508159"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Cortana スキルを使用した音声認識ボットの作成
@@ -160,7 +160,7 @@ module.exports.speak = function (template, params, options) {
 * [ReceiptCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html)
 * [ThumbnailCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html)
 
-これらのカードが Cortana の内部でどのように表示されるかについては、「[Card design best practices][CardDesign]」(カード設計のベスト プラクティス) を参照してください。 ボットにリッチ カードを追加する方法の例については、「[リッチ カードの送信](bot-builder-nodejs-send-rich-cards.md)」を参照してください。 
+これらのカードが Cortana の内部でどのように表示されるかについては、「[カード設計のベスト プラクティス][CardDesign]」を参照してください。 ボットにリッチ カードを追加する方法の例については、「[リッチ カードの送信](bot-builder-nodejs-send-rich-cards.md)」を参照してください。 
 
 次のコードは、Hero カードが含まれるメッセージに **speak** プロパティと **inputHint** プロパティを追加する方法を示しています。
 
@@ -417,7 +417,7 @@ bot.dialog('PlayGameDialog', function (session, args) {
 
 ## <a name="additional-resources"></a>その他のリソース
 * [Cortana Skills Kit][CortanaGetStarted]
-* [メッセージに音声を追加する](bot-builder-nodejs-text-to-speech.md)
+* [メッセージへの音声の追加](bot-builder-nodejs-text-to-speech.md)
 * [SSML リファレンス][SSMLRef]
 * [Cortana の音声設計のベスト プラクティス][VoiceDesign]
 * [Cortana のカード設計のベスト プラクティス][CardDesign]
