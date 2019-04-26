@@ -9,16 +9,17 @@ ms.service: bot-service
 ROBOTS: NOINDEX
 ms.date: 10/04/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 54742bdeddee410ec9307157d0dbd34cc4fbe3c8
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: b79aaaa2f85ea3d7d6c4388ebc7051890350e9a8
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59541078"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904505"
 ---
+# <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
+
 [!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]  
 
-# <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
 このチュートリアルでは、Azure Bot Service の新しいボット認証機能を使用します。提供される機能を利用することで、Azure AD (Azure Active Directory)、GitHub、Uber などの各種 ID プロバイダーにユーザーを認証するボットを容易に開発できます。 またこれらの更新は、一部クライアント用の_マジック コード検証_を排除することによって、ユーザー エクスペリエンスの向上に向けて前進します。
 
 これ以前は、ボットにおいて、OAuth コントローラーとログイン リンクを含め、ターゲット クライアントの ID とシークレットを保存し、ユーザー トークン管理を実行する必要がありました。

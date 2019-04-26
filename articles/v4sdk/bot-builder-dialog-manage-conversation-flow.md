@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/18/2018
+ms.date: 4/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 554d040dd4c9d126fa70c24f1af5a1ac97a39204
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 5361b2e411e12b296b60a0f27b560dee5f1f769f
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317621"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904865"
 ---
 # <a name="implement-sequential-conversation-flow"></a>連続して行われる会話フローの実装
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 ダイアログ ライブラリを使用して、単純な会話フローと複雑な会話フローを管理できます。 単純なインタラクションでは、ボットは決まった一連のステップを順番に実行していき、最後に会話が終了します。 この記事では "_ウォーターフォール ダイアログ_"、いくつかの "_プロンプト_"、および "_ダイアログ セット_" を使用して、ユーザーに一連の質問を行う単純なインタラクションを作成します。
 
