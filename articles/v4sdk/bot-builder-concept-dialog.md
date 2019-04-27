@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/28/2018
+ms.date: 04/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 997399997770db9a810db54c6dcb0cb943a99da9
-ms.sourcegitcommit: 54a4382add4756346098b286695a9b4791db7139
+ms.openlocfilehash: 36ccbb796c2cd014118d4ae1f426acd44aabed76
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58616948"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904895"
 ---
 # <a name="dialogs-library"></a>ダイアログ ライブラリ
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
 "*ダイアログ*" は SDK での中心的な概念であり、ユーザーとの会話の管理に役立つ手段を提供します。 ダイアログは、ボットのプログラムで関数のように動作する、ボット内の構造です。各ダイアログは、特定のタスクを特定の順序で実行するように設計されています。 個々のダイアログの順序を指定して会話を導き、ユーザーへの応答、外部の刺激、他のダイアログからなど、さまざまな方法でダイアログを呼び出すことができます。
 

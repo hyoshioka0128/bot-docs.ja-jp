@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 11/28/18
+ms.date: 4/18/19
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1f077cb5efd838f8a91a0f18a9bcc2f64455ceb6
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: ee8a244bbc1684a57cd374f5ffbef5d45ff3f47d
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59541118"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904515"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 ユーザーの真意を会話と文脈から理解する能力は難しいタスクかもしれませんが、より自然な会話の印象をボットに与えることができます。 そうした能力は LUIS と呼ばれる Language Understanding によって実現され、ボットがユーザーのメッセージの意図を認識できるように、ユーザーがより自然な言葉を使用できるように、また、会話フローがより適切に管理されるようになります。 このトピックでは、LUIS を使用して数種類の意図を認識する単純なボットの設定手順について説明します。 
 ## <a name="prerequisites"></a>前提条件

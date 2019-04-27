@@ -10,14 +10,17 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4c268bc40b7dc3315232d8f695bdb79343b15e21
-ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
+ms.openlocfilehash: 75e12ab44915783c33c3b2ee10775cc6f00487bb
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55795597"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905035"
 ---
 # <a name="add-telemetry-to-your-bot"></a>ボットへのテレメトリの追加
+
+[!INCLUDE[applies-to](../includes/applies-to.md)]
+
 Bot Framework SDK のバージョン 4.2 では、テレメトリ ログ記録が製品に追加されました。  これにより、ボット アプリケーションは Application Insights などのサービスにイベント データを送信できます。
 
 このドキュメントでは、ボットを新しいテレメトリ機能と統合する方法について説明します。  
@@ -128,7 +131,7 @@ const appInsightsClient = new ApplicationInsightsTelemetryClient(botConfig);
 
 >注:カスタム テレメトリ クライアントには、これらの値は提供されません。
 
-プロパティ |type | 詳細
+プロパティ |Type | 詳細
 --- | --- | ---
 `user_id`| `string` | [ChannelID](https://github.com/Microsoft/botframework-obi/blob/master/botframework-activity/botframework-activity.md#channel-id) + [From.Id](https://github.com/Microsoft/botframework-obi/blob/master/botframework-activity/botframework-activity.md#from)
 `session_id`| `string`|  [ConversationID](https://github.com/Microsoft/botframework-obi/blob/master/botframework-activity/botframework-activity.md#conversation)

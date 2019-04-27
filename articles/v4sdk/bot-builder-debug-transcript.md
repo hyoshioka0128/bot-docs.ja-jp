@@ -8,17 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservices: sdk
-ms.date: 2/26/2019
+ms.date: 4/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 997ad82e15a0fcd67d47b2fd6495c8e88a5ea127
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: 5f8ce42cdc110a81719313db6f02e63639fcad1f
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224820"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904915"
 ---
 # <a name="debug-your-bot-using-transcript-files"></a>トランスクリプト ファイルを使用してボットをデバッグする
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 ボットのテストとデバッグを成功させるうえで重要なポイントの 1 つが、ご自身のボットを実行するときに発生する一連の状況を記録し、調査できることです。 この記事では、ボット トランスクリプト ファイルを作成して使用し、テストおよびデバッグのために、一連の詳細なユーザー操作とボット応答を提供する方法について説明します。
 

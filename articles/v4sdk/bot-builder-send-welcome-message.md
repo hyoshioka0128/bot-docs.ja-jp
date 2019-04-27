@@ -10,16 +10,16 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/19/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 354dcb1bf1e172609c1729690da76f3297201c0a
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.openlocfilehash: 19b96b860f0faa98a484f17f7814324a5f62f0eb
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591143"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904935"
 ---
 # <a name="send-welcome-message-to-users"></a>ユーザーへのウェルカム メッセージの送信
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 ボットを作成する主な目的は、有意義な会話によってユーザー エンゲージメントを高めることです。 この目標を達成するための効果的な方法の 1 つは、ユーザーが最初にアクセスした瞬間から、ボットの主な目的と機能 (ボットが作られた理由) をユーザーがわかるようにすることです。 この記事では、ボットのユーザーを歓迎するのに役立つコード サンプルを紹介します。
 

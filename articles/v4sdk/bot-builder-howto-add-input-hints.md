@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 08/24/2018
+ms.date: 04/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 751d5067d2e4b6b6ad21e1a4fd0ccb3818385d06
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: e788501e7bd4cc109677f0e6870eac95c0696e36
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224877"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904955"
 ---
 # <a name="add-input-hints-to-messages"></a>メッセージへの入力ヒントの追加
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 メッセージの入力ヒントを指定すれば、メッセージがクライアントに配信された後、ボットがユーザー入力を受け付けるか、期待するか、無視するかを示すことができます。 多くのチャネルでは、これによってクライアントが適宜、ユーザー入力コントロールの状態を設定できます。 たとえば、ボットがユーザーの入力を無視していることをメッセージの入力ヒントが示している場合、クライアントはマイクを閉じて入力ボックスを無効にし、ユーザーが入力を提供するのを防ぐことができます。
 

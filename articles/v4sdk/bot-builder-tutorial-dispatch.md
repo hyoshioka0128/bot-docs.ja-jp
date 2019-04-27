@@ -10,16 +10,16 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bec6f44db929eab43cfcbbd6b2920b79924b7576
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.openlocfilehash: 373470b000b168e6e434ed5ed08b35c18ab09a99
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55712006"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904965"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 このチュートリアルでは、ボットでサポートされているさまざまなシナリオについて、複数の LUIS モデル と QnA Maker サービスがある場合に、ディスパッチ サービスを使用して発話をルーティングする方法を示します。 ここでは、ホーム オートメーションと気象情報に関連する会話に複数の LUIS モデルを使用し、また、入力として FAQ テキスト ファイルに基づいて質問に回答する QnA Maker サービスを使用して、ディスパッチを構成します。 このサンプルでは、以下のサービスが組み合わされます。
 

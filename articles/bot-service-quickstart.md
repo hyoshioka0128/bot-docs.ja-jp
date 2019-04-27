@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 02/07/2019
-ms.openlocfilehash: e0d62d4effaf02d52714153f51736e06949a2263
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: 6e0e4bb9e0cecccd10ee1baf14d68a90f02bfa49
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58809020"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904545"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Azure Bot Service を使用してボットを作成する
 
@@ -79,7 +79,7 @@ Bot Service では、ボットを開発するための Bot Framework SDK や、�
 
 ::: moniker range="azure-bot-service-4.0"
 
-[!INCLUDE [pre-release-label](includes/pre-release-label.md)]
+[!INCLUDE [applies-to-v4](includes/applies-to.md)]
 
 Azure Bot Service は、ボットを開発するための Bot Framework SDK や、ボットをチャンネルに接続するための Bot Service など、ボットを作成するためのコア コンポーネントを提供します。 このトピックでは、.NET テンプレートまたは Node.js テンプレートのいずれかを選択し、Bot Framework SDK v4 を使用してボットを作成できます。
 

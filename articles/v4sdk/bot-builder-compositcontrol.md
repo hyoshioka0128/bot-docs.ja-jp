@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 01/16/2019
+ms.date: 04/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b72ffa951e176a174dd8b00e69229b27bf28a360
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.openlocfilehash: c0b225cd114f369d14978c16108827f493434390
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55711996"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905145"
 ---
 # <a name="reuse-dialogs"></a>ダイアログの再利用
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 ユーザーに挨拶する、夕食のテーブルを予約する、食べ物を注文する、アラームを設定する、現在の天気を表示するなど、複数のタスクを処理するホテル ボットを作成しているとします。 これらの各タスクは、1 つのダイアログ オブジェクトを使用してボット内で処理できますが、これによりダイアログ コードが大きくなりすぎて乱雑になることがあります。
 

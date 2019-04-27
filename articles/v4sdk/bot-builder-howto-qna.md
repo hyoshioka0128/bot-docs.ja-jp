@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 02/27/2019
+ms.date: 04/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 494af4cc7936c8b191280d3f3f6cd73e7bc7d364
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: f28b5af3d8d063f0bd946045c94fe88361b86ca7
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224900"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904907"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>QnA Maker を使用して質問に回答する
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 QnA Maker サービスを使用すると、質問と回答のサポートをボットに追加することができます。 お客様独自の QnA Maker サービスを作成するときの基本的な要件の 1 つは、質問と回答でサービスをシードすることです。 多くの場合、質問と回答は、FAQ や他のドキュメントなどのコンテンツに既に存在しています。 また、より自然な会話になるように質問に対する回答をカスタマイズしたいこともあります。
 

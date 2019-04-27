@@ -10,16 +10,16 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/19/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 68c01b0f12790393fe0ee7ae0bd28addf2d26ae7
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.openlocfilehash: 811921cdeccc8c870b5b9dfc9daaab57e449c0cd
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591123"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905045"
 ---
 # <a name="gather-user-input-using-a-dialog-prompt"></a>ダイアログ プロンプトを使用してユーザー入力を収集する
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 質問を投稿して情報を収集することは、ボットがユーザーとやり取りする主な手段の 1 つです。 "*ダイアログ*" ライブラリを使うことで、質問が行いやすくなるだけでなく、応答が検証され、確実に特定のデータ型と一致するように、またはカスタム検証ルールを満たすようになります。 このトピックでは、ウォーターフォール ダイアログからプロンプトを作成して呼び出す方法について詳しく説明します。
 

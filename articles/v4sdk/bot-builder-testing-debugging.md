@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e0fbf2fe505866ec28385b2be3b9fcd7988be890
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: 618d438a384fa6a91ba919265519397cac555fda
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224930"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904855"
 ---
 # <a name="testing-and-debugging-guidelines"></a>テストとデバッグのガイドライン
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 ボットは様々なパーツが連携する複雑なアプリです。 他の複雑なアプリと同様、これにより興味深いバグがいくつか発生したり、お使いのボットが期待どおりに動作しなかったりします。
 

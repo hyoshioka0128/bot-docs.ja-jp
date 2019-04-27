@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/15/2018
+ms.date: 4/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 207dfaf71e8af7af3a36e496deb506ff9d0c13c8
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: 65d811babcdaf775d4e3a9889a1440c8f2b1ece6
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224890"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905135"
 ---
 # <a name="send-proactive-notifications-to-users"></a>ユーザーへのプロアクティブな通知の送信
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 通常、ボットがユーザーに送信する各メッセージは、ユーザーの前の入力に直接関連しています。
 場合によっては、ボットは、会話の現在のトピックまたはユーザーによって最後に送信されたメッセージに直接関連していないメッセージをユーザーに送信する必要があります。 この種のメッセージは、_プロアクティブ メッセージ_と呼ばれます。

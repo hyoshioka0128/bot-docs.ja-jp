@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/13/18
+ms.date: 4/13/19
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 314a8a55906ec150d001b56c67ffbfe0ae2049f8
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: 1f74e34c0eaf303e612f94605104482cd5f1f080
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59541128"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904501"
 ---
 # <a name="write-directly-to-storage"></a>ストレージに直接書き込む
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 ミドルウェアまたはコンテキスト オブジェクトを使用せずに、ストレージ オブジェクトに対して直接読み取りや書き込みを行うことができます。 ボットの会話フローの外にあるソースからのデータをボットが使用する場合は、この方法が適切な可能性があります。 たとえば、ユーザーが天気予報を尋ねるボットで、外部データベースからの読み取りによって指定日の天気予報を取得するとします。 天気データベースの内容はユーザーの情報または会話のコンテキストに依存しないため、状態マネージャーを使用する代わりに、単純にストレージから予報を直接読み取ることができます。 この記事のコード例では、**メモリ ストレージ**、**Cosmos DB**、**Blob Storage**、および **Azure Blob Transcript Store** を使用してストレージに対するデータの読み取りや書き込みを行う方法を示します。 
 

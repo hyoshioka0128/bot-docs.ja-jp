@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/13/2018
+ms.date: 04/13/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fa243d8cc00fd6fadf7c51668c9e7ba74d0c06e2
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: d72c374978f509bec0a17ba99c585578757ded61
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59508229"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904475"
 ---
 # <a name="activity-processing"></a>アクティビティの処理
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 ボットとユーザーの間では、アクティビティを介して情報のやり取りや交換が行われます。 ご利用のボット アプリケーションによって受信された各アクティビティはボット アダプターに渡されます。次に、このボット アダプターから、アクティビティ情報がご利用のボルト ロジックに渡され、最終的に応答がユーザーに送信されます。 アクティビティを受信した後、ボットを通して処理することをターンと呼びます。これはボットの完全な 1 サイクルを表します。 すべての実行が完了し、アクティビティが完全に処理され、ボットのすべてのレイヤーが完了すると、ターンは終了します。
 
