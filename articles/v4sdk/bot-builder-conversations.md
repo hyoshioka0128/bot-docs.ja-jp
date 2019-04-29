@@ -8,17 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/01/2018
+ms.date: 04/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b94150e168942370a38d39742157e57d0118f0eb
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 7f35b8a135cdde6ffaf11798a5c0e4a3688d5b4f
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225085"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904825"
 ---
 # <a name="conversation-flow"></a>会話フロー
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 ボットの会話フローを設計するには、ユーザーがボットに何か言ったときにボットがどのように応答するかを決定する必要があります。 ボットはまず、ユーザーからのメッセージに基づいてタスクまたは会話トピックを認識します。 ユーザーのメッセージに関連付けられたタスクまたはトピック ("*意図*" とも呼びます) を決定するために、ボットはユーザーのメッセージのテキストから単語またはパターンを探したり、[Language Understanding](bot-builder-concept-luis.md) や [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview) のようなサービスを利用したりできます。
 
@@ -102,7 +102,8 @@ Bot Framework SDK では、メッセージを処理して意図を判断する "
 
 ## <a name="conversation-lifetime"></a>会話の有効期間
 
-<!-- Note: these activities are dependent on whether the channel actually sends them. Also, we should add links --> ボットは、ボットが会話に追加されたり、他のメンバーが会話に追加または会話から削除されたり、会話メタデータが変更されたりするたびに、_会話更新_アクティビティを受信します。
+<!-- Note: these activities are dependent on whether the channel actually sends them. Also, we should add links -->
+ボットは、ボットが会話に追加されたり、他のメンバーが会話に追加または会話から削除されたり、会話メタデータが変更されたりするたびに、"_会話更新_" アクティビティを受信します。
 ユーザーに挨拶したり、自己紹介をしたりすることで、ボットを会話更新アクティビティに反応させることが必要な場合があります。
 
 ボットは、ユーザーが会話を終了したことを示す_会話終了_アクティビティを受信します。 ボットは、"_会話終了_" アクティビティを送信して、会話を終了していることを示すことができます。

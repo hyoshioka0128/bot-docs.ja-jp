@@ -8,16 +8,18 @@ manager: kamrani
 ms.topic: tutorial
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 01/15/2019
+ms.date: 04/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b1c34531ee60b2ce9037f42e4f5a7093501cf83a
-ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
+ms.openlocfilehash: bd29aa1ee56ebf64dc5db2edc47adc3ab250e7d5
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360955"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904945"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>チュートリアル:ボットで QnA Maker を使用して質問に回答する
+
+[!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
 QnA Maker サービスとナレッジ ベースを使用して、質問と回答のサポートをボットに追加できます。 ナレッジ ベースを作成したら、それに質問と回答をシードします。
 
@@ -36,7 +38,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 * [前のチュートリアル](bot-builder-tutorial-basic-deploy.md)で作成したボット。 そのボットに質問と回答の機能を追加します。
 * QnA Maker についてある程度理解していると役に立ちます。 QnA Maker ポータルを使用して、ボットで使用できるように、ナレッジ ベースを作成、トレーニング、公開します。
 
-前のチュートリアルに対する前提条件が既に揃っている必要があります。
+前のチュートリアルに対するこれらの前提条件が既に揃っている場合もあります。
 
 [!INCLUDE [deployment prerequisites snippet](~/includes/deploy/snippet-prerequisite.md)]
 
@@ -62,212 +64,213 @@ Azure 資格情報を使用して [QnA Maker ポータル](https://qnamaker.ai/)
 
    ボットでナレッジ ベースを使用できる状態になりました。 ナレッジ ベース ID、エンドポイント キー、およびホスト名を記録しておきます。 これらは次のステップで必要になります。
 
-## <a name="add-knowledge-base-information-to-your-bot-file"></a>ナレッジ ベースの情報を .bot ファイルに追加する
+## <a name="add-knowledge-base-information-to-your-bot"></a>ナレッジ ベースの情報をボットに追加する
+ボット フレームワーク v4.3 以降、Azure では、ダウンロードされたボットのソース コードの一部として .bot ファイルが提供されなくなりました。 次の手順に従って、CSharp または JavaScript ボットをナレッジベースに接続します。
 
-ナレッジ ベースにアクセスするために必要な情報を .bot ファイルに追加します。
+## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-1. エディターで .bot ファイルを開きます。
-1. `services` 配列に `qna` 要素を追加します。
+次の値を appsetting.json ファイルに追加します。
 
-    ```json
-    {
-        "type": "qna",
-        "name": "<your-knowledge-base-name>",
-        "kbId": "<your-knowledge-base-id>",
-        "hostname": "<your-qna-service-hostname>",
-        "endpointKey": "<your-knowledge-base-endpoint-key>",
-        "subscriptionKey": "<your-azure-subscription-key>",
-        "id": "<a-unique-id>"
-    }
-    ```
+```json
+{
+   "MicrosoftAppId": "",
+  "MicrosoftAppPassword": "",
+  "ScmType": "None",
+
+  "kbId": "<your-knowledge-base-id>",
+  "endpointKey": "<your-knowledge-base-endpoint-key>",
+  "hostname": "<your-qna-service-hostname>" // This is a URL
+}
+```
+
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+次の値を .env ファイルに追加します。
+
+```javascript
+MicrosoftAppId=""
+MicrosoftAppPassword=""
+ScmType=None
+
+kbId="<your-knowledge-base-id>"
+endpointKey="<your-knowledge-base-endpoint-key>"
+hostname="<your-qna-service-hostname>" // This is a URL
+
+```
+
+---
 
     | フィールド | 値 |
     |:----|:----|
-    | type | `qna`である必要があります。 これは、このサービス エントリで QnA のナレッジ ベースが記述されていることを示します。 |
-    | name | ナレッジ ベースに割り当てた名前。 |
     | kbId | QnA Maker ポータルで自動的に生成されたナレッジ ベース ID。 |
-    | hostname | QnA Maker ポータルで生成されたホスト URL。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 |
     | endpointKey | QnA Maker ポータルで自動的に生成されエンドポイント キー。 |
-    | subscriptionKey | Azure で QnA Maker サービスを作成するときに使用したサブスクリプションの ID。 |
-    | id | .bot ファイルに列記されている他のサービスのいずれでもまだ使用されていない一意の ID (例: "201")。 |
+    | hostname | QnA Maker ポータルで生成されたホスト URL。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 |
 
-1. 編集結果を保存します。
+編集結果を保存します。
 
 ## <a name="update-your-bot-to-query-the-knowledge-base"></a>ナレッジ ベースに対してクエリを実行するようにボットを更新する
 
 自分のナレッジ ベースのサービス情報を読み込むように、初期化コードを更新します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 1. **Microsoft.Bot.Builder.AI.QnA** NuGet パッケージをプロジェクトに追加します。
-1. **IBot** を実装するクラスの名前を `QnaBot` に変更します。
-1. ボットのアクセサーを含むクラスの名前を `QnaBotAccessors` に変更します。
-1. **Startup.cs** ファイルに、次の名前空間参照を追加します。
-    ```csharp
-    using System.Collections.Generic;
-    using System.Linq;
-    using Microsoft.Bot.Builder.AI.QnA;
-    using Microsoft.Bot.Builder.Integration;
-    ```
-1. そして、**.bot** ファイルで定義されているナレッジ ベースを初期化して登録するように、**ConfigureServices** メソッドを変更します。 以下の最初の数行は、その前に出現する `services.AddBot<QnaBot>(options =>` の呼び出しの本文から移動されたことに注意してください。
-    ```csharp
-    public void ConfigureServices(IServiceCollection services)
-    {
-        var secretKey = Configuration.GetSection("botFileSecret")?.Value;
-        var botFilePath = Configuration.GetSection("botFilePath")?.Value;
+1. **Microsoft.Extensions.Configuration** NuGet パッケージをプロジェクトに追加します。
+1. **startup.cs** ファイルに、次の名前空間参照を追加します。
 
-        // Loads .bot configuration file and adds a singleton that your Bot can access through dependency injection.
-        var botConfig = BotConfiguration.Load(botFilePath ?? @".\jfEchoBot.bot", secretKey);
-        services.AddSingleton(sp => botConfig ?? throw new InvalidOperationException($"The .bot config file could not be loaded. ({botConfig})"));
+   **startup.cs**
+   ```csharp
+       using Microsoft.Bot.Builder.AI.QnA;
+       using Microsoft.Extensions.Configuration;
+   ```
+1. _ConfigureServices_ メソッドを変更し、**appsettings.json** ファイルに定義されるナレッジ ベースに接続された QnAMkaerEndpoint を作成します。
 
-        // Initialize the QnA knowledge bases for the bot.
-        services.AddSingleton(sp => {
-            var qnaServices = new List<QnAMaker>();
-            foreach (var qnaService in botConfig.Services.OfType<QnAMakerService>())
-            {
-                qnaServices.Add(new QnAMaker(qnaService));
-            }
-            return qnaServices;
-        });
+   **startup.cs**
+   ```csharp
+   // Create QnAMaker endpoint as a singleton
+   services.AddSingleton(new QnAMakerEndpoint
+   {
+      KnowledgeBaseId = Configuration.GetValue<string>($"kbId"),
+      EndpointKey = Configuration.GetValue<string>($"endpointKey"),
+      Host = Configuration.GetValue<string>($"hostname")
+    });
 
-        services.AddBot<QnaBot>(options =>
-        {
-            // Retrieve current endpoint.
-            // ...
-        });
+   ```
+1. **EchoBot.cs** ファイルに、次の名前空間参照を追加します。
 
-        // Create and register state accessors.
-        // ...
-    }
-    ```
-1. **QnaBot.cs** ファイルに、次の名前空間参照を追加します。
-    ```csharp
-    using System.Collections.Generic;
-    using Microsoft.Bot.Builder.AI.QnA;
-    ```
-1. `_qnaServices` プロパティを追加し、ボットのコンストラクターで初期化します。
-    ```csharp
-    private readonly List<QnAMaker> _qnaServices;
+   **EchoBot.cs**
+   ```csharp
+   using System.Linq;
+   using Microsoft.Bot.Builder.AI.QnA;
+   ```
 
-    /// ...
-    public QnaBot(QnaBotAccessors accessors, List<QnAMaker> qnaServices, ILoggerFactory loggerFactory)
-    {
-        // ...
-        _qnaServices = qnaServices;
-    }
-    ```
-1. ユーザーの入力に対して登録済みのナレッジ ベースのクエリを実行するように、ターン ハンドラーを変更します。 QnA Maker からの回答をボットが必要とする場合、ボットのコードから `GetAnswersAsync` を呼び出して、現在のコンテキストに基づいて適切な回答を取得します。 お客様独自のナレッジ ベースにアクセスする場合は、以下の "_回答なし_" メッセージを変更して、お客様のユーザーの役に立つ手順を設定します。
-    ```csharp
-    public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
-    {
-        if (turnContext.Activity.Type == ActivityTypes.Message)
-        {
-            foreach(var qnaService in _qnaServices)
-            {
-                var response = await qnaService.GetAnswersAsync(turnContext);
-                if (response != null && response.Length > 0)
-                {
-                    await turnContext.SendActivityAsync(
-                        response[0].Answer,
-                        cancellationToken: cancellationToken);
-                    return;
-                }
-            }
+1. `EchoBotQnA` コネクタを追加し、ボットのコンストラクターで初期化します。
 
-            var msg = "No QnA Maker answers were found. This example uses a QnA Maker knowledge base that " +
-                "focuses on smart light bulbs. Ask the bot questions like 'Why won't it turn on?' or 'I need help'.";
+   **EchoBot.cs**
+   ```csharp
+   public QnAMaker EchoBotQnA { get; private set; }
+   public EchoBot(QnAMakerEndpoint endpoint)
+   {
+      // connects to QnA Maker endpoint for each turn
+      EchoBotQnA = new QnAMaker(endpoint);
+   }
+   ```
+1. _OnMembersAddedAsync( )_ メソッドの下に _AccessQnAMaker( )_ メソッドを作成します。そのためには、次のコードを追加します。
 
-            await turnContext.SendActivityAsync(msg, cancellationToken: cancellationToken);
-        }
-        else
-        {
-            await turnContext.SendActivityAsync($"{turnContext.Activity.Type} event detected");
-        }
-    }
-    ```
+   **EchoBot.cs**
+   ```csharp
+   private async Task AccessQnAMaker(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+   {
+      var results = await EchoBotQnA.GetAnswersAsync(turnContext);
+      if (results.Any())
+      {
+         await turnContext.SendActivityAsync(MessageFactory.Text("QnA Maker Returned: " + results.First().Answer), cancellationToken);
+      }
+      else
+      {
+         await turnContext.SendActivityAsync(MessageFactory.Text("Sorry, could not find an answer in the Q and A system."), cancellationToken);
+      }
+   }
+   ```
+1. 次に、_OnMessageActivityAsync ()_ 内で、次のように新しいメソッド _AccessQnAMaker ()_ を呼び出します。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+   **EchoBot.cs**
+   ```csharp
+   protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+   {
+      // First send the user input to your QnA Maker knowledgebase
+      await AccessQnAMaker(turnContext, cancellationToken);
+      ...
+   }
+   ```
+
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 1. ターミナルまたはコマンド プロンプトを開いて、プロジェクトのルート ディレクトリに移動します。
 1. **botbuilder-ai** npm パッケージをプロジェクトに追加します。
-    ```shell
-    npm i botbuilder-ai
-    ```
-1. **index.js** ファイルに、次の require ステートメントを追加します。
-    ```javascript
-    const { QnAMaker } = require('botbuilder-ai');
-    ```
-1. 構成情報を読み取って、QnA Maker サービスを生成します。
-    ```javascript
-    // Read bot configuration from .bot file.
-    // ...
+   ```shell
+   npm i botbuilder-ai
+   ```
 
-    // Initialize the QnA knowledge bases for the bot.
-    // Assume each QnA entry in the .bot file is well defined.
-    const qnaServices = [];
-    botConfig.services.forEach(s => {
-        if (s.type == 'qna') {
-            const endpoint = {
-                knowledgeBaseId: s.kbId,
-                endpointKey: s.endpointKey,
-                host: s.hostname
-            };
-            const options = {};
-            qnaServices.push(new QnAMaker(endpoint, options));
-        }
-    });
+1. **Index.js** で、// アダプターの作成セクションに続けて、次のコードを追加して QnA Maker サービスを生成するために必要な .env ファイル構成情報を読み取ります。
 
-    // Get bot endpoint configuration by service name
-    // ...
-    ```
-1. QnA サービスを渡すようにボットの構造を更新します。
-    ```javascript
-    // Create the bot.
-    const myBot = new MyBot(qnaServices);
-    ```
-1. **bot.js** ファイルに、コンストラクターを追加します。
-    ```javascript
-    constructor(qnaServices) {
-        this.qnaServices = qnaServices;
-    }
-    ```
-1. そして、ナレッジ ベースで回答のクエリを実行するように、ターン ハンドラーを更新します。
-    ```javascript
-    async onTurn(turnContext) {
-        if (turnContext.activity.type === ActivityTypes.Message) {
-            for (let i = 0; i < this.qnaServices.length; i++) {
-                // Perform a call to the QnA Maker service to retrieve matching Question and Answer pairs.
-                const qnaResults = await this.qnaServices[i].getAnswers(turnContext);
+   **index.js**
+   ```javascript
+   // Map knowledgebase endpoint values from .env file into the required format for `QnAMaker`.
+   const configuration = {
+      knowledgeBaseId: process.env.kbId,
+      endpointKey: process.env.endpointKey,
+      host: process.env.hostname
+   };
 
-                // If an answer was received from QnA Maker, send the answer back to the user and exit.
-                if (qnaResults[0]) {
-                    await turnContext.sendActivity(qnaResults[0].answer);
-                    return;
-                }
-            }
-            // If no answers were returned from QnA Maker, reply with help.
-            await turnContext.sendActivity('No QnA Maker answers were found. '
-                + 'This example uses a QnA Maker Knowledge Base that focuses on smart light bulbs. '
-                + `Ask the bot questions like "Why won't it turn on?" or "I need help."`);
-        } else {
-            await turnContext.sendActivity(`[${ turnContext.activity.type } event detected]`);
-        }
-    }
-    ```
+   ```
 
+1. QnA servicesconfiguration 情報を渡すようにボットの構造を更新します。
+
+   **index.js**
+   ```javascript
+   // Create the main dialog.
+   const myBot = new MyBot(configuration, {}, logger);
+   ```
+
+1. **bot.js** ファイルに、QnAMaker に必要なこれを追加します。
+
+   **bot.js**
+   ```javascript
+   const { QnAMaker } = require('botbuilder-ai');
+   ```
+
+1. QnAMaker コネクタを作成するのに必要な渡された構成パラメーターを受けとって、これらのパラメーターが指定されていない場合にエラーをスローするようにコンストラクターを変更します。
+
+   **bot.js**
+   ```javascript
+      class MyBot extends ActivityHandler {
+         constructor(configuration, qnaOptions) {
+            super();
+            if (!configuration) throw new Error('[QnaMakerBot]: Missing parameter. configuration is required');
+            // now create a qnaMaker connector.
+            this.qnaMaker = new QnAMaker(configuration, qnaOptions);
+   ```
+
+1. 最後に、各ユーザーに QnA Maker ナレッジベースへの入力を渡し、ユーザーに QnA Maker 応答を返す onMessage( ) 呼び出しを追加します。  回答を得るためにナレッジ ベースにクエリを実行します。
+ 
+    **bot.js**
+    ```javascript
+   // send user input to QnA Maker.
+   const qnaResults = await this.qnaMaker.getAnswers(turnContext);
+
+   // If an answer was received from QnA Maker, send the answer back to the user.
+   if (qnaResults[0]) {
+      await turnContext.sendActivity(`QnAMaker returned response: ' ${ qnaResults[0].answer}`);
+   } 
+   else { 
+      // If no answers were returned from QnA Maker, reply with help.
+      wait turnContext.sendActivity('No QnA Maker response was returned.'
+           + 'This example uses a QnA Maker Knowledge Base that focuses on smart light bulbs. '
+           + `Ask the bot questions like "Why won't it turn on?" or "I need help."`);
+   }
+   ```
 ---
 
 ### <a name="test-the-bot-locally"></a>ボットをローカルでテストする
 
 この時点で、ボットはいくつかの質問に回答できるようになっているはずです。 ローカル環境でボットを実行し、エミュレーターで開きます。
 
-![QnA サンプルをテストする](~/media/emulator-v4/qna-test-bot.png)
+![QnA サンプルをテストする](./media/qna-test-bot.png)
 
 ## <a name="re-publish-your-bot"></a>ボットを再公開する
 
-ボットを再公開できる状態になりました。
+これで、ボットを Azure に再公開できる状態になりました。
+
+## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [!INCLUDE [publish snippet](~/includes/deploy/snippet-publish.md)]
+
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+[!INCLUDE [publish snippet](~/includes/deploy/snippet-publish-js.md)]
+
+---
 
 ### <a name="test-the-published-bot"></a>公開したボットをテストする
 

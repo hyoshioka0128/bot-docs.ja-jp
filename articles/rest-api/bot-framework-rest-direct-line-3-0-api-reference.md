@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 36a95ec60af117a9a13843dc078bd9bd5cfde635
-ms.sourcegitcommit: 6ed90a4c90add925a0a865be1127041b7775fd3d
+ms.openlocfilehash: 28074e7ad59249cabbd38436bd02dc48bcab5b88
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50234475"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904885"
 ---
 # <a name="api-reference---direct-line-api-30"></a>API リファレンス - Direct Line API 3.0
 
@@ -192,22 +192,22 @@ Direct Line 3.0 スキーマには、[Bot Framework v3 スキーマ](bot-framewo
 ### <a name="activityset-object"></a>ActivitySet オブジェクト 
 アクティビティのセットを定義します。<br/><br/>
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 |----|----|----|
-| **activities** | [Activity](bot-framework-rest-connector-api-reference.md#activity-object)[] | **Activity** オブジェクトの配列です。 |
+| **アクティビティ** | [Activity](bot-framework-rest-connector-api-reference.md#activity-object)[] | **Activity** オブジェクトの配列です。 |
 | **watermark** | string | セット内のアクティビティの最大ウォーターマークです。 クライアントは、[ボットからアクティビティを取得する](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get)際、または[新しい WebSocket ストリーム URL を生成する](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)際に、`watermark` 値を使用して、直近に認識したメッセージを示すことができます。 |
 
 ### <a name="conversation-object"></a>Conversation オブジェクト
 Direct Line 会話を定義します。<br/><br/>
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 |----|----|----|
 | **conversationId** | string | 指定されたトークンが有効な会話を一意に識別する ID。 |
 | **expires_in** | number | トークンの有効期限が切れるまでの秒数。 |
 | **streamUrl** | string | 会話のメッセージ ストリームの URL。 |
 | **token** | string | 指定された会話で有効なトークン。 |
 
-### <a name="activities"></a>アクティビティ
+### <a name="activities"></a>Activities
 
 クライアントが Direct Line を通じてボットから受信した各[アクティビティ](bot-framework-rest-connector-api-reference.md#activity-object)には、次の操作が適用されます。
 
@@ -223,6 +223,6 @@ Direct Line 会話を定義します。<br/><br/>
 - `from` プロパティには、クライアントによって選択されたユーザー ID を指定する必要があります。
 - 添付ファイルには、既存のリソースの URL や、Direct Line 添付ファイル エンドポイントを通じてアップロードされた URL を含めることができます。
 - `channelData` プロパティは変更せずに保持されます。
-- JSON にシリアル化されている場合、アクティビティの合計サイズは 300,000 文字以内にする必要があります。
+- JSON にシリアル化されており暗号化されている場合、アクティビティの合計サイズは 256,000 文字以内にする必要があります。 そのため、アクティビティを 150,000 未満に抑えることをお勧めします。 さらにデータが必要な場合、アクティビティを複数に分割するか、添付ファイルを使用することを検討してください。
 
 クライアントでは、要求ごとにアクティビティを 1 つ[送信](bot-framework-rest-direct-line-3-0-send-activity.md)できます。 
