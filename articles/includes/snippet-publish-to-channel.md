@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 88fe2e3dca0559c101c55edb4353f3b57096a8d4
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563720"
+---
 ### <a name="cortana"></a>Cortana
 Cortana には[ダッシュボード](https://aka.ms/cortana-publish)からボットが発行され、Cortana スキルを強化するために使用されます。 発行されたボットはレビューのために送信されます。 Cortana スキルはご自身で使用するために、または小規模なグループに展開できます。また、一般公開することも可能です。
 

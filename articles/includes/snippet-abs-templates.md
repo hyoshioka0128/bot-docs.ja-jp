@@ -1,4 +1,12 @@
-|        テンプレート        |                                                                                                         説明                                                                                                         |
+---
+ms.openlocfilehash: 8eb45791cfcb578a8dc2fa6a14799c0637daed23
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563868"
+---
+|        Template        |                                                                                                         説明                                                                                                         |
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |         Basic          |                                                                                  ユーザーの入力に応答するためにダイアログを使用するボットを作成します。                                                                                  |
 |          フォーム          | C# で [FormFlow](~/dotnet/bot-builder-dotnet-formflow.md) または Node.js で[ウォーターフォール](~/nodejs/bot-builder-nodejs-prompts.md)を使用して作成されるガイド付き会話によって、ユーザーからの入力を収集するボットを作成します。 |

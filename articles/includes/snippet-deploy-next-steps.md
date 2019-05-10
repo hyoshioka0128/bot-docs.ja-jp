@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 8e5677fe59dd9edad6ac1da9d029e5f7c08bf179
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563965"
+---
 ## <a name="next-steps"></a>次の手順
 ご利用になるボッドをクラウドにデプロイし、Bot Framework Emulator を使用したボットのテストによってデプロイが正常に行われたことを確認したら、ボット発行プロセスでの次の手順は、ご利用になるボッドを Bot Framework に既に登録しているかどうかによって異なります。
 

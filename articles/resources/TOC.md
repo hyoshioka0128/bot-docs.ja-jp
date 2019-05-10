@@ -1,9 +1,8 @@
-# Enterprise テンプレート
-## [概要](../v4sdk/bot-builder-enterprise-template-overview.md)
-## [作業の開始](../v4sdk/bot-builder-enterprise-template-getting-started.md)
-## [テンプレートのカスタマイズ](../v4sdk/bot-builder-enterprise-template-customize.md)
-# 仮想アシスタント 
+# 仮想アシスタント
 ## [概要](../v4sdk/bot-builder-virtual-assistant-introduction.md)
+## [テンプレートの概要](../v4sdk/bot-builder-virtual-assistant-template.md)
+# スキル 
+## [概要](../v4sdk/bot-builder-skills-overview.md)
 # [FAQ](../bot-service-resources-bot-framework-faq.md)
 # [サポートを受ける](../bot-service-resources-links-help.md)
 # [チャネル リファレンス](../bot-service-channels-reference.md)

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 4e2ab87f509c29c33a27810668445975e31f6ac4
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563845"
+---
 ## <a name="application-settings-and-messaging-endpoint"></a>アプリケーション設定とメッセージング エンドポイント
 
 ### <a name="verify-application-settings"></a>アプリケーション設定を確認する

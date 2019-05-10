@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: fed6222fb9cf2d7793776c5575dfbcda49b54224
-ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
+ms.openlocfilehash: 14d9632ad578014a36b5f13e6dee883e2a6e1722
+ms.sourcegitcommit: 4ff7a8772124a567f43e2c3e13aded368c4002e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360919"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65035689"
 ---
-1. [**アプリケーション登録ポータル**](https://apps.dev.microsoft.com/)に移動します。
+1. [**アプリケーション登録ポータル**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)に移動します。
 1. **[アプリの追加]** をクリックしてアプリケーションを登録して、**アプリケーション ID** を作成し、**新しいパスワードを生成**します。 既にアプリケーションとパスワードを持っていて、パスワードを思い出せない場合は、[アプリケーション シークレット] セクションで新しいパスワードを生成する必要があります。
 1. `az bot create` コマンドで使用できるように、生成したアプリケーション ID と新しいパスワードの両方を控えておきます。  
 

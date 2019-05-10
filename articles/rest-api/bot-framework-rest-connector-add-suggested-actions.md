@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 298a827af880223f80cee1876eaea745c6a4a88e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 346c522a1e1cd3d5904b74ad6e6092a1457a001c
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000079"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032589"
 ---
 # <a name="add-suggested-actions-to-messages"></a>メッセージへの推奨されるアクションの追加
 > [!div class="op_single_selector"]
@@ -22,9 +22,6 @@ ms.locfileid: "50000079"
 > - [REST](../rest-api/bot-framework-rest-connector-add-suggested-actions.md)
 
 [!INCLUDE [Introduction to suggested actions](../includes/snippet-suggested-actions-intro.md)]
-
-> [!TIP]
-> 推奨されるアクションをさまざまなチャネルでレンダリングする方法については、[Channel Inspector][channelInspector] に関するページを参照してください。
 
 ## <a name="send-suggested-actions"></a>推奨されるアクションの送信
 

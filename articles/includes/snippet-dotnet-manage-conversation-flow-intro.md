@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 7eed8c8328456bad43f3bdfe0029df09efa062d6
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563499"
+---
 この図では、従来のアプリケーションの画面フローを、ボットのダイアログ フローと比較しています。 
 
 ![ボット](~/media/designing-bots/core/dialogs-screens.png)

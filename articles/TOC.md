@@ -1,6 +1,7 @@
 # [Azure Bot Service のドキュメント](index.md)
 # 概要
 ## [Azure Bot Service について](bot-service-overview-introduction.md)
+## [新機能](what-is-new.md)
 # クイック スタート
 ## [Azure Bot Service を使用してボットを作成する](~/bot-service-quickstart.md)
 ## ボットをローカルで作成する
@@ -11,8 +12,7 @@
 ## [2.QnA Maker を追加して、ボットを再デプロイする](v4sdk/bot-builder-tutorial-add-qna.md)
 ## [ボットへの認証の追加](bot-builder-tutorial-authentication.md)
 # サンプル
-## [GitHub の botbuilder-samples リポジトリ](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md)
-## [botbuilder-samples リポジトリからボットをデプロイする](bot-builder-deploy-samples.md)
+## [GitHub の Bot Framework サンプル リポジトリ](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md)
 # 概念
 ## [ボットのしくみ](v4sdk/bot-builder-basics.md)
 ## [状態の管理](v4sdk/bot-builder-concept-state.md)
@@ -40,36 +40,33 @@
 ### [ユーザーへのウェルカム メッセージの送信](v4sdk/bot-builder-send-welcome-message.md)
 <!-- ## [Add input hints to messages](v4sdk/bot-builder-howto-add-input-hints.md) -->
 ### [ユーザーへのプロアクティブな通知の送信](v4sdk/bot-builder-howto-proactive-message.md)
+### [連続して行われる会話フローの実装](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
 ### [ボットに自然言語の理解を追加する](v4sdk/bot-builder-howto-v4-luis.md)
 ### [QnA Maker を使用してユーザーの質問に回答する](v4sdk/bot-builder-howto-qna.md)
 ### [複数の LUIS と QnA モデルを使用する](v4sdk/bot-builder-tutorial-dispatch.md)
-### ダイアログ ライブラリを使用した会話の管理 
-#### [連続して行われる会話フローの実装](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
-#### [ダイアログ プロンプトを使用してユーザー入力を収集する](v4sdk/bot-builder-prompts.md)
-#### [ブランチとループを使用して高度な会話フローを作成する](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
-#### [ユーザーによる割り込みの処理](v4sdk/bot-builder-howto-handle-user-interrupt.md)
-#### [ユーザー データを保持する](v4sdk/bot-builder-tutorial-persist-user-inputs.md)
-#### [ダイアログの再利用](v4sdk/bot-builder-compositcontrol.md)
+### [ブランチとループを使用して高度な会話フローを作成する](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
+### [ダイアログの再利用](v4sdk/bot-builder-compositcontrol.md)
+<!--#### [Implement a greeting dialog](v4sdk/bot-builder-dialogs-greeting.md)--TODO: Add once there's a sample.-->
+### [ユーザーによる割り込みの処理](v4sdk/bot-builder-howto-handle-user-interrupt.md)
+<!--#### [Persist user data](v4sdk/bot-builder-tutorial-persist-user-inputs.md)--TODO: redirect to write directly to storage.-->
 ### [ストレージに直接書き込む](v4sdk/bot-builder-howto-v4-storage.md)
 ### [ボットへの認証の追加](v4sdk/bot-builder-authentication.md)
 ### [ボットのカスタム ストレージの実装](v4sdk/bot-builder-custom-storage.md)
 ### [ボットへのテレメトリの追加](v4sdk/bot-builder-telemetry.md)
-### [CLI ツールを使用したボットの管理](bot-builder-tools.md)
+### [ボットで Direct Line Speech を使用する](directline-speech-bot.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
 ## [デバッグ](debug/TOC.md)
 ## デプロイ
 ### [ボットを Azure にデプロイする](bot-builder-deploy-az-cli.md)
-<!-- ### [Deploy your C# bot using Visual Studio](bot-builder-howto-deploy-azure.md)
-### [Download and redeploy bot code](bot-service-build-download-source-code.md) 
-### [Set up continuous deployment](bot-service-build-continuous-deployment.md) -->
+### [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)
 ## [管理](manage/TOC.md)
 ## [移行](v4sdk/migration/TOC.md)
 # リファレンス
 ## [.NET SDK v4](https://aka.ms/botframework-v4-cs-sdk)
-## [JavaScript SDK v4](https://aka.ms/jssdk4)
+## [JavaScript SDK v4](https://aka.ms/bot-jssdk-v4)
 ## [REST](rest-api/TOC.md)
 ## [.NET SDK v3](https://aka.ms/botframework-v3-cs-sdk)
-## [Node.js SDK v3](https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html)
+## [Node.js SDK v3](https://aka.ms/bot-jssdk-v3)
 ## [エンティティとアクティビティの種類](bot-service-activities-entities.md)
 # [リソース](resources/TOC.md)

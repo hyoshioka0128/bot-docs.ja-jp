@@ -4,7 +4,10 @@
 ## [ボットをチャネルに接続する](../bot-service-manage-channels.md)
 ## [チャネル固有の機能の実装](../v4sdk/bot-builder-channeldata.md)
 ## [Cortana](../bot-service-channel-connect-cortana.md) 
-## [Direct Line](../bot-service-channel-connect-directline.md)
+## Direct Line
+### [Direct Line の概要](../bot-service-channel-directline.md)
+### [Direct Line に接続する](../bot-service-channel-connect-directline.md)
+### [Direct Line Speech に接続する](../bot-service-channel-connect-directlinespeech.md)
 ## [電子メール](../bot-service-channel-connect-email.md)
 ## [Web チャットで音声認識を有効にする](../bot-service-channel-connect-webchat-speech.md)
 ## [Facebook](../bot-service-channel-connect-facebook.md) 

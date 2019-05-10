@@ -28,11 +28,13 @@
 ## [チャネル固有の機能の実装](bot-builder-dotnet-channeldata.md)
 ## [Cortana のスキルのビルド](bot-builder-dotnet-cortana-skill.md)
 ## [Skype で音声通話を行う](bot-builder-dotnet-audio-calls.md)
-## Skype でリアルタイム メディア通話を行う
-### [リアルタイムのメディア通話の概念](bot-builder-dotnet-real-time-media-concepts.md)
-### [リアルタイムのメディア ボットの要件](bot-builder-dotnet-real-time-media-requirements.md)
-### [リアルタイムのメディア ボットのビルド](bot-builder-dotnet-real-time-audio-video-call-overview.md)
-### [リアルタイムのメディア ボットのデプロイ](bot-builder-dotnet-real-time-deploy-visual-studio.md)
+<!--
+## Conduct real-time media calls with Skype
+### [Real-time media calling concepts](bot-builder-dotnet-real-time-media-concepts.md)
+### [Requirements for real-time media bots](bot-builder-dotnet-real-time-media-requirements.md)
+### [Build a real-time media bot](bot-builder-dotnet-real-time-audio-video-call-overview.md)
+### [Deploy a real-time media bot](bot-builder-dotnet-real-time-deploy-visual-studio.md)
+-->
 # 状態データ
 ## [状態データの管理](bot-builder-dotnet-state.md)
 ## [Cosmos DB を使用した状態データの管理](bot-builder-dotnet-state-azure-cosmosdb.md)

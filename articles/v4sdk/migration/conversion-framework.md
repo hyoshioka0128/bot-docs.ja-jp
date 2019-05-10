@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1904bb09d8bd387cc5cec0d85f82df24d1f6ec9d
-ms.sourcegitcommit: 7f418bed4d0d8d398f824e951ac464c7c82b8c3e
+ms.openlocfilehash: ea6b859761a3bc8c1424d50d8bad0b7f1f50e86d
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56240178"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033464"
 ---
 # <a name="migrate-a-net-sdk-v3-bot-to-v4"></a>.NET SDK v3 のボットを v4 に移行する
 
@@ -111,7 +111,7 @@ namespace ContosoHelpdeskChatBot
 
 ## <a name="update-your-globalasaxcs-file"></a>Global.asax.cs ファイルを更新する
 
-スキャフォールディングの一部が変更されたので、v4 では[状態管理](/articles/v4sdk/bot-builder-concept-state.md)インフラストラクチャの一部を自分で設定する必要があります。 たとえば、v4 ではボット アダプターを使用して認証を処理し、アクティビティをボット コードに転送します。また、状態プロパティを事前に宣言しておきます。
+スキャフォールディングの一部が変更されたので、v4 では[状態管理](../bot-builder-concept-state.md)インフラストラクチャの一部を自分で設定する必要があります。 たとえば、v4 ではボット アダプターを使用して認証を処理し、アクティビティをボット コードに転送します。また、状態プロパティを事前に宣言しておきます。
 
 `DialogState` の状態プロパティを作成します。これは、v4 のダイアログのサポートに必要になります。 依存関係挿入を使用して、必要な情報をコントローラーとボット コードに取得します。
 
@@ -246,7 +246,7 @@ v4 では、このクラスでターン ハンドラーを呼び出すので、�
         }
     }
     ```
-1. ボットの[ターン ハンドラー](/articles/v4sdk/bot-builder-basics.md#the-activity-processing-stack) コードを含む **OnTurnAsync** メソッドを追加します。
+1. ボットの[ターン ハンドラー](../bot-builder-basics.md#the-activity-processing-stack) コードを含む **OnTurnAsync** メソッドを追加します。
     > [!NOTE]
     > v4 には scoreable は存在しません。 アクティブ ダイアログを続行する前に、ボットのターン ハンドラーでユーザーからの `cancel` メッセージの有無を確認します。
     ```csharp
@@ -353,8 +353,8 @@ v4 コードに関する注意事項を次に示します。
 
 このボットでは、ルート ダイアログがユーザーに一連のオプションからの選択を要求し、その選択に基づいて子ダイアログを開始します。 会話の有効期間中、これがループします。
 
-- メイン フローはウォーターフォール ダイアログとして設定できます。これは、v4 SDK の新しい概念です。 固定された一連のステップが順番に実行されます。 詳細については、「[連続して行われる会話フローの実装](/articles/v4sdk/bot-builder-dialog-manage-conversation-flow)」をご覧ください。
-- プロンプトは、プロンプト クラスで処理されるようになりました。プロンプト クラスは、入力を要求し、最小限の処理と検証を実行して値を返す短い子ダイアログです。 詳細については、[ダイアログ プロンプトを使用したユーザー入力の収集](/articles/v4sdk/bot-builder-prompts.md)に関するページをご覧ください。
+- メイン フローはウォーターフォール ダイアログとして設定できます。これは、v4 SDK の新しい概念です。 固定された一連のステップが順番に実行されます。 詳細については、「[連続して行われる会話フローの実装](~/v4sdk/bot-builder-dialog-manage-conversation-flow.md)」をご覧ください。
+- プロンプトは、プロンプト クラスで処理されるようになりました。プロンプト クラスは、入力を要求し、最小限の処理と検証を実行して値を返す短い子ダイアログです。 詳細については、[ダイアログ プロンプトを使用したユーザー入力の収集](~/v4sdk/bot-builder-prompts.md)に関するページをご覧ください。
 
 **Dialogs/RootDialog.cs** ファイルで、次の手順を実行します。
 
@@ -425,7 +425,7 @@ v4 コードに関する注意事項を次に示します。
     }
     ```
 1. **OnOptionSelected** をウォーターフォールの 2 番目のステップに置き換えることができます。 置換後も、ユーザーの入力に基づいて子ダイアログを開始します。
-   - 選択プロンプトは `FoundChoice` 値を返します。 これは、ステップ コンテキストの `Result` プロパティに示されます。 ダイアログ スタックでは、すべての戻り値をオブジェクトとして扱います。 戻り値がダイアログのいずれかから返されている場合、そのオブジェクトがどの種類の値であるかがわかります。 各プロンプトの種類で返される値の一覧については、[プロンプトの種類](/articles/v4sdk/bot-builder-concept-dialog.md#prompt-types)に関するセクションをご覧ください。
+   - 選択プロンプトは `FoundChoice` 値を返します。 これは、ステップ コンテキストの `Result` プロパティに示されます。 ダイアログ スタックでは、すべての戻り値をオブジェクトとして扱います。 戻り値がダイアログのいずれかから返されている場合、そのオブジェクトがどの種類の値であるかがわかります。 各プロンプトの種類で返される値の一覧については、[プロンプトの種類](../bot-builder-concept-dialog.md#prompt-types)に関するセクションをご覧ください。
    - 選択プロンプトは例外をスローしないため、try-catch ブロックを削除できます。
    - このメソッドが常に適切な値を返すように、フォールスルーを追加する必要があります。 このコードへの到達は回避する必要がありますが、到達しても、ダイアログを "正常に失敗にする" ことができます。
     ```csharp

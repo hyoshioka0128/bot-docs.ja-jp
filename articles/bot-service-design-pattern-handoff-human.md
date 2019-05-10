@@ -6,13 +6,13 @@ ms.author: mateusv
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 12/13/2017
-ms.openlocfilehash: f18b375a1e4ebcf06d00d045e383db8b05fb5111
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 5/2/2019
+ms.openlocfilehash: a5bb8d8dce1fdb45ab9ab42b247e2697713e51ac
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225737"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033055"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>会話をボットから人間に移行する
 
@@ -71,10 +71,6 @@ ms.locfileid: "54225737"
 
 > [!NOTE]
 > より高度なシナリオでは、ボットはユーザーとエージェントの間で単にメッセージをルーティングするだけでなく、責任を引き受けることができます。 たとえば、どの応答が適切であるかをボットが判断し、エージェントに続行の確認だけを求めるようにすることもできます。
-
-## <a name="sample-code"></a>サンプル コード
-
-Bot Framework SDK for Node.js を使用してボットから人間に会話を引き継ぐ方法を示す完全なサンプルについては、GitHub の <a href="https://github.com/palindromed/Bot-HandOff" target="_blank">Bot-HandOff サンプル</a>を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

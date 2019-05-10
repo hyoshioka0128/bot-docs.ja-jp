@@ -10,11 +10,11 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 86964bc39a95a23f397af649cfac6e2784dd588a
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224367"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563632"
 ---
 # <a name="implement-global-message-handlers"></a>グローバル メッセージ ハンドラーの実装
 
