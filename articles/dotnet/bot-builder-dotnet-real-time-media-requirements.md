@@ -1,21 +1,18 @@
 ---
-title: リアルタイム メディア ボットの要件と考慮事項 | Microsoft Docs
-description: Bot Framework SDK for .NET を使用した Skype 用のリアルタイム メディア ボットの作成に関連する要件と考慮事項を理解します。
-author: ssulzer
-ms.author: ssulzer
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 12/13/17
-monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d8cd326a3027fe5fcb440d9b205ba7d32a8b1640
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+redirect_url: https://aka.ms/realTimeMediaCalling-repo
+ms.openlocfilehash: 8868ee0d72aa0de6480a392368469b6adf18b561
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224937"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032912"
 ---
+<a name="--"></a><!--
+---
+title:リアルタイム メディア ボットの要件と考慮事項 | Microsoft Docs description:Bot Framework SDK for .NET を使用した Skype 用のリアルタイム メディア ボットの作成に関連する要件と考慮事項を理解します。
+author: ssulzer ms.author: ssulzer manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date:12/13/17 monikerRange: 'azure-bot-service-3.0'
+---
+
 # <a name="requirements-and-considerations-for-real-time-media-bots"></a>リアルタイム メディア ボットの要件と考慮事項
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -54,3 +51,4 @@ ms.locfileid: "54224937"
   2. Real-Time Media Platform は、現時点では、VM 上で使用できるグラフィックス処理ユニット (GPU) を利用したオフロードの H.264 ビデオ エンコード/デコードを行っていません。 代わりに、ビデオのエンコードとデコードは、CPU 上のソフトウェア内で実行されます。 GPU を利用できる場合、ボットは、独自のグラフィックス レンダリング (ボットが 3D グラフィックス エンジンを使用する場合など) でそれを活用できます。
 
 - リアルタイム メディア ボットをホストする VM インスタンスには、少なくとも 2 つの CPU コアが必要です。 Azure では、Dv2 シリーズの仮想マシンをお勧めします。 Azure VM の種類に関する詳細情報については、<a href="/azure/virtual-machines/windows/sizes-general" target="_blank">Azure ドキュメント</a>を参照してください。 
+-->

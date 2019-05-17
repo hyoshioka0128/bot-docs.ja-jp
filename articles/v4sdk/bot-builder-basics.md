@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 1/10/2019
+ms.date: 04/25/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a7f6c22f35719eacf66598e79df5fe52ff19dd43
-ms.sourcegitcommit: 103aa3316f9ff658cf2b0d341c5e76c3efc581ee
+ms.openlocfilehash: 53dd51c871b3d386caaa01bd2e652092e7477e09
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59540366"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033515"
 ---
 # <a name="how-bots-work"></a>ボットのしくみ
 
@@ -55,171 +55,65 @@ ms.locfileid: "59540366"
 
 上の例では、ボットがメッセージ アクティビティに対して、同じテキスト メッセージが含まれた別のメッセージ アクティビティで応答しました。 処理は、HTTP POST 要求で始まります。このとき、アクティビティ情報は JSON ペイロードとして伝達されて、Web サーバーに届きます。 C# では、これは通常 ASP.NET プロジェクトになります。また、JavaScript Node.js プロジェクトでは多くの場合、これはいずれかの一般的なフレームワーク (Express、Restify など) です。
 
-"*アダプター*" は SDK の統合コンポーネントで、SDK ランタイムのコアです。 アクティビティは、HTTP POST 本文で JSON として渡されます。 この JSON は逆シリアル化されて Activity オブジェクトが作成され、これが "*アクティビティの処理*" メソッドへの呼び出しによってアダプターに渡されます。 アクティビティを受け取ったアダプターにより、"*ターン コンテキスト*" が作成され、ミドルウェアが呼び出されます。 "*ターン コンテキスト*" という名前は、アクティビティの到着に関連したあらゆる処理の説明に、"ターン" という言葉が使用されていることに由来します。 ターン コンテキストは、SDK の中で最も重要なアブストラクションの 1 つで、インバウンド アクティビティをすべてのミドルウェア コンポーネントおよびアプリケーション ロジックに伝達するだけでなく、ミドルウェア コンポーネントとアプリケーション ロジックからアウトバウンド アクティビティを送信するためのメカニズムも備えています。 ターン コンテキストは、アクティビティに応答するための、"_アクティビティの送信、更新、および削除_" 応答メソッドを備えています。 各応答メソッドは、非同期プロセスで実行されます。 
+"*アダプター*" は SDK の統合コンポーネントで、SDK ランタイムのコアです。 アクティビティは、HTTP POST 本文で JSON として渡されます。 この JSON は逆シリアル化されて Activity オブジェクトが作成され、これが "*アクティビティの処理*" メソッドへの呼び出しによってアダプターに渡されます。 アクティビティを受け取ったアダプターにより、"*ターン コンテキスト*" が作成され、ミドルウェアが呼び出されます。 
+
+上述したように、ターン コンテキストは、アウトバウンド アクティビティを送信するメカニズムをボットに提供します。この送信処理は、多くの場合、インバウンド アクティビティに対する応答として実行されます。 これを実現するために、ターン コンテキストは、"_アクティビティの送信、更新、および削除_" 応答メソッドを備えています。 各応答メソッドは、非同期プロセスで実行されます。 
 
 [!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
+## <a name="activity-handlers"></a>アクティビティ ハンドラー
+
+アクティビティを受信したボットは、それを自身の "*アクティビティ ハンドラー*" に渡します。 実際には "*ターン ハンドラー*" と呼ばれる基本ハンドラーが 1 つあり、 すべてのアクティビティがそこを介してルーティングされます。 その後、ターン ハンドラーは、受信したアクティビティの種類に関係なく、個別のアクティビティ ハンドラーを呼び出します。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+たとえば、ボットがメッセージ アクティビティを受信すると、ターン ハンドラーはその受信アクティビティを確認して、`OnMessageActivityAsync` アクティビティ ハンドラーに送信します。 
+
+ご自身のボットを構築するとき、メッセージを処理し、これに応答するためのボット ロジックはこの `OnMessageActivityAsync` ハンドラーに格納されます。 同様に、会話に追加されたメンバーを処理するロジックは、会話にメンバーが追加されると必ず呼び出される `OnMembersAddedAsync` ハンドラーに格納されます。
+
+これらのハンドラーのロジックを実装するには、以下の「[ボット ロジック](#bot-logic)」セクションで示すように、お使いのボットでこれらのメソッドをオーバーライドします。 これらのハンドラーそれぞれに基本実装はありません。このため、必要なロジックをご自身のオーバーライドに追加するだけです。
+
+基本ターン ハンドラーのオーバーライドが必要になる場合もあります。たとえば、ターンの最後に[状態を保存](bot-builder-concept-state.md)するような状況です。 これを行う場合は、最初に必ず `await base.OnTurnAsync(turnContext, cancellationToken);` を呼び出して、`OnTurnAsync` の基本実装がご自身の追加コードの前に実行されていることを確認します。 この実装は特に、`OnMessageActivityAsync` などの残りのアクティビティ ハンドラーを呼び出す役割を果たします。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+たとえば、ボットがメッセージ アクティビティを受信すると、ターン ハンドラーはその受信アクティビティを確認して、`onMessage` アクティビティ ハンドラーに送信します。
+
+ご自身のボットを構築するとき、メッセージを処理し、これに応答するためのボット ロジックはこの `onMessage` ハンドラーに格納されます。 同様に、会話に追加されたメンバーを処理するロジックは、会話にメンバーが追加されると必ず呼び出される `onMembersAdded` ハンドラーに格納されます。
+
+これらのハンドラーのロジックを実装するには、以下の「[ボット ロジック](#bot-logic)」セクションで示すように、お使いのボットでこれらのメソッドをオーバーライドします。 ハンドラーごとにボット ロジックを定義し、**最後に必ず `next()` を呼び出します**。 `next()` を呼び出すことで、次のハンドラーが確実に実行されます。
+
+基本ターン ハンドラーのオーバーライドが必要になる状況はめったにないため、この操作を行う場合は気を付けてください。 ターンの最後に行う必要がある[状態の保存](bot-builder-concept-state.md)などの操作に対しては、`onDialog` と呼ばれる特別なハンドラーがあります。 `onDialog` ハンドラーは、ハンドラーの残りの部分の実行後、最後に実行され、特定のアクティビティの種類には関連付けられていません。 上記のすべてのハンドラーと同様、必ず `next()` を呼び出して、プロセスの残りの部分を終了してください。
+
+---
 
 ## <a name="middleware"></a>ミドルウェア
-ミドルウェアは、他のメッセージング ミドルウェアとよく似ています。連続する一連のコンポーネントで構成され、各コンポーネントが順に実行されるため、それぞれがアクティビティで動作できます。 ミドルウェア パイプラインの最終ステージは、アプリケーションがアダプターに登録したボット クラスでターン ハンドラーを呼び出すコールバック (C# の場合は `OnTurnAsync`、JS の場合は `onTurn`) 関数です。 ターン ハンドラーはその引数としてターン コンテキストを受け取り、通常はターン ハンドラー関数の内部で実行されているアプリケーション ロジックによってインバウンド アクティビティの内容を処理して、1 つ以上のアクティビティを応答として生成し、ターン コンテキストの "*アクティビティの送信*" 関数を使用してそれらを送信します。 ターン コンテキストで "*アクティビティの送信*" を呼び出すと、ミドルウェア コンポーネントがアウトバウンド アクティビティで呼び出されます。 ミドルウェア コンポーネントは、ボットのターン ハンドラー関数の前後で実行されます。 実行は本質的に入れ子なっているため、マトリョーシカ人形のようであると言われることもあります。 ミドルウェアの詳細については、[ミドルウェアに関するトピック](~/v4sdk/bot-builder-concept-middleware.md)を参照してください。
+
+ミドルウェアは、他のメッセージング ミドルウェアとよく似ています。連続する一連のコンポーネントで構成され、各コンポーネントが順に実行されるため、それぞれがアクティビティで動作できます。 ミドルウェア パイプラインの最終ステージは、アプリケーションがアダプターの *process activity* メソッドに登録したボット クラスのターン ハンドラーへのコールバックです。 ターン ハンドラーは、通常、C# の場合は `OnTurnAsync`、JavaScript の場合は `onTurn` です。
+
+ターン ハンドラーはその引数としてターン コンテキストを受け取り、通常はターン ハンドラー関数の内部で実行されているアプリケーション ロジックによってインバウンド アクティビティの内容を処理して、1 つ以上のアクティビティを応答として生成し、ターン コンテキストの "*アクティビティの送信*" 関数を使用してそれらを送信します。 ターン コンテキストで "*アクティビティの送信*" を呼び出すと、ミドルウェア コンポーネントがアウトバウンド アクティビティで呼び出されます。 ミドルウェア コンポーネントは、ボットのターン ハンドラー関数の前後で実行されます。 実行は本質的に入れ子なっているため、マトリョーシカ人形のようであると言われることもあります。 ミドルウェアの詳細については、[ミドルウェアに関するトピック](~/v4sdk/bot-builder-concept-middleware.md)を参照してください。
 
 ## <a name="bot-structure"></a>ボットの構造
-以降のセクションでは、ボットの主な要素について説明します。
 
-### <a name="prerequisites"></a>前提条件
-- **EchoBotWithCounter** サンプルのコピー (**[C#](https://aka.ms/EchoBotWithStateCSharp) または [JS](https://aka.ms/EchoBotWithStateJS)**)。 ここでは関連するコードのみを示していますが、サンプルを参照することで完全なソース コードを確認できます。
+次のセクションでは、[**CSharp**](../dotnet/bot-builder-dotnet-sdk-quickstart.md) または [**JavaScript**](../javascript/bot-builder-javascript-quickstart.md) 用に提供されたテンプレートを使用して簡単に作成できる EchoBot の "_主要部_" について説明します。
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+<!--Need to add section calling out the controller in code, and explaining it further-->
 
-ボットは、一種の [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.1) Web アプリケーションです。 [ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/index?view=aspnetcore-2.1&tabs=aspnetcore2x) の基礎に関する記事を見ると、**Program.cs** や **Startup.cs** などのファイルにあるのと同様のコードが確認できます。 これらのファイルはすべての Web アプリに必須で、ボット固有のものではありません。 
+ボットは Web アプリケーションで、各言語のテンプレートが用意されています。
 
-### <a name="bot-logic"></a>ボット ロジック
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-ボットのメイン ロジックは、`IBot` インターフェイスから派生した `EchoWithCounterBot` クラスに定義されます。 `IBot` には、`OnTurnAsync` というメソッドが 1 つだけ定義されています。 お客様のアプリケーションでは、このメソッドを実装する必要があります。 受信アクティビティに関する情報は、`OnTurnAsync` の turnContext から得られます。 受信アクティビティは、インバウンド HTTP 要求に相当します。 アクティビティにはさまざまな種類があるため、まず、お客様のボットがメッセージを受信したかどうかを確認します。 それがメッセージである場合は、ターン コンテキストから会話の状態を取得して、ターン カウンターをインクリメントし、新しいターン カウンターの値を会話の状態として保持します。 さらに、SendActivityAsync 呼び出しを使用してユーザーにメッセージを返します。 送信アクティビティは、アウトバウンド HTTP 要求に相当します。
+VSIX テンプレートによって生成されるのは [ASP.NET MVC Core](https://dotnet.microsoft.com/apps/aspnet/mvc) Web アプリです。 [ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/index?view=aspnetcore-2.1&tabs=aspnetcore2x) の基礎に関する記事を見ると、**Program.cs** や **Startup.cs** などのファイルにあるのと同様のコードが確認できます。 これらのファイルはすべての Web アプリに必須で、ボット固有のものではありません。
 
-```cs
-public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
-{
-    if (turnContext.Activity.Type == ActivityTypes.Message)
-    {
-        // Get the conversation state from the turn context.
-        var oldState = await _accessors.CounterState.GetAsync(turnContext, () => new CounterState());
+### <a name="appsettingsjson-file"></a>appsettings.json ファイル
 
-        // Bump the turn count for this conversation.
-        var newState = new CounterState { TurnCount = oldState.TurnCount + 1 };
+**appsettings.json** ファイルでは、アプリ ID、パスワードなど、お使いのボットの構成情報が指定されます。 特定のテクノロジを使用している場合、または運用環境でこのボットを使用している場合は、ご自身の特定のキーまたは URL をこの構成に追加する必要があります。 ただし、このエコー ボットについては、今のところ、ここでは何も行う必要はありません。アプリ ID およびパスワードは、現時点では未定義のままにしておくことができます。
 
-        // Set the property using the accessor.
-        await _accessors.CounterState.SetAsync(turnContext, newState);
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-        // Save the new turn count into the conversation state.
-        await _accessors.ConversationState.SaveChangesAsync(turnContext);
+<!-- TODO: Update this aka link to point to samples/javascript_nodejs/02.echobot (instead of samples/javascript_nodejs/02.a.echobot) once work-in-progress is merged into master. -->
 
-        // Echo back to the user whatever they typed.
-        var responseMessage = $"Turn {newState.TurnCount}: You sent '{turnContext.Activity.Text}'\n";
-        await turnContext.SendActivityAsync(responseMessage);
-    }
-    else
-    {
-        await turnContext.SendActivityAsync($"{turnContext.Activity.Type} event detected");
-    }
-}
-```
-
-### <a name="set-up-services"></a>サービスのセットアップ
-
-startup.cs ファイルの `ConfigureServices` メソッドでは、接続済みサービスを [.bot](bot-builder-basics.md#the-bot-file) ファイルから読み込み、会話のターン中に発生したエラーをキャッチしてログに記録します。さらに、資格情報プロバイダーを設定し、会話データをメモリに格納するための会話の状態オブジェクトを作成します。
-
-```csharp
-services.AddBot<EchoWithCounterBot>(options =>
-{
-    // Creates a logger for the application to use.
-    ILogger logger = _loggerFactory.CreateLogger<EchoWithCounterBot>();
-
-    var secretKey = Configuration.GetSection("botFileSecret")?.Value;
-    var botFilePath = Configuration.GetSection("botFilePath")?.Value;
-
-    // Loads .bot configuration file and adds a singleton that your Bot can access through dependency injection.
-    BotConfiguration botConfig = null;
-    try
-    {
-        botConfig = BotConfiguration.Load(botFilePath ?? @".\BotConfiguration.bot", secretKey);
-    }
-    catch
-    {
-        //...
-    }
-
-    services.AddSingleton(sp => botConfig);
-
-    // Retrieve current endpoint.
-    var environment = _isProduction ? "production" : "development";
-    var service = botConfig.Services.Where(s => s.Type == "endpoint" && s.Name == environment).FirstOrDefault();
-    if (!(service is EndpointService endpointService))
-    {
-        throw new InvalidOperationException($"The .bot file does not contain an endpoint with name '{environment}'.");
-    }
-
-    options.CredentialProvider = new SimpleCredentialProvider(endpointService.AppId, endpointService.AppPassword);
-
-    // Catches any errors that occur during a conversation turn and logs them.
-    options.OnTurnError = async (context, exception) =>
-    {
-        logger.LogError($"Exception caught : {exception}");
-        await context.SendActivityAsync("Sorry, it looks like something went wrong.");
-    };
-
-    // The Memory Storage used here is for local bot debugging only. When the bot
-    // is restarted, everything stored in memory will be gone.
-    IStorage dataStore = new MemoryStorage();
-
-    // ...
-
-    // Create Conversation State object.
-    // The Conversation State object is where we persist anything at the conversation-scope.
-    var conversationState = new ConversationState(dataStore);
-
-    options.State.Add(conversationState);
-});
-```
-
-`ConfigureServices` メソッドでは、`EchoBotAccessors` の作成と登録も行います。このアクセサーは、**EchoBotStateAccessors.cs** ファイルで定義され、ASP.NET Core の依存関係挿入フレームワークを使用して、パブリック `EchoWithCounterBot` コンストラクターに渡されます。
-
-```csharp
-// Accessors created here are passed into the IBot-derived class on every turn.
-services.AddSingleton<EchoBotAccessors>(sp =>
-{
-    var options = sp.GetRequiredService<IOptions<BotFrameworkOptions>>().Value;
-    // ...
-    var conversationState = options.State.OfType<ConversationState>().FirstOrDefault();
-    // ...
-
-    // Create the custom state accessor.
-    // State accessors enable other components to read and write individual properties of state.
-    var accessors = new EchoBotAccessors(conversationState)
-    {
-        CounterState = conversationState.CreateProperty<CounterState>(EchoBotAccessors.CounterStateName),
-    };
-
-    return accessors;
-});
-```
-
-`Configure` メソッドでは、ご自身のアプリで Bot Framework とその他のいくつかのファイルが使用されることを指定します。これにより、アプリの構成が完了します。 Bot Framework を使用するすべてのボットで、その構成の呼び出しが必要です。 `ConfigureServices` と `Configure` は、アプリの起動時にランタイムによって呼び出されます。
-
-### <a name="manage-state"></a>状態の管理
-
-このファイルには、現在の状態を維持するために、お客様のボットによって使用されるシンプルなクラスが含まれます。 これには、お客様のカウンターのインクリメントに使用する `int` のみが含まれます。
-
-```cs
-public class CounterState
-{
-    public int TurnCount { get; set; } = 0;
-}
-```
-
-### <a name="accessor-class"></a>アクセサー クラス
-
-`EchoBotAccessors` クラスは、`Startup` クラスにシングルトンとして作成され、IBot 派生クラスに渡されます。 例では、 `public class EchoWithCounterBot : IBot`が使用されます。 このアクセサーは、ボットで会話データを保持する際に使用されます。 `EchoBotAccessors` のコンストラクターには、Startup.cs ファイルに作成された会話オブジェクトが渡されます。
-
-```cs
-public class EchoBotAccessors
-{
-    public EchoBotAccessors(ConversationState conversationState)
-    {
-        ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
-    }
-
-    public static string CounterStateName { get; } = $"{nameof(EchoBotAccessors)}.CounterState";
-
-    public IStatePropertyAccessor<CounterState> CounterState { get; set; }
-
-    public ConversationState ConversationState { get; }
-}
-```
-
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
-
-Yeoman ジェネレーターにより、[restify](http://restify.com/) Web アプリケーションが作成されます。 ドキュメントで restify クイック スタートを確認すると、生成された **index.js** ファイルと似たアプリが表示されます。 このセクションでは、主に、**package.json**、**.env**、 **index.js**、**bot.js**、および **echobot-with-counter.bot** ファイルについて説明します。 一部のファイルに含まれるコードはここにコピーされませんが、ボットを実行すると表示されます。また、[Node.js echobot-with-counter](https://aka.ms/js-echobot-with-counter) サンプルを参照することができます。
+Yeoman ジェネレーターにより、[restify](http://restify.com/) Web アプリケーションが作成されます。 ドキュメントで restify クイック スタートを確認すると、生成された **index.js** ファイルと似たアプリが表示されます。 ここではテンプレートによって生成されるキー ファイルをいくつかを取り上げます。 一部のファイルに含まれるコードはコピーされませんが、ボットを実行すると表示されます。また、[Node.js echobot](https://aka.ms/js-echobot-sample) サンプルを参照できます。
 
 ### <a name="packagejson"></a>package.json
 
@@ -233,7 +127,169 @@ Yeoman ジェネレーターにより、[restify](http://restify.com/) Web ア�
 
 `npm install dotenv`
 
-### <a name="indexjs"></a>index.js
+---
+
+### <a name="bot-logic"></a>ボット ロジック
+
+ボット ロジックは 1 つ以上のチャネルからの受信アクティビティを処理し、応答の送信アクティビティを生成します。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+主なボット ロジックはボット コードで定義され、ここでは `Bots/EchoBot.cs` と呼ばれます。 `EchoBot` は `AcitivityHandler` から派生し、これは `IBot` インターフェイスから派生しています。 `ActivityHandler` ではさまざまなハンドラーがさまざまな種類のアクティビティに対して定義されます。たとえば、ここでは `OnMessageActivityAsync` および `OnMembersAddedAsync` の 2 つが定義されます。 これらのメソッドは保護されていますが、`ActivityHandler` から派生しているため、上書きできます。
+
+`ActivityHandler` で定義されているハンドラーを次に示します。
+
+| Event | Handler | 説明 |
+| :-- | :-- | :-- |
+| 任意のアクティビティの種類を受信した | `OnTurnAsync` | 受信したアクティビティの種類に基づいて、他のハンドラーのいずれかを呼び出します。 |
+| メッセージ アクティビティを受信した | `OnMessageActivityAsync` | これをオーバーライドして `Message` アクティビティを処理します。 |
+| 会話の更新アクティビティを受信した | `OnConversationUpdateActivityAsync` | `ConversationUpdate` アクティビティで、ボット以外のメンバーが会話に参加した場合、または会話から退出した場合にハンドラーを呼び出します。 |
+| ボットではないメンバーが会話に参加した | `OnMembersAddedAsync` | これをオーバーライドして、会話に参加するメンバーを処理します。 |
+| ボットではないメンバーが会話から退出した | `OnMembersRemovedAsync` | これをオーバーライドして、会話から退出メンバーを処理します。 |
+| イベント アクティビティを受信した | `OnEventActivityAsync` | `Event` アクティビティで、イベントの種類に固有のハンドラーを呼び出します。 |
+| Token-response イベント アクティビティを受信した | `OnTokenResponseEventAsync` | これをオーバーライドして、トークン応答イベントを処理します。 |
+| Non-token-response イベント アクティビティを受信した | `OnEventAsync` | これをオーバーライドして、その他の種類のイベントを処理します。 |
+| 他のアクティビティの種類を受信した | `OnUnrecognizedActivityTypeAsync` | これをオーバーライドして、他の方法では処理されない任意のアクティビティの種類を処理します。 |
+
+このような各種ハンドラーにインバウンド アクティビティに関する情報を提供する `turnContext` があり、これはインバウンド HTTP 要求に対応しています。 アクティビティの種類もさまざまであるため、各ハンドラーが、そのターン コンテキスト パラメーターで厳密に型指定されたアクティビティを提供します。ほとんどの場合、`OnMessageActivityAsync` は常に処理され通常は最も一般的です。
+
+このフレームワークの以前の 4.x バージョンでは、パブリック メソッド `OnTurnAsync` を実装するオプションもあります。 現在、このメソッドの基本実装はエラー チェックを処理し、各受信アクティビティの種類に応じて、特定のハンドラー (たとえば、このサンプルでは定義する 2 つのハンドラー) をそれぞれ呼び出します。 ほとんどの場合、このメソッドはそのままにして、個別のハンドラーを使用できますが、`OnTurnAsync` のカスタム実装が必要な場合でも、これは引き続き使用できます。
+
+> [!IMPORTANT]
+> `OnTurnAsync` メソッドをオーバーライドする場合は、`base.OnTurnAsync` を呼び出して、他のすべての `On<activity>Async` ハンドラーを呼び出すための基本実装を取得するか、ご自身でこれらのハンドラーを呼び出す必要があります。 それ以外の場合、これらのハンドラーは呼び出されず、そのコードは実行されません。
+
+このサンプルでは、新しいユーザーを歓迎するか、`SendActivityAsync` 呼び出しを使用してユーザーが送信したメッセージをエコー バックします。 アウトバウンド アクティビティは、アウトバウンド HTTP POST 要求に対応します。
+
+```cs
+public class MyBot : ActivityHandler
+{
+    protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+    {
+        await turnContext.SendActivityAsync(MessageFactory.Text($"Echo: {turnContext.Activity.Text}"), cancellationToken);
+    }
+
+    protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+    {
+        foreach (var member in membersAdded)
+        {
+            await turnContext.SendActivityAsync(MessageFactory.Text($"welcome {member.Name}"), cancellationToken);
+        }
+    }
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+主なボット ロジックはボット コードで定義され、ここでは `bots\echoBot.js` と呼ばれます。 `EchoBot` は `AcitivityHandler` から派生しています。 `ActivityHandler` ではさまざまなハンドラーがさまざまな種類のアクティビティに対して定義されます。ご自身のボットの動作を変更するには、`onMessage`、`onConversationUpdate` などの追加ロジックをここで指定します。
+
+`ActivityHandler` で定義されているハンドラーを次に示します。
+
+| Event | Handler | 説明 |
+| :-- | :-- | :-- |
+| 任意のアクティビティの種類を受信した | `onTurn` | 受信したアクティビティの種類に基づいて、他のハンドラーのいずれかを呼び出します。 |
+| メッセージ アクティビティを受信した | `onMessage` | これに対する関数を指定して、`Message` アクティビティを処理します。 |
+| 会話の更新アクティビティを受信した | `onConversationUpdate` | `ConversationUpdate` アクティビティで、ボット以外のメンバーが会話に参加した場合、または会話から退出した場合にハンドラーを呼び出します。 |
+| ボットではないメンバーが会話に参加した | `onMembersAdded` | これに対する関数を指定して、会話に参加するメンバーを処理します。 |
+| ボットではないメンバーが会話から退出した | `onMembersRemoved` | これに対する関数を指定して、会話から退出するメンバーを処理します。 |
+| イベント アクティビティを受信した | `onEvent` | `Event` アクティビティで、イベントの種類に固有のハンドラーを呼び出します。 |
+| Token-response イベント アクティビティを受信した | `onTokenResponseEvent` | これに対する関数を指定して、トークン応答イベントを処理します。 |
+| 他のアクティビティの種類を受信した | `onUnrecognizedActivityType` | これに対する関数を指定して、他の方法では処理されない任意のアクティビティの種類を処理します。 |
+| アクティビティ ハンドラーが完了した | `onDialog` | これに対する関数を指定して、アクティビティ ハンドラーの残りの部分の実行後、ターンの最後に完了する必要があるすべての処理を実行します。 |
+
+それぞれのターンでは、最初に、ボットがメッセージを受信したかどうかを確認します。 ユーザーからメッセージを受信すると、送信されたメッセージをエコー バックします。
+
+```javascript
+const { ActivityHandler } = require('botbuilder');
+
+class MyBot extends ActivityHandler {
+    constructor() {
+        super();
+        // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
+        this.onMessage(async (context, next) => {
+            await context.sendActivity(`You said '${ context.activity.text }'`);
+            // By calling next() you ensure that the next BotHandler is run.
+            await next();
+        });
+        this.onConversationUpdate(async (context, next) => {
+            await context.sendActivity('[conversationUpdate event detected]');
+            // By calling next() you ensure that the next BotHandler is run.
+            await next();
+        });
+    }
+}
+
+module.exports.MyBot = MyBot;
+```
+
+---
+
+### <a name="access-the-bot-from-your-app"></a>アプリからボットへのアクセス
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+#### <a name="set-up-services"></a>サービスのセットアップ
+
+`Startup.cs` ファイルの `ConfigureServices` メソッドは、接続済みサービス、`appsettings.json` または Azure Key Vault (存在する場合) のキー、接続状態などを読み込みます。 ここでは、MVC を追加し、サービスで互換性バージョンを設定した後、ボット コントローラーへの依存関係の挿入を使用して、アダプターとボットを使用できるように設定します。
+
+<!-- want to explain the singleton vs transient here?-->
+
+```csharp
+// This method gets called by the runtime. Use this method to add services to the container.
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+    // Create the credential provider to be used with the Bot Framework Adapter.
+    services.AddSingleton<ICredentialProvider, ConfigurationCredentialProvider>();
+
+    // Create the Bot Framework Adapter.
+    services.AddSingleton<IBotFrameworkHttpAdapter, BotFrameworkHttpAdapter>();
+
+    // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
+    services.AddTransient<IBot, EchoBot>();
+}
+```
+
+`Configure` メソッドでご自身のアプリの構成を完了するには、そのアプリによって MVC とその他のいくつかのファイルが使用されることを指定します。 Bot Framework を使用するすべてのボットに、その構成呼び出しが必要ですが、これはご自身のボットをビルドするときに、サンプルまたは VSIX テンプレートで定義されます。 `ConfigureServices` と `Configure` は、アプリの起動時にランタイムによって呼び出されます。
+
+#### <a name="bot-controller"></a>ボット コントローラー
+
+標準の MVC 構造に従っているコントローラーを使用すると、メッセージおよび HTTP POST 要求のルーティングを決定できます。 このボットの場合、前の「[アクティビティの処理スタック](#the-activity-processing-stack)」セクションで説明したように、受信要求をアダプターの *process async activity* メソッドに渡します。 その呼び出しで、ボットと、必要になる可能性がある他の認証情報を指定します。
+
+コントローラーは `ControllerBase` を実装し、`Startup.cs` で設定したアダプターとボットを保持して (ここでは依存関係の挿入を使用可能)、ボットが受信 HTTP POST を受信したときに、必要な情報をそのボットに渡します。
+
+ここでは、クラスはルートおよびコントローラー属性によって実行されます。 これらはフレームワークがメッセージを適切にルーティングし、どのコントローラーを使用するかを認識するうえで役に立ちます。 ルート属性の値を変更すると、エンドポイント、エミュレーター、または他のチャネルによって使用されるその変更は、ご自身のボットにアクセスします。
+
+```cs
+// This ASP Controller is created to handle a request. Dependency Injection will provide the Adapter and IBot
+// implementation at runtime. Multiple different IBot implementations running at different endpoints can be
+// achieved by specifying a more specific type for the bot constructor argument.
+[Route("api/messages")]
+[ApiController]
+public class BotController : ControllerBase
+{
+    private readonly IBotFrameworkHttpAdapter Adapter;
+    private readonly IBot Bot;
+
+    public BotController(IBotFrameworkHttpAdapter adapter, IBot bot)
+    {
+        Adapter = adapter;
+        Bot = bot;
+    }
+
+    [HttpPost]
+    public async Task PostAsync()
+    {
+        // Delegate the processing of the HTTP POST to the adapter.
+        // The adapter will invoke the bot.
+        await Adapter.ProcessAsync(Request, Response, Bot);
+    }
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="indexjs"></a>index.js
 
 `index.js` では、ボットの設定のほか、ボット ロジックにアクティビティを転送するホスティング サービスの設定が行われます。
 
@@ -242,188 +298,75 @@ Yeoman ジェネレーターにより、[restify](http://restify.com/) Web ア�
 `index.js` ファイルの最上部に、必要な一連のモジュールまたはライブラリが表示されます。 これらのモジュールにより、お使いのアプリケーションに含める必要がある関数セットにアクセスできるようになります。
 
 ```javascript
-// Import required packages
+const dotenv = require('dotenv');
 const path = require('path');
 const restify = require('restify');
 
-// Import required bot services. See https://aka.ms/bot-services to learn more about the different parts of a bot.
-const { BotFrameworkAdapter, ConversationState, MemoryStorage } = require('botbuilder');
+// Import required bot services.
+// See https://aka.ms/bot-services to learn more about the different parts of a bot.
+const { BotFrameworkAdapter } = require('botbuilder');
+
+// This bot's main dialog.
+const { MyBot } = require('./bot');
+
 // Import required bot configuration.
-const { BotConfiguration } = require('botframework-config');
-
-const { EchoBot } = require('./bot');
-
-// Read botFilePath and botFileSecret from .env file
-// Note: Ensure you have a .env file and include botFilePath and botFileSecret.
 const ENV_FILE = path.join(__dirname, '.env');
-const env = require('dotenv').config({ path: ENV_FILE });
+dotenv.config({ path: ENV_FILE });
 ```
 
-#### <a name="bot-configuration"></a>ボットの構成
+#### <a name="set-up-services"></a>サービスのセットアップ
 
-次のパートでは、ボットの構成ファイルから情報が読み込まれます。
-
-```javascript
-// Get the .bot file path
-// See https://aka.ms/about-bot-file to learn more about .bot file its use and bot configuration.
-const BOT_FILE = path.join(__dirname, (process.env.botFilePath || ''));
-let botConfig;
-try {
-    // Read bot configuration from .bot file.
-    botConfig = BotConfiguration.loadSync(BOT_FILE, process.env.botFileSecret);
-} catch (err) {
-    console.error(`\nError reading bot file. Please ensure you have valid botFilePath and botFileSecret set for your environment.`);
-    console.error(`\n - The botFileSecret is available under appsettings for your Azure Bot Service bot.`);
-    console.error(`\n - If you are running this bot locally, consider adding a .env file with botFilePath and botFileSecret.`);
-    console.error(`\n - See https://aka.ms/about-bot-file to learn more about .bot file its use and bot configuration.\n\n`);
-    process.exit();
-}
-
-// For local development configuration as defined in .bot file
-const DEV_ENVIRONMENT = 'development';
-
-// Define name of the endpoint configuration section from the .bot file
-const BOT_CONFIGURATION = (process.env.NODE_ENV || DEV_ENVIRONMENT);
-
-// Get bot endpoint configuration by service name
-// Bot configuration as defined in .bot file
-const endpointConfig = botConfig.findServiceByNameOrId(BOT_CONFIGURATION);
-```
-
-#### <a name="bot-adapter-http-server-and-bot-state"></a>ボット アダプター、HTTP サーバー、ボット状態
-
-次のパートでは、サーバーとアダプターの設定が行われます。このサーバーとアダプターにより、お客様のボットがユーザーとやり取りして、応答を送信できます。 サーバーは、**BotConfiguration.bot** 構成ファイルで指定されたポートでリッスンするか、エミュレーターとの接続用の _3978_ にフォールバックします。 アダプターはご自身のボットのコンダクタとして機能し、送受信の通信、認証などを指示します。
-
-`MemoryStorage` をストレージ プロバイダーとして使用する状態オブジェクトも作成します。 この状態は `ConversationState` として定義されています。これは、単にご自身の会話の状態が保持されていることを意味します。 `ConversationState` には、ご自身が興味のある情報が保存されます。この場合は、単なるメモリ内のターン カウンターです。
+次のパートでは、サーバーとアダプターの設定が行われます。このサーバーとアダプターにより、お客様のボットがユーザーとやり取りして、応答を送信できます。 サーバーは、構成ファイルで指定したポートでリッスンするか、エミュレーターとの接続用の _3978_ にフォールバックします。 アダプターはご自身のボットのコンダクタとして機能し、送受信の通信、認証などを指示します。
 
 ```javascript
-// Create bot adapter.
-// See https://aka.ms/about-bot-adapter to learn more about bot adapter.
-const adapter = new BotFrameworkAdapter({
-    appId: endpointConfig.appId || process.env.microsoftAppID,
-    appPassword: endpointConfig.appPassword || process.env.microsoftAppPassword
+// Create HTTP server
+const server = restify.createServer();
+server.listen(process.env.port || process.env.PORT || 3978, () => {
+    console.log(`\n${ server.name } listening to ${ server.url }`);
+    console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator`);
+    console.log(`\nTo talk to your bot, open the emulator select "Open Bot"`);
 });
 
-// Catch-all for any unhandled errors in your bot.
+// Create adapter.
+// See https://aka.ms/about-bot-adapter to learn more about how bots work.
+const adapter = new BotFrameworkAdapter({
+    appId: process.env.MicrosoftAppId,
+    appPassword: process.env.MicrosoftAppPassword
+});
+
+// Catch-all for errors.
 adapter.onTurnError = async (context, error) => {
     // This check writes out errors to console log .vs. app insights.
     console.error(`\n [onTurnError]: ${ error }`);
     // Send a message to the user
-    context.sendActivity(`Oops. Something went wrong!`);
-    // Clear out state
-    await conversationState.clear(context);
-    // Save state changes.
-    await conversationState.saveChanges(context);
+    await context.sendActivity(`Oops. Something went wrong!`);
 };
 
-// Define a state store for your bot. See https://aka.ms/about-bot-state to learn more about using MemoryStorage.
-// A bot requires a state store to persist the dialog and user state between messages.
-let conversationState;
-
-// For local development, in-memory storage is used.
-// CAUTION: The Memory Storage used here is for local bot debugging only. When the bot
-// is restarted, anything stored in memory will be gone.
-const memoryStorage = new MemoryStorage();
-conversationState = new ConversationState(memoryStorage);
-
 // Create the main dialog.
-const bot = new EchoBot(conversationState);
-
-// Create HTTP server
-let server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3978, function() {
-    console.log(`\n${ server.name } listening to ${ server.url }`);
-    console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator`);
-    console.log(`\nTo talk to your bot, open echoBot-with-counter.bot file in the Emulator`);
-});
+const myBot = new MyBot();
 ```
 
-#### <a name="bot-logic"></a>ボット ロジック
+#### <a name="forwarding-requests-to-the-bot-logic"></a>ボット ロジックへの要求のを転送
 
 受信アクティビティは、アダプターの `processActivity` によってボット ロジックに送信されます。
-`processActivity` 内の 3 番目のパラメーターは、受信された[アクティビティ](#the-activity-processing-stack)がアダプターによって事前処理され、任意のミドルウェアを介してルーティングされた後、ボット ロジックを実行するために呼び出される関数ハンドラーです。 ターン コンテキスト変数は引数として関数ハンドラーに渡され、受信アクティビティ、送信者と受信者、チャネル、会話などに関する情報を提供する目的で使用できます。アクティビティの処理は、EchoBot の `onTurn` にルーティングされます。
+`processActivity` 内の 3 番目のパラメーターは、受信された[アクティビティ](#the-activity-processing-stack)がアダプターによって事前処理され、任意のミドルウェアを介してルーティングされた後、ボット ロジックを実行するために呼び出される関数ハンドラーです。 ターン コンテキスト変数は引数として関数ハンドラーに渡され、受信アクティビティ、送信者と受信者、チャネル、会話などに関する情報を提供する目的で使用できます。アクティビティの処理は、ボットの `run` メソッドにルーティングされます。 `run` は `ActivityHandler` に定義され、エラー チェックをいくつか実行します。その後、受信アクティビティの種類に基づいてボットのイベント ハンドラーを呼び出します。
 
 ```javascript
 // Listen for incoming requests.
 server.post('/api/messages', (req, res) => {
-    // Route received request to adapter for processing
-    adapter.processActivity(req, res, (context) => {
+    adapter.processActivity(req, res, async (context) => {
         // Route to main dialog.
-        await bot.onTurn(context);
+        await myBot.run(context);
     });
 });
 ```
 
-### <a name="echobot"></a>EchoBot
-
-アクティビティの処理はすべて、このクラスの `onTurn` ハンドラーにルーティングされます。 このクラスの作成時に、状態オブジェクトが渡されます。 この状態オブジェクトを使用することにより、このボットのターン カウンターを保持するための `this.countProperty` アクセサーがコンストラクターによって作成されます。
-
-それぞれのターンでは、最初に、ボットがメッセージを受信したかどうかを確認します。 ボットがメッセージを受信しなかった場合は、受信したアクティビティの種類がエコー バックされます。 次に、ボットの会話に関する情報が保持される状態変数を作成します。 カウント変数が `undefined` である場合、変数は 1 に設定されるか (ボットの初回起動時)、新しいメッセージごとにインクリメントされます。 カウントは、送信メッセージと共にユーザーにエコー バックします。 最後に、カウントを設定し、変更を状態に保存します。
-
-```javascript
-const { ActivityTypes } = require('botbuilder');
-
-// Turn counter property
-const TURN_COUNTER_PROPERTY = 'turnCounterProperty';
-
-class EchoBot {
-
-    constructor(conversationState) {
-        // Creates a new state accessor property.
-        // See https://aka.ms/about-bot-state-accessors to learn more about the bot state and state accessors
-        this.countProperty = conversationState.createProperty(TURN_COUNTER_PROPERTY);
-        this.conversationState = conversationState;
-    }
-
-    async onTurn(turnContext) {
-        // Handle message activity type. User's responses via text or speech or card interactions flow back to the bot as Message activity.
-        // Message activities may contain text, speech, interactive cards, and binary or unknown attachments.
-        // see https://aka.ms/about-bot-activity-message to learn more about the message and other activity types
-        if (turnContext.activity.type === ActivityTypes.Message) {
-            // read from state.
-            let count = await this.countProperty.get(turnContext);
-            count = count === undefined ? 1 : ++count;
-            await turnContext.sendActivity(`${ count }: You said "${ turnContext.activity.text }"`);
-            // increment and set turn counter.
-            await this.countProperty.set(turnContext, count);
-        } else {
-            // Generic handler for all other activity types.
-            await turnContext.sendActivity(`[${ turnContext.activity.type } event detected]`);
-        }
-        // Save state changes
-        await this.conversationState.saveChanges(turnContext);
-    }
-}
-
-exports.EchoBot = EchoBot;
-```
-
 ---
 
-## <a name="the-bot-file"></a>ボット ファイル
+## <a name="manage-bot-resources"></a>ボット リソースの管理
 
-**.bot** ファイルには、エンドポイント、アプリ ID、パスワードなどの情報のほか、ボットによって使用されるサービスの参照が格納されます。 このファイルは、テンプレートからボットの作成を開始すると、自動的に作成されますが、エミュレーターまたはその他のツールを使用して、独自のものを作成することもできます。 [エミュレーター](../bot-service-debug-emulator.md)を使ってボットをテストするときに、使用する .bot ファイルを指定できます。
-
-```json
-{
-    "name": "echobot-with-counter",
-    "services": [
-        {
-            "type": "endpoint",
-            "name": "development",
-            "endpoint": "http://localhost:3978/api/messages",
-            "appId": "",
-            "appPassword": "",
-            "id": "1"
-        }
-    ],
-    "padlock": "",
-    "version": "2.0"
-}
-```
+アプリ ID、パスワード、キーまたはシークレットなどのボット リソースは、適切に管理する必要があります。 これを行う方法の詳細について、「[ボットのリソースを管理](bot-file-basics.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - ボットにおける状態の役割を理解するには、「[状態の管理](bot-builder-concept-state.md)」を参照してください。
-- リソースの管理におけるボット ファイルの役割について理解するには、「[.bot ファイルでリソースを管理する](bot-file-basics.md)」を参照してください。
-- ボットを初めて作成するには、[Azure Bot Service の使用](../bot-service-quickstart.md)、[C# の使用](../dotnet/bot-builder-dotnet-sdk-quickstart.md)、または [JavaScript の使用](../javascript/bot-builder-javascript-quickstart.md)のいずれかのクイック スタートを参照してください。

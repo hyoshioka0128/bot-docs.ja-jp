@@ -6,13 +6,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 02/26/2019
-ms.openlocfilehash: 48a0a42d193b0e561a484330222217c18a611e8d
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.date: 04/30/2019
+ms.openlocfilehash: 1e0678d869b02d536eb5c3ce39461da94dbd9a57
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224950"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033089"
 ---
 # <a name="troubleshooting-general-problems"></a>一般的な問題のトラブルシューティング
 以下のよく寄せられる質問は、一般的なボット開発や運用上の問題のトラブルシューティングに役立ちます。
@@ -21,7 +21,7 @@ ms.locfileid: "57224950"
 
 1. [Visual Studio Code](debug-bots-locally-vscode.md) または [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017) を使用して、ご利用のボットのソース コードをデバッグします。
 1. ボットをクラウドにデプロイする前に、[エミュレーター](bot-service-debug-emulator.md)を使用してテストします。
-1. Azure などのクラウド ホスティング プラットフォームにボットをデプロイし、<a href="https://dev.botframework.com" target="_blank">Bot Framework ポータル</a>のボットのダッシュボードで組み込み Web チャット コントロールを使用して、ボットへの接続をテストします。 Azure にデプロイした後でボットに関する問題が発生した場合は、次のブログ記事を参考にしてください:「[Understanding Azure troubleshooting and support (Azure のトラブルシューティングとサポートについて理解する)](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/)」。
+1. Azure などのクラウド ホスティング プラットフォームにボットをデプロイし、<a href="https://portal.azure.com" target="_blank">Azure portal</a> のボットのダッシュボードで組み込み Web チャット コントロールを使用して、ボットへの接続をテストします。 Azure にデプロイした後でボットに関する問題が発生した場合は、次のブログ記事を参考にしてください:「[Understanding Azure troubleshooting and support (Azure のトラブルシューティングとサポートについて理解する)](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/)」。
 1. [認証][TroubleshootingAuth]を考えられる問題から除外します。
 1. Skype でボットをテストします。 これは、エンド ツー エンド ユーザー エクスペリエンスを確認するのに役立ちます。
 1. ダイレクト ラインや Web チャットなど、追加の認証要件があるチャネルでのボットのテストを検討してください。
@@ -104,7 +104,7 @@ SMS および電子メール メッセージでは、`from.Id` プロパティ�
 
 ## <a name="why-are-my-facebook-user-names-not-showing-anymore"></a>自分の Facebook のユーザー名が表示されなくなったのはなぜですか。
 
-ご利用の Facebook のパスワードを変更しましたか。 変更すると、アクセス トークンが無効になり、<a href="https://dev.botframework.com" target="_blank">Bot Framework ポータル</a>で Facebook Messenger チャネル用のボットの構成設定の更新が必要になります。
+ご利用の Facebook のパスワードを変更しましたか。 変更すると、アクセス トークンが無効になり、<a href="https://portal.azure.com" target="_blank">Azure portal</a> で Facebook Messenger チャネル用のボットの構成設定の更新が必要になります。
 
 ## <a name="why-is-my-kik-bot-replying-im-sorry-i-cant-talk-right-now"></a>Kik ボットから、"申し訳ありません。現在、会話することはできません" という応答が返されるのはなぜですか。
 
@@ -130,7 +130,7 @@ Skype、Facebook、Slack などの他のチャネルでは、ボットで事前�
 これを解決するには、ダイレクト ライン クライアントによって送信される各メッセージの `from` プロパティを、メッセージを送信しているユーザーを一意に表す安定した値に設定します。 たとえば、ユーザーが既に Web ページまたはアプリにサインインしている場合、ユーザーが送信したメッセージの `from` プロパティの値として、その既存のユーザー ID を使用できます。 あるいは、ページの読み込み時またはアプリケーションの読み込み時にランダムなユーザー ID を生成し、その ID を Cookike またはデバイス状態で格納し、ユーザーが送信したメッセージの `from` プロパティの値として、その ID を使用することもできます。
 
 ## <a name="what-causes-the-direct-line-30-service-to-respond-with-http-status-code-502-bad-gateway"></a>ダイレクト ライン 3.0 サービスから HTTP 状態コード 502 "ゲートウェイが不適切です" という応答が返される原因は何ですか。
-ご利用のボットに接続しようとしたときに、要求が正常に完了しない場合は、ダイレクト ライン 3.0 から HTTP 状態コード 502 が返されます。 このエラーは、ボットからエラーが返されたか、要求がタイムアウトになったことを示します。ご利用のボットで生成されたエラーの詳細については、<a href="https://dev.botframework.com" target="_blank">Bot Framework ポータル</a>内のボットのダッシュボードに移動して、影響を受けるチャネルに関する "問題" リンクをクリックしてください。 ご利用のボットに対して Application Insights が構成されている場合は、そこで詳細なエラー情報を見つけることもできます。 
+ご利用のボットに接続しようとしたときに、要求が正常に完了しない場合は、ダイレクト ライン 3.0 から HTTP 状態コード 502 が返されます。 このエラーは、ボットからエラーが返されたか、要求がタイムアウトになったことを示します。ご利用のボットで生成されたエラーの詳細については、<a href="https://portal.azure.com" target="_blank">Azure portal</a> 内のボットのダッシュボードに移動して、影響を受けるチャネルに関する "問題" リンクをクリックしてください。 ご利用のボットに対して Application Insights が構成されている場合は、そこで詳細なエラー情報を見つけることもできます。 
 
 ::: moniker range="azure-bot-service-3.0"
 
@@ -216,13 +216,6 @@ builder
     .InstancePerLifetimeScope();
 builder.Update(Conversation.Container);
 ```
-::: moniker-end
-
-## <a name="is-there-a-limit-on-the-amount-of-data-i-can-store-using-the-state-api"></a>State API を使用して格納できるデータの量に制限はありますか。
-
-はい。各状態ストア (つまり、ユーザー、会話、およびプライベート ボット データ バッグ) には、最大 64 KB のデータを含めることができます。 詳細については、「[状態データを管理する][StateAPI]」を参照してください。
-
-::: moniker range="azure-bot-service-3.0"
 
 ## <a name="how-do-i-version-the-bot-data-stored-through-the-state-api"></a>State API を使用して格納されたボット データはどのようにバージョン管理するのですか。
 

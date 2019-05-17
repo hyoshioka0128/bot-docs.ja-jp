@@ -7,19 +7,19 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 04/18/2019
-ms.openlocfilehash: 86a75fb315ec303cb8a519bfa02063c4e6780307
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.date: 05/05/2019
+ms.openlocfilehash: 569438e43a64a96239f7d9e490563498e7f6f279
+ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904815"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65039775"
 ---
 # <a name="about-azure-bot-service"></a>Azure Bot Service について
 
 [!INCLUDE [applies-to-both](includes/applies-to-both.md)]
 
-Azure Bot Service には、インテリジェントなボットの作成、テスト、配置、管理をすべて一元的に行うツールが備わっています。 SDK で提供されるモジュール式の拡張可能なフレームワーク、ツール、テンプレート、および AI サービスを使用することで、開発者は音声の使用、自然言語の解釈、質問と応答の処理などを行うボットを作成できます。
+Azure Bot Service および Bot Framework には、インテリジェントなボットの作成、テスト、配置、管理をすべて一元的に行うツールが備わっています。 SDK で提供されるモジュール式の拡張可能なフレームワーク、ツール、テンプレート、および AI サービスを使用することで、開発者は音声の使用、自然言語の解釈、質問と応答の処理などを行うボットを作成できます。
 
 ## <a name="what-is-a-bot"></a>ボットとは何ですか?
 ボットは、コンピューターを使用しているという感覚が薄く、人 (または少なくとも知的なロボット) とやり取りしているように感じられるエクスペリエンスを提供します。 もう人が直接介入する必要がないような、ディナーの予約やプロファイル情報の収集などの繰り返し発生する単純なタスクを自動化されたシステムに移行するために使用できます。 ユーザーは、テキスト、インタラクティブ カード、および音声を使ってボットと会話します。 ボットとの対話では、簡単な質問と回答や、サービスへのアクセスをインテリジェントに提供する洗練された会話などが可能です。
@@ -28,7 +28,7 @@ Azure Bot Service には、インテリジェントなボットの作成、テ�
 
 ボットは、ファイルの読み取りと書き込み、データベースや API の使用、一般的な計算タスクの実行といった、他の種類のソフトウェアと同じ操作を実行できます。 ボットの特徴は、人と人のコミュニケーションによく見られるメカニズムを使用する点にあります。 
 
-Azure Bot Service では次のものが提供されています。
+Azure Bot Service および Bot Framework には以下が用意されています。
 - ボット開発用の Bot Framework SDK
 - エンド ツー エンドのボット開発ワークフローに対応する Bot Framework ツール
 - ボットとチャネルの間でメッセージとイベントを送受信する Bot Framework Service (BFS)
@@ -40,7 +40,7 @@ Azure Bot Service では次のものが提供されています。
 
 ## <a name="building-a-bot"></a>ボットの作成 
 
-Azure Bot Service は、このプロセスを容易にするために、統合された一連のツールとサービスを提供します。 開発者は好みの開発環境やコマンド ライン ツールを選んで、ボットを作成できます。 C#、JavaScript、および TypeScript 用の SDK が存在します  (Java と Python 用の SDK は現在開発中です)。ボット開発のさまざまなステージ用にツールが用意されており、ボットの設計と構築に役立てることができます。
+Azure Bot Service および Bot Framework は、このプロセスを容易にするために、統合された一連のツールとサービスを提供します。 開発者は好みの開発環境やコマンド ライン ツールを選んで、ボットを作成できます。 C#、JavaScript、および TypeScript 用の SDK が存在します  (Java と Python 用の SDK は現在開発中です)。ボット開発のさまざまなステージ用にツールが用意されており、ボットの設計と構築に役立てることができます。
 
 ![ボットの概要](media/bot-service-overview.png) 
 
@@ -48,9 +48,9 @@ Azure Bot Service は、このプロセスを容易にするために、統合�
 あらゆる種類のソフトウェアと同様に、目標、プロセス、およびユーザーのニーズを完全に理解することが、成功するボットを作成するプロセスにとって重要です。 コードを書く前に、ボットの[デザイン ガイドライン](bot-service-design-principles.md) でベスト プラクティスを確認し、作成するボットに必要な事柄を見極めてください。 単純なボットを作成することも、音声、自然言語の解釈、質問への応答などの高度な機能を含めることもできます。
 
 ### <a name="build"></a>構築
-作成するボットは会話型インターフェイスを実装した Web サービスであり、Bot Framework サービスとやり取りして、メッセージとイベントを送受信します。 Bot Framework Service は、Azure Bot Service のコンポーネントの 1 つです。 任意の数の環境と言語でボットを作成できます。 [Azure portal](bot-service-quickstart.md) 内でボット開発を開始することも、[[C#](dotnet/bot-builder-dotnet-sdk-quickstart.md) | [JavaScript](javascript/bot-builder-javascript-quickstart.md)] のテンプレートを使用してローカルで開発することもできます。
+作成するボットは会話型インターフェイスを実装した Web サービスであり、Bot Framework サービスとやり取りして、メッセージとイベントを送受信します。 Bot Framework Service は、Azure Bot Service および Bot Framework のコンポーネントの 1 つです。 任意の数の環境と言語でボットを作成できます。 [Azure portal](bot-service-quickstart.md) 内でボット開発を開始することも、[[C#](dotnet/bot-builder-dotnet-sdk-quickstart.md) | [JavaScript](javascript/bot-builder-javascript-quickstart.md)] のテンプレートを使用してローカルで開発することもできます。
 
-Azure Bot Service の一環として、ボットの機能の拡張に使用できる追加コンポーネントが用意されています。
+Azure Bot Service および Bot Framework の一環として、ボットの機能の拡張に使用できる追加コンポーネントが用意されています
 
 | 機能 | 説明 | Link |
 | --- | --- | --- |
@@ -62,7 +62,7 @@ Azure Bot Service の一環として、ボットの機能の拡張に使用で�
 > [!NOTE]
 > 上の表にすべてがリストされているわけではありません。 ボット機能についてさらに調べるには、[メッセージの送信](~/v4sdk/bot-builder-howto-send-messages.md)以下の左側の記事を参照してください。
 
-さらに、ボット資産の作成、管理、テストに役立つコマンド ライン ツールも用意されています。 これらのツールにより、ボット構成ファイルの管理、LUIS アプリの構成、QnA ナレッジ ベースの構築、会話のモックなどを実行できます。 詳細については、コマンド ライン ツールの [readme](https://aka.ms/botbuilder-tools-readme) を参照してください。
+さらに、ボット資産の作成、管理、テストに役立つコマンド ライン ツールも用意されています。 これらのツールにより、LUIS アプリの構成、QnA ナレッジ ベースの構築、コンポーネント間のディスパッチ モデルの構築、会話のモックなどを実行できます。 詳細については、コマンド ライン ツールの [readme](https://aka.ms/botbuilder-tools-readme) を参照してください。
 
 また、SDK を通じて利用できる機能の多くを紹介しているさまざまな[サンプル](https://github.com/microsoft/botbuilder-samples)にアクセスすることもできます。 これらは、始めから豊富な機能を求めている開発者に最適です。
 

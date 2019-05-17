@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: 818017a81b497b13ee181dbb6b87c03a0182736d
-ms.sourcegitcommit: 75f32b3325dd0fc4d8128dee6c22ebf91e5785b3
+ms.openlocfilehash: 9fa9a23f4d14667aeb97d304498b415f2c8041d1
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53120679"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033062"
 ---
 # <a name="entities-and-activity-types"></a>エンティティとアクティビティの種類
 
@@ -32,9 +32,9 @@ ms.locfileid: "53120679"
 メッセージでユーザーをメンションするには、メッセージのエンティティ プロパティに *mention* オブジェクトを設定します。
 メンション オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |----|----|
-| type | エンティティの種類 ("mention") |
+| Type | エンティティの種類 ("mention") |
 | Mentioned | メンションされたユーザーを示すチャネル アカウント オブジェクト | 
 | Text | メンション自体を表す *activity.text* プロパティ内のテキスト (空または null 値の可能性があります) |
 
@@ -70,9 +70,9 @@ entity = [mention];
 
 place オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |----|----|
-| type | エンティティの種類 ("Place") |
+| Type | エンティティの種類 ("Place") |
 | Address | 説明または住所オブジェクト (将来) |
 | ジオ (主要地域)  | GeoCoordinates |
 | HasMap | 地図の URL または地図オブジェクト (将来) |
@@ -80,9 +80,9 @@ place オブジェクトには、次のプロパティが含まれています�
 
 geoCoordinates オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |----|----|
-| type | エンティティの種類 ("GeoCoordinates") |
+| Type | エンティティの種類 ("GeoCoordinates") |
 | Name | 場所の名前 |
 | Longitude | 場所の経度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 | Longitude | 場所の緯度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
@@ -159,93 +159,7 @@ if(context.activity.type === 'message'){
 
 ---
 
-アクティビティには最も一般的な **message** 以外に複数の種類があります。 アクティビティには複数の種類があります。
-
-| Activity.Type | インターフェイス | 説明 |
-|-----|-----|-----|
-| [message](#message) | IMessageActivity (C#) <br> Activity (JS) | ボットとユーザー間の通信を表します。 |
-| [contactRelationUpdate](#contactrelationupdate) | IContactRelationUpdateActivity (C#) <br> Activity (JS) | ユーザーの連絡先リストに対してボットが追加または削除されたことを示します。 |
-| [conversationUpdate](#conversationupdate) | IConversationUpdateActivity (C#) <br> Activity (JS) | ボットが会話に追加されたこと、他のメンバーが会話に追加された、または会話から削除されたこと、会話のメタデータが変更されたことを示します。 |
-| [deleteUserData](#deleteuserdata) | 該当なし | ボットに保存されている可能性のあるユーザー データを削除するようにユーザーが要求したことをボットに示します。 |
-| [endOfConversation](#endofconversation) | IEndOfConversationActivity (C#) <br> Activity (JS) | 会話の終了を示します。 |
-| [event](#event) | IEventActivity (C#) <br> Activity (JS) | ボットに送信される、ユーザーに表示されない通信を表します。 |
-| [installationUpdate](#installationupdate) | IInstallationUpdateActivity (C#) <br> Activity (JS) | チャネルの組織単位 (顧客テナントや "チーム" など) 内のボットのインストールまたはアンインストールを表します。 |
-| [invoke](#invoke) | IInvokeActivity (C#) <br> Activity (JS) | ボットに送信される、特定の操作の実行を要求する通信を表します。 このアクティビティの種類は、Microsoft Bot Framework による内部使用のために予約されてます。 |
-| [messageReaction](#messagereaction) | IMessageReactionActivity (C#) <br> Activity (JS) | ユーザーが既存のアクティビティに反応したことを示します。 たとえば、ユーザーがメッセージの "いいね！" ボタンをクリックしたような場合です。 |
-| [typing](#typing) | ITypingActivity (C#) <br> Activity (JS) | 会話の相手側のユーザーまたはボットが応答をコンパイルしていることを示します。 |
-| messageUpdate | IMessageUpdateActivity (C#) <br> Activity (JS) | 会話内の以前のメッセージ アクティビティを更新する要求を示します。 |
-| messageDelete | IMessageDeleteActivity (C#) <br> Activity (JS) | 会話内の以前のメッセージ アクティビティを削除する要求を示します。 |
-| suggestion | ISuggestionActivity (C#) <br> Activity (JS) | 別の特定のアクティビティについての受信者にする個人的な提案を示します。 |
-| trace | ITraceActivity (C#) <br> Activity (JS) | ログに記録された会話のトランスクリプトにボットから内部情報を記録できるアクティビティ。 |
-| handoff | IHandoffActivity (C#) <br> Activity (JS) | 会話の制御権が移転されているか、会話の制御権の移転を求める要求。 |
-
-## <a name="message"></a>message
-
-<!-- Only the last link is different. -->
-
-::: moniker range="azure-bot-service-3.0"
-
-ボットは、メッセージ アクティビティを送信してユーザーに情報を伝達し、ユーザーからメッセージ アクティビティを受信します。
-プレーン テキストだけで構成されているシンプルなメッセージもあれば、読み上げテキスト、[推奨されるアクション](v4sdk/bot-builder-howto-add-suggested-actions.md)、[メディアの添付ファイル](v4sdk/bot-builder-howto-add-media-attachments.md)、[リッチ カード](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card)、[チャネル固有のデータ](~/dotnet/bot-builder-dotnet-channeldata.md)など、よりリッチなコンテンツを含むメッセージもあります。
-
-::: moniker-end
-
-::: moniker range="azure-bot-service-4.0"
-
-ボットは、メッセージ アクティビティを送信してユーザーに情報を伝達し、ユーザーからメッセージ アクティビティを受信します。
-プレーン テキストだけで構成されているシンプルなメッセージもあれば、読み上げテキスト、[推奨されるアクション](v4sdk/bot-builder-howto-add-suggested-actions.md)、[メディアの添付ファイル](v4sdk/bot-builder-howto-add-media-attachments.md)、[リッチ カード](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card)、[チャネル固有のデータ](~/v4sdk/bot-builder-channeldata.md)など、よりリッチなコンテンツを含むメッセージもあります。
-
-::: moniker-end
-
-## <a name="contactrelationupdate"></a>contactRelationUpdate
-
-ボットがユーザーの連絡先リストに対して追加または削除されるたびに、ボットは連絡先関係更新アクティビティを受信します。 アクティビティのアクション プロパティ (追加 | 削除) の値は、ボットがユーザーの連絡先リストに対して追加または削除されているかを示します。
-
-## <a name="conversationupdate"></a>conversationUpdate
-
-ボットは、ボットが会話に追加されたり、他のメンバーが会話に追加または会話から削除されたり、会話メタデータが変更されたりするたびに、会話更新アクティビティを受信します。
-
-メンバーが会話に追加された場合、アクティビティの追加メンバー プロパティには、新しいメンバーを示すチャネル アカウント オブジェクトの配列が含まれます。
-
-ボットが会話に追加されたか (つまり、新しいメンバーの 1 つか) どうかを判断するには、アクティビティの受信者 ID (つまり、ボットの ID) の値が、追加メンバー配列のアカウントのいずれかの ID プロパティと一致するかどうかを評価します。
-
-メンバーが会話から削除された場合、削除メンバー プロパティには、削除されたメンバーを示すチャネル アカウント オブジェクトの配列が含まれます。
-
-> [!TIP]
-> ユーザーが会話に参加したことを示す会話更新アクティビティをボットが受信した場合、そのユーザーにウェルカム メッセージを送信して応答させることを選択できます。
-
-## <a name="deleteuserdata"></a>deleteUserData
-
-ボットは、ボットが以前に保持していたユーザーのデータを削除するようにユーザーが要求すると、ユーザー データ削除アクティビティを受信します。 ボットがこの種類のアクティビティを受信した場合、ボットはその要求を実行したユーザー用に以前保存した個人を特定できる情報 (PII) を削除する必要があります。
-
-## <a name="endofconversation"></a>endOfConversation
-
-ボットは、ユーザーが会話を終了したことを示す会話終了アクティビティを受信します。 ボットは、会話終了アクティビティを送信して、会話を終了していることをユーザーに示すことができます。
-
-## <a name="event"></a>event
-
-ボットは、外部プロセスまたは外部サービスから、ボットに情報を通信することを望むが、その情報をユーザーには表示しないことを示す、イベント アクティビティを受信する場合があります。 通常、イベント アクティビティの送信者は、ボットがいかなる方法でも受信確認を行うことを望みません。
-
-## <a name="installationupdate"></a>installationUpdate
-
-インストール更新アクティビティは、チャネルの組織単位 (顧客テナントや "チーム" など) 内のボットのインストールまたはアンインストールを表します。 インストール更新アクティビティは、一般に、チャネルの追加または削除を表していません。 チャネルは、チャネル内のテナント、チーム、他の組織単位のボットが追加または削除されるときに、インストール アクティビティを送信できます。 ボットがチャネルにインストールされるとき、またはボットがチャネルから削除されるときは、チャネルはインストール アクティビティを送信してはなりません。
-
-## <a name="invoke"></a>invoke
-
-ボットは、ボットに対する特定の操作の実行要求を表す呼び出しアクティビティを受信することがあります。
-通常、呼び出しアクティビティの送信者は、ボットが HTTP 応答で受信確認することを期待しています。
-このアクティビティの種類は、Microsoft Bot Framework による内部使用のために予約されてます。
-
-## <a name="messagereaction"></a>messageReaction
-
-一部のチャネルは、ユーザーが既存のアクティビティに反応したときに、メッセージ反応アクティビティをボットに送信します。 たとえば、ユーザーがメッセージの "いいね！" ボタンをクリックしたような場合です。 replyToId プロパティは、ユーザーが反応したアクティビティを示します。
-
-メッセージ反応アクティビティは、チャネルで定義されている任意の数のメッセージ反応の種類に対応することができます。 たとえば、チャネルは反応の種類として "Like" や "PlusOne" を送信できます。
-
-## <a name="typing"></a>typing
-
-ボットは、ユーザーが応答を入力していることを示す入力中アクティビティを受信します。
-ボットは、入力中アクティビティを送信して、要求を満たしたり応答を作成したりするための作業を行っていることをユーザーに示すことができます。
+アクティビティの種類が複数あります。たとえば最も一般的な **message** 以外に複数の種類を使用できます。 説明と詳細については、[アクティビティ スキーマ ページ](https://aka.ms/botSpecs-activitySchema)をご覧ください。
 
 ::: moniker range="azure-bot-service-3.0"
 

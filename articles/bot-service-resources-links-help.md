@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: f9379613953714333ce4d174f5fa544213f84e99
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: b63f58596e5e0f4548e766f30be1b13b5d2fcd4e
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224917"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033593"
 ---
 # <a name="bot-framework-additional-resources"></a>Bot Framework のその他のリソース
 
@@ -27,6 +27,7 @@ ms.locfileid: "54224917"
 |        <strong>コミュニティ チャット グループ</strong>        |                                                                                                                                                                                                                        [Gitter.IM](https://gitter.im/Microsoft/BotBuilder)                                                                                                                                                                                                                        |
 |            <strong>ボットの使用</strong>             |                                                                                                                                                                                                                    公開元の電子メールでボットの開発者に連絡します。                                                                                                                                                                                                                     |
 | <strong>Bot Framework SDK に関する問題/提案</strong> |                                                                                                                                                                                           <a href="https://github.com/Microsoft/BotBuilder-v3/" target="_blank">GitHub リポジトリ</a>の [Issues] タブを使用します。                                                                                                                                                                                            |
+| <strong>Azure のヘルプとサポート</strong>             |                                                                                       [Azure ヘルプとサポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)                                                                                                                                                            |
 |        <strong>ドキュメントの問題</strong>        |                                                                                                                                                                     Bot Framework ドキュメント GitHub リポジトリに<a href="https://github.com/MicrosoftDocs/bot-framework-docs/issues" target="_blank">問題</a>を報告します。                                                                                                                                                                      |
 |       <strong>ドキュメントの更新</strong>        |                                                                                                                                                   記事の [編集] リンクをクリックし、<a href="https://github.com/MicrosoftDocs/bot-framework-docs" target="_blank">Bot Framework ドキュメント GitHub リポジトリ</a>に pull request を送信します。                                                                                                                                                   |
 |          <strong>不正使用の報告</strong>           |                                                                                                                                                                                                            [bf-reports@microsoft.com](mailto://bf-reports@microsoft.com) までご連絡ください。                                                                                                                                                                                                            |

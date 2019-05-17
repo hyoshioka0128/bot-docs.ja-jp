@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f7e68b9ab6ef1fca189108ed4117c0ab17f4d9f2
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 5ae3acded991411156d3e69f4ed9360df9bdccb1
+ms.sourcegitcommit: 4c5c08e7c7eaa5f74c6ac35d8478954b998625f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224297"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64906306"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
 
@@ -31,7 +31,7 @@ Cortana などの音声対応チャネルのボットを作成している場合
 
 Bot Framework SDK for Node.js を使用すると、音声対応チャネルでボットが読み上げるテキストを指定する方法は複数あります。 `IMessage.speak` プロパティを設定し、`session.send()` メソッド、`session.say()` メソッド (表示テキスト、音声テキスト、オプションを指定するパラメーターを渡す)、または組み込みプロンプト (オプション `speak` と `retrySpeak` を指定する) を使用してメッセージを送信することができます。
 
-### <a id="message-speak"></a> IMessage.speak 
+### <a id="message-speak"></a> IMessage.speak
 
 `session.send()` メソッドを使用して送信されるメッセージを作成している場合は、`speak` プロパティを設定して、ボットが読み上げるテキストを指定します。 次のコード例では、読み上げるテキストを指定し、ボットが[ユーザー入力を受け付けている](bot-builder-nodejs-send-input-hints.md)ことを示すメッセージを作成します。
 
@@ -47,7 +47,7 @@ Bot Framework SDK for Node.js を使用すると、音声対応チャネルで�
 |----|----|
 | `displayText` | 表示されるテキスト。 |
 | `speechText` | 読み上げるテキスト (プレーンテキストまたは <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">SSML</a> 形式)。 |
-| `options` | 添付ファイルや[入力ヒント](bot-builder-nodejs-send-input-hints.md)を含めることができる [IMessage][IMessage] オブジェクト。 |
+| `options` | 添付ファイルや[入力ヒント](bot-builder-nodejs-send-input-hints.md)を含めることができる `IMessage` オブジェクト。 |
 
 次のコード例では、表示するテキストと読み上げるテキストを指定し、ボットが[ユーザー入力を無視している](bot-builder-nodejs-send-input-hints.md)ことを示すメッセージを送信します。
 
@@ -78,10 +78,3 @@ Bot Framework SDK for .NET を使用して音声対応ボットを作成する�
 
 - <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">音声合成マークアップ言語 (SSML)</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Roller のサンプル (GitHub)</a>
-- [Bot Framework SDK for Node.js リファレンス][SDKReference]
-
-[SDKReference]: https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html
-
-[Message]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message
-
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage

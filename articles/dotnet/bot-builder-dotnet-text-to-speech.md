@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3eef1ec583764449554a223ec9dc339ff505ace6
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: f93ab91281cf0f19be10898436dc41a6a1583c9a
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225597"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032978"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
 
@@ -51,7 +51,9 @@ Bot Framework SDK for .NET を使用すると、音声対応チャネルでボ�
 
 ## <a id="ssml"></a> 音声合成マークアップ言語 (SSML)
 
-ボットで読み上げるテキストを指定するには、プレーンテキスト文字列または音声合成マークアップ言語 (SSML) として書式設定された文字列のいずれかを使用できます。SSML は XML ベースのマークアップ言語であり、声、速度、音量、発音、声の高さなどボットの音声のさまざまな特性を制御できます。 SSML の詳細については、「<a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language Reference (音声合成マークアップ言語リファレンス)</a>」を参照してください。
+ボットが読み上げるテキストを指定するには、それに音声合成マークアップ言語 (SSML) として書式設定された文字列を設定します。 SSML は、声、速さ、音量、発音、ピッチなどのボットの音声のさまざまな特性を制御できる XML ベースのマークアップ言語です (したがって、有効な XML である必要があります)。 SSML の詳細については、「<a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language Reference (音声合成マークアップ言語リファレンス)</a>」を参照してください。
+
+SSML 形式の文字列を指定する場合、外側 SSML ラッパー要素は省略できます。
 
 ## <a name="input-hints"></a>入力ヒント
 
@@ -66,7 +68,7 @@ Bot Framework SDK for .NET を使用して音声対応ボットを作成する�
 - [メッセージの作成](bot-builder-dotnet-create-messages.md)
 - [メッセージへの入力ヒントの追加](bot-builder-dotnet-add-input-hints.md)
 - <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">音声合成マークアップ言語 (SSML)</a>
-- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-RollerSkill" target="_blank">ローラー スキルのサンプル (GitHub)</a>
+- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-RollerSkill" target="_blank">ローラー スキルのサンプル (GitHub)</a>
 - <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
 - <a href="/dotnet/api/microsoft.bot.connector.imessageactivity" target="_blank">IMessageActivity インターフェイス</a>
 - <a href="/dotnet/api/microsoft.bot.builder.dialogs.internals.dialogcontext" target="_blank">DialogContext クラス</a>

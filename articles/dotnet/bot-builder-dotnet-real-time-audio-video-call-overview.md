@@ -1,21 +1,18 @@
 ---
-title: Skype 用のリアルタイム メディア ボットのビルド | Microsoft Docs
-description: Bot Framework SDK for .NET と Bot Builder-RealTimeMediaCalling SDK for .NET を使用し、Skype で音声/動画によるリアルタイム呼び出しを行うボットをビルドする方法について説明します。
-author: MalarGit
-ms.author: malarch
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 12/13/17
-monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a539ca3258e8c9a8020bfa7c939f6eddbdd30feb
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+redirect_url: https://aka.ms/realTimeMediaCalling-repo
+ms.openlocfilehash: 9251c3a8ea75376b0891fc173975470a66ccaec8
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225657"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032952"
 ---
+<a name="--"></a><!--
+---
+title:Skype 用のリアルタイム メディア ボットのビルド | Microsoft Docs description:Bot Framework SDK for .NET と Bot Builder-RealTimeMediaCalling SDK for .NET を使用し、Skype で音声/動画によるリアルタイム呼び出しを行うボットをビルドする方法について説明します。
+作成者:MalarGit ms.author: malarch manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date:12/13/17 monikerRange: 'azure-bot-service-3.0'
+---
+
 # <a name="build-a-real-time-media-bot-for-skype"></a>Skype 用のリアルタイム メディア ボットのビルド
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -375,3 +372,4 @@ private async Task OnRosterUpdateNotification(RosterUpdateNotification rosterUpd
 ### <a name="handle-call-clean-up-by-the-bot-framework"></a>Bot Framework で呼び出しのクリーンアップを処理する
 エラー状態では (たとえば、妥当な時間内に `AnswerAppHostedMediaOutcomeEvent` が届かない)、Bot Framework によって呼び出しが終了されることがあります。 ボットでは `OnCallCleanup` イベントを登録し、メディア ソケットを破棄する必要があります。
 
+-->

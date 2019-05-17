@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: 96f2963604d12c9c9e235288ad4df25924f45af4
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 04/10/2019
+ms.openlocfilehash: 717a95d580bad218ade9a884522724f1c6b96ad7
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998011"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032641"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -59,6 +59,26 @@ Authorization: Bearer SECRET
 POST https://directline.botframework.com/v3/directline/tokens/generate
 Authorization: Bearer RCurR_XV9ZA.cwA.BKA.iaJrC8xpy8qbOF5xnR2vtCX7CZj0LdjAPGfiCpg4Fv0
 ```
+
+要求ペイロードにはトークン パラメーターが含まれています。これは省略可能ですが、使用することをお勧めします。 Direct Line サービスに送り返すことができるトークンを生成するときに、次のペイロードを提供して、接続セキュリティを強化します。 これらの値を含めることによって、Direct Line によるユーザー ID と名前の追加セキュリティ検証が実行可能になり、悪意のあるクライアントによるこれらの値の改ざんが禁止されます。 これらの値を含めて、Direct Line の "_会話更新_" アクティビティ送信機能を向上させることもできます。これにより、ユーザーが会話に参加したときに直ちに会話更新を生成できるようになります。 この情報が指定されていない場合、ユーザーは、Direct Line が会話更新を送信する前に、コンテンツを送信する必要があります。
+
+```json
+{
+  "user": {
+    "id": "string",
+    "name": "string"
+  },
+  "trustedOrigins": [
+    "string"
+  ]
+}
+```
+
+| パラメーター | Type | 説明 |
+| :--- | :--- | :--- |
+| `user.id` | string | 省略可能。 トークン内でエンコードするためのチャネル固有のユーザー ID。 Direct Line ユーザーの場合、`dl_` で始まる必要があります。 会話ごとに一意のユーザー ID を作成できます。セキュリティを強化するために、この ID は推測できないものにします。 |
+| `user.name` | string | 省略可能。 トークン内でエンコードするためのユーザーの表示用フレンドリ名。 |
+| `trustedOrigins` | 文字列配列 | 省略可能。 トークン内に埋め込む信頼されたドメインの一覧。 これらはボットの Web チャット クライアントをホストできるドメインです。 これはご自身のボット用の Direct Line 構成ページの一覧と一致する必要があります。 |
 
 ### <a name="response"></a>Response
 

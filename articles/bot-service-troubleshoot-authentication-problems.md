@@ -6,20 +6,20 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 02/26/2019
-ms.openlocfilehash: 780dcf4d9db48f9ef7f5a92180dc13c41cc63305
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.date: 04/30/2019
+ms.openlocfilehash: 756e24409532de1473e546e3f771be416cb44c78
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224940"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033654"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Bot Framework 認証のトラブルシューティング
 
 このガイドは、一連のシナリオを評価してどこに問題があるかを判断することで、ボットの認証問題をトラブルシューティングするのに役立ちます。 
 
 > [!NOTE]
-> このガイドのすべての手順を完了するには、[Bot Framework Emulator][Emulator] をダウンロードして使用する必要があります。さらに、<a href="https://dev.botframework.com" target="_blank">Bot Framework Portal</a> でボットの登録設定にアクセスできる必要があります。
+> このガイドのすべての手順を完了するには、[Bot Framework Emulator][Emulator] をダウンロードして使用する必要があります。さらに、<a href="https://portal.azure.com" target="_blank">Azure portal</a> でボットの登録設定にアクセスできる必要があります。
 
 ## <a id="PW"></a> アプリ ID とパスワード
 
@@ -65,15 +65,11 @@ var connector = new builder.ChatConnector({
 
 ::: moniker range="azure-bot-service-4.0"
 
-Bot Framework SDK for .NET を使用している場合は、`.bot` ファイル内の次の設定を編集します。
+Bot Framework SDK for .NET を使用している場合は、`appsettings.json` ファイル内の次の設定を編集します。
 
 ```json
-"services": [
-  {
-    "appId": "<your app ID>",
-    "appPassword": "<your app password>",
-  }
-]
+  "MicrosoftAppId": "<your app ID>",
+  "MicrosoftAppPassword": "<your app password>"
 ```
 
 Bot Framework SDK for Node.js を使用している場合は、次の値を編集します (または該当する環境変数を更新します)。
@@ -84,8 +80,6 @@ const adapter = new BotFrameworkAdapter({
     appPassword: null
 });
 ```
-
-構成に `.bot` ファイルを使用している場合は、`appId` と `appPassword` を `""` に更新できます。
 
 ::: moniker-end
 
@@ -148,7 +142,7 @@ curl -k -X POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/t
 
 ボットのセキュリティは、ボットが localhost 上でのみ実行される場合でも、Microsoft のサービスに依存します。 ボットのセキュリティを有効にするには、その構成設定を編集して、[手順 2](#step-2) で確認したアプリ ID とパスワードの値を入力します。  さらに、パッケージが最新の状態であること (具体的には `System.IdentityModel.Tokens.Jwt` と `Microsoft.IdentityModel.Tokens`) を確認します。
 
-Bot Framework SDK for .NET を使用している場合は、`appsettings.config` ファイルでこれらの設定を指定するか、または `.bot` ファイルで対応する値を指定します。
+Bot Framework SDK for .NET を使用している場合は、`appsettings.config` ファイルでこれらの設定を指定するか、または `appsettings.json` ファイルで対応する値を指定します。
 
 ```xml
 <appSettings>
@@ -200,7 +194,7 @@ var connector = new builder.ChatConnector({
 Bot Framework では、ボットはインターネットからアクセス可能である必要があるため、Azure などのクラウド ホスティング プラットフォームにボットをデプロイする必要があります。 ボットをデプロイする前に、[手順 3](#step-3) の説明に従って、必ずセキュリティを有効にしてください。
 
 > [!NOTE]
-> クラウド ホスティング プロバイダーをまだ利用していない場合は、<a href="https://azure.microsoft.com/en-us/free/" target="_blank">無料アカウント</a>を登録できます。 
+> クラウド ホスティング プロバイダーをまだ利用していない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料アカウント</a>を登録できます。 
 
 ボットを Azure にデプロイする場合は、アプリケーション用に SSL が自動的に構成され、それにより Bot Framework が必要とする **HTTPS** エンドポイントが有効になります。 別のクラウド ホスティング プロバイダーにデプロイする場合は、ボットが **HTTPS** エンドポイントを使用できるように、アプリケーションが SSL 用に構成されることを確認してください。
 
@@ -209,7 +203,7 @@ Bot Framework では、ボットはインターネットからアクセス可能
 セキュリティが有効なクラウドでボットをテストするには、次の手順を完了します。
 
 1. ボットが正常にデプロイされ、実行されていることを確認します。 
-2. <a href="https://dev.botframework.com" target="_blank">Bot Framework Portal</a> にサインインします。
+2. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
 3. **[マイ ボット]** をクリックします。
 4. テストするボットを選択します。
 5. **[テスト]** をクリックして、埋め込み Web チャット コントロールでボットを開きます。
@@ -228,7 +222,7 @@ Bot Framework では、ボットはインターネットからアクセス可能
 上記の手順を完了した後で、問題が発生した場合は、以下を実行できます。
 
 * [ボットをデバッグする](bot-service-debug-bot.md)方法に関する記事、およびそのセクションに示されているデバッグに関するその他の記事をご覧ください。
-* Bot Framework Emulator と <a href="https://ngrok.com/" target="_blank">ngrok</a> を使用して、[クラウド内のボットをデバッグする](~/bot-service-debug-emulator.md)。
+* Bot Framework Emulator と <a href="https://ngrok.com/" target="_blank">ngrok</a> トンネリング ソフトウェアを使用して、[クラウド内のボットをデバッグする](~/bot-service-debug-emulator.md)。 "*ngrok はマイクロソフト製品ではありません。*"
 * [Fiddler](https://www.telerik.com/fiddler) などのプロキシ化ツールを使用して、ボットとの間の HTTPS トラフィックを検査する。 *Fiddler はマイクロソフト製品ではありません。*
 * Bot Framework で使用される認証テクノロジーについては、[Bot Connector 認証ガイド][BotConnectorAuthGuide]を参照してください。
 * Bot Framework の[サポート][Support] リソースを使用して、他のユーザーにヘルプを要請する。 

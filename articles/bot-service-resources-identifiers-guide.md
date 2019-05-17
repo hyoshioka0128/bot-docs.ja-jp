@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: 3c4f8549f40740961feea24f73aa2e4b9b7bc82f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 04/30/2019
+ms.openlocfilehash: 28932ca45c6faaad2f17ecc03f026ba04352a5a1
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998889"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033072"
 ---
 # <a name="id-fields-in-the-bot-framework"></a>Bot Framework の ID フィールド
 
@@ -36,13 +36,13 @@ ms.locfileid: "49998889"
 
 ## <a name="bot-handle"></a>ボット ハンドル
 
-Bot Framework に登録されているボットにはそれぞれボット ハンドルがあります。
+Azure Bot Service に登録されているボットにはそれぞれボット ハンドルがあります。
 
 例: `FooBot`
 
-ボット ハンドルは、オンラインの Bot Framework へのボットの登録を表します。 この登録は HTTP Webhook のエンドポイントと、チャネルへの登録に関連付けられています。
+ボット ハンドルは、オンラインの Azure Bot Service へのボットの登録を表します。 この登録は HTTP Webhook のエンドポイントと、チャネルへの登録に関連付けられています。
 
-Bot Framework 開発ポータルでは、ボット ハンドルの一意性が確保されます。 ポータルでは大文字と小文字を区別しない一意性の確認が行われます (つまり、大文字と小文字にバリエーションがあるボット ハンドルが単一のハンドルとして扱われる) が、これは開発ポータルの特性であり、ボット ハンドル自体の特性とは限りません。
+Azure Bot Service では、ボット ハンドルの一意性が確保されます。 Azure portal では大文字と小文字を区別しない一意性の確認が行われます (つまり、大文字と小文字にバリエーションがあるボット ハンドルが単一のハンドルとして扱われる) が、これは Azure portal ポータルの特性であり、ボット ハンドル自体の特性とは限りません。
 
 ### <a name="rules-for-bot-handles"></a>ボット ハンドルの規則
 
@@ -50,7 +50,7 @@ Bot Framework 開発ポータルでは、ボット ハンドルの一意性が�
 
 ## <a name="app-id"></a>アプリケーション ID
 
-Bot Framework に登録されているボットにはそれぞれアプリケーション ID があります。
+Azure Bot Service に登録されているボットにはそれぞれアプリ ID があります。
 
 > [!NOTE]
 > 以前は、アプリは一般的に "MSA アプリ" や "MSA/AAD アプリ" と呼ばれていました。 現在、アプリはより一般的に単に "アプリ" と呼ばれますが、一部のプロトコル要素では永続的に "MSA アプリ" と呼ばれる可能性があります。

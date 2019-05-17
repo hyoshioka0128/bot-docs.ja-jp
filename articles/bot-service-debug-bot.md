@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 2/26/2019
-ms.openlocfilehash: 1e806358ffdba90848f0c8124c8315fd4e2dec76
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: aa16bc839a96a49615ed127aaf56f686f50a5397
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224840"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033000"
 ---
 # <a name="debug-a-bot"></a>ボットをデバッグする
 
-この記事では、Visual Studio や Visual Studio Code などの統合開発環境 (IDE) と Bot Framework Emulator を使用して、ボットをデバッグする方法について説明します。 これらの方法を使用してローカルで任意のボットをデバッグできますが、この記事ではクイック スタートで作成された [C#](~/dotnet/bot-builder-dotnet-sdk-quickstart.md) および [JS](~/javascript/bot-builder-javascript-quickstart.md) ボットを使います。
+この記事では、Visual Studio や Visual Studio Code などの統合開発環境 (IDE) と Bot Framework Emulator を使用して、ボットをデバッグする方法について説明します。 これらの方法を使用してローカルで任意のボットをデバッグできますが、この記事ではクイック スタートで作成された [C# ボット](~/dotnet/bot-builder-dotnet-sdk-quickstart.md)または [Javascript ボット](~/javascript/bot-builder-javascript-quickstart.md)を使います。
 
 ## <a name="prerequisites"></a>前提条件 
 - [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started) をダウンロードしてインストールします。
@@ -29,7 +29,7 @@ ms.locfileid: "57224840"
 コマンド ラインを使用して JavaScript のボットを実行し、エミュレーターでボットをテストするには、次のようにします。
 1. コマンド ラインで、ボット プロジェクトのディレクトリに移動します。
 1. **node app.js** コマンドを実行してボットを開始します。
-1. エミュレーターを起動し、ボットのエンドポイントに接続します (例: **http://localhost:3978/api/messages**)。 初めてボットを実行する場合は、**[File]\(ファイル\) > [New Bot]\(新しいボット\)** をクリックして、画面の指示に従います。 それ以外の場合は、**[File]\(ファイル\) > [Open Bot]\(ボットを開く\)** をクリックして既存のボットを開きます。 このボットはお使いのコンピューターでローカルに実行されているため、**[MSA app ID]\(MSA アプリ ID\)** と **[MSA app password]\(MSA アプリ パスワード\)** フィールドは空白のままでかまいません。 詳細については、[エミュレーターを使用したデバッグ](bot-service-debug-emulator.md)に関するページをご覧ください。
+1. エミュレーターを起動し、ボットのエンドポイントに接続します (例: **http://localhost:3978/api/messages**)。 初めてボットを実行する場合は、**[File]\(ファイル\) > [New Bot]\(新しいボット\)** をクリックして、画面の指示に従います。 それ以外の場合は、**[File]\(ファイル\) > [Open Bot]\(ボットを開く\)** をクリックして既存のボットを開きます。 このボットはお使いのコンピューターでローカルに実行されているため、**MicrosoftAppId** フィールドと **MicrosoftAppPassword** フィールドは空白のままでかまいません。 詳細については、[エミュレーターを使用したデバッグ](bot-service-debug-emulator.md)に関するページをご覧ください。
 1. エミュレーターからボットにメッセージを送信します (例: "Hi" というメッセージを送信)。 
 1. エミュレーター ウィンドウの右側にある **[Inspector]\(インスペクター\)** パネルと **[ログ]** パネルを使用して、ボットをデバッグします。 たとえば、いずれかのメッセージ バブル (下のスクリーンショットでは "Hi" メッセージ バブル) をクリックすると、そのメッセージの詳細が **[Inspector]\(インスペクター\)** パネルに表示されます。 これを使って、エミュレーターとボットの間でメッセージが交換されるときに、要求と応答を確認できます。 または、**[ログ]** パネルでいずれかのリンクされたテキストをクリックすると、**[Inspector]\(インスペクター\)** パネルに詳細が表示されます。
 
@@ -132,7 +132,7 @@ Visual Studio 2017 でブレークポイントを使用してコードをデバ�
 ## <a name="additional-resources"></a>その他のリソース
 
 - [一般的な問題のトラブルシューティング](bot-service-troubleshoot-bot-configuration.md)に関する記事、およびそのセクションに示されているトラブルシューティングに関するその他の記事をご覧ください。
-- [ngrok を使用してチャネルをローカルでデバッグする](https://blog.botframework.com/2017/10/19/debug-channel-locally-using-ngrok/)方法に関するブログ記事をご覧ください。
+- [Emulator を使用してデバッグする](bot-service-debug-emulator.md)方法をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

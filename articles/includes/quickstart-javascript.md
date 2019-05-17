@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b3f9a0d2c24809c0814baa9bfb8f993a4ba55ef7
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: ee2c261f6b028542b20771801b114d0b23ab21ca
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59551593"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033204"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -12,7 +12,7 @@ ms.locfileid: "59551593"
 - [Node.js](https://nodejs.org/)
 - [Yeoman](http://yeoman.io/) (ジェネレーターを使用してボットを作成します)
 - [git](https://git-scm.com/)
-- [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator)
+- [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme)
 - [restify](http://restify.com/) および JavaScript での非同期プログラミングに関する知識
 
 > [!NOTE]
@@ -64,7 +64,7 @@ Yeoman により、作成するボットに関する情報の入力が求めら�
 テンプレートのおかげで、プロジェクトには、このクイック スタートでボットを作成するのに必要なすべてのコードが含まれています。 実際には、追加のコードを記述する必要はありません。
 
 > [!NOTE]
-> `Basic` ボットを作成する場合は、LUIS 言語モデルが必要です。 これは [luis.ai](https://www.luis.ai) で作成できます。 モデルの作成後、.bot ファイルを更新します。 完成したボット ファイルの例については、[こちら](../v4sdk/bot-builder-service-file.md)を参照してください。
+> `Basic` ボットを作成する場合は、LUIS 言語モデルが必要です。 これは [luis.ai](https://www.luis.ai) で作成できます。 モデルの作成後、構成ファイルを更新します。
 
 ## <a name="start-your-bot"></a>ボットの起動
 
@@ -73,8 +73,8 @@ Yeoman により、作成するボットに関する情報の入力が求めら�
 ## <a name="start-the-emulator-and-connect-your-bot"></a>エミュレーターの起動とボットの接続
 
 1. Bot Framework Emulator を起動します。
-2. エミュレーターの [ようこそ] タブにある **[Open Bot]\(ボットを開く\)** リンクをクリックします。
-3. プロジェクトを作成したディレクトリにある .bot ファイルを選択します。
+2. エミュレーターの [ようこそ] タブにある **[新しいボット構成を作成する]** リンクをクリックします。 
+3. ご自身のボットのフィールドに入力し、**[保存および接続]** をクリックします。
 
 メッセージをボットに送信します。ボットはメッセージで応答します。
 ![実行中のエミュレーター](../media/emulator-v4/js-quickstart.png)

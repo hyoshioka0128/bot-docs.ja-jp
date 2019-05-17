@@ -1,21 +1,18 @@
 ---
-title: Skype リアルタイム メディア ボットを Azure にデプロイする | Microsoft Docs
-description: Visual Studio の組み込みの発行機能を使用して、Skype リアルタイム音声/動画ボットを Azure にデプロイする方法について説明します。
-author: MalarGit
-ms.author: malarch
-manager: ssulzer
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 12/13/17
-monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 22cce8ad5bef3c1c6f08a8efc28118e0209dd3af
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+redirect_url: https://aka.ms/realTimeMediaCalling-repo
+ms.openlocfilehash: 1df0192632cdb9b35259b8ce1ec5c8b3be46c750
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999439"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032945"
 ---
+<a name="--"></a><!--
+---
+title:Skype リアルタイム メディア ボットを Azure にデプロイする | Microsoft Docs description:Visual Studio の組み込みの発行機能を使用して、Skype リアルタイム音声/動画ボットを Azure にデプロイする方法について説明します。
+作成者:MalarGit ms.author: malarch manager: ssulzer ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date:12/13/17 monikerRange: 'azure-bot-service-3.0'
+---
+
 # <a name="deploy-a-real-time-media-bot-from-visual-studio-to-azure"></a>Visual Studio から Azure へのリアルタイム メディア ボットのデプロイ
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -37,7 +34,7 @@ ms.locfileid: "49999439"
 > ボットの **AppID** と **AppPassword** を確認する方法については、「[MicrosoftAppID and MicrosoftAppPassword (MicrosoftAppID と MicrosoftAppPassword)](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」をご覧ください。
 
 ## <a name="create-worker-role-in-the-azure-portal"></a>Azure portal での worker ロールの作成
-### <a name="step-1-create-cloud-serviceclassic"></a>手順 1: クラウド サービス (クラシック) を作成する
+### <a name="step-1-create-cloud-serviceclassic"></a>手順 1:クラウド サービス (クラシック) を作成する
 <a href="https://portal.azure.com">Azure portal</a> にログオンします。 画面の左側の **+** をクリックし、**[Cloud Services (クラシック)]** を選択します。 必要な情報をフォームに入力し、**[作成]** をクリックします。
 
 ![クラウド サービスを作成する](../media/real-time-media-bot-portal-service-creation.png)
@@ -45,7 +42,7 @@ ms.locfileid: "49999439"
 > [!NOTE]
 > ボット登録の URL には、ボットの DNS 名を指定する必要があります。
 
-### <a name="step-2-upload-the-certificate-for-the-bot"></a>手順 2: ボットの証明書をアップロードする
+### <a name="step-2-upload-the-certificate-for-the-bot"></a>手順 2:ボットの証明書をアップロードする
 ボットが作成されたら、ボットの証明書をアップロードします。
 
 ![証明書のアップロード](../media/real-time-media-bot-portal-certificates.png)
@@ -66,14 +63,14 @@ ms.locfileid: "49999439"
 >      <Certificate name="Default" thumbprint="$CertThumbprint$" thumbprintAlgorithm="sha1" />
 >   ```
 
-## <a name="publish-the-bot-from-visual-studio"></a>Visual Studio からのボットの発行
-### <a name="step-1-launch-the-microsoft-azure-publishing-wizard-in-visual-studio"></a>手順 1: Visual Studio で Microsoft Azure 発行ウィザードを起動する
+## <a name="publish-the-bot-from-visual-studio"></a>Visual Studio からボットを発行する
+### <a name="step-1-launch-the-microsoft-azure-publishing-wizard-in-visual-studio"></a>手順 1:Visual Studio で Microsoft Azure 発行ウィザードを起動する
 
 Visual Studio でプロジェクトを開きます。 ソリューション エクスプローラーで、クラウド サービス プロジェクトを右クリックし、**[発行]** を選択します。 これにより、Microsoft Azure 発行ウィザードが起動します。 資格情報を使用して適切なサブスクリプションにサインインします。
 
 ![プロジェクトを右クリックし、[発行] を選択して Microsoft Azure 発行ウィザードを起動する](../media/real-time-media-bot-publish-signin.png)
 
-### <a name="step-2-publish-the-bot"></a>手順 2: ボットを発行する
+### <a name="step-2-publish-the-bot"></a>手順 2:ボットを発行する
 
 **[次へ]** をクリックします。 **[設定]** タブが開きます。ボットをデプロイするためのクラウド サービス、環境、ビルド構成、サービス構成を指定します。
 
@@ -84,3 +81,4 @@ Visual Studio でプロジェクトを開きます。 ソリューション エ�
 ![[詳細設定] タブをクリックする](../media/real-time-media-bot-publish-advanced-settings.png)
 
 **[概要]** タブで構成を確認し、**[発行]** をクリックしてボットを Microsoft Azure にデプロイします。
+-->

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0c6d1e779215b54f635adc019d93af39735e16e0
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 0d4279df31aba6cecb12b7d8d7262069aed8836b
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904875"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033393"
 ---
 # <a name="send-and-receive-text-message"></a>テキスト メッセージを送受信する
 
@@ -31,7 +31,7 @@ Markdown はほとんどのテキスト フィールドでサポートされて�
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-ボットの `OnTurnAsync` メソッドで、ターン コンテキスト オブジェクトの `SendActivityAsync` メソッドを使用してメッセージ応答を 1 つ送信します。 オブジェクトの `SendActivitiesAsync` メソッドを使用して一度に複数の応答を送信することもできます。
+ボットのアクティビティ ハンドラーで、ターン コンテキスト オブジェクトの `SendActivityAsync` メソッドを使用し、メッセージ応答を 1 つ送信します。 オブジェクトの `SendActivitiesAsync` メソッドを使用して一度に複数の応答を送信することもできます。
 
 ```cs
 await turnContext.SendActivityAsync($"Welcome!");
@@ -39,7 +39,7 @@ await turnContext.SendActivityAsync($"Welcome!");
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-ボットの `onTurn` ハンドラーで、ターン コンテキスト オブジェクトの `sendActivity` メソッドを使用し、メッセージ応答を 1 つ送信します。 オブジェクトの `sendActivities` メソッドを使用して一度に複数の応答を送信することもできます。
+ボットのアクティビティ ハンドラーで、ターン コンテキスト オブジェクトの `sendActivity` メソッドを使用し、メッセージ応答を 1 つ送信します。 オブジェクトの `sendActivities` メソッドを使用して一度に複数の応答を送信することもできます。
 
 ```javascript
 await context.sendActivity("Welcome!");
@@ -51,7 +51,7 @@ await context.sendActivity("Welcome!");
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-ボットの `OnTurnAsync` メソッドで、次のコードを使用してメッセージを受信します。 
+ボットのアクティビティ ハンドラーで、次のコードを使用してメッセージを受信します。 
 
 ```cs
 var responseMessage = turnContext.Activity.Text;
@@ -59,7 +59,7 @@ var responseMessage = turnContext.Activity.Text;
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-ボットの `OnTurnAsync` メソッドで、次のコードを使用してメッセージを受信します。
+ボットのアクティビティ ハンドラーで、次のコードを使用してメッセージを受信します。
 
 ```javascript
 let text = turnContext.activity.text;
@@ -70,5 +70,9 @@ let text = turnContext.activity.text;
 ## <a name="additional-resources"></a>その他のリソース
 
 - 一般的なアクティビティ処理の詳細については、[アクティビティの処理](~/v4sdk/bot-builder-basics.md#the-activity-processing-stack)に関するページをご覧ください。
-- よりリッチなコンテンツを送信する場合、[リッチ メディア](bot-builder-howto-add-media-attachments.md)添付ファイルを追加する方法をご覧ください。
 - 書式設定の詳細については、Bot Framework のアクティビティ スキーマに関するページの[メッセージ アクティビティ](https://aka.ms/botSpecs-activitySchema#message-activity)に関するセクションをご覧ください。
+
+## <a name="next-steps"></a>次の手順
+
+> [!div class="nextstepaction"]
+> [メッセージにメディアを追加する](./bot-builder-howto-add-media-attachments.md)

@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 4/31/2019
+ms.date: 04/30/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 41a33c20148e128efa1d10b72410eb06a6a94982
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: f6aaa824b978be28c050333c67d501a8cbbad005
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59905005"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033663"
 ---
 # <a name="implement-custom-storage-for-your-bot"></a>ボットのカスタム ストレージの実装
 
@@ -24,6 +24,10 @@ ms.locfileid: "59905005"
 ボットの対話は 3 つの領域に分かれています。1 つ目は Azure Bot Service とのアクティビティの交換、2 つ目は Store によるダイアログの状態の読み込みと保存、3 つ目はボットがジョブを完了するために連携する必要があるその他のバックエンド サービスです。
 
 ![スケールアウト ダイアグラム](../media/scale-out/scale-out-interaction.png)
+
+
+## <a name="prerequisites"></a>前提条件
+- この記事で使用する完全なサンプル コードについては、[C# サンプル](http://aka.ms/scale-out) を確認ください。
 
 この記事では、ボットと Azure Bot Service および Store との対話に関するセマンティクスについて説明します。
 
@@ -89,74 +93,11 @@ Bot Framework には既定の実装が含まれています。ほとんどの場
 
 最終的に作成するインターフェイスを次に示します。
 
-```csharp
-public interface IStore
-{
-  Task<(JObject content, string eTag)> LoadAsync(string key);
-  Task<bool> SaveAsync(string key, JObject content, string eTag);
-}
-```
+**IStore.cs** [!code-csharp[IStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/IStore.cs?range=14-19)]
+
 Azure Blob Storage に対してこれを実装するのは簡単です。
-```csharp
-public class BlobStore : IStore
-{
-  private CloudBlobContainer _container;
 
-  public BlobStore(string myAccountName, string myAccountKey, string containerName)
-  {
-    var storageCredentials = new StorageCredentials(myAccountName, myAccountKey);
-    var cloudStorageAccount = new CloudStorageAccount(storageCredentials, useHttps: true);
-    var client = cloudStorageAccount.CreateCloudBlobClient();
-    _container = client.GetContainerReference(containerName);
-  }
-
-  public async Task<(JObject content, string eTag)> LoadAsync(string key)
-  {
-    var blob = _container.GetBlockBlobReference(key);
-    try
-    {
-      var content = await blob.DownloadTextAsync();
-      var obj = JObject.Parse(content);
-      var eTag = blob.Properties.ETag;
-      return (obj, eTag);
-    }
-    catch (StorageException e)
-      when (e.RequestInformation.HttpStatusCode ==
-        (int)HttpStatusCode.NotFound)
-    {
-      return (new JObject(), null);
-    }
-  }
-
-  public async Task<bool> SaveAsync(string key, JObject obj, string eTag)
-  {
-    var blob = _container.GetBlockBlobReference(key);
-    blob.Properties.ContentType = "application/json";
-    var content = obj.ToString();
-    if (eTag != null)
-    {
-      try
-      {
-        await blob.UploadTextAsync(content,
-          new AccessCondition { IfMatchETag = eTag },
-          new BlobRequestOptions(),
-          new OperationContext());
-      }
-      catch (StorageException e)
-        when (e.RequestInformation.HttpStatusCode ==
-          (int)HttpStatusCode.PreconditionFailed)
-      {
-        return false;
-      }
-    }
-    else
-    {
-      await blob.UploadTextAsync(content);
-    }
-    return true;
-  }
-}
-```
+**BlobStore.cs** [!code-csharp[BlobStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/BlobStore.cs?range=18-101)]
 
 ご覧のとおり、ここでは Azure Blob Storage が実際の作業を行っています。 特定の例外のキャッチと、呼び出し元のコードで想定されている内容に合わせて、キャッチがどのように変換されているかに注意してください。 つまり、読み込み時の Not Found 例外では null を返し、保存時の Precondition Failed 例外ではブール値を返します。
 
@@ -170,39 +111,9 @@ public class BlobStore : IStore
 適切なキーを作成したら、対応する状態の読み込みを試みます。 次に、ボットのダイアログを実行し、保存を試みます。 その保存が成功した場合は、ダイアログを実行した結果として実行される送信アクティビティを送信します。 それ以外の場合は、元に戻って読み込み前からプロセス全体を繰り返します。 読み込みを再実行すると、新しい ETag が提供されるので、うまくいけば、次回は保存が成功します。
 
 最終的に作成する OnTurn 実装は次のようになります。
-```csharp
-public async Task OnTurnAsync(ITurnContext turnContext,
-  CancellationToken cancellationToken = default(CancellationToken))
-{
-  // Create the storage key for this conversation.
-  string key = $"{turnContext.Activity.ChannelId}/conversations/{turnContext.Activity.Conversation?.Id}";
 
-  // The execution sits in a loop because there might be a retry if the save operation fails.
-  while (true)
-  {
-    // Load any existing state associated with this key
-    var (oldState, etag) = await _store.LoadAsync(key);
+**ScaleoutBot.cs** [!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/Bots/ScaleOutBot.cs?range=43-72)]
 
-    // Run the dialog system with the old state and inbound activity,
-    // resulting in a new state and outbound activities.
-    var (activities, newState) = await DialogHost.RunAsync(_rootDialog, turnContext.Activity, oldState);
-
-    // Save the updated state associated with this key.
-    bool success = await _store.SaveAsync(key, newState, etag);
-
-    // Following a successful save, send any outbound Activities, otherwise retry everything.
-    if (success)
-    {
-      if (activities.Any())
-      {
-        // This is an actual send on the TurnContext we were given and so will actual do a send this time.
-        await turnContext.SendActivitiesAsync(activities);
-      }
-      break;
-    }
-  }
-}
-```
 ダイアログ実行を関数呼び出しとしてモデル化していることに注意してください。 さらに高度な実装では、インターフェイスを定義し、この依存関係を挿入可能にすることも考えられますが、ここでは、すべてのダイアログを静的関数の背後に置くことで、このアプローチの機能的特性を強調しています。 一般に、重要な部分が機能するように実装を構成すると、ネットワーク上で正常に動作させることに関して非常に良好な環境になります。
 
 
@@ -211,141 +122,24 @@ public async Task OnTurnAsync(ITurnContext turnContext,
 次の要件は、保存が正常に実行されるまで送信アクティビティをバッファー処理することです。 これには、カスタム BotAdapter の実装が必要になります。 このコードでは、アクティビティを送信するのではなくリストに追加する、抽象 SendActivity 関数を実装します。 ホストするダイアログに変わりはありません。
 このシナリオでは、UpdateActivity 操作と DeleteActivity 操作はサポートされていないので、これらのメソッドから Not Implemented がスローされるだけです。 また、SendActivity からの戻り値も考慮していません。 これは、アクティビティの更新を送信する必要があるシナリオ (チャネルで表示されているカードのボタンの無効化など) で、一部のチャネルによって使用されます。 特に状態が必要な場合、これらのメッセージ交換は複雑になる可能性がありますが、これについてはこの記事では取り上げません。 カスタム BotAdapter の完全な実装は次のようになります。
 
-```csharp
-public class DialogHostAdapter : BotAdapter
-{
-  private List<Activity> _response = new List<Activity>();
+**DialogHostAdapter.cs** [!code-csharp[DialogHostAdapter](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHostAdapter.cs?range=19-46)]
 
-  public IEnumerable<Activity> Activities => _response;
+## <a name="integration"></a>統合
 
-  public override Task<ResourceResponse[]> SendActivitiesAsync(ITurnContext turnContext,
-    Activity[] activities, CancellationToken cancellationToken)
-  {
-    foreach (var activity in activities)
-    {
-      _response.Add(activity);
-    }
-    return Task.FromResult(new ResourceResponse[0]);
-  }
-
-  public override Task DeleteActivityAsync(ITurnContext turnContext,
-    ConversationReference reference, CancellationToken cancellationToken)
-  {
-    throw new NotImplementedException();
-  }
-
-  public override Task<ResourceResponse> UpdateActivityAsync(ITurnContext turnContext,
-    Activity activity, CancellationToken cancellationToken)
-  {
-    throw new NotImplementedException();
-  }
-}
-```
-あと残っている作業は統合だけです。これらのさまざまな新しい要素をつなぎ合わせ、フレームワークの既存の要素に組み込みます。 メインの再試行ループは、IBot OnTurn 関数内にあります。 これには、テストのために依存関係を挿入可能にしたカスタム IStore 実装が保持されています。 ここでは、単一のパブリック静的関数を公開する DialogHost というクラスに、すべてのダイアログ ホスティング コードを配置しました。 この関数は、受信アクティビティと古い状態を取得し、結果としてのアクティビティと新しい状態を返すように定義されています。
+あと残っているのは、これらのさまざまな新しい要素をつなぎ合わせ、フレームワークの既存の要素に組み込む作業です。 メインの再試行ループは、IBot OnTurn 関数内にあります。 これには、テストのために依存関係を挿入可能にしたカスタム IStore 実装が保持されています。 ここでは、単一のパブリック静的関数を公開する DialogHost というクラスに、すべてのダイアログ ホスティング コードを配置しました。 この関数は、受信アクティビティと古い状態を取得し、結果としてのアクティビティと新しい状態を返すように定義されています。
 
 この関数で最初に行うことは、既に紹介したカスタム BotAdapter を作成することです。 その後は、DialogSet と DialogContext を作成し、通常の Continue または Begin フローを実行して、通常とまったく同様にダイアログを実行するだけです。 ここで説明しなかった唯一の要素は、カスタム アクセサーの必要性です。 これは、ダイアログの状態をダイアログ システムに渡すことを容易にする非常に単純な shim であることがわかります。 アクセサーでは、ダイアログ システムを操作するときに参照セマンティクスを使用するので、必要なのはハンドルを渡すことだけです。 さらにわかりやすくするために、使用するクラス テンプレートを参照セマンティクスに制限しました。
 
 階層化は慎重に行います。実装によってそれぞれ異なる方法でシリアル化する可能性がある場合に、JsonSerialization がプラグ可能なストレージ層内にあるのは望ましくないため、ホスティング コードにインラインで配置します。
 
 ドライバー コードを次に示します。
-```csharp
-public class DialogHost
-{
-  private static readonly JsonSerializer StateJsonSerializer = new JsonSerializer()
-    { TypeNameHandling = TypeNameHandling.All };
 
-  public static async Task<Tuple<Activity[], JObject>> RunAsync(Dialog rootDialog,
-    Activity activity, JObject oldState)
-  {
-    // A custom adapter and corresponding TurnContext that buffers any messages sent.
-    var adapter = new DialogHostAdapter();
-    var turnContext = new TurnContext(adapter, activity);
+**DialogHost.cs** [!code-csharp[DialogHost](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHost.cs?range=22-72)]
 
-    // Run the dialog using this TurnContext with the existing state.
-    JObject newState = await RunTurnAsync(rootDialog, turnContext, oldState);
+最後に、カスタム アクセサーについては、状態が参照に基づくため、実装する必要があるのは Get だけです。
 
-    // The result is a set of activities to send and a replacement state.
-    return Tuple.Create(adapter.Activities.ToArray(), newState);
-  }
+**RefAccessor.cs** [!code-csharp[RefAccessor](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/RefAccessor.cs?range=22-60)]
 
-  private static async Task<JObject> RunTurnAsync(Dialog rootDialog,
-    TurnContext turnContext, JObject state)
-  {
-    if (turnContext.Activity.Type == ActivityTypes.Message)
-    {
-      // If we have some state, deserialize it. (This mimics the shape produced by BotState.cs.)
-      var dialogState = state?[nameof(DialogState)]?.ToObject<DialogState>(StateJsonSerializer);
-
-      // A custom accessor is used to pass a handle on the state to the dialog system.
-      var accessor = new RefAccessor<DialogState>(dialogState);
-
-      // The following is regular dialog driver code.
-      var dialogs = new DialogSet(accessor);
-      dialogs.Add(rootDialog);
-
-      var dialogContext = await dialogs.CreateContextAsync(turnContext);
-      var results = await dialogContext.ContinueDialogAsync();
-
-      if (results.Status == DialogTurnStatus.Empty)
-      {
-        await dialogContext.BeginDialogAsync("root");
-      }
-
-      // Serialize the result, and put its value back into a new JObject.
-      return new JObject
-      {
-        { nameof(DialogState), JObject.FromObject(accessor.Value, StateJsonSerializer) }
-      };
-    }
-
-    return state;
-  }
-}
-```
-最後に、カスタム アクセサーについては、状態が参照に基づくため、実装する必要があるのは Set だけです。
-```csharp
-public class RefAccessor<T> : IStatePropertyAccessor<T> where T : class
-{
-  public RefAccessor(T value)
-  {
-    Value = value;
-  }
-
-  public T Value { get; private set; }
-
-  public string Name => nameof(T);
-
-  public Task<T> GetAsync(ITurnContext turnContext, Func<T> defaultValueFactory = null,
-    CancellationToken cancellationToken = default(CancellationToken))
-  {
-    if (Value == null)
-    {
-      if (defaultValueFactory == null)
-      {
-        throw new KeyNotFoundException();
-      }
-      else
-      {
-        Value = defaultValueFactory();
-      }
-    }
-    return Task.FromResult(Value);
-  }
-
-  public Task DeleteAsync(ITurnContext turnContext,
-    CancellationToken cancellationToken = default(CancellationToken))
-  {
-    throw new NotImplementedException();
-  }
-
-  public Task SetAsync(ITurnContext turnContext, T value,
-    CancellationToken cancellationToken = default(CancellationToken))
-  {
-    throw new NotImplementedException();
-  }
-}
-```
-
-## <a name="additional-resources"></a>その他のリソース
-この記事で使用する [C#](http://aka.ms/scale-out) サンプル コードは、GitHub で入手できます。
+## <a name="additional-information"></a>追加情報
+この記事で使用する [C# サンプル](http://aka.ms/scale-out) コードは、GitHub で入手できます。
 

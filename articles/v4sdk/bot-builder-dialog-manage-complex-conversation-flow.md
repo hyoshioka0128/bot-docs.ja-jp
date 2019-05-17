@@ -8,232 +8,114 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 4/18/2019
+ms.date: 04/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a5f3fe4fbec5a44a68bd6dcb7a2d6e2770052923
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: ad374ea8c404693836d7e90bb899669726366fcc
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59905025"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033483"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>ブランチとループを使用して高度な会話フローを作成する
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-この記事では、分岐およびループする複雑な会話を管理する方法について説明します。 また、ダイアログのさまざまな部分の間で引数を渡す方法についても説明します。
+ダイアログ ライブラリを使用して、単純な会話フローと複雑な会話フローを管理できます。
+この記事では、分岐およびループする複雑な会話を管理する方法について説明します。
+また、ダイアログのさまざまな部分の間で引数を渡す方法についても説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download)
-- この記事のコードは、**complex dialog** サンプルをベースにしています。 サンプルのコピー ([C#](https://aka.ms/cs-complex-dialog-sample) または [JS](https://aka.ms/js-complex-dialog-sample)) が必要になります。
-- [ボットの基本](bot-builder-basics.md)、[ダイアログ ライブラリ](bot-builder-concept-dialog.md)、[ダイアログの状態](bot-builder-dialog-state.md)、および [.bot](bot-file-basics.md) ファイルに関する知識。
+- [ボットの基本][concept-basics]、[状態の管理][concept-state]、[ダイアログ ライブラリ][concept-dialogs]、および[連続して行われる会話フローを実装][simple-dialog]する方法に関する知識。
+- 複雑なダイアログ サンプルのコピー ([**CSharp**][cs-sample] または [**JavaScript**][js-sample])。
 
-## <a name="about-the-sample"></a>サンプルについて
+## <a name="about-this-sample"></a>このサンプルについて
 
 このボットのサンプルでは、ユーザーがサインアップし、一覧から最大 2 つの会社をレビューできます。
 
-- ユーザーに名前と年齢の入力を求めて、ユーザーの年齢に基づいて "_分岐_" します。
+`DialogAndWelcomeBot` によって `DialogBot` が拡張され、さまざまなアクティビティのハンドラーと、ボットのターン ハンドラーが定義されます。 `DialogBot` ではダイアログが実行されます。
+
+- _run_ メソッドは `DialogBot` によって使用され、ダイアログを開始します。
+- `MainDialog` は他の 2 つのダイアログの親で、ダイアログで特定の時間に呼び出されます。 これらのダイアログについては、この記事全体を通して詳しく説明します。
+
+ダイアログは `MainDialog`、`TopLevelDialog`、`ReviewSelectionDialog` のコンポーネント ダイアログに分割され、連携して次の処理を実行します。
+
+- ユーザーの名前と年齢を聞いて、ユーザーの年齢に基づいて "_分岐_" します。
   - ユーザーが若すぎる場合、そのユーザーには会社のレビューを求めません。
   - ユーザーが十分な年齢に達している場合は、ユーザーのレビュー結果の収集を開始します。
     - ユーザーは、レビューする会社を選択できます。
-    - 会社を選択した場合は、"_ループ_" して、2 つ目の会社を選択できるようにします。
+    - ユーザーが会社を選択すると、"_ループ_" して、2 つ目の会社を選択できるようにします。
 - 最後に、ユーザーが参加してくれたことに対してお礼を述べます。
 
-複雑な会話の管理には、2 つのウォーターフォール ダイアログと、プロンプトがいくつか使用されます。
-
-## <a name="configure-state-for-your-bot"></a>ボットの状態を構成する
+複雑な会話の管理には、ウォーターフォール ダイアログと、プロンプトをいくつか使用します。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-収集するユーザー情報を定義します。
+![複雑なボットのフロー](./media/complex-conversation-flow.png)
 
-```csharp
-public class UserProfile
-{
-    public string Name { get; set; }
-    public int Age { get; set; }
+ダイアログを使用するには、ご自身のプロジェクトで **Microsoft.Bot.Builder.Dialogs** NuGet パッケージをインストールする必要があります。
 
-    //The list of companies the user wants to review.
-    public List<string> CompaniesToReview { get; set; } = new List<string>();
-}
-```
+**Startup.cs**
 
-ボットの状態管理オブジェクトと状態プロパティ アクセサーを保持するクラスを定義します。
+`Startup` でボット用のサービスを登録します。 これらのサービスは、依存関係の挿入を通じてコードの他の部分で使用できます。
 
-```csharp
-public class ComplexDialogBotAccessors
-{
-    public ComplexDialogBotAccessors(ConversationState conversationState, UserState userState)
-    {
-        ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
-        UserState = userState ?? throw new ArgumentNullException(nameof(userState));
-    }
+- ボット用の基本サービス: 資格情報プロバイダー、アダプター、およびボット実装。
+- 状態を管理するためのサービス: ストレージ、ユーザー状態、および会話の状態。
+- ボットで使用されるダイアログ。
 
-    public IStatePropertyAccessor<DialogState> DialogStateAccessor { get; set; }
-    public IStatePropertyAccessor<UserProfile> UserProfileAccessor { get; set; }
-
-    public ConversationState ConversationState { get; }
-    public UserState UserState { get; }
-}
-```
-
-状態管理オブジェクトを作成し、`Statup` クラスの `ConfigureServices` メソッドでアクセサー クラスを登録します。
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    // Register the bot.
-
-    // Create conversation and user state management objects, using memory storage.
-    IStorage dataStore = new MemoryStorage();
-    var conversationState = new ConversationState(dataStore);
-    var userState = new UserState(dataStore);
-
-    // Create and register state accessors.
-    // Accessors created here are passed into the IBot-derived class on every turn.
-    services.AddSingleton<ComplexDialogBotAccessors>(sp =>
-    {
-        // Create the custom state accessor.
-        // State accessors enable other components to read and write individual properties of state.
-        var accessors = new ComplexDialogBotAccessors(conversationState, userState)
-        {
-            DialogStateAccessor = conversationState.CreateProperty<DialogState>("DialogState"),
-            UserProfileAccessor = userState.CreateProperty<UserProfile>("UserProfile"),
-        };
-
-        return accessors;
-    });
-}
-```
+[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=22-39)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**Index.js** ファイルで、状態管理オブジェクトを定義します。
+![複雑なボットのフロー](./media/complex-conversation-flow-js.png)
 
-```javascript
-const { BotFrameworkAdapter, MemoryStorage, UserState, ConversationState } = require('botbuilder');
+ダイアログを使用するには、ご自身のプロジェクトで **botbuilder-dialogs** npm パッケージをインストールする必要があります。
 
-// ...
+**index.js**
 
-// Define state store for your bot.
-const memoryStorage = new MemoryStorage();
+コードの他の部分が必要とするボット用サービスを作成します。
 
-// Create user and conversation state with in-memory storage provider.
-const userState = new UserState(memoryStorage);
-const conversationState = new ConversationState(memoryStorage);
+- ボット用の基本サービス: アダプターおよびボット実装。
+- 状態を管理するためのサービス: ストレージ、ユーザー状態、および会話の状態。
+- ボットで使用されるダイアログ。
 
-// Create the bot.
-const myBot = new MyBot(conversationState, userState);
-```
-
-ボットのコンストラクターにより、ボットの状態プロパティ アクセサーが作成されます。
+[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=25-38)]
+[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=43-45)]
 
 ---
 
-## <a name="initialize-your-bot"></a>ボットを初期化する
+> [!NOTE]
+> メモリ ストレージはテストにのみ使用され、実稼働を目的としたものではありません。
+> 運用環境のボットでは、必ず永続タイプのストレージを使用してください。
 
-この例のすべてのダイアログの追加先となる、ボットの "_ダイアログ セット_" を作成します。
+## <a name="define-a-class-in-which-to-store-the-collected-information"></a>収集した情報を格納するクラスを定義する
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-ボットのコンストラクター内にダイアログ セットを作成し、プロンプトと 2 つのウォーターフォール ダイアログをそのセットに追加します。
+**UserProfile.cs**
 
-ここで、各ステップを別個のメソッドとして定義します。 これらは次のセクションで実装します。
-
-```csharp
-public class ComplexDialogBot : IBot
-{
-    // Define constants for the bot...
-
-    // Define properties for the bot's accessors and dialog set.
-    private readonly ComplexDialogBotAccessors _accessors;
-    private readonly DialogSet _dialogs;
-
-    // Initialize the bot and add dialogs and prompts to the dialog set.
-    public ComplexDialogBot(ComplexDialogBotAccessors accessors)
-    {
-        _accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
-
-        // Create a dialog set for the bot. It requires a DialogState accessor, with which
-        // to retrieve the dialog state from the turn context.
-        _dialogs = new DialogSet(accessors.DialogStateAccessor);
-
-        // Add the prompts we need to the dialog set.
-        _dialogs
-            .Add(new TextPrompt(NamePrompt))
-            .Add(new NumberPrompt<int>(AgePrompt))
-            .Add(new ChoicePrompt(SelectionPrompt));
-
-        // Add the dialogs we need to the dialog set.
-        _dialogs.Add(new WaterfallDialog(TopLevelDialog)
-            .AddStep(NameStepAsync)
-            .AddStep(AgeStepAsync)
-            .AddStep(StartSelectionStepAsync)
-            .AddStep(AcknowledgementStepAsync));
-
-        _dialogs.Add(new WaterfallDialog(ReviewSelectionDialog)
-            .AddStep(SelectionStepAsync)
-            .AddStep(LoopStepAsync));
-    }
-
-    // Turn handler and other supporting methods...
-}
-```
+[!code-csharp[UserProfile class](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/UserProfile.cs?range=8-16)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**bot.js** ファイルで、ボットのコンストラクター内にダイアログ セットを定義して作成し、プロンプトとウォーターフォール ダイアログをそのセットに追加します。
+**userProfile.js**
 
-ここで、各ステップを別個のメソッドとして定義します。 これらは次のセクションで実装します。
-
-```javascript
-const { ActivityTypes } = require('botbuilder');
-const { DialogSet, WaterfallDialog, TextPrompt, NumberPrompt, ChoicePrompt, DialogTurnStatus } = require('botbuilder-dialogs');
-
-// Define constants for the bot...
-
-class MyBot {
-    constructor(conversationState, userState) {
-        // Create the state property accessors and save the state management objects.
-        this.dialogStateAccessor = conversationState.createProperty(DIALOG_STATE_PROPERTY);
-        this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
-        this.conversationState = conversationState;
-        this.userState = userState;
-
-        // Create a dialog set for the bot. It requires a DialogState accessor, with which
-        // to retrieve the dialog state from the turn context.
-        this.dialogs = new DialogSet(this.dialogStateAccessor);
-
-        // Add the prompts we need to the dialog set.
-        this.dialogs
-            .add(new TextPrompt(NAME_PROMPT))
-            .add(new NumberPrompt(AGE_PROMPT))
-            .add(new ChoicePrompt(SELECTION_PROMPT));
-
-        // Add the dialogs we need to the dialog set.
-        this.dialogs.add(new WaterfallDialog(TOP_LEVEL_DIALOG)
-            .addStep(this.nameStep.bind(this))
-            .addStep(this.ageStep.bind(this))
-            .addStep(this.startSelectionStep.bind(this))
-            .addStep(this.acknowledgementStep.bind(this)));
-
-        this.dialogs.add(new WaterfallDialog(REVIEW_SELECTION_DIALOG)
-            .addStep(this.selectionStep.bind(this))
-            .addStep(this.loopStep.bind(this)));
-    }
-
-    // Turn handler and other supporting methods...
-}
-```
+[!code-javascript[UserProfile class](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/userProfile.js?range=4-12)]
 
 ---
 
-## <a name="implement-the-steps-for-the-waterfall-dialogs"></a>ウォーターフォール ダイアログのステップを実装する
+## <a name="create-the-dialogs-to-use"></a>使用するダイアログを作成する
 
-では、2 つのダイアログのステップを実装しましょう。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-### <a name="the-top-level-dialog"></a>最上位レベルのダイアログ
+**Dialogs\MainDialog.cs**
+
+コンポーネント ダイアログ `MainDialog` の定義が完了しました。これにはメイン ステップがいくつか含まれ、ダイアログとプロンプトの動作がこれにより指示されます。 最初のステップでは `TopLevelDialog` が呼び出されます。これについては以下で説明します。
+
+[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/MainDialog.cs?range=31-50&highlight=3)]
+
+**Dialogs\TopLevelDialog.cs**
 
 最初の最上位レベルのダイアログには 4 つのステップがあります。
 
@@ -242,261 +124,56 @@ class MyBot {
 1. ユーザーの年齢に基づいて分岐します。
 1. 最後に、ユーザーが参加してくれたことに対してお礼を述べ、収集した情報を返します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+最初のステップで、ユーザーのプロファイルをクリアします。これによりダイアログは空のプロファイルで毎回開始されます。 最後のステップでは終了時に情報が返されるため、`AcknowledgementStepAsync` は、その情報をユーザー状態に保存し、最後のステップで使用できるようにメイン ダイアログに返すことで終了します。
 
-```csharp
-// The first step of the top-level dialog.
-private static async Task<DialogTurnResult> NameStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-{
-    // Create an object in which to collect the user's information within the dialog.
-    stepContext.Values[UserInfo] = new UserProfile();
+[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/TopLevelDialog.cs?range=39-96&highlight=3-4,47-49,56-57)]
 
-    // Ask the user to enter their name.
-    return await stepContext.PromptAsync(
-        NamePrompt,
-        new PromptOptions { Prompt = MessageFactory.Text("Please enter your name.") },
-        cancellationToken);
-}
+**Dialogs\ReviewSelectionDialog.cs**
 
-// The second step of the top-level dialog.
-private async Task<DialogTurnResult> AgeStepAsync(
-    WaterfallStepContext stepContext,
-    CancellationToken cancellationToken)
-{
-    // Set the user's name to what they entered in response to the name prompt.
-    ((UserProfile)stepContext.Values[UserInfo]).Name = (string)stepContext.Result;
-
-    // Ask the user to enter their age.
-    return await stepContext.PromptAsync(
-        AgePrompt,
-        new PromptOptions { Prompt = MessageFactory.Text("Please enter your age.") },
-        cancellationToken);
-}
-
-// The third step of the top-level dialog.
-private async Task<DialogTurnResult> StartSelectionStepAsync(
-    WaterfallStepContext stepContext,
-    CancellationToken cancellationToken)
-{
-    // Set the user's age to what they entered in response to the age prompt.
-    int age = (int)stepContext.Result;
-    ((UserProfile)stepContext.Values[UserInfo]).Age = age;
-
-    if (age < 25)
-    {
-        // If they are too young, skip the review-selection dialog, and pass an empty list to the next step.
-        await stepContext.Context.SendActivityAsync(
-            MessageFactory.Text("You must be 25 or older to participate."),
-            cancellationToken);
-        return await stepContext.NextAsync(new List<string>(), cancellationToken);
-    }
-    else
-    {
-        // Otherwise, start the review-selection dialog.
-        return await stepContext.BeginDialogAsync(ReviewSelectionDialog, null, cancellationToken);
-    }
-}
-
-// The final step of the top-level dialog.
-private async Task<DialogTurnResult> AcknowledgementStepAsync(
-    WaterfallStepContext stepContext,
-    CancellationToken cancellationToken)
-{
-    // Set the user's company selection to what they entered in the review-selection dialog.
-    List<string> list = stepContext.Result as List<string>;
-    ((UserProfile)stepContext.Values[UserInfo]).CompaniesToReview = list ?? new List<string>();
-
-    // Thank them for participating.
-    await stepContext.Context.SendActivityAsync(
-        MessageFactory.Text($"Thanks for participating, {((UserProfile)stepContext.Values[UserInfo]).Name}."),
-        cancellationToken);
-
-    // Exit the dialog, returning the collected user information.
-    return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
-}
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-```javascript
-async nameStep(stepContext) {
-    // Create an object in which to collect the user's information within the dialog.
-    stepContext.values[USER_INFO] = {};
-
-    // Ask the user to enter their name.
-    return await stepContext.prompt(NAME_PROMPT, 'Please enter your name.');
-}
-
-async ageStep(stepContext) {
-    // Set the user's name to what they entered in response to the name prompt.
-    stepContext.values[USER_INFO].name = stepContext.result;
-
-    // Ask the user to enter their age.
-    return await stepContext.prompt(AGE_PROMPT, 'Please enter your age.');
-}
-
-async startSelectionStep(stepContext) {
-    // Set the user's age to what they entered in response to the age prompt.
-    stepContext.values[USER_INFO].age = stepContext.result;
-
-    if (stepContext.result < 25) {
-        // If they are too young, skip the review-selection dialog, and pass an empty list to the next step.
-        await stepContext.context.sendActivity('You must be 25 or older to participate.');
-        return await stepContext.next([]);
-    } else {
-        // Otherwise, start the review-selection dialog.
-        return await stepContext.beginDialog(REVIEW_SELECTION_DIALOG);
-    }
-}
-
-async acknowledgementStep(stepContext) {
-    // Set the user's company selection to what they entered in the review-selection dialog.
-    const list = stepContext.result || [];
-    stepContext.values[USER_INFO].companiesToReview = list;
-
-    // Thank them for participating.
-    await stepContext.context.sendActivity(`Thanks for participating, ${stepContext.values[USER_INFO].name}.`);
-
-    // Exit the dialog, returning the collected user information.
-    return await stepContext.endDialog(stepContext.values[USER_INFO]);
-}
-```
-
----
-
-### <a name="the-review-selection-dialog"></a>review-selection ダイアログ
-
-review-selection ダイアログには 2 つのステップがあります。
+review-selection ダイアログは最上位レベルのダイアログの `StartSelectionStepAsync` から開始され、2 つのステップがあります。
 
 1. ユーザーに対して、レビューする会社を選択するか、`done` を選択して完了するよう求めます。
 1. 必要に応じて、このダイアログを繰り返すか終了します。
 
 この設計では、スタック上で、最上位レベルのダイアログが必ず review-selection ダイアログに先行するため、review-selection ダイアログは、最上位レベル ダイアログの子と見なすことができます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-```csharp
-// The first step of the review-selection dialog.
-private async Task<DialogTurnResult> SelectionStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-{
-    // Continue using the same selection list, if any, from the previous iteration of this dialog.
-    List<string> list = stepContext.Options as List<string> ?? new List<string>();
-    stepContext.Values[CompaniesSelected] = list;
-
-    // Create a prompt message.
-    string message;
-    if (list.Count is 0)
-    {
-        message = $"Please choose a company to review, or `{DoneOption}` to finish.";
-    }
-    else
-    {
-        message = $"You have selected **{list[0]}**. You can review an additional company, " +
-            $"or choose `{DoneOption}` to finish.";
-    }
-
-    // Create the list of options to choose from.
-    List<string> options = _companyOptions.ToList();
-    options.Add(DoneOption);
-    if (list.Count > 0)
-    {
-        options.Remove(list[0]);
-    }
-
-    // Prompt the user for a choice.
-    return await stepContext.PromptAsync(
-        SelectionPrompt,
-        new PromptOptions
-        {
-            Prompt = MessageFactory.Text(message),
-            RetryPrompt = MessageFactory.Text("Please choose an option from the list."),
-            Choices = ChoiceFactory.ToChoices(options),
-        },
-        cancellationToken);
-}
-
-// The final step of the review-selection dialog.
-private async Task<DialogTurnResult> LoopStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-{
-    // Retrieve their selection list, the choice they made, and whether they chose to finish.
-    List<string> list = stepContext.Values[CompaniesSelected] as List<string>;
-    FoundChoice choice = (FoundChoice)stepContext.Result;
-    bool done = choice.Value == DoneOption;
-
-    if (!done)
-    {
-        // If they chose a company, add it to the list.
-        list.Add(choice.Value);
-    }
-
-    if (done || list.Count is 2)
-    {
-        // If they're done, exit and return their list.
-        return await stepContext.EndDialogAsync(list, cancellationToken);
-    }
-    else
-    {
-        // Otherwise, repeat this dialog, passing in the list from this iteration.
-        return await stepContext.ReplaceDialogAsync(ReviewSelectionDialog, list, cancellationToken);
-    }
-}
-```
+[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/ReviewSelectionDialog.cs?range=42-106)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-```javascript
-async selectionStep(stepContext) {
-    // Continue using the same selection list, if any, from the previous iteration of this dialog.
-    const list = Array.isArray(stepContext.options) ? stepContext.options : [];
-    stepContext.values[COMPANIES_SELECTED] = list;
+**dialogs/mainDialog.js**
 
-    // Create a prompt message.
-    let message;
-    if (list.length === 0) {
-        message = 'Please choose a company to review, or `' + DONE_OPTION + '` to finish.';
-    } else {
-        message = `You have selected **${list[0]}**. You can review an addition company, ` +
-            'or choose `' + DONE_OPTION + '` to finish.';
-    }
+コンポーネント ダイアログ `MainDialog` の定義が完了しました。これにはメイン ステップがいくつか含まれ、ダイアログとプロンプトの動作がこれにより指示されます。 最初のステップでは `TopLevelDialog` が呼び出されます。これについては以下で説明します。
 
-    // Create the list of options to choose from.
-    const options = list.length > 0
-        ? COMPANY_OPTIONS.filter(function (item) { return item !== list[0] })
-        : COMPANY_OPTIONS.slice();
-    options.push(DONE_OPTION);
+[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/mainDialog.js?range=43-55&highlight=2)]
 
-    // Prompt the user for a choice.
-    return await stepContext.prompt(SELECTION_PROMPT, {
-        prompt: message,
-        retryPrompt: 'Please choose an option from the list.',
-        choices: options
-    });
-}
+**dialogs/topLevelDialog.js**
 
-async loopStep(stepContext) {
-    // Retrieve their selection list, the choice they made, and whether they chose to finish.
-    const list = stepContext.values[COMPANIES_SELECTED];
-    const choice = stepContext.result;
-    const done = choice.value === DONE_OPTION;
+最初の最上位レベルのダイアログには 4 つのステップがあります。
 
-    if (!done) {
-        // If they chose a company, add it to the list.
-        list.push(choice.value);
-    }
+1. ユーザー名の入力を求めます。
+1. ユーザーの年齢の入力を求めます。
+1. ユーザーの年齢に基づいて分岐します。
+1. 最後に、ユーザーが参加してくれたことに対してお礼を述べ、収集した情報を返します。
 
-    if (done || list.length > 1) {
-        // If they're done, exit and return their list.
-        return await stepContext.endDialog(list);
-    } else {
-        // Otherwise, repeat this dialog, passing in the list from this iteration.
-        return await stepContext.replaceDialog(REVIEW_SELECTION_DIALOG, list);
-    }
-}
-```
+最初のステップで、ユーザーのプロファイルをクリアします。これによりダイアログは空のプロファイルで毎回開始されます。 最後のステップでは終了時に情報が返されるため、`acknowledgementStep` は、その情報をユーザー状態に保存し、最後のステップで使用できるようにメイン ダイアログに返すことで終了します。
+
+[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/topLevelDialog.js?range=32-76&highlight=2-3,37-39,43-44)]
+
+**dialogs/reviewSelectionDialog.js**
+
+review-selection ダイアログは最上位レベルのダイアログの `startSelectionStep` から開始され、2 つのステップがあります。
+
+1. ユーザーに対して、レビューする会社を選択するか、`done` を選択して完了するよう求めます。
+1. 必要に応じて、このダイアログを繰り返すか終了します。
+
+この設計では、スタック上で、最上位レベルのダイアログが必ず review-selection ダイアログに先行するため、review-selection ダイアログは、最上位レベル ダイアログの子と見なすことができます。
+
+[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=33-78)]
 
 ---
 
-## <a name="update-the-bots-turn-handler"></a>ボットのターン ハンドラーを更新する
+## <a name="implement-the-code-to-manage-the-dialog"></a>ダイアログを管理するコードを実装する
 
 ボットのターン ハンドラーによって、これらのダイアログで定義された 1 つの会話フローが繰り返されます。
 ユーザーからメッセージを受信したらに、次の操作を行います。
@@ -509,124 +186,117 @@ async loopStep(stepContext) {
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-```csharp
-public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
-{
-    if (turnContext == null)
-    {
-        throw new ArgumentNullException(nameof(turnContext));
-    }
+**DialogExtensions.cs**
 
-    if (turnContext.Activity.Type == ActivityTypes.Message)
-    {
-        // Run the DialogSet - let the framework identify the current state of the dialog from
-        // the dialog stack and figure out what (if any) is the active dialog.
-        DialogContext dialogContext = await _dialogs.CreateContextAsync(turnContext, cancellationToken);
-        DialogTurnResult results = await dialogContext.ContinueDialogAsync(cancellationToken);
-        switch (results.Status)
-        {
-            case DialogTurnStatus.Cancelled:
-            case DialogTurnStatus.Empty:
-                // If there is no active dialog, we should clear the user info and start a new dialog.
-                await _accessors.UserProfileAccessor.SetAsync(turnContext, new UserProfile(), cancellationToken);
-                await _accessors.UserState.SaveChangesAsync(turnContext, false, cancellationToken);
-                await dialogContext.BeginDialogAsync(TopLevelDialog, null, cancellationToken);
-                break;
+このサンプルの `Run` ヘルパー メソッドの定義が完了しました。このヘルパー メソッドは、ダイアログ コンテキストの作成およびアクセスに使用します。
+コンポーネント ダイアログによって内部ダイアログ セットが定義されているため、メッセージ ハンドラー コードに表示される外部ダイアログ セットを作成し、それを使用してダイアログ コンテキストを作成する必要があります。
 
-            case DialogTurnStatus.Complete:
-                // If we just finished the dialog, capture and display the results.
-                UserProfile userInfo = results.Result as UserProfile;
-                string status = "You are signed up to review "
-                    + (userInfo.CompaniesToReview.Count is 0
-                        ? "no companies"
-                        : string.Join(" and ", userInfo.CompaniesToReview))
-                    + ".";
-                await turnContext.SendActivityAsync(status);
-                await _accessors.UserProfileAccessor.SetAsync(turnContext, userInfo, cancellationToken);
-                await _accessors.UserState.SaveChangesAsync(turnContext, false, cancellationToken);
-                break;
+- `dialog` は、ボットの主なコンポーネント ダイアログです。
+- `turnContext` は、ボットの現在のターン コンテキストです。
 
-            case DialogTurnStatus.Waiting:
-                // If there is an active dialog, we don't need to do anything here.
-                break;
-        }
+[!code-csharp[Run method](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/DialogExtensions.cs?range=13-24)]
 
-        await _accessors.ConversationState.SaveChangesAsync(turnContext, false, cancellationToken);
-    }
+**Bots\DialogBot.cs**
 
-    // Processes ConversationUpdate Activities to welcome the user.
-    else if (turnContext.Activity.Type == ActivityTypes.ConversationUpdate)
-    {
-        // Welcome new users...
-    }
-    else
-    {
-        // Give a default reply for all other activity types...
-    }
-}
-```
+メッセージ ハンドラーでは、ダイアログ管理のために `Run` ヘルパー メソッドが呼び出されます。ターンの途中に発生した可能性のある会話およびユーザー状態に対する変更を保存するために、ターン ハンドラーをオーバーライドしました。 基本 `OnTurnAsync` によって `OnMessageActivityAsync` メソッドが呼び出されます。これにより、そのターンの最後に保存呼び出しが確実に行われます。
+
+[!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogBot.cs?range=33-48&highlight=5-7)]
+
+**Bots\DialogAndWelcome.cs**
+
+`DialogAndWelcomeBot` によって上記の `DialogBot` が拡張され、ユーザーが会話に参加したときにウェルカム メッセージが示されます。これは `Startup.cs` によって呼び出されます。
+
+[!code-csharp[On members added](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogAndWelcome.cs?range=21-38)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-```javascript
-async onTurn(turnContext) {
-    if (turnContext.activity.type === ActivityTypes.Message) {
-        // Run the DialogSet - let the framework identify the current state of the dialog from
-        // the dialog stack and figure out what (if any) is the active dialog.
-        const dialogContext = await this.dialogs.createContext(turnContext);
-        const results = await dialogContext.continueDialog();
-        switch (results.status) {
-            case DialogTurnStatus.cancelled:
-            case DialogTurnStatus.empty:
-                // If there is no active dialog, we should clear the user info and start a new dialog.
-                await this.userProfileAccessor.set(turnContext, {});
-                await this.userState.saveChanges(turnContext);
-                await dialogContext.beginDialog(TOP_LEVEL_DIALOG);
-                break;
-            case DialogTurnStatus.complete:
-                // If we just finished the dialog, capture and display the results.
-                const userInfo = results.result;
-                const status = 'You are signed up to review '
-                    + (userInfo.companiesToReview.length === 0 ? 'no companies' : userInfo.companiesToReview.join(' and '))
-                    + '.';
-                await turnContext.sendActivity(status);
-                await this.userProfileAccessor.set(turnContext, userInfo);
-                await this.userState.saveChanges(turnContext);
-                break;
-            case DialogTurnStatus.waiting:
-                // If there is an active dialog, we don't need to do anything here.
-                break;
-        }
-        await this.conversationState.saveChanges(turnContext);
-    } else if (turnContext.activity.type === ActivityTypes.ConversationUpdate) {
-        // Welcome new users...
-    } else {
-        // Give a default reply for all other activity types...
-    }
-}
-```
+**dialogs/mainDialog.js**
+
+このサンプルの `run` メソッドの定義が完了しました。このメソッドは、ダイアログ コンテキストの作成およびアクセスに使用します。
+コンポーネント ダイアログによって内部ダイアログ セットが定義されているため、メッセージ ハンドラー コードに表示される外部ダイアログ セットを作成し、それを使用してダイアログ コンテキストを作成する必要があります。
+
+- `turnContext` は、ボットの現在のターン コンテキストです。
+- `accessor` は、ダイアログの状態を管理するために作成したアクセサーです。
+
+[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/mainDialog.js?range=32-41)]
+
+**bots/dialogBot.js**
+
+メッセージ ハンドラーでは、ダイアログ管理のために `run` ヘルパー メソッドが呼び出されます。ターンの途中に発生した可能性のある会話およびユーザー状態に対する変更を保存するために、ターン ハンドラーを実装しています。 `next` を呼び出すことで、基本実装によって `onDialog` メソッドが呼び出されます。これにより、そのターンの最後に保存呼び出しが確実に行われます。
+
+[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=30-47)]
+
+**bots/dialogWandWelcomeBot.js**
+
+`DialogAndWelcomeBot` によって上記の `DialogBot` が拡張され、ユーザーが会話に参加したときにウェルカム メッセージが示されます。これは `Startup.cs` によって呼び出されます。
+
+[!code-javascript[On members added](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogAndWelcomeBot.js?range=10-21)]
 
 ---
 
-## <a name="test-your-dialog"></a>ダイアログをテストする
+## <a name="branch-and-loop"></a>分岐とループ
 
-1. ご自身のマシンを使ってローカルでサンプルを実行します。 手順については、README ファイルで [C#](https://aka.ms/cs-complex-dialog-sample) または [JS](https://aka.ms/js-complex-dialog-sample) サンプルを参照してください。
-1. 次に示すように、エミュレーターを使用してボットをテストします。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Dialogs\TopLevelDialog.cs**
+
+"_最上位レベル_" ダイアログのステップの分岐ロジック サンプルを次に示します。
+
+[!code-csharp[branching logic](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/TopLevelDialog.cs?range=68-80)]
+
+**Dialogs\ReviewSelectionDialog.cs**
+
+"_選択内容の確認_" ダイアログのステップのループ ロジック サンプルを次に示します。
+
+[!code-csharp[looping logic](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/ReviewSelectionDialog.cs?range=96-105)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**dialogs/topLevelDialog.js**
+
+"_最上位レベル_" ダイアログのステップの分岐ロジック サンプルを次に示します。
+
+[!code-javascript[branching logic](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/topLevelDialog.js?range=56-64)]
+
+**dialogs/reviewSelectionDialog.js**
+
+"_選択内容の確認_" ダイアログのステップのループ ロジック サンプルを次に示します。
+
+[!code-javascript[looping logic](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=71-77)]
+
+---
+
+## <a name="to-test-the-bot"></a>ボットをテストする
+
+1. [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme) をインストールします (まだインストールしていない場合)。
+1. ご自身のマシンを使ってローカルでサンプルを実行します。
+1. 以下に示すように、エミュレーターを起動し、お使いのボットに接続して、メッセージを送信します。
 
 ![複雑なダイアログのサンプルをテストする](~/media/emulator-v4/test-complex-dialog.png)
 
 ## <a name="additional-resources"></a>その他のリソース
 
-ダイアログの実装方法の概要については、[連続して行われる会話フローの実装](bot-builder-dialog-manage-conversation-flow.md)に関するページをご覧ください。この記事では、1 つのウォーターフォール ダイアログと、いくつかのプロンプトを使用して、ユーザーに一連の質問を行う単純なやり取りを作成します。
+ダイアログの実装方法の概要については、[連続して行われる会話フローの実装][simple-dialog]に関するページをご覧ください。この記事では、1 つのウォーターフォール ダイアログと、いくつかのプロンプトを使用して、ユーザーに一連の質問を行う単純なやり取りを作成します。
 
-ダイアログ ライブラリには、プロンプト用の基本的な検証が含まれます。 カスタム検証を追加することもできます。 詳細については、[ダイアログ プロンプトを使用したユーザー入力の収集](bot-builder-prompts.md)に関するページをご覧ください。
+ダイアログ ライブラリには、プロンプト用の基本的な検証が含まれます。 カスタム検証を追加することもできます。 詳細については、[ダイアログ プロンプトを使用したユーザー入力の収集][dialog-prompts]に関するページをご覧ください。
 
 ご自身のダイアログ コードを簡素化し、複数のボットで再利用するために、ダイアログ セットの一部を別のクラスとして定義できます。
-詳細については、[ダイアログの再利用](bot-builder-compositcontrol.md)に関するページをご覧ください。
+詳細については、「[ダイアログの再利用][component-dialogs]」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-ボットを強化して、"ヘルプ"、"キャンセル" など、会話の通常のフローを中断する可能性がある追加入力に対応できるようにします。
-
 > [!div class="nextstepaction"]
-> [ユーザーによる割り込みの処理](bot-builder-howto-handle-user-interrupt.md)
+> [ダイアログの再利用](bot-builder-compositcontrol.md)
+
+<!-- Footnote-style links -->
+
+[concept-basics]: bot-builder-basics.md
+[concept-state]: bot-builder-concept-state.md
+[concept-dialogs]: bot-builder-concept-dialog.md
+
+[simple-dialog]: bot-builder-dialog-manage-conversation-flow.md
+[dialog-prompts]: bot-builder-prompts.md
+[component-dialogs]: bot-builder-compositcontrol.md
+
+[cs-sample]: https://aka.ms/cs-complex-dialog-sample
+[js-sample]: https://aka.ms/js-complex-dialog-sample

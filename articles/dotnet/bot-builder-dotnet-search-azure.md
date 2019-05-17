@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6169ed28fb765e84aaf31cf9e7d2ca404294bcad
-ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
+ms.openlocfilehash: e0ffb9c24b5e85b0eb1afdd885654e4864e65939
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55783361"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032921"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Azure Search を使用してデータドリブン エクスペリエンスを作成する 
 
@@ -28,18 +28,17 @@ ms.locfileid: "55783361"
 
 Azure Search は、キーワード検索、組み込みの言語機能、カスタム スコアリング、ファセット ナビゲーションなど多くの機能を提供する Azure サービスです。 Azure Search はまた、Azure SQL DB、DocumentDB、Blob Storage、Table Storage など、さまざまなソースのコンテンツのインデックスを作成することもできます。 これは他のデータ ソースの "プッシュ" インデックス作成をサポートしており、PDF、Office ドキュメント、および非構造化データが含まれたその他の形式を開くことができます。 収集されると、これらのコンテンツは Azure Search によってインデックス化され、ボットが照会できるようになります。
 
-
 ## <a name="prerequisites"></a>前提条件
 
-ボット プロジェクトに [Microsoft.Azure.Search](https://www.nuget.org/packages/Microsoft.Azure.Search/4.0.0-preview) Nuget パッケージをインストールします。 
+ボット プロジェクトに [Microsoft.Azure.Search](https://www.nuget.org/packages/Microsoft.Azure.Search/4.0.0-preview) Nuget パッケージをインストールします。
 
-ボットのソリューションには、次の 3 つの C# プロジェクトが必要です。 これらのプロジェクトは、ボットと Azure Search に追加機能を提供します。 [GitHub](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search) からプロジェクトをフォークするか、またはソース コードを直接ダウンロードします。
+ボットのソリューションには、次の 3 つの C# プロジェクトが必要です。 これらのプロジェクトは、ボットと Azure Search に追加機能を提供します。 [GitHub](https://aka.ms/v3-cs-search-demo) からプロジェクトをフォークするか、またはソース コードを直接ダウンロードします。
 
-* [Search.Azure](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search/Search.Azure) は、Azure サービスの呼び出しを定義します。 
-* [Search.Contracts](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search/Search.Contracts) は、データを処理するための汎用インターフェイスとデータ モデルを定義します。
-* [Search.Dialogs](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search/Search.Dialogs) には、Azure Search にクエリを実行するために使用されるさまざまな汎用の Bot Builder ダイアログが含まれています。
+- **Search.Azure** プロジェクトは、Azure サービスの呼び出しを定義します。
+- **Search.Contracts** プロジェクトは、データを処理するための汎用インターフェイスとデータ モデルを定義します。
+- **Search.Dialogs** プロジェクトには、Azure Search にクエリを実行するために使用されるさまざまな汎用の Bot Builder ダイアログが含まれています。
 
-## <a name="configure-azure-search-settings"></a>Azure Search の設定を構成する 
+## <a name="configure-azure-search-settings"></a>Azure Search の設定を構成する
 
 値フィールドで独自の Azure Search 資格情報を使用して、プロジェクトの **Web.config** ファイル内の Azure Search の設定を構成します。 `AzureSearchClient` クラスのコンストラクターは、これらの設定を使用して、ボットを Azure サービスに登録およびバインドします。
 
@@ -176,7 +175,8 @@ public class SearchHitStyler : PromptStyler
 Bot Framework SDK for .NET を使用してボットで Azure Search をサポートする方法を示す 2 つの完全なサンプルについては、GitHub にある[不動産ボット サンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/RealEstateBot)または[求人情報ボット サンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/JobListingBot)を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
-* [Azure Search][search]
-* [ダイアログの概要](bot-builder-dotnet-dialogs.md)
+
+- [Azure Search][search]
+- [ダイアログの概要](bot-builder-dotnet-dialogs.md)
 
 [search]: /azure/search/search-what-is-azure-search

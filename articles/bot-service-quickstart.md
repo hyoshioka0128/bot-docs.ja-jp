@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 02/07/2019
-ms.openlocfilehash: 6e0e4bb9e0cecccd10ee1baf14d68a90f02bfa49
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 882dc15bd900667d76eac41049ee88b51ec5c120
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904545"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033136"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Azure Bot Service を使用してボットを作成する
 
@@ -49,7 +49,6 @@ Bot Service では、ボットを開発するための Bot Framework SDK や、�
    | **アプリ名** | 一意の名前 | ボットの一意の URL 名。 たとえば、ボットに *myawesomebot* という名前を付けた場合、ボットの URL は `http://myawesomebot.azurewebsites.net` になります。 名前には、英数字とアンダースコアのみを使用する必要があります。 このフィールドは 35 文字に制限されています。 ボットの作成後にアプリ名を変更することはできません。 |
    | **Bot template\(ボット テンプレート\)** | Basic | **C#** または **Node.js** のいずれかを選択し、このクイック スタートでは **Basic** テンプレートを選択して、**[選択]** をクリックします。 Basic テンプレートでは、エコー ボットが作成されます。 テンプレートの詳細については、[こちら](bot-service-concept-templates.md)をご覧ください。 |
    | **App Service プラン/場所** | ご利用の App Service プラン  | [App Service プラン](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/)の場所を選択します。 一覧に示されたどの場所を選択しても構いませんが、多くの場合、顧客に最も近い場所を選択するのが最良です。 (Functions Bot では使用できません。) |
-   | **Azure Storage** | お使いの Azure ストレージ アカウント | 新しいデータ ストレージ アカウントを作成することも、既存のアカウントを使用することもできます。 既定では、ボットは [Table Storage](/azure/storage/common/storage-introduction#table-storage) を使用します。 |
    | **Application Insights** | On | [Application Insights](/bot-framework/bot-service-manage-analytics) を**オン**にするか、**オフ**にするかを決定します。 **[オン]** を選択した場合は、リージョンの場所も指定する必要があります。 一覧に示されたどの場所を選択してもかまいませんが、多くの場合、ボット サービスと同じ場所を選択するのが最良です。 |
    | **Microsoft App ID and password\(Microsoft アプリ ID とパスワード\)** | アプリ ID とパスワードの自動作成 | Microsoft アプリ ID とパスワードを手動で入力する必要がある場合は、このオプションを使用します。 それ以外の場合は、ボット作成プロセスで新しい Microsoft アプリ ID とパスワードが自動的に作成されます。 |
 
@@ -81,6 +80,7 @@ Bot Service では、ボットを開発するための Bot Framework SDK や、�
 
 [!INCLUDE [applies-to-v4](includes/applies-to.md)]
 
+
 Azure Bot Service は、ボットを開発するための Bot Framework SDK や、ボットをチャンネルに接続するための Bot Service など、ボットを作成するためのコア コンポーネントを提供します。 このトピックでは、.NET テンプレートまたは Node.js テンプレートのいずれかを選択し、Bot Framework SDK v4 を使用してボットを作成できます。
 
 [!INCLUDE [Azure vs local development](~/includes/snippet-quickstart-paths.md)]
@@ -111,7 +111,6 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
  | **アプリ名** | 一意の名前 | ボットの一意の URL 名。 たとえば、ボットに *myawesomebot* という名前を付けた場合、ボットの URL は `http://myawesomebot.azurewebsites.net` になります。 名前には、英数字とアンダースコアのみを使用する必要があります。 このフィールドは 35 文字に制限されています。 ボットの作成後にアプリ名を変更することはできません。 |
  | **Bot template\(ボット テンプレート\)** | エコー ボット | **[SDK v4]** を選択します。 このクイック スタートでは C# または Node.js のいずれかを選択して、**[選択]** をクリックします。  
  | **App Service プラン/場所** | ご利用の App Service プラン  | [App Service プラン](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/)の場所を選択します。 一覧に示されたどの場所を選択してもかまいませんが、多くの場合、ボット サービスと同じ場所を選択するのが最良です。 |
- | **Azure Storage** | お使いの Azure ストレージ アカウント | 新しいデータ ストレージ アカウントを作成することも、既存のアカウントを使用することもできます。 既定では、ボットは [Table Storage](/azure/storage/common/storage-introduction#table-storage) を使用します。 |
  | **Application Insights** | On | [Application Insights](/bot-framework/bot-service-manage-analytics) を**オン**にするか、**オフ**にするかを決定します。 **[オン]** を選択した場合は、リージョンの場所も指定する必要があります。 一覧に示されたどの場所を選択してもかまいませんが、多くの場合、ボット サービスと同じ場所を選択するのが最良です。 |
  | **Microsoft App ID and password\(Microsoft アプリ ID とパスワード\)** | アプリ ID とパスワードの自動作成 | Microsoft アプリ ID とパスワードを手動で入力する必要がある場合は、このオプションを使用します。 それ以外の場合は、ボット作成プロセスで新しい Microsoft アプリ ID とパスワードが自動的に作成されます。 |
 
@@ -136,6 +135,6 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
     1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 
 ## <a name="next-steps"></a>次の手順
-コードをダウンロードしたら、お使いのコンピューターでボットをローカルで引き続き開発できます。 ボットをテストし、ボット コードを Azure portal にアップロードする準備ができたら、デプロイに関するトピックの[リポジトリの設定](./bot-builder-deploy-az-cli.md#setup-a-repository)に関するセクションに記載されている手順に従います。
+コードをダウンロードしたら、お使いのコンピューターでボットをローカルで引き続き開発できます。 ボットをテストし、ボット コードを Azure portal にアップロードする準備ができたら、[継続的デプロイの設定](./bot-service-build-continuous-deployment.md)に関するトピックに記載されている手順に従って、変更後にコードを自動更新します。
 
 ::: moniker-end

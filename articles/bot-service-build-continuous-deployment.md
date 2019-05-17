@@ -1,73 +1,74 @@
 ---
-redirect_url: /bot-framework/bot-builder-deploy-az-cli
-ms.openlocfilehash: 8149471553658df6778e2983bae114e80c846c9b
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+title: Bot Service の継続的配置を構成する | Microsoft Docs
+description: Bot Service のソース管理からの継続的デプロイを設定する方法について説明します。
+keywords: 継続的配置, 公開, デプロイ, Azure portal
+author: ivorb
+ms.author: v-ivorb
+manager: kamrani
+ms.topic: article
+ms.service: bot-service
+ms.date: 05/01/2019
+monikerRange: azure-bot-service-4.0
+ms.openlocfilehash: d755572c6559ca1de7f0cf93a120273aa0fff947
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971429"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033108"
 ---
-<a name="--"></a><!--
----
-title:Bot Service の継続的デプロイを構成する | Microsoft Docs description:Bot Service のソース管理からの継続的デプロイを設定する方法について説明します。 keywords: 継続的デプロイ, 発行, デプロイ, azure portal 作成者: ivorb ms.author: v-ivorb マネージャー: kamrani ms.topic: article ms.service: bot-service ms.date:2018/12/06
----
-
 # <a name="set-up-continuous-deployment"></a>Azure App Service での GIT による継続的なデプロイ
-コードが **GitHub** または **Azure DevOps (旧称 Visual Studio Team Services)** にチェックインされる場合は、継続的デプロイを使用して、コードの変更をソース リポジトリから Azure に自動的にデプロイします。 このトピックでは、**GitHub** および **Azure DevOps** に対して継続的デプロイを設定する方法を説明します。
 
-> [!NOTE]
-> この記事で説明するシナリオでは、ボットが Azure にデプロイ済みであり、そのボットの継続的デプロイを有効にする必要があることを前提としています。 また、継続的デプロイを設定すると、Azure portal 上のオンライン コード エディターが読み取り専用になることも覚えておいてください。
+[!INCLUDE [applies-to](./includes/applies-to.md)]
+
+この記事では、お使いのボットの継続的デプロイを構成する方法を示します。 継続的デプロイを有効にすると、コード変更をソース リポジトリから Azure に自動的にデプロイできます。 このトピックでは、GitHub に対して継続的デプロイを設定する方法を説明します。 その他のソース管理システムでの継続的デプロイの設定については、このページの下部にある「その他のリソース」セクションを参照してください。
+
+## <a name="prerequisites"></a>前提条件
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](http://portal.azure.com) を作成してください。
+- 継続的デプロイを有効にする前に、[お使いのボットを Azure にデプロイする](bot-builder-deploy-az-cli.md)**必要があります**。
+
+## <a name="prepare-your-repository"></a>リポジトリを準備する
+リポジトリのルートに、プロジェクトの適切なファイルがあることを確認してください。 これにより Azure App Service の Kudu ビルド サーバーから自動ビルドを取得できます。 
+
+|ランタイム | ルート ディレクトリのファイル |
+|:-------|:---------------------|
+| ASP.NET Core | .sln または .csproj |
+| Node.js | server.js、app.js、またはスタート スクリプトを含む package.json |
+
 
 ## <a name="continuous-deployment-using-github"></a>GitHub を使用した継続的デプロイ
+GitHub を使用する継続的デプロイを有効にするには、Azure portal でご自身のボットの **App Service** ページに移動します。
 
-Azure にデプロイするソース コードが含まれる GitHub リポジトリを使用して継続的デプロイを設定するには、以下の手順を実行します。
+**[デプロイ センター]** > **[GitHub]** > **[承認]** をクリックします。
 
-1. [Azure portal](https://portal.azure.com) 上で、ボットの **[All App service settings]\(すべての App Service の設定\)** ブレードをクリックし、**[Deployment options (Classic)]\(デプロイ オプション (クラシック)\)** をクリックします。 
+![継続的デプロイ](~/media/azure-bot-build/azure-deployment.png)
 
-1. **[ソースの選択]** をクリックして、**[GitHub]** を選択します。
+表示されたブラウザー ウィンドウで、**[Authorize AzureAppService]\(AzureAppService の承認\)** をクリックします。 
 
-   ![GitHub を選択する](~/media/azure-bot-build/continuous-deployment-setup-github.png)
+![Azure Github のアクセス許可](~/media/azure-bot-build/azure-deployment-github.png)
 
-1. **[Authorization]\(承認\)** をクリックして、**[Authorize]\(承認する\)** ボタンをクリックし、指示に従って GitHub アカウントにアクセスする承認を Azure に与えます。
+**AzureAppService** の承認後、Azure portal の**デプロイ センター**に戻ります。
 
-1. **[プロジェクトの選択]** をクリックして、プロジェクトを選択します。
+1. **[続行]** をクリックします。 
 
-1. **[ブランチの選択]** をクリックして、ブランチを選択します。
+1. **[App Service のビルド サービス]** を選択します。
 
-1. **[OK]** をクリックして設定プロセスを完了します。
+1. **[続行]** をクリックします。
 
-GitHub での継続的デプロイの設定が完了しました。 ソース コード リポジトリにコミットするたびに、変更が Azure Bot Service に自動的にデプロイされます。
+1. **[組織]**、**[リポジトリ]**、および **[分岐]** を選択します。
 
-## <a name="continuous-deployment-using-azure-devops"></a>Azure DevOps を使用した継続的デプロイ
+1. **[続行]** をクリックし、**[完了]** をクリックして設定を完了します。
 
-1. [Azure portal](https://portal.azure.com) 上で、ボットの **[All App service settings]\(すべての App Service の設定\)** ブレードをクリックし、**[Deployment options (Classic)]\(デプロイ オプション (クラシック)\)** をクリックします。 
-2. **[ソースの選択]** をクリックして、**[Visual Studio Team Services]** を選択します。 Visual Studio Team Services の名称は Azure DevOps Services に変更されました。
-
-   ![Visual Studio Team Services を選択する](~/media/azure-bot-build/continuous-deployment-setup-vs.png)
-
-3. **[Choose your account]\(アカウントの選択\)** をクリックして、アカウントを選択します。
-
-> [!NOTE]
-> お使いのアカウントが表示されない場合は、[アカウントを Azure サブスクリプションにリンク](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/connect-organization-to-azure-ad?view=vsts&tabs=new-nav)する必要があります。 サポートされているのは VSTS Git プロジェクトのみであることに注意してください。
-
-4. **[プロジェクトの選択]** をクリックして、プロジェクトを選択します。
-5. **[ブランチの選択]** をクリックして、ブランチを選択します。
-6. **[OK]** をクリックして設定プロセスを完了します。
-
-   ![Visual Studio の構成](~/media/azure-bot-build/continuous-deployment-setup-vs-configuration.png)
-
-Azure DevOps での継続的デプロイの設定が完了しました。 コミットするたびに、変更が Azure に自動的にデプロイされます。
+この時点で、GitHub での継続的デプロイは設定されています。 ソース コード リポジトリにコミットするたびに、変更が Azure Bot Service に自動的にデプロイされます。
 
 ## <a name="disable-continuous-deployment"></a>継続的なデプロイの無効化
 
 ボットが継続的デプロイ用に構成されている間は、オンライン コード エディターを使ってボットを変更することはきません。 オンライン コード エディターを使いたい場合は、継続的デプロイを一時的に無効にできます。
 
 継続的デプロイを無効にするには、次の手順のようにします。
-1. [Azure portal](https://portal.azure.com) 上で、ボットの **[All App service settings]\(すべての App Service の設定\)** ブレードをクリックし、**[Deployment options (Classic)]\(デプロイ オプション (クラシック)\)** をクリックします。 
-2. **[Disconnect]\(切断\)** をクリックして、継続的デプロイを無効化にします。 継続的デプロイを再度有効にするには、上記の該当するセクションの手順を繰り返します。
+1. [Azure portal](https://portal.azure.com) 上で、ボットの **[All App service settings]\(すべての App Service の設定\)** ブレードに移動し、**[デプロイ センター]** をクリックします。 
+1. **[Disconnect]\(切断\)** をクリックして、継続的デプロイを無効化にします。 継続的デプロイを再度有効にするには、上記の該当するセクションの手順を繰り返します。
 
-## <a name="additional-information"></a>追加情報
-- Visual Studio Team Services の名称は [Azure DevOps Services](https://docs.microsoft.com/en-us/azure/devops/?view=vsts) に変更されました。
+## <a name="additional-resources"></a>その他のリソース
+- BitBucket および Azure DevOps Services からの継続的デプロイを有効にするには、「[Azure App Service への継続的デプロイ](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment)」を参照してください。
 
 
--->

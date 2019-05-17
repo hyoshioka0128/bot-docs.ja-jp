@@ -8,19 +8,22 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/20/2018
-ms.openlocfilehash: f86cacce5b25f60010f646cf5989123e3abf3bf2
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.date: 4/30/2019
+ms.openlocfilehash: 93689b7cee1c89bd9a7079c15ddf6aa16fcacc26
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55711976"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033083"
 ---
 # <a name="troubleshoot-http-500-errors"></a>HTTP 500 エラーのトラブルシューティング
 
 500 エラーを解決するための最初の手順は、Application Insights を有効にすることです。
 
-luis-with-appinsights ([C#](https://aka.ms/cs-luis-with-appinsights-sample) / [JS](https://aka.ms/js-luis-with-appinsights-sample)) および qna-with-appinsights ([C#](https://aka.ms/qna-with-appinsights) / [JS](https://aka.ms/js-qna-with-appinsights-sample)) のサンプルは、Azure Application Insights をサポートするボットの実例です。 Application Insights を既存のボットに追加する方法については、[会話分析テレメトリ](https://aka.ms/botPowerBiTemplate)に関する記事を参照してください。
+<!-- TODO: Add links back in once there's a fresh AppInsights sample.
+The luis-with-appinsights ([C# sample](https://aka.ms/cs-luis-with-appinsights-sample) / [JS sample](https://aka.ms/js-luis-with-appinsights-sample)) and qna-with-appinsights ([C# sample](https://aka.ms/qna-with-appinsights) / [JS sample](https://aka.ms/js-qna-with-appinsights-sample)) samples demonstrate bots that support Azure Application Insights.
+-->
+Application Insights を既存のボットに追加する方法については、[会話分析テレメトリ](https://aka.ms/botframeworkanalytics)に関する記事を参照してください。
 
 ## <a name="enable-application-insights-on-aspnet"></a>ASP.NET で Application Insights を有効にする
 
@@ -71,7 +74,7 @@ union_all
 
 ### <a name="ensure-configuration-files-are-being-copied-net-only"></a>構成ファイルがコピーされていることを確認する (.NET のみ)
 
-デプロイ プロセス中に、`.bot` 構成ファイルと `appsettings.json` ファイルが正しくパッケージ化されていることを確認します。
+デプロイ プロセス中に、`appsettings.json` と他の構成ファイルすべてが正しくパッケージ化されていることを確認します。
 
 #### <a name="application-assemblies"></a>アプリケーション アセンブリ
 
@@ -86,7 +89,7 @@ union_all
 - Microsoft.AI.DependencyCollector
 - Microsoft.AI.Agent.Intercept
 
-デプロイ プロセス中に、`.bot` 構成ファイルと `appsettings.json` ファイルが正しくパッケージ化されていることを確認します。
+デプロイ プロセス中に、`appsettings.json` と他の構成ファイルすべてが正しくパッケージ化されていることを確認します。
 
 #### <a name="appsettingsjson"></a>appsettings.json
 
@@ -114,8 +117,6 @@ union_all
 
 ```json
 {
-    "botFilePath": "mybot.bot",
-    "botFileSecret": "<my secret>",
     "ApplicationInsights": {
         "InstrumentationKey": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
@@ -124,12 +125,13 @@ union_all
 
 ---
 
-### <a name="verify-bot-config-file"></a>.bot 構成ファイルを確認する
+### <a name="verify-config-file"></a>構成ファイルを確認する
 
-.bot ファイルに Application Insights キーが含まれていることを確認します。
+構成ファイルに Application Insights キーが含まれていることを確認します。
 
 ```json
-    {
+{
+    "ApplicationInsights": {
         "type": "appInsights",
         "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "subscriptionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -140,7 +142,8 @@ union_all
         "applicationId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "apiKeys": {},
         "id": ""
-    },
+    }
+},
 ```
 
 ### <a name="check-logs"></a>ログを確認する

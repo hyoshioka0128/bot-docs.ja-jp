@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: tutorial
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/18/2019
+ms.date: 04/30/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bd29aa1ee56ebf64dc5db2edc47adc3ab250e7d5
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: deafe148310dd214ab857d60595edb1abef9e46d
+ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904945"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65039724"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>チュートリアル:ボットで QnA Maker を使用して質問に回答する
 
@@ -27,7 +27,7 @@ QnA Maker サービスとナレッジ ベースを使用して、質問と回答
 
 > [!div class="checklist"]
 > * QnA Maker サービスとナレッジ ベースを作成する
-> * ナレッジ ベースの情報を .bot ファイルに追加する
+> * ナレッジ ベースの情報を構成ファイルに追加する
 > * ナレッジ ベースに対してクエリを実行するようにボットを更新する
 > * ボットを再公開する
 
@@ -36,11 +36,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 ## <a name="prerequisites"></a>前提条件
 
 * [前のチュートリアル](bot-builder-tutorial-basic-deploy.md)で作成したボット。 そのボットに質問と回答の機能を追加します。
-* QnA Maker についてある程度理解していると役に立ちます。 QnA Maker ポータルを使用して、ボットで使用できるように、ナレッジ ベースを作成、トレーニング、公開します。
+* [QnA Maker](https://qnamaker.ai/) についてある程度理解していると役に立ちます。 QnA Maker ポータルを使用して、ボットで使用できるように、ナレッジ ベースを作成、トレーニング、公開します。
+* Azure Bot Service を使用した [QnA ボット作成](https://aka.ms/azure-create-qna)に関する知識。
 
-前のチュートリアルに対するこれらの前提条件が既に揃っている場合もあります。
-
-[!INCLUDE [deployment prerequisites snippet](~/includes/deploy/snippet-prerequisite.md)]
+前のチュートリアルに対する前提条件が既に揃っている場合もあります。
 
 ## <a name="sign-in-to-qna-maker-portal"></a>QnA Maker ポータルにサインインする
 
@@ -62,10 +61,10 @@ Azure 資格情報を使用して [QnA Maker ポータル](https://qnamaker.ai/)
 1. ナレッジ ベースを**保存してトレーニング**します。
 1. ナレッジ ベースを**公開**します。
 
-   ボットでナレッジ ベースを使用できる状態になりました。 ナレッジ ベース ID、エンドポイント キー、およびホスト名を記録しておきます。 これらは次のステップで必要になります。
+ボットでナレッジ ベースを使用できる状態になりました。 ナレッジ ベース ID、エンドポイント キー、およびホスト名を記録しておきます。 これらは次のステップで必要になります。
 
 ## <a name="add-knowledge-base-information-to-your-bot"></a>ナレッジ ベースの情報をボットに追加する
-ボット フレームワーク v4.3 以降、Azure では、ダウンロードされたボットのソース コードの一部として .bot ファイルが提供されなくなりました。 次の手順に従って、CSharp または JavaScript ボットをナレッジベースに接続します。
+Bot Framework v4.3 以降、Azure では、ダウンロードされたボットのソース コードの一部として .bot ファイルが提供されなくなりました。 次の手順に従って、CSharp または JavaScript ボットをナレッジベースに接続します。
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -76,35 +75,34 @@ Azure 資格情報を使用して [QnA Maker ポータル](https://qnamaker.ai/)
    "MicrosoftAppId": "",
   "MicrosoftAppPassword": "",
   "ScmType": "None",
-
-  "kbId": "<your-knowledge-base-id>",
-  "endpointKey": "<your-knowledge-base-endpoint-key>",
-  "hostname": "<your-qna-service-hostname>" // This is a URL
+  
+  "QnAKnowledgebaseId": "<your-knowledge-base-id>",
+  "QnAAuthKey": "<your-knowledge-base-endpoint-key>",
+  "QnAEndpointHostName": "<your-qna-service-hostname>" // This is a URL
 }
 ```
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-次の値を .env ファイルに追加します。
+次の値をご自身の .env ファイルに追加します。
 
-```javascript
+```
 MicrosoftAppId=""
 MicrosoftAppPassword=""
 ScmType=None
 
-kbId="<your-knowledge-base-id>"
-endpointKey="<your-knowledge-base-endpoint-key>"
-hostname="<your-qna-service-hostname>" // This is a URL
-
+QnAKnowledgebaseId="<your-knowledge-base-id>"
+QnAAuthKey="<your-knowledge-base-endpoint-key>"
+QnAEndpointHostName="<your-qna-service-hostname>" // This is a URL
 ```
 
 ---
 
-    | フィールド | 値 |
-    |:----|:----|
-    | kbId | QnA Maker ポータルで自動的に生成されたナレッジ ベース ID。 |
-    | endpointKey | QnA Maker ポータルで自動的に生成されエンドポイント キー。 |
-    | hostname | QnA Maker ポータルで生成されたホスト URL。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 |
+| フィールド | 値 |
+|:----|:----|
+| kbId | QnA Maker ポータルで自動的に生成されたナレッジ ベース ID。 |
+| endpointKey | QnA Maker ポータルで自動的に生成されエンドポイント キー。 |
+| hostname | QnA Maker ポータルで生成されたホスト URL。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。 |
 
 編集結果を保存します。
 
@@ -116,23 +114,23 @@ hostname="<your-qna-service-hostname>" // This is a URL
 
 1. **Microsoft.Bot.Builder.AI.QnA** NuGet パッケージをプロジェクトに追加します。
 1. **Microsoft.Extensions.Configuration** NuGet パッケージをプロジェクトに追加します。
-1. **startup.cs** ファイルに、次の名前空間参照を追加します。
+1. **Startup.cs** ファイルに、次の名前空間参照を追加します。
 
-   **startup.cs**
+   **Startup.cs**
    ```csharp
-       using Microsoft.Bot.Builder.AI.QnA;
-       using Microsoft.Extensions.Configuration;
+   using Microsoft.Bot.Builder.AI.QnA;
+   using Microsoft.Extensions.Configuration;
    ```
-1. _ConfigureServices_ メソッドを変更し、**appsettings.json** ファイルに定義されるナレッジ ベースに接続された QnAMkaerEndpoint を作成します。
+1. _ConfigureServices_ メソッドを変更し、**appsettings.json** ファイルに定義されるナレッジ ベースに接続された QnAMakerEndpoint を作成します。
 
-   **startup.cs**
+   **Startup.cs**
    ```csharp
    // Create QnAMaker endpoint as a singleton
    services.AddSingleton(new QnAMakerEndpoint
    {
-      KnowledgeBaseId = Configuration.GetValue<string>($"kbId"),
-      EndpointKey = Configuration.GetValue<string>($"endpointKey"),
-      Host = Configuration.GetValue<string>($"hostname")
+      KnowledgeBaseId = Configuration.GetValue<string>($"QnAKnowledgebaseId"),
+      EndpointKey = Configuration.GetValue<string>($"QnAAuthKey"),
+      Host = Configuration.GetValue<string>($"QnAEndpointHostName")
     });
 
    ```
@@ -198,19 +196,19 @@ hostname="<your-qna-service-hostname>" // This is a URL
    ```javascript
    // Map knowledgebase endpoint values from .env file into the required format for `QnAMaker`.
    const configuration = {
-      knowledgeBaseId: process.env.kbId,
-      endpointKey: process.env.endpointKey,
-      host: process.env.hostname
+      knowledgeBaseId: process.env.QnAKnowledgebaseId,
+      endpointKey: process.env.QnAAuthKey,
+      host: process.env.QnAEndpointHostName
    };
 
    ```
 
-1. QnA servicesconfiguration 情報を渡すようにボットの構造を更新します。
+1. QnA サービス構成情報を渡すようにボットの構造を更新します。
 
    **index.js**
    ```javascript
    // Create the main dialog.
-   const myBot = new MyBot(configuration, {}, logger);
+   const myBot = new MyBot(configuration, {});
    ```
 
 1. **bot.js** ファイルに、QnAMaker に必要なこれを追加します。
@@ -232,7 +230,7 @@ hostname="<your-qna-service-hostname>" // This is a URL
             this.qnaMaker = new QnAMaker(configuration, qnaOptions);
    ```
 
-1. 最後に、各ユーザーに QnA Maker ナレッジベースへの入力を渡し、ユーザーに QnA Maker 応答を返す onMessage( ) 呼び出しを追加します。  回答を得るためにナレッジ ベースにクエリを実行します。
+1. 最後に、次のコードを onMessage( ) 呼び出しに追加します。これにより、各ユーザーに QnA Maker ナレッジベースへの入力を渡し、ユーザーに QnA Maker 応答を返して、回答を得るためにご自身のナレッジ ベースにクエリを実行します。
  
     **bot.js**
     ```javascript
@@ -258,13 +256,14 @@ hostname="<your-qna-service-hostname>" // This is a URL
 
 ![QnA サンプルをテストする](./media/qna-test-bot.png)
 
-## <a name="re-publish-your-bot"></a>ボットを再公開する
+## <a name="republish-your-bot"></a>ボットを再公開する
 
 これで、ボットを Azure に再公開できる状態になりました。
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-[!INCLUDE [publish snippet](~/includes/deploy/snippet-publish.md)]
+```cmd
+az webapp deployment source config-zip --resource-group <resource-group-name> --name <bot-name-in-azure> --src "c:\bot\mybot.zip"
+```
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -276,9 +275,8 @@ hostname="<your-qna-service-hostname>" // This is a URL
 
 ボットを公開した後、Azure でボットが更新されて開始されるまで、1、2 分待ちます。
 
-1. エミュレーターを使用してボットの運用エンドポイントをテストするか、または Azure portal を使用して Web チャットでボットをテストします。
-
-   いずれの場合も、ローカル環境でテストしたときと同じ動作になるはずです。
+エミュレーターを使用してボットの運用エンドポイントをテストするか、または Azure portal を使用して Web チャットでボットをテストします。
+いずれの場合も、ローカル環境でテストしたときと同じ動作になるはずです。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -292,6 +290,6 @@ hostname="<your-qna-service-hostname>" // This is a URL
 
 ## <a name="next-steps"></a>次の手順
 
-ボットに機能を追加する方法については、開発ハウツー セクションの記事をご覧ください。
+ボットに機能を追加する方法については、開発ハウツー セクションの**テキスト メッセージの送受信**に関する記事と、その他の記事をご覧ください。
 > [!div class="nextstepaction"]
-> [次のステップのボタン](bot-builder-howto-send-messages.md)
+> [テキスト メッセージを送受信する](bot-builder-howto-send-messages.md)

@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 2/26/2019
-ms.openlocfilehash: 53cb392dea5ee0e355451e7455a16512f22ebbaa
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.date: 4/30/2019
+ms.openlocfilehash: c208cef52d1850a00b62828ae0ea622a2606ec5b
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224850"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033424"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>ボット構成の問題のトラブルシューティング
 
@@ -72,7 +72,7 @@ Bot Framework でサポートされているチャネルの構成手順につい
 
 ### <a name="channel-specific-behavior"></a>チャネル固有の動作
 
-一部の機能の実装はチャネルによって異なります。 たとえば、すべてのチャネルでアダプティブ カードがサポートされているわけではありません。 ほとんどのチャネルはボタンをサポートしていますが、チャネル固有の方法でレンダリングされています。 一部のメッセージの種類が、チャネルによって動作が異なる場合は、[Channel Inspector](https://docs.botframework.com/channel-inspector/channels/Skype) を調べます。
+一部の機能の実装はチャネルによって異なります。 たとえば、すべてのチャネルでアダプティブ カードがサポートされているわけではありません。 ほとんどのチャネルはボタンをサポートしていますが、チャネル固有の方法でレンダリングされています。 一部のメッセージの種類が、チャネルによって動作が異なる場合は、[チャネル リファレンス](bot-service-channels-reference.md)を調べます。
 
 個々のチャネルに役立つその他のリンクを次に示します。
 

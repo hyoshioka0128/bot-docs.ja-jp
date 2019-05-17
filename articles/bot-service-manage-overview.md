@@ -8,15 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 12/13/2017
-ms.openlocfilehash: fef82d27c6dd4fb61c9a0cf864e76a88128847d7
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.date: 4/13/2019
+ms.openlocfilehash: 17d80fe4d4730ed294b770fd05bc5d7ea3d114af
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591163"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033042"
 ---
 # <a name="manage-a-bot"></a>ボットの管理
+
+[!INCLUDE [applies-to-both](includes/applies-to-both.md)]
 
 このトピックでは、Azure portal を使用してボットを管理する方法について説明します。
 
@@ -46,17 +48,11 @@ ms.locfileid: "56591163"
 
 ![アプリ サービスの設定](~/media/azure-manage-a-bot/app-service-settings.png)
 
-**[アプリケーションの設定]** ブレードには、ボットの環境、デバッグ設定、アプリケーション設定キー (botFilePath や botFileSecret など)、ボットに関する詳細情報が含まれています。
+**[アプリケーションの設定]** ブレードには、ボットの環境、デバッグ設定、アプリケーション設定キーなど、ボットに関する詳細情報が含まれています。
 
 ### <a name="microsoftappid-and-microsoftapppassword"></a>MicrosoftAppID と MicrosoftAppPassword
 
-**MicrosoftAppID** と **MicrosoftAppPassword** は、ボットの `.bot` ファイル内に保持されています。 これらを取得するには、ボット ファイルをダウンロードして復号化しますが、これはローカルで ID とパスワードを使用してテストする必要があります。
-
-### <a name="bot-file-path-and-secret"></a>ボットのファイル パスとシークレット
-
-お使いのボットの **botFilePath** と **botFileSecret** は、**[アプリケーションの設定]** ブレードで確認できます。
-
-![Microsoft のボットのファイル パスとシークレット](~/media/azure-manage-a-bot/app-settings.png)
+**MicrosoftAppID** と **MicrosoftAppPassword** は、ボットの構成ファイルまたは Azure Key Vault 内に保持されています。 これらを取得するには、お使いのボットの設定または構成ファイルをダウンロードするか、Azure Key Vault にアクセスします。 ID とパスワードを使用してローカルでテストする必要が出てくる場合があります。
 
 > [!NOTE]
 > **[Bot Channels Registration]\(ボット チャネル登録\)** ボット サービスには *MicrosoftAppID* が付属しますが、この種類のサービスに関連付けられているアプリ サービスがないため、*MicrosoftAppPassword* を確認するための **[アプリケーションの設定]** ブレードは表示されません。 パスワードを取得するには、最初にパスワードの生成を行う必要があります。 **[Bot Channels Registration]\(ボット チャネル登録\)** のパスワードを生成するには、「[Bot Channels Registration password (ボット チャネル登録のパスワード)](bot-service-quickstart-registration.md#bot-channels-registration-password)」を参照してください
