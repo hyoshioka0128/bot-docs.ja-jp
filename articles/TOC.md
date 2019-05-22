@@ -38,7 +38,6 @@
 ### [ユーザーと会話データを保存する](v4sdk/bot-builder-howto-v4-state.md) 
 ### [ユーザーに入力を求める](v4sdk/bot-builder-primitive-prompts.md) 
 ### [ユーザーへのウェルカム メッセージの送信](v4sdk/bot-builder-send-welcome-message.md)
-<!-- ## [Add input hints to messages](v4sdk/bot-builder-howto-add-input-hints.md) -->
 ### [ユーザーへのプロアクティブな通知の送信](v4sdk/bot-builder-howto-proactive-message.md)
 ### [連続して行われる会話フローの実装](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
 ### [ボットに自然言語の理解を追加する](v4sdk/bot-builder-howto-v4-luis.md)
@@ -48,7 +47,6 @@
 ### [ダイアログの再利用](v4sdk/bot-builder-compositcontrol.md)
 <!--#### [Implement a greeting dialog](v4sdk/bot-builder-dialogs-greeting.md)--TODO: Add once there's a sample.-->
 ### [ユーザーによる割り込みの処理](v4sdk/bot-builder-howto-handle-user-interrupt.md)
-<!--#### [Persist user data](v4sdk/bot-builder-tutorial-persist-user-inputs.md)--TODO: redirect to write directly to storage.-->
 ### [ストレージに直接書き込む](v4sdk/bot-builder-howto-v4-storage.md)
 ### [ボットへの認証の追加](v4sdk/bot-builder-authentication.md)
 ### [ボットのカスタム ストレージの実装](v4sdk/bot-builder-custom-storage.md)

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ea6b859761a3bc8c1424d50d8bad0b7f1f50e86d
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: c486970a3880c95ff10e9d4bb59b50a5600c7343
+ms.sourcegitcommit: 178140eb060d71803f1c6357dd5afebd7f44fe1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033464"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65855876"
 ---
 # <a name="migrate-a-net-sdk-v3-bot-to-v4"></a>.NET SDK v3 のボットを v4 に移行する
 
@@ -1001,9 +1001,3 @@ v4 の使用方法のトピック
 - [テキスト メッセージを送受信する](../bot-builder-howto-send-messages.md)
 - [ユーザーと会話データを保存する](../bot-builder-howto-v4-state.md)
 - [連続して行われる会話フローの実装](../bot-builder-dialog-manage-conversation-flow.md)
-- [ダイアログ プロンプトを使用してユーザー入力を収集する](../bot-builder-prompts.md)
-
-<!-- TODO:
-- The conceptual piece
-- The migration to a .NET Core project
--->

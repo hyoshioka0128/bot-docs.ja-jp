@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 03/25/2019
+ms.date: 05/08/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 74c3af688a8f35b4583aa7b195348a6b205292a2
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 3470b1c8f3fbcfb7fecbb060a54b1a356ad41b61
+ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033164"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65733321"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>ユーザー入力を収集するために独自のプロンプトを作成する
 
@@ -70,9 +70,9 @@ ms.locfileid: "65033164"
 
 **Index.js** で、状態プロパティとボットを作成し、`run` ボット メソッドを `processActivity` 内から呼び出します。
 
-[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/index.js?range=32-35)]
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=32-35)]
 
-[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/index.js?range=55-58)]
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=55-58)]
 
 ---
 
@@ -92,11 +92,11 @@ ms.locfileid: "65033164"
 
 コンストラクターで状態プロパティ アクセサーを作成し、目的の会話に対して、(上記で作成した) 状態管理オブジェクトを設定します。
 
-**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=23-29)]
+**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=23-29)]
 
 その後、(次のセクションで説明する) メイン メッセージ ハンドラーの後に実行する 2 つ目のハンドラー `onDialog` を定義します。 この 2 つ目のハンドラーにより、ターンごとに状態が確実に保存されます。
 
-[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=41-48)]
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=41-48)]
 
 ---
 
@@ -112,7 +112,7 @@ ms.locfileid: "65033164"
 
 メッセージ アクティビティを処理するために、会話とユーザー データを設定し、`fillOutUserProfile()` ヘルパー メソッドを使用します。 ターン ハンドラーの完全なコードを次に示します。
 
-**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-39)]
+**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-39)]
 ---
 
 ## <a name="filling-out-the-user-profile"></a>ユーザー プロファイルを入力する
@@ -131,7 +131,7 @@ ms.locfileid: "65033164"
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=52-116)]
+**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=52-116)]
 
 ---
 
@@ -157,7 +157,7 @@ ms.locfileid: "65033164"
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**bots/customPromptBot.cs** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=118-189)]
+**bots/customPromptBot.cs** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=118-189)]
 
 ---
 
