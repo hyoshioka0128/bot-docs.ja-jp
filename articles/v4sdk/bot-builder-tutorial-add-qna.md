@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: tutorial
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/30/2019
+ms.date: 05/20/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: deafe148310dd214ab857d60595edb1abef9e46d
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: e51683a5dbae29879d73ee322586272d49708b22
+ms.sourcegitcommit: 72cc9134bf50f335cbb33265b048bf6b76252ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65039724"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65973877"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>チュートリアル:ボットで QnA Maker を使用して質問に回答する
 
@@ -61,7 +61,19 @@ Azure 資格情報を使用して [QnA Maker ポータル](https://qnamaker.ai/)
 1. ナレッジ ベースを**保存してトレーニング**します。
 1. ナレッジ ベースを**公開**します。
 
-ボットでナレッジ ベースを使用できる状態になりました。 ナレッジ ベース ID、エンドポイント キー、およびホスト名を記録しておきます。 これらは次のステップで必要になります。
+QnA Maker アプリが公開されたら、 _[SETTINGS]\(設定\)_ タブを選択し、[Deployment details]\(デプロイの詳細\) まで下にスクロールします。 _Postman_ サンプル HTTP 要求の次の値を書き留めます。
+
+```text
+POST /knowledgebases/<knowledge-base-id>/generateAnswer
+Host: <your-hostname>  // NOTE - this is a URL ending in /qnamaker.
+Authorization: EndpointKey <qna-maker-resource-key>
+```
+
+ホスト名の完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。
+
+これらの値は、次のステップで、`appsettings.json` ファイルまたは `.env` ファイル内で使用されます。
+
+ボットでナレッジ ベースを使用できる状態になりました。
 
 ## <a name="add-knowledge-base-information-to-your-bot"></a>ナレッジ ベースの情報をボットに追加する
 Bot Framework v4.3 以降、Azure では、ダウンロードされたボットのソース コードの一部として .bot ファイルが提供されなくなりました。 次の手順に従って、CSharp または JavaScript ボットをナレッジベースに接続します。
@@ -76,9 +88,9 @@ Bot Framework v4.3 以降、Azure では、ダウンロードされたボット�
   "MicrosoftAppPassword": "",
   "ScmType": "None",
   
-  "QnAKnowledgebaseId": "<your-knowledge-base-id>",
-  "QnAAuthKey": "<your-knowledge-base-endpoint-key>",
-  "QnAEndpointHostName": "<your-qna-service-hostname>" // This is a URL
+  "QnAKnowledgebaseId": "<knowledge-base-id>",
+  "QnAAuthKey": "<qna-maker-resource-key>",
+  "QnAEndpointHostName": "<your-hostname>" // This is a URL ending in /qnamaker
 }
 ```
 
@@ -91,18 +103,18 @@ MicrosoftAppId=""
 MicrosoftAppPassword=""
 ScmType=None
 
-QnAKnowledgebaseId="<your-knowledge-base-id>"
-QnAAuthKey="<your-knowledge-base-endpoint-key>"
-QnAEndpointHostName="<your-qna-service-hostname>" // This is a URL
+QnAKnowledgebaseId="<knowledge-base-id>"
+QnAAuthKey="<qna-maker-resource-key>"
+QnAEndpointHostName="<your-hostname>" // This is a URL ending in /qnamaker
 ```
 
 ---
 
 | フィールド | 値 |
 |:----|:----|
-| kbId | QnA Maker ポータルで自動的に生成されたナレッジ ベース ID。 |
-| endpointKey | QnA Maker ポータルで自動的に生成されエンドポイント キー。 |
-| hostname | QnA Maker ポータルで生成されたホスト URL。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。 |
+| QnAKnowledgebaseId | QnA Maker ポータルで自動的に生成されたナレッジ ベース ID。 |
+| QnAAuthKey | QnA Maker ポータルで自動的に生成されエンドポイント キー。 |
+| QnAEndpointHostName | QnA Maker ポータルで生成されたホスト URL。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。 |
 
 編集結果を保存します。
 
@@ -260,6 +272,15 @@ QnAEndpointHostName="<your-qna-service-hostname>" // This is a URL
 
 これで、ボットを Azure に再公開できる状態になりました。
 
+> [!IMPORTANT]
+> プロジェクト ファイルの zip を作成する前に、必ず適切なフォルダー "_内_" に移動します。 
+> - C# ボットの場合は、.csproj ファイルが含まれるフォルダーです。 
+> - JS ボットの場合は、app.js ファイルまたは index.js ファイルが含まれるフォルダーです。 
+>
+> そのフォルダー内ですべてのファイルを選択して zip 圧縮し、そのフォルダー内でコマンドを実行します。
+>
+> お使いのルート フォルダーの場所が正しくない場合、**ボットは、Azure portal で実行できません**。
+
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 ```cmd
 az webapp deployment source config-zip --resource-group <resource-group-name> --name <bot-name-in-azure> --src "c:\bot\mybot.zip"
@@ -286,7 +307,7 @@ az webapp deployment source config-zip --resource-group <resource-group-name> --
 
 1. Azure portal で、ボットのリソース グループを開きます。
 1. **[リソース グループの削除]** をクリックして、グループとそれに含まれるすべてのリソースを削除します。
-1. 確認ウィンドウでリソース グループ名を入力して、**[削除]** をクリックします。
+1. 確認ウィンドウでリソース グループ名を入力して、 **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

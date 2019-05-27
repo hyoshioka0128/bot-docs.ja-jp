@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/15/2019
+ms.date: 05/20/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b3e488615f318529935d35dbebbed2dd3b734f62
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: c81e463c221c64250684827a4e0ed059e7f98a02
+ms.sourcegitcommit: 72cc9134bf50f335cbb33265b048bf6b76252ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65039747"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65973881"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -76,23 +76,39 @@ ms.locfileid: "65039747"
 
 3. _[完了]_ を選択します。
 
-4. LUIS で Home Automation アプリが開いたら、_[Train]\(トレーニング\)_ ボタンを選択します。 これで、'home-automation.json' ファイルでインポートした一連の発話を使用してアプリがトレーニングされます。
+4. LUIS で Home Automation アプリが開いたら、 _[Train]\(トレーニング\)_ ボタンを選択します。 これで、'home-automation.json' ファイルでインポートした一連の発話を使用してアプリがトレーニングされます。
 
-5. トレーニングが完了したら、_[Publish]\(公開\)_ ボタンを選択します。 次のダイアログ ボックスが表示されます。
+5. トレーニングが完了したら、 _[Publish]\(公開\)_ ボタンを選択します。 次のダイアログ ボックスが表示されます。
 
 ![LUIS アプリを公開する](./media/tutorial-dispatch/publish-luis-app.png)
 
-6. '運用' 環境を選択し、_[Publish]\(公開\)_ ボタンを選択します。
+6. '運用' 環境を選択し、 _[Publish]\(公開\)_ ボタンを選択します。
 
-7. 新しい LUIS アプリが公開されたら、_[MANAGE]\(管理\)_ タブを選択します。[アプリケーション情報] ページから、`Application ID` の値として "_app-id-for-app_" を、また `Display name` の値として "_name-of-app_" を記録しておきます。 [キーとエンドポイント] ページから、`Authoring Key` の値として "_your-luis-authoring-key_" を、また `Region` の値として "_your-region_" を記録しておきます。 これらの値は、お使いの appsetting.json ファイル内で後で使用されます。
+7. 新しい LUIS アプリが公開されたら、 _[MANAGE]\(管理\)_ タブを選択します。[アプリケーション情報] ページから、`Application ID` の値として "_app-id-for-app_" を、また `Display name` の値として "_name-of-app_" を記録しておきます。 [キーとエンドポイント] ページから、`Authoring Key` の値として "_your-luis-authoring-key_" を、また `Region` の値として "_your-region_" を記録しておきます。 これらの値は、お使いの appsetting.json ファイル内で後で使用されます。
 
 8. 完了したら、"Weather.json" ファイルに対して上記の手順を繰り返して、ご自身の LUIS 天気アプリと LUIS ディスパッチ アプリの両方を "_トレーニング_" し、"_公開_" します。
 
 ### <a name="create-qna-maker-kb"></a>QnA Maker KB を作成する
 
-QnA Maker KB を設定するには、まず Azure で QnA Maker サービスを設定します。 そのためには、[こちら](https://aka.ms/create-qna-maker)で説明されている手順に従います。 次に [QnAMaker Web ポータル](https://qnamaker.ai)にログインします。 手順 2 に進みます
+QnA Maker KB を設定するには、まず Azure で QnA Maker サービスを設定します。 そのためには、[こちら](https://aka.ms/create-qna-maker)で説明されている手順に従います。
 
-![QnA の作成手順 2](./media/tutorial-dispatch/create-qna-step-2.png)
+Azure で QnA Maker サービスを作成したら、QnA Maker サービス用に提供される Cognitive Services の "_キー 1_" を記録しておく必要があります。 これは、QnA をディスパッチ アプリケーションに追加する際に、\<azure-qna-service-key1> として使用します。 以降の手順では、このキーが提供されます。
+    
+![コグニティブ サービスを選択する](./media/tutorial-dispatch/select-qna-cognitive-service.png)
+
+1. Azure portal 内で、QnA Maker コグニティブ サービスを選択します。
+
+![コグニティブ サービス キーを選択する](./media/tutorial-dispatch/select-cognitive-service-keys.png)
+
+2. 左側のメニューで、 _[リソース管理]_ セクションの下にあるキー アイコンを選択します。
+
+![コグニティブ サービス キー 1 を選択する](./media/tutorial-dispatch/select-cognitive-service-key1.png)
+
+3. "_キー 1_" の値をクリップボードにコピーして、ローカルに保存します。 これは、後で QnA をディスパッチ アプリケーションに追加する際に、(-k) キー値 \<azure-qna-service-key1> の代わりに使用します。
+
+次に [QnAMaker Web ポータル](https://qnamaker.ai)にログインします。 手順 2 に進みます
+
+![QnA の作成手順 2](./media/tutorial-dispatch/create-qna-step-2.png) 
 
 そして選択します
 1. Azure AD アカウント。
@@ -117,14 +133,14 @@ _[+ ファイルの追加]_ オプションを選択し、ご自身のサンプ�
 
 _[Create your KB]\(KB の作成\)_ を選択します。
 
-アップロードされたファイルからナレッジ ベースが作成されたら、_[Save and train]\(保存してトレーニング\)_ を選択し、完了したら、_[PUBLISH]\(公開\)_ タブを選択してアプリを公開します。
+アップロードされたファイルからナレッジ ベースが作成されたら、 _[Save and train]\(保存してトレーニング\)_ を選択し、完了したら、 _[PUBLISH]\(公開\)_ タブを選択してアプリを公開します。
 
-QnA Maker アプリが公開されたら、_[SETTINGS]\(設定\)_ タブを選択し、[Deployment details]\(デプロイの詳細\) まで下にスクロールします。 _Postman_ サンプル HTTP 要求の次の値を書き留めます。
+QnA Maker アプリが公開されたら、 _[SETTINGS]\(設定\)_ タブを選択し、[Deployment details]\(デプロイの詳細\) まで下にスクロールします。 _Postman_ サンプル HTTP 要求の次の値を書き留めます。
 
 ```text
 POST /knowledgebases/<knowledge-base-id>/generateAnswer
 Host: <your-hostname>  // NOTE - this is a URL.
-Authorization: EndpointKey <your-endpoint-key>
+Authorization: EndpointKey <qna-maker-resource-key>
 ```
 
 ホスト名の完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。
@@ -156,7 +172,7 @@ LUIS アプリと QnA Maker ナレッジ ベースの名前と ID を書き留�
     ```cmd
     dispatch add -t luis -i "<app-id-for-weather-app>" -n "<name-of-weather-app>" -v <app-version-number> -k "<your-luis-authoring-key>" --intentName l_Weather
     dispatch add -t luis -i "<app-id-for-home-automation-app>" -n "<name-of-home-automation-app>" -v <app-version-number> -k "<your-luis-authoring-key>" --intentName l_HomeAutomation
-    dispatch add -t qna -i "<knowledge-base-id>" -n "<knowledge-base-name>" -k "<your-cognitive-services-subscription-id>" --intentName q_sample-qna
+    dispatch add -t qna -i "<knowledge-base-id>" -n "<knowledge-base-name>" -k "<azure-qna-service-key1>" --intentName q_sample-qna
     ```
 
 1. `dispatch create` を使用して、.dispatch ファイルからディスパッチ モデルを生成します。
@@ -206,7 +222,7 @@ LUIS アプリと QnA Maker ナレッジ ベースの名前と ID を書き留�
 "MicrosoftAppPassword": "",
   
 "QnAKnowledgebaseId": "<knowledge-base-id>",
-"QnAAuthKey": "<your-endpoint-key>",
+"QnAAuthKey": "<qna-maker-resource-key>",
 "QnAEndpointHostName": "<your-hostname>",
 
 "LuisAppId": "<app-id-for-dispatch-app>",
@@ -245,7 +261,7 @@ MicrosoftAppId=""
 MicrosoftAppPassword=""
 
 QnAKnowledgebaseId="<knowledge-base-id>"
-QnAAuthKey="<your-endpoint-key>"
+QnAAuthKey="<qna-maker-resource-key>"
 QnAEndpointHostName="<your-hostname>"
 
 LuisAppId=<app-id-for-dispatch-app>
@@ -371,13 +387,13 @@ LUIS リソースを削除するには:
    - `Home Automation`
    - `Weather`
    - `NLP-With-Dispatch-BotDispatch`
-1. _[削除]_ をクリックし、_[OK]_ をクリックして確認します。
+1. _[削除]_ をクリックし、 _[OK]_ をクリックして確認します。
 
 QnA Maker リソースを削除するには:
 
 1. [qnamaker.ai](https://www.qnamaker.ai/) ポータルにサインインします。
 1. _[My knowledge bases]\(マイ ナレッジ ベース\)_ ページに移動します。
-1. `Sample QnA` ナレッジ ベースの削除ボタンをクリックし、_[削除]_ をクリックして確認します。
+1. `Sample QnA` ナレッジ ベースの削除ボタンをクリックし、 _[削除]_ をクリックして確認します。
 
 ### <a name="best-practice"></a>ベスト プラクティス
 

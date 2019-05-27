@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 04/17/2019
+ms.date: 05/20/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f24fc4e0aa4ccb9d99275360df693c8465e5a4ad
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: 10ae35f51a072a1af6cf7d4bdf2fd2f4cb3d66ee
+ms.sourcegitcommit: 72cc9134bf50f335cbb33265b048bf6b76252ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65039759"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65973855"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>QnA Maker を使用して質問に回答する
 
@@ -58,10 +58,10 @@ QnA Maker を利用するボットの場合は、最初に [QnA Maker](https://w
 ## <a name="obtain-values-to-connect-your-bot-to-the-knowledge-base"></a>ボットをナレッジ ベースに接続するための値を取得する
 1. [QnA Maker](https://www.qnamaker.ai/) サイトで、目的のナレッジ ベースを選択します。
 1. ナレッジ ベースを開いた状態で **[設定]** を選択します。 "_サービス名_" に表示されている値を記録します。 この値は、QnA Maker ポータル インターフェイスを使用するときに、対象となる自分のナレッジ ベースを見つけるのに役立ちます。 この値を使用して、ボット アプリをこのナレッジ ベースに接続するわけではありません。 
-1. 下へスクロールして **[デプロイの詳細]** を探し、次の値を記録します。
-   - POST /knowledgebases/<Your_Knowledge_Base_Id>/getAnswers
-   - Host: <Your_Hostname>/qnamaker
-   - Authorization:EndpointKey <Your_Endpoint_Key>
+1. 下へスクロールして **[デプロイの詳細]** を見つけ、Postman サンプル HTTP 要求にある次の値を記録します。
+   - POST /knowledgebases/\<knowledge-base-id>/generateAnswer
+   - Host: \<your-hostname> // Full URL ending with /qnamaker
+   - Authorization:EndpointKey \<your-endpoint-key>
    
 ホスト名の完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。 この 3 つの値によって、アプリが Azure QnA サービスを介して QnA Maker ナレッジ ベースに接続する際に必要な情報が提供されます。  
 

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/30/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7f2c31ab0a7f97917be83334c39bdc4750547614
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: bb6346d8364e0323c1e5f12329e8cdea97bad0ac
+ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033189"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65733360"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>チュートリアル:基本的なボットを作成してデプロイする
 
@@ -117,7 +117,7 @@ az deployment create --name "<name-of-deployment>" --template-file "template-wit
 _注:botId パラメーターはグローバルに一意である必要があり、不変のボット ID として使用されます。変更可能なボットの displayName を構成するときにも使用されます。_
 
 ```cmd
-az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation=<location>"
+az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<location>"
 ```
 
 **オプション 2:新しい App Service プラン** 
@@ -160,7 +160,7 @@ az bot prepare-deploy --code-dir "." --lang Javascript
 
 構成されていない [zip デプロイ API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url) を使用してお使いのボットのコードをデプロイする場合、Web App/Kudu は次のように動作します。
 
-"_Kudu では、zip ファイルからデプロイを実行する準備ができていること、およびデプロイ中に npm install、dotnet restore/dotnet publish などの追加ビルド ステップが不要であることを既定で想定しています。_"
+"_Kudu では、zip ファイルからデプロイを実行する準備ができていること、およびデプロイ中に npm install、dotnet restore/dotnet publish などの追加ビルド ステップが不要であることを既定で想定しています。_ "
 
 そのため、ご自身のビルドされたコードと、Web アプリに展開されている必要な依存関係すべてを zip ファイルに含めることが重要です。これを行わないと、ボットは意図したとおりに動作しません。
 
@@ -168,6 +168,8 @@ az bot prepare-deploy --code-dir "." --lang Javascript
 > プロジェクト ファイルを zip 圧縮する前に、必ず適切なフォルダー "_内_" に移動します。 
 > - C# ボットの場合は、.csproj ファイルが含まれるフォルダーです。 
 > - JS ボットの場合は、app.js ファイルまたは index.js ファイルが含まれるフォルダーです。 
+>
+> そのフォルダー内ですべてのファイルを選択して zip 圧縮し、そのフォルダー内でコマンドを実行します。
 >
 > お使いのルート フォルダーの場所が正しくない場合、**ボットは、Azure portal で実行できません**。
 
@@ -186,7 +188,7 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 
 ### <a name="3-test-in-web-chat"></a>手順 3.Web チャットでのテスト
 - Azure portal で、Web アプリ ボット ブレードに移動します。
-- **[Bot Management]\(ボットの管理\)** セクションで、**[Test in Web Chat]\(Web チャットでのテスト\)** をクリックします。 Azure Bot Service で Web チャット コントロールを読み込み、ボットに接続します。
+- **[Bot Management]\(ボットの管理\)** セクションで、 **[Test in Web Chat]\(Web チャットでのテスト\)** をクリックします。 Azure Bot Service で Web チャット コントロールを読み込み、ボットに接続します。
 - デプロイが成功したら、数秒待ちます。必要に応じて、Web アプリを再起動してキャッシュをクリアします。 Web App Bot ブレードに戻り、Azure portal で提供されている Web チャットを使用してテストします。
 
 ## <a name="additional-resources"></a>その他のリソース

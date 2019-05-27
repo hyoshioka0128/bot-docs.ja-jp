@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d896584b2048c8d2b330a1e6e63bc47122102532
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: caa1938abd6ca2b79f9b42f28f3965413d24d81b
+ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033396"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65733380"
 ---
 # <a name="dialogs-library"></a>ダイアログ ライブラリ
 
@@ -80,7 +80,7 @@ ms.locfileid: "65033396"
 | _数値プロンプト_ | 数値の入力を求めます。 | 数値。 |
 | _テキスト プロンプト_ | 一般的なテキスト入力を求めます。 | 文字列。 |
 
-ユーザーに入力を求めるには、組み込みクラスのいずれかを使用してプロンプト (_"テキスト プロンプト"_ など) を定義し、ダイアログ セットに追加します。 プロンプトには固定 ID があります。この ID は、ダイアログ セット内で一意である必要があります。 プロンプトごとにカスタム検証コントロールを含めることができます。一部のプロンプトについては、"_既定のロケール_" を指定できます。 
+ユーザーに入力を求めるには、組み込みクラスのいずれかを使用してプロンプト ( _"テキスト プロンプト"_ など) を定義し、ダイアログ セットに追加します。 プロンプトには固定 ID があります。この ID は、ダイアログ セット内で一意である必要があります。 プロンプトごとにカスタム検証コントロールを含めることができます。一部のプロンプトについては、"_既定のロケール_" を指定できます。 
 
 #### <a name="prompt-locale"></a>プロンプトのロケール
 
@@ -164,7 +164,7 @@ end dialog メソッドは、ダイアログ コンテキストのある任意�
 
 ### <a name="repeating-a-dialog"></a>ダイアログの繰り返し
 
-ダイアログをそれ自体と置き換えることで、ループを作成できます。
+*replace dialog* メソッドを使用して、ダイアログをそれ自体と置き換えることで、ループを作成できます。
 この手法は、[複雑な会話フロー](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)を処理する優れた方法であり、メニューを管理する優れた手法でもあります。
 
 > [!NOTE]
