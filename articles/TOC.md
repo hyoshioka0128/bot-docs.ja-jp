@@ -1,4 +1,4 @@
-# [Azure Bot Service のドキュメント](index.md)
+# [Azure Bot Service のドキュメント](index.yml)
 # 概要
 ## [Azure Bot Service について](bot-service-overview-introduction.md)
 ## [新機能](what-is-new.md)
