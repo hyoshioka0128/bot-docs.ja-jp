@@ -7,14 +7,14 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/01/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d755572c6559ca1de7f0cf93a120273aa0fff947
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: dc4b524659df3fb0b91b54fca65b4b7dd36378cd
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033108"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66214269"
 ---
 # <a name="set-up-continuous-deployment"></a>Azure App Service での GIT による継続的なデプロイ
 
@@ -38,11 +38,11 @@ ms.locfileid: "65033108"
 ## <a name="continuous-deployment-using-github"></a>GitHub を使用した継続的デプロイ
 GitHub を使用する継続的デプロイを有効にするには、Azure portal でご自身のボットの **App Service** ページに移動します。
 
-**[デプロイ センター]** > **[GitHub]** > **[承認]** をクリックします。
+**[デプロイ センター]**  >  **[GitHub]**  >  **[承認]** をクリックします。
 
 ![継続的デプロイ](~/media/azure-bot-build/azure-deployment.png)
 
-表示されたブラウザー ウィンドウで、**[Authorize AzureAppService]\(AzureAppService の承認\)** をクリックします。 
+表示されたブラウザー ウィンドウで、 **[Authorize AzureAppService]\(AzureAppService の承認\)** をクリックします。 
 
 ![Azure Github のアクセス許可](~/media/azure-bot-build/azure-deployment-github.png)
 
@@ -54,9 +54,9 @@ GitHub を使用する継続的デプロイを有効にするには、Azure port
 
 1. **[続行]** をクリックします。
 
-1. **[組織]**、**[リポジトリ]**、および **[分岐]** を選択します。
+1. **[組織]** 、 **[リポジトリ]** 、および **[分岐]** を選択します。
 
-1. **[続行]** をクリックし、**[完了]** をクリックして設定を完了します。
+1. **[続行]** をクリックし、 **[完了]** をクリックして設定を完了します。
 
 この時点で、GitHub での継続的デプロイは設定されています。 ソース コード リポジトリにコミットするたびに、変更が Azure Bot Service に自動的にデプロイされます。
 
@@ -65,7 +65,7 @@ GitHub を使用する継続的デプロイを有効にするには、Azure port
 ボットが継続的デプロイ用に構成されている間は、オンライン コード エディターを使ってボットを変更することはきません。 オンライン コード エディターを使いたい場合は、継続的デプロイを一時的に無効にできます。
 
 継続的デプロイを無効にするには、次の手順のようにします。
-1. [Azure portal](https://portal.azure.com) 上で、ボットの **[All App service settings]\(すべての App Service の設定\)** ブレードに移動し、**[デプロイ センター]** をクリックします。 
+1. [Azure portal](https://portal.azure.com) 上で、ボットの **[All App service settings]\(すべての App Service の設定\)** ブレードに移動し、 **[デプロイ センター]** をクリックします。 
 1. **[Disconnect]\(切断\)** をクリックして、継続的デプロイを無効化にします。 継続的デプロイを再度有効にするには、上記の該当するセクションの手順を繰り返します。
 
 ## <a name="additional-resources"></a>その他のリソース

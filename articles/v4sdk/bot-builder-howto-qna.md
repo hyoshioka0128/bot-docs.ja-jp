@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 05/20/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 10ae35f51a072a1af6cf7d4bdf2fd2f4cb3d66ee
-ms.sourcegitcommit: 72cc9134bf50f335cbb33265b048bf6b76252ce4
+ms.openlocfilehash: 09b8261ea69e04345cb9fb2d80542ae754efdc25
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65973855"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215371"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>QnA Maker を使用して質問に回答する
 
@@ -27,7 +27,7 @@ QnA Maker は、データに基づく会話の質疑応答レイヤーを提供�
 
 ## <a name="prerequisites"></a>前提条件
 
-- この記事のコードは、QnA Maker サンプルをベースにしています。 そのコピー (**[CSharp](https://aka.ms/cs-qna) または [JavaScript](https://aka.ms/js-qna-sample)**) が必要になります。
+- この記事のコードは、QnA Maker サンプルをベースにしています。 そのコピー ( **[CSharp](https://aka.ms/cs-qna) または [JavaScript](https://aka.ms/js-qna-sample)** ) が必要になります。
 - [QnA Maker](https://www.qnamaker.ai/) アカウント
 - [ボットの基本](bot-builder-basics.md)、[QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview)、および[ボット リソースの管理](bot-file-basics.md)に関する知識。
 

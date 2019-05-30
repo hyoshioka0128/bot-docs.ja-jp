@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 05/01/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6e7bd108bc67595c1d523c3c038e8b403ce387b1
-ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
+ms.openlocfilehash: c17e830c61036a6551fa7f3dbab79f83bda38123
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65733296"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66214304"
 ---
 # <a name="deploy-your-bot"></a>ボットをデプロイする
 
@@ -150,7 +150,7 @@ az bot prepare-deploy --code-dir "." --lang Typescript
 
 構成されていない [zip デプロイ API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url) を使用してお使いのボットのコードをデプロイする場合、Web App/Kudu は次のように動作します。
 
-"_Kudu では、zip ファイルからデプロイを実行する準備ができていること、およびデプロイ中に npm install、dotnet restore/dotnet publish などの追加ビルド ステップが不要であることを既定で想定しています。_"
+"_Kudu では、zip ファイルからデプロイを実行する準備ができていること、およびデプロイ中に npm install、dotnet restore/dotnet publish などの追加ビルド ステップが不要であることを既定で想定しています。_ "
 
 そのため、ご自身のビルドされたコードと、Web アプリに展開されている必要な依存関係すべてを zip ファイルに含めることが重要です。これを行わないと、ボットは意図したとおりに動作しません。
 
@@ -176,7 +176,7 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 
 ## <a name="3-test-in-web-chat"></a>手順 3.Web チャットでのテスト
 - Azure portal で、Web アプリ ボット ブレードに移動します。
-- **[Bot Management]\(ボットの管理\)** セクションで、**[Test in Web Chat]\(Web チャットでのテスト\)** をクリックします。 Azure Bot Service で Web チャット コントロールを読み込み、ボットに接続します。
+- **[Bot Management]\(ボットの管理\)** セクションで、 **[Test in Web Chat]\(Web チャットでのテスト\)** をクリックします。 Azure Bot Service で Web チャット コントロールを読み込み、ボットに接続します。
 - デプロイが成功したら、数秒待ちます。必要に応じて、Web アプリを再起動してキャッシュをクリアします。 Web App Bot ブレードに戻り、Azure portal で提供されている Web チャットを使用してテストします。
 
 ## <a name="additional-information"></a>追加情報

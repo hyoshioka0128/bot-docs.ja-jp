@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 4/18/19
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 58d1e83b67d0601a9783e175318a50f8c0646bb2
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 7b06d99ae1265d2519b5c1aa8fe838a4e3e4d43a
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033575"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215349"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 
@@ -25,7 +25,7 @@ ms.locfileid: "65033575"
 
 ## <a name="prerequisites"></a>前提条件
 - [LUIS](https://www.luis.ai) アカウント
-- この記事のコードは、**コア ボット** サンプルをベースにしています。 サンプルのコピー (**[CSharp](https://aka.ms/cs-core-sample) または [JavaScript](https://aka.ms/js-core-sample)**) が必要になります。 
+- この記事のコードは、**コア ボット** サンプルをベースにしています。 サンプルのコピー ( **[CSharp](https://aka.ms/cs-core-sample) または [JavaScript](https://aka.ms/js-core-sample)** ) が必要になります。 
 - [ボットの基本](bot-builder-basics.md)、[自然言語処理](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/what-is-luis)、および[ボット リソースの管理](bot-file-basics.md)に関する知識。
 
 ## <a name="about-this-sample"></a>このサンプルについて
@@ -65,7 +65,7 @@ ms.locfileid: "65033575"
 ダイアログ、状態などのサンプルの他の側面については、[ダイアログ プロンプトを使用したユーザー入力の収集](bot-builder-prompts.md)に関するページ、「[ユーザーおよび会話データを保存する](bot-builder-howto-v4-state.md)」を参照してください。 
 
 ## <a name="create-a-luis-app-in-the-luis-portal"></a>LUIS ポータルでの LUIS アプリの作成
-LUIS ポータルにサインインして、ご自身のバージョンのサンプル LUIS アプリを作成します。 アプリケーションは、**[マイ アプリ]** で作成および管理できます。 
+LUIS ポータルにサインインして、ご自身のバージョンのサンプル LUIS アプリを作成します。 アプリケーションは、 **[マイ アプリ]** で作成および管理できます。 
 
 1. **[Import new app]\(新しいアプリのインポート\)** を選択します。 
 1. **[Choose App file (JSON format)...]\(アプリ ファイル (JSON 形式) を選択...\)** をクリックします。 
@@ -83,8 +83,8 @@ LUIS アプリには、その発行後、ボットからアクセスできるよ
 設定ファイル (`appsettings.json` または `.env`) は、すべてのサービス参照を 1 か所にまとめる場所として機能します。 取得した情報は、次のセクションでこのファイルに追加されます。 
 1. 発行済みの LUIS アプリを [luis.ai](https://www.luis.ai) から選択します。
 1. 発行済み LUIS アプリを開いた状態で **[管理]** タブを選択します。![LUIS アプリの管理](./media/how-to-luis/manage-luis-app.png)
-1. 左側の **[アプリケーション情報]** タブで、_[アプリケーション ID]_ に表示される値を <YOUR_APP_ID> として記録します。
-1. 左側の **[Keys and Endpoints]\(キーとエンドポイント\)** タブを選択し、_[オーサリング キー]_ に表示される値を <YOUR_AUTHORING_KEY> として記録します。
+1. 左側の **[アプリケーション情報]** タブで、 _[アプリケーション ID]_ に表示される値を <YOUR_APP_ID> として記録します。
+1. 左側の **[Keys and Endpoints]\(キーとエンドポイント\)** タブを選択し、 _[オーサリング キー]_ に表示される値を <YOUR_AUTHORING_KEY> として記録します。
 1. 下へスクロールしてページの最後まで移動し、"_リージョン_" に表示される値を <YOUR_REGION> として記録します。
 
 ### <a name="update-the-settings-file"></a>設定ファイルを更新する

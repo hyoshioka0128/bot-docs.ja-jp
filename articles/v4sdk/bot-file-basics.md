@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/01/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 20b434c4fe5106ffe953c1a9ba9a282254511c9c
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: b4a5e3f0271d6b80a4245294e520ebc5abaede4e
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032323"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66214137"
 ---
 # <a name="manage-bot-resources"></a>ボット リソースの管理
 
@@ -24,7 +24,7 @@ ms.locfileid: "65032323"
 通常、ボットでは [LUIS.ai](https://luis.ai)、[QnaMaker.ai](https://qnamaker.ai) などのさまざまなサービスが使用されます。 ボットを開発する場合、それらすべてを追跡できる必要があります。 appsettings.json、web.config、または .env などのさまざまな方法を使用できます。 
 
 > [!IMPORTANT]
-> Bot Framework SDK 4.3 リリースより前、Microsoft ではリソース管理のメカニズムとして .bot ファイルを提供していました。 ただし今後は、これらのリソースを管理するために appsettings.json または .env ファイルを使用することをお勧めします。 .bot ファイルを使用するボットは、.bot ファイルが "**_非推奨_**" になった今でも機能します。 リソースの管理に .bot ファイルを使用している場合は、設定の移行のために適用される手順に従ってください。 
+> Bot Framework SDK 4.3 リリースより前、Microsoft ではリソース管理のメカニズムとして .bot ファイルを提供していました。 ただし今後は、これらのリソースを管理するために appsettings.json または .env ファイルを使用することをお勧めします。 .bot ファイルを使用するボットは、.bot ファイルが " **_非推奨_** " になった今でも機能します。 リソースの管理に .bot ファイルを使用している場合は、設定の移行のために適用される手順に従ってください。 
 
 ## <a name="migrating-settings-from-bot-file"></a>.bot ファイルから設定を移行する
 次のセクションでは、.bot ファイルから設定を移行する方法について説明します。 ご自身に該当するシナリオに従ってください。

@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 4/13/19
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 417833b380e80788e26682ce3abd9cc98199eee5
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 07a66eb468bc456fb463c9c215a2c941e4fafe0a
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032835"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215330"
 ---
 # <a name="write-directly-to-storage"></a>ストレージに直接書き込む
 
@@ -266,9 +266,9 @@ module.exports.MyBot = MyBot;
 
 ![Cosmos DB の[新規アカウント] ページ](./media/cosmosdb-new-account-page.png)
 
-3. **[新規アカウント] ページ**で、**[サブスクリプション]** および **[リソース グループ]** に情報を指定します。 **[アカウント名]** フィールドに一意の名前を指定します。この名前は、最終的にはご自身のデータ アクセス URL の一部になります。 **API** には **Core(SQL)** を選択し、データ アクセス時間を短縮するために近くの**場所**を指定します。
-4. 次に、**[確認および作成]** をクリックします。
-5. 検証が適切に行われたら、**[作成]** をクリックします。
+3. **[新規アカウント] ページ**で、 **[サブスクリプション]** および **[リソース グループ]** に情報を指定します。 **[アカウント名]** フィールドに一意の名前を指定します。この名前は、最終的にはご自身のデータ アクセス URL の一部になります。 **API** には **Core(SQL)** を選択し、データ アクセス時間を短縮するために近くの**場所**を指定します。
+4. 次に、 **[確認および作成]** をクリックします。
+5. 検証が適切に行われたら、 **[作成]** をクリックします。
 
 アカウントの作成には数分かかります。 ポータルに " Azure Cosmos DB アカウントが作成されました" ページが表示されるまで待機します。
 
@@ -276,7 +276,7 @@ module.exports.MyBot = MyBot;
 
 ![Cosmos DB コレクションの追加](./media/add_database_collection.png)
 
-1. **[設定]、[新しいコレクション]** の順にクリックします。 **[コレクションの追加]** 領域が右端に表示されます。表示するには、右にスクロールする必要がある場合があります。 Cosmos DB が最近更新されたため、_/id_ でパーティション キーを 1 つ必ず追加します。このキーにより、クロス パーティション クエリのエラーが回避されます。
+1. **[設定]、[新しいコレクション]** の順にクリックします。 **[コレクションの追加]** 領域が右端に表示されます。表示するには、右にスクロールする必要がある場合があります。 Cosmos DB が最近更新されたため、 _/id_ でパーティション キーを 1 つ必ず追加します。このキーにより、クロス パーティション クエリのエラーが回避されます。
 
 ![Cosmos DB](./media/cosmos-db-sql-database.png)
 
@@ -441,9 +441,9 @@ Azure Blob Storage は、Microsoft のクラウド用オブジェクト スト�
 
 ![Blob Storage の [新規アカウント] ページ](./media/blob-storage-new-account.png)
 
-3. **[新規アカウント] ページ**で、ストレージ アカウントの **[名前]** を入力し、**[アカウントの種類]** として **[Blob ストレージ]** を選択し、**[場所]**、**[リソース グループ]**、および **[サブスクリプション]** の情報を指定します。  
-4. 次に、**[確認および作成]** をクリックします。
-5. 検証が適切に行われたら、**[作成]** をクリックします。
+3. **[新規アカウント] ページ**で、ストレージ アカウントの **[名前]** を入力し、 **[アカウントの種類]** として **[Blob ストレージ]** を選択し、 **[場所]** 、 **[リソース グループ]** 、および **[サブスクリプション]** の情報を指定します。  
+4. 次に、 **[確認および作成]** をクリックします。
+5. 検証が適切に行われたら、 **[作成]** をクリックします。
 
 ### <a name="create-blob-storage-container"></a>Blob Storage コンテナーの作成
 ご自身の Blob storage アカウントが作成されたら、次の手順でこのアカウントを開きます 
@@ -457,7 +457,7 @@ Azure Blob Storage は、Microsoft のクラウド用オブジェクト スト�
 
 #### <a name="add-configuration-information"></a>構成情報の追加
 上記のボットの Blob Storage の構成に必要な Blob Storage キーを検索します。
-1. Azure portal で、Blob Storage アカウントを開き、**[設定]、[アクセス キー]** の順に選択します。
+1. Azure portal で、Blob Storage アカウントを開き、 **[設定]、[アクセス キー]** の順に選択します。
 
 ![Blob Storage キーの検索](./media/find-blob-storage-keys.png)
 
@@ -568,7 +568,7 @@ Azure Blob トランスクリプト ストレージでは、上記の「_Blob St
 1. Azure Blob Storage アカウントを開きます。
 1. "_Storage Explorer_" をクリックします。
 1. "_BLOB コンテナー_" を右クリックし、"_BLOB コンテナーの作成_" を選択します。
-1. トランスクリプト コンテナーの名前を入力し、_[OK]_ を選択します  (mybottranscripts を入力しました)。
+1. トランスクリプト コンテナーの名前を入力し、 _[OK]_ を選択します  (mybottranscripts を入力しました)。
 
 ### <a name="implementation"></a>実装 
 次のコードでは、トランスクリプト ストレージのポインター `_myTranscripts` を新しい Azure Blob トランスクリプト ストレージ アカウントに接続します。 新しいコンテナー名 <your-blob-transcript-container-name> でこのリンクを作成するには、トランスクリプト ファイルを保持する新しいコンテナーを Blob Storage に作成します。

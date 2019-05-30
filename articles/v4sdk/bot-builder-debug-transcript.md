@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservices: sdk
-ms.date: 4/18/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6660026cddd0543266a33603685a7d30cabfe706
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: c10e6cda084f22cd4d97fd4ddce942941015733b
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032745"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215441"
 ---
 # <a name="debug-your-bot-using-transcript-files"></a>トランスクリプト ファイルを使用してボットをデバッグする
 
@@ -29,13 +29,13 @@ ms.locfileid: "65032745"
 ## <a name="creatingstoring-a-bot-transcript-file"></a>ボット トランスクリプト ファイルを作成/格納する
 この記事では、Microsoft の [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator) を使用して、ボット トランスクリプト ファイルを作成する方法について説明します。 トランスクリプト ファイルはプログラムで作成することもできます。その方法の詳細については、[こちら](./bot-builder-howto-v4-storage.md#blob-transcript-storage)をお読みください。 この記事では、ユーザーの移動手段、名前、年齢を要求する[マルチ ターン プロンプト ボット](https://aka.ms/cs-multi-prompts-sample)用の Bot Framework のサンプル コードを使用しますが、Microsoft の Bot Framework Emulator を使用してアクセスできるすべてのコードを、トランスクリプト ファイルの作成に使用することができます。
 
-このプロセスを開始するには、テストするボット コードがご自身の開発環境内で実行されていることを確認します。 Bot Framework Emulator を起動し、_[Open Bot]\(ボットを開く\)_ を選択して、次の画像に示すように、ブラウザーに表示される _localhost:port_ のアドレスを入力し、その後ろに "/api/messages" を付けます。 ここで、_[接続]_ をクリックして、エミュレーターをお使いのボットに接続します。
+このプロセスを開始するには、テストするボット コードがご自身の開発環境内で実行されていることを確認します。 Bot Framework Emulator を起動し、 _[Open Bot]\(ボットを開く\)_ を選択して、次の画像に示すように、ブラウザーに表示される _localhost:port_ のアドレスを入力し、その後ろに "/api/messages" を付けます。 ここで、 _[接続]_ をクリックして、エミュレーターをお使いのボットに接続します。
 
 ![エミュレーターをコードに接続する](./media/emulator_open_bot_configuration.png)
 
 エミュレーターをご自身の実行中のコードに接続した後、シミュレートされたユーザー操作をボットに送信してコードをテストします。 この例では、ユーザーの移動手段、名前、および年齢が渡されました。 保持したいすべてのユーザー操作を入力し、Bot Framework Emulator を使って、この会話が含まれるトランスクリプト ファイルを作成し、保存します。 
 
-_[ライブ チャット]_ タブ (以下を参照) で、_[Save transcript]\(トランスクリプトの保存\)_ を選択します。 
+_[ライブ チャット]_ タブ (以下を参照) で、 _[Save transcript]\(トランスクリプトの保存\)_ を選択します。 
 
 ![[save transcripot]\(トランスクリプトの保存\) を選択する](./media/emulator_transcript_save.png)
 
@@ -46,7 +46,7 @@ _[ライブ チャット]_ タブ (以下を参照) で、_[Save transcript]\(�
 エミュレーターでご自身のコードをテストするために入力した、すべてのユーザー操作とボット応答がトランスクリプト ファイルに保存されました。これは後で再度読み込むことができるため、該当するユーザーとご自身のボットの間のやり取りをデバッグするときに役立ちます。
 
 ## <a name="retrieving-a-bot-transcript-file"></a>ボット トランスクリプト ファイルを取得する
-Bot Framework Emulator を使用してボット トランスクリプト ファイルを取得するには、以下に示すように、エミュレーターの左上隅にある _[ファイル]_、_[Open Transcript...]\(トランスクリプトを開く\)_ を順に選択します。 次に、取得するトラン スクリプト ファイルを選択します。 (トランスクリプトには、エミュレーターの _[リソース]_ セクションの _[トランスクリプト]_ リスト コントロール内からアクセスできます) 
+Bot Framework Emulator を使用してボット トランスクリプト ファイルを取得するには、以下に示すように、エミュレーターの左上隅にある _[ファイル]_ 、 _[Open Transcript...]\(トランスクリプトを開く\)_ を順に選択します。 次に、取得するトラン スクリプト ファイルを選択します。 (トランスクリプトには、エミュレーターの _[リソース]_ セクションの _[トランスクリプト]_ リスト コントロール内からアクセスできます) 
 
 この例では、"ursula_user.transcript" という名前のトランスクリプト ファイルを取得します。 トランスクリプト ファイルを選択すると、保持されているやり取り全体が、"_トランスクリプト_" という名前の新しいタブに自動的に読み込まれます。
 
