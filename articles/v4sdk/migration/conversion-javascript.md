@@ -1,21 +1,21 @@
 ---
 title: 既存の v3 JavaScript ボットを新しい v4 プロジェクトに移行する |Microsoft Docs
 description: 既存の v3 JavaScript ボットを取得し、新しいプロジェクトを使用して、これを v4 SDK に移行します。
-keywords: JavaScript, ボットの移行, formflow, ダイアログ, v3 ボット
+keywords: JavaScript, ボットの移行, ダイアログ, v3 ボット
 author: JonathanFingold
 ms.author: v-jofing
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/13/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3692c723bf2ac4d2275176bb0f7c5f8103225808
-ms.sourcegitcommit: 178140eb060d71803f1c6357dd5afebd7f44fe1d
+ms.openlocfilehash: 591f58e1cefca576e2e3e4a486ecc6fbe0a6b0e4
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65856661"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215604"
 ---
 # <a name="migrate-a-sdk-v3-javascript-bot-to-v4"></a>SDK v3 JavaScript のボットを v4 に移行する
 
@@ -80,7 +80,7 @@ v4 テンプレートで、アプリのエントリ ポイントを表す **inde
 
 ボット アプリのエントリ ポイントである **./index.js** を編集します。 これには、v3 **app.js** ファイル内の、HTTP サーバーを設定する部分が含まれます。
 
-1. `BotFrameworkAdapter` に加え、**botbuilder** パッケージから `MemoryStorage` と `ConversationState` をインポートします。 また、ボットおよびメイン ダイアログ モジュールもインポートします  (これらはこの後すぐに作成しますが、ここではこれらを参照する必要があります)。
+1. `BotFrameworkAdapter` に加え、**botbuilder** パッケージから `MemoryStorage` と `ConversationState` をインポートします。 また、ボットおよびメイン ダイアログ モジュールもインポートします (これらはこの後すぐに作成しますが、ここではこれらを参照する必要があります)。
 
     ```javascript
     // Import required bot services.

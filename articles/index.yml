@@ -11,7 +11,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/23/2019
+  ms.date: 05/31/2019
   ms.author: ivorb
 abstract:
   description: 'Azure Bot Service では、ボット開発専用の統合環境が提供され、インテリジェント ボットのビルド、接続、テスト、デプロイ、管理をすべて一元化して行えます。 Azure Bot Service では、C# と JavaScript をサポートする Bot Framework SDK を活用します。 クイックスタート、チュートリアル、およびサンプルを使用して、Bot Service の使用方法を学習してください。'
@@ -25,6 +25,22 @@ abstract:
     href: 'https://mybuild.techcommunity.microsoft.com/sessions/77571?source=%7B%7B%20ctrl.source#top-anchor'
     width: 250
 sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction'
+            html: <p>Azure Bot Service について説明します。</p>
+            image:
+              src: media/index/i_overview.png
+            title: Azure Bot Service とは
+          - href: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-basics'
+            html: <p>ボットのしくみを説明します。</p>
+            image:
+              src: media/index/i_guidelines.png
+            title: ボットのしくみ
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
@@ -33,17 +49,17 @@ sections:
         style: icon48
         items:
           - image:
-              src: media/index/azure_portal.png
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart'
-          - image:
               src: v4sdk/media/logo_csharp.svg
             text: 'C#'
-            href: 'https://docs.microsoft.com/en-us/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart'
+            href: 'https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart'
           - image:
               src: v4sdk/media/logo_js.svg
             text: JavaScript
-            href: 'https://docs.microsoft.com/en-us/azure/bot-service/javascript/bot-builder-javascript-quickstart'
+            href: 'https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart'
+          - image:
+              src: media/index/azure_portal.png
+            text: Azure Portal
+            href: 'https://docs.microsoft.com/azure/bot-service/bot-service-quickstart'
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph
