@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/23/2019
+ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 93f660820407d6caf4c29efb3c128851059f3b02
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: b4226e842384caf1315170354c763a44c15b0c70
+ms.sourcegitcommit: 18ff5705d15b8edc85fb43001969b173625eb387
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215572"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66453212"
 ---
 # <a name="net-migration-quick-reference"></a>.NET 移行クイック リファレンス
 
@@ -454,3 +454,112 @@ protected override Task OnEventActivityAsync(ITurnContext<IEventActivity> turnCo
     // Handle event activities in general here.
 }
 ```
+
+## <a name="to-log-all-activities"></a>すべてのアクティビティをログに記録するには
+
+### <a name="v3"></a>v3
+
+[IActivityLogger](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.history.iactivitylogger) が使用されました。
+
+```csharp
+builder.RegisterType<ActivityLoggerImplementation>().AsImplementedInterfaces().InstancePerDependency(); 
+
+public class ActivityLoggerImplementation : IActivityLogger
+{
+    async Task IActivityLogger.LogAsync(IActivity activity)
+    {
+        // Store the activity.
+    }
+}
+```
+
+### <a name="v4"></a>v4
+
+[ITranscriptLogger](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.itranscriptlogger) を使用します。
+
+```csharp
+var transcriptMiddleware = new TranscriptLoggerMiddleware(new TranscriptLoggerImplementation(Configuration.GetSection("StorageConnectionString").Value));
+adapter.Use(transcriptMiddleware);
+
+public class TranscriptLoggerImplementation : ITranscriptLogger
+{
+    async Task ITranscriptLogger.LogActivityAsync(IActivity activity)
+    {
+        // Store the activity.
+    }
+}
+```
+
+## <a name="to-add-bot-state-storage"></a>ボット状態ストレージを追加するには
+
+"_ユーザー データ_"、"_会話データ_"、および "_個人的な会話データ_" を格納するためのインターフェイスが変更されました。
+
+### <a name="v3"></a>v3
+
+状態は、`IBotDataStore` 実装を使用して保持され、Autofac を使用して SDK のダイアログ状態システムにそれを挿入します。  Microsoft は [Microsoft.Bot.Builder.Azure](https://github.com/Microsoft/BotBuilder-Azure/) で `MemoryStorage`、`DocumentDbBotDataStore`、`TableBotDataStore`、および `SqlBotDataStore` クラスを提供しています。
+
+データを保持するために [IBotDataStore<BotData>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.dialogs.internals.ibotdatastore-1?view=botbuilder-dotnet-3.0) が使用されました。
+
+```csharp
+Task<bool> FlushAsync(IAddress key, CancellationToken cancellationToken);
+Task<T> LoadAsync(IAddress key, BotStoreType botStoreType, CancellationToken cancellationToken);
+Task SaveAsync(IAddress key, BotStoreType botStoreType, T data, CancellationToken cancellationToken);
+```
+
+```csharp
+var dbPath = ConfigurationManager.AppSettings["DocDbPath"];
+var dbKey = ConfigurationManager.AppSettings["DocDbKey"];
+var docDbUri = new Uri(dbPath);
+var storage = new DocumentDbBotDataStore(docDbUri, dbKey);
+builder.Register(c => storage)
+                .Keyed<IBotDataStore<BotData>>(AzureModule.Key_DataStore)
+                .AsSelf()
+                .SingleInstance();
+```
+
+### <a name="v4"></a>v4
+
+ストレージ層では `IStorage` インターフェイスが使用されます。お使いのボットの各状態管理オブジェクトを作成するときに、ストレージ層オブジェクトを指定します (`UserState`、`ConversationState`、`PrivateConversationState` など)。 状態管理オブジェクトは、基になるストレージ層にキーを提供し、またプロパティ マネージャーとしても機能します。 たとえば、`IPropertyManager.CreateProperty<T>(string name)` を使用して状態プロパティ アクセサーを作成します。  これらのプロパティ アクセサーは、ボットの基になるストレージに対して値を取得または格納するために使用されます。
+
+[IStorage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.istorage?view=botbuilder-dotnet-stable) を使用してデータを保持します。
+
+```csharp
+Task DeleteAsync(string[] keys, CancellationToken cancellationToken = default(CancellationToken));
+Task<IDictionary<string, object>> ReadAsync(string[] keys, CancellationToken cancellationToken = default(CancellationToken));
+Task WriteAsync(IDictionary<string, object> changes, CancellationToken cancellationToken = default(CancellationToken));
+```
+
+```csharp
+var storageOptions = new CosmosDbStorageOptions()
+{
+    AuthKey = configuration["cosmosKey"],
+    CollectionId = configuration["cosmosCollection"],
+    CosmosDBEndpoint = new Uri(configuration["cosmosPath"]),
+    DatabaseId = configuration["cosmosDatabase"]
+};
+
+IStorage dataStore = new CosmosDbStorage(storageOptions);
+var conversationState = new ConversationState(dataStore);
+services.AddSingleton(conversationState);
+
+```
+
+## <a name="to-use-form-flow"></a>フォーム フローを使用するには
+
+### <a name="v3"></a>v3
+
+[Microsoft.Bot.Builder.FormFlow](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.formflow?view=botbuilder-dotnet-3.0) がコア Bot Builder SDK に含まれました。
+
+### <a name="v4"></a>v4
+
+[Bot.Builder.Community.Dialogs.FormFlow](https://www.nuget.org/packages/Bot.Builder.Community.Dialogs.FormFlow/) は Bot Builder Community ライブラリになりました。  ソースはコミュニティの[リポジトリ](https://github.com/BotBuilderCommunity/botbuilder-community-dotnet/tree/develop/libraries/Bot.Builder.Community.Dialogs.FormFlow)で入手できます。
+
+## <a name="to-use-luisdialog"></a>LuisDialog を使用するには
+
+### <a name="v3"></a>v3
+
+[Microsoft.Bot.Builder.Dialogs.LuisDialog](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.dialogs.luisdialog-1?view=botbuilder-dotnet-3.0) がコア Bot Builder SDK に含まれました。
+
+### <a name="v4"></a>v4
+
+[Bot.Builder.Community.Dialogs.Luis](https://www.nuget.org/packages/Bot.Builder.Community.Dialogs.Luis/) は Bot Builder Community ライブラリになりました。  ソースはコミュニティの[リポジトリ](https://github.com/BotBuilderCommunity/botbuilder-community-dotnet/tree/develop/libraries/Bot.Builder.Community.Dialogs.Luis)で入手できます。

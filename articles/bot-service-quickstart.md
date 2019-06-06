@@ -8,31 +8,29 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 02/07/2019
-ms.openlocfilehash: 882dc15bd900667d76eac41049ee88b51ec5c120
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.date: 05/31/2019
+ms.openlocfilehash: 721a64fab578f6c49b1dbebe5fee28045a198153
+ms.sourcegitcommit: 0eb7ac64c4eb28944a9957a0cd2f65b046232244
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033136"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455456"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Azure Bot Service を使用してボットを作成する
 
 ::: moniker range="azure-bot-service-3.0"
 
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+> [!NOTE]
+> **2019 年 6 月 10 日以降、Azure portal で V3 SDK ボットを作成できなくなります。今後は、[V4 SDK](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) ボットを作成することをお勧めします。V3 SDK の長期サポートについて詳しくは、[こちら](https://docs.microsoft.com/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-3.0#bot-framework-sdk-version-3-lifetime-support)** をご覧ください。 
 
 Bot Service では、ボットを開発するための Bot Framework SDK や、ボットをチャンネルに接続するための Bot Framework など、ボットを作成するためのコア コンポーネントが提供されています。 Bot Service には、.NET および Node.js をサポートするボットを作成するときに選択できる 5 つのテンプレートが用意されています。 このトピックでは、Bot Service を使用して、Bot Framework SDK を使用する新しいボットを作成する方法について説明します。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 [Azure Portal](http://portal.azure.com) にログインします。
 
-> [!TIP]
-> サブスクリプションがない場合は、<a href="https://azure.microsoft.com/en-us/free/" target="_blank">無料アカウント</a>に登録できます。
-
 ## <a name="create-a-new-bot-service"></a>新しいボット サービスを作成する
 
-1. Azure portal の左上隅にある **[新しいリソースの作成]** リンクをクリックし、**[AI + Machine Learning] > [Web App Bot]** を選択します。 
+1. Azure portal の左上隅にある **[新しいリソースの作成]** リンクをクリックし、 **[AI + Machine Learning] > [Web App Bot]** を選択します。 
 
 2. **Web App Bot** に関する情報が含まれた新しいブレードが開きます。  
 
@@ -47,18 +45,18 @@ Bot Service では、ボットを開発するための Bot Framework SDK や、�
    | **場所** | 既定の場所 | リソース グループの地理的な場所を選択します。 一覧に示されたどの場所を選択しても構いませんが、多くの場合、顧客に最も近い場所を選択するのが最良です。 ボットの作成後に場所を変更することはできません。 |
    | **[価格レベル]** | F0 | 価格レベルを選択します。 価格レベルはいつでも更新できます。 詳細については、[Bot Service の価格](https://azure.microsoft.com/en-us/pricing/details/bot-service/)に関するページをご覧ください。 |
    | **アプリ名** | 一意の名前 | ボットの一意の URL 名。 たとえば、ボットに *myawesomebot* という名前を付けた場合、ボットの URL は `http://myawesomebot.azurewebsites.net` になります。 名前には、英数字とアンダースコアのみを使用する必要があります。 このフィールドは 35 文字に制限されています。 ボットの作成後にアプリ名を変更することはできません。 |
-   | **Bot template\(ボット テンプレート\)** | Basic | **C#** または **Node.js** のいずれかを選択し、このクイック スタートでは **Basic** テンプレートを選択して、**[選択]** をクリックします。 Basic テンプレートでは、エコー ボットが作成されます。 テンプレートの詳細については、[こちら](bot-service-concept-templates.md)をご覧ください。 |
+   | **Bot template\(ボット テンプレート\)** | Basic | **C#** または **Node.js** のいずれかを選択し、このクイック スタートでは **Basic** テンプレートを選択して、 **[選択]** をクリックします。 Basic テンプレートでは、エコー ボットが作成されます。 テンプレートの詳細については、[こちら](bot-service-concept-templates.md)をご覧ください。 |
    | **App Service プラン/場所** | ご利用の App Service プラン  | [App Service プラン](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/)の場所を選択します。 一覧に示されたどの場所を選択しても構いませんが、多くの場合、顧客に最も近い場所を選択するのが最良です。 (Functions Bot では使用できません。) |
    | **Application Insights** | On | [Application Insights](/bot-framework/bot-service-manage-analytics) を**オン**にするか、**オフ**にするかを決定します。 **[オン]** を選択した場合は、リージョンの場所も指定する必要があります。 一覧に示されたどの場所を選択してもかまいませんが、多くの場合、ボット サービスと同じ場所を選択するのが最良です。 |
    | **Microsoft App ID and password\(Microsoft アプリ ID とパスワード\)** | アプリ ID とパスワードの自動作成 | Microsoft アプリ ID とパスワードを手動で入力する必要がある場合は、このオプションを使用します。 それ以外の場合は、ボット作成プロセスで新しい Microsoft アプリ ID とパスワードが自動的に作成されます。 |
 
    > [!NOTE]
    > 
-   > **Functions Bot** を作成する場合、**[App Service プラン/場所]** フィールドは表示されません。 代わりに、*[ホスティング プラン]* フィールドが表示されます。 その場合は、[ホスティング プラン](bot-service-overview-readme.md#hosting-plans)を選択します。
+   > **Functions Bot** を作成する場合、 **[App Service プラン/場所]** フィールドは表示されません。 代わりに、 *[ホスティング プラン]* フィールドが表示されます。 その場合は、[ホスティング プラン](bot-service-overview-readme.md#hosting-plans)を選択します。
 
 4. **[作成]** をクリックしてサービスを作成し、ボットをクラウドにデプロイします。 このプロセスには数分かかることがあります。
 
-ボットがデプロイされたことを確認するには、**[通知]** をオンにします。 通知が、**[デプロイは進行中です...]** から **[デプロイメントに成功しました]** に変わります。 **[リソースに移動]** ボタンをクリックして、ボットのリソース ブレードを開きます。
+ボットがデプロイされたことを確認するには、 **[通知]** をオンにします。 通知が、 **[デプロイは進行中です...]** から **[デプロイメントに成功しました]** に変わります。 **[リソースに移動]** ボタンをクリックして、ボットのリソース ブレードを開きます。
 
  > [!TIP] 
  > パフォーマンス上の理由から、Node.js テンプレートを実行する **Functions Bot** は、*Azure Functions Pack* ツールを使用して既にパッケージ化されています。 *Azure Functions Pack* ツールでは、すべての Node.js モジュールを取得し、それらを 1 つの *.js ファイルにまとめます。
@@ -92,7 +90,7 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
 ### <a name="create-a-new-bot-service"></a>新しいボット サービスを作成する
 
 1. [Azure Portal](http://portal.azure.com/) にログインします。
-1. Azure portal の左上隅にある **[新しいリソースの作成]** リンクをクリックし、**[AI + Machine Learning]** > **[Web App Bot]** を選択します。 
+1. Azure portal の左上隅にある **[新しいリソースの作成]** リンクをクリックし、 **[AI + Machine Learning]** > **[Web App Bot]** を選択します。 
 
 ![ボットを作成する](~/media/azure-bot-quickstarts/abs-create-blade.png)
 
@@ -109,19 +107,19 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
  | **場所** | 既定の場所 | リソース グループの地理的な場所を選択します。 一覧に示されたどの場所を選択しても構いませんが、多くの場合、顧客に最も近い場所を選択するのが最良です。 ボットの作成後に場所を変更することはできません。 |
  | **[価格レベル]** | F0 | 価格レベルを選択します。 価格レベルはいつでも更新できます。 詳細については、[Bot Service の価格](https://azure.microsoft.com/en-us/pricing/details/bot-service/)に関するページをご覧ください。 |
  | **アプリ名** | 一意の名前 | ボットの一意の URL 名。 たとえば、ボットに *myawesomebot* という名前を付けた場合、ボットの URL は `http://myawesomebot.azurewebsites.net` になります。 名前には、英数字とアンダースコアのみを使用する必要があります。 このフィールドは 35 文字に制限されています。 ボットの作成後にアプリ名を変更することはできません。 |
- | **Bot template\(ボット テンプレート\)** | エコー ボット | **[SDK v4]** を選択します。 このクイック スタートでは C# または Node.js のいずれかを選択して、**[選択]** をクリックします。  
+ | **Bot template\(ボット テンプレート\)** | エコー ボット | **[SDK v4]** を選択します。 このクイック スタートでは C# または Node.js のいずれかを選択して、 **[選択]** をクリックします。  
  | **App Service プラン/場所** | ご利用の App Service プラン  | [App Service プラン](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/)の場所を選択します。 一覧に示されたどの場所を選択してもかまいませんが、多くの場合、ボット サービスと同じ場所を選択するのが最良です。 |
  | **Application Insights** | On | [Application Insights](/bot-framework/bot-service-manage-analytics) を**オン**にするか、**オフ**にするかを決定します。 **[オン]** を選択した場合は、リージョンの場所も指定する必要があります。 一覧に示されたどの場所を選択してもかまいませんが、多くの場合、ボット サービスと同じ場所を選択するのが最良です。 |
  | **Microsoft App ID and password\(Microsoft アプリ ID とパスワード\)** | アプリ ID とパスワードの自動作成 | Microsoft アプリ ID とパスワードを手動で入力する必要がある場合は、このオプションを使用します。 それ以外の場合は、ボット作成プロセスで新しい Microsoft アプリ ID とパスワードが自動的に作成されます。 |
 
 4. **[作成]** をクリックしてサービスを作成し、ボットをクラウドにデプロイします。 このプロセスには数分かかることがあります。
 
-ボットがデプロイされたことを確認するには、**[通知]** をオンにします。 通知が、**[デプロイは進行中です...]** から **[デプロイメントに成功しました]** に変わります。 **[リソースに移動]** ボタンをクリックして、ボットのリソース ブレードを開きます。
+ボットがデプロイされたことを確認するには、 **[通知]** をオンにします。 通知が、 **[デプロイは進行中です...]** から **[デプロイメントに成功しました]** に変わります。 **[リソースに移動]** ボタンをクリックして、ボットのリソース ブレードを開きます。
 
 ボットが作成されたので、Web チャットでテストします。 
 
 ## <a name="test-the-bot"></a>ボットのテスト
-**[Bot Management]\(ボットの管理\)** セクションで、**[Test in Web Chat]\(Web チャットでのテスト\)** をクリックします。 Azure Bot Service で Web チャット コントロールを読み込み、ボットに接続します。 
+**[Bot Management]\(ボットの管理\)** セクションで、 **[Test in Web Chat]\(Web チャットでのテスト\)** をクリックします。 Azure Bot Service で Web チャット コントロールを読み込み、ボットに接続します。 
 
 ![Azure の Web チャットでのテスト](./media/azure-bot-quickstarts/azure-webchat-test.png)
 
