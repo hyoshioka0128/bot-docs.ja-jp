@@ -10,14 +10,17 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: de497fa5ad694081258486dd5c6e9fd37b107879
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 2c8284bf1a78c4f8dd9fb5cc3dcb346ac99ad936
+ms.sourcegitcommit: 710d279898db587abb1e81d13628177a4e182293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215563"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66751295"
 ---
 # <a name="whats-new-in-bot-framework"></a>Bot Framework の新機能
+
+[!INCLUDE[applies-to](includes/applies-to.md)]
+
 Bot Framework SDK v4 は [オープン ソース SDK][1a] です。この SDK を使用すると、開発者が好きなプログラミング言語を使用して、高度な会話をモデル化して構築できます。
 
 この記事では、Bot Framework と Azure Bot Service の主な新機能と機能強化をまとめます。
