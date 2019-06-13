@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f7709d6273739be6d2b3e9e3174f24ea2734f22d
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 1a502e949ce1f4f9851facae39c4aa030b4ae4a8
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215309"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693660"
 ---
 # <a name="send-welcome-message-to-users"></a>ユーザーへのウェルカム メッセージの送信
 
@@ -59,14 +59,17 @@ ms.locfileid: "66215309"
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 ユーザー状態オブジェクトはスタートアップ時に作成され、依存関係がボット コンストラクターに挿入されます。
 
-**Startup.cs** [!code-csharp[ConfigureServices](~/../botBuilder-samples/samples/csharp_dotnetcore/03.welcome-user/Startup.cs?range=29-33)]
+**Startup.cs**  
+[!code-csharp[ConfigureServices](~/../botBuilder-samples/samples/csharp_dotnetcore/03.welcome-user/Startup.cs?range=29-33)]
 
-**WelcomeUserBot.cs** [!code-csharp[Class](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=41-47)]
+**WelcomeUserBot.cs**  
+[!code-csharp[Class](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=41-47)]
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 スタートアップ時に、メモリ ストレージとユーザーの両方の状態が index.js で定義されます。
 
-**Index.js** [!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/Index.js?range=8-10,33-41)]
+**index.js**  
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/Index.js?range=8-10,33-41)]
 
 ---
 
@@ -75,12 +78,14 @@ ms.locfileid: "66215309"
 ここでプロパティ アクセサーを作成します。このアクセサーにより、OnMessageActivityAsync メソッド内で WelcomeUserState のハンドルが提供されます。
 次に、GetAsync メソッドを呼び出して、適切に範囲指定されたキーを取得します。 その後、ユーザー入力イテレーションが終了するたびに、`SaveChangesAsync` メソッドを使用して、ユーザー状態データを保存します。
 
-**WelcomeUserBot.cs** [!code-csharp[OnMessageActivityAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-71, 102-105)]
+**WelcomeUserBot.cs**  
+[!code-csharp[OnMessageActivityAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-71, 102-105)]
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 ここでプロパティ アクセサーを作成します。このアクセサーにより、UserState 内で保持されている WelcomedUserProperty のハンドルが提供されます。
 
-**WelcomeBot.js** [!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=7-10,16-22)]
+**WelcomeBot.js**  
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=7-10,16-22)]
 
 ---
 
@@ -89,12 +94,14 @@ ms.locfileid: "66215309"
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 **WelcomeUserBot** では、`OnMembersAddedAsync()` を使用してアクティビティ更新をチェックし、会話に新しいユーザーが追加されたかどうかを確認して、そのユーザーに最初の 3 つのウェルカム メッセージ `WelcomeMessage`、`InfoMessage`、および `PatternMessage` を送信します。 このインタラクションの完全なコードを以下に示します。
 
-**WelcomeUserBot.cs** [!code-csharp[WelcomeMessages](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=20-40, 55-66)]
+**WelcomeUserBot.cs**  
+[!code-csharp[WelcomeMessages](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=20-40, 55-66)]
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 この JavaScript コードは、ユーザーが追加されたときに最初のウェルカム メッセージを送信します。 これは、会話アクティビティをチェックし、会話に新しいメンバーが追加されたことを確認することで実行されます。
 
-**WelcomeBot.js** [!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=65-87)]
+**WelcomeBot.js**  
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=65-87)]
 
 ---
 
@@ -103,12 +110,14 @@ ms.locfileid: "66215309"
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 ユーザーの入力に有用な情報が実際に含まれている場合を考慮することも重要です。これはチャネルによって異なります。 ユーザーが使用可能なすべてのチャネルで良好なエクスペリエンスを得られるようにするために、状態フラグ _didBotWelcomeUser_ を確認し、これが "false" の場合、最初のユーザー入力は処理しません。 代わりに、ユーザーに最初のウェルカム メッセージを表示します。 ブール値 _welcomedUserProperty_ が "true" に設定され、UserState に格納されると、すべての追加メッセージ アクティビティからのこのユーザーの入力が、コードによって処理されます。
 
-**WelcomeUserBot.cs** [!code-csharp[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-82)]
+**WelcomeUserBot.cs**  
+[!code-csharp[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-82)]
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 ユーザーの入力に有用な情報が実際に含まれている場合を考慮することも重要です。これはチャネルによって異なります。 ユーザーが使用可能なすべてのチャネルで良好なエクスペリエンスを得られるようにするために、didBotWelcomedUser プロパティを確認し、これが存在しない場合は、"false" に設定し、最初のユーザー入力は処理しません。 代わりに、ユーザーに最初のウェルカム メッセージを表示します。 その後、ブール値 _didBotWelcomeUser_ が "true" に設定され、すべての追加メッセージ アクティビティからのユーザー入力が、コードによって処理されます。
 
-**WelcomeBot.js** [!code-javascript[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=24-38,57-59,63)]
+**WelcomeBot.js**  
+[!code-javascript[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=24-38,57-59,63)]
 
 ---
 
@@ -119,12 +128,14 @@ ms.locfileid: "66215309"
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 "Intro" または "help" の入力により関数 `SendIntroCardAsync` が呼び出され、情報ヒーロー カードがユーザーに示されます。 そのコードについては、この記事の次のセクションで説明します。
 
-**WelcomeUserBot.cs** [!code-csharp[SwitchOnUtterance](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=85-100)]
+**WelcomeUserBot.cs**  
+[!code-csharp[SwitchOnUtterance](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=85-100)]
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 "Intro" または "help" の入力では CardFactory が使用され、概要アダプティブ カードがユーザーに示されます。 そのコードについては、この記事の次のセクションで説明します。
 
-**WelcomeBot.js** [!code-javascript[SwitchOnUtterance](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=40-56)]
+**WelcomeBot.js**  
+[!code-javascript[SwitchOnUtterance](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=40-56)]
 
 ---
 
@@ -134,11 +145,13 @@ ms.locfileid: "66215309"
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**WelcomeUserBot.cs** [!code-csharp[SendHeroCardGreeting](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=107-127)]
+**WelcomeUserBot.cs**  
+[!code-csharp[SendHeroCardGreeting](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=107-127)]
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**WelcomeBot.js** [!code-javascript[SendIntroCard](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=91-116)]
+**WelcomeBot.js**  
+[!code-javascript[SendIntroCard](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=91-116)]
 
 ---
 

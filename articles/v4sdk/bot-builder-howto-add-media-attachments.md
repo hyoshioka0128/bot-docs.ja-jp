@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 844e3d65794e814dc8a1d16e2b7cf0e7a0e75fab
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: fd74dedcb048a7872a518618f8a9382e0585dbb5
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215407"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693682"
 ---
 # <a name="add-media-to-messages"></a>メッセージにメディアを追加する
 
@@ -39,19 +39,23 @@ ms.locfileid: "66215407"
 
 返信メッセージを作成するには、テキストを定義し、添付ファイルを設定します。 添付ファイルを返信に割り当てる場合、添付ファイルの種類ごとに同じ操作を行いますが、次のスニペットに示すように、添付ファイルの設定と定義はそれぞれ異なります。 次のコードでは、インラインの添付ファイル用の返信が設定されます。
 
-**Bots/AttachmentsBot.cs** [!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=108-109)]
+**Bots/AttachmentsBot.cs**  
+[!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=108-109)]
 
 次に、添付ファイルの種類を見ていきます。 最初はインラインの添付ファイルです。
 
-**Bots/AttachmentsBot.cs** [!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=165-176)]
+**Bots/AttachmentsBot.cs**  
+[!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=165-176)]
 
 次は、アップロードされた添付ファイルです。
 
-**Bots/AttachmentsBot.cs** [!code-csharp[uploaded attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=179-215)]
+**Bots/AttachmentsBot.cs**  
+[!code-csharp[uploaded attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=179-215)]
 
 最後は、インターネットの添付ファイルです。
 
-**Bots/AttachmentsBot.cs** [!code-csharp[online attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=218-227)]
+**Bots/AttachmentsBot.cs**  
+[!code-csharp[online attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=218-227)]
 
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -60,23 +64,28 @@ ms.locfileid: "66215407"
 
 添付ファイルを使用するには、お使いのボットに次のライブラリを含めます。
 
-**bots/attachmentsBot.js** [!code-javascript[attachments libraries](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=4)]
+**bots/attachmentsBot.js**  
+[!code-javascript[attachments libraries](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=4)]
 
 返信メッセージを作成するには、テキストを定義し、添付ファイルを設定します。 添付ファイルを返信に割り当てる場合、添付ファイルの種類ごとに同じ操作を行いますが、次のスニペットに示すように、添付ファイルの設定と定義はそれぞれ異なります。 次のコードでは、インラインの添付ファイル用の返信が設定されます。
 
-**bots/attachmentsBot.js** [!code-javascript[attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=119,128-129)]
+**bots/attachmentsBot.js**  
+[!code-javascript[attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=119,128-129)]
 
 イメージやビデオのような単一のコンテンツを送信する場合、メディアを送信する方法は複数あります。 まず、インラインの添付ファイルとして送信できます。
 
-**bots/attachmentsBot.js** [!code-javascript[inline attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=170-179)]
+**bots/attachmentsBot.js**  
+[!code-javascript[inline attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=170-179)]
 
 次は、アップロードされた添付ファイルです。
 
-**bots/attachmentsBot.js** [!code-javascript[uploaded attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=197-215)]
+**bots/attachmentsBot.js**  
+[!code-javascript[uploaded attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=197-215)]
 
 最後は、URL に含まれるインターネットの添付ファイルです。
 
-**bots/attachmentsBot.js** [!code-javascript[internet attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=184-191)]
+**bots/attachmentsBot.js**  
+[!code-javascript[internet attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=184-191)]
 
 ---
 
@@ -92,7 +101,8 @@ ms.locfileid: "66215407"
 
 ここで示すソース コードは、[添付ファイルの処理](https://aka.ms/bot-attachments-sample-code)のサンプルに基づいています。
 
-**Bots/AttachmentsBot.cs** [!code-csharp[Hero card](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=39-62)]
+**Bots/AttachmentsBot.cs**  
+[!code-csharp[Hero card](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=39-62)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -100,7 +110,8 @@ ms.locfileid: "66215407"
 
 ここで示すソース コードは、[JS の添付ファイルの処理](https://aka.ms/bot-attachments-sample-code-js)のサンプルに基づいています。
 
-**bots/attachmentsBot.js** [!code-javascript[hero card](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=148-164)]
+**bots/attachmentsBot.js**  
+[!code-javascript[hero card](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=148-164)]
 
 ---
 
@@ -130,17 +141,21 @@ ms.locfileid: "66215407"
 
 使用可能なすべてのカードの例については、[C# カードのサンプル](https://aka.ms/bot-cards-sample-code)をご覧ください。
 
-**Cards.cs** [!code-csharp[hero cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=27-40)]
+**Cards.cs**  
+[!code-csharp[hero cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=27-40)]
 
-**Cards.cs** [!code-csharp[cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=91-100)]
+**Cards.cs**  
+[!code-csharp[cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=91-100)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 使用可能なすべてのカードの例については、[JS カードのサンプル](https://aka.ms/bot-cards-js-sample-code)をご覧ください。
 
-**dialogs/mainDialog.js** [!code-javascript[hero cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=213-225)]
+**dialogs/mainDialog.js**  
+[!code-javascript[hero cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=213-225)]
 
-**dialogs/mainDialog.js** [!code-javascript[sign in cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=266-272)]
+**dialogs/mainDialog.js**  
+[!code-javascript[sign in cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=266-272)]
 
 ---
 
@@ -162,7 +177,8 @@ ms.locfileid: "66215407"
 
 ここで示すソース コードは、[カード使用](https://aka.ms/bot-cards-sample-code)のサンプルに基づいています。
 
-**Cards.cs** [!code-csharp[adaptive cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=13-25)]
+**Cards.cs**  
+[!code-csharp[adaptive cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=13-25)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -172,11 +188,13 @@ ms.locfileid: "66215407"
 
 ここでは、アダプティブ カードは独自のファイルに格納され、ボットに含まれています。
 
-**resources/adaptiveCard.json** [!code-json[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/resources/adaptiveCard.json)]
+**resources/adaptiveCard.json**  
+[!code-json[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/resources/adaptiveCard.json)]
 
 次に、CardFactory で作成されます。
 
-**dialogs/mainDialog.js** [!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=177-179)]
+**dialogs/mainDialog.js**  
+[!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=177-179)]
 
 ---
 
@@ -190,15 +208,18 @@ ms.locfileid: "66215407"
 
 最初に、返信を作成し、添付ファイルをリストとして定義します。
 
-**Dialogs/MainDialog.cs** [!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=61-66)]
+**Dialogs/MainDialog.cs**  
+[!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=61-66)]
 
 次に、添付ファイルを追加します。 ここでは 1 つずつ追加しますが、必要に応じて、リストを使ってカードを追加することもできます。
 
-**Dialogs/MainDialog.cs** [!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=105-113)]
+**Dialogs/MainDialog.cs**  
+[!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=105-113)]
 
 添付ファイルが追加されると、他と同じように返信を送信できます。
 
-**Dialogs/MainDialog.cs** [!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=117-118)]
+**Dialogs/MainDialog.cs**  
+[!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=117-118)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -206,7 +227,8 @@ ms.locfileid: "66215407"
 
 カードのカルーセルを送信するには、添付ファイルを配列として、またレイアウトの種類を `Carousel` として定義して、返信します。
 
-**dialogs/mainDialog.js** [!code-javascript[carousel of cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=104-116)]
+**dialogs/mainDialog.js**  
+[!code-javascript[carousel of cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=104-116)]
 
 ---
 

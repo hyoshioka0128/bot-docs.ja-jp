@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 01/09/2019
-ms.openlocfilehash: 3573103e1d1c55e3ad648ad68d84674a98b397f7
-ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
+ms.openlocfilehash: 58416147a057bce8947943521a1226e1d9acbdf1
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54202564"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693601"
 ---
 # <a name="connect-a-bot-to-slack"></a>ボットを Slack に接続する
 
@@ -55,7 +55,7 @@ Slack メッセージング アプリを使用して、複数のユーザーと�
 
 ![ボットを作成する](~/media/channels/slack-CreateBot.png)
 
-**[Add Bot User]\(ボット ユーザーの追加\)** をクリックして設定を検証し、**[Always Show My Bot as Online]\(ボットを常にオンラインとして表示する\)** をクリックして **[On]\(オン\)** に設定した後、**[Save Changes]\(変更の保存\)** をクリックします。
+**[Add Bot User]\(ボット ユーザーの追加\)** をクリックして設定を検証し、 **[Always Show My Bot as Online]\(ボットを常にオンラインとして表示する\)** をクリックして **[On]\(オン\)** に設定した後、 **[Save Changes]\(変更の保存\)** をクリックします。
 
 ![ボットを作成する](~/media/channels/slack-CreateApp-AddBotUser.png)
 
@@ -72,7 +72,7 @@ Slack メッセージング アプリを使用して、複数のユーザーと�
 
    ![イベントをサブスクライブする: 上](~/media/channels/slack-SubscribeEvents-a.png)
 
-4. **[Subscribe to Bot Events]\(ボット イベントのサブスクライブ\)** で、**[Add Bot User Event]\(ボット ユーザー イベントの追加\)** をクリックします。
+4. **[Subscribe to Bot Events]\(ボット イベントのサブスクライブ\)** で、 **[Add Bot User Event]\(ボット ユーザー イベントの追加\)** をクリックします。
 5. イベントの一覧で、次の 6 つのイベント タイプを選択します。
     * `member_joined_channel`
     * `member_left_channel`
@@ -91,7 +91,7 @@ Slack メッセージング アプリを使用して、複数のユーザーと�
 
 ボットがボタンなどの Slack 固有の機能を使う場合は、次の手順のようにします。
 
-1. **[Interactive Components]\(対話型コンポーネント\)** タブを選択し、**[Enable Interactive Components]\(対話型コンポーネントを有効にする\)** をクリックします。
+1. **[Interactive Components]\(対話型コンポーネント\)** タブを選択し、 **[Enable Interactive Components]\(対話型コンポーネントを有効にする\)** をクリックします。
 2. **[Request URL]\(要求 URL\)** として「`https://slack.botframework.com/api/Actions`」と入力します。
 3. **[Save changes]\(変更の保存\)** ボタンをクリックします。
 
@@ -99,7 +99,7 @@ Slack メッセージング アプリを使用して、複数のユーザーと�
 
 ## <a name="gather-credentials"></a>資格情報を収集する
 
-**[Basic Information]\(基本情報\)** タブを選択し、**[App Credentials]\(アプリの資格情報\)** セクションまでスクロールします。
+**[Basic Information]\(基本情報\)** タブを選択し、 **[App Credentials]\(アプリの資格情報\)** セクションまでスクロールします。
 Slack ボットの構成に必要なクライアント ID、クライアント シークレット、検証トークンが表示されます。
 
 ![資格情報を収集する](~/media/channels/slack-AppCredentials.png)
@@ -130,7 +130,11 @@ Slack ボットの構成に必要なクライアント ID、クライアント �
 置き換える URL を取得するには、次の手順のようにします。
 
 1. [https://dev.botframework.com/bots](https://dev.botframework.com/bots) で、対象のボットをクリックします。
-2. **[チャネル]** をクリックし、**[Slack]** というエントリを右クリックして、**[Copy link]\(リンクのコピー\)** をクリックします。 この URL がクリップボードにコピーされます。
+2. **[チャネル]** をクリックし、 **[Slack]** というエントリを右クリックして、 **[Copy link]\(リンクのコピー\)** をクリックします。 この URL がクリップボードにコピーされます。
 3. この URL をクリップボードから Slack ボタンの HTML に貼り付けます。 この URL で、このボットに対して Slack によって提供される href の値を置き換えます。
 
 承認されたユーザーは、この変更した HTML で提供される **[Add to Slack]\(Slack に追加\)** ボタンをクリックして、Slack からボットにアクセスできます。
+
+## <a name="also-available-as-an-adapter"></a>アダプターとしても使用可能
+
+このチャネルも[アダプターとして使用可能な](https://botkit.ai/docs/v4/platforms/slack.html)します。 アダプターとチャネルを選択するために、次を参照してください。[現在使用可能なアダプター](bot-service-channel-additional-channels.md#currently-available-adapters)します。

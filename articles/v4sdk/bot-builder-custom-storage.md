@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9109808c786e3992d8bae6cd68b4272201a9b4f8
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 2b77b19a3b2d0fbd8e545e563f154124af894ffa
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215450"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693727"
 ---
 # <a name="implement-custom-storage-for-your-bot"></a>ボットのカスタム ストレージの実装
 
@@ -93,11 +93,13 @@ Bot Framework には既定の実装が含まれています。ほとんどの場
 
 最終的に作成するインターフェイスを次に示します。
 
-**IStore.cs** [!code-csharp[IStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/IStore.cs?range=14-19)]
+**IStore.cs**  
+[!code-csharp[IStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/IStore.cs?range=14-19)]
 
 Azure Blob Storage に対してこれを実装するのは簡単です。
 
-**BlobStore.cs** [!code-csharp[BlobStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/BlobStore.cs?range=18-101)]
+**BlobStore.cs**  
+[!code-csharp[BlobStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/BlobStore.cs?range=18-101)]
 
 ご覧のとおり、ここでは Azure Blob Storage が実際の作業を行っています。 特定の例外のキャッチと、呼び出し元のコードで想定されている内容に合わせて、キャッチがどのように変換されているかに注意してください。 つまり、読み込み時の Not Found 例外では null を返し、保存時の Precondition Failed 例外ではブール値を返します。
 

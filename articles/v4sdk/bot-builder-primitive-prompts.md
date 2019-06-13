@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bfd37b703a43e056142ad161eb3308fd2b754e25
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 9b1ffd73b4b68e6ff6349110e1485eb7cbda9e25
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215325"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693713"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>ユーザー入力を収集するために独自のプロンプトを作成する
 
@@ -62,9 +62,11 @@ ms.locfileid: "66215325"
 
 ユーザーおよび会話状態オブジェクトはスタートアップ時に作成され、依存関係がボット コンストラクターに挿入されます。 
 
-**Startup.cs** [!code-csharp[Startup](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Startup.cs?range=27-34)]
+**Startup.cs**  
+[!code-csharp[Startup](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Startup.cs?range=27-34)]
 
-**Bots/CustomPromptBot.cs** [!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=21-28)]
+**Bots/CustomPromptBot.cs**  
+[!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=21-28)]
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -82,7 +84,8 @@ ms.locfileid: "66215325"
 
 最初に、プロパティ アクセサーを作成します。このプロパティ アクセサーにより、`OnMessageActivityAsync` メソッド内の `BotState` へのハンドルが提供されます。 次に、`GetAsync` メソッドを呼び出して、適切に範囲指定されたキーを取得します。
 
-**Bots/CustomPromptBot.cs** [!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=30-37)]
+**Bots/CustomPromptBot.cs**  
+[!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=30-37)]
 
 最後に、`SaveChangesAsync` メソッドを使用してデータを保存します。
 
@@ -92,7 +95,8 @@ ms.locfileid: "66215325"
 
 コンストラクターで状態プロパティ アクセサーを作成し、目的の会話に対して、(上記で作成した) 状態管理オブジェクトを設定します。
 
-**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=23-29)]
+**bots/customPromptBot.js**  
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=23-29)]
 
 その後、(次のセクションで説明する) メイン メッセージ ハンドラーの後に実行する 2 つ目のハンドラー `onDialog` を定義します。 この 2 つ目のハンドラーにより、ターンごとに状態が確実に保存されます。
 
@@ -106,13 +110,15 @@ ms.locfileid: "66215325"
 
 メッセージ アクティビティを処理するために、_SaveChangesAsync()_ を使用して状態を保存する前に、_FillOutUserProfileAsync()_ ヘルパー メソッドを使用します。 完全なコードを次に示します。
 
-**Bots/CustomPromptBot.cs** [!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=30-44)]
+**Bots/CustomPromptBot.cs**  
+[!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=30-44)]
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 メッセージ アクティビティを処理するために、会話とユーザー データを設定し、`fillOutUserProfile()` ヘルパー メソッドを使用します。 ターン ハンドラーの完全なコードを次に示します。
 
-**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-39)]
+**bots/customPromptBot.js**  
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-39)]
 ---
 
 ## <a name="filling-out-the-user-profile"></a>ユーザー プロファイルを入力する
@@ -127,11 +133,13 @@ ms.locfileid: "66215325"
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**Bots/CustomPromptBot.cs** [!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=46-103)]
+**Bots/CustomPromptBot.cs**  
+[!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=46-103)]
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=52-116)]
+**bots/customPromptBot.js**  
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=52-116)]
 
 ---
 
@@ -153,11 +161,13 @@ ms.locfileid: "66215325"
 
 次の検証メソッドをお使いのボットに追加します。
 
-**Bots/CustomPromptBot.cs** [!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=105-203)]
+**Bots/CustomPromptBot.cs**  
+[!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=105-203)]
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**bots/customPromptBot.cs** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=118-189)]
+**bots/customPromptBot.cs**  
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=118-189)]
 
 ---
 

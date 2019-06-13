@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/9/2018
-ms.openlocfilehash: 7d7416940ccad4e62c98f4a386dac43189301b56
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 817623dd04612cd07d8877c8e9a199c05a2fd9e8
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998311"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693621"
 ---
 # <a name="connect-a-bot-to-twilio"></a>ボットを Twilio に接続する
 
@@ -34,13 +34,13 @@ Twilio アカウントを持っていない場合は、<a href="https://www.twil
 
 ## <a name="select-or-add-a-phone-number"></a>電話番号を選択または追加する
 
-<a href = "https://support.twilio.com/hc/en-us/articles/223180048-Adding-a-Verified-Phone-Number-or-Caller-ID-with-Twilio" target="_blank">こちら</a>の手順に従って、コンソール サイト経由で検証済みの呼び出し元の ID を追加します。 終了すると、**[Manage Numbers]\(番号の管理\)** の下の **[Active Numbers]\(アクティブな番号\)** に検証済みの番号が表示されます。
+<a href = "https://support.twilio.com/hc/en-us/articles/223180048-Adding-a-Verified-Phone-Number-or-Caller-ID-with-Twilio" target="_blank">こちら</a>の手順に従って、コンソール サイト経由で検証済みの呼び出し元の ID を追加します。 終了すると、 **[Manage Numbers]\(番号の管理\)** の下の **[Active Numbers]\(アクティブな番号\)** に検証済みの番号が表示されます。
 
 ![電話番号を設定する](~/media/channels/twi-StepPhone.png)
 
 ## <a name="specify-application-to-use-for-voice-and-messaging"></a>音声とメッセージングに使用するアプリケーションを指定する
 
-番号をクリックし、**[Configure]\(構成\)** に移動します。 [Voice]\(音声\) と [Messaging]\(メッセージング\) の両方で、**[CONFIGURE WITH]\(構成の対象\)** を [TwiML App]\(TwiML アプリ\) に設定し、**[TWIML APP]\(TwiML アプリ\)** を "My TwiML app" に設定します。 終了したら、**[Save]\(保存\)** をクリックします。
+番号をクリックし、 **[Configure]\(構成\)** に移動します。 [Voice]\(音声\) と [Messaging]\(メッセージング\) の両方で、 **[CONFIGURE WITH]\(構成の対象\)** を [TwiML App]\(TwiML アプリ\) に設定し、 **[TWIML APP]\(TwiML アプリ\)** を "My TwiML app" に設定します。 終了したら、 **[Save]\(保存\)** をクリックします。
 
 ![アプリケーションを指定する](~/media/channels/twi-StepPhone2.png)
 
@@ -61,8 +61,12 @@ Twilio アカウントを持っていない場合は、<a href="https://www.twil
 
 - **[My bots]\(マイ ボット\)** を選択し、Twilio に接続するボットを選択します。 これにより Azure portal に移動します。
 - **[Bot Management]\(ボット管理\)** の下の **[チャネル]** を選択します。 Twilio (SMS) アイコンをクリックします。
-- 前に記録した電話番号、アカウント SID、および認証トークンを入力します。 終了したら、**[保存]** をクリックします。
+- 前に記録した電話番号、アカウント SID、および認証トークンを入力します。 終了したら、 **[保存]** をクリックします。
 
 ![資格情報を送信する](~/media/channels/twi-StepSubmit.png)
 
 これらの手順を完了すると、ボットは、Twilio を使ってユーザーと通信するように正しく構成されます。
+
+## <a name="also-available-as-an-adapter"></a>アダプターとしても使用可能
+
+このチャネルも[アダプターとして使用可能な](https://botkit.ai/docs/v4/platforms/twilio-sms.html)します。 アダプターとチャネルを選択するために、次を参照してください。[現在使用可能なアダプター](bot-service-channel-additional-channels.md#currently-available-adapters)します。

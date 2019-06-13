@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c17e830c61036a6551fa7f3dbab79f83bda38123
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: afb27ad20ec8585c2ca30810a9be6858adc17187
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214304"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693518"
 ---
 # <a name="deploy-your-bot"></a>ボットをデプロイする
 
@@ -158,6 +158,8 @@ az bot prepare-deploy --code-dir "." --lang Typescript
 > プロジェクト ファイルを zip 圧縮する前に、必ず適切なフォルダー "_内_" に移動します。 
 > - C# ボットの場合は、.csproj ファイルが含まれるフォルダーです。 
 > - JS ボットの場合は、app.js ファイルまたは index.js ファイルが含まれるフォルダーです。 
+>
+> すべてのファイルを選択し、それらを zip 圧縮**そのフォルダーで**、そのフォルダー内のコマンドを実行します。
 >
 > お使いのルート フォルダーの場所が正しくない場合、**ボットは、Azure portal で実行できません**。
 

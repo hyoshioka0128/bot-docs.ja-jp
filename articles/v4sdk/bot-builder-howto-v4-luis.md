@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7b06d99ae1265d2519b5c1aa8fe838a4e3e4d43a
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 4fc8ebd1eff03c2b6ac994ff80cb85b341bb7231
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215349"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693671"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 
@@ -76,6 +76,8 @@ LUIS ポータルにサインインして、ご自身のバージョンのサン
 ### <a name="why-use-entities"></a>エンティティを使用する理由
 LUIS エンティティを使うと、標準の意図とは異なる物事やイベントを、お使いのボットがインテリジェントに解釈できるようになります。 これにより、ユーザーから追加情報を収集できるようになり、お使いのボットが、よりインテリジェントに応答したり、ユーザーにその追加情報をたずねる特定の質問をスキップしたりできます。 FlightBooking.json ファイルには、3 つの LUIS の意図である "Book Flight"、"Cancel"、および "None" の定義と共に、"From.Airport" や "To.Airport" などのエンティティのセットも含まれています。 これらのエンティティにより、ユーザーが新しい旅行の予約を要求したときに、LUIS は、そのユーザーの元の入力に含まれる追加情報を検出し、返すことができます。
 
+LUIS 結果内エンティティ情報を表示する方法については、次を参照してください。[インテントとエンティティに発話テキストからデータを抽出](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-data-extraction)します。
+
 ## <a name="obtain-values-to-connect-to-your-luis-app"></a>LUIS アプリに接続するための値を取得する
 LUIS アプリには、その発行後、ボットからアクセスできるようになります。 ボット内から LUIS アプリにアクセスするためには、いくつかの値を記録する必要があります。 その情報は、LUIS ポータルを使用して取得できます。
 
@@ -93,7 +95,8 @@ LUIS アプリには、その発行後、ボットからアクセスできるよ
 
 LUIS アプリにアクセスするために必要な情報 (アプリケーション ID、オーサリング キー、リージョンなど) を `appsettings.json` ファイルに追加します。 これらは、発行済みの LUIS アプリから先ほど保存した値です。 API ホスト名は `<your region>.api.cognitive.microsoft.com` 形式にする必要があることに注意してください。
 
-**appsetting.json** [!code-json[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/appsettings.json?range=1-7)]
+**appsetting.json**  
+[!code-json[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/appsettings.json?range=1-7)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -112,7 +115,8 @@ NuGet パッケージ **Microsoft.Bot.Builder.AI.Luis** がプロジェクトに
 
 LUIS サービスに接続するために、ボットは、上記で追加した情報を appsetting.json ファイルからプルします。 `LuisHelper` クラスには、`RecognizeAsync` メソッドを呼び出して ppsetting.json ファイルからご自身の設定をインポートし、LUIS サービスにクエリを実行するコードが含まれています。 最上位の意図が "Book_Flight" の場合は、予約の到着地、出発地、および旅行日に関する情報を含むエンティティが確認されます。
 
-**LuisHelper.cs** [!code-csharp[luis helper](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/LuisHelper.cs?range=15-54)]
+**LuisHelper.cs**  
+[!code-csharp[luis helper](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/LuisHelper.cs?range=15-54)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 

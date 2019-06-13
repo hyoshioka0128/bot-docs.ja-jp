@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b198408a800feaedff3c13dbab965ae63307eeb0
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 3e844a254f1aee709d7dd0b0866ee4ae14737f65
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215338"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693717"
 ---
 # <a name="save-user-and-conversation-data"></a>ユーザーおよび会話データを保存する
 
@@ -49,13 +49,15 @@ ms.locfileid: "66215338"
 
 次のコード例は、UserProfile クラスの定義の作成を示しています。
 
-**UserProfile.cs** [!code-csharp[UserProfile](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/UserProfile.cs?range=7-11)]
+**UserProfile.cs**  
+[!code-csharp[UserProfile](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/UserProfile.cs?range=7-11)]
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 最初の手順で、`UserState` と `ConversationState` の定義が含まれる botbuilder サービスを要求します。
 
-**index.js** [!code-javascript[BotService](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/index.js?range=7-9)]
+**index.js**  
+[!code-javascript[BotService](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/index.js?range=7-9)]
 
 ---
 
@@ -65,15 +67,18 @@ ms.locfileid: "66215338"
 
 次に、`UserState` オブジェクトと `ConversationState` オブジェクトの作成に使用する `MemoryStorage` を登録します。 ユーザーおよび会話状態オブジェクトは `Startup` で作成され、依存関係がボット コンストラクターに挿入されます。 ボット用のサービスとして他に資格情報プロバイダー、アダプター、およびボット実装が登録されています。
 
-**Startup.cs** [!code-csharp[ConfigureServices](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Startup.cs?range=16-38)]
+**Startup.cs**  
+[!code-csharp[ConfigureServices](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Startup.cs?range=16-38)]
 
-**StateManagementBot.cs** [!code-csharp[StateManagement](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=15-22)]
+**StateManagementBot.cs**  
+[!code-csharp[StateManagement](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=15-22)]
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 次に、`UserState` オブジェクトと `ConversationState` オブジェクトの作成に使用する `MemoryStorage` を登録します。
 
-**index.js** [!code-javascript[DefineMemoryStore](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/index.js?range=32-38)]
+**index.js**  
+[!code-javascript[DefineMemoryStore](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/index.js?range=32-38)]
 
 ---
 
@@ -83,13 +88,14 @@ ms.locfileid: "66215338"
 
 ここで、`BotState` オブジェクトにハンドルを提供する `CreateProperty` メソッドを使用して、プロパティ アクセサーを作成します。 各状態プロパティ アクセサーを使用すると、関連付けられている状態プロパティの値を取得または設定できます。 状態プロパティを使用する前に、各アクセサーを使用してストレージからプロパティを読み込んだうえで状態キャッシュから取得します。 状態プロパティに関連付けられている適切に範囲指定されたキーを取得するために、`GetAsync` メソッドを呼び出します。
 
-**StateManagementBot.cs** [!code-csharp[StateAccessors](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=38-46)]
+**StateManagementBot.cs**  
+[!code-csharp[StateAccessors](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=38-46)]
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 `UserState` および `ConversationState` 用の状態プロパティ アクセサーを作成します。 各状態プロパティ アクセサーを使用すると、関連付けられている状態プロパティの値を取得または設定できます。 各アクセサーを使用して、関連付けられているプロパティをストレージから読み込んで、現在の状態をキャッシュから取得します。
 
-**StateManagementBot.js**
+**StateManagementBot.js**  
 [!code-javascript[BotService](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=6-19)]
 
 ---
@@ -102,19 +108,23 @@ ms.locfileid: "66215338"
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**StateManagementBot.cs** [!code-csharp[OnMessageActivityAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=38-85)]
+**StateManagementBot.cs**  
+[!code-csharp[OnMessageActivityAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=38-85)]
 
 ターン ハンドラーを終了する前に、状態管理オブジェクトの _SaveChangesAsync()_ メソッドを使用して、すべての状態変更をストレージに書き戻します。
 
-**StateManagementBot.cs** [!code-csharp[OnTurnAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=24-31)]
+**StateManagementBot.cs**  
+[!code-csharp[OnTurnAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=24-31)]
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**StateManagementBot.js** [!code-javascript[OnMessage](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=21-54)]
+**StateManagementBot.js**  
+[!code-javascript[OnMessage](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=21-54)]
 
 各ダイアログ ターンを終了する前に、状態管理オブジェクトの _saveChanges()_ メソッドを使用して、状態をストレージに書き込むことですべての変更を保持します。
 
-**StateManagementBot.js** [!code-javascript[OnDialog](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=60-67)]
+**StateManagementBot.js**  
+[!code-javascript[OnDialog](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=60-67)]
 
 ---
 

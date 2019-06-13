@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 942ab2d5b3a43ca071c877b5cc18e8141838d604
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 290b06b28e590b01335694a621cc71c189ff6296
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214266"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693640"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -212,7 +212,8 @@ LUIS アプリと QnA Maker ナレッジ ベースの名前と ID を書き留�
 
 すべてのサービス アプリが作成されたら、それぞれの情報を "appsettings.json" ファイルに追加する必要があります。 初期 [C# サンプル][cs-sample] コードには、空の appsettings.json ファイルが含まれています。
 
-**appsettings.json** [!code-json[AppSettings](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/AppSettings.json?range=8-17)]
+**appsettings.json**  
+[!code-json[AppSettings](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/AppSettings.json?range=8-17)]
 
 次に示すエンティティごとに、前の手順で記録した値を追加します。
 
@@ -251,7 +252,8 @@ npm install --save dotenv
 
 すべてのサービス アプリが作成されたら、それぞれの情報を ".env" ファイルに追加する必要があります。 初期 [JavaScript サンプル][js-sample] コードには、空の .env ファイルが含まれています。 
 
-**.env** [!code-file[EmptyEnv](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/.env?range=1-10)]
+**.env**  
+[!code-file[EmptyEnv](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/.env?range=1-10)]
 
 次に示すように、ご自身のサービス接続の値を追加します。
 
@@ -281,13 +283,15 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 **BotServices.cs** では、ご自身のディスパッチ ボットと `Dispatch` サービスおよび `SampleQnA` サービスとの接続に、構成ファイル _appsettings.json_ に含まれている情報が使用されます。 コンストラクターでは、ご自身で指定した値が、これらのサービスへの接続に使用されます。
 
-**BotServices.cs** [!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-30)]
+**BotServices.cs**  
+[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-30)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 **dispatchBot.js** では、ご自身のディスパッチ ボットと _LuisRecognizer(dispatch)_ サービスおよび _QnAMaker_ サービスとの接続に、構成ファイル _.env_ に含まれている情報が使用されます。 コンストラクターでは、ご自身で指定した値が、これらのサービスへの接続に使用されます。
 
-**dispatchBot.js** [!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=18-31)]
+**dispatchBot.js**  
+[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=18-31)]
 
 ---
 
@@ -299,13 +303,14 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 **DispatchBot.cs** ファイルでは、`OnMessageActivityAsync` メソッドが呼び出されるたびに、受信ユーザー メッセージをディスパッチ モデルに対して確認します。 その後、ディスパッチ モデルの `topIntent` と `recognizerResult` を適切なメソッドに渡して、サービスを呼び出し、結果を返します。
 
-**DispatchBot.cs** [!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=26-36)]
+**DispatchBot.cs**  
+[!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=26-36)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 **dispatchBot.js** の `onMessage` メソッドでは、ディスパッチ モデルに対してユーザー入力メッセージを確認し、_topIntent_ を検索します。次に、_dispatchToTopIntentAsync_ を呼び出して、これを渡します。
 
-**dispatchBot.js**
+**dispatchBot.js**  
 
 [!code-javascript[OnMessageActivity](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=37-50)]
 
@@ -317,7 +322,8 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 モデルによって結果が生成されるとき、どのサービスが発話を最も適切に処理できるかが示されます。 このボットのコードでは、要求を対応するサービスにルーティングし、呼び出されたサービスからの応答を要約します。 Dispatch から返された "_意図_" によっては、このコードでは、返された意図を使用して、適切な LUIS モデルまたは QnA サービスへのルーティングが行われます。
 
-**DispatchBot.cs** [!code-csharp[DispatchToTop](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=51-69)]
+**DispatchBot.cs**  
+[!code-csharp[DispatchToTop](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=51-69)]
 
 `ProcessHomeAutomationAsync` または `ProcessWeatherAsync` のいずれかのメソッドが呼び出されると、_luisResult.ConnectedServiceResult_ 内のディスパッチ モデルから結果が渡されます。 その後、指定されたメソッドによって、ユーザー フィードバックが提供されます。このフィードバックには、ディスパッチ モデルの最上位の意図と、検出された意図およびエンティティの一覧がランク付けされて示されています。
 
@@ -327,7 +333,8 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 モデルによって結果が生成されるとき、どのサービスが発話を最も適切に処理できるかが示されます。 このサンプルのコードでは、対応するサービスへの要求のルーティング方法を示すために、認識された _topIntent_ が使用されます。
 
-**DispatchBot.cs** [!code-javascript[DispatchToTop](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=67-83)]
+**DispatchBot.cs**  
+[!code-javascript[DispatchToTop](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=67-83)]
 
 `processHomeAutomation` または `processWeather` のいずれかのメソッドが呼び出されると、_recognizerResult.luisResult_ 内のディスパッチ モデルから結果が渡されます。 その後、指定されたメソッドによって、ユーザー フィードバックが提供されます。このフィードバックには、ディスパッチ モデルの最上位の意図と、検出された意図およびエンティティの一覧がランク付けされて示されています。
 
