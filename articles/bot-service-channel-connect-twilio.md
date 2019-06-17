@@ -57,7 +57,7 @@ Twilio アカウントを持っていない場合は、<a href="https://www.twil
 
 ## <a name="submit-credentials"></a>資格情報を送信する
 
-別のウィンドウで、Bot Framework サイト (https://dev.botframework.com/) に戻ります。 
+別のウィンドウで、Bot Framework サイト (https://dev.botframework.com/ ) に戻ります。 
 
 - **[My bots]\(マイ ボット\)** を選択し、Twilio に接続するボットを選択します。 これにより Azure portal に移動します。
 - **[Bot Management]\(ボット管理\)** の下の **[チャネル]** を選択します。 Twilio (SMS) アイコンをクリックします。
@@ -69,4 +69,4 @@ Twilio アカウントを持っていない場合は、<a href="https://www.twil
 
 ## <a name="also-available-as-an-adapter"></a>アダプターとしても使用可能
 
-このチャネルも[アダプターとして使用可能な](https://botkit.ai/docs/v4/platforms/twilio-sms.html)します。 アダプターとチャネルを選択するために、次を参照してください。[現在使用可能なアダプター](bot-service-channel-additional-channels.md#currently-available-adapters)します。
+このチャネルは[アダプターとしても使用できます](https://botkit.ai/docs/v4/platforms/twilio-sms.html)。 アダプターとチャネルのどちらを選択するかについては、「[現在使用できるアダプター](bot-service-channel-additional-channels.md#currently-available-adapters)」を参照してください。

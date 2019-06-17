@@ -163,4 +163,4 @@ Azure portal で、前に Facebook Workplace からコピーした **Facebook �
 
 ## <a name="also-available-as-an-adapter"></a>アダプターとしても使用可能
 
-このチャネルも[アダプターとして使用可能な](https://botkit.ai/docs/v4/platforms/facebook.html)します。 アダプターとチャネルを選択するために、次を参照してください。[現在使用可能なアダプター](bot-service-channel-additional-channels.md#currently-available-adapters)します。
+このチャネルは[アダプターとしても使用できます](https://botkit.ai/docs/v4/platforms/facebook.html)。 アダプターとチャネルのどちらを選択するかについては、「[現在使用できるアダプター](bot-service-channel-additional-channels.md#currently-available-adapters)」を参照してください。

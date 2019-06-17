@@ -68,7 +68,7 @@ ms.locfileid: "66693660"
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 スタートアップ時に、メモリ ストレージとユーザーの両方の状態が index.js で定義されます。
 
-**index.js**  
+**Index.js**  
 [!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/Index.js?range=8-10,33-41)]
 
 ---

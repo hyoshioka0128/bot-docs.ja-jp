@@ -76,7 +76,7 @@ LUIS ポータルにサインインして、ご自身のバージョンのサン
 ### <a name="why-use-entities"></a>エンティティを使用する理由
 LUIS エンティティを使うと、標準の意図とは異なる物事やイベントを、お使いのボットがインテリジェントに解釈できるようになります。 これにより、ユーザーから追加情報を収集できるようになり、お使いのボットが、よりインテリジェントに応答したり、ユーザーにその追加情報をたずねる特定の質問をスキップしたりできます。 FlightBooking.json ファイルには、3 つの LUIS の意図である "Book Flight"、"Cancel"、および "None" の定義と共に、"From.Airport" や "To.Airport" などのエンティティのセットも含まれています。 これらのエンティティにより、ユーザーが新しい旅行の予約を要求したときに、LUIS は、そのユーザーの元の入力に含まれる追加情報を検出し、返すことができます。
 
-LUIS 結果内エンティティ情報を表示する方法については、次を参照してください。[インテントとエンティティに発話テキストからデータを抽出](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-data-extraction)します。
+エンティティ情報が LUIS の結果にどのように表示されるかについては、「[意図とエンティティが含まれる発話テキストからデータを抽出する](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-data-extraction)」を参照してください。
 
 ## <a name="obtain-values-to-connect-to-your-luis-app"></a>LUIS アプリに接続するための値を取得する
 LUIS アプリには、その発行後、ボットからアクセスできるようになります。 ボット内から LUIS アプリにアクセスするためには、いくつかの値を記録する必要があります。 その情報は、LUIS ポータルを使用して取得できます。
