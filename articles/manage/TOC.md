@@ -21,6 +21,7 @@
 ## [Telegram](../bot-service-channel-connect-telegram.md) 
 ## [Twilio](../bot-service-channel-connect-twilio.md)
 ## [Web チャット](../bot-service-channel-connect-webchat.md)
+## [追加のチャネル](../bot-service-channel-additional-channels.md)
 # [ボット設定の構成](../bot-service-manage-settings.md)
 # [音声プライミングを構成する](../bot-service-manage-speech-priming.md)
 # [Azure Bot Service によるボットの登録](../bot-service-quickstart-registration.md)
