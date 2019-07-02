@@ -5,6 +5,9 @@
 # スキル 
 ## [概要](../v4sdk/bot-builder-skills-overview.md)
 ## [作業の開始](../v4sdk/bot-builder-skills-gettingstarted.md)
+# WebChat
+## [概要](../v4sdk/bot-builder-webchat-overview.md)
+## [カスタマイズ](../v4sdk/bot-builder-webchat-customization.md)
 # [FAQ](../bot-service-resources-bot-framework-faq.md)
 # [サポートを受ける](../bot-service-resources-links-help.md)
 # [チャネル リファレンス](../bot-service-channels-reference.md)
