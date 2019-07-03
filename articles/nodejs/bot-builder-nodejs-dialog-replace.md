@@ -9,18 +9,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 58d2c3fc4a1fb266b74402541fc937f0b52fa189
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 7417e105ab20c3aca2c2a4e525248728ac49bf18
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224987"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404925"
 ---
 # <a name="replace-dialogs"></a>ダイアログの置換
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-ダイアログを置換する機能は、ユーザー入力を検証したり、会話中にアクションを繰り返したりする必要がある場合に便利です。 Bot Framework SDK for Node.js では、[`session.replaceDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog) メソッドを使用してダイアログを置換できます。 このメソッドを使用すると、呼び出し元に戻らずに、現在のダイアログを終了して、新しいダイアログに置き換えることができます。 
+ダイアログを置換する機能は、ユーザー入力を検証したり、会話中にアクションを繰り返したりする必要がある場合に便利です。 Bot Framework SDK for Node.js では、[`session.replaceDialog`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog) メソッドを使用してダイアログを置換できます。 このメソッドを使用すると、呼び出し元に戻らずに、現在のダイアログを終了して、新しいダイアログに置き換えることができます。 
 
 ## <a name="create-custom-prompts-to-validate-input"></a>カスタム プロンプトを作成して入力を検証する
 
@@ -61,7 +61,7 @@ bot.dialog('phonePrompt', [
 
 ## <a name="repeat-an-action"></a>アクションを繰り返す
 
-会話中、ユーザーが特定のアクションを複数回実行できるように、ダイアログを繰り返し表示したい場合があります。 たとえば、お使いのボットによってさまざまなサービスが提供される場合に、最初に表示するサービス メニューで、ユーザーがサービスの要求操作を行い、次に表示するサービス メニューで、ユーザーが別のサービスを要求できるようにする場合があります。 これを実現するには、['session.endConversation'](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#endconversation) メソッドで会話を終了するのではなく、[`session.replaceDialog`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog) メソッドを使用して、サービス メニューを再表示します。 
+会話中、ユーザーが特定のアクションを複数回実行できるように、ダイアログを繰り返し表示したい場合があります。 たとえば、お使いのボットによってさまざまなサービスが提供される場合に、最初に表示するサービス メニューで、ユーザーがサービスの要求操作を行い、次に表示するサービス メニューで、ユーザーが別のサービスを要求できるようにする場合があります。 これを実現するには、['session.endConversation'](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#endconversation) メソッドで会話を終了するのではなく、[`session.replaceDialog`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog) メソッドを使用して、サービス メニューを再表示します。 
 
 次の例は、`session.replaceDialog` メソッドを使用して、この種類のシナリオを実装する方法を示しています。 最初に、サービスのメニューが定義されます。
 
@@ -83,7 +83,7 @@ var menuItems = {
 }
 ```
 
-`mainMenu` ダイアログは既定のダイアログによって呼び出されるため、メニューは会話の開始時にユーザーに表示されます。 さらに、ユーザーが「メイン メニュー」と入力したときにも必ずメニューが表示されるように、[`triggerAction`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction) が `mainMenu` ダイアログにアタッチされます。 表示されたメニューでユーザーがオプションを選択すると、そのユーザーの選択に対応するダイアログが、`session.beginDialog` メソッドを使用して呼び出されます。
+`mainMenu` ダイアログは既定のダイアログによって呼び出されるため、メニューは会話の開始時にユーザーに表示されます。 さらに、ユーザーが「メイン メニュー」と入力したときにも必ずメニューが表示されるように、[`triggerAction`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction) が `mainMenu` ダイアログにアタッチされます。 表示されたメニューでユーザーがオプションを選択すると、そのユーザーの選択に対応するダイアログが、`session.beginDialog` メソッドを使用して呼び出されます。
 
 ```javascript
 var inMemoryStorage = new builder.MemoryBotStorage();
@@ -160,9 +160,9 @@ bot.dialog('orderDinner', [
 
 `orderDinner` ダイアログには、ユーザーが操作の途中でいつでも、注文を "最初からやり直す" か "取り消す" ことができるように 2 つのトリガーがアタッチされています。 
 
-最初のトリガーは [`reloadAction`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#reloadaction) です。これにより、ユーザーは「やり直し」と入力して送信することで、注文操作を最初からやり直すことができます。 トリガーが発話 "やり直し" と一致すると、`reloadAction` によってダイアログが最初から再開されます。 
+最初のトリガーは [`reloadAction`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#reloadaction) です。これにより、ユーザーは「やり直し」と入力して送信することで、注文操作を最初からやり直すことができます。 トリガーが発話 "やり直し" と一致すると、`reloadAction` によってダイアログが最初から再開されます。 
 
-2 番目のトリガーは [`cancelAction`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#cancelaction) です。これにより、ユーザーは「取り消し」と入力して送信することで、注文操作を中止できます。 このトリガーでは、メイン メニューは自動的には表示されませんが、代わりに「"メイン メニュー" を入力して続行」と言うことで、次の操作をユーザーに示すメッセージが送信されます。
+2 番目のトリガーは [`cancelAction`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#cancelaction) です。これにより、ユーザーは「取り消し」と入力して送信することで、注文操作を中止できます。 このトリガーでは、メイン メニューは自動的には表示されませんが、代わりに「"メイン メニュー" を入力して続行」と言うことで、次の操作をユーザーに示すメッセージが送信されます。
 
 ### <a name="dialog-loops"></a>ダイアログのループ
 
@@ -269,7 +269,7 @@ bot.dialog('orderDinner', [
 
 ## <a name="cancel-a-dialog"></a>ダイアログを取り消す
 
-`session.replaceDialog` メソッドを使用すると "*現在の*" ダイアログを新しいダイアログに置き換えることができますが、ダイアログ スタックの下の方にあるダイアログを置換することはできません。 ダイアログ スタック内の "*現在の*" ダイアログではないダイアログを置換するには、代わりに [`session.cancelDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#canceldialog) メソッドを使用します。 
+`session.replaceDialog` メソッドを使用すると "*現在の*" ダイアログを新しいダイアログに置き換えることができますが、ダイアログ スタックの下の方にあるダイアログを置換することはできません。 ダイアログ スタック内の "*現在の*" ダイアログではないダイアログを置換するには、代わりに [`session.cancelDialog`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#canceldialog) メソッドを使用します。 
 
 `session.cancelDialog` メソッドを使用すると、ダイアログ スタックにおけるダイアログの場所に関係なく、ダイアログを終了できるほか、必要に応じて、代わりの新しいダイアログを呼び出すことができます。 `session.cancelDialog` メソッドを呼び出すには、取り消すダイアログの ID を指定し、必要に応じて、代わりの呼び出すダイアログの ID を指定します。 たとえば、次のコード スニペットでは `orderDinner` ダイアログが取り消され、これが `mainMenu` ダイアログで置き換えられます。
 
@@ -277,7 +277,7 @@ bot.dialog('orderDinner', [
 session.cancelDialog('orderDinner', 'mainMenu'); 
 ```
 
-`session.cancelDialog` メソッドが呼び出されると、ダイアログ スタックが後方検索され、最初に検出されたダイアログが取り消されます。これにより、そのダイアログとその子ダイアログ (存在する場合) がダイアログ スタックから削除されます。 その後、制御が呼び出し元ダイアログに返されます。これにより、[`ResumeReason.notCompleted`](http://docs.botframework.com/en-us/node/builder/chat-reference/enums/_botbuilder_d_.resumereason.html#notcompleted) と同じ [`results.resumed`](http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptresult.html#resumed) コードがないかどうかをチェックして、取り消しを検出できます。
+`session.cancelDialog` メソッドが呼び出されると、ダイアログ スタックが後方検索され、最初に検出されたダイアログが取り消されます。これにより、そのダイアログとその子ダイアログ (存在する場合) がダイアログ スタックから削除されます。 その後、制御が呼び出し元ダイアログに返されます。これにより、[`ResumeReason.notCompleted`](http://docs.botframework.com/node/builder/chat-reference/enums/_botbuilder_d_.resumereason.html#notcompleted) と同じ [`results.resumed`](http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptresult.html#resumed) コードがないかどうかをチェックして、取り消しを検出できます。
 
 `session.cancelDialog` メソッドを呼び出すとき、取り消すダイアログの ID を指定する代わりに、取り消すダイアログの 0 から始まるインデックスを指定できます。ここではインデックスはダイアログ スタックにおけるダイアログの位置を表します。 たとえば、次のコード スニペットは、現在アクティブなダイアログ (インデックス = 0) を終了し、`mainMenu` ダイアログを代わりに起動します。 `mainMenu` ダイアログはダイアログ スタックの位置 0 で呼び出されるため、新しい既定のダイアログになります。
 

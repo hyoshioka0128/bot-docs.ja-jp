@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4fc8ebd1eff03c2b6ac994ff80cb85b341bb7231
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: e019d2d04d843cc0efd5a39135d65fe4cfc022f3
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693671"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404501"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 
@@ -26,7 +26,7 @@ ms.locfileid: "66693671"
 ## <a name="prerequisites"></a>前提条件
 - [LUIS](https://www.luis.ai) アカウント
 - この記事のコードは、**コア ボット** サンプルをベースにしています。 サンプルのコピー ( **[CSharp](https://aka.ms/cs-core-sample) または [JavaScript](https://aka.ms/js-core-sample)** ) が必要になります。 
-- [ボットの基本](bot-builder-basics.md)、[自然言語処理](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/what-is-luis)、および[ボット リソースの管理](bot-file-basics.md)に関する知識。
+- [ボットの基本](bot-builder-basics.md)、[自然言語処理](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis)、および[ボット リソースの管理](bot-file-basics.md)に関する知識。
 
 ## <a name="about-this-sample"></a>このサンプルについて
 
@@ -70,8 +70,8 @@ LUIS ポータルにサインインして、ご自身のバージョンのサン
 1. **[Import new app]\(新しいアプリのインポート\)** を選択します。 
 1. **[Choose App file (JSON format)...]\(アプリ ファイル (JSON 形式) を選択...\)** をクリックします。 
 1. サンプルの `CognitiveModels` フォルダーにある `FlightBooking.json` ファイルを選択します。 **[オプション名]** に、「**FlightBooking**」と入力します。 このファイルには、次の 3 つの意図が含まれています:"Book Flight"、"Cancel"、および "None"。 これらの意図を使って、ユーザーがどのようなつもりでボットに送メッセージを信しているのかを把握します。
-1. アプリを[トレーニング](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-how-to-train)します。
-1. アプリを*運用*環境に[発行](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp)します。
+1. アプリを[トレーニング](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-train)します。
+1. アプリを*運用*環境に[発行](https://docs.microsoft.com/azure/cognitive-services/LUIS/publishapp)します。
 
 ### <a name="why-use-entities"></a>エンティティを使用する理由
 LUIS エンティティを使うと、標準の意図とは異なる物事やイベントを、お使いのボットがインテリジェントに解釈できるようになります。 これにより、ユーザーから追加情報を収集できるようになり、お使いのボットが、よりインテリジェントに応答したり、ユーザーにその追加情報をたずねる特定の質問をスキップしたりできます。 FlightBooking.json ファイルには、3 つの LUIS の意図である "Book Flight"、"Cancel"、および "None" の定義と共に、"From.Airport" や "To.Airport" などのエンティティのセットも含まれています。 これらのエンティティにより、ユーザーが新しい旅行の予約を要求したときに、LUIS は、そのユーザーの元の入力に含まれる追加情報を検出し、返すことができます。
@@ -102,7 +102,7 @@ LUIS アプリにアクセスするために必要な情報 (アプリケーシ�
 
 LUIS アプリにアクセスするために必要な情報 (アプリケーション ID、オーサリング キー、リージョンなど) を `.env` ファイルに追加します。 これらは、発行済みの LUIS アプリから先ほど保存した値です。 API ホスト名は `<your region>.api.cognitive.microsoft.com` 形式にする必要があることに注意してください。
 
-**.env**
+**.env**  
 [!code[env](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/.env?range=1-5)]
 
 ---

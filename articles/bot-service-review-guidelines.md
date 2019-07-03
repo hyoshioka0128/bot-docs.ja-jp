@@ -1,9 +1,17 @@
+---
+ms.openlocfilehash: bbdad5f0cb51d99cf886070dd8400acae0ed24bb
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464574"
+---
 # <a name="bot-review-guidelines"></a>Bot レビュー ガイドライン
 
 Microsoft チャネルのボット、ボットレット、Web アプリ、アドイン、またはスキル ("アプリの統合") を作成するために才能と時間をご投資いただき、ありがとうございます。 アプリの統合を Skype や Microsoft Teams などの Microsoft チャネルに発行するために、まず満たす必要がある最小限の要件を以下に示します。 各チャネルには、以下に詳細に示された要件に加え、特定の要件がある場合があります。 該当する場合、各チャネルの構成ページにチャネル固有の条件があり、そのチャネルにボットを発行するには、まずチャネルのサービスへのサインアップが必要になることがあります。
 
 ## <a name="app-integration-policies"></a>アプリの統合ポリシー
-###  <a name="1-value-representation-security-and-usability"></a>1.値、表現、セキュリティ、および使用可能性
+### <a name="1-value-representation-security-and-usability"></a>1.値、表現、セキュリティ、および使用可能性
 
 アプリの統合とその関連メタデータは、以下の条件を満たす必要があります。
 

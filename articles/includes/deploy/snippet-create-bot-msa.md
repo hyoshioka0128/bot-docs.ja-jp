@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 14d9632ad578014a36b5f13e6dee883e2a6e1722
-ms.sourcegitcommit: 4ff7a8772124a567f43e2c3e13aded368c4002e3
+ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035689"
+ms.lasthandoff: 06/19/2019
+ms.locfileid: "67252644"
 ---
 1. [**アプリケーション登録ポータル**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)に移動します。
 1. **[アプリの追加]** をクリックしてアプリケーションを登録して、**アプリケーション ID** を作成し、**新しいパスワードを生成**します。 既にアプリケーションとパスワードを持っていて、パスワードを思い出せない場合は、[アプリケーション シークレット] セクションで新しいパスワードを生成する必要があります。

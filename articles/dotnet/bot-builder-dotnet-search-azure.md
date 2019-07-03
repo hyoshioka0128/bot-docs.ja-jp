@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e0ffb9c24b5e85b0eb1afdd885654e4864e65939
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: ee1e8c660eae27efae5c18b1392ff68d716f73da
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032921"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405639"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Azure Search を使用してデータドリブン エクスペリエンスを作成する 
 
@@ -22,9 +22,9 @@ ms.locfileid: "65032921"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-search-azure.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-search-azure.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-search-azure.md)
 
-ボットに [Azure Search](https://azure.microsoft.com/en-us/services/search/) を追加すると、ユーザーが大量のコンテンツ間を移動し、データドリブン探索エクスペリエンスを作成できるように支援できます。
+ボットに [Azure Search](https://azure.microsoft.com/services/search/) を追加すると、ユーザーが大量のコンテンツ間を移動し、データドリブン探索エクスペリエンスを作成できるように支援できます。
 
 Azure Search は、キーワード検索、組み込みの言語機能、カスタム スコアリング、ファセット ナビゲーションなど多くの機能を提供する Azure サービスです。 Azure Search はまた、Azure SQL DB、DocumentDB、Blob Storage、Table Storage など、さまざまなソースのコンテンツのインデックスを作成することもできます。 これは他のデータ ソースの "プッシュ" インデックス作成をサポートしており、PDF、Office ドキュメント、および非構造化データが含まれたその他の形式を開くことができます。 収集されると、これらのコンテンツは Azure Search によってインデックス化され、ボットが照会できるようになります。
 

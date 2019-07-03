@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e195f83eefd5f162b74f8891f3b174efc8934700
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f8b64e5705085af5b00de6a3c00059dbdea24cb9
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997969"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405767"
 ---
 # <a name="bot-scenarios"></a>ボット シナリオ
 
@@ -44,7 +44,7 @@ ms.locfileid: "49997969"
 ## <a name="iot-bot-scenario"></a>IoT ボットのシナリオ
 この[モノのインターネット (IoT) ボット](bot-service-scenario-internet-things.md)によって、対話型チャット コマンドを使用して、Philips Hue の照明などの自宅周辺のデバイスを簡単に制御できます。
 
-この単純なボットと無料の If This Then That (IFTTT) サービスを組み合わせると、Philips Hue の照明を制御することができます。 IoT デバイスである Philips Hue は、公開されている API を使ってローカルで制御できます。 ただし、この API は広くアクセスできるようにローカル ネットワークの外部に公開されてはいません。 しかし、IFTTT は "[Friend of Hue](http://www2.meethue.com/en-us/friends-of-hue/ifttt/)" であり、照明のオンやオフ、照明の色や光の強度を変更など、たくさんの制御コマンドが公開されています。
+この単純なボットと無料の If This Then That (IFTTT) サービスを組み合わせると、Philips Hue の照明を制御することができます。 IoT デバイスである Philips Hue は、公開されている API を使ってローカルで制御できます。 ただし、この API は広くアクセスできるようにローカル ネットワークの外部に公開されてはいません。 しかし、IFTTT は "[Friend of Hue](http://www2.meethue.com/friends-of-hue/ifttt/)" であり、照明のオンやオフ、照明の色や光の強度を変更など、たくさんの制御コマンドが公開されています。
 
 ## <a name="next-steps"></a>次の手順
 これでシナリオの概要が理解できたので、それぞれのシナリオを詳しく確認してください。

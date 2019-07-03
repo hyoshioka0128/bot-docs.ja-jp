@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b9b210ad215e091801456750237978babd029696
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: aa8a97bce9f14c8383db4e4ff1e66f4039d88129
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224647"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405730"
 ---
 # <a name="add-input-hints-to-messages"></a>メッセージへの入力ヒントの追加
 
@@ -22,7 +22,7 @@ ms.locfileid: "54224647"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-input-hints.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-send-input-hints.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-send-input-hints.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-input-hints.md)
 
 メッセージの入力ヒントを指定すれば、メッセージがクライアントに配信された後、ボットがユーザー入力を受け付けるか、期待するか、無視するかを示すことができます。 多くのチャネルでは、これによってクライアントが適宜、ユーザー入力コントロールの状態を設定できます。 たとえば、ボットがユーザーの入力を無視していることをメッセージの入力ヒントが示している場合、クライアントはユーザーが入力を提供できないよう、マイクを閉じて入力ボックスを無効にすることができます。
@@ -72,5 +72,5 @@ await connector.Conversations.ReplyToActivityAsync(reply);
 
 - [メッセージの作成](bot-builder-dotnet-create-messages.md)
 - [メッセージへの音声の追加](bot-builder-dotnet-text-to-speech.md)
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
 - <a href="/dotnet/api/microsoft.bot.connector.inputhints" target="_blank">InputHints クラス</a>

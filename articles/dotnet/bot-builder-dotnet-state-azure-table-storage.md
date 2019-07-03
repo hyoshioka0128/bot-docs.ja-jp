@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d5d6dc4e635b41424dfee0e260a769f9ed5f595d
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 05ab8f9148cd520be266d9340cd65a9903bf6e23
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225787"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405618"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-net"></a>.NET 用 Azure Table Storage を使用したカスタム状態データの管理
 
@@ -28,7 +28,7 @@ ms.locfileid: "54225787"
 
 ## <a name="prerequisites"></a>前提条件
 必要なものは次のとおりです。
- - [Microsoft Azure アカウント](https://azure.microsoft.com/en-us/free/)
+ - [Microsoft Azure アカウント](https://azure.microsoft.com/free/)
  - [Visual Studio 2015 またはそれ以降](https://www.visualstudio.com/)
  - [Bot Builder Azure NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Bot.Builder.Azure/)
  - [Autofac Web Api2 NuGet パッケージ](https://www.nuget.org/packages/Autofac.WebApi2/)
@@ -36,10 +36,10 @@ ms.locfileid: "54225787"
  - [Azure Storage Explorer](http://storageexplorer.com/)
  
 ## <a name="create-azure-account"></a>Azure アカウントを作成する
-Azure アカウントを持っていない場合は、[こちら](https://azure.microsoft.com/en-us/free/)をクリックして、無料アカウントにサインアップしてください。
+Azure アカウントを持っていない場合は、[こちら](https://azure.microsoft.com/free/)をクリックして、無料アカウントにサインアップしてください。
 
 ## <a name="set-up-the-azure-table-storage-service"></a>Azure Table Storage サービスを設定する
-1. Azure portal にログインし、**[新規]** をクリックして新しい Azure Table Storage サービスを作成します。 
+1. Azure portal にログインし、 **[新規]** をクリックして新しい Azure Table Storage サービスを作成します。 
 2. Azure Table を実装する**ストレージ アカウント**を検索します。 
 3. フィールドに入力し、画面下部にある **[作成]** ボタンをクリックし、新しいストレージ サービスをデプロイします。 新しいストレージ サービスがデプロイされると、利用可能な機能とオプションが表示されます。
 4. 左側の **[アクセス キー]** タブを選択し、後で使用するために接続文字列をコピーします。 ボットはこの接続文字列を使用して、状態データを保存するストレージ サービスを呼び出します。

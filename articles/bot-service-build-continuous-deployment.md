@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dc4b524659df3fb0b91b54fca65b4b7dd36378cd
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 8d324138db60c2b34f9bebd3ff53c30a12c3cefa
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214269"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405955"
 ---
 # <a name="set-up-continuous-deployment"></a>Azure App Service での GIT による継続的なデプロイ
 
@@ -69,6 +69,6 @@ GitHub を使用する継続的デプロイを有効にするには、Azure port
 1. **[Disconnect]\(切断\)** をクリックして、継続的デプロイを無効化にします。 継続的デプロイを再度有効にするには、上記の該当するセクションの手順を繰り返します。
 
 ## <a name="additional-resources"></a>その他のリソース
-- BitBucket および Azure DevOps Services からの継続的デプロイを有効にするには、「[Azure App Service への継続的デプロイ](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment)」を参照してください。
+- BitBucket および Azure DevOps Services からの継続的デプロイを有効にするには、「[Azure App Service への継続的デプロイ](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)」を参照してください。
 
 

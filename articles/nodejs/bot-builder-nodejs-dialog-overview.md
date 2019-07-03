@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dfa52914b3f0a2e81f4ff3a2f90c7404bfe53d4a
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: f0b933a5bdcea5090ede1b2f589cd69f9e681757
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225997"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405011"
 ---
 # <a name="dialogs-in-the-bot-framework-sdk-for-nodejs"></a>Bot Framework SDK for Node.js のダイアログ
 
@@ -22,7 +22,7 @@ ms.locfileid: "54225997"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-dialogs.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-dialog-overview.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-dialog-overview.md)
 
 Bot Framework SDK for Node.js 内でダイアログを使用すると、会話をモデル化し、会話フローを管理できます。 ボットは会話を通じてユーザーとコミュニケーションを取ります。 会話はダイアログに編成されます。 ダイアログには、ウォーターフォール手順とプロンプトを含めることができます。 ユーザーがボットとやりとりすると、ボットはユーザーのメッセージに応じてさまざまなダイアログの開始、停止、切り替えを行います。 ダイアログのしくみを理解することは、優れたボットを適切に設計し、作成するために重要です。 
 
@@ -53,7 +53,7 @@ Bot Framework SDK for Node.js は、1 つまたは複数のダイアログを介
 Bot Framework 3.5 より前のバージョンでは、*ルート* ダイアログは、`/` という名前のダイアログを追加して定義されます。そのため、URL と似た名前付け規則になります。 この名前付け規則は、ダイアログの命名には適切ではありませんでした。 
 
 > [!NOTE]
-> Bot Framework バージョン 3.5 以降、*既定のダイアログ*は [`UniversalBot`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html#constructor) のコンストラクターに 2 つ目のパラメーターとして登録されています。  
+> Bot Framework バージョン 3.5 以降、*既定のダイアログ*は [`UniversalBot`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html#constructor) のコンストラクターに 2 つ目のパラメーターとして登録されています。  
 
 次のコード スニペットは、`UniversalBot` オブジェクトの作成時に既定のダイアログを定義する方法を示しています。
 
@@ -71,7 +71,7 @@ var bot = new builder.UniversalBot(connector, [
 
 ## <a name="starting-and-ending-dialogs"></a>ダイアログの開始と終了
 
-新しいダイアログを開始する (そしてスタックにプッシュする) には、[`session.beginDialog()`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#begindialog) を使用します。 ダイアログを終了する (そしてスタックから削除し、呼び出し元のダイアログにコントロールを戻す)には、[`session.endDialog()`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#enddialog) または [`session.endDialogWithResult()`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#enddialogwithresult) を使用します。 
+新しいダイアログを開始する (そしてスタックにプッシュする) には、[`session.beginDialog()`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#begindialog) を使用します。 ダイアログを終了する (そしてスタックから削除し、呼び出し元のダイアログにコントロールを戻す)には、[`session.endDialog()`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#enddialog) または [`session.endDialogWithResult()`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#enddialogwithresult) を使用します。 
 
 ## <a name="using-waterfalls-and-prompts"></a>ウォーターフォールとプロンプトを使用する
 

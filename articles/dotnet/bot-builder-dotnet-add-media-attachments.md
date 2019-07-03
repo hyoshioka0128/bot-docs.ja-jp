@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6dcfe6595f1c5961151a90783dd8ceee9c7684dd
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: a719ae4b3aa3fbf61503b4a6f055ec5cc3f5104a
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224337"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464590"
 ---
 # <a name="add-media-attachments-to-messages"></a>メッセージへのメディア添付ファイルの追加
 
@@ -22,10 +22,12 @@ ms.locfileid: "54224337"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-media-attachments.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-media-attachments.md)
 
-ユーザーとボットの間のメッセージ交換には、メディア添付ファイル (イメージ、ビデオ、オーディオ、ファイルなど) を含めることができます。 <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> オブジェクトの `Attachments` プロパティには、メッセージ内のメディア添付ファイルやリッチ カードを表す <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment</a> オブジェクトの配列が格納されます。 
+ユーザーとボットの間のメッセージ交換には、メディア添付ファイル (イメージ、ビデオ、オーディオ、ファイルなど) を含めることができます。 
+
+<a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> オブジェクトの `Attachments` プロパティには、メッセージ内のメディア添付ファイルやリッチ カードを表す <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment</a> オブジェクトの配列が格納されます。 
 
 > [!NOTE]
 > 「[Add rich cards to messages](bot-builder-dotnet-add-rich-card-attachments.md)」 (メッセージへのリッチ カードの追加)。
@@ -44,8 +46,8 @@ ms.locfileid: "54224337"
 - [アクティビティの概要](bot-builder-dotnet-activities.md)
 - [メッセージの作成](bot-builder-dotnet-create-messages.md)
 - [メッセージへのリッチ カードの追加](bot-builder-dotnet-add-rich-card-attachments.md)
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
-- <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment クラス</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
+- <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment クラス</a>
 
 [inspector]: ../bot-service-channel-inspector.md
 

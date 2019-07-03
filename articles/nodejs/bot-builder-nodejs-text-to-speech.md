@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5ae3acded991411156d3e69f4ed9360df9bdccb1
-ms.sourcegitcommit: 4c5c08e7c7eaa5f74c6ac35d8478954b998625f9
+ms.openlocfilehash: 14b8bf7aa4e99e3ca97442c2ba57dc8c57138d99
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64906306"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404696"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
 
@@ -22,7 +22,7 @@ ms.locfileid: "64906306"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-text-to-speech.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-text-to-speech.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-text-to-speech.md)
 > - [REST](../rest-api/bot-framework-rest-connector-text-to-speech.md)
 
 Cortana などの音声対応チャネルのボットを作成している場合は、ボットが読み上げるテキストを指定するメッセージを構成できます。 また、[入力ヒント](bot-builder-nodejs-send-input-hints.md)を指定して、ボットがユーザー入力を受け入れるか、期待するか、無視するかを示し、クライアントのマイクの状態に影響を与えることを試すこともできます。
@@ -46,7 +46,7 @@ Bot Framework SDK for Node.js を使用すると、音声対応チャネルで�
 | パラメーター | 説明 |
 |----|----|
 | `displayText` | 表示されるテキスト。 |
-| `speechText` | 読み上げるテキスト (プレーンテキストまたは <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">SSML</a> 形式)。 |
+| `speechText` | 読み上げるテキスト (プレーンテキストまたは <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">SSML</a> 形式)。 |
 | `options` | 添付ファイルや[入力ヒント](bot-builder-nodejs-send-input-hints.md)を含めることができる `IMessage` オブジェクト。 |
 
 次のコード例では、表示するテキストと読み上げるテキストを指定し、ボットが[ユーザー入力を無視している](bot-builder-nodejs-send-input-hints.md)ことを示すメッセージを送信します。
@@ -61,7 +61,7 @@ Bot Framework SDK for Node.js を使用すると、音声対応チャネルで�
 
 ## <a id="ssml"></a> 音声合成マークアップ言語 (SSML)
 
-ボットで読み上げるテキストを指定するには、プレーンテキスト文字列または音声合成マークアップ言語 (SSML) として書式設定された文字列のいずれかを使用できます。SSML は XML ベースのマークアップ言語であり、声、速度、音量、発音、声の高さなどボットの音声のさまざまな特性を制御できます。 SSML の詳細については、「<a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language Reference (音声合成マークアップ言語リファレンス)</a>」を参照してください。
+ボットで読み上げるテキストを指定するには、プレーンテキスト文字列または音声合成マークアップ言語 (SSML) として書式設定された文字列のいずれかを使用できます。SSML は XML ベースのマークアップ言語であり、声、速度、音量、発音、声の高さなどボットの音声のさまざまな特性を制御できます。 SSML の詳細については、「<a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language Reference (音声合成マークアップ言語リファレンス)</a>」を参照してください。
 
 > [!TIP]
 > <a href="https://www.npmjs.com/search?q=ssml" target="_blank">SSML ライブラリ</a>を使用して、正しい形式の SSML を作成します。
@@ -76,5 +76,5 @@ Bot Framework SDK for .NET を使用して音声対応ボットを作成する�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">音声合成マークアップ言語 (SSML)</a>
+- <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">音声合成マークアップ言語 (SSML)</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Roller のサンプル (GitHub)</a>

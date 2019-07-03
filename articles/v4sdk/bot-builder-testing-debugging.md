@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3e1ebc07c73dcd7033a6b9a22c94379593c5890e
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 7b3380a409641bd7d406c877ebcbf83ddf15431c
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215261"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404446"
 ---
 # <a name="testing-and-debugging-guidelines"></a>テストとデバッグのガイドライン
 
@@ -65,7 +65,7 @@ ms.locfileid: "66215261"
 
 ### <a name="other-testing"></a>その他のテスト
 
-上記のレベルと組み合わせて、あるいはさまざまな角度から、ストレス テスト、パフォーマンス テスト、お使いのボットのアクティビティのプロファイリングなど、各種テストを実行できます。 Visual Studio には、これをローカルで実行するためのメソッドや、ご自身のアプリをテストするための[一連のツール](https://azure.microsoft.com/en-us/solutions/dev-test/)が用意されています。また、[Azure portal](https://portal.azure.com) を使用すると、ご自身のボットの動作に関する分析情報が提供されます。
+上記のレベルと組み合わせて、あるいはさまざまな角度から、ストレス テスト、パフォーマンス テスト、お使いのボットのアクティビティのプロファイリングなど、各種テストを実行できます。 Visual Studio には、これをローカルで実行するためのメソッドや、ご自身のアプリをテストするための[一連のツール](https://azure.microsoft.com/solutions/dev-test/)が用意されています。また、[Azure portal](https://portal.azure.com) を使用すると、ご自身のボットの動作に関する分析情報が提供されます。
 
 ## <a name="debugging"></a>デバッグ
 
@@ -105,7 +105,7 @@ For example [QnA maker](bot-builder-howto-qna.md) is designed to handle certain 
 
 特に複雑なタスクの場合、状態を追跡することが、お使いのボットにとっては重要です。 一般的に、ベスト プラクティスは、アクティビティをできるだけ迅速に処理し、状態が永続化されるようにその処理を完了させることです。 複数のアクティビティがほぼ同時にご使用のボットに送信されるため、非同期アーキテクチャが原因で、非常に紛らわしいバグが発生することがあります。
 
-重要なのは、自分が意図したとおりに状態が永続化されているかどうかを確認することです。 永続化の状態が存在する場所によっては、[Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator) および [Azure Table Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator) 用のストレージ エミュレーターが、運用環境のストレージを使用する前にその状態を確認するうえで役立つ場合があります。
+重要なのは、自分が意図したとおりに状態が永続化されているかどうかを確認することです。 永続化の状態が存在する場所によっては、[Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) および [Azure Table Storage](https://docs.microsoft.com/azure/storage/common/storage-use-emulator) 用のストレージ エミュレーターが、運用環境のストレージを使用する前にその状態を確認するうえで役立つ場合があります。
 
 ### <a name="how-to-use-activity-handlers"></a>アクティビティ ハンドラーを使用する方法
 
@@ -117,9 +117,9 @@ _send activity_ メソッドとそのハンドラーにより、独自の問題�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Visual Studio でのデバッグ](https://docs.microsoft.com/en-us/visualstudio/debugger/index)
-* Bot Framework のための[デバッグ、トレース、およびプロファイリング](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/)
-* 運用環境のコードに含めたくないメソッドに [ConditionalAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.conditionalattribute?view=netcore-2.0) を使用する
+* [Visual Studio でのデバッグ](https://docs.microsoft.com/visualstudio/debugger/index)
+* Bot Framework のための[デバッグ、トレース、およびプロファイリング](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/)
+* 運用環境のコードに含めたくないメソッドに [ConditionalAttribute](https://docs.microsoft.com/dotnet/api/system.diagnostics.conditionalattribute?view=netcore-2.0) を使用する
 * [Fiddler](https://www.telerik.com/fiddler) などのツールを使用してネットワーク トラフィックを確認する
 * [ボット ツール リポジトリ](https://github.com/Microsoft/botbuilder-tools)
 * テストに役立つ [Moq](https://github.com/moq/moq4) などのフレームワーク

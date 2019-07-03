@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 69ce362f35054c5ee42035d8bffefb17c6fa7f71
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 0e0fe51e33e99bbb35ef1d731b611ff9ca12a138
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215504"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404311"
 ---
 # <a name="activity-processing"></a>アクティビティの処理
 
@@ -23,7 +23,7 @@ ms.locfileid: "66215504"
 
 ボットとユーザーの間では、アクティビティを介して情報のやり取りや交換が行われます。 ご利用のボット アプリケーションによって受信された各アクティビティはボット アダプターに渡されます。次に、このボット アダプターから、アクティビティ情報がご利用のボルト ロジックに渡され、最終的に応答がユーザーに送信されます。 アクティビティを受信した後、ボットを通して処理することをターンと呼びます。これはボットの完全な 1 サイクルを表します。 すべての実行が完了し、アクティビティが完全に処理され、ボットのすべてのレイヤーが完了すると、ターンは終了します。
 
-アクティビティ (特にボット ターン中に[ボットから送信した](#generating-responses)アクティビティ) は、非同期で処理されます。 非同期処理はボットの構築に必要な部分です。ボット全体の動作方法についてブラッシュ アップを行う必要がある場合は、[.NET の場合の非同期](https://docs.microsoft.com/en-us/dotnet/csharp/async)または [JavaScript の場合の非同期](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)に関するページを確認してください。
+アクティビティ (特にボット ターン中に[ボットから送信した](#generating-responses)アクティビティ) は、非同期で処理されます。 非同期処理はボットの構築に必要な部分です。ボット全体の動作方法についてブラッシュ アップを行う必要がある場合は、[.NET の場合の非同期](https://docs.microsoft.com/dotnet/csharp/async)または [JavaScript の場合の非同期](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function)に関するページを確認してください。
 
 ## <a name="the-bot-adapter"></a>ボット アダプター
 

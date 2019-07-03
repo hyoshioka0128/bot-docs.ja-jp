@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 94a3459760c8f0f14886a068d082dafeb9530b19
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 187a8427fd8627b0ce6b812ce8ee857e62b0394d
+ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215542"
+ms.lasthandoff: 06/19/2019
+ms.locfileid: "67252690"
 ---
 # <a name="how-bots-work"></a>ボットのしくみ
 
@@ -135,7 +135,7 @@ Yeoman ジェネレーターにより、[restify](http://restify.com/) Web ア�
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-主なボット ロジックはボット コードで定義され、ここでは `Bots/EchoBot.cs` と呼ばれます。 `EchoBot` は `AcitivityHandler` から派生し、これは `IBot` インターフェイスから派生しています。 `ActivityHandler` ではさまざまなハンドラーがさまざまな種類のアクティビティに対して定義されます。たとえば、ここでは `OnMessageActivityAsync` および `OnMembersAddedAsync` の 2 つが定義されます。 これらのメソッドは保護されていますが、`ActivityHandler` から派生しているため、上書きできます。
+主なボット ロジックはボット コードで定義され、ここでは `Bots/EchoBot.cs` と呼ばれます。 `EchoBot` は `ActivityHandler` から派生し、これは `IBot` インターフェイスから派生しています。 `ActivityHandler` ではさまざまなハンドラーがさまざまな種類のアクティビティに対して定義されます。たとえば、ここでは `OnMessageActivityAsync` および `OnMembersAddedAsync` の 2 つが定義されます。 これらのメソッドは保護されていますが、`ActivityHandler` から派生しているため、上書きできます。
 
 `ActivityHandler` で定義されているハンドラーを次に示します。
 
@@ -180,7 +180,7 @@ public class MyBot : ActivityHandler
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-主なボット ロジックはボット コードで定義され、ここでは `bots\echoBot.js` と呼ばれます。 `EchoBot` は `AcitivityHandler` から派生しています。 `ActivityHandler` ではさまざまなハンドラーがさまざまな種類のアクティビティに対して定義されます。ご自身のボットの動作を変更するには、`onMessage`、`onConversationUpdate` などの追加ロジックをここで指定します。
+主なボット ロジックはボット コードで定義され、ここでは `bots\echoBot.js` と呼ばれます。 `EchoBot` は `ActivityHandler` から派生しています。 `ActivityHandler` ではさまざまなハンドラーがさまざまな種類のアクティビティに対して定義されます。ご自身のボットの動作を変更するには、`onMessage`、`onConversationUpdate` などの追加ロジックをここで指定します。
 
 `ActivityHandler` で定義されているハンドラーを次に示します。
 

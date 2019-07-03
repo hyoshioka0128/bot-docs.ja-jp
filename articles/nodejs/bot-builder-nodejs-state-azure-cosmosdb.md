@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 92672e9d9ca9949da1ce4741bdc71bc809d982f7
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 67e86455aefd000c8a6956a71adcfdb821266196
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224517"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404333"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-nodejs"></a>Node.js 用の Azure Cosmos DB によるカスタム状態データの管理
 
@@ -36,13 +36,13 @@ ms.locfileid: "54224517"
 - Node.js ボットが必要です。 ない場合は、[ボットを作成](bot-builder-nodejs-quickstart.md)します。 
 
 ## <a name="create-azure-account"></a>Azure アカウントの作成
-Azure アカウントを持っていない場合は、[こちら](https://azure.microsoft.com/en-us/free/)をクリックして、無料アカウントにサインアップしてください。
+Azure アカウントを持っていない場合は、[こちら](https://azure.microsoft.com/free/)をクリックして、無料アカウントにサインアップしてください。
 
 ## <a name="set-up-the-azure-cosmos-db-database"></a>Azure Cosmos DB データベースを設定する
-1. Azure Portal にログインしたら、**[新規]** をクリックして新しい *Azure Cosmos DB* データベースを作成します。 
+1. Azure Portal にログインしたら、 **[新規]** をクリックして新しい *Azure Cosmos DB* データベースを作成します。 
 2. **[データベース]** をクリックします。 
-3. **[Azure Cosmos DB]** を見つけて、**[作成]** をクリックします。
-4. フィールドに入力します。 **[API]** フィールドで、**[SQL (DocumentDB)]** を選択します。 すべてのフィールドに入力した後、画面下部にある **[作成]** ボタンをクリックして、新しいデータベースをデプロイします。 
+3. **[Azure Cosmos DB]** を見つけて、 **[作成]** をクリックします。
+4. フィールドに入力します。 **[API]** フィールドで、 **[SQL (DocumentDB)]** を選択します。 すべてのフィールドに入力した後、画面下部にある **[作成]** ボタンをクリックして、新しいデータベースをデプロイします。 
 5. 新しいデータベースがデプロイされたら、その新しいデータベースに移動します。 **[アクセス キー]** をクリックして、キーと接続文字列を検索します。 ボットはこの情報を使用して、状態データを保存するストレージ サービスを呼び出します。
 
 ## <a name="install-botbuilder-azure-module"></a>botbuilder-azure モジュールのインストール
@@ -74,14 +74,14 @@ npm install --save botbuilder-azure
    ```
    `host` 値と `masterKey` 値は、データベースの **[キー]** メニューで確認できます。 `database` エントリと `collection` エントリが Azure データベースにない場合、自動的に作成されます。
 
-3. `botbuilder-azure` モジュールを使用して、Azure データベースに接続するための新しいオブジェクトを 2 つ作成します。 最初に、(上記の `documentDbOptions` として定義されている) 接続構成設定を渡して、`DocumentDBClient` のインスタンスを作成します。 次に、`DocumentDBClient` オブジェクトを渡して `AzureBotStorage` のインスタンスを作成します。 例: 
+3. `botbuilder-azure` モジュールを使用して、Azure データベースに接続するための新しいオブジェクトを 2 つ作成します。 最初に、(上記の `documentDbOptions` として定義されている) 接続構成設定を渡して、`DocumentDBClient` のインスタンスを作成します。 次に、`DocumentDBClient` オブジェクトを渡して `AzureBotStorage` のインスタンスを作成します。 例:
    ```javascript
    var docDbClient = new azure.DocumentDbClient(documentDbOptions);
 
    var cosmosStorage = new azure.AzureBotStorage({ gzipData: false }, docDbClient);
    ```
 
-4. インメモリ ストレージではなく、カスタム データベースを使用するよう指定します。 例: 
+4. インメモリ ストレージではなく、カスタム データベースを使用するよう指定します。 例:
 
    ```javascript
    var bot = new builder.UniversalBot(connector, function (session) {

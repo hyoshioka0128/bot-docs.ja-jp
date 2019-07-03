@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f4b8243580ee678390177881b136a9016be4a786
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: eba4ad9ba2fae85fbc2488e5fef8d5a7dac593ee
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215462"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464760"
 ---
 ## <a name="custom-assistant-overview"></a>カスタム アシスタントの概要
 
@@ -35,17 +35,17 @@ Microsoft では、製品の機能をお客様が制御できるようにする�
 
 ## <a name="complete-ownership-and-control-of-data"></a>データの完全な所有権と管理
 
-カスタム アシスタントは、お客様の Azure サブスクリプション内にデプロイされます。 したがって、アシスタントによって生成されたデータ (質問の内容やユーザーの動作など) は、ご利用の Azure サブスクリプション内にすべて保存されます。 詳しくは、[Microsoft Cognitive Services](https://www.microsoft.com/en-us/trustcenter/cloudservices/cognitiveservices) に関するページと、[Trust Cente の Azure のセクション](https://www.microsoft.com/en-us/TrustCenter/CloudServices/Azure)をご覧ください。
+カスタム アシスタントは、お客様の Azure サブスクリプション内にデプロイされます。 したがって、アシスタントによって生成されたデータ (質問の内容やユーザーの動作など) は、ご利用の Azure サブスクリプション内にすべて保存されます。 詳しくは、[Microsoft Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) に関するページと、[Trust Cente の Azure のセクション](https://www.microsoft.com/TrustCenter/CloudServices/Azure)をご覧ください。
 
 ## <a name="your-assistant-anywhere"></a>あらゆるチャネルから利用できるアシスタント
 
-カスタム アシスタントは Microsoft Conversational AI プラットフォームを利用しているので、あらゆる Bot Framework [チャネル](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)を通じて利用することができます (Web チャット、FaceBook Messenger、Skype など)。さらに、[Direct Line](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0) チャネルを通じて、デスクトップやモバイル アプリ (自動車、スピーカー、アラーム時計などのデバイスを含む) に機能を組み込むこともできます。
+カスタム アシスタントは Microsoft Conversational AI プラットフォームを利用しているので、あらゆる Bot Framework [チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)を通じて利用することができます (Web チャット、FaceBook Messenger、Skype など)。さらに、[Direct Line](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0) チャネルを通じて、デスクトップやモバイル アプリ (自動車、スピーカー、アラーム時計などのデバイスを含む) に機能を組み込むこともできます。
 
 ## <a name="built-on-enterprise-grade-technology"></a>エンタープライズ グレードのテクノロジに基づいて構築
 
-カスタム アシスタント ソリューションは、Azure Bot Service、Language Understanding Cognitive Service、Unified Speech のほか、Azure の幅広いサポート コンポーネントに基づいて構築されているため、お客様は [Azure のグローバルなインフラストラクチャ](https://azure.microsoft.com/en-gb/global-infrastructure/)を効果的に活用することができます。
+カスタム アシスタント ソリューションは、Azure Bot Service、Language Understanding Cognitive Service、Unified Speech のほか、Azure の幅広いサポート コンポーネントに基づいて構築されているため、お客様は [Azure のグローバルなインフラストラクチャ](https://azure.microsoft.com/global-infrastructure/)を効果的に活用することができます。
 
-また、LUIS Cognitive Service によって Language Understanding がサポートされているので、[こちらに記載](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-supported-languages)されている幅広い言語セットをサポートできます。 [Translator Cognitive Service](https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/) では、カスタム アシスタントの提供範囲をさらに拡大するための、追加の機械翻訳機能も提供されています。
+また、LUIS Cognitive Service によって Language Understanding がサポートされているので、[こちらに記載](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages)されている幅広い言語セットをサポートできます。 [Translator Cognitive Service](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) では、カスタム アシスタントの提供範囲をさらに拡大するための、追加の機械翻訳機能も提供されています。
 
 ## <a name="integrated-and-context-aware"></a>統合性とコンテキスト対応
 
@@ -61,7 +61,7 @@ Microsoft のカスタム アシスタント アーキテクチャは柔軟性�
 
 ## <a name="adaptive-cards"></a>Adaptive Cards (アダプティブ カード)
 
-カスタム アシスタントで[アダプティブ カード](https://adaptivecards.io/)を使用すると、テキスト ベースの応答と共に、ユーザー エクスペリエンス要素 (カード、画像、ボタンなど) を返すことができます。 デバイスや会話キャンバスに画面がある場合は、これらのアダプティブ カードをさまざまなデバイスやプラットフォームでレンダリングして、チャネルに合ったユーザー エクスペリエンスを提供することができます。 アダプティブ カードの例は[こちら](https://adaptivecards.io/samples/)で確認できます。レンダリングのオプションに関する情報は、[こちら](https://docs.microsoft.com/en-us/adaptive-cards/rendering-cards/getting-started)のドキュメントに記載されています。
+カスタム アシスタントで[アダプティブ カード](https://adaptivecards.io/)を使用すると、テキスト ベースの応答と共に、ユーザー エクスペリエンス要素 (カード、画像、ボタンなど) を返すことができます。 デバイスや会話キャンバスに画面がある場合は、これらのアダプティブ カードをさまざまなデバイスやプラットフォームでレンダリングして、チャネルに合ったユーザー エクスペリエンスを提供することができます。 アダプティブ カードの例は[こちら](https://adaptivecards.io/samples/)で確認できます。レンダリングのオプションに関する情報は、[こちら](https://docs.microsoft.com/adaptive-cards/rendering-cards/getting-started)のドキュメントに記載されています。
 
 
 ## <a name="skills"></a>スキル

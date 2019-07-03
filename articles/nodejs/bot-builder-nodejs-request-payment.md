@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 296004c654cfd59de6c245bf9702a80024526140
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 88fd1ee1eb46fa056ecadae1f0cc1b19eb7c908f
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563767"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404838"
 ---
 # <a name="request-payment"></a>支払いの要求
 
@@ -22,7 +22,7 @@ ms.locfileid: "64563767"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-request-payment.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-request-payment.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-request-payment.md)
 
 ボットでユーザーがアイテムを購入できるようになっている場合、[リッチ カード](bot-builder-nodejs-send-rich-cards.md)に特殊な種類のボタンを含めて、支払いを要求することができます。 この記事では、Bot Framework SDK for Node.js を使用して支払い要求を送信する方法について説明します。
 
@@ -41,7 +41,7 @@ Bot Framework SDK for Node.js を使用して支払い要求を送信するに�
 
 1. <a href="https://dashboard.stripe.com/register" target="_blank">まだお持ちでない場合は、Stripe アカウントを作成してアクティブにします。</a>
 
-2. <a href="https://seller.microsoft.com/en-us/dashboard/registration/seller/?accountprogram=botframework" target="_blank">Microsoft アカウントを使用して Seller Center にサインインします。</a>
+2. <a href="https://seller.microsoft.com/dashboard/registration/seller/?accountprogram=botframework" target="_blank">Microsoft アカウントを使用して Seller Center にサインインします。</a>
 
 3. Seller Center 内で、そのアカウントを Stripe に接続します。
 
@@ -56,7 +56,7 @@ Bot Framework SDK for Node.js を使用して支払い要求を送信するに�
 <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/sample-payments" target="_blank">支払いボット</a> サンプルは、Node.js を使用して支払い要求を送信するボットの例を提供します。 動作中のこのサンプル ボットを確認するには、<a href="https://webchat.botframework.com/embed/paymentsample?s=d39Bk7JOMzQ.cwA.Rig.dumLki9bs3uqfWFMjXPn5PFnQVmT2VAVR1Zl1iPi07k" target="_blank">それを Web チャットで試し</a>、<a href="https://join.skype.com/bot/9fbc0f17-43eb-40fe-bf3b-af151e6ce45e" target="_blank">Skype 連絡先として追加するか</a>、または支払いボット サンプルをダウンロードし、Bot Framework エミュレーターを使用してそれをローカルで実行できます。 
 
 > [!NOTE]
-> Web チャットまたは Skype で**支払いボット** サンプルを使用してエンド ツー エンドの支払いプロセスを完了するには、Microsoft アカウント内で有効なクレジット カードまたはデビット カード (つまり、米国のカード発行者からの有効なカード) を指定する必要があります。 **支払いボット** サンプルはテスト モードで実行される (つまり、**.env** で `PAYMENTS_LIVEMODE` が `false` に設定されている) ため、そのカードは課金されず、カードの CVV も検証されません。
+> Web チャットまたは Skype で**支払いボット** サンプルを使用してエンド ツー エンドの支払いプロセスを完了するには、Microsoft アカウント内で有効なクレジット カードまたはデビット カード (つまり、米国のカード発行者からの有効なカード) を指定する必要があります。 **支払いボット** サンプルはテスト モードで実行される (つまり、 **.env** で `PAYMENTS_LIVEMODE` が `false` に設定されている) ため、そのカードは課金されず、カードの CVV も検証されません。
 
 この記事の次のいくつかのセクションでは、**支払いボット** サンプルのコンテキストでの支払いプロセスの 3 つの部分について説明します。
 
@@ -68,7 +68,7 @@ Bot Framework SDK for Node.js を使用して支払い要求を送信するに�
 
 この例では、ボタンの種類は、アプリが "支払い" として定義する `payments.PaymentActionType` として指定されています。 このボタンの値は、サポートされる支払い方法、詳細、およびオプションに関する情報を含む `PaymentRequest` オブジェクトを返す `createPaymentRequest` 関数によって入力されます。 実装の詳細については、<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/sample-payments" target="_blank">支払いボット</a> サンプル内の **app.js** を参照してください。
 
-このスクリーンショットは、上のコード スニペットによって生成される (**[購入]** ボタンが含まれた) Hero カードを示しています。 
+このスクリーンショットは、上のコード スニペットによって生成される ( **[購入]** ボタンが含まれた) Hero カードを示しています。 
  
 ![支払いのサンプル ボット](../media/payments-bot-buy.png) 
 
@@ -121,7 +121,7 @@ Bot Framework SDK for Node.js を使用して支払い要求を送信するに�
 
 [!INCLUDE [Test a payment bot](../includes/snippet-payment-test-bot.md)]
 
-<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/sample-payments" target="_blank">支払いボット</a> サンプルでは、**.env** 内の `PAYMENTS_LIVEMODE` 環境変数によって、[支払いの完了] コールバックにエミュレートされた支払いトークンまたは実際の支払いトークンのどちらが含まれるかが決定されます。 `PAYMENTS_LIVEMODE` が `false` に設定されている場合は、ボットがテスト モードにあることを示すヘッダーがボットの送信支払い要求に追加され、[支払いの完了] コールバックには、課金できないエミュレートされた支払いトークンが含まれます。 `PAYMENTS_LIVEMODE` が `true` に設定されている場合、ボットがテスト モードであることを示すヘッダーはボットの支払い送信要求から省略され、支払いの完了コールバックには、ボットが支払い処理のために Stripe に送信する実際の支払いトークンが含まれます。 これは、指定された支払い方法への課金が発生する実際のトランザクションになります。 
+<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/sample-payments" target="_blank">支払いボット</a> サンプルでは、 **.env** 内の `PAYMENTS_LIVEMODE` 環境変数によって、[支払いの完了] コールバックにエミュレートされた支払いトークンまたは実際の支払いトークンのどちらが含まれるかが決定されます。 `PAYMENTS_LIVEMODE` が `false` に設定されている場合は、ボットがテスト モードにあることを示すヘッダーがボットの送信支払い要求に追加され、[支払いの完了] コールバックには、課金できないエミュレートされた支払いトークンが含まれます。 `PAYMENTS_LIVEMODE` が `true` に設定されている場合、ボットがテスト モードであることを示すヘッダーはボットの支払い送信要求から省略され、支払いの完了コールバックには、ボットが支払い処理のために Stripe に送信する実際の支払いトークンが含まれます。 これは、指定された支払い方法への課金が発生する実際のトランザクションになります。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

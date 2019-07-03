@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9bab3e3df6bb32607773da261698d785b1f261f7
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: b2cc303cdedbc3a9d44ce725bfc78dd308974763
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214231"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464674"
 ---
 # <a name="virtual-assistant-overview"></a>仮想アシスタントの概要
 
@@ -67,17 +67,17 @@ ToDo スキル | 現在プレビュー段階の ToDo スキルには、一般的
 ### <a name="your-data-your-brand-and-your-experience"></a>データ、ブランド、エクスペリエンス
 エンド ユーザー エクスペリエンスの要素は、すべてお客様が制御できます。 これには、ブランディング、名前、音声、パーソナリティ、応答、およびアバターが含まれます。 仮想アシスタントとサポート スキルのソース コードもすべて提供されるので、必要に応じて調整できます。
 
-仮想アシスタントは、お客様の Azure サブスクリプション内にデプロイされます。 したがって、アシスタントによって生成されたデータ (質問の内容やユーザーの動作など) は、ご利用の Azure サブスクリプション内にすべて保存されます。 詳しくは、[Microsoft Cognitive Services](https://www.microsoft.com/en-us/trustcenter/cloudservices/cognitiveservices) に関するページと、[Trust Cente の Azure のセクション](https://www.microsoft.com/en-us/TrustCenter/CloudServices/Azure)をご覧ください。
+仮想アシスタントは、お客様の Azure サブスクリプション内にデプロイされます。 したがって、アシスタントによって生成されたデータ (質問の内容やユーザーの動作など) は、ご利用の Azure サブスクリプション内にすべて保存されます。 詳しくは、[Microsoft Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) に関するページと、[Trust Cente の Azure のセクション](https://www.microsoft.com/TrustCenter/CloudServices/Azure)をご覧ください。
 
 ### <a name="write-it-once-embed-it-anywhere"></a>記述したコードはどこにでも埋め込み可能
-仮想アシスタントは Microsoft Conversational AI プラットフォームを利用しているので、あらゆる Bot Framework [チャネル](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)を通じて利用することができます (Web チャット、FaceBook Messenger、Skype など)。 
+仮想アシスタントは Microsoft Conversational AI プラットフォームを利用しているので、あらゆる Bot Framework [チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)を通じて利用することができます (Web チャット、FaceBook Messenger、Skype など)。 
 
-さらに、[Direct Line](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0) チャネルを通じて、デスクトップやモバイル アプリ (自動車、スピーカー、アラーム時計などのデバイスを含む) に機能を組み込むこともできます。
+さらに、[Direct Line](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0) チャネルを通じて、デスクトップやモバイル アプリ (自動車、スピーカー、アラーム時計などのデバイスを含む) に機能を組み込むこともできます。
 
 ### <a name="enterprise-grade-solutions"></a>エンタープライズ グレードのソリューション
-仮想アシスタント ソリューションは、Azure Bot Service、Language Understanding Cognitive Service、Unified Speech のほか、Azure の幅広いサポート コンポーネントに基づいて構築されているため、お客様は [Azure のグローバルなインフラストラクチャ](https://azure.microsoft.com/en-gb/global-infrastructure/)を効果的に活用することができます (ISO 27018、HIPPA、PCI DSS、SOC 1、2、3 など)。
+仮想アシスタント ソリューションは、Azure Bot Service、Language Understanding Cognitive Service、Unified Speech のほか、Azure の幅広いサポート コンポーネントに基づいて構築されているため、お客様は [Azure のグローバルなインフラストラクチャ](https://azure.microsoft.com/global-infrastructure/)を効果的に活用することができます (ISO 27018、HIPPA、PCI DSS、SOC 1、2、3 など)。
 
-また、LUIS Cognitive Service によって Language Understanding がサポートされているので、[こちらに記載](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-supported-languages)されている幅広い言語セットをサポートできます。 [Translator Cognitive Service](https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/) では、仮想アシスタントの提供範囲をさらに拡大するための、追加の機械翻訳機能も提供されています。
+また、LUIS Cognitive Service によって Language Understanding がサポートされているので、[こちらに記載](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages)されている幅広い言語セットをサポートできます。 [Translator Cognitive Service](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) では、仮想アシスタントの提供範囲をさらに拡大するための、追加の機械翻訳機能も提供されています。
 
 ### <a name="integrated-and-context-aware"></a>統合性とコンテキスト対応
 仮想アシスタントはデバイスやエコシステム内に統合できるので、お客様は真に統合された、インテリジェントなエクスペリエンスを実現することができます。 このコンテキスト対応型のソリューションにより、かつてなくインテリジェントなエクスペリエンスを開発し、他の方法では達成できない高度なパーソナライズ性を提供することが可能となっています。
@@ -89,7 +89,7 @@ ToDo スキル | 現在プレビュー段階の ToDo スキルには、一般的
 Microsoft の仮想アシスタント アーキテクチャは柔軟性に優れているので、お客様が既に構築しているデバイス ベースの音声処理機能や自然言語処理機能と統合することができます。もちろん、既存のバックエンド システムや API とも統合できます。
 
 ### <a name="adaptive-cards"></a>Adaptive Cards (アダプティブ カード)
-仮想アシスタントで[アダプティブ カード](https://adaptivecards.io/)を使用すると、テキスト ベースの応答と共に、ユーザー エクスペリエンス要素 (カード、画像、ボタンなど) を返すことができます。 デバイスや会話キャンバスに画面がある場合は、これらのアダプティブ カードをさまざまなデバイスやプラットフォームでレンダリングして、チャネルに合ったユーザー エクスペリエンスを提供することができます。 アダプティブ カードの例は[こちら](https://adaptivecards.io/samples/)で確認できます。レンダリングのオプションに関する情報は、[こちら](https://docs.microsoft.com/en-us/adaptive-cards/rendering-cards/getting-started)のドキュメントに記載されています。
+仮想アシスタントで[アダプティブ カード](https://adaptivecards.io/)を使用すると、テキスト ベースの応答と共に、ユーザー エクスペリエンス要素 (カード、画像、ボタンなど) を返すことができます。 デバイスや会話キャンバスに画面がある場合は、これらのアダプティブ カードをさまざまなデバイスやプラットフォームでレンダリングして、チャネルに合ったユーザー エクスペリエンスを提供することができます。 アダプティブ カードの例は[こちら](https://adaptivecards.io/samples/)で確認できます。レンダリングのオプションに関する情報は、[こちら](https://docs.microsoft.com/adaptive-cards/rendering-cards/getting-started)のドキュメントに記載されています。
 
 ### <a name="skills"></a>スキル
 基本的なアシスタント以外にも、開発者の生産性向上に必要な、幅広い一般機能が用意されています。 生産性機能はその代表的な例です。カレンダー、タスク、電子メールなどの一般的な機能に対応しようとする場合、通常は、言語モデル (LUIS)、ダイアログ (コード)、統合 (コード)、言語生成 (応答) を作成する必要があります。

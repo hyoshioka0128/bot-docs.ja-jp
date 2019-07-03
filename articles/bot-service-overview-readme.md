@@ -8,19 +8,19 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 85ef0fde39980bab1b891518e338fddbd56b275a
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 74c48c779a41a6a2cbdf4f1c559c7136e7a94ca1
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563880"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405810"
 ---
 # <a name="how-bot-service-works"></a>Bot Service のしくみ
 
 Bot Service では、ボットを開発するための Bot Framework SDK や、ボットをチャンネルに接続するための Bot Framework など、ボットを作成するためのコア コンポーネントが提供されています。 Bot Service には、.NET および Node.js をサポートするボットを作成するときに選択できる 5 つのテンプレートが用意されています。
 
 > [!IMPORTANT]
-> Bot Service を使用するには、Microsoft Azure サブスクリプションが必要です。 サブスクリプションがない場合は、<a href="https://azure.microsoft.com/en-us/free/" target="_blank">無料アカウント</a>に登録できます。
+> Bot Service を使用するには、Microsoft Azure サブスクリプションが必要です。 サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料アカウント</a>に登録できます。
 
 ## <a name="hosting-plans"></a>ホスティング プラン
 Bot Service はボットのための 2 つのホスティング プランを提供します。 ニーズに合ったホスティング プランを選択できます。

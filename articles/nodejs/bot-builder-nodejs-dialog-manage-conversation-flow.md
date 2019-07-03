@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 96c28101c3ea72c70c6ad53b06306f4ea00b2929
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 497a00dd9327d3b4c26c1468bba04f18e2244ca1
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225607"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405034"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>ダイアログを使用して会話フローを管理する
 
@@ -22,7 +22,7 @@ ms.locfileid: "54225607"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-manage-conversation-flow.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
 会話フローの管理は、ボットを構築する上で最も重要なタスクです。 ボットは、主要なタスクを的確に実行し、中断を適切に処理できなければなりません。 Bot Framework SDK for Node.js を使用することで、ダイアログを使用して会話フローを管理することができます。
 
@@ -343,7 +343,7 @@ bot.dialog('orderDinner', [
 
 上記の例では、ダイアログは `session.endDialog` または `session.endDialogWithResult` のいずれかによって閉じられます。どちらもダイアログを終了し、スタックからダイアログを削除して、呼び出しダイアログに制御を戻します。 ユーザーが会話の終わりに達した場合は、会話が終了したことを示すために `session.endConversation` を使用する必要があります。
 
-[`session.endConversation`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#endconversation) メソッドは会話を終了し、必要に応じてメッセージをユーザーに送信します。 たとえば、前の例の `orderDinner` ダイアログでは、次のコード サンプルで示すように、`session.endConversation`を使用して会話を終了できます。
+[`session.endConversation`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#endconversation) メソッドは会話を終了し、必要に応じてメッセージをユーザーに送信します。 たとえば、前の例の `orderDinner` ダイアログでは、次のコード サンプルで示すように、`session.endConversation`を使用して会話を終了できます。
 
 ```javascript
 bot.dialog('orderDinner', [
@@ -359,7 +359,7 @@ bot.dialog('orderDinner', [
 ]);
 ```
 
-`session.endConversation` を呼び出すと、ダイアログ スタックがクリアされ、[`session.conversationData`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#conversationdata) ストレージがリセットされて会話が終了します。 データ ストレージの詳細については、「[Manage state data (状態データの管理)](bot-builder-nodejs-state.md)」を参照してください。
+`session.endConversation` を呼び出すと、ダイアログ スタックがクリアされ、[`session.conversationData`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#conversationdata) ストレージがリセットされて会話が終了します。 データ ストレージの詳細については、「[Manage state data (状態データの管理)](bot-builder-nodejs-state.md)」を参照してください。
 
 `session.endConversation` の呼び出しは、ボットが設計された目的の会話フローをユーザーが完了した場合の適切な動作です。 また、会話中にユーザーが「キャンセル」または「さようなら」と入力した場合に、`session.endConversation` を使用して会話を終了することもできます。 これは、ダイアログに `endConversationAction` を添付し、このトリガーに「キャンセル」または「さようなら」に一致する入力をリッスンさせるだけで実行できます。
 

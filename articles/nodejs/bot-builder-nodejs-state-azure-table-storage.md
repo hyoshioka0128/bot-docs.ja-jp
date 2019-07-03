@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5c2b8832401ccc9260c9aa872c0848b3a3e8445b
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 34f2cb79d4dcef9ddb68c6de0333a94b4128b301
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225717"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404701"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-nodejs"></a>Node.js 用 Azure Table Storage を使用したカスタム状態データの管理
 
@@ -37,13 +37,13 @@ ms.locfileid: "54225717"
 - [Storage Explorer](http://storageexplorer.com/)。
 
 ## <a name="create-azure-account"></a>Azure アカウントを作成する
-Azure アカウントを持っていない場合は、[こちら](https://azure.microsoft.com/en-us/free/)をクリックして、無料アカウントにサインアップしてください。
+Azure アカウントを持っていない場合は、[こちら](https://azure.microsoft.com/free/)をクリックして、無料アカウントにサインアップしてください。
 
 ## <a name="set-up-the-azure-table-storage-service"></a>Azure Table Storage サービスを設定する
-1. Azure portal にログインし、**[新規]** をクリックして新しい Azure Table Storage サービスを作成します。 
+1. Azure portal にログインし、 **[新規]** をクリックして新しい Azure Table Storage サービスを作成します。 
 2. Azure Table を実装する**ストレージ アカウント**を検索します。 **[作成]** をクリックして、ストレージ アカウントの作成を開始します。 
 3. フィールドに入力し、画面下部にある **[作成]** ボタンをクリックして、新しいストレージ サービスをデプロイします。 
-4. 新しいストレージ サービスがデプロイされたら、作成したストレージ アカウントに移動します。 作成したストレージ アカウントは、**[ストレージ アカウント]** ブレードに表示されます。
+4. 新しいストレージ サービスがデプロイされたら、作成したストレージ アカウントに移動します。 作成したストレージ アカウントは、 **[ストレージ アカウント]** ブレードに表示されます。
 4. **[アクセス キー]** を選択し、後で使用するためにそのキーをコピーします。 ボットは、**ストレージ アカウント名**と**キー**を使用して、状態データを保存するストレージ サービスを呼び出します。
 
 ## <a name="install-botbuilder-azure-module"></a>botbuilder-azure モジュールをインストールする
@@ -73,7 +73,7 @@ npm install --save botbuilder-azure
    ```
    `storageName` 値と `storageKay` 値は、Azure Table の **[アクセス キー]** メニューで確認できます。 Azure Table に `tableName` が存在しない場合は、作成されます。
 
-3. `botbuilder-azure` モジュールを使用して、Azure Table に接続するための新しいオブジェクトを 2 つ作成します。 最初に、接続構成設定を渡して、`AzureTableClient` のインスタンスを作成します。 次に、`AzureTableClient` オブジェクトを渡して `AzureBotStorage` のインスタンスを作成します。 例: 
+3. `botbuilder-azure` モジュールを使用して、Azure Table に接続するための新しいオブジェクトを 2 つ作成します。 最初に、接続構成設定を渡して、`AzureTableClient` のインスタンスを作成します。 次に、`AzureTableClient` オブジェクトを渡して `AzureBotStorage` のインスタンスを作成します。 例:
 
    ```javascript
    var azureTableClient = new azure.AzureTableClient(tableName, storageName, storageKey);
@@ -81,7 +81,7 @@ npm install --save botbuilder-azure
    var tableStorage = new azure.AzureBotStorage({gzipData: false}, azureTableClient);
    ```
 
-4. インメモリ ストレージではなくカスタム データベースを使用し、セッション情報をデータベースに追加するよう指定します。 例: 
+4. インメモリ ストレージではなくカスタム データベースを使用し、セッション情報をデータベースに追加するよう指定します。 例:
 
    ```javascript
    var bot = new builder.UniversalBot(connector, function (session) {

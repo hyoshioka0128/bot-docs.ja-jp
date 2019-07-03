@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: 4b5181babf728861107a0c7bc28f844491761a7a
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 117f95799df0abbe957000d4979b10f05baf262c
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033886"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405534"
 ---
-デプロイを開始する前に、最新バージョンの [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) および [dotnet CLI](https://dotnet.microsoft.com/download) を使用していることを確認します。 dotnet CLI がない場合は、上記のリンクから .Net Core ランタイム オプションを使用してインストールします。 
+デプロイを開始する前に、最新バージョンの [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) および [dotnet CLI](https://dotnet.microsoft.com/download) を使用していることを確認します。 dotnet CLI がない場合は、上記のリンクから .Net Core ランタイム オプションを使用してインストールします。 
 
 ### <a name="login-to-azure-cli-and-set-your-subscription"></a>Azure CLI にログインしてサブスクリプションを設定する
 ボットの作成とローカルでのテストが完了したので、次は Azure にデプロイします。 コマンド プロンプトを開いて Azure portal にログインします。
@@ -37,7 +37,7 @@ az group create --name <resource-group-name> --location <geographic-location> --
 
 | オプション     | 説明 |
 |:-----------|:---|
-| name     | リソース グループの一意名。 名前にスペースやアンダースコアを含めないでください。 |
+| 名前     | リソース グループの一意名。 名前にスペースやアンダースコアを含めないでください。 |
 | location | リソース グループの作成に使用する地理的な場所。 たとえば、`eastus`、`westus`、`westus2` などです。 場所の一覧を取得するには `az account list-locations` を使用します。 |
 
 その後、ボットを公開するボット リソースを作成します。 これにより、Azure に必要なリソースがプロビジョニングされて、ボット Web アプリが作成されます。これを、ローカル ボットで上書きします。 
@@ -56,7 +56,7 @@ az bot create --kind webapp --name <bot-name-in-azure> --location <geographic-lo
 
 | オプション | 説明 |
 |:---|:---|
-| name | Azure でのボットのデプロイに使用される一意の名前。 ローカルのボットと同じ名前にすることができます。 名前にスペースやアンダースコアを含めないでください。 |
+| 名前 | Azure でのボットのデプロイに使用される一意の名前。 ローカルのボットと同じ名前にすることができます。 名前にスペースやアンダースコアを含めないでください。 |
 | location | ボット サービス リソースを作成するために使用される地理的な場所。 たとえば、`eastus`、`westus`、`westus2` などです。 |
 | resource-group | ボットを作成するリソース グループの名前。 `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
 | appid | ボットで使用される Microsoft アカウント ID (MSA ID)。 |
@@ -69,7 +69,7 @@ az bot create --kind webapp --name <bot-name-in-azure> --location <geographic-lo
 ```
 | オプション | 説明 |
 |:---|:---|
-| name | Azure でのボットのデプロイに使用される一意の名前。 ローカルのボットと同じ名前にすることができます。 名前にスペースやアンダースコアを含めないでください。 |
+| 名前 | Azure でのボットのデプロイに使用される一意の名前。 ローカルのボットと同じ名前にすることができます。 名前にスペースやアンダースコアを含めないでください。 |
 | location | ボット サービス リソースを作成するために使用される地理的な場所。 たとえば、`eastus`、`westus`、`westus2` などです。 |
 | lang | ボットの作成に使用する言語: `Csharp` または `Node`。既定値は `Csharp` です。 |
 | resource-group | ボットを作成するリソース グループの名前。 `az configure --defaults group=<name>` を使用して、既定のグループを構成できます。 |
@@ -92,7 +92,7 @@ az bot create --kind webapp --name <bot-name-in-azure> --location <geographic-lo
 }
 ```
 
-`appId` と `appPassword` の値をコピーし、appsettings.json ファイルまたは .env ファイルに貼り付ける必要があります。 例: 
+`appId` と `appPassword` の値をコピーし、appsettings.json ファイルまたは .env ファイルに貼り付ける必要があります。 例:
 
 ```JSON
 {

@@ -10,17 +10,17 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 167e496fa510cdf755be13f71cf3a596b0183ec1
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 3138b591519ff76865f007ae091c6c33cd0da79c
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215474"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404147"
 ---
 # <a name="conversation-flow"></a>会話フロー
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-ボットの会話フローを設計するには、ユーザーがボットに何か言ったときにボットがどのように応答するかを決定する必要があります。 ボットはまず、ユーザーからのメッセージに基づいてタスクまたは会話トピックを認識します。 ユーザーのメッセージに関連付けられたタスクまたはトピック ("*意図*" とも呼びます) を決定するために、ボットはユーザーのメッセージのテキストから単語またはパターンを探したり、[Language Understanding](bot-builder-concept-luis.md) や [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview) のようなサービスを利用したりできます。
+ボットの会話フローを設計するには、ユーザーがボットに何か言ったときにボットがどのように応答するかを決定する必要があります。 ボットはまず、ユーザーからのメッセージに基づいてタスクまたは会話トピックを認識します。 ユーザーのメッセージに関連付けられたタスクまたはトピック ("*意図*" とも呼びます) を決定するために、ボットはユーザーのメッセージのテキストから単語またはパターンを探したり、[Language Understanding](bot-builder-concept-luis.md) や [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview) のようなサービスを利用したりできます。
 
 ボットがユーザーの意図を認識すると、シナリオに応じて、ボットは 1 回の返信でユーザーの要求を満足して 1 ターンで会話を完了する場合もあれば、数ターン必要な場合もあります。 複数ターンの会話フローの場合、Bot Framework SDK では、会話を追跡するための[状態管理](./bot-builder-howto-v4-state.md)、情報を尋ねるための[プロンプト](bot-builder-prompts.md)、および、会話フローをカプセル化するための[ダイアログ](bot-builder-dialog-manage-conversation-flow.md)が提供されます。
 
@@ -92,7 +92,7 @@ Bot Framework SDK では、メッセージを処理して意図を判断する "
 
 ![予期していないことをユーザーが言う](./media/concept-conversation/interruption.png)
 
-ボットがフローのスタックを論理的に構築していたとしても、ユーザーは現在のトピックとまったく違う何かをしようと思う、または現在のトピックに関係ない質問をしようと思うかもしれません。 例では、ユーザーはフローが期待するはい/いいえの応答を返す代わりに質問をします。 フローはどのように応答すべきでしょうか? 
+ボットがフローのスタックを論理的に構築していたとしても、ユーザーは現在のトピックとまったく違う何かをしようと思う、または現在のトピックに関係ない質問をしようと思うかもしれません。 例では、ユーザーはフローが期待するはい/いいえの応答を返す代わりに質問をします。 フローはどのように応答すべきでしょうか?
 
 * まず質問に答えるよう、ユーザーに主張します。
 * ユーザーの以前の行動をすべて無視し、フロー スタック全体をリセットし、ユーザーの質問に答えようとすることによって最初から始めます。

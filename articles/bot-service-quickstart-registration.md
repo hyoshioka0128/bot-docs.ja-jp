@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a5cb6431988e65a4fa4a889f3095404622d51626
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 0d13a27ef81660c6702f5a09487b731bc891c750
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224447"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405803"
 ---
 # <a name="register-a-bot-with-bot-service"></a>ボットを Bot Service に登録する
 
@@ -29,14 +29,14 @@ ms.locfileid: "54224447"
 [Azure Portal](http://portal.azure.com) にログインします。
 
 > [!TIP]
-> サブスクリプションがない場合は、<a href="https://azure.microsoft.com/en-us/free/" target="_blank">無料アカウント</a>に登録できます。
+> サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料アカウント</a>に登録できます。
 
 ## <a name="create-a-bot-channels-registration"></a>Bot Channels Registration を作成する
 Bot Service 機能を使用できるようにするには、**Bot Channels Registration** ボット サービスが必要です。 登録ボットを使用すると、ボットをチャンネルに接続できます。
 
 **Bot Channels Registration** を作成するには、次の手順を実行します。
 
-1. Azure portal の左上隅にある **[新規]** ボタンをクリックし、**[AI + Cognitive Services] > [Bot Channels Registration]** を選択します。 
+1. Azure portal の左上隅にある **[新規]** ボタンをクリックし、 **[AI + Cognitive Services] > [Bot Channels Registration]** を選択します。 
 
 2. **Bot Channels Registration** に関する情報が含まれた新しいブレードが開きます。 **[作成]** をクリックして作成プロセスを開始します。 
 
@@ -49,8 +49,8 @@ Bot Service 機能を使用できるようにするには、**Bot Channels Regis
    |           <strong>ボット名</strong>            |     ボットの表示名     |                                                  チャンネルとディレクトリに表示されるボットの表示名。 この名前はいつでも変更できます。                                                  |
    |         <strong>サブスクリプション</strong>          |        該当するサブスクリプション        |                                                                                使用する Azure サブスクリプションを選択します。                                                                                 |
    |        <strong>リソース グループ</strong>         |         myResourceGroup         |                                 新しい[リソース グループ](/azure/azure-resource-manager/resource-group-overview#resource-groups)を作成することも、既存のグループを選択することもできます。                                  |
-   |                    場所                    |             米国西部             |                                                        ボットがデプロイされている場所の近く、またはボットがアクセスする他のサービスの近くの場所を選択します。                                                         |
-   |         <strong>[価格レベル]</strong>          |               F0                |             価格レベルを選択します。 価格レベルはいつでも更新できます。 詳細については、[Bot Service の価格](https://azure.microsoft.com/en-us/pricing/details/bot-service/)に関するページをご覧ください。              |
+   |                    Location                    |             米国西部             |                                                        ボットがデプロイされている場所の近く、またはボットがアクセスする他のサービスの近くの場所を選択します。                                                         |
+   |         <strong>[価格レベル]</strong>          |               F0                |             価格レベルを選択します。 価格レベルはいつでも更新できます。 詳細については、[Bot Service の価格](https://azure.microsoft.com/pricing/details/bot-service/)に関するページをご覧ください。              |
    |      <strong>[Messaging endpoint]\(メッセージング エンドポイント\)</strong>       |               URL               |                                                                               ボットのメッセージング エンドポイントの URL を入力します。                                                                                |
    |     <strong>Application Insights</strong>      |               On                | [Application Insights](bot-service-manage-analytics.md) を<strong>オン</strong>にするか、<strong>オフ</strong>にするかを決定します。 <strong>[オン]</strong> を選択した場合は、リージョンの場所も指定する必要があります。 |
    | <strong>Microsoft App ID and password\(Microsoft アプリ ID とパスワード\)</strong> | アプリ ID とパスワードの自動作成 |              Microsoft アプリ ID とパスワードを手動で入力する必要がある場合は、このオプションを使用します。 それ以外の場合は、ボット作成プロセスで新しい Microsoft アプリ ID とパスワードが自動的に作成されます。               |
@@ -58,7 +58,7 @@ Bot Service 機能を使用できるようにするには、**Bot Channels Regis
 
 4. **[作成]** をクリックしてサービスを作成し、ボットのメッセージング エンドポイントを登録します。
 
-**[通知]** をチェックして、登録が作成されたことを確認します。 通知が、**[デプロイは進行中です...]** から **[デプロイメントに成功しました]** に変わります。 **[リソースに移動]** ボタンをクリックして、ボットのリソース ブレードを開きます。 
+**[通知]** をチェックして、登録が作成されたことを確認します。 通知が、 **[デプロイは進行中です...]** から **[デプロイメントに成功しました]** に変わります。 **[リソースに移動]** ボタンをクリックして、ボットのリソース ブレードを開きます。 
 
 ## <a name="bot-channels-registration-password"></a>Bot Channels Registration のパスワード
 
@@ -66,7 +66,7 @@ Bot Service 機能を使用できるようにするには、**Bot Channels Regis
 
 MicrosoftAppPassword を生成するには、次の手順を実行します。
 
-1. **[設定]** ブレードで **[管理]** をクリックします。 これは、**[Microsoft アプリ ID]** の横に表示されているリンクです。 このリンクにより、新しいパスワードを生成できるウィンドウが開きます。 <br/>
+1. **[設定]** ブレードで **[管理]** をクリックします。 これは、 **[Microsoft アプリ ID]** の横に表示されているリンクです。 このリンクにより、新しいパスワードを生成できるウィンドウが開きます。 <br/>
   ![[設定] ブレードの [管理] リンク](~/media/azure-bot-quickstarts/registration-settings-manage-link.png)
 
 2. **[新しいパスワードを生成]** をクリックします。 これにより、ボットの新しいパスワードが生成されます。 このパスワードをコピーしてファイルに保存します。 このパスワードが表示されるのはこのときだけです。 完全なパスワードを保存していなかった場合、後で必要になったら、このプロセスを繰り返して新しいパスワードを作成する必要があります。 <br/>

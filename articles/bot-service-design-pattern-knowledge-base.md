@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 12/13/2017
-ms.openlocfilehash: 6820815f251c38c59391f1e0e7719e52a375ed48
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 4e73a56eb94207de49d8684c4db26155554820f3
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224907"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405852"
 ---
 # <a name="design-knowledge-bots"></a>ナレッジ ボットを設計する
 
@@ -57,7 +57,7 @@ ms.locfileid: "54224907"
 
 ### <a name="azure-search"></a>Azure Search
 
-<a href="https://azure.microsoft.com/en-us/services/search/" target="_blank">Azure Search</a> を使うことにより、ボットが簡単に検索、ファセット、フィルターできる効率的な検索インデックスを作成できます。 Azure portal を使って作成された検索インデックスについて考えてみてください。
+<a href="https://azure.microsoft.com/services/search/" target="_blank">Azure Search</a> を使うことにより、ボットが簡単に検索、ファセット、フィルターできる効率的な検索インデックスを作成できます。 Azure portal を使って作成された検索インデックスについて考えてみてください。
 
 ![ダイアログの構造](~/media/bot-service-design-pattern-knowledge-base/search3.PNG)
 
@@ -78,7 +78,7 @@ ms.locfileid: "54224907"
 ## <a name="qna-maker"></a>QnA Maker
 
 よくある質問 (FAQ) に回答することだけが目的のナレッジ ボットもあります。 
-<a href="https://www.microsoft.com/cognitive-services/en-us/qnamaker" target="_blank">QnA Maker</a> は、このユース ケースのために特に設計されている強力なツールです。 QnA Maker には既存の FAQ サイトから質問と回答を収集する組み込み機能があり、質問と回答の独自のリストを手動で構成することもできます。 QnA Maker は自然言語処理機能を備え、予想と若干異なる言葉遣いの質問に対しても回答を提供できます。 ただし、セマンティック言語理解機能はありません。 たとえば、子犬 (puppy) が犬の種類であることは判断できません。 
+<a href="https://www.microsoft.com/cognitive-services/qnamaker" target="_blank">QnA Maker</a> は、このユース ケースのために特に設計されている強力なツールです。 QnA Maker には既存の FAQ サイトから質問と回答を収集する組み込み機能があり、質問と回答の独自のリストを手動で構成することもできます。 QnA Maker は自然言語処理機能を備え、予想と若干異なる言葉遣いの質問に対しても回答を提供できます。 ただし、セマンティック言語理解機能はありません。 たとえば、子犬 (puppy) が犬の種類であることは判断できません。 
 
 QnA Maker の Web インターフェイスを使うと、3 つの質問と回答のペアから成るナレッジ ベースを構成できます。 
 
@@ -130,7 +130,7 @@ Search、QnA Maker、LUIS はそれだけでも強力なツールですが、そ
 2. LUIS を最初に呼び出し、特定のしきい値スコアを満たす意図がない場合、つまり "None" 意図がトリガーされる場合は、QnA Maker を呼び出します。 または、"QnAIntent" にマップする QnA 質問の例を LUIS モデルにフィードして、QnA Maker に対する LUIS 意図を作成します。 
 3. QnA Maker を最初に呼び出し、特定のしきい値スコアを満たす回答がない場合、LUIS を呼び出します。 
 
-Bot Framework SDK では、LUIS と QnA Maker の組み込みサポートが提供されます。 これにより、LUIS と QnA Maker を使ってダイアログをトリガーしたり、質問に自動的に応答することができ、いずれかのツールへのカスタム呼び出しを実装する必要はありません。 詳しくは、[ディスパッチ ツールのチュートリアル](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0)に関する記事をご覧ください。
+Bot Framework SDK では、LUIS と QnA Maker の組み込みサポートが提供されます。 これにより、LUIS と QnA Maker を使ってダイアログをトリガーしたり、質問に自動的に応答することができ、いずれかのツールへのカスタム呼び出しを実装する必要はありません。 詳しくは、[ディスパッチ ツールのチュートリアル](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0)に関する記事をご覧ください。
 
 > [!TIP]
 > LUIS、QnA Maker、Azure Search の組み合わせを実装する場合は、各ツールで入力をテストして、各モデルのしきい値スコアを決定します。 LUIS、QnA Maker、Azure Search はそれぞれ異なるスコアリング条件を使ってスコアを生成するので、これらのツールによって生成されたスコアを直接比較することはできません。 さらに、LUIS と QnA Maker はスコアを正規化します。 LUIS モデルで "良" と見なされた特定のスコアが、別のモデルではそうならない可能性があります。 
@@ -142,4 +142,4 @@ Bot Framework SDK では、LUIS と QnA Maker の組み込みサポートが提�
 - For a sample that shows how to create more complex knowledge bots using the Bot Framework SDK for .NET, see the <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search" target="_blank">Search-powered Bots sample</a> in GitHub.
 -->
 
-[qnamakerTemplate]: https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle
+[qnamakerTemplate]: https://docs.botframework.com/azure-bot-service/templates/qnamaker/#navtitle

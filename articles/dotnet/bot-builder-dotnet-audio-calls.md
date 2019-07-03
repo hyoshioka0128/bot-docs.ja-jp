@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 72b2c42acb4743c67c63f158fa37c2bdd0e09ab9
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 621be0d3fe785cfdd51e9bd5c864b9bc4f60d8ad
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563923"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464435"
 ---
 # <a name="conduct-audio-calls-with-skype"></a>Skype で音声通話を行う
 
@@ -55,7 +55,7 @@ public class CallingController : ApiController
 > [!NOTE]
 > 音声通話をサポートする `CallingController` に加え、ボットにメッセージをサポートするための `MessagesController` を含めることもできます。 両方のオプションを提供することにより、ユーザーは好みの方法でボットとやり取りすることができます。 <!-- docs on MessagesController are where? -->
 
-##  <a name="answer-the-call"></a>電話に応答して
+## <a name="answer-the-call"></a>電話に応答して
 
 `ProcessIncomingCallAsync` タスクは、ユーザーが Skype からこのボットへの呼び出しを開始するたびに実行されます。
 コンストラクターは、`incomingCallEvent` のための事前定義されたハンドラーがある `IVRBot` クラスを登録します。

@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 19b44fbb09af69bde803b9b884d58108c248ebe5
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 7c00c17eaa8d4e84ffbeff1e318cbc403de2038a
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224834"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405634"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-net"></a>.NET 用の Azure Cosmos DB を使用してカスタム状態データを管理する
 
@@ -28,20 +28,20 @@ ms.locfileid: "54224834"
  
 ## <a name="prerequisites"></a>前提条件
 必要なものは次のとおりです。
- - [Microsoft Azure アカウント](https://azure.microsoft.com/en-us/free/)
+ - [Microsoft Azure アカウント](https://azure.microsoft.com/free/)
  - [Visual Studio 2015 またはそれ以降](https://www.visualstudio.com/)
  - [Bot Builder Azure NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Bot.Builder.Azure/)
  - [Autofac Web Api2 NuGet パッケージ](https://www.nuget.org/packages/Autofac.WebApi2/)
  - [Bot Framework Emulator](~/bot-service-debug-emulator.md)
  
 ## <a name="create-azure-account"></a>Azure アカウントを作成する
-Azure アカウントを持っていない場合は、[こちら](https://azure.microsoft.com/en-us/free/)をクリックして、無料アカウントにサインアップしてください。
+Azure アカウントを持っていない場合は、[こちら](https://azure.microsoft.com/free/)をクリックして、無料アカウントにサインアップしてください。
 
 ## <a name="set-up-the-azure-cosmos-db-database"></a>Azure Cosmos DB データベースを設定する
-1. Azure Portal にログインしたら、**[新規]** をクリックして新しい *Azure Cosmos DB* データベースを作成します。 
+1. Azure Portal にログインしたら、 **[新規]** をクリックして新しい *Azure Cosmos DB* データベースを作成します。 
 2. **[データベース]** をクリックします。 
-3. **[Azure Cosmos DB]** を見つけて、**[作成]** をクリックします。
-4. フィールドに入力します。 **[API]** フィールドで、**[SQL (DocumentDB)]** を選択します。 すべてのフィールドに入力した後、画面下部にある **[作成]** ボタンをクリックして、新しいデータベースをデプロイします。 
+3. **[Azure Cosmos DB]** を見つけて、 **[作成]** をクリックします。
+4. フィールドに入力します。 **[API]** フィールドで、 **[SQL (DocumentDB)]** を選択します。 すべてのフィールドに入力した後、画面下部にある **[作成]** ボタンをクリックして、新しいデータベースをデプロイします。 
 5. 新しいデータベースがデプロイされたら、その新しいデータベースに移動します。 **[アクセス キー]** をクリックして、キーと接続文字列を検索します。 ボットはこの情報を使用して、状態データを保存するストレージ サービスを呼び出します。
 
 ## <a name="install-nuget-packages"></a>NuGet パッケージのインストール

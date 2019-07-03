@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b4226e842384caf1315170354c763a44c15b0c70
-ms.sourcegitcommit: 18ff5705d15b8edc85fb43001969b173625eb387
+ms.openlocfilehash: 1bbc598ac8cd43b17d2ddaaf0803318ed6121abc
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66453212"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405994"
 ---
 # <a name="net-migration-quick-reference"></a>.NET 移行クイック リファレンス
 
@@ -459,7 +459,7 @@ protected override Task OnEventActivityAsync(ITurnContext<IEventActivity> turnCo
 
 ### <a name="v3"></a>v3
 
-[IActivityLogger](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.history.iactivitylogger) が使用されました。
+[IActivityLogger](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.history.iactivitylogger) が使用されました。
 
 ```csharp
 builder.RegisterType<ActivityLoggerImplementation>().AsImplementedInterfaces().InstancePerDependency(); 
@@ -475,7 +475,7 @@ public class ActivityLoggerImplementation : IActivityLogger
 
 ### <a name="v4"></a>v4
 
-[ITranscriptLogger](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.itranscriptlogger) を使用します。
+[ITranscriptLogger](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.itranscriptlogger) を使用します。
 
 ```csharp
 var transcriptMiddleware = new TranscriptLoggerMiddleware(new TranscriptLoggerImplementation(Configuration.GetSection("StorageConnectionString").Value));
@@ -498,7 +498,7 @@ public class TranscriptLoggerImplementation : ITranscriptLogger
 
 状態は、`IBotDataStore` 実装を使用して保持され、Autofac を使用して SDK のダイアログ状態システムにそれを挿入します。  Microsoft は [Microsoft.Bot.Builder.Azure](https://github.com/Microsoft/BotBuilder-Azure/) で `MemoryStorage`、`DocumentDbBotDataStore`、`TableBotDataStore`、および `SqlBotDataStore` クラスを提供しています。
 
-データを保持するために [IBotDataStore<BotData>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.dialogs.internals.ibotdatastore-1?view=botbuilder-dotnet-3.0) が使用されました。
+データを保持するために [IBotDataStore<BotData>](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.dialogs.internals.ibotdatastore-1?view=botbuilder-dotnet-3.0) が使用されました。
 
 ```csharp
 Task<bool> FlushAsync(IAddress key, CancellationToken cancellationToken);
@@ -521,7 +521,7 @@ builder.Register(c => storage)
 
 ストレージ層では `IStorage` インターフェイスが使用されます。お使いのボットの各状態管理オブジェクトを作成するときに、ストレージ層オブジェクトを指定します (`UserState`、`ConversationState`、`PrivateConversationState` など)。 状態管理オブジェクトは、基になるストレージ層にキーを提供し、またプロパティ マネージャーとしても機能します。 たとえば、`IPropertyManager.CreateProperty<T>(string name)` を使用して状態プロパティ アクセサーを作成します。  これらのプロパティ アクセサーは、ボットの基になるストレージに対して値を取得または格納するために使用されます。
 
-[IStorage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.istorage?view=botbuilder-dotnet-stable) を使用してデータを保持します。
+[IStorage](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.istorage?view=botbuilder-dotnet-stable) を使用してデータを保持します。
 
 ```csharp
 Task DeleteAsync(string[] keys, CancellationToken cancellationToken = default(CancellationToken));
@@ -548,7 +548,7 @@ services.AddSingleton(conversationState);
 
 ### <a name="v3"></a>v3
 
-[Microsoft.Bot.Builder.FormFlow](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.formflow?view=botbuilder-dotnet-3.0) がコア Bot Builder SDK に含まれました。
+[Microsoft.Bot.Builder.FormFlow](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.formflow?view=botbuilder-dotnet-3.0) がコア Bot Builder SDK に含まれました。
 
 ### <a name="v4"></a>v4
 
@@ -558,7 +558,7 @@ services.AddSingleton(conversationState);
 
 ### <a name="v3"></a>v3
 
-[Microsoft.Bot.Builder.Dialogs.LuisDialog](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.dialogs.luisdialog-1?view=botbuilder-dotnet-3.0) がコア Bot Builder SDK に含まれました。
+[Microsoft.Bot.Builder.Dialogs.LuisDialog](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.dialogs.luisdialog-1?view=botbuilder-dotnet-3.0) がコア Bot Builder SDK に含まれました。
 
 ### <a name="v4"></a>v4
 

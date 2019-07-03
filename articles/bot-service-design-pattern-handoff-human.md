@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 5/2/2019
-ms.openlocfilehash: a5bb8d8dce1fdb45ab9ab42b247e2697713e51ac
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: d1fed33682349948d1b33d9b4fecdf718a20a248
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033055"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405846"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>会話をボットから人間に移行する
 
@@ -42,7 +42,7 @@ ms.locfileid: "65033055"
 
 自然言語の理解と感情分析は、ボットが会話の制御を人間のエージェントにいつ移行するかを判断するために役立ちます。 これは、ユーザーがいつフラストレーションを感じ、人間のエージェントと話したくなるかを判断しようとするときに特に重要です。 
  
-ボットは、感情を推論するために <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="blank">Text Analytics API</a> を使用するか、<a href="https://www.luis.ai" target="_blank">LUIS API</a> を使用して、ユーザーのメッセージの内容を分析します。 
+ボットは、感情を推論するために <a href="https://www.microsoft.com/cognitive-services/text-analytics-api" target="blank">Text Analytics API</a> を使用するか、<a href="https://www.luis.ai" target="_blank">LUIS API</a> を使用して、ユーザーのメッセージの内容を分析します。 
 
 
 > [!TIP]
@@ -77,7 +77,7 @@ ms.locfileid: "65033055"
 ::: moniker range="azure-bot-service-4.0"
 
 - [ダイアログ](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
-- <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="blank">Text Analytics API</a>
+- <a href="https://www.microsoft.com/cognitive-services/text-analytics-api" target="blank">Text Analytics API</a>
 
 ::: moniker-end
 
@@ -85,7 +85,7 @@ ms.locfileid: "65033055"
 
 - [ダイアログで会話フローを管理する (.NET)](~/dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 - [ダイアログで会話フローを管理する (Node.js)](~/nodejs/bot-builder-nodejs-manage-conversation-flow.md)
-- <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="blank">Text Analytics API</a>
+- <a href="https://www.microsoft.com/cognitive-services/text-analytics-api" target="blank">Text Analytics API</a>
 
 
 ::: moniker-end

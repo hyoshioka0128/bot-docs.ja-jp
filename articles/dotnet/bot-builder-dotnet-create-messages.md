@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 96a0c63575b1e77418262a22050013413f39141f
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: eaebb40e7b0e57966f0eb06c6d0108f6db1b62ff
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225917"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405672"
 ---
 # <a name="create-messages"></a>メッセージを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "54225917"
 
 ## <a name="customizing-a-message"></a>メッセージのカスタマイズ
 
-メッセージのテキストの書式設定をさらに制御するため、[Activity](https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html) オブジェクトを使用してカスタム メッセージを作成し、ユーザーに送信する前に必要なプロパティを設定することができます。
+メッセージのテキストの書式設定をさらに制御するため、[Activity](https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html) オブジェクトを使用してカスタム メッセージを作成し、ユーザーに送信する前に必要なプロパティを設定することができます。
 
 このサンプルでは、カスタム `message` オブジェクトを作成し、`Text`、`TextFormat`、`Local` のプロパティを設定する方法を示しています。
 
@@ -46,9 +46,9 @@ ms.locfileid: "54225917"
 
 多くのチャネルは、ボットまたはユーザーが会話のコンテキスト内で誰かを "メンション" する能力をサポートしています。 メッセージでユーザーをメンションするには、メッセージの `Entities` プロパティに `Mention` オブジェクトを設定します。 `Mention` オブジェクトには、次のプロパティが含まれています。 
 
-| プロパティ | 説明 | 
+| プロパティ | Description | 
 |----|----|
-| type | エンティティの種類 ("mention") | 
+| Type | エンティティの種類 ("mention") | 
 | Mentioned | どのユーザーがメンションされたかを示す `ChannelAccount` オブジェクト | 
 | Text | メンション自体を表す `Activity.Text` プロパティ内のテキスト (空または null 値の可能性があります) |
 
@@ -65,19 +65,19 @@ ms.locfileid: "54225917"
 
 `Place` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | 説明 | 
+| プロパティ | Description | 
 |----|----|
-| type | エンティティの種類 ("Place") |
+| Type | エンティティの種類 ("Place") |
 | Address | 説明または `PostalAddress` オブジェクト (将来) | 
-| ジオ (主要地域)  | GeoCoordinates | 
+| ジオ (主要地域) | GeoCoordinates | 
 | HasMap | 地図の URL または `Map` オブジェクト (将来) |
 | Name | 場所の名前 |
 
 `GeoCoordinates` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | 説明 | 
+| プロパティ | Description | 
 |----|----|
-| type | エンティティの種類 ("GeoCoordinates") |
+| Type | エンティティの種類 ("GeoCoordinates") |
 | Name | 場所の名前 |
 | Longitude | 場所の経度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
 | Latitude | 場所の緯度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
@@ -127,6 +127,6 @@ ms.locfileid: "54225917"
 - [メッセージへの音声の追加](bot-builder-dotnet-text-to-speech.md)
 - [メッセージへの推奨されるアクションの追加](bot-builder-dotnet-add-suggested-actions.md)
 - [チャネル固有の機能の実装](bot-builder-dotnet-channeldata.md)
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
 - <a href="/dotnet/api/microsoft.bot.connector.imessageactivity" target="_blank">IMessageActivity インターフェイス</a>
 

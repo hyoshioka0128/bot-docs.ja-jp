@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b4a5e3f0271d6b80a4245294e520ebc5abaede4e
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: a550de06be6584c5d9ba5eca4ffffffd49a518d2
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214137"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404307"
 ---
 # <a name="manage-bot-resources"></a>ボット リソースの管理
 
@@ -137,4 +137,4 @@ const adapter = new BotFrameworkAdapter({
 
 ## <a name="additional-resources"></a>その他のリソース
 - ボットをデプロイする手順については、[デプロイ](../bot-builder-deploy-az-cli.md)に関するトピックをご覧ください。
-- [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-overview) を使用して、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護して管理する方法について説明します。
+- [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) を使用して、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護して管理する方法について説明します。

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: 8e0d2939078e1e27162c7056373e95790a03eb88
-ms.sourcegitcommit: 5042e31bc6b2762d7a6636e98c8f496b90ea33c1
+ms.openlocfilehash: 114274a66492d421a7b3d6294d77ee83d336d3ca
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65240434"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405919"
 ---
 # <a name="connect-a-bot-to-direct-line-speech-preview"></a>ボットを Direct Line Speech に接続する (プレビュー)
 
@@ -52,13 +52,13 @@ Direct Line Speech チャネルがご自身のボットに作成されたら、�
 
 1. [Azure portal](https://portal.azure.com) でご自身のボットのブレードを開きます (まだ開いていない場合)。 
 
-1. (**[チャネル]** のすぐ下にある) **[Bot Management]\(ボット管理\)** カテゴリの **[設定]** をクリックします。 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** チェック ボックスをオンにします。
+1. ( **[チャネル]** のすぐ下にある) **[Bot Management]\(ボット管理\)** カテゴリの **[設定]** をクリックします。 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** チェック ボックスをオンにします。
 
     ![ストリーミング プロトコルを有効にする](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-enablestreamingsupport.png "ストリーミング拡張機能のサポートを有効にする")
 
 1. ページの上部にある **[保存]** をクリックします。
 
-1. 同じブレードで、**[App Service の設定]** カテゴリの **[構成]** をクリックします。
+1. 同じブレードで、 **[App Service の設定]** カテゴリの **[構成]** をクリックします。
 
     ![App Service の設定に移動する](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-configureappservice.png "App Service を構成する")
 
@@ -84,10 +84,10 @@ Direct Line Speech チャネルが接続され、Bot Framework Protocol スト�
 
 このサービスはプレビュー段階なので、変更されることがあり、これがボット開発および全体的なパフォーマンスに影響を及ぼす可能性があることに注意してください。 既知の問題の一覧を次に示します。 
 
-1. 現在サービスは [Azure リージョン](https://azure.microsoft.com/en-us/global-infrastructure/regions/)米国西部 2 にデプロイされています。 他のリージョンについてはまもなく展開され、すべてのお客様が、短い待機時間でボットと対話するメリットを得られるようになります。
+1. 現在サービスは [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)米国西部 2 にデプロイされています。 他のリージョンについてはまもなく展開され、すべてのお客様が、短い待機時間でボットと対話するメリットを得られるようになります。
 
 1. [serviceUrl](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#service-url) など、コントロール フィールドに対する軽微な変更が行われます
 
 1. 会話の開始と終了の通知に使用される [conversationUpdate](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#conversation-update-activity) アクティビティと [endOfCoversation](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#end-of-conversation-activity) アクティビティは、ようこそメッセージの生成によく使用され、他のチャネルとの整合性を確保するために更新されます
 
-1. [SigninCard](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-add-rich-cards?view=azure-bot-service-4.0) は、チャネルではまだサポートされていません 
+1. [SigninCard](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-connector-add-rich-cards?view=azure-bot-service-4.0) は、チャネルではまだサポートされていません 

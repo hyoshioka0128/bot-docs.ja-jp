@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 8d9b2ea2e2133c86428b537427433f9dd15216ee
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: dbd7d437b7a1cdffd446337192e77a8c3d93e4a0
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225947"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405771"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>ボットを Bot Framework API v3 にアップグレードする
 
@@ -23,9 +23,9 @@ Build 2016 で、Microsoft は Microsoft Bot Framework と Bot Connector API の
 
 ## <a name="step-1-get-your-app-id-and-password-from-the-bot-framework-portal"></a>手順 1:Bot Framework ポータルからアプリ ID とパスワードを取得する
 
-[Bot Framework ポータル](https://dev.botframework.com/)にサインインし、**[My bots]\(マイ ボット\)** をクリックしてボットを選択してから、そのダッシュボードを開きます。 次に、ページ左側の **[ボット管理]** の下にある **[設定]** リンクをクリックします。 
+[Bot Framework ポータル](https://dev.botframework.com/)にサインインし、 **[My bots]\(マイ ボット\)** をクリックしてボットを選択してから、そのダッシュボードを開きます。 次に、ページ左側の **[ボット管理]** の下にある **[設定]** リンクをクリックします。 
 
-設定ページの **[構成]** セクション内で、**[Microsoft App ID]\(Microsoft アプリ ID\)** フィールドの内容を調べ、次の手順に進みます。
+設定ページの **[構成]** セクション内で、 **[Microsoft App ID]\(Microsoft アプリ ID\)** フィールドの内容を調べ、次の手順に進みます。
 
 <!-- TODO: Remove this 
 ### Case 1: App ID field is already populated
@@ -71,15 +71,15 @@ If the **App ID** field is empty, complete these steps:
 
 V1 のボットは互換性がなくなりました。 お使いのボットを更新するには、V3 で新しいボットを作成する必要があります。 使用中の古いコードを保持する必要がある場合は、そのコードを手動で移行する必要があります。
 
-最も簡単な解決策は、ご自身のボットを新しい [SDK](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0) で再作成し、デプロイすることです。 
+最も簡単な解決策は、ご自身のボットを新しい [SDK](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) で再作成し、デプロイすることです。 
 
 使用中の古いコードを保持するには、次の手順に従ってください。
 
 1. 新しいボット アプリケーションを作成します。
 2. 古いコードを新しいボット アプリケーションにコピーします。
 3. NuGet パッケージ マネージャーを使用して、SDK を最新バージョンにアップグレードします。
-4. 表示されたすべてのエラーを修正し、新しい [SDK](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0) を参照します。
-5. 次の[手順](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0)に従って、ご自身のボットを Azure にデプロイします
+4. 表示されたすべてのエラーを修正し、新しい [SDK](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) を参照します。
+5. 次の[手順](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0)に従って、ご自身のボットを Azure にデプロイします
 
 <!-- TODO: Remove outdated code 
 To update your bot code to version 3.0, complete these steps:
@@ -165,7 +165,7 @@ Bot Framework API v3 では、認証プロパティを以下のキーで **Web.C
 
 ## <a id="step-3"></a> 手順 3:自分の更新ボットを Azure にデプロイする。
 
-ご自身のボット コードを API v3 にアップグレードしたら、こちらの[手順](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0)に従って、そのボットを Azure にデプロイします。 V1 はサポートされていないため、Azure サービスにデプロイされたすべてのボットで V3 API が自動的に使用されます。
+ご自身のボット コードを API v3 にアップグレードしたら、こちらの[手順](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0)に従って、そのボットを Azure にデプロイします。 V1 はサポートされていないため、Azure サービスにデプロイされたすべてのボットで V3 API が自動的に使用されます。
 
 <!-- TODO: Documentation set for removal 
 1. Sign in to the [Bot Framework Portal](https://dev.botframework.com/).

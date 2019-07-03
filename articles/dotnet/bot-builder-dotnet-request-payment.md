@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/17
+ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f9e693d8bd5aad03930259422939f5572a22ff0a
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 1b27cbc9a901318a4e1b050720fb9f8b230f9e75
+ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563642"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496655"
 ---
 # <a name="request-payment"></a>支払いの要求
 
@@ -22,7 +22,7 @@ ms.locfileid: "64563642"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-request-payment.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-request-payment.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-request-payment.md)
 
 ボットでユーザーがアイテムを購入できるようになっている場合、[リッチ カード](bot-builder-dotnet-add-rich-card-attachments.md)に特殊な種類のボタンを含めて、支払いを要求することができます。 この記事では、Bot Framework SDK for .NET を使用して支払い要求を送信する方法について説明します。
 
@@ -41,7 +41,7 @@ Bot Framework SDK for .NET を使用して支払い要求を送信するには�
 
 1. <a href="https://dashboard.stripe.com/register" target="_blank">まだお持ちでない場合は、Stripe アカウントを作成してアクティブにします。</a>
 
-2. <a href="https://seller.microsoft.com/en-us/dashboard/registration/seller/?accountprogram=botframework" target="_blank">Microsoft アカウントを使用して Seller Center にサインインします。</a>
+2. <a href="https://seller.microsoft.com/dashboard/registration/seller/?accountprogram=botframework" target="_blank">Microsoft アカウントを使用して Seller Center にサインインします。</a>
 
 3. Seller Center 内で、そのアカウントを Stripe に接続します。
 
@@ -68,7 +68,7 @@ Bot Framework SDK for .NET を使用して支払い要求を送信するには�
 
 この例では、ボタンの種類は、Bot Builder ライブラリが "支払い" として定義する `PaymentRequest.PaymentActionType` として指定されています。 このボタンの値は、`BuildPaymentRequest` メソッドによって入力されます。このメソッドは、サポートされる支払い方法、詳細、オプションに関する情報が入った `PaymentRequest` オブジェクトを返します。 実装の詳細については、<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/sample-payments" target="_blank">支払いボット</a> サンプル内の **Dialogs/RootDialog.cs** を参照してください。
 
-次のスクリーンショットは、上のコード スニペットによって生成される (**[Buy]** ボタンが含まれた) Hero カードを示しています。 
+次のスクリーンショットは、上のコード スニペットによって生成される ( **[Buy]** ボタンが含まれた) Hero カードを示しています。 
  
 ![支払いのサンプル ボット](../media/payments-bot-buy.png) 
 

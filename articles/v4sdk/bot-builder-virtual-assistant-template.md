@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ce3ab86d5716250e24a44268f5e5fc39fbdd3398
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 503ec19444c51120bf46838e14edb891ec5c3bb5
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214172"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464662"
 ---
 # <a name="virtual-assistant---template-outline"></a>仮想アシスタント - テンプレートの概要
 
@@ -30,11 +30,11 @@ ms.locfileid: "66214172"
 基本のダイアログ | 基本的なーザー情報と、キャンセルおよびヘルプ意図の中断ロジックをキャプチャするためのダイアログ フロー
 基本の応答  | 基本の意図とダイアログのテキストおよび音声の応答
 FAQ | ナレッジ ベースから一般的な質問に回答するための [QnA Maker](https://www.qnamaker.ai) との統合 
-おしゃべり | 一般的なクエリに対する標準的な回答を提供するためのプロフェッショナルなおしゃべりモデル ([詳細](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base))
-ディスパッチャー | 指定の発話を LUIS で処理するか QnA Maker で処理するかを特定する、統合された[ディスパッチ](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) モデル。
+おしゃべり | 一般的なクエリに対する標準的な回答を提供するためのプロフェッショナルなおしゃべりモデル ([詳細](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base))
+ディスパッチャー | 指定の発話を LUIS で処理するか QnA Maker で処理するかを特定する、統合された[ディスパッチ](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) モデル。
 言語のサポート | 英語、フランス語、イタリア語、ドイツ語、スペイン語、および中国語で使用できます
 トランスクリプト | Azure Storage に格納されているすべての会話のトランスクリプト
-テレメトリ  | すべての会話のテレメトリを収集するための [Application Insights](https://azure.microsoft.com/en-gb/services/application-insights/) 統合
+テレメトリ  | すべての会話のテレメトリを収集するための [Application Insights](https://azure.microsoft.com/services/application-insights/) 統合
 Analytics | ご自身の会話エクスペリエンス分析情報の使用を開始するときに使用する Power BI ダッシュ ボードのサンプル。
 自動化されたデプロイ | Azure ARM テンプレートを使用した前述のサービスすべての容易なデプロイ。
 
@@ -95,7 +95,7 @@ PowerBI ダッシュボードの例は、Bot Framework ソリューション の
 - LUIS モデルと QnA Maker の発話がわずかに重複することがあり、そのようなときには、QnA Maker に転送されるはずの質問の処理を LUIS が試行するかもしれないという、想定外の動作が引き起こされる可能性がありました。
 - 2 つ以上の LUIS モデルがあった場合は、ボットによって各モデルが呼び出され、特定の発話の送信先を特定するためになんらかの意図評価比較が実行される必要がありました。 共通のベースライン スコアがないため、モデル間の比較が効果的に機能せず、ユーザー エクスペリエンスの低下を招いていました。
 
-[Dispatcher](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) では、構成された各 LUIS モデルから発話を、QnA Maker から質問を抽出して、一元的なディスパッチ LUIS モデルを作成することで、この問題をうまく解決できます。
+[Dispatcher](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) では、構成された各 LUIS モデルから発話を、QnA Maker から質問を抽出して、一元的なディスパッチ LUIS モデルを作成することで、この問題をうまく解決できます。
 
 これにより、与えられた発話を処理すべき LUIS モデルまたはコンポーネントをボットが速やかに特定できるほか、QnA Maker のデータが以前のように単に意図なし、とされるのではなく、意図処理の最上位レベルで検討されるようになります。
 
