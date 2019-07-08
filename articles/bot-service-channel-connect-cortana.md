@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/30/2018
-ms.openlocfilehash: 6bb4945801ee127cfa954289792987a57eae7fd5
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 3df9d22b486e56547452cc5bce4add3946f670f5
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032989"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405932"
 ---
 # <a name="connect-a-bot-to-cortana"></a>ボットを Cortana に接続する
 
 Cortana は、テキストによる会話だけでなく、音声メッセージも送受信できる音声認識対応チャンネルです。 Cortana に接続することを目的としたボットは、テキストだけでなく音声にも対応するように設計する必要があります。 Cortana "*スキル*" とは、Cortana クライアントを使用して呼び出すことができるボットです。 ボットを公開すると、利用可能なスキルの一覧にボットが追加されます。
 
-Cortana チャンネルを追加するには、[Azure portal](https://portal.azure.com/) でボットを開き、**[チャンネル]** ブレードをクリックして、**[Cortana]** をクリックします。
+Cortana チャンネルを追加するには、[Azure portal](https://portal.azure.com/) でボットを開き、 **[チャンネル]** ブレードをクリックして、 **[Cortana]** をクリックします。
 
 ![Cortana チャンネルを追加する](~/media/channels/cortana-addchannel.png)
 
@@ -30,11 +30,13 @@ Cortana チャンネルを追加するには、[Azure portal](https://portal.azu
 
 | フィールド | 説明 |
 |------|------|
-| **[スキル] アイコン** | スキルが呼び出されたときに Cortana のキャンバスに表示されるアイコン。 これは、スキルを発見可能な場所 (Microsoft Store など) でも使用されます  (最大 32 KB、PNG のみ)。|
-| **[表示名]** | Cortana スキルの名前は、ビジュアル UI の上部に表示されます  (最大 30 文字)。 |
-| **呼び出し名** | スキルを呼び出すときにユーザーが呼びかける名前です。 3 つ以下の単語で構成され、発音が簡単なものにする必要があります。 この名前の選択方法の詳細については、「[Invocation Name Guidelines (呼び出し名ガイドライン)][invocation]」をご覧ください。|
+| **[スキル] アイコン** | スキルが呼び出されたときに Cortana のキャンバスに表示されるアイコン。 これは、スキルを発見可能な場所 (Microsoft Store など) でも使用されます (最大 32 KB、PNG のみ)。|
+| **[表示名]** | Cortana スキルの名前は、ビジュアル UI の上部に表示されます (最大 30 文字)。 |
+| **呼び出し名** | スキルを呼び出すときにユーザーが呼びかける名前です。 3 つ以下の単語で構成され、発音が簡単なものにする必要があります。 この名前の選択方法の詳細については、「[Invocation Name Guidelines][invocation]」(呼び出し名ガイドライン) をご覧ください。|
 
 ![既定の設定](~/media/channels/cortana-defaultsettings.png)
+
+>!注:Cortana は現在、Azure Active Directory (AAD) アカウント認証の使用をサポートしていません。 ボットを Cortana に正常に公開するには、Microsoft アカウント (MSA) を使用する必要があります。
 
 ## <a name="general-bot-information"></a>ボットの一般情報
 
@@ -47,9 +49,9 @@ Cortana チャンネルを追加するには、[Azure portal](https://portal.azu
 
 ### <a name="when-should-cortana-prompt-for-a-user-to-sign-in"></a>[When should Cortana prompt for a user to sign in]\(Cortana がユーザーにサインインを要求するタイミング\)
 
-ユーザーがスキルを呼び出したときに Cortana でユーザーにサインインする場合は、**[Sign in at invocation]\(呼び出し時にサインインする\)** を選択します。
+ユーザーがスキルを呼び出したときに Cortana でユーザーにサインインする場合は、 **[Sign in at invocation]\(呼び出し時にサインインする\)** を選択します。
 
-Bot Service サインイン カードを使用してユーザーにサインインする場合は、**[Sign in when required]\(必要に応じてサインインする\)** を選択します。 通常、このオプションは、認証が必要な機能を使用するときにのみユーザーにサインインする場合に使用します。 サインイン カードが添付ファイルとして含まれたメッセージがスキルから送信されると、Cortana はサインイン カードを無視し、アカウントの接続設定を使用して認可フローを実行します。
+Bot Service サインイン カードを使用してユーザーにサインインする場合は、 **[Sign in when required]\(必要に応じてサインインする\)** を選択します。 通常、このオプションは、認証が必要な機能を使用するときにのみユーザーにサインインする場合に使用します。 サインイン カードが添付ファイルとして含まれたメッセージがスキルから送信されると、Cortana はサインイン カードを無視し、アカウントの接続設定を使用して認可フローを実行します。
 
 ### <a name="account-name"></a>アカウント名
 
@@ -73,7 +75,7 @@ Bot Service サインイン カードを使用してユーザーにサインイ�
 
 ### <a name="grant-type"></a>[付与タイプ]
 
-コード付与フローを使用するには、**[承認コード]** を選択します。暗黙的フローを使用するには、**[暗黙]** を選択します。
+コード付与フローを使用するには、 **[承認コード]** を選択します。暗黙的フローを使用するには、 **[暗黙]** を選択します。
 
 ### <a name="token-url"></a>[トークンURL]
 
@@ -99,7 +101,7 @@ Cortana では、さまざまな種類のユーザー プロファイル情報�
 
 ### <a name="deploy-on-cortana"></a>[Deploy on Cortana]\(Cortana にデプロイする\)
 
-Cortana スキルの登録フォームへの入力が完了したら、**[Deploy on Cortana]\(Cortana にデプロイする\)** をクリックして接続を完了します。 これにより、ボットの [チャンネル] ブレードに戻るので、ボットが Cortana に接続されていることを確認できます。
+Cortana スキルの登録フォームへの入力が完了したら、 **[Deploy on Cortana]\(Cortana にデプロイする\)** をクリックして接続を完了します。 これにより、ボットの [チャンネル] ブレードに戻るので、ボットが Cortana に接続されていることを確認できます。
 
 この時点で、ボットは Cortana スキルとしてお使いのアカウントにデプロイされています。
 
@@ -109,6 +111,6 @@ Cortana スキルの登録フォームへの入力が完了したら、**[Deploy
 * [デバッグの有効化](bot-service-debug-cortana-skill.md)
 * [Cortana スキルの公開][publish]
 
-[invocation]: https://docs.microsoft.com/en-us/cortana/skills/cortana-invocation-guidelines
-[publish]: https://docs.microsoft.com/en-us/cortana/skills/publish-skill
+[invocation]: https://docs.microsoft.com/cortana/skills/cortana-invocation-guidelines
+[publish]: https://docs.microsoft.com/cortana/skills/publish-skill
 [CortanaEntity]: https://aka.ms/lgvcto

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 08/15/2018
-ms.openlocfilehash: e68358ed65b9300ed8595496b88c5d0736819671
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 5a0ded9af5f624398df764f16e6dd2db0105255c
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998219"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405874"
 ---
 # <a name="embed-a-bot-in-an-app"></a>ボットをアプリに埋め込む
 
@@ -25,7 +25,7 @@ ms.locfileid: "49998219"
 
 ### <a name="native-mobile-app"></a>ネイティブ モバイル アプリ
 
-ネイティブ コードで作成されたアプリは、REST または WebSocket 経由で[ダイレクト ライン API][directLineAPI] を使用して Bot Framework と通信できます。
+ネイティブ コードで作成されたアプリは、REST または WebSocket 経由で[Direct Line API][directLineAPI] を使用して Bot Framework と通信できます。
 
 ### <a name="web-based-mobile-app"></a>Web ベースのモバイル アプリ
 
@@ -33,11 +33,11 @@ Web 言語と、<a href="https://cordova.apache.org/" target="_blank">Cordova</a
 
 ### <a name="iot-app"></a>IoT アプリ
 
-IoT アプリと Bot Framework の通信には、[ダイレクト ライン API][directLineAPI] が使用されます。 シナリオによっては、<a href="https://www.microsoft.com/cognitive-services/" target="_blank">Microsoft Cognitive Services</a> を使って、画像認識や音声などの機能を有効にできます。
+IoT アプリと Bot Framework の通信には、[Direct Line API][directLineAPI] が使用されます。 シナリオによっては、<a href="https://www.microsoft.com/cognitive-services/" target="_blank">Microsoft Cognitive Services</a> を使って、画像認識や音声などの機能を有効にできます。
 
 ### <a name="other-types-of-apps-and-games"></a>その他の種類のアプリとゲーム
 
-その他の種類のアプリやゲームと Bot Framework の通信には、[ダイレクト ライン API][directLineAPI] が使用されます。 
+その他の種類のアプリやゲームと Bot Framework の通信には、[Direct Line API][directLineAPI] が使用されます。 
 
 ## <a name="creating-a-cross-platform-mobile-app-that-runs-a-bot"></a>ボットが実行されるクロスプラットフォーム モバイル アプリの作成
 
@@ -74,4 +74,4 @@ For a complete sample that shows how to create a cross-platform mobile app that 
 - [Direct Line API][directLineAPI]
 - <a href="https://www.microsoft.com/cognitive-services/" target="_blank">Microsoft Cognitive Services</a>
 
-[directLineAPI]: https://docs.botframework.com/en-us/restapi/directline3/#navtitle
+[directLineAPI]: https://docs.botframework.com/restapi/directline3/#navtitle

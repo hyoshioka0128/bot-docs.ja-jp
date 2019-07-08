@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d592aa8b37e1d73e3cf9003209b985b8ca0f03f8
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: ce1b3f073c932cd4042b91ae9afc1e332a7443f2
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224397"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404902"
 ---
 # <a name="support-localization"></a>ローカライズをサポートする
 
@@ -95,7 +95,7 @@ bot.use({
 });
 ```
 
-上記のコード スニペットをボットに追加した後、[session.preferredLocale()][preferredLocal] を呼び出すと、検出された言語が自動的に返されます。 `preferredLocale()` の検索順序は次のとおりです。
+上記のコード スニペットをボットに追加したら、[session.preferredLocale()][preferredLocal] を呼び出すと、検出された言語が自動的に返されます。 `preferredLocale()` の検索順序は次のとおりです。
 1. `session.preferredLocale()` の呼び出しによって保存されたロケール。 この値は、`session.userData['BotBuilder.Data.PreferredLocale']` に格納されます。
 2. `session.message.textLocale` に割り当てられている、検出されたロケール。
 3. ボットの構成済みの既定のロケール (例:英語 (‘en’))。
@@ -119,7 +119,7 @@ Bot Framework SDK の既定のローカライズ システムはファイル ベ
 
 ファイルの構造は、メッセージ ID とローカライズされたテキスト文字列の単純な JSON マップです。 値が文字列ではなく配列の場合は、[session.localizer.gettext()][GetText] を使用して値を取得すると、配列から 1 つのプロンプトがランダムに選択されます。 
 
-[session.send()](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#send) の呼び出しで、言語固有のテキストではなくメッセージ ID が渡された場合、ボットは、そのメッセージのローカライズ版を自動的に取得します。
+[session.send()](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#send) の呼び出しで、言語固有のテキストではなくメッセージ ID が渡された場合、ボットは、そのメッセージのローカライズ版を自動的に取得します。
 
 ```javascript
 var bot = new builder.UniversalBot(connector, [
@@ -134,7 +134,7 @@ var bot = new builder.UniversalBot(connector, [
 ]);
 ```
 
-内部的には、SDK は、[`session.preferredLocale()`][preferredLocale] を呼び出してユーザーの優先ロケールを取得した後、それを [`session.localizer.gettext()`][GetText] の呼び出しで使用して、メッセージ ID をローカライズされたテキスト文字列にマップします。  場合によっては、ローカライザーを手動で呼び出す必要があります。 たとえば、[`Prompts.choice()`][promptsChoice] に渡された列挙値は、自動的にローカライズされることはないため、プロンプトを呼び出す前にローカライズされた一覧を手動で取得する必要があります。
+内部的に、SDK では [`session.preferredLocale()`][preferredLocale] to get the user's preferred locale and then uses that in a call to [`session.localizer.gettext()`][GetText] を呼び出して、メッセージ ID をそのローカライズされたテキスト文字列にマップします。  場合によっては、ローカライザーを手動で呼び出す必要があります。 たとえば、[`Prompts.choice()`][promptsChoice] に渡された列挙値は、自動的にローカライズされることはないため、プロンプトを呼び出す前にローカライズされた一覧を手動で取得する必要があります。
 
 ```javascript
 var options = session.localizer.gettext(session.preferredLocale(), "choice_options");
@@ -159,14 +159,14 @@ builder.Prompts.choice(session, "choice_prompt", options);
 
 
 [LUIS]: https://www.luis.ai/
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
-[IntentRecognizerSetOptions]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
-[LUISRecognizer]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
+[IMessage]: http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
+[IntentRecognizerSetOptions]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
+[LUISRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
 [LUISSample]: https://aka.ms/v3-js-luisSample
 [DisambiguationSample]: https://aka.ms/v3-js-onDisambiguateRoute
-[preferredLocal]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#preferredlocale
-[preferredLocale]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#preferredlocale
-[promptsChoice]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#choice
-[GetText]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ilocalizer.html#gettext
+[preferredLocal]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#preferredlocale
+[preferredLocale]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#preferredlocale
+[promptsChoice]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#choice
+[GetText]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ilocalizer.html#gettext
 [IEFT]: https://en.wikipedia.org/wiki/IETF_language_tag
 

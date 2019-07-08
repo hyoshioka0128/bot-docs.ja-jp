@@ -7,22 +7,22 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/30/2019
-ms.openlocfilehash: 1e0678d869b02d536eb5c3ce39461da94dbd9a57
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 7a018855b11aa638cbad1b70b53505395ae7f5f9
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033089"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464584"
 ---
 # <a name="troubleshooting-general-problems"></a>一般的な問題のトラブルシューティング
 以下のよく寄せられる質問は、一般的なボット開発や運用上の問題のトラブルシューティングに役立ちます。
 
 ## <a name="how-can-i-troubleshoot-issues-with-my-bot"></a>ボットに関する問題をトラブルシューティングするにはどうすればよいですか。
 
-1. [Visual Studio Code](debug-bots-locally-vscode.md) または [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017) を使用して、ご利用のボットのソース コードをデバッグします。
+1. [Visual Studio Code](debug-bots-locally-vscode.md) または [Visual Studio](https://docs.microsoft.com/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017) を使用して、ご利用のボットのソース コードをデバッグします。
 1. ボットをクラウドにデプロイする前に、[エミュレーター](bot-service-debug-emulator.md)を使用してテストします。
-1. Azure などのクラウド ホスティング プラットフォームにボットをデプロイし、<a href="https://portal.azure.com" target="_blank">Azure portal</a> のボットのダッシュボードで組み込み Web チャット コントロールを使用して、ボットへの接続をテストします。 Azure にデプロイした後でボットに関する問題が発生した場合は、次のブログ記事を参考にしてください:「[Understanding Azure troubleshooting and support (Azure のトラブルシューティングとサポートについて理解する)](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/)」。
-1. [認証][TroubleshootingAuth]を考えられる問題から除外します。
+1. Azure などのクラウド ホスティング プラットフォームにボットをデプロイし、<a href="https://portal.azure.com" target="_blank">Azure portal</a> のボットのダッシュボードで組み込み Web チャット コントロールを使用して、ボットへの接続をテストします。 Azure にデプロイした後でボットに関する問題が発生した場合は、次のブログ記事を参考にしてください:「[Understanding Azure troubleshooting and support (Azure のトラブルシューティングとサポートについて理解する)](https://azure.microsoft.com/blog/understanding-azure-troubleshooting-and-support/)」。
+1. [認証][TroubleshootingAuth]を、起こり得る問題から除外します。
 1. Skype でボットをテストします。 これは、エンド ツー エンド ユーザー エクスペリエンスを確認するのに役立ちます。
 1. ダイレクト ラインや Web チャットなど、追加の認証要件があるチャネルでのボットのテストを検討してください。
 1. [ボットをデバッグする](bot-service-debug-bot.md)方法に関する記事、およびそのセクションに示されているデバッグに関するその他の記事をご覧ください。
@@ -34,10 +34,10 @@ ms.locfileid: "65033089"
 ## <a name="im-using-the-bot-framework-sdk-for-net-how-can-i-troubleshoot-issues-with-my-bot"></a>Bot Framework SDK for .NET を使用しています。 ボットに関する問題をトラブルシューティングするにはどうすればよいですか。
 
 **例外を探します。**  
-Visual Studio 2017 で、**[デバッグ]** > **[Windows]** > **[例外設定]** の順に移動します。 **[例外設定]** ウィンドウで、**[Common Language Runtime Exceptions]\(共通言語ランタイム例外\)** の横にある **[スローされたときに中断]** チェック ボックスをオンにします。 スローされた例外やハンドルされない例外がある場合にも、出力ウィンドウに診断の出力が表示されることがあります。
+Visual Studio 2017 で、 **[デバッグ]**  >  **[Windows]**  >  **[例外設定]** の順に移動します。 **[例外設定]** ウィンドウで、 **[Common Language Runtime Exceptions]\(共通言語ランタイム例外\)** の横にある **[スローされたときに中断]** チェック ボックスをオンにします。 スローされた例外やハンドルされない例外がある場合にも、出力ウィンドウに診断の出力が表示されることがあります。
 
 **呼び出し履歴を確認します。**  
-Visual Studio で、[マイ コードのみ](https://msdn.microsoft.com/en-us/library/dn457346.aspx)をデバッグするかどうかを選択できます。 完全な呼び出し履歴を調べることで、問題に関する詳細な分析情報が得られる場合があります。
+Visual Studio で、[マイ コードのみ](https://msdn.microsoft.com/library/dn457346.aspx)をデバッグするかどうかを選択できます。 完全な呼び出し履歴を調べることで、問題に関する詳細な分析情報が得られる場合があります。
 
 **すべてのダイアログ メソッドの最後が、次のメッセージを処理するプランであることを確認します。**  
 すべてのダイアログ ステップは、ウォーターフォールの次のステップにフィードされるか、現在のダイアログを終了してスタックから取り出す必要があります。 ステップが正しく処理されない場合、会話は期待どおりに続きません。 ダイアログの詳細については、[ダイアログ](v4sdk/bot-builder-concept-dialog.md)の概念に関する記事を参照してください。
@@ -63,7 +63,7 @@ HTTP 状態コード 429 のエラー応答は、一定時間に発行された�
 
 ## <a name="how-can-i-run-background-tasks-in-aspnet"></a>ASP.NET でバックグラウンド タスクを実行するにはどうすればよいですか。 
 
-場合によっては、非同期タスクを開始することができます。このタスクでは数秒間待機してから、コードが実行されてユーザー プロファイルがクリアされるか、会話やダイアログの状態がリセットされます。 これを行う方法の詳細については、「[How to run Background Tasks in ASP.NET](https://www.hanselman.com/blog/HowToRunBackgroundTasksInASPNET.aspx)」 (ASP.NET でバックグラウンド タスクを実行する方法) を参照してください。 具体的には、[HostingEnvironment.QueueBackgroundWorkItem](https://msdn.microsoft.com/en-us/library/dn636893(v=vs.110).aspx) の使用を検討します。 
+場合によっては、非同期タスクを開始することができます。このタスクでは数秒間待機してから、コードが実行されてユーザー プロファイルがクリアされるか、会話やダイアログの状態がリセットされます。 これを行う方法の詳細については、「[How to run Background Tasks in ASP.NET](https://www.hanselman.com/blog/HowToRunBackgroundTasksInASPNET.aspx)」 (ASP.NET でバックグラウンド タスクを実行する方法) を参照してください。 具体的には、[HostingEnvironment.QueueBackgroundWorkItem](https://msdn.microsoft.com/library/dn636893(v=vs.110).aspx) の使用を検討します。 
 
 
 ## <a name="how-do-user-messages-relate-to-https-method-calls"></a>ユーザー メッセージは HTTPS メソッド呼び出しにどのように関連しますか。
@@ -74,7 +74,7 @@ HTTP 状態コード 429 のエラー応答は、一定時間に発行された�
 
 ボットは Web サービスであり、Azure を含む一部のホスティング プラットフォームでは、サービスで一定時間にトラフィックが受信されない場合、そのサービスは自動的にスリープ状態になります。 ご利用のボットでこのようになった場合は、次回のメッセージの受信時に最初からやり直す必要があり、その応答には、既に実行されている場合よりもかなり時間がかかります。
 
-一部のホスティング プラットフォームでは、スリープ状態にならないようにご利用のサービスを構成することができます。 Azure でこれを行うには、[Azure Portal](https://portal.azure.com) でご利用のボットのサービスに移動し、**[アプリケーション設定]**、**[常時接続]** の順に選択します。 このオプションは、すべてではなく、ほとんどのサービス プランで利用できます。
+一部のホスティング プラットフォームでは、スリープ状態にならないようにご利用のサービスを構成することができます。 Azure でこれを行うには、[Azure Portal](https://portal.azure.com) でご利用のボットのサービスに移動し、 **[アプリケーション設定]** 、 **[常時接続]** の順に選択します。 このオプションは、すべてではなく、ほとんどのサービス プランで利用できます。
 
 ## <a name="how-can-i-guarantee-message-delivery-order"></a>メッセージの配信順序を保証するにはどうすればよいですか。
 
@@ -108,11 +108,11 @@ SMS および電子メール メッセージでは、`from.Id` プロパティ�
 
 ## <a name="why-is-my-kik-bot-replying-im-sorry-i-cant-talk-right-now"></a>Kik ボットから、"申し訳ありません。現在、会話することはできません" という応答が返されるのはなぜですか。
 
-Kik の開発中のボットは 50 人のサブスクライバーが利用できます。 50 人の一意のユーザーがご利用のボットと対話した後、そのボットとチャットしようとしている新しいユーザーは、"申し訳ありません。現在、会話することはできません" というメッセージを受け取ります。 詳細については、[Kik のドキュメント](https://botsupport.kik.com/hc/en-us/articles/225764648-How-can-I-share-my-bot-with-Kik-users-while-in-development-)を参照してください。
+Kik の開発中のボットは 50 人のサブスクライバーが利用できます。 50 人の一意のユーザーがご利用のボットと対話した後、そのボットとチャットしようとしている新しいユーザーは、"申し訳ありません。現在、会話することはできません" というメッセージを受け取ります。 詳細については、[Kik のドキュメント](https://botsupport.kik.com/hc/articles/225764648-How-can-I-share-my-bot-with-Kik-users-while-in-development-)を参照してください。
 
 ## <a name="how-can-i-use-authenticated-services-from-my-bot"></a>自分のボットから認証済みのサービスを使用するにはどうすればよいですか。
 
-Azure Active Directory の認証については、認証の追加に関する記事 ([V3](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-3.0&tabs=csharp) | [V4](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-4.0&tabs=csharp)) をご覧ください。 
+Azure Active Directory の認証については、認証の追加に関する記事 ([V3](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-3.0&tabs=csharp) | [V4](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-4.0&tabs=csharp)) をご覧ください。 
 
 > [!NOTE] 
 > 認証およびセキュリティ機能をご自分のボットに追加する場合は、コードで実装するパターンが、ご利用のアプリケーションに適したセキュリティ標準に準拠していることを確認する必要があります。
@@ -157,7 +157,7 @@ Skype、Facebook、Slack などの他のチャネルでは、ボットで事前�
 次のような複数のオプションがあります。
 
 * `Autofac` と `FiberModule.Key_DoNotSerialize` を使用して依存関係を解決します。 これは最もクリーンなソリューションです。
-* [NonSerialized](https://msdn.microsoft.com/en-us/library/system.nonserializedattribute(v=vs.110).aspx) および [OnDeserialized](https://msdn.microsoft.com/en-us/library/system.runtime.serialization.ondeserializedattribute(v=vs.110).aspx) 属性を使用して、逆シリアル化時に依存関係を復元します。 これは最もシンプルなソリューションです。
+* [NonSerialized](https://msdn.microsoft.com/library/system.nonserializedattribute(v=vs.110).aspx) および [OnDeserialized](https://msdn.microsoft.com/library/system.runtime.serialization.ondeserializedattribute(v=vs.110).aspx) 属性を使用して、逆シリアル化時に依存関係を復元します。 これは最もシンプルなソリューションです。
 * シリアル化されなくなるため、その依存関係は格納しないでください。 このソリューションは、技術的には実行可能ですがお勧めしません。
 * リフレクション シリアル化サロゲートを使用します。 このソリューションは、場合によっては実行できない可能性があり、シリアル化が過剰になるリスクがあります。
 
@@ -224,7 +224,7 @@ builder.Update(Conversation.Container);
 
 State サービスでは、会話のダイアログの進行状況を保持することができるため、ユーザーは後でボットでの会話に戻ることができます。位置がわからなくなることはありません。 これを保持するため、ボットのコードの変更時に、State API を使用して格納されたボット データ プロパティ バッグが自動的にクリアになることはありません。 変更されたコードが以前のバージョンのコードと互換性があるかどうかに基づいて、ボット データをクリアするかどうかを決定する必要があります。 
 
-* ご利用のボットの開発時に会話のダイアログ スタックと状態を手動でリセットする場合は、` /deleteprofile` コマンドを使用して状態データを削除することができます。 必ず、このコマンドの先頭にスペースを挿入し、チャネルで解釈されないようにしてください。
+* ご利用のボットの開発時に会話のダイアログ スタックと状態を手動でリセットする場合は、`/deleteprofile` コマンドを使用して状態データを削除することができます。 必ず、このコマンドの先頭にスペースを挿入し、チャネルで解釈されないようにしてください。
 * ご利用のボットが運用環境にデプロイされたら、ボット データのバージョンを管理し、バージョンをバンプする場合に、関連付けられている状態データがクリアされるようにすることができます。 Bot Framework SDK for Node.js では、ミドルウェアを使用して、このようにすることができます。Bot Framework SDK for .NET では、`IPostToBot` 実装を使用して行うことができます。
 
 > [!NOTE]
@@ -234,7 +234,7 @@ State サービスでは、会話のダイアログの進行状況を保持す�
 
 ## <a name="what-are-the-possible-machine-readable-resolutions-of-the-luis-built-in-date-time-duration-and-set-entities"></a>LUIS の組み込みの日付、時刻、期間、およびセット エンティティのコンピューターで読み取り可能な解決策として何が考えられますか。
 
-例の一覧については、LUIS ドキュメントの[「作成済みエンティティ」セクション][LUISPreBuiltEntities]を参照してください。
+例の一覧については、LUIS ドキュメントの[作成済みエンティティ][LUISPreBuiltEntities]に関するセクションを参照してください。
 
 ## <a name="how-can-i-use-more-than-the-maximum-number-of-luis-intents"></a>最大数を超える LUIS の意図を使用するにはどうすればよいですか。
 
@@ -253,7 +253,7 @@ Bot Framework SDK for Node.js と Bot Framework SDK for .NET の両方で、単�
 * [Language Understanding (LUIS) の概要 - Microsoft Cognitive Services](https://www.youtube.com/watch?v=jWeLajon9M8) (ビデオ)
 * [Language Understanding (LUIS) の高度な学習セッション](https://www.youtube.com/watch?v=39L0Gv2EcSk) (ビデオ)
 * [LUIS のドキュメント](/azure/cognitive-services/LUIS/Home)
-* [Language Understanding のフォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=LUIS) 
+* [Language Understanding のフォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) 
 
 
 ## <a name="what-are-some-community-authored-dialogs"></a>コミュニティで作成されるダイアログをいくつか教えてください。
@@ -281,9 +281,9 @@ Azure Bot Service ボットを作成するためのアクセス許可は、Azure
 
 **ゲスト**でないことを確認したら、アクティブ ディレクトリ内のユーザーがボット サービスを作成できることを確認するために、ディレクトリ管理者が次の設定を構成する必要があります。
 
-1. [AAD ポータル](http://aad.portal.azure.com)にサインインします。 **[ユーザーとグループ]** に移動して、**[ユーザー設定]** を選択します。
-2. **[アプリの登録]** セクションで、**[ユーザーはアプリケーションを登録できる]** を **[はい]** に設定します。 これで、ディレクトリ内のユーザーがボット サービスを作成できるようになります。
-3. **[外部ユーザー]** セクションで、**[ゲストのアクセス許可を制限する]** を **[いいえ]** に設定します。 これで、ディレクトリ内のゲスト ユーザーがボット サービスを作成できるようになります。
+1. [AAD ポータル](http://aad.portal.azure.com)にサインインします。 **[ユーザーとグループ]** に移動して、 **[ユーザー設定]** を選択します。
+2. **[アプリの登録]** セクションで、 **[ユーザーはアプリケーションを登録できる]** を **[はい]** に設定します。 これで、ディレクトリ内のユーザーがボット サービスを作成できるようになります。
+3. **[外部ユーザー]** セクションで、 **[ゲストのアクセス許可を制限する]** を **[いいえ]** に設定します。 これで、ディレクトリ内のゲスト ユーザーがボット サービスを作成できるようになります。
 
 ![Azure Active Directory 管理センター](~/media/azure-active-directory/admin_center.png)
 

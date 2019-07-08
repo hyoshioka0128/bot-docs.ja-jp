@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ROBOTS: NoIndex, NoFollow
-ms.openlocfilehash: d41c2c24ed38fffe76cd73a6bb8a685d3861ac55
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: fee70da7288b3214ff7f384998a69b40f91b3226
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000429"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464517"
 ---
 # <a name="configure-adaptive-cards"></a>アダプティブ カードの構成
 > [!IMPORTANT]
@@ -41,19 +41,19 @@ Conversation Designer は、ボットでアダプティブ カードを作成、
 
 次のコード スニペットでは、コードで **myName** エンティティを定義する方法を示しています。
 
-``javascript
+```javascript
 {
    "type": "Input.Text",
    "id": "myName",
    "placeholder": "Last, First"
 }
-``
+```
 
 さらに、フィールドに `@task` の ID がある場合、フィールドの値がタスク名として使用されます。 このフィールドがトリガーされると (例: ボタンのクリック)、名前付きのタスクが実行されます。 
 
 次のスニペットのコードを例にとってみましょう。
 
-``javascript
+```javascript
 {
   'type': 'Action.Submit',
   'title': 'Search',
@@ -62,7 +62,7 @@ Conversation Designer は、ボットでアダプティブ カードを作成、
     '@task': 'Hotel Search'
   }
 }
-``
+```
 
 このボタンがクリックされたときに、送信アクションがトリガーされ、`context.sticky` が `Hotel Search` に設定されます。 その結果、**ホテル検索**タスクが実行されます。 この機能を使用するには、`@task` が Conversation Designer で定義したタスク名に一致することを確認します。
 
@@ -72,7 +72,7 @@ Conversation Designer は、ボットでアダプティブ カードを作成、
 * `entityName` は、カード内のエンティティを使用します。
 * `responseTemplateName` は、カード内の単純な応答テンプレートや条件付き応答テンプレートを使用します。
 
-アダプティブ カードの詳細については、こちらをご覧ください  TODO: アダプティブ カード スキーマ ドキュメントへのリンクの挿入 -->
+アダプティブ カードの詳細については、こちらの TODO を参照してください:アダプティブ カードのスキーマ ドキュメントへのリンクを挿入 -->
 
 ## <a name="sample-adaptive-card-payload"></a>アダプティブ カードのペイロードのサンプル
 

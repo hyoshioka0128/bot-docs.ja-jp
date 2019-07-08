@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 02/21/2019
-ms.openlocfilehash: 54be82eb263c2189fd6bb7a0dc4018b9ecf5c2f2
-ms.sourcegitcommit: e41dabe407fdd7e6b1d6b6bf19bef5f7aae36e61
+ms.openlocfilehash: 57efc2f1d137988792d9484d7f1f857bd193ecfa
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56893502"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405784"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework についてよく寄せられる質問
 
@@ -61,24 +61,54 @@ SDK V3 ボットは Azure Bot Service によって引き続き実行およびサ
 - 運用中の Bot Framework SDK V3 ボットが既にある場合でも心配は無用です。当面の間はそのまま機能します。
 - Azure portal と Azure コマンド ラインを使用すると、Bot Framework SDK V4 ボットと以前の V3 ボットを作成できます。 
 
+### <a name="how-can-i-migrate-azure-bot-service-from-one-region-to-another"></a>Azure Bot Service をあるリージョンから別のリージョンに移行するにはどうすればよいですか?
+
+Azure Bot Service は、リージョンの移動をサポートしていません。 特定のリージョンに関連付けられていないグローバル サービスです。
+
 ## <a name="channels"></a>チャンネル
 ### <a name="when-will-you-add-more-conversation-experiences-to-the-bot-framework"></a>Bot Framework にさらに多くの会話エクスペリエンスが追加されるのはいつですか?
 
 Microsoft では、チャンネルの追加など、Bot Framework を継続的に改善していく予定ですが、現時点でスケジュールを提供することはできません。  
-フレームワークに特定のチャンネルを追加することをご希望の場合は[お知らせください][Support]。
+フレームワークに特定のチャンネルを追加することをご希望の場合は[お問い合わせください][Support]。
 
 ### <a name="i-have-a-communication-channel-id-like-to-be-configurable-with-bot-framework-can-i-work-with-microsoft-to-do-that"></a>Bot Framework で構成可能にしたいコミュニケーション チャンネルがあります。 Microsoft と協力してこれを行うことはできますか?
 
-開発者が Bot Framework に新しいチャンネルを追加する一般的なメカニズムは提供していませんが、[Direct Line API][DirectLineAPI] を使用してボットをアプリに接続できます。 お客様がコミュニケーション チャンネルの開発者であり、Microsoft と協力して Bot Framework でチャンネルを 有効にすることをご希望であれば、[ぜひお知らせください][Support]。
+開発者が Bot Framework に新しいチャンネルを追加する一般的なメカニズムは提供していませんが、[Direct Line API][DirectLineAPI]. If you are a developer of a communication channel and would like to work with us to enable your channel in the Bot Framework [we’d love to hear from you][Support] を使用してボットをアプリに接続できます。
 
-### <a name="if-i-want-to-create-a-bot-for-skype-what-tools-and-services-should-i-use"></a>Skype 用のボットを作成する場合、どのようなツールやサービスを使用すればよいですか?
+### <a name="if-i-want-to-create-a-bot-for-microsoft-teams-what-tools-and-services-should-i-use"></a>Microsoft Teams 用のボットを作成する場合、どのようなツールやサービスを使用すればよいですか?
 
-Bot Framework は、Skype や他の多くのチャンネル向けに、高品質でパフォーマンスと応答性に優れたスケーラブルなボットを作成、接続、展開できるように設計されています。 SDK を使用して、(会話エクスペリエンスで今日のボットの対話の大半を占める) テキスト/SMS、画像、ボタン、およびカード対応のボットや、豊富なオーディオ/動画エクスペリエンスなどの Skype 固有のボットの対話を作成できます。
+Bot Framework は、Teams や他の多くのチャンネル向けに、高品質でパフォーマンスと応答性に優れたスケーラブルなボットを作成、接続、展開できるように設計されています。 SDK を使用して、(会話エクスペリエンス全体で現在のボットの対話において多くを占める) テキスト/SMS、画像、ボタン、カード対応のボットや、豊富なオーディオ/動画エクスペリエンスなどの Teams 固有のボットの対話を作成できます。
 
-優れたボットが既にあり、Skype の対象ユーザーを獲得したい場合は、Bot Framework for REST API を使用して Skype (またはサポートされている任意のチャンネル) に簡単に接続できます (インターネットにアクセス可能な REST エンドポイントがある場合)。
+優れたボットが既にあり、Teams の対象ユーザーを獲得したい場合は、Bot Framework for REST API を使用して Teams (またはサポートされている任意のチャンネル) に簡単に接続できます (インターネットにアクセス可能な REST エンドポイントがある場合)。
+
+### <a name="how-do-i-create-a-bot-that-uses-the-us-government-data-center"></a>米国政府データ センターを使用するボットはどのように作成しますか?
+
+米国政府データ センターを使用するボットを作成するために必要となる主要な手順は 2 つあります。
+1. appsettings.json (または App Service 設定) に "チャンネル プロバイダー" 設定を追加します。 これは、具体的にはこの名前/値の定数に設定する必要があります:ChannelService ="https://botframework.azure.us"。 以下に appsetting.json の使用例を示します。
+
+```json
+{
+  "MicrosoftAppId": "", 
+  "MicrosoftAppPassword": "",
+  "ChannelService": "https://botframework.azure.us"
+}
+```
+2. .NET core を使用している場合、startup.cs ファイルに ConfigurationChannelProvider を追加する必要があります。 この方法は、使用している SDK のバージョンによって異なります。
+
+- バージョン 4.3 以降、ConfigureServices メソッドで、ConfigurationChannelProvider インスタンスを作成する必要があります。 BotFrameworkHttpAdapter クラスを使用している場合、これをシングルトンとしてサービス コレクションに次のように挿入します:
+
+```csharp  
+services.AddSingleton<IChannelProvider, ConfigurationChannelProvider>();
+```
+- 4\.3 より前のバージョンの場合、ConfigureServices メソッドで、AddBot メソッドを検索します。 オプションを設定するときは、必ず次を追加します:
+
+```csharp
+options.ChannelProvider = new ConfigurationChannelProvider();
+```
+政府機関のサービスに関する詳細については、[こちら](https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-services-aiandcognitiveservices#azure-bot-service)を参照してください。
 
 ## <a name="security-and-privacy"></a>セキュリティとプライバシー
-### <a name="do-the-bots-registered-with-the-bot-framework-collect-personal-information-if-yes-how-can-i-be-sure-the-data-is-safe-and-secure-what-about-privacy"></a>Bot Framework に登録されているボットは個人情報を収集するのでしょうか。 収集する場合、データの安全とセキュリティを確保するにはどうすればよいですか?  プライバシーはどうですか?
+### <a name="do-the-bots-registered-with-the-bot-framework-collect-personal-information-if-yes-how-can-i-be-sure-the-data-is-safe-and-secure-what-about-privacy"></a>Bot Framework に登録されているボットは個人情報を収集するのでしょうか。 収集する場合、データの安全とセキュリティを確保するにはどうすればよいですか? プライバシーはどうですか?
 
 各ボットは独自のサービスであり、これらのサービスの開発者には、開発者倫理規定に従ってサービス利用規約とプライバシーに関する声明を提供することが義務付けられています。  この情報には、ボット ディレクトリのボットのカードからアクセスできます。
 
@@ -105,7 +135,7 @@ I/O サービスを提供するために、Bot Framework では、お客様が�
 いいえ。 このような IP アドレスまたは DNS ホワイトリスト登録は実用的ではありません。 Bot Framework Connector サービスは、世界規模の Azure データセンターでホストされ、Azure IP の一覧が常に変わっています。 特定の IP アドレスのホワイトリスト登録が有効なのは 1 日で、翌日に Azure IP アドレスが変わると無効になります。
  
 ### <a name="what-keeps-my-bot-secure-from-clients-impersonating-the-bot-framework-connector-service"></a>自分のボットは、Bot Framework Connector サービスを偽装するクライアントからどのように保護されますか?
-1. お使いのボットへのすべての要求に付いているセキュリティ トークンでは ServiceUrl がエンコードされています。つまり、攻撃者がトークンにアクセスしても、会話を新しい ServiceUrl にリダイレクトすることはできません。 これは、SDK のすべての実装によって適用され、Microsoft の認証[参考](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector)資料に記載されています。
+1. お使いのボットへのすべての要求に付いているセキュリティ トークンでは ServiceUrl がエンコードされています。つまり、攻撃者がトークンにアクセスしても、会話を新しい ServiceUrl にリダイレクトすることはできません。 これは、SDK のすべての実装によって適用され、Microsoft の認証[参考](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector)資料に記載されています。
 
 2. 受信トークンが欠落しているか、形式に誤りがある場合、Bot Framework SDK の応答ではトークンが生成されません。 これにより、ボットが正しく構成されていない場合に発生する損害が制限されます。
 3. ボット内で、トークンで提供される ServiceUrl を手動で確認できます。 これにより、サービス トポロジの変更が発生した場合にボットが脆弱になります。したがって、これは可能ですが、お勧めしません。
@@ -158,7 +188,55 @@ Direct Line は以下に適しています。
 * [埋め込み可能な Web チャット チャンネル][WebChat]が提供するものよりも多くのカスタマイズが必要な Web ページ
 * サービス間アプリケーション
 
-[DirectLineAPI]: https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts
+
+## <a name="app-registration"></a>アプリケーションの登録
+
+### <a name="i-need-to-manually-create-my-app-registration-how-do-i-create-my-own-app-registration"></a>自分のアプリケーションの登録を手動で作成する必要があります。 独自のアプリケーションの登録はどのように作成するのですか?
+
+独自のアプリケーションの登録の作成は、次のような状況で必要になります。
+
+- Bot Framework ポータル (https://dev.botframework.com/bots/new) など) で、ボットを作成しました。 
+- 自分の組織でアプリケーションの登録をすることができず、構築しているボット用のアプリ ID を作成するために別のパーティーが必要になります。
+- それ以外の場合、独自のアプリ ID (とパスワード) を手動で作成する必要があります。
+
+独自のアプリ ID を作成するには、次の手順に従ってください。
+
+1. [Azure アカウント](https://portal.azure.com)にサインインします。 Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ ](https://azure.microsoft.com/free/) できます。
+2. [[アプリの登録] ブレード ](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) にアクセスし、上部にある操作バーの **[新しい登録]** をクリックします。
+
+    ![新しい登録](media/app-registration/new-registration.png)
+
+3. *[名前]* フィールドにアプリケーション登録の表示名を入力し、サポートされているアカウントの種類を選択します。 この名前は、ボット ID と一致させる必要はありません。
+
+    > [!IMPORTANT]
+    > *[サポートされているアカウントの種類]* で、 *[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]* ラジオ ボタンを選択します。 その他のオプションのいずれかを選択すると、**ボットの作成は失敗**します。
+
+    ![登録の詳細](media/app-registration/registration-details.png)
+
+4. **[登録]** をクリックします。
+
+    しばらくすると、新しく作成されたアプリケーションの登録によって、ブレードが開きます。 [概要] ブレードの *[アプリケーション クライアント ID]* をコピーし、[アプリ ID] フィールドに貼り付けます。
+
+    ![アプリケーション ID](media/app-registration/app-id.png)
+
+Bot Framework ポータルを介してボットを作成している場合、アプリケーションの登録の設定は完了しています。シークレットは自動的に生成されます。 
+
+Azure portal でボットを作成している場合、アプリケーションの登録用のシークレットを生成する必要があります。 
+
+1. アプリケーション登録のブレードの左側のナビゲーション列にある **[Certificates & secrets]\(証明書およびシークレット\)** をクリックします。
+2. そのブレードで、 **[New client secret]\(新しいクライアント シークレット\)** ボタンをクリックします。 ポップアップ表示されるダイアログ ボックスで、シークレットのオプションの説明を入力し、[有効期限] ラジオ ボタン グループから **[無期限]** を選択します。 
+
+    ![新しいシークレット](media/app-registration/new-secret.png)
+
+3. *[クライアント シークレット]* の下の表からシークレットの値をコピーして、アプリケーションの *[パスワード]* フィールドに貼り付け、そのブレードの下部にある **[OK]** をクリックします。 ボットの作成を続行します。 
+
+    > [!NOTE]
+    > シークレットは、このブレード上にいる間のみ表示されます。そのページから移動すると、取得することができなくなります。 必ず、これを安全な場所にコピーしてください。
+
+    ![新しいアプリケーション ID](media/app-registration/create-app-id.png)
+
+
+[DirectLineAPI]: https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts
 [Support]: bot-service-resources-links-help.md
 [WebChat]: bot-service-channel-connect-webchat.md
 

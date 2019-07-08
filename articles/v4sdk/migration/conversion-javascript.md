@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 591f58e1cefca576e2e3e4a486ecc6fbe0a6b0e4
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 573dabba7a16f88db890f0d095a2d4a0f983660c
+ms.sourcegitcommit: 41c8caf0e0c849beeeb50cdccf6dbc1ba7cce442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215604"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67344593"
 ---
 # <a name="migrate-a-sdk-v3-javascript-bot-to-v4"></a>SDK v3 JavaScript のボットを v4 に移行する
 
@@ -489,7 +489,7 @@ v4 のボットでは、ダイアログ システム外部のアクティビテ�
 
 **./bot.js** の名前を **./bots/reservationBot.js** に変更し、これを編集します。
 
-1. このファイルには、ボットの基本実装を提供する **ActivityHandler** が既にインポートされています。
+1. このファイルには、ボットの基本実装を提供する `ActivityHandler` が既にインポートされています。
 
     ```javascript
     const { ActivityHandler } = require('botbuilder');
@@ -634,3 +634,5 @@ v4 の使用方法のトピック
 - [テキスト メッセージを送受信する](../bot-builder-howto-send-messages.md)
 - [ユーザーと会話データを保存する](../bot-builder-howto-v4-state.md)
 - [連続して行われる会話フローの実装](../bot-builder-dialog-manage-conversation-flow.md)
+- [エミュレーターを使用したデバッグ](../../bot-service-debug-emulator.md)
+- [ボットへのテレメトリの追加](../bot-builder-telemetry.md)

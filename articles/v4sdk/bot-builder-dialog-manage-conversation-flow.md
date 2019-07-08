@@ -10,25 +10,29 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 680d9148b463bbb5d10f4a6a06cc7b32b824b66e
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 0f29520b993d12ce01c65cd29517b3a4b2aada84
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215421"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404553"
 ---
 # <a name="implement-sequential-conversation-flow"></a>連続して行われる会話フローの実装
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-質問を投稿して情報を収集することは、ボットがユーザーとやり取りする主な手段の 1 つです。 ダイアログ ライブラリを使うことで、質問が行いやすくなるだけでなく、応答が検証され、確実に特定のデータ型と一致するように、またはカスタム検証ルールを満たすようになります。
+質問を投稿して情報を収集することは、ボットがユーザーとやり取りする主な手段の 1 つです。 ダイアログ ライブラリでは、質問を行いやすくなるだけでなく、応答が検証され、確実に特定のデータ型と一致するように、またはカスタム検証ルールを満たすように、*prompt* クラスなどの便利な組み込み機能が提供されます。 
 
 ダイアログ ライブラリを使用して、単純な会話フローと複雑な会話フローを管理できます。 単純なインタラクションでは、ボットは決まった一連のステップを順番に実行していき、最後に会話が終了します。 一般的に、ダイアログは、ボットがユーザーから情報を収集する必要がある場合に役立ちます。 このトピックでは、プロンプトを作成してウォーターフォール ダイアログから呼び出すことで、単純な会話フローを実装する方法について詳しく説明します。 
 
+> [!TIP]
+> ダイアログ ライブラリを使用することなく、独自のプロンプトを作成する方法の例については、「[ユーザー入力を収集するために独自のプロンプトを作成する](bot-builder-primitive-prompts.md)」の記事を参照してください。 
+
+
 ## <a name="prerequisites"></a>前提条件
 
-- [ボットの基本][concept-basics]、[状態の管理][concept-state]、および[ダイアログ ライブラリ][concept-dialogs]に関する知識。
-- **マルチターン プロンプト** サンプルのコピー ([**CSharp**][cs-sample] または [**JavaScript**][js-sample])。
+- [ボットの基本][concept-basics], [managing state][concept-state]、および[ダイアログ ライブラリ][concept-dialogs]に関する知識。
+- [**CSharp**][cs-sample] or [**JavaScript**][js-sample] のいずれかの**マルチターン プロンプト** サンプルのコピー。
 
 ## <a name="about-this-sample"></a>このサンプルについて
 
@@ -63,6 +67,8 @@ ms.locfileid: "66215421"
 [!code-csharp[Constructor snippet](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=22-41)]
 
 次に、ダイアログで使用されるステップを実装します。 プロンプトを使用するには、そのプロンプトをご自身のダイアログのステップから呼び出し、`stepContext.Result` を使用して、次のステップでプロンプトの結果を取得します。 バックグラウンドでは、プロンプトは 2 つのステップから成るダイアログです。 最初のステップでプロンプトは入力を要求します。そして 2 番目のステップで有効な値を返すか、最初からやり直して、有効な入力を受信するまでユーザーに再入力を要求します。
+
+
 
 ウォーターフォール ステップからは常に null 以外の `DialogTurnResult` を返す必要があります。 そうしないと、ご自身のダイアログは設計どおりに機能しません。 ここでは、ウォーターフォール ダイアログの `NameStepAsync` に対する実装を示します。
 
@@ -156,13 +162,13 @@ ms.locfileid: "66215421"
 
 **Bots\DialogBot.cs**
 
-`OnMessageActivityAsync` ハンドラーでは、ダイアログの開始または続行に拡張メソッドが使用されます。 `OnTurnAsync` では、ボットの状態管理オブジェクトを使用して、ストレージに対するすべての状態変更を保持します  (`ActivityHandler.OnTurnAsync` メソッドでは、`OnMessageActivityAsync` など、さまざまなアクティビティ ハンドラー メソッドが呼び出されます。 この方法で、メッセージ ハンドラーの完了後、ターン自体が完了する前に、状態を保存します)。
+`OnMessageActivityAsync` ハンドラーでは、ダイアログの開始または続行に拡張メソッドが使用されます。 `OnTurnAsync` では、ボットの状態管理オブジェクトを使用して、ストレージに対するすべての状態変更を保持します (`ActivityHandler.OnTurnAsync` メソッドでは、`OnMessageActivityAsync` など、さまざまなアクティビティ ハンドラー メソッドが呼び出されます。 この方法で、メッセージ ハンドラーの完了後、ターン自体が完了する前に、状態を保存します)。
 
 [!code-csharp[overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=33-48&highlight=5-7)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-`onMessage` ハンドラーでは、ダイアログの開始または続行にヘルパー メソッドが使用されます。 `onDialog` では、ボットの状態管理オブジェクトを使用して、ストレージに対するすべての状態変更を保持します  (`onDialog` メソッドは、`onMessage` など、他の定義済みハンドラーの実行後、最後に呼び出されます。 この方法で、メッセージ ハンドラーの完了後、ターン自体が完了する前に、状態を保存します)。
+`onMessage` ハンドラーでは、ダイアログの開始または続行にヘルパー メソッドが使用されます。 `onDialog` では、ボットの状態管理オブジェクトを使用して、ストレージに対するすべての状態変更を保持します (`onDialog` メソッドは、`onMessage` など、他の定義済みハンドラーの実行後、最後に呼び出されます。 この方法で、メッセージ ハンドラーの完了後、ターン自体が完了する前に、状態を保存します)。
 
 [!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=30-44)]
 

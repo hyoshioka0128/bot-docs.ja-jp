@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e3bf4a6868702f24af08e69d5f07c036082ec3b6
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: cba67dc4da5a0b505b4f91f9cbf7fbc0a47b8974
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225237"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404800"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
 
@@ -23,7 +23,7 @@ ms.locfileid: "54225237"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-rich-card-attachments.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-send-rich-cards.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-send-rich-cards.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-rich-cards.md)
 
 Skype、Facebook などの複数のチャネルで、ユーザーがクリックすることでアクションが開始される対話型ボタンを使用して、グラフィカルなリッチ カードをユーザーに送信できます。 SDK には、カードを作成および送信するときに使用できる、メッセージとカード ビルダー クラスが複数用意されています。 これらのカードは、チャネルにネイティブなスキーマを使用して、Bot Framework Connector サービスによってレンダリングされ、クロスプラットフォーム通信がサポートされます。 チャネルで SMS などのカードがサポートされていない場合、Bot Framework では、ユーザーに対して妥当なエクスペリエンスが提供されるように最善が尽くされます。 
@@ -34,13 +34,13 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 | カードの種類 | 説明 |
 |------|------|
 | <a href="/adaptive-cards/get-started/bots">アダプティブ カード</a> | テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。  [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。 |
-| [アニメーション カード][animationCard] | アニメーション Gif または短い動画を再生できるカード。 |
+| [アニメーション カード][animationCard] | アニメーション GIF または短い動画を再生できるカード。 |
 | [オーディオ カード][audioCard] | オーディオ ファイルを再生できるカード。 |
-| [ヒーロー カード][heroCard] | 通常 1 つの大きな画像、1 つ以上のボタン、およびテキストが含まれるカード。 |
-| [サムネイル カード][thumbnailCard] | 通常 1 つのサムネイル画像、1 つ以上のボタン、およびテキストが含まれるカード。|
-| [領収書カード][receiptCard] | ボットが領収書をユーザーに提供できるようにするカード。 通常は、領収書に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。 |
-| [サインイン カード][signinCard] | ボットでユーザーのサインインを要求できるようにするカード。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つまたは複数のボタンが含まれます。 |
-| [動画カード][videoCard] | 動画を再生できるカード。 |
+| [ヒーロー カード][heroCard] | 通常 1 つの大きなイメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
+| [サムネイル カード][thumbnailCard] | 通常 1 つのサムネイル イメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。|
+| [領収書カード][receiptCard] | ボットからユーザーに領収書を提供できるようにするカード。 通常は、領収書に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。 |
+| [サインイン カード][signinCard] | ボットでユーザーのサインインを要求できるようにするカード。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つ以上のボタンが含まれます。 |
+| [ビデオ カード][videoCard] | 動画を再生できるカード。 |
 
 ## <a name="send-a-carousel-of-hero-cards"></a>ヒーロー カードのカルーセルを送信する
 次の例は、架空の T シャツ会社のボットと、ユーザーが "シャツを表示" と言ったときの応答としてカードのカルーセルを送信する方法を示しています。 
@@ -149,7 +149,7 @@ bot.dialog('buyButtonClick', [
 To learn more about sending a typing indicator, see [How to send a typing indicator](bot-builder-nodejs-send-typing-indicator.md).
 -->
 
-Bot Framework では、ボットからの複数のメッセージが順不同で表示されるのを防ぐために、バッチ処理が実装されています。 <!-- Unfortunately, not all channels can guarantee this. --> お使いのボットによって複数の応答がユーザーに送信されるとき、メッセージの元の順序を維持するために、個別のメッセージが自動的にバッチにグループ化され、1 つのセットとしてユーザーに配信されます。 この自動バッチ処理では、毎回 **session.send()** が呼び出された後、既定の 250 ミリ秒の待機時間を経てから、次の **send()** の呼び出しが開始されます。
+Bot Framework では、ボットからの複数のメッセージが順不同で表示されるのを防ぐために、バッチ処理が実装されています。 <!-- Unfortunately, not all channels can guarantee this. --> ご利用のボットによって複数の応答がユーザーに送信されるとき、メッセージの元の順序を維持するために、個別のメッセージが自動的にバッチにグループ化され、1 つのセットとしてユーザーに配信されます。 この自動バッチ処理では、毎回 **session.send()** が呼び出された後、既定の 250 ミリ秒の待機時間を経てから、次の **send()** の呼び出しが開始されます。
 
 メッセージのバッチ処理の遅延は構成可能です。 SDK の自動バッチ処理ロジックを無効にするには、既定の遅延を大きな数値に設定して、バッチが配信された後に呼び出すコールバックによって **sendBatch()** を手動で呼び出します。
 
@@ -178,25 +178,25 @@ Node.js を使用してアダプティブ カードを作成するには、<a hr
 * [ReceiptCard][receiptCard]
 * [SigninCard][signinCard]
 * [VideoCard][videoCard]
-* [Message][Message]
+* [メッセージ][Message]
 * [添付ファイルの送信方法](bot-builder-nodejs-send-receive-attachments.md)
 
 [MessageOrder]: bot-builder-nodejs-manage-conversation-flow.md#message-ordering
-[Message]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
+[Message]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message
+[IMessage]: http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
 
-[animationCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.animationcard.html 
+[animationCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.animationcard.html 
 
-[audioCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.audiocard.html 
+[audioCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.audiocard.html 
 
-[heroCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html
+[heroCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html
 
-[thumbnailCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html 
+[thumbnailCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html 
 
-[receiptCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html 
+[receiptCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html 
 
-[signinCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.signincard.html 
+[signinCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.signincard.html 
 
-[videoCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.videocard.html
+[videoCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.videocard.html
 
 [inspector]: ../bot-service-channel-inspector.md

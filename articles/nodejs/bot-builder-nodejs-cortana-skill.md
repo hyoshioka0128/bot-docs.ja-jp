@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ff2d55ccdd6312e95bdb1acb223d8e1d5f60b0b3
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 1b62ca7e98313fb0247d45cb66fcae8be32e6492
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032626"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405052"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Cortana スキルを使用した音声認識ボットの作成
 
@@ -21,17 +21,17 @@ ms.locfileid: "65032626"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-cortana-skill.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-cortana-skill.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-cortana-skill.md)
 
 Bot Framework SDK for Node.js で音声認識ボットを作成できます。そのためには、これを Cortana スキルとして Cortana チャネルに接続します。 Cortana スキルを使用すると、ユーザーからの音声入力に応じた機能を Cortana を通して提供できます。
 
 > [!TIP]
-> スキルとは何か、何ができるかについては、「[Cortana Skills Kit][CortanaGetStarted]」を参照してください。
+> スキルとは何か、何ができるかについては、「[Cortana Skills Kit][CortanaGetStarted]」 (Cortana スキル キット) を参照してください。
 
 Bot Framework を使用して Cortana スキルを作成する場合、Cortana 固有の知識はほとんど必要なく、ボットの作成が主な部分を構成します。 これまでに作成してきたかもしれない他のボットとの主な相違点の 1 つは、Cortana には視覚と音声の両方のコンポーネントがあることです。 視覚コンポーネントとしては、Cortana にはカードなどのコンテンツを表示するためのキャンバス領域があります。 音声コンポーネントとしては、ボットのメッセージにテキストまたは SSML を指定すると、それが Cortana によってユーザーに向けて読み上げられるので、ボットが話せるようになります。 
 
 > [!NOTE]
-> Cortana は多種多様なデバイスで利用できます。 画面があるものもあれば、スタンドアロン スピーカーのように画面がないものもあります。 どちらのシナリオにも対応できるようにボットを作成する必要があります。 デバイス情報を確認する方法については、[Cortana 固有のエンティティ][CortanaSpecificEntities]を参照してください。
+> Cortana は多種多様なデバイスで利用できます。 画面があるものもあれば、スタンドアロン スピーカーのように画面がないものもあります。 どちらのシナリオにも対応できるようにボットを作成する必要があります。 デバイス情報を確認する方法については、[Cortana 固有のエンティティ][CortanaSpecificEntities]に関するページを参照してください。
 
 ## <a name="adding-speech-to-your-bot"></a>ボットに音声を追加する
 
@@ -58,7 +58,7 @@ Bot Framework を使用して Cortana スキルを作成する場合、Cortana �
 |------|------|
 | **acceptingInput** | ボットは受動的に入力を受け入れる準備ができていますが、応答を待機しているわけではありません。 ユーザーがマイク ボタンを押したままにすると、Cortana はユーザーからの入力を受け入れます。|
 | **expectingInput** | ボットがユーザーからの応答をアクティブに必要としていることを示します。 Cortana はユーザーがマイクに話すのをリッスンします。  |
-||注:ヘッドレス デバイス (ディスプレイのないデバイス) で **expectingInput** を使用_しない_でください。 [Cortana Skills Kit の FAQ](https://review.docs.microsoft.com/en-us/cortana/skills/faq) をご覧ください。|
+||注:ヘッドレス デバイス (ディスプレイのないデバイス) で **expectingInput** を使用_しない_でください。 [Cortana Skills Kit の FAQ](https://review.docs.microsoft.com/cortana/skills/faq) をご覧ください。|
 | **ignoringInput** | Cortana は入力を無視します。 ボットが要求をアクティブに処理しており、要求が完了するまでユーザーの入力を無視する場合に、このヒントを送信できます。  |
 
 以下の例は、Cortana がプレーンテキストまたは SSML を読み取る方法を示しています。
@@ -156,11 +156,11 @@ module.exports.speak = function (template, params, options) {
 ## <a name="display-cards-in-cortana"></a>Cortana でのカードの表示
 
 音声応答に加え、Cortana ではカードの添付ファイルも表示できます。 Cortana は、次のリッチ カードをサポートしています。
-* [HeroCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html)
-* [ReceiptCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html)
-* [ThumbnailCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html)
+* [HeroCard](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html)
+* [ReceiptCard](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html)
+* [ThumbnailCard](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html)
 
-これらのカードが Cortana の内部でどのように表示されるかについては、「[カード設計のベスト プラクティス][CardDesign]」を参照してください。 ボットにリッチ カードを追加する方法の例については、「[リッチ カードの送信](bot-builder-nodejs-send-rich-cards.md)」を参照してください。 
+これらのカードが Cortana の内部でどのように表示されるかについては、[カード設計のベスト プラクティス][CardDesign]に関するページを参照してください。 ボットにリッチ カードを追加する方法の例については、「[リッチ カードの送信](bot-builder-nodejs-send-rich-cards.md)」を参照してください。 
 
 次のコードは、Hero カードが含まれるメッセージに **speak** プロパティと **inputHint** プロパティを追加する方法を示しています。
 
@@ -195,7 +195,7 @@ module.exports.speak = function (template, params, options) {
 ## <a name="sample-rollerskill"></a>サンプル:RollerSkill
 以下のセクションで取り上げるコードは、サイコロを振る Cortana のサンプル スキルのものです。 [BotBuilder-Samples リポジトリ](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill)から、ボットのコード全体をダウンロードしてください。
 
-Cortana に向かって[呼び出し名][InvocationNameGuidelines]を話しかけて、スキルを呼び出します。 Roller スキルの場合、[ボットを Cortana チャネルに追加し][CortanaChannel]、それを Cortana スキルとして登録した後、Cortana に「Ask Roller」(Roller に頼んで) または「Ask Roller to roll dice」(サイコロを振るよう Roller に頼んで) と話しかけると、これを呼び出せます。
+その[呼び出し名][InvocationNameGuidelines] to Cortana. For the roller skill, after you [add the bot to the Cortana channel][CortanaChannel] を言ってスキルを呼び出し、それを Cortana スキルとして登録した後、Cortana に "Ask Roller" (Roller に頼んで) または "Ask Roller to roll dice" (サイコロを振るよう Roller に頼んで) と話しかけると、これを呼び出せます。
 
 ### <a name="explore-the-code"></a>コードを調べる
 
@@ -416,7 +416,7 @@ bot.dialog('PlayGameDialog', function (session, args) {
 
 
 ## <a name="additional-resources"></a>その他のリソース
-* [Cortana Skills Kit][CortanaGetStarted]
+* [Cortana スキル キット][CortanaGetStarted]
 * [メッセージへの音声の追加](bot-builder-nodejs-text-to-speech.md)
 * [SSML リファレンス][SSMLRef]
 * [Cortana の音声設計のベスト プラクティス][VoiceDesign]
@@ -430,9 +430,9 @@ bot.dialog('PlayGameDialog', function (session, args) {
 
 
 [SSMLRef]: https://aka.ms/cortana-ssml
-[IMessage]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage.html
-[Send]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#send
-[CortanaDevCenter]: https://developer.microsoft.com/en-us/cortana
+[IMessage]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage.html
+[Send]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#send
+[CortanaDevCenter]: https://developer.microsoft.com/cortana
 
 [CortanaSpecificEntities]: https://aka.ms/lgvcto
 [CortanaAuth]: https://aka.ms/vsdqcj

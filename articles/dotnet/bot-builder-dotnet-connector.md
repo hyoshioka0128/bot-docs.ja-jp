@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0407ec0d90c58e10aa14616e2aa9205bb8840d55
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 4df2dcc8857c2af9a69c18e6acf8c8d064e1e043
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225227"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405688"
 ---
 # <a name="send-and-receive-activities"></a>アクティビティを送受信する
 
@@ -29,7 +29,7 @@ Bot Framework Connector では、ボットで Skype、電子メール、Slack �
 
 ## <a name="create-a-connector-client"></a>コネクタ クライアントを作成する
 
-[ConnectorClient][ConnectorClient] クラスには、ボットによってチャネル上のユーザーと通信するために使用されるメソッドが含まれます。 ボットで Connector から <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> オブジェクトを受信すると、そのアクティビティ用に指定された `ServiceUrl` を使用して、後で返信を生成するために使用されるコネクタ クライアントを作成する必要があります。 
+[ConnectorClient][ConnectorClient] クラスには、ボットによってチャネル上のユーザーと通信するために使用されるメソッドが含まれます。 ボットで Connector から <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> オブジェクトを受信すると、そのアクティビティ用に指定された `ServiceUrl` を使用して、後で返信を生成するために使用されるコネクタ クライアントを作成する必要があります。 
 
 [!code-csharp[Create connector client](../includes/code/dotnet-send-and-receive.cs#createConnectorClient)]
 
@@ -88,7 +88,7 @@ Connector では、[Activity](bot-builder-dotnet-activities.md) オブジェク�
 - [アクティビティの概要](bot-builder-dotnet-activities.md)
 - [メッセージの作成](bot-builder-dotnet-create-messages.md)
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Framework SDK for .NET リファレンス</a>
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
 - <a href="/dotnet/api/microsoft.bot.connector.connectorclient" target="_blank">ConnectorClient クラス</a>
 
 [ConnectorClient]: /dotnet/api/microsoft.bot.connector.connectorclient

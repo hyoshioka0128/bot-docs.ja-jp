@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fd74dedcb048a7872a518618f8a9382e0585dbb5
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: 9478a3861b24746b4081ab2176486e59ccc7d4bc
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693682"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464712"
 ---
 # <a name="add-media-to-messages"></a>メッセージにメディアを追加する
 
@@ -31,7 +31,7 @@ ms.locfileid: "66693682"
 
 使用可能なカードの例については、[ユーザー エクスペリエンスの設計](../bot-service-design-user-experience.md)に関する記事をご覧ください。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 `Activity` オブジェクトの `Attachments` プロパティには、メッセージに添付するメディア添付ファイルやリッチ カードを表す `Attachment` オブジェクトが格納されます。 メディア添付ファイルをメッセージに追加するには、(`CreateReply()` を使用してアクティビティ外で作成された) `reply` アクティビティ用の `Attachment` オブジェクトを作成し、`ContentType`、`ContentUrl`、`Name` の各プロパティを設定します。
 
@@ -40,25 +40,24 @@ ms.locfileid: "66693682"
 返信メッセージを作成するには、テキストを定義し、添付ファイルを設定します。 添付ファイルを返信に割り当てる場合、添付ファイルの種類ごとに同じ操作を行いますが、次のスニペットに示すように、添付ファイルの設定と定義はそれぞれ異なります。 次のコードでは、インラインの添付ファイル用の返信が設定されます。
 
 **Bots/AttachmentsBot.cs**  
-[!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=108-109)]
+[!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=105-106)]
 
 次に、添付ファイルの種類を見ていきます。 最初はインラインの添付ファイルです。
 
 **Bots/AttachmentsBot.cs**  
-[!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=165-176)]
+[!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=167-178)]
 
 次は、アップロードされた添付ファイルです。
 
 **Bots/AttachmentsBot.cs**  
-[!code-csharp[uploaded attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=179-215)]
+[!code-csharp[uploaded attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=181-214)]
 
 最後は、インターネットの添付ファイルです。
 
 **Bots/AttachmentsBot.cs**  
-[!code-csharp[online attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=218-227)]
+[!code-csharp[online attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=217-226)]
 
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ここで示すソース コードは、[JS の添付ファイルの処理](https://aka.ms/bot-attachments-sample-code-js)のサンプルに基づいています。
 
@@ -95,16 +94,16 @@ ms.locfileid: "66693682"
 
 シンプルなイメージ添付ファイルまたはビデオ添付ファイルだけでなく、**ヒーロー カード**を添付することもできます。これにより、1 つのオブジェクトに含まれるイメージとボタンを結合してユーザーに送信することができます。 Markdown はほとんどのテキスト フィールドでサポートされていますが、サポート状況はチャネルごとに異なる場合があります。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ヒーロー カードとボタンを使用してメッセージを作成するには、`HeroCard` をメッセージに添付します。 
 
 ここで示すソース コードは、[添付ファイルの処理](https://aka.ms/bot-attachments-sample-code)のサンプルに基づいています。
 
 **Bots/AttachmentsBot.cs**  
-[!code-csharp[Hero card](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=39-62)]
+[!code-csharp[Hero card](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=39-58)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ヒーロー カードとボタンを使用してメッセージを作成するには、`HeroCard` をメッセージに添付します。 
 
@@ -137,7 +136,7 @@ ms.locfileid: "66693682"
 
 次のコードでは、さまざまなリッチ カード イベントを使用する例を示します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 使用可能なすべてのカードの例については、[C# カードのサンプル](https://aka.ms/bot-cards-sample-code)をご覧ください。
 
@@ -147,7 +146,7 @@ ms.locfileid: "66693682"
 **Cards.cs**  
 [!code-csharp[cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=91-100)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 使用可能なすべてのカードの例については、[JS カードのサンプル](https://aka.ms/bot-cards-js-sample-code)をご覧ください。
 
@@ -168,10 +167,13 @@ ms.locfileid: "66693682"
 
 チャネルでのアダプティブ カードのサポートに関する最新情報については、<a href="http://adaptivecards.io/designer/">アダプティブ カード デザイナー</a>に関するページをご覧ください。
 
+アダプティブ カードを使用するには、必ず `AdaptiveCards` NuGet パッケージを追加してください。 
+
+
 > [!NOTE]
 > ご自分のボットで使用されるチャネルにおいてこの機能をテストして、それらのチャネルでアダプティブ カードがサポートされているかどうかを判断する必要があります。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 アダプティブ カードを使用するには、必ず `AdaptiveCards` NuGet パッケージを追加してください。
 
@@ -180,7 +182,7 @@ ms.locfileid: "66693682"
 **Cards.cs**  
 [!code-csharp[adaptive cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=13-25)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 アダプティブ カードを使用するには、必ず `adaptivecards` npm パッケージを追加してください。
 
@@ -202,7 +204,7 @@ ms.locfileid: "66693682"
 
 また、メッセージには複数の添付ファイルをカルーセル レイアウトで含めることもできます。このレイアウトでは、添付ファイルが左右に並べて配置され、ユーザーは全体をスクロールすることができます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ここで示すソース コードは、[カード サンプル](https://aka.ms/bot-cards-sample-code)に基づいています。
 
@@ -214,14 +216,14 @@ ms.locfileid: "66693682"
 次に、添付ファイルを追加します。 ここでは 1 つずつ追加しますが、必要に応じて、リストを使ってカードを追加することもできます。
 
 **Dialogs/MainDialog.cs**  
-[!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=105-113)]
+[!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=104-113)]
 
 添付ファイルが追加されると、他と同じように返信を送信できます。
 
 **Dialogs/MainDialog.cs**  
 [!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=117-118)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ここで示すソース コードは、[JS カード サンプル](https://aka.ms/bot-cards-js-sample-code)に基づいています。
 
@@ -247,6 +249,120 @@ ms.locfileid: "66693682"
 | 推奨されるアクション | [C# のサンプル](https://aka.ms/SuggestedActionsCSharp) | [JS のサンプル](https://aka.ms/SuggestedActionsJS) |
 
 その他のサンプルについては、[GitHub](https://aka.ms/bot-samples-readme) の Bot Builder サンプル リポジトリを参照してください。
+
+### <a name="code-sample-for-processing-adaptive-card-input"></a>アダプティブ カード入力を処理するためのコード サンプル
+
+このサンプル コードは、ボット ダイアログ クラス内でアダプティブ カード入力を使用する 1 つの方法を示しています。
+この方法では、テキスト フィールドで受け取った、応答するクライアントからの入力を検証することで、現在のサンプル 06.using-cards が拡張されます。
+まず、resources フォルダーにある adaptiveCard.json の最後の括弧の直前に次のコードを追加することにより、既存のアダプティブ カードにテキスト入力およびボタン機能を追加しました。
+
+```json
+  ,
+  "actions": [
+    {
+      "type": "Action.ShowCard",
+      "title": "Text",
+      "card": {
+      "type": "AdaptiveCard",
+      "body": [
+        {
+          "type": "Input.Text",
+          "id": "text",
+          "isMultiline": true,
+          "placeholder": "Enter your comment"
+        }
+      ],
+      "actions": [
+        {
+          "type": "Action.Submit",
+          "title": "OK"
+        }
+      ]
+    }
+  }
+]
+
+```
+
+入力フィールドには "text" というラベルが付いているので、アダプティブ カードではコメント テキスト データが Value.[text] として添付されます。
+
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+検証コントロールでは、Newtonsoft.json を使用して最初にこれを JObject に変換し、次に比較のためにトリミングされたテキスト文字列を作成します。 そのため、次のコードを
+  ```csharp
+  using Newtonsoft.Json.Linq;
+  ```
+MainDialog.cs に追加して、Newtonsoft.Json の最新の安定した nuget パッケージをインストールします。
+検証コントロールのコードでは、コード コメントにロジック フローを追加しました。 この ChoiceValidator () コードは、06.using-cards サンプルにある、MainDialog の宣言用の閉じ括弧の public の直後に配置されています。
+
+```csharp
+private async Task ChoiceValidator(
+  PromptValidatorContext promptContext,
+  CancellationToken cancellationToken)
+  {
+    // Retrieves Adaptive Card comment text as JObject.
+    // looks for JObject field "text" and converts that input into a trimmed text string.
+    var jobject = promptContext.Context.Activity.Value as JObject;
+    var jtoken = jobject?["text"];
+    var text = jtoken?.Value().Trim();
+    // Logic: 1. if succeeded = true, just return promptContext
+    //        2. if false, see if JObject contained Adaptive Card input.
+    //               No = (bad input) return promptContext
+    //               Yes = update Value field with JObject text string, return "true".
+    if (!promptContext.Recognized.Succeeded && text != null)
+    {
+       var choice = promptContext.Options.Choices.FirstOrDefault(
+       c => c.Value.Equals(text, StringComparison.InvariantCultureIgnoreCase));
+       if (choice != null)
+       {
+           promptContext.Recognized.Value = new FoundChoice
+            {
+               Value = choice.Value,
+             };
+            return true;
+       }
+    }
+    return promptContext.Recognized.Succeeded;
+  }
+```
+
+今度は、上記の MainDialog 宣言内で、次の内容を、
+  ```csharp
+  // Define the main dialog and its related components.
+  AddDialog(new ChoicePrompt(nameof(ChoicePrompt)));
+  ```
+を次のように変更します。
+  ```csharp
+  // Define the main dialog and its related components.
+  AddDialog(new ChoicePrompt(nameof(ChoicePrompt), ChoiceValidator));
+  ```
+これにより、新しい ChoicePrompt が作成されるたびに、検証コントロールが呼び出されてアダプティブ カード入力が検索されます。
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+mainDialog.js を開き、実行メソッド _async run(turnContext, accessor)_ を見つけます。このメソッドでは着信アクティビティが処理されます。
+呼び出し _dialogSet.add(this);_ のすぐ後に、次のコードを追加します。
+```JavaScript
+  // The following check looks for a non-existant text input
+  // plus Adaptive Card input in _activity.value.text
+  // If both conditions exist, the Activity Card text 
+  // is copied into the text input field.
+  if(turnContext._activity.text == null
+      && turnContext._activity.value.text != null)
+   {
+      this.logger.log('replacing null text with Activity Card text input');
+      turnContext._activity.text = turnContext._activity.value.text;
+   }
+```
+このチェックで、クライアントからの存在しないテキストの入力が見つかった場合、アダプティブ カードからの入力があるかどうかが調べられます。
+アダプティブ カードの入力が \_activity.value.text に存在する場合は、これが通常のテキスト入力フィールドにコピーされます。
+
+---
+
+ご自身のコードをテストするには、アダプティブ カードが表示されたら、[テキスト] ボタンをクリックし、「ヒーロー カード」などの有効な選択肢を入力して [OK] ボタンをクリックします。
+
+![アダプティブ カードのテスト](media/adaptive-card-input.png)
+
+1. 最初の入力は、新しいダイアログを開始するために使用されます。
+2. もう一度 [OK] ボタンをクリックすると、新しいカードを選択する場合にこの入力が使用されるようになります。
 
 ## <a name="next-steps"></a>次の手順
 

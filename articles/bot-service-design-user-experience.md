@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/20/2018
-ms.openlocfilehash: 0b5bc1e82b6ef2dc5550fcaa5db176d06a7d2ea7
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ecccbcadab93417dd52f72512a0046e70a83e85e
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999699"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405824"
 ---
 # <a name="design-the-user-experience"></a>ユーザー エクスペリエンスを設計する
 
@@ -47,7 +47,7 @@ Microsoft Bot Service のカードはプログラミング可能なオブジェ�
 
 カードを使用すると、ボットを一度設計するだけで、さまざまなチャネルで動作させることができます。 ただし、一部の種類のカードについては、一部のチャネルでは、まだ完全にはサポートされていません。 
 
-ボットにカードを追加する手順の詳細については、[リッチ カード メディアの添付ファイルの追加](v4sdk/bot-builder-howto-add-media-attachments.md)に関するページと「[メッセージへの推奨されるアクションの追加](v4sdk/bot-builder-howto-add-suggested-actions.md)」を参照してください。 また、サンプル コードはこちら (カード: [C#](https://aka.ms/bot-cards-sample-code-cs)/[JS](https://aka.ms/bot-cards-sample-code-js)、アダプティブ カード: [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code)、添付ファイル: [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-js-sample-code)、推奨されるアクション: [C#](https://aka.ms/bot-suggested-actions-code)/[JS](https://aka.ms/bot-suggested-actions-js-code)) にも見つかります。
+ボットにカードを追加する手順の詳細については、[リッチ カード メディアの添付ファイルの追加](v4sdk/bot-builder-howto-add-media-attachments.md)に関するページと「[メッセージへの推奨されるアクションの追加](v4sdk/bot-builder-howto-add-suggested-actions.md)」を参照してください。 サンプル コードも用意されています。カードについては[C#](https://aka.ms/bot-cards-sample-code-cs)/[JS](https://aka.ms/bot-cards-sample-code-js)、アダプティブ カードについては[C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code)、添付については、[C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-js-sample-code)、推奨されるアクションについては[C#](https://aka.ms/bot-suggested-actions-code)/[JS](https://aka.ms/bot-suggested-actions-js-code) を参照してください。
 
 
 
@@ -63,7 +63,7 @@ Microsoft Bot Service のカードはプログラミング可能なオブジェ�
 
 場合によっては、ユーザーが**非常に具体的な質問に答える**ことがあります。 たとえば、ボットから "お名前は何ですか" と聞かれたユーザーは、"John" と名前だけ答えることも、"私の名前は John です" と文章で答えることもあります。
 
-具体的な質問をすると、ボットに返されることが想定される妥当な答えの範囲が狭くなり、応答の解析および理解に必要なロジックの複雑さが減ります。 たとえば、"ご気分はいかがですか?" という自由回答式の大まかな質問について考えてみましょう。 このような質問に対して想定される答えの順列が多数であることを考えると、これを解釈する作業は非常に複雑です。
+具体的な質問をすると、ボットに返されることが想定される妥当な答えの範囲が狭くなり、応答の解析および理解に必要なロジックの複雑さが減ります。 たとえば、次の自由回答式の大まかな質問について考えてみましょう:"ご気分はいかがですか?" このような質問に対して想定される答えの順列が多数であることを考えると、これを解釈する作業は非常に複雑です。
 
 これに対し、"痛みを感じますか? はい/いいえ"、"どこに痛みを感じますか? 胸/頭/腕/脚" といった具体的な質問ならば、自然言語の理解を実装しなくてもボットが解析および解釈できる、より具体的な応答を引き出すことができますす。 
 
@@ -77,7 +77,7 @@ Microsoft Bot Service のカードはプログラミング可能なオブジェ�
 > ユーザーに対して特定のコマンドを要求するようにボットを設計すると、多くの場合、優れたユーザー エクスペリエンスを実現でき、自然言語の理解機能も不要になります。
 
   
-"*ナレッジ ベース*" ボットまたは "*質問と回答*" ボットの場合は、ユーザーが**一般的な質問**を行う場合があります。 たとえば、何千ものドキュメントの内容に基づいて質問に答えることができるボットを想像してみてください。 <a href="https://qnamaker.ai" target="_blank">QnA Maker</a> と <a href="https://azure.microsoft.com/en-us/services/search/" target="_blank">Azure Search</a> は両方とも、この種類のシナリオ専用に設計されたテクノロジです。 詳細については、「[ナレッジ ボットを設計する](bot-service-design-pattern-knowledge-base.md)」を参照してください。
+"*ナレッジ ベース*" ボットまたは "*質問と回答*" ボットの場合は、ユーザーが**一般的な質問**を行う場合があります。 たとえば、何千ものドキュメントの内容に基づいて質問に答えることができるボットを想像してみてください。 <a href="https://qnamaker.ai" target="_blank">QnA Maker</a> と <a href="https://azure.microsoft.com/services/search/" target="_blank">Azure Search</a> は両方とも、この種類のシナリオ専用に設計されたテクノロジです。 詳細については、「[ナレッジ ボットを設計する](bot-service-design-pattern-knowledge-base.md)」を参照してください。
 
 > [!TIP]
 > データベース、Web ページ、またはドキュメントからの構造化データまたは非構造化データに基づいて質問に答えるボットを設計する場合は、自然言語の理解によって問題の解決を試みるのではなく、このシナリオに対応するように特別に設計されたテクノロジを使用することを検討してください。

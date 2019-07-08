@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2b77b19a3b2d0fbd8e545e563f154124af894ffa
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: 138f3c943fc6c4a7882e808c3f280d4ebe04f62f
+ms.sourcegitcommit: 409e8f89a1e9bcd0e69a29a313add424f66a81e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693727"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67153076"
 ---
 # <a name="implement-custom-storage-for-your-bot"></a>ボットのカスタム ストレージの実装
 
@@ -114,7 +114,8 @@ Azure Blob Storage に対してこれを実装するのは簡単です。
 
 最終的に作成する OnTurn 実装は次のようになります。
 
-**ScaleoutBot.cs** [!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/Bots/ScaleOutBot.cs?range=43-72)]
+**ScaleoutBot.cs**  
+[!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/Bots/ScaleOutBot.cs?range=43-72)]
 
 ダイアログ実行を関数呼び出しとしてモデル化していることに注意してください。 さらに高度な実装では、インターフェイスを定義し、この依存関係を挿入可能にすることも考えられますが、ここでは、すべてのダイアログを静的関数の背後に置くことで、このアプローチの機能的特性を強調しています。 一般に、重要な部分が機能するように実装を構成すると、ネットワーク上で正常に動作させることに関して非常に良好な環境になります。
 
@@ -124,7 +125,8 @@ Azure Blob Storage に対してこれを実装するのは簡単です。
 次の要件は、保存が正常に実行されるまで送信アクティビティをバッファー処理することです。 これには、カスタム BotAdapter の実装が必要になります。 このコードでは、アクティビティを送信するのではなくリストに追加する、抽象 SendActivity 関数を実装します。 ホストするダイアログに変わりはありません。
 このシナリオでは、UpdateActivity 操作と DeleteActivity 操作はサポートされていないので、これらのメソッドから Not Implemented がスローされるだけです。 また、SendActivity からの戻り値も考慮していません。 これは、アクティビティの更新を送信する必要があるシナリオ (チャネルで表示されているカードのボタンの無効化など) で、一部のチャネルによって使用されます。 特に状態が必要な場合、これらのメッセージ交換は複雑になる可能性がありますが、これについてはこの記事では取り上げません。 カスタム BotAdapter の完全な実装は次のようになります。
 
-**DialogHostAdapter.cs** [!code-csharp[DialogHostAdapter](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHostAdapter.cs?range=19-46)]
+**DialogHostAdapter.cs**  
+[!code-csharp[DialogHostAdapter](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHostAdapter.cs?range=19-46)]
 
 ## <a name="integration"></a>統合
 
@@ -136,11 +138,13 @@ Azure Blob Storage に対してこれを実装するのは簡単です。
 
 ドライバー コードを次に示します。
 
-**DialogHost.cs** [!code-csharp[DialogHost](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHost.cs?range=22-72)]
+**DialogHost.cs**  
+[!code-csharp[DialogHost](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHost.cs?range=22-72)]
 
 最後に、カスタム アクセサーについては、状態が参照に基づくため、実装する必要があるのは Get だけです。
 
-**RefAccessor.cs** [!code-csharp[RefAccessor](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/RefAccessor.cs?range=22-60)]
+**RefAccessor.cs**  
+[!code-csharp[RefAccessor](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/RefAccessor.cs?range=22-60)]
 
 ## <a name="additional-information"></a>追加情報
 この記事で使用する [C# サンプル](http://aka.ms/scale-out) コードは、GitHub で入手できます。

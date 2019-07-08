@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4b2cd49d84ea90f0ac6449ce4da61495100d45c4
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: a72c103204384188d509777639c2c90e63431dd8
+ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215364"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496693"
 ---
 # <a name="send-and-receive-text-message"></a>テキスト メッセージを送受信する
 
@@ -24,6 +24,8 @@ ms.locfileid: "66215364"
 ボットでユーザーと通信し、同様にボットで通信を受け取る主要な方法は、**メッセージ** アクティビティを利用することです。 メッセージにはプレーンテキストで構成されている単純なものもあれば、カードや添付など、よりリッチなコンテンツが含まれるものもあります。 ボットのターン ハンドラーでは、ユーザーからメッセージを受け取ります。そこからユーザーに応答を送信できます。 ターン コンテキスト オブジェクトによって、ユーザーにメッセージを戻すためのメソッドが与えられます。 この記事では、単純なテキスト メッセージを送信する方法について説明します。
 
 Markdown はほとんどのテキスト フィールドでサポートされていますが、サポート状況はチャネルごとに異なる場合があります。
+
+メッセージを送受信する実行中のボットについては、目次の一番上にあるクイックスタートを実行するか、[ボットの動作方法に関するの記事](bot-builder-basics.md#bot-structure)を確認してください。これは、ご自身で実行する場合にご利用いただけるシンプルなサンプルへもリンクされています。
 
 ## <a name="send-a-text-message"></a>テキスト メッセージの送信
 

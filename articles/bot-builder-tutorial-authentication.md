@@ -9,12 +9,12 @@ ms.service: bot-service
 ROBOTS: NOINDEX
 ms.date: 10/04/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8e2cb944e56271be9ff925e05c48236e94998f1d
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: d1b14d405b4df19db81269fc1f588305840485bd
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033013"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405960"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
 
@@ -76,73 +76,62 @@ OAuth コントローラーのホスティングやトークンのライフサ�
 
 ### <a name="register-an-application-in-azure-ad"></a>アプリケーションを Azure AD に登録する
 
-Microsoft Graph API や、Azure AD で保護された独自リソースなどに接続するためにボットが使用できる Azure AD アプリケーションが必要です。
+Microsoft Graph API に接続するためにご自身のボットが使用できる Azure AD アプリケーションが必要です。
 
 このボットには Azure AD v1 または v2 エンドポイントを使用できます。
 v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の比較](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare)に関する記事と、[Azure AD v2.0 エンドポイントの概要](https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview)に関する記事を参照してください。
 
-#### <a name="to-create-an-azure-ad-v1-application"></a>Azure AD v1 アプリケーションを作成するには
+#### <a name="to-create-an-azure-ad-application"></a>Azure AD アプリケーションを作成するには
 
-1. [Azure portal で Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) に移動します。
-1. **[アプリの登録]** をクリックします。
-1. **[アプリの登録]** パネルで、 **[新しいアプリケーションの登録]** をクリックします。
+次の手順を使用して、新しい Azure AD アプリケーションを作成します。 作成するアプリには v1 または v2 エンドポイントを使用できます。
+
+> [!TIP]
+> アプリケーションによって要求されたアクセス許可を委任することに同意できる、テナントで Azure AD プリケーションを作成し、登録する必要があります。
+
+1. Azure portal で [Azure Active Directory][azure-aad-blade] パネルを開きます。
+    適切なテナントにいない場合は、 **[ディレクトリの切り替え]** をクリックして適切なテナントに切り替えます (テナントを作成する方法については、[ポータルへのアクセスとテナントの作成](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)に関するページをご覧ください)。
+1. **[アプリの登録]** パネルを開きます。
+1. **[アプリの登録]** パネルで、 **[新規登録]** をクリックします。
 1. 必須のフィールドに入力してアプリ登録を作成します。
+
    1. アプリケーションに名前を付けます。
-   1. **[アプリケーションの種類]** を **[Web アプリ/API]** に設定します。
-   1. **[サインオン URL]** を `https://token.botframework.com/.auth/web/redirect` に設定します。
-   1. **Create** をクリックしてください。
-      - 作成されると、 **[登録済みのアプリ]** ウィンドウに表示されます。
-      - **[アプリケーション ID]** の値をメモします。 後でこれを _[クライアント ID]_ として入力します。
-1. **[設定]** をクリックしてアプリケーションを構成します。
-1. **[キー]** をクリックして **[キー]** パネルを開きます。
-   1. **[パスワード]** で、`BotLogin` キーを作成します。
-   1. **[期間]** を **[有効期限なし]** に設定します。
-   1. **[保存]** をクリックし、キー値をメモします。 後で_アプリケーション シークレット_にこれを指定します。
-   1. **[キー]** パネルを閉じます。
-1. **[必要なアクセス許可]** をクリックして、 **[必要なアクセス許可]** パネルを開きます。
+   1. ご自分のアプリケーションについて、 **[サポートされているアカウントの種類]** を選択します。 (このサンプルは、これらのオプションのどれを使用しても動作します。)
+   1. **[リダイレクト URI]** で
+       1. **[Web]** を選択します。
+       1. URL を `https://token.botframework.com/.auth/web/redirect` に設定します。
+   1. **[登録]** をクリックします。
+
+      - アプリが作成された後、その **[概要]** ページが Azure によって表示されます。
+      - **[アプリケーション (クライアント) ID]** の値を記録します。 この値は、後で Azure AD アプリケーションをご自身のボットに登録するときに、"_クライアント ID_" として使用します。
+      - さらに、 **[ディレクトリ (テナント) ID]** の値を記録します。 これも、このアプリケーションを自分のボットに登録するために使用します。
+
+1. ナビゲーション ウィンドウで **[証明書とシークレット]** をクリックして、自分のアプリケーションのシークレットを作成します。
+
+   1. **[クライアント シークレット]** で、 **[新しいクライアント シークレット]** をクリックします。
+   1. 説明を追加します (`bot login` など)。必要に応じてこのアプリのために作成する他のシークレットからこれを識別するためです。
+   1. **[期限]** を **[無期限]** に設定します。
    1. **[追加]** をクリックします。
-   1. **[API を選択します]** をクリックし、 **[Microsoft Graph]** を選択して **[選択]** をクリックします。
-   1. **[アクセス許可の選択]** をクリックします。 アプリケーションで使用するアプリケーションのアクセス許可を選択します。
+   1. このページを離れる前に、シークレットを記録してください。 この値は、後で Azure AD アプリケーションをご自身のボットに登録するときに、"_クライアント シークレット_" として使用します。
+
+1. ナビゲーション ウィンドウで、 **[API のアクセス許可]** をクリックし、 **[API のアクセス許可]** パネルを開きます。 アプリの API アクセス許可を明示的に設定するのがベスト プラクティスです。
+
+   1. **[アクセス許可の追加]** をクリックし、 **[API アクセス許可の要求]** ウィンドウを表示します。
+   1. このサンプルでは、 **[Microsoft API]** と **[Microsoft Graph]** を選択します。
+   1. **[委任されたアクセス許可]** を選択し、必要とするアクセス許可が選択されていることを確認します。 このサンプルでは、これらのアクセス許可が必要です。
 
       > [!NOTE]
-      > **[管理者権限が必要]** と表示されているアクセス許可は、ユーザーとテナント管理者の両方がログインすることを要求するため、ボットではこれらのアクセス許可を避けるのが一般的です。
+      > **[管理者の同意が必要]** とマークされているアクセス許可は、ユーザーとテナント管理者の両方がログインすることを要求するため、ボットではこれらのアクセス許可を避けるのが一般的です。
 
-      次の Microsoft Graph 委任アクセス許可を選択します。
-      - すべてのユーザーの基本プロファイルの読み取り
-      - ユーザーのメールの読み取り
-      - サインインとユーザー プロファイルの読み取り
-      - ユーザーとしてのメールの送信
-      - ユーザーの基本プロファイルの表示
-      - ユーザーの電子メール アドレスの表示
+      - **openid**
+      - **profile**
+      - **Mail.Read**
+      - **Mail.Send**
+      - **User.Read**
+      - **User.ReadBasic.All**
 
-   1. **[選択]** をクリックし、 **[完了]** をクリックします。
-   1. **[必要なアクセス許可]** パネルを閉じます。
+   1. **[アクセス許可の追加]** をクリックします。 (ユーザーは、ボットを通じてこのアプリに初めてアクセスする際に、同意を付与する必要があります。)
 
-これで、Azure AD v1 アプリケーションが構成されました。
-
-#### <a name="to-create-an-azure-ad-v2-application"></a>Azure AD v2 アプリケーションを作成するには
-
-1. [Microsoft アプリケーション登録ポータル](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)に移動します。
-1. **[アプリの追加]** をクリックします
-1. Azure AD アプリに名前を付けて、 **[作成]** をクリックします。
-
-    **[アプリケーション ID]** の GUID をメモします。 後でこれを接続設定のクライアント ID として入力します。
-
-1. **[アプリケーション シークレット]** で **[新しいパスワードを生成]** をクリックします。
-
-    ポップアップに表示されているパスワードをメモします。 後でこれを接続設定のクライアント シークレットとして入力します。
-
-1. **[プラットフォーム]** で、 **[プラットフォームの追加]** をクリックします。
-1. **[プラットフォームの追加]** ポップアップで、 **[Web]** をクリックします。
-    1. **[暗黙的フローを許可する]** はチェックされたままにします。
-    1. **[リダイレクト URL]** に、`https://token.botframework.com/.auth/web/redirect` と入力します。
-    1. **[ログアウト URL]** は空白のままにします。
-1. **[Microsoft Graph のアクセス許可]** で、追加の委任されたアクセス許可を追加できます。
-    - このチュートリアルでは、**Mail.Read**、**Mail.Send**、**openid**、**profile**、**User.Read**、および **User.ReadBasic.All** の各アクセス許可を追加します。
-      接続設定のスコープは、**openid** と、**Mail.Read** のような Azure AD グラフ内のリソースの両方を持っている必要があります。
-    - 選択したアクセス許可をメモします。 後でこれを接続設定のスコープとして入力します。
-
-1. ページの下部にある **[保存]** をクリックします。
+これで、Azure AD アプリケーションが構成されました。
 
 ### <a name="create-your-bot-on-azure"></a>Azure でのボットの作成
 
@@ -152,44 +141,45 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 次に、作成した Azure AD アプリケーションをボットに登録します。
 
-#### <a name="to-register-an-azure-ad-v1-application"></a>Azure AD v1 アプリケーションを登録するには
+# <a name="azure-ad-v1tabaadv1"></a>[Azure AD v1](#tab/aadv1)
 
 1. [Azure Portal](http://portal.azure.com/) で、ボットのリソース ページに移動します。
 1. **[設定]** をクリックします。
 1. ページ下部付近の **[OAuth Connection Settings]\(OAuth 接続設定\)** で、 **[設定の追加]** をクリックします。
 1. 次のようにフォームに入力します。
-    1. **[名前]** に、接続の名前を入力します。 ボットのコードで使用します。
+
+    1. **[名前]** に、接続の名前を入力します。 この名前はご自身のボット コードで使用します。
     1. **[サービス プロバイダー]** で、 **[Azure Active Directory]** を選択します。 これを選択すると、Azure AD に固有のフィールドが表示されます。
-    1. **[クライアント ID]** に、Azure AD v1 アプリケーションの設定時にメモしたアプリケーション ID を入力します。
-    1. **[クライアント シークレット]** に、アプリケーションの `BotLogin` キーの設定時にメモしたキーを入力します。
+    1. **[クライアント ID]** に、Azure AD v1 アプリケーションの設定時に記録したアプリケーション (クライアント) ID を入力します。
+    1. **[クライアント シークレット]** に、作成したシークレットを入力して、Azure AD アプリへのアクセスをボットに許可します。
     1. **[付与タイプ]** に、`authorization_code` と入力します。
     1. **[ログイン URL]** に、`https://login.microsoftonline.com` と入力します。
-    1. **[テナント ID]** に、Azure Active Directory のテナント ID を入力します (例: `microsoft.com` または `common`)。
+    1. **[テナント ID]** に、先ほど記録した Azure AD アプリのディレクトリ (テナント) ID を入力します。
 
-       これは、認証可能なユーザーに関連付けられるテナントになります。 すべてのユーザーがボット経由で自分自身を認証できるようにするには、`common` テナントを使用します。
+       これは、認証可能なユーザーに関連付けられるテナントになります。
 
     1. **[リソース URL]** に、「`https://graph.microsoft.com/`」と入力します。
     1. **[スコープ]** は空白のままにします。
+
 1. **[Save]** をクリックします。
 
 > [!NOTE]
 > これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。
 
-ボット コードでこの接続名を使用してユーザー トークンを取得できるようになりました。
-
-#### <a name="to-register-an-azure-ad-v2-application"></a>Azure AD v2 アプリケーションを登録するには
+# <a name="azure-ad-v2tabaadv2"></a>[Azure AD v2](#tab/aadv2)
 
 1. [Azure Portal](http://portal.azure.com/) で、ボットの [Bot Channels Registration]\(ボット チャネル登録\) ページに移動します。
 1. **[設定]** をクリックします。
 1. ページ下部付近の **[OAuth Connection Settings]\(OAuth 接続設定\)** で、 **[設定の追加]** をクリックします。
 1. 次のようにフォームに入力します。
+
     1. **[名前]** に、接続の名前を入力します。 ボットのコードで使用します。
     1. **[サービス プロバイダー]** で、 **[Azure Active Directory v2]** を選択します。 これを選択すると、Azure AD に固有のフィールドが表示されます。
-    1. **[クライアント ID]** に、アプリケーション登録からの Azure AD v2 アプリケーション ID を入力します。
-    1. **[クライアント シークレット]** に、アプリケーション登録からの Azure AD v2 アプリケーション パスワードを入力します。
-    1. **[テナント ID]** に、Azure Active Directory のテナント ID を入力します (例: `microsoft.com` または `common`)。
+    1. **[クライアント ID]** に、Azure AD v1 アプリケーションの設定時に記録したアプリケーション (クライアント) ID を入力します。
+    1. **[クライアント シークレット]** に、作成したシークレットを入力して、Azure AD アプリへのアクセスをボットに許可します。
+    1. **[テナント ID]** に、先ほど記録した Azure AD アプリのディレクトリ (テナント) ID を入力します。
 
-        これは、認証可能なユーザーに関連付けられるテナントになります。 すべてのユーザーがボット経由で自分自身を認証できるようにするには、`common` テナントを使用します。
+       これは、認証可能なユーザーに関連付けられるテナントになります。
 
     1. **[スコープ]** には、アプリケーション登録から選択したアクセス許可の名前を入力します。`Mail.Read Mail.Send openid profile User.Read User.ReadBasic.All`
 
@@ -201,7 +191,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 > [!NOTE]
 > これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。
 
-ボット コードでこの接続名を使用してユーザー トークンを取得できるようになりました。
+---
 
 #### <a name="to-test-your-connection"></a>接続をテストするには
 
@@ -213,7 +203,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 ## <a name="prepare-the-bot-sample-code"></a>ボットのサンプル コードの準備
 
-1. [https://github.com/Microsoft/BotBuilder](https://github.com/Microsoft/BotBuilder) にある github リポジトリを複製します。
+1. [https://github.com/Microsoft/BotBuilder](https://github.com/Microsoft/BotBuilder ) にある github リポジトリを複製します。
 1. ソリューション `BotBuilder\CSharp\Microsoft.Bot.Builder.sln`を開き、ビルドします。
 1. そのソリューションを閉じて、`BotBuilder\CSharp\Samples\Microsoft.Bot.Builder.Samples.sln` を開きます。
 1. スタートアップ プロジェクトを設定します。

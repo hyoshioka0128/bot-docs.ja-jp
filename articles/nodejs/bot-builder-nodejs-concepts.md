@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: efd47cb1ae48c34d58d673eaea04feeb1869b640
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: a3cff9a77de098ee524334183ba891068f176b6e
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225447"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464779"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-nodejs"></a>Bot Framework SDK for Node.js の主要概念
 
@@ -22,18 +22,19 @@ ms.locfileid: "54225447"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-concepts.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-concepts.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-concepts.md)
 
 この記事では、Bot Framework SDK for Node.js の主要な概念について説明します。 Bot Framework の概要については、[Bot Framework の概要](../overview-introduction-bot-framework.md)に関するページを参照してください。
 
 ## <a name="connector"></a>コネクタ
+Bot Framework Connector は、ご利用のボットを複数の "*チャネル*" ([Teams](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-create)、Skype、Facebook、Slack、SMS などのクライアント) に接続するサービスです。 
 
-Bot Framework Connector は、ご利用のボットを複数の*チャネル* (Skype、Facebook、Slack、SMS などのクライアント) に接続するサービスです。 この Connector では、ボットからチャネルへのメッセージおよびチャネルからボットへのメッセージが中継されて、ボットとユーザー間の通信が容易になります。 ご利用のボットのロジックは、ユーザーからのメッセージを Connector サービスを経由して受信する Web サービスとしてホストされます。ご利用のボットの応答は HTTPS POST を使用して Connector に送信されます。 
+この Connector では、ボットからチャネルへのメッセージおよびチャネルからボットへのメッセージが中継されて、ボットとユーザー間の通信が容易になります。 ご利用のボットのロジックは、ユーザーからのメッセージを Connector サービスを経由して受信する Web サービスとしてホストされます。ご利用のボットの応答は HTTPS POST を使用して Connector に送信されます。 
 
-Bot Framework SDK for Node.js には [UniversalBot][UniversalBot] クラスおよび [ChatConnector][ChatConnector] クラスが用意されており、これらのクラスを使用することで、ボットにおけるメッセージの送受信が Bot Framework Connector を経由して行われるように構成することができます。 `UniversalBot` クラスでは、ご利用のボットの頭脳が形成されます。 このクラスの役割は、ご利用のボットで行われるユーザーとの会話をすべて管理することにあります。 `ChatConnector` クラスでは、ご利用のボットを Bot Framework Connector サービスに接続することができます。
+Bot Framework SDK for Node.js には [UniversalBot][UniversalBot] クラスand [ChatConnector][ChatConnector] クラスが用意されており、これらのクラスを使用することで、ボットにおけるメッセージの送受信が Bot Framework Connector を経由して行われるように構成することができます。 `UniversalBot` クラスでは、ご利用のボットの頭脳が形成されます。 このクラスの役割は、ご利用のボットで行われるユーザーとの会話をすべて管理することにあります。 `ChatConnector` クラスでは、ご利用のボットを Bot Framework Connector サービスに接続することができます。
 これらのクラスの使用例については、「[Bot Framework SDK for Node.js を使用したボットの作成](bot-builder-nodejs-quickstart.md)」をご覧ください。
 
-Connector ではボットからチャネルに送信されるメッセージの正規化も行われます。このため、プラットフォームに依存しない方法でボットを開発することができます。 メッセージを正規化するには、メッセージを Bot Framework のスキーマから、チャネルのスキーマに変換する必要があります。 フレームワークのスキーマのすべての側面がチャネルによってサポートされているわけではない場合は、そのチャネルでサポートされている形式にメッセージを変換する試みが Connector によって行われます。 たとえば、カードとアクション ボタンを含むメッセージがボットから SMS チャネルに送信される場合、Connector によってカードがイメージとしてレンダリングされ、アクションがリンクとしてメッセージのテキストに取り込まれます。 [Channel Inspector] [ChannelInspector] は、Connector によってメッセージが各種のチャネル上でどのようにレンダリングされるかを示す Web ツールです。
+Connector ではボットからチャネルに送信されるメッセージの正規化も行われます。このため、プラットフォームに依存しない方法でボットを開発することができます。 メッセージを正規化するには、メッセージを Bot Framework のスキーマから、チャネルのスキーマに変換する必要があります。 フレームワークのスキーマのすべての側面がチャネルによってサポートされているわけではない場合は、そのチャネルでサポートされている形式にメッセージを変換する試みが Connector によって行われます。 たとえば、カードとアクション ボタンを含むメッセージがボットから SMS チャネルに送信される場合、Connector によってカードがイメージとしてレンダリングされ、アクションがリンクとしてメッセージのテキストに取り込まれます。 [Channel Inspector][ChannelInspector] は、Connector によってメッセージが各種のチャネル上でどのようにレンダリングされるかを示す Web ツールです。
 
 `ChatConnector` では、ご利用のボット内で API エンドポイントを設定する必要があります。 Node.js SDK の場合、この設定は、通常、`restify` Node.js モジュールをインストールすることによって行われます。 また、[ConsoleConnector][ConsoleConnector] (API エンドポイントは不要) を使用すると、コンソール向けのボッドを作成することができます。
 
@@ -59,7 +60,7 @@ Bot Framework SDK で提供されている組み込みの正規表現認識エ�
 
 ## <a name="saving-state"></a>状態の保存
 
-ボットを適切に設計するための鍵は、会話のコンテキストを追跡することです。そうすることで、ユーザーからの最後の質問などの事柄をボットで記憶することができます。 Bot Framework SDK を使用して構築するボットはステートレスとなるように設計されます。そのため、複数の計算ノード間で実行する場合にボッドを容易にスケーリングすることができます。 Bot Framework にはボットのデータを格納するストレージ システムが用意されているため、ボッド Web サービスをスケーリングすることができます。 そのことが理由で、通常は、グローバル変数または関数クロージャを使用して状態を保存しないようにする必要があります。 それを行うと、ご利用のボットをスケール アウトする場合に問題が発生します。 代わりに、ご利用のボットの[セッション][ Session]オブジェクトの次のプロパティを使用します。
+ボットを適切に設計するための鍵は、会話のコンテキストを追跡することです。そうすることで、ユーザーからの最後の質問などの事柄をボットで記憶することができます。 Bot Framework SDK を使用して構築するボットはステートレスとなるように設計されます。そのため、複数の計算ノード間で実行する場合にボッドを容易にスケーリングすることができます。 Bot Framework にはボットのデータを格納するストレージ システムが用意されているため、ボッド Web サービスをスケーリングすることができます。 そのことが理由で、通常は、グローバル変数または関数クロージャを使用して状態を保存しないようにする必要があります。 それを行うと、ご利用のボットをスケール アウトする場合に問題が発生します。 代わりに、ご利用のボットの[session][Session] オブジェクトの次のプロパティを使用します。
 
 * **userData** では、すべての会話でのユーザーの情報がグローバルに格納されます。
 * **conversationData** では、単一の会話に関する情報がグローバルに格納されます。 このデータは、会話に参加しているすべてのユーザーに表示されるので、このプロパティにデータを格納する場合は注意が必要です。 既定では有効になっています。ボットの [persistConversationData][PersistConversationData] 設定を使用することで、無効にすることができます。
@@ -72,7 +73,7 @@ Bot Framework SDK で提供されている組み込みの正規表現認識エ�
 
 Bot Builder では、LUIS を使用して、ご利用のボットに自然言語の理解機能を追加することができます。[LuisRecognizer][LuisRecognizer] クラスを使用します。 **LuisRecognizer** のインスタンスを追加することができます。これによって、ご利用の公開された言語モデルが参照され、ユーザーの発話に応答してアクションを実行するハンドラーが追加されます。 実行中の LUIS を確認するには、次の 10 分間チュートリアルをご覧ください。
 
-* [Microsoft LUIS チュートリアル][ LUISVideo] (ビデオ)
+* [Microsoft LUIS チュートリアル][LUISVideo] (ビデオ)
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
@@ -80,20 +81,20 @@ Bot Builder では、LUIS を使用して、ご利用のボットに自然言語
 
 
 
-[PersistConversationData]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iuniversalbotsettings.html#persistconversationdata
-[UniversalBot]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html
-[ChatConnector]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.chatconnector.html
-[ConsoleConnector]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.consoleconnector.html
+[PersistConversationData]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iuniversalbotsettings.html#persistconversationdata
+[UniversalBot]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html
+[ChatConnector]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.chatconnector.html
+[ConsoleConnector]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.consoleconnector.html
 
 [ChannelInspector]: ../bot-service-channel-inspector.md
 
-[Session]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html
-[SessionSend]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#send
+[Session]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html
+[SessionSend]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#send
 
-[triggerAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
+[triggerAction]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
 [waterfall]: bot-builder-nodejs-prompts.md
 
 [RespondMessages]:bot-builder-nodejs-use-default-message-handler.md
 
-[LUISRecognizer]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
+[LUISRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
 [LUISVideo]: https://vimeo.com/145499419

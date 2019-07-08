@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: acdc6053f7d666c2f086dca554efafc93c8af769
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 1a3b8a4bfdd73674b972f43fe58afec49c63d8cc
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225287"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464805"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>LUIS を使用して意図とエンティティを認識する 
 
@@ -24,7 +24,7 @@ ms.locfileid: "54225287"
 
 ## <a name="create-a-language-understanding-bot-with-bot-service"></a>Bot Service での Language Understanding ボットの作成
 
-1. [Azure Portal](https://portal.azure.com) のメニュー ブレードで、**[新しいリソースの作成]** を選択し、**[すべて表示]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) のメニュー ブレードで、 **[新しいリソースの作成]** を選択し、 **[すべて表示]** をクリックします。
 
     ![新しいリソースの作成](../media/bot-builder-nodejs-use-luis/bot-service-creation.png)
 
@@ -32,9 +32,9 @@ ms.locfileid: "54225287"
 
     ![新しいリソースの作成](../media/bot-builder-nodejs-use-luis/bot-service-selection.png)
 
-3. **[ボット サービス]** ブレードで、必要な情報を指定し、**[作成]** をクリックします。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 
+3. **[ボット サービス]** ブレードで、必要な情報を指定し、 **[作成]** をクリックします。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 
    * **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。 この名前は、ボットに関連付けられる LUIS アプリの名前としても使用されます。 後で、ボットに関連付けられた LUIS アプリを探すために使用できるよう、名前をコピーしておきます。
-   * サブスクリプション、[リソース グループ](/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/en-us/regions/)を選択します。
+   * サブスクリプション、[リソース グループ](/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
    * **[ボット テンプレート]** フィールドで **Language Understanding (Node.js)** テンプレートを選択します。
 
      ![[ボット サービス] ブレード](../media/bot-builder-nodejs-use-luis/bot-service-setting-callout-template.png)
@@ -42,14 +42,14 @@ ms.locfileid: "54225287"
    * チェック ボックスをオンにしてサービス利用規約に同意します。
 
 4. ボット サービスがデプロイされたことを確認します。
-    * [通知] (Azure portal の上端にあるベル アイコン) をクリックします。 通知が、**[デプロイが開始されました]** から **[デプロイメントに成功しました]** に変わります。
+    * [通知] (Azure portal の上端にあるベル アイコン) をクリックします。 通知が、 **[デプロイが開始されました]** から **[デプロイメントに成功しました]** に変わります。
     * 通知が **[デプロイメントに成功しました]** に変わったら、その通知で **[リソースに移動]** をクリックします。
 
 ## <a name="try-the-bot"></a>ボットを試す
 
-ボットがデプロイされたことを確認するには、**[通知]** をオンにします。 通知が、**[デプロイは進行中です...]** から **[デプロイメントに成功しました]** に変わります。 **[リソースに移動]** ボタンをクリックして、ボットのリソース ブレードを開きます。
+ボットがデプロイされたことを確認するには、 **[通知]** をオンにします。 通知が、 **[デプロイは進行中です...]** から **[デプロイメントに成功しました]** に変わります。 **[リソースに移動]** ボタンをクリックして、ボットのリソース ブレードを開きます。
 
-ボットが登録されたら、**[Test in Web Chat]\(Web チャットでのテスト\)** をクリックして、Web チャット ウィンドウを開きます。 Web チャットに「hello」と入力します。
+ボットが登録されたら、 **[Test in Web Chat]\(Web チャットでのテスト\)** をクリックして、Web チャット ウィンドウを開きます。 Web チャットに「hello」と入力します。
 
   ![Web チャットでのボットのテスト](../media/bot-builder-nodejs-use-luis/bot-service-web-chat.png)
 
@@ -86,12 +86,12 @@ LUIS アプリは次の 4 つの意図で始まります:Cancel、Greeting、Hel
 
 
 3.  右上の **[トレーニング]** ボタンをクリックして、ご利用のアプリをトレーニングします。
-4.  上部のナビゲーション バーの **[PUBLISH]\(発行\)** をクリックして、**[発行]** ページを開きます。 **[Publish to production slot]\(運用スロットに発行\)** ボタンをクリックします。 発行が正常に行われた後、**[Publish App]\(アプリの発行\)** ページの **[エンドポイント]** 列 (リソース名 Starter_Key で始まる行) に表示されている URL に、LUIS アプリがデプロイされます。 URL の形式は次の例のようになります。`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=` この URL のアプリ ID およびサブスクリプション キーは、** [アプリ サービスの設定] > [ApplicationSettings] > [アプリ設定] ** の LuisAppId および LuisAPIKey と同じです。
+4.  上部のナビゲーション バーの **[PUBLISH]\(発行\)** をクリックして、 **[発行]** ページを開きます。 **[Publish to production slot]\(運用スロットに発行\)** ボタンをクリックします。 発行が正常に行われた後、 **[Publish App]\(アプリの発行\)** ページの **[エンドポイント]** 列 (リソース名 Starter_Key で始まる行) に表示されている URL に、LUIS アプリがデプロイされます。 URL の形式は次の例のようになります。`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=` この URL のアプリ ID およびサブスクリプション キーは、 **[アプリ サービスの設定] > [ApplicationSettings] > [アプリ設定]** の LuisAppId および LuisAPIKey と同じです。
 
 
 ## <a name="modify-the-bot-code"></a>ボット コードの変更
 
-**[Build]\(ビルド\)**、**[Open online code editor]\(オンライン コード エディターを開く\)** の順にクリックします。
+**[Build]\(ビルド\)** 、 **[Open online code editor]\(オンライン コード エディターを開く\)** の順にクリックします。
 
    ![オンライン コード エディターを開く](../media/bot-builder-nodejs-use-luis/bot-service-build.png)
 
@@ -149,7 +149,7 @@ var recognizer = new builder.LuisRecognizer(LuisModelUrl);
 bot.recognizer(recognizer);
 
 // Add a dialog for each intent that the LUIS app recognizes.
-// See https://docs.microsoft.com/en-us/bot-framework/nodejs/bot-builder-nodejs-recognize-intent-luis 
+// See https://docs.microsoft.com/bot-framework/nodejs/bot-builder-nodejs-recognize-intent-luis 
 bot.dialog('GreetingDialog',
     (session) => {
         session.send('You reached the Greeting intent. You said \'%s\'.', session.message.text);
@@ -265,7 +265,7 @@ bot.dialog('CreateNote', [
 });
 ```
 
-発話内のすべてのエンティティは、`args` パラメーターを使用してダイアログに渡されます。 [ウォーターフォール][waterfall]の最初の手順では [EntityRecognizer.findEntity][EntityRecognizer_findEntity] を呼び出し、LUIS 応答の `Note.Title` エンティティからメモのタイトルを取得します。 LUIS アプリで `Note.Title` エンティティが検出されなかった場合は、ボットによってユーザーにメモの名前が求められます。 ウォーターフォールの 2 番目の手順では、メモに含めるテキストが求められます。 ボットでメモのテキストが用意できたら、3 番目の手順では [session.userData][session_userData] を使用し、キーとしてタイトルを使って、`notes` オブジェクトにメモを保存します。 `session.UserData` の詳細については、「[状態データを管理する](./bot-builder-nodejs-state.md)」を参照してください。 
+発話内のすべてのエンティティは、`args` パラメーターを使用してダイアログに渡されます。 [ウォーターフォール][waterfall]の最初のステップでは、calls [EntityRecognizer.findEntity][EntityRecognizer_findEntity] to get the title of the note from any `Note.Title` entities in the LUIS response. If the LUIS app didn't detect a `Note.Title` entity, the bot prompts the user for the name of the note. The second step of the waterfall prompts for the text to include in the note. Once the bot has the text of the note, the third step uses [session.userData][session_userData] を使用し、タイトルをキーとして使用して、`notes` オブジェクトにメモを保存します。 `session.UserData` の詳細については、「[状態データを管理する](./bot-builder-nodejs-state.md)」を参照してください。 
 
 
 
@@ -555,7 +555,7 @@ function noteCount(notes) {
 
 ## <a name="test-the-bot"></a>ボットのテスト
 
-Azure Portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** をクリックしてボットをテストします。 "メモを作成する"、"自分のメモを読み取る"、"メモを削除する" などのメッセージを入力して、追加した意図を呼び出してみます。
+Azure Portal で、 **[Test in Web Chat]\(Web チャットでのテスト\)** をクリックしてボットをテストします。 "メモを作成する"、"自分のメモを読み取る"、"メモを削除する" などのメッセージを入力して、追加した意図を呼び出してみます。
    ![Web チャットでメモ ボットをテストする](../media/bot-builder-nodejs-use-luis/bot-service-test-notebot.png)
 
 > [!TIP]
@@ -572,40 +572,40 @@ Azure Portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 
 [LUIS]: https://www.luis.ai/
 
-[intentDialog]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html
+[intentDialog]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html
 
-[intentDialog_matches]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html#matches 
+[intentDialog_matches]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html#matches 
 
 [NotesSample]: https://github.com/Microsoft/BotFramework-Samples/tree/master/docs-samples/Node/basics-naturalLanguage
 
-[triggerAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
+[triggerAction]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
 
-[confirmPrompt]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#confirmprompt
+[confirmPrompt]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#confirmprompt
 
 [waterfall]: bot-builder-nodejs-dialog-manage-conversation-flow.md#manage-conversation-flow-with-a-waterfall
 
-[session_userData]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
+[session_userData]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
 
-[EntityRecognizer_findEntity]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.entityrecognizer.html#findentity
+[EntityRecognizer_findEntity]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.entityrecognizer.html#findentity
 
-[matches]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#matches
+[matches]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#matches
 
 [LUISAzureDocs]: /azure/cognitive-services/LUIS/Home
 
-[Dialog]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html
+[Dialog]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html
 
-[IntentRecognizerSetOptions]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
+[IntentRecognizerSetOptions]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
 
-[LuisRecognizer]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
+[LuisRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
 
-[LUISConcepts]: https://docs.botframework.com/en-us/node/builder/guides/understanding-natural-language/
+[LUISConcepts]: https://docs.botframework.com/node/builder/guides/understanding-natural-language/
 
 [DisambiguationSample]: https://aka.ms/v3-js-onDisambiguateRoute
 
-[IDisambiguateRouteHandler]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.idisambiguateroutehandler.html
+[IDisambiguateRouteHandler]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.idisambiguateroutehandler.html
 
-[RegExpRecognizer]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.regexprecognizer.html
+[RegExpRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.regexprecognizer.html
 
 [AlarmBot]: https://aka.ms/v3-js-luisSample
 
-[UniversalBot]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html
+[UniversalBot]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html

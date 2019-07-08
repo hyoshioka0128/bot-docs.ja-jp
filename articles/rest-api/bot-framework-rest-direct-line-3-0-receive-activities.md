@@ -7,21 +7,23 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: dd5e81ba3feaba09e60011c138dcbe1537144b5a
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.date: 06/13/2019
+ms.openlocfilehash: c99e7ce86415ee1291a92e2684b975fd03c822f7
+ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59541008"
+ms.lasthandoff: 06/19/2019
+ms.locfileid: "67252697"
 ---
 # <a name="receive-activities-from-the-bot"></a>ボットからアクティビティを受信する
 
-クライアントは、Direct Line 3.0 プロトコルを使用して、`WebSocket` ストリーム経由でアクティビティを受信するか、`HTTP GET` 要求を発行してアクティビティを取得できます。 
+クライアントは、Direct Line 3.0 プロトコルを使用して、`WebSocket` ストリーム経由でアクティビティを受信するか、`HTTP GET` 要求を発行してアクティビティを取得できます。
 
 ## <a name="websocket-vs-http-get"></a>WebSocket と HTTP GET
 
-WebSocket のストリーミング はメッセージを効率的にクライアントにプッシュし、GET インターフェイスはクライアントがメッセージを明示的に要求できるようにします。 多くの場合、効率の良さから WebSocket メカニズムが推奨されますが、WebSocket を使用できないクライアントでは、GET メカニズムが役立ちます。 
+WebSocket のストリーミング はメッセージを効率的にクライアントにプッシュし、GET インターフェイスはクライアントがメッセージを明示的に要求できるようにします。 多くの場合、効率の良さから WebSocket メカニズムが推奨されますが、WebSocket を使用できないクライアントでは、GET メカニズムが役立ちます。
+
+このサービスでは、会話ごとに WebSocket 接続を 1 つだけ許可します。 Direct Line では、`collision` の理由の値で追加の WebSocket 接続を閉じる可能性があります。
 
 WebSocket と HTTP GET は、どちらも、すべての[アクティビティの種類](bot-framework-rest-connector-activities.md)を利用できるわけではありません。 次の表で、Direct Line プロトコルを使用するクライアントで利用可能なさまざまな種類のアクティビティについて説明します。
 

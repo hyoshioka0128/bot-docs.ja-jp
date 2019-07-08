@@ -7,18 +7,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 05/31/2019
+ms.date: 06/07/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 89df62255c9ea6fbf55b2c7aed2d6f334d69c571
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: e708f6b556c832ed7f8858a893cc5fb0a8406ab2
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693686"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404327"
 ---
 <!-- Related TODO:
-- Check code in [Web Chat channel](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
-- Check guidance in [DirectLine authentication](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0)
+- Check code in [Web Chat channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
+- Check guidance in [DirectLine authentication](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0)
 -->
 
 <!-- General TODO: (Feedback from CSE (Nafis))
@@ -98,15 +98,15 @@ Web チャットで Azure Bot Service 認証を使用する場合、考慮すべ
 
 ## <a name="prerequisites"></a>前提条件
 
-- [ボットの基本][concept-basics]、[状態の管理][concept-state]、[ダイアログ ライブラリ][concept-dialogs]、[連続して行われる会話フローを実装][simple-dialog]する方法、[ダイアログを再利用][component-dialogs]する方法に関する知識。
+- [ボットの基本][concept-basics], [managing state][concept-state]、[ダイアログ ライブラリ][concept-dialogs]、[連続して行われる会話フローの実装方法][simple-dialog], and how to [reuse dialogs][component-dialogs]に関する知識。
 - Azure と OAuth 2.0 開発の知識。
 - Visual Studio 2017 以降、Node.js、npm、git。
 - 次のいずれかのサンプル。
 
 | サンプル | BotBuilder のバージョン | 対象 |
 |:---|:---:|:---|
-| [**CSharp**][cs-auth-sample] または [**JavaScript**][js-auth-sample] の**ボット認証** | v4 | OAuthCard サポート |
-| [**CSharp**][cs-msgraph-sample] または [**JavaScript**][js-msgraph-sample] の**ボット認証 MSGraph** | v4 |  OAuth 2 を使用した Microsoft Graph API サポート |
+| [**CSharp**][cs-auth-sample] or [**JavaScript**][js-auth-sample] の**ボット認証** | v4 | OAuthCard サポート |
+| [**CSharp**][cs-msgraph-sample] or [**JavaScript**][js-msgraph-sample] の**ボット認証 MSGraph** | v4 |  OAuth 2 を使用した Microsoft Graph API サポート |
 
 ## <a name="create-your-bot-resource-on-azure"></a>Azure でご自身のボット リソースを作成する
 
@@ -126,10 +126,10 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 次の手順を使用して、新しい Azure AD アプリケーションを作成します。 作成するアプリには v1 または v2 エンドポイントを使用できます。
 
 > [!TIP]
-> 管理者権限があるテナントで Azure AD アプリケーションを作成し、登録する必要があります。
+> アプリケーションによって要求されたアクセス許可を委任することに同意できるテナントで、Azure AD アプリケーションを作成および登録する必要があります。
 
 1. Azure portal で [[Azure Active Directory]][azure-aad-blade] パネルを開きます。
-    適切なテナントにいない場合は、 **[ディレクトリの切り替え]** をクリックして適切なテナントに切り替えます (テナントを作成する方法については、[ポータルへのアクセスとテナントの作成](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)に関するページをご覧ください)。
+    適切なテナントにいない場合は、 **[ディレクトリの切り替え]** をクリックして適切なテナントに切り替えます (テナントを作成する方法については、[ポータルへのアクセスとテナントの作成](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)に関するページをご覧ください)。
 1. **[アプリの登録]** パネルを開きます。
 1. **[アプリの登録]** パネルで、 **[新規登録]** をクリックします。
 1. 必須のフィールドに入力してアプリ登録を作成します。
@@ -247,7 +247,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 <!-- TODO: Add guidance (once we have it) on how not to hard-code IDs and ABS auth. -->
 
-1. GitHub リポジトリから、使用したいサンプルを複製します: [**ボット認証**][cs-auth-sample]または[**ボット認証 MSGraph**][cs-msgraph-sample] を複製します。
+1. GitHub リポジトリから、使用したいサンプルを複製します: [**ボット認証**][cs-auth-sample] or [**Bot authentication MSGraph**][cs-msgraph-sample]。
 1. **appsettings.json** を更新します。
 
     - `ConnectionName` を、お使いのボットに追加した OAuth 接続設定の名前に設定します。
@@ -259,7 +259,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-1. 使用する github リポジトリから [**ボット認証**][js-auth-sample]または[**ボット認証 MSGraph**][js-msgraph-sample] を複製します。
+1. 使用する github リポジトリから [**ボット認証**][js-auth-sample] or [**Bot authentication MSGraph**][js-msgraph-sample]。
 1. **.env** を更新します。
 
     - `connectionName` を、お使いのボットに追加した OAuth 接続設定の名前に設定します。

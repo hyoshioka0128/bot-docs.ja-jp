@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7ca595b1c24769addfbdf7975c48d3a052c4a2de
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 5a0756be0a29660ef63f50a67ce4fa0f27ccc50f
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54226007"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405044"
 ---
 # <a name="handle-user-actions"></a>ユーザー アクションを処理する
 
@@ -22,7 +22,7 @@ ms.locfileid: "54226007"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-global-handlers.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-dialog-actions.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-dialog-actions.md)
 
 ユーザーは通常、「ヘルプ」、「キャンセル」、「やり直し」などのキーワードを使用して、ボット内の特定の機能にアクセスしようとします。 ユーザーは会話の途中で、ボットが別の応答を期待しているときにこれを行います。 **アクション**を実装することによって、そのような要求をより適切に処理するようにボットを設計できます。 ハンドラーは「ヘルプ」、「キャンセル」、「やり直し」などの指定されたキーワードのユーザー入力を検証し、適切に応答します。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "54226007"
 
 ## <a name="bind-actions-to-dialog"></a>アクションをダイアログにバインドする
 
-ユーザーの発話またはボタンのクリックのどちらかがアクションを*トリガー*することができ、これは[ダイアログ](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html)に関連付けられます。
+ユーザーの発話またはボタンのクリックのどちらかがアクションを*トリガー*することができ、これは[ダイアログ](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html)に関連付けられます。
 *matches* が指定されている場合、アクションは、そのアクションをトリガーする単語またはフレーズをユーザーが言うのを聞き取ります。  `matches` オプションには正規表現または[認識エンジン][RecognizeIntent]の名前を渡すことができます。
 アクションをボタンのクリックにバインドするには、[CardAction.dialogAction()][CardAction] を使用してアクションをトリガーします。
 
@@ -57,7 +57,7 @@ ms.locfileid: "54226007"
 
 ### <a name="bind-a-triggeraction"></a>triggerAction のバインド
 
-[triggerAction][triggerAction] をダイアログにバインドするには、次の手順を実行します。
+[triggerAction][triggerAction] をダイアログにバインドするには、次の手順を行います。
 
 ```javascript
 // Order dinner.
@@ -116,7 +116,7 @@ bot.customAction({
 
 ### <a name="bind-a-begindialogaction"></a>beginDialogAction のバインド
 
-`beginDialogAction` をダイアログにバインドすると、アクションがダイアログに登録されます。 このメソッドは、トリガーされると別のダイアログを開始します。 このアクションの動作は、[beginDialog](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#begindialog) メソッドの呼び出しに似ています。 新しいダイアログはダイアログ スタックの一番上にプッシュされるため、現在のタスクを自動的に終了させることはありません。 新しいタスクが終了すると、現在のタスクが継続されます。 
+`beginDialogAction` をダイアログにバインドすると、アクションがダイアログに登録されます。 このメソッドは、トリガーされると別のダイアログを開始します。 このアクションの動作は、[beginDialog](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#begindialog) メソッドの呼び出しに似ています。 新しいダイアログはダイアログ スタックの一番上にプッシュされるため、現在のタスクを自動的に終了させることはありません。 新しいタスクが終了すると、現在のタスクが継続されます。 
 
 次のコード スニペットは、[beginDialogAction][beginDialogAction] をダイアログにバインドする方法を示しています。
 
@@ -142,7 +142,7 @@ bot.dialog('showDinnerCart', function(session){
 });
 ```
 
-新しいダイアログに追加の引数を渡す必要がある場合、[`dialogArgs`](https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.idialogactionoptions#dialogargs) オプションをアクションに追加できます。
+新しいダイアログに追加の引数を渡す必要がある場合、[`dialogArgs`](https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.idialogactionoptions#dialogargs) オプションをアクションに追加できます。
 
 上記のサンプルを使用して、`dialogArgs` によって渡された引数を受け入れるようにサンプルを変更できます。
 
@@ -178,7 +178,7 @@ bot.dialog('showDinnerCart', function(session, args){
 
 ### <a name="bind-a-reloadaction"></a>reloadAction のバインド
 
-`reloadAction` をダイアログにバインドすると、ダイアログに登録されます。 このアクションをダイアログにバインドすると、アクションがトリガーされたときにダイアログが再開するようになります。 このアクションをトリガーすることは、[replaceDialog](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#replacedialog) メソッドの呼び出しに似ています。 これは、「やり直し」のようなユーザーの発話を処理するロジックの実装や、[ループ](bot-builder-nodejs-dialog-replace.md#repeat-an-action)を作成する目的に役立ちます。
+`reloadAction` をダイアログにバインドすると、ダイアログに登録されます。 このアクションをダイアログにバインドすると、アクションがトリガーされたときにダイアログが再開するようになります。 このアクションをトリガーすることは、[replaceDialog](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#replacedialog) メソッドの呼び出しに似ています。 これは、「やり直し」のようなユーザーの発話を処理するロジックの実装や、[ループ](bot-builder-nodejs-dialog-replace.md#repeat-an-action)を作成する目的に役立ちます。
 
 次のコード スニペットは、[reloadAction][reloadAction] をダイアログにバインドする方法を示しています。
 
@@ -193,7 +193,7 @@ bot.dialog('orderDinner', [
 });
 ```
 
-再読み込みされるダイアログに追加の引数を渡す必要がある場合、[`dialogArgs`](https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.idialogactionoptions#dialogargs) オプションをアクションに追加できます。 このオプションは `args` パラメーターに渡されます。 再読み込みアクション時に引数を受け取るように上記のサンプル コードを記述し直すと、次のようになります。
+再読み込みされるダイアログに追加の引数を渡す必要がある場合、[`dialogArgs`](https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.idialogactionoptions#dialogargs) オプションをアクションに追加できます。 このオプションは `args` パラメーターに渡されます。 再読み込みアクション時に引数を受け取るように上記のサンプル コードを記述し直すと、次のようになります。
 
 ```javascript
 // Order dinner.
@@ -236,7 +236,7 @@ bot.dialog('orderDinner', [
 
 ### <a name="bind-an-endconversationaction"></a>endConversationAction のバインド
 
-`endConversationAction` をバインドすると、ダイアログに登録されます。 トリガーされると、このアクションはユーザーとの会話を終了します。 このアクションをトリガーすることは、[endConversation](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#endconversation) メソッドの呼び出しに似ています。 会話が終了すると、Bot Framework SDK for Node.js はダイアログ スタックと保持されていた状態データをクリアします。 保持される状態データの詳細については、「[状態データの管理](bot-builder-nodejs-state.md)」を参照してください。
+`endConversationAction` をバインドすると、ダイアログに登録されます。 トリガーされると、このアクションはユーザーとの会話を終了します。 このアクションをトリガーすることは、[endConversation](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#endconversation) メソッドの呼び出しに似ています。 会話が終了すると、Bot Framework SDK for Node.js はダイアログ スタックと保持されていた状態データをクリアします。 保持される状態データの詳細については、「[状態データの管理](bot-builder-nodejs-state.md)」を参照してください。
 
 次のコード スニペットは、[endConversationAction][endConversationAction] をダイアログにバインドする方法を示しています。
 
@@ -255,7 +255,7 @@ bot.dialog('orderDinner', [
 
 すべてではないにしても、これらのアクションのほとんどは会話の通常のフローを中断させます。 多くは中断を伴い、慎重に扱う必要があります。 たとえば、`triggerAction`、`cancelAction`、または `endConversationAction` はダイアログ スタックをクリアします。 ユーザーが誤ってこれらのアクションのいずれかをトリガーした場合、ユーザーはタスクをもう一度やり直す必要があります。 ユーザーが実際にこれらのアクションをトリガーする意図があったことを確認するために、`confirmPrompt` オプションをこれらのアクションに追加することができます。 `confirmPrompt` は、現在のタスクを本当にキャンセルまたは終了してもよいかユーザーに確認します。 これにより、ユーザーはアクションを取り消してプロセスを継続できます。
 
-次のコード スニペットは、ユーザーが本当に注文プロセスをキャンセルしたいのか確認するための [confirmPrompt](http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions#confirmprompt) 付きの [cancelAction][cancelAction] を示しています。
+次のコード スニペットは、ユーザーが本当に注文プロセスをキャンセルしたいのかを確認するための [confirmPrompt](http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions#confirmprompt) 付きの [cancelAction][cancelAction] を示しています。
 
 ```javascript
 // Order dinner.
@@ -280,16 +280,16 @@ bot.dialog('orderDinner', [
 > [状態データの管理](bot-builder-nodejs-state.md)
 
 
-[triggerAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
+[triggerAction]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
 
-[cancelAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#cancelaction
+[cancelAction]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#cancelaction
 
-[reloadAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#reloadaction
+[reloadAction]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#reloadaction
 
-[beginDialogAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#begindialogaction
+[beginDialogAction]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#begindialogaction
 
-[endConversationAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#endconversationaction
+[endConversationAction]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#endconversationaction
 
 [RecognizeIntent]: bot-builder-nodejs-recognize-intent-messages.md
 
-[CardAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.cardaction#dialogaction
+[CardAction]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.cardaction#dialogaction

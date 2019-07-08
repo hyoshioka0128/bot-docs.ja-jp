@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 07a66eb468bc456fb463c9c215a2c941e4fafe0a
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 56a95023810bd7d66687c892f449fa31c9394dc8
+ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215330"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496679"
 ---
 # <a name="write-directly-to-storage"></a>ストレージに直接書き込む
 
@@ -568,7 +568,7 @@ Azure Blob トランスクリプト ストレージでは、上記の「_Blob St
 1. Azure Blob Storage アカウントを開きます。
 1. "_Storage Explorer_" をクリックします。
 1. "_BLOB コンテナー_" を右クリックし、"_BLOB コンテナーの作成_" を選択します。
-1. トランスクリプト コンテナーの名前を入力し、 _[OK]_ を選択します  (mybottranscripts を入力しました)。
+1. トランスクリプト コンテナーの名前を入力し、 _[OK]_ を選択します (mybottranscripts を入力しました)。
 
 ### <a name="implementation"></a>実装 
 次のコードでは、トランスクリプト ストレージのポインター `_myTranscripts` を新しい Azure Blob トランスクリプト ストレージ アカウントに接続します。 新しいコンテナー名 <your-blob-transcript-container-name> でこのリンクを作成するには、トランスクリプト ファイルを保持する新しいコンテナーを Blob Storage に作成します。
@@ -671,7 +671,7 @@ protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivi
 
 ```
 
-次に示すリンク先には、[Azure Blob トランスクリプト ストレージ](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.azure.azureblobtranscriptstore)に関するその他の情報が記載されています 
+次に示すリンク先には、[Azure Blob トランスクリプト ストレージ](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.azure.azureblobtranscriptstore)に関するその他の情報が記載されています 
 
 ## <a name="additional-information"></a>追加情報
 

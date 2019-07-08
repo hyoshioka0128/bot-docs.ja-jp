@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: 307a6bf697e274391336a0d216c64da85232616d
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 0e548700e81fff5029031fd1e349cc75d9d0bc7a
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033259"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464642"
 ---
 # <a name="debug-with-the-emulator"></a>エミュレーターを使用したデバッグ
 
@@ -26,9 +26,13 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 
 ![エミュレーター UI](media/emulator-v4/emulator-welcome.png)
 
-ローカルで実行されているボットに接続するには、**[Open bot]\(ボットを開く\)** をクリックするか、事前構成済みファイル (.bot ファイル) を選択します。 ご自身のボットへの接続に構成ファイルは必要はありませんが、ボットに構成ファイルがある場合、エミュレーターは引き続きそのファイルで動作します。 お使いのボットが Microsoft アカウント (MSA) の資格情報で実行されている場合は、その資格情報も入力します。
+ローカルで実行されているボットに接続するには、 **[Open bot]\(ボットを開く\)** をクリックするか、事前構成済みファイル (.bot ファイル) を選択します。 ご自身のボットへの接続に構成ファイルは必要はありませんが、ボットに構成ファイルがある場合、エミュレーターは引き続きそのファイルで動作します。 お使いのボットが [Microsoft アカウント (MSA) の資格情報](#use-bot-credentials)で実行されている場合は、その資格情報も入力します。
 
 ![エミュレーター UI](media/emulator-v4/emulator-open-bot.png)
+
+### <a name="use-bot-credentials"></a>ボットの資格情報を使用
+
+ボットを開いたときに、ボットが資格情報を使用して実行されている場合は、**Microsoft アプリ ID** および **Microsoft アプリ パスワード**を設定します。 Azure Bot Service でボットを作成した場合、資格情報はそのボットの App Service ( **[設定] -> [構成]** セクションの下) で使用できます。 値がわからない場合は、ローカルで実行されているボットの構成ファイルからそれを削除してから、ボットをエミュレーターで実行できます。 ボットがこれらの設定で実行されていない場合は、その設定でエミュレーターを実行する必要もありません。 
 
 ## <a name="view-detailed-message-activity-with-the-inspector"></a>インスペクターを利用してメッセージ アクティビティの詳細を表示する
 
@@ -38,11 +42,11 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 
 ## <a name="save-and-load-conversations-with-bot-transcripts"></a>ボット トランスクリプトと共に会話を保存し、読み込む
 
-エミュレーターのアクティビティはトランスクリプトとして保存できます。 開いているライブ チャット ウィンドウで、**[Save Transcript As]\(トランスクリプトを名前を付けて保存\)** を選択してトランスクリプト ファイルを保存します。 **[やり直す]** ボタンを使用し、いつでも会話を消去し、ボットへの接続を再起動できます。  
+エミュレーターのアクティビティはトランスクリプトとして保存できます。 開いているライブ チャット ウィンドウで、 **[Save Transcript As]\(トランスクリプトを名前を付けて保存\)** を選択してトランスクリプト ファイルを保存します。 **[やり直す]** ボタンを使用し、いつでも会話を消去し、ボットへの接続を再起動できます。  
 
 ![エミュレーターでトランスクリプトを保存する](media/emulator-v4/emulator-save-transcript.png)
 
-トランスクリプトを読み込むには、**[ファイル] > [Open Transcript File]\(トランスクリプト ファイルを開く\)** の順に選択し、トランスクリプトを選択します。 新しいトランスクリプト ウィンドウが開き、出力ウィンドウにメッセージ アクティビティが表示されます。 
+トランスクリプトを読み込むには、 **[ファイル] > [Open Transcript File]\(トランスクリプト ファイルを開く\)** の順に選択し、トランスクリプトを選択します。 新しいトランスクリプト ウィンドウが開き、出力ウィンドウにメッセージ アクティビティが表示されます。 
 
 ![エミュレーターでトランスクリプトを読み込む](media/emulator-v4/emulator-load-transcript.png)
 
@@ -50,7 +54,7 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 
 エミュレーターからボットに直接 LUIS アプリ、QnA ナレッジベース、ディスパッチ モデルを簡単に追加できます。 ボットが読み込まれたら、エミュレーター ウィンドウの左端にあるサービス ボタンを選択します。 **[サービス]** メニューの下に LUIS、QnA Maker、ディスパッチ を追加するためのオプションが表示されます。 
 
-サービス アプリを追加するには、**+** ボタンをクリックして、追加するサービスを選択します。 Azure portal にサインインしてボット ファイルにサービスを追加し、そのサービスをボット アプリケーションに接続するよう求められます。 
+サービス アプリを追加するには、 **+** ボタンをクリックして、追加するサービスを選択します。 Azure portal にサインインしてボット ファイルにサービスを追加し、そのサービスをボット アプリケーションに接続するよう求められます。 
 
 > [!IMPORTANT]
 > サービスの追加は、`.bot` 構成ファイルを使用している場合にのみ機能します。 サービスは個別に追加する必要があります。 詳細については、「[ボット リソースの管理](v4sdk/bot-file-basics.md)」または追加しようとしているサービスに関する個別のハウツー記事をご覧ください。
@@ -118,7 +122,7 @@ Emulator による使用状況データの収集を許可する必要がなく�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-Bot Framework Emulator はオープン ソースです。 開発に[貢献][EmulatorGithubContribute]したり、[バグや提案を送信][EmulatorGithubBugs]したりできます。
+Bot Framework Emulator はオープン ソースです。 [投稿][EmulatorGithubContribute] to the development and [submit bugs and suggestions][EmulatorGithubBugs]できます。
 
 トラブルシューティングについては、[一般的な問題のトラブルシューティング](bot-service-troubleshoot-bot-configuration.md)に関する記事、およびそのセクションに示されているトラブルシューティングに関するその他の記事をご覧ください。
 

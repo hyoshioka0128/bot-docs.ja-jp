@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f93ab91281cf0f19be10898436dc41a6a1583c9a
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 94c0e7dd55e36c88066662ec7c9f3be1ce2dfd06
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032978"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405600"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
 
@@ -22,7 +22,7 @@ ms.locfileid: "65032978"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-text-to-speech.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-text-to-speech.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-text-to-speech.md)
 > - [REST](../rest-api/bot-framework-rest-connector-text-to-speech.md)
 
 Cortana などの音声対応チャネルのボットを作成している場合は、ボットが読み上げるテキストを指定するメッセージを構成できます。 また、[入力ヒント](bot-builder-dotnet-add-input-hints.md)を指定して、ボットがユーザー入力を受け入れるか、期待するか、無視するかを示し、クライアントのマイクの状態に影響を与えることを試すこともできます。
@@ -51,7 +51,7 @@ Bot Framework SDK for .NET を使用すると、音声対応チャネルでボ�
 
 ## <a id="ssml"></a> 音声合成マークアップ言語 (SSML)
 
-ボットが読み上げるテキストを指定するには、それに音声合成マークアップ言語 (SSML) として書式設定された文字列を設定します。 SSML は、声、速さ、音量、発音、ピッチなどのボットの音声のさまざまな特性を制御できる XML ベースのマークアップ言語です (したがって、有効な XML である必要があります)。 SSML の詳細については、「<a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language Reference (音声合成マークアップ言語リファレンス)</a>」を参照してください。
+ボットが読み上げるテキストを指定するには、それに音声合成マークアップ言語 (SSML) として書式設定された文字列を設定します。 SSML は、声、速さ、音量、発音、ピッチなどのボットの音声のさまざまな特性を制御できる XML ベースのマークアップ言語です (したがって、有効な XML である必要があります)。 SSML の詳細については、「<a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language Reference (音声合成マークアップ言語リファレンス)</a>」を参照してください。
 
 SSML 形式の文字列を指定する場合、外側 SSML ラッパー要素は省略できます。
 
@@ -67,9 +67,9 @@ Bot Framework SDK for .NET を使用して音声対応ボットを作成する�
 
 - [メッセージの作成](bot-builder-dotnet-create-messages.md)
 - [メッセージへの入力ヒントの追加](bot-builder-dotnet-add-input-hints.md)
-- <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">音声合成マークアップ言語 (SSML)</a>
+- <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">音声合成マークアップ言語 (SSML)</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-RollerSkill" target="_blank">ローラー スキルのサンプル (GitHub)</a>
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
 - <a href="/dotnet/api/microsoft.bot.connector.imessageactivity" target="_blank">IMessageActivity インターフェイス</a>
 - <a href="/dotnet/api/microsoft.bot.builder.dialogs.internals.dialogcontext" target="_blank">DialogContext クラス</a>
 - <a href="/dotnet/api/microsoft.bot.builder.dialogs.internals.prompt-2" target="_blank">Prompt クラス</a>

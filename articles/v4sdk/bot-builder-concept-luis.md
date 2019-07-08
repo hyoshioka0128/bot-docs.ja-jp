@@ -11,12 +11,12 @@ ms.subservice: cognitive-services
 ms.date: 09/19/2018
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bb280f3c43348a1293345bc698e83608694946b1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 0c0918b0ac0a10927bd8d7c52283e74b4fd480bf
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000319"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404642"
 ---
 # <a name="language-understanding"></a>Language Understanding
 
@@ -33,7 +33,7 @@ ms.locfileid: "50000319"
 
 ## <a name="recognize-intent"></a>意図を認識する
 
-[LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/home) は、ボットが適切に応答できるように、ユーザーの発言内容からその**意図** (したいこと) を判断することに役立ちます。 特に、ユーザーがボットに話しかけたことが、予測可能な構造または特定のパターンに従っていない場合に、LUIS は役立ちます。 ボットにユーザーが話しかけたり応答を入力したりする会話型ユーザー インターフェイスがある場合は、*発話* (ユーザーからの音声またはテキストの入力) のバリエーションは無限にあります。
+[LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/home) は、ボットが適切に応答できるように、ユーザーの発言内容からその**意図** (したいこと) を判断することに役立ちます。 特に、ユーザーがボットに話しかけたことが、予測可能な構造または特定のパターンに従っていない場合に、LUIS は役立ちます。 ボットにユーザーが話しかけたり応答を入力したりする会話型ユーザー インターフェイスがある場合は、*発話* (ユーザーからの音声またはテキストの入力) のバリエーションは無限にあります。
 
 たとえば、旅行ボットのユーザーがフライトの予約を依頼する場合に、多くの言い方があることを考えてみてください。
 
@@ -51,9 +51,9 @@ ms.locfileid: "50000319"
 
 開発時間を節約するため、LUIS には、ボットの一般的なカテゴリの一般的な発話を認識する事前トレーニング済みの言語モデルが用意されています。 
 
-**事前作成済みのドメイン**は、予定、リマインダー、管理、フィットネス、エンターテインメント、通信、予約などの一般的なシナリオで、組み合わせてうまく機能する、事前トレーニング済みのすぐに使用できる意図とエンティティのコレクションです。 **ユーティリティ**事前作成済みドメインは、ボットがキャンセル、確認、ヘルプ、繰り返し、停止などの一般的なタスクを処理するのに役立ちます。 LUIS が提供している[事前作成済みのドメイン](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-how-to-use-prebuilt-domains)をご覧ください。
+**事前作成済みのドメイン**は、予定、リマインダー、管理、フィットネス、エンターテインメント、通信、予約などの一般的なシナリオで、組み合わせてうまく機能する、事前トレーニング済みのすぐに使用できる意図とエンティティのコレクションです。 **ユーティリティ**事前作成済みドメインは、ボットがキャンセル、確認、ヘルプ、繰り返し、停止などの一般的なタスクを処理するのに役立ちます。 LUIS が提供している[事前作成済みのドメイン](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-use-prebuilt-domains)をご覧ください。
 
-**事前作成済みエンティティ**は、ボットが日付、時刻、数値、温度、通貨、地理、年齢などの一般的な情報の種類を認識するのに役立ちます。 LUIS が認識できる型の背景情報については、[事前作成済みエンティティの使用](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/pre-builtentities)に関するページを参照してください。
+**事前作成済みエンティティ**は、ボットが日付、時刻、数値、温度、通貨、地理、年齢などの一般的な情報の種類を認識するのに役立ちます。 LUIS が認識できる型の背景情報については、[事前作成済みエンティティの使用](https://docs.microsoft.com/azure/cognitive-services/LUIS/pre-builtentities)に関するページを参照してください。
 
 ## <a name="how-your-bot-gets-messages-from-luis"></a>ボットが LUIS からメッセージを受け取るしくみ
 
@@ -61,7 +61,7 @@ LUIS の設定と接続が完了すると、ボットから LUIS アプリにメ
 
 ![意図とエンティティがボットに渡されるしくみ](./media/cognitive-services-add-bot-language/cognitive-services-luis-message-flow-bot-code.png)
 
-ボットで LUIS アプリの使用を開始するには、[Language Understanding での LUIS の使用](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0)に関するページを参照してください。
+ボットで LUIS アプリの使用を開始するには、[Language Understanding での LUIS の使用](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0)に関するページを参照してください。
 
 ## <a name="best-practices-for-language-understanding"></a>Language Understanding のベスト プラクティス
 
@@ -100,7 +100,7 @@ LUIS アプリでは、ユーザーから送信されたメッセージを確認
 
 ## <a name="use-luis-to-improve-speech-recognition"></a>LUIS を使用して音声認識を向上させる
 
-ユーザーが話しかけるボットの場合、LUIS と統合することで、音声をテキストに変換するときに誤解される可能性がある単語をボットが識別するのに役立ちます。  たとえば、チェスのシナリオで、ユーザーが "Move knight to A 7 (ナイトを A 7 に移動)" と言ったとします。 そのユーザーの意図に対するコンテキストがなければ、その発話は "Move night 287 (ナイトを 287 に移動)" と認識される可能性があります。 チェスの駒と座標を表すエンティティを作成し、それらを発話でラベル付けすることで、それらを識別するための音声認識のコンテキストを提供します。 Bing Speech と統合されている Bot Framework チャネル (Web チャット、Bot Framework エミュレーター、Cortana など) を使用して、[音声認識の準備を有効](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-speech-priming?view=azure-bot-service-4.0)にすることができます。  
+ユーザーが話しかけるボットの場合、LUIS と統合することで、音声をテキストに変換するときに誤解される可能性がある単語をボットが識別するのに役立ちます。  たとえば、チェスのシナリオで、ユーザーが次のように言ったとします: "Move knight to A 7 (ナイトを A 7 に移動)"。 そのユーザーの意図に対するコンテキストがなければ、その発話は次のように認識される可能性があります: "Move night 287 (ナイトを 287 に移動)"。 チェスの駒と座標を表すエンティティを作成し、それらを発話でラベル付けすることで、それらを識別するための音声認識のコンテキストを提供します。 Bing Speech と統合されている Bot Framework チャネル (Web チャット、Bot Framework エミュレーター、Cortana など) を使用して、[音声認識の準備を有効](https://docs.microsoft.com/azure/bot-service/bot-service-manage-speech-priming?view=azure-bot-service-4.0)にすることができます。  
 
 ## <a name="additional-resources"></a>その他のリソース
-詳細については、[Cognitive Services](https://docs.microsoft.com/en-us/azure/cognitive-services/) のドキュメントを参照してください。
+詳細については、[Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) のドキュメントを参照してください。

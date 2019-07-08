@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 966e1b6e884486ddc3d57bea0a52ee07ac982346
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 73a675c6e54d676f74dad2df24b3668d5e4e98be
+ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214322"
+ms.lasthandoff: 06/19/2019
+ms.locfileid: "67252379"
 ---
 ## <a name="use-direct-line-speech-in-your-bot"></a>ボットで Direct Line Speech を使用する 
 
@@ -74,7 +74,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-7. 引き続き Startup.cs で、ConfigureServices メソッドの下部に移動します。 app.UseMvc(); 呼び出しの前で、app.UseWebSockets(); を呼び出して (Use 呼び出しの順序は重要なので、これは重要です)、追加します。 メソッドが完了すると、以下のような内容になっているはずです。
+7. 引き続き Startup.cs で、Configure メソッドの下部に移動します。 app.UseMvc(); 呼び出しの前で、app.UseWebSockets(); を呼び出して (Use 呼び出しの順序は重要なので、これは重要です)、追加します。 メソッドが完了すると、以下のような内容になっているはずです。
 
 ```cs
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)

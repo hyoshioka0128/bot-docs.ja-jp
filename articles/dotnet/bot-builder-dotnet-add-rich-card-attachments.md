@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5a6fc63005797a1c645de7506a8f15df2dcd0557
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 51bdc5e52bd147747e9d068fc4721ca4b782ef27
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317677"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464507"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
 
@@ -22,10 +22,12 @@ ms.locfileid: "54317677"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-rich-card-attachments.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-send-rich-cards.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-send-rich-cards.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-rich-cards.md)
 
-ユーザーとボットの間のメッセージ交換には、リストまたはカルーセルとしてレンダリングされる 1 つまたは複数のリッチ カードを含めることができます。 <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> オブジェクトの `Attachments` プロパティには、メッセージ内のリッチ カードやメディア添付ファイルを表す <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment</a> オブジェクトの配列が格納されます。 
+ユーザーとボットの間のメッセージ交換には、リストまたはカルーセルとしてレンダリングされる 1 つまたは複数のリッチ カードを含めることができます。 
+
+<a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> オブジェクトの `Attachments` プロパティには、メッセージ内のリッチ カードやメディア添付ファイルを表す <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment</a> オブジェクトの配列が格納されます。 
 
 > [!NOTE]
 > メッセージにメディア添付ファイルを追加する方法については、「[Add media attachments to messages](bot-builder-dotnet-add-media-attachments.md)」 (メッセージにメディア添付ファイルを追加する) を参照してください。
@@ -37,13 +39,13 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 | カードの種類 | 説明 |
 |----|----|
 | <a href="/adaptive-cards/get-started/bots">アダプティブ カード</a> | テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。 [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。  |
-| [アニメーション カード][animationCard] | アニメーション Gif または短い動画を再生できるカード。 |
+| [アニメーション カード][animationCard] | アニメーション GIF または短い動画を再生できるカード。 |
 | [オーディオ カード][audioCard] | オーディオ ファイルを再生できるカード。 |
-| [ヒーロー カード][heroCard] | 通常 1 つの大きな画像、1 つ以上のボタン、およびテキストが含まれるカード。 |
-| [サムネイル カード][thumbnailCard] | 通常 1 つのサムネイル画像、1 つ以上のボタン、およびテキストが含まれるカード。 |
-| [領収書カード][receiptCard] | ボットが領収書をユーザーに提供できるようにするカード。 通常は、受信確認に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。 |
-| [サインイン カード][signinCard] | ボットでユーザーのサインインを要求できるようにするカード。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つまたは複数のボタンが含まれます。 |
-| [動画カード][videoCard] | ビデオを再生できるカード。 |
+| [ヒーロー カード][heroCard] | 通常 1 つの大きなイメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
+| [サムネイル カード][thumbnailCard] | 通常 1 つのサムネイル イメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
+| [領収書カード][receiptCard] | ボットからユーザーに領収書を提供できるようにするカード。 通常は、領収書に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。 |
+| [サインイン カード][signinCard] | ボットでユーザーのサインインを要求できるようにするカード。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つ以上のボタンが含まれます。 |
+| [ビデオ カード][videoCard] | 動画を再生できるカード。 |
 
 > [!TIP]
 > 複数のリッチ カードをリスト形式で表示するには、アクティビティの `AttachmentLayout` プロパティを "list" に設定します。 複数のリッチ カードをカルーセル形式で表示するには、アクティビティの `AttachmentLayout` プロパティを "carousel" に設定します。 カルーセル形式がチャネルでサポートされていない場合、`AttachmentLayout` プロパティに "carousel" が指定されていたとしても、リッチ カードはリスト形式で表示されます。
@@ -52,12 +54,12 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 リッチ カード内のイベントを処理するには、`CardAction` オブジェクトを定義して、ユーザーがボタンをクリックするか、またはカードのセクションをタップしたときのアクションを指定します。 各 `CardAction` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | type | 説明 | 
+| プロパティ | Type | 説明 | 
 |----|----|----|
-| type | 文字列 | アクションの種類 (下の表に示されている値のいずれか) |
-| タイトル | 文字列 | ボタンのタイトル |
-| イメージ | 文字列 | ボタン用のイメージ URL |
-| 値 | 文字列 | 指定された種類のアクションを実行するために必要な値 |
+| Type | string | アクションの種類 (下の表に示されている値のいずれか) |
+| タイトル | string | ボタンのタイトル |
+| Image | string | ボタン用のイメージ URL |
+| 値 | string | 指定された種類のアクションを実行するために必要な値 |
 
 > [!NOTE]
 > アダプティブ カード内のボタンは、`CardAction` オブジェクトではなく、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>によって定義されているスキーマを使用して作成されます。 アダプティブ カードにボタンを追加する方法の例については、「[Add an Adaptive Card to a message](#adaptive-card)」(メッセージにアダプティブ カードを追加する) を参照してください。
@@ -129,8 +131,8 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 - [アクティビティの概要](bot-builder-dotnet-activities.md)
 - [メッセージの作成](bot-builder-dotnet-create-messages.md)
 - [メッセージへのメディア添付ファイルの追加](bot-builder-dotnet-add-media-attachments.md)
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
-- <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment クラス</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
+- <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment クラス</a>
 
 [animationCard]: /dotnet/api/microsoft.bot.connector.animationcard
 

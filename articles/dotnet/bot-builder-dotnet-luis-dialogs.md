@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 26b23c9beda872b71defd779563531328b63a0c8
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: ebbaa7473ec44ef9369df25a41873583abc28034
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225377"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405663"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>LUIS を使用して意図とエンティティを認識する 
 
@@ -24,7 +24,7 @@ ms.locfileid: "54225377"
 
 ## <a name="create-a-language-understanding-bot-with-bot-service"></a>Bot Service での Language Understanding ボットの作成
 
-1. [Azure Portal](https://portal.azure.com) のメニュー ブレードで、**[新しいリソースの作成]** を選択し、**[すべて表示]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) のメニュー ブレードで、 **[新しいリソースの作成]** を選択し、 **[すべて表示]** をクリックします。
 
     ![新しいリソースの作成](../media/bot-builder-dotnet-use-luis/bot-service-creation.png)
 
@@ -32,9 +32,9 @@ ms.locfileid: "54225377"
 
     ![新しいリソースの作成](../media/bot-builder-dotnet-use-luis/bot-service-selection.png)
 
-3. **[ボット サービス]** ブレードで、必要な情報を指定し、**[作成]** をクリックします。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 
+3. **[ボット サービス]** ブレードで、必要な情報を指定し、 **[作成]** をクリックします。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 
    * **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。 この名前は、ボットに関連付けられる LUIS アプリの名前としても使用されます。 後で、ボットに関連付けられた LUIS アプリを探すために使用できるよう、名前をコピーしておきます。
-   * サブスクリプション、[リソース グループ](/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/en-us/regions/)を選択します。
+   * サブスクリプション、[リソース グループ](/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
    * **[ボット テンプレート]** フィールドで **Language Understanding (C#)** テンプレートを選択します。
 
      ![[ボット サービス] ブレード](../media/bot-builder-dotnet-use-luis/bot-service-setting-callout-template.png)
@@ -42,14 +42,14 @@ ms.locfileid: "54225377"
    * チェック ボックスをオンにしてサービス利用規約に同意します。
 
 4. ボット サービスがデプロイされたことを確認します。
-    * [通知] (Azure portal の上端にあるベル アイコン) をクリックします。 通知が、**[デプロイが開始されました]** から **[デプロイメントに成功しました]** に変わります。
+    * [通知] (Azure portal の上端にあるベル アイコン) をクリックします。 通知が、 **[デプロイが開始されました]** から **[デプロイメントに成功しました]** に変わります。
     * 通知が **[デプロイメントに成功しました]** に変わったら、その通知で **[リソースに移動]** をクリックします。
 
 ## <a name="try-the-bot"></a>ボットを試す
 
-ボットがデプロイされたことを確認するには、**[通知]** をオンにします。 通知が、**[デプロイは進行中です...]** から **[デプロイメントに成功しました]** に変わります。 **[リソースに移動]** ボタンをクリックして、ボットのリソース ブレードを開きます。
+ボットがデプロイされたことを確認するには、 **[通知]** をオンにします。 通知が、 **[デプロイは進行中です...]** から **[デプロイメントに成功しました]** に変わります。 **[リソースに移動]** ボタンをクリックして、ボットのリソース ブレードを開きます。
 
-ボットが登録されたら、**[Test in Web Chat]\(Web チャットでのテスト\)** をクリックして、Web チャット ウィンドウを開きます。 Web チャットに「hello」と入力します。
+ボットが登録されたら、 **[Test in Web Chat]\(Web チャットでのテスト\)** をクリックして、Web チャット ウィンドウを開きます。 Web チャットに「hello」と入力します。
 
   ![Web チャットでのボットのテスト](../media/bot-builder-dotnet-use-luis/bot-service-web-chat.png)
 
@@ -85,11 +85,11 @@ LUIS アプリは次の 4 つの意図で始まります:Cancel、Greeting、Hel
      ![LUIS アプリに表示される意図](../media/bot-builder-dotnet-use-luis/luis-intent-list.png)
 
 3. 右上の **[トレーニング]** ボタンをクリックして、ご利用のアプリをトレーニングします。
-4. 上部のナビゲーション バーの **[PUBLISH]\(発行\)** をクリックして、**[発行]** ページを開きます。 **[Publish to production slot]\(運用スロットに発行\)** ボタンをクリックします。 発行に成功した後、**[Publish App]\(アプリの発行\)** ページの **[エンドポイント]** 列に表示されている URL を、リソース名 Starter_Key で始まる行にコピーします。 後からボットのコードで使用するために、この URL を保存しておきます。 URL の形式は次の例のようになります。`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=`
+4. 上部のナビゲーション バーの **[PUBLISH]\(発行\)** をクリックして、 **[発行]** ページを開きます。 **[Publish to production slot]\(運用スロットに発行\)** ボタンをクリックします。 発行に成功した後、 **[Publish App]\(アプリの発行\)** ページの **[エンドポイント]** 列に表示されている URL を、リソース名 Starter_Key で始まる行にコピーします。 後からボットのコードで使用するために、この URL を保存しておきます。 URL の形式は次の例のようになります。`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=`
 
 ## <a name="modify-the-bot-code"></a>ボット コードの変更
 
-**[Build]\(ビルド\)**、**[Open online code editor]\(オンライン コード エディターを開く\)** の順にクリックします。
+**[Build]\(ビルド\)** 、 **[Open online code editor]\(オンライン コード エディターを開く\)** の順にクリックします。
     ![オンライン コード エディターを開く](../media/bot-builder-dotnet-use-luis/bot-service-build.png)
 
 コード エディターで、`BasicLuisDialog.cs` を開きます。 これには、LUIS アプリから意図を処理するための次のコードが含まれています。
@@ -359,13 +359,13 @@ Note.Create 意図を処理するには、次のコードを `BasicLuisDialog` �
 ```
 
 ## <a name="build-the-bot"></a>ボットのビルド
-コード エディターで **build.cmd** を右クリックし、**[Run from Console]\(コンソールから実行\)** を選択します。
+コード エディターで **build.cmd** を右クリックし、 **[Run from Console]\(コンソールから実行\)** を選択します。
 
    ![build.cmd の実行](../media/bot-builder-dotnet-use-luis/bot-service-run-console.png)
 
 ## <a name="test-the-bot"></a>ボットのテスト
 
-Azure Portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** をクリックしてボットをテストします。 「Create a note」、「read my notes」、「delete notes」のようなメッセージを入力してみます。
+Azure Portal で、 **[Test in Web Chat]\(Web チャットでのテスト\)** をクリックしてボットをテストします。 「Create a note」、「read my notes」、「delete notes」のようなメッセージを入力してみます。
    ![Web チャットでメモ ボットをテストする](../media/bot-builder-dotnet-use-luis/bot-service-test-notebot.png)
 
 > [!TIP]

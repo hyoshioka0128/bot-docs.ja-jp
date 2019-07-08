@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: afb27ad20ec8585c2ca30810a9be6858adc17187
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: cc49cab1a3c82b3f0af2a4d8ebf261415c137e36
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693518"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405972"
 ---
 # <a name="deploy-your-bot"></a>ボットをデプロイする
 
@@ -26,7 +26,8 @@ ms.locfileid: "66693518"
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプションをお持ちでない場合は、始める前に[アカウント](https://azure.microsoft.com/free/)を作成してください。
 - ローカル コンピューター上で開発した CSharp、JavaScript、または TypeScript ボット。
-- 最新バージョンの [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest)。
+- 最新バージョンの [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
+- [Azure cli および ARM テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使い慣れていること。
 
 ## <a name="1-prepare-for-deployment"></a>1.デプロイの準備をする
 Visual Studio または Yeoman テンプレートを使用してボットを作成する場合、生成されたソース コードには `deploymentTemplates` フォルダーと ARM テンプレートが含まれています。 ここで説明するデプロイ プロセスでは、ARM テンプレートを使用して、Azure CLI を使ってボットに必要なリソースを Azure でプロビジョニングします。 
@@ -81,7 +82,7 @@ az deployment create --name "<name-of-deployment>" --template-file "template-wit
 
 | オプション   | 説明 |
 |:---------|:------------|
-| name | デプロイのフレンドリ名。 |
+| 名前 | デプロイのフレンドリ名。 |
 | template-file | ARM テンプレートへのパス。 プロジェクトの `deploymentTemplates` フォルダーで指定された `template-with-new-rg.json` ファイルを使用できます。 |
 | location |場所。 値のソース: `az account list-locations` `az configure --defaults location=<location>` を使用して、既定の場所を構成できます。 |
 | parameters | デプロイ パラメーターの値を提供します。 `az ad app create` コマンドを実行して取得した `appId` 値。 `appSecret` は、前の手順で指定したパスワードです。 `botId` パラメーターはグローバルに一意である必要があり、不変のボット ID として使用されます。 これは、変更可能なボットの表示名を構成するときにも使用されます。 `botSku` は価格レベルです。F0 (無料) または S1 (Standard) を指定できます。 `newAppServicePlanName` は App Service プランの名前です。 `newWebAppName` は、作成する Web アプリの名前です。 `groupName` は、作成する Azure リソース グループの名前です。 `groupLocation` は、Azure リソース グループの場所です。 `newAppServicePlanLocation` は、App Service プランの場所です。 |
@@ -112,7 +113,7 @@ az group deployment create --name "<name-of-deployment>" --resource-group "<name
 
 | オプション   | 説明 |
 |:---------|:------------|
-| name | デプロイのフレンドリ名。 |
+| 名前 | デプロイのフレンドリ名。 |
 | resource-group | Azure リソース グループの名前 |
 | template-file | ARM テンプレートへのパス。 プロジェクトの `deploymentTemplates` フォルダーで指定された `template-with-preexisting-rg.json` ファイルを使用できます。 |
 | location |場所。 値のソース: `az account list-locations` `az configure --defaults location=<location>` を使用して、既定の場所を構成できます。 |
@@ -173,7 +174,7 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 | オプション   | 説明 |
 |:---------|:------------|
 | resource-group | Azure で前に作成したリソース グループの名前。 |
-| name | 前に使用した Web アプリの名前。 |
+| 名前 | 前に使用した Web アプリの名前。 |
 | src  | 作成した zip ファイルへのパス。 |
 
 ## <a name="3-test-in-web-chat"></a>手順 3.Web チャットでのテスト
@@ -182,7 +183,7 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 - デプロイが成功したら、数秒待ちます。必要に応じて、Web アプリを再起動してキャッシュをクリアします。 Web App Bot ブレードに戻り、Azure portal で提供されている Web チャットを使用してテストします。
 
 ## <a name="additional-information"></a>追加情報
-ボットを Azure にデプロイするには、使用するサービスの料金を支払う必要があります。 [課金とコスト管理](https://docs.microsoft.com/en-us/azure/billing/)に関する記事で、Azure の課金の確認、使用量とコストの監視、アカウントとサブスクリプションの管理の方法について説明されています。
+ボットを Azure にデプロイするには、使用するサービスの料金を支払う必要があります。 [課金とコスト管理](https://docs.microsoft.com/azure/billing/)に関する記事で、Azure の課金の確認、使用量とコストの監視、アカウントとサブスクリプションの管理の方法について説明されています。
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]

@@ -6,14 +6,14 @@ author: v-ducvo
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/01/18
+ms.date: 05/01/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: acf4f73ea83646878e08d14e036d0d2d66686756
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 7d07317afb6d89c2d22d6f4983f7b21c3a1a053c
+ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224957"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496673"
 ---
 # <a name="test-a-cortana-skill"></a>Cortana スキルのテスト
 
@@ -46,7 +46,7 @@ Cortana をチャネルとして追加するには、「[Connect a bot to Cortan
 
 ## <a name="test-using-web-chat-control"></a>Web チャット コントロールを使用したテスト
 
-ボット サービスで統合 Web チャット コントロールを使用してボットをテストするには、**[Web チャットでのテスト]** をクリックし、ボットが動作していることを確認するためのメッセージを入力します。
+ボット サービスで統合 Web チャット コントロールを使用してボットをテストするには、 **[Web チャットでのテスト]** をクリックし、ボットが動作していることを確認するためのメッセージを入力します。
 
 ## <a name="test-using-emulator"></a>エミュレーターを使用したテスト
 
@@ -60,7 +60,7 @@ Cortana をチャネルとして追加するには、「[Connect a bot to Cortan
 ## <a name="test-using-cortana"></a>Cortana を使用したテスト
 Cortana に、呼び出しフレーズを話しかけることで、Cortana スキルを呼び出すことができます。 
 1. Cortana を開きます。
-2. Cortana 内で Notebook を開き、**[自己紹介]** をクリックして、Cortana にどのアカウントを使用しているかを確認します。 ボットを登録するときに使用したのと同じ Microsoft アカウントでサインインしていることを確認します。 
+2. Cortana 内で Notebook を開き、 **[自己紹介]** をクリックして、Cortana にどのアカウントを使用しているかを確認します。 ボットを登録するときに使用したのと同じ Microsoft アカウントでサインインしていることを確認します。 
    ![Cortana のノートブックにサインインする](~/media/cortana/cortana-notebook.png)
 2. Cortana アプリまたは Windows の [Ask me anything]\(何でも聞いて\) 検索ボックスにあるマイク ボタンをクリックし、ボットの[呼び出しフレーズ][InvocationNameGuidelines]を話しかけます。 呼び出しフレーズには "*呼び出し名*" が含まれており、これによって、呼び出すスキルが一意に識別されます。 たとえば、スキルの呼び出し名が "Northwind Photo" の場合は、適切な呼び出しフレーズには、"Northwind Photo に依頼..." または "Northwind Photo に通知…" が含まれます。
 
@@ -82,15 +82,15 @@ Cortana スキルの起動に失敗した場合は、次のことを確認して
 
 ## <a name="next-steps"></a>次の手順
 
-Cortana スキルをテストして期待どおりに動作することを確認したら、ベータ テスト担当者のグループにデプロイするか、一般に公開することができます。 詳細については、「[Publishing Cortana Skills (Cortana スキルの公開)][Cortana-Publish]」を参照してください。
+Cortana スキルをテストして期待どおりに動作することを確認したら、ベータ テスト担当者のグループにデプロイするか、一般に公開することができます。 詳細については、「[Publishing Cortana Skills][Cortana-Publish]」 (Cortana スキルの公開) を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
-* [Cortana Skills Kit][CortanaGetStarted]
+* [Cortana スキル キット][CortanaGetStarted]
 
 [CortanaGetStarted]: /cortana/getstarted
 
 [BFPortal]: https://dev.botframework.com/
-[CortanaDevCenter]: https://developer.microsoft.com/en-us/cortana
+[CortanaDevCenter]: https://developer.microsoft.com/cortana
 
 [CortanaSpecificEntities]: https://aka.ms/lgvcto
 [CortanaAuth]: https://aka.ms/vsdqcj
