@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/23/2019
+ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1f9070b0fd3b4e88eb7d752f5a73c4374bfe8415
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 77f1c154af5821b1e476546f307a01be27f568c0
+ms.sourcegitcommit: b498649da0b44f073dc5b23c9011ea2831edb31e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215524"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67587491"
 ---
 # <a name="reuse-dialogs"></a>ダイアログの再利用
 
@@ -25,8 +25,8 @@ ms.locfileid: "66215524"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [ボットの基本][concept-basics]、[ダイアログ ライブラリ][concept-dialogs]、および[会話を管理][simple-flow]する方法に関する知識。
-- マルチターン プロンプト サンプルのコピー ([**CSharp**][cs-sample] または [**JavaScript**][js-sample])。
+- [ボットの基本][concept-basics], the [dialogs library][concept-dialogs]、[会話を管理][simple-flow]する方法に関する知識。
+- [**CSharp**][cs-sample] or [**JavaScript**][js-sample] のいずれかのマルチターン プロンプト サンプルのコピー。
 
 ## <a name="about-the-sample"></a>サンプルについて
 
@@ -106,15 +106,9 @@ ms.locfileid: "66215524"
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**DialogExtensions.cs**
+**Bots\DialoBot.cs**
 
-サンプルでは、これは `Run` 拡張メソッドを使用して行われます。
-
-[!code-csharp[Run method](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/DialogExtensions.cs?range=13-24)]
-
-**Bots\DialogBot.cs**
-
-`Run` メソッドは、ボットの `OnMessageActivityAsync` メソッドから呼び出されます。
+サンプルでは、これはボットの `OnMessageActivityAsync` メソッドから呼び出される `RunAsync` メソッドを使用して行います。
 
 [!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=42-48)]
 

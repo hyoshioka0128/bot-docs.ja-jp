@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/23/2019
+ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bc11e5a4a5dec1a9588254b3a9d28d56ad163fb4
-ms.sourcegitcommit: 409e8f89a1e9bcd0e69a29a313add424f66a81e1
+ms.openlocfilehash: b7ffa16c2f0a00043b12faec1d31bbfe5bfa250f
+ms.sourcegitcommit: b498649da0b44f073dc5b23c9011ea2831edb31e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67153061"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67587474"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>ブランチとループを使用して高度な会話フローを作成する
 
@@ -27,8 +27,8 @@ ms.locfileid: "67153061"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [ボットの基本][concept-basics]、[状態の管理][concept-state]、[ダイアログ ライブラリ][concept-dialogs]、および[連続して行われる会話フローを実装][simple-dialog]する方法に関する知識。
-- 複雑なダイアログ サンプルのコピー ([**CSharp**][cs-sample] または [**JavaScript**][js-sample])。
+- [ボットの基本][concept-basics], [managing state][concept-state]、[ダイアログ ライブラリ][concept-dialogs]、[連続して行われる会話フローの実装方法][simple-dialog]に関する知識。
+- 複雑なダイアログ サンプルのコピー ([**CSharp**][cs-sample] or [**JavaScript**][js-sample])。
 
 ## <a name="about-this-sample"></a>このサンプルについて
 
@@ -186,19 +186,21 @@ review-selection ダイアログは最上位レベルのダイアログの `star
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**DialogExtensions.cs**
+<!-- **DialogExtensions.cs**
 
-このサンプルの `Run` ヘルパー メソッドの定義が完了しました。このヘルパー メソッドは、ダイアログ コンテキストの作成およびアクセスに使用します。
-コンポーネント ダイアログによって内部ダイアログ セットが定義されているため、メッセージ ハンドラー コードに表示される外部ダイアログ セットを作成し、それを使用してダイアログ コンテキストを作成する必要があります。
+In this sample, we've defined a `Run` helper method that we will use to create and access the dialog context.
+Since component dialog defines an inner dialog set, we have to create an outer dialog set that's visible to the message handler code, and use that to create a dialog context.
 
-- `dialog` は、ボットの主なコンポーネント ダイアログです。
-- `turnContext` は、ボットの現在のターン コンテキストです。
+- `dialog` is the main component dialog for the bot.
+- `turnContext` is the current turn context for the bot.
 
 [!code-csharp[Run method](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/DialogExtensions.cs?range=13-24)]
 
+-->
+
 **Bots\DialogBot.cs**
 
-メッセージ ハンドラーでは、ダイアログ管理のために `Run` ヘルパー メソッドが呼び出されます。ターンの途中に発生した可能性のある会話およびユーザー状態に対する変更を保存するために、ターン ハンドラーをオーバーライドしました。 基本 `OnTurnAsync` によって `OnMessageActivityAsync` メソッドが呼び出されます。これにより、そのターンの最後に保存呼び出しが確実に行われます。
+メッセージ ハンドラーでは、ダイアログ管理のために `RunAsync` メソッドが呼び出されます。ターンの途中に発生した可能性のある会話およびユーザー状態に対する変更を保存するために、ターン ハンドラーをオーバーライドしました。 基本 `OnTurnAsync` によって `OnMessageActivityAsync` メソッドが呼び出されます。これにより、そのターンの最後に保存呼び出しが確実に行われます。
 
 [!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogBot.cs?range=33-48&highlight=5-7)]
 
@@ -281,7 +283,7 @@ review-selection ダイアログは最上位レベルのダイアログの `star
 ダイアログ ライブラリには、プロンプト用の基本的な検証が含まれます。 カスタム検証を追加することもできます。 詳細については、[ダイアログ プロンプトを使用したユーザー入力の収集][dialog-prompts]に関するページをご覧ください。
 
 ご自身のダイアログ コードを簡素化し、複数のボットで再利用するために、ダイアログ セットの一部を別のクラスとして定義できます。
-詳細については、「[ダイアログの再利用][component-dialogs]」を参照してください。
+詳細については、[ダイアログの再利用][component-dialogs]に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

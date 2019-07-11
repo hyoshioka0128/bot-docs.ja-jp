@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/23/2019
+ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0f29520b993d12ce01c65cd29517b3a4b2aada84
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: c3c116eec8222ce50cd7dde672cc86f9765a3f97
+ms.sourcegitcommit: b498649da0b44f073dc5b23c9011ea2831edb31e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404553"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67587485"
 ---
 # <a name="implement-sequential-conversation-flow"></a>連続して行われる会話フローの実装
 
@@ -122,29 +122,13 @@ ms.locfileid: "67404553"
 
 [!code-javascript[user profile](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/userProfile.js?range=4-10)]
 
-**Dialogs\UserProfileDialog.cs**
+**dialogs\userProfileDialog.js**
 
 最後のステップで、前のウォーターフォール ステップで呼び出されたダイアログによって返された `step.result` を確認します。 戻り値が true の場合は、ユーザー プロファイル アクセサーを使用して、ユーザー プロファイルを取得し、更新します。 ユーザー プロファイルを取得するには、`get` メソッドを呼び出して、`userProfile.transport`、`userProfile.name`、`userProfile.age` の各プロパティの値を設定します。 最後に、ダイアログを終了する `endDialog` を呼び出す前に、ユーザーの情報をまとめます。 ダイアログを終了すると、そのダイアログはダイアログ スタックから取り出され、ダイアログの親に省略可能な結果が返されます。 この親は、終了したばかりのダイアログを開始したダイアログまたはメソッドです。
 
 [!code-javascript[summary step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=115-136&highlight=4-8,20-21)]
 
----
-
-## <a name="create-the-extension-method-to-run-the-waterfall-dialog"></a>拡張メソッドを作成してウォーターフォール ダイアログを実行する
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-`Run` 拡張メソッドの定義が完了しました。この拡張メソッドは、ダイアログ コンテキストの作成およびアクセスに使用します。 ここでは `accessor` はダイアログ状態プロパティの状態プロパティ アクセサーで、`dialog` はユーザー プロファイルのコンポーネント ダイアログです。 コンポーネント ダイアログによって内部ダイアログ セットが定義されているため、メッセージ ハンドラー コードに表示される外部ダイアログ セットを作成し、それを使用してダイアログ コンテキストを作成する必要があります。
-
-ダイアログ コンテキストは、`CreateContext` メソッドを呼び出すことで作成され、ボットのターン ハンドラー内からダイアログ セットと対話するために使用されます。 ダイアログ コンテキストには、現在のターン コンテキスト、親ダイアログ、およびダイアログの状態が含まれています。ダイアログの状態が、ダイアログ内の情報を保持する方法を指定します。
-
-ダイアログ コンテキストを使用すると、文字列 ID を使用してダイアログを開始したり、現在のダイアログ (複数のステップが含まれるウォーターフォール ダイアログなど) を続行したりすることができます。 ダイアログ コンテキストは、ボットのすべてのダイアログおよびウォーターフォール ステップに渡されます。
-
-**DialogExtensions.cs**
-
-[!code-csharp[Run method](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/DialogExtensions.cs?range=13-24)]
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+**拡張メソッドを作成してウォーターフォール ダイアログを実行する**
 
 `userProfileDialog` 内の `run` ヘルパー メソッドの定義が完了しました。このヘルパー メソッドは、ダイアログ コンテキストの作成およびアクセスに使用します。 ここでは `accessor` はダイアログ状態プロパティの状態プロパティ アクセサーで、`this` はユーザー プロファイルのコンポーネント ダイアログです。 コンポーネント ダイアログによって内部ダイアログ セットが定義されているため、メッセージ ハンドラー コードに表示される外部ダイアログ セットを作成し、それを使用してダイアログ コンテキストを作成する必要があります。
 
@@ -162,7 +146,7 @@ ms.locfileid: "67404553"
 
 **Bots\DialogBot.cs**
 
-`OnMessageActivityAsync` ハンドラーでは、ダイアログの開始または続行に拡張メソッドが使用されます。 `OnTurnAsync` では、ボットの状態管理オブジェクトを使用して、ストレージに対するすべての状態変更を保持します (`ActivityHandler.OnTurnAsync` メソッドでは、`OnMessageActivityAsync` など、さまざまなアクティビティ ハンドラー メソッドが呼び出されます。 この方法で、メッセージ ハンドラーの完了後、ターン自体が完了する前に、状態を保存します)。
+`OnMessageActivityAsync` ハンドラーでは、ダイアログの開始または続行に `RunAsync` メソッドが使用されます。 `OnTurnAsync` では、ボットの状態管理オブジェクトを使用して、ストレージに対するすべての状態変更を保持します (`ActivityHandler.OnTurnAsync` メソッドでは、`OnMessageActivityAsync` など、さまざまなアクティビティ ハンドラー メソッドが呼び出されます。 この方法で、メッセージ ハンドラーの完了後、ターン自体が完了する前に、状態を保存します)。
 
 [!code-csharp[overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=33-48&highlight=5-7)]
 
