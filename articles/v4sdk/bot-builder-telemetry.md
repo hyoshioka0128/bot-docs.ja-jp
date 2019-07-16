@@ -622,7 +622,7 @@ WaterfallDialog が開始されると、`WaterfallStart` イベントがログ�
 - ReplyToID
 - RecipientId
 - ConversationName
-- ロケール
+- Locale
 - RecipientName (PII では省略可能)
 - Text (PII では省略可能)
 - Speak (PII では省略可)
@@ -638,7 +638,7 @@ WaterfallDialog が開始されると、`WaterfallStart` イベントがログ�
 - RecipientId
 - ConversationId
 - ConversationName
-- ロケール
+- Locale
 - Text (PII では省略可能)
 
 
@@ -664,7 +664,7 @@ LUIS サービスの結果をログに記録します。
 - Channel ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
 - ActivityType ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
 - ApplicationId
-- 意図
+- Intent
 - IntentScore
 - Intent2 
 - IntentScore2 
