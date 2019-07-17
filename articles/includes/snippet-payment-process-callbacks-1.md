@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: f09d0a7b81e3cfa69fd42356faf27f79e3bc038c
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563681"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68230713"
 ---
 [配送先住所の更新] または [配送オプションの更新] コールバックの受信時、ボットには、クライアントからの支払い詳細の現在の状態が `Activity.Value` プロパティで提供されます。
 マーチャントは、これらのコールバックを静的として処理する必要があります。入力の支払い詳細が与えられ、何らかの出力の支払い詳細を計算しますが、クライアントによって提供された入力状態が何らかの理由で無効である場合は失敗します。 
