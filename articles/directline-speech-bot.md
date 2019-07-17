@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 05/23/2019
+ms.date: 07/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 73a675c6e54d676f74dad2df24b3668d5e4e98be
-ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
+ms.openlocfilehash: 898136303d2c5bbf6a8ce5ea5b87bff0bac0a5c7
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2019
-ms.locfileid: "67252379"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68230759"
 ---
-## <a name="use-direct-line-speech-in-your-bot"></a>ボットで Direct Line Speech を使用する 
+# <a name="use-direct-line-speech-in-your-bot"></a>ボットで Direct Line Speech を使用する 
 
 [!INCLUDE [applies-to-v4](includes/applies-to.md)]
 
@@ -29,11 +29,24 @@ Direct Line Speech プレビューについては、ご自身のボットに追�
 
 2.  ご自身のボット プロジェクトのプロパティで、[NuGet パッケージの管理] に移動します。
 
-3.  それがソースとしてまだ存在しない場合は、右上にある NuGet フィード設定から `https://botbuilder.myget.org/F/experimental/api/v3/index.json` をフィードとして追加します。
+3.  `Microsoft.Bot.Builder.StreamingExtensions` パッケージを追加します。 プレビュー パッケージを表示するには、[プレリリースを含める] をオンにする必要があります。
 
-4.  この NuGet ソースを選択し、`Microsoft.Bot.Protocol.StreamingExtensions.NetCore` パッケージのいずれかを追加します。
+4.  プロジェクトへのパッケージ追加を完了するプロンプトを受け入れます。
 
-5.  プロジェクトへのパッケージ追加を完了するプロンプトを受け入れます。
+## <a name="set-the-speak-field-on-activities-you-want-spoken-to-the-user"></a>ユーザーに対して読み上げるアクティビティの Speak フィールドを設定する
+ボットから送信される、ユーザーに対して読み上げる任意のアクティビティの Speak フィールドを設定する必要があります。 
+
+```cs
+public IActivity Speak(string message)
+{
+    var activity = MessageFactory.Text(message);
+    string body = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
+        <voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)'>" +
+        $"{message}" + "</voice></speak>";
+    activity.Speak = body;
+    return activity;
+}
+```
 
 ## <a name="option-1-update-your-net-core-bot-code-if-your-bot-has-a-botcontrollercs"></a>オプション 1:"_ボットに BotController.cs が含まれる場合_" に、.NET Core ボット コードを更新する
 EchoBot などのテンプレートのいずれかを使用して、Azure portal から新しいボットを作成する場合、単一の POST エンドポイントを公開する ASP.NET MVC コントローラーが含まれるボットが表示されます。 これらの手順では、エンドポイントも公開するように、これを展開する方法について説明します。これにより、GET エンドポイントである WebSocket ストリーミング エンドポイントが受け入れられます。
@@ -55,7 +68,7 @@ public async Task PostAsync()
 5.  新しい名前空間を追加します。
 
 ```cs
-using Microsoft.Bot.Protocol.StreamingExtensions.NetCore;
+using Microsoft.Bot.Builder.StreamingExtensions;
 ```
 
 6.  ConfigureServices メソッドで、AdapterWithErrorHandler の使用を、適切なservices.AddSingleton 呼び出しの WebSocketEnabledHttpAdapter に置き換えます。

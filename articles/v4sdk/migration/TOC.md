@@ -1,5 +1,6 @@
-<!--# [Migration overview](migratration-overview.md)-->
+# [移行の概要](migration-overview.md)
 # [.NET SDK v3 と v4 の違い](migration-about.md)
+# [JavaScript SDK v3 とv4 の違い](migration-about-javascript.md)
 # [.NET 移行クイック リファレンス](net-migration-quickreference.md)
 # [JavaScript 移行クイック リファレンス](javascript-migration-quickreference.md)
 # [.NET v3 ボットを .NET Framework v4 ボットに移行する](conversion-framework.md)
