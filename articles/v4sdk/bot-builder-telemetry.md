@@ -605,7 +605,7 @@ WaterfallDialog が開始されると、`WaterfallStart` イベントがログ�
   - Bot Framework プロトコルの [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) フィールドに対応します。
   - ログに記録されるプロパティ名は `fromName` です。
 
-- ロケール
+- Locale
   - Bot Framework プロトコルの [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) フィールドに対応します。
   - ログに記録されるプロパティ名は `fromName` です。
 
