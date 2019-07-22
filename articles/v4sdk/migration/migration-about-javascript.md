@@ -127,7 +127,7 @@ v3 での一般的な操作と、ウォーターフォール ダイアログ内�
 
 | Operation | v3 | v4 |
 |:---|:---|:---|
-| ダイアログの開始を処理する | `session.beginDialog` を呼び出し、ダイアログの ID で渡します | `DialogContext.beginDialog` を呼び出して |
+| ダイアログの開始を処理する | `session.beginDialog` を呼び出し、ダイアログの ID で渡します | `DialogContext.beginDialog` を呼び出します |
 | アクティビティを送信する | `session.send` を呼び出します。 | `TurnContext.sendActivity` を呼び出します。<br/>ステップ コンテキストの `Context` プロパティを使用して、ターン コンテキスト (`step.context.sendActivity`) を取得します。  |
 | ユーザーの応答を待機する | ウォーターフォール ステップ内からプロンプトを呼び出します (例: `builder.Prompts.text(session, 'Please enter your destination')`)。 次のステップで応答を取得します。 | プロンプト ダイアログを開始する `TurnContext.prompt` を待機して制御を戻します。 次に、ウォーターフォールの次のステップで結果を取得します。 |
 | ダイアログの継続を処理する | 自動 | ウォーターフォール ダイアログにステップを追加するか、`Dialog.continueDialog` を実装する |
