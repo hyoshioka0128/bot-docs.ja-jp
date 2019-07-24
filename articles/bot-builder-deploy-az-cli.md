@@ -82,7 +82,7 @@ az deployment create --name "<name-of-deployment>" --template-file "template-wit
 
 | オプション   | 説明 |
 |:---------|:------------|
-| 名前 | デプロイのフレンドリ名。 |
+| name | デプロイのフレンドリ名。 |
 | template-file | ARM テンプレートへのパス。 プロジェクトの `deploymentTemplates` フォルダーで指定された `template-with-new-rg.json` ファイルを使用できます。 |
 | location |場所。 値のソース: `az account list-locations` `az configure --defaults location=<location>` を使用して、既定の場所を構成できます。 |
 | parameters | デプロイ パラメーターの値を提供します。 `az ad app create` コマンドを実行して取得した `appId` 値。 `appSecret` は、前の手順で指定したパスワードです。 `botId` パラメーターはグローバルに一意である必要があり、不変のボット ID として使用されます。 これは、変更可能なボットの表示名を構成するときにも使用されます。 `botSku` は価格レベルです。F0 (無料) または S1 (Standard) を指定できます。 `newAppServicePlanName` は App Service プランの名前です。 `newWebAppName` は、作成する Web アプリの名前です。 `groupName` は、作成する Azure リソース グループの名前です。 `groupLocation` は、Azure リソース グループの場所です。 `newAppServicePlanLocation` は、App Service プランの場所です。 |
@@ -113,7 +113,7 @@ az group deployment create --name "<name-of-deployment>" --resource-group "<name
 
 | オプション   | 説明 |
 |:---------|:------------|
-| 名前 | デプロイのフレンドリ名。 |
+| name | デプロイのフレンドリ名。 |
 | resource-group | Azure リソース グループの名前 |
 | template-file | ARM テンプレートへのパス。 プロジェクトの `deploymentTemplates` フォルダーで指定された `template-with-preexisting-rg.json` ファイルを使用できます。 |
 | location |場所。 値のソース: `az account list-locations` `az configure --defaults location=<location>` を使用して、既定の場所を構成できます。 |
@@ -174,7 +174,7 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 | オプション   | 説明 |
 |:---------|:------------|
 | resource-group | Azure で前に作成したリソース グループの名前。 |
-| 名前 | 前に使用した Web アプリの名前。 |
+| name | 前に使用した Web アプリの名前。 |
 | src  | 作成した zip ファイルへのパス。 |
 
 ## <a name="3-test-in-web-chat"></a>手順 3.Web チャットでのテスト
