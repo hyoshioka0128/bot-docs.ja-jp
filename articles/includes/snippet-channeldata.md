@@ -351,7 +351,7 @@ Facebook 通知を作成するには、アクティビティ オブジェクト�
 
 | プロパティ | 説明 |
 |----|----|
-| 最大配信数 | Kik メッセージの配列。 Kik メッセージ形式の詳細については、<a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Kik メッセージ形式</a>に関するページをご覧ください。 |
+| messages | Kik メッセージの配列。 Kik メッセージ形式の詳細については、<a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Kik メッセージ形式</a>に関するページをご覧ください。 |
 
 このスニペットは、ネイティブ Kik メッセージ用の `channelData` プロパティの例を示しています。
 
