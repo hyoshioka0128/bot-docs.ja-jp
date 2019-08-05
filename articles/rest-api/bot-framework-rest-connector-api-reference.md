@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/25/2018
-ms.openlocfilehash: 41aceaa20613d9b6b7ac95a7837b4ae197d1dd4a
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 2600b69fff24f6d952853c7b1ed764577b4cb270
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464793"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671491"
 ---
 # <a name="api-reference"></a>API リファレンス
 
@@ -140,15 +140,15 @@ Authorization: Bearer ACCESS_TOKEN
 | [添付ファイルをチャネルにアップロードする](#upload-attachment-to-channel) | 添付ファイルをチャネルの BLOB ストレージに直接アップロードします。 |
 
 ### <a name="create-conversation"></a>会話を作成する
-新しい会話を作成します。 
+新しい会話を作成します。
 ```http 
 POST /v3/conversations
 ```
 
 | | |
 |----|----|
-| **要求本文** | [Conversation](#conversation-object) オブジェクト |
-| **戻り値** | [ConversationResourceResponse](#conversationresourceresponse-object) オブジェクト | 
+| **要求本文** | [ConversationParameters](#conversationparameters-object) オブジェクト |
+| **戻り値** | [ConversationResourceResponse](#conversationresourceresponse-object) オブジェクト |
 
 ### <a name="send-to-conversation"></a>会話に送信する
 指定された会話にアクティビティ (メッセージ) を送信します。 アクティビティは、タイムスタンプまたはチャネルのセマンティクスに従って会話の最後に追加されます。 会話内の特定のメッセージに返信するには、代わりに[アクティビティに返信する](#reply-to-activity)を使用します。
@@ -409,7 +409,6 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | [CardAction オブジェクト](#cardaction-object) | 実行するアクションを定義します。 |
 | [CardImage オブジェクト](#cardimage-object) | カードに表示する画像を定義します。 |
 | [ChannelAccount オブジェクト](#channelaccount-object) | チャネルのボットまたはユーザー アカウントを定義します。 |
-| [Conversation オブジェクト](#conversation-object) | 会話を定義します (会話内に含まれているボットとユーザーなど)。 |
 | [ConversationAccount オブジェクト](#conversationaccount-object) | チャネルでの会話を定義します。 |
 | [ConversationMembers オブジェクト](#conversationmembers-object) | 会話のメンバーを取得します。 |
 | [ConversationParameters オブジェクト](#conversationparameters-object) | 新しい会話を作成するためのパラメーターを定義します |
@@ -453,7 +452,7 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 | **code** | string | 会話が終了した理由を示すコード。 |
 | **entities** | object[] | メッセージでメンションされたエンティティを表すオブジェクトの配列。 この配列内のオブジェクトは任意の <a href="http://schema.org/" target="_blank">Schema.org</a> オブジェクトです。 たとえば、会話でメンションされた人物を識別する [Mention](#mention-object) オブジェクトや、会話でメンションされた場所を識別する [Place](#place-object) オブジェクトを配列に含めることができます。 |
 | **from** | [ChannelAccount](#channelaccount-object) | メッセージの送信者を指定する **ChannelAccount** オブジェクト。 |
-| **historyDisclosed** | Boolean | 履歴が公開されているかどうかを示すフラグ。 既定値は **false** です。 |
+| **historyDisclosed** | ブール値 | 履歴が公開されているかどうかを示すフラグ。 既定値は **false** です。 |
 | **id** | string | チャネルでのアクティビティを一意に識別する ID。 | 
 | **inputHint** | string | メッセージがクライアントに配信された後、ボットがユーザー入力を受け付けるか、期待するか、または無視するかを示す値。 次の値のいずれか: **acceptingInput**、**expectingInput**、**ignoringInput**。 |
 | **locale** | string | メッセージ内のテキストの表示に使用する言語のロケールで、`<language>-<country>` の形式。 ボットがその言語の表示文字列を指定できるよう、チャネルはこのプロパティを使用してユーザーの言語を指示します。 既定値は **en-US** です。 |
@@ -483,13 +482,13 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 | プロパティ | Type | 説明 |
 |----|----|----|
-| **autoloop** | Boolean | 最後の項目が終了したときにアニメーション GIF のリストをリプレイするかどうかを示すフラグ。 アニメーションを自動的にリプレイするには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
-| **autostart** | Boolean | カードが表示されたときにアニメーションを自動的に再生するかどうかを示すフラグ。 アニメーションを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **autoloop** | ブール値 | 最後の項目が終了したときにアニメーション GIF のリストをリプレイするかどうかを示すフラグ。 アニメーションを自動的にリプレイするには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **autostart** | ブール値 | カードが表示されたときにアニメーションを自動的に再生するかどうかを示すフラグ。 アニメーションを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **buttons** | [CardAction](#cardaction-object)[] | ユーザーが 1 つ以上のアクションを実行できるようにする **CardAction** オブジェクトの配列。 指定できるボタンの数はチャネルが決定します。 |
 | **duration** | string | メディア コンテンツの長さ ([ISO 8601 の期間の形式](https://www.iso.org/iso-8601-date-and-time-format.html))。 |
 | **画像** | [ThumbnailUrl](#thumbnailurl-object) | カードに表示する画像を指定する **ThumbnailUrl** オブジェクト。 |
 | **media** | [MediaUrl](#mediaurl-object)[] | 再生するアニメーション GIF のリストを指定する **MediaUrl** オブジェクトの配列。 |
-| **shareable** | Boolean | アニメーションを他のユーザーと共有できるかどうかを示すフラグ。 アニメーションを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **shareable** | ブール値 | アニメーションを他のユーザーと共有できるかどうかを示すフラグ。 アニメーションを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **subtitle** | string | カードのタイトルの下に表示するサブタイトル。 |
 | **text** | string | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
 | **title** | string | カードのタイトル。 |
@@ -563,12 +562,12 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 |----|----|----|
 | **aspect** | string | **image** プロパティで指定されたサムネイルの縦横比。 有効な値は **16:9** および **9:16** です。 |
 | **autoloop** | ブール値 | 最後の項目が終了したときにオーディオ ファイルのリストをリプレイするかどうかを示すフラグ。 オーディオ ファイルを自動的にリプレイするには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
-| **autostart** | Boolean | カードが表示されたときにオーディオを自動的に再生するかどうかを示すフラグ。 オーディオを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **autostart** | ブール値 | カードが表示されたときにオーディオを自動的に再生するかどうかを示すフラグ。 オーディオを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **buttons** | [CardAction](#cardaction-object)[] | ユーザーが 1 つ以上のアクションを実行できるようにする **CardAction** オブジェクトの配列。 指定できるボタンの数はチャネルが決定します。 |
 | **duration** | string | メディア コンテンツの長さ ([ISO 8601 の期間の形式](https://www.iso.org/iso-8601-date-and-time-format.html))。 |
 | **画像** | [ThumbnailUrl](#thumbnailurl-object) | カードに表示する画像を指定する **ThumbnailUrl** オブジェクト。 |
 | **media** | [MediaUrl](#mediaurl-object)[] | 再生するオーディオ ファイルのリストを指定する **MediaUrl** オブジェクトの配列。 |
-| **shareable** | Boolean | オーディオ ファイルを他のユーザーと共有できるかどうかを示すフラグ。 オーディオを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **shareable** | ブール値 | オーディオ ファイルを他のユーザーと共有できるかどうかを示すフラグ。 オーディオを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **subtitle** | string | カードのタイトルの下に表示するサブタイトル。 |
 | **text** | string | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
 | **title** | string | カードのタイトル。 |
@@ -617,22 +616,10 @@ Bot State サービスを使用して保存される特定の会話のコンテ�
 
 | プロパティ | Type | 説明 |
 |----|----|----|
-| **id** | string | チャネルのボットまたはユーザーを一意に識別する ID。 |
-| **name** | string | ボットまたはユーザーの名前。 |
-
-<a href="#objects">スキーマの表に戻る</a>
-
-<!--TODO can't find-->
-### <a name="conversation-object"></a>Conversation オブジェクト
-会話を定義します (会話内に含まれているボットとユーザーなど)。<br/><br/> 
-
-| プロパティ | Type | 説明 |
-|----|----|----|
-| **bot** | [ChannelAccount](#channelaccount-object) | ボットを識別する **ChannelAccount** オブジェクト。 |
-| **isGroup** | Boolean | これがグループ会話であるかどうかを示すフラグ。 これがグループ会話の場合は **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **false** です。 グループ会話を開始するには、チャネルがグループ会話をサポートしている必要があります。 |
-| **members** | [ChannelAccount](#channelaccount-object)[] | 会話のメンバーを識別する **ChannelAccount** オブジェクトの配列。 **isGroup** が **true** に設定されていない限り、このリストには 1 人のユーザーが含まれている必要があります。 このリストには他のボットを含めることができます。 |
-| **topicName** | string | 会話のタイトル。 |
-| **activity** | [アクティビティ](#activity-object) | [会話を作成する](#create-conversation)要求で、新しい会話に投稿する最初のメッセージを定義する **Activity** オブジェクト。 |
+| **id** | string | このチャネルのユーザーまたはボットの一意の ID。 |
+| **name** | string | ボットまたはユーザーの表示用の名前。 |
+| **aadObjectId** | string | Azure Active Directory 内のこのアカウントのオブジェクト ID。 |
+| **role** | string enum | このアカウントの背後にあるエンティティのロール。 `user` または `bot` のいずれかです。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -659,15 +646,16 @@ Bot State サービスを使用して保存される特定の会話のコンテ�
 <a href="#objects">スキーマの表に戻る</a>
 
 ### <a name="conversationparameters-object"></a>ConversationParameters オブジェクト
-新しい会話を作成するためのパラメーターを定義します。<br/><br/> 
+新しい会話を作成するためのパラメーターを定義します。<br/><br/>
 
 | プロパティ | Type | 説明 |
 |----|----|----|
 | **isGroup** | ブール値 | これがグループ会話かどうかを示します。 |
-| **bot** | [ChannelAccount](#channelaccount-object) | 会話でのボットのアドレス。 |
-| **members** | array | 会話に追加するメンバーのリスト。 |
-| **topicName** | string | 会話のトピック タイトル。 このプロパティは、チャネルがサポートしている場合にのみ使用されます。 |
-| **activity** | [アクティビティ](#activity-object) | (オプション) 新しい会話を作成するときに、このアクティビティを会話の初期メッセージとして使用します。 |
+| **bot** | [ChannelAccount](#channelaccount-object) | ボットにメッセージをルーティングするために必要なチャネル アカウント情報。 |
+| **members** | [ChannelAccount](#channelaccount-object) array | 各ユーザーにメッセージをルーティングするために必要なチャネル アカウント情報。 |
+| **topicName** | string | 会話のトピック (省略可能)。 このプロパティは、チャネルがサポートしている場合にのみ使用されます。 |
+| **tennantId** | string | 会話が作成されるテナントの ID (省略可能)。 |
+| **activity** | [アクティビティ](#activity-object) | 会話の作成時に送信される初期メッセージ (省略可能)。 |
 | **channelData** | object | 会話を作成するためのチャネル固有のペイロード。 |
 
 <a href="#objects">スキーマの表に戻る</a>
@@ -691,9 +679,9 @@ Bot State サービスを使用して保存される特定の会話のコンテ�
 
 | プロパティ | Type | 説明 |
 |----|----|----|
-| **activityId** | string | アクティビティの ID。 |
+| **activityId** | string | アクティビティの ID (送信された場合)。 |
 | **id** | string | リソースの ID。 |
-| **serviceUrl** | string | サービス エンドポイント。 |
+| **serviceUrl** | string | 会話に関する操作を実行できるサービス エンドポイント。 |
 
 <a href="#objects">スキーマの表に戻る</a>
 
@@ -945,13 +933,13 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 | プロパティ | Type | 説明 |
 |----|----|----|
 | **aspect** | string | ビデオの縦横比 (例: 16:9、4:3)。|
-| **autoloop** | Boolean | 最後の項目が終了したときにビデオのリストをリプレイするかどうかを示すフラグ。 ビデオを自動的にリプレイするには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
-| **autostart** | Boolean | カードが表示されたときにビデオを自動的に再生するかどうかを示すフラグ。 ビデオを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **autoloop** | ブール値 | 最後の項目が終了したときにビデオのリストをリプレイするかどうかを示すフラグ。 ビデオを自動的にリプレイするには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **autostart** | ブール値 | カードが表示されたときにビデオを自動的に再生するかどうかを示すフラグ。 ビデオを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **buttons** | [CardAction](#cardaction-object)[] | ユーザーが 1 つ以上のアクションを実行できるようにする **CardAction** オブジェクトの配列。 指定できるボタンの数はチャネルが決定します。 |
 | **duration** | string | メディア コンテンツの長さ ([ISO 8601 の期間の形式](https://www.iso.org/iso-8601-date-and-time-format.html))。 |
 | **画像** | [ThumbnailUrl](#thumbnailurl-object) | カードに表示する画像を指定する **ThumbnailUrl** オブジェクト。 |
 | **media** | [MediaUrl](#mediaurl-object)[] | 再生するビデオのリストを指定する **MediaUrl** オブジェクトの配列。 |
-| **shareable** | Boolean | ビデオを他のユーザーと共有できるかどうかを示すフラグ。 ビデオを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
+| **shareable** | ブール値 | ビデオを他のユーザーと共有できるかどうかを示すフラグ。 ビデオを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **subtitle** | string | カードのタイトルの下に表示するサブタイトル。 |
 | **text** | string | カードのタイトルまたはサブタイトルの下に表示する説明またはプロンプト。 |
 | **title** | string | カードのタイトル。 |

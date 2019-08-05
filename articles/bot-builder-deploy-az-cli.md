@@ -5,17 +5,17 @@ keywords: ボットのデプロイ, azure へのボットのデプロイ, ボッ
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: cc49cab1a3c82b3f0af2a4d8ebf261415c137e36
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: ed7c9d7a883a1d1807237b636bbb59d25df60e08
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405972"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671387"
 ---
 # <a name="deploy-your-bot"></a>ボットをデプロイする
 
@@ -178,9 +178,19 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 | src  | 作成した zip ファイルへのパス。 |
 
 ## <a name="3-test-in-web-chat"></a>手順 3.Web チャットでのテスト
-- Azure portal で、Web アプリ ボット ブレードに移動します。
-- **[Bot Management]\(ボットの管理\)** セクションで、 **[Test in Web Chat]\(Web チャットでのテスト\)** をクリックします。 Azure Bot Service で Web チャット コントロールを読み込み、ボットに接続します。
-- デプロイが成功したら、数秒待ちます。必要に応じて、Web アプリを再起動してキャッシュをクリアします。 Web App Bot ブレードに戻り、Azure portal で提供されている Web チャットを使用してテストします。
+
+1. ブラウザーで [Azure portal](https://ms.portal.azure.com) に移動します。
+2. 左側のパネルで **[リソース グループ]** をクリックします。
+3. 右側のパネルでグループを検索します。
+4. グループ名をクリックします。
+5. Bot Channel Registration のリンクをクリックします。
+6. *[Bot Channel Registration] ブレード*で、 **[Test in Web Chat]\(Web チャットでのテスト\)** をクリックします。
+あるいは、右側のパネルで [テスト] ボックスをクリックします。
+
+チャネル登録の詳細については、「[ボットを Bot Service に登録する](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0)」を参照してください。
+
+> [!NOTE]
+> ブレードは、選択するとサービス機能またはナビゲーション要素が表示される画面です。
 
 ## <a name="additional-information"></a>追加情報
 ボットを Azure にデプロイするには、使用するサービスの料金を支払う必要があります。 [課金とコスト管理](https://docs.microsoft.com/azure/billing/)に関する記事で、Azure の課金の確認、使用量とコストの監視、アカウントとサブスクリプションの管理の方法について説明されています。

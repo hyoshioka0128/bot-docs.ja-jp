@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d0b7b3250a62a995113bc9c7e087e2e62af0f413
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 15ad5855fef9bc20f351e196941fe81822db5451
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997069"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671517"
 ---
 # <a name="send-and-receive-messages"></a>メッセージを送受信する
 
@@ -23,7 +23,7 @@ Bot Connector サービスを使用すると、ボットで Skype、電子メー
 
 ### <a name="create-a-reply"></a>応答を作成する 
 
-ユーザーがボットにメッセージを送信すると、ボットは種類が **message** の [Activity][Activity] オブジェクトとしてメッセージを受け取ります。 ユーザーのメッセージへの応答を作成するには、新しい [Activity][Activity] オブジェクトを作成し、まず次のプロパティを設定します。
+ユーザーがボットにメッセージを送信すると、ボットは **message** 型の [Activity][Activity] オブジェクトとしてメッセージを受け取ります。 ユーザーのメッセージへの応答を作成するには、新しい [Activity][Activity] オブジェクトを作成し、まず次のプロパティを設定します。
 
 | プロパティ | 値 |
 |----|----|
@@ -46,7 +46,7 @@ Bot Connector サービスを使用すると、ボットで Skype、電子メー
 POST /v3/conversations/{conversationId}/activities/{activityId}
 ```
 
-この要求 URI の **{conversationId}** を (応答) Activity 内の `conversation` オブジェクトの `id`プロパティの値で置き換え、**{activityId}** を (応答) Activity 内の `replyToId` プロパティの値で置き換えます。 応答を表すために作成した [Activity][Activity] オブジェクトに要求の本文を設定します。
+この要求 URI の **{conversationId}** を (応答) Activity 内の `conversation` オブジェクトの `id`プロパティの値で置き換え、 **{activityId}** を (応答) Activity 内の `replyToId` プロパティの値で置き換えます。 応答を表すために作成した [Activity][Activity] オブジェクトに要求の本文を設定します。
 
 次の例は、単純なテキストのみの応答をユーザーのメッセージに送信する要求を示しています。 この要求の例で、`https://smba.trafficmanager.net/apis` はベース URI を示しています。ご利用のボットによって発行される要求に対するベース URI は、これとは異なる場合があります。 ベース URI の設定の詳細については、[API リファレンス](bot-framework-rest-connector-api-reference.md#base-uri)に関する記事をご覧ください。
 
@@ -86,9 +86,9 @@ Content-Type: application/json
 POST /v3/conversations/{conversationId}/activities
 ```
 
-この要求 URI では、**{conversationId}** を会話の ID で置き換えます。 
+この要求 URI では、 **{conversationId}** を会話の ID で置き換えます。 
     
-応答を表すために作成した [Activity][Activity] オブジェクトに要求の本文を設定します。
+応答を表すために作成する [Activity][Activity] オブジェクトに要求の本文を設定します。
 
 > [!NOTE]
 > Bot Framework では、ボットで送信できるメッセージ数の制限を指定していません。 しかし、ほとんどのチャネルでは、ボットが短時間で多数のメッセージを送信しないように、調整制限を強制します。 さらに、ボットで立て続けに複数のメッセージを送信する場合は、チャネルでは適切な順序でメッセージがレンダリングされない可能性があります。
@@ -106,10 +106,10 @@ POST /v3/conversations/{conversationId}/activities
 POST /v3/conversations
 ```
 
-ボットのアカウント情報と、会話に含めるユーザーのアカウント情報を指定する [Conversation][Conversation] オブジェクトに、要求の本文を設定します。
+ボットのアカウント情報と、会話に含めるユーザーのアカウント情報を指定する [ConversationParameters][] オブジェクトに、要求の本文を設定します。
 
 > [!NOTE]
-> すべてのチャネルが、グループの会話をサポートするわけではありません。 チャネルがグループの会話をサポートしているかどうかを判断し、チャネルが会話で許可している参加者の最大数を特定するには、チャネルのドキュメントを参照してください。
+> すべてのチャネルが、グループ会話をサポートするわけではありません。 チャネルがグループの会話をサポートしているかどうかを判断し、チャネルが会話で許可している参加者の最大数を特定するには、チャネルのドキュメントを参照してください。
 
 次の例は、会話を開始する要求を示しています。 この要求の例で、`https://smba.trafficmanager.net/apis` はベース URI を示しています。ご利用のボットによって発行される要求に対するベース URI は、これとは異なる場合があります。 ベース URI の設定の詳細については、[API リファレンス](bot-framework-rest-connector-api-reference.md#base-uri)に関する記事をご覧ください。
 
@@ -153,5 +153,5 @@ Content-Type: application/json
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object
 [ConversationAccount]: bot-framework-rest-connector-api-reference.md#conversationaccount-object
-[Conversation]: bot-framework-rest-connector-api-reference.md#conversation-object
+[ConversationParameters]: bot-framework-rest-connector-api-reference.md#conversationparameters-object
 

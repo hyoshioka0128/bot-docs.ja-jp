@@ -8,27 +8,63 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: 0e548700e81fff5029031fd1e349cc75d9d0bc7a
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 847ae51791ae66ef190ebefee765f2806ec91c5e
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464642"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68484036"
 ---
 # <a name="debug-with-the-emulator"></a>エミュレーターを使用したデバッグ
 
 Bot Framework Emulator は、ローカルでもリモートでも、ボットをテストし、デバッグできるデスクトップ アプリケーションです。 このエミュレーターを使用し、ボットとチャットしたり、ボットが送受信するメッセージを検査したりできます。 このエミュレーターでは、Web チャット UI に表示されるときと同じようにメッセージが表示され、ボットとメッセージを交換するときの JSON の要求と応答がログに記録されます。 自分のボットをクラウドにデプロイする前に、エミュレーターを使用してローカルで実行し、テストしてください。 まだ Azure Bot Service で[作成](./bot-service-quickstart.md)していない場合でも、何らかのチャネルで実行するように構成していない場合でも、エミュレーターを使用して自分のボットをテストできます。
 
 ## <a name="prerequisites"></a>前提条件
-- [エミュレーター](https://aka.ms/Emulator-wiki-getting-started)をインストールする
+- [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started) をインストールします
+
+## <a name="run-a-bot-locally"></a>ボットをローカルで実行する
+ボットを Bot Framework Emulator に接続する前に、ボットをローカルで実行する必要があります。 ボットを実行するには、Visual Studio または Visual Studio Code を使用するか、コマンド ラインを使用できます。 コマンド ラインを使用してボットを実行するには、次の操作を行います。
+
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+* コマンド プロンプトにアクセスし、ボットのプロジェクト ディレクトリに移動します。
+* 次のコマンドを実行して、ボットを起動します。 
+    ```
+    dotnet run
+    ```
+* *Application started.Press CTRL+C to shut down.* の前の行のポート番号をコピーします。
+
+    ![C# ポート番号](media/bot-service-debug-emulator/csharp_port_number.png)
+
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+* コマンド プロンプトにアクセスし、ボットのプロジェクト ディレクトリに移動します。
+* 次のコマンドを実行して、ボットを起動します。
+    ```
+    node index.js
+    ```
+* Restify がリッスンするポート番号をコピーします。
+
+    ![JS ポート番号](media/bot-service-debug-emulator/js_port_number.png)
+---
+
+この時点では、ボットはローカルで実行されています。 
+
 
 ## <a name="connect-to-a-bot-running-on-localhost"></a>localhost で実行されているボットに接続する
 
 ![エミュレーター UI](media/emulator-v4/emulator-welcome.png)
 
-ローカルで実行されているボットに接続するには、 **[Open bot]\(ボットを開く\)** をクリックするか、事前構成済みファイル (.bot ファイル) を選択します。 ご自身のボットへの接続に構成ファイルは必要はありませんが、ボットに構成ファイルがある場合、エミュレーターは引き続きそのファイルで動作します。 お使いのボットが [Microsoft アカウント (MSA) の資格情報](#use-bot-credentials)で実行されている場合は、その資格情報も入力します。
+ローカルで実行されているボットに接続するには、 **[Open bot]\(ボットを開く\)** をクリックします。 先ほどコピーしたポート番号を次の URL に追加し、その更新した URL を [Bot URL]\(ボットの URL\) バーに貼り付けます。
 
-![エミュレーター UI](media/emulator-v4/emulator-open-bot.png)
+*http://localhost:**ポート番号**/api/messages*
+
+![エミュレーター UI](media/bot-service-debug-emulator/open_bot_emulator.png)
+
+お使いのボットが [Microsoft アカウント (MSA) の資格情報](#use-bot-credentials)で実行されている場合は、その資格情報も入力します。
+
 
 ### <a name="use-bot-credentials"></a>ボットの資格情報を使用
 
@@ -36,36 +72,43 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 
 ## <a name="view-detailed-message-activity-with-the-inspector"></a>インスペクターを利用してメッセージ アクティビティの詳細を表示する
 
-ボットにメッセージを送信すると、ボットが応答するはずです。 会話ウィンドウ内でメッセージ吹き出しをクリックし、ウィンドウの右にある **INSPECTOR** 機能を使用して raw JSON アクティビティを検査できます。 メッセージ吹き出しは選択すると黄色になり、アクティビティ JSON オブジェクトがチャット ウィンドウの左に表示されます。 JSON 情報には、チャネル ID、アクティビティの種類、会話 ID、テキスト メッセージ、エンドポイント URL など、重要なメタデータが含まれます。ユーザーから送信されたアクティビティやボットの応答アクティビティを検査できます。 
+ボットにメッセージを送信すると、ボットが応答を返すはずです。 会話ウィンドウ内でメッセージ吹き出しをクリックし、ウィンドウの右側にある**インスペクター**機能を使用して、未加工の JSON アクティビティを検査できます。 メッセージ吹き出しは選択すると黄色になり、アクティビティ JSON オブジェクトがチャット ウィンドウの左に表示されます。 この JSON 情報には、チャネル ID、アクティビティの種類、会話 ID、テキスト メッセージ、エンドポイント URL など、重要なメタデータが含まれます。 ユーザーから送信されたアクティビティやボットの応答アクティビティを検査できます。
 
 ![エミュレーターのメッセージ アクティビティ](media/emulator-v4/emulator-view-message-activity-03.png)
 
-## <a name="save-and-load-conversations-with-bot-transcripts"></a>ボット トランスクリプトと共に会話を保存し、読み込む
+> [!TIP]
+> [検査ミドルウェア](bot-service-debug-inspection-middleware.md)をボットに追加することで、チャネルに接続されているボットの状態の変化をデバッグできます。
 
-エミュレーターのアクティビティはトランスクリプトとして保存できます。 開いているライブ チャット ウィンドウで、 **[Save Transcript As]\(トランスクリプトを名前を付けて保存\)** を選択してトランスクリプト ファイルを保存します。 **[やり直す]** ボタンを使用し、いつでも会話を消去し、ボットへの接続を再起動できます。  
+<!--
+## Save and load conversations with bot transcripts
 
-![エミュレーターでトランスクリプトを保存する](media/emulator-v4/emulator-save-transcript.png)
+Activities in the emulator can be saved as transcripts. From an open live chat window, select **Save Transcript As** to the transcript file. The **Start Over** button can be used any time to clear a conversation and restart a connection to the bot.  
 
-トランスクリプトを読み込むには、 **[ファイル] > [Open Transcript File]\(トランスクリプト ファイルを開く\)** の順に選択し、トランスクリプトを選択します。 新しいトランスクリプト ウィンドウが開き、出力ウィンドウにメッセージ アクティビティが表示されます。 
+![Emulator save transcripts](media/emulator-v4/emulator-save-transcript.png)
 
-![エミュレーターでトランスクリプトを読み込む](media/emulator-v4/emulator-load-transcript.png)
+To load transcripts, simply select **File > Open Transcript File** and select the transcript. A new Transcript window will open and render the message activity to the output window. 
 
-## <a name="add-services"></a>サービスの追加 
+![Emulator load transcripts](media/emulator-v4/emulator-load-transcript.png)
+--->
+<!---
+## Add services 
 
-エミュレーターからボットに直接 LUIS アプリ、QnA ナレッジベース、ディスパッチ モデルを簡単に追加できます。 ボットが読み込まれたら、エミュレーター ウィンドウの左端にあるサービス ボタンを選択します。 **[サービス]** メニューの下に LUIS、QnA Maker、ディスパッチ を追加するためのオプションが表示されます。 
+You can easily add a LUIS app, QnA knowledge base, or dispatch model to your bot directly from the emulator. When the bot is loaded, select the services button on the far left of the emulator window. You will see options under the **Services** menu to add LUIS, QnA Maker, and Dispatch. 
 
-サービス アプリを追加するには、 **+** ボタンをクリックして、追加するサービスを選択します。 Azure portal にサインインしてボット ファイルにサービスを追加し、そのサービスをボット アプリケーションに接続するよう求められます。 
+To add a service app, simply click on the **+** button and select the service you want to add. You will be prompted to sign in to the Azure portal to add the service to the bot file, and connect the service to your bot application. 
 
 > [!IMPORTANT]
-> サービスの追加は、`.bot` 構成ファイルを使用している場合にのみ機能します。 サービスは個別に追加する必要があります。 詳細については、「[ボット リソースの管理](v4sdk/bot-file-basics.md)」または追加しようとしているサービスに関する個別のハウツー記事をご覧ください。
+> Adding services only works if you're using a `.bot` configuration file. Services will need to be added independently. For details on that, see [Manage bot resources](v4sdk/bot-file-basics.md) or the individual how to articles for the service you're trying to add.
 >
-> `.bot` ファイルを使用していない場合、(ご自身のボットでサービスが使用されていても) 左側のウィンドウにはサービスは表示されず、"*サービスが使用できない*" ことを示すメッセージが表示されます。
+> If you are not using a `.bot` file, the left pane won't have your services listed (even if your bot uses services) and will display *Services not available*.
 
-![LUIS 接続](media/emulator-v4/emulator-connect-luis-btn.png)
+![LUIS connect](media/emulator-v4/emulator-connect-luis-btn.png)
 
-いずれかのサービスが接続されているとき、ライブ チャット ウィンドウに戻り、サービスが接続され、動作していることを確認できます。 
+When either service is connected, you can go back to a live chat window and verify that your services are connected and working. 
 
-![QnA 接続完了](media/emulator-v4/emulator-view-message-activity.png)
+![QnA connected](media/emulator-v4/emulator-view-message-activity.png)
+
+--->
 
 ## <a name="inspect-services"></a>サービスの検査
 
@@ -88,18 +131,16 @@ Open the **Emulator Settings**, enter the path to ngrok, select whether or not t
 ![ngrok path](media/emulator-v4/emulator-ngrok-path.png)
 -->
 
-## <a name="login-to-azure"></a>Azure にログインする
+<!---## Login to Azure
 
-Emulator を使って、ご自身の Azure アカウントにログインできます。 これは、ご自身のボットが依存するサービスを追加および管理するときに特に役に立ちます。 Emulator を使用して管理できるサービスの詳細については、[上](#add-services)の説明を参照してください。
+You can use Emulator to login in to your Azure account. This is particularly helpful for you to add and manage services your bot depends on. 
+See [above](#add-services) to learn more about services you can manage using the Emulator.
+-->
 
-### <a name="to-login"></a>ログインする
-
-![Azure ログイン](media/emulator-v4/emulator-azure-login.png)
-
-ログインするには
-- [ファイル]、[Sign in with Azure]\(Azure を使ってサインインする\) の順にクリックします
+### <a name="login-to-azure"></a>Azure にログインする
+Emulator を使って、ご自身の Azure アカウントにログインできます。 これは、ご自身のボットが依存するサービスを追加および管理するときに特に役に立ちます。 次の手順に従って、Azure にログインします。
+- [ファイル]、[Sign in with Azure]\(Azure を使ってサインインする\) の順にクリックします ![Azure ログイン](media/emulator-v4/emulator-azure-login.png)
 - ようこそ画面で、[Sign in with your Azure account]\(Azure アカウントを使ってサインインする\) をクリックします。Emulator アプリケーションを再起動しても、その Emulator でのサインイン状態が継続されるようにするように設定することもできます。
-
 ![Azure ログイン](media/emulator-v4/emulator-azure-login-success.png)
 
 ## <a name="disabling-data-collection"></a>データ収集の無効化
@@ -128,10 +169,17 @@ Bot Framework Emulator はオープン ソースです。 [投稿][EmulatorGithu
 
 ## <a name="next-steps"></a>次の手順
 
-会話をトランスクリプト ファイルに保存すると、デバッグのために一連のやり取りの下書きをすばやく作成し、そのやり取りを再生できます。
+検査ミドルウェアを使用して、チャネルに接続されているボットをデバッグします。
 
 > [!div class="nextstepaction"]
-> [トランスクリプト ファイルを使用してお使いのボットをデバッグする](~/v4sdk/bot-builder-debug-transcript.md)
+> [トランスクリプト ファイルを使用してお使いのボットをデバッグする](bot-service-debug-inspection-middleware.md)
+
+<!--
+Saving a conversation to a transcript file allows you to quickly draft and replay a certain set of interactions for debugging.
+
+> [!div class="nextstepaction"]
+> [Debug your bot using transcript files](~/v4sdk/bot-builder-debug-transcript.md)
+-->
 
 <!-- Footnote-style URLs -->
 

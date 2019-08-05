@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: ac74fff5fa7635bf0ef585423b0f8663a1df41c4
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67404836"
 ---
 # <a name="send-and-receive-attachments"></a>添付ファイルを送受信する
@@ -31,7 +31,7 @@ ms.locfileid: "67404836"
 * **カード**: <!-- and custom keyboards --> **contentType** に目的のカードの種類を設定し、カードの JSON を渡すことで、視覚的に優れた一連のカードを送信することができます。 **HeroCard** などのリッチ カード ビルダー クラスを使用する場合、添付ファイルは自動的に追加されます。 この例については、「[リッチ カードを送信する](bot-builder-nodejs-send-rich-cards.md)」をご覧ください。
 
 ## <a name="add-a-media-attachment"></a>メディア添付ファイルの追加
-メッセージ オブジェクトは、JSON オブジェクトの形式でメッセージを送信するために、[IMessage][IMessage] and it's most useful to send the user a message as an object when you’d like to include an attachment like an image. Use the [session.send()][SessionSend] メソッドのインスタンスである必要があります。 
+メッセージ オブジェクトは、[IMessage][IMessage] のインスタンスである必要があります。これは、イメージなどの添付ファイルを含めたい場合、ユーザーにオブジェクトとしてメッセージを送信する際にとても便利です。 JSON オブジェクト形式でメッセージを送信するには、[session.send()][SessionSend] メソッドを使用します。 
 
 ## <a name="example"></a>例
 

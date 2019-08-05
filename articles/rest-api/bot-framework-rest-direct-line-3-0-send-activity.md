@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 290a2733b96a458eb3529b0b0854703631e05f22
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a9a98419a8ac65c7e1093e1281e03917fa4eca11
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000039"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671503"
 ---
 # <a name="send-an-activity-to-the-bot"></a>ボットにアクティビティを送信する
 
@@ -46,7 +46,12 @@ Content-Type: application/json
 
 ### <a name="response"></a>Response
 
-アクティビティがボットに配信されるとき、サービスでは、ボットのステータス コードを反映する HTTP ステータス コードで応答します。 ボットによりエラーが生成された場合、そのアクティビティ送信要求への応答で、HTTP 502 応答 ("ゲートウェイが不適切です") がクライアントに返されます。 投稿が成功した場合、ボットに送信されたアクティビティの ID を指定する JSON ペイロードが応答に含まれます。
+アクティビティがボットに配信されるとき、サービスでは、ボットのステータス コードを反映する HTTP ステータス コードで応答します。 ボットによりエラーが生成された場合、そのアクティビティ送信要求への応答で、HTTP 502 応答 ("ゲートウェイが不適切です") がクライアントに返されます。
+
+> [!NOTE]
+> これは、正しいトークンが使用されていないことが原因で発生する可能性があります。 アクティビティの送信には、"*会話の開始*" に対して受信したトークンのみを使用できます。
+
+投稿が成功した場合、ボットに送信されたアクティビティの ID を指定する JSON ペイロードが応答に含まれます。
 
 ```http
 HTTP/1.1 200 OK
@@ -95,7 +100,7 @@ Content-Disposition: ATTACHMENT_INFO
 [file content]
 ```
 
-この要求 URI で、**{conversationId}** を会話の ID に置換し、**{userId}** をメッセージを送信するユーザーの ID に置換します。 `userId` パラメーターは必須です。 要求ヘッダーで、`Content-Type` を設定して添付ファイルの種類を指定し、`Content-Disposition` を設定して添付ファイルのファイル名を指定します。
+この要求 URI で、 **{conversationId}** を会話の ID に置換し、 **{userId}** をメッセージを送信するユーザーの ID に置換します。 `userId` パラメーターは必須です。 要求ヘッダーで、`Content-Type` を設定して添付ファイルの種類を指定し、`Content-Disposition` を設定して添付ファイルのファイル名を指定します。
 
 次のスニペットは、(単一の) 添付ファイル送信要求と応答の例を示しています。
 

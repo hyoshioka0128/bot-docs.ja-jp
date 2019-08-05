@@ -5,17 +5,17 @@ keywords: Bot Framework, Azure Bot Service
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1bbea2f12af976a9d967e7c62baf416b8938f8aa
-ms.sourcegitcommit: b053c0ca7f2e9e60679f7e82e583c57ae83fcb50
+ms.openlocfilehash: f7083c45e67d8731e25e14577f6b061732ffefd5
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336739"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671395"
 ---
 # <a name="whats-new-in-bot-framework-july-2019"></a>Bot Framework の新機能 (2019 年 7 月)
 
@@ -29,7 +29,7 @@ Bot Framework SDK v4 は [オープン ソース SDK][1a] です。この SDK �
 |---|:---:|:---:|:------:|
 |SDK |[4.5][1] | [4.5][2] | [4.4.0b2 (プレビュー)][3] | 
 |Docs | [docs][5] |[docs][5] |  | |
-|サンプル |[.NET Core][6], [WebAPI][10] |[Node.js][7] , [TypeScript][8], [es6][9]  | [Python][111] | | 
+|サンプル |[.NET Core][6]、[WebAPI][10] |[Node.js][7]、[TypeScript][8]、[es6][9]  | [Python][111] | | 
 
 [1a]:https://github.com/microsoft/botframework-sdk/#readme
 [1]:https://github.com/Microsoft/botbuilder-dotnet/#packages
@@ -57,7 +57,9 @@ Bot Framework SDK v4 は [オープン ソース SDK][1a] です。この SDK �
 ## <a name="bot-framework-testing"></a>Bot Framework のテスト
 - [単体テスト](http://aka.ms/bot-test-package) | [ドキュメント](https://aka.ms/testing-framework) | [C# サンプル](https://aka.ms/corebot-test) | [JS サンプル](https://aka.ms/js-core-test-sample):より優れたテスト ツールを求めるお客様や開発者のご要望にお応えするため、7 月版の SDK では、新しい単体テスト機能が導入されています。 Microsoft.Bot.Builder.testing パッケージを使用すると、ボットの単体テスト ダイアログのプロセスが簡略化されます。 
 
-- [チャネルのテスト](https://github.com/Microsoft/BotFramework-Emulator/releases):Bot Inspector は、Microsoft ビルド 2019 で導入された Bot Framework Emulator の新機能であり、Microsoft Teams、Slack、Cortana などのチャネルでボットをデバッグおよびテストできます。 特定のチャネルでボットを使用すると、ボットが受信したメッセージ データを検査できる Bot Framework Emulator に、メッセージがミラー化されます。 さらに、チャネルとボットの間の特定のターンに対するボットのメモリ状態のスナップショットも表示されます。
+- [チャネルのテスト](https://github.com/Microsoft/BotFramework-Emulator/releases) | [ドキュメント](https://aka.ms/channel-testing): 
+
+Bot Inspector は、Microsoft ビルド 2019 で導入された Bot Framework Emulator の新機能であり、Microsoft Teams、Slack、Cortana などのチャネルでボットをデバッグおよびテストできます。 特定のチャネルでボットを使用すると、ボットが受信したメッセージ データを検査できる Bot Framework Emulator に、メッセージがミラー化されます。 さらに、チャネルとボットの間の特定のターンに対するボットのメモリ状態のスナップショットも表示されます。
 
 ## <a name="web-chat"></a>Web チャット
 - 企業のお客様からのご要望に基づき、ボットを使用してエンタープライズ アプリ上のリソースへのアクセスをユーザーに承認する方法を示す [Web チャット サンプル](https://github.com/microsoft/BotFramework-WebChat/tree/master/samples/19.a.single-sign-on-for-enterprise-apps#single-sign-on-demo-for-enterprise-apps-using-oauth)を追加しました。 OAuth と Microsoft Graph および GitHub API の相互運用性を示すために、2 種類のリソースが使用されています。

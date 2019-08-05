@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 1cb9143e5ab2d5eb7e92e263b838cdd9217492ef
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: cbe2a6e449ecc2920e3a2d1ecb04a63dcb489b66
+ms.sourcegitcommit: 8336a06941d09e1107b38f494d048dd785a13069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225357"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68631564"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -34,7 +34,7 @@ ms.locfileid: "54225357"
 
 | テクノロジ | 説明 |
 |----|----|
-| **SSL/TLS** | SSL/TLS は、すべてのサービス間接続に対して使用されます。 `X.509v3` 証明書が、すべての HTTPS サービスの ID を確立するために使用されます。 **クライアントでは、サービスが信頼でき、有効であることを確認するために、必ずサービス証明書を調べる必要があります**  (この手法では、クライアント証明書は使用されません)。 |
+| **SSL/TLS** | SSL/TLS は、すべてのサービス間接続に対して使用されます。 `X.509v3` 証明書が、すべての HTTPS サービスの ID を確立するために使用されます。 **クライアントでは、サービスが信頼でき、有効であることを確認するために、必ずサービス証明書を調べる必要があります** (この手法では、クライアント証明書は使用されません)。 |
 | **OAuth 2.0** | Microsoft アカウント (MSA)/AAD v2 ログイン サービスに対して OAuth 2.0 ログインを使用すると、ボットからメッセージを送信する際に使用できるセキュリティ トークンが作成されます。 このトークンはサービス間トークンであり、ユーザー ログインは不要です。 |
 | **JSON Web トークン (JWT)** | JSON Web トークンは、ボットとの間で送受信されるトークンをエンコードするために使用されます。 **クライアントでは、受信したすべての JWT トークンを検証する必要があります。** この記事で説明している要件に従ってください。 |
 | **OpenID メタデータ** | Bot Connector サービスからは有効なトークンの一覧が公開されます。これは、既知の静的なエンドポイントにある OpenID メタデータに対して独自の JWT トークンに署名を行うために、このサービスによって使用されます。 |
@@ -173,7 +173,7 @@ GET https://login.botframework.com/v1/.well-known/openidconfiguration
 
 ### <a id="connector-to-bot-step-3"></a> 手順 3:有効な署名キーの一覧を取得する
 
-有効な署名キーの一覧を取得するには、OpenID メタデータ ドキュメントで `jwks_uri` プロパティによって指定されている URL に、HTTPS 経由で `GET` 要求を発行します。 例: 
+有効な署名キーの一覧を取得するには、OpenID メタデータ ドキュメントで `jwks_uri` プロパティによって指定されている URL に、HTTPS 経由で `GET` 要求を発行します。 例:
 
 ```http
 GET https://login.botframework.com/v1/.well-known/keys
@@ -181,10 +181,7 @@ GET https://login.botframework.com/v1/.well-known/keys
 
 応答の本体には、ドキュメントが [JWK 形式](https://tools.ietf.org/html/rfc7517)で指定されますが、各キーに対応する追加のプロパティ `endorsements` も含まれています。 キーの一覧は比較的安定しており、長期間キャッシュしておくことができます (既定では、Bot Framework SDK の中に 5 日間)。
 
-各キーの `endorsements` プロパティには、少なくとも 1 つの保証文字列が含まれており、これを使用することにより、受信した要求の [Activity][Activity] オブジェクト内で `channelId` プロパティによって指定されているチャネル ID が正しいことを検証できます。 保証が必要なチャネル ID の一覧は、各ボット内で設定できます。 既定では、これは公開済みのすべてのチャネル ID の一覧になりますが、ボットの開発者は一部のチャネル ID 値を選択し、何らかの方法でオーバーライドすることができます。 チャネル ID に対して保証が必要な場合は、以下が適用されます。
-
-- ご利用のボットにそのチャネル ID で送信されるすべての [Activity][Activity] オブジェクトには、そのチャネルに対する保証で署名された JWT トークンが付随していることを要件とする必要があります。 
-- 保証が存在しない場合、ご利用のボットは、**HTTP 403 (アクセス不可)** 状態コードを返すことによって要求を拒否する必要があります。
+各キーの `endorsements` プロパティには、少なくとも 1 つの保証文字列が含まれており、これを使用することにより、受信した要求の [Activity][Activity] オブジェクト内で `channelId` プロパティによって指定されているチャネル ID が正しいことを検証できます。 保証が必要なチャネル ID の一覧は、各ボット内で設定できます。 既定では、これは公開済みのすべてのチャネル ID の一覧になりますが、ボットの開発者は一部のチャネル ID 値を選択し、何らかの方法でオーバーライドすることができます。 
 
 ### <a name="step-4-verify-the-jwt-token"></a>手順 4:JWT トークンを検証する
 
@@ -200,7 +197,10 @@ Bot Connector サービスから送信されたトークンの信頼性を検証
 6. トークンに有効な暗号化署名があり、そのキーが、[手順 2](#openid-metadata-document) で取得した Open ID メタデータ ドキュメントの `id_token_signing_alg_values_supported` プロパティで指定されている署名アルゴリズムを使用して[手順 3](#connector-to-bot-step-3) で取得した OpenID キー ドキュメント内の一覧に含まれている。
 7. トークンに "serviceUrl" 要求が含まれ、その値が、受信した要求の [Activity][Activity] オブジェクトのルートにある `servieUrl` プロパティと一致する。 
 
-トークンがこれらの要件を満たさない場合、ご利用のボットは、**HTTP 403 (アクセス不可)** 状態コードを返すことによって要求を拒否する必要があります。
+チャネル ID に対して保証が必要な場合は、以下が適用されます。
+
+- ご利用のボットにそのチャネル ID で送信されるすべての [Activity][Activity] オブジェクトには、そのチャネルに対する保証で署名された JWT トークンが付随していることを要件とする必要があります。 
+- 保証が存在しない場合、ご利用のボットは、**HTTP 403 (アクセス不可)** 状態コードを返すことによって要求を拒否する必要があります。
 
 > [!IMPORTANT]
 > これらの要件はすべて重要ですが、要件 4 と 6 は特に重要です。 これらの検証要件のすべてを実装しないと、ボットは攻撃に対して無防備になり、ボットから JWT トークンが漏洩するおそれがあります。
@@ -266,7 +266,7 @@ GET https://login.microsoftonline.com/botframework.com/v2.0/.well-known/openid-c
 
 ### <a id="emulator-to-bot-step-3"></a> 手順 3:有効な署名キーの一覧を取得する
 
-有効な署名キーの一覧を取得するには、OpenID メタデータ ドキュメントで `jwks_uri` プロパティによって指定されている URL に、HTTPS 経由で `GET` 要求を発行します。 例: 
+有効な署名キーの一覧を取得するには、OpenID メタデータ ドキュメントで `jwks_uri` プロパティによって指定されている URL に、HTTPS 経由で `GET` 要求を発行します。 例:
 
 ```http
 GET https://login.microsoftonline.com/common/discovery/v2.0/keys 
@@ -283,7 +283,7 @@ Host: login.microsoftonline.com
 
 1. トークンが HTTP `Authorization` ヘッダーに含まれ、"Bearer" スキームで送信された。
 2. トークンは有効な JSON であり、[JWT 標準](http://openid.net/specs/draft-jones-json-web-token-07.html)に準拠している。
-3. トークンに "issuer" 要求が含まれ、その値が `https://sts.windows.net/d6d49420-f39b-4df7-a1dc-d59a935871db/` または `https://sts.windows.net/f8cdef31-a31e-4b4a-93e4-5f571e91255a/` である  (両方の issuer 値を確認することで、セキュリティ プロトコル v3.1 と v3.2 両方の issuer 値を確実にチェックすることができます)。
+3. トークンに "issuer" 要求が含まれ、その値が `https://sts.windows.net/d6d49420-f39b-4df7-a1dc-d59a935871db/` または `https://sts.windows.net/f8cdef31-a31e-4b4a-93e4-5f571e91255a/` である (両方の issuer 値を確認することで、セキュリティ プロトコル v3.1 と v3.2 両方の issuer 値を確実にチェックすることができます)。
 4. トークンに "audience" 要求が含まれ、その値がボットの Microsoft AppID と同じである。
 5. トークンに "appid" 要求が含まれ、その値がボットの Microsoft AppID と同じである。
 6. トークンの有効期限が切れていない。 業界標準の clock-skew は 5 分です。

@@ -5,17 +5,17 @@ keywords: Bot Framework, Azure Bot Service
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0b7342274e37ff33afb8695e8f25fbf0fa707178
-ms.sourcegitcommit: b053c0ca7f2e9e60679f7e82e583c57ae83fcb50
+ms.openlocfilehash: 4553335cbca5b5eb720c7cffd11c8e14c8aa19c1
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336753"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671529"
 ---
 # <a name="whats-new-in-bot-framework-may-2019"></a>Bot Framework の新機能 (2019 年 5 月)
 
@@ -23,7 +23,7 @@ ms.locfileid: "68336753"
 |---|:---:|:---:|:------:|:-----:|
 |SDK |[4.4.3][1] | [4.4.0][2] | [4.4.0b1 (プレビュー)][3] | [4.0.0a6 (プレビュー)][3a]|
 |Docs | [docs][5] |[docs][5] |  | |
-|サンプル |[.NET Core][6], [WebAPI][10] |[Node.js][7] , [TypeScript][8], [es6][9]  | [Python][111] | | 
+|サンプル |[.NET Core][6]、[WebAPI][10] |[Node.js][7]、[TypeScript][8]、[es6][9]  | [Python][111] | | 
 
 [1a]:https://github.com/microsoft/botframework-sdk/#readme
 [1]:https://github.com/Microsoft/botbuilder-dotnet/#packages
@@ -42,11 +42,11 @@ ms.locfileid: "68336753"
 <a name="V4-whats-new"></a>
 ## <a name="bot-framework-sdk-new-in-preview"></a>Bot Framework SDK (新機能。 プレビュー段階)
 
-- [アダプティブ ダイアログ][47] | [docs][48]  |  [C# サンプル][49]:アダプティブ ダイアログを使用すると、開発者が、会話の進行中に動的に変更できる会話を構築できます。  開発者はこれまで会話のフロー全体を事前に細かく計画していましたが、これでは会話の柔軟性が制限されます。  アダプティブ ダイアログにより柔軟性が高まり、会話の進行中に、コンテキストの変更や、会話への新しいステップやサブダイアログの挿入に対応できます。 
+- [アダプティブ ダイアログ][47] | [ドキュメント][48] | [C# のサンプル][49]:アダプティブ ダイアログを使用すると、開発者が、会話の進行中に動的に変更できる会話を構築できます。  開発者はこれまで会話のフロー全体を事前に細かく計画していましたが、これでは会話の柔軟性が制限されます。  アダプティブ ダイアログにより柔軟性が高まり、会話の進行中に、コンテキストの変更や、会話への新しいステップやサブダイアログの挿入に対応できます。 
 
-- [言語生成][43] | [docs][44]  |  [C# サンプル][45]:言語生成により、開発者は、コードやリソース ファイルから埋め込み文字列を抽出し、言語生成のランタイムとファイル形式を管理できます。  また、お客様は、言語生成を使用して、語句のバリエーションを複数定義したり、コンテキストに基づいて単純な式を実行したり、会話のメモリを参照したりできます。Microsoft では今後、より自然な会話エクスペリエンスにつながる機能を追加していきます。
+- [言語生成][43] | [ドキュメント][44] | [C# のサンプル][45]:言語生成により、開発者は、コードやリソース ファイルから埋め込み文字列を抽出し、言語生成のランタイムとファイル形式を管理できます。  また、お客様は、言語生成を使用して、語句のバリエーションを複数定義したり、コンテキストに基づいて単純な式を実行したり、会話のメモリを参照したりできます。Microsoft では今後、より自然な会話エクスペリエンスにつながる機能を追加していきます。
 
-- [一般的な式言語][40] | [api][41]:一般的な式言語は、ボットの会話を強化するためにアダプティブ ダイアログと言語生成の両方で使用されています。
+- [一般的な式言語][40] | [API][41]:一般的な式言語は、ボットの会話を強化するためにアダプティブ ダイアログと言語生成の両方で使用されています。
 
 [40]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/common-expression-language#readme
 [41]:https://github.com/Microsoft/BotBuilder-Samples/blob/master/experimental/common-expression-language/api-reference.md
@@ -62,7 +62,7 @@ ms.locfileid: "68336753"
 ## <a name="botkit"></a>Botkit
 [Botkit][100] は、チャット ボット、アプリ、および主要なメッセージング プラットフォーム用カスタム統合を構築するための開発者ツールおよび SDK です。 Botkit ボットでは、`hear()` でトリガーが実行され、`ask()` で質問が行われ、`say()` で応答します。 開発者はこの構文を使用してダイアログを構築できます。現在これは最新バージョンのすべての Bot Framework SDK と互換性があります。 
 
-さらに、Botkit には 6 つのプラットフォーム アダプターが用意されているため、Javascript ボット アプリケーションと次のメッセージング プラットフォームが直接通信できます: [Slack][102], [Webex Teams][103]、[Google ハングアウト][104]、[Facebook Messenger][105], [Twilio][106]、[Web チャット][107]。
+さらに、Botkit には 6 つのプラットフォーム アダプターが用意されているため、Javascript ボット アプリケーションと次のメッセージング プラットフォームが直接通信できます: [Slack][102]、[Webex Teams][103]、[Google Hangouts][104]、[Facebook Messenger][105]、[Twilio][106]、および [Web チャット][107]。
 
 Botkit は、Microsoft Bot Framework に含まれ、[MIT のオープン ソース ライセンス][101]でリリースされます
 
@@ -86,7 +86,7 @@ Botkit は、Microsoft Bot Framework に含まれ、[MIT のオープン ソー�
 |[**分析**](https://github.com/Microsoft/AI/blob/master/docs/readme.md#analytics)| 会話型 AI 分析ソリューションでは、ご自身のボットの正常性と動作に関する主な分析情報を取得します。 利用可能なテレメトリ、Application Insights のサンプル クエリ、および Power BI ダッシュボードを確認することで、お使いのボットとユーザーとの幅広い会話を理解します。 |
 
 ## <a name="azure-bot-service"></a>Azure Bot Service
-Azure Bot Service を使用すると、データの完全な所有権と管理により、エンタープライズ レベルのインテリジェントなボットをホストできます。 開発者は自身のボットを登録して、Skype、Microsoft Teams、Cortana、Web チャットなどのユーザーに接続できます。 [Azure][27]  |  [docs][28] | [チャンネルに接続する][29] 
+Azure Bot Service を使用すると、データの完全な所有権と管理により、エンタープライズ レベルのインテリジェントなボットをホストできます。 開発者は自身のボットを登録して、Skype、Microsoft Teams、Cortana、Web チャットなどのユーザーに接続できます。 [Azure][27]  |  [ドキュメント][28] | [チャネルに接続][29] 
 
 * **Direct Line JS クライアント**: Azure Bot Service で Direct Line チャネルを使用する必要がある場合、Web チャット クライアントを使用していないときは、ご自身のカスタム アプリケーションで Direct Line JS クライアントを使用できます。 詳細については、[GitHub][30] にアクセスしてください。
 
@@ -103,7 +103,7 @@ Azure Bot Service を使用すると、データの完全な所有権と管理�
 ## <a name="bot-framework-emulator"></a>Bot Framework エミュレーター
 [Bot Framework Emulator][60] はクロスプラットフォーム デスクトップ アプリケーションです。このアプリケーションを使用すると、ボット開発者が、Bot Framework SDK を使って構築されたボットをテストし、デバッグできます。 Bot Framework Emulator を使用して、ご自身のマシンでローカルで実行されているボットをテストしたり、リモートで実行されているボットに接続したりできます。
 
-- [最新バージョンをダウンロード][61] | [Docs][62]
+- [最新バージョンをダウンロード][61] | [ドキュメント][62]
 
 <a name="Emulator-whats-new"></a>
 ### <a name="bot-inspector-new-in-preview"></a>Bot Inspector (新機能。 プレビュー段階)
@@ -126,7 +126,7 @@ Bot Framework Emulator の新しい Bot Inspector 機能のベータ版がリリ
 
 - **新機能。Analytics ダッシュボード**: LUIS の視覚的に豊かで包括的かつ詳細なダッシュボードがリリースされます。 そのわかりやすいデザインには、アプリケーションの設計時にユーザーのほとんどが直面する一般的な問題が強調表示され、その問題の解決方法が簡単に説明されています。これは、ユーザーが、モデルの品質、潜在的なデータの問題、およびベスト プラクティスを採用するためのガイダンスに関する、さらに詳しい分析情報を得るうえで役立ちます。
 
-[ドキュメント][31] | [Add language understanding to your bot][32] 
+[ドキュメント][31] | [ボットへの自然言語の理解の追加][32] 
 
 [18]:https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS#readme
 [19]:https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker#readme
@@ -143,7 +143,7 @@ Bot Framework Emulator の新しい Bot Inspector 機能のベータ版がリリ
 - **新機能。インテリジェンス**: コンテキストに応じたランキング モデル、アクティブ ラーニング提案
 - **新機能。会話**: QnA Maker のマルチターンの会話。
 
-[ドキュメント][34]  | [add qnamaker to your bot][35] 
+[ドキュメント][34]  | [ボットへの qnamaker の追加][35] 
 
 [33]:https://www.qnamaker.ai/
 [34]:https://aka.ms/qnamaker-docs-home

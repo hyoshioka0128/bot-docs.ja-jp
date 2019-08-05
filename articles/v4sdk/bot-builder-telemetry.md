@@ -2,115 +2,367 @@
 title: ボットへのテレメトリの追加 | Microsoft Docs
 description: ボットを新しいテレメトリ機能と統合する方法について説明します。
 keywords: テレメトリ, appinsights, ボットの監視
-author: ivorb
+author: WashingtonKayaker
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/23/2019
+ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7225387933630eb7343a57aa849581ff1cbfbb0c
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: bd2de7055baf6a37323ad49ccd206c11e8829d9d
+ms.sourcegitcommit: 3574fa4e79edf2a0c179d8b4a71939d7b5ffe2cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464697"
+ms.lasthandoff: 07/27/2019
+ms.locfileid: "68591038"
 ---
 # <a name="add-telemetry-to-your-bot"></a>ボットへのテレメトリの追加
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Bot Framework SDK のバージョン 4.2 では、テレメトリ ログ記録が製品に追加されました。  これにより、ボット アプリケーションは Application Insights などのサービスにイベント データを送信できます。 最初のセクションでこれらのメソッドについて説明してから、より広範なテレメトリ機能をその後で取り上げます。
 
-このドキュメントでは、ボットを新しいテレメトリ機能と統合する方法について説明します。 
+Bot Framework SDK のバージョン 4.2 にテレメトリのログ記録が追加されました。  これにより、ボット アプリケーションは [Application Insights](https://aka.ms/appinsights-overview) などのテレメトリ サービスにイベント データを送信できます。 テレメトリは、どの機能が最も使用されているかを示すことによりボットの分析情報を提供し、不要な動作を検出し、可用性、パフォーマンス、および使用状況を可視化します。
 
-## <a name="basic-telemetry-options"></a>基本的なテレメトリ オプション
 
-### <a name="basic-application-insights"></a>基本的な Application insights
+この記事では、Application Insights を使用してテレメトリをボットに組み入れる方法について説明します。
 
-まず、Application Insights を使用して、ボットに基本的なテレメトリを追加しましょう。 設定の詳細については、[Application Insights の概要](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started-with-Application-Insights-for-ASP.NET-Core)に関するページの最初のいくつかのセクションを参照してください。   
+* テレメトリをボットにつないで Application Insights に接続するために必要なコード
 
-Application Insights 固有の追加構成 (テレメトリ初期化子など) を必要とせずに、Application Insights を "ストック" する場合は、`ConfigureServices()` メソッドに以下を追加します。   これが最も簡単な初期化方法です。Application Insights は、要求の追跡、他のサービスの外部呼び出し、サービス間でのイベントの関連付けを開始するように構成されます。
+* ボットの[ダイアログ](bot-builder-concept-dialog.md)でテレメトリを有効にする
 
-次のスニペットに含まれる NuGet パッケージを追加する必要があります。
+* テレメトリが [LUIS](bot-builder-howto-v4-luis.md) や [QnA Maker](bot-builder-howto-qna.md) などの他のサービスから使用状況データを取り込めるようにする
 
-**Startup.cs**
-```csharp
-using Microsoft.ApplicationInsights.Extensibility;
-using Microsoft.Bot.Builder.ApplicationInsights;
-using Microsoft.Bot.Builder.Integration.ApplicationInsights.Core;
-using Microsoft.Bot.Builder.Integration.AspNet.Core;
- 
-// This method gets called by the runtime. Use this method to add services to the container.
-public void ConfigureServices(IServiceCollection services)
-{
-    ...
-    // Add Application Insights services into service collection
-    services.AddApplicationInsightsTelemetry();
+* テレメトリ データを Application Insights で視覚化する
 
-    // Add the standard telemetry client
-    services.AddSingleton<IBotTelemetryClient, BotTelemetryClient>();
+## <a name="prerequisites"></a>前提条件
 
-    // Add ASP middleware to store the HTTP body, mapped with bot activity key, in the httpcontext.items
-    // This will be picked by the TelemetryBotIdInitializer
-    services.AddTransient<TelemetrySaveBodyASPMiddleware>();
+* [CoreBot サンプル コード](https://aka.ms/cs-core-sample)
 
-    // Add telemetry initializer that will set the correlation context for all telemetry items
-    services.AddSingleton<ITelemetryInitializer, OperationCorrelationTelemetryInitializer>();
+* [Application Insights サンプル コード](https://aka.ms/csharp-corebot-app-insights-sample)
 
-    // Add telemetry initializer that sets the user ID and session ID (in addition to other 
-    // bot-specific properties, such as activity ID)
-    services.AddSingleton<ITelemetryInitializer, TelemetryBotIdInitializer>();
-    ...
-}
+* [Microsoft Azure](https://portal.azure.com/) のサブスクリプション。
 
-// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-{
-    ...
-    app.UseBotApplicationInsights();
-}
-```
+* [Application Insights のキー](../bot-service-resources-app-insights-keys.md)
 
-次に、Application Insights のインストルメンテーション キーを `appsettings.json` ファイルに格納するか、環境変数として格納する必要があります。 `appsettings.json` ファイルには、ボットの実行中に使用される外部サービスに関するメタデータが格納されます。  たとえば、CosmosDB、Application Insights、Language Understanding (LUIS) サービスの接続とメタデータがここに保存されています。 インストルメンテーション キーは、Azure portal の **[概要]** セクション (折りたたまれている場合は、そのページのサービスの `Essentials` ドロップダウン) で確認できます。 キーを取得する方法の詳細については、[こちら](~/bot-service-resources-app-insights-keys.md)をご覧ください。
+* [Application Insights](https://aka.ms/appinsights-overview) を熟知していること
 
-正しくフォーマットされている場合、フレームワークによってキーが検索されます。 `appsettings.json` エントリは次のようにフォーマットする必要があります。
+> [!NOTE]
+> [Application Insights サンプル コード](https://aka.ms/csharp-corebot-app-insights-sample)は、[CoreBot サンプル コード](https://aka.ms/cs-core-sample)を基にして構築されました。 この記事では、テレメトリを組み込むための CoreBot サンプル コードの変更手順について説明します。 Visual Studio で作業を進めていくと、完了時までに Application Insights のサンプル コードが作成されます。
 
-```json
-    "ApplicationInsights": {
-        "InstrumentationKey": "putinstrumentationkeyhere"
-    },
-    "Logging": {
-        "LogLevel": {
-            "Default": "Warning"
+## <a name="wiring-up-telemetry-in-your-bot"></a>ボットでテレメトリを接続する
+
+[CoreBot サンプル アプリ](https://aka.ms/cs-core-sample)から開始して、テレメトリをボットに統合するために必要なコードを追加します。 これにより、Application Insights は要求の追跡を開始できるようになります。
+
+1. Visual Studio で [CoreBot サンプル アプリ](https://aka.ms/cs-core-sample)を開きます
+
+2. 次の NuGet パッケージを追加します。 NuGet の使用方法について詳しくは、「[Visual Studio にパッケージをインストールして管理する](https://aka.ms/install-manage-packages-vs)」を参照してください。
+    * `Microsoft.ApplicationInsights`
+    * `Microsoft.Bot.Builder.ApplicationInsights`
+    * `Microsoft.Bot.Builder.Integration.ApplicationInsights.Core`
+
+3. 次のステートメントを `Startup.cs` に含めます。
+    ```csharp
+    using Microsoft.ApplicationInsights.Extensibility;
+    using Microsoft.Bot.Builder.ApplicationInsights;
+    using Microsoft.Bot.Builder.Integration.ApplicationInsights.Core;
+    using Microsoft.Bot.Builder.Integration.AspNet.Core;
+    ```
+
+    注:CoreBot サンプル コードを更新して作業を進めている場合は、`Microsoft.Bot.Builder.Integration.AspNet.Core` の using ステートメントが既に CoreBot サンプルにあることに気付きます。
+
+4. 次のコードを `Startup.cs` の `ConfigureServices()` メソッドに含めます。 こうすることで、[依存関係の挿入 (DI)](https://aka.ms/asp.net-core-dependency-interjection) によりテレメトリ サービスをボットで使用できるようになります。
+    ```csharp
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        ...
+
+        // Create the Bot Framework Adapter with error handling enabled.
+        services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
+
+        // Add Application Insights services into service collection
+        services.AddApplicationInsightsTelemetry();
+
+        // Create the telemetry client.
+        services.AddSingleton<IBotTelemetryClient, BotTelemetryClient>();
+
+        // Add ASP middleware to store the http body mapped with bot activity key in the httpcontext.items. This will be picked by the TelemetryBotIdInitializer
+        services.AddTransient<TelemetrySaveBodyASPMiddleware>();
+
+        // Add telemetry initializer that will set the correlation context for all telemetry items.
+        services.AddSingleton<ITelemetryInitializer, OperationCorrelationTelemetryInitializer>();
+
+        // Add telemetry initializer that sets the user ID and session ID (in addition to other bot-specific properties such as activity ID)
+        services.AddSingleton<ITelemetryInitializer, TelemetryBotIdInitializer>();
+
+        // Create the telemetry middleware to track conversation events
+        services.AddSingleton<IMiddleware, TelemetryLoggerMiddleware>();
+
+        ...
+    }
+    ```
+    
+    注:CoreBot サンプル コードを更新して作業を進めている場合は、`services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();` が既に存在していることに気付きます。 
+
+5. `UseBotApplicationInsights()` メソッド呼び出しを `Startup.cs` の `Configure()` メソッドに追加します。 これにより、ボットは必要なボット固有のプロパティを HTTP コンテキストに格納して、イベントが追跡されるときにテレメトリ初期化子でそれを取得できるようになります。
+
+    ```csharp
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        ...
+
+        app.UseBotApplicationInsights();
+    }
+    ```
+6. `ConfigureServices()` メソッドに追加されたミドルウェア コードを使用するようにアダプターに指示します。 これは、次に示すように、`AdapterWithErrorHandler.cs` で、コンストラクター パラメーター一覧のパラメーター IMiddleware middleware とコンストラクターの `Use(middleware);` ステートメントを使用して行います。
+    ```csharp
+    public AdapterWithErrorHandler(ICredentialProvider credentialProvider, ILogger<BotFrameworkHttpAdapter> logger, IMiddleware middleware, ConversationState conversationState = null)
+            : base(credentialProvider)
+    {
+        ...
+
+        Use(middleware);
+    }
+    ```
+7. Application Insights のインストルメンテーション キーを `appsettings.json` ファイルに追加します。`appsettings.json` ファイルには、ボットが実行中に使用する外部サービスに関するメタデータが含まれています。 たとえば、CosmosDB、Application Insights、Language Understanding (LUIS) サービスの接続とメタデータがそこに保存されています。 `appsettings.json` ファイルへの追加は、次の形式にする必要があります。
+
+    ```json
+    {
+        "MicrosoftAppId": "",
+        "MicrosoftAppPassword": "",
+        "ApplicationInsights": {
+            "InstrumentationKey": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
         }
     }
+    ```
+    注:_Application Insights のインストルメンテーション キー_の取得の詳細については、「[Application Insights キー](../bot-service-resources-app-insights-keys.md)」の記事をご覧ください。
+
+この時点で、Application Insights を使用してテレメトリを有効にする準備作業が完了しました。  ボット エミュレーターを使用してボットをローカルで実行した後に、Application Insights にアクセスして、応答時間、アプリ全体の正常性、一般的な実行情報などのログ記録を確認できます。 
+
+次に、テレメトリ機能をダイアログに追加するために含める必要があるものを確認します。 これにより、実行されるダイアログやそれぞれについての統計情報などの追加情報を取得できます。
+
+## <a name="enabling-telemetry-in-your-bots-dialogs"></a>ボットのダイアログでテレメトリを有効にする
+
+ダイアログに関する組み込みのテレメトリ情報を取得するには、すべてのダイアログにテレメトリ クライアントを追加する必要があります。 次の手順に従って、CoreBot の例を更新します。
+
+1.  `MainDialog.cs` で、新しい TelemetryClient フィールドを `MainDialog` クラスに追加し、`IBotTelemetryClient` パラメーターを含めるようにコンストラクターのパラメーター一覧を更新し、それを `AddDialog()` メソッドへの各呼び出しに渡す必要があります。
+
+
+    * パラメーター `IBotTelemetryClient telemetryClient` を MainDialog クラス コンストラクターに追加し、それを `TelemetryClient` フィールドに割り当てます。
+
+        ```csharp
+        public MainDialog(IConfiguration configuration, ILogger<MainDialog> logger, IBotTelemetryClient telemetryClient)
+            : base(nameof(MainDialog))
+        {
+            TelemetryClient = telemetryClient;
+
+            ...
+
+        }
+        ```
+
+    * `AddDialog` メソッドを使用して各ダイアログを追加するとき、`TelemetryClient` 値を設定します。
+
+        ```cs
+        public MainDialog(IConfiguration configuration, ILogger<MainDialog> logger, IBotTelemetryClient telemetryClient)
+            : base(nameof(MainDialog))
+        {
+            ...
+
+            AddDialog(new TextPrompt(nameof(TextPrompt))
+            {
+                TelemetryClient = telemetryClient,
+            });
+
+            ...
+        }
+        ```
+
+    * ウォーターフォール ダイアログは、他のダイアログとは無関係にイベントを生成します。 ウォーターフォール手順の一覧の後に `TelemetryClient` プロパティを設定します。
+
+        ```csharp
+        // The IBotTelemetryClient to the WaterfallDialog
+        AddDialog(new WaterfallDialog(
+            nameof(WaterfallDialog),
+            new WaterfallStep[]
+        {
+            IntroStepAsync,
+            ActStepAsync,
+            FinalStepAsync,
+        })
+        {
+            TelemetryClient = telemetryClient,
+        });
+
+        ```
+
+2. `DialogExtensions.cs` で、`dialogSet` オブジェクトの `TelemetryClient` プロパティを `Run()` メソッドに設定する必要があります。
+
+
+    ```csharp
+    public static async Task Run(this Dialog dialog, ITurnContext turnContext, IStatePropertyAccessor<DialogState> accessor, CancellationToken cancellationToken = default(CancellationToken))
+    {
+        ...
+
+        dialogSet.TelemetryClient = dialog.TelemetryClient;
+
+        ...
+        
+    }
+
+    ```
+
+3. `BookingDialog.cs` で、`MainDialog.cs` を更新するときに使用したのと同じプロセスを使用して、このファイルに追加された 4 つのダイアログでテレメトリを有効にします。 BookingDialog クラスに `TelemetryClient` フィールドを追加し、BookingDialog コンストラクターに `IBotTelemetryClient telemetryClient` パラメーターを追加することを忘れないでください。
+
+
+> [!TIP] 
+> CoreBot サンプル コードを更新して作業を進めている場合、問題が発生したときは、[Application Insights サンプル コード](https://aka.ms/csharp-corebot-app-insights-sample)を参照できます。
+
+ボット ダイアログへのテレメトリの追加についてはこれですべてです。この時点でボットを実行した場合は、Application Insights にログが記録されているのを確認できるはずです。ただし、LUIS や QnA Maker などの統合テクノロジがある場合は、さらに `TelemetryClient` をそのコードに追加する必要があります。
+
+
+## <a name="enabling-telemetry-to-capture-usage-data-from-other-services-like-luis-and-qna-maker"></a>テレメトリが LUIS や QnA Maker などの他のサービスから使用状況データを取り込めるようにする
+
+次に、LUIS サービスでテレメトリ機能を実装します。 LUIS サービスでは、組み込みのテレメトリ ログ記録が利用できるため、LUIS からのテレメトリ データの取得を開始するために実行しなければならない操作はほとんどありません。  
+
+このサンプルでは、単にダイアログの場合と同様の方法でテレメトリ クライアントを提供する必要があります。 
+
+1. `LuisHelper.cs` の `ExecuteLuisQuery()` メソッドには _`IBotTelemetryClient telemetryClient`_ パラメーターが必要です。
+
+    ```cs
+    public static async Task<BookingDetails> ExecuteLuisQuery(IBotTelemetryClient telemetryClient, IConfiguration configuration, ILogger logger, ITurnContext turnContext, CancellationToken cancellationToken)
+    ```
+
+2. `LuisPredictionOptions` クラスを使用すると、LUIS 予測要求に対する省略可能なパラメーターを指定できます。  テレメトリを有効にするには、`LuisHelper.cs` に `luisPredictionOptions` オブジェクトを作成するときに `TelemetryClient` パラメーターを設定する必要があります。
+
+    ```cs
+    var luisPredictionOptions = new LuisPredictionOptions()
+    {
+        TelemetryClient = telemetryClient,
+    };
+
+    var recognizer = new LuisRecognizer(luisApplication, luisPredictionOptions);
+    ```
+
+3. 最後の手順は、テレメトリ クライアントを `MainDialog.cs` の `ActStepAsync()` メソッドで `ExecuteLuisQuery` への呼び出しに渡すことです。
+
+    ```cs
+    await LuisHelper.ExecuteLuisQuery(TelemetryClient, Configuration, Logger, stepContext.Context, cancellationToken)
+    ```
+
+これで、テレメトリ データを Application insights に記録する、機能するボットが用意できたはずです。 [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme) を使用して、ボットをローカルで実行できます。 ボットの動作には変化は見られませんが、Application Insights に情報が記録されます。 複数のメッセージを送信してボットと対話します。次のセクションでは、Application Insights でテレメトリの結果を確認します。
+
+ボットのテストとデバッグの詳細については、次の記事を参照できます。
+
+ * [ボットのデバッグ](../bot-service-debug-bot.md)
+ * [テストとデバッグのガイドライン](bot-builder-testing-debugging.md)
+ * [エミュレーターを使用したデバッグ](../bot-service-debug-emulator.md)
+
+
+## <a name="visualizing-your-telemetry-data-in-application-insights"></a>テレメトリ データを Application Insights で視覚化する
+Application Insights は、クラウドとオンプレミスのどちらでホストされているかにかかわらず、ボット アプリケーションの可用性、パフォーマンス、使用状況を監視します。 Azure Monitor の強力なデータ分析プラットフォームを利用し、ユーザーの報告を待つことなく、アプリケーション運用やエラー診断に対する深い洞察を提供します。 Application Insights によって収集されたテレメトリ データを表示するにはいくつかの方法があります。2 つの主要な方法は、クエリとダッシュボードを使用するというものです。 
+
+### <a name="querying-your-telemetry-data-in-application-insights-using-kusto-queries"></a>Kusto クエリを使って Application Insights でテレメトリ データのクエリを実行する
+このセクションは、Application Insights でのログ クエリの使用方法を学ぶための開始点として使用してください。 ここでは、2 つの有用なクエリを示し、追加情報を含む他のドキュメントへのリンクを提供します。
+
+データのクエリを実行するには、次のようにします。
+
+1. [Azure portal](https://portal.azure.com) に移動します
+2. Application Insights に移動します。 これを行う最も簡単な方法は、 **[監視] > [アプリケーション]** の順にクリックすることであり、そこで見つかります。 
+3. Application Insights を開いたら、ナビゲーション バーにある _[ログ (Analytics)]_ をクリックできます。
+
+    ![ログ (Analytics)](media/AppInsights-LogView.png)
+
+4. これにより、クエリ ウィンドウが表示されます。  次のクエリを入力し、 _[実行]_ を選択します。
+
+    ```sql
+    customEvents
+    | where name=="WaterfallStart"
+    | extend DialogId = customDimensions['DialogId']
+    | extend InstanceId = tostring(customDimensions['InstanceId'])
+    | join kind=leftouter (customEvents | where name=="WaterfallComplete" | extend InstanceId = tostring(customDimensions['InstanceId'])) on InstanceId    
+    | summarize starts=countif(name=='WaterfallStart'), completes=countif(name1=='WaterfallComplete') by bin(timestamp, 1d), tostring(DialogId)
+    | project Percentage=max_of(0.0, completes * 1.0 / starts), timestamp, tostring(DialogId) 
+    | render timechart
+    ```
+5. これにより、完了まで実行されるウォーターフォール ダイアログの割合が返されます。
+
+    ![ログ (Analytics)](media/AppInsights-Query-PercentCompleteDialog.png)
+
+
+> [!TIP]
+> **[ログ (Analytics)]** ブレードの右上にあるボタンを選択することにより、Application Insights ダッシュボードに任意のクエリをピン留めできます。 ピン留めするダッシュボードを選択するだけで、次回そのダッシュボードにアクセスするとそれが使用可能になります。
+
+
+## <a name="the-application-insights-dashboard"></a>Application Insights ダッシュボード
+
+Azure で Application Insights リソースを作成するたびに、新しいダッシュボードが自動的に作成されて、関連付けられます。  そのダッシュボードを表示するには、Application Insights ブレードの上部にある、 **[アプリケーション ダッシュボード]** というラベルの付いたボタンを選択します。 
+
+![アプリケーション ダッシュボード リンク](media/Application-Dashboard-Link.png)
+
+
+あるいは、データを表示するには、Azure portal に移動します。 左側の **[ダッシュボード]** をクリックし、目的のダッシュボードをドロップダウンから選択します。
+
+ここには、ボットのパフォーマンスに関する既定の情報と、ダッシュボードにピン留めしたその他のクエリが表示されます。
+
+
+
+## <a name="additional-information"></a>追加情報
+
+* [Application Insights とは何か?](https://aka.ms/appinsights-overview)
+
+* [Application Insights の検索の使用](https://aka.ms/search-in-application-insights)
+
+* [Azure Application Insights を使ってカスタム KPI ダッシュボードを作成する](https://aka.ms/custom-kpi-dashboards-application-insights)
+
+
+<!--
+The easiest way to test is by creating a dashboard using [Azure portal's template deployment page](https://portal.azure.com/#create/Microsoft.Template).
+- Click ["Build your own template in the editor"]
+- Copy and paste either one of these .json file that is provided to help you create the dashboard:
+  - [System Health Dashboard](https://aka.ms/system-health-appinsights)
+  - [Conversation Health Dashboard](https://aka.ms/conversation-health-appinsights)
+- Click "Save"
+- Populate `Basics`: 
+   - Subscription: <your test subscription>
+   - Resource group: <a test resource group>
+   - Location: <such as West US>
+- Populate `Settings`:
+   - Insights Component Name: <like `core672so2hw`>
+   - Insights Component Resource Group: <like `core67`>
+   - Dashboard Name:  <like `'ConversationHealth'` or `SystemHealth`>
+- Click `I agree to the terms and conditions stated above`
+- Click `Purchase`
+- Validate
+   - Click on [`Resource Groups`](https://ms.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fsubscriptions%2FresourceGroups)
+   - Select your Resource Group from above (like `core67`).
+   - If you don't see a new Resource, then look at "Deployments" and see if any have failed.
+   - Here's what you typically see for failures:
+     
+```json
+{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"BadRequest","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidTemplate\",\r\n \"message\": \"Unable to process template language expressions for resource '/subscriptions/45d8a30e-3363-4e0e-849a-4bb0bbf71a7b/resourceGroups/core67/providers/Microsoft.Portal/dashboards/Bot Analytics Dashboard' at line '34' and column '9'. 'The template parameter 'virtualMachineName' is not found. Please see https://aka.ms/arm-template/#parameters for usage details.'\"\r\n }\r\n}"}]}
 ```
+-->
 
-ASP.NET Core アプリケーションに Application Insights を追加する方法の詳細については、[こちらの記事](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core-no-visualstudio)を参照してください。 
 
-### <a name="customize-your-telemetry-client"></a>テレメトリ クライアントをカスタマイズする
 
-Application Insights クライアントをカスタマイズする場合や、まったく別のサービスにログを記録する場合は、異なる方法でシステムを構成する必要があります。 NuGet からパッケージ `Microsoft.Bot.Builder.ApplicationInsights` をダウンロードするか、npm を使用して `botbuilder-applicationinsights` をインストールします。 Application Insights のキーを取得する方法の詳細については、[こちら](~/bot-service-resources-app-insights-keys.md)をご覧ください。
 
-**Application Insights の構成を変更する**
 
-構成を変更するには、Application Insights を追加する際に、`options` を含めます。 そうしないと、すべてが上記と同じになります。
 
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    ...
-    // Add Application Insights services into service collection
-    services.AddApplicationInsightsTelemetry(options);
-    ...
-}
-```
 
-`options` オブジェクトの型は `ApplicationInsightsServiceOptions` です。 これらのオプションの詳細については、[こちらをご覧ください]()。
 
-**カスタム テレメトリを使用する**: Bot Framework によって生成されたテレメトリ イベントのログをまったく別のシステムに記録する場合は、基底インターフェイス `IBotTelemetryClient` から派生した新しいクラスを作成して構成します。 次に、上記のようにテレメトリ クライアントを追加する際に、使用するカスタム クライアントを挿入します。 
+
+<!--
+## Additional information
+
+### Customize your telemetry client
+
+If you want to customize your telemetry to log into a separate service, you have to configure the system differently. If using Application Insights to do so, download the package `Microsoft.Bot.Builder.ApplicationInsights` via NuGet, or use npm to install `botbuilder-applicationinsights`. Details on getting the Application Insights keys can be found [here](../bot-service-resources-app-insights-keys.md). Otherwise, include what is necessary for logging to that service, then follow the section below.
+
+**Use Custom Telemetry**
+If you want to log telemetry events generated by the Bot Framework into a completely separate system, create a new class derived from the base interface `IBotTelemetryClient` and configure. Then, when adding your telemetry client as above, just inject your custom client. 
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -122,43 +374,32 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### <a name="add-custom-logging-to-your-bot"></a>カスタム ログ記録をボットに追加する
+### Add custom logging to your bot
 
-ボットで新しいテレメトリ ログ記録のサポートを構成したら、ボットにテレメトリを追加できます。  `BotTelemetryClient` (C# では `IBotTelemetryClient`) には、異なる種類のイベントをログに記録するメソッドがいくつかあります。  適切な種類のイベントを選択すると、Application Insights の既存のレポートを利用できます (Application Insights を使用している場合)。  一般的なシナリオでは、通常、`TraceEvent` が使用されます。  `TraceEvent` を使用してログに記録されたデータは、Kusto の `CustomEvent` テーブルに格納されます。
+Once the Bot has the new telemetry logging support configured, you can begin adding telemetry to your bot.  The `BotTelemetryClient`(in C#, `IBotTelemetryClient`) has several methods to log distinct types of events.  Choosing the appropriate type of event enables you to take advantage of Application Insights existing reports (if you are using Application Insights).  For general scenarios `TraceEvent` is typically used.  The data logged using `TraceEvent` lands in the `CustomEvent` table in Kusto.
 
-ボット内でダイアログを使用している場合は、ダイアログ ベースのすべてのオブジェクト (プロンプトを含む) に新しい `TelemetryClient` プロパティが含まれます。  これは、ログ記録を実行できるようにする `BotTelemetryClient` です。  これは単なる便利なものではありません。この記事で後述するように、このプロパティを設定すると、`WaterfallDialogs` によってイベントが生成されます。
+If using a Dialog within your Bot, every Dialog-based object (including Prompts) will contain a new `TelemetryClient` property.  This is the `BotTelemetryClient` that enables you to perform logging.  This is not just a convenience, we'll see later in this article if this property is set, `WaterfallDialogs` will generate events.
 
-#### <a name="identifiers-and-custom-events"></a>識別子とカスタム イベント
+### Details of telemetry options
 
-イベントのログを Application Insights に記録する場合、生成されるイベントには、入力する必要のない既定のプロパティが含まれています。  たとえば、(`TraceEvent` API を使用して生成された) 各カスタム イベントには、`user_id` プロパティと `session_id` プロパティが含まれています。  さらに、`activitiId`、`activityType`、`channelId` も追加されます。
+There are three main components available for your bot to log telemetry, and each component has customization available for logging your own events, which are discussed in this section. 
 
->注:カスタム テレメトリ クライアントには、これらの値は提供されません。
+- A  [Bot Framework Middleware component](#telemetry-middleware) (*TelemetryLoggerMiddleware*) that will log when messages are received, sent, updated or deleted. You can override for custom logging.
+- [*LuisRecognizer* class.](#telemetry-support-luis)  You can override for custom logging in two ways - per invocation (add/replace properties) or derived classes.
+- [*QnAMaker*  class.](#telemetry-qnamaker)  You can override for custom logging in two ways - per invocation (add/replace properties) or derived classes.
 
-プロパティ |Type | 詳細
---- | --- | ---
-`user_id`| `string` | [ChannelID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#channel-id) + [From.Id](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from)
-`session_id`| `string`|  [ConversationID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#conversation)
-`customDimensions.activityId`| `string` | [ボット アクティビティ ID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#id)
-`customDimensions.activityType` | `string` | [ボット アクティビティの種類](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#channel-id)
-`customDimensions.channelId` | `string` |  [ボット アクティビティのチャネル ID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#channel-id)
+All components log using the `IBotTelemetryClient`  (or `BotTelemetryClient` in node.js) interface which can be overridden with a custom implementation.
 
-## <a name="in-depth-telemetry"></a>詳細なテレメトリ
 
-SDK バージョン 4.4 に追加された新しいコンポーネントは 3 つあります。  すべてのコンポーネントのログが、カスタム実装でオーバーライドできる `IBotTelemetryClient` (node.js の場合は `BotTelemetryClient`) インターフェイスを使用して記録されます。
-
-- Bot Framework ミドルウェア コンポーネント (*TelemetryLoggerMiddleware*)。メッセージを受信、送信、更新、または削除したときにログに記録されます。 カスタム ログをオーバーライドできます。
-- *LuisRecognizer* クラス。  2 つの方法でカスタム ログをオーバーライドできます - 呼び出しごと (プロパティの追加/置換) または派生クラス。
-- *QnAMaker* クラス。  2 つの方法でカスタム ログをオーバーライドできます - 呼び出しごと (プロパティの追加/置換) または派生クラス。
-
-### <a name="telemetry-middleware"></a>テレメトリ ミドルウェア
+#### Telemetry Middleware
 
 |C#  | JavaScript |
 |:-----|:------------|
 |**Microsoft.Bot.Builder.TelemetryLoggerMiddleware** | **botbuilder-core** |
 
-#### <a name="out-of-box-usage"></a>標準の使用
+##### Out of box usage
 
-TelemetryLoggerMiddleware は変更なしで追加できる Bot Framework コンポーネントで、これにより Bot Framework SDK 付属の標準レポートを有効にするログ記録が実行されます。 
+The TelemetryLoggerMiddleware is a Bot Framework component that can be added without modification, and it will perform logging that enables out of the box reports that ship with the Bot Framework SDK. 
 
 ```csharp
 // Create the telemetry middleware to track conversation events
@@ -168,14 +409,26 @@ services.AddSingleton<IMiddleware, TelemetryLoggerMiddleware>();
 services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
 ```
 
-#### <a name="adding-properties"></a>プロパティの追加
-追加プロパティを追加することにした場合は、TelemetryLoggerMiddleware クラスを派生させることができます。  たとえば、"MyImportantProperty" プロパティを `BotMessageReceived` イベントに追加するとします。  `BotMessageReceived` は、ユーザーがボットにメッセージを送信するときにログに記録されます。  追加プロパティは、次のように追加します。
+And in our adapter, we would specify the use of middleware:
+
+```csharp
+public AdapterWithErrorHandler(ICredentialProvider credentialProvider, ILogger<BotFrameworkHttpAdapter> logger, IMiddleware middleware, ConversationState conversationState = null)
+           : base(credentialProvider)
+{
+    ...
+    Use(middleware);
+    ...
+}
+```
+
+##### Adding properties
+If you decide to add additional properties, the TelemetryLoggerMiddleware class can be derived.  For example, if you would like to add the property "MyImportantProperty" to the `BotMessageReceived` event.  `BotMessageReceived` is logged when the user sends a message to the bot.  Adding the additional property can be accomplished in the following way:
 
 ```csharp
 class MyTelemetryMiddleware : TelemetryLoggerMiddleware
 {
     ...
-    public Task OnReceiveActivityAsync(
+    protected override Task OnReceiveActivityAsync(
                   Activity activity,
                   CancellationToken cancellation)
     {
@@ -194,26 +447,25 @@ class MyTelemetryMiddleware : TelemetryLoggerMiddleware
 }
 ```
 
-そして、起動時に新しいクラスを追加します。
+In Startup, we would add the new class:
 
 ```csharp
 // Create the telemetry middleware to track conversation events
 services.AddSingleton<IMiddleware, MyTelemetryMiddleware>();
 ```
 
-#### <a name="completely-replacing-properties--additional-events"></a>プロパティ/追加イベントを完全に置き換える
+##### Completely replacing properties / Additional event(s)
 
-ログに記録されているプロパティを完全に置き換えることにした場合は、`TelemetryLoggerMiddleware` クラスを派生させることができます (プロパティを拡張する場合は上記と同じ)。   同様に、新しいイベントのログ記録が同じ方法で実行されます。
+If you decide to completely replace properties being logged, the `TelemetryLoggerMiddleware` class can be derived (like above when extending properties).   Similarly, logging new events is performed in the same way.
 
-たとえば、`BotMessageSend` プロパティを完全に置き換えて、複数のイベントを送信する場合の動作を次に示します。
+For example, if you would like to completely replace the`BotMessageSend` properties and send multiple events, the following demonstrates how this could be performed:
 
 ```csharp
 class MyTelemetryMiddleware : TelemetryLoggerMiddleware
 {
     ...
-    public Task<RecognizerResult> OnLuisRecognizeAsync(
+    protected override Task OnReceiveActivityAsync(
                   Activity activity,
-                  string dialogId = null,
                   CancellationToken cancellation)
     {
         // Override properties for BotMsgSendEvent
@@ -237,42 +489,41 @@ class MyTelemetryMiddleware : TelemetryLoggerMiddleware
     ...
 }
 ```
-注:標準プロパティがログに記録されていないと、製品に付属する標準レポートの動作が停止します。
+Note: When the standard properties are not logged, it will cause the out of box reports shipped with the product to stop working.
 
-#### <a name="events-logged-from-telemetry-middleware"></a>テレメトリ ミドルウェアからログに記録されたイベント
-[BotMessageSend](#customevent-botmessagesend)
-[BotMessageReceived](#customevent-botmessagereceived)
-[BotMessageUpdate](#customevent-botmessageupdate)
-[BotMessageDelete](#customevent-botmessagedelete)
+##### Events Logged from Telemetry Middleware
+[BotMessageSend](bot-builder-telemetry-reference.md#customevent-botmessagesend)
+[BotMessageReceived](bot-builder-telemetry-reference.md#customevent-botmessagereceived)
+[BotMessageUpdate](bot-builder-telemetry-reference.md#customevent-botmessageupdate)
+[BotMessageDelete](bot-builder-telemetry-reference.md#customevent-botmessagedelete)
 
-### <a name="telemetry-support-luis"></a>テレメトリ サポート LUIS 
+#### Telemetry support LUIS 
 
 |C#  | JavaScript |
 |:-----|:------------|
 | **Microsoft.Bot.Builder.AI.Luis** | **botbuilder-ai** |
 
-#### <a name="out-of-box-usage"></a>標準の使用
-LuisRecognizer は既存の Bot Framework コンポーネントです。テレメトリを有効にするには、`luisOptions` を介して IBotTelemetryClient インターフェイスを渡します。  ログに記録された既定のプロパティをオーバーライドし、必要に応じて新しいイベントを記録できます。
+##### Out of box usage
+The LuisRecognizer is an existing Bot Framework component, and telemetry can be enabled by passing a IBotTelemetryClient interface through `luisOptions`.  You can override the default properties being logged and log new events as required.
 
-`luisOptions` の作成中、これを機能させるには、`IBotTelemetryClient` オブジェクトを指定する必要があります。
+During construction of `luisOptions`, an `IBotTelemetryClient` object must be provided for this to work.
 
 ```csharp
-var luisOptions = new LuisPredictionOptions(
-      ...
-      telemetryClient,
-      false); // Log personal information flag. Defaults to false.
-
-var client = new LuisRecognizer(luisApp, luisOptions);
+var luisPredictionOptions = new LuisPredictionOptions()
+{
+    TelemetryClient = telemetryClient
+};
+var recognizer = new LuisRecognizer(luisApplication, luisPredictionOptions);
 ```
 
-#### <a name="adding-properties"></a>プロパティの追加
-追加プロパティを追加することにした場合は、`LuisRecognizer` クラスを派生させることができます。  たとえば、"MyImportantProperty" プロパティを `LuisResult` イベントに追加するとします。  `LuisResult` は、LUIS 予測呼び出しが実行されるときにログに記録されます。  追加プロパティは、次のように追加します。
+##### Adding properties
+If you decide to add additional properties, the `LuisRecognizer` class can be derived.  For example, if you would like to add the property "MyImportantProperty" to the `LuisResult` event.  `LuisResult` is logged when a LUIS prediction call is performed.  Adding the additional property can be accomplished in the following way:
 
 ```csharp
 class MyLuisRecognizer : LuisRecognizer 
 {
    ...
-   override protected Task OnRecognizerResultAsync(
+   protected override Task OnRecognizerResultAsync(
            RecognizerResult recognizerResult,
            ITurnContext turnContext,
            Dictionary<string, string> properties = null,
@@ -291,8 +542,8 @@ class MyLuisRecognizer : LuisRecognizer
 }
 ```
 
-#### <a name="add-properties-per-invocation"></a>呼び出しごとにプロパティを追加する
-呼び出し中、追加プロパティを追加する必要が出てくる場合があります。
+##### Add properties per invocation
+Sometimes it's necessary to add additional properties during the invocation:
 ```csharp
 var additionalProperties = new Dictionary<string, string>
 {
@@ -301,20 +552,19 @@ var additionalProperties = new Dictionary<string, string>
 };
 
 var result = await recognizer.RecognizeAsync(turnContext,
-     additionalProperties,
-     CancellationToken.None).ConfigureAwait(false);
+     additionalProperties).ConfigureAwait(false);
 ```
 
-#### <a name="completely-replacing-properties--additional-events"></a>プロパティ/追加イベントを完全に置き換える
-ログに記録されているプロパティを完全に置き換えることにした場合は、`LuisRecognizer` クラスを派生させることができます (プロパティを拡張する場合は上記と同じ)。   同様に、新しいイベントのログ記録が同じ方法で実行されます。
+##### Completely replacing properties / Additional event(s)
+If you decide to completely replace properties being logged, the `LuisRecognizer` class can be derived (like above when extending properties).   Similarly, logging new events is performed in the same way.
 
-たとえば、`LuisResult` プロパティを完全に置き換えて、複数のイベントを送信する場合の動作を次に示します。
+For example, if you would like to completely replace the`LuisResult` properties and send multiple events, the following demonstrates how this could be performed:
 
 ```csharp
 class MyLuisRecognizer : LuisRecognizer
 {
     ...
-    override protected Task OnRecognizerResultAsync(
+    protected override Task OnRecognizerResultAsync(
              RecognizerResult recognizerResult,
              ITurnContext turnContext,
              Dictionary<string, string> properties = null,
@@ -341,30 +591,30 @@ class MyLuisRecognizer : LuisRecognizer
     ...
 }
 ```
-注:標準プロパティがログに記録されていないと、製品に付属する Application Insights 標準レポートの動作が停止します。
+Note: When the standard properties are not logged, it will cause the Application Insights out of box reports shipped with the product to stop working.
 
-#### <a name="events-logged-from-telemetryluisrecognizer"></a>TelemetryLuisRecognizer からログに記録されたイベント
-[LuisResult](#customevent-luisevent)
+##### Events Logged from TelemetryLuisRecognizer
+[LuisResult](bot-builder-telemetry-reference.md#customevent-luisevent)
 
-### <a name="telemetry-qna-recognizer"></a>テレメトリ QnA 認識エンジン
+### Telemetry QnAMaker
 
 |C#  | JavaScript |
 |:-----|:------------|
 | **Microsoft.Bot.Builder.AI.QnA** | **botbuilder-ai** |
 
 
-#### <a name="out-of-box-usage"></a>標準の使用
-QnAMaker クラスは既存の Bot Framework コンポーネントで、ログ記録を有効にする 2 つの追加コンストラクター パラメーターを追加し、Bot Framework SDK に付属する標準レポートを有効にします。 新しい `telemetryClient` は、ログ記録を実行する `IBotTelemetryClient` インターフェイスを参照します。  
+##### Out of box usage
+The QnAMaker class is an existing Bot Framework component that adds two additional constructor parameters which enable logging that enable out of the box reports that ship with the Bot Framework SDK. The new `telemetryClient` references a `IBotTelemetryClient` interface which performs the logging.  
 
 ```csharp
 var qna = new QnAMaker(endpoint, options, client, 
                        telemetryClient: telemetryClient,
                        logPersonalInformation: true);
 ```
-#### <a name="adding-properties"></a>プロパティの追加 
-追加プロパティを追加することにした場合、これを行う方法は 2 つあります。1 つは QnA 呼び出し中、回答を取得するためにプロパティの追加が必要な状況です。もう 1 つは `QnAMaker` クラスから派生させる方法です。  
+##### Adding properties 
+If you decide to add additional properties, there are two methods of doing this - when properties need to be added during the QnA call to retrieve answers or deriving from the `QnAMaker` class.  
 
-次は `QnAMaker` クラスからの派生を示しています。  この例では、"MyImportantProperty" プロパティを `QnAMessage` イベントに追加しています。  `QnAMessage` イベントは、QnA `GetAnswers` 呼び出しの実行中に記録されます。  さらに、2 番目の "MySecondEvent" イベントを記録します。
+The following demonstrates deriving from the `QnAMaker` class.  The example shows adding the property "MyImportantProperty" to the `QnAMessage` event.  The`QnAMessage` event is logged when a QnA `GetAnswers`call is performed.  In addition, we log a second event "MySecondEvent".
 
 ```csharp
 class MyQnAMaker : QnAMaker 
@@ -400,10 +650,10 @@ class MyQnAMaker : QnAMaker
 }
 ```
 
-#### <a name="adding-properties-during-getanswersasync"></a>GetAnswersAsync 実行中のプロパティの追加
-実行時に追加する必要があるプロパティがある場合、`GetAnswersAsync` メソッドは、イベントに追加するプロパティやメトリックを提供できます。
+##### Adding properties during GetAnswersAsync
+If you have properties that need to be added during runtime, the `GetAnswersAsync` method can provide properties and/or metrics to add to the event.
 
-たとえば、`dialogId` をイベントに追加する必要がある場合、これは次のように行われます。
+For example, if you want to add a `dialogId` to the event, it can be done like the following:
 ```csharp
 var telemetryProperties = new Dictionary<string, string>
 {
@@ -412,15 +662,15 @@ var telemetryProperties = new Dictionary<string, string>
 
 var results = await qna.GetAnswersAsync(context, opts, telemetryProperties);
 ```
-`QnaMaker` クラスには、PersonalInfomation プロパティなどのプロパティをオーバーライドする機能もあります。
+The `QnaMaker` class provides the capability of overriding properties, including PersonalInfomation properties.
 
-#### <a name="completely-replacing-properties--additional-events"></a>プロパティ/追加イベントを完全に置き換える
-ログに記録されているプロパティを完全に置き換えることにした場合は、`TelemetryQnAMaker` クラスを派生させることができます (プロパティを拡張する場合は上記と同じ)。   同様に、新しいイベントのログ記録が同じ方法で実行されます。
+##### Completely replacing properties / Additional event(s)
+If you decide to completely replace properties being logged, the `TelemetryQnAMaker` class can be derived (like above when extending properties).   Similarly, logging new events is performed in the same way.
 
-たとえば、`QnAMessage` プロパティを完全に置き換える場合の動作を次に示します。
+For example, if you would like to completely replace the`QnAMessage` properties, the following demonstrates how this could be performed:
 
 ```csharp
-class MyLuisRecognizer : TelemetryQnAMaker
+class MyQnAMaker : QnAMaker
 {
     ...
     protected override Task OnQnaResultsAsync(
@@ -443,325 +693,27 @@ class MyLuisRecognizer : TelemetryQnAMaker
     ...
 }
 ```
-注:標準プロパティがログに記録されていないと、製品に付属する標準レポートの動作が停止します。
+Note: When the standard properties are not logged, it will cause the out of box reports shipped with the product to stop working.
 
-#### <a name="events-logged-from-telemetryluisrecognizer"></a>TelemetryLuisRecognizer からログに記録されたイベント
-[QnAMessage](#customevent-qnamessage)
+##### Events Logged from TelemetryLuisRecognizer
+[QnAMessage](bot-builder-telemetry-reference.md#customevent-qnamessage)
 
+### All other events
 
-## <a name="waterfalldialog-events"></a>WaterfallDialog イベント
+A full list of events logged for your bot's telemetry can be found on the [telemetry reference page](bot-builder-telemetry-reference.md).
 
-独自のイベントの生成に加え、SDK 内の `WaterfallDialog` オブジェクトによってイベントが生成されるようになりました。 次のセクションでは、Bot Framework 内から生成されるイベントについて説明します。 `WaterfallDialog` で `TelemetryClient` プロパティを設定することによって、これらのイベントが保存されます。
+#### Identifiers and Custom Events
 
-テレメトリ イベントをログに記録するために、`WaterfallDialog` を使用するサンプル (CoreBot) を変更する例を次に示します。  CoreBot では、`WaterfallDialog` が `ComponentDialog` (`GreetingDialog`) 内に配置されている場合に使用される一般的なパターンを使用します。
+When logging events into Application Insights, the events generated contain default properties that you won't have to fill.  For example, `user_id` and `session_id`properties are contained in each Custom Event (generated with the `TraceEvent` API).  In addition, `activitiId`, `activityType` and `channelId` are also added.
 
-```csharp
-// IBotTelemetryClient is direct injected into our Bot
-public CoreBot(BotServices services, UserState userState, ConversationState conversationState, IBotTelemetryClient telemetryClient)
-...
+> [!NOTE]
+> Custom telemetry clients will not be provided these values.
 
-// The IBotTelemetryClient passed to the GreetingDialog
-...
-Dialogs = new DialogSet(_dialogStateAccessor);
-Dialogs.Add(new GreetingDialog(_greetingStateAccessor, telemetryClient));
-...
-
-// The IBotTelemetryClient to the WaterfallDialog
-...
-AddDialog(new WaterfallDialog(ProfileDialog, waterfallSteps) { TelemetryClient = telemetryClient });
-...
-
-```
-
-`WaterfallDialog` に `IBotTelemetryClient` が構成されると、イベントのログ記録が開始されます。
-
-## <a name="events-generated-by-the-bot-framework-service"></a>Bot Framework Service によって生成されるイベント
-
-ボット コードからイベントを生成する `WaterfallDialog` だけでなく、Bot Framework Channel Service もイベントをログに記録します。  これは、チャネルに関する問題や全体的なボット エラーの診断に役立ちます。
-
-### <a name="customevent-activity"></a>CustomEvent: "Activity"
-**ログ記録元:** Channel Service メッセージを受信したときに、Channel Service によってログに記録されます。
-
-### <a name="exception-bot-errors"></a>例外:"Bot Errors"
-**ログ記録元:** Channel Service ボットの呼び出しから 2XX 以外の HTTP 応答が返されたときに、チャネルによってログに記録されます。
-
-## <a name="all-events-generated"></a>生成されるすべてのイベント
-
-### <a name="customevent-waterfallstart"></a>CustomEvent: "WaterfallStart" 
-
-WaterfallDialog が開始されると、`WaterfallStart` イベントがログに記録されます。
-
-- `user_id` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `session_id` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.activityId` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.activityType` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.channelId` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.DialogId` (ウォーターフォールに渡される dialogId (文字列) です。  これは "ウォーターフォールの種類" と考えることができます)
-- `customDimensions.InstanceID` (ダイアログのインスタンスごとに一意)
-
-### <a name="customevent-waterfallstep"></a>CustomEvent: "WaterfallStep" 
-
-ウォーターフォール ダイアログの個々のステップをログに記録します。
-
-- `user_id` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `session_id` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.activityId` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.activityType` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.channelId` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.DialogId` (ウォーターフォールに渡される dialogId (文字列) です。  これは "ウォーターフォールの種類" と考えることができます)
-- `customDimensions.StepName` (メソッド名または `StepXofY` (ラムダの場合))
-- `customDimensions.InstanceID` (ダイアログのインスタンスごとに一意)
-
-### <a name="customevent-waterfalldialogcomplete"></a>CustomEvent: "WaterfallDialogComplete"
-
-ウォーターフォール ダイアログが完了したときにログに記録します。
-
-- `user_id` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `session_id` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.activityId` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.activityType` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.channelId` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.DialogId` (ウォーターフォールに渡される dialogId (文字列) です。  これは "ウォーターフォールの種類" と考えることができます)
-- `customDimensions.InstanceID` (ダイアログのインスタンスごとに一意)
-
-### <a name="customevent-waterfalldialogcancel"></a>CustomEvent: "WaterfallDialogCancel" 
-
-ウォーターフォール ダイアログがキャンセルされたときにログに記録します。
-
-- `user_id` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `session_id` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.activityId` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.activityType` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.channelId` ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- `customDimensions.DialogId` (ウォーターフォールに渡される dialogId (文字列) です。  これは "ウォーターフォールの種類" と考えることができます)
-- `customDimensions.StepName` (メソッド名または `StepXofY` (ラムダの場合))
-- `customDimensions.InstanceID` (ダイアログのインスタンスごとに一意)
-
-### <a name="customevent-botmessagereceived"></a>CustomEvent: BotMessageReceived 
-ボットがユーザーから新しいメッセージを受信したときにログに記録されます。
-
-オーバーライドされていない場合、このイベントは、`Microsoft.Bot.Builder.IBotTelemetry.TrackEvent()` メソッドを使用して `Microsoft.Bot.Builder.TelemetryLoggerMiddleware` からログに記録されます。
-
-- セッション ID  
-  - Application Insights を使用する場合、これは、Application Insights 内で使用されている**セッション** ID (*Temeletry.Context.Session.Id*) として、`TelemetryBotIdInitializer` からログに記録されます。  
-  - Bot Framework プロトコルで定義されている [Conversation ID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#conversation) に対応します。
-  - ログに記録されるプロパティ名は `session_id` です。
-
-- ユーザー ID
-  - Application Insights を使用する場合、これは、Application Insights 内で使用されている**ユーザー** ID (*Temeletry.Context.User.Id*) として、`TelemetryBotIdInitializer` からログに記録されます。  
-  - このプロパティの値は、Bot Framework プロトコルによって定義されている (連結された) [Channel ID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#channel-id) プロパティと [User ID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) プロパティの組み合わせです。
-  - ログに記録されるプロパティ名は `user_id` です。
-
-- ActivityID 
-  - Application Insights を使用する場合、これはイベントに対するプロパティとして、`TelemetryBotIdInitializer` からログに記録されます。
-  - Bot Framework プロトコルで定義されている [Activity ID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#Id) に対応します。
-  - プロパティ名は `activityId` です。
-
-- チャネル ID
-  - Application Insights を使用する場合、これはイベントに対するプロパティとして、`TelemetryBotIdInitializer` からログに記録されます。  
-  - Bot Framework プロトコルの [Channel ID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#id) に対応します。
-  - ログに記録されるプロパティ名は `channelId` です。
-
-- ActivityType 
-  - Application Insights を使用する場合、これはイベントに対するプロパティとして、`TelemetryBotIdInitializer` からログに記録されます。  
-  - Bot Framework プロトコルの [Activity Type](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#type) に対応します。
-  - ログに記録されるプロパティ名は `activityType` です。
-
-- Text
-  - `logPersonalInformation` プロパティが `true` に設定されている場合に、**必要に応じて**ログに記録されます。
-  - Bot Framework プロトコルの [Activity Text](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#text) フィールドに対応します。
-  - ログに記録されるプロパティ名は `text` です。
-
-- Speak
-
-  - `logPersonalInformation` プロパティが `true` に設定されている場合に、**必要に応じて**ログに記録されます。
-  - Bot Framework プロトコルの [Activity Speak](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#speak) フィールドに対応します。
-  - ログに記録されるプロパティ名は `speak` です。
-
-  - 
-
-- FromId
-  - Bot Framework プロトコルの [From ID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) フィールドに対応します。
-  - ログに記録されるプロパティ名は `fromId` です。
-
-- FromName
-  - `logPersonalInformation` プロパティが `true` に設定されている場合に、**必要に応じて**ログに記録されます。
-  - Bot Framework プロトコルの [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) フィールドに対応します。
-  - ログに記録されるプロパティ名は `fromName` です。
-
-- RecipientId
-  - Bot Framework プロトコルの [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) フィールドに対応します。
-  - ログに記録されるプロパティ名は `fromName` です。
-
-- RecipientName
-  - Bot Framework プロトコルの [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) フィールドに対応します。
-  - ログに記録されるプロパティ名は `fromName` です。
-
-- ConversationId
-  - Bot Framework プロトコルの [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) フィールドに対応します。
-  - ログに記録されるプロパティ名は `fromName` です。
-
-- ConversationName
-  - Bot Framework プロトコルの [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) フィールドに対応します。
-  - ログに記録されるプロパティ名は `fromName` です。
-
-- Locale
-  - Bot Framework プロトコルの [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) フィールドに対応します。
-  - ログに記録されるプロパティ名は `fromName` です。
-
-### <a name="customevent-botmessagesend"></a>CustomEvent: BotMessageSend 
-**ログ記録元:** TelemetryLoggerMiddleware 
-
-ボットがメッセージを送信したときにログに記録されます。
-
-- UserID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- SessionID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- ActivityID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- Channel ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- ActivityType ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- ReplyToID
-- RecipientId
-- ConversationName
-- Locale
-- RecipientName (PII では省略可能)
-- Text (PII では省略可能)
-- Speak (PII では省略可)
-
-
-### <a name="customevent-botmessageupdate"></a>CustomEvent: BotMessageUpdate
-**ログ記録元:** TelemetryLoggerMiddleware ボットによってメッセージが更新されたときにログに記録されます (まれなケース)。
-- UserID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- SessionID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- ActivityID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- Channel ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- ActivityType ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- RecipientId
-- ConversationId
-- ConversationName
-- Locale
-- Text (PII では省略可能)
-
-
-### <a name="customevent-botmessagedelete"></a>CustomEvent: BotMessageDelete
-**ログ記録元:** TelemetryLoggerMiddleware ボットによってメッセージが削除されたときにログに記録されます (まれなケース)。
-- UserID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- SessionID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- ActivityID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- Channel ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- ActivityType ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- RecipientId
-- ConversationId
-- ConversationName
-
-### <a name="customevent-luisevent"></a>CustomEvent: LuisEvent
-**ログ記録元:** LuisRecognizer
-
-LUIS サービスの結果をログに記録します。
-
-- UserID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- SessionID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- ActivityID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- Channel ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- ActivityType ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- ApplicationId
-- Intent
-- IntentScore
-- Intent2 
-- IntentScore2 
-- FromId
-- SentimentLabel
-- SentimentScore
-- Entities (json として)
-- Question (PII では省略可能)
-
-## <a name="customevent-qnamessage"></a>CustomEvent: QnAMessage
-**ログ記録元:** QnA Maker
-
-QnA Maker サービスの結果をログに記録します。
-
-- UserID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- SessionID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- ActivityID ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- Channel ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- ActivityType ([テレメトリ初期化子から](https://aka.ms/telemetry-initializer))
-- Username (PII では省略可能)
-- Question (PII では省略可能)
-- MatchedQuestion
-- QuestionId
-- Answer
-- Score
-- ArticleFound
-
-## <a name="querying-the-data"></a>データのクエリ
-Application Insights を使用すると、すべてのデータが (サービス間でも) 相互に関連付けられます。  成功した要求のクエリを実行することで、その要求の関連するすべてのイベントを確認できます。  
-以下のクエリによって、最新の要求がわかります。
-```sql
-requests 
-| where timestamp > ago(3d) 
-| where resultCode == 200
-| order by timestamp desc
-| project timestamp, operation_Id, appName
-| limit 10
-```
-
-最初のクエリから、`operation_Id` をいくつか選択し、詳細情報を探します。
-
-```sql
-let my_operation_id = "<OPERATION_ID>";
-let union_all = () {
-    union
-    (traces | where operation_Id == my_operation_id),
-    (customEvents | where operation_Id == my_operation_id),
-    (requests | where operation_Id == my_operation_id),
-    (dependencies | where operation_Id  == my_operation_id),
-    (exceptions | where operation_Id == my_operation_id)
-};
-union_all
-    | order by timestamp asc
-    | project itemType, name, performanceBucket
-```
-
-これにより、各呼び出しの期間バケットで、1 つの要求の内訳が時系列で表示されます。
-![呼び出しの例](media/performance_query.png)
-
-> 注:"Activity" `customEvent` イベントは非同期でログに記録されるため、これらのイベントのタイムスタンプの順序は正しくありません。
-
-## <a name="create-a-dashboard"></a>ダッシュボードを作成する
-
-最も簡単なテスト方法は、[Azure portal の [テンプレートのデプロイ] ページ](https://portal.azure.com/#create/Microsoft.Template)を使用してダッシュボードを作成することです。  
-- [Build your own template in the editor] \(エディターで独自のテンプレートをビルド\) をクリックします。
-- ダッシュボードの作成を支援するために用意されている、次のいずれかの .json ファイルをコピーして貼り付けます。
-  - [System Health Dashboard](https://aka.ms/system-health-appinsights)
-  - [Conversation Health Dashboard](https://aka.ms/conversation-health-appinsights)
-- [保存] をクリックします
-- `Basics` の設定: 
-   - サブスクリプション: <your test subscription>
-   - リソース グループ: <a test resource group>
-   - 場所: <such as West US>
-- `Settings` の設定:
-   - Insights コンポーネント名: <例: `core672so2hw`>
-   - Insights コンポーネントのリソース グループ: <例: `core67`>
-   - ダッシュボード名: <例: `'ConversationHealth'` や `SystemHealth`>
-- [`I agree to the terms and conditions stated above`] をクリックします。
-- [`Purchase`] をクリックします。
-- 検証
-   - [[`Resource Groups`]](https://ms.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fsubscriptions%2FresourceGroups) をクリックします
-   - 上記からリソース グループ (`core67` など) を選択します。
-   - 新しいリソースが表示されない場合は、[デプロイ] でエラーが発生していないかどうかを確認します。
-   - エラーが発生した場合に通常表示される内容を次に示します。
-     
-```json
-{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"BadRequest","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidTemplate\",\r\n \"message\": \"Unable to process template language expressions for resource '/subscriptions/45d8a30e-3363-4e0e-849a-4bb0bbf71a7b/resourceGroups/core67/providers/Microsoft.Portal/dashboards/Bot Analytics Dashboard' at line '34' and column '9'. 'The template parameter 'virtualMachineName' is not found. Please see https://aka.ms/arm-template/#parameters for usage details.'\"\r\n }\r\n}"}]}
-```
-
-データを表示するには、Azure portal に移動します。 左側の **[ダッシュボード]** をクリックし、ドロップダウンから作成したダッシュボードを選択します。
-
-## <a name="additional-resources"></a>その他のリソース
-テレメトリを実装した次のサンプルを参照してください。
-- C#
-  - [LUIS with AppInsights](https://aka.ms/luis-with-appinsights-cs)
-  - [QnA with AppInsights](https://aka.ms/qna-with-appinsights-cs)
-- JS
-  - [LUIS with AppInsights](https://aka.ms/luis-with-appinsights-js)
-  - [QnA with AppInsights](https://aka.ms/qna-with-appinsights-js)
-
+Property |Type | Details
+--- | --- | ---
+`user_id`| `string` | [ChannelID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#channel-id) + [From.Id](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from)
+`session_id`| `string`|  [ConversationID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#conversation)
+`customDimensions.activityId`| `string` | [The bot activity ID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#id)
+`customDimensions.activityType` | `string` | [The bot activity type](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#channel-id)
+`customDimensions.channelId` | `string` |  [The bot activity channel ID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#channel-id)
+-->

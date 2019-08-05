@@ -10,12 +10,12 @@ ms.subservice: bot-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: v-ivorb
-ms.openlocfilehash: 0b108d90d18261cd22214db9a7926bdac1bfee40
-ms.sourcegitcommit: a4181f35dbe6a8b107eea28122372f524e19880a
+ms.openlocfilehash: 08765793611a0c2543fea481479ea4cfa2c8b74c
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65030195"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671423"
 ---
 ## <a name="about-direct-line"></a>Direct Line の概要
 
@@ -29,16 +29,16 @@ Direct Line は、次の 3 つのフォームでご利用いただけます。
 
 |                            | Direct Line | Direct Line App Service 拡張機能 | Direct Line Speech |
 |----------------------------|-------------|-----------------------------------|--------------------|
-| 一般提供状況と SLA    | 一般公開 | プライベート プレビュー、SLA なし  | プライベート プレビュー、SLA なし |
+| 可用性とライセンス    | 一般公開 | プライベート プレビュー、SLA なし  | プライベート プレビュー、SLA なし |
 | 音声認識およびテキスト読み上げのパフォーマンス | Standard | Standard | 高性能 |
-| 統合 OAuth           | はい | はい | いいえ  |
-| 統合テレメトリ       | はい | はい | いいえ  |
-| 従来の Web ブラウザーのサポート | はい | いいえ  | いいえ  |
+| 統合 OAuth           | はい | はい | いいえ |
+| 統合テレメトリ       | はい | はい | いいえ |
+| 従来の Web ブラウザーのサポート | はい | いいえ | いいえ |
 | Bot Framework SDK のサポート | すべての v3、v4 | v4.5 以上が必要 | v4.5 以上が必要 |
 | クライアント SDK のサポート    | JS、C# | JS、C# | C++、C#、Unity |
-| Web チャットとの連携  | はい | はい | いいえ |
-| 会話履歴 API | はい | はい| いいえ |
-| VNet | いいえ  | プレビュー* | いいえ  |
+| Web チャットとの連携  | はい | はい | いいえ|
+| 会話履歴 API | はい | はい| いいえ|
+| VNet | いいえ | プレビュー* | いいえ |
 
 _* Direct Line App Service 拡張機能は VNET で使用できますが、送信呼び出しの制限はまだ許可されていません。_
 

@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 1a3b8a4bfdd73674b972f43fe58afec49c63d8cc
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67464805"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>LUIS を使用して意図とエンティティを認識する 
@@ -265,7 +265,7 @@ bot.dialog('CreateNote', [
 });
 ```
 
-発話内のすべてのエンティティは、`args` パラメーターを使用してダイアログに渡されます。 [ウォーターフォール][waterfall]の最初のステップでは、calls [EntityRecognizer.findEntity][EntityRecognizer_findEntity] to get the title of the note from any `Note.Title` entities in the LUIS response. If the LUIS app didn't detect a `Note.Title` entity, the bot prompts the user for the name of the note. The second step of the waterfall prompts for the text to include in the note. Once the bot has the text of the note, the third step uses [session.userData][session_userData] を使用し、タイトルをキーとして使用して、`notes` オブジェクトにメモを保存します。 `session.UserData` の詳細については、「[状態データを管理する](./bot-builder-nodejs-state.md)」を参照してください。 
+発話内のすべてのエンティティは、`args` パラメーターを使用してダイアログに渡されます。 [ウォーターフォール][waterfall]の最初の手順では [EntityRecognizer.findEntity][EntityRecognizer_findEntity] を呼び出し、LUIS 応答の `Note.Title` エンティティからメモのタイトルを取得します。 LUIS アプリで `Note.Title` エンティティが検出されなかった場合は、ボットによってユーザーにメモの名前が求められます。 ウォーターフォールの 2 番目の手順では、メモに含めるテキストが求められます。 ボットでメモのテキストが用意できたら、3 番目の手順では [session.userData][session_userData] を使用し、キーとしてタイトルを使って、`notes` オブジェクトにメモを保存します。 `session.UserData` の詳細については、「[状態データを管理する](./bot-builder-nodejs-state.md)」を参照してください。 
 
 
 
