@@ -6,18 +6,17 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d69013c721552483cfd38b204936cb1c7f508f82
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 95ec59da7b2b64391a599fa690bf3e8410c3cd53
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64564011"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757191"
 ---
 # <a name="implement-channel-specific-functionality"></a>チャネル固有の機能の実装
 
-一部のチャネルには、[メッセージのテキストと添付ファイル](bot-framework-rest-connector-create-messages.md)だけでは実装できない機能が用意されています。 チャネル固有の機能を実装するには、[Activity][Activity] オブジェクトの `channelData` プロパティを使用して、ネイティブのメタデータをチャネルに渡します。 たとえば、お使いのボットで `channelData` プロパティを使用して、ステッカーを送信するように Telegram に指示したり、電子メールを送信するように Office365 に指示したりできます。
+一部のチャネルには、[メッセージのテキストと添付ファイル](bot-framework-rest-connector-create-messages.md)だけでは実装できない機能が用意されています。 チャネル固有の機能を実装するには、`Activity` オブジェクトの `channelData` プロパティを使用して、ネイティブのメタデータをチャネルに渡します。 たとえば、お使いのボットで `channelData` プロパティを使用して、ステッカーを送信するように Telegram に指示したり、電子メールを送信するように Office365 に指示したりできます。
 
 この記事では、メッセージ アクティビティの `channelData` プロパティを使用して、このチャネル固有の機能を実装する方法について説明します。
 
@@ -30,15 +29,15 @@ ms.locfileid: "64564011"
 | Kik | ネイティブ Kik メッセージを送受信します | 
 
 > [!NOTE]
-> [Activity][Activity] オブジェクトの `channelData` プロパティの値は JSON オブジェクトです。 以下に示すように、JSON オブジェクトの構造は、チャネルおよび実装されている機能によって異なります。 
+> `Activity` オブジェクトの `channelData` プロパティの値は JSON オブジェクトです。 以下に示すように、JSON オブジェクトの構造は、チャネルおよび実装されている機能によって異なります。 
 
 ## <a name="create-a-custom-email-message"></a>カスタム電子メール メッセージを作成する
 
-電子メール メッセージを作成するには、[Activity][Activity] オブジェクトの `channelData` プロパティを、次のプロパティを含む JSON オブジェクトに設定します。
+電子メール メッセージを作成するには、`Activity` オブジェクトの `channelData` プロパティを、次のプロパティを含む JSON オブジェクトに設定します。
 
 [!INCLUDE [Email channelData table](~/includes/snippet-channelData-email.md)]
 
-このスニペットは、カスタム電子メール メッセージ用の `channelData` プロパティの例を示しています。
+次のスニペットは、カスタム電子メール メッセージ用の `channelData` プロパティの例を示しています。
 
 ```json
 "channelData":
@@ -52,7 +51,7 @@ ms.locfileid: "64564011"
 
 ## <a name="create-a-full-fidelity-slack-message"></a>完全に忠実な Slack メッセージを作成する
 
-完全に忠実な Slack メッセージを作成するには、[Activity][Activity] オブジェクトの `channelData` プロパティを、<a href="https://api.slack.com/docs/messages" target="_blank">Slack のメッセージ</a>、<a href="https://api.slack.com/docs/message-attachments" target="_blank">Slack の添付ファイル</a>、<a href="https://api.slack.com/docs/message-buttons" target="_blank">Slack のボタン</a>を指定する JSON オブジェクトに設定します。 
+完全に忠実な Slack メッセージを作成するには、`Activity` オブジェクトの `channelData` プロパティを、<a href="https://api.slack.com/docs/messages" target="_blank">Slack のメッセージ</a>、<a href="https://api.slack.com/docs/message-attachments" target="_blank">Slack の添付ファイル</a>、<a href="https://api.slack.com/docs/message-buttons" target="_blank">Slack のボタン</a>を指定する JSON オブジェクトに設定します。 
 
 > [!NOTE]
 > Slack メッセージでボタンをサポートするには、Slack チャネルに[お使いのボットを接続](../bot-service-manage-channels.md)するときに、**インタラクティブ メッセージ**を有効にする必要があります。
@@ -136,7 +135,7 @@ ms.locfileid: "64564011"
 
 ## <a name="create-a-facebook-notification"></a>Facebook 通知を作成する
 
-Facebook 通知を作成するには、[Activity][Activity] オブジェクトの `channelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
+Facebook 通知を作成するには、`Activity` オブジェクトの `channelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
 
 | プロパティ | 説明 |
 |----|----|
@@ -163,7 +162,7 @@ Facebook 通知を作成するには、[Activity][Activity] オブジェクト�
 
 ## <a name="create-a-telegram-message"></a>Telegram メッセージを作成する
 
-音声メモやステッカーの共有など、Telegram 固有のアクションが実装されているメッセージを作成するには、[Activity][Activity] オブジェクトの `channelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
+音声メモやステッカーの共有など、Telegram 固有のアクションが実装されているメッセージを作成するには、`Activity` オブジェクトの `channelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
 
 | プロパティ | 説明 |
 |----|----|
@@ -237,7 +236,7 @@ Facebook 通知を作成するには、[Activity][Activity] オブジェクト�
 
 ## <a name="create-a-native-kik-message"></a>ネイティブ Kik メッセージを作成する
 
-ネイティブ Kik メッセージを作成するには、[Activity][Activity] オブジェクトの `channelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
+ネイティブ Kik メッセージを作成するには、`Activity` オブジェクトの `channelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
 
 | プロパティ | 説明 |
 |----|----|
@@ -274,6 +273,5 @@ Facebook 通知を作成するには、[Activity][Activity] オブジェクト�
 - [アクティビティの概要](bot-framework-rest-connector-activities.md)
 - [メッセージの作成](bot-framework-rest-connector-create-messages.md)
 - [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
+- [Bot Framework のアクティビティ スキーマ](https://aka.ms/botSpecs-activitySchema)
 - [Channel Inspector を使用して機能をプレビューする](../bot-service-channel-inspector.md)
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
