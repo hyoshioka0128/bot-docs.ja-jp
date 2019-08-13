@@ -11,10 +11,10 @@ ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: 77f1c154af5821b1e476546f307a01be27f568c0
-ms.sourcegitcommit: b498649da0b44f073dc5b23c9011ea2831edb31e
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 08/06/2019
 ms.locfileid: "67587491"
 ---
 # <a name="reuse-dialogs"></a>ダイアログの再利用
@@ -25,8 +25,8 @@ ms.locfileid: "67587491"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [ボットの基本][concept-basics], the [dialogs library][concept-dialogs]、[会話を管理][simple-flow]する方法に関する知識。
-- [**CSharp**][cs-sample] or [**JavaScript**][js-sample] のいずれかのマルチターン プロンプト サンプルのコピー。
+- [ボットの基本][concept-basics]、[ダイアログ ライブラリ][concept-dialogs]、および[会話を管理][simple-flow]する方法に関する知識。
+- マルチターン プロンプト サンプルのコピー ([**CSharp**][cs-sample] または [**JavaScript**][js-sample])。
 
 ## <a name="about-the-sample"></a>サンプルについて
 

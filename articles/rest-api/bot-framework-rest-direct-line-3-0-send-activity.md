@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: a9a98419a8ac65c7e1093e1281e03917fa4eca11
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: 8dfa76d02b2338916011040771a1c1b7e7cb7d76
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671503"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68756905"
 ---
 # <a name="send-an-activity-to-the-bot"></a>ボットにアクティビティを送信する
 
@@ -21,7 +20,7 @@ Direct Line 3.0 プロトコルを利用すると、**メッセージ** アク�
 
 ## <a name="send-an-activity"></a>アクティビティを送信する
 
-ボットにアクティビティを送信するには、クライアントで [Activity](bot-framework-rest-connector-api-reference.md#activity-object) オブジェクトを作成してアクティビティを定義し、`POST` 要求を `https://directline.botframework.com/v3/directline/conversations/{conversationId}/activities` に発行し、要求の本文でその Activity オブジェクトを指定する必要があります。
+ボットにアクティビティを送信するには、クライアントで `Activity` オブジェクトを作成してアクティビティを定義し、`POST` 要求を `https://directline.botframework.com/v3/directline/conversations/{conversationId}/activities` に発行し、要求の本文でその Activity オブジェクトを指定する必要があります。
 
 次のスニペットは、アクティビティ送信要求と応答の例を示しています。
 
@@ -76,11 +75,11 @@ Direct Line 会話にメッセージを投稿するための合計時間は次�
 
 ## <a name="send-attachments-to-the-bot"></a>ボットに添付ファイルを送信する
 
-クライアントでは、画像や文書など、添付ファイルをボットに送信しなければならない状況があります。 `POST /v3/directline/conversations/{conversationId}/activities` を利用して送信される [Activity](bot-framework-rest-connector-api-reference.md#activity-object) オブジェクト内で添付ファイルの [URL を指定する](#send-by-url)か、`POST /v3/directline/conversations/{conversationId}/upload` を利用して[添付ファイルをアップロードする](#upload-attachments)ことで、クライアントでは添付ファイルを送信できます。
+状況によっては、クライアントから画像や文書などの添付ファイルをボットに送信しなければならないことがあります。 `POST /v3/directline/conversations/{conversationId}/activities` を利用して送信される `Activity` オブジェクト内で添付ファイルの [URL を指定する](#send-by-url)か、`POST /v3/directline/conversations/{conversationId}/upload` を利用して[添付ファイルをアップロードする](#upload-attachments)ことで、クライアントからボットに添付ファイルを送信できます。
 
 ## <a id="send-by-url"></a> URL で添付ファイルを送信する
 
-`POST /v3/directline/conversations/{conversationId}/activities` を利用し、[Activity](bot-framework-rest-connector-api-reference.md#activity-object) オブジェクトの一部として 1 つまたは複数の添付ファイルを送信するには、Activity オブジェクト内に 1 つまたは複数の [Attachment](bot-framework-rest-connector-api-reference.md#attachment-object) オブジェクトを含め、各 Attachment オブジェクトの `contentUrl` プロパティを設定し、添付ファイルの HTTP、HTTPS、`data` URI を指定します。
+`POST /v3/directline/conversations/{conversationId}/activities` を利用して `Activity` オブジェクトの一部として 1 つ以上の添付ファイルを送信するには、Activity オブジェクト内に 1 つ以上の `Attachment` オブジェクトを含め、各 Attachment オブジェクトの `contentUrl` プロパティを設定して、添付ファイルの HTTP、HTTPS、`data` URI を指定します。
 
 ## <a id="upload-attachments"></a> アップロードで添付ファイルを送信する
 
@@ -133,9 +132,9 @@ HTTP/1.1 200 OK
 
 ### <a id="upload-multiple-attachments"></a> アップロードで複数の添付ファイルを送信する
 
-アップロードで複数の添付ファイルを送信するには、`/v3/directline/conversations/{conversationId}/upload` エンドポイントに対して、マルチパート要求の `POST` を実行します。 要求の `Content-Type` ヘッダーを `multipart/form-data` に設定し、パートごとに `Content-Type` ヘッダーと `Content-Disposition` ヘッダーを含めて各添付ファイルの種類とファイル名を指定します。 要求 URI で、メッセージを送信するユーザーの ID に `userId` パラメーターを設定します。 
+アップロードで複数の添付ファイルを送信するには、`/v3/directline/conversations/{conversationId}/upload` エンドポイントに対して、マルチパート要求の `POST` を実行します。 要求の `Content-Type` ヘッダーを `multipart/form-data` に設定し、パートごとに `Content-Type` ヘッダーと `Content-Disposition` ヘッダーを含めて各添付ファイルの種類とファイル名を指定します。 要求 URI で、`userId` パラメーターを、メッセージを送信するユーザーの ID に設定します。 
 
-`Content-Type` ヘッダー値 `application/vnd.microsoft.activity` を指定するパートを追加することで、要求内に [Activity](bot-framework-rest-connector-api-reference.md#activity-object) オブジェクトを含めることができます。 要求にアクティビティが含まれる場合、ペイロードの他のパートで指定される添付ファイルが添付ファイルとして送信前にそのアクティビティに追加されます。 要求にアクティビティが含まれない場合、指定の添付ファイルが送信されるコンテナーとして空のアクティビティが作成されます。
+`Content-Type` ヘッダー値 `application/vnd.microsoft.activity` を指定するパートを追加することで、要求内に `Activity` オブジェクトを含めることができます。 要求にアクティビティが含まれる場合、ペイロードの他のパートで指定される添付ファイルが添付ファイルとして送信前にそのアクティビティに追加されます。 要求にアクティビティが含まれない場合、指定の添付ファイルが送信されるコンテナーとして空のアクティビティが作成されます。
 
 次のスニペットは、添付ファイル (複数) 送信要求と応答の例を示しています。 この例では、要求により、テキストと 1 つの画像添付ファイルが含まれるメッセージが送信されます。 要求にさらにパートを追加して、このメッセージに複数の添付ファイルを含めることができます。
 
@@ -192,3 +191,4 @@ HTTP/1.1 200 OK
 - [会話への再接続](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)
 - [ボットからのアクティビティの受信](bot-framework-rest-direct-line-3-0-receive-activities.md)
 - [会話を終了する](bot-framework-rest-direct-line-3-0-end-conversation.md)
+- [Bot Framework のアクティビティ スキーマ](https://aka.ms/botSpecs-activitySchema)

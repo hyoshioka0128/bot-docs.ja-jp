@@ -3,19 +3,18 @@ title: 新しい .NET Core プロジェクトで既存のボットを移行す�
 description: 既存の .NET v3 ボットを取得し、新しい .NET Core プロジェクトを使用して、これを .NET v4 SDK に移行します。
 keywords: bot の移行, formflow, ダイアログ, v3 ボット
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 06/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d09b52760bf6ef15dac0205d9aef2d3906fcacfd
-ms.sourcegitcommit: 41c8caf0e0c849beeeb50cdccf6dbc1ba7cce442
+ms.openlocfilehash: c5735b7ad47204dab42abc7b1dd7a15a407b0115
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67344737"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757208"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-core-v4-bot"></a>.NET v3 ボットを .NET Core v4 ボットに移行する
 
@@ -71,7 +70,8 @@ Bot Framework SDK v4 は、SDK v3 と同じ基になる REST API に基づいて
 
 **Startup.cs** で:
 
-1. `using` ステートメントを更新します。[!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Startup.cs?range=4-13)]
+1. `using` ステートメントを更新します。  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Startup.cs?range=4-13)]
 
 1. このコンストラクターを削除します。
     ```csharp
@@ -83,7 +83,8 @@ Bot Framework SDK v4 は、SDK v3 と同じ基になる REST API に基づいて
 
 1. `Configuration` プロパティを削除します。
 
-1. 次のコードで `ConfigureServices` メソッドを更新します。[!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Startup.cs?range=19-41)]
+1. 次のコードで `ConfigureServices` メソッドを更新します。  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Startup.cs?range=19-41)]
 
 この時点では、コンパイル時のエラーがあります。 次の手順でこれらを修正します。 
 
@@ -104,7 +105,8 @@ v4 では、基本的に、ターン ハンドラーまたはメッセージ ル
 
 1. **Bots\DialogBots.cs** ファイルを更新します。
 
-1. `using` ステートメントを更新します。[!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=4-8)]
+1. `using` ステートメントを更新します。  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=4-8)]
 
 1. ダイアログ用のジェネリック パラメーターを含めるように、`DialogBot` を更新します。
     [!code-csharp[Class definition](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=19)]
@@ -184,7 +186,8 @@ v4 コードに関する注意事項を次に示します。
 
 **Dialogs/RootDialog.cs** ファイルで、次の手順を実行します。
 
-1. `using` ステートメントを更新します。[!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=4-10)]
+1. `using` ステートメントを更新します。  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=4-10)]
 
 1. `HelpdeskOptions` オプションを文字列のリストから選択肢のリストに変換する必要があります。 これは選択プロンプトで使用されます。選択プロンプトは、(リスト内で) 選択された番号、選択された値、または選択肢のいずれかの同義語を有効な入力として受け入れます。
     [!code-csharp[HelpDeskOptions](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=28-33)]
@@ -232,7 +235,8 @@ v4 コードに関する注意事項を次に示します。
 
 **Dialogs/InstallAppDialog.cs** ファイルで、次の手順を実行します。
 
-1. `using` ステートメントを更新します。[!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=4-11)]
+1. `using` ステートメントを更新します。  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=4-11)]
 
 1. 収集した情報を追跡するために使用するキーの定数を定義します。
     [!code-csharp[Key ID](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=17-18)]
@@ -324,16 +328,20 @@ v4 の FormFlow コミュニティ ライブラリと同じ v3 モデルを使�
 
 次に示すように、モデル クラスで `using` ステートメントを更新する必要があります。
 
-1. **InstallApps.cs** で、次のように変更します。[!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/InstallApp.cs?range=4-5)]
+1. **InstallApps.cs** で、次のように変更します。  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/InstallApp.cs?range=4-5)]
 
-1. **LocalAdmin.cs** で、次のように変更します。[!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/LocalAdmin.cs?range=4-5)]
+1. **LocalAdmin.cs** で、次のように変更します。  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/LocalAdmin.cs?range=4-5)]
 
-1. **LocalAdminPrompt.cs** で、次のように変更します。[!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/LocalAdminPrompt.cs?range=4)]
+1. **LocalAdminPrompt.cs** で、次のように変更します。  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/LocalAdminPrompt.cs?range=4)]
 
 1. **ResetPassword.cs** で、次のように変更します。[!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPassword.cs?range=4-5)]
     また、名前空間内の `using` ステートメントを削除します。
 
-1. **ResetPasswordPrompt.cs** で、次のように変更します。[!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPasswordPrompt.cs?range=4-5)]
+1. **ResetPasswordPrompt.cs** で、次のように変更します。  
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPasswordPrompt.cs?range=4-5)]
 
 ### <a name="additional-changes"></a>追加の変更
 

@@ -3,22 +3,21 @@ title: Web チャットの概要 | Microsoft Docs
 description: Bot Framework の Web チャットを構成する方法について学習します。
 keywords: bot framework, web チャット, チャット, サンプル, react, リファレンス
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 06/07/2019
-ms.openlocfilehash: 1d787d375fcd1ddade544724bb28dea9aaeb1dd6
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: 2575ac196bd3e875d8523da99d7114b789e70558
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671420"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757097"
 ---
 # <a name="web-chat-overview"></a>Web チャットの概要
 
-この記事には、[Bot Framework の Web チャット](https://github.com/microsoft/BotFramework-WebChat) コンポーネントの詳細が含まれています。 Bot Framework の Web チャット コンポーネントは、Bot Framework V4 SDK 用の高度にカスタマイズ可能な Web ベースのクライアントです。 Bot Framework SDK v4 により、開発者は、会話をモデル化して、アプリケーションの高度なボットを構築できます。
+この記事には、[Bot Framework の Web チャット](https://github.com/microsoft/BotFramework-WebChat) コンポーネントの詳細が含まれています。 Bot Framework の Web チャット コンポーネントは、Bot Framework V4 SDK 用の高度にカスタマイズ可能な Web ベースのクライアントです。 Bot Framework SDK v4 により、開発者は、会話をモデル化して、高度なボット アプリケーションを構築できます。
 
 Web チャット v3 から v4 への移行を検討している場合は、[移行のセクション](#migrating-from-web-chat-v3-to-v4)に進んでください。
 
@@ -57,12 +56,12 @@ Web チャット v3 から v4 への移行を検討している場合は、[移�
 </html>
 ```
 
-> `userID`、`username`、`locale`、`botAvatarInitials`、`userAvatarInitials` はすべて、`renderWebChat` メソッドに渡すためのオプションのパラメーターです。 Web チャットのプロパティの詳細については、この `README` の [Web チャット API リファレンス](#web-chat-api-reference)を参照してください。
+> `userID`、`username`、`locale`、`botAvatarInitials`、`userAvatarInitials` はすべて、`renderWebChat` メソッドに渡すためのオプションのパラメーターです。 Web チャットのプロパティの詳細については、この記事の「[Web チャット API リファレンス](#web-chat-api-reference)」セクションを参照してください。
 > ![Web チャットのスクリーンショット](https://raw.githubusercontent.com/Microsoft/BotFramework-WebChat/master/media/weatherquery.png.jpg)
 
 ### <a name="integrate-with-javascript"></a>JavaScript との統合
 
-Web チャットは、JavaScript または React を使用して既存の Web サイトと統合するように設計されています。 JavaScript と統合すると、ある程度のスタイルとカスタマイズ性が得られます。
+Web チャットは、JavaScript または React を使用して既存の Web サイトと統合するように設計されています。 JavaScript と統合することで、一部のスタイル設定とカスタマイズ可能性を得ることができます。詳細については、「[Web チャットを Web サイトに統合する](https://aka.ms/integrate-webchat-into-site)」の記事をご覧ください。
 
 最もよく使われる機能を含んだ、完全で一般的な Web チャット パッケージを使用できます。
 
@@ -91,9 +90,9 @@ Web チャットは、JavaScript または React を使用して既存の Web �
 
 ### <a name="integrate-with-react"></a>React との統合
 
-完全にカスタマイズできるように、React を使用して Web チャットのコンポーネントを再構成できます。
+完全なカスタマイズ性を得るためには、[React](https://reactjs.org/) を使用して Web チャットのコンポーネントを再構成できます。
 
-NPM から運用ビルドをインストールするには、`npm install botframework-webchat` を実行します。
+npm から運用ビルドをインストールするには、`npm install botframework-webchat` を実行します。
 
 ```jsx
 import { DirectLine } from 'botframework-directlinejs';
@@ -120,6 +119,10 @@ export default class extends React.Component {
 
 [React を介してレンダリングされる Web チャット](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples/03.a.host-with-react/)の実稼働するサンプルを参照してください。
 
+> [!TIP]
+> React と jsx を初めて使用する場合は、Reacts の「[概要](https://reactjs.org/docs/getting-started.html)」ページにトレーニングがあります。
+
+
 ## <a name="customize-web-chat-ui"></a>Web チャットの UI のカスタマイズ
 
 Web チャットは、ソース コードのフォークなしでカスタマイズできるように設計されています。 次の表は、Web チャットをさまざまな方法でインポートするときに実現可能なカスタマイズの種類を示しています。 このリストは全てを網羅しているわけではありません。
@@ -137,6 +140,9 @@ Web チャットは、ソース コードのフォークなしでカスタマイ
 | UI 全体の再構成        |                    | :heavy_check_mark: |
 
 カスタマイズの詳細については、[Web チャットのカスタマイズ](https://github.com/Microsoft/BotFramework-WebChat/blob/master/SAMPLES.md)の詳細を参照してください。
+
+> [!NOTE] 
+> コンテンツ配信ネットワーク (CDN) の詳細については、「[コンテンツ配信ネットワーク (CDN)](https://aka.ms/CDN-best-practices)」をご覧ください。
 
 ## <a name="migrating-from-web-chat-v3-to-v4"></a>Web チャット v3 から v4 への移行
 

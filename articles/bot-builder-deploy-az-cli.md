@@ -3,19 +3,18 @@ title: ボットをデプロイする | Microsoft Docs
 description: 使用するボットを Azure クラウドにデプロイします。
 keywords: ボットのデプロイ, azure へのボットのデプロイ, ボットの発行
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: conceptual
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ed7c9d7a883a1d1807237b636bbb59d25df60e08
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: a5ef32f16ae8424093cebd77ed137fb31ed53a22
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671387"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68756790"
 ---
 # <a name="deploy-your-bot"></a>ボットをデプロイする
 
@@ -43,6 +42,10 @@ Visual Studio または Yeoman テンプレートを使用してボットを作�
 az login
 ```
 ブラウザー ウィンドウが開いて、サインインできます。
+
+> [!NOTE]
+> US Gov などの Azure 以外のクラウドにボットをデプロイする場合は、`az login` の前に `az cloud set --name <name-of-cloud>` を実行する必要があります。この場合、&lt;name-ofcloud> は、`AzureUSGovernment` などの登録済みクラウドの名前になります。 パブリック クラウドに戻る場合は、`az cloud set --name AzureCloud` を実行できます。 
+
 
 ### <a name="set-the-subscription"></a>サブスクリプションを設定する
 使用する既定のサブスクリプションを設定します。
@@ -123,7 +126,7 @@ az group deployment create --name "<name-of-deployment>" --resource-group "<name
 
 ### <a name="retrieve-or-create-necessary-iiskudu-files"></a>必要な IIS/Kudu ファイルを作成または取得する
 
-**C# ボット**
+### <a name="c-botstabcsharp"></a>[C# ボット](#tab/csharp)
 
 ```cmd
 az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.csproj"
@@ -131,7 +134,7 @@ az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.cspro
 
 --code-dir に関連する .csproj ファイルへのパスを指定する必要があります。 これは、--proj-file-path 引数を使用して実行できます。 コマンドによって --code-dir および --proj-file-path が "./MyBot.csproj" に解決されます
 
-**JavaScript ボット**
+### <a name="javascript-botstabjavascript"></a>[JavaScript ボット](#tab/javascript)
 
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Javascript
@@ -139,13 +142,15 @@ az bot prepare-deploy --code-dir "." --lang Javascript
 
 このコマンドにより、Azure App Service で IIS と連携するために Node.js アプリに必要な web.config が取り込まれます。 web.config がお使いのボットのルートに保存されていることを確認してください。
 
-**TypeScript ボット**
+### <a name="typescript-botstabtypescript"></a>[TypeScript ボット](#tab/typescript)
 
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Typescript
 ```
 
 このコマンドは、上記の JavaScript の動作と似ていますが、Typescript ボットを対象としています。
+
+---
 
 ### <a name="zip-up-the-code-directory-manually"></a>コード ディレクトリを手動で zip 圧縮する
 

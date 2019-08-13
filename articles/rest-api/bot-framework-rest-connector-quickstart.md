@@ -6,19 +6,18 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 57babac9594118c12805ff9023cf7086e526a273
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 4c4bfacaeb0be0c3f6dd71f0dd2a195aa2261541
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997941"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757145"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Bot Connector サービスでのボットの作成
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-quickstart.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-quickstart.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-quickstart.md)
 > - [Bot Service](../bot-service-quickstart.md)
 > - [REST](../rest-api/bot-framework-rest-connector-quickstart.md)
 
@@ -71,7 +70,7 @@ grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT
 
 ### <a name="receive-a-message-from-the-user"></a>ユーザーからメッセージを受信する
 
-ユーザーがメッセージを送信すると、お使いのボットを[登録](../bot-service-quickstart-registration.md)したときに指定したエンドポイントに、Bot Framework Connector によって要求の POST が実行されます。 要求の本文は [Activity][Activity] オブジェクトです。 次の例は、ユーザーが簡単なメッセージをボットに送信したときに、ボット側で受信する要求本文を示しています。 
+ユーザーがメッセージを送信すると、お使いのボットを[登録](../bot-service-quickstart-registration.md)したときに指定したエンドポイントに、Bot Framework Connector によって要求の POST が実行されます。 要求の本文は `Activity` オブジェクトです。 次の例は、ユーザーが簡単なメッセージをボットに送信したときに、ボット側で受信する要求本文を示しています。 
 
 ```json
 {
@@ -98,7 +97,7 @@ grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT
 
 ### <a name="reply-to-the-users-message"></a>ユーザーのメッセージに返信する
 
-お使いのボットのエンドポイントで、ユーザーからのメッセージを表す `POST` 要求 (つまり `type` = **メッセージ**) を受信したら、その要求の情報を使用して、ご自身の応答用の [Activity][Activity] オブジェクトを作成します。
+お使いのボットのエンドポイントで、ユーザーからのメッセージを表す `POST` 要求 (つまり `type` = **メッセージ**) を受信したら、その要求の情報を使用して、ご自身の応答用の `Activity` オブジェクトを作成します。
 
 1. **conversation** プロパティを、ユーザーのメッセージの **conversation** プロパティのコンテンツに設定します。
 2. **from** プロパティを、ユーザーのメッセージの **recipient** プロパティのコンテンツに設定します。
@@ -107,7 +106,7 @@ grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT
 
 着信要求の `serviceUrl` プロパティを使用して、その応答を発行するときに、ご自身のボットによって使用される[ベース URI を特定](bot-framework-rest-connector-api-reference.md#base-uri)します。 
 
-応答を送信するには、次の例に示すように、`/v3/conversations/{conversationId}/activities/{activityId}` に対して、ご自身の [Activity][Activity] オブジェクトの `POST` を実行します。 この要求の本文は、ユーザーに使用可能な予定の時刻を選択するように求める [Activity][Activity] オブジェクトです。
+応答を送信するには、次の例に示すように、`/v3/conversations/{conversationId}/activities/{activityId}` に対して、ご自身の `Activity` オブジェクトの `POST` を実行します。 この要求の本文は、ユーザーに使用可能な予定の時刻を選択するように求める `Activity` オブジェクトです。
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/bf3cc9a2f5de... 
@@ -195,6 +194,3 @@ Content-Type: application/json
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Bot Framework からアクセス トークンを取得し、Bot Connector サービスを使用してユーザーとメッセージを交換しました。 [Bot Framework エミュレーター](../bot-service-debug-emulator.md)を使用すると、お使いのボットのテストおよびデバッグを行うことができます。 ご自身のボットを他のユーザーと共有したい場合は、そのボットが 1 つまたは複数のチャネルで実行されるように[構成](../bot-service-manage-channels.md)する必要があります。
-
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

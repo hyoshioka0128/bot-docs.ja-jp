@@ -6,26 +6,25 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 346c522a1e1cd3d5904b74ad6e6092a1457a001c
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: e616c3e3b8d7ee82f5685fe1edc69059acffb1b1
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032589"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757067"
 ---
 # <a name="add-suggested-actions-to-messages"></a>メッセージへの推奨されるアクションの追加
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-suggested-actions.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-send-suggested-actions.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-send-suggested-actions.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-suggested-actions.md)
 
 [!INCLUDE [Introduction to suggested actions](../includes/snippet-suggested-actions-intro.md)]
 
 ## <a name="send-suggested-actions"></a>推奨されるアクションの送信
 
-推奨されるアクションをメッセージに追加するには、[Activity][Activity] の `suggestedActions` プロパティを設定して、ユーザーに表示されるボタンを表す [CardAction][CardAction] オブジェクトのリストを指定します。 
+推奨されるアクションをメッセージに追加するには、`Activity` の `suggestedActions` プロパティを設定して、ユーザーに表示されるボタンを表す `CardAction` オブジェクトのリストを指定します。 
 
 次の要求では、3 つの推奨されるアクションをユーザーに提示するメッセージが送信されます。 この要求の例で、`https://smba.trafficmanager.net/apis` はベース URI を示しています。ご利用のボットによって発行される要求に対するベース URI は、これとは異なる場合があります。 ベース URI の設定の詳細については、[API リファレンス](bot-framework-rest-connector-api-reference.md#base-uri)に関する記事をご覧ください。
 
@@ -83,9 +82,3 @@ Content-Type: application/json
 - [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
 
 [channelInspector]: ../bot-service-channel-inspector.md
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
-
-[CardAction]: bot-framework-rest-connector-api-reference.md#cardaction-object
-
-[SuggestedAction]: bot-framework-rest-connector-api-reference.md#suggestedactions-object

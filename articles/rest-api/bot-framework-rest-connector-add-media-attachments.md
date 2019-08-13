@@ -6,19 +6,18 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 10/25/2018
-ms.openlocfilehash: 3fad5b66f5137cd4098087e1b01d1f2493800994
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 03facdff733787e95ca3bc68dfee15d747340453
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032603"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757093"
 ---
 # <a name="add-media-attachments-to-messages"></a>メッセージへのメディア添付ファイルの追加
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-media-attachments.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-media-attachments.md)
 
 通常、ボットとチャネルが交換するのはテキスト文字列ですが、添付ファイルの交換もサポートされる一部のチャネルでは、ボットはよりリッチなメッセージをユーザーに送信できます。 たとえば、ボットは、メディア添付ファイル (画像、動画、オーディオ、ファイルなど) と[リッチ カード](bot-framework-rest-connector-add-rich-cards.md)を送信できます。 この記事では、Bot Connector サービスを使用してメッセージにメディア添付ファイルを追加する方法について説明します。
@@ -28,7 +27,7 @@ ms.locfileid: "65032603"
 
 ## <a name="add-a-media-attachment"></a>メディア添付ファイルの追加  
 
-メディア添付ファイルをメッセージに追加するには、[Attachment][Attachment] オブジェクトを作成し、`name` プロパティを設定します。さらに、`contentUrl` プロパティをメディア ファイルの URL に設定し、`contentType` プロパティを適切なメディアの種類 (たとえば、**image/png**、**audio/wav**、**video/mp4**) に設定します。 次に、メッセージを表す [Activity][Activity] オブジェクト内で、[Attachment][Attachment] オブジェクトを `attachments` 配列内に指定します。 
+メディア添付ファイルをメッセージに追加するには、`Attachment` オブジェクトを作成し、`name` プロパティを設定します。さらに、`contentUrl` プロパティをメディア ファイルの URL に設定し、`contentType` プロパティを適切なメディアの種類 (たとえば、**image/png**、**audio/wav**、**video/mp4**) に設定します。 次に、メッセージを表す `Activity` オブジェクト内で、`Attachment` オブジェクトを `attachments` 配列内に指定します。 
 
 次の例に、テキストと 1 つの画像添付ファイルを含むメッセージを送信する要求を示します。 この要求の例で、`https://smba.trafficmanager.net/apis` はベース URI を示しています。ご利用のボットによって発行される要求に対するベース URI は、これとは異なる場合があります。 ベース URI の設定の詳細については、「[API Reference (API リファレンス)](bot-framework-rest-connector-api-reference.md#base-uri)」を参照してください。
 
@@ -65,7 +64,7 @@ Content-Type: application/json
 }
 ```
 
-画像のインライン バイナリをサポートするチャネルの場合、`Attachment` の `contentUrl` プロパティを画像の base64 バイナリに設定できます (たとえば、**data:image/png;base64,iVBORw0KGgo...**)。 このチャネルでは、メッセージのテキスト文字列の横に画像または画像の URL が表示されます。
+画像のインライン バイナリをサポートするチャネルの場合、`Attachment` の `contentUrl` プロパティを画像の base64 バイナリに設定できます (たとえば、**data:image/png;base64,iVBORw0KGgo...** )。 このチャネルでは、メッセージのテキスト文字列の横に画像または画像の URL が表示されます。
 
 ```json
 {
@@ -102,7 +101,7 @@ Content-Type: application/json
 
 ## <a name="add-an-audiocard-attachment"></a>AudioCard 添付ファイルの追加
 
-[AudioCard](bot-framework-rest-connector-api-reference.md#audiocard-object) または [VideoCard](bot-framework-rest-connector-api-reference.md#videocard-object) 添付ファイルを追加する方法は、メディア添付ファイルを追加する方法と同じです。 たとえば、次の JSON は、メディア添付ファイルにオーディオ カードを追加する方法を示しています。
+`AudioCard` または `VideoCard` の添付ファイルを追加する方法は、メディア添付ファイルを追加する方法と同じです。 たとえば、次の JSON は、メディア添付ファイルにオーディオ カードを追加する方法を示しています。
 
 ```json
 {
@@ -144,7 +143,7 @@ Content-Type: application/json
 }
 ```
 
-チャネルがこの添付ファイルを受け取ると、オーディオ ファイルの再生が開始されます。 たとえば、**[一時停止]** ボタンをクリックしてユーザーがオーディオとやりとりすると、チャネルは次のような JSON でコールバックをボットに送信します。
+チャネルがこの添付ファイルを受け取ると、オーディオ ファイルの再生が開始されます。 たとえば、 **[一時停止]** ボタンをクリックしてユーザーがオーディオとやりとりすると、チャネルは次のような JSON でコールバックをボットに送信します。
 
 ```json
 {
@@ -176,7 +175,5 @@ Content-Type: application/json
 - [メッセージの作成](bot-framework-rest-connector-create-messages.md)
 - [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
 - [メッセージへのリッチ カードの追加](bot-framework-rest-connector-add-rich-cards.md)
+- [Bot Framework のアクティビティ スキーマ](https://aka.ms/botSpecs-activitySchema)
 - [Bot Framework のカード スキーマ](https://aka.ms/botSpecs-cardSchema)
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
-[Attachment]: bot-framework-rest-connector-api-reference.md#attachment-object

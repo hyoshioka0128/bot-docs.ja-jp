@@ -3,20 +3,19 @@ title: ユーザーによる割り込みを処理する | Microsoft Docs
 description: ユーザーによる割り込みを処理し、会話フローを転送する方法について説明します。
 keywords: 割り込む, 割り込み, トピックの切り替え, 中断
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 04/18/2019
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ba1bc99608558966f4cf45894b2e04b8f17c9a69
-ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
+ms.openlocfilehash: 75f6cc720042ad7f10c0b016dedba7af5fd84435
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68483965"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757003"
 ---
 # <a name="handle-user-interruptions"></a>ユーザーによる割り込みを処理する
 
@@ -28,8 +27,8 @@ ms.locfileid: "68483965"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [ボットの基本][concept-basics], [managing state][concept-state]、[ダイアログ ライブラリ][concept-dialogs]、[ダイアログを再利用][component-dialogs]する方法に関する知識。
-- コア ボット サンプルのコピー ([**CSharp**][cs-sample] または or [**JavaScript**][js-sample])
+- [ボットの基本][concept-basics]、[状態の管理][concept-state]、[ダイアログ ライブラリ][concept-dialogs]、および[ダイアログを再利用][component-dialogs]する方法に関する知識。
+- コア ボット サンプルのコピー ([**CSharp**][cs-sample] または [**JavaScript**][js-sample])。
 
 ## <a name="about-this-sample"></a>このサンプルについて
 
@@ -52,7 +51,7 @@ ms.locfileid: "68483965"
 
 [!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=10)]
 
-`CancelAndHelpDialog` クラスでは、`OnBeginDialogAsync` メソッドと `OnContinueDialogAsync` メソッドが `InerruptAsync` メソッドを呼び出して、ユーザーが通常のフローを中断をしたかどうかを確認します。 フローが中断された場合は、基底クラス メソッドが呼び出されます。それ以外の場合は、戻り値が `InterruptAsync` から返されます。
+`CancelAndHelpDialog` クラスでは、`OnContinueDialogAsync` メソッドが `InerruptAsync` メソッドを呼び出して、ユーザーが通常のフローを中断をしたかどうかを確認します。 フローが中断された場合は、基底クラス メソッドが呼び出されます。それ以外の場合は、戻り値が `InterruptAsync` から返されます。
 
 [!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=22-31)]
 
@@ -72,7 +71,7 @@ ms.locfileid: "68483965"
 
 [!code-javascript[Class signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=11)]
 
-`CancelAndHelpDialog` クラスでは、`onBeginDialog` メソッドと `onContinueDialog` メソッドが `interrupt` メソッドを呼び出して、ユーザーが通常のフローを中断をしたかどうかを確認します。 フローが中断された場合は、基底クラス メソッドが呼び出されます。それ以外の場合は、戻り値が `interrupt` から返されます。
+`CancelAndHelpDialog` クラスでは、`onContinueDialog` メソッドが `interrupt` メソッドを呼び出して、ユーザーが通常のフローを中断をしたかどうかを確認します。 フローが中断された場合は、基底クラス メソッドが呼び出されます。それ以外の場合は、戻り値が `interrupt` から返されます。
 
 [!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=12-18)]
 

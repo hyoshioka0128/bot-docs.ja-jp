@@ -6,17 +6,16 @@ services: bot-service
 author: trrwilson
 manager: nitinme
 ms.service: bot-service
-ms.subservice: bot-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: 114274a66492d421a7b3d6294d77ee83d336d3ca
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: f38caad2a1b09e8f07e5fe8c7ea7bf7e2b2dfd6f
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405919"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68756830"
 ---
 # <a name="connect-a-bot-to-direct-line-speech-preview"></a>ボットを Direct Line Speech に接続する (プレビュー)
 
@@ -32,7 +31,7 @@ Direct Line Speech は現在プレビュー段階です。[Azure portal](https:/
 
 ## <a name="add-the-direct-line-speech-channel"></a>Direct Line Speech チャネルを追加する
 
-1. Direct Line Speech チャネルを追加するには、最初に [Azure portal](https://portal.azure.com) でボットを開き、構成ブレードで **[チャネル]** をクリックします。
+1. ブラウザーで [Azure portal](https://portal.azure.com) に移動します。 リソースから、**Bot Channel Registration** リソースを選択します。 構成ブレードの *[Bot management]\(ボットの管理\)* セクションで、 **[Channels]\(チャネル\)** をクリックします。
 
     ![接続先チャネルを選択するために場所が強調表示されている](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-selectchannel.png "チャネルの選択")
 
@@ -50,19 +49,17 @@ Direct Line Speech は現在プレビュー段階です。[Azure portal](https:/
 
 Direct Line Speech チャネルがご自身のボットに作成されたら、待機時間が短い最適な対話を実現するために、Bot Framework Protocol ストリーミング拡張機能のサポートを有効にする必要があります。
 
-1. [Azure portal](https://portal.azure.com) でご自身のボットのブレードを開きます (まだ開いていない場合)。 
-
-1. ( **[チャネル]** のすぐ下にある) **[Bot Management]\(ボット管理\)** カテゴリの **[設定]** をクリックします。 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** チェック ボックスをオンにします。
+1. **Bot Channel Registration** リソースの構成ブレードで、 **[Bot Management]\(ボットの管理\)** カテゴリ ( **[Channels]\(チャネル\)** のすぐ下にある) の **[Settings]\(設定\)** をクリックします。 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** チェック ボックスをオンにします。
 
     ![ストリーミング プロトコルを有効にする](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-enablestreamingsupport.png "ストリーミング拡張機能のサポートを有効にする")
 
 1. ページの上部にある **[保存]** をクリックします。
 
-1. 同じブレードで、 **[App Service の設定]** カテゴリの **[構成]** をクリックします。
+1. リソースから、**App Service** リソースを選択します。 表示されたブレードで、 **[設定]** カテゴリの **[構成]** をクリックします。
 
     ![App Service の設定に移動する](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-configureappservice.png "App Service を構成する")
 
-1. `General settings` をクリックし、`Web socket` サポートを有効にするオプションを選択します。
+1. `General settings` タブをクリックし、`Web socket` サポートを有効にするオプションを選択します。
 
     ![App Service の WebSocket を有効にする](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-enablewebsockets.png "WebSocket を有効にする")
 
@@ -72,9 +69,17 @@ Direct Line Speech チャネルがご自身のボットに作成されたら、�
 
 ## <a name="manage-secret-keys"></a>秘密鍵を管理する
 
-Direct Line Speech チャネルを介してクライアント アプリケーションとお使いのボットを接続するには、クライアント アプリケーションにチャネル シークレットが必要になります。 これらの秘密鍵は、チャネルの選択内容を保存した後、Azure portal の **[Configure Direct Line Speech]\(Direct Line Speech の構成\)** ページから取得できます。
+Direct Line Speech チャネルを介してクライアント アプリケーションとお使いのボットを接続するには、クライアント アプリケーションにチャネル シークレットが必要になります。 チャネルの選択を保存したら、次の手順に従ってこれらの秘密鍵を取得できます。
 
-![Direct Line Speech の秘密鍵の取得](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-getspeechsecretkeys.png "Direct Line Speech の秘密鍵の取得")
+1. リソースから、**Bot Channel Registration** リソースを選択します。 構成ブレードの *[Bot management]\(ボットの管理\)* セクションで、 **[Channels]\(チャネル\)** をクリックします。
+1. Direct Line Speech の **[編集]** リンクをクリックします。
+
+    ![Direct Line Speech の秘密鍵の取得](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-getspeechsecretkeys1.png "Direct Line Speech の秘密鍵の取得")
+
+    次のウィンドウが表示されます。
+
+    ![Direct Line Speech の秘密鍵の取得](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-getspeechsecretkeys.png "Direct Line Speech の秘密鍵の取得")
+1. アプリケーションで使用する鍵を表示してコピーします。
 
 ## <a name="adding-protocol-support-to-your-bot"></a>プロトコル サポートをお使いのボットに追加する
 

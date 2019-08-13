@@ -6,18 +6,17 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: db09888c5f782b065ff6bd108ce93379cd42527a
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 69c58e1e6bd9da4b07e21f8ca3eb029d2dec9e75
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317682"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757176"
 ---
 # <a name="activities-overview"></a>アクティビティの概要
 
-Bot Connector サービスでは、[Activity][Activity] オブジェクトを渡すことによって、ボットとチャンネル (ユーザー) 間で情報が交換されます。 最も一般的なアクティビティの種類は**メッセージ**ですが、ボットまたはチャネルにさまざまな種類の情報を通信するために使用できる他のアクティビティの種類も存在します。 
+Bot Connector サービスでは、`Activity` オブジェクトを渡すことによって、ボットとチャネル (ユーザー) 間で情報が交換されます。 最も一般的なアクティビティの種類は**メッセージ**ですが、ボットまたはチャネルにさまざまな種類の情報を通信するために使用できる他のアクティビティの種類も存在します。 
 
 ## <a name="activity-types-in-the-bot-connector-service"></a>Bot Connector サービスのアクティビティの種類
 
@@ -65,5 +64,4 @@ Bot Connector サービスでは、[Activity][Activity] オブジェクトを渡
 
 - [メッセージの作成](bot-framework-rest-connector-create-messages.md)
 - [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
+- [Bot Framework のアクティビティ スキーマ](https://aka.ms/botSpecs-activitySchema)

@@ -7,15 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c72f978e927f05f430ec94cf747016f4ebc15c5d
-ms.sourcegitcommit: 0e6c49964b96c1ac8485ba7afe0daae04b671138
+ms.openlocfilehash: 26622b5757a2fb8e7297484c02d1d8ba1a2c1b04
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67492008"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757200"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -24,9 +23,9 @@ ms.locfileid: "67492008"
 ボットで複数の LUIS モデルおよび QnA Maker ナレッジ ベース (ナレッジ ベース) が使用されている場合は、ディスパッチ ツールを使用して、どの LUIS モデルまたは QnA Maker ナレッジ ベースがユーザー入力に最も適しているかを判断できます。 ディスパッチ ツールでは、これを行うために、ユーザー入力を正しいモデルにルーティングする 1 つの LUIS アプリが作成されます。 ディスパッチ (CLI コマンドを含む) の詳細については、[README][dispatch-readme] を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-- [ボットの基本](bot-builder-basics.md)、[LUIS][howto-luis], and [QnA Maker][howto-qna]に関する知識。 
+- [ボットの基本](bot-builder-basics.md)、[LUIS][howto-luis]、および [QnA Maker][howto-qna] に関する知識。 
 - [ディスパッチ ツール](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
-- **ディスパッチによる NLP** のコピー ([C# サンプル][cs-sample]or [JS Sample][js-sample] コード リポジトリ)。
+- **ディスパッチによる NLP** のコピー ([C# サンプル][cs-sample]または [JS サンプル][js-sample]のコード リポジトリ)。
 - LUIS アプリを発行するための [luis.ai](https://www.luis.ai/) アカウント。
 - QnA ナレッジ ベースを発行するための [QnA Maker](https://www.qnamaker.ai/) アカウント。
 
@@ -61,7 +60,7 @@ ms.locfileid: "67492008"
 ## <a name="create-luis-apps-and-qna-knowledge-base"></a>LUIS アプリと QnA ナレッジ ベースを作成する
 ディスパッチ モデルを作成するには、ご自身の LUIS アプリと QnA ナレッジ ベースを作成し、発行しておく必要があります。 この記事では、`\CognitiveModels` フォルダーの "_ディスパッチによる NLP_" サンプルに含まれる次のモデルを公開します。 
 
-| Name | 説明 |
+| EnableAdfsAuthentication | 説明 |
 |------|------|
 | HomeAutomation | 関連付けられているエンティティ データによってホーム オートメーションの意図を認識する LUIS アプリ。|
 | Weather | 場所データによって天気関連の意図を認識する LUIS アプリ。|
@@ -86,7 +85,7 @@ ms.locfileid: "67492008"
 
 7. 新しい LUIS アプリが公開されたら、 _[MANAGE]\(管理\)_ タブを選択します。[アプリケーション情報] ページから、`Application ID` の値として "_app-id-for-app_" を、また `Display name` の値として "_name-of-app_" を記録しておきます。 [キーとエンドポイント] ページから、`Authoring Key` の値として "_your-luis-authoring-key_" を、また `Region` の値として "_your-region_" を記録しておきます。 これらの値は、お使いの appsetting.json ファイル内で後で使用されます。
 
-8. 完了したら、"Weather.json" ファイルに対して上記の手順を繰り返して、ご自身の LUIS 天気アプリと LUIS ディスパッチ アプリの両方を "_トレーニング_" し、"_公開_" します。
+8. 完了したら、"Weather.json" ファイルに対して上記の手順を繰り返して、ご自身の LUIS **weather** アプリと LUIS **dispatch** アプリの両方を "_トレーニング_" し、"_公開_" します。
 
 ### <a name="create-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの作成
 
@@ -141,12 +140,18 @@ Azure で QnA Maker サービスを作成したら、QnA Maker サービス用�
 
 ## <a name="dispatch-app-needs-read-access-to-existing-apps"></a>ディスパッチ アプリには既存のアプリへの読み取りアクセスが必要
 
-LUIS アプリおよび QnA Maker アプリにディスパッチする新しい親 LUIS アプリを作成するために、ディスパッチ ツールには既存の LUIS アプリと QnA Maker アプリを読み取るための作成アクセスが必要です。 このアクセスには、アプリ ID と作成キーが提供されます。 2 つの LUIS アプリのそれぞれ、および QnA Maker アプリに対して ID とキーが必要です。
+LUIS アプリおよび QnA Maker アプリにディスパッチする新しい親 LUIS アプリを作成するために、ディスパッチ ツールには既存の LUIS アプリと QnA Maker アプリを読み取るための作成アクセスが必要です。 このアクセスには、アプリ ID と作成キーが提供されます。 
+
+### <a name="service-authoring-keys"></a>サービス作成キー
+
+**作成キー**は、モデルの作成と編集にのみ使用されます。 2 つの LUIS アプリのそれぞれ、および QnA Maker アプリに対して ID とキーが必要です。
 
 |アプリ|情報の場所|
 |--|--|
-|LUIS|アプリ ID - アプリごとに [LUIS ポータル](https://www.luis.ai)に表示されます。[管理] -> [アプリケーション情報]<br>作成キー - LUIS ポータルの右上隅に表示されます。ご自分の [ユーザー]、[設定] の順に選択します。|
-|QnA Maker| アプリ ID - アプリを公開した後、[設定] ページ上の [QnA Maker ポータル](https://http://qnamaker.ai)に表示されます。 これは、knowledgebase の後にくる POST コマンドの最初の部分にある ID です。 アプリ ID を検査する場所の例として、`POST /knowledgebases/{APP-ID}/generateAnswer` が挙げられます。<br>作成キー - Azure portal で QnA Maker リソースの **[キー]** の下にあります。 複数のキーのうち、必要なのは 1 つだけです。|
+|LUIS|**アプリ ID** - アプリごとに [LUIS ポータル](https://www.luis.ai)に表示されます ([管理] -> [アプリケーション情報])。<br>**作成キー** - LUIS ポータルの右上隅に表示されます。自分の [ユーザー]、[設定] の順に選択します。|
+|QnA Maker| **アプリ ID** - アプリを公開した後、[設定] ページ上の [QnA Maker ポータル](https://http://qnamaker.ai)に表示されます。 これは、knowledgebase の後にくる POST コマンドの最初の部分にある ID です。 アプリ ID を検査する場所の例として、`POST /knowledgebases/{APP-ID}/generateAnswer` が挙げられます。<br>**作成キー** - Azure portal で QnA Maker リソースの **[キー]** の下にあります。 複数のキーのうち、必要なのは 1 つだけです。|
+
+作成キーは、発行されたアプリケーションから予測スコアまたは信頼スコアを取得するためには使用されません。 この操作にはエンドポイント キーが必要です。 **[エンドポイント キー](#service-endpoint-keys)** は、このチュートリアルで後ほど取り上げて使用します。 
 
 ## <a name="create-the-dispatch-model"></a>ディスパッチ モデルを作成する
 
@@ -192,6 +197,8 @@ LUIS アプリおよび QnA Maker アプリにディスパッチする新しい�
 - `q_sample-qna`
 
 ボットを適切に動作させるには、これらのサービスが正しい名前で公開されている必要があります。 公開されたサービスにボットがアクセスできるようにするには、アクセス対象サービスに関する情報がそのボットに必要です。
+
+### <a name="service-endpoint-keys"></a>サービス エンドポイント キー
 
 このボットには、3 つの LUIS アプリ (ディスパッチ、天気、およびホーム オートメーション) 用のクエリ予測エンドポイントと、単一の QnA Maker ナレッジ ベースが必要です。 次の表を使用してエンドポイント キーを見つけます。
 
