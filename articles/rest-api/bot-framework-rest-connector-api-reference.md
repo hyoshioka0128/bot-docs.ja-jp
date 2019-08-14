@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 10/25/2018
-ms.openlocfilehash: f8f04c8b0cbd2b43f29676f0315739f4cc7716b3
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.date: 08/02/2019
+ms.openlocfilehash: 5a520c2fc5b9e94976e9a2618286aa184045bdeb
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757172"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866640"
 ---
 # <a name="api-reference"></a>API リファレンス
 
@@ -309,83 +309,6 @@ Microsoft Bot Framework State サービスは 2018 年 3 月 30 日時点で廃�
 | `Get Conversation Data` | チャネルの特定の会話で以前に保存した状態データを取得します。 |
 | `Get Private Conversation Data` | チャネルの特定の会話のコンテキスト内で以前に保存した特定のユーザーの状態データを取得します。 |
 | `Delete State For User` | ユーザーのために以前に格納された状態データを削除します。 |
-
-### <a name="set-user-data"></a>ユーザー データを設定する
-指定されたチャネルの指定されたユーザーの状態データを保存します。
-```http
-POST /v3/botstate/{channelId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **要求本文** | `BotData` オブジェクト |
-| **戻り値** | `BotData` オブジェクト | 
-
-### <a name="set-conversation-data"></a>会話データを設定する
-指定されたチャネルの指定された会話の状態データを保存します。
-```http
-POST /v3/botstate/{channelId}/conversations/{conversationId}
-```
-
-| | |
-|----|----|
-| **要求本文** | `BotData` オブジェクト |
-| **戻り値** | `BotData` オブジェクト | 
-
-### <a name="set-private-conversation-data"></a>個人的な会話データを設定する
-指定されたチャネルの指定された会話のコンテキスト内で、指定されたユーザーの状態データを保存します。
-```http
-POST /v3/botstate/{channelId}/conversations/{conversationId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **要求本文** | `BotData` オブジェクト |
-| **戻り値** | `BotData` オブジェクト | 
-
-### <a name="get-user-data"></a>ユーザー データを取得する
-指定されたチャネルのすべての会話で以前に保存した特定のユーザーの状態データを取得します。
-```http
-GET /v3/botstate/{channelId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **要求本文** | 該当なし |
-| **戻り値** | `BotData` オブジェクト | 
-
-### <a name="get-conversation-data"></a>会話データを取得する
-指定されたチャネルの特定の会話で以前に保存した状態データを取得します。
-```http
-GET /v3/botstate/{channelId}/conversations/{conversationId} 
-```
-
-| | |
-|----|----|
-| **要求本文** | 該当なし |
-| **戻り値** | `BotData` オブジェクト | 
-
-### <a name="get-private-conversation-data"></a>個人的な会話データを取得する
-指定されたチャネルの指定された会話のコンテキスト内で以前に保存した特定のユーザーの状態データを取得します。
-```http
-GET /v3/botstate/{channelId}/conversations/{conversationId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **要求本文** | 該当なし |
-| **戻り値** | [`BotData` オブジェクト | 
-
-### <a name="delete-state-for-user"></a>ユーザーの状態を削除する
-[ユーザー データを設定する](#set-user-data)操作または[個人的な会話データを設定する](#set-private-conversation-data)操作のどちらかを使用して以前に保存した特定のチャネルの特定のユーザーの状態データを削除します。
-```http
-DELETE /v3/botstate/{channelId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **要求本文** | 該当なし |
-| **戻り値** | 文字列の配列 (ID) | 
 
 ## <a name="bot-framework-activity-schema"></a>Bot Framework アクティビティ スキーマ
 

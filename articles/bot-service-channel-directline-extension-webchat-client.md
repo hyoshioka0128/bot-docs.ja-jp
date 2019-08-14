@@ -8,25 +8,25 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 5e74627530e77f4ae5f1f8ec1ae36dc5b07959a6
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: a11870dfa728621d346a7376363c7e31ddb1596c
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757744"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866430"
 ---
-## <a name="use-webchat-with-the-direct-line-app-service-extension"></a>WebChat を Direct Line App Service 拡張機能と共に使用する
+# <a name="use-webchat-with-the-direct-line-app-service-extension"></a>WebChat を Direct Line App Service 拡張機能と共に使用する
 
 この記事では、Direct Line App Service 拡張機能と共に WebChat を使用する方法について説明します。
 
-### <a name="get-your-direct-line-secret"></a>Direct Line シークレットを取得する
+## <a name="get-your-direct-line-secret"></a>Direct Line シークレットを取得する
 
-最初の手順では、Direct Line シークレットを見つけます。 これを行うには、「[ボットを Direct Line に接続する](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-directline?view=azure-bot-service-4.0)」の記事に記載されている手順に従ってください。
+最初の手順では、Direct Line シークレットを見つけます。 これを行うには、「[ボットを Direct Line に接続する](bot-service-channel-connect-directline.md)」の記事に記載されている手順に従ってください。
 
-### <a name="get-the-preview-version-of-directlinejs"></a>DirectLineJS のプレビュー バージョンを取得する
+## <a name="get-the-preview-version-of-directlinejs"></a>DirectLineJS のプレビュー バージョンを取得する
 DirectLineJS のプレビュー バージョンはこちらにあります。 https://github.com/Jeffders/DirectLineAppServiceExtensionPreview/tree/master/libraries
 
-### <a name="integrate-webchat-client"></a>WebChat クライアントを統合する
+## <a name="integrate-webchat-client"></a>WebChat クライアントを統合する
 
 一般に、このアプローチは以前と同じです。 ただし、双方向の **WebSocket** トラフィックをサポートする **WebChat** の新しいバージョンが作成されています。これは、 https://directline.botframework.com/ に接続する代わりに、ホストされているボットに直接接続します。
 ボットの Direct Line URL は `https://<your_app_service>.azurewebsites.net/.bot/` になります。ここで、`/.bot/` 拡張機能は App Service の Direct Line **エンドポイント**です。

@@ -1,10 +1,8 @@
 # 仮想アシスタント
 ## [概要](../v4sdk/bot-builder-virtual-assistant-introduction.md)
 ## [テンプレートの概要](../v4sdk/bot-builder-virtual-assistant-template.md)
-## [作業の開始](../v4sdk/bot-builder-virtual-assistant-gettingstarted.md)
 # スキル 
 ## [概要](../v4sdk/bot-builder-skills-overview.md)
-## [作業の開始](../v4sdk/bot-builder-skills-gettingstarted.md)
 # WebChat
 ## [概要](../v4sdk/bot-builder-webchat-overview.md)
 ## [カスタマイズ](../v4sdk/bot-builder-webchat-customization.md)

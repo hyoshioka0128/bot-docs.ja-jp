@@ -7,14 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
-ms.date: 10/11/2018
-ms.openlocfilehash: 9383e15590569458e795e9a0603df21f63609001
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 08/7/2019
+ms.openlocfilehash: edfb61a4f4ca33089bce7d4b44ed242f83cbcc0d
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997739"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866623"
 ---
 # <a name="connect-a-bot-to-direct-line"></a>ボットを Direct Line に接続する
 
@@ -22,26 +21,26 @@ Direct Line チャネルを使用することによって、独自のクライ�
 
 ## <a name="add-the-direct-line-channel"></a>Direct Line チャネルを追加する
 
-Direct Line チャネルを追加するには、[Azure portal](https://portal.azure.com/) でボットを開き、**[チャネル]** ブレードをクリックして、**[Direct Line]\(Direct Line\)** をクリックします。
+Direct Line チャネルを追加するには、[Azure portal](https://portal.azure.com/) でボットを開き、 **[チャネル]** ブレードをクリックして、 **[Direct Line]\(Direct Line\)** をクリックします。
 
-![Direct Line チャネルを追加する](~/media/bot-service-channel-connect-directline/directline-addchannel.png)
+![Direct Line チャネルを追加する](media/bot-service-channel-connect-directline/directline-addchannel.png)
 
 ## <a name="add-new-site"></a>新しいサイトを追加する
 
-次に、ボットに接続するクライアント アプリケーションを表す新しいサイトを追加します。 **[Add new site]\(新しいサイトの追加\)** をクリックし、サイトの名前を入力して、**[完了]** をクリックします。
+次に、ボットに接続するクライアント アプリケーションを表す新しいサイトを追加します。 **[Add new site]\(新しいサイトの追加\)** をクリックし、サイトの名前を入力して、 **[完了]** をクリックします。
 
-![Direct Line サイトを追加する](~/media/bot-service-channel-connect-directline/directline-addsite.png)
+![Direct Line サイトを追加する](media/bot-service-channel-connect-directline/directline-addsite.png)
 
 ## <a name="manage-secret-keys"></a>秘密鍵を管理する
 
 サイトが作成されると、Bot Framework によって秘密鍵が生成されます。クライアント アプリケーションは、この秘密鍵を使って、ボットと通信するために発行する Direct Line API 要求の[認証](~/rest-api/bot-framework-rest-direct-line-3-0-authentication.md)を行うことができます。 鍵をプレーン テキストで表示するには、対応する鍵の **[表示]** をクリックします。
 
-![Direct Line の鍵を表示する](~/media/bot-service-channel-connect-directline/directline-showkey.png)
+![Direct Line の鍵を表示する](media/bot-service-channel-connect-directline/directline-showkey.png)
 
 表示された鍵をコピーし、安全に保管します。 その後、この鍵を使って、クライアントがボットと通信するために発行する Direct Line API 要求を[認証](~/rest-api/bot-framework-rest-direct-line-3-0-authentication.md)します。
 または、Direct Line API を使って[鍵をトークンと交換](~/rest-api/bot-framework-rest-direct-line-3-0-authentication.md#generate-token)します。クライアントはこのトークンを使って、1 つの会話のスコープ内で後続の要求を認証できます。
 
-![Direct Line の鍵をコピーする](~/media/bot-service-channel-connect-directline/directline-copykey.png)
+![Direct Line の鍵をコピーする](media/bot-service-channel-connect-directline/directline-copykey.png)
 
 ## <a name="configure-settings"></a>設定を構成する
 
@@ -52,4 +51,4 @@ Direct Line チャネルを追加するには、[Azure portal](https://portal.az
 > [!TIP]
 > クライアント アプリケーションとボットの間の新しい接続を作成する場合は、Direct Line API 3.0 を使います。
 
-終わったら、**[完了]** をクリックしてサイトの構成を保存します。 ボットに接続するクライアント アプリケーションごとに、このプロセスを [[Add new site]\(新しいサイトの追加\)](#add-new-site) から繰り返すことができます。
+終わったら、 **[完了]** をクリックしてサイトの構成を保存します。 ボットに接続するクライアント アプリケーションごとに、このプロセスを [[Add new site]\(新しいサイトの追加\)](#add-new-site) から繰り返すことができます。
