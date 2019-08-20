@@ -4,17 +4,17 @@ description: Bot Framework SDK for Node.js で Cortana スキルを構築する�
 keywords: Bot Framework, Cortana スキル, 音声, Node.js, Bot Builder, SDK, 主な概念, 主要概念
 author: DeniseMak
 manager: kamrani
+ms.author: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5de773f6f8f4d46c0c1fe880588f2530c3c68f56
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: 6aca29556fe877866d4beee8487ce0f1537334e6
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59746066"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866743"
 ---
 # <a name="key-concepts-for-building-a-bot-for-cortana-skills-using-nodejs"></a>Node.js を使用して Cortana スキル用のボットを構築するための主要概念
  

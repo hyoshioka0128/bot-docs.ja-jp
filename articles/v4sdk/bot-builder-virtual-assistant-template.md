@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 503ec19444c51120bf46838e14edb891ec5c3bb5
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 6bf567729e0c4799672f773ddcfadb4fabfa36fc
+ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464662"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68991950"
 ---
 # <a name="virtual-assistant---template-outline"></a>仮想アシスタント - テンプレートの概要
 
@@ -48,11 +48,11 @@ Analytics | ご自身の会話エクスペリエンス分析情報の使用を�
 
 ## <a name="basic-language-understanding-luis-intents"></a>Language Understanding (LUIS) の基本的な意図
 
-すべてのボットは、会話での基本レベルの言語理解に対応する必要があります。 すべてのボットが簡単に対応すべき基本的なことの例としては、あいさつがあります。 通常、開発者は最初にこれらの基本的な意図を作成して、初期トレーニング データを提供する必要があります。 仮想アシスタント テンプレートには、お客様が利用を開始するためのサンプル LU ファイルが用意されているので、プロジェクトごとに毎回それらを作成する必要がなく、すぐに基本レベルの機能を使用できます。
+すべてのボットは、会話での基本レベルの言語理解に対応する必要があります。 すべてのボットが簡単に対応すべき基本的なことの例としては、あいさつがあります。 通常、開発者は最初にこれらの基本的な意図を作成して、初期トレーニング データを提供する必要があります。 仮想アシスタント テンプレートには、お客様が利用を開始するためのサンプル .lu ファイルが用意されているので、プロジェクトごとに毎回それらを作成する必要がなく、すぐに基本レベルの機能を使用できます。
 
-LU ファイルには、英語、中国語、フランス語、イタリア語、ドイツ語、スペイン語で以下の意図が用意されています。
+.lu ファイルには、英語、中国語、フランス語、イタリア語、ドイツ語、スペイン語で以下の意図が用意されています。
 
-意図       | サンプルの発話 |
+Intent       | サンプルの発話 |
 -------------|-------------|
 Cancel       |"*キャンセル*"、"*気にしないで*"|
 エスカレート     |"*ユーザーと話すことができますか*"|
@@ -68,7 +68,7 @@ ShowPrevious |"*前を表示*"|
 StartOver    |*restart*|
 Stop         |*stop*|
 
-[LU](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) 形式はマークダウンと類似していて、変更とソース管理を容易に行えます。 次に .LU ファイルを LUIS モデルに変換するために [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) ツールが使用されます。そしてこの LUIS モデルは、ポータルまたは関連付けられた [LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) CLI (コマンド ライン) ツールを使用してお客様の LUIS サブスクリプションに発行できます。
+[.lu](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) 形式はマークダウンと類似していて、変更とソース管理を容易に行えます。 次に .lu ファイルを LUIS モデルに変換するために [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) ツールが使用されます。そしてこの LUIS モデルは、ポータルまたは関連付けられた [LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) CLI (コマンド ライン) ツールを使用してお客様の LUIS サブスクリプションに発行できます。
 
 ## <a name="telemetry"></a>テレメトリ
 
@@ -80,7 +80,7 @@ Application Insights の統合によって、追加設定なしで運用およ�
 
 ミドルウェア コンポーネントと QnA Maker および LuisRecognizer の SDK クラスを囲むラッパー クラスとを組み合わせることで、一貫性のある一連のイベントを洗練された方法で収集できます。 これらの一貫性のあるイベントは、その後 PowerBI などのツールと共に Application Insights ツールによって使用されます。
 
-PowerBI ダッシュボードの例は、Bot Framework ソリューション の GitHub リポジトリの一部であり、すべての仮想アシスタント テンプレートですぐにそのまま利用できます。 詳細については、[Analytics](https://github.com/Microsoft/AI/blob/master/docs/readme.md#analytics) に関するセクションを参照してください。
+Power BI ダッシュボードの例は、Bot Framework ソリューション の GitHub リポジトリの一部であり、すべての仮想アシスタント テンプレートですぐにそのまま利用できます。 詳細については、[Analytics](https://aka.ms/bfsanalytics) に関するセクションを参照してください。
 
 ![分析の例](./media/enterprise-template/powerbi-conversationanalytics-luisintents.png)
 
@@ -88,20 +88,20 @@ PowerBI ダッシュボードの例は、Bot Framework ソリューション の
 
 会話エクスペリエンスの第 1 弾で効果を上げるために使用された重要な設計パターンは、Language Understanding (LUIS) と QnA Maker を利用することでした。 LUIS では、お客様のボットがエンド ユーザーのために実行できるタスクについてのトレーニングが行われ、QnA Maker では、より一般的な知識についてのトレーニングが行われていました。
 
-入力された発話 (質問) はすべて、分析のために LUIS にルーティングされていました。 与えられた発話の意図が特定されなかった場合、それは意図なし、としてマークされました。 その後、エンドユーザーへの回答を見つけ出すために QnA Maker が使用されていました。
+入力された発話 (質問) はすべて、分析のために LUIS にルーティングされていました。 与えられた発話の意図が特定されなかった場合、それは意図*なし*、としてマークされました。 その後、エンドユーザーへの回答を見つけ出すために QnA Maker が使用されていました。
 
 このパターンはうまく機能していたものの、問題が発生し得る重要なシナリオが 2 つありました。
 
 - LUIS モデルと QnA Maker の発話がわずかに重複することがあり、そのようなときには、QnA Maker に転送されるはずの質問の処理を LUIS が試行するかもしれないという、想定外の動作が引き起こされる可能性がありました。
 - 2 つ以上の LUIS モデルがあった場合は、ボットによって各モデルが呼び出され、特定の発話の送信先を特定するためになんらかの意図評価比較が実行される必要がありました。 共通のベースライン スコアがないため、モデル間の比較が効果的に機能せず、ユーザー エクスペリエンスの低下を招いていました。
 
-[Dispatcher](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) では、構成された各 LUIS モデルから発話を、QnA Maker から質問を抽出して、一元的なディスパッチ LUIS モデルを作成することで、この問題をうまく解決できます。
+[Dispatch](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) では、構成された各 LUIS モデルから発話を、QnA Maker から質問を抽出して、一元的なディスパッチ LUIS モデルを作成することで、この問題をうまく解決できます。
 
-これにより、与えられた発話を処理すべき LUIS モデルまたはコンポーネントをボットが速やかに特定できるほか、QnA Maker のデータが以前のように単に意図なし、とされるのではなく、意図処理の最上位レベルで検討されるようになります。
+これにより、与えられた発話を処理すべき LUIS モデルまたはコンポーネントをボットが速やかに特定できるほか、QnA Maker のデータが以前のように単に意図*なし*、とされるのではなく、意図処理の最上位レベルで検討されるようになります。
 
-このディスパッチ ツールでは、LUIS モデルと QnA Maker のナレッジベースとの間における混乱と重複を浮き彫りにする評価を実行して、デプロイ前に問題を明らかにすることもできます。
+このディスパッチ ツールでは、LUIS モデルと QnA Maker のナレッジ ベースとの間における混乱、問題、重複をデプロイ前に明らかにする評価を実行することもできます。
 
-Dispatcher は、テンプレートを使用して作成された各プロジェクトのコアとして使用されます。 ディスパッチ モデルは、ターゲットが LUIS モデルと QnA のいずれであるかを特定するために `MainDialog` クラス内で使用されます。 LUIS の場合は、セカンダリ LUIS モデルが呼び出され、通常どおり意図とエンティティが返されます。 Dispatcher は、中断の検出にも使用されます。
+Dispatcher は、テンプレートを使用して作成された各プロジェクトのコアとして使用されます。 ディスパッチ モデルは、ターゲットが LUIS モデルと QnA のいずれであるかを特定するために `MainDialog` クラス内で使用されます。 LUIS の場合は、セカンダリ LUIS モデルが呼び出され、意図とエンティティが返されます。 Dispatcher は、中断の検出にも使用されます。
 
 ![ディスパッチの例](./media/enterprise-template/dispatchexample.png)
 
@@ -109,19 +109,19 @@ Dispatcher は、テンプレートを使用して作成された各プロジェ
 
 [QnA Maker](https://www.qnamaker.ai/) には、開発者以外のユーザーが質問と回答のペアという形式で一般的な知識のキュレーションを行える機能があります。 この知識は、FAQ データ ソースと製品マニュアルからインポートできるほか、QnA Maker ポータル内で対話形式でインポートできます。
 
-CognitiveModels の QnA フォルダーには、[LU](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) ファイル形式の 2 つの QnA Maker モデルの例が用意されています。1 つは FAQ 用、もう 1 つは chit-chat 用です。 次に、デプロイ スクリプトの一部として [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) が使用され、QnA Maker JSON ファイルが作成されます。そして、[QnA Maker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) CLI (コマンド ライン) ツールによってこれが使用され、項目が QnA Maker ナレッジベースに発行されます。
+CognitiveModels の QnA フォルダーには、[.lu](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) ファイル形式の 2 つの QnA Maker モデルの例が用意されています。1 つは FAQ 用、もう 1 つは chit-chat 用です。 次に、デプロイ スクリプトの一部として [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) が使用され、QnA Maker JSON ファイルが作成されます。そして、[QnA Maker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) CLI (コマンド ライン) ツールによってこれが使用され、項目が QnA Maker ナレッジ ベースに発行されます。
 
 ![QnA のおしゃべりの例](./media/enterprise-template/qnachitchatexample.png)
 
 ## <a name="content-moderator"></a>Content Moderator
 
-Content Moderator はオプションのコンポーネントで、不適切な可能性がある表現を検出できます。また、個人を特定できる情報 (PII) のチェックに役立ちます。 これをボットに統合すると役に立つ可能性があります。ボットは不適切な表現に反応したり、ユーザーが PII 情報を共有した場合に反応したりできるようになります。 たとえば、ボットに謝罪させたり、人間への引き継ぎを行わせたりできます。または、PII 情報が検出された場合に、ボットがテレメトリ レコードを保存しないようにできます。
+Content Moderator はオプションのコンポーネントで、不適切な可能性がある表現を検出できます。また、個人を特定できる情報 (PII) のチェックに役立ちます。 たとえば、不適切な表現があった場合にボットに謝罪させたり、人間への引き継ぎを行わせたりできます。または、PII 情報が検出された場合に、ボットがテレメトリ レコードを保存しないようにできます。
 
 TurnState オブジェクトの ```TextModeratorResult``` を通じてテキストとサーフェスをスクリーニングするミドルウェア コンポーネントが提供されます。
 
-# <a name="next-steps"></a>次の手順
-ご自身の仮想アシスタントを作成してデプロイする方法については、[作業の開始](https://github.com/Microsoft/AI/tree/master/docs#tutorials)に関するページをご覧ください。 
+## <a name="next-steps"></a>次の手順
+ご自身の仮想アシスタントを作成してデプロイする方法については、[チュートリアル](https://aka.ms/bfstutorials)をご覧ください。 
 
-# <a name="additional-resources"></a>その他のリソース
-仮想アシスタント テンプレートの完全なソース コードは、[GitHub](https://github.com/Microsoft/AI/) にあります。
+## <a name="additional-resources"></a>その他のリソース
+仮想アシスタント テンプレートの完全なソース コードは、[GitHub](https://aka.ms/bfsolutions) にあります。
 

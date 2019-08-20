@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: a3cff9a77de098ee524334183ba891068f176b6e
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67464779"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-nodejs"></a>Bot Framework SDK for Node.js の主要概念
@@ -31,7 +31,7 @@ Bot Framework Connector は、ご利用のボットを複数の "*チャネル*"
 
 この Connector では、ボットからチャネルへのメッセージおよびチャネルからボットへのメッセージが中継されて、ボットとユーザー間の通信が容易になります。 ご利用のボットのロジックは、ユーザーからのメッセージを Connector サービスを経由して受信する Web サービスとしてホストされます。ご利用のボットの応答は HTTPS POST を使用して Connector に送信されます。 
 
-Bot Framework SDK for Node.js には [UniversalBot][UniversalBot] クラスand [ChatConnector][ChatConnector] クラスが用意されており、これらのクラスを使用することで、ボットにおけるメッセージの送受信が Bot Framework Connector を経由して行われるように構成することができます。 `UniversalBot` クラスでは、ご利用のボットの頭脳が形成されます。 このクラスの役割は、ご利用のボットで行われるユーザーとの会話をすべて管理することにあります。 `ChatConnector` クラスでは、ご利用のボットを Bot Framework Connector サービスに接続することができます。
+Bot Framework SDK for Node.js には [UniversalBot][UniversalBot] クラスおよび [ChatConnector][ChatConnector] クラスが用意されており、これらのクラスを使用することで、ボットにおけるメッセージの送受信が Bot Framework Connector を経由して行われるように構成することができます。 `UniversalBot` クラスでは、ご利用のボットの頭脳が形成されます。 このクラスの役割は、ご利用のボットで行われるユーザーとの会話をすべて管理することにあります。 `ChatConnector` クラスでは、ご利用のボットを Bot Framework Connector サービスに接続することができます。
 これらのクラスの使用例については、「[Bot Framework SDK for Node.js を使用したボットの作成](bot-builder-nodejs-quickstart.md)」をご覧ください。
 
 Connector ではボットからチャネルに送信されるメッセージの正規化も行われます。このため、プラットフォームに依存しない方法でボットを開発することができます。 メッセージを正規化するには、メッセージを Bot Framework のスキーマから、チャネルのスキーマに変換する必要があります。 フレームワークのスキーマのすべての側面がチャネルによってサポートされているわけではない場合は、そのチャネルでサポートされている形式にメッセージを変換する試みが Connector によって行われます。 たとえば、カードとアクション ボタンを含むメッセージがボットから SMS チャネルに送信される場合、Connector によってカードがイメージとしてレンダリングされ、アクションがリンクとしてメッセージのテキストに取り込まれます。 [Channel Inspector][ChannelInspector] は、Connector によってメッセージが各種のチャネル上でどのようにレンダリングされるかを示す Web ツールです。

@@ -1,23 +1,22 @@
 ---
 title: Direct Line Speech ボットを開発する | Microsoft Docs
 description: Direct Line Speech ボットを開発します
-keywords: Direct Line Speech ボットの開発 Speech ボット
+keywords: Direct Line Speech ボットの開発, Speech ボット
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
-ms.topic: conceptuals
+ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 07/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4f33f799af3c7a6aecec172f5512791b52fdbffe
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: d4b44fdc2d063c2d91020435473346fdfbda589b
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671485"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970614"
 ---
-# <a name="use-direct-line-speech-in-your-bot"></a>ボットで Direct Line Speech を使用する 
+# <a name="use-direct-line-speech-in-your-bot"></a>ボットで Direct Line Speech を使用する
 
 [!INCLUDE [applies-to-v4](includes/applies-to.md)]
 
@@ -48,7 +47,7 @@ public IActivity Speak(string message)
 }
 ```
 
-## <a name="option-1-update-your-net-core-bot-code-if-your-bot-has-a-botcontrollercs"></a>オプション 1:"_ボットに BotController.cs が含まれる場合_" に、.NET Core ボット コードを更新する
+## <a name="option-1-update-your-net-core-bot-code-_if-your-bot-has-a-botcontrollercs_"></a>オプション 1:"_ボットに BotController.cs が含まれる場合_" に、.NET Core ボット コードを更新する
 EchoBot などのテンプレートのいずれかを使用して、Azure portal から新しいボットを作成する場合、単一の POST エンドポイントを公開する ASP.NET MVC コントローラーが含まれるボットが表示されます。 これらの手順では、エンドポイントも公開するように、これを展開する方法について説明します。これにより、GET エンドポイントである WebSocket ストリーミング エンドポイントが受け入れられます。
 1.  ご自身のソリューションで、Controllers フォルダーの BotController.cs を開きます
 
@@ -105,7 +104,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 8.  ご自身のボット コードの残りの部分は同じままです。
 
-## <a name="option-2-update-your-net-core-bot-code-if-your-bot-uses-addbot-and-usebotframework-instead-of-a-botcontroller"></a>オプション 2:"_BotController ではなく AddBot と UseBotFramework がボットで使用されている場合_" に、.NET Core ボット コードを更新する
+## <a name="option-2-update-your-net-core-bot-code-_if-your-bot-uses-addbot-and-usebotframework-instead-of-a-botcontroller_"></a>オプション 2:"_BotController ではなく AddBot と UseBotFramework がボットで使用されている場合_" に、.NET Core ボット コードを更新する
 
 バージョン 4.3.2 よりも前の Bot Builder SDK v4 を使用してボットを作成した場合、そのボットに BotController が含まれず、代わりに Startup.cs ファイルの AddBot() メソッドと UseBotFramework() メソッドが使用され、ボットがメッセージを受信する POST エンドポイントが公開されている可能性があります。 新しいストリーミング エンドポイントを公開するには、BotController を追加し、AddBot() メソッドと UseBotFramework() メソッドを削除する必要があります。 これらの手順では、必要な変更について説明します。
 
@@ -167,6 +166,10 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 4.  ご自身のボット コードの残りの部分は同じままです。
+
+## <a name="additional-information"></a>追加情報
+
+アクティビティの操作の詳細については、「[ボットのしくみ](v4sdk/bot-builder-basics.md)」および[テキスト メッセージを送受信する](v4sdk/bot-builder-howto-send-messages.md)方法を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]

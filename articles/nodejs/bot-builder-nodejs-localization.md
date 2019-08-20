@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: ce1b3f073c932cd4042b91ae9afc1e332a7443f2
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67404902"
 ---
 # <a name="support-localization"></a>ローカライズをサポートする
@@ -134,7 +134,7 @@ var bot = new builder.UniversalBot(connector, [
 ]);
 ```
 
-内部的に、SDK では [`session.preferredLocale()`][preferredLocale] to get the user's preferred locale and then uses that in a call to [`session.localizer.gettext()`][GetText] を呼び出して、メッセージ ID をそのローカライズされたテキスト文字列にマップします。  場合によっては、ローカライザーを手動で呼び出す必要があります。 たとえば、[`Prompts.choice()`][promptsChoice] に渡された列挙値は、自動的にローカライズされることはないため、プロンプトを呼び出す前にローカライズされた一覧を手動で取得する必要があります。
+内部的には、SDK は、[`session.preferredLocale()`][preferredLocale] を呼び出してユーザーの優先ロケールを取得した後、それを [`session.localizer.gettext()`][GetText] の呼び出しで使用して、メッセージ ID をローカライズされたテキスト文字列にマップします。  場合によっては、ローカライザーを手動で呼び出す必要があります。 たとえば、[`Prompts.choice()`][promptsChoice] に渡された列挙値は、自動的にローカライズされることはないため、プロンプトを呼び出す前にローカライズされた一覧を手動で取得する必要があります。
 
 ```javascript
 var options = session.localizer.gettext(session.preferredLocale(), "choice_options");

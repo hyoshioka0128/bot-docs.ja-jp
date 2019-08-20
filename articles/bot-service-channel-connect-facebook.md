@@ -2,23 +2,21 @@
 title: Facebook Messenger にボットを接続する | Microsoft Docs
 description: Facebook Messenger へのボットの接続を構成する方法について説明します。
 keywords: Facebook Messenger, ボット チャンネル, Facebook アプリ, アプリ ID, アプリ シークレット, Facebook ボット, 資格情報
-author: RobStand
-ms.author: RobStand
 manager: kamrani
 ms.topic: article
+ms.author: kamrani
 ms.service: bot-service
-ms.subservice: sdk
-ms.date: 10/12/2018
-ms.openlocfilehash: 36d98c6eeb368399ee11ef9a048bb42922103f16
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.date: 08/03/2019
+ms.openlocfilehash: 4e5dc332b463e9490c7aa265a08e8f126d59d3f9
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693614"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866471"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Facebook にボットを接続する
 
-ボットは Facebook Messenger と Facebook Workplace の両方に接続できるため、両方のプラットフォームのユーザーと通信できます。 次のチュートリアルでは、これらの 2 つのチャネルにボットを接続する方法を詳しく説明します。
+ボットは Facebook Messenger と Facebook Workplace の両方に接続できるため、両方のプラットフォームのユーザーと通信できます。 次のチュートリアルでは、これらの 2 つのチャネルにボットを接続する方法を説明します。
 
 > [!NOTE]
 > Facebook の UI は、使用しているバージョンによって多少異なる場合があります。
@@ -27,74 +25,95 @@ ms.locfileid: "66693614"
 
 Facebook Messenger 向けの開発の詳細については、[Messenger プラットフォームのドキュメント](https://developers.facebook.com/docs/messenger-platform)を参照してください。 Facebook の[プレリリースのガイドライン](https://developers.facebook.com/docs/messenger-platform/product-overview/launch#app_public)、[クイック スタート](https://developers.facebook.com/docs/messenger-platform/guides/quick-start)、および[設定ガイド](https://developers.facebook.com/docs/messenger-platform/guides/setup)を参照してください。
 
-Facebook Messenger を使用して通信するようにボットを構成するには、Facebook ページで Facebook Messenger を有効にしてから、ボットをアプリに接続します。
+Facebook Messenger を使用して通信するようにボットを構成するには、Facebook ページで Facebook Messenger を有効にしてから、ボットを接続します。
 
 ### <a name="copy-the-page-id"></a>ページ ID をコピーする
 
-ボットは Facebook ページからアクセスします。 [新しい Facebook ページを作成する](https://www.facebook.com/bookmarks/pages)か、既存のページに移動します。
+ボットは Facebook ページからアクセスします。
 
-* Facebook ページの **[About]\(概要\)** ページを開き、 **[Page ID]\(ページ ID\)** をコピーして保存します。
+1. [新しい Facebook ページを作成する](https://www.facebook.com/bookmarks/pages)か、既存のページに移動します。
+
+1. Facebook ページの **[About]\(概要\)** ページを開き、 **[Page ID]\(ページ ID\)** をコピーして保存します。
 
 ### <a name="create-a-facebook-app"></a>Facebook アプリを作成する
 
-ページで [[Create a new Facebook App]\(新しい Facebook アプリの作成\)](https://developers.facebook.com/quickstarts/?platform=web) を選択肢、アプリのアプリ ID とアプリ シークレットを生成します。
+1. ブラウザーで、[[Create a new Facebook App]\(新しい Facebook アプリの作成\)](https://developers.facebook.com/quickstarts/?platform=web) に移動します。
+1. アプリの名前を入力し、 **[Create New Facebook App ID]\(新しい Facebook アプリ ID の作成\)** ボタンをクリックします。
 
-![アプリ ID を作成する](~/media/channels/FB-CreateAppId.png)
+    ![アプリを作成する](media/channels/fb-create-messenger-bot-app.png)
 
-* **[App ID]\(アプリ ID\)** と **[App Secret]\(アプリ シークレット\)** をコピーして保存します。
+1. 表示されたダイアログ ボックスで、電子メール アドレスを入力し、 **[Create App ID]\(アプリ ID の作成\)** ボタンをクリックします。
 
-![アプリ ID とシークレットを保存する](~/media/channels/FB-get-appid.png)
+    ![アプリ ID を作成する](media/channels/fb-create-messenger-bot-app-id.png)
 
-[Allow API Access to App Settings]\(アプリ設定への API のアクセスを許可する\) スライダーを [Yes]\(はい\) に設定します。
+1. ウィザードの手順を実行します。
 
-![アプリケーション設定](~/media/bot-service-channel-connect-facebook/api_settings.png)
+1. 必要なチェック情報を入力し、右上にある **[Skip Quick Start]\(クイック スタートをスキップ\)** ボタンをクリックします。
+
+1. 次に表示されるウィンドウの左側のウィンドウで、 *[設定]* を展開し、 **[基本]** をクリックします。
+
+1. 右側のウィンドウで、 **[アプリ ID]** および **[アプリ シークレット]** をコピーして保存します。
+
+    ![アプリ ID とアプリ シークレットをコピー](media/channels/fb-messenger-bot-get-appid-secret.png)
+
+1. 左側のウィンドウの *[設定]* で、 **[詳細]** をクリックします。
+
+1. 右側のウィンドウで、 **[Allow API Access to App Settings]\(アプリ設定への API のアクセスを許可する\)** スライダーを **[はい]** に設定します。
+
+    ![アプリ ID とアプリ シークレットをコピー](media/channels/fb-messenger-bot-api-settings.png)
+
+1. 右下のページで、 **[変更の保存]** ボタンをクリックします。
 
 ### <a name="enable-messenger"></a>Messenger を有効にする
 
-新しい Facebook App で Facebook Messenger を有効にします。
+1. 左側のウィンドウで、 **[ダッシュボード]** をクリックします。
+1. 右側のウィンドウで下にスクロールし、 **[Messenger]** ボックスの **[Set Up]\(設定\)** ボタンをクリックします。 Messenger のエントリは、左側のウィンドウの *[PRODUCTS]\(製品\)* セクションに表示されます。  
 
-![Messenger を有効にする](~/media/channels/FB-AddMessaging1.png)
+    ![Messenger を有効にする](media/channels/fb-messenger-bot-enable-messenger.png)
 
 ### <a name="generate-a-page-access-token"></a>ページ アクセス トークンを生成する
 
-Messenger セクションの **[Token Generation]\(トークンの生成\)** パネルで、ターゲット ページを選択します。 ページ アクセス トークンが生成されます。
+1. 左側のウィンドウで、Messenger のエントリの下にある **[設定]** をクリックします。
+1. 右側のウィンドウで下にスクロールし、 **[Token Generation]\(トークンの生成\)** セクションでターゲット ページを選択します。
 
-* **[Page Access Token]\(ページ アクセス トークン\)** をコピーして保存します。
+    ![Messenger を有効にする](media/channels/fb-messenger-bot-select-messenger-page.png)
 
-![トークンを生成する](~/media/channels/FB-generateToken.png)
+1. アクセス トークンを生成するために、 **[アクセス許可の編集]** ボタンをクリックして、pages_messaging をアプリに許可します。
+1. ウィザードの手順に従います。 最後の手順では、既定の設定をそのまま使用し、 **[完了]** ボタンをクリックします。 最後に、**ページ アクセス トークン**が生成されます。
+
+    ![Messenger のアクセス許可](media/channels/fb-messenger-bot-permissions.png)
+
+1. **[Page Access Token]\(ページ アクセス トークン\)** をコピーして保存します。
 
 ### <a name="enable-webhooks"></a>Webhook を有効にする
 
-**[Set up Webhooks]\(Webhook の設定\)** をクリックして、Facebook Messenger からボットにメッセージング イベントを転送します。
+ボットから Facebook Messenger にメッセージやその他のイベントを送信するには、Webhook 統合を有効にする必要があります。 この時点では、Facebook 設定の手順は保留のままにしておき、後で戻ってきます。
 
-![Webhook を有効にする](~/media/channels/FB-webhook.png)
+1. ブラウザーで新しいウィンドウを開き、[Azure portal](https://portal.azure.com/) に移動します。 
 
-### <a name="provide-webhook-callback-url-and-verify-token"></a>Webhook のコールバック URL を指定し、トークンを確認する
+1. リソースの一覧でボット リソースの登録をクリックし、関連するブレードで **[チャネル]** をクリックします。
 
-[Azure portal](https://portal.azure.com/) で、ボットを開いて、 **[チャンネル]** タブをクリックし、 **[Facebook Messenger]** をクリックします。
+1. 右側のウィンドウで、 **[Facebook]** アイコンをクリックします。
 
-* ポータルの **[コールバックの URL]** と **[トークンの確認]** の値をコピーします。
+1. ウィザードで、前の手順で保存した Facebook の情報を入力します。 情報が正しい場合、ウィザードの下部に**コールバック URL** と**トークンの確認**が表示されます。 それらをコピーして保存します。  
 
-![値をコピーする](~/media/channels/fb-callbackVerify.png)
+    ![FB Messenger チャネル構成](media/channels/fb-messenger-bot-config-channel.PNG)
 
-1. Facebook メッセンジャーに戻り、 **[コールバックの URL]** と **[トークンの確認]** の値を貼り付けます。
-
-2. **[サブスクリプション フィールド]** で、 *[message\_deliveries]* 、 *[messages]* 、 *[messaging\_optins]* 、 *[messaging\_postbacks]* を選択します。
-
-3. **[Verify and Save]\(確認して保存\)** をクリックします。
-
-![Webhook を構成する](~/media/channels/FB-webhookConfig.png)
-
-4. Webhook を Facebook ページにサブスクライブします。
-
-![Webhook をサブスクライブする](~/media/bot-service-channel-connect-facebook/subscribe-webhook.png)
+1. **[保存]** ボタンをクリックします。
 
 
-### <a name="provide-facebook-credentials"></a>Facebook の資格情報を入力する
+1. Facebook の設定に戻りましょう。 右側のウィンドウで下にスクロールし、 **[Webhook]** セクションで **[Subscribe To Events]\(イベントのサブスクライブ\)** ボタンをクリックします。 これは、メッセージング イベントを Facebook Messenger からボットに転送するためです。
 
-Azure portal で、前に Facebook Messenger からコピーした **Facebook アプリ ID**、**Facebook アプリ シークレット**、**ページ ID**、および**ページ アクセス トークン**の各値を貼り付けます。 複数の Facebook ページで同じボットを使用するには、追加のページ ID とアクセス トークンを追加します。
+    ![Webhook を有効にする](media/channels/fb-messenger-bot-webhooks.PNG)
 
-![資格情報を入力する](~/media/channels/fb-credentials2.png)
+1. 表示されたダイアログ ボックスで、前に保存した **[コールバック URL]** および **[トークンの確認]** の値を入力します。 **[サブスクリプション フィールド]** で、 *[message\_deliveries]* 、 *[messages]* 、 *[messaging\_optins]* 、 *[messaging\_postbacks]* を選択します。
+
+    ![Webhook を構成する](media/channels/fb-messenger-bot-config-webhooks.png)
+
+1. **[確認して保存]** ボタンをクリックします。
+1. Webhook をサブスクライブする Facebook ページを選択します。 **[サブスクライブ]** ボタンをクリックします。
+
+    ![Webhook ページを構成する](media/channels/fb-messenger-bot-config-webhooks-page.PNG)
 
 ### <a name="submit-for-review"></a>確認用に送信する
 
@@ -116,30 +135,25 @@ Facebook Workplace については、[Workplace ヘルプ センター](https://
 
 Facebook Workplace を使用して通信するようにボットを構成するには、カスタム統合を作成してそれにボットを接続します。
 
-### <a name="create-a-facebook-workplace-premium-account"></a>Facebook Workplace プレミアム アカウントを作成する
 
-[こちら](https://www.facebook.com/workplace)の手順に従って、Facebook Workplace プレミアム アカウントを作成し、自分自身をシステム管理者として設定します。 カスタム統合を作成できるのは Workplace のシステム管理者だけであることに注意してください。
+1. Facebook Workplace プレミアム アカウントを作成します。 [こちら](https://www.facebook.com/workplace)の手順に従って、Facebook Workplace プレミアム アカウントを作成し、自分自身をシステム管理者として設定します。 カスタム統合を作成できるのは Workplace のシステム管理者だけであることに注意してください。
 
-### <a name="create-a-custom-integration"></a>カスタム統合を作成する
+1. 次で説明する手順に従って、Workplace の[カスタム統合](https://developers.facebook.com/docs/workplace/custom-integrations-new)を作成します。 カスタム統合を作成すると、アクセス許可が定義されたアプリと、Workplace コミュニティ内でのみ表示される "ボット" 型のページが作成されます。
 
-カスタム統合を作成すると、アクセス許可が定義されたアプリと、Workplace コミュニティ内でのみ表示される "ボット" 型のページが作成されます。
+1. **[Admin Panel]\(管理パネル\)** で、 **[Integrations]\(統合\)** タブを開きます。
+1. **[Create your own custom App]\(カスタム アプリの作成\)** ボタンをクリックします。
 
-次の手順に従って、Workplace の[カスタム統合](https://developers.facebook.com/docs/workplace/custom-integrations-new)を作成します。
+    ![Workplace の統合](media/channels/fb-integration.png)
 
-- **[Admin Panel]\(管理パネル\)** で、 **[Integrations]\(統合\)** タブを開きます。
-- **[Create your own custom App]\(カスタム アプリの作成\)** ボタンをクリックします。
+1. アプリの表示名とプロファイルの写真を選択します。 これらの情報は、"ボット" 型のページと共有されます。
+1. **[Allow API Access to App Settings]\(アプリ設定への API のアクセスを許可する\)** を [Yes]\(はい\) に設定します。
+1. 表示されたアプリ ID、アプリ シークレット、およびアプリ トークンをコピーし、安全に保管します。
 
-![Workplace の統合](~/media/channels/fb-integration.png)
+    ![Workplace のキー](media/channels/fb-keys.png)
 
-- アプリの表示名とプロファイルの写真を選択します。 これらの情報は、"ボット" 型のページと共有されます。
-- **[Allow API Access to App Settings]\(アプリ設定への API のアクセスを許可する\)** を [Yes]\(はい\) に設定します。
-- 表示されたアプリ ID、アプリ シークレット、およびアプリ トークンをコピーし、安全に保管します。
+1. これで、カスタム統合の作成が完了しました。 次に示すように、Workplace コミュニティ内で "ボット" 型のページを見つけることができます。
 
-![Workplace のキー](~/media/channels/fb-keys.png)
-
-これで、カスタム統合の作成が完了しました。 次に示すように、Workplace コミュニティ内で "ボット" 型のページを見つけることができます。
-
-![Workplace のページ](~/media/channels/fb-page.png)
+    ![Workplace のページ](media/channels/fb-page.png)
 
 ### <a name="provide-facebook-credentials"></a>Facebook の資格情報を入力する
 
@@ -155,12 +169,10 @@ Azure portal で、前に Facebook Workplace からコピーした **Facebook �
 
 特定のバージョンの Graph API の廃止に関する Facebook からの通知を受け取った場合、[Facebook 開発者向けページ](https://developers.facebook.com)に移動します。 お使いのボットの **[アプリ設定]** に移動し、 **[設定] > [詳細] > [Upgrade API version]\(API バージョンのアップグレード\)** に移動し、 **[Upgrade All Calls]\(すべての呼び出しをアップグレード\)** を 3.0 に切り替えます。
 
-![API バージョンのアップグレード](~/media/channels/facebook-version-upgrade.png)
+![API バージョンのアップグレード](media/channels/fb-version-upgrade.png)
 
-## <a name="sample-code"></a>サンプル コード
+## <a name="see-also"></a>関連項目
 
-また、参考として、<a href="https://aka.ms/facebook-events" target="_blank">Facebook-events</a> のサンプル ボットを使用して、Facebook Messenger とのボット通信を探索することができます。
+- **サンプル コード**。 <a href="https://aka.ms/facebook-events" target="_blank">Facebook-events</a> のサンプル ボットを使用して、Facebook Messenger とのボット通信を探索します。
 
-## <a name="also-available-as-an-adapter"></a>アダプターとしても使用可能
-
-このチャネルは[アダプターとしても使用できます](https://botkit.ai/docs/v4/platforms/facebook.html)。 アダプターとチャネルのどちらを選択するかについては、「[現在使用できるアダプター](bot-service-channel-additional-channels.md#currently-available-adapters)」を参照してください。
+- **アダプターとして使用可能**。 このチャネルは[アダプターとしても使用できます](https://botkit.ai/docs/v4/platforms/facebook.html)。 アダプターとチャネルのどちらを選択するかについては、「[現在使用できるアダプター](bot-service-channel-additional-channels.md#currently-available-adapters)」を参照してください。

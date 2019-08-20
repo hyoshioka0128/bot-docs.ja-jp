@@ -8,14 +8,14 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 6b6e841e49ab800b239961cf5ae54dc2d5feab23
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 68ef5f1d24c464489ff500fe290de2a151f87f5a
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757774"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970599"
 ---
-## <a name="net-bot-with-direct-line-app-service-extension"></a>.NET ボットと Direct Line App Service 拡張機能
+# <a name="configure-net-bot-for-extension"></a>拡張機能のための .NET ボットの構成
 
 [!INCLUDE[applies-to-v4](includes/applies-to.md)]
 
@@ -24,6 +24,10 @@ ms.locfileid: "68757774"
 ## <a name="prerequisites"></a>前提条件
 
 次に説明する手順を実行するには、**Azure App Service** リソースと、関連する **App Service** が Azure にある必要があります。
+
+## <a name="enable-direct-line-app-service-extension"></a>Direct Line App Service 拡張機能を有効にする
+
+このセクションでは、ボットのチャネル構成からのキーと、ボットがホストされている **Azure App Service** リソースを使用して Direct Line App Service 機能拡張を有効にする方法について説明します。
 
 ## <a name="update-net-bot-to-use-direct-line-app-service-extension"></a>Direct Line App Service 拡張機能を使用するように .NET ボットを更新する
 
@@ -71,10 +75,6 @@ ms.locfileid: "68757774"
 
 1. ボットを Azure App Service に**発行**します。
 1. ブラウザーで、 https://<your_app_service>.azurewebsites.net/.bot に移動します。 すべて正しければ、ページは JSON コンテンツ `{"k":true,"ib":true,"ob":true,"initialized":true}` を返します。
-
-## <a name="enable-direct-line-app-service-extension"></a>Direct Line App Service 拡張機能を有効にする
-
-このセクションでは、ボットのチャネル構成からのキーと、ボットがホストされている **Azure App Service** リソースを使用して Direct Line App Service 機能拡張を有効にする方法について説明します。
 
 ### <a name="gather-your-direct-line-extension-keys"></a>Direct Line 拡張機能キーを収集する
 

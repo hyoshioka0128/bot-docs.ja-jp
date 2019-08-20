@@ -2,21 +2,24 @@
 title: Azure Bot Service を介してボットに認証を追加する | Microsoft Docs
 description: Azure Bot Service の認証機能を使用して SSO をボットに追加する方法について説明します。
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 06/07/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3467c45ed97c84a2bad28cd5fef2de03a3caed22
-ms.sourcegitcommit: 3574fa4e79edf2a0c179d8b4a71939d7b5ffe2cf
+ms.openlocfilehash: b5d3031a23959d054056f89968c35a1e1e49c1dd
+ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2019
-ms.locfileid: "68591051"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68991986"
 ---
-<!-- Related TODO:
+<!-- 
+
+ms.author: v-jofing
+
+Related TODO:
 - Check code in [Web Chat channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
 - Check guidance in [DirectLine authentication](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0)
 -->
@@ -79,8 +82,6 @@ Azure ボット リソースを作成する必要があります。また、以�
 - **ボットのサンプル コードの準備**
 
 手順が終了すると、電子メールのチェックと送信、自分とその上司の情報の表示など、Azure AD アプリケーションに対するいくつかの単純なタスクに応答できるボットが完成します。このボットはローカルで実行されています。 これを行うために、ボットでは Azure AD アプリケーションからのトークンを Microsoft.Graph ライブラリに対して使用します。 OAuth サインイン機能をテストするためにご自身のボットを公開する必要はありませんが、ボットには有効な Azure アプリ ID とパスワードが必要になります。
-
-これらの認証機能は、他の種類のボットとも連動します。 ただし、この記事では登録のみのボットを使用します。
 
 ### <a name="web-chat-and-direct-line-considerations"></a>Web チャットと Direct Line に関する考慮事項
 
@@ -406,6 +407,33 @@ OAuth プロンプトを起動すると、そのプロンプトは、ユーザ�
 
 ---
 
+### <a name="adding-teams-authentication"></a>Teams 認証の追加
+
+Teams は、OAuth に関して他のチャネルとは多少異なる動作をするため、認証を適切に実装するにはいくつかの変更が必要です。 Teams Authentication Bot サンプルからコードを追加します ([C#][cs-teams-auth-sample]/[JavaScript][js-teams-auth-sample])。
+ 
+他のチャネルと Teams の違いの 1 つは、Teams がボットに*イベント* アクティビティではなく*呼び出し*アクティビティを送信することです。 
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+**Bots/TeamsBot.cs** [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight34)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+**bots/teamsBot.js** [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-31&highlight=27)]
+
+---
+
+*OAuth プロンプト*を使用する場合は、この呼び出しアクティビティをダイアログに転送する必要があります。 ここでは、`TeamsActivityHandler` でこれを行います。 次のコードをメイン ダイアログ ファイルに追加します。 
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+**Bots/DialogBot.cs** [!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=18)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+**Bots/dialogBot.js** [!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=4-6)]
+
+---
+最後に必ず、ボットのフォルダーの最上位レベルに適切な `TeamsActivityHandler` ファイル (C# ボットの場合は `TeamsActivityHandler.cs`、Javascript ボットの場合は `teamsActivityHandler.js`) を追加してください。
+
+`TeamsActivityHandler` は*メッセージの反応*アクティビティも送信します。 メッセージの反応アクティビティは、*返信先 ID* フィールドを使用して元のアクティビティを参照します。 このアクティビティは、Microsoft Teams の[アクティビティ フィード][teams-activity-feed]でも表示される必要があります。
+
 ### <a name="further-reading"></a>参考資料
 
 - 「[Bot Framework のその他のリソース](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help)」に追加サポートのリンクがあります。
@@ -429,3 +457,6 @@ OAuth プロンプトを起動すると、そのプロンプトは、ユーザ�
 [js-auth-sample]: https://aka.ms/v4js-bot-auth-sample
 [cs-msgraph-sample]: https://aka.ms/v4cs-auth-msgraph-sample
 [js-msgraph-sample]: https://aka.ms/v4js-auth-msgraph-sample
+[cs-teams-auth-sample]:https://aka.ms/cs-teams-auth-sample
+[js-teams-auth-sample]:https://aka.ms/js-teams-auth-sample
+[teams-activity-feed]:[https://aka.ms/teams-activity-feed

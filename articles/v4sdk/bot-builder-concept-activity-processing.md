@@ -3,19 +3,18 @@ title: アクティビティの処理 | Microsoft Docs
 description: ボット SDK でのアクティビティ処理について説明します。
 keywords: ボット アダプター, カスタム ミドルウェア, ショート サーキット, フォールバック, イベント ハンドラー
 author: jonathanfingold
-ms.author: jonathanfingold
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0e0fe51e33e99bbb35ef1d731b611ff9ca12a138
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 315bebddeda21301d29fa003ce9c8f43e1677000
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404311"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970718"
 ---
 # <a name="activity-processing"></a>アクティビティの処理
 
@@ -23,7 +22,7 @@ ms.locfileid: "67404311"
 
 ボットとユーザーの間では、アクティビティを介して情報のやり取りや交換が行われます。 ご利用のボット アプリケーションによって受信された各アクティビティはボット アダプターに渡されます。次に、このボット アダプターから、アクティビティ情報がご利用のボルト ロジックに渡され、最終的に応答がユーザーに送信されます。 アクティビティを受信した後、ボットを通して処理することをターンと呼びます。これはボットの完全な 1 サイクルを表します。 すべての実行が完了し、アクティビティが完全に処理され、ボットのすべてのレイヤーが完了すると、ターンは終了します。
 
-アクティビティ (特にボット ターン中に[ボットから送信した](#generating-responses)アクティビティ) は、非同期で処理されます。 非同期処理はボットの構築に必要な部分です。ボット全体の動作方法についてブラッシュ アップを行う必要がある場合は、[.NET の場合の非同期](https://docs.microsoft.com/dotnet/csharp/async)または [JavaScript の場合の非同期](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function)に関するページを確認してください。
+アクティビティ (特にボット ターン中に[ボットから送信](#generating-responses)されたアクティビティ) は、非同期で処理されます。 非同期処理はボットの構築に必要な部分です。ボット全体の動作方法についてブラッシュ アップを行う必要がある場合は、[.NET の場合の非同期](https://docs.microsoft.com/dotnet/csharp/async)または [JavaScript の場合の非同期](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function)に関するページを確認してください。
 
 ## <a name="the-bot-adapter"></a>ボット アダプター
 

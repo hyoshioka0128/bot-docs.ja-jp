@@ -8,18 +8,18 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 1b3b11723cc93c32aef92250518d2ffc16435460
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 62fda46569c6134f798b4d253a0676a037fdfa0f
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757784"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866455"
 ---
-## <a name="create-net-client-to-connect-to-direct-line-app-service-extension"></a>Direct Line App Service 拡張機能に接続する .NET クライアントを作成する
+# <a name="create-net-client-to-connect-to-direct-line-app-service-extension"></a>Direct Line App Service 拡張機能に接続する .NET クライアントを作成する
 
 この記事では、Direct Line App Service 拡張機能に接続する .NET クライアントを C# で作成する方法について説明します。
 
-### <a name="gather-your-direct-line-extension-keys"></a>Direct Line 拡張機能キーを収集する
+## <a name="gather-your-direct-line-extension-keys"></a>Direct Line 拡張機能キーを収集する
 
 1. ブラウザーで [Azure portal](https://portal.azure.com/) に移動します。
 1. Azure portal で、目的の **Azure Bot Service** リソースを見つけます。
@@ -29,12 +29,12 @@ ms.locfileid: "68757784"
 1. [サイト] セクションまでスクロールします。 通常、削除または名前を変更していない限り、既定のサイトがあります。
 1. **[表示] リンク**をクリックしていずれかのキーを表示し、その値をコピーします。
 
-![App Service 拡張機能キー](./media/channels/direct-line-extension-extension-keys-net-client.png)
+    ![App Service 拡張機能キー](./media/channels/direct-line-extension-extension-keys-net-client.png)
 
 > [!NOTE]
 > この値は、Direct Line App Service 拡張機能に接続するために使用される Direct Line クライアントのシークレットです。 必要に応じて追加のサイトを作成でき、それらのシークレット値も使用できます。
 
-### <a name="add-the-preview-nuget-package-source"></a>プレビュー版の Nuget パッケージのソースを追加する
+## <a name="add-the-preview-nuget-package-source"></a>プレビュー版の Nuget パッケージのソースを追加する
 
 C# Direct Line クライアントを作成するために必要なプレビュー版の NuGet パッケージは、NuGet フィードにあります。
 
@@ -46,7 +46,7 @@ C# Direct Line クライアントを作成するために必要なプレビュ�
 1. **[更新]** ボタンをクリックして値を保存します。
 1. **[OK]** をクリックして、パッケージ ソースの構成を終了します。
 
-### <a name="create-a-c-direct-line-client"></a>C# Direct Line クライアントを作成する
+## <a name="create-a-c-direct-line-client"></a>C# Direct Line クライアントを作成する
 
 Direct Line App Service 拡張機能との対話は、従来の Direct Line とは異なる方法で行われます。これは、ほとんどの通信が *WebSocket* で行われるためです。 更新された Direct Line クライアントには、*WebSocket* の開始/終了、WebSocket 経由でのコマンドの送信、およびボットから返される Activity の受信のためのヘルパー クラスが含まれています。 このセクションでは、ボットと対話するための単純な C# クライアントを作成する方法について説明します。
 

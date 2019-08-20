@@ -9,10 +9,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
 ms.openlocfilehash: 847ae51791ae66ef190ebefee765f2806ec91c5e
-ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68484036"
 ---
 # <a name="debug-with-the-emulator"></a>エミュレーターを使用したデバッグ
@@ -33,7 +33,7 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
     ```
     dotnet run
     ```
-* *Application started.Press CTRL+C to shut down.* の前の行のポート番号をコピーします。
+* 次の記述の前の行のポート番号をコピーします: *Application started.Press Ctrl+C to shut down.* (アプリケーションが開始しました。シャットダウンするには Ctrl + C キーを押してください。)
 
     ![C# ポート番号](media/bot-service-debug-emulator/csharp_port_number.png)
 
@@ -163,7 +163,7 @@ Emulator による使用状況データの収集を許可する必要がなく�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-Bot Framework Emulator はオープン ソースです。 [投稿][EmulatorGithubContribute] to the development and [submit bugs and suggestions][EmulatorGithubBugs]できます。
+Bot Framework Emulator はオープン ソースです。 開発に[貢献][EmulatorGithubContribute]したり、[バグや提案を送信][EmulatorGithubBugs]したりできます。
 
 トラブルシューティングについては、[一般的な問題のトラブルシューティング](bot-service-troubleshoot-bot-configuration.md)に関する記事、およびそのセクションに示されているトラブルシューティングに関するその他の記事をご覧ください。
 

@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 9dd84e9e5e39e1e1b801e08fbee101dbfa8b0c49
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67405680"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Cortana スキルを使用した音声認識ボットの作成
@@ -99,7 +99,7 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
 ## <a name="sample-rollerskill"></a>サンプル:RollerSkill
 以下のセクションで取り上げるコードは、サイコロを振る Cortana のサンプル スキルのものです。 [BotBuilder-Samples リポジトリ](https://github.com/Microsoft/BotBuilder-Samples/)から、ボットのコード全体をダウンロードしてください。
 
-その[呼び出し名][InvocationNameGuidelines] to Cortana. For the roller skill, after you [add the bot to the Cortana channel][CortanaChannel] を言ってスキルを呼び出し、それを Cortana スキルとして登録した後、Cortana に "Ask Roller" (Roller に頼んで) または "Ask Roller to roll dice" (サイコロを振るよう Roller に頼んで) と話しかけると、これを呼び出せます。
+Cortana に向かって[呼び出し名][InvocationNameGuidelines]を話しかけて、スキルを呼び出します。 Roller スキルの場合、[ボットを Cortana チャネルに追加し][CortanaChannel]、それを Cortana スキルとして登録した後、Cortana に「Ask Roller」(Roller に頼んで) または「Ask Roller to roll dice」(サイコロを振るよう Roller に頼んで) と話しかけると、これを呼び出せます。
 
 ### <a name="explore-the-code"></a>コードを調べる
 

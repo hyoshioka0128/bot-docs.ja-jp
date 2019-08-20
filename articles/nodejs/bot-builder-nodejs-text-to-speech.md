@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 14b8bf7aa4e99e3ca97442c2ba57dc8c57138d99
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 14bda9e14f0f812cf528a6b9fdf01175e7eb21ae
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404696"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866650"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
 
@@ -72,9 +71,9 @@ Bot Framework SDK for Node.js を使用すると、音声対応チャネルで�
 
 ## <a name="sample-code"></a>サンプル コード 
 
-Bot Framework SDK for .NET を使用して音声対応ボットを作成する方法を示す完全なサンプルについては、GitHub の「<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Roller sample (Roller のサンプル)</a>」を参照してださい。
+Bot Framework SDK for Node.js を使用して音声対応ボットを作成する方法を示す完全なサンプルについては、GitHub の「<a href="https://github.com/microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/demo-RollerSkill" target="_blank">Roller sample (Roller のサンプル)</a>」を参照してださい。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">音声合成マークアップ言語 (SSML)</a>
-- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Roller のサンプル (GitHub)</a>
+- <a href="https://github.com/microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/demo-RollerSkill" target="_blank">Roller のサンプル (GitHub)</a>

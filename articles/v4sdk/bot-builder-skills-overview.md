@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8ed5841f9bfe874de26f1aecbb0e4460e541668b
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 59b5e340ee9f2eeb89eaf420a0cca031fcc7f2b1
+ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215297"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68991939"
 ---
 # <a name="virtual-assistant---skills-overview"></a>仮想アシスタント - スキルの概要
 
@@ -38,15 +38,15 @@ ms.locfileid: "66215297"
 
 ![スキルのシナリオ](./media/enterprise-template/skills-at-build.png)
 
-| Name | 説明 |
+| EnableAdfsAuthentication | 説明 |
 | ---- | ----------- |
-|[カレンダー スキル](https://github.com/Microsoft/AI/blob/master/docs/reference/skills/productivity-calendar.md)|カレンダー機能をご自身のアシスタントに追加します。 Microsoft Graph および Google を使用。|
-|[メール スキル](https://github.com/Microsoft/AI/blob/master/docs/reference/skills/productivity-email.md)|メール機能をご自身のアシスタントに追加します。 Microsoft Graph および Google を使用。|
-|[To Do スキル](https://github.com/Microsoft/AI/blob/master/docs/reference/skills/productivity-todo.md)|タスク管理機能をご自身のアシスタントに追加します。 Microsoft Graph を使用。|
-|[目的地スキル](https://github.com/Microsoft/AI/blob/master/docs/reference/skills/productivity-pointofinterest.md)|目的地と方向を検索します。 Azure Maps と FourSquare を使用。|
-|[自動車スキル](https://github.com/Microsoft/AI/blob/master/docs/reference/skills/automotive.md)|自動車機能のコントロールを示す業界垂直スキル。|
-|[試験段階スキル](https://github.com/Microsoft/AI/blob/master/docs/reference/skills/experimental.md)|ニュース、レストラン予約、および天気。|
+|[カレンダー スキル](https://aka.ms/bfcalendarskill)|カレンダー機能をご自身のアシスタントに追加します。 Microsoft Graph および Google を使用。|
+|[メール スキル](https://aka.ms/bfemailskill)|メール機能をご自身のアシスタントに追加します。 Microsoft Graph および Google を使用。|
+|[To Do スキル](https://aka.ms/bftodoskill)|タスク管理機能をご自身のアシスタントに追加します。 Microsoft Graph を使用。|
+|[目的地スキル](https://aka.ms/bfpoiskill)|目的地と方向を検索します。 Azure Maps と FourSquare を使用。|
+|[自動車スキル](https://aka.ms/bfautoskill)|自動車機能のコントロールを示す業界垂直スキル。|
+|[試験段階スキル](https://aka.ms/bfexperimentalskills)|ニュース、レストラン予約、および天気。|
 
 ## <a name="getting-started"></a>Getting Started (概要)
 
-既存のスキルを利用して独自のスキルを構築する方法については、[作業の開始](https://github.com/Microsoft/AI/tree/master/docs#tutorials)に関するページをご覧ください。
+既存のスキルを利用して独自のスキルを構築する方法については、[チュートリアル](https://aka.ms/bfstutorials)をご覧ください。

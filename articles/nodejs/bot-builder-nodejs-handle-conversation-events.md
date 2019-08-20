@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: a6149b750a4432f00268571df6d12b611114181f
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67404910"
 ---
 # <a name="handle-user-and-conversation-events"></a>ユーザーと会話イベントの処理
@@ -44,7 +44,7 @@ Bot Framework では、メンバーが会話に参加または退出するたび
 
 [!INCLUDE [first-run sample Node.js](../includes/snippet-code-node-first-run-dialog-1.md)]
 
-また、中断が発生する前に妨害するために [onSelectAction][onSelectAction] handler. For trigger actions you can provide an [onInterrupted][onInterrupted] ハンドラーを指定することで、トリガーされた後にアクションが行うアクションもカスタマイズできます。 詳細については、「[Handle user actions](bot-builder-nodejs-dialog-actions.md)」(ユーザー アクションの処理) を参照してください。
+また、[onSelectAction][onSelectAction] ハンドラーを指定することで、トリガーされた後にアクションが行う動作をカスタマイズできます。 トリガー アクションでは、[onInterrupted][onInterrupted] ハンドラーを指定して、中断が発生する前にインターセプトできます。 詳細については、「[Handle user actions](bot-builder-nodejs-dialog-actions.md)」(ユーザー アクションの処理) を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
