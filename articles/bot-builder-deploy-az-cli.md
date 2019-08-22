@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 08/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e8ad6d3f365fefef3e2a6978802bfb02688d317c
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 4578cfcb497825c8928c066178ca3b28bb4540bf
+ms.sourcegitcommit: c2fbd002315759af9853ecaf0ec9dca7923f438f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68970578"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69520967"
 ---
 # <a name="deploy-your-bot"></a>ボットをデプロイする
 
@@ -73,7 +73,10 @@ az ad app create --display-name "displayName" --password "AtLeastSixteenCharacte
 上記のコマンド キーにより JSON と キー `appId` が出力され、ARM デプロイ用にこのキーの値が保存されます。これは、ここで `appId` パラメーターに対して使用されます。 指定されたパスワードは `appSecret` パラメーターで使用されます。
 
 > [!NOTE] 
-> 既存のアプリ登録を使用する場合は、次のコマンドを使用できます: az bot create --kind webapp --resource-group "name-of-resource-group" --name "name-of-web-app" --appid "existing-app-id" --password "existing-app-password" --lang "Javascript | Csharp"_
+> 既存のアプリ登録を使用する場合は、次のコマンドを使用できます。
+> ``` cmd
+> az bot create --kind webapp --resource-group "<name-of-resource-group>" --name "<name-of-web-app>" --appid "<existing-app-id>" --password "<existing-app-password>" --lang <Javascript|Csharp>
+> ```
 
 ご自身のボットは、新しいリソース グループまたは既存のリソース グループにデプロイできます。 自分にとって最適なオプションを選択してください。
 

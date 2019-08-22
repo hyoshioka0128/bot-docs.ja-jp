@@ -7,15 +7,14 @@ ms.author: johtaylo
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 187a8427fd8627b0ce6b812ce8ee857e62b0394d
-ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
+ms.openlocfilehash: c728962141c1beec89f2830fa15d5985922ddfa5
+ms.sourcegitcommit: 3eaf06dd9691a27a1cd4a7f6434e922cd530795a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2019
-ms.locfileid: "67252690"
+ms.lasthandoff: 08/17/2019
+ms.locfileid: "69565396"
 ---
 # <a name="how-bots-work"></a>ボットのしくみ
 
@@ -142,13 +141,16 @@ Yeoman ジェネレーターにより、[restify](http://restify.com/) Web ア�
 | Event | Handler | 説明 |
 | :-- | :-- | :-- |
 | 任意のアクティビティの種類を受信した | `OnTurnAsync` | 受信したアクティビティの種類に基づいて、他のハンドラーのいずれかを呼び出します。 |
-| メッセージ アクティビティを受信した | `OnMessageActivityAsync` | これをオーバーライドして `Message` アクティビティを処理します。 |
-| 会話の更新アクティビティを受信した | `OnConversationUpdateActivityAsync` | `ConversationUpdate` アクティビティで、ボット以外のメンバーが会話に参加した場合、または会話から退出した場合にハンドラーを呼び出します。 |
+| メッセージ アクティビティを受信した | `OnMessageActivityAsync` | これをオーバーライドして `message` アクティビティを処理します。 |
+| 会話の更新アクティビティを受信した | `OnConversationUpdateActivityAsync` | `conversationUpdate` アクティビティで、ボット以外のメンバーが会話に参加した場合、または会話から退出した場合にハンドラーを呼び出します。 |
 | ボットではないメンバーが会話に参加した | `OnMembersAddedAsync` | これをオーバーライドして、会話に参加するメンバーを処理します。 |
 | ボットではないメンバーが会話から退出した | `OnMembersRemovedAsync` | これをオーバーライドして、会話から退出メンバーを処理します。 |
-| イベント アクティビティを受信した | `OnEventActivityAsync` | `Event` アクティビティで、イベントの種類に固有のハンドラーを呼び出します。 |
+| イベント アクティビティを受信した | `OnEventActivityAsync` | `event` アクティビティで、イベントの種類に固有のハンドラーを呼び出します。 |
 | Token-response イベント アクティビティを受信した | `OnTokenResponseEventAsync` | これをオーバーライドして、トークン応答イベントを処理します。 |
 | Non-token-response イベント アクティビティを受信した | `OnEventAsync` | これをオーバーライドして、その他の種類のイベントを処理します。 |
+| メッセージの反応アクティビティを受信した | `OnMessageReactionActivityAsync` | `messageReaction` アクティビティで、メッセージに対して 1 つ以上の反応が追加または削除された場合にハンドラーを呼び出します。 |
+| メッセージの反応がメッセージに追加された | `OnReactionsAddedAsync` | これをオーバーライドして、メッセージに追加された反応を処理します。 |
+| メッセージの反応がメッセージから削除された | `OnReactionsRemovedAsync` | これをオーバーライドして、メッセージから削除された反応を処理します。 |
 | 他のアクティビティの種類を受信した | `OnUnrecognizedActivityTypeAsync` | これをオーバーライドして、他の方法では処理されない任意のアクティビティの種類を処理します。 |
 
 このような各種ハンドラーにインバウンド アクティビティに関する情報を提供する `turnContext` があり、これはインバウンド HTTP 要求に対応しています。 アクティビティの種類もさまざまであるため、各ハンドラーが、そのターン コンテキスト パラメーターで厳密に型指定されたアクティビティを提供します。ほとんどの場合、`OnMessageActivityAsync` は常に処理され通常は最も一般的です。
@@ -186,15 +188,20 @@ public class MyBot : ActivityHandler
 
 | Event | Handler | 説明 |
 | :-- | :-- | :-- |
-| 任意のアクティビティの種類を受信した | `onTurn` | 受信したアクティビティの種類に基づいて、他のハンドラーのいずれかを呼び出します。 |
-| メッセージ アクティビティを受信した | `onMessage` | これに対する関数を指定して、`Message` アクティビティを処理します。 |
-| 会話の更新アクティビティを受信した | `onConversationUpdate` | `ConversationUpdate` アクティビティで、ボット以外のメンバーが会話に参加した場合、または会話から退出した場合にハンドラーを呼び出します。 |
-| ボットではないメンバーが会話に参加した | `onMembersAdded` | これに対する関数を指定して、会話に参加するメンバーを処理します。 |
-| ボットではないメンバーが会話から退出した | `onMembersRemoved` | これに対する関数を指定して、会話から退出するメンバーを処理します。 |
-| イベント アクティビティを受信した | `onEvent` | `Event` アクティビティで、イベントの種類に固有のハンドラーを呼び出します。 |
-| Token-response イベント アクティビティを受信した | `onTokenResponseEvent` | これに対する関数を指定して、トークン応答イベントを処理します。 |
-| 他のアクティビティの種類を受信した | `onUnrecognizedActivityType` | これに対する関数を指定して、他の方法では処理されない任意のアクティビティの種類を処理します。 |
-| アクティビティ ハンドラーが完了した | `onDialog` | これに対する関数を指定して、アクティビティ ハンドラーの残りの部分の実行後、ターンの最後に完了する必要があるすべての処理を実行します。 |
+| 任意のアクティビティの種類を受信した | `onTurn` | いずれかのアクティビティを受信したときに呼び出されます。 |
+| メッセージ アクティビティを受信した | `onMessage` | `message` アクティビティを受信したときに呼び出されます。 |
+| 会話の更新アクティビティを受信した | `onConversationUpdate` | いずれかの `conversationUpdate` アクティビティを受信したときに呼び出されます。 |
+| メンバーが会話に参加した | `onMembersAdded` | いずれかのメンバー (ボットを含む) が会話に参加したときに呼び出されます。 |
+| メンバーが会話から退出した | `onMembersRemoved` | いずれかのメンバー (ボットを含む) が会話から退出したときに呼び出されます。 |
+| メッセージの反応アクティビティを受信した | `onMessageReaction` | いずれかの `messageReaction` アクティビティを受信したときに呼び出されます。 |
+| メッセージの反応がメッセージに追加された | `onReactionsAdded` | 反応がメッセージに追加されたときに呼び出されます。 |
+| メッセージの反応がメッセージから削除された | `onReactionsRemoved` | 反応がメッセージから削除されたときに呼び出されます。 |
+| イベント アクティビティを受信した | `onEvent` | いずれかの `event` アクティビティを受信したときに呼び出されます。 |
+| Token-response イベント アクティビティを受信した | `onTokenResponseEvent` | `tokens/response` イベントを受信したときに呼び出されます。 |
+| 他のアクティビティの種類を受信した | `onUnrecognizedActivityType` | 特定の種類のアクティビティのハンドラーが定義されていないときに呼び出されます。 |
+| アクティビティ ハンドラーが完了した | `onDialog` | 適用可能なハンドラーが完了した後に呼び出されます。 |
+
+各ハンドラーから `next` 関数パラメーターを呼び出して、処理を続行できるようにします。 `next` が呼び出されない場合は、アクティビティの処理が終了します。
 
 それぞれのターンでは、最初に、ボットがメッセージを受信したかどうかを確認します。 ユーザーからメッセージを受信すると、送信されたメッセージをエコー バックします。
 
