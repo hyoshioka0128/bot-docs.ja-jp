@@ -5,7 +5,9 @@
 # [JavaScript 移行クイック リファレンス](javascript-migration-quickreference.md)
 # [.NET v3 ボットを .NET Framework v4 ボットに移行する](conversion-framework.md)
 # [.NET v3 ボットを .NET Core v4 ボットに移行する](conversion-core.md)
-# [JavaScript v3 ボットを v4 に移行する](conversion-javascript.md)
+# [v4 ボットで .NET v3 ユーザー状態を使用する](csharp-user-state-using.md)
+# [JavaScript v3 ボットを v4 ボットに移行する](conversion-javascript.md)
+<!-- Remember to add JavaScript user state topic -->
 
 <!-- Current target:
 _intro/overview_
