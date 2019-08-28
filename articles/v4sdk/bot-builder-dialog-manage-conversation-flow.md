@@ -3,31 +3,29 @@ title: 連続して行われる会話フローの実装 | Microsoft Docs
 description: Bot Framework SDK でダイアログを使用して単純な会話フローを管理する方法について説明します。
 keywords: 単純な会話フロー, 連続して行われる会話フロー, ダイアログ, プロンプト, ウォーターフォール, ダイアログ セット
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c3c116eec8222ce50cd7dde672cc86f9765a3f97
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 27d7e5ee6edd4cedfb9d59b318d9a3765e2f0ad8
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67587485"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890609"
 ---
 # <a name="implement-sequential-conversation-flow"></a>連続して行われる会話フローの実装
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-質問を投稿して情報を収集することは、ボットがユーザーとやり取りする主な手段の 1 つです。 ダイアログ ライブラリでは、質問を行いやすくなるだけでなく、応答が検証され、確実に特定のデータ型と一致するように、またはカスタム検証ルールを満たすように、*prompt* クラスなどの便利な組み込み機能が提供されます。 
+質問を投稿して情報を収集することは、ボットがユーザーとやり取りする主な手段の 1 つです。 ダイアログ ライブラリでは、質問を行いやすくなるだけでなく、応答が検証され、確実に特定のデータ型と一致するように、またはカスタム検証ルールを満たすように、*prompt* クラスなどの便利な組み込み機能が提供されます。
 
-ダイアログ ライブラリを使用して、単純な会話フローと複雑な会話フローを管理できます。 単純なインタラクションでは、ボットは決まった一連のステップを順番に実行していき、最後に会話が終了します。 一般的に、ダイアログは、ボットがユーザーから情報を収集する必要がある場合に役立ちます。 このトピックでは、プロンプトを作成してウォーターフォール ダイアログから呼び出すことで、単純な会話フローを実装する方法について詳しく説明します。 
+ダイアログ ライブラリを使用して、単純な会話フローと複雑な会話フローを管理できます。 単純なインタラクションでは、ボットは決まった一連のステップを順番に実行していき、最後に会話が終了します。 一般的に、ダイアログは、ボットがユーザーから情報を収集する必要がある場合に役立ちます。 このトピックでは、プロンプトを作成してウォーターフォール ダイアログから呼び出すことで、単純な会話フローを実装する方法について詳しく説明します。
 
 > [!TIP]
-> ダイアログ ライブラリを使用することなく、独自のプロンプトを作成する方法の例については、「[ユーザー入力を収集するために独自のプロンプトを作成する](bot-builder-primitive-prompts.md)」の記事を参照してください。 
-
+> ダイアログ ライブラリを使用することなく、独自のプロンプトを作成する方法の例については、「[ユーザー入力を収集するために独自のプロンプトを作成する](bot-builder-primitive-prompts.md)」の記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +37,7 @@ ms.locfileid: "67587485"
 マルチターン プロンプト サンプルでは、ウォーターフォール ダイアログ、いくつかのプロンプト、およびコンポーネント ダイアログを使用して、ユーザーに一連の質問を行う単純なインタラクションを作成します。 コードはダイアログを使用して、これらの手順を順番に切り替えます。
 
 | 手順        | プロンプトの種類  |
-|:-------------|:-------------| 
+|:-------------|:-------------|
 | 移動手段をユーザーに聞きます | 選択プロンプト |
 | 名前をユーザーに聞きます | テキスト プロンプト |
 | 年齢を指定するかどうかをユーザーに聞きます | 確認プロンプト |
@@ -67,8 +65,6 @@ ms.locfileid: "67587485"
 [!code-csharp[Constructor snippet](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=22-41)]
 
 次に、ダイアログで使用されるステップを実装します。 プロンプトを使用するには、そのプロンプトをご自身のダイアログのステップから呼び出し、`stepContext.Result` を使用して、次のステップでプロンプトの結果を取得します。 バックグラウンドでは、プロンプトは 2 つのステップから成るダイアログです。 最初のステップでプロンプトは入力を要求します。そして 2 番目のステップで有効な値を返すか、最初からやり直して、有効な入力を受信するまでユーザーに再入力を要求します。
-
-
 
 ウォーターフォール ステップからは常に null 以外の `DialogTurnResult` を返す必要があります。 そうしないと、ご自身のダイアログは設計どおりに機能しません。 ここでは、ウォーターフォール ダイアログの `NameStepAsync` に対する実装を示します。
 
@@ -104,17 +100,17 @@ ms.locfileid: "67587485"
 
 `UserProfileDialog` コンストラクターで、ウォーターフォール ステップ、プロンプト、およびウォーターフォール ダイアログを作成し、ダイアログ セットに追加します。 プロンプトは、それが使用されるダイアログ セットに追加する必要があります。
 
-[!code-javascript[Constructor snippet](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-47)]
+[!code-javascript[Constructor snippet](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-45)]
 
 次に、ダイアログで使用されるステップを実装します。 プロンプトを使用するには、そのプロンプトをご自身のダイアログのステップから呼び出し、この場合は `step.result` を使用して、ステップ コンテキストの次のステップでプロンプトの結果を取得します。 バックグラウンドでは、プロンプトは 2 つのステップから成るダイアログです。 最初のステップでプロンプトは入力を要求します。そして 2 番目のステップで有効な値を返すか、最初からやり直して、有効な入力を受信するまでユーザーに再入力を要求します。
 
 ウォーターフォール ステップからは常に null 以外の `DialogTurnResult` を返す必要があります。 そうしないと、ご自身のダイアログは設計どおりに機能しません。 ここでは、ウォーターフォール ダイアログの `nameStep` に対する実装を示します。
 
-[!code-javascript[name step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=75-78)]
+[!code-javascript[name step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=73-76)]
 
 `ageStep` で、ユーザー入力を検証できない場合の再試行プロンプトを指定します。入力を検証できない原因は、その入力がプロンプトで解析できない形式であるか、上記のコンストラクターで指定した検証基準を満たしていないかのいずれかです。 この状況で、再試行プロンプトが指定されていないと、プロンプトは最初のプロンプト テキストを使用して、ユーザーに再入力を求めます。
 
-[!code-javascript[age step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=90-101&highlight=5)]
+[!code-javascript[age step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=88-99&highlight=5)]
 
 **userProfile.js**
 
@@ -126,7 +122,7 @@ ms.locfileid: "67587485"
 
 最後のステップで、前のウォーターフォール ステップで呼び出されたダイアログによって返された `step.result` を確認します。 戻り値が true の場合は、ユーザー プロファイル アクセサーを使用して、ユーザー プロファイルを取得し、更新します。 ユーザー プロファイルを取得するには、`get` メソッドを呼び出して、`userProfile.transport`、`userProfile.name`、`userProfile.age` の各プロパティの値を設定します。 最後に、ダイアログを終了する `endDialog` を呼び出す前に、ユーザーの情報をまとめます。 ダイアログを終了すると、そのダイアログはダイアログ スタックから取り出され、ダイアログの親に省略可能な結果が返されます。 この親は、終了したばかりのダイアログを開始したダイアログまたはメソッドです。
 
-[!code-javascript[summary step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=115-136&highlight=4-8,20-21)]
+[!code-javascript[summary step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=113-134&highlight=4-8,20-21)]
 
 **拡張メソッドを作成してウォーターフォール ダイアログを実行する**
 
@@ -136,7 +132,7 @@ ms.locfileid: "67587485"
 
 ダイアログ コンテキストを使用すると、文字列 ID を使用してダイアログを開始したり、現在のダイアログ (複数のステップが含まれるウォーターフォール ダイアログなど) を続行したりすることができます。 ダイアログ コンテキストは、ボットのすべてのダイアログおよびウォーターフォール ステップに渡されます。
 
-[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=55-64)]
+[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=53-62)]
 
 ---
 
@@ -154,7 +150,9 @@ ms.locfileid: "67587485"
 
 `onMessage` ハンドラーでは、ダイアログの開始または続行にヘルパー メソッドが使用されます。 `onDialog` では、ボットの状態管理オブジェクトを使用して、ストレージに対するすべての状態変更を保持します (`onDialog` メソッドは、`onMessage` など、他の定義済みハンドラーの実行後、最後に呼び出されます。 この方法で、メッセージ ハンドラーの完了後、ターン自体が完了する前に、状態を保存します)。
 
-[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=30-44)]
+**bots/dialogBot.js**
+
+[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-38&highlight=11-13)]
 
 ---
 
@@ -172,15 +170,15 @@ ms.locfileid: "67587485"
 
 `Startup` でボット用のサービスを登録します。 これらのサービスは、依存関係の挿入を通じてコードの他の部分で使用できます。
 
-[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Startup.cs?range=17-41)]
+[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Startup.cs?range=17-39)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
-`index.js` でボット用のサービスを登録します。 
+`index.js` でボット用のサービスを登録します。
 
-[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/index.js?range=18-49)]
+[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/index.js?range=18-46)]
 
 ---
 

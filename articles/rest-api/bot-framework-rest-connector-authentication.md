@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 645ab3c8bcf2bc253128219b5aa1332d8ae23dc1
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 8f9b66165c0f88b92d81bfec58fd20a182e43e1d
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757047"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037537"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -180,7 +180,7 @@ GET https://login.botframework.com/v1/.well-known/keys
 
 応答の本体には、ドキュメントが [JWK 形式](https://tools.ietf.org/html/rfc7517)で指定されますが、各キーに対応する追加のプロパティ `endorsements` も含まれています。 キーの一覧は比較的安定しており、長期間キャッシュしておくことができます (既定では、Bot Framework SDK の中に 5 日間)。
 
-各キーの `endorsements` プロパティには、少なくとも 1 つの保証文字列が含まれており、これを使用することにより、受信した要求の `Activity` オブジェクト内で `channelId` プロパティによって指定されているチャネル ID が正しいことを検証できます。 保証が必要なチャネル ID の一覧は、各ボット内で設定できます。 既定では、これは公開済みのすべてのチャネル ID の一覧になりますが、ボットの開発者は一部のチャネル ID 値を選択し、何らかの方法でオーバーライドすることができます。 
+各キーの `endorsements` プロパティには、少なくとも 1 つの保証文字列が含まれており、これを使用することにより、受信した要求の [Activity][] オブジェクト内で `channelId` プロパティによって指定されているチャネル ID が正しいことを検証できます。 保証が必要なチャネル ID の一覧は、各ボット内で設定できます。 既定では、これは公開済みのすべてのチャネル ID の一覧になりますが、ボットの開発者は一部のチャネル ID 値を選択し、何らかの方法でオーバーライドすることができます。 
 
 ### <a name="step-4-verify-the-jwt-token"></a>手順 4:JWT トークンを検証する
 
@@ -194,7 +194,7 @@ Bot Connector サービスから送信されたトークンの信頼性を検証
 4. トークンに "audience" 要求が含まれ、その値がボットの Microsoft AppID と同じである。
 5. トークンの有効期限が切れていない。 業界標準の clock-skew は 5 分です。
 6. トークンに有効な暗号化署名があり、そのキーが、[手順 2](#openid-metadata-document) で取得した Open ID メタデータ ドキュメントの `id_token_signing_alg_values_supported` プロパティで指定されている署名アルゴリズムを使用して[手順 3](#connector-to-bot-step-3) で取得した OpenID キー ドキュメント内の一覧に含まれている。
-7. トークンに "serviceUrl" 要求が含まれ、その値が、受信した要求の `Activity` オブジェクトのルートにある `servieUrl` プロパティと一致する。 
+7. トークンに "serviceUrl" 要求が含まれ、その値が、受信した要求の [Activity][] オブジェクトのルートにある `servieUrl` プロパティと一致する。 
 
 チャネル ID に対して保証が必要な場合は、以下が適用されます。
 
@@ -392,3 +392,5 @@ payload:
 - [JSON Web トークン (JWT) draft-jones-json-web-token-07](http://openid.net/specs/draft-jones-json-web-token-07.html)
 - [JSON Web Signature (JWS) draft-jones-json-web-signature-04](https://tools.ietf.org/html/draft-jones-json-web-signature-04)
 - [JSON Web Key (JWK) RFC 7517](https://tools.ietf.org/html/rfc7517)
+
+[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

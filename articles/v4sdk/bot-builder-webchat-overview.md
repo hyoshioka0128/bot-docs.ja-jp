@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/07/2019
-ms.openlocfilehash: 2575ac196bd3e875d8523da99d7114b789e70558
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: e5a6320a645f55fe9e023688af23ec8fe62e3006
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757097"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037385"
 ---
 # <a name="web-chat-overview"></a>Web チャットの概要
 
@@ -27,7 +27,7 @@ Web チャット v3 から v4 への移行を検討している場合は、[移�
 > 以前のバージョンの Web チャット (v3) の場合は、[Web チャット v3 のブランチ](https://github.com/Microsoft/BotFramework-WebChat/tree/v3)を参照してください。
 
 まず、[Azure Bot Service](https://azure.microsoft.com/services/bot-service/) を使用してボットを作成します。
-ボットが作成されたら、Azure portal で[ボットの Web チャット シークレットを取得](../bot-service-channel-connect-webchat.md#step-1)する必要があります。 シークレットを使用して、[トークンを生成し](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md)、それを Web チャットに渡します。
+ボットが作成されたら、Azure portal で[ボットの Web チャット シークレットを取得](../bot-service-channel-connect-webchat.md#get-your-bot-secret-key)する必要があります。 シークレットを使用して、[トークンを生成し](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md)、それを Web チャットに渡します。
 
 次に、Web チャット コントロールを Web サイトに追加する方法を示します。
 

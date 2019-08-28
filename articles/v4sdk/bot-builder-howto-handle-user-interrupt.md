@@ -8,18 +8,15 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/18/2019
-ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 75f6cc720042ad7f10c0b016dedba7af5fd84435
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: b3e2a2f60c3a3f44c81e31b280315d8fee06138b
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757003"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026334"
 ---
 # <a name="handle-user-interruptions"></a>ユーザーによる割り込みを処理する
-
-<!-- Rebuild to link to published samples in the master branch -->
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
@@ -49,7 +46,7 @@ ms.locfileid: "68757003"
 
 最初に、ユーザーによる中断を処理する `CancelAndHelpDialog` クラスを実装します。
 
-[!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=10)]
+[!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=12)]
 
 `CancelAndHelpDialog` クラスでは、`OnContinueDialogAsync` メソッドが `InerruptAsync` メソッドを呼び出して、ユーザーが通常のフローを中断をしたかどうかを確認します。 フローが中断された場合は、基底クラス メソッドが呼び出されます。それ以外の場合は、戻り値が `InterruptAsync` から返されます。
 
@@ -93,7 +90,7 @@ ms.locfileid: "68757003"
 
 新しいメッセージ アクティビティが届くと、ボットは `MainDialog` を実行します。 `MainDialog` は、ユーザーに対して、ボットに役立つ情報を入力するよう要求します。 そして、次のように `MainDialog.ActStepAsync` メソッドで `BookingDialog` を開始して、`BeginDialogAsync` を呼び出します。
 
-[!code-csharp[ActStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=58-101&highlight=82-83)]
+[!code-csharp[ActStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=58-101&highlight=6,26)]
 
 次に、`MainDialog` クラスの `FinalStepAsync` メソッドで、予約ダイアログが終了し、予約は完了または取り消し済みと見なされます。
 
@@ -107,7 +104,7 @@ ms.locfileid: "68757003"
 
 新しいメッセージ アクティビティが届くと、ボットは `MainDialog` を実行します。 `MainDialog` は、ユーザーに対して、ボットに役立つ情報を入力するよう要求します。 そして、次のように `MainDialog.actStep` メソッドで `bookingDialog` を開始して、`beginDialog` を呼び出します。
 
-[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=90-97&highlight=96-97)]
+[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=71-112&highlight=6,27)]
 
 次に、`MainDialog` クラスの `finalStep` メソッドで、予約ダイアログが終了し、予約は完了または取り消し済みと見なされます。
 
@@ -147,7 +144,7 @@ ms.locfileid: "68757003"
 
 最後に、`Startup.cs` では、ボットは一時的なものとして作成され、ターンごとに、ボットの新しいインスタンスが作成されます。
 
-[!code-csharp[Add transient bot](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Startup.cs?range=47-48)]
+[!code-csharp[Add transient bot](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Startup.cs?range=43-44)]
 
 参照用に、上記のボットを作成するときに呼び出しで使用されるクラスの定義を次に示します。
 
@@ -161,7 +158,7 @@ ms.locfileid: "68757003"
 
 最後に、`index.js` で、ボットが作成されます。
 
-[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=69-73)]
+[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=65)]
 
 参照用に、上記のボットを作成するときに呼び出しで使用されるクラスの定義を次に示します。
 

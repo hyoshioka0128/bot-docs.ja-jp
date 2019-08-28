@@ -1,20 +1,19 @@
 ---
 title: Azure Bot Service を介してボットに認証を追加する | Microsoft Docs
 description: Azure Bot Service の認証機能を使用して SSO をボットに追加する方法について説明します。
-author: JonathanFingold
-ms.author: JonathanFingold
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ROBOTS: NOINDEX
 ms.date: 10/04/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d1b14d405b4df19db81269fc1f588305840485bd
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 3bd411da4edd30b6045654884aeae5ae1cc4239f
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405960"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890532"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
 
@@ -225,7 +224,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
     </appSettings>
     ```
 
-    **Microsoft アプリ ID** と **Microsoft アプリ パスワード**の値を取得する方法がわからない場合は、[bot-channels-registration-password](bot-service-quickstart-registration.md#bot-channels-registration-password) の説明に従って新しいパスワードを作成するか、[find-your-azure-bots-appid-and-appsecret](https://blog.botframework.com/2018/07/03/find-your-azure-bots-appid-and-appsecret) の説明に従って、デプロイの **Bot Channels Registration** でプロビジョニング済みの **Microsoft アプリ ID** と **Microsoft アプリ パスワード**を取得します。
+    **Microsoft アプリ ID** と **Microsoft アプリ パスワード**の値を取得する方法がわからない場合は、[bot-channels-registration-password](bot-service-quickstart-registration.md#get-registration-password) の説明に従って新しいパスワードを作成するか、[find-your-azure-bots-appid-and-appsecret](https://blog.botframework.com/2018/07/03/find-your-azure-bots-appid-and-appsecret) の説明に従って、デプロイの **Bot Channels Registration** でプロビジョニング済みの **Microsoft アプリ ID** と **Microsoft アプリ パスワード**を取得します。
 
     > [!NOTE]
     > ここで、このボット コードを Azure サブスクリプションに発行 (プロジェクトを右クリックして **[発行]** を選択) することもできますが、このチュートリアルでは不要です。 Azure Portal でボットを構成するときに使用したアプリケーションとホスティング プランを使用する発行構成を設定する必要があります。
