@@ -2,25 +2,26 @@
 title: Bot Service を使用してボットを作成する | Microsoft Docs
 description: 統合された専用のボット開発環境である Bot Service を使用してボットを作成する方法について説明します。
 keywords: クイック スタート, ボットの作成, bot service, web app bot
-author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
-ms.date: 07/19/2019
-ms.openlocfilehash: c4274df084fb0f25535aacb0173e19bc93f20ba1
-ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
+ms.date: 08/15/2019
+ms.openlocfilehash: b8307877bf08db170173486ec9df88fae4d27c29
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68484419"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890616"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Azure Bot Service を使用してボットを作成する
 
 [!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
 Azure Bot Service は、ボットを開発するための Bot Framework SDK や、ボットをチャンネルに接続するための Bot Service など、ボットを作成するためのコア コンポーネントを提供します。 このトピックでは、.NET テンプレートまたは Node.js テンプレートのいずれかを選択し、Bot Framework SDK v4 を使用してボットを作成できます。
+
+>[!NOTE] 
+> 作成したボットは、Azure Bot Service に自動的に登録されます。 既に他の場所でホストされているボットを登録する場合は、「[ボットを Azure Bot Service に登録する](../bot-service-quickstart-registration.md)」の記事を参照してください。
 
 [!INCLUDE [Azure vs local development](~/includes/snippet-quickstart-paths.md)]
 
@@ -57,7 +58,7 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
 
 ボットがデプロイされたことを確認するには、 **[通知]** をオンにします。 通知が、 **[デプロイは進行中です...]** から **[デプロイメントに成功しました]** に変わります。 **[リソースに移動]** ボタンをクリックして、ボットのリソース ブレードを開きます。
 
-ボットが作成されたので、Web チャットでテストします。 
+ボットが作成されたので、Web チャットでテストします。
 
 ## <a name="test-the-bot"></a>ボットのテスト
 **[Bot Management]\(ボットの管理\)** セクションで、 **[Test in Web Chat]\(Web チャットでのテスト\)** をクリックします。 Azure Bot Service で Web チャット コントロールを読み込み、ボットに接続します。 
@@ -65,6 +66,16 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
 ![Azure の Web チャットでのテスト](../media/azure-bot-quickstarts/azure-webchat-test.png)
 
 メッセージを入力すると、ボットが応答します。
+
+## <a name="manual-app-registration"></a>アプリの手動登録
+
+次のような状況では、手動で登録する必要があります。
+
+- 自分の組織で登録できず、構築しているボット用のアプリ ID を作成するために別のパーティーが必要である。
+- 独自のアプリ ID (とパスワード) を手動で作成する必要がある。
+
+[FAQ の「アプリの登録」](../bot-service-resources-bot-framework-faq.md#app-registration)をご覧ください。
+
 
 ## <a name="download-code"></a>コードをダウンロードする
 コードをダウンロードして、ローカルで操作することができます。 

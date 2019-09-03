@@ -2,22 +2,20 @@
 title: 既存の v3 JavaScript ボットを新しい v4 プロジェクトに移行する |Microsoft Docs
 description: 既存の v3 JavaScript ボットを取得し、新しいプロジェクトを使用して、これを v4 SDK に移行します。
 keywords: JavaScript, ボットの移行, ダイアログ, v3 ボット
-author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 573dabba7a16f88db890f0d095a2d4a0f983660c
-ms.sourcegitcommit: 41c8caf0e0c849beeeb50cdccf6dbc1ba7cce442
+ms.openlocfilehash: 2dac81ea653729043294ed3ebe6037b6cd8b67eb
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67344593"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026390"
 ---
-# <a name="migrate-a-sdk-v3-javascript-bot-to-v4"></a>SDK v3 JavaScript のボットを v4 に移行する
+# <a name="migrate-a-javascript-v3-bot-to-a-v4-bot"></a>Javascript v3 ボットを v4 ボットに移行する
 
 この記事では、v3 SDK JavaScript [core-MultiDialogs-v3](https://aka.ms/v3-js-core-multidialog-migration-sample) ボットを新しい v4 JavaScript ボットに移植します。
 この変換は次のステージに分けられます。

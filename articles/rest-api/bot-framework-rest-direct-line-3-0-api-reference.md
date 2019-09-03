@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 522f4f133e6a7b4e5379a27c1ce1a02138402559
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 25f6e30898101b87289af775e8386f941aa747a9
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756932"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037369"
 ---
 # <a name="api-reference---direct-line-api-30"></a>API リファレンス - Direct Line API 3.0
 
@@ -46,7 +46,7 @@ Authorization: Bearer SECRET_OR_TOKEN
 | 204 | 要求は成功しましたが、返されたコンテンツはありませんでした。 |
 | 400 | 要求の形式その他が正しくありませんでした。 |
 | 401 | クライアントは要求を行うことを許可されていません。 多くの場合、この状態コードの原因は、`Authorization` ヘッダーが見つからないか、形式が正しくないことです。 |
-| 403 | 要求された操作の実行がクライアントに許可されていません。 以前は有効であったが期限切れとなったトークンが要求で指定されている場合は、`ErrorResponse` オブジェクト内で返される `Error` の `code` プロパティが `TokenExpired` に設定されます。 |
+| 403 | 要求された操作の実行がクライアントに許可されていません。 以前は有効であったが期限切れとなったトークンが要求で指定されている場合は、[ErrorResponse][] オブジェクト内で返された [Error][] の `code` プロパティが `TokenExpired` に設定されます。 |
 | 404 | 要求されたリソースが見つかりませんでした。 通常、この状態コードは、要求 URI が無効であることを示します。 |
 | 500 | Direct Line サービス内で内部サーバー エラーが発生しました。 |
 | 502 | ボットが利用できないか、ボットからエラーが返されました。 **これは一般的なエラー コードです。** |
@@ -56,7 +56,7 @@ Authorization: Bearer SECRET_OR_TOKEN
 
 ### <a name="errors"></a>Errors
 
-4xx 範囲または 5xx 範囲の HTTP 状態コードを指定する応答では、エラーの情報を提供する `ErrorResponse` オブジェクトが応答の本文に含まれます。 4xx 範囲のエラー応答を受け取った場合、要求を再送信する前に、**ErrorResponse** オブジェクトを検査してエラーの原因を識別し、問題を解決してください。
+4xx 範囲または 5xx 範囲の HTTP 状態コードを指定する応答では、エラーの情報を提供する [ErrorResponse][] オブジェクトが応答の本文に含まれます。 4xx 範囲のエラー応答を受け取った場合、要求を再送信する前に、**ErrorResponse** オブジェクトを検査してエラーの原因を識別し、問題を解決してください。
 
 > [!NOTE]
 > **ErrorResponse** オブジェクト内の `code` プロパティで指定された HTTP 状態コードと値は変わりません。 **ErrorResponse** オブジェクト内の `message` プロパティで指定された値は、時間の経過と共に変更される可能性があります。
@@ -167,8 +167,8 @@ POST /v3/directline/conversations/{conversationId}/activities
 
 | | |
 |----|----|
-| **要求本文** | `Activity` オブジェクト |
-| **戻り値** | ボットに送信されたアクティビティの ID を指定する `id` プロパティを格納した `ResourceResponse`。 | 
+| **要求本文** | [Activity][] オブジェクト |
+| **戻り値** | ボットに送信されたアクティビティの ID を指定する `id` プロパティを格納した [ResourceResponse][]。 | 
 
 ### <a id="upload-send-files"></a> ファイルのアップロードと送信
 ファイルを添付ファイルとしてアップロードして送信します。 添付ファイルを送信しているユーザーの ID を指定するには、要求 URI 内に `userId` パラメーターを設定します。
@@ -178,8 +178,8 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 
 | | |
 |----|----|
-| **要求本文** | 1 つの添付ファイルの場合は、要求本文にファイルのコンテンツを設定します。 複数の添付ファイルの場合は、添付ファイルごとに 1 つのパートを含むマルチパート要求本文を作成し、さらに (必要に応じて、) 指定された添付ファイルのコンテナーとして機能する `Activity` オブジェクト用の 1 つのパートを作成します。 詳しくは、「[ボットにアクティビティを送信する](bot-framework-rest-direct-line-3-0-send-activity.md)」をご覧ください。 |
-| **戻り値** | ボットに送信されたアクティビティの ID を指定する `id` プロパティを格納した `ResourceResponse`。 | 
+| **要求本文** | 1 つの添付ファイルの場合は、要求本文にファイルのコンテンツを設定します。 複数の添付ファイルの場合は、各パートが 1 つの添付ファイルを指定するマルチパートを含む要求本文を作成します。(必要に応じて) 指定された添付ファイルのコンテナーとして機能する [Activity][] オブジェクト用の 1 つのパートを記述することもできます。 詳しくは、「[ボットにアクティビティを送信する](bot-framework-rest-direct-line-3-0-send-activity.md)」をご覧ください。 |
+| **戻り値** | ボットに送信されたアクティビティの ID を指定する `id` プロパティを格納した [ResourceResponse][]。 | 
 
 > [!NOTE]
 > アップロードされたファイルは、24 時間後に削除されます。
@@ -193,7 +193,7 @@ Direct Line 3.0 スキーマには、[Bot Framework アクティビティ スキ
 
 | プロパティ | Type | 説明 |
 |----|----|----|
-| **アクティビティ** | `Activity`[] | **Activity** オブジェクトの配列です。 |
+| **アクティビティ** | [Activity][][] | **Activity** オブジェクトの配列です。 |
 | **watermark** | string | セット内のアクティビティの最大ウォーターマークです。 クライアントは、[ボットからアクティビティを取得する](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get)際、または[新しい WebSocket ストリーム URL を生成する](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)際に、`watermark` 値を使用して、直近に認識したメッセージを示すことができます。 |
 
 ### <a name="conversation-object"></a>Conversation オブジェクト
@@ -208,7 +208,7 @@ Direct Line 会話を定義します。<br/><br/>
 
 ### <a name="activities"></a>Activities
 
-クライアントが Direct Line を通じてボットから受信する `Activity` ごとに、次の操作が適用されます。
+クライアントが Direct Line を通じてボットから受信した各[Activity][]には、次の操作が適用されます。
 
 - 添付ファイル カードは保持されます。
 - アップロードされた添付ファイルの URL は、プライベート リンクを使用して非表示にされます。
@@ -229,3 +229,8 @@ Direct Line 会話を定義します。<br/><br/>
 ## <a name="additional-resources"></a>その他のリソース
 
 - [Bot Framework のアクティビティ スキーマ](https://aka.ms/botSpecs-activitySchema)
+
+[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
+[Error]: bot-framework-rest-connector-api-reference.md#error-object
+[ErrorResponse]: bot-framework-rest-connector-api-reference.md#errorresponse-object
+[ResourceResponse]: bot-framework-rest-connector-api-reference.md#resourceresponse-object

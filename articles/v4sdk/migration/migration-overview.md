@@ -7,15 +7,14 @@ ms.author: v-mimiel
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 06/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b1082e16933da1fb4c20f51d4764ec1774aabdb6
-ms.sourcegitcommit: 4f78e68507fa3594971bfcbb13231c5bfd2ba555
+ms.openlocfilehash: 576947edf99705e5d0d8850837b3469f13381d06
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68292192"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026408"
 ---
 # <a name="migration-overview"></a>移行の概要
 
@@ -96,8 +95,10 @@ Bot Framework SDK v4 では、v3 と同じ基になる Bot Framework Service が
 
 次のワークシートは、移行ワークロードの見積もりに役立ちます。 「**発生回数**」列の *count* は実際の数値に置き換えてください。 「**T シャツ**」列に、次のような値を入力します。*Small*、*Medium*、*Large* (見積りに基づく)。
 
-手順 | V3 | V4 | 発生回数 | 複雑さ | T シャツ
--- | -- | -- | -- | -- | --
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+| 手順 | V3 | V4 | 発生回数 | 複雑さ | T シャツ |
+| -- | -- | -- | -- | -- | -- |
 受信アクティビティを取得する | IDialogContext.Activity | ITurnContext.Activity | count | Small  
 アクティビティを作成してユーザーに送信する | activity.CreateReply(“text”) IDialogContext.PostAsync | MessageFactory.Text(“text”) ITurnContext.SendActivityAsync | count | Small |
 状態管理 | UserData、ConversationData、PrivateConversationData context.UserData.SetValue context.UserData.TryGetValue botDataStore.LoadAsyn | プロパティ アクセサーを使用する UserState、ConversationState、PrivateConversationState | context.UserData.SetValue - count context.UserData.TryGetValue - count botDataStore.LoadAsyn - count | Medium から Large (使用できる[ユーザー状態の管理](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)に関する記事を参照してください) |
@@ -111,7 +112,26 @@ Bot Framework SDK v4 では、v3 と同じ基になる Bot Framework Service が
 現在のダイアログが完了したことを通知する | IDialogContext.Done | ステップ コンテキストの EndDialogAsync メソッドを待機して制御を戻します。 | count | Medium |  
 ダイアログを失敗にする | IDialogContext.Fail | キャッチされた例外をボットの別のレベルでスローするか、Cancelled の状態でステップを終了するか、ステップまたはダイアログ コンテキストの CancelAllDialogsAsync を呼び出します。 | count | Small |  
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+| 手順 | V3 | V4 | 発生回数 | 複雑さ | T シャツ |
+| -- | -- | -- | -- | -- | -- |
+受信アクティビティを取得する | IMessage | TurnContext.activity | count | Small  
+アクティビティを作成してユーザーに送信する | Session.send('message') を呼び出します。 | TurnContext.sendActivity を呼び出します。 | count | Small |
+状態管理 | UserState および ConversationState UserState.get()、UserState.saveChanges()、ConversationState.get()、ConversationState.saveChanges() | プロパティ アクセサーを使用する UserState および ConversationState | count | Medium から Large (使用できる[ユーザー状態の管理](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)に関する記事を参照してください) |
+ダイアログの開始を処理する | ダイアログの ID を渡して session.beginDialog を呼び出します。 | DialogContext.beginDialog を呼び出します。 | count | Small |  
+アクティビティを送信する | Session.send を呼び出します。 | TurnContext.sendActivity を呼び出します。 | count | Small |  
+ユーザーの応答を待機する | ウォーターフォール ステップ内からプロンプトを呼び出します。例: builder.Prompts.text(session, 'Please enter your destination')。 次のステップで応答を取得します。 | プロンプト ダイアログを開始する TurnContext.prompt を待機して制御を戻します。 次に、ウォーターフォールの次のステップで結果を取得します。 | count | Medium (フローに依存) |  
+ダイアログの継続を処理する | 自動 | ウォーターフォール ダイアログにステップを追加するか、Dialog.continueDialog を実装します。 | count | Large |  
+ユーザーの次のメッセージまで処理が終了したことを伝える | Session.endDialog | Dialog.EndOfTurn を返します。 | count | Medium |  
+子ダイアログを開始する | Session.beginDialog | ステップ コンテキストの beginDialog メソッドを待機して制御を戻します。 子ダイアログから値が返された場合、ステップ コンテキストの Result プロパティを使用して、ウォーターフォールの次のステップでその値を使用できます。 | count | Medium |  
+現在のダイアログを新しいダイアログに置き換える | Session.replaceDialog | ITurnContext.replaceDialog | count | Large |  
+現在のダイアログが完了したことを通知する | Session.endDialog | ステップ コンテキストの endDialog メソッドを待機して制御を戻します。 | count | Medium |  
+ダイアログを失敗にする | Session.pruneDialogStack | キャッチされた例外をボットの別のレベルでスローするか、Cancelled の状態でステップを終了するか、ステップまたはダイアログ コンテキストの cancelAllDialogs を呼び出します。 | count | Small |  
+
+---
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Bot Framework SDK v4 と v3 は、基になる REST API を共有しています。 ただし、v4 は、より柔軟にボットを制御できるように、以前のバージョンの SDK をリファクターしたものです。
 
@@ -138,7 +158,7 @@ Bot Framework SDK v4 と v3 は、基になる REST API を共有しています
 
 詳細については、「[.NET v3 ボットを .NET Core v4 ボットに移行する](conversion-core.md)」を参照してください。
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 **Bot Framework JavaScript SDK v4** では、ボットの作成方法についていくつかの基本的な変更が加えられています。 これらの変更の結果、特に、ボット オブジェクトの作成、ダイアログの定義、イベント処理ロジックのコーディング関連で、JavaScript でボットを開発するための構文が変更されています。 Bot Framework SDK v4 と v3 は、基になる REST API を共有しています。 ただし、v4 は、より柔軟にボットを制御できるように、以前のバージョンの SDK をリファクターしたものです。特に、
 

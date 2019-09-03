@@ -7,14 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
-ms.date: 12/04/2018
-ms.openlocfilehash: 20ee5a5a0849cef91e59aece7a87f8e9ac4e86ec
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.date: 08/22/2019
+ms.openlocfilehash: b6174f20be47d40287cedd2a94b2d4e87c29bc2f
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317632"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037495"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>ボットを Web チャットに接続する
 
@@ -26,9 +25,14 @@ Bot Service を使用して[ボットを作成](bot-service-quickstart.md)する
 
 Bot Framework ポータル内の Web チャット チャンネルには、Web チャット コントロールを Web ページに埋め込むために必要なものがすべて含まれています。 Web チャット コントロールを使用するために必要なのは、ボットの秘密鍵を取得し、コントロールを Web ページに埋め込むことだけです。
 
-## <a id="step-1"></a>ボットの秘密鍵を取得する
+## <a name="web-chat-and-direct-line-considerations"></a>Web チャットと Direct Line に関する考慮事項
 
-1. [Azure portal](http://portal.azure.com) でボットを開き、**[チャンネル]** ブレードをクリックします。
+> [!IMPORTANT]
+> こちらの重要な[セキュリティに関する考慮事項](rest-api/bot-framework-rest-direct-line-3-0-authentication.md#security-considerations)に留意してください。
+
+## <a name="get-your-bot-secret-key"></a>ボットの秘密鍵を取得する
+
+1. [Azure portal](http://portal.azure.com) でボットを開き、 **[チャンネル]** ブレードをクリックします。
 
 2. **[Web チャット]** チャンネルの **[編集]** をクリックします。  
 ![Web チャット チャンネル](./media/bot-service-channel-webchat/bot-service-channel-list.png)
@@ -54,7 +58,7 @@ Bot Framework ポータル内の Web チャット チャンネルには、Web �
 
 2. **GET** 要求への応答には、**iframe** 内で Web チャット コントロールをレンダリングして会話を開始する際に使用できるトークンが含まれています (トークンは引用符で囲まれています)。 トークンは 1 つの会話でのみ有効です。別の会話を開始するには、新しいトークンを生成する必要があります。
 
-3. Bot Framework ポータル内の Web チャット チャンネルからコピーした `iframe` **埋め込みコード**内で (上の「[ボットの秘密鍵を取得する](#step-1)」を参照)、`s=` パラメーターを `t=` に変更し、"YOUR_SECRET_HERE" をトークンに置き換えます。
+3. Bot Framework ポータル内の Web チャット チャンネルからコピーした `iframe` **埋め込みコード**内で (上の「[ボットの秘密鍵を取得する](#get-your-bot-secret-key)」を参照)、`s=` パラメーターを `t=` に変更し、"YOUR_SECRET_HERE" をトークンに置き換えます。
 
 > [!NOTE]
 > トークンは、有効期限が切れる前に自動的に更新されます。 
@@ -113,7 +117,7 @@ Authorization: BotConnector YOUR_SECRET_HERE
 
 `iframe` タグ内でシークレットを指定して、Web サイトにボットを埋め込むには、次の手順に従います。
 
-1. Bot Framework ポータル内の Web チャット チャンネルから `iframe` **埋め込みコード**をコピーします (上の「[ボットの秘密鍵を取得する](#step-1)」を参照)。
+1. Bot Framework ポータル内の Web チャット チャンネルから `iframe` **埋め込みコード**をコピーします (上の「[ボットの秘密鍵を取得する](#get-your-bot-secret-key)」を参照)。
 
 2. その**埋め込みコード**内で、"YOUR_SECRET_HERE" を、同じページからコピーした**秘密鍵**の値に置き換えます。
 

@@ -1,19 +1,18 @@
 ---
 title: Azure Bot Service を介してボットに認証を追加する | Microsoft Docs
 description: Azure Bot Service の認証機能を使用して SSO をボットに追加する方法について説明します。
-author: JonathanFingold
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 06/07/2019
+ms.date: 08/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b5d3031a23959d054056f89968c35a1e1e49c1dd
-ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
+ms.openlocfilehash: 8eea0bfd49bfd142c648d8ce842e1c24aa8ab45a
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991986"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037521"
 ---
 <!-- 
 
@@ -87,15 +86,8 @@ Azure ボット リソースを作成する必要があります。また、以�
 
 <!-- Summarized from: https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features/ -->
 
-Web チャットで Azure Bot Service 認証を使用する場合、考慮すべき重要なセキュリティの問題がいくつかあります。
-
-1. 攻撃者が自身を他の誰かであるとボットに思わせる偽装を防ぎます。 Web チャットでは、攻撃者が自分の Web チャット インスタンスのユーザー ID を変えて、他の誰かになりすまします。
-
-    これを防ぐために、ユーザー ID を推測できないようにします。 Direct Line チャネルで強化された認証オプションを有効にすると、Azure Bot Service が、ユーザー ID の変更を検出して拒否できます。 Direct Line からのご自身のボットへのメッセージのユーザー ID は、Web チャットを初期化したときに使ったものと必ず同じになります。 この機能では、ユーザー ID は必ず `dl_` で始まる必要があることに注意してください。
-
-1. 適切なユーザーがサインインしていることを確認します。 ユーザーには、チャネルの ID と ID プロバイダーの ID の 2 つの ID があります。 Web チャットでは、Azure Bot Service によって、サインイン プロセスが必ず Web チャットと同じブラウザー セッションで完了することを保証できます。
-
-    この保護を有効にするには、ボットの Web チャット クライアントをホストできる信頼されたドメインの一覧を含む Direct Line トークンを使用して、Web チャットを開始します。 次に、Direct Line 構成ページで信頼されているドメイン (origin) の一覧を静的に指定します。
+> [!IMPORTANT]
+> 次の重要な[セキュリティの考慮事項](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md#security-considerations)に留意してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -178,7 +170,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 次に、作成した Azure AD アプリケーションをボットに登録します。
 
-# <a name="azure-ad-v1tabaadv1"></a>[Azure AD v1](#tab/aadv1)
+#### <a name="azure-ad-v1"></a>Azure AD v1
 
 1. [Azure Portal](http://portal.azure.com/) で、ボットのリソース ページに移動します。
 1. **[設定]** をクリックします。
@@ -191,7 +183,11 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
     1. **[クライアント シークレット]** に、作成したシークレットを入力して、Azure AD アプリへのアクセスをボットに許可します。
     1. **[付与タイプ]** に、`authorization_code` と入力します。
     1. **[ログイン URL]** に、`https://login.microsoftonline.com` と入力します。
-    1. **[テナント ID]** に、先ほど記録した Azure AD アプリのディレクトリ (テナント) ID を入力します。
+    1. **[テナント ID]** に、AAD アプリを作成したときに選択したサポートされるアカウントの種類に基づいて、AAD アプリ用に以前記録した**ディレクトリ (テナント) ID** を入力するか、「**common**」と入力します。 割り当てる値を決定するには、次の条件に従います。
+
+        - AAD アプリの作成時に、 *[Accounts in this organizational directory only (Microsoft only - Single tenant)]\(この組織のディレクトリ内のアカウントのみ (Microsoft のみ - シングル テナント)\)* または *[Accounts in any organizational directory(Microsoft AAD directory - Multi tenant)]\(任意の組織のディレクトリ内のアカウント (Microsoft AAD ディレクトリ - マルチテナント)\)* を選択した場合、AAD アプリ用に以前記録した**テナント ID** を入力します。
+
+        - ただし、 *[Accounts in any organizational directory (Any AAD directory - Multi tenant and personal Microsoft accounts e.g. Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウント (任意の AAD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox、Outlook.com など)\)* を選択した場合、テナント ID の代わりに「**common**」という語を入力します。 それ以外の場合、AAD アプリは ID が選択されているテナントを通じて検証され、個人の MS アカウントは除外されます。
 
        これは、認証可能なユーザーに関連付けられるテナントになります。
 
@@ -203,7 +199,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 > [!NOTE]
 > これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。
 
-# <a name="azure-ad-v2tabaadv2"></a>[Azure AD v2](#tab/aadv2)
+#### <a name="azure-ad-v2"></a>Azure AD v2
 
 1. [Azure Portal](http://portal.azure.com/) で、ボットの [Bot Channels Registration]\(ボット チャネル登録\) ページに移動します。
 1. **[設定]** をクリックします。
@@ -214,7 +210,11 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
     1. **[サービス プロバイダー]** で、 **[Azure Active Directory v2]** を選択します。 これを選択すると、Azure AD に固有のフィールドが表示されます。
     1. **[クライアント ID]** に、Azure AD v1 アプリケーションの設定時に記録したアプリケーション (クライアント) ID を入力します。
     1. **[クライアント シークレット]** に、作成したシークレットを入力して、Azure AD アプリへのアクセスをボットに許可します。
-    1. **[テナント ID]** に、先ほど記録した Azure AD アプリのディレクトリ (テナント) ID を入力します。
+    1. **[テナント ID]** に、AAD アプリを作成したときに選択したサポートされるアカウントの種類に基づいて、AAD アプリ用に以前記録した**ディレクトリ (テナント) ID** を入力するか、「**common**」と入力します。 割り当てる値を決定するには、次の条件に従います。
+
+        - AAD アプリの作成時に、 *[Accounts in this organizational directory only (Microsoft only - Single tenant)]\(この組織のディレクトリ内のアカウントのみ (Microsoft のみ - シングル テナント)\)* または *[Accounts in any organizational directory(Microsoft AAD directory - Multi tenant)]\(任意の組織のディレクトリ内のアカウント (Microsoft AAD ディレクトリ - マルチテナント)\)* を選択した場合、AAD アプリ用に以前記録した**テナント ID** を入力します。
+
+        - ただし、 *[Accounts in any organizational directory (Any AAD directory - Multi tenant and personal Microsoft accounts e.g. Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウント (任意の AAD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox、Outlook.com など)\)* を選択した場合、テナント ID の代わりに「**common**」という語を入力します。 それ以外の場合、AAD アプリは ID が選択されているテナントを通じて検証され、個人の MS アカウントは除外されます。
 
        これは、認証可能なユーザーに関連付けられるテナントになります。
 
@@ -227,8 +227,6 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 > [!NOTE]
 > これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。
-
----
 
 ### <a name="test-your-connection"></a>接続をテストする
 
@@ -272,7 +270,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 ---
 
-**Microsoft アプリ ID** と **Microsoft アプリ パスワード**の値を取得する方法がわからない場合は、[こちらの説明に従って](../bot-service-quickstart-registration.md#bot-channels-registration-password)新しいパスワードを作成できます。
+**Microsoft アプリ ID** と **Microsoft アプリ パスワード**の値を取得する方法がわからない場合は、[こちらの説明に従って](../bot-service-quickstart-registration.md#get-registration-password)新しいパスワードを作成できます。
 
 > [!NOTE]
 > ここで、このボット コードを Azure サブスクリプションに発行 (プロジェクトを右クリックして **[発行]** を選択) することもできますが、この記事では不要です。 Azure Portal でボットを構成するときに使用したアプリケーションとホスティング プランを使用する発行構成を設定する必要があります。
@@ -342,7 +340,7 @@ OAuth プロンプトを、コンストラクター内の **MainDialog** に追�
 
 次のダイアログ ステップ内で、前のステップの結果としてトークンが存在することを確認します。 null でない場合、ユーザーは正常にサインインしています。
 
-[!code-csharp[Get the OAuthPrompt result](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/MainDialog.cs?range=54-58)]
+[!code-csharp[Get the OAuthPrompt result](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/MainDialog.cs?range=54-56)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -352,7 +350,7 @@ OAuth プロンプトを、コンストラクター内の **MainDialog** に追�
 
 OAuth プロンプトを、コンストラクター内の **MainDialog** に追加します。 ここでは、接続名の値は **.env** ファイルから取得されました。
 
-[!code-javascript[Add OAuthPrompt](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=23-28)]
+[!code-javascript[Add OAuthPrompt](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=24-29)]
 
 ダイアログ ステップ内で、`beginDialog` を使用して OAuth プロンプトを起動します。これによりユーザーのサインインが求められます。
 
@@ -363,7 +361,7 @@ OAuth プロンプトを、コンストラクター内の **MainDialog** に追�
 
 次のダイアログ ステップ内で、前のステップの結果としてトークンが存在することを確認します。 null でない場合、ユーザーは正常にサインインしています。
 
-[!code-javascript[Get OAuthPrompt result](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=61-64)]
+[!code-javascript[Get OAuthPrompt result](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=62-63)]
 
 ---
 
@@ -385,25 +383,25 @@ OAuth プロンプトを起動すると、そのプロンプトは、ユーザ�
 
 **AuthBot** は `ActivityHandler` から派生し、トークン応答イベント アクティビティを明示的に処理します。 ここではアクティブなダイアログを続行します。これにより OAuth プロンプトでイベントを処理し、トークンを取得できます。
 
-[!code-javascript[onTokenResponseEvent](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/bots/authBot.js?range=28-33)]
+[!code-javascript[onTokenResponseEvent](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/bots/authBot.js?range=29-31)]
 
 ---
 
 ### <a name="log-the-user-out"></a>ユーザーをログアウトする
 
-接続のタイムアウトを使用するのではなく、ユーザーが明示的にサインアウトまたはログアウトできるようにすることをお勧めします。
+接続のタイムアウトに依存するのではなく、ユーザーが明示的にサインアウトまたはログアウトできるようにすることをお勧めします。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 **Dialogs\LogoutDialog.cs**
 
-[!code-csharp[Allow logout](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/LogoutDialog.cs?range=20-61&highlight=35)]
+[!code-csharp[Allow logout](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/LogoutDialog.cs?range=44-61&highlight=11)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 **dialogs/logoutDialog.js**
 
-[!code-javascript[Allow logout](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/logoutDialog.js?range=13-42&highlight=25)]
+[!code-javascript[Allow logout](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/logoutDialog.js?range=31-42&highlight=7)]
 
 ---
 
@@ -414,10 +412,10 @@ Teams は、OAuth に関して他のチャネルとは多少異なる動作を�
 他のチャネルと Teams の違いの 1 つは、Teams がボットに*イベント* アクティビティではなく*呼び出し*アクティビティを送信することです。 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
-**Bots/TeamsBot.cs** [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight34)]
+**Bots/TeamsBot.cs** [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight=1)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-**bots/teamsBot.js** [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-31&highlight=27)]
+**bots/teamsBot.js** [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-32&highlight=3)]
 
 ---
 

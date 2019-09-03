@@ -7,19 +7,18 @@ keywords: Bot Framework SDK, ボットのデバッグ, 検査ミドルウェア,
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 7/9/2019
-ms.openlocfilehash: bdc88645b6747e5f38497c858c77cd79b21a6dd3
-ms.sourcegitcommit: 565a5df8b34a6d73ddf452ca7808eb83bb5be503
+ms.openlocfilehash: fe96131a7087f3f2c4980fe4f2eacb94a4ae9e4a
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68508034"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037512"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>検査ミドルウェアを使用してボットをデバッグする
-この記事では、Bot Framework v4 の新機能である検査ミドルウェアを使用してボットをデバッグする方法について説明します。 トレース メッセージを使用してエミュレーターにデータを送信し、会話のある特定のターンでのボットの状態を調べることができます。
+この記事では、検査ミドルウェアを使用してボットをデバッグする方法について説明します。 この機能を使用すると、Bot Framework Emulator で、ボットの現在の状態を確認でき、さらにボットとの間のトラフィックをデバッグできます。 トレース メッセージを使用してエミュレーターにデータを送信し、会話のある特定のターンでのボットの状態を調べることができます。 
 
-[Bot Framework](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/02.echo-bot) を使って作成された基本的なエコー ボットを使用して、ボットをデバッグし、ボットのメッセージ状態を検査するために検査ミドルウェアを追加する方法を示します。 また、[IDE を使用してボットをデバッグ](./bot-service-debug-bot.md)したり、[Bot Framework Emulator を使用してデバッグ](./bot-service-debug-emulator.md)したりすることもできますが、状態をデバッグするには、検査ミドルウェアをボットに追加する必要があります。 [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection) および [JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection) の検査ボット サンプルを取得できます。 
+Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) | [JavaScript](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0)) を使用してローカルに構築された EchoBot を使用して、ボットのメッセージの状態をデバッグおよび検査する方法を示します。 また、[IDE を使用してボットをデバッグ](./bot-service-debug-bot.md)したり、[Bot Framework Emulator を使用してデバッグ](./bot-service-debug-emulator.md)したりすることもできますが、状態をデバッグするには、検査ミドルウェアをボットに追加する必要があります。 検査ボットのサンプルを入手できます:[C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection) および [JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection)。 
 
 ## <a name="prerequisites"></a>前提条件
 - [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started) をダウンロードしてインストールする
@@ -36,12 +35,22 @@ ms.locfileid: "68508034"
 
 ## <a name="update-your-bots-code"></a>ボットのコードを更新する
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+**Startup** ファイルで検査状態を設定します。 検査ミドルウェアをアダプターに追加します。 検査状態は、依存関係の挿入によって提供されます。 以下のコードの更新をご覧になるか、[C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection) の検査サンプルを参照してください。 
+
+**Startup.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
+
+**AdapterWithInspection.cs**  
+[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-21)]
+
+**EchoBot.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
+
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 ボットのコードを更新する前に、ターミナルで次のコマンドを実行して、パッケージを最新バージョンに更新する必要があります。 
 ```cmd
 npm install --save botbuilder@latest 
 ```  
-次に、JavaScript ボットのコードを次のように更新する必要があります。 詳細については、「[ボットのコードの更新](https://github.com/Microsoft/BotFramework-Emulator/blob/master/content/CHANNELS.md#1-update-your-bots-code)」を参照するか、[JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection)の検査サンプルを参照してください。 
+次に、JavaScript ボットのコードを次のように更新する必要があります。 詳細については、「[ボットのコードを更新する](https://github.com/Microsoft/BotFramework-Emulator/blob/master/content/CHANNELS.md#1-update-your-bots-code)」を参照するか、[JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection) の検査サンプルを参照してください。 
 
 **index.js**
 
@@ -55,16 +64,6 @@ npm install --save botbuilder@latest
 
 [!code-javascript [inspection bot sample](~/../botbuilder-samples/samples/javascript_nodejs/47.inspection/bot.js?range=6-50)]
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-**Startup** ファイルで検査状態を設定します。 検査ミドルウェアをアダプターに追加します。 検査状態は、依存関係の挿入によって提供されます。 以下のコードの更新をご覧になるか、[C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection) の検査サンプルを参照してください。 
-
-**Startup.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
-
-**AdapterWithInspection.cs**  
-[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-21)]
-
-**EchoBot.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
-
 ---
 
 ## <a name="test-your-bot-locally"></a>ボットをローカルでテストする 
@@ -72,17 +71,18 @@ npm install --save botbuilder@latest
 
 1. ターミナルでボットのディレクトリに移動し、次のコマンドを実行してボットをローカルで実行します。 
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```cmd
+dotnet run
+```
+
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```cmd
 npm start 
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-```cmd
-dotnet run
-```
 ---
 
 2. エミュレーターを開きます。 **[Open Bot]\(ボットを開く\)** をクリックします。 [Bot URL]\(ボットの URL\) に「 http://localhost:3978/api/messages 」を入力し、**MicrosoftAppId** と **MicrosoftAppPassword** の値を入力します。 JavaScript ボットの場合、これらの値はボットの **.env** ファイルにあります。 C# ボットの場合、これらの値は **appsettings.json** ファイルにあります。 **[接続]** をクリックします。 
@@ -96,7 +96,7 @@ dotnet run
 
 5. これで、最初のエミュレーターのチャット ボックスでメッセージを送信し、デバッグ エミュレーターでメッセージを検査できるようになりました。 メッセージの状態を確認するには、デバッグ エミュレーターで **[Bot State]\(ボットの状態\)** をクリックし、右側の **JSON** ウィンドウで**値**を展開します。 ボットの状態は次のように表示されます。![ボットの状態](./media/bot-debug-inspection-middleware/bot-debug-bot-state.png)
 
-## <a name="inspect-the-state-of-a-bot-configured-in-azure-connected-to-channels"></a>チャネルに接続されている、Azure に構成されたボットの状態を検査する 
+## <a name="inspect-the-state-of-a-bot-configured-in-azure"></a>Azure に構成されたボットの状態を検査する 
 Azure に構成され、チャネル (Teams など) に接続されているボットの状態を調べるには、[ngrok](https://ngrok.com/) をインストールして実行する必要があります。
 
 ### <a name="run-ngrok"></a>ngrok を実行する

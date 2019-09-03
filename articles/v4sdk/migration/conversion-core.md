@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 06/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c5735b7ad47204dab42abc7b1dd7a15a407b0115
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 23646cf47b49e73eec9c3ce9a4deb1e053892fa1
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757208"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037265"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-core-v4-bot"></a>.NET v3 ボットを .NET Core v4 ボットに移行する
 
@@ -114,7 +114,9 @@ v4 では、基本的に、ターン ハンドラーまたはメッセージ ル
 1. これらのフィールドと、これらのフィールドを初期化するコンス トラクターを追加します。 もう一度、ASP.NET で依存関係挿入を使用し、パラメーター値を取得します。
     [!code-csharp[Fields and constructor](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=21-28)]
 
-1. メイン ダイアログを呼び出すように、`OnMessageActivityAsync` の実装を更新します。 (この後すぐに `Run` 拡張メソッドを定義します) [!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=38-47)]
+1. メイン ダイアログを呼び出すように、`OnMessageActivityAsync` の実装を更新します。 (この後すぐに `Run` 拡張メソッドを定義します)。
+
+[!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=38-47)]
 
 1. `OnTurnAsync` を更新して、ターンの最後に会話状態を保存します。 v4 では、状態を永続化レイヤーに書き込むために、明示的にこれを行う必要があります。 `ActivityHandler.OnTurnAsync` メソッドでは、受信したアクティビティの種類に基づいて特定のアクティビティ ハンドラー メソッドが呼び出されます。そのため、基本メソッドの呼び出し後の状態を保存します。
     [!code-csharp[OnTurnAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=30-36)]
@@ -337,7 +339,9 @@ v4 の FormFlow コミュニティ ライブラリと同じ v3 モデルを使�
 1. **LocalAdminPrompt.cs** で、次のように変更します。  
     [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/LocalAdminPrompt.cs?range=4)]
 
-1. **ResetPassword.cs** で、次のように変更します。[!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPassword.cs?range=4-5)]
+1. **ResetPassword.cs** で、次のように変更します。
+
+[!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPassword.cs?range=4-5)]
     また、名前空間内の `using` ステートメントを削除します。
 
 1. **ResetPasswordPrompt.cs** で、次のように変更します。  
@@ -345,12 +349,16 @@ v4 の FormFlow コミュニティ ライブラリと同じ v3 モデルを使�
 
 ### <a name="additional-changes"></a>追加の変更
 
-**ResetPassword.cs** で、次のように `MobileNumber` の戻り値の型を変更します。[!code-csharp[MobileNumber](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPassword.cs?range=17)]
+**ResetPassword.cs** で、次のように `MobileNumber` の戻り値の型を変更します。
+
+[!code-csharp[MobileNumber](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Models/ResetPassword.cs?range=17)]
 
 ## <a name="final-porting-steps"></a>最後の移行手順 
 移行プロセスを完了するには、次の手順を行います。
 
-1. `AdapterWithErrorHandler` クラスを作成して、ミドルウェアまたはアプリケーションで例外をキャッチできるエラー ハンドラーを含む、アダプターを定義します。 アダプターは、ボットのミドルウェア パイプラインを通ってボットのロジックに入ってきた後、また出ていくアクティビティを処理および管理します。 次のコードを使用して、クラスを作成します。[!code-csharp[MobileNumber](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/AdapterWithErrorHandler.cs?range=4-46)]
+1. `AdapterWithErrorHandler` クラスを作成して、ミドルウェアまたはアプリケーションで例外をキャッチできるエラー ハンドラーを含む、アダプターを定義します。 アダプターは、ボットのミドルウェア パイプラインを通ってボットのロジックに入ってきた後、また出ていくアクティビティを処理および管理します。 次のコードを使用して、クラスを作成します。
+
+ [!code-csharp[MobileNumber](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/AdapterWithErrorHandler.cs?range=4-46)]
 1. 好みに合わせて、**wwwroot\default.htm** ページを変更します。
 
 ## <a name="run-and-test-your-bot-in-the-emulator"></a>ボットを実行してエミュレーターでテストする

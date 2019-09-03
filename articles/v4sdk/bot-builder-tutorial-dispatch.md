@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 26622b5757a2fb8e7297484c02d1d8ba1a2c1b04
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 4d95eafeb5b1b5923f38c40e884b5e3cee8b16eb
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757200"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026342"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -60,7 +60,7 @@ ms.locfileid: "68757200"
 ## <a name="create-luis-apps-and-qna-knowledge-base"></a>LUIS アプリと QnA ナレッジ ベースを作成する
 ディスパッチ モデルを作成するには、ご自身の LUIS アプリと QnA ナレッジ ベースを作成し、発行しておく必要があります。 この記事では、`\CognitiveModels` フォルダーの "_ディスパッチによる NLP_" サンプルに含まれる次のモデルを公開します。 
 
-| EnableAdfsAuthentication | 説明 |
+| 名前 | 説明 |
 |------|------|
 | HomeAutomation | 関連付けられているエンティティ データによってホーム オートメーションの意図を認識する LUIS アプリ。|
 | Weather | 場所データによって天気関連の意図を認識する LUIS アプリ。|
@@ -271,6 +271,7 @@ npm install --save dotenv
 次に示すように、ご自身のサービス接続の値を追加します。
 
 **.env**
+
 ```file
 MicrosoftAppId=""
 MicrosoftAppPassword=""
@@ -282,8 +283,8 @@ QnAEndpointHostName="<your-hostname>"
 LuisAppId=<app-id-for-dispatch-app>
 LuisAPIKey=<your-luis-endpoint-key>
 LuisAPIHostName=<your-dispatch-app-region>
-
 ```
+
 すべての変更が完了したら、このファイルを保存します。
 
 ---
@@ -303,8 +304,8 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 **dispatchBot.js** では、ご自身のディスパッチ ボットと _LuisRecognizer(dispatch)_ サービスおよび _QnAMaker_ サービスとの接続に、構成ファイル _.env_ に含まれている情報が使用されます。 コンストラクターでは、ご自身で指定した値が、これらのサービスへの接続に使用されます。
 
-**dispatchBot.js**  
-[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=18-31)]
+**bots/dispatchBot.js**  
+[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-24)]
 
 ---
 
@@ -316,16 +317,16 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 **DispatchBot.cs** ファイルでは、`OnMessageActivityAsync` メソッドが呼び出されるたびに、受信ユーザー メッセージをディスパッチ モデルに対して確認します。 その後、ディスパッチ モデルの `topIntent` と `recognizerResult` を適切なメソッドに渡して、サービスを呼び出し、結果を返します。
 
-**DispatchBot.cs**  
+**bots\DispatchBot.cs**  
 [!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=26-36)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 **dispatchBot.js** の `onMessage` メソッドでは、ディスパッチ モデルに対してユーザー入力メッセージを確認し、_topIntent_ を検索します。次に、_dispatchToTopIntentAsync_ を呼び出して、これを渡します。
 
-**dispatchBot.js**  
+**bots/dispatchBot.js**  
 
-[!code-javascript[OnMessageActivity](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=37-50)]
+[!code-javascript[OnMessageActivity](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=29-42)]
 
 ---
 
@@ -335,7 +336,7 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 モデルによって結果が生成されるとき、どのサービスが発話を最も適切に処理できるかが示されます。 このボットのコードでは、要求を対応するサービスにルーティングし、呼び出されたサービスからの応答を要約します。 Dispatch から返された "_意図_" によっては、このコードでは、返された意図を使用して、適切な LUIS モデルまたは QnA サービスへのルーティングが行われます。
 
-**DispatchBot.cs**  
+**bots\DispatchBot.cs**  
 [!code-csharp[DispatchToTop](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=51-69)]
 
 `ProcessHomeAutomationAsync` または `ProcessWeatherAsync` のいずれかのメソッドが呼び出されると、_luisResult.ConnectedServiceResult_ 内のディスパッチ モデルから結果が渡されます。 その後、指定されたメソッドによって、ユーザー フィードバックが提供されます。このフィードバックには、ディスパッチ モデルの最上位の意図と、検出された意図およびエンティティの一覧がランク付けされて示されています。
@@ -346,8 +347,8 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 モデルによって結果が生成されるとき、どのサービスが発話を最も適切に処理できるかが示されます。 このサンプルのコードでは、対応するサービスへの要求のルーティング方法を示すために、認識された _topIntent_ が使用されます。
 
-**DispatchBot.cs**  
-[!code-javascript[DispatchToTop](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=67-83)]
+**bots/dispatchBot.js**  
+[!code-javascript[dispatchToTopIntentAsync](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=59-75)]
 
 `processHomeAutomation` または `processWeather` のいずれかのメソッドが呼び出されると、_recognizerResult.luisResult_ 内のディスパッチ モデルから結果が渡されます。 その後、指定されたメソッドによって、ユーザー フィードバックが提供されます。このフィードバックには、ディスパッチ モデルの最上位の意図と、検出された意図およびエンティティの一覧がランク付けされて示されています。
 

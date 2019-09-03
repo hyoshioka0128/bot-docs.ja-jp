@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
-ms.date: 04/10/2019
-ms.openlocfilehash: 717a95d580bad218ade9a884522724f1c6b96ad7
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.date: 08/22/2019
+ms.openlocfilehash: d79cea421e6743c504e3fa68056de71974194923
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032641"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037443"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -140,7 +139,132 @@ HTTP/1.1 200 OK
 }
 ```
 
+## <a name="azure-bot-service-authentication"></a>Azure Bot Service 認証
+
+このセクションに記載されている情報は、「[Azure Bot Service を介してボットに認証を追加する](../v4sdk/bot-builder-authentication.md)」の記事に基づいています。
+
+**Azure Bot Service 認証**を使用すると、各種 ID プロバイダー (*Azure Active Directory*、*GitHub*、*Uber* など) に対してユーザーを認証し、これらから**アクセス トークン**を取得できます。 カスタム **OAuth2** ID プロバイダーの認証も構成できます。 これだけで、サポートされているすべての ID プロバイダーとチャネルで動作する **1 つの認証コード**を作成できます。 これらの機能を利用するには、次の手順を実行する必要があります。
+
+1. ボットで、ID プロバイダーでのアプリケーション登録の詳細を含む `settings` を静的に構成します。
+2. 前の手順で指定したアプリケーション情報に基づき、`OAuthCard` を使用して、ユーザーをサインインします。
+3. **Azure Bot Service API** を使用してアクセス トークンを取得します。
+
+### <a name="security-considerations"></a>セキュリティに関する考慮事項
+
+<!-- Summarized from: https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features/ -->
+
+[Web チャット](../bot-service-channel-connect-webchat.md)で *Azure Bot Service 認証*を使用する場合、注意する必要がある重要なセキュリティの考慮事項がいくつかあります。
+
+1. **偽装**。 ここでの偽装とは、攻撃者がボットに自分を別人であると思い込ませることです。 Web チャットでは、攻撃者が自分の Web チャット インスタンスの**ユーザー ID を変えて**、他の誰かになりすます可能性があります。 これを防ぐために、推奨事項として、ボット開発者は**ユーザー ID を推測できないようにする**必要があります。 **強化された認証**オプションを有効にすると、Azure Bot Service ではすべてのユーザー ID の変更を検出して、拒否できます。 この場合、Direct Line からボットへのメッセージのユーザー ID (`Activity.From.Id`) は、Web チャットを初期化したときに使用したものと必ず同じになります。 この機能では、ユーザー ID は `dl_` で始まる必要があることに注意してください。
+1. **ユーザー ID**。 次の 2 つのユーザー ID を取り扱う点に注意する必要があります。
+
+    1. チャネルのユーザーの ID。
+    1. ボットがやり取りする ID プロバイダーのユーザーの ID。
+  
+    ボットで、チャネルのユーザー A に ID プロバイダー P にサインインするよう要求する場合、サインイン プロセスでは、P にサインインするのはユーザー A であることを保証する必要があります。別のユーザー B がサインインを許可される場合、ユーザー A は、ボットを通じてユーザー B のリソースにアクセスできるようになります。 Web チャットでは、次に説明するように、確実に適切なユーザーがサインインするために 2 つのメカニズムが用意されています。
+
+    1. 以前は、サインインの最後に、ランダムに生成された 6 桁のコード (別名マジック コード) がユーザーに表示されました。 ユーザーは、サインイン プロセスを完了するために、サインインを開始したやり取りにおいて、このコードを入力する必要があります。 このメカニズムでは、ユーザー エクスペリエンスが悪化する傾向があります。 また、フィッシング攻撃を受けやすくなります。 悪意のあるユーザーが、別のユーザーになりすましてサインインし、フィッシング詐欺を通じてマジック コードを入手できます。
+
+    2. 前の方法で問題が発生したため、Azure Bot Service では、マジック コードが不要になりました。 Azure Bot Service では、サインイン プロセスは必ず Web チャット自体と**同じブラウザー セッション**でのみ完了します。 
+    ボット開発者がこの保護を有効にするには、**ボットの Web チャット クライアントをホストできる信頼されたドメインの一覧**を含む **Direct Line トークン**を使用して、Web チャットを開始する必要があります。 以前は、ドキュメントに記載されていないオプション パラメーターを Direct Line トークン API に渡すことでのみ、このトークンを取得できました。 現在は、強化された認証オプションを使用して、Direct Line 構成ページで信頼されたドメイン (origin) の一覧を静的に指定できます。
+
+### <a name="code-examples"></a>コード例
+
+次の .NET コントローラーは、強化された認証オプションが有効な状態で動作し、Direct Line トークンとユーザー ID を返します。
+
+```csharp
+public class HomeController : Controller
+{
+    public async Task<ActionResult> Index()
+    {
+        var secret = GetSecret();
+
+        HttpClient client = new HttpClient();
+
+        HttpRequestMessage request = new HttpRequestMessage(
+            HttpMethod.Post,
+            $"https://directline.botframework.com/v3/directline/tokens/generate");
+
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", secret);
+
+        var userId = $"dl_{Guid.NewGuid()}";
+
+        request.Content = new StringContent(
+            JsonConvert.SerializeObject(
+                new { User = new { Id = userId } }),
+                Encoding.UTF8,
+                "application/json");
+
+        var response = await client.SendAsync(request);
+        string token = String.Empty;
+
+        if (response.IsSuccessStatusCode)
+        {
+            var body = await response.Content.ReadAsStringAsync();
+            token = JsonConvert.DeserializeObject<DirectLineToken>(body).token;
+        }
+
+        var config = new ChatConfig()
+        {
+            Token = token,
+            UserId = userId  
+        };
+
+        return View(config);
+    }
+}
+
+public class DirectLineToken
+{
+    public string conversationId { get; set; }
+    public string token { get; set; }
+    public int expires_in { get; set; }
+}
+public class ChatConfig
+{
+    public string Token { get; set; }
+    public string UserId { get; set; }
+}
+
+```
+
+次の JavaScript コントローラーは、強化された認証オプションが有効な状態で動作し、Direct Line トークンとユーザー ID を返します。
+
+```javascript
+var router = express.Router(); // get an instance of the express Router
+
+// Get a directline configuration (accessed at GET /api/config)
+const userId = "dl_" + createUniqueId();
+
+router.get('/config', function(req, res) {
+    const options = {
+        method: 'POST',
+        uri: 'https://directline.botframework.com/v3/directline/tokens/generate',
+        headers: {
+            'Authorization': 'Bearer ' + secret
+        },
+        json: {
+            User: { Id: userId }
+        }
+    };
+
+    request.post(options, (error, response, body) => {
+        if (!error && response.statusCode < 300) {
+            res.json({ 
+                    token: body.token,
+                    userId: userId
+                });
+        }
+        else {
+            res.status(500).send('Call to retrieve token from Direct Line failed');
+        } 
+    });
+});
+
+```
+
 ## <a name="additional-resources"></a>その他のリソース
 
 - [主要な概念](bot-framework-rest-direct-line-3-0-concepts.md)
 - [ボットを Direct Line に接続する](../bot-service-channel-connect-directline.md)
+- [Azure Bot Service を介してボットに認証を追加する](../bot-builder-tutorial-authentication.md)

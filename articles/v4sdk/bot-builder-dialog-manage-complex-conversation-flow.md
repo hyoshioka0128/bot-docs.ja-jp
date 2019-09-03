@@ -3,19 +3,18 @@ title: ブランチとループを使用して高度な会話フローを作成�
 description: Bot Framework SDK でダイアログを使用して複雑な会話フローを管理する方法について説明します。
 keywords: 複雑な会話フロー, 繰り返し, ループ, メニュー, ダイアログ, プロンプト, ウォーターフォール, ダイアログ セット
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b7ffa16c2f0a00043b12faec1d31bbfe5bfa250f
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 9f88c854f2af18ae0c9fb724f8c3a3c99b6141ba
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "67587474"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890634"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>ブランチとループを使用して高度な会話フローを作成する
 
@@ -64,7 +63,7 @@ ms.locfileid: "67587474"
 - 状態を管理するためのサービス: ストレージ、ユーザー状態、および会話の状態。
 - ボットで使用されるダイアログ。
 
-[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=22-39)]
+[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=22-36)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -80,8 +79,7 @@ ms.locfileid: "67587474"
 - 状態を管理するためのサービス: ストレージ、ユーザー状態、および会話の状態。
 - ボットで使用されるダイアログ。
 
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=25-38)]
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=43-45)]
+[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=25-55)]
 
 ---
 
@@ -206,7 +204,7 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 **Bots\DialogAndWelcome.cs**
 
-`DialogAndWelcomeBot` によって上記の `DialogBot` が拡張され、ユーザーが会話に参加したときにウェルカム メッセージが示されます。これは `Startup.cs` によって呼び出されます。
+`DialogAndWelcomeBot` によって上記の `DialogBot` が拡張され、ユーザーが会話に参加したときにウェルカム メッセージが示されます。これは `Startup.cs` で作成されます。
 
 [!code-csharp[On members added](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogAndWelcome.cs?range=21-38)]
 
@@ -226,11 +224,11 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 メッセージ ハンドラーでは、ダイアログ管理のために `run` ヘルパー メソッドが呼び出されます。ターンの途中に発生した可能性のある会話およびユーザー状態に対する変更を保存するために、ターン ハンドラーを実装しています。 `next` を呼び出すことで、基本実装によって `onDialog` メソッドが呼び出されます。これにより、そのターンの最後に保存呼び出しが確実に行われます。
 
-[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=30-47)]
+[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=24-41)]
 
 **bots/dialogAndWelcomeBot.js**
 
-`DialogAndWelcomeBot` によって上記の `DialogBot` が拡張され、ユーザーが会話に参加したときにウェルカム メッセージが示されます。これは `Startup.cs` によって呼び出されます。
+`DialogAndWelcomeBot` によって上記の `DialogBot` が拡張され、ユーザーが会話に参加したときにウェルカム メッセージが示されます。これは `index.js` で作成されます。
 
 [!code-javascript[On members added](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogAndWelcomeBot.js?range=10-21)]
 

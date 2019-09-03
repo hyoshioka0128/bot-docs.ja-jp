@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 4c4bfacaeb0be0c3f6dd71f0dd2a195aa2261541
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 751a5d8430bb675e8ad5e10d02f94ee5642672cb
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757145"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037475"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Bot Connector サービスでのボットの作成
 > [!div class="op_single_selector"]
@@ -70,7 +70,7 @@ grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT
 
 ### <a name="receive-a-message-from-the-user"></a>ユーザーからメッセージを受信する
 
-ユーザーがメッセージを送信すると、お使いのボットを[登録](../bot-service-quickstart-registration.md)したときに指定したエンドポイントに、Bot Framework Connector によって要求の POST が実行されます。 要求の本文は `Activity` オブジェクトです。 次の例は、ユーザーが簡単なメッセージをボットに送信したときに、ボット側で受信する要求本文を示しています。 
+ユーザーがメッセージを送信すると、お使いのボットを[登録](../bot-service-quickstart-registration.md)したときに指定したエンドポイントに、Bot Framework Connector によって要求の POST が実行されます。 要求の本文は [Activity][] オブジェクトです。 次の例は、ユーザーが簡単なメッセージをボットに送信したときに、ボット側で受信する要求本文を示しています。 
 
 ```json
 {
@@ -97,7 +97,7 @@ grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT
 
 ### <a name="reply-to-the-users-message"></a>ユーザーのメッセージに返信する
 
-お使いのボットのエンドポイントで、ユーザーからのメッセージを表す `POST` 要求 (つまり `type` = **メッセージ**) を受信したら、その要求の情報を使用して、ご自身の応答用の `Activity` オブジェクトを作成します。
+お使いのボットのエンドポイントで、ユーザーからのメッセージを表す `POST` 要求 (つまり `type` = **メッセージ**) を受信したら、その要求の情報を使用して、ご自身の応答用の [Activity][] オブジェクトを作成します。
 
 1. **conversation** プロパティを、ユーザーのメッセージの **conversation** プロパティのコンテンツに設定します。
 2. **from** プロパティを、ユーザーのメッセージの **recipient** プロパティのコンテンツに設定します。
@@ -194,3 +194,5 @@ Content-Type: application/json
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Bot Framework からアクセス トークンを取得し、Bot Connector サービスを使用してユーザーとメッセージを交換しました。 [Bot Framework エミュレーター](../bot-service-debug-emulator.md)を使用すると、お使いのボットのテストおよびデバッグを行うことができます。 ご自身のボットを他のユーザーと共有したい場合は、そのボットが 1 つまたは複数のチャネルで実行されるように[構成](../bot-service-manage-channels.md)する必要があります。
+
+[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

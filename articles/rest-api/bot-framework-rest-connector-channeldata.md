@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 95ec59da7b2b64391a599fa690bf3e8410c3cd53
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 242774949243802c267a9db3b8461113b161c13a
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757191"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037333"
 ---
 # <a name="implement-channel-specific-functionality"></a>チャネル固有の機能の実装
 
-一部のチャネルには、[メッセージのテキストと添付ファイル](bot-framework-rest-connector-create-messages.md)だけでは実装できない機能が用意されています。 チャネル固有の機能を実装するには、`Activity` オブジェクトの `channelData` プロパティを使用して、ネイティブのメタデータをチャネルに渡します。 たとえば、お使いのボットで `channelData` プロパティを使用して、ステッカーを送信するように Telegram に指示したり、電子メールを送信するように Office365 に指示したりできます。
+一部のチャネルには、[メッセージのテキストと添付ファイル](bot-framework-rest-connector-create-messages.md)だけでは実装できない機能が用意されています。 チャネル固有の機能を実装するには、[Activity[]] オブジェクトの `channelData` プロパティを使用して、ネイティブのメタデータをチャネルに渡します。 たとえば、お使いのボットで `channelData` プロパティを使用して、ステッカーを送信するように Telegram に指示したり、電子メールを送信するように Office365 に指示したりできます。
 
 この記事では、メッセージ アクティビティの `channelData` プロパティを使用して、このチャネル固有の機能を実装する方法について説明します。
 
@@ -240,7 +240,7 @@ Facebook 通知を作成するには、`Activity` オブジェクトの `channel
 
 | プロパティ | 説明 |
 |----|----|
-| 最大配信数 | Kik メッセージの配列。 Kik メッセージ形式の詳細については、<a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Kik メッセージ形式</a>に関するページをご覧ください。 |
+| messages | Kik メッセージの配列。 Kik メッセージ形式の詳細については、<a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Kik メッセージ形式</a>に関するページをご覧ください。 |
 
 このスニペットは、ネイティブ Kik メッセージ用の `channelData` プロパティの例を示しています。
 
@@ -275,3 +275,5 @@ Facebook 通知を作成するには、`Activity` オブジェクトの `channel
 - [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Bot Framework のアクティビティ スキーマ](https://aka.ms/botSpecs-activitySchema)
 - [Channel Inspector を使用して機能をプレビューする](../bot-service-channel-inspector.md)
+
+[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
