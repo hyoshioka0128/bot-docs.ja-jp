@@ -2,18 +2,18 @@
 title: Enterprise Productivity ボットのシナリオ | Microsoft Docs
 description: Bot Framework による Enterprise Productivity ボットのシナリオについて説明します。
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1fe68144662be3de349d05ea861a230641ae1efb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3ae87b52864ae1a9a4b7b439529e5093d6d3be8e
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996710"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167077"
 ---
 # <a name="enterprise-productivity-bot-scenario"></a>Enterprise Productivity ボットのシナリオ
 
@@ -34,7 +34,7 @@ Enterprise ボットは、Office 365 カレンダーやその他のサービス�
 5. 従業員に情報が返され、その従業員はボットから離れずにデータを絞り込むことができます。
 6. Application Insights がランタイム テレメトリを収集して、ボットのパフォーマンスと使用状況の情報によって開発をサポートします。
 
-このサンプル ボットのソース コードは、「[Samples for Common Bot Framework Scenarios (Bot Framework の一般的なシナリオのサンプル)](https://aka.ms/bot/scenarios)」からダウンロードするか複製することができます。
+このサンプル ボットのソース コードは、「[Samples for Common Bot Framework Scenarios (Bot Framework の一般的なシナリオのサンプル)](https://aka.ms/abs-scenarios)」からダウンロードするか複製することができます。
 
 ## <a name="sample-bot"></a>サンプル ボット
 ボットにはさまざまなチャネルからアクセスできるため、デスクで会社のポータルから使用したり、外出先で Skype から使用したりすることができます。必要なのは、認証を受けることだけです。 Azure AD の統合により、Enterprise Productivity ボットは、ボットにアクセスできるユーザーであれば Azure AD によって認証されていることを把握しています。 そこから、特定の顧客との次回の予定を確認するようにボットに依頼することができます。 ボットは、Graph API を介して Office 365 に対してクエリを実行することでこの情報を取得します。 その後、今後 7 日以内に予定があれば、ボットは CRM に対してクエリを実行し、顧客の最近の案件を探します。 ボットは、案件が見つからなかったと応答するか、オープン中またはクローズ済みの案件の数を返します。 そこから、種類ごとの案件の一覧を作成し、個別の案件の詳細を表示するようにボットに依頼することができます。

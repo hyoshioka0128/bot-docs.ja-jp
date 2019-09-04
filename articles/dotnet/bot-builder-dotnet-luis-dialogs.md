@@ -2,19 +2,18 @@
 title: LUIS を使用して意図とエンティティを認識する | Microsoft Docs
 description: Bot Framework SDK for .NET の LUIS ダイアログを使用して、ボットが自然言語を理解できるようにする方法について説明します。
 author: DeniseMak
-ms.author: v-demak
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ebbaa7473ec44ef9369df25a41873583abc28034
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 7e7eb36d0cb3cdbf18037f05b4960b240cb70d8d
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405663"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167400"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>LUIS を使用して意図とエンティティを認識する 
 
@@ -104,7 +103,7 @@ using Microsoft.Bot.Builder.Luis.Models;
 
 namespace Microsoft.Bot.Sample.LuisBot
 {
-    // For more information about this template visit http://aka.ms/azurebots-csharp-luis
+    // For more information about this template visit http://aka.ms/basic-luis-dialog
     [Serializable]
     public class BasicLuisDialog : LuisDialog<object>
     {

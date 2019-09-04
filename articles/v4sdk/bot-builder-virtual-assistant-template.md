@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6bf567729e0c4799672f773ddcfadb4fabfa36fc
-ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
+ms.openlocfilehash: 82385510894213a386c3f38836c85aad44306a23
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991950"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167063"
 ---
 # <a name="virtual-assistant---template-outline"></a>仮想アシスタント - テンプレートの概要
 
@@ -80,7 +80,7 @@ Application Insights の統合によって、追加設定なしで運用およ�
 
 ミドルウェア コンポーネントと QnA Maker および LuisRecognizer の SDK クラスを囲むラッパー クラスとを組み合わせることで、一貫性のある一連のイベントを洗練された方法で収集できます。 これらの一貫性のあるイベントは、その後 PowerBI などのツールと共に Application Insights ツールによって使用されます。
 
-Power BI ダッシュボードの例は、Bot Framework ソリューション の GitHub リポジトリの一部であり、すべての仮想アシスタント テンプレートですぐにそのまま利用できます。 詳細については、[Analytics](https://aka.ms/bfsanalytics) に関するセクションを参照してください。
+Power BI ダッシュボードの例は、Bot Framework ソリューション の GitHub リポジトリの一部であり、すべての仮想アシスタント テンプレートですぐにそのまま利用できます。 詳細については、[Analytics](https://aka.ms/bfs-analytics) に関するセクションを参照してください。
 
 ![分析の例](./media/enterprise-template/powerbi-conversationanalytics-luisintents.png)
 
@@ -120,8 +120,8 @@ Content Moderator はオプションのコンポーネントで、不適切な�
 TurnState オブジェクトの ```TextModeratorResult``` を通じてテキストとサーフェスをスクリーニングするミドルウェア コンポーネントが提供されます。
 
 ## <a name="next-steps"></a>次の手順
-ご自身の仮想アシスタントを作成してデプロイする方法については、[チュートリアル](https://aka.ms/bfstutorials)をご覧ください。 
+ご自身の仮想アシスタントを作成してデプロイする方法については、[チュートリアル](https://aka.ms/bfs-tutorials)をご覧ください。 
 
 ## <a name="additional-resources"></a>その他のリソース
-仮想アシスタント テンプレートの完全なソース コードは、[GitHub](https://aka.ms/bfsolutions) にあります。
+仮想アシスタント テンプレートの完全なソース コードは、[GitHub](https://aka.ms/bf-solutions) にあります。
 

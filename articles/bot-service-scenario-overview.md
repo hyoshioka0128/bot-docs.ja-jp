@@ -2,18 +2,18 @@
 title: Bot Service シナリオの概要 | Microsoft Docs
 description: Bot Service で構築した強力なボットをうまく活用する主なシナリオについて説明します。
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f8b64e5705085af5b00de6a3c00059dbdea24cb9
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: c4a0af8bfd6496b82ddcc9219e948395d87e4ff3
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405767"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167352"
 ---
 # <a name="bot-scenarios"></a>ボット シナリオ
 
@@ -21,7 +21,7 @@ ms.locfileid: "67405767"
 
 このトピックでは、Bot Service で構築した強力なボットをうまく活用する主なシナリオについて説明します。
 
-すべてのシナリオのボット サンプルのソース コードは、[Bot Framework の一般的なシナリオのサンプル](https://aka.ms/bot/scenarios)からダウンロードまたは複製できます。
+すべてのシナリオのボット サンプルのソース コードは、[Bot Framework の一般的なシナリオのサンプル](https://aka.ms/abs-scenarios)からダウンロードまたは複製できます。
 
 ## <a name="commerce-bot-scenario"></a>コマース ボットのシナリオ
 [コマース ボット](bot-service-scenario-commerce.md)のシナリオでは、ホテルのコンシェルジュ サービスなど、従来の電子メールおよび電話によるインタラクションを置換するボットについて説明します。 ボットは、Cognitive Services を活用し、バックエンド サービスとの統合から収集したコンテキストを踏まえて、テキストや音声による顧客の要求に対する処理を改善します。

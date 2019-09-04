@@ -2,18 +2,18 @@
 title: モノのインターネット ボットのシナリオ | Microsoft Docs
 description: Bot Framework によるモノのインターネット ボットのシナリオについて説明します。
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0cdade289bc7474a3d2597ae54fd2c355a7969f9
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 53a99c4313604d55da6554e927109f0f2f74104c
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996999"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167364"
 ---
 # <a name="internet-of-things-iot-bot-scenario"></a>モノのインターネット (IoT) ボットのシナリオ
 
@@ -36,7 +36,7 @@ ms.locfileid: "49996999"
 ## <a name="sample-bot"></a>サンプル ボット
 IoT ボットを使用すると、Skype や Slack のようなチャネルから手軽にチャット コマンドを使用して Hue を制御できるようになります。 リモート アクセスを容易にするには、Hue と連携するために事前定義された IFTTT アプレットを呼び出します。
 
-このサンプル ボットのソース コードは、[Bot Framework の一般的なシナリオのサンプル](https://aka.ms/bot/scenarios)からダウンロードまたは複製できます。
+このサンプル ボットのソース コードは、[Bot Framework の一般的なシナリオのサンプル](https://aka.ms/abs-scenarios)からダウンロードまたは複製できます。
 
 ## <a name="components-youll-use"></a>使用するコンポーネント
 モノのインターネット (IoT) ボットでは、次のコンポーネントを使用します。

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 4af367b04f84d935936b5752cf9dbc863430105c
-ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.openlocfilehash: f6d12b0031ec14e8c7c6e8bee876e7abb96c01f6
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68230812"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70174632"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,7 +61,7 @@ Yeoman により、作成するボットに関する情報の入力が求めら�
 - ボットの名前を入力します。 (my-chat-bot)
 - 説明を入力します。 (Microsoft Bot Framework の主要な機能を示します)
 - ボットの言語を選択します。 (JavaScript)
-- 使用するテンプレートを選択します。 (エコー ボット - https://aka.ms/bot-template-echo)
+- 使用するテンプレートを選択します。 (エコー ボット - https://aka.ms/generator-botbuilder-templates)
 
 テンプレートのおかげで、プロジェクトには、このクイック スタートでボットを作成するのに必要なすべてのコードが含まれています。 実際には、追加のコードを記述する必要はありません。
 

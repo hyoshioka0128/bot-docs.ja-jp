@@ -2,19 +2,18 @@
 title: Cortana スキル ボットのシナリオ | Microsoft Docs
 description: Bot Framework による Cortana スキル ボットのシナリオについて説明します。
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7676b7bd75a45130b62c1a691499095d6ba07291
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d6ba5b414ff7e600fac1e5d4ebce27363340f42f
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000229"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167055"
 ---
 # <a name="cortana-skills-bot-scenario"></a>Cortana スキル ボットのシナリオ
 
@@ -38,7 +37,7 @@ Cortana は、ユーザーのパーソナル アシスタントです。 ユー�
 ## <a name="sample-bot"></a>サンプル ボット
 Cortana スキル ボットは、個々人のコンテキストで動作します。 Cortana を使用すると、ご自分の位置情報を基に、ご自分の音声を使って "ボブの出張整備" に車のメンテナンスに来るように依頼できます。 ボットは、Cortana を介して公開される個人情報を使用して、ユーザーがボットに話しかけているときの場所を基に位置情報を確認できます。
 
-このサンプル ボットのソース コードは、[Bot Framework の一般的なシナリオのサンプル](https://aka.ms/bot/scenarios)からダウンロードまたは複製できます。
+このサンプル ボットのソース コードは、[Bot Framework の一般的なシナリオのサンプル](https://aka.ms/abs-scenarios)からダウンロードまたは複製できます。
 
 ## <a name="components-youll-use"></a>使用するコンポーネント
 Cortana ボットでは、次のコンポーネントを使用します。

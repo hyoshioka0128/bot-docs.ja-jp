@@ -2,18 +2,18 @@
 title: コマース ボットのシナリオ | Microsoft Docs
 description: Bot Framework によるコマース ボットのシナリオについて説明します。
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f880bc9a424fd9905f7e4ced25e97e2c37155072
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 9e2eac132922ad90437c88404cbfb97f6f495945
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996829"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167083"
 ---
 # <a name="commerce-bot-scenario"></a>コマース ボットのシナリオ
 
@@ -36,18 +36,18 @@ ms.locfileid: "49996829"
 ## <a name="sample-bot"></a>サンプル ボット
 サンプルのコマース ボットは、架空のホテルのコンシェルジュ サービスに基づいて設計されています。 このボットは C# で記述されています。顧客は、チェーンの会員サービス モバイル アプリからホテルの Azure AD B2C を認証した後、ボットにアクセスします。 チェーンの予約情報は、SQL Database に格納されます。 顧客は、「プール付きの部屋に泊まるには、いくらかかりますか」というような自然な言葉で質問できます。 次にボットは、どのホテルか、ゲストの宿泊期間はどのくらいかといったコンテキストを尋ねます。 さらに、Language Understanding (LUIS) サービスにより、「プール付きの部屋」のような単純な語句からも簡単にコンテキストを取得できます。 ボットは、ゲストに回答を返すとともに、日数や部屋の種類を提示して、プール付きの部屋を予約することを提案します。 必要なデータがすべてそろうと、ボットは予約を行います。 ゲストは、音声で同じ要求を行うこともできます。
 
-このサンプル ボットは、[Bot Framework の一般的なシナリオのサンプル](https://aka.ms/bot/scenarios)からダウンロードするか、ソース コードを複製できます。
+このサンプル ボットは、[Bot Framework の一般的なシナリオのサンプル](https://aka.ms/abs-scenarios)からダウンロードするか、ソース コードを複製できます。
 
 ## <a name="components-youll-use"></a>使用するコンポーネント
 コマース ボットでは、次のコンポーネントを使用します。
 -   認証用の Azure AD
--   Cognitive Services: LUIS
+-   コグニティブ サービス:LUIS
 -   Application Insights
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。 また、Azure AD は世界中の数多くの組織が使用する卓越した ID 管理ソリューションとすばやく簡単に統合できるため、ボット開発者はボットの構築に集中することができます。 Azure AD では、Google、Facebook、Microsoft アカウントなどの外部 ID を使用して個人を識別できる B2C コネクタがサポートされています。 Azure AD を使うと、ユーザーの資格情報管理が不要になり、ボットのソリューションに集中できるようになります。ボットのユーザーとアプリケーションによって公開されている正しいデータを関連付けることができるのは皆さんであることを把握しているからです。
 
-### <a name="cognitive-services-luis"></a>Cognitive Services: LUIS
+### <a name="cognitive-services-luis"></a>コグニティブ サービス:LUIS
 Cognitive Services ファミリ テクノロジのメンバーである Language Understanding (LUIS) を使うと、アプリに機械学習の力を追加することができます。 現時点で、LUIS はいくつかの言語をサポートしており、それを使って人がやりたいことをボットに解釈させることができます。 LUIS を統合する際は、意図を明示し、ボットが解釈するエンティティを定義します。 続いて、発話の例を使ってトレーニングを行い、ボットがこれらの意図やエンティティを解釈できるようにします。 この統合は、ボットができるだけ柔軟に特定の会話ニーズに対応できるように、フレーズ リストや正規表現機能を使用して調整することができます。
 
 ### <a name="application-insights"></a>Application Insights

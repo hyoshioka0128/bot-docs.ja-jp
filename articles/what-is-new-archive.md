@@ -2,20 +2,19 @@
 title: 新機能 | Microsoft Docs
 description: Bot Framework の新機能について説明します。
 keywords: Bot Framework, Azure Bot Service
-author: ivorb
-ms.author: v-ivorb
+author: kamrani
+ms.author: kamrani
 manager: kamrani
 ms.topic: conceptual
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4553335cbca5b5eb720c7cffd11c8e14c8aa19c1
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 6b0b85abe825e0a4298ceb9985cca1f31e35ddbb
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68671529"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167325"
 ---
 # <a name="whats-new-in-bot-framework-may-2019"></a>Bot Framework の新機能 (2019 年 5 月)
 
@@ -79,7 +78,7 @@ Botkit は、Microsoft Bot Framework に含まれ、[MIT のオープン ソー�
 
 [Bot Framework ソリューション リポジトリ](https://github.com/Microsoft/AI#readme)は、一連のテンプレート、ソリューション アクセラレータ、スキルのホームであり、高度なアシスタント的会話エクスペリエンスの構築に役立ちます。
 
-| EnableAdfsAuthentication | 説明 |  
+| 名前 | 説明 |  
 |:------------|:------------| 
 |[**仮想アシスタント**](https://github.com/Microsoft/AI/tree/master/docs#virtual-assistant) | お客様の間で、自社のブランドに合わせてカスタマイズし、顧客に合わせてパーソナライズして、幅広いキャンバスやデバイスで使用できる会話アシスタントを提供したい、という声が高まっています。 <br/><br/> Enterprise Template により、基本的な会話の意図、ディスパッチ統合、QnA Maker、Application Insights、自動デプロイなど、新しいボット プロジェクトの作成が大幅に簡素化されます。|
 |[**スキル**](https://github.com/Microsoft/AI/blob/master/docs/overview/skills.md)| 開発者が会話エクスペリエンスを作成するには、"スキル" と呼ばれる再利用可能な会話機能を結合します。 スキル自体がボットであり、リモートで呼び出されます。また、新しいスキルの作成を容易にするためのスキル開発者向けテンプレート (.NET、TS) もあります。 
@@ -146,7 +145,7 @@ Bot Framework Emulator の新しい Bot Inspector 機能のベータ版がリリ
 [ドキュメント][34]  | [ボットへの qnamaker の追加][35] 
 
 [33]:https://www.qnamaker.ai/
-[34]:https://aka.ms/qnamaker-docs-home
+[34]:https://aka.ms/what-is-qnamaker
 [35]:https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&branch=pr-en-us-1325&tabs=cs
 
 ### <a name="speech-services"></a>Speech Services
