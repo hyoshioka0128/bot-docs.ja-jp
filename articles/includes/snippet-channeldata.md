@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c19287b38a2c807e6675af2c3f7e1824eb7eab8e
-ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.openlocfilehash: 0eab36869a986d15905cdfde5c317613276c844d
+ms.sourcegitcommit: e573c586472c5328ce875114308d9d1b73651e62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68230770"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70242697"
 ---
 一部のチャネルには、メッセージのテキストと添付ファイルを使用するだけでは実装できない機能が用意されています。 チャネル固有の機能を実装するには、アクティビティ オブジェクトの "_チャネル データ_" プロパティを使用して、ネイティブのメタデータをチャネルに渡します。 たとえば、お使いのボットでチャネル データ プロパティを使用して、ステッカーを送信するように Telegram に指示したり、電子メールを送信するように Office365 に指示したりできます。
 
@@ -444,6 +444,49 @@ LINE に固有のメッセージのタイプ (スタンプ、テンプレート�
     } 
 }
 ```
+
+## <a name="adding-a-bot-to-teams"></a>ボットを Teams に追加する
+
+チームに追加されたボットは、別のチーム メンバーとなり、会話の中で `@mentioned` によって言及される可能性があります。 実際、ボットは、`@mentioned` でのみメッセージを受信するため、チャネルでの他の会話はボットに送信されません。
+詳細については、「[Microsoft Teams のボットを使用したチャネルおよびグループ チャットでの会話](https://aka.ms/bots-con-channel)」を参照してください。
+
+グループまたはチャネル内のボットは、メッセージ内でメンションされた (`@botname`) 場合にのみ応答するため、ボットが受信するグループ チャネル内のすべてのメッセージにはその名前が含まれており、メッセージの解析においてそれが処理されるようにする必要があります。 また、ボットは、メンションされた他のユーザーを解析し、そのメッセージの中でユーザーをメンションできます。
+
+### <a name="check-for-and-strip-bot-mention"></a>@bot メンションの確認と削除
+
+```csharp
+
+Mention[] m = sourceMessage.GetMentions();
+var messageText = sourceMessage.Text;
+
+for (int i = 0;i < m.Length;i++)
+{
+    if (m[i].Mentioned.Id == sourceMessage.Recipient.Id)
+    {
+        //Bot is in the @mention list.
+        //The below example will strip the bot name out of the message, so you can parse it as if it wasn't included. Note that the Text object will contain the full bot name, if applicable.
+        if (m[i].Text != null)
+            messageText = messageText.Replace(m[i].Text, "");
+    }
+}
+```
+
+```javascript
+var text = message.text;
+if (message.entities) {
+    message.entities
+        .filter(entity => ((entity.type === "mention") && (entity.mentioned.id.toLowerCase() === botId)))
+        .forEach(entity => {
+            text = text.replace(entity.text, "");
+        });
+    text = text.trim();
+}
+
+```
+
+> [!IMPORTANT] 
+> テスト以外の目的のために、GUID によってボットを追加することはお勧めできません。 そのようにすると、ボットの機能が厳しく制限されます。 運用環境のボットは、アプリの一部として Teams に追加する必要があります。 「[ボットの作成](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-create)」と[「Microsoft Teams のボットのテストとデバッグ](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-test)」を参照してください。
+
 
 ## <a name="additional-resources"></a>その他のリソース
 

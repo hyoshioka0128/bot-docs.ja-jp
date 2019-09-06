@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
-ms.openlocfilehash: d79cea421e6743c504e3fa68056de71974194923
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 37e02a34e7b8ecc4d501ed7330b6f374548fd5a0
+ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037443"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70076568"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -26,7 +26,12 @@ Authorization: Bearer SECRET_OR_TOKEN
 
 Direct Line **シークレット**は、関連付けられているボットに属するすべての会話にアクセスするために使用できるマスター キーです。 **シークレット**は、**トークン**を取得するために使用することもできます。 シークレットには有効期限がありません。 
 
-Direct Line **トークン**は、1 つの会話にアクセスするために使用できるキーです。 トークンには有効期限がありますが、更新できます。 
+Direct Line **トークン**は、1 つの会話にアクセスするために使用できるキーです。 トークンには有効期限がありますが、更新できます。
+
+**シークレット** キーまたは**トークン**を使用するタイミングや、どちらを使用するかの決定は、セキュリティに関する考慮事項に基づいて行う必要があります。
+シークレット キーの公開は、計画的に注意して行えば、許容される場合があります。 実際のところ、クライアントが正当であるかどうかを Direct Line で判断することを許可するため、これは既定の動作です。
+ただし、一般に、ユーザー データを保持しようとしている場合は、セキュリティが問題になります。
+詳細については、「[セキュリティに関する考慮事項](#security-considerations)」セクションを参照してください。
 
 サービス間アプリケーションを作成する場合は、Direct Line API 要求の `Authorization` ヘッダー内に**シークレット**を指定することが最も簡単な方法です。 クライアントが Web ブラウザーまたはモバイル アプリで実行されるアプリケーションを記述する場合は、シークレットをトークン (1 つの会話でのみ機能し、更新されない限り有効期限が切れます) と交換し、その**トークン**を、Direct Line API 要求の `Authorization` ヘッダー内に指定できます。 自分にとって最適なセキュリティ モデルを選択してください。
 
@@ -167,6 +172,8 @@ HTTP/1.1 200 OK
 
     2. 前の方法で問題が発生したため、Azure Bot Service では、マジック コードが不要になりました。 Azure Bot Service では、サインイン プロセスは必ず Web チャット自体と**同じブラウザー セッション**でのみ完了します。 
     ボット開発者がこの保護を有効にするには、**ボットの Web チャット クライアントをホストできる信頼されたドメインの一覧**を含む **Direct Line トークン**を使用して、Web チャットを開始する必要があります。 以前は、ドキュメントに記載されていないオプション パラメーターを Direct Line トークン API に渡すことでのみ、このトークンを取得できました。 現在は、強化された認証オプションを使用して、Direct Line 構成ページで信頼されたドメイン (origin) の一覧を静的に指定できます。
+
+    「[Azure Bot Service を介してボットに認証を追加する](../v4sdk/bot-builder-authentication.md)」も参照してください。
 
 ### <a name="code-examples"></a>コード例
 

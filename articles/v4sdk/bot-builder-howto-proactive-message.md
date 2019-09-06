@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bb243e1530155819afb4ab4061da1e29908f58e4
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: 2a1f36e548f92e9c057947f0c5a82e426a8d0d23
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026348"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167387"
 ---
 # <a name="send-proactive-notifications-to-users"></a>ユーザーへのプロアクティブな通知の送信
 
@@ -34,7 +34,7 @@ ms.locfileid: "70026348"
 ## <a name="prerequisites"></a>前提条件
 
 - [ボットの基本](bot-builder-basics.md)を理解する。
-- プロアクティブ メッセージ サンプルのコピー ( **[CSharp](https://aka.ms/proactive-sample-cs) or [JavaScript](https://aka.ms/proactive-sample-js)** )。 このサンプルは、この記事でプロアクティブ メッセージングを説明するために使用します。
+- プロアクティブ メッセージ サンプルのコピー ( **[C#](https://aka.ms/proactive-sample-cs) または [JavaScript](https://aka.ms/proactive-sample-js)** )。 このサンプルは、この記事でプロアクティブ メッセージングを説明するために使用します。
 
 ## <a name="about-the-proactive-sample"></a>プロアクティブ サンプルについて
 

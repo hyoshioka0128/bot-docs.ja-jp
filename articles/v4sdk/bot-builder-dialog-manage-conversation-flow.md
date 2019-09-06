@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27d7e5ee6edd4cedfb9d59b318d9a3765e2f0ad8
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: 4030a1498be321757b8a25bbd9b8bcde29bb9e5d
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890609"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167191"
 ---
 # <a name="implement-sequential-conversation-flow"></a>連続して行われる会話フローの実装
 
@@ -30,7 +30,7 @@ ms.locfileid: "69890609"
 ## <a name="prerequisites"></a>前提条件
 
 - [ボットの基本][concept-basics]、[状態の管理][concept-state]、および[ダイアログ ライブラリ][concept-dialogs]に関する知識。
-- **マルチターン プロンプト** サンプルのコピー ([**CSharp**][cs-sample] または [**JavaScript**][js-sample])。
+- **マルチターン プロンプト** サンプルのコピー ([**C#** ][cs-sample] または [**JavaScript**][js-sample])。
 
 ## <a name="about-this-sample"></a>このサンプルについて
 

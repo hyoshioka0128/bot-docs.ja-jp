@@ -2,20 +2,19 @@
 title: 新機能 | Microsoft Docs
 description: Bot Framework の新機能について説明します。
 keywords: Bot Framework, Azure Bot Service
-author: ivorb
-ms.author: v-ivorb
+author: kamrani
+ms.author: kamrani
 manager: kamrani
 ms.topic: conceptual
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f7083c45e67d8731e25e14577f6b061732ffefd5
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: 708ad1fac166f312ad6ccf14a024f821f19eaaf2
+ms.sourcegitcommit: e573c586472c5328ce875114308d9d1b73651e62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671395"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70224395"
 ---
 # <a name="whats-new-in-bot-framework-july-2019"></a>Bot Framework の新機能 (2019 年 7 月)
 
@@ -55,7 +54,7 @@ Bot Framework SDK v4 は [オープン ソース SDK][1a] です。この SDK �
 - [Bot Framework Python SDK (プレビュー 2)](https://github.com/microsoft/botbuilder-python) | [サンプル](https://github.com/Microsoft/botbuilder-python/tree/master/samples):Python SDK で OAuth、プロンプト、CosmosDB がサポートされるようになり、SDK 4.5 のすべての主要機能が含まれるようになりました。 また、SDK の新機能について学習するのに役立つサンプルも用意されています。
 
 ## <a name="bot-framework-testing"></a>Bot Framework のテスト
-- [単体テスト](http://aka.ms/bot-test-package) | [ドキュメント](https://aka.ms/testing-framework) | [C# サンプル](https://aka.ms/corebot-test) | [JS サンプル](https://aka.ms/js-core-test-sample):より優れたテスト ツールを求めるお客様や開発者のご要望にお応えするため、7 月版の SDK では、新しい単体テスト機能が導入されています。 Microsoft.Bot.Builder.testing パッケージを使用すると、ボットの単体テスト ダイアログのプロセスが簡略化されます。 
+- [ドキュメント](https://aka.ms/testing-framework) | 単体テストのパッケージ ([C#](https://aka.ms/nuget-botbuilder-testing)/ [JavaScript](https://aka.ms/npm-botbuilder-testing)) | [C# サンプル](https://aka.ms/cs-core-test-sample) | [JS サンプル](https://aka.ms/js-core-test-sample):より優れたテスト ツールを求めるお客様や開発者のご要望にお応えするため、7 月版の SDK では、新しい単体テスト機能が導入されています。 Microsoft.Bot.Builder.testing パッケージを使用すると、ボットの単体テスト ダイアログのプロセスが簡略化されます。  
 
 - [チャネルのテスト](https://github.com/Microsoft/BotFramework-Emulator/releases) | [ドキュメント](https://aka.ms/channel-testing): 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 72c4d972b3f403beadad6d098a3c639cbbc1694d
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: 014f5c998fcb9d322439ca8b0e0bf2ba5f9f0679
+ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890551"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70076514"
 ---
 # <a name="register-a-bot-with-azure-bot-service"></a>ボットを Azure Bot Service に登録する
 
@@ -32,6 +32,7 @@ ms.locfileid: "69890551"
 
 1. 左側のウィンドウで、 **[リソースの作成]** をクリックします。
 1. 右側のウィンドウの選択ボックスに、「*bot*」と入力します。 ドロップダウン リストで、ご使用のアプリケーションに基づいて **[Bot Channels Registration]\(ボット チャネル登録\)** または **[Web App Bot]\(Web アプリ ボット\)** を選択します。
+**Web ボット アプリ**の場合、「[Azure Bot Service を使用してボットを作成する](v4sdk/abs-quickstart.md)」の記事で説明されている手順に従います。 Azure Bot Service に自動的に登録されるボットを Azure で作成します。
 1. **[作成]** ボタンをクリックして、プロセスを開始します。
 1. **[Bot Service]** ブレードで、画像の下の表に示すように、ボットに関する必要な情報を入力します。  
 
@@ -75,8 +76,6 @@ ms.locfileid: "69890551"
     ![登録ボットの作成ブレード](media/azure-bot-quickstarts/bot-channels-registration-app-secrets-create.png)
 
     これにより、ボットの新しいパスワードが生成されます。 このパスワードをコピーしてファイルに保存します。 このパスワードが表示されるのはこのときだけです。 完全なパスワードを保存していなかった場合、後で必要になったら、このプロセスを繰り返して新しいパスワードを作成する必要があります。
-
-**Web ボット アプリ**の場合、「[Azure Bot Service を使用してボットを作成する](v4sdk/abs-quickstart.md)」の記事で説明されている手順に従います。 Azure Bot Service に自動的に登録されるボットを Azure で作成します。
 
 ## <a name="manual-app-registration"></a>アプリの手動登録
 

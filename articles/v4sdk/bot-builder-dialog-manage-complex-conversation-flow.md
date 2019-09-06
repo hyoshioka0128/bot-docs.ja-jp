@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9f88c854f2af18ae0c9fb724f8c3a3c99b6141ba
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: b6bff3cd3d1245556b86a0d20845872d6074c104
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890634"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167391"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>ブランチとループを使用して高度な会話フローを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "69890634"
 ## <a name="prerequisites"></a>前提条件
 
 - [ボットの基本][concept-basics]、[状態の管理][concept-state]、[ダイアログ ライブラリ][concept-dialogs]、および[連続して行われる会話フローを実装][simple-dialog]する方法に関する知識。
-- 複雑なダイアログ サンプルのコピー ([**CSharp**][cs-sample] または [**JavaScript**][js-sample])。
+- 複雑なダイアログ サンプルのコピー ([**C#** ][cs-sample] または [**JavaScript**][js-sample])。
 
 ## <a name="about-this-sample"></a>このサンプルについて
 

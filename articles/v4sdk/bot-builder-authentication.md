@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8eea0bfd49bfd142c648d8ce842e1c24aa8ab45a
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 8b12068984396a015bfbb441f9b1e506acbb9154
+ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037521"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70076574"
 ---
 <!-- 
 
@@ -431,6 +431,9 @@ Teams は、OAuth に関して他のチャネルとは多少異なる動作を�
 最後に必ず、ボットのフォルダーの最上位レベルに適切な `TeamsActivityHandler` ファイル (C# ボットの場合は `TeamsActivityHandler.cs`、Javascript ボットの場合は `teamsActivityHandler.js`) を追加してください。
 
 `TeamsActivityHandler` は*メッセージの反応*アクティビティも送信します。 メッセージの反応アクティビティは、*返信先 ID* フィールドを使用して元のアクティビティを参照します。 このアクティビティは、Microsoft Teams の[アクティビティ フィード][teams-activity-feed]でも表示される必要があります。
+
+> [!NOTE]
+> マニフェストを作成して、`validDomains` セクションに `token.botframework.com` を含める必要があります。そうしないと、 OAuthCard の **[サインイン]** ボタンをクリックしても、認証ウィンドウは開きません。 [App Studio](https://docs.microsoft.com/en-us/microsoftteams/platform/get-started/get-started-app-studio) を使用して、マニフェストを生成してください。
 
 ### <a name="further-reading"></a>参考資料
 

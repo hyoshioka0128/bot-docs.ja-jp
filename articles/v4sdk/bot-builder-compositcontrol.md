@@ -3,19 +3,18 @@ title: ダイアログの再利用 | Microsoft Docs
 description: Bot Framework SDK でコンポーネント ダイアログを使用して、ご自身のボット ロジックをモジュール化する方法について説明します。
 keywords: 複合コントロール、モジュラー ボット ロジック
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 77f1c154af5821b1e476546f307a01be27f568c0
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: bb359ec2493b1c29624f5fb0135478cae1dea0e0
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "67587491"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167175"
 ---
 # <a name="reuse-dialogs"></a>ダイアログの再利用
 
@@ -26,7 +25,7 @@ ms.locfileid: "67587491"
 ## <a name="prerequisites"></a>前提条件
 
 - [ボットの基本][concept-basics]、[ダイアログ ライブラリ][concept-dialogs]、および[会話を管理][simple-flow]する方法に関する知識。
-- マルチターン プロンプト サンプルのコピー ([**CSharp**][cs-sample] または [**JavaScript**][js-sample])。
+- マルチターン プロンプト サンプルのコピー ([**C#** ][cs-sample] または [**JavaScript**][js-sample])。
 
 ## <a name="about-the-sample"></a>サンプルについて
 
