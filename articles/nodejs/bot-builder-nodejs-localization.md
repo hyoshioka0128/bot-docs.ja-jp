@@ -2,19 +2,18 @@
 title: ローカライズをサポートする | Microsoft Docs
 description: Bot Framework SDK for Node.js を使用して、ユーザーの在住地を判別し、ローカライズ機能を有効にする方法について説明します。
 author: DeniseMak
-ms.author: v-demak
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ce1b3f073c932cd4042b91ae9afc1e332a7443f2
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 68cc1134e8a26c8cbc49b0527cc598c5b409d5db
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67404902"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299809"
 ---
 # <a name="support-localization"></a>ローカライズをサポートする
 

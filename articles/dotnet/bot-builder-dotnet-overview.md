@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f54ea91bbe04f5b9b8a0701a3473ef7e76cacaeb
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: f9f15903bf3b004e64fbe737f25d6cb34cdfe7fe
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224727"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297846"
 ---
 # <a name="bot-framework-sdk-for-net"></a>Bot Framework SDK for .NET
 
@@ -22,7 +21,7 @@ ms.locfileid: "54224727"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-overview.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-overview.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-overview.md)
 > - [REST](../rest-api/bot-framework-rest-overview.md)
 
 Bot Framework SDK for .NET は、自由形式の対話と、ユーザーが使用可能な値の中から選択するガイド付きの会話の両方に対応できるボットを作成するための強力なフレームワークです。 この使いやすい SDK では、C# を活用することで、.NET 開発者が使い慣れた方法でボットを作成できるようにします。
@@ -46,9 +45,9 @@ SDK は、NuGet パッケージおよびオープン ソースとして <a href=
 
 Visual Studio プロジェクトに SDK をインストールするには、次の手順を実行します。
 
-1. **ソリューション エクスプローラー**でプロジェクト名を右クリックし、**[NuGet パッケージの管理...]** を選択します。
+1. **ソリューション エクスプローラー**でプロジェクト名を右クリックし、 **[NuGet パッケージの管理...]** を選択します。
 2. **[参照]** タブで、検索ボックスに「Microsoft.Bot.Builder」と入力します。
-3. 結果の一覧で **[Microsoft.Bot.Builder]** を選択し、**[インストール]** をクリックして、変更を適用します。
+3. 結果の一覧で **[Microsoft.Bot.Builder]** を選択し、 **[インストール]** をクリックして、変更を適用します。
 
 ## <a name="get-code-samples"></a>コード サンプルの入手
 

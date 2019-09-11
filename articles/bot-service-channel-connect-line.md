@@ -3,18 +3,17 @@ title: ボットを LINE に接続する | Microsoft Docs
 description: ボットから LINE への接続を構成する方法について説明します。
 keywords: ボットの接続, ボット チャンネル, LINE ボット, 資格情報, 構成, 携帯電話
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 1/7/2019
-ms.openlocfilehash: f6ed40c5ad3999ea5a123bf051de849917f22b42
-ms.sourcegitcommit: e41dabe407fdd7e6b1d6b6bf19bef5f7aae36e61
+ms.openlocfilehash: 8be0c7f89595e3222e5170fc7f11d052f9cb6851
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56893512"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298475"
 ---
 # <a name="connect-a-bot-to-line"></a>ボットを LINE に接続する
 
@@ -35,58 +34,58 @@ LINE アプリを介して複数のユーザーと通信できるように、ボ
 
 ## <a name="create-a-new-provider"></a>新しいプロバイダーを作成する
 
-ボットのプロバイダーを設定していない場合は、作成します。 プロバイダーとは、アプリを提供する組織 (個人の名前や会社) です。
+まず、ボットのプロバイダーを作成します (まだ設定していない場合)。 プロバイダーは、アプリを提供するエンティティ (個人または会社) です。
 
 ![LINE のスクリーンショット (プロバイダーの作成)](./media/channels/LINE-screenshot-2.png)
 
-## <a name="create-a-messaging-api-channel"></a>Messageing API のチャネルを作成する
+## <a name="create-a-messaging-api-channel"></a>メッセージング API チャンネルを作成する
 
-次に、新規に Messaging API チャネルを作成します。 
+次に、新しい Messaging API チャンネルを作成します。 
 
-![LINE のスクリーンショット (チャネルの種類)](./media/channels/LINE-channel-type-selection.png)
+![LINE のスクリーンショット (チャンネルの種類)](./media/channels/LINE-channel-type-selection.png)
 
-新規に Messaging API チャネルを作成するには、緑色の四角形をクリックします。
+新しい Messaging API チャンネルを作成するには、緑色の四角形をクリックします。
 
-![LINE のスクリーンショット (チャネルの作成)](./media/channels/LINE-create-channel.png)
+![LINE のスクリーンショット (チャンネルの作成)](./media/channels/LINE-create-channel.png)
 
-名前には、"LINE" またはこれに似た文字列を含めることはできません。 必須フィールドに入力し、チャネルの設定を確認します。
+名前には、"LINE" またはこれに似た文字列を含めることはできません。 必須フィールドに入力し、チャンネルの設定を確認します。
 
-![LINE のスクリーンショット (チャネルの設定)](./media/channels/LINE-screenshot-4.png)
+![LINE のスクリーンショット (チャンネルの設定)](./media/channels/LINE-screenshot-4.png)
 
-## <a name="get-necessary-values-from-your-channel-settings"></a>チャネルの設定から必要な値を取得する
+## <a name="get-necessary-values-from-your-channel-settings"></a>チャンネルの設定から必要な値を取得する
 
-チャネルの設定を確認したら、次のようなページが表示されます。
+チャンネルの設定を確認したら、次のようなページが表示されます。
 
-![LINE のスクリーンショット (チャネルのページ)](./media/channels/LINE-screenshot-5.png)
+![LINE のスクリーンショット (チャンネルのページ)](./media/channels/LINE-screenshot-5.png)
 
 作成したチャネルをクリックしてチャネル基本設定にアクセスし、下にスクロールして **[基本情報] > [Channel Secret]** を見つけます。 これを一時的にどこかに保存します。 また、`PUSH_MESSAGE` [利用可能な機能]  が含まれていることを確認します。
 
-![LINE のスクリーンショット (チャネル シークレット)](./media/channels/LINE-screenshot-6.png)
+![LINE のスクリーンショット (チャンネル シークレット)](./media/channels/LINE-screenshot-6.png)
 
 次に、さらに **[メッセージ送受信設定])** までスクロールします。 **[アクセストークン（ロングターム）]** フィールドと *[再発行]* ボタンがあります。 ボタンをクリックしてアクセストークンを取得し、先ほど同様に一時的に保存します。
 
 ![LINE のスクリーンショット (チャンネル トークン)](./media/channels/LINE-screenshot-8.png)
 
-## <a name="connect-your-line-channel-to-your-azure-bot"></a>LINE のチャネルを Azure ボットに接続する
+## <a name="connect-your-line-channel-to-your-azure-bot"></a>LINE のチャンネルを Azure ボットに接続する
 
-[Azure portal](https://portal.azure.com/) にログインして自身のボットにアクセスし、**[チャネル]** をクリックします。 
+[Azure portal](https://portal.azure.com/) にログインしてボットを見つけ、 **[チャンネル]** をクリックします。 
 
 ![LINE のスクリーンショット (Azure の設定)](./media/channels/LINE-channel-setting-2.png)
 
-この中で LINE のチャネルを選択し、上記のチャネル シークレットとアクセス トークンを適切なフィールドに貼り付けます。 変更後、必ず保存をしてください。
+ここで、LINE のチャンネルを選択し、上記のチャンネル シークレットとアクセス トークンを適切なフィールドに貼り付けます。 必ず変更内容を保存してください。
 
-次に、Azure から提供されるカスタムの Webhook URL をコピーします。
+Azure から提供されるカスタム Webhook URL をコピーします。
 
 ![LINE のスクリーンショット (Azure の設定)](./media/channels/LINE-channel-setting-1.png)
 
 ## <a name="configure-line-webhook-settings"></a>LINE の Webhook 設定を構成する
 
-次に、LINE Developers Console に戻って、Azure からコピーした Webhook URL を **[メッセージ送受信設定] > [Webhook URL]** に貼り付け、**[接続確認]** をクリックして接続を確認します。 Azure でチャネルを作成した直後の場合は、有効になるまでに数分かかることがあります。
+次に、LINE Developers Console に戻って、Azure からコピーした Webhook URL を **[メッセージ送受信設定] > [Webhook URL]** に貼り付け、 **[接続確認]** をクリックして接続を確認します。 Azure でチャネルを作成した直後の場合は、有効になるまでに数分かかることがあります。
 
 次に **[メッセージ送受信設定] > [Webhook送信] を [利用する]** にします。
 
 > [!IMPORTANT]
-> LINE の Developers Console では、最初に Webhook URL を設定した場合のみ、**[Use webhooks]\(Webhook の使用\) を[Enabled]\(有効\)** に設定できます。 URL を空にしたままで Webhook を有効にすると、UI では有効になったように見えても、有効な状態に設定されません。
+> LINE の Developers Console では、最初に Webhook URL を設定した場合のみ、 **[Use webhooks]\(Webhook の使用\) を[Enabled]\(有効\)** に設定できます。 URL を空にしたままで Webhook を有効にすると、UI では有効になったように見えても、有効な状態に設定されません。
 
 Webhook URL を追加してから Webhook を有効にしたら、このページを再度読み込んで、これらの変更が正しく設定されていることを確認してください。
 
@@ -98,17 +97,17 @@ Webhook URL を追加してから Webhook を有効にしたら、このペー�
 
 ### <a name="add-your-bot-to-your-line-mobile-app"></a>ボットを LINE のモバイル アプリに追加する
 
-LINE の Developers Console で、[チャネル基本設定] ページの下部にボットの QR コードが表示されています。  
+LINE の Developers Console で、[チャネル基本設定] ページの下部にボットの QR コードが表示されています。 
 
-LINE のモバイルアプリで、右端のナビゲーションタブ (3 つのドット **[...]**) に移動し、QR コードのアイコンをタップします。 
+LINE のモバイル アプリで、右端のナビゲーション タブ (3 つのドット **[...]** ) に移動し、QR コードのアイコンをタップします。 
 
 ![LINE のスクリーンショット (モバイル アプリ)](./media/channels/LINE-screenshot-12.jpg)
 
-Developers Console の QR コードに QR コードリーダーをポイントします。 LINE のモバイルアプリでボットとやり取りをしてテストできるようになります。
+Developers Console の QR コードで QR コード リーダーをポイントします。 これで、LINE のモバイル アプリでボットとやり取りして、ボットをテストできるようになりました。
 
 ### <a name="automatic-messages"></a>自動メッセージ
 
-ボットのテストを開始すると、`conversationUpdate` アクティビティで指定したものではない、予期しないメッセージがボットから送信される場合があります。  その場合、次のようなダイアログが表示されます。
+ボットのテストを開始すると、`conversationUpdate` アクティビティで指定したものではない、予期しないメッセージがボットから送信される場合があります。  次のようなダイアログが表示されることがあります。
 
 ![LINE のスクリーンショット (会話)](./media/channels/LINE-screenshot-conversation.jpg)
 

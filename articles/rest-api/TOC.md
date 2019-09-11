@@ -5,7 +5,7 @@
 ## [API リファレンス](bot-framework-rest-connector-api-reference.md)
 # コネクタ
 ## [認証](bot-framework-rest-connector-authentication.md)
-## [アクティビティの概要](bot-framework-rest-connector-activities.md)
+## [アクティビティの概要](https://aka.ms/botSpecs-activitySchema)
 ## [メッセージの作成](bot-framework-rest-connector-create-messages.md)
 ## [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
 ## [メッセージへのメディア添付ファイルの追加](bot-framework-rest-connector-add-media-attachments.md)

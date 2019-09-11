@@ -3,19 +3,18 @@ title: 状態の管理 | Microsoft Docs
 description: Bot Framework SDK 内で状態がどのように機能するかについて説明します。
 keywords: 状態, ボットの状態, 会話の状態, ユーザーの状態
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 037331b10719a47fba42485b19d5ecc9dab08cbe
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 23a7c4e0e0009631ebb9485f1f565c3a98d362ca
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215483"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299410"
 ---
 # <a name="managing-state"></a>状態の管理
 

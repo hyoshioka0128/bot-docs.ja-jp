@@ -2,19 +2,18 @@
 title: Azure Search を使用してデータドリブン エクスペリエンスを作成する | Microsoft Docs
 description: Azure Search を使用してデータドリブン エクスペリエンスを作成し、ユーザーが Bot Framework SDK for .NET および Azure Search を使用してボット内の大量のコンテンツ間を移動できるように支援する方法について説明します。
 author: matthewshim-ms
-ms.author: v-shimma
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ee1e8c660eae27efae5c18b1392ff68d716f73da
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 2328357c372cabc186e589ccbf65f36517d4789c
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405639"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297813"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Azure Search を使用してデータドリブン エクスペリエンスを作成する 
 

@@ -7,15 +7,14 @@ ms.author: johtaylo
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 049d0d39d6e1d64e44f743ea7558bbc23ad0f2f5
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 9911fda3458d686cce993a54223ab06036dee745
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464769"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299510"
 ---
 # <a name="dialogs-library"></a>ダイアログ ライブラリ
 
@@ -140,7 +139,7 @@ prompt validator context には、次のプロパティが含まれます。
 
 | プロパティ | 説明 |
 | :--- | :--- |
-| _成功_ | 認識エンジンが入力を解析できたかどうかを示します。 |
+| _Succeeded_ | 認識エンジンが入力を解析できたかどうかを示します。 |
 | _値_ | 認識エンジンからの戻り値。 必要に応じて、検証コードでこの値を変更できます。 |
 
 ### <a name="component-dialog"></a>コンポーネント ダイアログ

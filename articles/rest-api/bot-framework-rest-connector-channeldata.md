@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 242774949243802c267a9db3b8461113b161c13a
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 8f437b2e807035a6ae0d6ec655c1edf17aacf12e
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037333"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876139"
 ---
 # <a name="implement-channel-specific-functionality"></a>チャネル固有の機能の実装
 
@@ -270,7 +270,6 @@ Facebook 通知を作成するには、`Activity` オブジェクトの `channel
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [アクティビティの概要](bot-framework-rest-connector-activities.md)
 - [メッセージの作成](bot-framework-rest-connector-create-messages.md)
 - [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Bot Framework のアクティビティ スキーマ](https://aka.ms/botSpecs-activitySchema)

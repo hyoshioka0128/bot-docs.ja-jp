@@ -2,19 +2,18 @@
 title: ユーザーと会話イベントの処理 | Microsoft Docs
 description: Bot Framework SDK for Node.js を使用して、会話に参加しているユーザーなどのイベントを処理する方法について説明します。
 author: DucVo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a6149b750a4432f00268571df6d12b611114181f
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 074868cfe6cd8bb2317d8c3cae1a814d9906a0c0
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67404910"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299850"
 ---
 # <a name="handle-user-and-conversation-events"></a>ユーザーと会話イベントの処理
 

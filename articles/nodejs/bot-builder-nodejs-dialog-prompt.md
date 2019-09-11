@@ -2,19 +2,18 @@
 title: ユーザーに入力を求めるプロンプト | Microsoft Docs
 description: Bot Framework SDK for Node.js でプロンプトを使用してユーザー入力を収集する方法について説明します。
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1cad11c8b1dde800543c919ab579b0112e7d3036
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: f0b9e7457c63ee1be8b2d3063d098e4186b1db3a
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404993"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299861"
 ---
 # <a name="prompt-for-user-input"></a>ユーザーに入力を求めるプロンプト
 
@@ -162,7 +161,7 @@ bot.dialog('createAlarm', [
 
 `ListStyle` 列挙値は次のとおりです。
 
-| Index | Name | 説明 |
+| Index | 名前 | 説明 |
 | ---- | ---- | ---- |
 | 0 | なし | 一覧は表示されません。 これは、一覧がプロンプトの一部として含まれる場合に使用されます。 |
 | 1 | インライン | 選択肢は、次の形式のインラインリストとして表示されます。"1. 赤、2. 緑、3. 青" |

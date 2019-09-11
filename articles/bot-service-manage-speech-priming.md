@@ -3,18 +3,17 @@ title: 音声プライミングを構成する | Microsoft Docs
 description: Azure portal を使用して、ボット サービス用の音声プライミングを構成する方法について説明します。
 keywords: 音声プライミング, 音声認識, LUIS
 author: v-royhar
-ms.author: v-royhar
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: cognitive-services
 ms.date: 12/13/2017
-ms.openlocfilehash: 5cb47be530f9f82d83272684e6405730c72f3cb7
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 5cb993392c57db63074fd5354ff85616d5004133
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997155"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298032"
 ---
 # <a name="configure-speech-priming"></a>音声プライミングを構成する
 

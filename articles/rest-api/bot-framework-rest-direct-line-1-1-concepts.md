@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 288fde1d8c4333256b956b270fe37a56217632ca
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 63475546472d2305ef665fd4ab29c6f2df2b08eb
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404650"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299636"
 ---
 # <a name="key-concepts-in-direct-line-api-11"></a>Direct Line API 1.1 の主要な概念
 
@@ -22,7 +21,7 @@ Direct Line API を使用すると、ボットと独自のクライアント ア
 > [!IMPORTANT]
 > この記事では、Direct Line API 1.1 の主要概念を紹介し、関連する開発者リソースに関する情報を提供します。 クライアント アプリケーションとボットの間の新しい接続を作成する場合は、代わりに [Direct Line API 3.0](bot-framework-rest-direct-line-3-0-concepts.md) を使用します。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 Direct Line API 1.1 の要求は、<a href="https://dev.botframework.com/" target="_blank">Bot Framework ポータル</a>の Direct Line チャネル構成ページから取得する**シークレット**を使用するか、実行時に取得する**トークン**を使用して認証できます。  詳細については、[認証](bot-framework-rest-direct-line-1-1-authentication.md)に関するページをご覧ください。
 

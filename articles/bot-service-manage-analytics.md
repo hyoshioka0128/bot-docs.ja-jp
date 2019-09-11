@@ -3,18 +3,17 @@ title: ボットの分析 | Microsoft Docs
 description: Bot Framework での分析を利用してボットを向上させるためのデータの収集と分析の使用方法について説明します。
 keywords: ボットの分析, アプリケーション分析情報, トラフィック, 待ち時間, 統合, AppInsights
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 12/04/2018
-ms.openlocfilehash: 2f7474500af4305f4c51193a2a5af264d419569b
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: 324050c625f5d9666811f63191d783643816104c
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010517"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298690"
 ---
 # <a name="bot-analytics"></a>ボットの分析
 
@@ -22,7 +21,7 @@ Analytics は [Application Insights](/azure/application-insights/app-insights-an
 
 ## <a name="view-analytics-for-a-bot"></a>ボットの分析を表示する
 
-Analytics にアクセスするには、Azure portal 上でボットを開き、**[分析]** をクリックします。
+Analytics にアクセスするには、Azure portal 上でボットを開き、 **[分析]** をクリックします。
 
 データが多すぎる場合は、 ボットにリンクされた Application Insights で、[サンプリングを有効にして構成](/azure/application-insights/app-insights-sampling)することができます。 こうすることで、統計的に正しい分析を維持しながら、テレメトリのトラフィックとストレージを削減できます。
 
@@ -68,7 +67,7 @@ Analytics にアクセスするには、Azure portal 上でボットを開き、
 * 折れ線グラフでは、特定の時点でボットにアクセスしていたユーザーの数が示されます。
 * 折れ線グラフの凡例では、各チャネルを表す色が示され、指定期間中のユーザーの合計数が含まれます。
 
-### <a name="activities"></a>アクティビティ
+### <a name="activities"></a>Activities
 
 アクティビティ グラフでは、指定期間内に各チャネルを使用して送受信されたアクティビティの数が追跡されます。
 
@@ -84,14 +83,14 @@ Application Insights を有効にして構成するまで、Analytics は使用�
 
 > [!NOTE]
 > Analytics には、Azure サブスクリプションと Application Insights [リソース](/azure/application-insights/app-insights-create-new-resource)の両方が必要です。
-Application Insights にアクセスするには、[Azure Portal](https://portal.azure.com/) でボットを開き、**[Settings]\(設定\)** をクリックします。
+Application Insights にアクセスするには、[Azure Portal](https://portal.azure.com/) でボットを開き、 **[Settings]\(設定\)** をクリックします。
 
 ボット リソースを作成するときに Application Insights を追加できます。
 
 後で Application Insights リソースを作成して、ボットに接続することもできます。
 
 1. Application Insights の[リソース](/azure/application-insights/app-insights-create-new-resource)を作成します。
-2. ダッシュボードでボットを開きます。 **[Settings]\(設定\)** をクリックして、**[Analytics]\(分析\)** セクションまで下にスクロールします。
+2. ダッシュボードでボットを開きます。 **[Settings]\(設定\)** をクリックして、 **[Analytics]\(分析\)** セクションまで下にスクロールします。
 3. 情報を入力してボットを Application Insights に接続します。 すべてのフィールドが必須です。
 
 ![Insights に接続する](~/media/analytics-enable.png)

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: c6abff25dcccce4c18ad0083ef24b69495222c9f
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "70297349"
+---
 通常、ボットがユーザーに送信する各メッセージは、ユーザーの前の入力に直接関連しています。
 場合によっては、ボットは、会話の現在のトピックまたはユーザーによって最後に送信されたメッセージに直接関連していないメッセージをユーザーに送信する必要があります。 この種のメッセージは、**プロアクティブ メッセージ**と呼ばれます。
 

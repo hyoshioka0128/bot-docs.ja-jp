@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB を使用してカスタム状態データを管理する | Microsoft Docs
 description: Bot Framework SDK for .NET で Azure Cosmos DB を使用して状態データを保存および取得する方法を説明します
-author: kaiqb
+author: kamrani
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7c00c17eaa8d4e84ffbeff1e318cbc403de2038a
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 2495e0506072609e47f4014f1027ed5033fb4bf7
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405634"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297774"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-net"></a>.NET 用の Azure Cosmos DB を使用してカスタム状態データを管理する
 

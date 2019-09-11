@@ -7,14 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 02/08/2019
-ms.openlocfilehash: e77f6cddac07cdcc06d6d35cda98544f33dd1d43
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: ca88c2d023505401d9e31a58bfe7313565a2350c
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563410"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298582"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>ボットを Office 365 の電子メールに接続する
 
@@ -31,7 +30,7 @@ AAD に代わる任意のベンダーを使用するフェデレーション認�
 > [!NOTE]
 > 個人の電子メール アカウントをボットで使用しないでください。これを行うと、その電子メール アドレスに送信されたすべてのメッセージがボットに転送されます。 その結果、ボットが不適切な応答を送信元に送信する可能性があります。 このため、ボットでは、専用の O365 メール アカウントを使用する必要があります。
 
-電子メール チャンネルを追加するには、[Azure Portal](https://portal.azure.com/) でボットを開き、**[チャンネル]** ブレードをクリックし、**[電子メール]** をクリックします。 有効な電子メールの資格情報を入力し、**[保存]** をクリックします。
+電子メール チャンネルを追加するには、[Azure Portal](https://portal.azure.com/) でボットを開き、 **[チャンネル]** ブレードをクリックし、 **[電子メール]** をクリックします。 有効な電子メールの資格情報を入力し、 **[保存]** をクリックします。
 
 ![電子メールの資格情報の入力](~/media/bot-service-channel-connect-email/bot-service-channel-connect-email-credentials.png)
 
@@ -73,7 +72,7 @@ AAD に代わる任意のベンダーを使用するフェデレーション認�
 
 ## <a name="other-considerations"></a>その他の考慮事項
 
-お客様のボットが、受信電子メール メッセージへの応答として 15 秒内に 200 OK の HTTP 状態コードを返さない場合、電子メール チャネルはメッセージを再送信しようとするため、お客様のボットは同じ電子メール メッセージ アクティビティを数回受け取る可能性があります。 詳細については、「**How bots work (ボットのしくみ)**」の「[HTTP details (HTTP の詳細)](v4sdk/bot-builder-basics.md#http-details)」セクション、および[タイムアウト エラーのトラブルシューティング](https://github.com/daveta/analytics/blob/master/troubleshooting_timeout.md)の方法に関する記事を参照してください。
+お客様のボットが、受信電子メール メッセージへの応答として 15 秒内に 200 OK の HTTP 状態コードを返さない場合、電子メール チャネルはメッセージを再送信しようとするため、お客様のボットは同じ電子メール メッセージ アクティビティを数回受け取る可能性があります。 詳細については、「**How bots work (ボットのしくみ)** 」の「[HTTP details (HTTP の詳細)](v4sdk/bot-builder-basics.md#http-details)」セクション、および[タイムアウト エラーのトラブルシューティング](https://github.com/daveta/analytics/blob/master/troubleshooting_timeout.md)の方法に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

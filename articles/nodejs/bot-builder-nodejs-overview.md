@@ -2,19 +2,18 @@
 title: Bot Framework SDK for Node.js | Microsoft Docs
 description: 強力で使いやすいボット構築フレームワーク、Bot Framework SDK for Node.js について説明します。
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2e25237b616810f5ef10442fec41834568afcb59
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 20b0f852c4e5cddced42e9e710bb5d62663945a7
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224744"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299787"
 ---
 # <a name="bot-framework-sdk-for-nodejs"></a>Bot Framework SDK for Node.js
 
@@ -22,7 +21,7 @@ ms.locfileid: "54224744"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-overview.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-overview.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-overview.md)
 > - [REST](../rest-api/bot-framework-rest-overview.md)
 
 Bot Framework SDK for Node.js は、強力で使いやすいフレームワークであり、Node.js 開発者がボットを作成するための手慣れた方法を提供しています。

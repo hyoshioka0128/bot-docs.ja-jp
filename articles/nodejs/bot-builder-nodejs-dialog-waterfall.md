@@ -2,19 +2,18 @@
 title: ウォーターフォールを使用した会話のステップの定義 | Microsoft Docs
 description: Bot Framework SDK for Node.js でウォーターフォールを使用して会話のステップを定義する方法について説明します。
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 526091d61f10ac0c241b994aa3ea99c1d2a70074
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 2a5ade5e6407537e72b520a22d74bc2c3943fce4
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225327"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299843"
 ---
 # <a name="define-conversation-steps-with-waterfalls"></a>ウォーターフォールを使用した会話のステップの定義
 
@@ -166,7 +165,7 @@ bot.dialog('ensureProfile', [
 
 * `session.endDialog`:呼び出し元のダイアログに返すデータがない場合は、このメソッドを使用してウォーターフォールを終了します。
 
-* `session.endDialogWithResult`:呼び出し元のダイアログに返すデータがある場合は、このメソッドを使用してウォーターフォールを終了します。 返される `response` 引数は、JSON オブジェクトまたは任意の JavaScript プリミティブ データ型です。 例: 
+* `session.endDialogWithResult`:呼び出し元のダイアログに返すデータがある場合は、このメソッドを使用してウォーターフォールを終了します。 返される `response` 引数は、JSON オブジェクトまたは任意の JavaScript プリミティブ データ型です。 例:
   ```javascript
   session.endDialogWithResult({
     response: { name: session.dialogData.name, company: session.dialogData.company }
@@ -175,7 +174,7 @@ bot.dialog('ensureProfile', [
 
 * `session.endConversation`:ウォーターフォールの終了が会話の終了を表す場合は、このメソッドを使用してウォーターフォールを終了します。
 
-これらの 3 つのメソッドのいずれかを使用してウォーターフォールを終了する代わりに、`endConversationAction` トリガーをダイアログにアタッチすることができます。 例: 
+これらの 3 つのメソッドのいずれかを使用してウォーターフォールを終了する代わりに、`endConversationAction` トリガーをダイアログにアタッチすることができます。 例:
 
 ```javascript
 bot.dialog('dinnerOrder', [

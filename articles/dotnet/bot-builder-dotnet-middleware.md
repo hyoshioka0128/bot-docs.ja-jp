@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 03/01/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0e8873d2914d42b928004c31c14c8d60cb35b2a3
-ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
+ms.openlocfilehash: dc2dd7b26f4c13b28d58a10c4dde103ce3f1c558
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58073768"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297379"
 ---
 # <a name="intercept-messages"></a>メッセージをインターセプトする
 
@@ -22,7 +21,7 @@ ms.locfileid: "58073768"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-middleware.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-intercept-messages.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-intercept-messages.md)
 
 [!INCLUDE [Introducton to message logging](../includes/snippet-message-logging-intro.md)]
 

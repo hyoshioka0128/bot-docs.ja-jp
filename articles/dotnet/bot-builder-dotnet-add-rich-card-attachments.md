@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 51bdc5e52bd147747e9d068fc4721ca4b782ef27
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 37c652e101f5501295b243386ba9b675c578624f
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464507"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298405"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
 
@@ -54,9 +53,9 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 リッチ カード内のイベントを処理するには、`CardAction` オブジェクトを定義して、ユーザーがボタンをクリックするか、またはカードのセクションをタップしたときのアクションを指定します。 各 `CardAction` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | Type | 説明 | 
+| プロパティ | 種類 | 説明 | 
 |----|----|----|
-| Type | string | アクションの種類 (下の表に示されている値のいずれか) |
+| 種類 | string | アクションの種類 (下の表に示されている値のいずれか) |
 | タイトル | string | ボタンのタイトル |
 | Image | string | ボタン用のイメージ URL |
 | 値 | string | 指定された種類のアクションを実行するために必要な値 |
@@ -71,7 +70,7 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 | openUrl | 組み込みのブラウザーで開かれる URL |
 | imBack | (ボタンをクリックまたはカードをタップしたユーザーから) ボットに送信されるメッセージのテキスト。 会話の参加者すべてが、会話をホストしているクライアント アプリケーションを介して、このメッセージ (ユーザーからボットへの) を表示することができます。 |
 | postBack | (ボタンをクリックまたはカードをタップしたユーザーから) ボットに送信されるメッセージのテキスト。 クライアント アプリケーションによっては、このテキストがメッセージ フィードに表示される場合があります。そこでは、会話の参加者のすべてにそのテキストが表示されます。 |
-| 以下を呼び出します。 | 電話の呼び出し先であり、**tel:123123123123** の形式となります。 |
+| call | 電話の呼び出し先であり、**tel:123123123123** の形式となります。 |
 | playAudio | 再生されるオーディオの URL |
 | playVideo | 再生されるビデオの URL |
 | showImage | 表示されるイメージの URL |

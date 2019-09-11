@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 4108f02a350d7e02d66db06cd7e65fa9c7a98e7d
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "70297354"
+---
 **アドホック型のプロアクティブ メッセージ**は、最も単純な種類のプロアクティブ メッセージです。
 ボットは会話が開始されると単純に会話にメッセージを差し挟みます。つまり、ユーザーが現在、ボットと別の話題で会話中であり、話題を変えるつもりがない場合でも考慮しません。
 

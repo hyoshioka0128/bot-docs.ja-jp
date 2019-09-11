@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ce7b82d6d3bffe57d758370525cdd7dcc6cddea6
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f1cfa6de6dbc0b1dc6ed0408f405a91493741a93
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999799"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297635"
 ---
 # <a name="bot-service-templates"></a>Bot Service テンプレート
 
@@ -37,7 +36,7 @@ C# 言語のフォーム テンプレートで作成されたボットでは、[
 
 ユーザーが "仮想現実会社に関するニュースを入手する" などのメッセージを送信した場合、ご利用のボットでは LUIS を使用して、そのメッセージの意味を解釈できます。 LUIS を使用することで、込められた意図 (ニュースの検索) と存在する主要エンティティ (仮想現実会社) という観点で、ユーザー入力を解釈する HTTP エンドポイントをすばやくデプロイできます。 LUIS では、ご利用のアプリケーションに関連するエンティティと意図のセットを指定することができ、Language Understanding アプリケーションの作成プロセスをガイドします。
 
-Language Understanding テンプレートを使用してボットを作成するときに、Bot Service では、対応する空の (つまり、常に `None` を返す) LUIS アプリケーションが作成されます。 LUIS アプリケーション モデルを更新して、ユーザー入力を解釈できるようにするには、<a href="https://www.luis.ai" target="_blank">LUIS</a> にサインインして、**[マイ アプリケーション]** をクリックし、サービスで作成されたアプリケーションを選択してから意図を作成し、エンティティを指定してアプリケーションをトレーニングします。
+Language Understanding テンプレートを使用してボットを作成するときに、Bot Service では、対応する空の (つまり、常に `None` を返す) LUIS アプリケーションが作成されます。 LUIS アプリケーション モデルを更新して、ユーザー入力を解釈できるようにするには、<a href="https://www.luis.ai" target="_blank">LUIS</a> にサインインして、 **[マイ アプリケーション]** をクリックし、サービスで作成されたアプリケーションを選択してから意図を作成し、エンティティを指定してアプリケーションをトレーニングします。
 
 ## <a name="question-and-answer-bot"></a>質疑応答ボット
 質問と回答のペアなどの半構造化データを個別の役立つ回答に抽出するボットを作成するには、**質疑応答**テンプレートを選択します。 このテンプレートでは <a href="https://qnamaker.ai">QnA Maker</a> サービスを活用して、質問を解析し、回答を提供します。 

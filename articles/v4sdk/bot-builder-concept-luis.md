@@ -3,20 +3,19 @@ title: Language Understanding | Microsoft Docs
 description: Microsoft Cognitive Services を使って、ボットをより便利で魅力的にするために、人工知能を追加する方法について説明します。
 keywords: LUIS, 意図, 認識エンジン, ディスパッチ ツール, QnA, QnA Maker
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: rstand
 ms.topic: article
 ms.service: bot-service
-ms.subservice: cognitive-services
 ms.date: 09/19/2018
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0c0918b0ac0a10927bd8d7c52283e74b4fd480bf
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 83d6a4b43cdd3132730ee78079260d2a2d79b228
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404642"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299484"
 ---
 # <a name="language-understanding"></a>Language Understanding
 

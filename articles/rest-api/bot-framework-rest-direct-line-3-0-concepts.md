@@ -6,20 +6,19 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 01/06/2019
-ms.openlocfilehash: 94ef9cc221e67f4f3762eb7a1a006a915e3c5307
-ms.sourcegitcommit: fd60ad0ff51b92fa6495b016e136eaf333413512
+ms.openlocfilehash: 6727530ec6267a63e28e103bdfc12183ebed8016
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55764100"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299595"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Direct Line API 3.0 の主要な概念
 
 Direct Line API を使用すると、ボットと独自のクライアント アプリケーション間の通信を有効にできます。 この記事では、Direct Line API 3.0 の主要概念を紹介し、関連する開発者リソースに関する情報を提供します。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 Direct Line API 3.0 の要求は、<a href="https://dev.botframework.com/" target="_blank">Bot Framework ポータル</a>の Direct Line チャネル構成ページから取得する**シークレット**を使用するか、実行時に取得する**トークン**を使用して認証できます。 詳細については、[認証](bot-framework-rest-direct-line-3-0-authentication.md)に関するページをご覧ください。
 

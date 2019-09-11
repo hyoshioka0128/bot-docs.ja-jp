@@ -2,17 +2,17 @@
 title: ボットのトラブルシューティング | Microsoft Docs
 description: よく寄せられる技術的な質問を使用して、ボット開発における一般的な問題のトラブルシューティングを行います。
 author: DeniseMak
-ms.author: v-demak
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/30/2019
-ms.openlocfilehash: 7a018855b11aa638cbad1b70b53505395ae7f5f9
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: c9c8ff04e7093cd0375e52c4ecd90b44af4f4798
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464584"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298560"
 ---
 # <a name="troubleshooting-general-problems"></a>一般的な問題のトラブルシューティング
 以下のよく寄せられる質問は、一般的なボット開発や運用上の問題のトラブルシューティングに役立ちます。
@@ -265,7 +265,7 @@ Bot Framework SDK for Node.js と Bot Framework SDK for .NET の両方で、単�
 
 * [ES6 BotBuilder](https://github.com/brene/botbuilder-es6-template) - ES6 Bot Builder のテンプレート
 
-## <a name="why-do-i-get-an-authorizationrequestdenied-exception-when-creating-a-bot"></a>ボットを作成するときに Authorization_RequestDenied という例外が発生するのはなぜですか。
+## <a name="why-do-i-get-an-authorization_requestdenied-exception-when-creating-a-bot"></a>ボットを作成するときに Authorization_RequestDenied という例外が発生するのはなぜですか。
 
 Azure Bot Service ボットを作成するためのアクセス許可は、Azure Active Directory (AAD) ポータルを通じて管理されます。 [AAD ポータル](http://aad.portal.azure.com)でアクセス許可が適切に構成されていない場合、ユーザーがボット サービスを作成しようとしたときに **Authorization_RequestDenied** 例外が発生します。
 

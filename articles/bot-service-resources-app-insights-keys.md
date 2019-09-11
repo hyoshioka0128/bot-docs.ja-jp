@@ -2,18 +2,17 @@
 title: Application Insights キー | Microsoft Docs
 description: ボットにテレメトリを追加するための Application Insights キーを取得する方法について説明します。
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: 87cdd27a3a413ae200273090d4a79b5edbc55dc1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d4fe7ae7f14349303f4445b321e55195483d210f
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996909"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297483"
 ---
 # <a name="application-insights-keys"></a>Application Insights キー
 
@@ -38,7 +37,7 @@ Azure **Application Insights** は、Microsoft Azure リソースにアプリケ
 
 3. **[Overview]** をクリックします。
 
-4. **[要点]** ブロックを展開し、**[インストルメンテーション キー]** を見つけます。 
+4. **[要点]** ブロックを展開し、 **[インストルメンテーション キー]** を見つけます。 
 ![[概要] が表示されているポータルの画面キャプチャ](~/media/portal-app-insights-instrumentation-key-dropdown.png)
 ![インストルメンテーション キーを示すポータルの画面キャプチャ](~/media/portal-app-insights-instrumentation-key.png)
 
@@ -47,7 +46,7 @@ Azure **Application Insights** は、Microsoft Azure リソースにアプリケ
 ## <a name="application-id"></a>アプリケーション ID
 
 アプリケーション ID を取得するには、次の手順を実行します。
-1. Application Insights リソースから、**[API アクセス]** をクリックします。
+1. Application Insights リソースから、 **[API アクセス]** をクリックします。
 
 2. **アプリケーション ID** をコピーし、ボットの設定の **[Application Insights Application ID]\(Application Insights アプリケーション ID\)** フィールドに貼り付けます。 
 ![アプリケーション ID を示すポータルの画面キャプチャ](~/media/portal-app-insights-appid.png)
@@ -55,11 +54,11 @@ Azure **Application Insights** は、Microsoft Azure リソースにアプリケ
 ## <a name="api-key"></a>API キー
 
 API キーを取得するには、次の手順を実行します。
-1. Application Insights リソースから、**[API アクセス]** をクリックします。
+1. Application Insights リソースから、 **[API アクセス]** をクリックします。
 
 2. **[API キーの作成]** をクリックします。
 
-3. 簡単な説明を入力し、**[テレメトリを読み取る]** をオンにして、**[キーの生成]** をクリックします。
+3. 簡単な説明を入力し、 **[テレメトリを読み取る]** をオンにして、 **[キーの生成]** をクリックします。
 ![アプリケーション ID と API キーを示すポータルの画面キャプチャ](~/media/portal-app-insights-appid-apikey.png)
 
    > [!WARNING]

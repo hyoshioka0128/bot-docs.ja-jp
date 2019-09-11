@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: fc4fe669c57c53b8b53a98bf495ed858094ef4b6
-ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
+ms.openlocfilehash: 9dc2519e74147d1147e2d5f2cb7fba883bd1269c
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67496631"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298789"
 ---
 # <a name="manage-state-data"></a>状態データの管理
 
@@ -78,7 +77,7 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 
 次の表に、状態データの管理に使用できるメソッドを示します。
 
-| Method | スコープ | 目的 |                                                
+| 方法 | スコープ | 目的 |                                                
 |----|----|----|
 | `GetUserData` | User | 指定されたチャネル上のユーザーの、以前に保存された状態データを取得します。 |
 | `GetConversationData` | 会話 | 指定されたチャネル上の会話の、以前に保存された状態データを取得します。 |

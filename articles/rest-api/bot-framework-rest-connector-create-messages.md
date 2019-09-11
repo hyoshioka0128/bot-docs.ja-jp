@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 3f8badd90c3be5191e24556d5f7fde66cc72fd6b
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 727a319ef479a1f8954151d0e7dcaefaf3d249a1
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037366"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876159"
 ---
 # <a name="create-messages"></a>メッセージを作成する
 
@@ -55,7 +55,7 @@ ms.locfileid: "70037366"
 ## <a name="additional-resources"></a>その他のリソース
 
 - [Channel Inspector を使用して機能をプレビューする][ChannelInspector]
-- [アクティビティの概要](bot-framework-rest-connector-activities.md)
+- [アクティビティの概要](https://aka.ms/botSpecs-activitySchema)
 - [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
 - [メッセージへのメディア添付ファイルの追加](bot-framework-rest-connector-add-media-attachments.md)
 - [メッセージへのリッチ カードの追加](bot-framework-rest-connector-add-rich-cards.md)

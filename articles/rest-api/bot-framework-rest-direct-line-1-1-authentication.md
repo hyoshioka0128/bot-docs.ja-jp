@@ -6,16 +6,15 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 4f607050fd891eefe2129973a46d830aa0bab6c7
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 555cb3298114c3eb8ba8a4e1c41b5515e929fd91
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997619"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299646"
 ---
-# <a name="authentication"></a>Authentication
+# <a name="authentication"></a>認証
 
 > [!IMPORTANT]
 > この記事では、Direct Line API 1.1 での認証について説明します。 クライアント アプリケーションとボットの間の新しい接続を作成する場合は、代わりに [Direct Line API 3.0](bot-framework-rest-direct-line-3-0-authentication.md) を使用します。

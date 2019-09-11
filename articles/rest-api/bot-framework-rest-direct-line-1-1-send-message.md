@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 360ec3a6a6c9a3be16370aaf445f24a237a702e3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 461ea04e0865991c3a6d643db7511e58d516ec41
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998019"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299616"
 ---
 # <a name="send-a-message-to-the-bot"></a>メッセージをボットに送信する
 
@@ -88,7 +87,7 @@ Content-Disposition: ATTACHMENT_INFO
 [file content]
 ```
 
-この要求 URI で、**{conversationId}** を会話の ID に置換し、**{userId}** をメッセージを送信するユーザーの ID に置換します。 要求ヘッダーで、`Content-Type` を設定して添付ファイルの種類を指定し、`Content-Disposition` を設定して添付ファイルのファイル名を指定します。
+この要求 URI で、 **{conversationId}** を会話の ID に置換し、 **{userId}** をメッセージを送信するユーザーの ID に置換します。 要求ヘッダーで、`Content-Type` を設定して添付ファイルの種類を指定し、`Content-Disposition` を設定して添付ファイルのファイル名を指定します。
 
 次のスニペットは、(単一の) 添付ファイル送信要求と応答の例を示しています。
 

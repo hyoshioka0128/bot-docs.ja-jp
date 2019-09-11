@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: eaebb40e7b0e57966f0eb06c6d0108f6db1b62ff
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: bb75e49e50a479e0141000ef49d75559148fe43a
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405672"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297301"
 ---
 # <a name="create-messages"></a>メッセージを作成する
 
@@ -48,7 +47,7 @@ ms.locfileid: "67405672"
 
 | プロパティ | Description | 
 |----|----|
-| Type | エンティティの種類 ("mention") | 
+| 種類 | エンティティの種類 ("mention") | 
 | Mentioned | どのユーザーがメンションされたかを示す `ChannelAccount` オブジェクト | 
 | Text | メンション自体を表す `Activity.Text` プロパティ内のテキスト (空または null 値の可能性があります) |
 
@@ -67,18 +66,18 @@ ms.locfileid: "67405672"
 
 | プロパティ | Description | 
 |----|----|
-| Type | エンティティの種類 ("Place") |
+| 種類 | エンティティの種類 ("Place") |
 | Address | 説明または `PostalAddress` オブジェクト (将来) | 
 | ジオ (主要地域) | GeoCoordinates | 
 | HasMap | 地図の URL または `Map` オブジェクト (将来) |
-| Name | 場所の名前 |
+| 名前 | 場所の名前 |
 
 `GeoCoordinates` オブジェクトには、次のプロパティが含まれています。
 
 | プロパティ | Description | 
 |----|----|
-| Type | エンティティの種類 ("GeoCoordinates") |
-| Name | 場所の名前 |
+| 種類 | エンティティの種類 ("GeoCoordinates") |
+| 名前 | 場所の名前 |
 | Longitude | 場所の経度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
 | Latitude | 場所の緯度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
 | Elevation | 場所の標高 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 

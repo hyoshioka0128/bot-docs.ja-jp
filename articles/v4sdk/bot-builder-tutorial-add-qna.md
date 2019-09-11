@@ -3,19 +3,18 @@ title: 質問に回答するボットの Azure Bot Service チュートリアル
 description: QnA Maker を使用して質問に回答するボットに関するチュートリアルです。
 keywords: QnA Maker, 質問と回答, ナレッジ ベース
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: tutorial
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: aff1440f739150181ddc2d65d9b749b4eeda5d79
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 8bc13f06e4cfd36afea65a344503fa48fe05f08e
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464695"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299215"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>チュートリアル:ボットで QnA Maker を使用して質問に回答する
 

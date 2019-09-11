@@ -3,18 +3,17 @@ title: ボットを GroupMe に接続する | Microsoft Docs
 description: ボットの GroupMe への接続を構成する方法について説明します。
 keywords: ボット チャネル, GroupMe, GroupMe の作成, 資格情報
 author: RobStand
-ms.author: RobStand
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: a2004293ff10cfbc7132f58b7c0c834a2012cfd1
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 67bcd518f8c6ae7a1e383c611108c15b51bd0292
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563584"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298733"
 ---
 # <a name="connect-a-bot-to-groupme"></a>ボットを GroupMe に接続する
 

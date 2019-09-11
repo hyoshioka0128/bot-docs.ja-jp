@@ -3,18 +3,17 @@ title: ボットの HTTP 500 エラーのトラブルシューティング | Mic
 description: デプロイされたボットでの HTTP 500 エラーを解決する方法。
 keywords: トラブルシューティング, HTTP 500 エラー, 問題。
 author: jonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 4/30/2019
-ms.openlocfilehash: 93689b7cee1c89bd9a7079c15ddf6aa16fcacc26
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 3dcb22c2310f8c686f02fae27617061681910d01
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033083"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298607"
 ---
 # <a name="troubleshoot-http-500-errors"></a>HTTP 500 エラーのトラブルシューティング
 
@@ -170,9 +169,9 @@ Bot ASP.Net と Node からは、検査可能なログがサーバー レベル�
 
 1. 別のブラウザーを使用して、Azure Portal でボットを開きます。
 1. **[アプリ サービスの設定]/[All App service settings]\(すべてのアプリ サービス設定\)** ページを開き、すべてのサービス設定を確認します。
-1. アプリ サービスの **[概要]** ページに切り替え、**[再起動]** をクリックします。
-   - 確認を求められたら、**[はい]** を選択します。
+1. アプリ サービスの **[概要]** ページに切り替え、 **[再起動]** をクリックします。
+   - 確認を求められたら、 **[はい]** を選択します。
 1. 最初のブラウザー ウィンドウに戻り、ログを確認します。
 1. 新しいログを受け取っていることを確認します。
    - アクティビティがない場合は、ボットを再デプロイします。
-   - 次に、**[アプリケーション ログ]** ページに切り替え、エラーがないか確認します。
+   - 次に、 **[アプリケーション ログ]** ページに切り替え、エラーがないか確認します。

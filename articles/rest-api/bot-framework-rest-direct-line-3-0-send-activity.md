@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 0b9e2c406ee20535dfb065639beda8b66d0a2996
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 5c7ac61da6c2e0d09fb2f8dc4cd0bf3961bcfc4f
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037357"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70875995"
 ---
 # <a name="send-an-activity-to-the-bot"></a>ボットにアクティビティを送信する
 
-Direct Line 3.0 プロトコルを利用すると、**メッセージ** アクティビティ、**入力**アクティビティ、ボットでサポートされるカスタム アクティビティなど、さまざまな種類の[アクティビティ](bot-framework-rest-connector-activities.md)をクライアントとボットで交換できます。 クライアントでは、要求ごとにアクティビティを 1 つを送信できます。 
+Direct Line 3.0 プロトコルを利用すると、**メッセージ** アクティビティ、**入力**アクティビティ、ボットでサポートされるカスタム アクティビティなど、さまざまな種類の[アクティビティ](https://aka.ms/botSpecs-activitySchema)をクライアントとボットで交換できます。 クライアントでは、要求ごとにアクティビティを 1 つを送信できます。 
 
 ## <a name="send-an-activity"></a>アクティビティを送信する
 

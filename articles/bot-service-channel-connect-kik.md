@@ -3,18 +3,17 @@ title: ボットを Kik に接続する | Microsoft Docs
 description: ボットの Kik への接続を構成する方法について説明します。
 keywords: ボットの接続, ボットのチャネル, Kik ボット, 資格情報, 構成, 携帯電話
 author: RobStand
-ms.author: RobStand
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3072694307ace7c8821fd9e61fe8204acca97efb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 9024de58fd40fc3ef9f3c064a23b5e0811c20a89
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996730"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298360"
 ---
 # <a name="connect-a-bot-to-kik"></a>ボットを Kik に接続する
 
@@ -40,7 +39,7 @@ Kik を携帯電話にインストールしていない場合は、携帯電話�
 
 ## <a name="gather-credentials"></a>資格情報を収集する
 
-[Configuration]\(構成\) タブで、**[Name]\(名前\)** と **[API key]\(API キー\)** をコピーします。
+[Configuration]\(構成\) タブで、 **[Name]\(名前\)** と **[API key]\(API キー\)** をコピーします。
 
 ![ボットの情報のコピー](./media/channels/kik-configure.png)
 
@@ -52,6 +51,6 @@ Kik を携帯電話にインストールしていない場合は、携帯電話�
 
 ## <a name="enable-the-bot"></a>ボットの有効化
 
-**[Enable this bot on Kik]\(このボットを Kik で有効にする\)** をオンにします。 次に、**[I'm done configuring Kik]\(Kik の構成が終了しました\)** をクリックします。
+**[Enable this bot on Kik]\(このボットを Kik で有効にする\)** をオンにします。 次に、 **[I'm done configuring Kik]\(Kik の構成が終了しました\)** をクリックします。
 
 これらの手順を完了すると、ボットは、Kik でユーザーとコミュニケーションするように正しく構成されます。
