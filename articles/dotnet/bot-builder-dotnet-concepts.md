@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e01473a06a0cdbef635de33e5734b02351e36cea
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 0b0493d9975e58dda0f2195c03d887e4681ca0bf
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563432"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298387"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-net"></a>Bot Framework SDK for .NET の主要概念
 
@@ -22,7 +21,7 @@ ms.locfileid: "64563432"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-concepts.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-concepts.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-concepts.md)
 
 この記事では、Bot Framework SDK for .NET の主要な概念について説明します。
 
@@ -48,7 +47,7 @@ Bot Framework SDK for .NET では、[Builder][builderLibrary] ライブラリを
 
 Bot Framework SDK for .NET 内の [FormFlow](bot-builder-dotnet-formflow.md) を使用すると、ユーザーから情報を収集するボットを効率的に構築できます。 たとえば、サンドイッチの注文を取るボットは、パンの種類、トッピングの選択、サイズなど、ユーザーから情報をいくつか収集する必要があります。 基本的なガイドラインを指定すると、このようなガイド付きの会話を管理するために必要なダイアログを FormFlow で自動的に生成することができます。
 
-## <a name="state"></a>状態
+## <a name="state"></a>State
 
 [!INCLUDE [State concept overview](../includes/snippet-dotnet-concept-state.md)]
 

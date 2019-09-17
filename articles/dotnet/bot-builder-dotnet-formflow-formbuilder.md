@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8a13358afca190606e235475a58f6aedd146fee5
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: b738296d3d796cdccd40e0d3bda503b9d6349bff
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225407"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297994"
 ---
 # <a name="customize-a-form-using-formbuilder"></a>FormBuilder によるフォームのカスタマイズ
 
@@ -41,7 +40,7 @@ FormBuilder を使用して、フィールド値、確認、およびメッセ�
 この例では、[Advanced.Field.SetType][setType] メソッドはフィールドの種類を指定します (`null` は列挙体フィールドを表します)。 [Advanced.Field.SetActive][setActive] メソッドは、サンドウィッチの長さが `Length.FootLong` である場合にのみフィールドが有効になるように指定します。 最後に、[Advanced.Field.SetDefine][setDefine] メソッドはフィールドを定義する非同期デリゲートを指定します。 デリゲートには、現在の状態オブジェクトと、動的に定義中の [Advanced.Field][field] が渡されます。 デリゲートは、動的に値を定義するためにフィールドの fluent メソッドを使用します。 この例では、値は文字列であり、`AddDescription` メソッドおよび `AddTerms` メソッドは各値の説明と用語を指定します。
 
 > [!NOTE]
-> フィールドの値を動的に定義するには、[Advanced.IField][iField] を実装するか、上の例に示すように [Advanced.FieldReflector][FieldReflector] クラスを使用してプロセスを効率化することができます。 
+> フィールドの値を動的に定義するには、[Advanced.IField][iField] を実装するか、上の例に示すように [Advanced.FieldReflector][FieldReflector] クラスを使用してプロセスを効率化できます。 
 
 ### <a name="dynamically-define-messages-and-confirmations"></a>メッセージと確認の動的な定義
 

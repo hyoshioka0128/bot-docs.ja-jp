@@ -7,14 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: efe38392117fb871b2b98e3f1d8d798bfaef0c41
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: cdf9a98d77f876fb582432ab9b4704d2ac98d45f
+ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563759"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70385976"
 ---
 # <a name="connect-a-bot-to-telegram"></a>ボットを Telegram に接続する
 
@@ -53,9 +52,17 @@ Telegram ボットのアクセス トークンをコピーします。
 
 ## <a name="enter-the-telegram-bots-access-token"></a>Telegram ボットのアクセス トークンを入力する
 
-前にコピーしたトークンを **[Access Token]\(アクセス トークン\)** フィールドに貼り付けて、**[Submit]\(送信\)** をクリックします。
+Azure portal でご使用のボットの **[チャネル]** セクションにアクセスし、 **[Telegram]** ボタンをクリックします。 
 
-## <a name="enable-the-bot"></a>ボットを有効にする
-**[Enable this bot on Telegram]\(このボットを Telegram で有効にする\)** をオンにします。 次に、**[I'm done configuring Telegram]\(Telegram の構成が終了しました\)** をクリックします。
+> [!NOTE]
+>  ボットを Telegram に既に接続している場合は、Azure portal UI の表示は多少異なります。 
 
-これらの手順を完了すると、ボットは、Telegram でユーザーと通信するように正しく構成されます。
+![チャネルでの Telegram の選択](~/media/channels/tg-connectBot-Azure.png)
+
+前にコピーしたトークンを **[アクセス トークン]** フィールドに貼り付けて、 **[保存]** をクリックします。
+
+![Telegram のアクセス トークン](~/media/channels/tg-accessToken-Azure.png)
+
+これで、ボットは Telegram のユーザーと通信するように正常に構成されました。 
+
+![Telegram ボットの有効化](~/media/channels/tg-botEnabled-Azure.png)

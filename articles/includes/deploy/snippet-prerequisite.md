@@ -1,20 +1,25 @@
 ---
-ms.openlocfilehash: 2f970239f7df015bf38d163dd6442a9920b21115
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 967e0811cda9e77135b4575560d36f12ffdfafcf
+ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405584"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70386020"
 ---
-- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-- 最新バージョンの [Azure CLI ツール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)をインストールします。
-- 最新バージョンの [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/MSBot) ツールをインストールします。
-- 最新リリース バージョンの [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started) をインストールします。
-- [ngrok](https://github.com/Microsoft/BotFramework-Emulator/wiki/Tunneling-%28ngrok%29) をインストールして構成します。 
-- [ボット リソース管理](~/v4sdk/bot-file-basics.md)に関する知識。
+- [Microsoft Azure](https://azure.microsoft.com/free/) のサブスクリプション。
+- ローカル コンピューターで開発した C#、JavaScript、または TypeScript ボット
+- 最新バージョンの [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
+- [Azure CLI および ARM テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使い慣れていること
 
-msbot 4.3.2 以降では、Azure CLI バージョン 2.0.54 以降が必要です。 botservice 拡張機能をインストールした場合は、次のコマンドでそれを削除します。
+<!-- - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/) before you begin.
+- Install the latest version of the [Azure cli tool](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Install latest version of the [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/MSBot) tool.
+- Install latest released version of the [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
+- Install and configure [ngrok](https://github.com/Microsoft/BotFramework-Emulator/wiki/Tunneling-%28ngrok%29). 
+- Knowledge of [Managing bot resources](~/v4sdk/bot-file-basics.md).
+
+With msbot 4.3.2 and later, you need Azure CLI version 2.0.54 or later. If you installed the botservice extension, remove it with this command.
 
 ```cmd
 az extension remove --name botservice
-```
+``` -->

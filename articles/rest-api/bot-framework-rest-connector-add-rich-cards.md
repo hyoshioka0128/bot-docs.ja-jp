@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 10246fda94932feb96e5faa0cdd8ca489c98c855
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 3a4bf05a6c9b9eeca4a3cccef7aaf77c2f304048
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037478"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876184"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 | カードの種類 | 説明 |
 |----|----|
-| <a href="/adaptive-cards/get-started/bots">AdaptiveCard</a> | テキスト、音声、イメージ、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。 [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。  |
+| <a href="/adaptive-cards/get-started/bots">AdaptiveCard</a> | テキスト、音声、イメージ、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。 [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。 |
 | [AnimationCard][] | アニメーション GIF または短い動画を再生できるカード。 |
 | [AudioCard][] | オーディオ ファイルを再生できるカード。 |
 | [HeroCard][] | 通常 1 つの大きなイメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
@@ -48,8 +48,11 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 リッチ カード内のイベントを処理するには、[CardAction][] オブジェクトを使用して、ユーザーがボタンをクリックするか、カードのセクションをタップしたときのアクションを指定します。 各 `CardAction` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | Type | 説明 | 
+| プロパティ | 種類 | 説明 | 
 |----|----|----|
+| channelData | string | このアクションに関連付けられているチャネル固有のデータ |
+| displayText | string | ボタンがクリックされた場合にチャット フィードに表示するテキスト | 
+| text | string | アクションのテキスト | 
 | type | string | アクションの種類 (下の表に示されている値のいずれか) |
 | title | string | ボタンのタイトル |
 | image | string | ボタン用のイメージ URL |
@@ -260,12 +263,10 @@ Content-Type: application/json
 - <a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>
 
 [ChannelInspector]: ../bot-service-channel-inspector.md
-
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object
 [Attachment]: bot-framework-rest-connector-api-reference.md#attachment-object
 [CardAction]: bot-framework-rest-connector-api-reference.md#cardaction-object
-
-[AnnimationCard]: bot-framework-rest-connector-api-reference.md#annimationcard-object
+[AnimationCard]: bot-framework-rest-connector-api-reference.md#animationcard-object
 [AudioCard]: bot-framework-rest-connector-api-reference.md#audiocard-object
 [HeroCard]: bot-framework-rest-connector-api-reference.md#herocard-object
 [ThumbnailCard]: bot-framework-rest-connector-api-reference.md#thumbnailcard-object

@@ -3,19 +3,18 @@ title: メッセージにメディアを追加する | Microsoft Docs
 description: Bot Framework SDK を使用してメッセージにメディアを追加する方法について説明します。
 keywords: メディア, メッセージ, イメージ, オーディオ, ビデオ, ファイル, MessageFactory, リッチ カード, メッセージ, アダプティブ カード, ヒーロー カード, 推奨されるアクション
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9478a3861b24746b4081ab2176486e59ccc7d4bc
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 4caa11221ed930a627b53d7f46107adb226a816d
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464712"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876173"
 ---
 # <a name="add-media-to-messages"></a>メッセージにメディアを追加する
 
@@ -23,7 +22,15 @@ ms.locfileid: "67464712"
 
 ユーザーとボットの間のメッセージ交換には、イメージ、ビデオ、オーディオ、ファイルなどのメディア添付ファイルを含めることができます。 Bot Framework SDK では、ユーザーにリッチ メッセージを送信するタスクがサポートされています。 チャネル (Facebook、Skype、Slack など) がサポートするリッチ メッセージの種類を確認するには、チャネルのドキュメントで制限事項に関する情報を参照してください。
 
-使用可能なカードの例については、[ユーザー エクスペリエンスの設計](../bot-service-design-user-experience.md)に関する記事をご覧ください。
+## <a name="prerequisites"></a>前提条件
+- [ボットの基本](bot-builder-basics.md)に関する知識。
+- この記事のコードは、次のサンプルに基づいています。
+
+  | サンプル コード | C# | JS |
+  | :------ | :----- | :---|
+  | カード | [C# のサンプル](https://aka.ms/bot-cards-sample-code) | [JS のサンプル](https://aka.ms/bot-cards-js-sample-code) |
+  | [添付ファイル] | [C# のサンプル](https://aka.ms/bot-attachments-sample-code) | [JS のサンプル](https://aka.ms/bot-attachments-sample-code-js) |
+  | 推奨されるアクション | [C# のサンプル](https://aka.ms/SuggestedActionsCSharp) | [JS のサンプル](https://aka.ms/SuggestedActionsJS) |
 
 ## <a name="send-attachments"></a>添付ファイルを送信する
 
@@ -120,7 +127,7 @@ ms.locfileid: "67464712"
 
 正常に機能させるために、カード上のクリック可能な各アイテムにアクションの種類を割り当てます。 この表では、使用できるアクションの種類と、関連付けられている value プロパティに含める内容を一覧にまとめ、説明しています。
 
-| Type | 説明 | 値 |
+| 種類 | 説明 | 値 |
 | :---- | :---- | :---- |
 | openUrl | 組み込みのブラウザーで URL を開きます。 | 開く URL。 |
 | imBack | ボットにメッセージを送信し、目に見える応答をチャットに投稿します。 | 送信するメッセージのテキスト。 |
@@ -241,14 +248,6 @@ ms.locfileid: "67464712"
 使用可能なカードの例については、[ユーザー エクスペリエンスの設計](../bot-service-design-user-experience.md)に関する記事をご覧ください。
 
 スキーマの詳細については、「[Bot Framework card schema (Bot Framework のカード スキーマ)](https://aka.ms/botSpecs-cardSchema)」と Bot Framework のアクティビティ スキーマに関するページの「[Message activity (メッセージ アクティビティ)](https://aka.ms/botSpecs-activitySchema#message-activity)」セクションをご覧ください。
-
-| サンプル コード | C# | JS |
-| :------ | :----- | :---|
-| カード | [C# のサンプル](https://aka.ms/bot-cards-sample-code) | [JS のサンプル](https://aka.ms/bot-cards-js-sample-code) |
-| [添付ファイル] | [C# のサンプル](https://aka.ms/bot-attachments-sample-code) | [JS のサンプル](https://aka.ms/bot-attachments-sample-code-js) |
-| 推奨されるアクション | [C# のサンプル](https://aka.ms/SuggestedActionsCSharp) | [JS のサンプル](https://aka.ms/SuggestedActionsJS) |
-
-その他のサンプルについては、[GitHub](https://aka.ms/bot-samples-readme) の Bot Builder サンプル リポジトリを参照してください。
 
 ### <a name="code-sample-for-processing-adaptive-card-input"></a>アダプティブ カード入力を処理するためのコード サンプル
 

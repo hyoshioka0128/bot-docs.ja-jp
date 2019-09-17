@@ -1,31 +1,17 @@
 ---
-ms.openlocfilehash: f8aad539a2d1e415833609f66cd5b398c88206f1
-ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
+ms.openlocfilehash: c664749bc6ad63d1b0f60e001b2603898e58a9ea
+ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2019
-ms.locfileid: "67252669"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70386010"
 ---
-コマンド プロンプトを開いて Azure portal にログインします。
+ボットをローカルで作成してテストしたら、Azure にデプロイできます。 コマンド プロンプトを開いて Azure portal にログインします。
 
 ```cmd
 az login
 ```
-
 ブラウザー ウィンドウが開いて、サインインできます。
 
-### <a name="set-the-subscription"></a>サブスクリプションを設定する
-
-使用する既定のサブスクリプションを設定します。
-
-```cmd
-az account set --subscription "<azure-subscription>"
-```
-
-ボットのデプロイに使用するサブスクリプションが不明な場合は、`az account list` コマンドを使用して、お使いのアカウントの `subscriptions` の一覧を表示できます。
-
-ボットのフォルダーに移動します。
-
-```cmd
-cd <local-bot-folder>
-```
+> [!NOTE]
+> US Gov などの Azure 以外のクラウドにボットをデプロイする場合は、`az login` の前に `az cloud set --name <name-of-cloud>` を実行する必要があります。この場合、&lt;name-ofcloud> は、`AzureUSGovernment` などの登録済みクラウドの名前になります。 パブリック クラウドに戻る場合は、`az cloud set --name AzureCloud` を実行できます。 

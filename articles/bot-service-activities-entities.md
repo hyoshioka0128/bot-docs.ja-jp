@@ -3,18 +3,17 @@ title: エンティティとアクティビティの種類 | Microsoft Docs
 description: エンティティとアクティビティの種類。
 keywords: メンション エンティティ, アクティビティの種類, エンティティの使用
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: e38d9887e50455e66ac7fdcd5c4e7bb309a3e3e9
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 4a37824ffc6eeeda69330a659d3d026bde5f0069
+ms.sourcegitcommit: 99fa595b81e6fabb1f4a93e0694e88bfbfab2dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405942"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70808436"
 ---
 # <a name="entities-and-activity-types"></a>エンティティとアクティビティの種類
 
@@ -34,7 +33,7 @@ ms.locfileid: "67405942"
 
 | プロパティ | Description |
 |----|----|
-| Type | エンティティの種類 ("mention") |
+| 種類 | エンティティの種類 ("mention") |
 | Mentioned | メンションされたユーザーを示すチャネル アカウント オブジェクト | 
 | Text | メンション自体を表す *activity.text* プロパティ内のテキスト (空または null 値の可能性があります) |
 
@@ -72,18 +71,18 @@ place オブジェクトには、次のプロパティが含まれています�
 
 | プロパティ | Description |
 |----|----|
-| Type | エンティティの種類 ("Place") |
+| 種類 | エンティティの種類 ("Place") |
 | Address | 説明または住所オブジェクト (将来) |
 | ジオ (主要地域) | GeoCoordinates |
 | HasMap | 地図の URL または地図オブジェクト (将来) |
-| Name | 場所の名前 |
+| 名前 | 場所の名前 |
 
 geoCoordinates オブジェクトには、次のプロパティが含まれています。
 
 | プロパティ | Description |
 |----|----|
-| Type | エンティティの種類 ("GeoCoordinates") |
-| Name | 場所の名前 |
+| 種類 | エンティティの種類 ("GeoCoordinates") |
+| 名前 | 場所の名前 |
 | Longitude | 場所の経度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 | Longitude | 場所の緯度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 | Elevation | 場所の標高 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
@@ -138,10 +137,10 @@ if (entity[0].type === "GeoCoordinates" && entity[0].latitude > 34) {
 ---
 
 ## <a name="activity-types"></a>アクティビティの種類
+<!-- 
+This code example show how to process an activity of type **message**:
 
-このコード例では、**message** 型のアクティビティの処理方法を示します。
-
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# [C#](#tab/cs)
 
 ```cs
 if (context.Activity.Type == ActivityTypes.Message){
@@ -149,7 +148,7 @@ if (context.Activity.Type == ActivityTypes.Message){
 }
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# [JavaScript](#tab/js)
 
 ```js
 if(context.activity.type === 'message'){
@@ -157,9 +156,9 @@ if(context.activity.type === 'message'){
 }
 ```
 
----
+--- -->
 
-アクティビティの種類が複数あります。たとえば最も一般的な **message** 以外に複数の種類を使用できます。 説明と詳細については、[アクティビティ スキーマ ページ](https://aka.ms/botSpecs-activitySchema)をご覧ください。
+アクティビティには最も一般的な **message** 以外に複数の種類があります。 さまざまなアクティビティの種類の説明と詳細については、[Bot Framework のアクティビティ スキーマ](https://aka.ms/botSpecs-activitySchema)に関するページを参照してください。
 
 ::: moniker range="azure-bot-service-3.0"
 

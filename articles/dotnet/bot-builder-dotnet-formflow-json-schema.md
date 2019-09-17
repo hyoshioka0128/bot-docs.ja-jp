@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d84252281baa57a15b093cfd0ba92fe5fe422027
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: a29f376afa4a9d3027960407f688cbef76b35473
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225857"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298807"
 ---
 # <a name="define-a-form-using-json-schema"></a>JSON スキーマによるフォームの定義
 
@@ -32,10 +31,10 @@ FormFlow は、以下の標準 <a href="http://json-schema.org/documentation.htm
 |----|----|
 | type | フィールドに入るデータの型を定義します。 |
 | enum | フィールドの有効な値を定義します。 |
-| minimum | フィールドで許可される最小の数値を定義します ([NumericAttribute][numericAttribute] で説明)。 |
-| maximum | フィールドで許可される最大の数値を定義します ([NumericAttribute][numericAttribute] で説明)。 |
+| minimum | フィールドで許可される最小の数値を定義します (「[NumericAttribute][numericAttribute]」で説明)。 |
+| maximum | フィールドで許可される最大の数値を定義します (「[NumericAttribute][numericAttribute]」で説明)。 |
 | 必須 | どれが必須フィールドであるかを定義します。 |
-| pattern | 文字列値を検証します ([PatternAttribute][patternAttribute] で説明)。 |
+| pattern | 文字列値を検証します (「[PatternAttribute][patternAttribute]」で説明)。 |
 
 ## <a name="extensions-to-json-schema"></a>JSON スキーマの拡張
 
@@ -66,8 +65,8 @@ JSON スキーマでテンプレートおよびプロンプトを指定するに
 
 |   プロパティ   |          目次           |                                                   説明                                                    |
 |--------------|-----------------------------|------------------------------------------------------------------------------------------------------------------|
-|   Datetime   |            bool             |                                  フィールドが `DateTime` フィールドかどうかを示します。                                  |
-|   Describe   |      文字列またはオブジェクト       |                  フィールドの説明 ([DescribeAttribute][describeAttribute] で説明)。                  |
+|   DateTime   |            bool             |                                  フィールドが `DateTime` フィールドかどうかを示します。                                  |
+|   Describe   |      文字列またはオブジェクト       |                  フィールドの説明 (「[DescribeAttribute][describeAttribute]」で説明)。                  |
 |    Terms     |       `[string,...]`        |                  フィールド値を照合するための正規表現 (TermsAttribute で説明)。                  |
 |  MaxPhrase   |             int             |                  `Language.GenerateTerms(string, int)` で用語を処理して、展開します。                   |
 |    値    | `{ string: {Describe:string |                                  object, Terms:[string, ...], MaxPhrase}, ...}`                                  |
@@ -87,7 +86,7 @@ JSON スキーマでテンプレートおよびプロンプトを指定するに
 
 前述のプロパティの中には、プロパティ値としてスクリプトが含まれるものもあります。 スクリプトは、メソッドの本体に普通に見出せるような、C# コードの任意のスニペットとすることができます。 **References** プロパティまたは **Imports** プロパティ (あるいはその両方) を使用して、参照を追加できます。 特別なグローバル変数には以下が含まれます。
 
-| 可変 | 説明 |
+| 変数 | 説明 |
 |----|----|
 | choice | スクリプトが実行する内部ディスパッチ。 |
 | state | すべてのスクリプトにバインドされる `JObject` フォーム状態。 |

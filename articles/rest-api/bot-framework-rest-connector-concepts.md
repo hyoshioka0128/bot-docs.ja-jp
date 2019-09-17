@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/16/2019
-ms.openlocfilehash: 12a54d479f0222497589c2b14e017a4aa8d992fd
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 0e97ad58fc81b52086eb691950845eec1665b064
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037545"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876089"
 ---
 # <a name="key-concepts"></a>主要な概念
 
@@ -24,13 +24,13 @@ Bot Connector サービスを使用すると、<a href="https://dev.botframework
 
 ### <a name="activity"></a>アクティビティ
 
-Bot Connector サービスでは、[Activity][] オブジェクトを渡すことによって、ボットとチャネル (ユーザー) 間で情報が交換されます。 最も一般的なアクティビティの種類は**メッセージ**ですが、ボットまたはチャネルにさまざまな種類の情報を通信するために使用できる他のアクティビティの種類も存在します。 Bot Connector 内のアクティビティの詳細については、「[Activities overview](bot-framework-rest-connector-activities.md)」(アクティビティの概要) を参照してください。
+Bot Connector サービスでは、[Activity][] オブジェクトを渡すことによって、ボットとチャネル (ユーザー) 間で情報が交換されます。 最も一般的なアクティビティの種類は**メッセージ**ですが、ボットまたはチャネルにさまざまな種類の情報を通信するために使用できる他のアクティビティの種類も存在します。 Bot Connector サービス内のアクティビティの詳細については、[アクティビティの概要](https://aka.ms/botSpecs-activitySchema )に関するページを参照してください。
 
 ## <a name="bot-state-service"></a>Bot State サービス
 
 Microsoft Bot Framework State サービスは 2018 年 3 月 30 日時点で廃止されています。 以前は、Azure Bot Service または Bot Builder SDK で構築されたボットには、ボットの状態データを格納するために Microsoft によってホストされたこのサービスへの既定の接続がありました。 ボットは、独自の状態ストレージを使用するように更新する必要があります。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 Bot Connector サービスを使用すると、JWT ベアラー トークンによる認証が有効になります。 ご利用のボッドから Bot Framework に送信された送信要求を認証する方法、Bot Framework からご利用のボットに届いた受信要求を認証する方法などの詳細については、「[Authentication](bot-framework-rest-connector-authentication.md)」(認証) を参照してください。 
 

@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3ec3d12a7d35f65adca901395edff2db3ab71c66
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 795232b401284becd940daed6bf7da8642c12efd
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225587"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297950"
 ---
 # <a name="localize-form-content"></a>フォームの内容をローカライズする
 
@@ -79,7 +78,7 @@ rview -g Microsoft.Bot.Sample.AnnotatedSandwichBot.dll Microsoft.Bot.Sample.Anno
 
 リソース ファイルを生成した後、それをプロジェクトに追加し、以下の手順に従ってニュートラル言語を設定します。 
 
-1. プロジェクトを右クリックし、**[アプリケーション]** を選択します。
+1. プロジェクトを右クリックし、 **[アプリケーション]** を選択します。
 2. **[アセンブリ情報]** をクリックします。
 3. ボットを開発した言語に対応する **[ニュートラル言語]** の値を選択します。
 
@@ -93,8 +92,8 @@ rview -g Microsoft.Bot.Sample.AnnotatedSandwichBot.dll Microsoft.Bot.Sample.Anno
 リソース ファイルをプロジェクトに追加した後、<a href="https://developer.microsoft.com/windows/develop/multilingual-app-toolkit" target="_blank">多言語アプリ ツールキット (MAT)</a> を使用してリソース ファイルをローカライズできます。 **MAT** をインストールした後、以下の手順に従ってプロジェクトで MAT を有効にします。
 
 1. Visual Studio のソリューション エクスプローラーでプロジェクトを選択します。
-2. **[ツール]**、**[Multilingual App Toolkit]\(多言語アプリ ツールキット\)**、**[有効にする]** の順にクリックします。
-3. プロジェクトを右クリックし、**[Multilingual App Toolkit]\(多言語アプリ ツールキット\)**、**[Add Translations]\(翻訳の追加\)** の順に選択して、翻訳を選択します。 これにより、自動または手動で翻訳できる業界標準の <a href="https://en.wikipedia.org/wiki/XLIFF" target="_blank">XLF</a> ファイルが作成されます。
+2. **[ツール]** 、 **[Multilingual App Toolkit]\(多言語アプリ ツールキット\)** 、 **[有効にする]** の順にクリックします。
+3. プロジェクトを右クリックし、 **[Multilingual App Toolkit]\(多言語アプリ ツールキット\)** 、 **[Add Translations]\(翻訳の追加\)** の順に選択して、翻訳を選択します。 これにより、自動または手動で翻訳できる業界標準の <a href="https://en.wikipedia.org/wiki/XLIFF" target="_blank">XLF</a> ファイルが作成されます。
 
 > [!NOTE]
 > この記事では多言語アプリ ツールキットを使って内容をローカライズする方法を説明しましたが、他のさまざまな手段を使ってローカライズを実装することができます。

@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 710a8ce315faa02a72eaeb753c44b9b212524ec3
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 4e9aa1b7bffd55518bd4ef03512d873ac48b49a7
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224677"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297858"
 ---
 # <a name="basic-features-of-formflow"></a>FormFlow の基本的機能
 
@@ -32,8 +31,8 @@ FormFlow を使用してボットを作成するには、ボットがユーザ�
 
 - 整数 (sbyte、byte、short、ushort、int、uint、long、ulong)
 - 浮動小数点 (float、double)
-- String
-- Datetime
+- string
+- DateTime
 - Enumeration
 - 列挙型のリスト
 
@@ -64,7 +63,7 @@ FormFlow を使用するには、まず、`Microsoft.Bot.Builder.FormFlow` 名�
 
 ### <a name="see-it-in-action"></a>実際の動作を確認する
 
-C# クラスを使用してフォームを定義し、フォームをフレームワークに接続するだけで、FormFlow がボットとユーザー間の会話を自動的に管理できるようになりました。 以下に示す対話例は、FormFlow の基本的機能を使用して作成されたボットの機能を示しています。 各対話では、**>** 記号はユーザーが応答を入力するポイントを示しています。 
+C# クラスを使用してフォームを定義し、フォームをフレームワークに接続するだけで、FormFlow がボットとユーザー間の会話を自動的に管理できるようになりました。 以下に示す対話例は、FormFlow の基本的機能を使用して作成されたボットの機能を示しています。 各対話では、 **>** 記号はユーザーが応答を入力するポイントを示しています。 
 
 #### <a name="display-the-first-prompt"></a>最初のプロンプトを表示する 
 

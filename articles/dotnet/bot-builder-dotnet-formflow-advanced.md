@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d04e13babef847a44438e1a748990d7405478fa2
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 4dc065905c71aef0b3f0108032ca79a2a15f8af0
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225957"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298027"
 ---
 # <a name="advanced-features-of-formflow"></a>FormFlow の高度な機能
 
@@ -71,11 +70,11 @@ For sandwich toppings you have selected Avocado, Banana Peppers, Cucumbers, Gree
 | Attribute | 目的 |
 |----|----| 
 | [Describe][describeAttribute] | テンプレートやカードにフィールドや値を表示する方法を変更します |
-| [Numeric][numericAttribute] | 数値フィールドの許容値を制限します |
-| [Optional][optionalAttribute] | フィールドに省略可能とマークします |
-| [Pattern][patternAttribute] | 文字列フィールドを検証する正規表現を定義します |
+| [数値][numericAttribute] | 数値フィールドの許容値を制限します |
+| [省略可能][optionalAttribute] | フィールドに省略可能とマークします |
+| [パターン][patternAttribute] | 文字列フィールドを検証する正規表現を定義します |
 | [Prompt][promptAttribute] | フィールドのプロンプトを定義します |
-| [Template][templateAttribute] | プロンプトまたはプロンプトの値を生成するために使用するテンプレートを定義します |
+| [テンプレート][templateAttribute] | プロンプトまたはプロンプトの値を生成するために使用するテンプレートを定義します |
 | [Terms][termsAttribute] | フィールドまたは値を照合する入力用語を定義します |
 
 ## <a name="customize-prompts-using-the-prompt-attribute"></a>Prompt 属性を使用してプロンプトをカスタマイズする

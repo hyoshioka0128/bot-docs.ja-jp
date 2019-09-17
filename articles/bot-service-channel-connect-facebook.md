@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: kamrani
 ms.service: bot-service
 ms.date: 08/03/2019
-ms.openlocfilehash: 4e5dc332b463e9490c7aa265a08e8f126d59d3f9
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: a856e3cc578b8c73583126df9f670bfde68ec9dc
+ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866471"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70386106"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Facebook にボットを接続する
 
@@ -131,14 +131,31 @@ Facebook には、基本アプリ設定ページの [Privacy Policy URL]\(プラ
 
 ## <a name="connect-a-bot-to-facebook-workplace"></a>Facebook Workplace にボットを接続する
 
+Facebook Workplace は、従業員が簡単に接続して共同作業できる Facebook のビジネス指向バージョンです。 これには、ライブ動画、ニュース フィード、グループ、Messenger、リアクション、検索、およびトレンドの投稿が含まれています。 また、以下もサポートします。
+
+- 分析と統合。 企業が Workplace を既存の IT システムと統合するために使用する分析、統合、シングルサインオン、および ID プロバイダーを備えたダッシュボード。
+- 複数の企業のグループ。 さまざまな組織の従業員が連携して共同作業を行うことができる共有スペース。
+
 Facebook Workplace については、[Workplace ヘルプ センター](https://workplace.facebook.com/help/work/)を参照してください。Facebook Workplace の開発に関するガイドラインについては、[Workplace の開発者向けドキュメント](https://developers.facebook.com/docs/workplace)を参照してください。
 
-Facebook Workplace を使用して通信するようにボットを構成するには、カスタム統合を作成してそれにボットを接続します。
+ボットと共に Facebook Workplace を使用するには、ボットを接続するために、Workplace アカウントとカスタム統合を作成する必要があります。
 
+### <a name="create-a-workplace-premium-account"></a>Workplace プレミアム アカウントを作成する
 
-1. Facebook Workplace プレミアム アカウントを作成します。 [こちら](https://www.facebook.com/workplace)の手順に従って、Facebook Workplace プレミアム アカウントを作成し、自分自身をシステム管理者として設定します。 カスタム統合を作成できるのは Workplace のシステム管理者だけであることに注意してください。
+1. 会社を代表して [Workplace](https://www.facebook.com/workplace) に申請を送信します。
+1. 申請が承認されると、参加するよう招待するメールが届きます。 応答にはしばらく時間がかかる場合があります。
+1. 招待メールの **[Get Started]\(作業の開始\)** をクリックします。
+1. プロファイル情報を入力します。
+    > [!TIP]
+    > 自分自身をシステム管理者として設定します。 カスタム統合を作成できるのはシステム管理者のみであることに注意してください。
+1. **[Preview Profile]\(プロファイルのプレビュー\)** をクリックし、情報が正しいことを確認します。
+1. *[Free Trial]\(無料試用版\)* にアクセスします。
+1. **パスワード**を作成します。
+1. **[Invite Coworkers]\(同僚を招待する\)** をクリックして、サインインするように従業員を招待します。 招待した従業員は、サインインするとすぐにメンバーになります。 彼らは、これらの手順で説明した内容と同様のサインイン プロセスを行います。
 
-1. 次で説明する手順に従って、Workplace の[カスタム統合](https://developers.facebook.com/docs/workplace/custom-integrations-new)を作成します。 カスタム統合を作成すると、アクセス許可が定義されたアプリと、Workplace コミュニティ内でのみ表示される "ボット" 型のページが作成されます。
+### <a name="create-a-custom-integration"></a>カスタム統合を作成する
+
+以下で説明する手順に従って、Workplace の[カスタム統合](https://developers.facebook.com/docs/workplace/custom-integrations-new)を作成します。 カスタム統合を作成すると、アクセス許可が定義されたアプリと、Workplace コミュニティ内でのみ表示される "ボット" 型のページが作成されます。
 
 1. **[Admin Panel]\(管理パネル\)** で、 **[Integrations]\(統合\)** タブを開きます。
 1. **[Create your own custom App]\(カスタム アプリの作成\)** ボタンをクリックします。

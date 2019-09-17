@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3089e7a073f6a6d9af3a3720954af3a915106888
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: fe45d873369b28a0081df28d2d3971e5b77ca4f9
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224997"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298368"
 ---
 # <a name="dialogs-in-the-bot-framework-sdk-for-net"></a>Bot Framework SDK for .NET のダイアログ
 
@@ -22,7 +21,7 @@ ms.locfileid: "54224997"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-dialogs.md)
-> - [Node.js](../nodejs/bot-builder-nodejs-dialog-overview.md)
+> - [Node.JS](../nodejs/bot-builder-nodejs-dialog-overview.md)
 
 Bot Framework SDK for .NET を使用してボットを作成する場合、ダイアログを使用して会話をモデル化し、[会話フロー](../bot-service-design-conversation-flow.md)を管理できます。 各ダイアログは、`IDialog` を実装する C# クラスに独自の状態をカプセル化する抽象化です。 ダイアログは、他のダイアログと組み合わせて最大限に再利用することができます。ダイアログ コンテキストは、任意の時点における会話内のアクティブな[ダイアログのスタック](../bot-service-design-conversation-flow.md#dialog-stack)を保持します。 
 

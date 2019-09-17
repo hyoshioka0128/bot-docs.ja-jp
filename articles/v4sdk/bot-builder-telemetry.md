@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5ca631c1e2d334eef82c2a0f5c0b08ef242d06b1
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 4db21ee1515b1c43dcbb20b532dcd195e20c3357
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167145"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876193"
 ---
 # <a name="add-telemetry-to-your-bot"></a>ボットへのテレメトリの追加
 
@@ -55,10 +55,8 @@ Bot Framework SDK のバージョン 4.2 にテレメトリのログ記録が追
 
 1. Visual Studio で [CoreBot サンプル アプリ](https://aka.ms/cs-core-sample)を開きます
 
-2. 次の NuGet パッケージを追加します。 NuGet の使用方法について詳しくは、「[Visual Studio にパッケージをインストールして管理する](https://aka.ms/install-manage-packages-vs)」を参照してください。
-    * `Microsoft.ApplicationInsights`
-    * `Microsoft.Bot.Builder.ApplicationInsights`
-    * `Microsoft.Bot.Builder.Integration.ApplicationInsights.Core`
+2. `Microsoft.Bot.Builder.Integration.ApplicationInsights.Core ` NuGet パッケージを追加します。 NuGet の使用方法について詳しくは、「[Visual Studio にパッケージをインストールして管理する](https://aka.ms/install-manage-packages-vs)」を参照してください。
+
 
 3. 次のステートメントを `Startup.cs` に含めます。
     ```csharp

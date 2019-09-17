@@ -2,17 +2,17 @@
 title: Bot Framework 認証のトラブルシューティング | Microsoft Docs
 description: ボットの認証エラーをトラブルシューティングする方法について説明します。
 author: DeniseMak
-ms.author: v-demak
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/30/2019
-ms.openlocfilehash: 756e24409532de1473e546e3f771be416cb44c78
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: c929a97175858f8e159b660346cb897183bbcf73
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033654"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297452"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Bot Framework 認証のトラブルシューティング
 
@@ -101,12 +101,12 @@ const adapter = new BotFrameworkAdapter({
 
 * エミュレーター設定に指定されているボットのエンドポイントが正しくない。 URL に適切なポート番号と、末尾に適切なパスが含まれていることを確認します (例: `/api/messages`)。
 * エミュレーター設定に指定されているボットのエンドポイントが `https` で始まっている。 localhost では、エンドポイントは、`http` で始める必要があります。
-* エミュレーター設定で、**[Microsoft アプリ ID]** フィールドと **[Microsoft アプリ パスワード]** フィールドの値が指定されている。 どちらのフィールドも、空にする必要があります。
+* エミュレーター設定で、 **[Microsoft アプリ ID]** フィールドと **[Microsoft アプリ パスワード]** フィールドの値が指定されている。 どちらのフィールドも、空にする必要があります。
 * ボットのセキュリティが無効になっていない。 ボットのアプリ ID とパスワードの値が、両方とも指定されていないことを[確認](#disable-security-localhost)します。
 
 ## <a id="step-2"></a>手順 2: ボットのアプリ ID とパスワードを確認する
 
-この手順では、ボットが認証のために使用するアプリ ID とパスワードが有効であることを確認します  (これらの値がわからない場合は、今すぐ[取得](#PW)してください)。 
+この手順では、ボットが認証のために使用するアプリ ID とパスワードが有効であることを確認します (これらの値がわからない場合は、今すぐ[取得](#PW)してください)。 
 
 > [!WARNING]
 > 次の手順は、`login.microsoftonline.com` の SSL 検証を無効にします。 この手順は、セキュリティで保護されたネットワークでのみ実行し、実行後にアプリケーションのパスワードを変更することを検討してください。
@@ -182,7 +182,7 @@ var connector = new builder.ChatConnector({
 
 * エミュレーター設定に指定されているボットのエンドポイントが正しくない。 URL に適切なポート番号と、末尾に適切なパスが含まれていることを確認します (例: `/api/messages`)。
 * エミュレーター設定に指定されているボットのエンドポイントが `https` で始まっている。 localhost では、エンドポイントは、`http` で始める必要があります。
-* エミュレーター設定で、**[Microsoft アプリ ID]** フィールドと **[Microsoft アプリ パスワード]** に有効な値が含まれていない。 両方のフィールドには、[手順 2](#step-2) で確認した該当する値を入力する必要があります。
+* エミュレーター設定で、 **[Microsoft アプリ ID]** フィールドと **[Microsoft アプリ パスワード]** に有効な値が含まれていない。 両方のフィールドには、[手順 2](#step-2) で確認した該当する値を入力する必要があります。
 * ボットのセキュリティが有効になっていない。 ボットの構成設定にアプリ ID とパスワードの両方の値が指定されていることを[確認](#enable-security-localhost)します。
 
 ## 手順 4:ボットをクラウドでテストする<a id="step-4"></a>
@@ -222,9 +222,9 @@ Bot Framework では、ボットはインターネットからアクセス可能
 上記の手順を完了した後で、問題が発生した場合は、以下を実行できます。
 
 * [ボットをデバッグする](bot-service-debug-bot.md)方法に関する記事、およびそのセクションに示されているデバッグに関するその他の記事をご覧ください。
-* Bot Framework Emulator と <a href="https://ngrok.com/" target="_blank">ngrok</a> トンネリング ソフトウェアを使用して、[クラウド内のボットをデバッグする](~/bot-service-debug-emulator.md)。 "*ngrok はマイクロソフト製品ではありません。*"
+* Bot Framework Emulator と <a href="https://ngrok.com/" target="_blank">ngrok</a> トンネリング ソフトウェアを使用して、[クラウド内のボットをデバッグする](~/bot-service-debug-emulator.md)。 "*ngrok はマイクロソフト製品ではありません。* "
 * [Fiddler](https://www.telerik.com/fiddler) などのプロキシ化ツールを使用して、ボットとの間の HTTPS トラフィックを検査する。 *Fiddler はマイクロソフト製品ではありません。*
-* Bot Framework で使用される認証テクノロジーについては、[Bot Connector 認証ガイド][BotConnectorAuthGuide]を参照してください。
+* Bot Framework で使用される認証テクノロジについては、[Bot Connector 認証ガイド][BotConnectorAuthGuide]を参照してください。
 * Bot Framework の[サポート][Support] リソースを使用して、他のユーザーにヘルプを要請する。 
 
 [BotConnectorAuthGuide]: ~/rest-api/bot-framework-rest-connector-authentication.md

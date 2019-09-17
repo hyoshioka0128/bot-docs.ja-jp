@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f3d46431191638cc41026f6c020a5f04de21ff0d
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 032d3c9553c5be774bf5d71fb2477d5a5689ca40
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225637"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297912"
 ---
 # <a name="customize-user-experience-with-pattern-language"></a>パターン言語によるユーザー エクスペリエンスのカスタマイズ
 
@@ -45,7 +44,7 @@ ms.locfileid: "54225637"
 | `{[{<field><format>} ...]}` | 名前付きフィールドの値の一覧を表示します。リスト内の個々の値は、[Separator][separator] および [LastSeparator][lastSeparator] を使用して分割されます。 |
 | `{*}` | アクティブなフィールドそれぞれについて 1 行を表示します。各行には、フィールドの説明と現在の値が含まれます。 | 
 | `{*filled}` | 実際に値を含むアクティブなフィールドそれぞれについて 1 行を表示します。各行には、フィールドの説明と現在の値が含まれます。 |
-| `{<nth><format>}` | テンプレートの n 番目の引数に適用される通常の C# の書式指定子です。 利用可能な引数の一覧は、「[TemplateUsage][templateUsage]」を参照してください。 |
+| `{<nth><format>}` | テンプレートの n 番目の引数に適用される通常の C# の書式指定子です。 利用可能な引数の一覧は、「[TemplateUsage][templateUsage]」をご覧ください。 |
 | `{?<textOrPatternElement>...}` | 条件付き置換です。 参照されるすべてのパターン要素に値がある場合、値が置換されて式全体が使用されます。 |
 
 上記の要素について
