@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 04/30/2019
-ms.openlocfilehash: c9c8ff04e7093cd0375e52c4ecd90b44af4f4798
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.date: 09/17/2019
+ms.openlocfilehash: 47f87555b48edcfdca6d07ab2bdaa52ef915a8da
+ms.sourcegitcommit: 61a2297fabf35c59693309f2a605e893634585b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298560"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71061066"
 ---
 # <a name="troubleshooting-general-problems"></a>一般的な問題のトラブルシューティング
 以下のよく寄せられる質問は、一般的なボット開発や運用上の問題のトラブルシューティングに役立ちます。
@@ -78,7 +78,7 @@ HTTP 状態コード 429 のエラー応答は、一定時間に発行された�
 
 ## <a name="how-can-i-guarantee-message-delivery-order"></a>メッセージの配信順序を保証するにはどうすればよいですか。
 
-Bot Framework では、メッセージの順序が可能な限り保持されます。 たとえば、メッセージ A を送信し、その HTTP 操作が完了するまで待ってから、別の HTTP 操作を開始してメッセージ B を送信する場合、Bot Framework では、メッセージ A がメッセージ B より前にある必要があることが自動的に認識されます。しかし、一般には、メッセージの配信順序を保証することはできません。これは、最終的にチャネルでメッセージの配信が行われ、メッセージの順序が変更される場合があるためです。 間違った順序で配信されるメッセージのリスクを軽減するために、メッセージ間の遅延時間を実装することもできます。
+Bot Framework では、メッセージの順序が可能な限り保持されます。 たとえば、メッセージ A を送信し、その HTTP 操作が完了するまで待ってから、別の HTTP 操作を開始してメッセージ B を送信する場合、Bot Framework では、メッセージ A がメッセージ B より前にある必要があることが自動的に認識されます。しかし、一般には、メッセージの配信順序を保証することはできません。これは、最終的にチャネルでメッセージの配信が行われ、メッセージの順序が変更される場合があるためです。
 
 ## <a name="how-can-i-intercept-all-messages-between-the-user-and-my-bot"></a>ユーザーと自分のボット間のすべてのメッセージをインターセプトするにはどうすればよいですか。
 
