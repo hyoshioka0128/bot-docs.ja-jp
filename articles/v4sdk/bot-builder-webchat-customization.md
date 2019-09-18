@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/07/2019
-ms.openlocfilehash: 9e61e7e9d7bc6ba06d4c239cbf8b0dc0c4e7e16e
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 9310bdf8cab253cd379b7b49daa18deed79f27ae
+ms.sourcegitcommit: 96d26f6b0576747fa62767710af922ace0ff0e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299097"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71060341"
 ---
 # <a name="web-chat-customization"></a>Web チャットのカスタマイズ
 
@@ -155,7 +155,7 @@ Web チャット コントロールの最新バージョンでは、豊富なカ
 
 ## <a name="change-the-avatar-of-the-bot-within-the-dialog-box"></a>ダイアログ ボックス内でボットのアバターを変更する
 
-最新の Web チャットではアバターがサポートされ、`botAvatarInitials` と `userAvatarInitials` のプロパティを使用してカスタマイズすることができます。
+最新バージョンの Web Chat では、アバターがサポートされています。これは、`styleOptions` プロパティで `botAvatarInitials` および `userAvatarInitials` を設定することによってカスタマイズできます。
 
 <img alt="Screenshot with avatar initials" src="https://raw.githubusercontent.com/Microsoft/BotFramework-WebChat/master/media/sample-avatar-initials.png" width="396" />
 
@@ -166,15 +166,17 @@ Web チャット コントロールの最新バージョンでは、豊富なカ
       <div id="webchat" role="main"></div>
       <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
       <script>
+         const styleOptions = {
+            botAvatarInitials: 'BF',
+            userAvatarInitials: 'WC'
+         };
+
          window.WebChat.renderWebChat(
             {
                directLine: window.WebChat.createDirectLine({
                   secret: 'YOUR_BOT_SECRET'
                }),
-
-               // Passing avatar initials when rendering Web Chat
-               botAvatarInitials: 'BF',
-               userAvatarInitials: 'WC'
+               styleOptions
             },
             document.getElementById('webchat')
          );
@@ -183,7 +185,7 @@ Web チャット コントロールの最新バージョンでは、豊富なカ
 </html>
 ```
 
-`renderWebChat` コード内で、`botAvatarInitials` と `userAvatarInitials` を追加しました。
+Web チャットの `styleOptions` プロパティ内に、`botAvatarInitials` と `userAvatarInitials` が追加されました。
 
 ```js
 botAvatarInitials: 'BF',
