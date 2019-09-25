@@ -7,14 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 09/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4d95eafeb5b1b5923f38c40e884b5e3cee8b16eb
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: df7c608b32b2b570c50eb9a045d965adabd96881
+ms.sourcegitcommit: b869b6c325017df22158f4575576fb63c8ded488
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026342"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71224786"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -91,7 +91,11 @@ ms.locfileid: "70026342"
 
 QnA Maker ナレッジ ベースを設定する最初の手順は、Azure で QnA Maker サービスを設定することです。 そのためには、[こちら](https://aka.ms/create-qna-maker)で説明されている手順に従います。
 
-Azure で QnA Maker サービスを作成したら、QnA Maker サービス用に提供される Cognitive Services の "_キー 1_" を記録しておく必要があります。 これは、QnA Maker アプリをご利用のディスパッチ アプリケーション追加する際に、\<azure-qna-service-key1> として使用します。 以降の手順では、このキーが提供されます。
+Azure で QnA Maker サービスを作成したら、QnA Maker サービス用に提供される Cognitive Services の "_キー 1_" を記録しておく必要があります。 これは、QnA Maker アプリをご利用のディスパッチ アプリケーション追加する際に、\<azure-qna-service-key1> として使用します。 
+
+QnA Maker で使用される [2 つの異なる種類のキー](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure#types-of-keys-in-qna-maker)の詳細については、こちらを参照してください。
+
+以降の手順では、このキーが提供されます。
     
 ![コグニティブ サービスを選択する](./media/tutorial-dispatch/select-qna-cognitive-service.png)
 
@@ -152,6 +156,8 @@ LUIS アプリおよび QnA Maker アプリにディスパッチする新しい�
 |QnA Maker| **アプリ ID** - アプリを公開した後、[設定] ページ上の [QnA Maker ポータル](https://http://qnamaker.ai)に表示されます。 これは、knowledgebase の後にくる POST コマンドの最初の部分にある ID です。 アプリ ID を検査する場所の例として、`POST /knowledgebases/{APP-ID}/generateAnswer` が挙げられます。<br>**作成キー** - Azure portal で QnA Maker リソースの **[キー]** の下にあります。 複数のキーのうち、必要なのは 1 つだけです。|
 
 作成キーは、発行されたアプリケーションから予測スコアまたは信頼スコアを取得するためには使用されません。 この操作にはエンドポイント キーが必要です。 **[エンドポイント キー](#service-endpoint-keys)** は、このチュートリアルで後ほど取り上げて使用します。 
+
+QnA Maker で使用される [2 つの異なる種類のキー](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure#types-of-keys-in-qna-maker)の詳細については、こちらを参照してください。
 
 ## <a name="create-the-dispatch-model"></a>ディスパッチ モデルを作成する
 
