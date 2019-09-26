@@ -7,6 +7,8 @@
 # [.NET v3 ボットを .NET Core v4 ボットに移行する](conversion-core.md)
 # [v4 ボットで .NET v3 ユーザー状態を使用する](csharp-user-state-using.md)
 # [JavaScript v3 ボットを v4 ボットに移行する](conversion-javascript.md)
+# [v4 ボットで JavaScript v3 ユーザー状態を使用する](javascript-user-state-using.md)
+
 <!-- Remember to add JavaScript user state topic -->
 
 <!-- Current target:
