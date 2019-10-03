@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 27553a88ee4373eacb089eb6358520820509e195
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: ca343ccb400a652a382ae1a8c279010ff7456bf1
+ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297596"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71278947"
 ---
 # <a name="principles-of-bot-design"></a>ボット設計の原則
 
@@ -56,4 +56,4 @@ Bot Framework を使用すると、開発者が、さまざまなビジネス上
 
 ## <a name="next-steps"></a>次の手順
 
-ボット設計の基本原則についてはおわかりいただけたと思います。次は、ユーザー エクスペリエンスと、このセクションの続きの部分となる一般的なパターンを設計する方法について詳しく説明します。
+ボット設計のいくつかの基本原則を理解した後は、ユーザーとボットの間の[最初の対話を設計](~/bot-service-design-first-interaction.md)するための基本原則について学習します。

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 05/05/2019
-ms.openlocfilehash: 5ca0e9d036d5d3628fff9ae8b0bf5d9f4aa9d8b4
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: 3ef81582c500a403080908e0d2c63de2ead5b9ab
+ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671446"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693147"
 ---
 # <a name="about-azure-bot-service"></a>Azure Bot Service について
 
@@ -72,6 +72,8 @@ Azure Bot Service および Bot Framework の一環として、ボットの機�
 - [エミュレーター](bot-service-debug-emulator.md)を使ってボットをローカルでテストする。 Bot Framework Emulator は、チャット インターフェイスだけでなく、ボットの動作方法とその動作の理由を理解するのに役立つデバッグ ツールと質問ツールも提供するスタンドアロン アプリです。  このエミュレーターは、開発中のボット アプリケーションと共にローカルで実行できます。 
  
 - [Web](bot-service-manage-test-webchat.md) 上でボットをテストする。 Azure portal から設定すると、Web チャット インターフェイスを介してボットにアクセスすることもできます。 Web チャット インターフェイスは、ボットの実行されているコードに直接アクセスできないテスターやその他の人に、ボットへのアクセスを許可するすばらしい方法です。
+
+- Bot Framework SDK の 7 月の更新を使用してボットの[単体テスト](https://docs.microsoft.com/en-us/azure/bot-service/unit-test-bots?view=azure-bot-service-4.0)を実行する。
 
 ### <a name="publish"></a>発行 
 ボットを Web 上で使用する準備が整ったら、ボットを [Azure](bot-builder-howto-deploy-azure.md) に発行するか、独自の Web サービスまたはデータ センターに発行します。 パブリック インターネット上のアドレスを取得することが、ボットをサイト上やチャット チャネル内で稼働させる第一歩です。

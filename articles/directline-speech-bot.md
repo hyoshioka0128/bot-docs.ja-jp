@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5a8a79139c7efa1141c79921836d778c6fae5c89
-ms.sourcegitcommit: 4ddaae622fffb2c3bcfd3bff3c97bcc8088f93e0
+ms.openlocfilehash: 8294ca4b58c2a50d55bdfd9a81cc2c6fb57f3922
+ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69448581"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71279003"
 ---
 # <a name="use-direct-line-speech-in-your-bot"></a>ボットで Direct Line Speech を使用する
 
@@ -26,8 +26,11 @@ Direct Line Speech では、Direct Line Speech チャネルとボットの間の
 
 Direct Line Speech プレビューについては、ご自身のボットに追加する必要がある追加 NuGet パッケージが存在します。
 
-- **Microsoft.Bot.StreamingExtensions** 4.5.1-preview1
 - **Microsoft.Bot.Builder.StreamingExtensions** 4.5.1-preview1
+
+これにより、次のパッケージもインストールされます。
+
+- **Microsoft.Bot.StreamingExtensions** 4.5.1-preview1
 
 これらが最初に見つからなかった場合は、検索にプレリリース パッケージを含めたことを確認してください。
 
@@ -40,10 +43,19 @@ public IActivity Speak(string message)
 {
     var activity = MessageFactory.Text(message);
     string body = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
-        <voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)'>" +
+        <voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>" +
         $"{message}" + "</voice></speak>";
     activity.Speak = body;
     return activity;
+}
+```
+
+次のスニペットは、前述の *Speak* 関数の使用法を示します。
+
+```cs
+protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+{
+    await turnContext.SendActivityAsync(Speak($"Echo: {turnContext.Activity.Text}"), cancellationToken);
 }
 ```
 
@@ -174,9 +186,11 @@ EchoBot などのテンプレートのいずれかを使用して、Azure portal
 
 ## <a name="additional-information"></a>追加情報
 
-アクティビティの操作の詳細については、「[ボットのしくみ](v4sdk/bot-builder-basics.md)」および[テキスト メッセージを送受信する](v4sdk/bot-builder-howto-send-messages.md)方法を参照してください。
+- 音声対応のボットの作成および使用に関する詳細な例については、「[チュートリアル: Speech SDK を使用してボットを音声対応にする](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk)」を参照してください。
+
+- アクティビティの操作の詳細については、「[ボットのしくみ](v4sdk/bot-builder-basics.md)」および[テキスト メッセージを送受信する](v4sdk/bot-builder-howto-send-messages.md)方法を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ボットを Direct Line Speech に接続する (プレビュー)](./bot-service-channel-connect-directlinespeech.md)
+> [ボットを Direct Line Speech に接続する](./bot-service-channel-connect-directlinespeech.md)

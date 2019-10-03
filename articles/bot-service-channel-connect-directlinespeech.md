@@ -10,16 +10,19 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: f7f70804ce67adec386d1a6722ba7e87b6cb2a93
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: ec0a4afb33c560a6b53ff6a02da9b1cfed07f16b
+ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167021"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71279000"
 ---
-# <a name="connect-a-bot-to-direct-line-speech-preview"></a>ボットを Direct Line Speech に接続する (プレビュー)
+# <a name="connect-a-bot-to-direct-line-speech-channel"></a>ボットを Direct Line Speech チャネルに接続する
 
 [!INCLUDE[applies-to-v4](includes/applies-to.md)]
+
+> [!WARNING]
+> **Direct Line Speech チャネル**はパブリック **プレビュー**段階です。  
 
 クライアント アプリケーションが Direct Line Speech チャネルを介してボットと通信できるように、そのボットを構成できます。
 
@@ -96,3 +99,8 @@ Direct Line Speech チャネルが接続され、Bot Framework Protocol スト�
 1. 会話の開始と終了の通知に使用される [conversationUpdate](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#conversation-update-activity) アクティビティと [endOfCoversation](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#end-of-conversation-activity) アクティビティは、ようこそメッセージの生成によく使用され、他のチャネルとの整合性を確保するために更新されます
 
 1. [SigninCard](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-connector-add-rich-cards?view=azure-bot-service-4.0) は、チャネルではまだサポートされていません 
+
+## <a name="next-steps"></a>次の手順
+
+> [!div class="nextstepaction"]
+> [ボットで Direct Line Speech を使用する](./directline-speech-bot.md)

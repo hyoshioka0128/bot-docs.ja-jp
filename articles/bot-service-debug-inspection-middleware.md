@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 7/9/2019
-ms.openlocfilehash: fe96131a7087f3f2c4980fe4f2eacb94a4ae9e4a
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 4a3ff1ef255b914a30c10f6ebd070b7ca98d2f86
+ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037512"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693127"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>検査ミドルウェアを使用してボットをデバッグする
 この記事では、検査ミドルウェアを使用してボットをデバッグする方法について説明します。 この機能を使用すると、Bot Framework Emulator で、ボットの現在の状態を確認でき、さらにボットとの間のトラフィックをデバッグできます。 トレース メッセージを使用してエミュレーターにデータを送信し、会話のある特定のターンでのボットの状態を調べることができます。 
@@ -38,12 +38,14 @@ Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-b
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 **Startup** ファイルで検査状態を設定します。 検査ミドルウェアをアダプターに追加します。 検査状態は、依存関係の挿入によって提供されます。 以下のコードの更新をご覧になるか、[C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection) の検査サンプルを参照してください。 
 
-**Startup.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
+**Startup.cs**  
+[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
 
 **AdapterWithInspection.cs**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-21)]
 
-**EchoBot.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
+**EchoBot.cs**  
+[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 ボットのコードを更新する前に、ターミナルで次のコマンドを実行して、パッケージを最新バージョンに更新する必要があります。 

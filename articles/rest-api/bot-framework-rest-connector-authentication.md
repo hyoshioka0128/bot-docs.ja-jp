@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 8f9b66165c0f88b92d81bfec58fd20a182e43e1d
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: ed02e02e73f8cf326963da0002477df3441719a2
+ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037537"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71279879"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -34,7 +34,7 @@ ms.locfileid: "70037537"
 | テクノロジ | 説明 |
 |----|----|
 | **SSL/TLS** | SSL/TLS は、すべてのサービス間接続に対して使用されます。 `X.509v3` 証明書が、すべての HTTPS サービスの ID を確立するために使用されます。 **クライアントでは、サービスが信頼でき、有効であることを確認するために、必ずサービス証明書を調べる必要があります** (この手法では、クライアント証明書は使用されません)。 |
-| **OAuth 2.0** | Microsoft アカウント (MSA)/AAD v2 ログイン サービスに対して OAuth 2.0 ログインを使用すると、ボットからメッセージを送信する際に使用できるセキュリティ トークンが作成されます。 このトークンはサービス間トークンであり、ユーザー ログインは不要です。 |
+| **OAuth 2.0** | OAuth 2.0 では、Azure Active Directory (Azure AD) v2 アカウント ログイン サービスを使用して、ボットがメッセージを送信するために使用できるセキュリティ トークンを生成します。 このトークンはサービス間トークンであり、ユーザー ログインは不要です。 |
 | **JSON Web トークン (JWT)** | JSON Web トークンは、ボットとの間で送受信されるトークンをエンコードするために使用されます。 **クライアントでは、受信したすべての JWT トークンを検証する必要があります。** この記事で説明している要件に従ってください。 |
 | **OpenID メタデータ** | Bot Connector サービスからは有効なトークンの一覧が公開されます。これは、既知の静的なエンドポイントにある OpenID メタデータに対して独自の JWT トークンに署名を行うために、このサービスによって使用されます。 |
 
@@ -55,9 +55,9 @@ Authorization: Bearer ACCESS_TOKEN
 > [!IMPORTANT]
 > Bot Framework に[ご利用のボットを登録](../bot-service-quickstart-registration.md)して、その AppID とパスワードを取得する必要があります (この操作をまだ行っていない場合)。 アクセス トークンを要求するには、ボットの AppID とパスワードが必要になります。
 
-### <a name="step-1-request-an-access-token-from-the-msaaad-v2-login-service"></a>手順 1:MSA/AAD v2 ログイン サービスにアクセス トークンを要求する
+### <a name="step-1-request-an-access-token-from-the-azure-ad-v2-account-login-service"></a>手順 1:Azure AD v2 アカウント ログイン サービスにアクセス トークンを要求する
 
-MSA/AAD v2 ログイン サービスにアクセス トークンを要求するには、次の要求を発行します。**MICROSOFT-APP-ID** および **MICROSOFT-APP-PASSWORD** は、ご利用のボットを Bot Framework に[登録](../bot-service-quickstart-registration.md)したときに取得した AppID とパスワードに置き換えてください。
+ログイン サービスにアクセス トークンを要求するには、次の要求を発行します。**MICROSOFT-APP-ID** および **MICROSOFT-APP-PASSWORD** は、ご利用のボットを Bot Framework に[登録](../bot-service-quickstart-registration.md)したときに取得した AppID とパスワードに置き換えてください。
 
 ```http
 POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token
@@ -67,17 +67,17 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT-APP-PASSWORD&scope=https%3A%2F%2Fapi.botframework.com%2F.default
 ```
 
-### <a name="step-2-obtain-the-jwt-token-from-the-msaaad-v2-login-service-response"></a>手順 2:MSA/AAD v2 ログイン サービスによる応答から JWT トークンを取得する
+### <a name="step-2-obtain-the-jwt-token-from-the-the-azure-ad-v2-account-login-service-response"></a>手順 2:Azure AD v2 アカウント ログイン サービスの応答から JWT トークンを取得する
 
-お使いのアプリケーションが MSA/AAD v2 ログイン サービスによって認証されると、JSON 応答の本体によってご自身のアクセス トークン、トークンのタイプ、トークンの有効期限 (秒単位) が指定されます。 
+お使いのアプリケーションがログイン サービスによって認証されると、JSON 応答の本文によってアクセス トークン、その種類、トークンの有効期限 (秒単位) が指定されます。
 
 トークンを要求の `Authorization` ヘッダーに追加するときは、この応答で指定されている値のとおりに使用する必要があります (トークンの値をエスケープしたりエンコードしたりしないでください)。 アクセス トークンは、有効期限が切れるまで有効です。 トークンの有効期限が切れてもご利用のボットの実行に影響が及ばないように、トークンをキャッシュし、事前に最新の情報に更新しておくこともできます。
 
-この例では、MSA/AAD v2 ログイン サービスからの応答を示します。
+この例では、Azure AD v2 アカウント ログイン サービスからの応答を示します。
 
 ```http
 HTTP/1.1 200 OK
-... (other headers) 
+... (other headers)
 ```
 
 ```json
@@ -97,7 +97,8 @@ Bot Connector サービスに API 要求を送信するときは、次の形式�
 Authorization: Bearer ACCESS_TOKEN
 ```
 
-Bot Connector サービスに送信するすべての要求で、`Authorization` ヘッダーにアクセス トークンを含める必要があります。 トークンが正しい形式であり、有効期限が切れておらず、MSA/AAD v2 ログイン サービスによって作成されたものである場合、要求は Bot Connector サービスによって認証されます。 トークンが要求の送信元ボットのものであることを確認するために、追加のチェックが実行されます。
+Bot Connector サービスに送信するすべての要求で、`Authorization` ヘッダーにアクセス トークンを含める必要があります。
+トークンが正しい形式であり、有効期限が切れておらず、Azure AD v2 アカウント ログイン サービスによって生成されたものである場合、要求は Bot Connector サービスによって認証されます。 トークンが要求の送信元ボットのものであることを確認するために、追加のチェックが実行されます。
 
 次の例で、要求の `Authorization` ヘッダーでアクセス トークンを指定する方法を示します。 
 
@@ -109,7 +110,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1Ni...
 ```
 
 > [!IMPORTANT]
-> JWT トークンは、Bot Connector サービスに送信する要求の `Authorization` ヘッダーにのみ指定します。 セキュリティ保護されていないチャネルでトークンを送信しないでください。また、他のサービスに送信する HTTP 要求に含めないでください。 MSA/AAD v2 ログイン サービスから取得する JWT トークンは、パスワードと同様のものです。細心の注意を払って扱う必要があります。 トークンを所持していれば、誰でもそれを使用して、お使いのボットの代理として操作を実行できてしまいます。 
+> JWT トークンは、Bot Connector サービスに送信する要求の `Authorization` ヘッダーにのみ指定します。
+> セキュリティ保護されていないチャネルでトークンを送信しないでください。また、他のサービスに送信する HTTP 要求に含めないでください。
+> Azure AD v2 アカウント ログイン サービスから取得する JWT トークンは、パスワードと同様のものです。細心の注意を払って扱う必要があります。 トークンを所持していれば、誰でもそれを使用して、お使いのボットの代理として操作を実行できてしまいます。
 
 #### <a name="bot-to-connector-example-jwt-components"></a>ボットからコネクタ: サンプル JWT コンポーネント
 
