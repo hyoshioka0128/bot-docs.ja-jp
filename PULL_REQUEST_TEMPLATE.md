@@ -1,3 +1,3 @@
-Informazioni utili per fornire un suggerimento:
-1. Vai a [Guide di stile per la localizzazione delle guide di avvio rapido](https://docs.microsoft.com/globalization/localization/styleguides) per scoprire le **prime 10 regole principali** della Guida di stile Microsoft.
-2. Vai al [Portale linguistico Microsoft](https://www.microsoft.com/language) per verificare la **traduzione dei termini standardizzati** nei prodotti Microsoft.
+提案を送信するための役立つ情報:
+1.[ローカライズ スタイル ガイドのクイック スタート](https://docs.microsoft.com/globalization/localization/styleguides) に移動して、Microsoft スタイル ガイドの **最も重要なルール上位 10 個** をご確認ください。
+2.[Microsoft ランゲージ ポータル](https://www.microsoft.com/language) に移動して、Microsoft 製品間での **標準化された用語の翻訳** をご確認ください。
