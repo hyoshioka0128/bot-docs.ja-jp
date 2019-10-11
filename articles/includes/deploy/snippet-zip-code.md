@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 80cc69ca3d863a4f96f1dd241e6471074cc9976f
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: b3fcdea923daa96a93b7b9d223354a16878b0ac2
+ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386048"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72039777"
 ---
 構成されていない [zip デプロイ API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url) を使用してお使いのボットのコードをデプロイする場合、Web App/Kudu は次のように動作します。
 
@@ -15,7 +15,8 @@ ms.locfileid: "70386048"
 > [!IMPORTANT]
 > プロジェクト ファイルを zip 圧縮する前に、必ずそのプロジェクト フォルダー "_内_" に移動します。 
 > - C# ボットの場合は、.csproj ファイルが含まれるフォルダーです。 
-> - JS ボットの場合は、app.js ファイルまたは index.js ファイルが含まれるフォルダーです。 
+> - JavaScript ボットの場合は、app.js または index.js ファイルが含まれるフォルダーです。 
+> - TypeScript ボットの場合は、_src_ フォルダー (bot.ts および index.ts ファイルがある場所) が含まれるフォルダーです。 
 >
 >プロジェクト フォルダー**内**ですべてのファイルを選択して zip 圧縮し、そのフォルダー内でコマンドを実行します。 
 >

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 8073e5f635d20de457e1bf5880c1b5c4c564fab4
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: bbe74a9a82d3bd04593384d825d373bfab35e3db
+ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386095"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72039787"
 ---
 ボットをデプロイする前に、プロジェクト ファイルを準備する必要があります。 
 <!-- **C# bots** -->
@@ -37,4 +37,5 @@ az bot prepare-deploy --code-dir "." --lang Typescript
 ---
 
 > [!NOTE]
-> `az bot prepare-depoloy` コマンドを実行すると、ボット プロジェクトフォルダーに `.deployment` ファイルが生成されます。
+>  C# ボットと JavaScript ボットの場合、`az bot prepare-depoloy` コマンドを実行すると、ボット プロジェクトフォルダーに `.deployment` ファイルが生成されます。
+> TypeScript ボットの場合、このコマンドは 2 つの `web.config` ファイルを生成します。 1 つはプロジェクト フォルダー内にあり、もう 1 つはプロジェクト フォルダー内の **src** フォルダーにあります。 

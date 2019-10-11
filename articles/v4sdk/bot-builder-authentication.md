@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: da7c9f76c65a70acc8cbb4a12ee93fc8f99de53b
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 953f52a7bc95c0b87435be70bb4052cf939b0a63
+ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299560"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72039767"
 ---
 <!-- 
 
@@ -411,21 +411,25 @@ Teams は、OAuth に関して他のチャネルとは多少異なる動作を�
  
 他のチャネルと Teams の違いの 1 つは、Teams がボットに*イベント* アクティビティではなく*呼び出し*アクティビティを送信することです。 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-**Bots/TeamsBot.cs** [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight=1)]
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)  
+**Bots/TeamsBot.cs**  
+[!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight=1)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-**bots/teamsBot.js** [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-32&highlight=3)]
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)  
+**bots/teamsBot.js**  
+[!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-32&highlight=3)]
 
 ---
 
 *OAuth プロンプト*を使用する場合は、この呼び出しアクティビティをダイアログに転送する必要があります。 ここでは、`TeamsActivityHandler` でこれを行います。 次のコードをメイン ダイアログ ファイルに追加します。 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-**Bots/DialogBot.cs** [!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=18)]
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)  
+**Bots/DialogBot.cs**  
+[!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=18)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-**Bots/dialogBot.js** [!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=4-6)]
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)  
+**Bots/dialogBot.js**  
+[!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=4-6)]
 
 ---
 最後に必ず、ボットのフォルダーの最上位レベルに適切な `TeamsActivityHandler` ファイル (C# ボットの場合は `TeamsActivityHandler.cs`、Javascript ボットの場合は `teamsActivityHandler.js`) を追加してください。

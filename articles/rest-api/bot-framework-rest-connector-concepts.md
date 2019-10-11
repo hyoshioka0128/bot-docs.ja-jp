@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/16/2019
-ms.openlocfilehash: 0e97ad58fc81b52086eb691950845eec1665b064
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 25adbcda6b1f33f5379f9231291c5a511e9c1d04
+ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876089"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72039745"
 ---
 # <a name="key-concepts"></a>主要な概念
 
@@ -24,7 +24,7 @@ Bot Connector サービスを使用すると、<a href="https://dev.botframework
 
 ### <a name="activity"></a>アクティビティ
 
-Bot Connector サービスでは、[Activity][] オブジェクトを渡すことによって、ボットとチャネル (ユーザー) 間で情報が交換されます。 最も一般的なアクティビティの種類は**メッセージ**ですが、ボットまたはチャネルにさまざまな種類の情報を通信するために使用できる他のアクティビティの種類も存在します。 Bot Connector サービス内のアクティビティの詳細については、[アクティビティの概要](https://aka.ms/botSpecs-activitySchema )に関するページを参照してください。
+Bot Connector サービスでは、[Activity][Activity] オブジェクトを渡すことによって、ボットとチャネル (ユーザー) 間で情報が交換されます。 最も一般的なアクティビティの種類は**メッセージ**ですが、ボットまたはチャネルにさまざまな種類の情報を通信するために使用できる他のアクティビティの種類も存在します。 Bot Connector 内のアクティビティの詳細については、「[Activities overview](https://aka.ms/botSpecs-activitySchema)」(アクティビティの概要) を参照してください。
 
 ## <a name="bot-state-service"></a>Bot State サービス
 

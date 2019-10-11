@@ -8,16 +8,19 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/09/2019
-ms.openlocfilehash: f5d23d31b0f2665993a8cc774d7c4577d0333441
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: c4c54e50450ae81098992c880e23a049229fa09f
+ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68970588"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72039757"
 ---
 # <a name="direct-line-app-service-extension"></a>Direct Line App Service 拡張機能
 
 [!INCLUDE[applies-to-v4](includes/applies-to.md)]
+
+> [!WARNING]
+> **Direct Line App Service 拡張機能**はパブリック **プレビュー**中です。  
 
 Direct Line App Service 拡張機能を使用すると、クライアントはボットが配置されているホストに直接接続できます。 これにより、ワークロードの分離が実現され、場合によってはパフォーマンスが向上します。 次の図は、全体のアーキテクチャを示しています。
 
@@ -33,7 +36,7 @@ Direct Line App Service 拡張機能は、世界中のすべてのデータ セ�
 
 ## <a name="see-also"></a>関連項目
 
-|EnableAdfsAuthentication|説明|
+|名前|説明|
 |---|---|
 |[拡張機能のための .NET ボットの構成](bot-service-channel-directline-extension-net-bot.md)|**名前付きパイプ**を使って機能するようにボットを更新し、ボットがホストされている **Azure App Service** リソースで Direct Line App Service 拡張機能を有効にします。  |
 |[拡張機能を使用した .NET クライアントの作成](bot-service-channel-directline-extension-net-client.md)|Direct Line App Service 拡張機能に接続する .NET クライアントを C# で作成します|
