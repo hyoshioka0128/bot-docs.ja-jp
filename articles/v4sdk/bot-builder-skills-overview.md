@@ -6,14 +6,14 @@ ms.author: darrenj
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 10/09/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 566eb58f98335b9c55499051c6a23a6e0e0b6bc5
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 9bb149773fe1b2cdd09da0165a4fff4e647f419d
+ms.sourcegitcommit: 5d81c5b25ea56e04f09d05916ee947d631009172
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167120"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72236434"
 ---
 # <a name="virtual-assistant---skills-overview"></a>仮想アシスタント - スキルの概要
 
@@ -44,7 +44,7 @@ ms.locfileid: "70167120"
 |[メール スキル](https://aka.ms/bf-email-skill)|メール機能をご自身のアシスタントに追加します。 Microsoft Graph および Google を使用。|
 |[To Do スキル](https://aka.ms/bf-todo-skill)|タスク管理機能をご自身のアシスタントに追加します。 Microsoft Graph を使用。|
 |[目的地スキル](https://aka.ms/bf-poi-skill)|目的地と方向を検索します。 Azure Maps と FourSquare を使用。|
-|[自動車スキル](https://aka.ms/bf-autos-kill)|自動車機能のコントロールを示す業界垂直スキル。|
+|[自動車スキル](https://aka.ms/bf-auto-skill)|自動車機能のコントロールを示す業界垂直スキル。|
 |[試験段階スキル](https://aka.ms/bf-experimental-skills)|ニュース、レストラン予約、および天気。|
 
 ## <a name="getting-started"></a>Getting Started (概要)
