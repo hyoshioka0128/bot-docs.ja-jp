@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: df7c608b32b2b570c50eb9a045d965adabd96881
-ms.sourcegitcommit: b869b6c325017df22158f4575576fb63c8ded488
+ms.openlocfilehash: c9303962c992ef9b0801d0bdaabf08886755777d
+ms.sourcegitcommit: 33b67191b3a1c5744e1b93b0c02345536db41a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71224786"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72561361"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -23,7 +23,8 @@ ms.locfileid: "71224786"
 ボットで複数の LUIS モデルおよび QnA Maker ナレッジ ベース (ナレッジ ベース) が使用されている場合は、ディスパッチ ツールを使用して、どの LUIS モデルまたは QnA Maker ナレッジ ベースがユーザー入力に最も適しているかを判断できます。 ディスパッチ ツールでは、これを行うために、ユーザー入力を正しいモデルにルーティングする 1 つの LUIS アプリが作成されます。 ディスパッチ (CLI コマンドを含む) の詳細については、[README][dispatch-readme] を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-- [ボットの基本](bot-builder-basics.md)、[LUIS][howto-luis]、および [QnA Maker][howto-qna] に関する知識。 
+
+- [ボットの基本](bot-builder-basics.md)、[LUIS][howto-luis]、および [QnA Maker][howto-qna] に関する知識。
 - [ディスパッチ ツール](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
 - **ディスパッチによる NLP** のコピー ([C# サンプル][cs-sample]または [JS サンプル][js-sample]のコード リポジトリ)。
 - LUIS アプリを発行するための [luis.ai](https://www.luis.ai/) アカウント。
@@ -58,7 +59,8 @@ ms.locfileid: "71224786"
 ハンドラーによって LUIS または QnA Maker サービスが呼び出され、生成された結果がユーザーに返されます。
 
 ## <a name="create-luis-apps-and-qna-knowledge-base"></a>LUIS アプリと QnA ナレッジ ベースを作成する
-ディスパッチ モデルを作成するには、ご自身の LUIS アプリと QnA ナレッジ ベースを作成し、発行しておく必要があります。 この記事では、`\CognitiveModels` フォルダーの "_ディスパッチによる NLP_" サンプルに含まれる次のモデルを公開します。 
+
+ディスパッチ モデルを作成するには、ご自身の LUIS アプリと QnA ナレッジ ベースを作成し、発行しておく必要があります。 この記事では、`\CognitiveModels` フォルダーの "_ディスパッチによる NLP_" サンプルに含まれる次のモデルを公開します。
 
 | 名前 | 説明 |
 |------|------|
@@ -67,11 +69,12 @@ ms.locfileid: "71224786"
 | QnA Maker  | ボットに関するシンプルな質問への回答を提供する QnA Maker ナレッジ ベース。 |
 
 ### <a name="create-luis-apps"></a>LUIS アプリを作成する
+
 1. [LUIS Web ポータル](https://www.luis.ai/)にログインします。 _[マイ アプリ]_ セクションの _[Import new app]\(新しいアプリのインポート\)_ タブを選択します。 次のダイアログ ボックスが表示されます。
 
     ![LUIS JSON ファイルをインポートする](./media/tutorial-dispatch/import-new-luis-app.png)
 
-2. _[Choose app file]\(アプリ ファイルの選択\)_ ボタンを選択し、ご自身のサンプル コードの CognitiveModel フォルダーに移動して、"HomeAutomation.json" ファイルを選択します。 省略可能な名前のフィールドは空白のままにします。 
+2. _[Choose app file]\(アプリ ファイルの選択\)_ ボタンを選択し、ご自身のサンプル コードの CognitiveModel フォルダーに移動して、"HomeAutomation.json" ファイルを選択します。 省略可能な名前のフィールドは空白のままにします。
 
 3. _[完了]_ を選択します。
 
@@ -91,12 +94,12 @@ ms.locfileid: "71224786"
 
 QnA Maker ナレッジ ベースを設定する最初の手順は、Azure で QnA Maker サービスを設定することです。 そのためには、[こちら](https://aka.ms/create-qna-maker)で説明されている手順に従います。
 
-Azure で QnA Maker サービスを作成したら、QnA Maker サービス用に提供される Cognitive Services の "_キー 1_" を記録しておく必要があります。 これは、QnA Maker アプリをご利用のディスパッチ アプリケーション追加する際に、\<azure-qna-service-key1> として使用します。 
+Azure で QnA Maker サービスを作成したら、QnA Maker サービス用に提供される Cognitive Services の "_キー 1_" を記録しておく必要があります。 これは、QnA Maker アプリをご利用のディスパッチ アプリケーション追加する際に、\<azure-qna-service-key1> として使用します。
 
 QnA Maker で使用される [2 つの異なる種類のキー](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure#types-of-keys-in-qna-maker)の詳細については、こちらを参照してください。
 
 以降の手順では、このキーが提供されます。
-    
+
 ![コグニティブ サービスを選択する](./media/tutorial-dispatch/select-qna-cognitive-service.png)
 
 1. ご利用の Azure portal 内で、QnA Maker コグニティブ サービスを選択します。
@@ -109,16 +112,15 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
 
 1. "_キー 1_" の値をクリップボードにコピーして、ローカルに保存します。 これは、後で QnA Maker アプリをご利用のディスパッチ アプリケーションに追加する際に、(-k) キー値 \<azure-qna-service-key1> の代わりに使用します。
 
-1. 次に [QnAMaker Web ポータル](https://qnamaker.ai)にサインインします。 
+1. 次に [QnAMaker Web ポータル](https://qnamaker.ai)にサインインします。
 
 1. 手順 2 では、次のように選択します。
 
-    * Azure AD アカウント。
-    * Azure サブスクリプション名。
-    * QnA Maker サービス用に作成した名前 (最初の段階でこのプル ダウン リストに Azure QnA サービスが表示されない場合は、ページを更新してみてください)。
+    - Azure AD アカウント。
+    - Azure サブスクリプション名。
+    - QnA Maker サービス用に作成した名前 (最初の段階でこのプル ダウン リストに Azure QnA サービスが表示されない場合は、ページを更新してみてください)。
 
-    ![QnA の作成手順 2](./media/tutorial-dispatch/create-qna-step-2.png) 
-     
+    ![QnA の作成手順 2](./media/tutorial-dispatch/create-qna-step-2.png)
 
 1. 手順 3 では、QnA Maker ナレッジベースの名前を指定します。 この例では、名前 'sample-qna' を使用します。
 
@@ -139,12 +141,12 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
     Host: <your-hostname>  // NOTE - this is a URL.
     Authorization: EndpointKey <qna-maker-resource-key>
     ```
-    
-    ホスト名の完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。 これらの値は、お使いの `appsettings.json` ファイルまたは `.env` ファイルで後で使用されます。
+
+    ホスト名の完全な URL 文字列は、"https://<host-id>.azure.net/qnamaker" のようになります。 これらの値は、お使いの `appsettings.json` ファイルまたは `.env` ファイルで後で使用されます。
 
 ## <a name="dispatch-app-needs-read-access-to-existing-apps"></a>ディスパッチ アプリには既存のアプリへの読み取りアクセスが必要
 
-LUIS アプリおよび QnA Maker アプリにディスパッチする新しい親 LUIS アプリを作成するために、ディスパッチ ツールには既存の LUIS アプリと QnA Maker アプリを読み取るための作成アクセスが必要です。 このアクセスには、アプリ ID と作成キーが提供されます。 
+LUIS アプリおよび QnA Maker アプリにディスパッチする新しい親 LUIS アプリを作成するために、ディスパッチ ツールには既存の LUIS アプリと QnA Maker アプリを読み取るための作成アクセスが必要です。 このアクセスには、アプリ ID と作成キーが提供されます。
 
 ### <a name="service-authoring-keys"></a>サービス作成キー
 
@@ -153,9 +155,9 @@ LUIS アプリおよび QnA Maker アプリにディスパッチする新しい�
 |アプリ|情報の場所|
 |--|--|
 |LUIS|**アプリ ID** - アプリごとに [LUIS ポータル](https://www.luis.ai)に表示されます ([管理] -> [アプリケーション情報])。<br>**作成キー** - LUIS ポータルの右上隅に表示されます。自分の [ユーザー]、[設定] の順に選択します。|
-|QnA Maker| **アプリ ID** - アプリを公開した後、[設定] ページ上の [QnA Maker ポータル](https://http://qnamaker.ai)に表示されます。 これは、knowledgebase の後にくる POST コマンドの最初の部分にある ID です。 アプリ ID を検査する場所の例として、`POST /knowledgebases/{APP-ID}/generateAnswer` が挙げられます。<br>**作成キー** - Azure portal で QnA Maker リソースの **[キー]** の下にあります。 複数のキーのうち、必要なのは 1 つだけです。|
+|QnA Maker| **アプリ ID** - アプリを公開した後、[設定] ページ上の [QnA Maker ポータル](https://http://qnamaker.ai)に表示されます。 これは、knowledgebase の後にくる POST コマンドの最初の部分にある ID です。 アプリ ID を検査する場所の例として、`POST /knowledgebases/<APP-ID>/generateAnswer` が挙げられます。<br>**作成キー** - Azure portal で QnA Maker リソースの **[キー]** の下にあります。 複数のキーのうち、必要なのは 1 つだけです。|
 
-作成キーは、発行されたアプリケーションから予測スコアまたは信頼スコアを取得するためには使用されません。 この操作にはエンドポイント キーが必要です。 **[エンドポイント キー](#service-endpoint-keys)** は、このチュートリアルで後ほど取り上げて使用します。 
+作成キーは、発行されたアプリケーションから予測スコアまたは信頼スコアを取得するためには使用されません。 この操作にはエンドポイント キーが必要です。 **[エンドポイント キー](#service-endpoint-keys)** は、このチュートリアルで後ほど取り上げて使用します。
 
 QnA Maker で使用される [2 つの異なる種類のキー](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure#types-of-keys-in-qna-maker)の詳細については、こちらを参照してください。
 
@@ -202,7 +204,8 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
 - `None`
 - `q_sample-qna`
 
-ボットを適切に動作させるには、これらのサービスが正しい名前で公開されている必要があります。 公開されたサービスにボットがアクセスできるようにするには、アクセス対象サービスに関する情報がそのボットに必要です。
+ボットを適切に動作させるには、これらのサービスが正しい名前で公開されている必要があります。
+公開されたサービスにボットがアクセスできるようにするには、アクセス対象サービスに関する情報がそのボットに必要です。
 
 ### <a name="service-endpoint-keys"></a>サービス エンドポイント キー
 
@@ -211,7 +214,7 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
 |アプリ|クエリ エンドポイント キーの場所|
 |--|--|
 |LUIS|LUIS ポータルで各 LUIS アプリの [管理] セクションで、 **[Keys and Endpoint settings]\(キーとエンドポイントの設定\)** を選択して、各アプリに関連付けられているキーを見つけます。 このチュートリアルを行う場合、エンドポイント キーは `<your-luis-authoring-key>` と同じキーです。 作成キーでは、1000 回のエンドポイント ヒットが許可され、その後有効期限が切れます。|
-|QnA Maker|QnA Maker ポータルのナレッジ ベースの [管理] 設定で、**Authorization** ヘッダー用の [Postman]\(Postman\) 設定に表示されているキー値を、テキスト `EndpointKey ` なしで使用します。|
+|QnA Maker|QnA Maker ポータルのナレッジ ベースの [管理] 設定で、**Authorization** ヘッダー用の [Postman]\(Postman\) 設定に表示されているキー値を、テキスト `EndpointKey` なしで使用します。|
 
 これらの値は、C# の場合は **appsettings.json** ファイルで使用され、javascript の場合は **.env** ファイルで使用されます。
 
@@ -219,24 +222,24 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
 
 ### <a name="installing-packages"></a>パッケージのインストール
 
-このアプリを初めて実行する前に、いくつかの nuget パッケージがインストールされていることを確認します。
+このアプリを初めて実行する前に、いくつかの NuGet パッケージがインストールされていることを確認します。
 
-**Microsoft.Bot.Builder**
-
-**Microsoft.Bot.Builder.AI.Luis**
-
-**Microsoft.Bot.Builder.AI.QnA**
+- **Microsoft.Bot.Builder**
+- **Microsoft.Bot.Builder.AI.Luis**
+- **Microsoft.Bot.Builder.AI.QnA**
 
 ### <a name="manually-update-your-appsettingsjson-file"></a>お使いの appsettings.json ファイルを手動で更新する
 
 すべてのサービス アプリが作成されたら、それぞれの情報を "appsettings.json" ファイルに追加する必要があります。 初期 [C# サンプル][cs-sample] コードには、空の appsettings.json ファイルが含まれています。
 
-**appsettings.json**  
+**appsettings.json**
+
 [!code-json[AppSettings](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/AppSettings.json?range=8-17)]
 
 次に示すエンティティごとに、前の手順で記録した値を追加します。
 
 **appsettings.json**
+
 ```json
 "MicrosoftAppId": "",
 "MicrosoftAppPassword": "",
@@ -249,6 +252,7 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
 "LuisAPIKey": "<your-luis-endpoint-key>",
 "LuisAPIHostName": "<your-dispatch-app-region>",
 ```
+
 すべての変更が完了したら、このファイルを保存します。
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
@@ -261,6 +265,7 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
 npm install --save botbuilder
 npm install --save botbuilder-ai
 ```
+
 .env 構成ファイルを使用するには、お使いのボットに追加のパッケージが含まれている必要があります。
 
 ```powershell
@@ -303,17 +308,22 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 **BotServices.cs** では、ご自身のディスパッチ ボットと `Dispatch` サービスおよび `SampleQnA` サービスとの接続に、構成ファイル _appsettings.json_ に含まれている情報が使用されます。 コンストラクターでは、ご自身で指定した値が、これらのサービスへの接続に使用されます。
 
-**BotServices.cs**  
+**BotServices.cs**
+
 [!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-30)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 **dispatchBot.js** では、ご自身のディスパッチ ボットと _LuisRecognizer(dispatch)_ サービスおよび _QnAMaker_ サービスとの接続に、構成ファイル _.env_ に含まれている情報が使用されます。 コンストラクターでは、ご自身で指定した値が、これらのサービスへの接続に使用されます。
 
-**bots/dispatchBot.js**  
+**bots/dispatchBot.js**
+
 [!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-24)]
 
 ---
+
+> [!NOTE]
+> 既定では、`includeApiResults` パラメーターは false に設定されています。つまり、レコグナイザーはエンティティ/意図に関する基本情報のみを返します。 LUIS からの完全な応答 (このチュートリアルで後ほど使用する `ConnectedServiceResult` など) が必要な場合は、このパラメーターを true に設定します。 これにより、LUIS サービスからの完全な応答が、`RecognizerResult` の Properties コレクションに追加されます。
 
 ### <a name="call-the-services-from-your-bot"></a>ボットからのサービスを呼び出す
 
@@ -323,14 +333,15 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 **DispatchBot.cs** ファイルでは、`OnMessageActivityAsync` メソッドが呼び出されるたびに、受信ユーザー メッセージをディスパッチ モデルに対して確認します。 その後、ディスパッチ モデルの `topIntent` と `recognizerResult` を適切なメソッドに渡して、サービスを呼び出し、結果を返します。
 
-**bots\DispatchBot.cs**  
+**bots\DispatchBot.cs**
+
 [!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=26-36)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 **dispatchBot.js** の `onMessage` メソッドでは、ディスパッチ モデルに対してユーザー入力メッセージを確認し、_topIntent_ を検索します。次に、_dispatchToTopIntentAsync_ を呼び出して、これを渡します。
 
-**bots/dispatchBot.js**  
+**bots/dispatchBot.js**
 
 [!code-javascript[OnMessageActivity](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=29-42)]
 
@@ -342,7 +353,8 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 モデルによって結果が生成されるとき、どのサービスが発話を最も適切に処理できるかが示されます。 このボットのコードでは、要求を対応するサービスにルーティングし、呼び出されたサービスからの応答を要約します。 Dispatch から返された "_意図_" によっては、このコードでは、返された意図を使用して、適切な LUIS モデルまたは QnA サービスへのルーティングが行われます。
 
-**bots\DispatchBot.cs**  
+**bots\DispatchBot.cs**
+
 [!code-csharp[DispatchToTop](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=51-69)]
 
 `ProcessHomeAutomationAsync` または `ProcessWeatherAsync` のいずれかのメソッドが呼び出されると、_luisResult.ConnectedServiceResult_ 内のディスパッチ モデルから結果が渡されます。 その後、指定されたメソッドによって、ユーザー フィードバックが提供されます。このフィードバックには、ディスパッチ モデルの最上位の意図と、検出された意図およびエンティティの一覧がランク付けされて示されています。
@@ -387,9 +399,9 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 ## <a name="dispatch-for-user-utterance-to-qna-maker"></a>QnA Maker へのユーザー発話のためのディスパッチ
 
-1. ボット エミュレーターで、テキスト `hi` を入力して発話を送信します。 ボットから、このクエリがディスパッチ LUIS アプリに送信されると、さらなる処理のためにどの子アプリがこの発話を取得する必要があるかを示す応答がボットに届きます。 
+1. ボット エミュレーターで、テキスト `hi` を入力して発話を送信します。 ボットから、このクエリがディスパッチ LUIS アプリに送信されると、さらなる処理のためにどの子アプリがこの発話を取得する必要があるかを示す応答がボットに届きます。
 
-1. ログ内の `LUIS Trace` 行を選択すると、ボット エミュレーター内で LUIS 応答を確認できます。 ディスパッチ LUIS アプリからの LUIS 結果がインスペクターに表示されます。 
+1. ログ内の `LUIS Trace` 行を選択すると、ボット エミュレーター内で LUIS 応答を確認できます。 ディスパッチ LUIS アプリからの LUIS 結果がインスペクターに表示されます。
 
     ```json
     {
@@ -421,10 +433,10 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
       }
     }
     ```
-    
-    発話 `hi` は、ディスパッチ LUIS アプリの **q_sample-qna** 意図の一部であり、`topScoringIntent` として選択されているため、ボットでは同じ発話を使用して今回は QnA Maker アプリに 2 番目の要求が行われます。 
 
-1. ボット エミュレーター ログ内で `QnAMaker Trace` 行を選択します。 インスペクターに QnA Maker の結果が表示されます。 
+    発話 `hi` は、ディスパッチ LUIS アプリの **q_sample-qna** 意図の一部であり、`topScoringIntent` として選択されているため、ボットでは同じ発話を使用して今回は QnA Maker アプリに 2 番目の要求が行われます。
+
+1. ボット エミュレーター ログ内で `QnAMaker Trace` 行を選択します。 インスペクターに QnA Maker の結果が表示されます。
 
 ```json
 {
@@ -448,14 +460,17 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 ## <a name="resolving-incorrect-top-intent-from-dispatch"></a>ディスパッチによる誤っている最上位の意図の解決
 
-ボットが起動したら、ディスパッチされたアプリ間での類似の発話または重複する発話を削除することで、ボットのパフォーマンスを向上することができます。 たとえば、`Home Automation` LUIS アプリで、"ライトを点けて" のような要求は "TurnOnLights" の意図にマップされますが、"なぜライトが点かない?" のような要求は、 QnA Maker に渡すことができるように "None" の意図にマップされます。 正しい子アプリが LUIS アプリなのか、または QnA Maker アプリなのかをディスパッチ LUIS アプリで判断するには、この 2 つの発話は近すぎます。
+ボットが起動したら、ディスパッチされたアプリ間での類似の発話または重複する発話を削除することで、ボットのパフォーマンスを向上することができます。
+<!--For example, let's say that in the `Home Automation` LUIS app requests like "turn my lights on" map to a "TurnOnLights" intent, but requests like "Why won't my lights turn on?" map to a "None" intent so that they can be passed on to QnA Maker. These two utterances are too close for the dispatch LUIS app to determine if the correct child app is the LUIS app or the QnA Maker app.
 
-ディスパッチを使用して LUIS アプリと QnA Maker アプリを結合するときは、次の_いずれか_を行う必要があります。
+When you combine the LUIS app and the QnA Maker app using dispatch, you need to do _one_ of the following:
 
-* 子の `Home Automation` LUIS アプリから "None" の意図を削除し、代わりにその意図の発話をディスパッチャー アプリの "None" の意図に追加します。
-* ご利用のボットにロジックを追加して、ディスパッチ LUIS アプリの "None" の意図に一致するメッセージを QnA Maker サービスに渡します。 ディスパッチ LUIS アプリのスコアと QnA Maker アプリのスコアを比較します。 最高のスコアを使用します。 これにより、QnA Maker がディスパッチ サイクルから効果的に削除されます。 
+- Remove the "None" intent from the child `Home Automation` LUIS app, and instead add the utterances from that intent to the "None" intent in the dispatcher app.
+- Add logic in your bot to pass the messages that match the Dispatch LUIS app's "None" intent on to the QnA maker service. Compare the score of the Dispatch LUIS app's score and the score of the QnA Maker app. Use the highest score. This effectively removes QnA Maker from the Dispatch cycle.
 
-上記の 2 つのアクションのどちらでも、ボットからユーザーに '回答が見つかりません' というメッセージが返される回数を減らすことができます。
+Either of the above two actions will reduce the number of times that your bot responds back to your users with the message, 'Couldn't find an answer.'
+-->
+[Dispatch][dispatch-readme] コマンドライン ツールを使用して、ディスパッチ モデルをテストおよび評価することができます。
 
 ### <a name="to-update-or-create-a-new-luis-model"></a>LUIS モデルを更新するか、新しく作成する
 
@@ -485,6 +500,7 @@ QnA Maker リソースを削除するには:
 
 このサンプルで使用されているサービスを向上させるには、[LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices) および [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices) 向けのベスト プラクティスを参照してください。
 
+<!-- Foot-note style links -->
 
 [howto-luis]: bot-builder-howto-v4-luis.md
 [howto-qna]: bot-builder-howto-qna.md
@@ -492,4 +508,5 @@ QnA Maker リソースを削除するには:
 [cs-sample]: https://aka.ms/dispatch-sample-cs
 [js-sample]: https://aka.ms/dispatch-sample-js
 
-[dispatch-readme]: https://aka.ms/botbuilder-tools-dispatch
+[dispatch-readme]: https://aka.ms/dispatch-command-line-tool
+<!--[dispatch-evaluate]: https://aka.ms/dispatch-command-line-tool#evaluating-your-dispatch-model-->
