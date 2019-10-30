@@ -6,13 +6,13 @@ manager: kamrani
 ms.topic: article
 ms.author: kamrani
 ms.service: bot-service
-ms.date: 08/03/2019
-ms.openlocfilehash: a856e3cc578b8c73583126df9f670bfde68ec9dc
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.date: 10/28/2019
+ms.openlocfilehash: 0821d9cac50828cc7802c4be8221538d4e1e620d
+ms.sourcegitcommit: b2819741e2bcace92510e7b250cd5c1ab667d774
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386106"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73031220"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Facebook にボットを接続する
 
@@ -22,6 +22,9 @@ ms.locfileid: "70386106"
 > Facebook の UI は、使用しているバージョンによって多少異なる場合があります。
 
 ## <a name="connect-a-bot-to-facebook-messenger"></a>Facebook Messenger にボットを接続する
+
+> [!NOTE]
+> 2019 年 12 月 16 日より、Workplace by Facebook はカスタム統合のセキュリティ モデルを変更します。  Microsoft Bot Framework で構築された現在の統合は、Bot Framework アダプター (JavaScript/Node.js で利用可能) を使用するように更新し、Azure 上の Web アプリを使用してデプロイする必要があります。  Microsoft Bot Framework を使用して開発された新しい Workplace ボットは、JavaScript Facebook アダプターも使用する必要があります。 [Facebook アダプターの使用](https://aka.ms/botframework-workplace-adapter)に関する詳細をご確認ください。 以下の手順は、2019 年 12 月 16 日まで有効です。
 
 Facebook Messenger 向けの開発の詳細については、[Messenger プラットフォームのドキュメント](https://developers.facebook.com/docs/messenger-platform)を参照してください。 Facebook の[プレリリースのガイドライン](https://developers.facebook.com/docs/messenger-platform/product-overview/launch#app_public)、[クイック スタート](https://developers.facebook.com/docs/messenger-platform/guides/quick-start)、および[設定ガイド](https://developers.facebook.com/docs/messenger-platform/guides/setup)を参照してください。
 
