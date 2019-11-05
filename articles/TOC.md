@@ -19,6 +19,7 @@
 ## [ミドルウェア](v4sdk/bot-builder-concept-middleware.md)
 ## [ユーザー認証](v4sdk/bot-builder-concept-authentication.md)
 ## [ボット リソースの管理](v4sdk/bot-file-basics.md)
+## [Microsoft Teams のボットのしくみ](v4sdk/bot-builder-basics-teams.md)
 <!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Bot Service テンプレート](bot-service-concept-templates.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
@@ -56,6 +57,7 @@
 ### [Node.JS](nodejs/TOC.md)
 ## テスト
 ### [ボットの単体テスト](v4sdk/unit-test-bots.md)
+### [ボットへのトレース アクティビティの追加](v4sdk/using-trace-activities.md)
 ## [デバッグ](debug/TOC.md)
 ## デプロイ
 ### [ボットを Azure にデプロイする](bot-builder-deploy-az-cli.md)
@@ -68,5 +70,8 @@
 ## [REST](rest-api/TOC.md)
 ## [.NET SDK v3](https://aka.ms/botframework-v3-cs-sdk)
 ## [Node.js SDK v3](https://aka.ms/bot-jssdk-v3)
+## BF CLI ツールのリファレンス
+### [BF CLI の概要](v4sdk/bf-cli-overview.md)
+### [BF CLI のリファレンス](v4sdk/bf-cli-reference.md)
 ## [エンティティとアクティビティの種類](bot-service-activities-entities.md)
 # [リソース](resources/TOC.md)
