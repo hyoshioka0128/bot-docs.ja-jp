@@ -5,18 +5,16 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 08/22/2019
+ms.date: 11/04/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 953f52a7bc95c0b87435be70bb4052cf939b0a63
-ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
+ms.openlocfilehash: c55e14f10bf6a5f4032033472c07401bde82a334
+ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039767"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73592276"
 ---
 <!-- 
-
-ms.author: kamrani
 
 Related TODO:
 - Check code in [Web Chat channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
@@ -172,7 +170,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 #### <a name="azure-ad-v1"></a>Azure AD v1
 
-1. [Azure Portal](http://portal.azure.com/) で、ボットのリソース ページに移動します。
+1. [Azure Portal](https://portal.azure.com/) で、ボットのリソース ページに移動します。
 1. **[設定]** をクリックします。
 1. ページ下部付近の **[OAuth Connection Settings]\(OAuth 接続設定\)** で、 **[設定の追加]** をクリックします。
 1. 次のようにフォームに入力します。
@@ -201,7 +199,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 #### <a name="azure-ad-v2"></a>Azure AD v2
 
-1. [Azure Portal](http://portal.azure.com/) で、ボットの [Bot Channels Registration]\(ボット チャネル登録\) ページに移動します。
+1. [Azure Portal](https://portal.azure.com/) で、ボットの [Bot Channels Registration]\(ボット チャネル登録\) ページに移動します。
 1. **[設定]** をクリックします。
 1. ページ下部付近の **[OAuth Connection Settings]\(OAuth 接続設定\)** で、 **[設定の追加]** をクリックします。
 1. 次のようにフォームに入力します。
@@ -437,7 +435,7 @@ Teams は、OAuth に関して他のチャネルとは多少異なる動作を�
 `TeamsActivityHandler` は*メッセージの反応*アクティビティも送信します。 メッセージの反応アクティビティは、*返信先 ID* フィールドを使用して元のアクティビティを参照します。 このアクティビティは、Microsoft Teams の[アクティビティ フィード][teams-activity-feed]でも表示される必要があります。
 
 > [!NOTE]
-> マニフェストを作成して、`validDomains` セクションに `token.botframework.com` を含める必要があります。そうしないと、 OAuthCard の **[サインイン]** ボタンをクリックしても、認証ウィンドウは開きません。 [App Studio](https://docs.microsoft.com/en-us/microsoftteams/platform/get-started/get-started-app-studio) を使用して、マニフェストを生成してください。
+> マニフェストを作成して、`validDomains` セクションに `token.botframework.com` を含める必要があります。そうしないと、 OAuthCard の **[サインイン]** ボタンをクリックしても、認証ウィンドウは開きません。 [App Studio](https://docs.microsoft.com/microsoftteams/platform/get-started/get-started-app-studio) を使用して、マニフェストを生成してください。
 
 ### <a name="further-reading"></a>参考資料
 
