@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 04/18/2019
+ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b3e2a2f60c3a3f44c81e31b280315d8fee06138b
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: 1c75349605e7b142035112c84c2b8684fe78ca85
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026334"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933555"
 ---
 # <a name="handle-user-interruptions"></a>ユーザーによる割り込みを処理する
 
@@ -56,7 +56,7 @@ ms.locfileid: "70026334"
 
 ユーザーが「cancel」と入力すると、内部ダイアログ コンテキストで `CancelAllDialogsAsync` が呼び出され、そのダイアログ スタックがクリアされ処理が終了します。この場合、取り消し済み状態になり、結果値は返されません。 `MainDialog` (後で説明します) の場合は、予約ダイアログが終了し、null を返したように見えます。これはユーザーが予約を確認しないことを選択した場合の処理と似ています。
 
-[!code-csharp[Interrupt](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=33-56&highlight=43-45,49-51)]
+[!code-csharp[Interrupt](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=33-56)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -76,7 +76,7 @@ ms.locfileid: "70026334"
 
 ユーザーが「cancel」と入力すると、内部ダイアログ コンテキストで `cancelAllDialogs` が呼び出され、そのダイアログ スタックがクリアされ処理が終了します。この場合、取り消し済み状態になり、結果値は返されません。 `MainDialog` (後で説明します) の場合は、予約ダイアログが終了し、null を返したように見えます。これはユーザーが予約を確認しないことを選択した場合の処理と似ています。
 
-[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=20-37&highlight=27-29,32-34)]
+[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=20-39)]
 
 ---
 
@@ -104,11 +104,11 @@ ms.locfileid: "70026334"
 
 新しいメッセージ アクティビティが届くと、ボットは `MainDialog` を実行します。 `MainDialog` は、ユーザーに対して、ボットに役立つ情報を入力するよう要求します。 そして、次のように `MainDialog.actStep` メソッドで `bookingDialog` を開始して、`beginDialog` を呼び出します。
 
-[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=71-112&highlight=6,27)]
+[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=71-115&highlight=6,27)]
 
 次に、`MainDialog` クラスの `finalStep` メソッドで、予約ダイアログが終了し、予約は完了または取り消し済みと見なされます。
 
-[!code-javascript[Final step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=135-139)]
+[!code-javascript[Final step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=142-159)]
 
 `BookingDialog` のコードは中断処理に直接関連しないため、ここには示されていません。 これは、ユーザーに予約の詳細の入力を求めるときに使用されます。 このコードは、**Dialogs\bookingDialogs.js** にあります。
 
@@ -124,7 +124,7 @@ ms.locfileid: "70026334"
 
 このサンプルでは、アダプターの `OnTurnError` ハンドラーは、お使いのボットのターン ロジックによってスローされたすべての例外を受け取ります。 例外がスローされると、ハンドラーは、ボットが無効な状態になることでエラー ループに陥らないように、現在の会話の会話状態を削除します。
 
-[!code-csharp[AdapterWithErrorHandler](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/AdapterWithErrorHandler.cs?range=13-45)]
+[!code-csharp[AdapterWithErrorHandler](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/AdapterWithErrorHandler.cs?range=19-50)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -132,7 +132,7 @@ ms.locfileid: "70026334"
 
 このサンプルでは、アダプターの `onTurnError` ハンドラーは、お使いのボットのターン ロジックによってスローされたすべての例外を受け取ります。 例外がスローされると、ハンドラーは、ボットが無効な状態になることでエラー ループに陥らないように、現在の会話の会話状態を削除します。
 
-[!code-javascript[AdapterWithErrorHandler](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=34-44)]
+[!code-javascript[AdapterWithErrorHandler](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=35-57)]
 
 ---
 
@@ -158,7 +158,7 @@ ms.locfileid: "70026334"
 
 最後に、`index.js` で、ボットが作成されます。
 
-[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=65)]
+[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=75-78)]
 
 参照用に、上記のボットを作成するときに呼び出しで使用されるクラスの定義を次に示します。
 

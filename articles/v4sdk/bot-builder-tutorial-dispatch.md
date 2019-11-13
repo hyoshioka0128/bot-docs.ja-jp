@@ -7,14 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 09/23/2019
+ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c9303962c992ef9b0801d0bdaabf08886755777d
-ms.sourcegitcommit: 33b67191b3a1c5744e1b93b0c02345536db41a54
+ms.openlocfilehash: 844f1514c0b90477cbe454d91dbc93637713d457
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72561361"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933759"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -310,7 +310,7 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 **BotServices.cs**
 
-[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-30)]
+[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=16-31)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
@@ -318,7 +318,7 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 **bots/dispatchBot.js**
 
-[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-24)]
+[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-26)]
 
 ---
 
@@ -343,7 +343,7 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 **bots/dispatchBot.js**
 
-[!code-javascript[OnMessageActivity](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=29-42)]
+[!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=31-44)]
 
 ---
 
@@ -366,7 +366,7 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 モデルによって結果が生成されるとき、どのサービスが発話を最も適切に処理できるかが示されます。 このサンプルのコードでは、対応するサービスへの要求のルーティング方法を示すために、認識された _topIntent_ が使用されます。
 
 **bots/dispatchBot.js**  
-[!code-javascript[dispatchToTopIntentAsync](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=59-75)]
+[!code-javascript[dispatchToTopIntentAsync](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=61-77)]
 
 `processHomeAutomation` または `processWeather` のいずれかのメソッドが呼び出されると、_recognizerResult.luisResult_ 内のディスパッチ モデルから結果が渡されます。 その後、指定されたメソッドによって、ユーザー フィードバックが提供されます。このフィードバックには、ディスパッチ モデルの最上位の意図と、検出された意図およびエンティティの一覧がランク付けされて示されています。
 

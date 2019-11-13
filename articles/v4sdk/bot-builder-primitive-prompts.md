@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 589c9d07bf0cf7b0be10ff8a9a56f7c9be19dd61
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: 444aa96366fbacac30ff135b43947847fab5dac1
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890600"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933726"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>ユーザー入力を収集するために独自のプロンプトを作成する
 
@@ -71,9 +71,9 @@ ms.locfileid: "69890600"
 
 **Index.js** で、状態プロパティとボットを作成し、`run` ボット メソッドを `processActivity` 内から呼び出します。
 
-[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=32-38)]
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=33-39)]
 
-[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=55-60)]
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=63-69)]
 
 ---
 
@@ -88,7 +88,7 @@ ms.locfileid: "69890600"
 
 最後に、`SaveChangesAsync` メソッドを使用してデータを保存します。
 
-[!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=42-43)]
+[!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=41-44)]
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
