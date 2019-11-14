@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 68ef5f1d24c464489ff500fe290de2a151f87f5a
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 3ed589bff5c3740dddcfb62226714006313ae330
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68970599"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933678"
 ---
 # <a name="configure-net-bot-for-extension"></a>拡張機能のための .NET ボットの構成
 
@@ -74,7 +74,13 @@ ms.locfileid: "68970599"
     これらの値は、**appid** と、サービス登録グループに関連付けられた **appSecret** です。
 
 1. ボットを Azure App Service に**発行**します。
-1. ブラウザーで、 https://<your_app_service>.azurewebsites.net/.bot に移動します。 すべて正しければ、ページは JSON コンテンツ `{"k":true,"ib":true,"ob":true,"initialized":true}` を返します。
+1. ブラウザーで、 https://<your_app_service>.azurewebsites.net/.bot に移動します。 すべて正しければ、ページは JSON コンテンツ `{"k":true,"ib":true,"ob":true,"initialized":true}` を返します。 これは、**すべてが正常に動作している**場合に取得される情報です。ここでは、次のようになります。
+
+    - **k** によって、Direct Line App Service Extension (ASE) がその構成から拡張キーを読み取れるかどうかを決定します。 
+    - **initialized** によって、Direct Line ASE が拡張キーを使用して Azure Bot Service からボット メタデータをダウンロードできるかどうかを決定します。
+    - **ib** によって、Direct Line ASE がボットとの受信接続を確立できるかどうかを決定します。
+    - **ob** によって、Direct Line ASE がボットとの送信接続を確立できるかどうかを決定します。 
+
 
 ### <a name="gather-your-direct-line-extension-keys"></a>Direct Line 拡張機能キーを収集する
 
@@ -94,7 +100,7 @@ ms.locfileid: "68970599"
 1. Azure portal で、ボットをホストしている、またはホストする予定の Web アプリの **Azure App Service** リソース ページを見つけます
 1. **[Configuration]\(構成\)** をクリックします。 *[アプリケーションの設定]* セクションで、次の新しい設定を追加します。
 
-    |EnableAdfsAuthentication|値|
+    |名前|値|
     |---|---|
     |DirectLineExtensionKey|<App_Service_Extension_Key_From_Section_1>|
     |DIRECTLINE_EXTENSION_VERSION|latest|

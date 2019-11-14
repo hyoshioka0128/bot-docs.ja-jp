@@ -11,7 +11,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/31/2019
+  ms.date: 11/11/2019
   ms.author: ivorb
 abstract:
   description: 'Azure Bot Service では、ボット開発専用の統合環境が提供され、インテリジェント ボットのビルド、接続、テスト、デプロイ、管理をすべて一元化して行えます。 Azure Bot Service では、C# と JavaScript をサポートする Bot Framework SDK を活用します。 クイックスタート、チュートリアル、およびサンプルを使用して、Bot Service の使用方法を学習してください。'
@@ -21,8 +21,8 @@ abstract:
       height: 110
       src: media/video/satya-video.png
       width: 250
-    title: 'サティア ナデラによる Build 2019 基調講演 (1:25:09)'
-    href: 'https://mybuild.techcommunity.microsoft.com/sessions/77571?source=%7B%7B%20ctrl.source#top-anchor'
+    title: 'サティア ナデラによる Ignite 2019 基調講演 (1:52)'
+    href: 'https://myignite.techcommunity.microsoft.com/sessions/77831?source=sessions'
     width: 250
 sections:
   - items:

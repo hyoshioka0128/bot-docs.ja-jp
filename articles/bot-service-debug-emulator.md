@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: b6db4fd406b115ca88298d0727ff118821dad0d5
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: de15fbc7fb000bde3b62883405149d22f3ac23a0
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298262"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933640"
 ---
 # <a name="debug-with-the-emulator"></a>エミュレーターを使用したデバッグ
 
@@ -55,6 +55,37 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 
 ## <a name="connect-to-a-bot-running-on-localhost"></a>localhost で実行されているボットに接続する
 
+<!-- auth config steps -->
+### <a name="configure-the-emulator-for-authentication"></a>認証用にエミュレーターを構成する
+
+ボットが認証を必要とし、ログイン ダイアログを表示するには、エミュレーターを次のように構成する必要があります。
+
+#### <a name="using-sign-in-verification-code"></a>サインイン確認コードを使用する
+
+1. エミュレーターを起動します。
+1. エミュレーターで、左下の歯車アイコンをクリックするか、右上の **[エミュレーター設定]** タブをクリックします。
+1. **[Use a sign-in verification code for OAuthCards]\(OAuthCard のサインイン確認コードを使用する\)** ボックスをオンにします。
+1. **[Bypass ngrok for local address]\(ローカル アドレスに対して ngrok をバイパスする\)** ボックスをオンにします。
+1. **[Save]\(保存\)** ボタンをクリックします。
+
+ボットによって表示されるログイン ボタンをクリックすると、確認コードが生成されます。
+ボット入力チャット ボックスにコードを入力して、認証を実行します。
+その後、許可されている操作を実行できます。
+
+または、以下で説明されている手順を実行することもできます。
+
+#### <a name="using-authentication-tokens"></a>認証トークンを使用する
+
+1. エミュレーターを起動します。
+1. エミュレーターで、左下の歯車アイコンをクリックするか、右上の **[エミュレーター設定]** タブをクリックします。
+1. **[Use version1.0 authentication tokens]\(バージョン1.0 認証トークンを使用する\)** ボックスをオンにします。
+1. **ngrok** ツールへのローカル パスを入力します。 ツールの詳細については、「[ngrok](https://ngrok.com/)」を参照してください。
+1. **[Run ngrok when the Emulator starts up]\(エミュレーターの起動時に ngrok を実行する\)** ボックスをオンに ます。
+1. **[Save]\(保存\)** ボタンをクリックします。
+
+ボットによって表示されるログイン ボタンをクリックすると、資格情報を入力するように求められます。 認証トークンが生成されます。 その後、許可されている操作を実行できます。
+
+
 ![エミュレーター UI](media/emulator-v4/emulator-welcome.png)
 
 ローカルで実行されているボットに接続するには、 **[Open bot]\(ボットを開く\)** をクリックします。 先ほどコピーしたポート番号を次の URL に追加し、その更新した URL を [Bot URL]\(ボットの URL\) バーに貼り付けます。
@@ -64,7 +95,6 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 ![エミュレーター UI](media/bot-service-debug-emulator/open_bot_emulator.png)
 
 お使いのボットが [Microsoft アカウント (MSA) の資格情報](#use-bot-credentials)で実行されている場合は、その資格情報も入力します。
-
 
 ### <a name="use-bot-credentials"></a>ボットの資格情報を使用
 

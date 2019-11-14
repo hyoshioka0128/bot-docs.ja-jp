@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/04/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c55e14f10bf6a5f4032033472c07401bde82a334
-ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
+ms.openlocfilehash: 165eac6ac134a5807119c7a067b77fb7bc6e3282
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73592276"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933703"
 ---
 <!-- 
 
@@ -273,30 +273,36 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 > [!NOTE]
 > ここで、このボット コードを Azure サブスクリプションに発行 (プロジェクトを右クリックして **[発行]** を選択) することもできますが、この記事では不要です。 Azure Portal でボットを構成するときに使用したアプリケーションとホスティング プランを使用する発行構成を設定する必要があります。
 
-## <a name="test-the-bot"></a>ボットのテスト
+## <a name="test-the-bot-using-the-emulator"></a>エミュレーターを使ってボットをテストする
 
-1. [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme) をインストールします (まだインストールしていない場合)。
-1. ご自身のマシンを使ってローカルでサンプルを実行します。
-1. エミュレーターを起動し、お使いのボットに接続して、メッセージを送信します。
+[Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme) をインストールします (まだインストールしていない場合)。 「[エミュレーターを使用したデバッグ](../bot-service-debug-emulator.md)」もご覧ください。
 
-    - お使いのボットに接続するときに、ボットのアプリ ID とパスワードを入力する必要があります。
+<!-- auth config steps -->
+ボット サンプル ログインを機能させるには、「[認証用にエミュレーターを構成する](../bot-service-debug-emulator.md#configure-the-emulator-for-authentication)」に示されているようにエミュレーターを構成する必要があります。
 
-        - ボット コード内のパスワードを XML エスケープする必要がある場合は、ここでもそれを行う必要があります。
+### <a name="testing"></a>テスト
 
-    - `help` と入力すると、ボットで使用できるコマンドの一覧が表示され、認証機能をテストします。
-    - サインインした後は、サインアウトするまで、資格情報を再度入力する必要はありません。
-    - サインアウトして認証をキャンセルするには、`logout` と入力します。
+認証メカニズムを構成したら、実際のボット サンプル テストを実行できます。  
+
+1. お使いのマシン上でローカルでボット サンプルを実行します。
+1. エミュレーターを起動します。
+1. ボットに接続するときに、ボットのアプリ ID とパスワードを入力する必要があります。
+    - Azure アプリの登録からアプリ ID とパスワードを取得します。 これらは、`appsettings.json` または `.env` ファイルでボット アプリに割り当てたものと同じ値です。 エミュレーターで、これらの値を構成ファイルで、または初めてボットに接続するときに割り当てます。
+    - ボット コード内のパスワードを XML エスケープする必要がある場合は、ここでもそれを行う必要があります。
+1. `help` と入力すると、ボットで使用できるコマンドの一覧が表示され、認証機能をテストします。
+1. サインインした後は、サインアウトするまで、資格情報を再度入力する必要はありません。
+1. サインアウトして認証をキャンセルするには、`logout` と入力します。
 
 > [!NOTE]
 > ボット認証では Bot Connector Service を使用する必要があります。 このサービスは、お使いのボットのボット チャネル登録情報にアクセスします。
 
-# <a name="bot-authenticationtabbot-oauth"></a>[ボット認証](#tab/bot-oauth)
+## <a name="bot-authentication-example"></a>ボット認証の例
 
 **ボット認証**サンプルでは、ダイアログは、ユーザーのログイン後、ユーザー トークンを取得するように設計されています。
 
 ![サンプル出力](media/how-to-auth/auth-bot-test.png)
 
-# <a name="bot-authentication-msgraphtabbot-msgraph-auth"></a>[ボット認証 MSGraph](#tab/bot-msgraph-auth)
+## <a name="bot-authentication-msgraph-example"></a>ボット認証 MSGraph の例
 
 **ボット認証 MSGraph** サンプルでは、ダイアログは、ユーザーのログイン後、制限された一部のコマンドを受け取るように設計されています。
 
@@ -423,7 +429,7 @@ Teams は、OAuth に関して他のチャネルとは多少異なる動作を�
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)  
 **Bots/DialogBot.cs**  
-[!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=18)]
+[!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=19)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)  
 **Bots/dialogBot.js**  

@@ -7,24 +7,49 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 02/21/2019
-ms.openlocfilehash: d8e5151e7b5432b8ec90087647380757e101c447
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 8804ee573f3bf16a831e58221e27d2c8557bd20f
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298094"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933539"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework についてよく寄せられる質問
 
 この記事では、Bot Framework についてよく寄せられる質問とその回答を示します。
 
 ## <a name="background-and-availability"></a>背景と提供状況
+
 ### <a name="why-did-microsoft-develop-the-bot-framework"></a>Microsoft が Bot Framework を開発したのはなぜですか?
 
 会話ユーザー インターフェイス (CUI) が登場しましたが、現時点では、新しい会話型エクスペリエンスを構築したり、ユーザーが楽しめる会話型インターフェイスで既存のアプリケーションやサービスを利用できるようにするために必要な専門知識やツールを持っている開発者はほとんどいません。 Microsoft は、開発者が優れたボットを作成し、Microsoft のプレミア チャンネル上など、ユーザーが会話する場所にボットを接続することを容易にするために、Bot Framework を開発しました。
 
 ### <a name="what-is-the-v4-sdk"></a>v4 SDK とは何ですか?
 Bot Framework v4 SDK は、以前の Bot Framework SDK から得たフィードバックと知識を基に構築されています。 ボットの構成要素の豊富なコンポーネント化を可能にしながら、適切なレベルの抽象化が導入されます。 簡単なボットから始め、モジュール式の拡張可能なフレームワークを使用してボットを高度化していくことができます。 GitHub で SDK の [FAQ](https://github.com/Microsoft/botbuilder-dotnet/wiki/FAQ) をご覧ください。
+
+### <a name="running-a-bot-offline"></a>ボットをオフラインで実行する
+
+<!-- WIP -->
+ボットのオフラインでの使用について説明する前に、Azure または一部のその他のホスト サービス上ではなく、オンプレミスにデプロイされるボットについて、いくつかの点を明確にしておきます。
+
+- ボットは UI を持たない Web サービスです。そのためユーザーは、[Azure コネクタ サービス](rest-api/bot-framework-rest-connector-concepts.md#bot-connector-service)を使用する、チャネルの形式など他の方法でボットとやり取りする必要があります。 コネクタは、"*プロキシ*" として機能して、クライアントとボット間のメッセージを中継します。
+- **コネクタ**は、Azure ノードでホストされるグローバル アプリケーションであり、可用性とスケーラビリティのために地理的に分散されています。 
+- ボットをコネクタに登録するには、[ボット チャネル登録](bot-service-quickstart-registration.md)を使用します。
+    >[!NOTE]
+    > ボットのエンドポイントは、コネクタによってパブリックに到達可能である必要があります。
+
+機能制限付きでボットをオフラインで実行することができます。 たとえば、LUIS 機能を持つボットをオフラインで使用する場合は、ボット用のコンテナー、必要なツール、LUIS 用のコンテナーを作成する必要があります。 いずれも Docker Compose のブリッジされたネットワーク経由で接続されます。
+
+これは、Cognitive Services コンテナーに定期的なオンライン接続が必要なため、"部分的な" オフライン ソリューションです。
+
+> [!NOTE]
+> QnA サービスは、オフラインで実行されるボットではサポートされていません。
+
+詳細については、次を参照してください。
+
+- [Language Understanding (LUIS) コンテナーを Azure Container Instances にデプロイする](https://docs.microsoft.com/azure/cognitive-services/luis/deploy-luis-on-container-instances)
+- [Azure Cognitive Services でのコンテナーのサポート](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support)
+
 
 ## <a name="bot-framework-sdk-version-3-lifetime-support"></a>Bot Framework SDK バージョン 3 のライフタイム サポート 
 SDK V3 ボットは Azure Bot Service によって引き続き実行およびサポートされます。  他のフレームワークと同様に、Bot Framework SDK V4 のリリース以降も、セキュリティ、優先度の高いバグ修正、およびコネクタ/プロトコル レイヤーの更新を含む SDK V3 のサポートを継続します。  v3 のサポートは 2019 年まで継続されます。
@@ -57,7 +82,7 @@ SDK V3 ボットは Azure Bot Service によって引き続き実行およびサ
 
 ### <a name="should-i-build-new-a-bot-using-v3-or-v4"></a>V3 または V4 を使用して新しいボットをビルドする必要はありますか?
 - 新しい会話型エクスペリエンスのために、Bot Framework SDK V4 を使用して新しいボットを始めることをお勧めします。
-- Bot Framework SDK V3 に既に慣れ親しんでいる場合は、新しいバージョンと、新しい [Bot Framework SDK V4](http://aka.ms/botframeowrkoverview) で提供される機能の学習には時間がかかります。
+- Bot Framework SDK V3 に既に慣れ親しんでいる場合は、新しいバージョンと、新しい [Bot Framework SDK V4](https://aka.ms/botframeowrkoverview) で提供される機能の学習には時間がかかります。
 - 運用中の Bot Framework SDK V3 ボットが既にある場合でも心配は無用です。当面の間はそのまま機能します。
 - Azure portal と Azure コマンド ラインを使用すると、Bot Framework SDK V4 ボットと以前の V3 ボットを作成できます。 
 
@@ -105,7 +130,7 @@ services.AddSingleton<IChannelProvider, ConfigurationChannelProvider>();
 ```csharp
 options.ChannelProvider = new ConfigurationChannelProvider();
 ```
-政府機関のサービスに関する詳細については、[こちら](https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-services-aiandcognitiveservices#azure-bot-service)を参照してください。
+政府機関のサービスに関する詳細については、[こちら](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#azure-bot-service)を参照してください。
 
 ## <a name="security-and-privacy"></a>セキュリティとプライバシー
 ### <a name="do-the-bots-registered-with-the-bot-framework-collect-personal-information-if-yes-how-can-i-be-sure-the-data-is-safe-and-secure-what-about-privacy"></a>Bot Framework に登録されているボットは個人情報を収集するのでしょうか。 収集する場合、データの安全とセキュリティを確保するにはどうすればよいですか? プライバシーはどうですか?
@@ -132,7 +157,7 @@ I/O サービスを提供するために、Bot Framework では、お客様が�
 - *.botframework.com (チャンネル)
 
 ### <a name="can-i-block-all-traffic-to-my-bot-except-traffic-from-the-bot-connector-service"></a>Bot Connector サービスからのトラフィックを除く、自分のボットへのすべてのトラフィックをブロックできますか?
-いいえ。 このような IP アドレスまたは DNS ホワイトリスト登録は実用的ではありません。 Bot Framework Connector サービスは、世界規模の Azure データセンターでホストされ、Azure IP の一覧が常に変わっています。 特定の IP アドレスのホワイトリスト登録が有効なのは 1 日で、翌日に Azure IP アドレスが変わると無効になります。
+No. このような IP アドレスまたは DNS ホワイトリスト登録は実用的ではありません。 Bot Framework Connector サービスは、世界規模の Azure データセンターでホストされ、Azure IP の一覧が常に変わっています。 特定の IP アドレスのホワイトリスト登録が有効なのは 1 日で、翌日に Azure IP アドレスが変わると無効になります。
  
 ### <a name="what-keeps-my-bot-secure-from-clients-impersonating-the-bot-framework-connector-service"></a>自分のボットは、Bot Framework Connector サービスを偽装するクライアントからどのように保護されますか?
 1. お使いのボットへのすべての要求に付いているセキュリティ トークンでは ServiceUrl がエンコードされています。つまり、攻撃者がトークンにアクセスしても、会話を新しい ServiceUrl にリダイレクトすることはできません。 これは、SDK のすべての実装によって適用され、Microsoft の認証[参考](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector)資料に記載されています。
@@ -162,7 +187,7 @@ Bot Framework サービスは、どのボットも他のボットのパフォー
 ## <a name="related-services"></a>関連サービス
 ### <a name="how-does-the-bot-framework-relate-to-cognitive-services"></a>Bot Framework は Cognitive Services にどのように関連していますか?
 
-Bot Framework と [Cognitive Services](http://www.microsoft.com/cognitive) は、[Microsoft Build 2016](http://build.microsoft.com) で導入された新しい機能であり、一般提供時に Cortana Intelligence Suite にも統合されます。 これらのサービスはいずれも、長年にわたる研究と一般的な Microsoft 製品での使用に基づいて構築されています。 これらの機能を "Cortana Intelligence" と組み合わせることで、あらゆる組織が、データの力、クラウド、インテリジェンスを活用して、新たなチャンスを切り開き、ビジネスを加速させ、顧客にサービスを提供する業界をリードする独自のインテリジェント システムを構築できます。
+Bot Framework と [Cognitive Services](https://www.microsoft.com/cognitive) は、[Microsoft Build 2016](https://build.microsoft.com) で導入された新しい機能であり、一般提供時に Cortana Intelligence Suite にも統合されます。 これらのサービスはいずれも、長年にわたる研究と一般的な Microsoft 製品での使用に基づいて構築されています。 これらの機能を "Cortana Intelligence" と組み合わせることで、あらゆる組織が、データの力、クラウド、インテリジェンスを活用して、新たなチャンスを切り開き、ビジネスを加速させ、顧客にサービスを提供する業界をリードする独自のインテリジェント システムを構築できます。
 
 ### <a name="what-is-cortana-intelligence"></a>Cortana Intelligence とは何ですか?
 

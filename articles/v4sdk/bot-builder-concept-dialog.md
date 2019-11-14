@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9911fda3458d686cce993a54223ab06036dee745
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 9dbb64dd941cdd7706b0ec8f7bd531530c8db59e
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299510"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933602"
 ---
 # <a name="dialogs-library"></a>ダイアログ ライブラリ
 
@@ -106,7 +106,7 @@ ms.locfileid: "70299510"
 * *値*: コンテキストに追加できる情報が格納され、以降の手順に繰り越されます。
 * *結果*: 前の手順の結果が格納されます。
 
-さらに、*next* メソッドは、同じターン内のウォーターフォール ダイアログの次のステップに進み、必要な場合は特定のステップをスキップすることができます。
+さらに、*next* メソッド (C# の **NextAsync**、JS の **next**) は、同じターン内のウォーターフォール ダイアログの次のステップに進み、必要な場合は特定のステップをスキップすることができます。
 
 #### <a name="prompt-options"></a>プロンプト オプション
 
