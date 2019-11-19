@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: kamrani
 ms.service: bot-service
 ms.date: 10/28/2019
-ms.openlocfilehash: 0821d9cac50828cc7802c4be8221538d4e1e620d
-ms.sourcegitcommit: b2819741e2bcace92510e7b250cd5c1ab667d774
+ms.openlocfilehash: ba9f0ec8f4b6f0e2f5a7069ab456f96b303a4c92
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73031220"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441640"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Facebook にボットを接続する
 
@@ -133,6 +133,9 @@ Facebook には、基本アプリ設定ページの [Privacy Policy URL]\(プラ
 このボットに関連付けられた Facebook ページが発行されていることを確認します。 [Pages settings]\(ページ設定\) に状態が表示されます。
 
 ## <a name="connect-a-bot-to-facebook-workplace"></a>Facebook Workplace にボットを接続する
+
+> [!NOTE]
+> 2019 年 12 月 16 日より、Workplace by Facebook はカスタム統合のセキュリティ モデルを変更します。  Bot Framework [Facebook for Workplace Adapter](https://aka.ms/botframework-workplace-adapter) を使用するには、JavaScript/node.js で Microsoft Bot Framework v4 を使用して構築された現在の統合を更新する必要があり、その日を超えて作業を続行するには、Azure Web アプリを使用してデプロイする必要があります。 Workplace をターゲットとする新しい Microsoft Bot Framework のボットも、そのアダプターを使用して開発する必要があります。
 
 Facebook Workplace は、従業員が簡単に接続して共同作業できる Facebook のビジネス指向バージョンです。 これには、ライブ動画、ニュース フィード、グループ、Messenger、リアクション、検索、およびトレンドの投稿が含まれています。 また、以下もサポートします。
 

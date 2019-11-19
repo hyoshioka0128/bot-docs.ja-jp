@@ -7,13 +7,13 @@ keywords: Bot Framework SDK, ボットのデバッグ, 検査ミドルウェア,
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 7/9/2019
-ms.openlocfilehash: 4a3ff1ef255b914a30c10f6ebd070b7ca98d2f86
-ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
+ms.date: 11/01/2019
+ms.openlocfilehash: 0e59c6d3548e273a8fb164526ddeb6ba66f48e3e
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693127"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933525"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>検査ミドルウェアを使用してボットをデバッグする
 この記事では、検査ミドルウェアを使用してボットをデバッグする方法について説明します。 この機能を使用すると、Bot Framework Emulator で、ボットの現在の状態を確認でき、さらにボットとの間のトラフィックをデバッグできます。 トレース メッセージを使用してエミュレーターにデータを送信し、会話のある特定のターンでのボットの状態を調べることができます。 
@@ -22,8 +22,8 @@ Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-b
 
 ## <a name="prerequisites"></a>前提条件
 - [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started) をダウンロードしてインストールする
-- ボットの[ミドルウェア](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0)の知識
-- ボットの[管理状態](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0)の知識
+- ボットの[ミドルウェア](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0)の知識
+- ボットの[管理状態](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0)の知識
 - [ngrok](https://ngrok.com/) をダウンロードしてインストールする (追加のチャネルを使用するために、Azure に構成されているボットをデバッグする場合)
 
 ## <a name="update-your-emulator-to-the-latest-version"></a>エミュレーターを最新バージョンに更新する 
@@ -36,13 +36,13 @@ Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-b
 ## <a name="update-your-bots-code"></a>ボットのコードを更新する
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
-**Startup** ファイルで検査状態を設定します。 検査ミドルウェアをアダプターに追加します。 検査状態は、依存関係の挿入によって提供されます。 以下のコードの更新をご覧になるか、[C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection) の検査サンプルを参照してください。 
+**Startup** ファイルで検査状態を設定します。 検査ミドルウェアをアダプターに追加します。 検査状態は、依存関係の挿入によって提供されます。 以下のコード更新をご覧になるか、こちらの検査サンプルを参照してください:[C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection)。 
 
 **Startup.cs**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
 
 **AdapterWithInspection.cs**  
-[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-21)]
+[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-37)]
 
 **EchoBot.cs**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
@@ -52,7 +52,7 @@ Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-b
 ```cmd
 npm install --save botbuilder@latest 
 ```  
-次に、JavaScript ボットのコードを次のように更新する必要があります。 詳細については、「[ボットのコードを更新する](https://github.com/Microsoft/BotFramework-Emulator/blob/master/content/CHANNELS.md#1-update-your-bots-code)」を参照するか、[JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection) の検査サンプルを参照してください。 
+次に、JavaScript ボットのコードを次のように更新する必要があります。 詳細については、次を参照してください。「[Update your bot's code](https://github.com/Microsoft/BotFramework-Emulator/blob/master/content/CHANNELS.md#1-update-your-bots-code)」(ボットのコードを更新する) または以下の検査サンプルを参照してください:[JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection)。 
 
 **index.js**
 

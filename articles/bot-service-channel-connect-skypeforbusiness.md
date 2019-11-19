@@ -8,34 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: fc72262106687199769cad0515c546f805e341af
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 95b611f9499b65571eaf334d0c434b621c1b8589
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298323"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441615"
 ---
 # <a name="connect-a-bot-to-skype-for-business-preview"></a>ボットを Skype for Business に接続する (プレビュー)
 
 Skype for Business Online を使うと、インスタント メッセージング、電話、およびビデオ通話で同僚やビジネス パートナーと接続することができます。 ユーザーが Skype for Business のインターフェイスを介して検出およびやり取りできるボットを構築すると、この機能を拡張することができます。
 
 > [!IMPORTANT]
-> **Bot Framework の Skype for Business チャネルは 2019 年 6 月 30 日に廃止される予定です。**
+> **Bot Framework の Skype for Business チャネルは 2019 年 6 月 30 日に廃止されました。**
 > 
-> この日以降、新しいボットで Skype for Business チャネルを追加できなくなります。  既存のボットは 2019 年 10 月 31 日まで引き続き機能します。 Microsoft Teams は、Microsoft により推奨される通信ツールです。  [ボットを Microsoft Teams に接続する](https://msdn.microsoft.com/microsoft-teams/bots)方法を確認してください。
-
-## <a name="enable-the-channel"></a>チャネルの有効化
-
-[Azure Portal](https://portal.azure.com/) でボットを開き、 **[チャネル]** ブレードをクリックし、 **[Skype for Business]** をクリックします。 これで、ボットが有効になりました。 
-
-ボットと Skype for Business Online の接続は、Skype for Business テナントの**テナント管理者**が実行します。
-
-## <a name="next-steps"></a>次の手順
-* [Skype for Business Bot Framework](https://msdn.microsoft.com/skype/Skype-For-Business-Bot-Framework/docs/overview)
-
-
-
-
-
-
-
+> Skype for Business チャネルは、2019 年 6 月 30 日に新しいボットの受け入れを停止しました。  既存のボットは、2019 年 10 月 31 日まで継続して動作しました。  チャネルは現在廃止されているため、運用環境の負荷でこれを使用しないでください。  Microsoft Teams は、Microsoft により推奨される通信ツールです。  [ボットを Microsoft Teams に接続する](https://msdn.microsoft.com/microsoft-teams/bots)方法を確認してください。

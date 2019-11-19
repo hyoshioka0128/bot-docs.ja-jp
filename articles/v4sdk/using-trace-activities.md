@@ -1,0 +1,91 @@
+---
+title: ボットへのトレース アクティビティの追加 | Microsoft Docs
+description: Bot Framework SDK のトレース アクティビティとその使用方法について説明します。
+keywords: トレース, アクティビティ, ボット, Bot Framework SDK
+author: JonathanFingold
+ms.author: kamrani
+manager: kamrani
+ms.topic: article
+ms.service: bot-service
+ms.date: 10/18/2019
+monikerRange: azure-bot-service-4.0
+ms.openlocfilehash: 54c663a370cc4f613e0f38bb8057b10e49bf8c69
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933767"
+---
+# <a name="add-trace-activities-to-your-bot"></a>ボットへのトレース アクティビティの追加
+
+[!INCLUDE[applies-to](../includes/applies-to.md)]
+
+<!-- What is it and why use it -->
+
+_トレース アクティビティ_ は、ボットが Bot Framework Emulator に送信できるアクティビティです。
+トレース アクティビティを使用すると、ボットをローカルで実行している間に情報を表示することができるため、ボットをインタラクティブにデバッグできます。
+
+<!-- Details -->
+
+トレース アクティビティはエミュレーターにのみ送信され、他のクライアントまたはチャネルには送信されません。
+エミュレーターでは、メインのチャット パネルではなく、ログに表示されます。
+
+- ターン コンテキストを介して送信されたトレース アクティビティは、ターン コンテキストに登録された_送信アクティビティ ハンドラー_を介して送信されます。
+- ターン コンテキストを介して送信されたトレース アクティビティは、会話リファレンスがあった場合にそれを適用し、受信アクティビティに関連付けられています。
+  プロアクティブ メッセージの場合、 _[reply to ID]\(返信先 ID)_ は新しい GUID になります。
+- トレース アクティビティでは、送信方法に関係なく、 _[responded]\(返信済み\)_ フラグが設定されることはありません。
+
+## <a name="to-use-a-trace-activity"></a>トレース アクティビティを使用するには
+
+エミュレーターでトレース アクティビティを表示するには、例外をスローし、アダプターのオン ターン エラー ハンドラーからトレース アクティビティを送信するなど、ボットがトレース アクティビティを送信するシナリオが必要です。
+
+ボットからトレース アクティビティを送信するには:
+
+1. 新しいアクティビティを作成します。
+   - _type_ プロパティを "trace" に設定します。 これは必須です。
+   - 必要に応じて、トレースに対応する、_name_、_label_、_value_、および _value type_ プロパティを設定します。
+1. _turn context_ オブジェクトの _send activity_ メソッドを使用して、トレース アクティビティを送信します。
+   - このメソッドは、受信アクティビティに基づいて、アクティビティの残りの必須プロパティの値を追加します。
+     これには、_channel ID_、_service URL_、_from_、および _recipient_ プロパティが含まれます。
+
+エミュレーターでトレース アクティビティを表示するには:
+
+1. お使いのマシン上でローカルでボットを実行します。
+1. エミュレーターを使ってテストします。
+   - ボットと対話し、シナリオのステップを使用してトレース アクティビティを生成します。
+   - ボットがトレース アクティビティを出力すると、トレース アクティビティがエミュレーター ログに表示されます。
+
+ここでは、ボットが依存している QnAMaker ナレッジ ベースを最初に設定することなく、コアボットを実行した場合に表示されるトレース アクティビティを示します。
+
+![エミュレーターのスクリーン ショット](./media/using-trace-activities.png)
+
+## <a name="add-a-trace-activity-to-the-adapters-on-error-handler"></a>アダプターのオンエラー ハンドラーにトレース アクティビティを追加する
+
+アダプターの _オン ターン エラー_ ハンドラーは、ターン中にボットからスローされ、その他の方法ではキャッチされない例外をキャッチします。
+これは、わかりやすいメッセージをユーザーに送信し、例外に関するデバッグ情報をエミュレーターに送信できるため、トレース アクティビティに適しています。
+
+このコード例は、**コア ボット** サンプルからのものです。 [**C#** ](https://aka.ms/cs-core-sample) または [**JavaScript**](https://aka.ms/js-core-sample) の完全なサンプルを参照してください。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+このサンプルで定義されている **SendTraceActivityAsync** ヘルパー メソッド は、例外情報をトレース アクティビティとしてエミュレーターに送信します。
+
+**AdapterWithErrorHandler.cs**
+
+[!code-csharp[SendTraceActivityAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/AdapterWithErrorHandler.cs?range=16-51&highlight=33-34)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+アダプターの **onTurnError** ハンドラーは、例外情報を含むトレース アクティビティを作成して、エミュレーターに送信します。
+
+**index.js**
+
+[!code-javascript[onTurnError ](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/index.js?range=35-57&highlight=8-14)]
+
+---
+
+## <a name="additional-resources"></a>その他のリソース
+
+- [検査ミドルウェアを使用してボットをデバッグする](../bot-service-debug-inspection-middleware.md)方法では、トレース アクティビティを出力するミドルウェアを追加する方法について説明します。
+- デプロイされたボットをデバッグする場合は、Application Insights を使用できます。 詳細については、「[ボットへのテレメトリの追加](bot-builder-telemetry.md)」を参照してください。
+- アクティビティの種類の詳細については、[ボットのフレームワークのアクティビティ スキーマ](https://aka.ms/botSpecs-activitySchema)に関するページをご覧ください。

@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a0dac2fb38f065c0dab6044b5421918e73a0c563
-ms.sourcegitcommit: b8b2776552b15590a453267dd0141a25418fbc0c
+ms.openlocfilehash: 9ac71659e6420f5181aa7e332d8e5806f1edc348
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72556458"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441545"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>QnA Maker を使用して質問に回答する
 
@@ -154,6 +154,201 @@ QnA Maker からの回答をボットが必要とする場合、ボットのコ�
 
 ![QnA サンプルをテストする](../media/emulator-v4/qna-test-bot.png)
 
+## <a name="additional-information"></a>追加情報
+
+### <a name="multi-turn-prompts"></a>マルチターン プロンプト
+
+QnA Maker は、マルチターン プロンプトとも呼ばれるフォローアップ プロンプトをサポートしています。
+QnA Maker ナレッジベースにユーザーからの追加の応答が必要な場合、ユーザーにプロンプトを表示するために使用できるコンテキスト情報が QnA Maker から送信されます。 この情報は、QnA Maker サービスへのフォローアップの呼び出しを行うためにも使用されます。
+バージョン 4.6 では、Bot Framework SDK にこの機能のサポートが追加されました。
+
+このようなナレッジベースを作成するには、[フォローアップ プロンプトを使用して複数ターンの会話を作成する](https://aka.ms/qnamaker-multiturn-conversation)方法に関する QnA Maker のドキュメントを参照してください。 ボットにマルチターン サポートを組み込む方法については、QnA Maker マルチターン [[**C#** ](https://aka.ms/cs-qna-multiturn) | [**JS**](https://aka.ms/js-qna-multiturn)] サンプルをご覧ください。
+
+<!--TODO: Update code based on final sample 
+The following code snippets come from the proof-of-concept **multi-turn QnA Maker prompts** sample for
+[**C#**](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-prompting/csharp_dotnetcore) and
+[**JavaScript**](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-prompting/javascript_nodejs).
+-->
+<!--
+#### Sample code
+
+This sample uses a custom QnA dialog to track state for QnA Maker and handle the user's input and QnA Maker's response. When the user sends a message to the bot, the bot treats the input as either an initial query or a response to a follow-up question. The bot starts or continues its QnA dialog, which tracks the QnA Maker context information.
+
+1. When the dialog **starts**, it makes an initial call to the QnA Maker service. QnA Maker context information **is not** included in the call.
+1. When the dialog **continues**, it makes a follow-up call to the QnA Maker service. QnA Maker context information included **is** included in the call.
+1. In either case, the dialog evaluates the query results.
+   - Each QnA Maker result includes either an answer or a follow-up question to the user's initial query. (This sample uses only the first result.)
+   - If the result includes follow-up prompts, the dialog prompts the user, saves the context information, and stays on the dialog stack, waiting for additional information from the user.
+   - Otherwise, the result represents an answer, the dialog sends the answer and ends.
+
+This sample implements this across two dialog classes:
+
+- The base _functional dialog_ defines the begin, continue, and state logic for the dialog, notably, the _run state machine_ method.
+- The derived _QnA dialog_ defines the logic to call QnA Maker, evaluate its response, and send an answer or follow-up question to the user.
+
+#### QnA Maker context
+
+You need to track context information for the QnA Maker service.
+The dialog funnels incoming activities through its _run state machine_ method, which:
+
+1. Gets previous QnA Maker context, if any, from state.
+1. Calls its _process_ method to call QnA Maker and generates a response for the user.
+1. If the result was a follow-up question, sends the question, saves new QnA Maker context to state, and waits for more input on the next turn.
+1. If the result was an answer, sends the answer and ends the dialog.
+
+##### [C#](#tab/csharp)
+
+**Dialogs\FunctionDialogBase.cs** defines the **RunStateMachineAsync** method.
+
+```csharp
+private async Task<DialogTurnResult> RunStateMachineAsync(DialogContext dialogContext, CancellationToken cancellationToken)
+{
+     // Get the Process function's current state from the dialog state
+     var oldState = GetPersistedState(dialogContext.ActiveDialog);
+
+     // Run the Process function.
+     var (newState, output, result) = await ProcessAsync(oldState, dialogContext.Context.Activity).ConfigureAwait(false);
+
+     // If we have output to send then send it.
+     foreach (var activity in output)
+     {
+          await dialogContext.Context.SendActivityAsync(activity).ConfigureAwait(false);
+     }
+
+     // If we have new state then we must still be running.
+     if (newState != null)
+     {
+          // Add the state returned from the Process function to the dialog state.
+          dialogContext.ActiveDialog.State[FunctionStateName] = newState;
+
+          // Return Waiting indicating this dialog is still in progress.
+          return new DialogTurnResult(DialogTurnStatus.Waiting);
+     }
+     else
+     {
+          // The Process function indicates it's completed by returning null for the state.
+          return await dialogContext.EndDialogAsync(result).ConfigureAwait(false);
+     }
+}
+```
+
+##### [JavaScript](#tab/javascript)
+
+**dialogs/functionDialogBase.js** defines the **runStateMachine** method.
+
+```javascript
+async runStateMachine(dc) {
+
+     var oldState = this.getPersistedState(dc.activeDialog);
+
+     var processResult = await this.processAsync(oldState, dc.context.activity);
+
+     var newState = processResult[0];
+     var output = processResult[1];
+     var result = processResult[2];
+
+     await dc.context.sendActivity(output);
+
+     if(newState != null){
+          dc.activeDialog.state[functionStateName] = newState;
+          return { status: DialogTurnStatus.waiting };
+     }
+     else{
+          return await dc.endDialog();
+     }
+}
+```
+
+---
+
+#### QnA Maker input and response
+
+You need to provide any previous context information when you call the QnA Maker service.
+The dialog handles the call to QnA Maker in its _process_ method, which:
+
+1. Makes the call to QnA Maker, passing in the previous context, if any.
+   - This sample uses a _query QnA service_ helper method to format the parameters and make the call.
+   - Importantly, if this is a follow-up call to QnA Maker, the _QnA Maker options_ should include values for the _QnA request context_ and the _QnA question ID_.
+1. Gets QnA Maker's response and any follow-up prompts from the top result.
+1. If the result was a follow-up question:
+   - Generates a hero card that contains the question and options for the user's response.
+   - Includes the hero card in a message activity.
+   - Returns the message activity and the new QnA Maker context.
+1. If the result was an answer, returns a message activity that contains the answer.
+
+You can format a follow-up activity in many ways. This sample uses a hero card. However, using suggested actions would be another option.
+
+##### [C#](#tab/csharp)
+
+**Dialogs\QnADialog.cs** defines the **RunStateMachineAsync** method.
+
+```csharp
+protected override async Task<(object newState, IEnumerable<Activity> output, object result)> ProcessAsync(object oldState, Activity inputActivity)
+{
+     Activity outputActivity = null;
+     QnABotState newState = null;
+
+     var query = inputActivity.Text;
+     var qnaResult = await _qnaService.QueryQnAServiceAsync(query, (QnABotState)oldState);
+     var qnaAnswer = qnaResult[0].Answer;
+     var prompts = qnaResult[0].Context?.Prompts;
+
+     if (prompts == null || prompts.Length < 1)
+     {
+          outputActivity = MessageFactory.Text(qnaAnswer);
+     }
+     else
+     {
+          // Set bot state only if prompts are found in QnA result
+          newState = new QnABotState
+          {
+          PreviousQnaId = qnaResult[0].Id,
+          PreviousUserQuery = query
+          };
+
+          outputActivity = CardHelper.GetHeroCard(qnaAnswer, prompts);
+     }
+
+     return (newState, new Activity[] { outputActivity }, null);
+}
+```
+
+##### [JavaScript](#tab/javascript)
+
+**dialogs/qnaDialog.js** defines the **runStateMachine** method.
+
+```javascript
+async processAsync(oldState, activity){
+
+     var newState = null;
+     var query = activity.text;
+     var qnaResult = await QnAServiceHelper.queryQnAService(query, oldState);
+     var qnaAnswer = qnaResult[0].answer;
+
+     var prompts = null;
+     if(qnaResult[0].context != null){
+          prompts = qnaResult[0].context.prompts;
+     }
+
+     var outputActivity = null;
+     if(prompts == null || prompts.length < 1){
+          outputActivity = MessageFactory.text(qnaAnswer);
+     }
+     else{
+          var newState = {
+               PreviousQnaId: qnaResult[0].id,
+               PreviousUserQuery: query
+          }
+
+          outputActivity = CardHelper.GetHeroCard(qnaAnswer, prompts);
+     }
+
+     return [newState, outputActivity , null];
+}  
+```
+
+---
+-->
 ## <a name="next-steps"></a>次の手順
 
 他の Cognitive Services と QnA Maker を組み合わせて、ボットをさらに強力にすることができます。 ディスパッチ ツールを使用すると、ボットで QnA と Language Understanding (LUIS) を結合できます。

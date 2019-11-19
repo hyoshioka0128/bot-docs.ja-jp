@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 17e9925cf8e34eb4d31964b9cebac367abaec58c
-ms.sourcegitcommit: 378dbffd3960a1fa063ffb314878ccd64fb8fb49
+ms.openlocfilehash: 5b8c812d7521edb2907b1a52d3acb890adf5ac67
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71094444"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441507"
 ---
 # <a name="add-telemetry-to-your-bot"></a>ボットへのテレメトリの追加
 
@@ -22,6 +22,8 @@ ms.locfileid: "71094444"
 
 
 Bot Framework SDK のバージョン 4.2 にテレメトリのログ記録が追加されました。  これにより、ボット アプリケーションは [Application Insights](https://aka.ms/appinsights-overview) などのテレメトリ サービスにイベント データを送信できます。 テレメトリは、どの機能が最も使用されているかを示すことによりボットの分析情報を提供し、不要な動作を検出し、可用性、パフォーマンス、および使用状況を可視化します。
+
+***注:バージョン 4.6 では、カスタム アダプターを使用するときにテレメトリが正しく記録されるように、ボットにテレメトリを実装するための標準的な方法が更新されました。この記事は更新され、更新された方法が表示されるようになりました。これらの変更は下位互換性があり、前の方法を使用するボットはテレメトリを正しくログに記録し続けます。***
 
 
 この記事では、Application Insights を使用してテレメトリをボットに組み入れる方法について説明します。
@@ -74,46 +76,33 @@ Bot Framework SDK のバージョン 4.2 にテレメトリのログ記録が追
     public void ConfigureServices(IServiceCollection services)
     {
         ...
-
         // Create the Bot Framework Adapter with error handling enabled.
         services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
 
         // Add Application Insights services into service collection
         services.AddApplicationInsightsTelemetry();
 
-        // Create the telemetry client.
+        // Add the standard telemetry client
         services.AddSingleton<IBotTelemetryClient, BotTelemetryClient>();
 
-        // Add ASP middleware to store the http body mapped with bot activity key in the httpcontext.items. This will be picked by the TelemetryBotIdInitializer
-        services.AddTransient<TelemetrySaveBodyASPMiddleware>();
+        // Create the telemetry middleware to track conversation events
+        services.AddSingleton<TelemetryLoggerMiddleware>();
 
-        // Add telemetry initializer that will set the correlation context for all telemetry items.
+        // Add the telemetry initializer middleware
+        services.AddSingleton<IMiddleware, TelemetryInitializerMiddleware>();
+
+        // Add telemetry initializer that will set the correlation context for all telemetry items
         services.AddSingleton<ITelemetryInitializer, OperationCorrelationTelemetryInitializer>();
 
-        // Add telemetry initializer that sets the user ID and session ID (in addition to other bot-specific properties such as activity ID)
+        // Add telemetry initializer that sets the user ID and session ID (in addition to other bot-specific properties, such as activity ID)
         services.AddSingleton<ITelemetryInitializer, TelemetryBotIdInitializer>();
-
-        // Create the telemetry middleware to track conversation events
-        services.AddSingleton<IMiddleware, TelemetryLoggerMiddleware>();
-
         ...
     }
     ```
     
     注:CoreBot サンプル コードを更新して作業を進めている場合は、`services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();` が既に存在していることに気付きます。 
 
-5. `UseBotApplicationInsights()` メソッド呼び出しを `Startup.cs` の `Configure()` メソッドに追加します。 これにより、ボットは必要なボット固有のプロパティを HTTP コンテキストに格納して、イベントが追跡されるときにテレメトリ初期化子でそれを取得できるようになります。
-
-    ```csharp
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-    {
-        ...
-
-        app.UseBotApplicationInsights();
-    }
-    ```
-6. `ConfigureServices()` メソッドに追加されたミドルウェア コードを使用するようにアダプターに指示します。 これは、次に示すように、`AdapterWithErrorHandler.cs` で、コンストラクター パラメーター一覧のパラメーター IMiddleware middleware とコンストラクターの `Use(middleware);` ステートメントを使用して行います。
+5. `ConfigureServices()` メソッドに追加されたミドルウェア コードを使用するようにアダプターに指示します。 これは、次に示すように、`AdapterWithErrorHandler.cs` で、コンストラクター パラメーター一覧のパラメーター IMiddleware middleware とコンストラクターの `Use(middleware);` ステートメントを使用して行います。
     ```csharp
     public AdapterWithErrorHandler(ICredentialProvider credentialProvider, ILogger<BotFrameworkHttpAdapter> logger, IMiddleware middleware, ConversationState conversationState = null)
             : base(credentialProvider)
@@ -123,6 +112,7 @@ Bot Framework SDK のバージョン 4.2 にテレメトリのログ記録が追
         Use(middleware);
     }
     ```
+
 7. Application Insights のインストルメンテーション キーを `appsettings.json` ファイルに追加します。`appsettings.json` ファイルには、ボットが実行中に使用する外部サービスに関するメタデータが含まれています。 たとえば、CosmosDB、Application Insights、Language Understanding (LUIS) サービスの接続とメタデータがそこに保存されています。 `appsettings.json` ファイルへの追加は、次の形式にする必要があります。
 
     ```json
@@ -137,6 +127,45 @@ Bot Framework SDK のバージョン 4.2 にテレメトリのログ記録が追
     注:_Application Insights のインストルメンテーション キー_の取得の詳細については、「[Application Insights キー](../bot-service-resources-app-insights-keys.md)」の記事をご覧ください。
 
 この時点で、Application Insights を使用してテレメトリを有効にする準備作業が完了しました。  ボット エミュレーターを使用してボットをローカルで実行した後に、Application Insights にアクセスして、応答時間、アプリ全体の正常性、一般的な実行情報などのログ記録を確認できます。 
+
+## <a name="enabling--disabling-activity-event-and-personal-information-logging"></a>アクティビティ イベントと個人情報のログ記録の有効化/無効化
+
+### <a name="enabling-or-disabling-activity-logging"></a>アクティビティのログ記録を有効または無効にする
+
+既定では、`TelemetryInitializerMiddleware` は `TelemetryLoggerMiddleware` を使用して、ボットがアクティビティを送信/受信するときにテレメトリをログに記録します。 アクティビティ ログでは、Application Insights リソースにカスタム イベント ログが作成されます。  必要に応じて、**Startup.cs** 内に登録する前に、`TelemetryInitializerMiddleware` で `logActivityTelemetry` を false に設定して、アクティビティ イベントのログ記録を無効にできます。
+
+```cs
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    // Add the telemetry initializer middleware
+    services.AddSingleton<IMiddleware, TelemetryInitializerMiddleware>(sp =>
+            {
+                var httpContextAccessor = sp.GetService<IHttpContextAccessor>();
+                var loggerMiddleware = sp.GetService<TelemetryLoggerMiddleware>();
+                return new TelemetryInitializerMiddleware(httpContextAccessor, loggerMiddleware, logActivityTelemetry: false);
+            });
+    ...
+}
+```
+
+### <a name="enable-or-disable-logging-personal-information"></a>個人情報のログ記録を有効または無効にする
+
+既定では、アクティビティ ログが有効になっている場合、受信/送信アクティビティの一部のプロパティは、ユーザー名やアクティビティ テキストなどの個人情報が含まれる可能性があるため、ログから除外されます。 これらのプロパティをログに含めるには、`TelemetryLoggerMiddleware` の登録時に **Startup.cs** に次の変更を加える必要があります。
+
+```cs
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    // Add the telemetry initializer middleware
+    services.AddSingleton<TelemetryLoggerMiddleware>(sp =>
+            {
+                var telemetryClient = sp.GetService<IBotTelemetryClient>();
+                return new TelemetryLoggerMiddleware(telemetryClient, logPersonalInformation: true);
+            });
+    ...
+}
+```
 
 次に、テレメトリ機能をダイアログに追加するために含める必要があるものを確認します。 これにより、実行されるダイアログやそれぞれについての統計情報などの追加情報を取得できます。
 

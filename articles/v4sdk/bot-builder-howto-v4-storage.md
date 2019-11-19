@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9a5a8f8eac9f0b20278b2506063c6e14e4d9fd5b
-ms.sourcegitcommit: 514a3c1ffe0ebe69e07565446ddde0370b35aeaa
+ms.openlocfilehash: bd34b7f369fddfeaa0cd97b10fb49b86e2207c64
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903670"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441574"
 ---
 # <a name="write-directly-to-storage"></a>ストレージに直接書き込む
 
@@ -253,13 +253,13 @@ module.exports.MyBot = MyBot;
 メモリ ストレージを使用しているので、Azure Cosmos DB を使用するようにコードを更新します。 Cosmos DB は、Microsoft のグローバル分散型マルチモデル データベースです。 Azure Cosmos DB では、Azure のリージョンをいくつでもまたいでスループットとストレージを柔軟かつ個別にスケーリングすることができます。 このサービスは包括的なサービス レベル アグリーメント (SLA) により、スループット、待機時間、可用性、一貫性が保証されています。 
 
 ### <a name="set-up"></a>セットアップ
-ボットで Cosmos DB を使用するには、コードに取り組む前に、いくつかの設定を行う必要があります。 Cosmos DB のデータベースとアプリ作成の詳細については、こちらの [Cosmos DB dotnet](https://aka.ms/Bot-framework-create-dotnet-cosmosdb) または [Cosmos DB nodejs](https://aka.ms/Bot-framework-create-nodejs-cosmosdb) に関するドキュメントを参照してください。
+ボットで Cosmos DB を使用するには、コードに取り組む前に、データベース リソースを作成する必要があります。 Cosmos DB のデータベースとアプリ作成の詳細については、こちらの [Cosmos DB dotnet](https://aka.ms/Bot-framework-create-dotnet-cosmosdb) または [Cosmos DB nodejs](https://aka.ms/Bot-framework-create-nodejs-cosmosdb) に関するドキュメントを参照してください。
 
 ### <a name="create-your-database-account"></a>データベース アカウントの作成
 
-1. 新しいブラウザー ウィンドウで、[Azure Portal](http://portal.azure.com) にサインインします。
+1. 新しいブラウザー ウィンドウで、[Azure Portal](https://portal.azure.com) にサインインします。
 
-![Cosmos DB データベースの作成](./media/create-cosmosdb-database.png)
+![Cosmos DB データベース アカウントの作成](./media/create-cosmosdb-database.png)
 
 2. **[リソースの作成]、[データベース]、[Azure Cosmos DB]** の順にクリックします。
 
@@ -271,22 +271,31 @@ module.exports.MyBot = MyBot;
 
 アカウントの作成には数分かかります。 ポータルに " Azure Cosmos DB アカウントが作成されました" ページが表示されるまで待機します。
 
-### <a name="add-a-collection"></a>コレクションの追加
+### <a name="add-a-database"></a>データベースを追加する
 
-![Cosmos DB コレクションの追加](./media/add_database_collection.png)
+1. 新しく作成した Cosmos DB アカウント内の **[データ エクスプローラー]** ページに移動し、 **[コンテナーの作成]** ボタンの横にあるドロップダウン ボックスから **[データベースの作成]** を選択します。 ウィンドウの右側にパネルが表示され、新しいコンテナーの詳細を入力することができます。 
 
-1. **[設定]、[新しいコレクション]** の順にクリックします。 **[コレクションの追加]** 領域が右端に表示されます。表示するには、右にスクロールする必要がある場合があります。 Cosmos DB が最近更新されたため、 _/id_ でパーティション キーを 1 つ必ず追加します。このキーにより、クロス パーティション クエリのエラーが回避されます。
+![Cosmos DB](./media/create-cosmosdb-database-resource.png)
 
-![Cosmos DB](./media/cosmos-db-sql-database.png)
+2. 新しいデータベースの ID を入力し、必要に応じてスループットを設定し (これは後で変更できます)、最後に **[OK]** をクリックしてデータベースを作成します。 このデータベース ID は、後でボットを構成するときに使用するためにメモしておいてください。
 
-2. 新しいデータベース コレクションは "bot-cosmos-sql-db" です。コレクション ID は "bot-storage" になります。 これらの値は、以降に示すコード例で使用します。
+![Cosmos DB](./media/create-cosmosdb-database-resource-details.png)
+
+3. Cosmos DB アカウントとデータベースを作成したので、新しいデータベースを bot に統合するために、いくつかの値をコピーする必要があります。  これらの値を取得するには、Cosmos DB アカウントのデータベースの設定セクション内にある **[キー]** タブに移動します。  このページから、Cosmos DB エンドポイント (**URI**) と承認キー (**主キー**) が必要になります。
 
 ![Cosmos DB のキー](./media/comos-db-keys.png)
 
-3. データベース設定の **[キー]** タブで、エンドポイント URI とキーが利用可能になります。 これらの値は、この記事の後半のコードの構成で必要になります。 
+これで、データベースを含む Cosmos DB アカウントを作成し、bot を構成するための次の詳細情報が準備できているはずです。
+
+- Cosmos DB エンドポイント
+- 承認キー
+- データベース ID
 
 ### <a name="add-configuration-information"></a>構成情報の追加
-Cosmos DB ストレージを追加するための構成データは短くシンプルなものであり、ボットがより複雑になった場合でも、同じ方法を使用して構成設定を追加できます。 この例では、上記の例の Cosmos DB データベースとコレクションの名前を使用します。
+Cosmos DB ストレージを追加するための構成データは短く簡単です。  この記事の前の部分でメモした詳細情報を使用して、エンドポイント、承認キー、およびデータベース ID を設定します。  最後に、ボットの状態を格納するためにデータベース内に作成されるコンテナーに適切な名前を選択する必要があります。 次の例では、コンテナーは "bot-storage" と呼びます。
+
+> [!NOTE]
+> コンテナーを自分で作成しないでください。 ボットは、その内部の Cosmos DB クライアントを作成するときにそれを作成し、ボットの状態を格納するために正しく構成されていることを確認します。
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -295,9 +304,9 @@ Cosmos DB ストレージを追加するための構成データは短くシン�
 public class EchoBot : ActivityHandler
 {
    private const string CosmosServiceEndpoint = "<your-cosmos-db-URI>";
-   private const string CosmosDBKey = "<your-cosmos-db-account-key>";
-   private const string CosmosDBDatabaseName = "bot-cosmos-sql-db";
-   private const string CosmosDBCollectionName = "bot-storage";
+   private const string CosmosDBKey = "<your-authorization-key>";
+   private const string CosmosDBDatabaseId = "<your-database-id>";
+   private const string CosmosDBContainerId = "bot-storage";
    ...
    
 }
@@ -309,10 +318,10 @@ public class EchoBot : ActivityHandler
 
 **.env**
 ```javascript
-DB_SERVICE_ENDPOINT="<your-Cosmos-db-URI>"
-AUTH_KEY="<your-cosmos-db-account-key>"
-DATABASE="<bot-cosmos-sql-db>"
-COLLECTION="<bot-storage>"
+DB_SERVICE_ENDPOINT="<your-cosmos-db-URI>"
+AUTH_KEY="<your-authorization-key>"
+DATABASE_ID="<your-database-id>"
+CONTAINER="bot-storage"
 ```
 ---
 
@@ -343,6 +352,9 @@ npm install --save dotenv
 
 ### <a name="implementation"></a>実装 
 
+> [!NOTE]
+> バージョン 4.6 では、新しい Cosmos DB ストレージプロバイダー `CosmosDbPartitionedStorage` が導入されました。 元の `CosmosDbStorage` を使用する既存のボットは、`CosmosDbStorage` を使用し続ける必要があります。 以前のプロバイダーを使用しているボットは引き続き正常に動作します。 パーティション分割によってパフォーマンスが向上するため、新しいボットでは `CosmosDbPartitionedStorage` を使用する必要があります。
+
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 次のサンプル コードは、上記の[メモリ ストレージ](#memory-storage)のサンプルと同じボット コードを使用して実行されます。
@@ -361,12 +373,12 @@ public class EchoBot : ActivityHandler
    // private static readonly MemoryStorage _myStorage = new MemoryStorage();
 
    // Replaces Memory Storage with reference to Cosmos DB.
-   private static readonly CosmosDbStorage _myStorage = new CosmosDbStorage(new CosmosDbStorageOptions
+   private static readonly CosmosDbStorage _myStorage = new CosmosDbPartitionedStorage(new CosmosDbPartitionedStorageOptions
    {
-      AuthKey = CosmosDBKey,
-      CollectionId = CosmosDBCollectionName,
-      CosmosDBEndpoint = new Uri(CosmosServiceEndpoint),
-      DatabaseId = CosmosDBDatabaseName,
+        CosmosDbEndpoint = CosmosServiceEndpoint,
+        AuthKey = CosmosDBKey,
+        DatabaseId = CosmosDBDatabaseId,
+        ContainerId = CosmosDBContainerId,
    });
    
    ...
@@ -397,11 +409,11 @@ require('dotenv').config({ path: ENV_FILE });
 // var storage = new MemoryStorage();
 
 // Create access to CosmosDb Storage - this replaces local Memory Storage.
-var storage = new CosmosDbStorage({
-    serviceEndpoint: process.env.DB_SERVICE_ENDPOINT, 
+var storage = new CosmosDbPartitionedStorage({
+    cosmosDbEndpoint: process.env.DB_SERVICE_ENDPOINT, 
     authKey: process.env.AUTH_KEY, 
-    databaseId: process.env.DATABASE,
-    collectionId: process.env.COLLECTION
+    databaseId: process.env.DATABASE_ID,
+    containerId: process.env.CONTAINER
 })
 
 ```
@@ -432,7 +444,7 @@ Azure Blob Storage は、Microsoft のクラウド用オブジェクト スト�
 
 ### <a name="create-your-blob-storage-account"></a>Blob Storage アカウントの作成
 ボットで Blob Storage を使用するには、コードに取り組む前に、いくつかの設定を行う必要があります。
-1. 新しいブラウザー ウィンドウで、[Azure Portal](http://portal.azure.com) にサインインします。
+1. 新しいブラウザー ウィンドウで、[Azure Portal](https://portal.azure.com) にサインインします。
 
 ![Blob Storage の作成](./media/create-blob-storage.png)
 

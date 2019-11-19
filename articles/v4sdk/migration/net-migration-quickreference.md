@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3ede676cd1a09566b42dc49cc3258aa6e42cbe05
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: ff072cd3a16c3a58099cf91c1de962837994075b
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298957"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441495"
 ---
 # <a name="net-migration-quick-reference"></a>.NET 移行クイック リファレンス
 
@@ -529,19 +529,22 @@ Task WriteAsync(IDictionary<string, object> changes, CancellationToken cancellat
 ```
 
 ```csharp
-var storageOptions = new CosmosDbStorageOptions()
+var storageOptions = new CosmosDbPartitionedStorageOptions()
 {
     AuthKey = configuration["cosmosKey"],
-    CollectionId = configuration["cosmosCollection"],
-    CosmosDBEndpoint = new Uri(configuration["cosmosPath"]),
+    ContainerId = configuration["cosmosContainer"],
+    CosmosDbEndpoint = configuration["cosmosPath"],
     DatabaseId = configuration["cosmosDatabase"]
 };
 
-IStorage dataStore = new CosmosDbStorage(storageOptions);
+IStorage dataStore = new CosmosDbPartitionedStorage(storageOptions);
 var conversationState = new ConversationState(dataStore);
 services.AddSingleton(conversationState);
 
 ```
+
+> [!NOTE]
+> `CosmosDbPartitionedStorage` を使用する場合は、データベースを作成し、上記のように Cosmos DB エンドポイント、承認キー、およびデータベース ID を提供する必要があります。 単純にコンテナーの ID を特定してください。ボットが作成し、ボットの状態を格納するために正しく構成されていることを確認します。 コンテナーを自分で作成する場合は、パーティション キーが **/id** に設定されていることを確認し、`CosmosDbPartitionedStorageOptions.ContainerId` プロパティを設定します。
 
 ## <a name="to-use-form-flow"></a>フォーム フローを使用するには
 
