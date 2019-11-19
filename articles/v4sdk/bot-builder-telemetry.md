@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5b8c812d7521edb2907b1a52d3acb890adf5ac67
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 524ffa37d1d089bfec01fa7b89a456ecdda719f9
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441507"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933709"
 ---
 # <a name="add-telemetry-to-your-bot"></a>ボットへのテレメトリの追加
 
@@ -171,9 +171,9 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="enabling-telemetry-in-your-bots-dialogs"></a>ボットのダイアログでテレメトリを有効にする
 
-ダイアログに関する組み込みのテレメトリ情報を取得するには、すべてのダイアログにテレメトリ クライアントを追加する必要があります。 次の手順に従って、CoreBot の例を更新します。
+ 次の手順に従って、CoreBot の例を更新します。
 
-1.  `MainDialog.cs` で、新しい TelemetryClient フィールドを `MainDialog` クラスに追加し、`IBotTelemetryClient` パラメーターを含めるようにコンストラクターのパラメーター一覧を更新し、それを `AddDialog()` メソッドへの各呼び出しに渡す必要があります。
+1.  `MainDialog.cs` で、新しい TelemetryClient フィールドを `MainDialog` クラスに追加し、`IBotTelemetryClient` パラメーターを含めるようにコンストラクターのパラメーター一覧を更新し、それを `AddDialog()` メソッドへの各呼び出しに渡します。
 
 
     * パラメーター `IBotTelemetryClient telemetryClient` を MainDialog クラス コンストラクターに追加し、それを `TelemetryClient` フィールドに割り当てます。
@@ -224,7 +224,7 @@ public void ConfigureServices(IServiceCollection services)
 
         ```
 
-2. `DialogExtensions.cs` で、`dialogSet` オブジェクトの `TelemetryClient` プロパティを `Run()` メソッドに設定する必要があります。
+2. `DialogExtensions.cs` で、`Run()` メソッドの `dialogSet` オブジェクトの `TelemetryClient` プロパティを設定します。
 
 
     ```csharp

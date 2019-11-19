@@ -7,22 +7,22 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/01/2019
+ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9ac71659e6420f5181aa7e332d8e5806f1edc348
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: b58307732ae973719231987a35eab6374ea704e4
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441545"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933611"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>QnA Maker を使用して質問に回答する
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-QnA Maker は、データに基づく会話の質疑応答レイヤーを提供します。 これにより、お使いのボットが QnA Maker に質問を送信し、回答を受け取ることができます。その際、その質問の意図を解析および解釈する必要はありません。 
+QnA Maker は、データに基づく会話の質疑応答レイヤーを提供します。 これにより、お使いのボットが QnA Maker に質問を送信し、回答を受け取ることができます。その際、その質問の意図を解析および解釈する必要はありません。
 
-お客様独自の QnA Maker サービスを作成するときの基本的な要件の 1 つは、質問と回答でサービスをシードすることです。 多くの場合、質問と回答は FAQ などのドキュメントに既に存在していますが、質問に対する回答をカスタマイズして、より自然な会話にしたいこともあります。 
+お客様独自の QnA Maker サービスを作成するときの基本的な要件の 1 つは、質問と回答でサービスをシードすることです。 多くの場合、質問と回答は FAQ などのドキュメントに既に存在していますが、質問に対する回答をカスタマイズして、より自然な会話にしたいこともあります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,19 +35,23 @@ QnA Maker は、データに基づく会話の質疑応答レイヤーを提供�
 QnA Maker を利用するボットの場合は、最初に [QnA Maker](https://www.qnamaker.ai/) でナレッジ ベースを作成する必要があります。これについては、次のセクションで説明します。 これによりボットは QnA Maker にユーザーのクエリを送信できるようになり、QnA Maker は、その質問に最適な回答を応答で提供します。
 
 ## <a name="ctabcs"></a>[C#](#tab/cs)
+
 ![QnABot ロジック フロー](./media/qnabot-logic-flow.png)
 
-ユーザー入力を受け取るたびに、`OnMessageActivityAsync` が呼び出されます。 呼び出された時点で、サンプル コードの `appsetting.json` ファイルに格納されている `_configuration` 情報にアクセスし、事前構成済み QnA Maker ナレッジ ベースに接続するための値を検索します。 
+ユーザー入力を受け取るたびに、`OnMessageActivityAsync` が呼び出されます。 呼び出された時点で、サンプル コードの `appsetting.json` ファイルに格納されている `_configuration` 情報にアクセスし、事前構成済み QnA Maker ナレッジ ベースに接続するための値を検索します。
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+
 ![QnABot JS ロジック フロー](./media/qnabot-js-logic-flow.png)
 
 ユーザー入力を受け取るたびに、`OnMessage` が呼び出されます。 呼び出された時点で、指定された値を使用して事前構成された `qnamaker` コネクタに、サンプル コードの `.env` ファイルからアクセスします。  qnamaker メソッド `getAnswers` は、お使いのボットを、ご自身の外部の QnA Maker ナレッジ ベースに接続します。
 
 ---
+
 ユーザーの入力はナレッジ ベースに送信され、返された最適な回答が、該当するユーザーに表示されます。
 
 ## <a name="create-a-qna-maker-service-and-publish-a-knowledge-base"></a>QnA Maker サービスの作成とナレッジ ベースの発行
+
 最初の手順で、QnA Maker サービスを作成します。 QnA Maker [ドキュメント](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure)に記載されている手順に従って、Azure でサービスを作成します。
 
 次に、サンプル プロジェクトの CognitiveModels フォルダーにある `smartLightFAQ.tsv` ファイルを使用して、ナレッジ ベースを作成します。 ご自身の QnA Maker [ナレッジ ベース](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base)を作成、トレーニング、および発行する手順は、QnA Maker のドキュメントに記載されています。 次の手順では、ご自身の KB `qna` に名前を付け、`smartLightFAQ.tsv` ファイルを使用して KB を設定します。
@@ -55,18 +59,19 @@ QnA Maker を利用するボットの場合は、最初に [QnA Maker](https://w
 > 注: この記事は、お客様のユーザーが作成した QnA Maker ナレッジ ベースにアクセスする際にも使用できます。
 
 ## <a name="obtain-values-to-connect-your-bot-to-the-knowledge-base"></a>ボットをナレッジ ベースに接続するための値を取得する
+
 1. [QnA Maker](https://www.qnamaker.ai/) サイトで、目的のナレッジ ベースを選択します。
-1. ナレッジ ベースを開いた状態で **[設定]** を選択します。 "_サービス名_" に表示されている値を記録します。 この値は、QnA Maker ポータル インターフェイスを使用するときに、対象となる自分のナレッジ ベースを見つけるのに役立ちます。 この値を使用して、ボット アプリをこのナレッジ ベースに接続するわけではありません。 
+1. ナレッジ ベースを開いた状態で **[設定]** を選択します。 "_サービス名_" に表示されている値を記録します。 この値は、QnA Maker ポータル インターフェイスを使用するときに、対象となる自分のナレッジ ベースを見つけるのに役立ちます。 この値を使用して、ボット アプリをこのナレッジ ベースに接続するわけではありません。
 1. 下へスクロールして **[デプロイの詳細]** を見つけ、Postman サンプル HTTP 要求にある次の値を記録します。
    - POST /knowledgebases/\<knowledge-base-id>/generateAnswer
    - Host: \<your-hostname> // Full URL ending with /qnamaker
    - Authorization:EndpointKey \<your-endpoint-key>
-   
+
 ホスト名の完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。 この 3 つの値によって、アプリが Azure QnA サービスを介して QnA Maker ナレッジ ベースに接続する際に必要な情報が提供されます。  
 
 ## <a name="update-the-settings-file"></a>設定ファイルを更新する
 
-まず、ナレッジ ベースにアクセスするために必要な情報 (ホスト名、エンドポイント キー、ナレッジ ベース ID (kbId) など) を設定ファイルに追加します。 これらは、QnA Maker でナレッジ ベースの **[設定]** タブから保存した値です。 
+まず、ナレッジ ベースにアクセスするために必要な情報 (ホスト名、エンドポイント キー、ナレッジ ベース ID (kbId) など) を設定ファイルに追加します。 これらは、QnA Maker でナレッジ ベースの **[設定]** タブから保存した値です。
 
 これを運用環境にデプロイしない場合、アプリ ID とパスワードのフィールドは空白にできます。
 
@@ -77,29 +82,13 @@ QnA Maker を利用するボットの場合は、最初に [QnA Maker](https://w
 
 ### <a name="update-your-appsettingsjson-file"></a>お使いの appsettings.json ファイルを更新する
 
-```json
-{
-  "MicrosoftAppId": "",
-  "MicrosoftAppPassword": "",
-  
-  "QnAKnowledgebaseId": "<knowledge-base-id>",
-  "QnAAuthKey": "<your-endpoint-key>",
-  "QnAEndpointHostName": "<your-hostname>"
-}
-```
+[!code-csharp[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/appsettings.json)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 ### <a name="update-your-env-file"></a>お使いの .env ファイルを更新する
 
-```file
-MicrosoftAppId=""
-MicrosoftAppPassword=""
-
-QnAKnowledgebaseId="<knowledge-base-id>"
-QnAAuthKey="<your-endpoint-key>"
-QnAEndpointHostName="<your-hostname>"
-```
+[!code-javascript[.env file](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/.env)]
 
 ---
 
@@ -113,8 +102,7 @@ NuGet パッケージ **Microsoft.Bot.Builder.AI.QnA** がプロジェクトに�
 
 **QnABot.cs** の `OnMessageActivityAsync` メソッドで、QnAMaker インスタンスを作成します。 `QnABot` クラスも、上記の `appsettings.json` に保存されている接続情報の名前がプルされる場所です。 設定ファイルでナレッジ ベース接続情報に別の名前を選択した場合は、ここで必ず名前を更新して、指定した名前を反映させます。
 
-**Bots/QnABot.cs**  
-[!code-csharp[qna connection](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=32-37)]
+**Bots/QnABot.cs** [!code-csharp[qna connection](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=32-39)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
@@ -124,7 +112,8 @@ NuGet パッケージ **Microsoft.Bot.Builder.AI.QnA** がプロジェクトに�
 
 **QnABot.js** ファイルで、ご自身の .env ファイルによって提供された接続情報を使用して、QnA Maker サービス _this.qnaMaker_ への接続を確立します。
 
-**QnAMaker.js** [!code-javascript[QnAMaker](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=12-16)]
+**bots/QnABot.js** [!code-javascript[QnAMaker](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=12-16)]
+
 ---
 
 ## <a name="calling-qna-maker-from-your-bot"></a>ボットからの QnA Maker の呼び出し
@@ -133,16 +122,13 @@ NuGet パッケージ **Microsoft.Bot.Builder.AI.QnA** がプロジェクトに�
 
 QnA Maker からの回答をボットが必要とする場合、ボットのコードから `GetAnswersAsync()` を呼び出して、現在のコンテキストに基づいて適切な回答を取得します。 お客様独自のナレッジ ベースにアクセスする場合は、以下の "_回答が見つかりませんでした_" メッセージを変更して、お客様のユーザーの役に立つ手順を設定します。
 
-**QnABot.cs**  
-[!code-csharp[qna connection](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=43-52)]
+**Bots/QnABot.cs** [!code-csharp[qna get answers](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=43-52)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
-**QnABot.js** ファイルで、ユーザーの入力を QnA Maker サービスの `getAnswers` メソッドに渡して、ナレッジ ベースから回答を取得します。 QnA Maker によって応答が返されると、これがユーザーに表示されます。 それ以外の場合、ユーザーは "QnA Maker の回答が見つかりませんでした" というメッセージを受信します。 
+**QnABot.js** ファイルで、ユーザーの入力を QnA Maker サービスの `getAnswers` メソッドに渡して、ナレッジ ベースから回答を取得します。 QnA Maker によって応答が返されると、これがユーザーに表示されます。 それ以外の場合、ユーザーは "QnA Maker の回答が見つかりませんでした" というメッセージを受信します。
 
-**QnABot.js**
-
-[!code-javascript[OnMessage](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=43-59)]
+**bots/QnABot.js** [!code-javascript[OnMessage](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=46-55)]
 
 ---
 
@@ -162,7 +148,7 @@ QnA Maker は、マルチターン プロンプトとも呼ばれるフォロー
 QnA Maker ナレッジベースにユーザーからの追加の応答が必要な場合、ユーザーにプロンプトを表示するために使用できるコンテキスト情報が QnA Maker から送信されます。 この情報は、QnA Maker サービスへのフォローアップの呼び出しを行うためにも使用されます。
 バージョン 4.6 では、Bot Framework SDK にこの機能のサポートが追加されました。
 
-このようなナレッジベースを作成するには、[フォローアップ プロンプトを使用して複数ターンの会話を作成する](https://aka.ms/qnamaker-multiturn-conversation)方法に関する QnA Maker のドキュメントを参照してください。 ボットにマルチターン サポートを組み込む方法については、QnA Maker マルチターン [[**C#** ](https://aka.ms/cs-qna-multiturn) | [**JS**](https://aka.ms/js-qna-multiturn)] サンプルをご覧ください。
+このようなナレッジベースを作成するには、[フォローアップ プロンプトを使用して複数ターンの会話を作成する](https://aka.ms/qnamaker-multiturn-conversation)方法に関する QnA Maker のドキュメントを参照してください。 <!--To learn how to incorporate multi-turn support in your bot, take a look at the QnA Maker Multi-turn [[**C#**](https://aka.ms/cs-qna-multiturn) | [**JS**](https://aka.ms/js-qna-multiturn)] sample.-->
 
 <!--TODO: Update code based on final sample 
 The following code snippets come from the proof-of-concept **multi-turn QnA Maker prompts** sample for
