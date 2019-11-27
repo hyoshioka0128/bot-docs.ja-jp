@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dedd9c7eb8d562acd30e137cb1a99f618f79ff7e
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 65a55550dff284ad44fd85cfe9223107cb8f4baf
+ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167332"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74415135"
 ---
 # <a name="virtual-assistant-overview"></a>仮想アシスタントの概要
 
@@ -107,3 +107,4 @@ Microsoft の仮想アシスタント アーキテクチャは柔軟性に優れ
 ## <a name="getting-started"></a>Getting Started (概要)
 
 ご自身の仮想アシスタントを作成してデプロイする方法については、[チュートリアル](https://aka.ms/bfs-tutorials)をご覧ください。
+
