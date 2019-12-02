@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: ed02e02e73f8cf326963da0002477df3441719a2
-ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
+ms.openlocfilehash: cc2421c5693d123f8dd76b238c37d6e4198b5dd8
+ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71279879"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74410446"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -52,12 +52,12 @@ Authorization: Bearer ACCESS_TOKEN
 
 ![MSA ログイン サービスに対して認証し、次にボットに対して認証する](../media/connector/auth_bot_to_bot_connector.png)
 
-> [!IMPORTANT]
-> Bot Framework に[ご利用のボットを登録](../bot-service-quickstart-registration.md)して、その AppID とパスワードを取得する必要があります (この操作をまだ行っていない場合)。 アクセス トークンを要求するには、ボットの AppID とパスワードが必要になります。
-
 ### <a name="step-1-request-an-access-token-from-the-azure-ad-v2-account-login-service"></a>手順 1:Azure AD v2 アカウント ログイン サービスにアクセス トークンを要求する
 
-ログイン サービスにアクセス トークンを要求するには、次の要求を発行します。**MICROSOFT-APP-ID** および **MICROSOFT-APP-PASSWORD** は、ご利用のボットを Bot Framework に[登録](../bot-service-quickstart-registration.md)したときに取得した AppID とパスワードに置き換えてください。
+> [!IMPORTANT]
+> Bot Framework に[ご利用のボットを登録](../bot-service-quickstart-registration.md)して、その AppID とパスワードを取得する必要があります (この操作をまだ行っていない場合)。 アクセス トークンを要求するには、ボットの App ID とパスワードが必要です。
+
+ログイン サービスにアクセス トークンを要求するには、次の要求を発行します。**MICROSOFT-APP-ID** および **MICROSOFT-APP-PASSWORD** は、ご利用のボットを Bot Framework に[登録](../bot-service-quickstart-registration.md)したときに取得したボットの AppID とパスワードに置き換えてください。
 
 ```http
 POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token

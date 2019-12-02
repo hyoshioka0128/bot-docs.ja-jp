@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 08/15/2019
-ms.openlocfilehash: b8307877bf08db170173486ec9df88fae4d27c29
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.date: 11/22/2019
+ms.openlocfilehash: fd3a20822827a8d4500a1e91bbb9e998b05475dd
+ms.sourcegitcommit: a4a437a1d44137375ea044dcc11bccc8d004e3db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890616"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479511"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Azure Bot Service を使用してボットを作成する
 
@@ -21,17 +21,17 @@ ms.locfileid: "69890616"
 Azure Bot Service は、ボットを開発するための Bot Framework SDK や、ボットをチャンネルに接続するための Bot Service など、ボットを作成するためのコア コンポーネントを提供します。 このトピックでは、.NET テンプレートまたは Node.js テンプレートのいずれかを選択し、Bot Framework SDK v4 を使用してボットを作成できます。
 
 >[!NOTE] 
-> 作成したボットは、Azure Bot Service に自動的に登録されます。 既に他の場所でホストされているボットを登録する場合は、「[ボットを Azure Bot Service に登録する](../bot-service-quickstart-registration.md)」の記事を参照してください。
+> 作成したボットは、Azure Bot Service に自動的に登録されます。 既に他の場所でホストされているボットを登録する場合は、次の記事を参照してください:[Azure Bot Service へのボットの登録](../bot-service-quickstart-registration.md)。
 
 [!INCLUDE [Azure vs local development](~/includes/snippet-quickstart-paths.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure](http://portal.azure.com) アカウント
+- [Azure](https://portal.azure.com) アカウント
 
 ### <a name="create-a-new-bot-service"></a>新しいボット サービスを作成する
 
-1. [Azure Portal](http://portal.azure.com/) にログインします。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
 1. Azure portal の左上隅にある **[新しいリソースの作成]** リンクをクリックし、 **[AI + Machine Learning]**  >  **[Web App Bot]\(Web アプリ ボット\)** を選択します。 
 
 ![ボットを作成する](../media/azure-bot-quickstarts/abs-create-blade.png)
@@ -51,6 +51,7 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
  | **アプリ名** | 一意の名前 | ボットの一意の URL 名。 たとえば、ボットに *myawesomebot* という名前を付けた場合、ボットの URL は `http://myawesomebot.azurewebsites.net` になります。 名前には、英数字とアンダースコアのみを使用する必要があります。 このフィールドは 35 文字に制限されています。 ボットの作成後にアプリ名を変更することはできません。 |
  | **Bot template\(ボット テンプレート\)** | エコー ボット | **[SDK v4]** を選択します。 このクイック スタートでは C# または Node.js のいずれかを選択して、 **[選択]** をクリックします。  
  | **App Service プラン/場所** | ご利用の App Service プラン  | [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)の場所を選択します。 一覧に示されたどの場所を選択してもかまいませんが、多くの場合、ボット サービスと同じ場所を選択するのが最良です。 |
+ | **LUIS アカウント** _Basic Bot テンプレートでのみ使用可能_ | LUIS Azure リソース名 | [LUIS リソースを Azure リソースに移行](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)した後、Azure リソース名を入力して、この LUIS アプリケーションをその Azure リソースに関連付けます。 
  | **Application Insights** | On | [Application Insights](/bot-framework/bot-service-manage-analytics) を**オン**にするか、**オフ**にするかを決定します。 **[オン]** を選択した場合は、リージョンの場所も指定する必要があります。 一覧に示されたどの場所を選択してもかまいませんが、多くの場合、ボット サービスと同じ場所を選択するのが最良です。 |
  | **Microsoft App ID and password\(Microsoft アプリ ID とパスワード\)** | アプリ ID とパスワードの自動作成 | Microsoft アプリ ID とパスワードを手動で入力する必要がある場合は、このオプションを使用します。 それ以外の場合は、ボット作成プロセスで新しい Microsoft アプリ ID とパスワードが自動的に作成されます。 ボット サービス用に手動でアプリケーションの登録を作成する場合は、サポートされるアカウントの種類が [任意の組織のディレクトリ内のアカウント] または [任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)] に確実に設定されているようにしてください。 |
 

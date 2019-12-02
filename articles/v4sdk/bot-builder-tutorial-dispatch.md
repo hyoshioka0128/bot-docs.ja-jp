@@ -7,14 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/06/2019
+ms.date: 11/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 844f1514c0b90477cbe454d91dbc93637713d457
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 8b98610c649f145aed975ed1d4b8eb0281d26016
+ms.sourcegitcommit: a4a437a1d44137375ea044dcc11bccc8d004e3db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933759"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479524"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -88,7 +88,7 @@ ms.locfileid: "73933759"
 
 7. 新しい LUIS アプリが公開されたら、 _[MANAGE]\(管理\)_ タブを選択します。[アプリケーション情報] ページから、`Application ID` の値として "_app-id-for-app_" を、また `Display name` の値として "_name-of-app_" を記録しておきます。 [キーとエンドポイント] ページから、`Authoring Key` の値として "_your-luis-authoring-key_" を、また `Region` の値として "_your-region_" を記録しておきます。 これらの値は、お使いの appsetting.json ファイル内で後で使用されます。
 
-8. 完了したら、"Weather.json" ファイルに対して上記の手順を繰り返して、ご自身の LUIS **weather** アプリと LUIS **dispatch** アプリの両方を "_トレーニング_" し、"_公開_" します。
+8. 完了したら、"Weather.json" ファイルに対して上記の手順を繰り返して、ご自身の LUIS **Home Automation** アプリと LUIS **Weather** アプリの両方を "_トレーニング_" し、"_公開_" します。
 
 ### <a name="create-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの作成
 
@@ -475,6 +475,16 @@ Either of the above two actions will reduce the number of times that your bot re
 ### <a name="to-update-or-create-a-new-luis-model"></a>LUIS モデルを更新するか、新しく作成する
 
 このサンプルは、事前構成済みの LUIS モデルが基になっています。 このモデルの更新または新しい LUIS モデルの作成に役立つ追加情報については、[こちら](https://aka.ms/create-luis-model#updating-your-cognitive-models)をご覧ください。
+
+基になるモデル (QnA または LUIS) を更新した後、`dispatch refresh` を実行して Dispatch LUIS アプリを更新します。 `dispatch refresh` は基本的に `dispatch create` と同じコマンドですが、新しい LUIS アプリ ID は作成されません。 
+
+LUIS で直接追加された発話は、`dispatch refresh` の実行時に保持されないことに注意してください。 これらの追加の発話を Dispatch アプリで保持するには、テキスト ファイルでそれらの発話を (1 行に 1 発話ずつ) 追加し、次のコマンドを実行してファイルを Dispatch に追加します。
+
+```powershell
+dispatch add -t file -f <file path> --intentName <target intent name, ie l_General>
+```
+
+追加の発話を含むファイルが Dispatch に追加されると、更新してもそれらの発話は残ります。
 
 ### <a name="to-delete-resources"></a>リソースを削除する
 

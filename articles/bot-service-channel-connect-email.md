@@ -2,18 +2,18 @@
 title: ボットを Office 365 の電子メールに接続する | Microsoft Docs
 description: Office 365 で電子メールを送受信するようにボットを構成する方法について説明します。
 keywords: Office 365, ボット チャネル, 電子メール, 電子メールの資格情報, Azure Portal, カスタム電子メール
-author: RobStand
+author: kamrani
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 02/08/2019
-ms.openlocfilehash: ca88c2d023505401d9e31a58bfe7313565a2350c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.date: 11/15/2019
+ms.openlocfilehash: 3ad7829af9dc24ca9e10ebab352b4513b3bcad28
+ms.sourcegitcommit: 78da125eafe93b3c6d254708b82bdd01de7c3afb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298582"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464287"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>ボットを Office 365 の電子メールに接続する
 
@@ -21,6 +21,9 @@ ms.locfileid: "70298582"
 
 > [!WARNING]
 > 望まれていない電子メールや承認されていない電子メールを一括送信するボットなどの "スパムボット" の作成は、Bot Framework の[倫理規定](https://www.botframework.com/Content/Microsoft-Bot-Framework-Preview-Online-Services-Agreement.htm)違反です。
+
+> [!NOTE]
+> Microsoft Exchange Server を使用している場合は、電子メール チャネルを構成する前に、[自動検出](https://docs.microsoft.com/exchange/client-developer/exchange-web-services/autodiscover-for-exchange)を最初に有効にしていることを確認してください。 
 
 ## <a name="configure-email-credentials"></a>電子メールの資格情報を構成する
 

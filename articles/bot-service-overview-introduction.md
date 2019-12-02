@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 05/05/2019
-ms.openlocfilehash: 3ef81582c500a403080908e0d2c63de2ead5b9ab
-ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
+ms.openlocfilehash: 0206cf3381d95fbc58d49924aa19dadea5f226dc
+ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693147"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74415158"
 ---
 # <a name="about-azure-bot-service"></a>Azure Bot Service について
 
@@ -50,7 +50,7 @@ Azure Bot Service および Bot Framework は、このプロセスを容易に�
 ### <a name="build"></a>構築
 作成するボットは会話型インターフェイスを実装した Web サービスであり、Bot Framework サービスとやり取りして、メッセージとイベントを送受信します。 Bot Framework Service は、Azure Bot Service および Bot Framework のコンポーネントの 1 つです。 任意の数の環境と言語でボットを作成できます。 [Azure portal](bot-service-quickstart.md) 内でボット開発を開始することも、[[C#](dotnet/bot-builder-dotnet-sdk-quickstart.md) | [JavaScript](javascript/bot-builder-javascript-quickstart.md)] のテンプレートを使用してローカルで開発することもできます。
 
-Azure Bot Service および Bot Framework の一環として、ボットの機能の拡張に使用できる追加コンポーネントが用意されています
+Azure Bot Service および Bot Framework の一環として、ボットの機能の拡張に使用できる追加コンポーネントが用意されています。
 
 | 機能 | 説明 | Link |
 | --- | --- | --- |
@@ -73,7 +73,7 @@ Azure Bot Service および Bot Framework の一環として、ボットの機�
  
 - [Web](bot-service-manage-test-webchat.md) 上でボットをテストする。 Azure portal から設定すると、Web チャット インターフェイスを介してボットにアクセスすることもできます。 Web チャット インターフェイスは、ボットの実行されているコードに直接アクセスできないテスターやその他の人に、ボットへのアクセスを許可するすばらしい方法です。
 
-- Bot Framework SDK の 7 月の更新を使用してボットの[単体テスト](https://docs.microsoft.com/en-us/azure/bot-service/unit-test-bots?view=azure-bot-service-4.0)を実行する。
+- Bot Framework SDK の 7 月の更新を使用してボットの[単体テスト](https://docs.microsoft.com/azure/bot-service/unit-test-bots?view=azure-bot-service-4.0)を実行する。
 
 ### <a name="publish"></a>発行 
 ボットを Web 上で使用する準備が整ったら、ボットを [Azure](bot-builder-howto-deploy-azure.md) に発行するか、独自の Web サービスまたはデータ センターに発行します。 パブリック インターネット上のアドレスを取得することが、ボットをサイト上やチャット チャネル内で稼働させる第一歩です。

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 91b2729aa10c8ac1985e62845126296e8141ef77
-ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.openlocfilehash: 99bd2b58bafd1c4ece57aad5decc710346f56f86
+ms.sourcegitcommit: 08f9dc91152e0d4565368f72f547cdea1885af89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68230643"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74536345"
 ---
 > [!IMPORTANT]
 > プライマリ ボット ターンが完了すると、それを処理していたスレッドによってコンテキスト オブジェクトの破棄処理が行われます。 **いずれのアクティビティ呼び出しに対しても必ず `await` を実行**します。これにより、プライマリ スレッドでは生成されたアクティビティで待機してから、その処理が終了され、ターン コンテキストの破棄が行われます。 そうしないと、応答 (そのハンドラーも含まれる) にかなりの時間がかかり、コンテキスト オブジェクトに基づいた処理が試みられた場合、"_コンテキスト破棄済み_" エラーが返されることがあります。

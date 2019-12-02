@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 0570ec6a44c9fe1b007c1fd1b8c335288baa63cb
-ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.openlocfilehash: 9c86001a51914f359163e7d755aa57e1c54127f8
+ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68230672"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74414466"
 ---
 ## <a name="prerequisites"></a>前提条件
 - [Visual Studio 2017 以降](https://www.visualstudio.com/downloads)
@@ -13,14 +13,14 @@ ms.locfileid: "68230672"
 - [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) および [C# での非同期プログラミング](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/index)に関する知識
 
 ## <a name="create-a-bot"></a>ボットの作成
-前提条件セクションでダウンロードした BotBuilderVSIX.vsix テンプレートをインストールします。
+前提条件セクションでダウンロードした [BotBuilderVSIX.vsix](https://aka.ms/bot-vsix) テンプレートをインストールします。
 
-Visual Studio で、**Echo Bot (Bot Framework v4)** テンプレートを使用して、新しいボット プロジェクトを作成します。
+Visual Studio で、**Echo Bot (Bot Framework v4)** テンプレートを使用して、新しいボット プロジェクトを作成します。 検索ボックスに「_bot framework v4_」と入力して、ボット テンプレートのみを表示します。
 
-![Visual Studio プロジェクト](~/media/azure-bot-quickstarts/bot-builder-dotnet-project.png)
+![Visual Studio のプロジェクト新規作成ダイアログ](../media/azure-bot-quickstarts/bot-builder-dotnet-project-vs2019.png)
 
 > [!TIP] 
-> 必要な場合は、プロジェクトのビルドの種類を ``.Net Core 2.1`` に変更します。 また、必要に応じて、`Microsoft.Bot.Builder` [NuGet パッケージ](https://docs.microsoft.com/nuget/quickstart/install-and-use-a-package-in-visual-studio)を更新します。
+> Visual Studio 2017 を使用している場合は、プロジェクトのビルドの種類が ``.Net Core 2.1`` 以降であることを確認してください。 また、必要に応じて、`Microsoft.Bot.Builder` [NuGet パッケージ](https://docs.microsoft.com/nuget/quickstart/install-and-use-a-package-in-visual-studio)を更新します。
 
 テンプレートのおかげで、プロジェクトには、このクイック スタートでボットを作成するのに必要なすべてのコードが含まれています。 実際には、追加のコードを記述する必要はありません。
 

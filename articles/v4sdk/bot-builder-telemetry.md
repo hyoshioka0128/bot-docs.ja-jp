@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 524ffa37d1d089bfec01fa7b89a456ecdda719f9
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: a023fd97bfb7b8d55ad01d118075a6441e426575
+ms.sourcegitcommit: 08f9dc91152e0d4565368f72f547cdea1885af89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933709"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74510756"
 ---
 # <a name="add-telemetry-to-your-bot"></a>ボットへのテレメトリの追加
 
@@ -113,7 +113,7 @@ Bot Framework SDK のバージョン 4.2 にテレメトリのログ記録が追
     }
     ```
 
-7. Application Insights のインストルメンテーション キーを `appsettings.json` ファイルに追加します。`appsettings.json` ファイルには、ボットが実行中に使用する外部サービスに関するメタデータが含まれています。 たとえば、CosmosDB、Application Insights、Language Understanding (LUIS) サービスの接続とメタデータがそこに保存されています。 `appsettings.json` ファイルへの追加は、次の形式にする必要があります。
+6. Application Insights のインストルメンテーション キーを `appsettings.json` ファイルに追加します。`appsettings.json` ファイルには、ボットが実行中に使用する外部サービスに関するメタデータが含まれています。 たとえば、CosmosDB、Application Insights、Language Understanding (LUIS) サービスの接続とメタデータがそこに保存されています。 `appsettings.json` ファイルへの追加は、次の形式にする必要があります。
 
     ```json
     {
@@ -251,7 +251,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="enabling-telemetry-to-capture-usage-data-from-other-services-like-luis-and-qna-maker"></a>テレメトリが LUIS や QnA Maker などの他のサービスから使用状況データを取り込めるようにする
 
-次に、LUIS サービスでテレメトリ機能を実装します。 LUIS サービスでは、組み込みのテレメトリ ログ記録が利用できるため、LUIS からのテレメトリ データの取得を開始するために実行しなければならない操作はほとんどありません。  
+次に、LUIS サービスでテレメトリ機能を実装します。 LUIS サービスでは、組み込みのテレメトリ ログ記録が利用できるため、LUIS からのテレメトリ データの取得を開始するために実行しなければならない操作はほとんどありません。  QnA Maker 対応ボットでテレメトリを有効にすることを検討している場合は、「[QnAMaker ボットへのテレメトリの追加](bot-builder-telemetry-QnAMaker.md)」を参照してください
 
 このサンプルでは、単にダイアログの場合と同様の方法でテレメトリ クライアントを提供する必要があります。 
 
@@ -337,6 +337,8 @@ Azure で Application Insights リソースを作成するたびに、新しい�
 
 ## <a name="additional-information"></a>追加情報
 
+* [QnAMaker ボットへのテレメトリの追加](bot-builder-telemetry-qnamaker.md)
+
 * [Application Insights とは何か?](https://aka.ms/appinsights-overview)
 
 * [Application Insights の検索の使用](https://aka.ms/search-in-application-insights)
@@ -372,14 +374,6 @@ The easiest way to test is by creating a dashboard using [Azure portal's templat
 ```
 -->
 
-
-
-
-
-
-
-
-
 <!--
 ## Additional information
 
@@ -414,9 +408,7 @@ There are three main components available for your bot to log telemetry, and eac
 - [*LuisRecognizer* class.](#telemetry-support-luis)  You can override for custom logging in two ways - per invocation (add/replace properties) or derived classes.
 - [*QnAMaker*  class.](#telemetry-qnamaker)  You can override for custom logging in two ways - per invocation (add/replace properties) or derived classes.
 
-
 All components log using the `IBotTelemetryClient`  (or `BotTelemetryClient` in node.js) interface which can be overridden with a custom implementation.
-
 
 #### Telemetry Middleware
 
@@ -735,6 +727,7 @@ When logging events into Application Insights, the events generated contain defa
 
 > [!NOTE]
 > Custom telemetry clients will not be provided these values.
+
 
 Property |Type | Details
 --- | --- | ---

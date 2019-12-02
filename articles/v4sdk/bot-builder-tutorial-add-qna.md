@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8bc13f06e4cfd36afea65a344503fa48fe05f08e
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 422c1285d6f668b6f5c39617f5d25419b2874eea
+ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299215"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74410485"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>チュートリアル:ボットで QnA Maker を使用して質問に回答する
 
@@ -55,12 +55,12 @@ Azure 資格情報を使用して [QnA Maker ポータル](https://qnamaker.ai/)
    1. 必要な場合は、QnA サービスを作成します。 (既存の QnA Maker サービスを使用しても、このチュートリアル用に新しく作成してもかまいません。)QnA Maker での作業について詳しくは、「[QnA Maker サービスを作成する](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure)」および「[QnA Maker ナレッジ ベースの作成、トレーニング、発行](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base)」をご覧ください。
    1. QnA サービスをナレッジ ベースに接続します。
    1. ナレッジ ベースの名前を設定します。
-   1. ナレッジ ベースにデータを追加するには、サンプル リポジトリの **BotBuilder-Samples\samples\csharp_dotnetcore\11.qnamaker\CognitiveModels\smartLightFAQ.tsv** ファイルを使用します。
+   1. ナレッジ ベースに入力するには、サンプル リポジトリの `BotBuilder-Samples\samples\csharp_dotnetcore\11.qnamaker\CognitiveModels\smartLightFAQ.tsv` ファイルを使用します。 サンプルをダウンロードした場合は、お使いのコンピューターから *smartLightFAQ.tsv* ファイルをアップロードします。
    1. **[Create your kb]\(KB の作成\)** をクリックして、ナレッジ ベースを作成します。
 1. ナレッジ ベースを**保存してトレーニング**します。
 1. ナレッジ ベースを**公開**します。
 
-QnA Maker アプリが公開されたら、 _[SETTINGS]\(設定\)_ タブを選択し、[Deployment details]\(デプロイの詳細\) まで下にスクロールします。 _Postman_ サンプル HTTP 要求の次の値を書き留めます。
+QnA Maker アプリが公開されたら、 **[SETTINGS]\(設定\)** タブを選択し、 *[Deployment details]\(デプロイの詳細\)* まで下にスクロールします。 *Postman* HTTP サンプル要求の次の値をコピーします。
 
 ```text
 POST /knowledgebases/<knowledge-base-id>/generateAnswer
@@ -111,9 +111,9 @@ QnAEndpointHostName="your-hostname" // This is a URL ending in /qnamaker
 
 | フィールド | 値 |
 |:----|:----|
-| QnAKnowledgebaseId | QnA Maker ポータルで自動的に生成されたナレッジ ベース ID。 |
-| QnAAuthKey | QnA Maker ポータルで自動的に生成されエンドポイント キー。 |
-| QnAEndpointHostName | QnA Maker ポータルで生成されたホスト URL。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。 |
+| QnAKnowledgebaseId | *Postman* HTTP サンプル要求の `knowledge-base-id`。|
+| QnAAuthKey | *Postman* HTTP サンプル要求の `qna-maker-resource-key`。 |
+| QnAEndpointHostName | *Postman* HTTP サンプル要求の `your-hostname`。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 完全な URL 文字列は `https://<your knowledge base name>.azurewebsites.net/qnamaker` のようになります。 |
 
 編集結果を保存します。
 
@@ -207,9 +207,9 @@ QnAEndpointHostName="your-hostname" // This is a URL ending in /qnamaker
    ```csharp
    protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
    {
-      // First send the user input to your QnA Maker knowledge base
+      await turnContext.SendActivityAsync(MessageFactory.Text($"Echo: {turnContext.Activity.Text}"), cancellationToken);
+
       await AccessQnAMaker(turnContext, cancellationToken);
-      ...
    }
    ```
 
@@ -293,28 +293,33 @@ QnAEndpointHostName="your-hostname" // This is a URL ending in /qnamaker
 ![QnA サンプルをテストする](./media/qna-test-bot.png)
 
 ## <a name="republish-your-bot"></a>ボットを再公開する
+これで、ボットを Azure に再公開できる状態になりました。 プロジェクト フォルダーを zip 圧縮してから、コマンドを実行してボットを Azure にデプロイする必要があります。 詳細については、[ボットのデプロイ](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&tabs=csharp)に関する記事を参照してください。 
 
-これで、ボットを Azure に再公開できる状態になりました。
+### <a name="zip-your-project-folder"></a>プロジェクト フォルダーを zip 圧縮する 
+[!INCLUDE [zip up code](~/includes/deploy/snippet-zip-code.md)]
 
-> [!IMPORTANT]
-> プロジェクト ファイルの zip を作成する前に、必ず適切なフォルダー "_内_" に移動します。 
-> - C# ボットの場合は、.csproj ファイルが含まれるフォルダーです。 
-> - JS ボットの場合は、app.js ファイルまたは index.js ファイルが含まれるフォルダーです。 
+<!-- > [!IMPORTANT]
+> Before creating a zip of your project files, make sure that you are _in_ the correct folder. 
+> - For C# bots, it is the folder that has the .csproj file. 
+> - For JS bots, it is the folder that has the app.js or index.js file. 
 >
-> そのフォルダー内ですべてのファイルを選択して zip 圧縮し、そのフォルダー内でコマンドを実行します。
+> Select all the files and zip them up while in that folder, then run the command while still in that folder.
 >
-> お使いのルート フォルダーの場所が正しくない場合、**ボットは、Azure portal で実行できません**。
+> If your root folder location is incorrect, the **bot will fail to run in the Azure portal**. -->
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="deploy-your-code-to-azure"></a>コードを Azure にデプロイする
+[!INCLUDE [deploy code to Azure](~/includes/deploy/snippet-deploy-code-to-az.md)]
+
+<!-- # [C#](#tab/csharp)
 ```cmd
 az webapp deployment source config-zip --resource-group "resource-group-name" --name "bot-name-in-azure" --src "c:\bot\mybot.zip"
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# [JavaScript](#tab/javascript)
 
 [!INCLUDE [publish snippet](~/includes/deploy/snippet-publish-js.md)]
 
----
+--- -->
 
 ### <a name="test-the-published-bot"></a>公開したボットをテストする
 
@@ -330,8 +335,8 @@ az webapp deployment source config-zip --resource-group "resource-group-name" --
 このアプリケーションを引き続き使用しない場合は、次の手順で関連付けられているリソースを削除します。
 
 1. Azure portal で、ボットのリソース グループを開きます。
-1. **[リソース グループの削除]** をクリックして、グループとそれに含まれるすべてのリソースを削除します。
-1. 確認ウィンドウでリソース グループ名を入力して、 **[削除]** をクリックします。
+2. **[リソース グループの削除]** をクリックして、グループとそれに含まれるすべてのリソースを削除します。
+3. 確認ウィンドウでリソース グループ名を入力して、 **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

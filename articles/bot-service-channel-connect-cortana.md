@@ -7,13 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 04/30/2018
-ms.openlocfilehash: caa7c71bc0b12ff6defb72f75dcb6d12ce512806
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.date: 11/22/2019
+ms.openlocfilehash: 912f913f5fa09d971ba1e87e31736292f707adc2
+ms.sourcegitcommit: 78da125eafe93b3c6d254708b82bdd01de7c3afb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167005"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464278"
 ---
 # <a name="connect-a-bot-to-cortana"></a>ボットを Cortana に接続する
 
@@ -103,6 +103,8 @@ Cortana では、さまざまな種類のユーザー プロファイル情報�
 Cortana スキルの登録フォームへの入力が完了したら、 **[Deploy on Cortana]\(Cortana にデプロイする\)** をクリックして接続を完了します。 これにより、ボットの [チャンネル] ブレードに戻るので、ボットが Cortana に接続されていることを確認できます。
 
 この時点で、ボットは Cortana スキルとしてお使いのアカウントにデプロイされています。
+
+次に、ボットのスキルを有効化し、アカウントへの接続を承認する必要があります。 Cortana アプリで「ask *呼び出し名*」と話しかけるか、入力します。この "呼び出し名" は、Azure portal の Cortana チャネルで構成したものです。 ボットのスキルの接続を許可するよう Cortana から求められます。 "はい" を選択して許可すると、スキルが有効になり、Cortana のスキル一覧に表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
