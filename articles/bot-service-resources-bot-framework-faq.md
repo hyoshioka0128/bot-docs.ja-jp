@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/21/2019
-ms.openlocfilehash: c0feda708be8ac384c458289884fddf6ee798790
-ms.sourcegitcommit: a4a437a1d44137375ea044dcc11bccc8d004e3db
+ms.openlocfilehash: 4c8a70e4b82e2bc4a5c10d4cf73abf51f5f904ea
+ms.sourcegitcommit: 91a393e885b9ef7e08ceb978ce2f567ea38e7f48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479506"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74564408"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework についてよく寄せられる質問
 
@@ -84,8 +84,7 @@ V3 ボットから V4 への移行を開始することを強くお勧めしま�
 2.  SDK およびツールの開発は V4 のみで行われており、V3 に対する作業は実施も計画もされていません (Microsoft は既に "その段階" に達しています)。
 3.  これは、ユーザーが各自の V3 ボットを管理するために古いツールを実行することを妨げるものではありません。 
 
-
-### <a name="how-can-i-migrate-azure-bot-service-from-one-region-to-another"></a>Azure Bot Service をあるリージョンから別のリージョンに移行するにはどうすればよいですか?
+## <a name="how-can-i-migrate-azure-bot-service-from-one-region-to-another"></a>Azure Bot Service をあるリージョンから別のリージョンに移行するにはどうすればよいですか?
 
 Azure Bot Service は、リージョンの移動をサポートしていません。 特定のリージョンに関連付けられていないグローバル サービスです。
 
