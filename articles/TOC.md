@@ -5,6 +5,7 @@
 # クイック スタート
 ## [.NET を使用してボットを作成する](dotnet/bot-builder-dotnet-sdk-quickstart.md)
 ## [JavaScript を使用してボットを作成する](javascript/bot-builder-javascript-quickstart.md)
+## [Python を使用してボットを作成する](python/bot-builder-python-quickstart.md)
 ## [Azure Bot Service を使用してボットを作成する](v4sdk/abs-quickstart.md)
 # チュートリアル
 ## [1.基本的なボットを作成してデプロイする](v4sdk/bot-builder-tutorial-basic-deploy.md)
@@ -55,12 +56,12 @@
 ### [QnA ボットへのテレメトリの追加](v4sdk/bot-builder-telemetry-QnAMaker.md)
 ### [ボットで Direct Line Speech を使用する](directline-speech-bot.md)
 ### [.NET](dotnet/TOC.md)
-### [Node.JS](nodejs/TOC.md)
+### [Node.js](nodejs/TOC.md)
 ## テスト
 ### [ボットの単体テスト](v4sdk/unit-test-bots.md)
 ### [ボットへのトレース アクティビティの追加](v4sdk/using-trace-activities.md)
 ## [デバッグ](debug/TOC.md)
-## デプロイ
+## 配置
 ### [ボットを Azure にデプロイする](bot-builder-deploy-az-cli.md)
 ### [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)
 ## [管理](manage/TOC.md)
