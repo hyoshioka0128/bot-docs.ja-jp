@@ -62,10 +62,14 @@ sections:
             text: JavaScript
             href: 'https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart'
           - image:
+              src: v4sdk/media/logo_python.svg
+            text: Python
+            href: 'https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-python-quickstart'
+          - image:
               src: media/index/azure_portal.png
-            text: Azure Portal
+            text: Azure portal
             href: 'https://docs.microsoft.com/azure/bot-service/bot-service-quickstart'
-  - title: ステップバイステップのチュートリアル
+  - title: ステップバイステップ チュートリアル
     items:
       - type: paragraph
         text: Azure でボットを作成しデプロイする方法を説明します。
@@ -80,5 +84,5 @@ sections:
         style: cards
         className: cardsD
         items:
-          - title: 言語
+          - title: Languages
             html: '<p><a href="/dotnet/api/?view=botbuilder-dotnet-stable">.NET</a></p><p><a href="https://docs.microsoft.com/en-us/javascript/api/botbuilder/index?view=botbuilder-ts-latest">JavaScript</a></p>'
