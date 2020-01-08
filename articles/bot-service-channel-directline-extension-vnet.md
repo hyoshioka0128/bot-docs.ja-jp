@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 7c565d77879641d92a3e331852ff38ea21fdaf9e
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 839fd125976fd70cb78817078ff7cf4709974a8a
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866451"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491269"
 ---
 # <a name="use-direct-line-app-service-extension-within-a-vnet"></a>VNET 内で Direct Line App Service 拡張機能を使用する
 
@@ -22,8 +22,8 @@ ms.locfileid: "68866451"
 ## <a name="create-an-app-service-environment-and-other-azure-resources"></a>App Service Environment とその他の Azure リソースを作成する
 
 1. Direct Line App Service 拡張機能は、**Azure App Service Environment** 内でホストされているものも含め、すべての **Azure App Service** で利用できます。 Azure App Service Environment は分離を提供し、VNET 内での作業に最適です。
-    - 外部 App Service Environment の作成手順については、「[外部 App Service Environment の作成](https://docs.microsoft.com/en-us/azure/app-service/environment/create-external-ase)」の記事を参照してください。
-    - 内部 App Service Environment の作成手順については、「[App Service Environment で内部ロード バランサーを作成して使用する](https://docs.microsoft.com/en-us/azure/app-service/environment/create-ilb-ase)」の記事を参照してください。
+    - 外部 App Service Environment の作成手順については、「[外部 App Service Environment の作成](https://docs.microsoft.com/azure/app-service/environment/create-external-ase)」の記事を参照してください。
+    - 内部 App Service Environment の作成手順については、「[App Service Environment で内部ロード バランサーを作成して使用する](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase)」の記事を参照してください。
 1. App Service Environment を作成したら、その中に App Service プランを追加する必要があります。そこでボットをデプロイできます (そして、それにより Direct Line App Service 拡張機能を実行できます)。 これを行うには、次の手順を実行します。
     - [https://resources.azure.com](https://portal.azure.com/ ) に移動します
     - 新しい "App Service プラン" のリソースを作成します。
@@ -41,7 +41,7 @@ ms.locfileid: "68866451"
 |送信先 IP アドレス|20.38.80.64、40.82.248.64|
 |宛先ポート範囲|443|
 |Protocol|Any|
-|Action|Allow|
+|アクション|Allow|
 
 
 ![Direct Line 拡張機能のアーキテクチャ](./media/channels/direct-line-extension-vnet.png)

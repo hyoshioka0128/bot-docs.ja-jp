@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 11/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0dfe98c13d74f2f7d13a3eece505dd901184c849
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 530e7accbde7e9c6a9601ad17ccdd63ec5d0f691
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299067"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491642"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-framework-v4-bot"></a>.NET v3 ボットを .NET Framework v4 ボットに移行する
 
@@ -55,7 +55,7 @@ Bot Framework SDK v4 は、SDK v3 と同じ基になる REST API に基づいて
 
 > [!TIP]
 > 現在のプロジェクトが .NET Framework 4.6 を対象としている場合は、4.6.1 以降に更新する必要があります。これは、**Bot.Builder.Community.Dialogs.Formflow** が .NET Standard 2.0 ライブラリであるためです。
-> 詳細については、「[.NET 実装のサポート](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-implementation-support)」を参照してください。
+> 詳細については、「[.NET 実装のサポート](https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support)」を参照してください。
 
 この時点でビルドすると、コンパイラ エラーが発生します。 これらは無視してかまいません。 変換が完了すると、作業コードが作成されます。
 
@@ -154,7 +154,7 @@ v4 SDK に移行するために、元のダイアログに多くの変更を加�
 
 ダイアログ内の制御フローとメッセージングは同じ方法で処理されなくなったので、各ダイアログを変換するときにこれを変更する必要があります。
 
-| Operation | v3 コード | v4 コード |
+| 操作 | v3 コード | v4 コード |
 | :--- | :--- | :--- |
 | ダイアログの開始を処理する | `IDialog.StartAsync` を実装する | これをウォーターフォール ダイアログの最初のステップにするか、`Dialog.BeginDialogAsync` を実装する |
 | ダイアログの継続を処理する | `IDialogContext.Wait` を呼び出す | ウォーターフォール ダイアログにステップを追加するか、`Dialog.ContinueDialogAsync` を実装する |

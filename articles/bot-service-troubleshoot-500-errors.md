@@ -7,13 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 4/30/2019
-ms.openlocfilehash: 3dcb22c2310f8c686f02fae27617061681910d01
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.date: 11/19/2019
+ms.openlocfilehash: bed93200a7ea79f5d5fd8c4e698445b3f431e56e
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298607"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491574"
 ---
 # <a name="troubleshoot-http-500-errors"></a>HTTP 500 エラーのトラブルシューティング
 
@@ -151,7 +151,7 @@ Bot ASP.Net と Node からは、検査可能なログがサーバー レベル�
 
 #### <a name="set-up-a-browser-to-watch-your-logs"></a>ログを監視できるようにブラウザーを設定する
 
-1. [Azure Portal](http://portal.azure.com/) でボットを開きます。
+1. [Azure Portal](https://portal.azure.com/) でボットを開きます。
 1. **[アプリ サービスの設定]/[All App service settings]\(すべてのアプリ サービス設定\)** ページを開き、すべてのサービス設定を確認します。
 1. アプリ サービスの **[監視]/[診断ログ]** ページを開きます。
    - **[アプリケーション ログ (ファイル システム)]** が有効であることを確認します。 この設定を変更する場合は、必ず **[保存]** をクリックします。

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7197cf4716369b00a8ccdff0f0e289bd3a0fdd16
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 699b4cfc1acc47757b7adc06dfeae577b09fba2e
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491874"
 ---
 # <a name="implement-custom-storage-for-your-bot"></a>ボットのカスタム ストレージの実装
 
@@ -26,7 +26,7 @@ ms.locfileid: "70299384"
 
 
 ## <a name="prerequisites"></a>前提条件
-- この記事で使用する完全なサンプル コードについては、[C# サンプル](http://aka.ms/scale-out) を確認ください。
+- この記事で使用する完全なサンプル コードについては、[C# サンプル](https://aka.ms/scale-out) を確認ください。
 
 この記事では、ボットと Azure Bot Service および Store との対話に関するセマンティクスについて説明します。
 
@@ -145,6 +145,6 @@ Azure Blob Storage に対してこれを実装するのは簡単です。
 **RefAccessor.cs**  
 [!code-csharp[RefAccessor](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/RefAccessor.cs?range=22-60)]
 
-## <a name="additional-information"></a>追加情報
-この記事で使用する [C# サンプル](http://aka.ms/scale-out) コードは、GitHub で入手できます。
+## <a name="additional-information"></a>関連情報
+この記事で使用する [C# サンプル](https://aka.ms/scale-out) コードは、GitHub で入手できます。
 

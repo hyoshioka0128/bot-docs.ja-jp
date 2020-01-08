@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/21/2019
-ms.openlocfilehash: 4c8a70e4b82e2bc4a5c10d4cf73abf51f5f904ea
-ms.sourcegitcommit: 91a393e885b9ef7e08ceb978ce2f567ea38e7f48
+ms.openlocfilehash: 9d23c1497fa5ab58ef6eba4725035c4c0929586f
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74564408"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491371"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework についてよく寄せられる質問
 
@@ -79,10 +79,10 @@ V3 ボットから V4 への移行を開始することを強くお勧めしま�
 3.  新しい V3 ボットの作成はポータルで無効になっていますが、V3 ボットを ABS にデプロイするのではなく独立して (たとえば、webapp サービスとして) デプロイしたい上級ユーザーは、そのようにデプロイできます。
 
 #### <a name="sdk-and-tools"></a>SDK とツール
-
 1.  SDK サイドから V3 に投資することはなく、当面の間、重要なセキュリティ修正を SDK ブランチに適用するのみとなります (例外: V4 ボットからレガシ V3 ボットを呼び出せるよう、スキル コネクタの追加を計画しています)。
 2.  SDK およびツールの開発は V4 のみで行われており、V3 に対する作業は実施も計画もされていません (Microsoft は既に "その段階" に達しています)。
 3.  これは、ユーザーが各自の V3 ボットを管理するために古いツールを実行することを妨げるものではありません。 
+
 
 ## <a name="how-can-i-migrate-azure-bot-service-from-one-region-to-another"></a>Azure Bot Service をあるリージョンから別のリージョンに移行するにはどうすればよいですか?
 
@@ -155,7 +155,7 @@ I/O サービスを提供するために、Bot Framework では、お客様が�
 - *.botframework.com (チャンネル)
 
 ### <a name="can-i-block-all-traffic-to-my-bot-except-traffic-from-the-bot-connector-service"></a>Bot Connector サービスからのトラフィックを除く、自分のボットへのすべてのトラフィックをブロックできますか?
-No. このような IP アドレスまたは DNS ホワイトリスト登録は実用的ではありません。 Bot Framework Connector サービスは、世界規模の Azure データセンターでホストされ、Azure IP の一覧が常に変わっています。 特定の IP アドレスのホワイトリスト登録が有効なのは 1 日で、翌日に Azure IP アドレスが変わると無効になります。
+いいえ。 このような IP アドレスまたは DNS ホワイトリスト登録は実用的ではありません。 Bot Framework Connector サービスは、世界規模の Azure データセンターでホストされ、Azure IP の一覧が常に変わっています。 特定の IP アドレスのホワイトリスト登録が有効なのは 1 日で、翌日に Azure IP アドレスが変わると無効になります。
  
 ### <a name="what-keeps-my-bot-secure-from-clients-impersonating-the-bot-framework-connector-service"></a>自分のボットは、Bot Framework Connector サービスを偽装するクライアントからどのように保護されますか?
 1. お使いのボットへのすべての要求に付いているセキュリティ トークンでは ServiceUrl がエンコードされています。つまり、攻撃者がトークンにアクセスしても、会話を新しい ServiceUrl にリダイレクトすることはできません。 これは、SDK のすべての実装によって適用され、Microsoft の認証[参考](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector)資料に記載されています。

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 06/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 576947edf99705e5d0d8850837b3469f13381d06
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: 25c7fcb994e0fae348014c1eba393451dc0d9e15
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026408"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491397"
 ---
 # <a name="migration-overview"></a>移行の概要
 
@@ -27,7 +27,7 @@ Bot Framework SDK v4 は、旧バージョンの SDK のお客様のフィード
 
 ## <a name="what-happens-to-bots-built-using-sdk-v3"></a>SDK v3 を使用して構築されたボットへの影響
 
-Bot Framework SDK v3 は廃止されますが、既存の V3 ボット ワークロードは中断することなく引き続き実行されます。 詳細については、次を参照してください。「[Bot Framework SDK バージョン 3 のライフタイム サポート](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0#bot-framework-sdk-version-3-lifetime-support)」。
+Bot Framework SDK v3 は廃止されますが、既存の V3 ボット ワークロードは中断することなく引き続き実行されます。 詳細については、次を参照してください。「[Bot Framework SDK バージョン 3 のライフタイム サポート](https://docs.microsoft.com/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0#bot-framework-sdk-version-3-lifetime-support)」。
 
 V3 ボットから V4 への移行を開始することを強くお勧めします。 この移行をサポートするために、Microsoft では関連ドキュメントを作成しました。また、標準チャネルを介して移行イニシアチブに対する拡張サポートを提供する予定です。
 
@@ -69,7 +69,7 @@ V3 ボットから V4 への移行を開始することを強くお勧めしま�
 
 ## <a name="whats-changed"></a>変更内容
 
-Bot Framework SDK v4 では、v3 と同じ基になる Bot Framework Service がサポートされています。 ただし、v4 は以前の SDK をリファクターしたものであり、ボットの作成をより柔軟に制御できるようになります。 この製品には次のツールが含まれています。
+Bot Framework SDK v4 では、v3 と同じ基になる Bot Framework Service がサポートされています。 ただし、v4 は以前の SDK をリファクターしたものであり、ボットの作成をより柔軟に制御できるようになります。 これには、次の内容が含まれます。
 
 - ボット アダプターを導入しました
   - アダプターはアクティビティ処理スタックに含まれます
@@ -101,7 +101,7 @@ Bot Framework SDK v4 では、v3 と同じ基になる Bot Framework Service が
 | -- | -- | -- | -- | -- | -- |
 受信アクティビティを取得する | IDialogContext.Activity | ITurnContext.Activity | count | Small  
 アクティビティを作成してユーザーに送信する | activity.CreateReply(“text”) IDialogContext.PostAsync | MessageFactory.Text(“text”) ITurnContext.SendActivityAsync | count | Small |
-状態管理 | UserData、ConversationData、PrivateConversationData context.UserData.SetValue context.UserData.TryGetValue botDataStore.LoadAsyn | プロパティ アクセサーを使用する UserState、ConversationState、PrivateConversationState | context.UserData.SetValue - count context.UserData.TryGetValue - count botDataStore.LoadAsyn - count | Medium から Large (使用できる[ユーザー状態の管理](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)に関する記事を参照してください) |
+状態管理 | UserData、ConversationData、PrivateConversationData context.UserData.SetValue context.UserData.TryGetValue botDataStore.LoadAsyn | プロパティ アクセサーを使用する UserState、ConversationState、PrivateConversationState | context.UserData.SetValue - count context.UserData.TryGetValue - count botDataStore.LoadAsyn - count | Medium から Large (使用できる[ユーザー状態の管理](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)に関する記事を参照してください) |
 ダイアログの開始を処理する | IDialog.StartAsync を実装します | これをウォーターフォール ダイアログの最初のステップにします。 | count | Small |  
 アクティビティを送信する | IDialogContext.PostAsync。 | ITurnContext.SendActivityAsync を呼び出します。 | count | Small |  
 ユーザーの応答を待機する | IAwaitable<IMessageActivity>パラメーターを使用し、IDialogContext.Wait を呼び出します | プロンプト ダイアログを開始する ITurnContext.PromptAsync を待機して制御を戻します。 次に、ウォーターフォールの次のステップで結果を取得します。 | count | Medium (フローに依存) |  
@@ -118,7 +118,7 @@ Bot Framework SDK v4 では、v3 と同じ基になる Bot Framework Service が
 | -- | -- | -- | -- | -- | -- |
 受信アクティビティを取得する | IMessage | TurnContext.activity | count | Small  
 アクティビティを作成してユーザーに送信する | Session.send('message') を呼び出します。 | TurnContext.sendActivity を呼び出します。 | count | Small |
-状態管理 | UserState および ConversationState UserState.get()、UserState.saveChanges()、ConversationState.get()、ConversationState.saveChanges() | プロパティ アクセサーを使用する UserState および ConversationState | count | Medium から Large (使用できる[ユーザー状態の管理](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)に関する記事を参照してください) |
+状態管理 | UserState および ConversationState UserState.get()、UserState.saveChanges()、ConversationState.get()、ConversationState.saveChanges() | プロパティ アクセサーを使用する UserState および ConversationState | count | Medium から Large (使用できる[ユーザー状態の管理](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)に関する記事を参照してください) |
 ダイアログの開始を処理する | ダイアログの ID を渡して session.beginDialog を呼び出します。 | DialogContext.beginDialog を呼び出します。 | count | Small |  
 アクティビティを送信する | Session.send を呼び出します。 | TurnContext.sendActivity を呼び出します。 | count | Small |  
 ユーザーの応答を待機する | ウォーターフォール ステップ内からプロンプトを呼び出します。例: builder.Prompts.text(session, 'Please enter your destination')。 次のステップで応答を取得します。 | プロンプト ダイアログを開始する TurnContext.prompt を待機して制御を戻します。 次に、ウォーターフォールの次のステップで結果を取得します。 | count | Medium (フローに依存) |  
@@ -187,7 +187,7 @@ Bot Framework SDK v4 と v3 は、基になる REST API を共有しています
 <!-- _Mini-TOC with explainer for .NET topics_ -->
 次のトピックでは、.NET v3 と v4 の Bot Framework SDK の違い、2 つのバージョンの主な変更点、v3 から v4 にボットを移行する手順が説明されています。
 
-| トピック | 説明 |
+| トピック | [説明] |
 | :--- | :--- |
 | [.NET SDK v3 と v4 の違い](migration-about.md) |v3 と v4 SDK の一般的な違い |
 | [.NET 移行クイック リファレンス](net-migration-quickreference.md) |v3 と v4 SDK の主な変更点 |
@@ -199,7 +199,7 @@ Bot Framework SDK v4 と v3 は、基になる REST API を共有しています
 <!-- _Mini-TOC with explainer for JavaScript topics_ -->
 次のトピックでは、JavaScript v3 と v4 の Bot Framework SDK の違い、2 つのバージョンの主な変更点、v3 から v4 にボットを移行する手順が説明されています。
 
-| トピック | 説明 |
+| トピック | [説明] |
 | :--- | :--- |
 | [JavaScript SDK v3 とv4 の違い](migration-about-javascript.md) | v3 と v4 SDK の一般的な違い |
 | [JavaScript 移行クイック リファレンス](javascript-migration-quickreference.md)| v3 と v4 SDK の主な変更点|
@@ -211,7 +211,7 @@ Bot Framework SDK v4 と v3 は、基になる REST API を共有しています
 
 以下は、Bot Framework SDK V4 の学習やプロジェクトの開始に使用できるコード サンプルです。
 
-| サンプル | 説明 |
+| サンプル | [説明] |
 | :--- | :--- |
 | [Bot Framework V3 から V4 への移行サンプル](https://github.com/microsoft/BotBuilder-Samples/tree/master/MigrationV3V4) <img width="200">| Bot Framework V3 SDK から V4 SDK への移行サンプル |
 | [Bot Builder .NET のサンプル](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore) | Bot Builder の C#.NET Core サンプル |
@@ -222,15 +222,15 @@ Bot Framework SDK v4 と v3 は、基になる REST API を共有しています
 
 次のリソースは、ボット開発のための追加情報とサポートを提供します。
 
-[Bot Framework のその他のリソース](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-links-help?view=azure-bot-service-4.0)
+[Bot Framework のその他のリソース](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help?view=azure-bot-service-4.0)
 
-### <a name="references"></a>参照
+### <a name="references"></a>References
 
 詳細と背景情報については、次のリソースを参照してください。
 
-| トピック | 説明 |
+| トピック | [説明] |
 | :--- | :--- |
-| [Bot Framework の新機能](https://docs.microsoft.com/en-us/azure/bot-service/what-is-new?view=azure-bot-service-4.0) | Bot Framework と Azure Bot Service の主な機能と機能強化|
+| [Bot Framework の新機能](https://docs.microsoft.com/azure/bot-service/what-is-new?view=azure-bot-service-4.0) | Bot Framework と Azure Bot Service の主な機能と機能強化|
 |[ボットのしくみ](../bot-builder-basics.md)|ボットの内部メカニズム|
 |[状態の管理](../bot-builder-concept-state.md)|状態の管理を容易にすることができる抽象化|
 |[ダイアログ ライブラリ](../bot-builder-concept-dialog.md)| 会話を管理するための中心的な概念|

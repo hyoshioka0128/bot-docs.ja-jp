@@ -7,17 +7,17 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 12/19/2018
-ms.openlocfilehash: 7b261ab363c91209a4030bed31fa8bfc23f3ff6c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.date: 11/19/2019
+ms.openlocfilehash: 7c46a89daf3e80d8579ffe0c475cce6b10fde9b5
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297640"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491341"
 ---
-::: moniker range="azure-bot-service-3.0"
-
 # <a name="design-and-control-conversation-flow"></a>会話フローの設計と制御
+
+::: moniker range="azure-bot-service-3.0"
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
 
@@ -58,7 +58,7 @@ ms.locfileid: "70297640"
 
 ユーザーが常にこのようなストレートな論理パスをたどってくれれば、それに越したことはないのですが、実際にはこのようなことはあまりありません。 
 人間は "スタック" に基づいてやりとりをするわけではないからです。 ユーザーが心変わりすることは頻繁に起こりえます。 
-次の例を考えてみます。 
+次の例を確認してください。 
 
 ![ボット](./media/bot-service-design-conversation-flow/stack-issue.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "70297640"
 
 この質問に 1 つの "*正解*" はありません。なぜなら、どのようなシナリオが想定されるか、またはユーザーがボットにどのような応答を期待するかによって、最良の対応方法は変わってくるからです。 しかし、会話が複雑になると、**ダイアログ**の管理は困難になります。 分岐が複雑な場合は、ユーザーの会話を追跡するための独自の制御ロジックを作成する方が簡単なことがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ダイアログ間でのユーザーの移動を管理し、ユーザーが (シナリオとは違った方法であっても) 目標を達成できるように会話フローを設計することは、ボット設計の基本的な課題です。 
 [次の記事](./bot-service-design-navigation.md)では、ナビゲーション設計に関する一般的な落とし穴と、そのような失敗を回避するための戦略について説明します。 
@@ -80,8 +80,6 @@ ms.locfileid: "70297640"
 ::: moniker-end
 
 ::: moniker range="azure-bot-service-4.0"
-
-# <a name="design-and-control-conversation-flow"></a>会話フローの設計と制御
 
 従来のアプリケーションでは、ユーザー インターフェイス (UI) は一連の画面で構成されます。つまり、1 つのアプリや Web サイト上で、必要に応じて 1 つ以上の画面を使用し、ユーザーと情報を交換できます。
 多くのアプリケーションでは、起動するとまずメイン画面が表示され、ユーザーはそこに表示されたナビゲーションから別の画面に移動して、新しい注文を開始したり、製品を参照したり、ヘルプを検索したりします。
@@ -121,7 +119,7 @@ ms.locfileid: "70297640"
 
 ユーザーが常にこのようなストレートな論理パスをたどってくれれば、それに越したことはないのですが、実際にはこのようなことはあまりありません。
 人間は手続き型の `dialogs` を通じてやりとりを行うわけではないからです。 ユーザーが心変わりすることは頻繁に起こりえます。
-次の例を考えてみます。
+次の例を確認してください。
 
 ![ボット](./media/bot-service-design-conversation-flow/stack-issue.png)
 
@@ -135,7 +133,7 @@ ms.locfileid: "70297640"
 
 この質問に対する*正解*はありません。なぜなら、どのようなシナリオが想定されるかや、ユーザーがボットにどのような応答を期待するかによって、最良の対応方法は変わってくるからです。 詳しくは、「[ユーザーによる割り込みの処理](v4sdk/bot-builder-howto-handle-user-interrupt.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ダイアログ間でのユーザーの移動を管理し、ユーザーが (シナリオとは違った方法であっても) 目標を達成できるように会話フローを設計することは、ボット設計の基本的な課題です。
 [次の記事](~/bot-service-design-navigation.md)では、ナビゲーション設計に関する一般的な落とし穴と、そのような失敗を回避するための戦略について説明します。

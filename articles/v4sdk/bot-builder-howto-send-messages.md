@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 002f2de104e61be3b0f7e543408c0c0d78018f9b
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: d8aa120e37d13cc5710915d2362fdeed5b9d10bf
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299252"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491488"
 ---
 # <a name="send-and-receive-text-message"></a>テキスト メッセージを送受信する
 
@@ -45,6 +45,15 @@ await turnContext.SendActivityAsync($"Welcome!");
 ```javascript
 await context.sendActivity("Welcome!");
 ```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+ボットのアクティビティ ハンドラーで、ターン コンテキスト オブジェクトの `send_activity` メソッドを使用し、メッセージ応答を 1 つ送信します。
+
+```python
+await turn_context.send_activity("Welcome!")
+```
+
 ---
 ## <a name="receive-a-text-message"></a>テキスト メッセージの受信
 
@@ -66,6 +75,14 @@ var responseMessage = turnContext.Activity.Text;
 let text = turnContext.activity.text;
 ```
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+ボットのアクティビティ ハンドラーで、次のコードを使用してメッセージを受信します。
+
+```python
+response = context.activity.text
+```
+
 ---
 
 ## <a name="additional-resources"></a>その他のリソース
@@ -73,7 +90,7 @@ let text = turnContext.activity.text;
 - 一般的なアクティビティ処理の詳細については、[アクティビティの処理](~/v4sdk/bot-builder-basics.md#the-activity-processing-stack)に関するページをご覧ください。
 - 書式設定の詳細については、Bot Framework のアクティビティ スキーマに関するページの[メッセージ アクティビティ](https://aka.ms/botSpecs-activitySchema#message-activity)に関するセクションをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [メッセージにメディアを追加する](./bot-builder-howto-add-media-attachments.md)

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/26/2019
-ms.openlocfilehash: 1ba0873c880bfb9b1e0f449039e98859e5571028
-ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
+ms.openlocfilehash: fbe91d7ee3941a0cde4e59c91857fbff72f634a3
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076529"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491607"
 ---
 # <a name="connect-a-bot-to-teams"></a>ボットを Teams に接続する
 
@@ -37,5 +37,5 @@ Teams チャネルを追加した後、 **[チャネル]** ページに移動し
 > テスト以外の目的のために、GUID によってボットを追加することはお勧めできません。 そのようにすると、ボットの機能が厳しく制限されます。 運用環境のボットは、アプリの一部として Teams に追加する必要があります。 「[ボットの作成](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-create)」と[「Microsoft Teams のボットのテストとデバッグ](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-test)」を参照してください。
 
 
-## <a name="additional-information"></a>追加情報
-Microsoft Teams 固有の情報については、Teams の[ドキュメント](https://docs.microsoft.com/en-us/microsoftteams/platform/overview)を参照してください。 
+## <a name="additional-information"></a>関連情報
+Microsoft Teams 固有の情報については、Teams の[ドキュメント](https://docs.microsoft.com/microsoftteams/platform/overview)を参照してください。 

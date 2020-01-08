@@ -1,21 +1,21 @@
 ---
-title: WebChat を Direct Line App Service 拡張機能と共に使用する
+title: WebChat を Direct Line App Service 拡張機能と共に使用します。
 titleSuffix: Bot Service
-description: WebChat を Direct Line App Service 拡張機能と共に使用する
+description: WebChat を Direct Line App Service 拡張機能と共に使用します。
 services: bot-service
 manager: kamrani
 ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: a11870dfa728621d346a7376363c7e31ddb1596c
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 35772bd4e31cad4787f6ef8b50a56503bfbef55c
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866430"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491215"
 ---
-# <a name="use-webchat-with-the-direct-line-app-service-extension"></a>WebChat を Direct Line App Service 拡張機能と共に使用する
+# <a name="use-webchat-with-the-direct-line-app-service-extension"></a>WebChat を Direct Line App Service 拡張機能と共に使用します。
 
 この記事では、Direct Line App Service 拡張機能と共に WebChat を使用する方法について説明します。
 
@@ -32,7 +32,7 @@ DirectLineJS のプレビュー バージョンはこちらにあります。 ht
 ボットの Direct Line URL は `https://<your_app_service>.azurewebsites.net/.bot/` になります。ここで、`/.bot/` 拡張機能は App Service の Direct Line **エンドポイント**です。
 独自のドメイン名を構成できる場合でも、Direct Line REST API にアクセスするために `/.bot/` パスを追加する必要があります。
 
-1. 「[認証](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0)」の記事の手順に従って、トークンのシークレットを交換します。 ただし、`https://directline.botframework.com/v3/directline/tokens/generate` でトークンを取得するのではなく、`https://<your_app_service>.azurewebsites.net/.bot/v3/directline/tokens/generate` で Direct Line App Service 拡張機能から直接トークンを生成します。  
+1. 「[認証](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0)」の記事の手順に従って、トークンのシークレットを交換します。 ただし、`https://directline.botframework.com/v3/directline/tokens/generate` でトークンを取得するのではなく、`https://<your_app_service>.azurewebsites.net/.bot/v3/directline/tokens/generate` で Direct Line App Service 拡張機能から直接トークンを生成します。  
 
 1. トークンを取得したら、WebChat を使用する Web ページを次の変更で更新できます。
 

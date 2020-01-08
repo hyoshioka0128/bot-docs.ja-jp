@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: de15fbc7fb000bde3b62883405149d22f3ac23a0
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 7fd53098eecce95f3c6314806de6117802ef42e6
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933640"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491375"
 ---
 # <a name="debug-with-the-emulator"></a>エミュレーターを使用したデバッグ
 
@@ -48,6 +48,17 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 * Restify がリッスンするポート番号をコピーします。
 
     ![JS ポート番号](media/bot-service-debug-emulator/js_port_number.png)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+* コマンド プロンプトにアクセスし、ボットのプロジェクト ディレクトリに移動します。
+* 次のコマンドを実行して、ボットを起動します。
+    ```
+   python app.py
+    ```
+* Restify がリッスンするポート番号をコピーします。
+
+    ![JS ポート番号](media/bot-service-debug-emulator/js_port_number.png)
+
 ---
 
 この時点では、ボットはローカルで実行されています。 
@@ -197,7 +208,7 @@ Bot Framework Emulator はオープン ソースです。 開発に[貢献][Emul
 
 トラブルシューティングについては、[一般的な問題のトラブルシューティング](bot-service-troubleshoot-bot-configuration.md)に関する記事、およびそのセクションに示されているトラブルシューティングに関するその他の記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 検査ミドルウェアを使用して、チャネルに接続されているボットをデバッグします。
 

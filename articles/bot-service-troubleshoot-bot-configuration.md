@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 4/30/2019
-ms.openlocfilehash: d71cfc604484b521450465c483201952d4672fcd
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 6f24a2e5c4fbc2bf88d99ba4225506e25c4262a8
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491595"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>ボット構成の問題のトラブルシューティング
 
@@ -21,7 +21,7 @@ ms.locfileid: "70298614"
 
 ## <a name="test-in-web-chat"></a>Web チャットでのテスト
 
-1. [Azure Portal](http://portal.azure.com/) でボット リソースを開きます。
+1. [Azure Portal](https://portal.azure.com/) でボット リソースを開きます。
 1. **[Test in Web Chat]\(Web チャットでのテスト\)** ウィンドウを開きます。
 1. ボットにメッセージを送信します。
 
