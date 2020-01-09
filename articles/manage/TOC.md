@@ -27,6 +27,7 @@
 ## [Twilio](../bot-service-channel-connect-twilio.md)
 ## [WeChat](../bot-service-channel-connect-wechat.md)
 ## [Web チャット](../bot-service-channel-connect-webchat.md)
+## [Webex](../bot-service-adapter-connect-webex.md)
 ## [追加のチャネル](../bot-service-channel-additional-channels.md)
 # [ボット設定の構成](../bot-service-manage-settings.md)
 # [音声プライミングを構成する](../bot-service-manage-speech-priming.md)
