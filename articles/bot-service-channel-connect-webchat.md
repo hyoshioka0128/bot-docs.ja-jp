@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
-ms.openlocfilehash: b6174f20be47d40287cedd2a94b2d4e87c29bc2f
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 55bf98c3665558d55c92585f4d9915ac91554a79
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491282"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>ボットを Web チャットに接続する
 
@@ -32,7 +32,7 @@ Bot Framework ポータル内の Web チャット チャンネルには、Web �
 
 ## <a name="get-your-bot-secret-key"></a>ボットの秘密鍵を取得する
 
-1. [Azure portal](http://portal.azure.com) でボットを開き、 **[チャンネル]** ブレードをクリックします。
+1. [Azure portal](https://portal.azure.com) でボットを開き、 **[チャンネル]** ブレードをクリックします。
 
 2. **[Web チャット]** チャンネルの **[編集]** をクリックします。  
 ![Web チャット チャンネル](./media/bot-service-channel-webchat/bot-service-channel-list.png)

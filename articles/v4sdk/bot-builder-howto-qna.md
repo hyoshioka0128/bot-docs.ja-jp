@@ -9,30 +9,30 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b58307732ae973719231987a35eab6374ea704e4
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: fc22235e53307e5b1dde737930c6cd06c2e9df8a
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933611"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491808"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>QnA Maker を使用して質問に回答する
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-QnA Maker は、データに基づく会話の質疑応答レイヤーを提供します。 これにより、お使いのボットが QnA Maker に質問を送信し、回答を受け取ることができます。その際、その質問の意図を解析および解釈する必要はありません。
+QnA Maker は、データに基づく会話の質疑応答レイヤーを提供します。 これにより、ボットは QnA Maker に質問を送信し、回答を受け取ることができます。質問の意図を解析および解釈する必要はありません。
 
-お客様独自の QnA Maker サービスを作成するときの基本的な要件の 1 つは、質問と回答でサービスをシードすることです。 多くの場合、質問と回答は FAQ などのドキュメントに既に存在していますが、質問に対する回答をカスタマイズして、より自然な会話にしたいこともあります。
+独自の QnA Maker サービスを作成するための基本的な要件の 1 つは、質問と回答を設定することです。 多くの場合、質問と回答は FAQ などのドキュメントに既に存在していますが、質問に対する回答をカスタマイズして、より自然な会話にしたいこともあります。
 
 ## <a name="prerequisites"></a>前提条件
 
-- この記事のコードは、QnA Maker サンプルをベースにしています。 そのコピー ( **[C#](https://aka.ms/cs-qna) または [JavaScript](https://aka.ms/js-qna-sample)** ) が必要になります。
+- この記事のコードは、QnA Maker サンプルをベースにしています。 そのコピー ( **[C#](https://aka.ms/cs-qna)** 、 **[JavaScript](https://aka.ms/js-qna-sample)** 、または **[Python](https://aka.ms/bot-qna-python-sample-code)** ) が必要になります。 
 - [QnA Maker](https://www.qnamaker.ai/) アカウント
 - [ボットの基本](bot-builder-basics.md)、[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview)、および[ボット リソースの管理](bot-file-basics.md)に関する知識。
 
 ## <a name="about-this-sample"></a>このサンプルについて
 
-QnA Maker を利用するボットの場合は、最初に [QnA Maker](https://www.qnamaker.ai/) でナレッジ ベースを作成する必要があります。これについては、次のセクションで説明します。 これによりボットは QnA Maker にユーザーのクエリを送信できるようになり、QnA Maker は、その質問に最適な回答を応答で提供します。
+ボットで QnA Maker を使用するには、次のセクションで示すように、[QnA Maker](https://www.qnamaker.ai/) ポータルにナレッジ ベースを作成する必要があります。 それにより、ボットは、最適な回答を提供する QnA Maker にユーザーの質問を送信できます。
 
 ## <a name="ctabcs"></a>[C#](#tab/cs)
 
@@ -45,6 +45,12 @@ QnA Maker を利用するボットの場合は、最初に [QnA Maker](https://w
 ![QnABot JS ロジック フロー](./media/qnabot-js-logic-flow.png)
 
 ユーザー入力を受け取るたびに、`OnMessage` が呼び出されます。 呼び出された時点で、指定された値を使用して事前構成された `qnamaker` コネクタに、サンプル コードの `.env` ファイルからアクセスします。  qnamaker メソッド `getAnswers` は、お使いのボットを、ご自身の外部の QnA Maker ナレッジ ベースに接続します。
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+![QnABot JS ロジック フロー](./media/qnabot-python-logic-flow.png)
+
+ユーザー入力を受け取るたびに、`on_message_activity` が呼び出されます。 呼び出された時点で、指定された値を使用して事前構成された `qna_maker` コネクタに、サンプル コードの `config.py` ファイルからアクセスします。  メソッド `qna_maker.getAnswers` は、ボットを外部の QnA Maker ナレッジ ベースに接続します。
 
 ---
 
@@ -90,6 +96,12 @@ QnA Maker を利用するボットの場合は、最初に [QnA Maker](https://w
 
 [!code-javascript[.env file](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/.env)]
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+### <a name="update-your-configpy-file"></a>config.py ファイルを更新する
+
+[!code-python[config.py](~/../botbuilder-python/samples/python/11.qnamaker/config.py?range=10-18)]
+
 ---
 
 ## <a name="set-up-the-qna-maker-instance"></a>QnA Maker インスタンスを設定する
@@ -102,7 +114,9 @@ NuGet パッケージ **Microsoft.Bot.Builder.AI.QnA** がプロジェクトに�
 
 **QnABot.cs** の `OnMessageActivityAsync` メソッドで、QnAMaker インスタンスを作成します。 `QnABot` クラスも、上記の `appsettings.json` に保存されている接続情報の名前がプルされる場所です。 設定ファイルでナレッジ ベース接続情報に別の名前を選択した場合は、ここで必ず名前を更新して、指定した名前を反映させます。
 
-**Bots/QnABot.cs** [!code-csharp[qna connection](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=32-39)]
+**Bots/QnABot.cs**
+
+[!code-csharp[qna connection](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=32-39)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
@@ -112,7 +126,15 @@ NuGet パッケージ **Microsoft.Bot.Builder.AI.QnA** がプロジェクトに�
 
 **QnABot.js** ファイルで、ご自身の .env ファイルによって提供された接続情報を使用して、QnA Maker サービス _this.qnaMaker_ への接続を確立します。
 
-**bots/QnABot.js** [!code-javascript[QnAMaker](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=12-16)]
+**bots/QnABot.js**
+
+[!code-javascript[QnAMaker](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=12-16)]
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+**qna_bot.py** ファイルで、`config.py` ファイルによって提供される接続情報を使用して、QnA Maker サービス `self.qna_maker` への接続を確立します。
+
+**bots/qna_bot.py** [!code-python[QnAMaker](~/../botbuilder-python/samples/python/11.qnamaker/bots/qna_bot.py?range=13-19)]
 
 ---
 
@@ -122,25 +144,36 @@ NuGet パッケージ **Microsoft.Bot.Builder.AI.QnA** がプロジェクトに�
 
 QnA Maker からの回答をボットが必要とする場合、ボットのコードから `GetAnswersAsync()` を呼び出して、現在のコンテキストに基づいて適切な回答を取得します。 お客様独自のナレッジ ベースにアクセスする場合は、以下の "_回答が見つかりませんでした_" メッセージを変更して、お客様のユーザーの役に立つ手順を設定します。
 
-**Bots/QnABot.cs** [!code-csharp[qna get answers](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=43-52)]
+**Bots/QnABot.cs**
+
+[!code-csharp[qna get answers](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=43-52)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 **QnABot.js** ファイルで、ユーザーの入力を QnA Maker サービスの `getAnswers` メソッドに渡して、ナレッジ ベースから回答を取得します。 QnA Maker によって応答が返されると、これがユーザーに表示されます。 それ以外の場合、ユーザーは "QnA Maker の回答が見つかりませんでした" というメッセージを受信します。
 
-**bots/QnABot.js** [!code-javascript[OnMessage](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=46-55)]
+**bots/QnABot.js**
+
+[!code-javascript[OnMessage](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=46-55)]
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+**qna_bot.py** ファイルで、ユーザーの入力を QnA Maker サービスの `get_answers` メソッドに渡して、ナレッジ ベースから回答を取得します。 QnA Maker によって応答が返されると、これがユーザーに表示されます。 それ以外の場合、ユーザーは "*No QnA Maker answers were found*" (QnA Maker の回答が見つかりませんでした) というメッセージを受信します。
+
+**bots/qna_bot.py** [!code-python[get_answers](~/../botbuilder-python/samples/python/11.qnamaker/bots/qna_bot.py?range=33-37)]
 
 ---
 
 ## <a name="test-the-bot"></a>ボットのテスト
 
 ご自身のマシンを使ってローカルでサンプルを実行します。 [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download) をインストールします (まだインストールしていない場合)。 詳しい手順については、readme ファイルで [C# サンプル](https://aka.ms/cs-qna)または [Javascript サンプル](https://aka.ms/js-qna-sample)を参照してください。
+または [Python サンプル](https://aka.ms/bot-qna-python-sample-code)。 
 
 以下に示すように、エミュレーターを起動し、お使いのボットに接続して、メッセージを送信します。
 
 ![QnA サンプルをテストする](../media/emulator-v4/qna-test-bot.png)
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 ### <a name="multi-turn-prompts"></a>マルチターン プロンプト
 
@@ -335,7 +368,7 @@ async processAsync(oldState, activity){
 
 ---
 -->
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 他の Cognitive Services と QnA Maker を組み合わせて、ボットをさらに強力にすることができます。 ディスパッチ ツールを使用すると、ボットで QnA と Language Understanding (LUIS) を結合できます。
 

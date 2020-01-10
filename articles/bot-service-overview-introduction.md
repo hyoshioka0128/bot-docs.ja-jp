@@ -7,13 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/05/2019
-ms.openlocfilehash: 0206cf3381d95fbc58d49924aa19dadea5f226dc
-ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
+ms.date: 11/15/2019
+ms.openlocfilehash: 6bdb6381c31045563963b4640faa31708be47ba4
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74415158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75490767"
 ---
 # <a name="about-azure-bot-service"></a>Azure Bot Service について
 
@@ -47,12 +47,12 @@ Azure Bot Service および Bot Framework は、このプロセスを容易に�
 ### <a name="plan"></a>プラン
 あらゆる種類のソフトウェアと同様に、目標、プロセス、およびユーザーのニーズを完全に理解することが、成功するボットを作成するプロセスにとって重要です。 コードを書く前に、ボットの[デザイン ガイドライン](bot-service-design-principles.md) でベスト プラクティスを確認し、作成するボットに必要な事柄を見極めてください。 単純なボットを作成することも、音声、自然言語の解釈、質問への応答などの高度な機能を含めることもできます。
 
-### <a name="build"></a>構築
-作成するボットは会話型インターフェイスを実装した Web サービスであり、Bot Framework サービスとやり取りして、メッセージとイベントを送受信します。 Bot Framework Service は、Azure Bot Service および Bot Framework のコンポーネントの 1 つです。 任意の数の環境と言語でボットを作成できます。 [Azure portal](bot-service-quickstart.md) 内でボット開発を開始することも、[[C#](dotnet/bot-builder-dotnet-sdk-quickstart.md) | [JavaScript](javascript/bot-builder-javascript-quickstart.md)] のテンプレートを使用してローカルで開発することもできます。
+### <a name="build"></a>Build
+作成するボットは会話型インターフェイスを実装した Web サービスであり、Bot Framework サービスとやり取りして、メッセージとイベントを送受信します。 Bot Framework Service は、Azure Bot Service および Bot Framework のコンポーネントの 1 つです。 任意の数の環境と言語でボットを作成できます。 [Azure portal](bot-service-quickstart.md) 内でボット開発を開始することも、[[C#](dotnet/bot-builder-dotnet-sdk-quickstart.md) | [JavaScript](javascript/bot-builder-javascript-quickstart.md) | [Python](python/bot-builder-python-quickstart.md)] のテンプレートを使用してローカルで開発することもできます。
 
 Azure Bot Service および Bot Framework の一環として、ボットの機能の拡張に使用できる追加コンポーネントが用意されています。
 
-| 機能 | 説明 | Link |
+| 機能 | [説明] | Link |
 | --- | --- | --- |
 | 自然言語処理を追加する | ボットによる自然言語の解釈、スペル ミスの理解、音声の使用、ユーザーの意図の認識を可能にします。 | [LUIS](~/v4sdk/bot-builder-howto-v4-luis.md) の使用方法 
 | 質問に答える | ナレッジ ベースを追加して、より自然な会話方法でユーザーの質問に答えます。 | [QnA Maker](~/v4sdk/bot-builder-howto-qna.md) の使用方法 
@@ -73,19 +73,21 @@ Azure Bot Service および Bot Framework の一環として、ボットの機�
  
 - [Web](bot-service-manage-test-webchat.md) 上でボットをテストする。 Azure portal から設定すると、Web チャット インターフェイスを介してボットにアクセスすることもできます。 Web チャット インターフェイスは、ボットの実行されているコードに直接アクセスできないテスターやその他の人に、ボットへのアクセスを許可するすばらしい方法です。
 
-- Bot Framework SDK の 7 月の更新を使用してボットの[単体テスト](https://docs.microsoft.com/azure/bot-service/unit-test-bots?view=azure-bot-service-4.0)を実行する。
+- Bot Framework SDK の 7 月の更新を使用してボットの[単体テスト](https://docs.microsoft.com/azure/bot-service/unit-test-bots)を実行する。
+
+
 
 ### <a name="publish"></a>発行 
 ボットを Web 上で使用する準備が整ったら、ボットを [Azure](bot-builder-howto-deploy-azure.md) に発行するか、独自の Web サービスまたはデータ センターに発行します。 パブリック インターネット上のアドレスを取得することが、ボットをサイト上やチャット チャネル内で稼働させる第一歩です。
 
-### <a name="connect"></a>接続          
+### <a name="connect"></a>接続する          
 ボットを、Facebook、Messenger、Kik、Skype、Slack、Microsoft Teams、Telegram、SMS 送信、Twilio、Cortana、Skype などのチャネルに接続できます。 Bot Framework は、こうしたさまざまなプラットフォームすべてとの間でメッセージを送受信するために必要な作業のほとんどを行います。ボット アプリケーションでは、接続されているチャネルの数や種類に関係なく、統一され、正規化されたメッセージのストリームを受信します。 チャネルの追加については、[チャネル](bot-service-manage-channels.md)に関するトピックをご覧ください。
 
 ### <a name="evaluate"></a>Evaluate 
 Azure portal で収集されたデータを使用し、ボットの機能とパフォーマンスを強化する機会を特定します。 トラフィック、待ち時間、統合などのサービス レベルのデータやインストルメンテーション データを取得できます。 Analytics では、ユーザー、メッセージ、チャネル データに関する会話レベルのレポートも提供されます。 詳しくは、[分析情報の収集方法](bot-service-manage-analytics.md)に関するページをご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ボットのこれらの[ケース スタディ](https://azure.microsoft.com/services/bot-service/)を確認するか、下記のリンクをクリックして、ボットを作成してください。
 > [!div class="nextstepaction"]
 > [ボットを作成する](bot-service-quickstart.md)

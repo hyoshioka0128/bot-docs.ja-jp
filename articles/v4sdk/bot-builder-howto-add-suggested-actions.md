@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 603b6d6fe9fed99cb31649539e518651c135241a
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: b121a60b72551dd473a880d47868a61763e5afa0
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491493"
 ---
 # <a name="use-button-for-input"></a>入力にボタンを使用する
 
@@ -38,13 +38,24 @@ ms.locfileid: "70299304"
 
 [!code-javascript[suggested actions](~/../botbuilder-samples/samples/javascript_nodejs/08.suggested-actions/bots/suggestedActionsBot.js?range=61-64)]
 
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+ここで示すソース コードは、[推奨アクションのサンプル](https://aka.ms/SuggestActionsPython)に基づいています。
+
+[!code-python[suggested actions](~/../botbuilder-python/samples/python/08.suggested-actions/bots/suggested_actions_bot.py?range=63-81)]
+
+
 ---
 
 ## <a name="additional-resources"></a>その他のリソース
 
-ここで示したソース コードの完全版については、[CSharp サンプル](https://aka.ms/SuggestedActionsCSharp)または [JavaScript サンプル](https://aka.ms/SuggestActionsJS)を参照してください。
+ここで示したソース コードの完全版には、次からアクセスできます。
+- [C# のサンプル](https://aka.ms/SuggestedActionsCSharp)
+- [JavaScript のサンプル](https://aka.ms/SuggestActionsJS)
+- [Python のサンプル](https://aka.ms/SuggestActionsPython)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ユーザーと会話データを保存する](./bot-builder-howto-v4-state.md)

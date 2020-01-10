@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 08/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1e5c2068fe9b4fdc13641d098eb1579c01dd24c2
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: 7faa7091198202058c00ddca4aee79fe87d700e9
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386043"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491178"
 ---
 # <a name="deploy-your-bot"></a>ボットをデプロイする
 
@@ -29,7 +29,7 @@ ms.locfileid: "70386043"
 - Latest version of the [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 - Familiarity with [Azure CLI and ARM templates](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) -->
 
-## <a name="prepare-for-deployment"></a>デプロイの準備をする
+## <a name="prepare-for-deployment"></a>展開を準備する
 [!INCLUDE [deploy prepare intro](~/includes/deploy/snippet-prepare-deploy-intro.md)]
 <!-- When you create a bot using [Visual Studio template](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) or [Yeoman template](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0), the source code generated contains a `deploymentTemplates` folder with ARM templates. The deployment process documented here uses the ARM template to provision required resources for the bot in Azure by using the Azure CLI. 
 
@@ -59,7 +59,7 @@ az account set --subscription "<azure-subscription>"
 
 If you are not sure which subscription to use for deploying the bot, you can view the list of subscriptions for your account by using `az account list` command. Navigate to the bot folder. -->
 
-### <a name="3-create-an-app-registration"></a>手順 3.アプリ登録を作成する
+### <a name="3-create-an-app-registration"></a>3.アプリ登録を作成する
 [!INCLUDE [deploy create app registration](~/includes/deploy/snippet-create-app-registration.md)]
 <!-- Registering the application means that you can use Azure AD to authenticate users and request access to user resources. Your bot requires a Registered app in Azure that provides the bot access to the Bot Framework Service for sending and receiving authenticated messages. To create register an app via the Azure CLI, perform the following command:
 
@@ -82,7 +82,11 @@ The above command outputs JSON with the key `appId`, save the value of this key 
 > ``` -->
 
 ### <a name="4-deploy-via-arm-template"></a>4.ARM テンプレートを使用してデプロイする
-ご自身のボットは、新しいリソース グループまたは既存のリソース グループにデプロイできます。 自分にとって最適なオプションを選択してください。 
+ご自身のボットは、新しいリソース グループまたは既存のリソース グループにデプロイできます。 自分にとって最適なオプションを選択してください。
+
+> [!NOTE]
+> Python ボットは、Windows サービス/ボットを含むリソース グループにはデプロイできません。  複数の Python ボットを同じリソース グループにデプロイできますが、別のリソース グループに他のサービス (LUIS、QnA など) を作成します。
+>
 
 #### <a name="deploy-via-arm-template-with-new-resource-group"></a>**ARM テンプレートを使用したデプロイ (**新しい**リソース グループを使用)**
 <!-- ##### Create Azure resources -->
@@ -213,9 +217,9 @@ For more information about channel registration, see [Register a bot with Bot Se
 > [!NOTE]
 > A blade is the surface on which service functions or navigation elements appear when selected. -->
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 ボットを Azure にデプロイするには、使用するサービスの料金を支払う必要があります。 [課金とコスト管理](https://docs.microsoft.com/azure/billing/)に関する記事で、Azure の課金の確認、使用量とコストの監視、アカウントとサブスクリプションの管理の方法について説明されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)

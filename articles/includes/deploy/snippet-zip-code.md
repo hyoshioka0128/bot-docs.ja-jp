@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: fdbafb6ca852a3b06b791d6580c72b90e02d4218
-ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
+ms.openlocfilehash: e335e8c3da1b84ed3ce443effc6965b60c933501
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74410478"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491138"
 ---
 構成されていない [zip デプロイ API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url) を使用してお使いのボットのコードをデプロイする場合、Web App/Kudu は次のように動作します。
 
@@ -17,7 +17,8 @@ ms.locfileid: "74410478"
 > - C# ボットの場合は、.csproj ファイルが含まれるフォルダーです。 
 > - JavaScript ボットの場合は、app.js または index.js ファイルが含まれるフォルダーです。 
 > - TypeScript ボットの場合は、_src_ フォルダー (bot.ts および index.ts ファイルがある場所) が含まれるフォルダーです。 
->
+> - Python ボットの場合は、app.py ファイルが含まれるフォルダーです。
+
 >プロジェクト フォルダー**内**で、コマンドを実行して zip ファイルを作成する前に、zip ファイルに含めるすべてのファイルとフォルダーを選択します。これにより、選択したすべてのファイルとフォルダーを含む 1 つの zip ファイルが作成されます。
 >
 > お使いのルート フォルダーの場所が正しくない場合、**ボットは、Azure portal で実行できません**。

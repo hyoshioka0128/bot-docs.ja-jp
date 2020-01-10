@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 12/13/2017
-ms.openlocfilehash: d4fe7ae7f14349303f4445b321e55195483d210f
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.date: 11/19/2019
+ms.openlocfilehash: db295251284fb93ebd730572d2ced1e431460c90
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297483"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491587"
 ---
 # <a name="application-insights-keys"></a>Application Insights キー
 
@@ -30,7 +30,7 @@ Azure **Application Insights** は、Microsoft Azure リソースにアプリケ
 ## <a name="instrumentation-key"></a>インストルメンテーション キー
 
 インストルメンテーション キーを取得するには、次の手順を実行します。
-1. [Azure portal](http://portal.azure.com) の [モニター] セクションで、新しい **Application Insights** リソースを作成します (または既存のリソースを使用します)。
+1. [Azure portal](https://portal.azure.com) の [モニター] セクションで、新しい **Application Insights** リソースを作成します (または既存のリソースを使用します)。
 ![Application Insights の一覧を示すポータルの画面キャプチャ](~/media/portal-app-insights-add-new.png)
 
 2. Application Insights リソースの一覧で、先ほど作成した Application Insight リソースをクリックします。

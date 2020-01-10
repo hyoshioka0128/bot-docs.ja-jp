@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1c75349605e7b142035112c84c2b8684fe78ca85
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 63ecbd2aaef40d5d25c49ef93aa665853ff0054c
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933555"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491736"
 ---
 # <a name="handle-user-interruptions"></a>ユーザーによる割り込みを処理する
 
@@ -25,7 +25,7 @@ ms.locfileid: "73933555"
 ## <a name="prerequisites"></a>前提条件
 
 - [ボットの基本][concept-basics]、[状態の管理][concept-state]、[ダイアログ ライブラリ][concept-dialogs]、および[ダイアログを再利用][component-dialogs]する方法に関する知識。
-- コア ボット サンプルのコピー ([**CSharp**][cs-sample] または [**JavaScript**][js-sample])。
+- コア ボット サンプルのコピー ([**CSharp**][cs-sample]、[**JavaScript**][js-sample]、または [**Python**][python-sample])。
 
 ## <a name="about-this-sample"></a>このサンプルについて
 
@@ -76,7 +76,30 @@ ms.locfileid: "73933555"
 
 ユーザーが「cancel」と入力すると、内部ダイアログ コンテキストで `cancelAllDialogs` が呼び出され、そのダイアログ スタックがクリアされ処理が終了します。この場合、取り消し済み状態になり、結果値は返されません。 `MainDialog` (後で説明します) の場合は、予約ダイアログが終了し、null を返したように見えます。これはユーザーが予約を確認しないことを選択した場合の処理と似ています。
 
-[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=20-39)]
+[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js??range=20-39)]
+
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+ダイアログを使用するには、`botbuilder-dialogs` パッケージをインストールし、サンプルの `requirements.txt` ファイルに `botbuilder-dialogs>=4.5.0` などの適切な参照が含まれていることを確認します。 パッケージのインストールの詳細については、サンプル リポジトリの [README](https://github.com/microsoft/botbuilder-python) ファイルを参照してください。
+> [!NOTE]
+> `pip install botbuilder-dialogs` を実行すると、`botbuilder-core`、`botbulder-connector`、および `botbuilder-schema` もインストールされます。
+
+**dialogs/cancel-and-help-dialog.py**
+
+最初に、ユーザーによる中断を処理する `CancelAndHelpDialog` クラスを実装します。
+
+[!code-python[class signature](~/../botbuilder-python/samples/python/13.core-bot/dialogs/cancel_and_help_dialog.py?range=14)]
+
+`CancelAndHelpDialog` クラスでは、`on_continue_dialog` メソッドが `interrupt` メソッドを呼び出して、ユーザーが通常のフローを中断をしたかどうかを確認します。 フローが中断された場合は、基底クラス メソッドが呼び出されます。それ以外の場合は、戻り値が `InterruptAsync` から返されます。
+
+[!code-python[dialog](~/../botbuilder-python/samples/python/13.core-bot/dialogs/cancel_and_help_dialog.py?range=18-23)]
+
+ユーザーが「*help*」または「 *?* 」と入力すると、`interrupt` メソッドがメッセージを送信し、`DialogTurnResult(DialogTurnStatus.Waiting)` を呼び出します。これは、スタックの上のダイアログがユーザーからの応答を待っていることを示します。 この方法では、ターンについてのみ会話フローが中断され、次のターンでは、中断された場所から再開されます。
+
+ユーザーが「*cancel*」または「*quit*」と入力すると、内部ダイアログ コンテキストで `cancel_all_dialogs()` が呼び出され、そのダイアログ スタックがクリアされ処理が終了します。この場合、取り消し済み状態になり、結果値は返されません。 `MainDialog` (後で説明します) の場合は、予約ダイアログが終了し、null を返したように見えます。これはユーザーが予約を確認しないことを選択した場合の処理と似ています。
+
+[!code-python[interrupt](~/../botbuilder-python/samples/python/13.core-bot/dialogs/cancel_and_help_dialog.py?range=25-47)]
 
 ---
 
@@ -112,6 +135,18 @@ ms.locfileid: "73933555"
 
 `BookingDialog` のコードは中断処理に直接関連しないため、ここには示されていません。 これは、ユーザーに予約の詳細の入力を求めるときに使用されます。 このコードは、**Dialogs\bookingDialogs.js** にあります。
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs/main_dialog.py**
+
+新しいメッセージ アクティビティが届くと、ボットは `MainDialog` を実行します。 `MainDialog` は、ユーザーに対して、ボットに役立つ情報を入力するよう要求します。 そして、次のように `MainDialog.act_step` メソッドで `bookingDialog` を開始して、`begin_dialog` を呼び出します。
+
+[!code-python[act step](~/../botbuilder-python/samples/python/13.core-bot/dialogs/main_dialog.py?range=63-100&highlight=4-5,20)]
+
+次に、`MainDialog` クラスの `final_step` メソッドで、予約ダイアログが終了し、予約は完了または取り消し済みと見なされます。
+
+[!code-python[final step](~/../botbuilder-python/samples/python/13.core-bot/dialogs/main_dialog.py?range=102-118)]
+
 ---
 
 ## <a name="handle-unexpected-errors"></a>予期しないエラーを処理する
@@ -133,6 +168,14 @@ ms.locfileid: "73933555"
 このサンプルでは、アダプターの `onTurnError` ハンドラーは、お使いのボットのターン ロジックによってスローされたすべての例外を受け取ります。 例外がスローされると、ハンドラーは、ボットが無効な状態になることでエラー ループに陥らないように、現在の会話の会話状態を削除します。
 
 [!code-javascript[AdapterWithErrorHandler](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=35-57)]
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+**adapter_with_error_handler.py**
+
+このサンプルでは、アダプターの `on_error` ハンドラーは、お使いのボットのターン ロジックによってスローされたすべての例外を受け取ります。 例外がスローされると、ハンドラーは、ボットが無効な状態になることでエラー ループに陥らないように、現在の会話の会話状態を削除します。
+
+[!code-python[adapter_with_error_handler](~/../botbuilder-python/samples/python/13.core-bot/adapter_with_error_handler.py?range=15-54)]
 
 ---
 
@@ -166,6 +209,20 @@ ms.locfileid: "73933555"
 [!code-javascript[DialogAndWelcomeBot signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/bots/dialogAndWelcomeBot.js?range=8)]
 [!code-javascript[DialogBot signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/bots/dialogBot.js?range=6)]
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+**app.py** 最後に、`app.py` で、ボットが作成されます。
+
+[!code-python[create bot](~/../botbuilder-python/samples/python/13.core-bot/app.py?range=44-48)]
+
+参照用に、ボットを作成するための呼び出しで使用されるクラスの定義を次に示します。
+
+[!code-python[main dialog](~/../botbuilder-python/samples/python/13.core-bot/dialogs/main_dialog.py?range=20)]
+
+[!code-python[dialog and welcome](~/../botbuilder-python/samples/python/13.core-bot/bots/dialog_and_welcome_bot.py?range=21)]
+
+[!code-python[dialog](~/../botbuilder-python/samples/python/13.core-bot/bots/dialog_bot.py?range=9)]
+
 ---
 
 ## <a name="to-test-the-bot"></a>ボットをテストする
@@ -176,7 +233,7 @@ ms.locfileid: "73933555"
 
 <!--![test dialog prompt sample](~/media/emulator-v4/test-dialog-prompt.png)-->
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 - [認証サンプル](https://aka.ms/logout)には、同様の中断処理パターンが使用されるログアウトの処理方法が示されています。
 
@@ -199,3 +256,4 @@ ms.locfileid: "73933555"
 
 [cs-sample]: https://aka.ms/cs-core-sample
 [js-sample]: https://aka.ms/js-core-sample
+[python-sample]: https://aka.ms/bot-core-python-sample-code

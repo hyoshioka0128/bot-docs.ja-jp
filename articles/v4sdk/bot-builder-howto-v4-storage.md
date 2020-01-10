@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bd34b7f369fddfeaa0cd97b10fb49b86e2207c64
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 3de06fb5aa3ae09f4730cf7b0d4e0a587d568b8c
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441574"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491708"
 ---
 # <a name="write-directly-to-storage"></a>ストレージに直接書き込む
 
@@ -24,8 +24,8 @@ ms.locfileid: "73441574"
 
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
-- 記事に関する知識: [dotnet](https://aka.ms/bot-framework-www-c-sharp-quickstart) または [nodeJS](https://aka.ms/bot-framework-www-node-js-quickstart) 用にボットをローカルで作成します。
-- [C#テンプレート](https://aka.ms/bot-vsix) または [nodeJS](https://nodejs.org) および [yeoman](http://yeoman.io) 用の Bot Framework SDK v4 テンプレート。
+- 記事に関する知識: [dotnet](https://aka.ms/bot-framework-www-c-sharp-quickstart)、[nodeJS](https://aka.ms/bot-framework-www-node-js-quickstart)、または [Python](https://aka.ms/bot-framework-www-node-python-quickstart) 用にボットをローカルで作成します。
+- [C# テンプレート](https://aka.ms/bot-vsix)、[nodeJS](https://nodejs.org) および [yeoman](http://yeoman.io) 用の Bot Framework SDK v4 テンプレート。
 
 ## <a name="about-this-sample"></a>このサンプルについて
 この記事のサンプル コードは、基本的なエコー ボットの構造で始まり、コードを追加することでそのボットの機能を拡張します (下記を参照)。 拡張されたこのコードにより、受信したユーザー入力が保持されるリストが作成されます。 ユーザー入力の完全なリストは、ターンごとにユーザーにエコー バックされます。 この入力リストを含むデータ構造は、その後、そのターンの最後にストレージに保存されます。 このサンプル コードには追加機能が追加されているため、さまざまな種類のストレージについて説明します。
@@ -36,7 +36,7 @@ Bot Framework SDK を使用すると、メモリ内ストレージを使用し�
 
 #### <a name="build-a-basic-bot"></a>基本のボットを作成する
 
-このトピックの残りの部分では、エコー ボットについては取り上げません。 エコー ボットのサンプル コードをローカルでビルドするには、[C# EchoBot](https://aka.ms/bot-framework-www-c-sharp-quickstart) または [JS EchoBot](https://aka.ms/bot-framework-www-node-js-quickstart) のいずれかをビルドするためのクイック スタート手順に従ってください。
+このトピックの残りの部分では、エコー ボットについては取り上げません。 エコー ボットのサンプル コードをローカルで構築するには、[C# EchoBot](https://aka.ms/bot-framework-www-c-sharp-quickstart)、[JS EchoBot](https://aka.ms/bot-framework-www-node-js-quickstart)、または [Python EchoBot](https://aka.ms/bot-framework-www-node-python-quickstart) のいずれかを構築するためのクイック スタート手順に従ってください。
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -233,6 +233,64 @@ async function logMessageText(storage, turnContext) {
 module.exports.MyBot = MyBot;
 
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bot.py**
+```py
+from botbuilder.core import ActivityHandler, TurnContext, StoreItem, MemoryStorage
+
+
+class UtteranceLog(StoreItem):
+    """
+    Class for storing a log of utterances (text of messages) as a list.
+    """
+
+    def __init__(self):
+        super(UtteranceLog, self).__init__()
+        self.utterance_list = []
+        self.turn_number = 0
+        self.e_tag = "*"
+
+
+class MyBot(ActivityHandler):
+    """
+    Represents a bot saves and echoes back user input.
+    """
+
+    def __init__(self):
+        self.storage = MemoryStorage()
+
+    async def on_message_activity(self, turn_context: TurnContext):
+        utterance = turn_context.activity.text
+
+        # read the state object
+        store_items = await self.storage.read(["UtteranceLog"])
+
+        if "UtteranceLog" not in store_items:
+            # add the utterance to a new state object.
+            utterance_log = UtteranceLog()
+            utterance_log.utterance_list.append(utterance)
+            utterance_log.turn_number = 1
+        else:
+            # add new message to list of messages existing state object.
+            utterance_log: UtteranceLog = store_items["UtteranceLog"]
+            utterance_log.utterance_list.append(utterance)
+            utterance_log.turn_number = utterance_log.turn_number + 1
+
+        # Show user list of utterances.
+        await turn_context.send_activity(f"{utterance_log.turn_number}: "
+                                         f"The list is now: {','.join(utterance_log.utterance_list)}")
+
+        try:
+            # Save the user message to your Storage.
+            changes = {"UtteranceLog": utterance_log}
+            await self.storage.write(changes)
+        except Exception as exception:
+            # Inform the user an error occurred.
+            await turn_context.send_activity("Sorry, something went wrong storing your message!")
+```
+
 ---
 
 ### <a name="start-your-bot"></a>ボットの起動
@@ -252,7 +310,7 @@ module.exports.MyBot = MyBot;
 ## <a name="using-cosmos-db"></a>Cosmos DB の使用
 メモリ ストレージを使用しているので、Azure Cosmos DB を使用するようにコードを更新します。 Cosmos DB は、Microsoft のグローバル分散型マルチモデル データベースです。 Azure Cosmos DB では、Azure のリージョンをいくつでもまたいでスループットとストレージを柔軟かつ個別にスケーリングすることができます。 このサービスは包括的なサービス レベル アグリーメント (SLA) により、スループット、待機時間、可用性、一貫性が保証されています。 
 
-### <a name="set-up"></a>セットアップ
+### <a name="set-up"></a>設定
 ボットで Cosmos DB を使用するには、コードに取り組む前に、データベース リソースを作成する必要があります。 Cosmos DB のデータベースとアプリ作成の詳細については、こちらの [Cosmos DB dotnet](https://aka.ms/Bot-framework-create-dotnet-cosmosdb) または [Cosmos DB nodejs](https://aka.ms/Bot-framework-create-nodejs-cosmosdb) に関するドキュメントを参照してください。
 
 ### <a name="create-your-database-account"></a>データベース アカウントの作成
@@ -323,6 +381,18 @@ AUTH_KEY="<your-authorization-key>"
 DATABASE_ID="<your-database-id>"
 CONTAINER="bot-storage"
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+`bot.py` ファイルに以下の情報を追加します。
+
+```javascript
+COSMOSDB_SERVICE_ENDPOINT = "<your-cosmos-db-URI>"
+COSMOSDB_KEY = "<your-authorization-key>"
+COSMOSDB_DATABASE_ID = "<your-database-id>"
+COSMOSDB_CONTAINER_ID = "bot-storage"
+```
+
 ---
 
 #### <a name="installing-packages"></a>パッケージのインストール
@@ -348,6 +418,15 @@ npm install --save botbuilder-azure
 ```powershell
 npm install --save dotenv
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+pip を使用して、botbuilder-azure への参照をご自身のプロジェクトに追加できます。
+
+```powershell
+pip install botbuilder-azure 
+```
+
 ---
 
 ### <a name="implementation"></a>実装 
@@ -390,12 +469,12 @@ public class EchoBot : ActivityHandler
 
 次のサンプル コードは[メモリ ストレージ](#memory-storage)と似ていますが、わずかに変更されています。
 
-`botbuilder-azure` の `CosmosDbStorage` が必要です。また、`.env` ファイルを読み取るように dotenv を構成します。
+`botbuilder-azure` の `CosmosDbPartitionedStorage` が必要です。また、`.env` ファイルを読み取るように dotenv を構成します。
 
 **bot.js**
 
 ```javascript
-const { CosmosDbStorage } = require("botbuilder-azure");
+const { CosmosDbPartitionedStorage } = require("botbuilder-azure");
 ```
 メモリ ストレージをコメント アウトし、Cosmos DB への参照で置き換えます。
 
@@ -417,6 +496,33 @@ var storage = new CosmosDbPartitionedStorage({
 })
 
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+次のサンプル コードは[メモリ ストレージ](#memory-storage)と似ていますが、わずかに変更されています。
+
+`botbuilder-azure` からの `CosmosDbStorage` が必要で、CosmosDBStorage オブジェクトを作成します。
+
+**bot.py**
+
+```py
+from botbuilder.azure import CosmosDbStorage, CosmosDbConfig
+```
+
+`__init__` でメモリ ストレージをコメント アウトし、Cosmos DB への参照に置き換えます。  上で使用したエンドポイント、認証キー、データベース ID、コンテナー ID を使用します。
+
+**bot.py**
+```py
+def __init__(self):
+    cosmos_config = CosmosDbConfig(
+        endpoint=COSMOSDB_SERVICE_ENDPOINT,
+        masterkey=COSMOSDB_KEY,
+        database=COSMOSDB_DATABASE_ID,
+        container=COSMOSDB_CONTAINER_ID
+    )
+    self.storage = CosmosDbStorage(cosmos_config)
+```
+
 ---
 
 ## <a name="start-your-bot"></a>ボットの起動
@@ -497,6 +603,15 @@ npm install --save botbuilder-azure
 ```powershell
 npm install --save dotenv
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+pip を使用して、botbuilder-azure への参照をご自身のプロジェクトに追加できます。
+
+```powershell
+pip install botbuilder-azure 
+```
+
 ---
 
 ### <a name="implementation"></a>実装 
@@ -547,6 +662,33 @@ var storage = new BlobStorage({
     storageAccountOrConnectionString: process.env.BLOB_STRING
 });
 ```
+
+
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+次のサンプル コードは[メモリ ストレージ](#memory-storage)と似ていますが、わずかに変更されています。
+
+`botbuilder-azure` からの `BlobStorage` が必要で、CosmosDBStorage オブジェクトを作成します。
+
+**bot.py**
+
+```py
+from botbuilder.azure import BlobStorage, BlobStorageSettings
+```
+
+`__init__` でメモリ ストレージをコメント アウトし、Cosmos DB への参照に置き換えます。  上で使用したコンテナー名と接続文字列を使用します。
+
+**bot.py**
+```py
+def __init__(self):
+    blob_settings = BlobStorageSettings(
+        container_name="<your_container_name>",
+        connection_string="<your_connection_string>"
+    )
+    self.storage = BlobStorage(blob_settings)
+```
+
 ---
 
 ご自身の Blob Storage アカウントを指すようにストレージが設定されると、お使いのボット コードは Blob Storage からデータを保存および取得するようになります。
@@ -571,8 +713,11 @@ var storage = new BlobStorage({
 ## <a name="blob-transcript-storage"></a>Blob トランスクリプト ストレージ
 Azure Blob トランスクリプト ストレージには、特殊なストレージ オプションが用意されています。このオプションを使用すると、記録されたトランスクリプトの形式でユーザーの会話を簡単に保存および取得できます。 Azure Blob トランスクリプト ストレージは、ボットのパフォーマンスをデバッグする際に、調べるユーザー入力を自動的にキャプチャする場合に特に便利です。
 
-### <a name="set-up"></a>セットアップ
+**注: Javascript と Python では、現在、AzureBlobTranscriptStore はサポートされていません。次の説明は、C# のみを対象としています。**
+
+### <a name="set-up"></a>設定
 Azure Blob トランスクリプト ストレージでは、上記の「_Blob Storage アカウントの作成_」および「_構成情報の追加_」の手順に従って作成したのと同じ Blob Storage アカウントを使用できます。 ここで、トランスクリプトを保持するためのコンテナーを追加します
+
 
 ![トランスクリプト コンテナーの作成](./media/create-blob-transcript-container.png)
 
@@ -835,11 +980,49 @@ await updateSampleNote(storage, turnContext);
 
 ご自身の変更の書き戻しを試みる前に、他のユーザーによってストア内のメモが更新されていると、`eTag` 値は一致しなくなり、`write` への呼び出しによって例外がスローされます。
 
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+最初に、`StoreItem` を実装するクラスを作成します。
+
+**bot.py**
+```py
+class Note(StoreItem):
+    def __init__(self, name: str, contents: str, e_tag="*"):
+        super(Note, self).__init__()
+        self.name = name
+        self.contents = contents
+        self.e_tag = e_tag
+```
+
+次に、ストレージ オブジェクトを作成することによって最初のメモを作成し、オブジェクトをストアに追加します。
+
+**bot.py**
+```py
+# create a note for the first time, with a non-null, non-* ETag.
+changes = {"Note": Note(name="Shopping List", contents="eggs", e_tag="x")}
+
+await self.storage.write(changes)
+```
+
+後でメモにアクセスして更新し、ストアから読み取ったその `eTag` を維持します。
+
+**bot.py**
+```py
+store_items = await self.storage.read(["Note"])
+    note = store_items["Note"]
+    note.contents = note.contents + ", bread"
+
+    changes = {"Note": note}
+    await self.storage.write(changes)
+```
+
+変更を書き込む前にストアのメモが更新されていた場合、`write` の呼び出しでは例外がスローされます。
+
 ---
 
 コンカレンシーを維持するには、常にストレージからプロパティを読み取った後、読み取ったプロパティを変更して、`eTag` が維持されるようにします。 ストアからユーザー データを読み取る場合、応答には eTag プロパティが含まれます。 データを変更して更新後のデータをストアに書き込む場合、要求に含まれる eTag プロパティでは、前に読み取ったのと同じ値が指定されている必要があります。 ただし、`eTag` を `*` に設定してオブジェクトを書き込むと、書き込みで他の変更を上書きできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ストレージを直接読み書きする方法がわかったので、状態マネージャーを使ってそれを行う方法を確認してください。
 
 > [!div class="nextstepaction"]

@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 10/18/2019
+ms.date: 11/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 54c663a370cc4f613e0f38bb8057b10e49bf8c69
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 5728bac81e13548ca4de54c6e9fa525c659b6f81
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933767"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491652"
 ---
 # <a name="add-trace-activities-to-your-bot"></a>ボットへのトレース アクティビティの追加
 
@@ -64,7 +64,7 @@ _トレース アクティビティ_ は、ボットが Bot Framework Emulator �
 アダプターの _オン ターン エラー_ ハンドラーは、ターン中にボットからスローされ、その他の方法ではキャッチされない例外をキャッチします。
 これは、わかりやすいメッセージをユーザーに送信し、例外に関するデバッグ情報をエミュレーターに送信できるため、トレース アクティビティに適しています。
 
-このコード例は、**コア ボット** サンプルからのものです。 [**C#** ](https://aka.ms/cs-core-sample) または [**JavaScript**](https://aka.ms/js-core-sample) の完全なサンプルを参照してください。
+このコード例は、**コア ボット** サンプルからのものです。 [**C#** ](https://aka.ms/cs-core-sample)、[**JavaScript**](https://aka.ms/js-core-sample)、または [**Python**](https://aka.ms/py-core-sample) の完全なサンプルを参照してください。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -82,6 +82,30 @@ _トレース アクティビティ_ は、ボットが Bot Framework Emulator �
 
 [!code-javascript[onTurnError ](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/index.js?range=35-57&highlight=8-14)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+アダプターの **on_error** ハンドラーは、例外情報を含むトレース アクティビティを作成して、エミュレーターに送信します。
+```python
+async def on_error(context: TurnContext, error: Exception):
+...
+
+if context.activity.channel_id == "emulator":
+
+# Create a trace activity that contains the error object
+trace_activity = Activity(
+    label="TurnError",
+    name="on_turn_error Trace",
+    timestamp=datetime.utcnow(),
+    type=ActivityTypes.trace,
+    value=f"{error}",
+    value_type="https://www.botframework.com/schemas/error",
+)
+
+# Send a trace activity, which will be displayed in Bot Framework Emulator
+await context.send_activity(trace_activity)
+
+...
+```
 ---
 
 ## <a name="additional-resources"></a>その他のリソース

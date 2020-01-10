@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 3/22/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d0d2f6930dd9a686cff98b09ca3e863ec0980491
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: c4b058ecc4f6a01d51d3aa7abe8f4f926df4e771
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297522"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491358"
 ---
 # <a name="migrate-your-bot-to-azure"></a>ボットを Azure に移行する
 
 [Bot Framework Portal](http://dev.botframework.com) で作成された **Azure Bot Service (プレビュー)** ボットはすべて、Azure の新しい Bot Service に移行する必要があります。 このサービスは 2017 年 12 月に一般公開 (GA) となりました。 
 
-以下にのみ接続されている登録ボットは移行する "*必要がない*" ことにご注意ください: **Teams**、**Skype**、**Cortana**。 たとえば、**Facebook** と **Skype** に接続されている登録ボットは移行する*必要があります*が、**Skype** と **Cortana** に接続されている登録ボットは移行する*必要がありません*。
+以下にのみ接続されている登録ボットは移行する "*必要がない*" ことにご注意ください: **Teams**、**Skype**、**Cortana**。 たとえば、**Facebook** と **Skype** に接続されている登録ボットは移行する*必要があります*が、**Skype** と **Cortana** に接続されている登録ボットは移行する*必要はありません*。
 
 > [!IMPORTANT]
 > Node.js で作成された Functions ボットを移行する前に、**Azure Functions Pack** を利用して **node_modules** モジュールをまとめてパッケージ化する必要があります。 パッケージ化により、移行中のパフォーマンスがよくなり、移行後も Functions ボットがより効率的に実行されます。 モジュールをパッケージ化する方法については、「[Package a Functions bot with Funcpack](#package-a-functions-bot-with-funcpack)」(Funcpack で Functions ボットをパッケージ化する) を参照してください。
@@ -35,7 +35,7 @@ ms.locfileid: "70297522"
 
 移行プロセスが正常に完了すると、 **[移行ステータス]** にボットが移行されていることが示されます。問題が発生したときのために、 **[Roll back migration]\(移行のロールバック\)** ボタンが一週間表示されます。
 
-移行したボットの名前をクリックすると、[Azure Portal](http://portal.azure.com) でそのボットが開きます。
+移行したボットの名前をクリックすると、[Azure Portal](https://portal.azure.com) でそのボットが開きます。
 
 ## <a name="package-a-functions-bot-with-funcpack"></a>Funcpack で Functions ボットをパッケージ化する
 
@@ -102,7 +102,7 @@ node.js/functions ボットが正常に移行されましたが、応答しま�
 その他の問題については、Azure Support に CRI を提出するか、[GitHub](https://github.com/MicrosoftDocs/bot-framework-docs/issues) で問題を提出してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これでボットが移行されました。次は、Azure Portal からボットを管理する方法について学習してください。
 

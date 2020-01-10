@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4390ddbbe9c75852cb9d7cad19cb50d0f8f04f8b
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: d3c369772736bddc96cab8b9e15e4005bd05bc3c
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933718"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491684"
 ---
 # <a name="send-welcome-message-to-users"></a>ユーザーへのウェルカム メッセージの送信
 
@@ -25,7 +25,7 @@ ms.locfileid: "73933718"
 ## <a name="prerequisites"></a>前提条件
 
 - [ボットの基本](bot-builder-basics.md)を理解する。
-- **ウェルカム サンプル**のコピー ([C# サンプル](https://aka.ms/welcome-user-mvc) または [JS サンプル](https://aka.ms/bot-welcome-sample-js))。 サンプルのコードは、ウェルカム メッセージの送信方法を説明するために使用されます。
+- **ウェルカム サンプル**のコピー ([C# サンプル](https://aka.ms/welcome-user-mvc)、[JS サンプル](https://aka.ms/bot-welcome-sample-js)、または [Python サンプル](https://aka.ms/bot-welcome-python-sample-code))。 サンプルのコードは、ウェルカム メッセージの送信方法を説明するために使用されます。
 
 ## <a name="about-this-sample-code"></a>このサンプル コードについて
 
@@ -33,7 +33,7 @@ ms.locfileid: "73933718"
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-ボットの 2 つのメイン イベントを次に示します
+ボットの 2 つの主要なイベントを次に示します。
 
 - `OnMembersAddedAsync`: 新しいユーザーがボットに接続されると必ず呼び出されます
 - `OnMessageActivityAsync`: 新しいユーザー入力を受信すると必ず呼び出されます。
@@ -45,7 +45,7 @@ ms.locfileid: "73933718"
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-ボットの 2 つのメイン イベントを次に示します
+ボットの 2 つの主要なイベントを次に示します。
 
 - `onMembersAdded`: 新しいユーザーがボットに接続されると必ず呼び出されます
 - `onMessage`: 新しいユーザー入力を受信すると必ず呼び出されます。
@@ -54,14 +54,28 @@ ms.locfileid: "73933718"
 
 接続された新しいユーザーには必ず、`welcomeMessage`、`infoMessage`、および `patternMessage` がボットから提供されます。
 新しいユーザー入力を受信すると、`welcomedUserProperty` で `didBotWelcomeUser` が _true_ に設定されているかどうかが確認されます。 設定されていない場合、最初のウェルカム メッセージがユーザーに返されます。
-
----
-
- DidBotWelcomeUser が _true_ の場合は、ユーザー入力が評価されます。 ユーザー入力のコンテンツに基づいて、このボットでは次のいずれかの処理が実行されます。
+`DidBotWelcomeUser` が _true_ の場合は、ユーザーの入力が評価されます。 ユーザー入力のコンテンツに基づいて、このボットでは次のいずれかの処理が実行されます。
 
 - ユーザーから受信したグリーティングをエコー バックします。
 - ボットに関する追加情報を提供するヒーロー カードを表示します。
 - `WelcomeMessage` を再送信します。これには、このボットで想定される入力の説明が示されています。
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+ボットの 2 つの主要なイベントを次に示します。
+
+- `on_members_added_activity`: 新しいユーザーがボットに接続されると必ず呼び出されます
+- `on_message_activity`: 新しいユーザー入力を受信すると必ず呼び出されます。
+
+![ウェルカム ロジック フロー](media/welcome-user-flow-python.png)
+
+新しいユーザーが接続されるたびに、ボットによって*ウェルカム メッセージ*、*情報メッセージ*、*パターン メッセージ*が表示されます。
+新しいユーザー入力を受信すると、`welcome_user_state.did_welcome_user` プロパティが *true* に設定されているかどうかが確認されます。 *true* に設定されていない場合、最初のウェルカム ユーザー メッセージがユーザーに返されます。 *true* に設定されている場合、ユーザー入力のコンテンツに基づいて、このボットでは次のいずれかの処理が実行されます。
+
+- ユーザーから受信したグリーティングをエコー バックします。 
+- ボットに関する追加情報を提供するヒーロー カードを表示します。
+
+---
 
 ## <a name="create-user-object"></a>ユーザー オブジェクトを作成する
 
@@ -77,11 +91,17 @@ ms.locfileid: "73933718"
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-スタートアップ時に、メモリ ストレージとユーザーの両方の状態が index.js で定義されます。
+スタートアップ時に、メモリ ストレージとユーザー状態の両方が `index.js` に定義されます。
 
 **Index.js**  
 [!code-javascript[Import statement](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/Index.js?range=8-10)]
 [!code-javascript[Create objects](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/Index.js?range=51-55)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+スタートアップ時に、ユーザー状態とウェルカム メッセージの両方が `welcome-user-bot.py` に定義されます。
+
+**welcome-user-bot.py** [!code-python[user state](~/../botbuilder-python/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=23-37)]
 
 ---
 
@@ -104,6 +124,11 @@ ms.locfileid: "73933718"
 [!code-javascript[Define welcome property key](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=7-8)]
 [!code-javascript[Create welcome property accessor](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=16-22)]
 
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+`on_message_activity` 内の `WelcomeUserState` へのハンドルを提供するプロパティ アクセサー `user_state_accessor` を作成します。
+
+**welcome-user-bot.py** [!code-python[user state](~/../botbuilder-python/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=31)]
 ---
 
 ## <a name="detect-and-greet-newly-connected-users"></a>新しく接続されたユーザーを検出し、あいさつする
@@ -123,29 +148,41 @@ ms.locfileid: "73933718"
 **WelcomeBot.js**  
 [!code-javascript[Send messages](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=65-88)]
 
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+`on_members_added_activity` は、新しいユーザーが追加されたかどうかを確認してから、3 つのウェルカム メッセージ ("*ウェルカム メッセージ*"、"*情報メッセージ*"、および "*パターン メッセージ*") を送信します。
+
+**welcome-user-bot.py** [!code-python[user state](~/../botbuilder-python/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=55-74)]
+
 ---
 
 ## <a name="welcome-new-user-and-discard-initial-input"></a>新しいユーザーにウェルカム メッセージを表示し、最初の入力を破棄する
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-ユーザーの入力に有用な情報が実際に含まれている場合を考慮することも重要です。これはチャネルによって異なります。 ユーザーが使用可能なすべてのチャネルで良好なエクスペリエンスを得られるようにするために、状態フラグ _didBotWelcomeUser_ を確認し、これが "false" の場合、最初のユーザー入力は処理しません。 代わりに、ユーザーに最初のウェルカム メッセージを表示します。 ブール値 _welcomedUserProperty_ が "true" に設定され、UserState に格納されると、すべての追加メッセージ アクティビティからのこのユーザーの入力が、コードによって処理されます。
+ユーザーの入力に有用な情報が実際に含まれている場合を考慮することも重要です。これはチャネルごとに異なる可能性があります。 ユーザーが使用可能なすべてのチャネルで良好なエクスペリエンスを得られるようにするために、状態フラグ _didBotWelcomeUser_ を確認し、これが "false" の場合、最初のユーザー入力は処理しません。 代わりに、ユーザーに最初のウェルカム メッセージを表示します。 ブール値 _welcomedUserProperty_ が "true" に設定され、UserState に格納されると、すべての追加メッセージ アクティビティからのこのユーザーの入力が、コードによって処理されます。
 
 **WelcomeUserBot.cs**  
 [!code-csharp[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-82)]
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-ユーザーの入力に有用な情報が実際に含まれている場合を考慮することも重要です。これはチャネルによって異なります。 ユーザーが使用可能なすべてのチャネルで良好なエクスペリエンスを得られるようにするために、didBotWelcomedUser プロパティを確認し、これが存在しない場合は、"false" に設定し、最初のユーザー入力は処理しません。 代わりに、ユーザーに最初のウェルカム メッセージを表示します。 その後、ブール値 _didBotWelcomeUser_ が "true" に設定され、すべての追加メッセージ アクティビティからのユーザー入力が、コードによって処理されます。
+ユーザーの入力に有用な情報が実際に含まれている場合を考慮することも重要です。これはチャネルごとに異なる可能性があります。 ユーザーが使用可能なすべてのチャネルで良好なエクスペリエンスを得られるようにするために、didBotWelcomedUser プロパティを確認し、これが存在しない場合は、"false" に設定し、最初のユーザー入力を処理しません。 代わりに、ユーザーに最初のウェルカム メッセージを表示します。 その後、ブール値 didBotWelcomeUser が "true" に設定され、すべての追加メッセージ アクティビティからのユーザー入力が、コードによって処理されます。
 
 **WelcomeBot.js**  
 [!code-javascript[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=24-38,57-59,63)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+ユーザーの入力に有用な情報が実際に含まれている場合を考慮することも重要です。これはチャネルごとに異なる可能性があります。 ユーザーが使用可能なすべてのチャネルで良好なエクスペリエンスを得られるようにするために、`on_message_activity` は `did_welcome_user` プロパティを確認します。 初回は、*false* に設定し、ユーザー入力を処理しません。 代わりに、ユーザーに最初のウェルカム メッセージを表示します。 次に、`did_welcome_user` を *true* に設定し、すべての追加メッセージ アクティビティからのユーザー入力を処理します。
+
+**welcome-user-bot.py** [!code-python[user state](~/../botbuilder-python/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=85-95)]
 
 ---
 
 ## <a name="process-additional-input"></a>追加入力を処理する
 
-新しいユーザーにウェルカム メッセージが表示されたら、メッセージ ターンごとにユーザー入力情報が評価され、そのユーザー入力のコンテキストに基づいてボットが応答します。 次のコードは、その応答の生成に使用する意思決定ロジックを示しています。 
+新しいユーザーにウェルカム メッセージが表示されると、メッセージ ターンごとにユーザー入力情報が評価され、そのユーザー入力のコンテキストに基づいてボットが応答します。 次のコードは、その応答の生成に使用する意思決定ロジックを示しています。
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -161,11 +198,17 @@ ms.locfileid: "73933718"
 **WelcomeBot.js**  
 [!code-javascript[SwitchOnUtterance](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=40-56)]
 
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+ユーザーが *intro* または *help* を入力すると、ボットが `__send_intro_card` を呼び出して、概要アダプティブ カードがユーザーに示されます。
+
+**welcome-user-bot.py** [!code-python[user state](~/../botbuilder-python/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=101-106&highlight=103-104)]
+
 ---
 
 ## <a name="using-hero-card-greeting"></a>ヒーロー カード グリーティングを使用する
 
-既に説明したように、一部のユーザー入力では、要求の応答として "_ヒーロー カード_" が生成されます。 ヒーロー カード グリーティングの詳細については、[概要カードの送信](./bot-builder-howto-add-media-attachments.md)に関するページをご覧ください。 このボットのヒーロー カード応答の作成に必要なコードを次に示します。
+既に説明したように、一部のユーザー入力では、要求の応答として "*ヒーロー カード*" が生成されます。 ヒーロー カード グリーティングの詳細については、[概要カードの送信](./bot-builder-howto-add-media-attachments.md)に関するページをご覧ください。 このボットのヒーロー カード応答の作成に必要なコードを次に示します。
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -176,6 +219,10 @@ ms.locfileid: "73933718"
 
 **WelcomeBot.js**  
 [!code-javascript[SendIntroCard](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=91-116)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**welcome-user-bot.py** [!code-python[user state](~/../botbuilder-python/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=108-143)]
 
 ---
 
@@ -196,7 +243,7 @@ ms.locfileid: "73933718"
 
 さまざまなメディアの応答の詳細については、「[メッセージにメディアを追加する](./bot-builder-howto-add-media-attachments.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ユーザー入力の収集](bot-builder-prompts.md)

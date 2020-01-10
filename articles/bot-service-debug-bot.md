@@ -8,19 +8,19 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: 27af606506eb19b98a327e276a00201ac417c7e4
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: dcc8ae71be76d2629681a058ea43e280aebad795
+ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298181"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75736791"
 ---
 # <a name="debug-a-bot"></a>ボットをデバッグする
 
 この記事では、Visual Studio や Visual Studio Code などの統合開発環境 (IDE) と Bot Framework Emulator を使用して、ボットをデバッグする方法について説明します。 これらの方法を使用してローカルで任意のボットをデバッグできますが、この記事ではクイック スタートで作成された [C# ボット](~/dotnet/bot-builder-dotnet-sdk-quickstart.md)または [Javascript ボット](~/javascript/bot-builder-javascript-quickstart.md)を使います。
 
 > [!NOTE]
-> この記事では、Bot Framework Emulator を使用して、デバッグ中にボットとメッセージを送受信します。 Bot Framework Emulator を使用して、他の方法でボットをデバッグするには、「[Bot Framework Emulator を使用したデバッグ](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0)」の記事を参照してください。 
+> この記事では、Bot Framework Emulator を使用して、デバッグ中にボットとメッセージを送受信します。 Bot Framework Emulator を使用して、他の方法でボットをデバッグするには、「[Bot Framework Emulator を使用したデバッグ](https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator)」の記事を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件 
 - [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started) をダウンロードしてインストールします。
@@ -48,10 +48,13 @@ Visual Studio Code では、ブレークポイントを設定し、デバッグ 
 1. VS Code を起動し、ボット プロジェクト フォルダーを開きます。
 2. メニュー バーの **[デバッグ]** をクリックし、 **[デバッグの開始]** をクリックします。 コードを実行するランタイム エンジンの選択を求められた場合は、**Node.js** を選択します。 この時点で、ボットはローカルに実行されています。 
 3. **.js** ファイルをクリックし、必要に応じてブレークポイントを設定します。 VS Code では、行番号の左側に列をマウスでポイントすることによって、ブレークポイントを設定できます。 小さな赤いドットが表示されます。 ドットをクリックすると、ブレークポイントが設定されます。 もう一度ドットをクリックすると、ブレークポイントが削除されます。
-   ![VS Code でのブレークポイントの設定](~/media/bot-service-debug-bot/breakpoint-set.png)
-4. 「[Bot Framework Emulator を使用したデバッグ](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0)」の記事の説明に従って、Bot Framework Emulator を起動してボットに接続します。 
+
+   ![VS Code でブレークポイントを設定する](~/media/bot-service-debug-bot/breakpoint-set.png)
+
+4. 「[Bot Framework Emulator を使用したデバッグ](https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator)」の記事の説明に従って、Bot Framework Emulator を起動してボットに接続します。 
 5. エミュレーターからボットにメッセージを送信します (例: "Hi" というメッセージを送信)。 ブレークポイントを設定した行で、実行が停止します。
-   ![VS Code でのデバッグ](~/media/bot-service-debug-bot/breakpoint-caught.png)
+
+   ![VS Code でデバッグする](~/media/bot-service-debug-bot/breakpoint-caught.png)
 
 ## <a name="debug-a-c-bot-using-breakpoints-in-visual-studio"></a>Visual Studio でブレークポイントを使用して C# のボットをデバッグする
 
@@ -62,17 +65,20 @@ Visual Studio (VS) では、ブレークポイントを設定し、デバッグ 
 3. **ソリューション エクスプローラー**で、 **.cs** ファイルをクリックし、必要に応じてブレークポイントを設定します。 このファイルでは、ボットのメイン ロジックが定義されています。 VS では、行番号の左側に列をマウスでポイントすることによって、ブレークポイントを設定できます。 小さな赤いドットが表示されます。 このドットをクリックすると、ブレークポイントが設定されます。 もう一度ドットをクリックすると、ブレークポイントが削除されます。
 4. メニューの **[デバッグ]** をクリックし、 **[デバッグの開始]** をクリックします。 この時点で、ボットはローカルに実行されています。 
 
+   ![VS でブレークポイントを設定する](~/media/bot-service-debug-bot/breakpoint-set-vs.png)
+
 <!--
    > [!NOTE]
    > If you get the "Value cannot be null" error, check to make sure your **Table Storage** setting is valid.
    > The **EchoBot** is default to using **Table Storage**. To use Table Storage in your bot, you need the table *name* and *key*. If you do not have a Table Storage instance ready, you can create one or for testing purposes, you can comment out the code that uses **TableBotDataStore** and uncomment the line of code that uses **InMemoryDataStore**. The **InMemoryDataStore** is intended for testing and prototyping only.
 -->
-   ![VS でブレークポイントを設定する](~/media/bot-service-debug-bot/breakpoint-set-vs.png)
 
 5. Bot Framework Emulator を開始し、前のセクションで説明したようにボットに接続します。 
 6. エミュレーターからボットにメッセージを送信します (例: "Hi" というメッセージを送信)。 ブレークポイントを設定した行で、実行が停止します。
-   ![VS でのデバッグ](~/media/bot-service-debug-bot/breakpoint-caught-vs.png)
-::: moniker range="azure-bot-service-3.0" 
+
+   ![VS でデバッグする](~/media/bot-service-debug-bot/breakpoint-caught-vs.png)
+
+::: moniker range="azure-bot-service-3.0"
 
 ## <a id="debug-csharp-serverless"></a> 従量課金プランの C\# Functions ボットをデバッグする
 
@@ -123,12 +129,31 @@ Visual Studio 2017 でブレークポイントを使用してコードをデバ�
 
 ::: moniker-end
 
+## <a name="debug-a-python--bot-using-breakpoints-in-visual-studio-code"></a>Visual Studio Code でブレークポイントを使用して Python のボットをデバッグする
+
+Visual Studio Code では、ブレークポイントを設定し、デバッグ モードでボットを実行して、コードをステップ実行できます。 「[Bot Framework SDK for Python を使用したボットの作成](~/python/bot-builder-python-quickstart.md)」も参照してください。
+
+1. VS Code を起動し、ボット プロジェクト フォルダーを開きます。
+1. 必要に応じてブレークポイントを設定します。 ブレークポイントを設定するには、行番号の左側の列にマウス カーソルを合わせます。 小さな赤いドットが表示されます。 ドットをクリックすると、ブレークポイントが設定されます。 もう一度ドットをクリックすると、ブレークポイントが削除されます。
+1. `app.py` を選択します。
+1. メニュー バーの **[デバッグ]** をクリックし、 **[デバッグの開始]** をクリックします。
+1. 現在選択されているファイルをデバッグするには、 **[Python ファイル]** を選択します。
+
+   ![ブレークポイントを設定する](~/media/bot-service-debug-bot/bot-debug-python-breakpoints.png)
+
+1. 「[Bot Framework Emulator を使用したデバッグ](https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator)」の記事の説明に従って、Bot Framework Emulator を起動してボットに接続します。 
+1. エミュレーターからボットにメッセージを送信します (例: "Hi" というメッセージを送信)。 ブレークポイントを設定した行で、実行が停止します。
+
+   ![VS Code でデバッグする](~/media/bot-service-debug-bot/bot-debug-python-breakpoint-caught.png)
+
+詳細については、「[Python コードのデバッグ](https://aka.ms/bot-debug-python)」を参照してください。
+
 ## <a name="additional-resources"></a>その他のリソース
 
 - [一般的な問題のトラブルシューティング](bot-service-troubleshoot-bot-configuration.md)に関する記事、およびそのセクションに示されているトラブルシューティングに関するその他の記事をご覧ください。
 - [Emulator を使用してデバッグする](bot-service-debug-emulator.md)方法をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [トランスクリプト ファイルを使用してお使いのボットをデバッグする](v4sdk/bot-builder-debug-transcript.md)。

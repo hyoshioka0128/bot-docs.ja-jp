@@ -1,13 +1,13 @@
 ---
-ms.openlocfilehash: 967e0811cda9e77135b4575560d36f12ffdfafcf
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: 194e09ba45be1720f785fe7926361de8d8d588b2
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386020"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491146"
 ---
 - [Microsoft Azure](https://azure.microsoft.com/free/) のサブスクリプション。
-- ローカル コンピューターで開発した C#、JavaScript、または TypeScript ボット
+- ローカル コンピューターで開発した C#、JavaScript、TypeScript、または Python ボット
 - 最新バージョンの [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 - [Azure CLI および ARM テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使い慣れていること
 

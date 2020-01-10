@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6ef79b62aecbc79ed277f3962606d5ed5d9ceeb3
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: c273b0c157abd40dd139739411b19656565fa7c7
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933572"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491526"
 ---
 # <a name="reuse-dialogs"></a>ダイアログの再利用
 
@@ -25,7 +25,7 @@ ms.locfileid: "73933572"
 ## <a name="prerequisites"></a>前提条件
 
 - [ボットの基本][concept-basics]、[ダイアログ ライブラリ][concept-dialogs]、および[会話を管理][simple-flow]する方法に関する知識。
-- マルチターン プロンプト サンプルのコピー ([**C#** ][cs-sample] または [**JavaScript**][js-sample])。
+- マルチターン プロンプト サンプルのコピー ([**C#** ][cs-sample]、[**JavaScript**][js-sample]、または [**Python**][python-sample])。
 
 ## <a name="about-the-sample"></a>サンプルについて
 
@@ -55,15 +55,15 @@ ms.locfileid: "73933572"
 
 ここでは `UserProfileDialog` クラスは、`ComponentDialog` クラスから派生しています。
 
-[!code-csharp[Class](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=13)]
+[!code-csharp[Class](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=17)]
 
 コンストラクター内で、`AddDialog` メソッドによって、ダイアログとプロンプトがコンポーネント ダイアログに追加されます。 このメソッドを使用して追加した最初の項目が初期ダイアログとして設定されますが、これは、`InitialDialogId` プロパティを明示的に設定することで変更できます。 コンポーネント ダイアログを開始すると、その _initial dialog_ が開始されます。
 
-[!code-csharp[Constructor](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=17-42)]
+[!code-csharp[Constructor](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=21-48)]
 
 これは、ウォーターフォール ダイアログの最初のステップの実装です。
 
-[!code-csharp[First step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=44-54)]
+[!code-csharp[First step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=50-60)]
 
 ウォーターフォール ダイアログの実装の詳細については、[連続して行われる会話フローを実装する](bot-builder-dialog-manage-complex-conversation-flow.md)方法をご覧ください。
 
@@ -87,6 +87,26 @@ ms.locfileid: "73933572"
 
 ウォーターフォール ダイアログの実装の詳細については、[連続して行われる会話フローを実装する](bot-builder-dialog-manage-complex-conversation-flow.md)方法をご覧ください。
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+ダイアログを使用するには、ターミナルから `pip install botbuilder-dialogs` と `pip install botbuilder-ai` を実行して **botbuilder-dialogs** および **botbuilder-ai** pypi パッケージをインストールします。
+
+**dialogs/user_profile_dialog.py**
+
+ここでは `UserProfileDialog` クラスによって `ComponentDialog` が拡張されます。
+
+[!code-python[Class](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=25)]
+
+コンストラクター内で、`add_dialog` メソッドによって、ダイアログとプロンプトがコンポーネント ダイアログに追加されます。 このメソッドを使用して追加した最初の項目が初期ダイアログとして設定されますが、これは、`initial_dialog_id` プロパティを明示的に設定することで変更できます。 コンポーネント ダイアログを開始すると、その _initial dialog_ が開始されます。
+
+[!code-python[Constructor](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=25-57)]
+
+これは、ウォーターフォール ダイアログの最初のステップの実装です。
+
+[!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=59-71)]
+
+ウォーターフォール ダイアログの実装の詳細については、[連続して行われる会話フローを実装する](bot-builder-dialog-manage-complex-conversation-flow.md)方法をご覧ください。
+
 ---
 
 実行時、コンポーネント ダイアログに独自のダイアログ スタックが保持されます。 コンポーネント ダイアログが開始すると、以下が行われます。
@@ -105,7 +125,7 @@ ms.locfileid: "73933572"
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**Bots\DialoBot.cs**
+**Bots\DialogBot.cs**
 
 サンプルでは、これはボットの `OnMessageActivityAsync` メソッドから呼び出される `RunAsync` メソッドを使用して行います。
 
@@ -125,6 +145,18 @@ ms.locfileid: "73933572"
 
 [!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-31&highlight=5)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**helpers/dialog_helper.py**
+
+サンプルでは、`run_dialog` メソッドをユーザー プロファイル ダイアログに追加しました。
+
+[!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
+
+ボットの `on_message_activity` メソッドから呼び出される `run_dialog` メソッド。
+
+**bots/dialog_bot.py** [!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=46-51)]
+
 ---
 
 ## <a name="to-test-the-bot"></a>ボットをテストする
@@ -135,7 +167,7 @@ ms.locfileid: "73933572"
 
 ![マルチターン プロンプト ダイアログの実行サンプル](../media/emulator-v4/multi-turn-prompt.png)
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 ### <a name="how-cancellation-works-for-component-dialogs"></a>コンポーネント ダイアログのキャンセルのしくみ
 
@@ -145,7 +177,7 @@ ms.locfileid: "73933572"
 
 ボットで入れ子になったコンポーネント ダイアログを管理するときは、この点に注意してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ボットを強化して、"ヘルプ"、"キャンセル" など、会話の通常のフローを中断する可能性がある追加入力に対応できるようにします。
 
@@ -164,3 +196,4 @@ ms.locfileid: "73933572"
 
 [cs-sample]: https://aka.ms/cs-multi-prompts-sample
 [js-sample]: https://aka.ms/js-multi-prompts-sample
+[python-sample]: https://aka.ms/python-multi-prompts-sample

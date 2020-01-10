@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 014f5c998fcb9d322439ca8b0e0bf2ba5f9f0679
-ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
+ms.openlocfilehash: 78de3676332561aafd4b24f755962b614cb9a27d
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076514"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491570"
 ---
 # <a name="register-a-bot-with-azure-bot-service"></a>ボットを Azure Bot Service に登録する
 
@@ -38,7 +38,7 @@ ms.locfileid: "70076514"
 
    ![登録ボットの作成ブレード](media/azure-bot-quickstarts/registration-create-bot-service-blade.png)
 
-   |Setting |推奨値|説明|
+   |設定 |推奨値|[説明]|
    |---|---|--|
    |**ボット名** <img width="300px">|ボットの表示名|チャンネルとディレクトリに表示されるボットの表示名。 この名前はいつでも変更できます。|
    |**サブスクリプション**|該当するサブスクリプション|使用する Azure サブスクリプションを選択します。|
@@ -87,7 +87,7 @@ ms.locfileid: "70076514"
 [FAQ の「アプリの登録」](bot-service-resources-bot-framework-faq.md#app-registration)をご覧ください。
 
 > [!IMPORTANT]
-> *[Supports account types]\(アカウントの種類のサポート\)* セクションで、2 つのマルチテナント タイプのいずれかを選択する必要があります。つまり、アプリ作成時に、 *[Accounts in any organizational directory (Any Azure AD - Multitenant)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD - マルチテナント)\)* または *[Accounts in any organizational directory (Any Azure AD - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox, Outlook.com)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox、Outlook.com など)\)* を選択します。そうしないと、ボットは動作しません。 詳細については、「[Azure portal を使用した新規アプリケーションの登録](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)」を参照してください。
+> *[Supports account types]\(アカウントの種類のサポート\)* セクションで、2 つのマルチテナント タイプのいずれかを選択する必要があります。つまり、アプリ作成時に、 *[Accounts in any organizational directory (Any Azure AD - Multitenant)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD - マルチテナント)\)* または *[Accounts in any organizational directory (Any Azure AD - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox, Outlook.com)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox、Outlook.com など)\)* を選択します。そうしないと、ボットは動作しません。 詳細については、「[Azure portal を使用した新規アプリケーションの登録](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)」を参照してください。
 
 ## <a name="update-the-bot"></a>ボットを更新する
 
@@ -105,7 +105,7 @@ Bot Framework SDK for Node.js を使用している場合は、次の環境変�
 
 ボット サービスが作成されたので、[Web チャット](bot-service-manage-test-webchat.md)でテストします。 メッセージを入力すると、ボットが応答します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このトピックでは、ホストされたボットを Bot Service に登録する方法を学びました。 次に、Bot Service を管理する方法を確認しましょう。
 

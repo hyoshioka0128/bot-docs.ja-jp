@@ -8,17 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: 0e59c6d3548e273a8fb164526ddeb6ba66f48e3e
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 3bb0dea0b66acfdffd75904770cc88572e377258
+ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933525"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75736824"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>検査ミドルウェアを使用してボットをデバッグする
 この記事では、検査ミドルウェアを使用してボットをデバッグする方法について説明します。 この機能を使用すると、Bot Framework Emulator で、ボットの現在の状態を確認でき、さらにボットとの間のトラフィックをデバッグできます。 トレース メッセージを使用してエミュレーターにデータを送信し、会話のある特定のターンでのボットの状態を調べることができます。 
 
-Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) | [JavaScript](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0)) を使用してローカルに構築された EchoBot を使用して、ボットのメッセージの状態をデバッグおよび検査する方法を示します。 また、[IDE を使用してボットをデバッグ](./bot-service-debug-bot.md)したり、[Bot Framework Emulator を使用してデバッグ](./bot-service-debug-emulator.md)したりすることもできますが、状態をデバッグするには、検査ミドルウェアをボットに追加する必要があります。 検査ボットのサンプルを入手できます:[C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection) および [JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection)。 
+Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) | [JavaScript](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0) | [Python](https://docs.microsoft.com/azure/bot-service/python/bot-builder-python-quickstart?view=azure-bot-service-4.0)) を使用してローカルに構築された EchoBot を使用して、ボットのメッセージの状態をデバッグおよび検査する方法を示します。 また、[IDE を使用してボットをデバッグ](./bot-service-debug-bot.md)したり、[Bot Framework Emulator を使用してデバッグ](./bot-service-debug-emulator.md)したりすることもできますが、状態をデバッグするには、検査ミドルウェアをボットに追加する必要があります。 検査ボットのサンプルを入手できます:[C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection)、[JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection)、および [Python](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/python/47.inspection)。 
 
 ## <a name="prerequisites"></a>前提条件
 - [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started) をダウンロードしてインストールする
@@ -66,6 +66,24 @@ npm install --save botbuilder@latest
 
 [!code-javascript [inspection bot sample](~/../botbuilder-samples/samples/javascript_nodejs/47.inspection/bot.js?range=6-50)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+ボットのコードを更新する前に、ターミナルで次のコマンドを実行して、必要な pypi パッケージをインストールします。
+```cmd
+pip install aiohttp
+pip install botbuilder-core>=4.7.0
+```
+アダプターにミドルウェアを追加して、**app.py** ファイルに検査状態を設定します。
+
+**app.py**
+
+[!code-python [inspection bot sample](~/../botbuilder-samples/samples/python/47.inspection/app.py?range=74-86)]
+
+**echo_bot.py** ファイル内のボット クラスを更新します。
+
+**bots/echo_bot.py** 
+
+[!code-python [inspection bot sample](~/../botbuilder-samples/samples/python/47.inspection/bots/echo_bot.py?range=16-64)]
+
 ---
 
 ## <a name="test-your-bot-locally"></a>ボットをローカルでテストする 
@@ -83,6 +101,11 @@ dotnet run
 
 ```cmd
 npm start 
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+```cmd
+python app.py
 ```
 
 ---

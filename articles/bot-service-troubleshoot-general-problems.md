@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 09/17/2019
-ms.openlocfilehash: 47f87555b48edcfdca6d07ab2bdaa52ef915a8da
-ms.sourcegitcommit: 61a2297fabf35c59693309f2a605e893634585b7
+ms.openlocfilehash: d958f2a9f85af4a42dab241264115050f1972d4d
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71061066"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75490843"
 ---
 # <a name="troubleshooting-general-problems"></a>一般的な問題のトラブルシューティング
 以下のよく寄せられる質問は、一般的なボット開発や運用上の問題のトラブルシューティングに役立ちます。
@@ -180,7 +180,7 @@ Bot Framework SDK for .NET または Bot Framework SDK for Node.js を使用し�
 * 言語 (Node.js または C#) 層で Builder インターフェイスを使用します。
 
 > [!IMPORTANT]
-> Bot Framework State Service API を運用環境で使用することはお勧めしません。将来のリリースで非推奨となる可能性があります。 テストが目的の場合はメモリ内ストレージを使用するようにボット コードを更新し、運用ボットの場合はいずれかの **Azure 拡張機能**を使用することをお勧めします。 詳細については、[.NET](~/dotnet/bot-builder-dotnet-state.md) または [Node](~/nodejs/bot-builder-nodejs-state.md) の実装に関する「**状態データの管理**」トピックを参照してください。
+> Bot Framework State Service API を運用環境で使用することは推奨されていません。将来のリリースで非推奨となる可能性があります。 テストが目的の場合はメモリ内ストレージを使用するようにボット コードを更新し、運用ボットの場合はいずれかの **Azure 拡張機能**を使用することをお勧めします。 [.NET](~/dotnet/bot-builder-dotnet-state.md) または [Node](~/nodejs/bot-builder-nodejs-state.md) での実装の詳細については、「**状態データの管理**」トピックを参照してください。
 
 ::: moniker-end
 
@@ -267,11 +267,11 @@ Bot Framework SDK for Node.js と Bot Framework SDK for .NET の両方で、単�
 
 ## <a name="why-do-i-get-an-authorization_requestdenied-exception-when-creating-a-bot"></a>ボットを作成するときに Authorization_RequestDenied という例外が発生するのはなぜですか。
 
-Azure Bot Service ボットを作成するためのアクセス許可は、Azure Active Directory (AAD) ポータルを通じて管理されます。 [AAD ポータル](http://aad.portal.azure.com)でアクセス許可が適切に構成されていない場合、ユーザーがボット サービスを作成しようとしたときに **Authorization_RequestDenied** 例外が発生します。
+Azure Bot Service ボットを作成するためのアクセス許可は、Azure Active Directory (AAD) ポータルを通じて管理されます。 [AAD ポータル](https://aad.portal.azure.com)でアクセス許可が適切に構成されていない場合、ユーザーがボット サービスを作成しようとしたときに **Authorization_RequestDenied** 例外が発生します。
 
 まず、ディレクトリの "ゲスト" であるかどうかを確認します。
 
-1. [Azure Portal](http://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]** をクリックし、*active* を検索します。
 3. **[Azure Active Directory]** を選択します。
 4. **[ユーザー]** をクリックします。
@@ -281,7 +281,7 @@ Azure Bot Service ボットを作成するためのアクセス許可は、Azure
 
 **ゲスト**でないことを確認したら、アクティブ ディレクトリ内のユーザーがボット サービスを作成できることを確認するために、ディレクトリ管理者が次の設定を構成する必要があります。
 
-1. [AAD ポータル](http://aad.portal.azure.com)にサインインします。 **[ユーザーとグループ]** に移動して、 **[ユーザー設定]** を選択します。
+1. [AAD ポータル](https://aad.portal.azure.com)にサインインします。 **[ユーザーとグループ]** に移動して、 **[ユーザー設定]** を選択します。
 2. **[アプリの登録]** セクションで、 **[ユーザーはアプリケーションを登録できる]** を **[はい]** に設定します。 これで、ディレクトリ内のユーザーがボット サービスを作成できるようになります。
 3. **[外部ユーザー]** セクションで、 **[ゲストのアクセス許可を制限する]** を **[いいえ]** に設定します。 これで、ディレクトリ内のゲスト ユーザーがボット サービスを作成できるようになります。
 
@@ -299,7 +299,7 @@ Azure Bot Service ボットを作成するためのアクセス許可は、Azure
 
 ## <a name="where-can-i-get-more-help"></a>詳細情報はどこで入手できますか。
 
-* [Stack Overflow](https://stackoverflow.com/questions/tagged/botframework) で既に回答済みの質問の情報を利用するか、`botframework` タグを使用してご自分の質問を投稿します。 Stack Overflow には、わかりやすいタイトル、完全かつ簡潔な問題の説明、問題を再現するのに十分な詳細情報を必要とするなどのガイドラインが含まれていることに注意してください。 機能要求や非常に広範な質問はトピックから外れています。新しいユーザーは、[Stack Overflow ヘルプ センター](https://stackoverflow.com/help/how-to-ask)にアクセスして詳細を確認する必要があります。
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/botframework) で既に回答済みの質問の情報を利用するか、`botframework` タグを使用してご自分の質問を投稿します。 Stack Overflow には、わかりやすいタイトル、完全かつ簡潔な問題の説明、問題を再現するための十分な詳細情報が必要などのガイドラインがあることに注意してください。 機能要求や非常に広範な質問はトピックから外れています。新しいユーザーは、[Stack Overflow ヘルプ センター](https://stackoverflow.com/help/how-to-ask)にアクセスして詳細を確認する必要があります。
 * Bot Framework SDK での既知の問題に関する情報を確認する場合や、新しい問題を報告する場合は、GitHub の [BotBuilder に関する問題](https://github.com/Microsoft/BotBuilder/issues)を参照してください。
 * [Gitter](https://gitter.im/Microsoft/BotBuilder) の BotBuilder コミュニティ ディスカッションの情報を活用します。
 

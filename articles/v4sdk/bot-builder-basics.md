@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dc2c222866796f584bcad950a6e0afc40ab43a90
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 97f8318b6f9035e3ac3be1983b0691f627240242
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441626"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491533"
 ---
 # <a name="how-bots-work"></a>ボットのしくみ
 
@@ -84,6 +84,16 @@ ms.locfileid: "73441626"
 
 基本ターン ハンドラーのオーバーライドが必要になる状況はめったにないため、この操作を行う場合は気を付けてください。 ターンの最後に行う必要がある[状態の保存](bot-builder-concept-state.md)などの操作に対しては、`onDialog` と呼ばれる特別なハンドラーがあります。 `onDialog` ハンドラーは、ハンドラーの残りの部分の実行後、最後に実行され、特定のアクティビティの種類には関連付けられていません。 上記のすべてのハンドラーと同様、必ず `next()` を呼び出して、プロセスの残りの部分を終了してください。
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+たとえば、ボットがメッセージ アクティビティを受信すると、ターン ハンドラーはその受信アクティビティを確認して、`on_message_activity` アクティビティ ハンドラーに送信します。 
+
+ご自身のボットを構築するとき、メッセージを処理し、これに応答するためのボット ロジックはこの `on_message_activity` ハンドラーに格納されます。 同様に、会話に追加されたメンバーを処理するロジックは、会話にメンバーが追加されると必ず呼び出される `on_members_added` ハンドラーに格納されます。
+
+これらのハンドラーのロジックを実装するには、以下の「[ボット ロジック](#bot-logic)」セクションで示すように、お使いのボットでこれらのメソッドをオーバーライドします。 これらのハンドラーそれぞれに基本実装はありません。このため、必要なロジックをご自身のオーバーライドに追加するだけです。
+
+基本ターン ハンドラーのオーバーライドが必要になる場合もあります。たとえば、ターンの最後に[状態を保存](bot-builder-concept-state.md)するような状況です。 これを行う場合は、最初に必ず `await super().on_turn(turnContext);` を呼び出して、`on_turn` の基本実装がご自身の追加コードの前に実行されていることを確認します。 この実装は特に、`on_message_activity` などの残りのアクティビティ ハンドラーを呼び出す役割を果たします。
+
 ---
 
 ## <a name="middleware"></a>ミドルウェア
@@ -126,6 +136,18 @@ Yeoman ジェネレーターにより、[restify](http://restify.com/) Web ア�
 
 `npm install dotenv`
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+### <a name="requirementstxt"></a>requirements.txt
+
+**requirements.txt** では、ボットの依存関係とそれに関連付けられているバージョンが指定されます。  これはすべて、テンプレートとご自身のシステムによって設定されます。
+
+依存関係は、`pip install -r requirements.txt` を使用してインストールする必要があります。
+
+### <a name="configpy"></a>config.py
+
+**config.py** ファイルでは、ポート番号、アプリ ID、パスワードなど、お使いのボットの構成情報が指定されます。 特定のテクノロジを使用している場合、または運用環境でこのボットを使用している場合は、ご自身の特定のキーまたは URL をこの構成に追加する必要があります。 ただし、このエコー ボットについては、今のところ、ここでは何も行う必要はありません。アプリ ID およびパスワードは、現時点では未定義のままにしておくことができます。
+
 ---
 
 ### <a name="bot-logic"></a>ボット ロジック
@@ -138,7 +160,7 @@ Yeoman ジェネレーターにより、[restify](http://restify.com/) Web ア�
 
 `ActivityHandler` で定義されているハンドラーを次に示します。
 
-| Event | Handler | 説明 |
+| Event | Handler | [説明] |
 | :-- | :-- | :-- |
 | 任意のアクティビティの種類を受信した | `OnTurnAsync` | 受信したアクティビティの種類に基づいて、他のハンドラーのいずれかを呼び出します。 |
 | メッセージ アクティビティを受信した | `OnMessageActivityAsync` | これをオーバーライドして `message` アクティビティを処理します。 |
@@ -186,7 +208,7 @@ public class MyBot : ActivityHandler
 
 `ActivityHandler` で定義されているハンドラーを次に示します。
 
-| Event | Handler | 説明 |
+| Event | Handler | [説明] |
 | :-- | :-- | :-- |
 | 任意のアクティビティの種類を受信した | `onTurn` | いずれかのアクティビティを受信したときに呼び出されます。 |
 | メッセージ アクティビティを受信した | `onMessage` | `message` アクティビティを受信したときに呼び出されます。 |
@@ -226,6 +248,51 @@ class MyBot extends ActivityHandler {
 }
 
 module.exports.MyBot = MyBot;
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+主なボット ロジックはボット コードで定義され、ここでは `bots/echo_bot.py` と呼ばれます。 `EchoBot` は `ActivityHandler` から派生し、これは `Bot` インターフェイスから派生しています。 `ActivityHandler` ではさまざまなハンドラーがさまざまな種類のアクティビティに対して定義されます。たとえば、ここでは `on_message_activity` および `on_members_added` の 2 つが定義されます。 これらのメソッドは保護されていますが、`ActivityHandler` から派生しているため、上書きできます。
+
+`ActivityHandler` で定義されているハンドラーを次に示します。
+
+| Event | Handler | [説明] |
+| :-- | :-- | :-- |
+| 任意のアクティビティの種類を受信した | `on_turn` | 受信したアクティビティの種類に基づいて、他のハンドラーのいずれかを呼び出します。 |
+| メッセージ アクティビティを受信した | `on_message_activity` | これをオーバーライドして `message` アクティビティを処理します。 |
+| 会話の更新アクティビティを受信した | `on_conversation_update_activity` | `conversationUpdate` アクティビティで、ボット以外のメンバーが会話に参加した場合、または会話から退出した場合にハンドラーを呼び出します。 |
+| ボットではないメンバーが会話に参加した | `on_members_added_activity` | これをオーバーライドして、会話に参加するメンバーを処理します。 |
+| ボットではないメンバーが会話から退出した | `on_members_removed_activity` | これをオーバーライドして、会話から退出メンバーを処理します。 |
+| イベント アクティビティを受信した | `on_event_activity` | `event` アクティビティで、イベントの種類に固有のハンドラーを呼び出します。 |
+| Token-response イベント アクティビティを受信した | `on_token_response_event` | これをオーバーライドして、トークン応答イベントを処理します。 |
+| Non-token-response イベント アクティビティを受信した | `on_event_activity` | これをオーバーライドして、その他の種類のイベントを処理します。 |
+| メッセージの反応アクティビティを受信した | `on_message_reaction_activity` | `messageReaction` アクティビティで、メッセージに対して 1 つ以上の反応が追加または削除された場合にハンドラーを呼び出します。 |
+| メッセージの反応がメッセージに追加された | `on_reactions_added` | これをオーバーライドして、メッセージに追加された反応を処理します。 |
+| メッセージの反応がメッセージから削除された | `on_reactions_removed` | これをオーバーライドして、メッセージから削除された反応を処理します。 |
+| 他のアクティビティの種類を受信した | `on_unrecognized_activity_type` | これをオーバーライドして、他の方法では処理されない任意のアクティビティの種類を処理します。 |
+
+このような各種ハンドラーにインバウンド アクティビティに関する情報を提供する `turn_context` があり、これはインバウンド HTTP 要求に対応しています。 アクティビティの種類もさまざまであるため、各ハンドラーが、そのターン コンテキスト パラメーターで厳密に型指定されたアクティビティを提供します。ほとんどの場合、`on_message_activity` は常に処理され通常は最も一般的です。
+
+このフレームワークの以前の 4.x バージョンでは、パブリック メソッド `on_turn` を実装するオプションもあります。 現在、このメソッドの基本実装はエラー チェックを処理し、各受信アクティビティの種類に応じて、特定のハンドラー (たとえば、このサンプルでは定義する 2 つのハンドラー) をそれぞれ呼び出します。 ほとんどの場合、このメソッドはそのままにして、個別のハンドラーを使用できますが、`on_turn` のカスタム実装が必要な場合でも、これは引き続き使用できます。
+
+> [!IMPORTANT]
+> `on_turn` メソッドをオーバーライドする場合は、`super().on_turn` を呼び出して、他のすべての `on_<activity>` ハンドラーを呼び出すための基本実装を取得するか、ご自身でこれらのハンドラーを呼び出す必要があります。 それ以外の場合、これらのハンドラーは呼び出されず、そのコードは実行されません。
+
+このサンプルでは、新しいユーザーを歓迎するか、`send_activity` 呼び出しを使用してユーザーが送信したメッセージをエコー バックします。 アウトバウンド アクティビティは、アウトバウンド HTTP POST 要求に対応します。
+
+```py
+class MyBot(ActivityHandler):
+    async def on_members_added_activity(
+        self, members_added: [ChannelAccount], turn_context: TurnContext
+    ):
+        for member in members_added:
+            if member.id != turn_context.activity.recipient.id:
+                await turn_context.send_activity("Hello and welcome!")
+
+    async def on_message_activity(self, turn_context: TurnContext):
+        return await turn_context.send_activity(
+            f"Echo: {turn_context.activity.text}"
+        )
 ```
 
 ---
@@ -366,6 +433,98 @@ server.post('/api/messages', (req, res) => {
         await myBot.run(context);
     });
 });
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+#### <a name="apppy"></a>app.py
+
+`app.py` では、ボットの設定のほか、ボット ロジックにアクティビティを転送するホスティング サービスの設定が行われます。
+
+#### <a name="required-libraries"></a>必要なライブラリ
+
+`app.py` ファイルの最上部に、必要な一連のモジュールまたはライブラリが表示されます。 これらのモジュールにより、お使いのアプリケーションに含める必要がある関数セットにアクセスできるようになります。
+
+```py
+from botbuilder.core import BotFrameworkAdapterSettings, TurnContext, BotFrameworkAdapter
+from botbuilder.schema import Activity, ActivityTypes
+
+from bots import MyBot
+
+# Create the loop and Flask app
+LOOP = asyncio.get_event_loop()
+app = Flask(__name__, instance_relative_config=True)
+app.config.from_object("config.DefaultConfig")
+```
+
+#### <a name="set-up-services"></a>サービスのセットアップ
+
+次のパートでは、サーバーとアダプターの設定が行われます。このサーバーとアダプターにより、お客様のボットがユーザーとやり取りして、応答を送信できます。 サーバーは、構成ファイルで指定したポートでリッスンするか、エミュレーターとの接続用の _3978_ にフォールバックします。 アダプターはご自身のボットのコンダクタとして機能し、送受信の通信、認証などを指示します。
+
+```py
+# Create adapter.
+# See https://aka.ms/about-bot-adapter to learn more about how bots work.
+SETTINGS = BotFrameworkAdapterSettings(app.config["APP_ID"], app.config["APP_PASSWORD"])
+ADAPTER = BotFrameworkAdapter(SETTINGS)
+
+# Catch-all for errors.
+async def on_error(context: TurnContext, error: Exception):
+    # This check writes out errors to console log .vs. app insights.
+    # NOTE: In production environment, you should consider logging this to Azure
+    #       application insights.
+    print(f"\n [on_turn_error] unhandled error: {error}", file=sys.stderr)
+
+    # Send a message to the user
+    await context.send_activity("The bot encountered an error or bug.")
+    await context.send_activity("To continue to run this bot, please fix the bot source code.")
+    # Send a trace activity if we're talking to the Bot Framework Emulator
+    if context.activity.channel_id == 'emulator':
+        # Create a trace activity that contains the error object
+        trace_activity = Activity(
+            label="TurnError",
+            name="on_turn_error Trace",
+            timestamp=datetime.utcnow(),
+            type=ActivityTypes.trace,
+            value=f"{error}",
+            value_type="https://www.botframework.com/schemas/error"
+        )
+        # Send a trace activity, which will be displayed in Bot Framework Emulator
+        await context.send_activity(trace_activity)
+
+ADAPTER.on_turn_error = on_error
+
+# Create the Bot
+BOT = MyBot()
+```
+
+#### <a name="forwarding-requests-to-the-bot-logic"></a>ボット ロジックへの要求のを転送
+
+受信アクティビティは、アダプターの `process_activity` によってボット ロジックに送信されます。
+`process_activity` 内の 3 番目のパラメーターは、受信された[アクティビティ](#the-activity-processing-stack)がアダプターによって事前処理され、任意のミドルウェアを介してルーティングされた後、ボット ロジックを実行するために呼び出される関数ハンドラーです。 ターン コンテキスト変数は引数として関数ハンドラーに渡され、受信アクティビティ、送信者と受信者、チャネル、会話などに関する情報を提供する目的で使用できます。アクティビティの処理は、ボットの `on_turn` メソッドにルーティングされます。 `on_turn` は `ActivityHandler` に定義され、エラー チェックをいくつか実行します。その後、受信アクティビティの種類に基づいてボットのイベント ハンドラーを呼び出します。
+
+```py
+# Listen for incoming requests on /api/messages
+@app.route("/api/messages", methods=["POST"])
+def messages():
+    # Main bot message handler.
+    if "application/json" in request.headers["Content-Type"]:
+        body = request.json
+    else:
+        return Response(status=415)
+
+    activity = Activity().deserialize(body)
+    auth_header = (
+        request.headers["Authorization"] if "Authorization" in request.headers else ""
+    )
+
+    try:
+        task = LOOP.create_task(
+            ADAPTER.process_activity(activity, auth_header, BOT.on_turn)
+        )
+        LOOP.run_until_complete(task)
+        return Response(status=201)
+    except Exception as exception:
+        raise exception
 ```
 
 ---

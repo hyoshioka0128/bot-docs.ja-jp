@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: daf5624f3ab327602ae75bcbbd00d4b527661ff4
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 5ef5901f778d34983e5725e983d39f14b6fa0014
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297737"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491300"
 ---
 # <a name="set-up-continuous-deployment"></a>Azure App Service での GIT による継続的なデプロイ
 
@@ -23,7 +23,7 @@ ms.locfileid: "70297737"
 この記事では、お使いのボットの継続的デプロイを構成する方法を示します。 継続的デプロイを有効にすると、コード変更をソース リポジトリから Azure に自動的にデプロイできます。 このトピックでは、GitHub に対して継続的デプロイを設定する方法を説明します。 その他のソース管理システムでの継続的デプロイの設定については、このページの下部にある「その他のリソース」セクションを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](http://portal.azure.com) を作成してください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://portal.azure.com) を作成してください。
 - 継続的デプロイを有効にする前に、[お使いのボットを Azure にデプロイする](bot-builder-deploy-az-cli.md)**必要があります**。
 
 ## <a name="prepare-your-repository"></a>リポジトリを準備する
@@ -33,6 +33,7 @@ ms.locfileid: "70297737"
 |:-------|:---------------------|
 | ASP.NET Core | .sln または .csproj |
 | Node.js | server.js、app.js、またはスタート スクリプトを含む package.json |
+| Python | app.py |
 
 
 ## <a name="continuous-deployment-using-github"></a>GitHub を使用した継続的デプロイ

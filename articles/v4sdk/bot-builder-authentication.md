@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/04/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 165eac6ac134a5807119c7a067b77fb7bc6e3282
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 4881de8f18cebb7a760061586296b948cf621929
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933703"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491551"
 ---
 <!-- 
 
@@ -85,7 +85,7 @@ Azure ボット リソースを作成する必要があります。また、以�
 <!-- Summarized from: https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features/ -->
 
 > [!IMPORTANT]
-> 次の重要な[セキュリティの考慮事項](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md#security-considerations)に留意してください。
+> こちらの重要な[セキュリティに関する考慮事項](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md#security-considerations)に留意してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -96,8 +96,8 @@ Azure ボット リソースを作成する必要があります。また、以�
 
 | サンプル | BotBuilder のバージョン | 対象 |
 |:---|:---:|:---|
-| [**CSharp**][cs-auth-sample] または [**JavaScript**][js-auth-sample] の**ボット認証** | v4 | OAuthCard サポート |
-| [**CSharp**][cs-msgraph-sample] または [**JavaScript**][js-msgraph-sample] の**ボット認証 MSGraph** | v4 |  OAuth 2 を使用した Microsoft Graph API サポート |
+| [**CSharp**][cs-auth-sample]、[**JavaScript**][js-auth-sample]、または [**Python**][python-auth-sample] の**ボット認証** | v4 | OAuthCard サポート |
+| [**CSharp**][cs-msgraph-sample]、[**JavaScript**][js-msgraph-sample]、または [**Python**](https://aka.ms/bot-auth-msgraph-python-sample-code) の**ボット認証 MSGraph**| v4 |  OAuth 2 を使用した Microsoft Graph API サポート |
 
 ## <a name="create-your-bot-resource-on-azure"></a>Azure でご自身のボット リソースを作成する
 
@@ -117,7 +117,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 次の手順を使用して、新しい Azure AD アプリケーションを作成します。 作成するアプリには v1 または v2 エンドポイントを使用できます。
 
 > [!TIP]
-> アプリケーションによって要求されたアクセス許可を委任することに同意できるテナントで、Azure AD アプリケーションを作成および登録する必要があります。
+> アプリケーションによって要求されたアクセス許可を委任することに同意できる、テナントで Azure AD プリケーションを作成し、登録する必要があります。
 
 1. Azure portal で [[Azure Active Directory]][azure-aad-blade] パネルを開きます。
     適切なテナントにいない場合は、 **[ディレクトリの切り替え]** をクリックして適切なテナントに切り替えます (テナントを作成する方法については、[ポータルへのアクセスとテナントの作成](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)に関するページをご覧ください)。
@@ -192,7 +192,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
     1. **[リソース URL]** に、「`https://graph.microsoft.com/`」と入力します。
     1. **[スコープ]** は空白のままにします。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 > [!NOTE]
 > これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。
@@ -221,7 +221,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
         > [!NOTE]
         > Azure AD v2 の場合、 **[スコープ]** はスペースで区切った値のリストであり、大文字と小文字が区別されます。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 > [!NOTE]
 > これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。
@@ -244,7 +244,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 <!-- TODO: Add guidance (once we have it) on how not to hard-code IDs and ABS auth. -->
 
-1. GitHub リポジトリから、使用したいサンプルを複製します: [**ボット認証**][cs-auth-sample] または [**ボット認証 MSGraph**][cs-msgraph-sample]。
+1. GitHub リポジトリから、使用したいサンプルを複製します: [**ボット認証**][cs-auth-sample]または[**ボット認証 MSGraph**][cs-msgraph-sample] を複製します。
 1. **appsettings.json** を更新します。
 
     - `ConnectionName` を、お使いのボットに追加した OAuth 接続設定の名前に設定します。
@@ -265,6 +265,18 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
       お使いのボット シークレットに含まれる文字によっては、パスワードを XML でエスケープすることが必要な場合があります。 たとえば、アンパサンド (&) は `&amp;` のようにエンコードする必要があります。
 
     [!code-txt[.env](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/.env)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+1. Github リポジトリから[**ボット認証**][python-auth-sample]サンプルを複製します。
+1. **config.py** を更新します。
+
+    - `ConnectionName` を、お使いのボットに追加した OAuth 接続設定の名前に設定します。
+    - `MicrosoftAppId` および `MicrosoftAppPassword` を、お使いのボットのアプリ ID とアプリ シークレットに設定します。
+
+      お使いのボット シークレットに含まれる文字によっては、パスワードを XML でエスケープすることが必要な場合があります。 たとえば、アンパサンド (&) は `&amp;` のようにエンコードする必要があります。
+
+    [!code-python[config](~/../botbuilder-python/samples/python/18.bot-authentication/config.py)]
 
 ---
 
@@ -310,7 +322,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 ---
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 ユーザーがボットに何らかの処理を要求し、それによってボットでユーザーのログインが必要になった場合、ボットによって `OAuthPrompt` が使用され、特定の接続に必要なトークンの取得が開始されます。 `OAuthPrompt` では、以下で構成されるトークン取得フローが作成されます。
 
@@ -367,6 +379,28 @@ OAuth プロンプトを、コンストラクター内の **MainDialog** に追�
 
 [!code-javascript[Get OAuthPrompt result](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=62-63)]
 
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+![ボット アーキテクチャ](media/how-to-auth/architecture-python.png)
+
+**dialogs/main_dialog.py**
+
+OAuth プロンプトを、コンストラクター内の **MainDialog** に追加します。 ここでは、接続名の値は **config.py** ファイルから取得されました。
+
+[!code-python[Add OAuthPrompt](~/../botbuilder-python/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=34-44)]
+
+ダイアログ ステップ内で、`begin_dialog` を使用して OAuth プロンプトを起動します。これによりユーザーのサインインが求められます。
+
+- ユーザーがサインイン済みの場合は、ユーザーに問い合わせることなく、トークン応答イベントが生成されます。
+- それ以外の場合は、ユーザーのサインインが求められます。 ユーザーがサインインを試みた後、Azure Bot Service によってトークン応答イベントが送信されます。
+
+[!code-python[Add OAuthPrompt](~/../botbuilder-python/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=49)]
+
+次のダイアログ ステップ内で、前のステップの結果としてトークンが存在することを確認します。 null でない場合、ユーザーは正常にサインインしています。
+
+[!code-python[Add OAuthPrompt](~/../botbuilder-python/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=54-65)]
+
 ---
 
 ### <a name="wait-for-a-tokenresponseevent"></a>TokenResponseEvent の待機
@@ -389,6 +423,14 @@ OAuth プロンプトを起動すると、そのプロンプトは、ユーザ�
 
 [!code-javascript[onTokenResponseEvent](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/bots/authBot.js?range=29-31)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bots/auth_bot.py**
+
+**AuthBot** は、トークン応答イベント アクティビティを明示的に処理します。 ここではアクティブなダイアログを続行します。これにより OAuth プロンプトでイベントを処理し、トークンを取得できます。
+
+[!code-python[on_token_response_event](~/../botbuilder-python/samples/python/18.bot-authentication/bots/auth_bot.py?range=38-44)]
+
 ---
 
 ### <a name="log-the-user-out"></a>ユーザーをログアウトする
@@ -407,6 +449,12 @@ OAuth プロンプトを起動すると、そのプロンプトは、ユーザ�
 
 [!code-javascript[Allow logout](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/logoutDialog.js?range=31-42&highlight=7)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs/logout_dialog.py**
+
+[!code-python[allow logout](~/../botbuilder-python/samples/python/18.bot-authentication/dialogs/logout_dialog.py?range=27-34&highlight=6)]
+
 ---
 
 ### <a name="adding-teams-authentication"></a>Teams 認証の追加
@@ -419,9 +467,14 @@ Teams は、OAuth に関して他のチャネルとは多少異なる動作を�
 **Bots/TeamsBot.cs**  
 [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight=1)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)  
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)   
+
 **bots/teamsBot.js**  
-[!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-32&highlight=3)]
+[!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=16-25&highlight=1)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+現在、Microsoft Teams は、認証とボットとの統合方法が若干異なります。 認証については、[Teams のドキュメント](https://aka.ms/teams-docs)を参照してください。
 
 ---
 
@@ -433,9 +486,14 @@ Teams は、OAuth に関して他のチャネルとは多少異なる動作を�
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)  
 **Bots/dialogBot.js**  
-[!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=4-6)]
+[!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=6)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+現在、Microsoft Teams は、認証とボットとの統合方法が若干異なります。 認証については、[Teams のドキュメント](https://aka.ms/teams-docs)を参照してください。
 
 ---
+
 最後に必ず、ボットのフォルダーの最上位レベルに適切な `TeamsActivityHandler` ファイル (C# ボットの場合は `TeamsActivityHandler.cs`、Javascript ボットの場合は `teamsActivityHandler.js`) を追加してください。
 
 `TeamsActivityHandler` は*メッセージの反応*アクティビティも送信します。 メッセージの反応アクティビティは、*返信先 ID* フィールドを使用して元のアクティビティを参照します。 このアクティビティは、Microsoft Teams の[アクティビティ フィード][teams-activity-feed]でも表示される必要があります。
@@ -443,7 +501,7 @@ Teams は、OAuth に関して他のチャネルとは多少異なる動作を�
 > [!NOTE]
 > マニフェストを作成して、`validDomains` セクションに `token.botframework.com` を含める必要があります。そうしないと、 OAuthCard の **[サインイン]** ボタンをクリックしても、認証ウィンドウは開きません。 [App Studio](https://docs.microsoft.com/microsoftteams/platform/get-started/get-started-app-studio) を使用して、マニフェストを生成してください。
 
-### <a name="further-reading"></a>参考資料
+### <a name="further-reading"></a>関連項目
 
 - 「[Bot Framework のその他のリソース](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help)」に追加サポートのリンクがあります。
 - [Bot Framework SDK](https://github.com/microsoft/botbuilder) のリポジトリでは、Bot Builder SDK に関連付けられているリポジトリ、サンプル、ツール、および仕様の詳細を確認できます。
@@ -464,6 +522,8 @@ Teams は、OAuth に関して他のチャネルとは多少異なる動作を�
 
 [cs-auth-sample]: https://aka.ms/v4cs-bot-auth-sample
 [js-auth-sample]: https://aka.ms/v4js-bot-auth-sample
+[python-auth-sample]: https://aka.ms/bot-auth-python-sample-code
+
 [cs-msgraph-sample]: https://aka.ms/v4cs-auth-msgraph-sample
 [js-msgraph-sample]: https://aka.ms/v4js-auth-msgraph-sample
 [cs-teams-auth-sample]:https://aka.ms/cs-teams-auth-sample

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8b98610c649f145aed975ed1d4b8eb0281d26016
-ms.sourcegitcommit: a4a437a1d44137375ea044dcc11bccc8d004e3db
+ms.openlocfilehash: c0e07dfa828854e44b2236aff2e1e17e60d69bfa
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479524"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491657"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -26,7 +26,7 @@ ms.locfileid: "74479524"
 
 - [ボットの基本](bot-builder-basics.md)、[LUIS][howto-luis]、および [QnA Maker][howto-qna] に関する知識。
 - [ディスパッチ ツール](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
-- **ディスパッチによる NLP** のコピー ([C# サンプル][cs-sample]または [JS サンプル][js-sample]のコード リポジトリ)。
+- **ディスパッチによる NLP** のコピー ([C# サンプル][cs-sample]、[JS サンプル][js-sample]、または [Python サンプル][python-sample]のコード リポジトリ)。
 - LUIS アプリを発行するための [luis.ai](https://www.luis.ai/) アカウント。
 - QnA ナレッジ ベースを発行するための [QnA Maker](https://www.qnamaker.ai/) アカウント。
 
@@ -54,6 +54,16 @@ ms.locfileid: "74479524"
 - `processWeather` -天気クエリ。
 - `processHomeAutomation` -家庭用照明コマンド。
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+![コード サンプル ロジック フロー](./media/tutorial-dispatch/dispatch-logic-flow-python.png)
+
+ユーザー入力を受け取るたびに、`on_message_activity` が呼び出されます。 このモジュールでは、最上位スコアのユーザーの意図を検索し、その結果を `_dispatch_to_top_intent` に渡します。 次に、_dispatch_to_top_intent によって、適切なアプリ ハンドラーが呼び出されます
+
+- `_process_sample_qna` - ボットの FAQ の質問。
+- `_process_weather` -天気クエリ。
+- `_process_home_automation` -家庭用照明コマンド。
+
 ---
 
 ハンドラーによって LUIS または QnA Maker サービスが呼び出され、生成された結果がユーザーに返されます。
@@ -62,7 +72,7 @@ ms.locfileid: "74479524"
 
 ディスパッチ モデルを作成するには、ご自身の LUIS アプリと QnA ナレッジ ベースを作成し、発行しておく必要があります。 この記事では、`\CognitiveModels` フォルダーの "_ディスパッチによる NLP_" サンプルに含まれる次のモデルを公開します。
 
-| 名前 | 説明 |
+| Name | [説明] |
 |------|------|
 | HomeAutomation | 関連付けられているエンティティ データによってホーム オートメーションの意図を認識する LUIS アプリ。|
 | Weather | 場所データによって天気関連の意図を認識する LUIS アプリ。|
@@ -298,6 +308,41 @@ LuisAPIHostName=<your-dispatch-app-region>
 
 すべての変更が完了したら、このファイルを保存します。
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+### <a name="installing-packages"></a>パッケージのインストール
+
+このアプリを初めて実行する前に、pypi パッケージをいくつかインストールする必要があります。
+
+```powershell
+pip install azure
+pip install botbuilder-core
+pip install botbuilder-ai
+```
+
+### <a name="manually-update-your-configpy-file"></a>config.py ファイルを手動で更新する
+すべてのサービス アプリが作成されたら、それぞれの情報を "config.py" ファイルに追加する必要があります。 この最初の [Python サンプル][python-sample] コードには、空の config.py ファイルが含まれています。 
+
+**config.py**
+
+[!code-python[config.py](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/config.py?range=10-24)]
+
+次に示すエンティティごとに、前の手順で記録した値を追加します。
+```python
+APP_ID = os.environ.get("MicrosoftAppId", "")
+APP_PASSWORD = os.environ.get("MicrosoftAppPassword", "")
+
+QNA_KNOWLEDGEBASE_ID = os.environ.get("QnAKnowledgebaseId", "<knowledge-base-id>")
+QNA_ENDPOINT_KEY = os.environ.get("QnAEndpointKey", "<qna-maker-resource-key>")
+QNA_ENDPOINT_HOST = os.environ.get("QnAEndpointHostName", "<your-hostname>")
+
+LUIS_APP_ID = os.environ.get("LuisAppId", "<app-id-for-dispatch-app>")
+LUIS_API_KEY = os.environ.get("LuisAPIKey", "<your-luis-endpoint-key>")
+# LUIS endpoint host name, ie "westus.api.cognitive.microsoft.com"
+LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-region>")
+```
+すべての変更が完了したら、このファイルを保存します。
+
 ---
 
 ### <a name="connect-to-the-services-from-your-bot"></a>ボットからサービスに接続する
@@ -320,6 +365,13 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 [!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-26)]
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+**dispatch_bot.py** では、ディスパッチ ボットを _QnAMaker_ および _LuisRecognizer_ サービスに接続するために、構成ファイル _config.py_ 内に含まれている情報が使用されます。 コンストラクターでは、ご自身で指定した値が、これらのサービスへの接続に使用されます。
+
+**bots/dispatch_bot.py**
+
+[!code-python[ReadConfigurationInfo](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=14-30)]
+
 ---
 
 > [!NOTE]
@@ -341,9 +393,15 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 **dispatchBot.js** の `onMessage` メソッドでは、ディスパッチ モデルに対してユーザー入力メッセージを確認し、_topIntent_ を検索します。次に、_dispatchToTopIntentAsync_ を呼び出して、これを渡します。
 
-**bots/dispatchBot.js**
-
 [!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=31-44)]
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dispatch_bot.py** ファイルでは、`on_message_activity` メソッドが呼び出されるたびに、受信ユーザー メッセージをディスパッチ モデルに対して確認します。 その後、ディスパッチ モデルの `top_intent` と `recognize_result` を適切なメソッドに渡して、サービスを呼び出し、結果を返します。
+
+**bots/dispatch_bot.py**
+
+[!code-python[on_message](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=46-54)]
 
 ---
 
@@ -372,6 +430,18 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 `q_sample-qna` メソッドが呼び出されると、turnContext 内に含まれるユーザー入力が、ナレッジ ベースからの応答の生成と、ユーザーへの結果の表示に使用されます。
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+モデルによって結果が生成されるとき、どのサービスが発話を最も適切に処理できるかが示されます。 このサンプルのコードでは、対応するサービスへの要求のルーティング方法を示すために、認識された最上位の "_意図_" が使用されます。
+
+**bots\dispatch_bot.py**
+
+[!code-python[dispatch top intent](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=56-70)]
+
+`_process_home_automation` または `_process_weather` のいずれかのメソッドが呼び出されると、_recognizer_result.properties["luisResult"]_ 内のディスパッチ モデルから結果が渡されます。 その後、指定されたメソッドによって、ユーザー フィードバックが提供されます。このフィードバックには、ディスパッチ モデルの最上位の意図と、検出された意図およびエンティティの一覧がランク付けされて示されています。
+
+`q_sample-qna` メソッドが呼び出されると、turnContext 内に含まれるユーザー入力が、ナレッジ ベースからの応答の生成と、ユーザーへの結果の表示に使用されます。
+
 ---
 
 > [!NOTE]
@@ -386,8 +456,8 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 1. **[マイ ボット]** リストでボット名を選択して、実行中のボットにアクセスします。 参考のために、ご自身のボット用に作成されたサービスに含まれる質問とコマンドの一部を次に示します。
 
     - QnA Maker
-      - `hi`、`good morning`
-      - `what are you`、`what do you do`
+      - `hi`, `good morning`
+      - `what are you`, `what do you do`
     - LUIS (ホーム オートメーション)
       - `turn on bedroom light`
       - `turn off bedroom light`
@@ -512,11 +582,14 @@ QnA Maker リソースを削除するには:
 
 <!-- Foot-note style links -->
 
+
+
 [howto-luis]: bot-builder-howto-v4-luis.md
 [howto-qna]: bot-builder-howto-qna.md
 
 [cs-sample]: https://aka.ms/dispatch-sample-cs
 [js-sample]: https://aka.ms/dispatch-sample-js
+[python-sample]: https://aka.ms/dispatch-sample-python
 
 [dispatch-readme]: https://aka.ms/dispatch-command-line-tool
 <!--[dispatch-evaluate]: https://aka.ms/dispatch-command-line-tool#evaluating-your-dispatch-model-->

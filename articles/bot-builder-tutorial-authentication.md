@@ -6,14 +6,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ROBOTS: NOINDEX
-ms.date: 10/04/2018
+ms.date: 11/14/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3bd411da4edd30b6045654884aeae5ae1cc4239f
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: 2d36a1465fd1a81b0c5f30bab52824a6130c215e
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890532"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491210"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
 
@@ -38,7 +38,7 @@ OAuth コントローラーのホスティングやトークンのライフサ�
 
 この記事の手順を応用して、このような機能を既存のボットに追加することができます。 以下は、新しい認証機能の例を示すサンプル ボットです
 
-| サンプル | BotBuilder のバージョン | 説明 |
+| サンプル | BotBuilder のバージョン | [説明] |
 |:---|:---:|:---|
 | [AadV1Bot](https://aka.ms/AadV1Bot) | v3 | Azure AD v1 エンドポイントを使用して、v3 C# SDK での OAuthCard サポートの例を示します |
 | [AadV2Bot](https://aka.ms/AadV2Bot) | v3 |  Azure AD v2 エンドポイントを使用して、v3 C# SDK での OAuthCard サポートの例を示します |
@@ -142,7 +142,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 # <a name="azure-ad-v1tabaadv1"></a>[Azure AD v1](#tab/aadv1)
 
-1. [Azure Portal](http://portal.azure.com/) で、ボットのリソース ページに移動します。
+1. [Azure Portal](https://portal.azure.com/) で、ボットのリソース ページに移動します。
 1. **[設定]** をクリックします。
 1. ページ下部付近の **[OAuth Connection Settings]\(OAuth 接続設定\)** で、 **[設定の追加]** をクリックします。
 1. 次のようにフォームに入力します。
@@ -160,14 +160,14 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
     1. **[リソース URL]** に、「`https://graph.microsoft.com/`」と入力します。
     1. **[スコープ]** は空白のままにします。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 > [!NOTE]
 > これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。
 
 # <a name="azure-ad-v2tabaadv2"></a>[Azure AD v2](#tab/aadv2)
 
-1. [Azure Portal](http://portal.azure.com/) で、ボットの [Bot Channels Registration]\(ボット チャネル登録\) ページに移動します。
+1. [Azure Portal](https://portal.azure.com/) で、ボットの [Bot Channels Registration]\(ボット チャネル登録\) ページに移動します。
 1. **[設定]** をクリックします。
 1. ページ下部付近の **[OAuth Connection Settings]\(OAuth 接続設定\)** で、 **[設定の追加]** をクリックします。
 1. 次のようにフォームに入力します。
@@ -185,7 +185,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
         > [!NOTE]
         > Azure AD v2 の場合、 **[スコープ]** はスペースで区切った値のリストであり、大文字と小文字が区別されます。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 > [!NOTE]
 > これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。

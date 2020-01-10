@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: daf1091bc33b160affaefcd8aef0ed5797581fbc
-ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
+ms.openlocfilehash: 3b7847fcc97f4a95587f7fa45f91ade93b0c1e38
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74415167"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491726"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 
@@ -23,7 +23,7 @@ ms.locfileid: "74415167"
 
 ## <a name="prerequisites"></a>前提条件
 - [LUIS](https://www.luis.ai) アカウント
-- この記事のコードは、**コア ボット** サンプルをベースにしています。 サンプルのコピー ( **[C#](https://aka.ms/cs-core-sample) または [JavaScript](https://aka.ms/js-core-sample)** ) が必要になります。 
+- この記事のコードは、**コア ボット** サンプルをベースにしています。 サンプルのコピー ( **[C#](https://aka.ms/cs-core-sample)** 、 **[JavaScript](https://aka.ms/js-core-sample)** 、または **[Python](https://aka.ms/python-core-sample)** ) が必要になります。 
 - [ボットの基本](bot-builder-basics.md)、[自然言語処理](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis)、および[ボット リソースの管理](bot-file-basics.md)に関する知識。
 
 ## <a name="about-this-sample"></a>このサンプルについて
@@ -38,7 +38,7 @@ ms.locfileid: "74415167"
 
 ![LUIS サンプル ロジック フロー](./media/how-to-luis/luis-logic-flow.png)
 
-`OnMessageActivityAsync` モジュールは、`Run` ダイアログ拡張メソッドによって適切なダイアログを実行します。 そして、メイン ダイアログは LUIS ヘルパーを呼び出して、最もスコアが高いユーザーの意図を見つけます。 ユーザー入力の最上位の意図によって "BookFlight" が返されると、ヘルパーは LUIS によって返されたユーザー情報を入力します。 その後、メイン ダイアログは `BookingDialog` を開始し、これにより、次のような追加情報を必要に応じてユーザーから取得します。
+`OnMessageActivityAsync` モジュールは、`Run` ダイアログ拡張メソッドによって適切なダイアログを実行します。 そして、メイン ダイアログは LUIS ヘルパーを呼び出して、最もスコアが高いユーザーの意図を見つけます。 ユーザー入力の最上位の意図によって "BookFlight" が返されると、ヘルパーは LUIS によって返されたユーザー情報を入力します。 その後、メイン ダイアログは `BookingDialog` を開始し、これにより、必要に応じて次のような追加情報をユーザーから取得します。
 
 - `Origin` 出発地
 - `TravelDate` 航空券の予約日
@@ -59,6 +59,20 @@ ms.locfileid: "74415167"
 - `destination` 到着地。
 - `origin` 出発地。
 - `travelDate` 航空券の予約日。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+ユーザー入力の処理が完了するたびに、`DialogBot` では `user_state` と `conversation_state` の両方の現在の状態が保存されます。 必要な情報がすべて収集されると、コード サンプルによりデモの航空券予約が作成されます。 この記事では、このサンプルの LUIS 部分について説明します。 ただし、サンプルの一般的なフローは次のようになります。
+
+- 新しいユーザーが接続され、ようこそカードを表示すると、`on_members_added_activity` が呼び出されます。 
+- ユーザー入力を受け取るたびに、`on_message_activity` が呼び出されます。
+
+![LUIS サンプル Python ロジック フロー](./media/how-to-luis/luis-logic-flow-python.png)
+
+`on_message_activity` モジュールは、`run_dialog` ダイアログ拡張メソッドによって適切なダイアログを実行します。 そして、メイン ダイアログは `LuisHelper` を呼び出して、最もスコアが高いユーザーの意図を見つけます。 ユーザー入力の最上位の意図によって "BookFlight" が返されると、ヘルパー関数は LUIS によって返されたユーザー情報を入力します。 その後、メイン ダイアログは `BookingDialog` を開始し、これにより、必要に応じて次のような追加情報をユーザーから取得します。
+
+- `destination` 到着地。
+- `origin` 出発地。
+- `travel_date` 航空券の予約日。
 
 ---
 
@@ -105,6 +119,12 @@ LUIS アプリにアクセスするために必要な情報 (アプリケーシ�
 **.env**  
 [!code[env](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/.env?range=1-5)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+LUIS アプリにアクセスするために必要な情報 (アプリケーション ID、オーサリング キー、リージョンなど) を `config.py` ファイルに追加します。 これらは、発行済みの LUIS アプリから先ほど保存した値です。 API ホスト名は `<your region>.api.cognitive.microsoft.com` 形式にする必要があることに注意してください。
+
+**config.py** [!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/config.py?range=14-19)]
+
 ---
 
 ## <a name="configure-your-bot-to-use-your-luis-app"></a>LUIS アプリを使用するためのボットの構成
@@ -137,6 +157,20 @@ LUIS サービスに接続するために、ボットは、上記で追加した
 
 From、To、および TravelDate を抽出するロジックは、`flightBookingRecognizer.js` 内のヘルパー メソッドとして実装されています。 これらのメソッドは、`mainDialog.js` から `flightBookingRecognizer.executeLuisQuery()` を呼び出した後に使用されます
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+お使いのプロジェクトに対して **botbuilder ai** pypi パッケージがインストールされていることを確認します。
+
+LUIS サービスに接続するために、ボットは、上記で追加した `config.py` ファイルの情報を使用します。 `FlightBookingRecognizer` クラスには、`config.py` ファイルからユーザーの設定をインポートするコードが含まれています。また、`recognize()` メソッドを呼び出すことで LUIS サービスにクエリを実行します。
+
+**flight_booking_recognizer.py**
+
+[!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/flight_booking_recognizer.py?range=8-32)]
+
+*From*、*To*、および *travel_date* を抽出するロジックは、`luis_helper.py` 内の `LuisHelper` クラスのヘルパー メソッドとして実装されています。 これらのメソッドは、`main_dialog.py` から `LuisHelper.execute_luis_query()` を呼び出した後に使用されます
+
+**helpers/luis_helper.py** [!code-python[luis helper](~/../botbuilder-python/samples/python/13.core-bot/helpers/luis_helper.py?range=30-102)]
+
 ---
 
 お客様のボットで使用するための LUIS の構成と接続が完了しました。
@@ -145,7 +179,7 @@ From、To、および TravelDate を抽出するロジックは、`flightBooking
 
 最新の [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme) をダウンロードしてインストールします
 
-1. ご自身のマシンを使ってローカルでサンプルを実行します。 手順については、readme ファイルで [C# サンプル](https://aka.ms/cs-core-sample)または [JS サンプル](https://aka.ms/js-core-sample)のいずれかを参照してください。
+1. ご自身のマシンを使ってローカルでサンプルを実行します。 手順については、README ファイルで [C# サンプル](https://aka.ms/cs-core-sample)、[JS サンプル](https://aka.ms/js-core-sample)、または [Python サンプル](https://aka.ms/python-core-sample)を参照してください。
 
 1. エミュレーターで、"パリの旅行する"、"パリからベルリンに移動する" などのメッセージを入力します。 FlightBooking.json ファイルの任意の発話を、意図 "Book flight" のトレーニングに使用します。
 
@@ -157,7 +191,7 @@ LUIS から返された最上位の意図が "Book flight" に解決されると
 
 この時点で、コードのボット ロジックはリセットされ、引き続き追加の予約を作成できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [QnA Maker を使用して質問に回答する](./bot-builder-howto-qna.md)

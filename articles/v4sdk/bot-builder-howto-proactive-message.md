@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 774738186127bff1e680d905d208b69097402d8e
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 24435d186569d29165760cf1d7d41ee50e665d06
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491479"
 ---
 # <a name="send-proactive-notifications-to-users"></a>ユーザーへのプロアクティブな通知の送信
 
@@ -34,7 +34,7 @@ ms.locfileid: "73933580"
 ## <a name="prerequisites"></a>前提条件
 
 - [ボットの基本](bot-builder-basics.md)を理解する。
-- プロアクティブ メッセージ サンプルのコピー ( **[C#](https://aka.ms/proactive-sample-cs) または [JavaScript](https://aka.ms/proactive-sample-js)** )。 このサンプルは、この記事でプロアクティブ メッセージングを説明するために使用します。
+- プロアクティブ メッセージ サンプルのコピー ([**C#** ](https://aka.ms/proactive-sample-cs)、[**JavaScript**](https://aka.ms/proactive-sample-js)、または [**Python**](https://aka.ms/bot-proactive-python-sample-code))。 このサンプルは、この記事でプロアクティブ メッセージングを説明するために使用します。
 
 ## <a name="about-the-proactive-sample"></a>プロアクティブ サンプルについて
 
@@ -59,6 +59,12 @@ ms.locfileid: "73933580"
 [!code-javascript[onConversationUpdateActivity](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/bots/proactiveBot.js?range=13-17&highlight=2)]
 
 [!code-javascript[onConversationUpdateActivity](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/bots/proactiveBot.js?range=41-44&highlight=2-3)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bots/proactive_bot.py** [!code-python[on_conversation_update_activity](~/../botbuilder-python/samples/python/16.proactive-messages/bots/proactive_bot.py?range=14-16&highlight=2)]
+
+[!code-python[on_conversation_update_activity](~/../botbuilder-python/samples/python/16.proactive-messages/bots/proactive_bot.py?range=35-45)]
 
 ---
 
@@ -95,6 +101,14 @@ ms.locfileid: "73933580"
 
 [!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=68-80&highlight=4-6)]
 
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+ボットの通知ページが要求されるたびに、サーバーは、ディクショナリから会話の参照を取得します。
+次に、サーバーは `_send_proactive_message` を使用して、プロアクティブ メッセージを送信します。
+
+**app.py** [!code-python[Notify logic](~/../botbuilder-python/samples/python/16.proactive-messages/app.py?range=104-110&highlight=3-7)]
+
 ---
 
 ## <a name="test-your-bot"></a>ボットをテストする
@@ -104,13 +118,13 @@ ms.locfileid: "73933580"
 1. エミュレーターを起動し、お使いのボットに接続します。
 1. お使いのボットの API/通知ページに読み込みます。 これによりエミュレーターでプロアクティブ メッセージが生成されます。
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 この記事のサンプル以外の追加サンプルについては、[GitHub](https://github.com/Microsoft/BotBuilder-Samples/) の C# および JS で入手できます。
 
 ### <a name="avoiding-401-unauthorized-errors"></a>401 "未承認" エラーの防止 
 
-BotAuthentication によって受信要求が認証されている場合、既定では、BotBuilder SDK は、信頼されたホスト名の一覧に `serviceUrl` を追加します。 これらはメモリ内キャッシュに保持されています。 お使いのボットを再起動すると、再起動したボットにもう一度情報を伝達しない限り、プロアクティブ メッセージを待っているユーザーがそのメッセージを受信できません。 
+BotAuthentication によって受信要求が認証されている場合、既定では、BotBuilder SDK は、信頼されたホスト名の一覧に `serviceUrl` を追加します。 これらはメモリ内キャッシュに保持されています。 お使いのボットを再起動すると、再起動したボットにもう一度情報を伝達しない限り、プロアクティブ メッセージを待っているユーザーがそのメッセージを受信できません。
 
 これを回避するには、次を使用して、信頼されたホスト名の一覧に `serviceUrl` を手動で追加する必要があります。 
 
@@ -134,9 +148,19 @@ MicrosoftAppCredentials.trustServiceUrl(serviceUrl);
 
 上記のコードを、プロアクティブ メッセージを送信するコードの直前に追加します。 [プロアクティブ メッセージ サンプル](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/16.proactive-messages)では、`index.js` 内で `await turnContext.sendActivity('proactive hello');` の直前に配置します。
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```python
+MicrosoftAppCredentials.trustServiceUrl(serviceUrl)
+```
+
+プロアクティブなメッセージングについては、`serviceUrl` はプロアクティブ メッセージの受信者が使用しているチャネルの URL で、`activity.serviceUrl` にあります。
+
+上記のコードを、プロアクティブ メッセージを送信するコードの直前に追加します。 [プロアクティブ メッセージ サンプル](https://aka.ms/bot-proactive-python-sample-code)では、*proactive hello* メッセージを送信する前に、`app.py` にそれを追加します。
+
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [連続して行われる会話フローの実装](bot-builder-dialog-manage-conversation-flow.md)

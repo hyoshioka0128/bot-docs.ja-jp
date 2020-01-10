@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ec56a36feb747160e1a82f9831aa323074d46801
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 51a77c9f95bdf8d77f87d081704284c5f7584df3
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491513"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>ブランチとループを使用して高度な会話フローを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "73933619"
 ## <a name="prerequisites"></a>前提条件
 
 - [ボットの基本][concept-basics]、[状態の管理][concept-state]、[ダイアログ ライブラリ][concept-dialogs]、および[連続して行われる会話フローを実装][simple-dialog]する方法に関する知識。
-- 複雑なダイアログ サンプルのコピー ([**C#** ][cs-sample] または [**JavaScript**][js-sample])。
+- 複雑なダイアログ サンプルのコピー ([**C#** ][cs-sample]、[**JavaScript**][js-sample]、または [**Python**][python-sample])。
 
 ## <a name="about-this-sample"></a>このサンプルについて
 
@@ -73,13 +73,29 @@ ms.locfileid: "73933619"
 
 **index.js**
 
+次に示す、ボット用の必要なサービスを作成します。
+
+- 基本サービス: アダプターおよびボット実装
+- 状態管理: ストレージ、ユーザー状態、および会話状態。
+- ダイアログ: ボットは、会話を管理するためにこれらを使用します
+
+[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=26-65)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+![複雑なボットのフロー](./media/complex-conversation-flow-python.png)
+
+ダイアログを使用するには、プロジェクトで `pip install botbuilder-dialogs` を実行して **botbuilder-dialogs** pypi パッケージをインストールする必要があります。
+
+**app.py**
+
 コードの他の部分が必要とするボット用サービスを作成します。
 
 - ボット用の基本サービス: アダプターおよびボット実装。
 - 状態を管理するためのサービス: ストレージ、ユーザー状態、および会話の状態。
 - ボットで使用されるダイアログ。
 
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=26-65)]
+[!code-python[ConfigureServices](~/../botbuilder-python/samples/python/43.complex-dialog/app.py?range=28-75)]
 
 ---
 
@@ -100,6 +116,13 @@ ms.locfileid: "73933619"
 **userProfile.js**
 
 [!code-javascript[UserProfile class](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/userProfile.js?range=4-12)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**data_models/user_profile.py**
+
+[!code-python[UserProfile class](~/../botbuilder-python/samples/python/43.complex-dialog/data_models/user_profile.py?range=7-13)]
+
 
 ---
 
@@ -169,6 +192,38 @@ review-selection ダイアログは最上位レベルのダイアログの `star
 
 [!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=33-78)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs\main_dialog.py**
+
+コンポーネント ダイアログ `MainDialog` の定義が完了しました。これにはメイン ステップがいくつか含まれ、ダイアログとプロンプトの動作がこれにより指示されます。 最初のステップでは `TopLevelDialog` が呼び出されます。これについては以下で説明します。
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/main_dialog.py?range=29-50&highlight=4)]
+
+**dialogs\top_level_dialog.py**
+
+最初の最上位レベルのダイアログには 4 つのステップがあります。
+
+1. ユーザー名の入力を求めます。
+1. ユーザーの年齢の入力を求めます。
+1. ユーザーの年齢に基づいて分岐します。
+1. 最後に、ユーザーが参加してくれたことに対してお礼を述べ、収集した情報を返します。
+
+最初のステップで、ユーザーのプロファイルをクリアします。これによりダイアログは空のプロファイルで毎回開始されます。 最後のステップでは終了時に情報が返されるため、`acknowledgementStep` は、その情報をユーザー状態に保存し、最後のステップで使用できるようにメイン ダイアログに返すことで終了します。
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=43-95&highlight=2-3,43-44,52)]
+
+**dialogs/review_selection_dialog.py**
+
+review-selection ダイアログは最上位レベルのダイアログの `startSelectionStep` から開始され、2 つのステップがあります。
+
+1. ユーザーに対して、レビューする会社を選択するか、`done` を選択して完了するよう求めます。
+1. 必要に応じて、このダイアログを繰り返すか終了します。
+
+この設計では、スタック上で、最上位レベルのダイアログが必ず review-selection ダイアログに先行するため、review-selection ダイアログは、最上位レベル ダイアログの子と見なすことができます。
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=42-99)]
+
 ---
 
 ## <a name="implement-the-code-to-manage-the-dialog"></a>ダイアログを管理するコードを実装する
@@ -232,6 +287,20 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 [!code-javascript[On members added](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogAndWelcomeBot.js?range=10-21)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bots/dialog_bot.py**
+
+メッセージ ハンドラーでは、ダイアログ管理のために `run_dialog` メソッドが呼び出されます。ターンの途中に発生した可能性のある会話およびユーザー状態に対する変更を保存するために、ターン ハンドラーをオーバーライドしました。 基本 `on_turn` によって `on_message_activity` メソッドが呼び出されます。これにより、そのターンの最後に保存呼び出しが確実に行われます。
+
+[!code-python[Overrides](~/../botbuilder-python/samples/python/43.complex-dialog/bots/dialog_bot.py?range=29-41&highlight=32-34)]
+
+**bots/dialog_and_welcome_bot.py**
+
+`DialogAndWelcomeBot` によって上記の `DialogBot` が拡張され、ユーザーが会話に参加したときにウェルカム メッセージが示されます。これは `config.py` で作成されます。
+
+[!code-python[on_members_added](~/../botbuilder-python/samples/python/43.complex-dialog/bots/dialog_and_welcome_bot.py?range=28-39)]
+
 ---
 
 ## <a name="branch-and-loop"></a>分岐とループ
@@ -264,6 +333,20 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 [!code-javascript[looping logic](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=71-77)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs/top_level_dialog.py**
+
+"_最上位レベル_" ダイアログのステップの分岐ロジック サンプルを次に示します。
+
+[!code-python[branching logic](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=71-80)]
+
+**dialogs/review_selection_dialog.py**
+
+"_選択内容の確認_" ダイアログのステップのループ ロジック サンプルを次に示します。
+
+[!code-python[looping logic](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=93-98)]
+
 ---
 
 ## <a name="to-test-the-bot"></a>ボットをテストする
@@ -283,7 +366,7 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 ご自身のダイアログ コードを簡素化し、複数のボットで再利用するために、ダイアログ セットの一部を別のクラスとして定義できます。
 詳細については、[ダイアログの再利用][component-dialogs]に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ダイアログの再利用](bot-builder-compositcontrol.md)
@@ -300,3 +383,4 @@ Since component dialog defines an inner dialog set, we have to create an outer d
 
 [cs-sample]: https://aka.ms/cs-complex-dialog-sample
 [js-sample]: https://aka.ms/js-complex-dialog-sample
+[python-sample]: https://aka.ms/python-complex-dialog-sample
