@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 422c1285d6f668b6f5c39617f5d25419b2874eea
-ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
+ms.openlocfilehash: c22e0b8413fc0bcfb4ced330470d88a8a4fbea81
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74410485"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491433"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>チュートリアル:ボットで QnA Maker を使用して質問に回答する
 
@@ -75,7 +75,7 @@ Authorization: EndpointKey <qna-maker-resource-key>
 ボットでナレッジ ベースを使用できる状態になりました。
 
 ## <a name="add-knowledge-base-information-to-your-bot"></a>ナレッジ ベースの情報をボットに追加する
-Bot Framework v4.3 以降、Azure では、ダウンロードされたボットのソース コードの一部として .bot ファイルが提供されなくなりました。 次の手順に従って、CSharp または JavaScript ボットをナレッジ ベースに接続します。
+Bot Framework v4.3 以降、Azure では、ダウンロードされたボットのソース コードの一部として .bot ファイルが提供されなくなりました。 次の手順に従って、CSharp、JavaScript、または Python のボットをナレッジ ベースに接続します。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -107,13 +107,29 @@ QnAAuthKey="qna-maker-resource-key"
 QnAEndpointHostName="your-hostname" // This is a URL ending in /qnamaker
 ```
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+次の値を `config.py` ファイルに追加します。
+
+```python
+class DefaultConfig:
+    """ Bot Configuration """
+    PORT = 3978
+    APP_ID = os.environ.get("MicrosoftAppId", "")
+    APP_PASSWORD = os.environ.get("MicrosoftAppPassword", "")
+
+    QNA_KNOWLEDGEBASE_ID = os.environ.get("QnAKnowledgebaseId", "")
+    QNA_ENDPOINT_KEY = os.environ.get("QnAEndpointKey", "")
+    QNA_ENDPOINT_HOST = os.environ.get("QnAEndpointHostName", "")
+
+```
+
 ---
 
 | フィールド | 値 |
 |:----|:----|
-| QnAKnowledgebaseId | *Postman* HTTP サンプル要求の `knowledge-base-id`。|
-| QnAAuthKey | *Postman* HTTP サンプル要求の `qna-maker-resource-key`。 |
-| QnAEndpointHostName | *Postman* HTTP サンプル要求の `your-hostname`。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 完全な URL 文字列は `https://<your knowledge base name>.azurewebsites.net/qnamaker` のようになります。 |
+
+| QnAKnowledgebaseId | QnA Maker ポータルで自動的に生成されたナレッジ ベース ID。 | | QnAAuthKey (Python の QnAEndpointKey)  | QnA Maker ポータルで自動的に生成されたエンドポイント キー。 | | QnAEndpointHostName | QnA Maker ポータルで生成されたホスト URL。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。 |
 
 編集結果を保存します。
 
@@ -284,6 +300,81 @@ QnAEndpointHostName="your-hostname" // This is a URL ending in /qnamaker
     });
     ```
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+1. サンプル リポジトリの README ファイルで説明されているようにパッケージをインストールしたことを確認します。
+1. 次に示すように、`botbuilder-ai` 参照を `requirements.txt` ファイルに追加します。
+
+   **requirements.txt**
+   <!-- Removed version numbers -->
+   ```text
+      botbuilder-core
+      botbuilder-ai
+      flask
+   ```
+
+   バージョンは異なる場合があることに注意してください。
+
+1. `app.py` ファイルで、次に示すようにボット インスタンスの作成を変更します。
+
+   **app.py**
+
+   ```python
+   # Create the main dialog
+   BOT = MyBot(APP.config)
+   ```
+
+1. 次に示すように、`bot.py` ファイルで `QnAMaker` と `QnAMakerEndpoint` をインポートし、さらに `Config` もインポートします。
+
+   **bot.py**
+
+   ```python
+   from flask import Config
+
+   from botbuilder.ai.qna import QnAMaker, QnAMakerEndpoint
+   from botbuilder.core import ActivityHandler, MessageFactory, TurnContext
+   from botbuilder.schema import ChannelAccount
+   ```
+
+1. `config.py` ファイルに指定されている構成パラメーターを 使用して  オブジェクトをインスタンス化するための `config.py`init 関数を追加します。  
+
+   **bot.py**
+
+   ```python
+   def __init__(self, config: Config):
+      self.qna_maker = QnAMaker(
+         QnAMakerEndpoint(
+            knowledge_base_id=config["QNA_KNOWLEDGEBASE_ID"],
+            endpoint_key=config["QNA_ENDPOINT_KEY"],
+            host=config["QNA_ENDPOINT_HOST"],
+      )
+   )
+
+   ```
+
+1. 回答を得るためにナレッジ ベースに対してクエリを実行するように `on_message_activity` を更新します。 各ユーザー入力を QnA Maker ナレッジ ベースに渡し、最初の QnA Maker の応答をユーザーに返します。
+
+   **bot.py**
+
+   ```python
+   async def on_message_activity(self, turn_context: TurnContext):
+      # The actual call to the QnA Maker service.
+      response = await self.qna_maker.get_answers(turn_context)
+      if response and len(response) > 0:
+         await turn_context.send_activity(MessageFactory.text(response[0].answer))
+      else:
+         await turn_context.send_activity("No QnA Maker answers were found.")
+
+   ```
+
+1. 必要に応じて `on_members_added_activity` のウェルカム メッセージを更新します。次に例を示します。
+
+   **bot.py**
+
+   ```python
+   await turn_context.send_activity("Hello and welcome to QnA!")
+   ```
+
 ---
 
 ### <a name="test-the-bot-locally"></a>ボットをローカルでテストする
@@ -302,6 +393,7 @@ QnAEndpointHostName="your-hostname" // This is a URL ending in /qnamaker
 > Before creating a zip of your project files, make sure that you are _in_ the correct folder. 
 > - For C# bots, it is the folder that has the .csproj file. 
 > - For JS bots, it is the folder that has the app.js or index.js file. 
+> - For Python bots, it is the folder that has the app.py file. 
 >
 > Select all the files and zip them up while in that folder, then run the command while still in that folder.
 >
@@ -319,16 +411,18 @@ az webapp deployment source config-zip --resource-group "resource-group-name" --
 
 [!INCLUDE [publish snippet](~/includes/deploy/snippet-publish-js.md)]
 
---- -->
+# [Python](#tab/python)
 
-### <a name="test-the-published-bot"></a>公開したボットをテストする
+az webapp deployment source config-zip --resource-group "resource_group_name" --name "unique_bot_name" --src "zi
 
-ボットを公開した後、Azure でボットが更新されて開始されるまで、1、2 分待ちます。
+### Test the published bot
 
-エミュレーターを使用してボットの運用エンドポイントをテストするか、または Azure portal を使用して Web チャットでボットをテストします。
-いずれの場合も、ローカル環境でテストしたときと同じ動作になるはずです。
+After you publish the bot, give Azure a minute or two to update and start the bot.
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+Use the Emulator to test the production endpoint for your bot, or use the Azure portal to test the bot in Web Chat.
+In either case, you should see the same behavior as you did when you tested it locally.
+
+## Clean up resources
 
 <!-- In the first tutorial, we should tell them to use a new resource group, so that it is easy to clean up resources. We should also mention in this step in the first tutorial not to clean up resources if they are continuing with the sequence. -->
 
@@ -338,7 +432,7 @@ az webapp deployment source config-zip --resource-group "resource-group-name" --
 2. **[リソース グループの削除]** をクリックして、グループとそれに含まれるすべてのリソースを削除します。
 3. 確認ウィンドウでリソース グループ名を入力して、 **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ボットに機能を追加する方法については、開発ハウツー セクションの**テキスト メッセージの送受信**に関する記事と、その他の記事をご覧ください。
 > [!div class="nextstepaction"]
