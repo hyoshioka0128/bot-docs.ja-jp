@@ -54,6 +54,7 @@
 ### [ボットのカスタム ストレージの実装](v4sdk/bot-builder-custom-storage.md)
 ### [ボットへのテレメトリの追加](v4sdk/bot-builder-telemetry.md)
 ### [QnA ボットへのテレメトリの追加](v4sdk/bot-builder-telemetry-QnAMaker.md)
+### [ボットのテレメトリ データを分析する](v4sdk/bot-builder-telemetry-analytics-queries.md)
 ### [ボットで Direct Line Speech を使用する](directline-speech-bot.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
