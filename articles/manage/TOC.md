@@ -10,6 +10,7 @@
 ### [Direct Line Speech に接続する](../bot-service-channel-connect-directlinespeech.md)
 ### [Direct Line App Service 拡張機能](../bot-service-channel-directline-extension.md)
 #### [拡張機能のための .NET ボットの構成](../bot-service-channel-directline-extension-net-bot.md)
+#### [拡張機能のための Node.js ボットの構成](../bot-service-channel-directline-extension-node-bot.md)
 #### [拡張機能を使用した .NET クライアントの作成](../bot-service-channel-directline-extension-net-client.md)
 #### [WebChat で拡張機能を使用する](../bot-service-channel-directline-extension-webchat-client.md)
 #### [VNET 内で拡張機能を使用する](../bot-service-channel-directline-extension-vnet.md)
