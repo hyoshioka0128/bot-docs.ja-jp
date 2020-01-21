@@ -1,5 +1,5 @@
 ---
-title: ボットのセキュリティ保護 | Microsoft Docs
+title: ボットのセキュリティ保護 - Bot Service
 description: HTTPS と Bot Framework 認証を使用して、ボットをセキュリティで保護する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0465a10082d164e2090a33c9ba20bde2abfaf874
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: fde01bafdb20daf50ce0eb6d83ae6248f2a2a0a7
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297220"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798538"
 ---
 # <a name="secure-your-bot"></a>ボットのセキュリティ保護
 

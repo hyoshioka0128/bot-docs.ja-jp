@@ -1,5 +1,5 @@
 ---
-title: ボットを Cortana に接続する | Microsoft Docs
+title: ボットを Cortana に接続する - Bot Service
 description: Cortana インターフェイスを介してアクセスできるようにボットを構成する方法について説明します。
 keywords: cortana, ボット チャンネル, cortana の構成
 author: RobStand
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/22/2019
-ms.openlocfilehash: 912f913f5fa09d971ba1e87e31736292f707adc2
-ms.sourcegitcommit: 78da125eafe93b3c6d254708b82bdd01de7c3afb
+ms.openlocfilehash: 5d7823697262e37619ca6c82bf9582449ea4bdde
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464278"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789671"
 ---
 # <a name="connect-a-bot-to-cortana"></a>ボットを Cortana に接続する
 
@@ -27,7 +27,7 @@ Cortana チャンネルを追加するには、[Azure portal](https://portal.azu
 
 ボットを Cortana チャンネルに接続すると、登録フォームにボットの基本情報が自動的に入力されます。 この情報を入念に確認してください。 このフォームは次のフィールドで構成されます。
 
-| フィールド | 説明 |
+| フィールド | [説明] |
 |------|------|
 | **[スキル] アイコン** | スキルが呼び出されたときに Cortana のキャンバスに表示されるアイコン。 これは、スキルを発見可能な場所 (Microsoft Store など) でも使用されます (最大 32 KB、PNG のみ)。|
 | **[表示名]** | Cortana スキルの名前は、ビジュアル UI の上部に表示されます (最大 30 文字)。 |
@@ -106,7 +106,7 @@ Cortana スキルの登録フォームへの入力が完了したら、 **[Deplo
 
 次に、ボットのスキルを有効化し、アカウントへの接続を承認する必要があります。 Cortana アプリで「ask *呼び出し名*」と話しかけるか、入力します。この "呼び出し名" は、Azure portal の Cortana チャネルで構成したものです。 ボットのスキルの接続を許可するよう Cortana から求められます。 "はい" を選択して許可すると、スキルが有効になり、Cortana のスキル一覧に表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Cortana Skills Kit](https://aka.ms/CortanaSkillsKitOverview)
 * [デバッグの有効化](bot-service-debug-cortana-skill.md)

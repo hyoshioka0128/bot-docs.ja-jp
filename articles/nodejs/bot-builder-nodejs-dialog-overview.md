@@ -1,5 +1,5 @@
 ---
-title: ダイアログの概要 | Microsoft Docs
+title: ダイアログの概要 (v3 JS) - Bot Service
 description: Bot Framework SDK for Node.js 内でダイアログを使用して会話をモデル化し、会話フローを管理する方法を学習します。
 author: DucVo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9ec846c5d464821538902dd726e8b9ee68d4bae1
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: be983482273eaaa5be79f7c4100dcd4741f62469
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299871"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790924"
 ---
 # <a name="dialogs-in-the-bot-framework-sdk-for-nodejs"></a>Bot Framework SDK for Node.js のダイアログ
 
@@ -21,7 +21,7 @@ ms.locfileid: "70299871"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-dialogs.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-dialog-overview.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-dialog-overview.md)
 
 Bot Framework SDK for Node.js 内でダイアログを使用すると、会話をモデル化し、会話フローを管理できます。 ボットは会話を通じてユーザーとコミュニケーションを取ります。 会話はダイアログに編成されます。 ダイアログには、ウォーターフォール手順とプロンプトを含めることができます。 ユーザーがボットとやりとりすると、ボットはユーザーのメッセージに応じてさまざまなダイアログの開始、停止、切り替えを行います。 ダイアログのしくみを理解することは、優れたボットを適切に設計し、作成するために重要です。 
 
@@ -92,7 +92,7 @@ bot.dialog('greetings', [
 
 ボットがダイアログを終了することなくウォーターフォールの最後に到達した後に、ユーザーから次のメッセージが入力されると、ウォーターフォールの手順 1 からそのダイアログは再開されます。 その結果、ユーザーがループに閉じ込められているように感じ、不満につながる可能性があります。 このような状況を回避するには、会話またはダイアログが終了したときは、`endDialog`、`endDialogWithResult`、または `endConversation` を明示的に呼び出すことをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ダイアログの知識を深めるには、ウォーターフォール パターンのしくみや、それを使用してプロセスを介してユーザーを誘導する方法を理解することが重要です。
 

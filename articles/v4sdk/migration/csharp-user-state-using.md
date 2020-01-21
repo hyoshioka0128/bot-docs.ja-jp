@@ -1,5 +1,5 @@
 ---
-title: v4 ボットで .NET v3 ユーザー状態を使用する | Microsoft Docs
+title: v4 ボットで .NET v3 ユーザー状態を使用する - Bot Service
 description: v4 ボットで v3 ユーザー状態を使用する方法の例
 keywords: Csharp, ボットの移行, v3 ボット
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/21/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1bae27b9cf2bdc6a53a5c55fe7458802729160c1
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: 51aef13bee896feeb901040cef641f7b1011dbd5
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026701"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798085"
 ---
 # <a name="using-net-v3-user-state-in-a-v4-bot"></a>v4 ボットで .NET v3 ユーザー状態を使用する
 
@@ -137,7 +137,7 @@ ms.locfileid: "70026701"
 - ボットの URL として `http://localhost:3978/api/messages` を入力します。
 
 
-## <a name="further-reading"></a>参考資料
+## <a name="further-reading"></a>関連項目
 
 - [Azure Bot Service のドキュメント][21]
 - [ボットの状態][7]

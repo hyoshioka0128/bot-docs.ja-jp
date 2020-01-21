@@ -1,5 +1,5 @@
 ---
-title: Bot Framework 認証のトラブルシューティング | Microsoft Docs
+title: Bot Framework 認証のトラブルシューティング - Bot Service
 description: ボットの認証エラーをトラブルシューティングする方法について説明します。
 author: DeniseMak
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/30/2019
-ms.openlocfilehash: c929a97175858f8e159b660346cb897183bbcf73
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: eda2e2887eddce7c113ff69871162a6b67cc398e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297452"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796925"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Bot Framework 認証のトラブルシューティング
 
@@ -104,7 +104,7 @@ const adapter = new BotFrameworkAdapter({
 * エミュレーター設定で、 **[Microsoft アプリ ID]** フィールドと **[Microsoft アプリ パスワード]** フィールドの値が指定されている。 どちらのフィールドも、空にする必要があります。
 * ボットのセキュリティが無効になっていない。 ボットのアプリ ID とパスワードの値が、両方とも指定されていないことを[確認](#disable-security-localhost)します。
 
-## <a id="step-2"></a>手順 2: ボットのアプリ ID とパスワードを確認する
+## <a id="step-2"></a> ステップ 2:ボットのアプリ ID とパスワードを確認する
 
 この手順では、ボットが認証のために使用するアプリ ID とパスワードが有効であることを確認します (これらの値がわからない場合は、今すぐ[取得](#PW)してください)。 
 

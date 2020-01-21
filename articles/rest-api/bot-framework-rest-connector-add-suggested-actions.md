@@ -1,5 +1,5 @@
 ---
-title: メッセージへの推奨されるアクションの追加 | Microsoft Docs
+title: メッセージへの推奨されるアクションの追加 - Bot Service
 description: Bot Connector サービスを使用して、推奨されるアクションをメッセージに追加する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,17 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: b8b0eb454b77332a8b19104af78d9553582ab854
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: ea8c76df736678754db95d7306605f5ef10b6a11
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037144"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790083"
 ---
 # <a name="add-suggested-actions-to-messages"></a>メッセージへの推奨されるアクションの追加
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-suggested-actions.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-send-suggested-actions.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-send-suggested-actions.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-suggested-actions.md)
 
 [!INCLUDE [Introduction to suggested actions](../includes/snippet-suggested-actions-intro.md)]

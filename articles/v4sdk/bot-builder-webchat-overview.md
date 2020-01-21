@@ -1,5 +1,5 @@
 ---
-title: Web チャットの概要 | Microsoft Docs
+title: Web チャットの概要 - Bot Service
 description: Bot Framework の Web チャットを構成する方法について学習します。
 keywords: bot framework, web チャット, チャット, サンプル, react, リファレンス
 author: ivorb
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/07/2019
-ms.openlocfilehash: e5a6320a645f55fe9e023688af23ec8fe62e3006
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: e04ba2abe8d92246149cb6b7bfa185826448d71e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037385"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791154"
 ---
 # <a name="web-chat-overview"></a>Web チャットの概要
 
@@ -160,7 +160,7 @@ v3 から v4 に移行する際に、移行される可能性があるパスは 
 
 Web チャットの v4 に関して私たちのチームが気に入っていることの 1 つは、**Web チャットをフォークする必要なく**カスタマイズを追加できることです。 これにより、以前 Web チャットをフォークした v3 ユーザーに追加のオーバーヘッドが発生しますが、私たちは、バージョンアップを行うお客様をサポートするために最善を尽くします。 次の推奨事項を使用してください。
 
--  サンプルの実装[ `01.c.getting-started-migration`](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples/01.c.getting-started-migration)をご覧ください。 これは、Web チャットを起動して実行するための優れた出発点です。
+-  サンプルの実装[`01.c.getting-started-migration`](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples/01.c.getting-started-migration)をご覧ください。 これは、Web チャットを起動して実行するための優れた出発点です。
 -  次に、[サンプル リスト](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples)を調べて、カスタマイズ要件と、Web チャットが既にサポートしているものを比較してください。 これらのサンプルは、Web チャットでよく寄せられる機能で構成されています。
 -  サンプルの 1 つ以上の機能が利用できない場合、[未解決の問題と終了した問題](https://github.com/Microsoft/BotFramework-WebChat/issues?utf8=%E2%9C%93&q=is%3Aissue+)、[サンプル ラベル](https://github.com/Microsoft/BotFramework-WebChat/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3ASample)、[移行サポート ラベル](https://github.com/Microsoft/BotFramework-WebChat/issues?q=is%3Aissue+migrate+label%3A%22Migration+Support%22)を調べて、探している機能のサンプル リクエストやカスタマイズ サポートを検索してください。 未解決の問題にコメントを追加すると、チームは需要の高い要求に優先順位を付けるのに役立ちます。また、コミュニティへの参加をお勧めします。
 -  未解決の要求のリストにご自身の機能が見つからない場合は、お気軽に[ご自分の独自の要求を提出](https://github.com/Microsoft/BotFramework-WebChat/issues/new)してください。 上記の項目と同様に、未解決の問題にコメントを追加する他のお客様によって、Web チャット ユーザー間で最も一般的に必要とされる機能を優先させることができます。
@@ -169,7 +169,7 @@ Web チャットの v4 に関して私たちのチームが気に入っている
 
 ## <a name="samples-list"></a>サンプルのリスト
 
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;サンプル&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 説明                                                                                                                                                                                                                         | Link                                                                                                                                |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;サンプル&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | [説明]                                                                                                                                                                                                                         | Link                                                                                                                                |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | [`01.a.getting-started-full-bundle`](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples/01.a.getting-started-full-bundle)                                                                                       | CDN から埋め込まれた Web チャットを紹介し、シンプルで完全な機能を備えた Web チャットのデモンストレーションを行います。 これには、Adaptive Cards、Cognitive Services、Markdown-It の依存関係が含まれます。                                                            | [フル バンドルのデモ](https://microsoft.github.io/BotFramework-WebChat/01.a.getting-started-full-bundle)                               |
 | [`01.b.getting-started-es5-bundle`](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples/01.b.getting-started-es5-bundle)                                                                                         | Web チャットの ES5 ponyfill を使用して、ES5 ブラウザーとの下位互換性を埋め込んだ、フル機能の Web チャットを紹介します。                                                                                                                | [ES5 バンドルのデモ](https://microsoft.github.io/BotFramework-WebChat/01.b.getting-started-es5-bundle)                                 |
@@ -214,7 +214,7 @@ Web チャットの v4 に関して私たちのチームが気に入っている
 
 Web チャット React コンポーネント (`<ReactWebChat>`) または `renderWebChat()` メソッドに渡すことができるプロパティがいくつかあります。 [`packages/component/src/Composer.js`](https://github.com/Microsoft/BotFramework-WebChat/blob/master/packages/component/src/Composer.js#L378) で始まるソース コードを自由に調べてください。 次に、使用可能なプロパティについて簡単に説明します。
 
-| プロパティ                   | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| プロパティ                   | [説明]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `activityMiddleware`       | [Redux ミドルウェア](https://medium.com/@jacobp100/you-arent-using-redux-middleware-enough-94ffe991e6)をモデルとした一連のミドルウェアで、開発者は現在の既存のアクティビティの DOM に新しい DOM コンポーネントを追加することができます。 ミドルウェアの署名は次のとおりです: `options => next => card => children => next(card)(children)`。                                                                                                                                                                                                                                           |
 | `activityRenderer`         | Redux の[ストア エンハンサー](https://github.com/reduxjs/redux/blob/master/docs/Glossary.md#store-enhancer)の概念に似た `activityMiddleware` の "フラット化された" バージョン。                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -279,8 +279,8 @@ Internet Explorer 11 で Web チャットが必要な場合は、[ES5 バンド�
 
 プロジェクトのビルド方法およびプル リクエストのリポジトリのガイドラインの詳細は、[寄与のページ](https://github.com/Microsoft/BotFramework-WebChat/tree/master/.github/CONTRIBUTING.md) を参照してください。
 
-このプロジェクトでは、[Microsoft オープン ソースの倫理規定](https://opensource.microsoft.com/codeofconduct/)を採用しています。
-詳細については、[倫理規定についてよくある質問](https://opensource.microsoft.com/codeofconduct/faq/)を参照するか、[opencode@microsoft.com](mailto:opencode@microsoft.com) 宛てに質問またはコメントをお送りください。
+このプロジェクトは、「[Microsoft のオープン ソースの倫理規定](https://opensource.microsoft.com/codeofconduct/)」を採用しています。
+詳細については[論理規定についてのよくある質問](https://opensource.microsoft.com/codeofconduct/faq/)をご覧ください。また、追加の質問やコメントがある場合は[opencode@microsoft.com](mailto:opencode@microsoft.com)にお問い合わせください。
 
 ## <a name="reporting-security-issues"></a>セキュリティの問題の報告
 

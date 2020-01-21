@@ -1,5 +1,5 @@
 ---
-title: 会話をボットから人間に移行する | Microsoft Docs
+title: 会話をボットから人間に移行する - Bot Service
 description: ユーザーがボットとの会話を開始した後、人間に引き継ぐ必要がある場合のための設計方法を説明します。
 author: matvelloso
 ms.author: mateusv
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 5/2/2019
-ms.openlocfilehash: d1fed33682349948d1b33d9b4fecdf718a20a248
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 83cb5b70313855db4fbd759867b905466727499a
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405846"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792150"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>会話をボットから人間に移行する
 

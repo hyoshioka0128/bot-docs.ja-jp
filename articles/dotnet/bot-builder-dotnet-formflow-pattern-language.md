@@ -1,5 +1,5 @@
 ---
-title: パターン言語によるユーザー エクスペリエンスのカスタマイズ | Microsoft Docs
+title: パターン言語によるユーザー エクスペリエンスのカスタマイズ - Bot Service
 description: パターン言語と Bot Framework SDK for .NET を使用した FormFlow プロンプトのカスタマイズ方法や FormFlow テンプレートのオーバーライド方法を学習します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 032d3c9553c5be774bf5d71fb2477d5a5689ca40
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 43ae6504dcd58c221d0dfe2678c2363323ac63cb
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297912"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796820"
 ---
 # <a name="customize-user-experience-with-pattern-language"></a>パターン言語によるユーザー エクスペリエンスのカスタマイズ
 
@@ -34,7 +34,7 @@ ms.locfileid: "70297912"
 
 パターン言語では、実行時に実際の値に置き換えられる要素を中かっこ (`{}`) を使用して識別します。 次の表は、パターン言語の要素をまとめたものです。
 
-| 要素 | 説明 |
+| 要素 | [説明] |
 |----|----|
 | `{<format>}` | 現在のフィールド (属性が適用されるフィールド) の値を表示します。 |
 | `{&}` | 現在のフィールドの説明 (指定されてない場合はフィールドの名前) を表示します。 |
@@ -89,7 +89,7 @@ What kind of sandwich would you like?
 
 プロンプトとテンプレートは、以下の書式パラメーターをサポートします。
 
-| 使用法 | 説明 |
+| 使用法 | [説明] |
 |----|----|
 | `AllowDefault` | <code>{&#124;&#124;}</code> パターン要素に適用されます。 フォームがフィールドの現在の値を使用可能な選択肢として表示するかどうかを決定します。 `true` の場合、現在の値が使用可能な値として表示されます。 既定では、 `true`です。 |
 | `ChoiceCase` | <code>{&#124;&#124;}</code> パターン要素に適用されます。 各選択肢のテキストを正規化 (例: 各単語の最初の文字を大文字にするかどうか) するかどうかを決定します。 既定では、 `CaseNormalization.None`です。 使用できる値については、「[CaseNormalization][caseNormalization]」をご覧ください。 |

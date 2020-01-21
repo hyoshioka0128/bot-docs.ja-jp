@@ -1,5 +1,5 @@
 ---
-title: Web チャットで音声認識を有効にする | Microsoft Docs
+title: Web チャットで音声認識を有効にする - Bot Service
 description: Web チャット チャンネルに接続されたボットの Web チャット コントロールで音声認識を有効にする方法について説明します。
 keywords: 音声認識, web チャット, 音声, マイク, オーディオ
 author: DeniseMak
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b83dff7969c58451e5752938f74b682b2163c49d
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 72a247fe0e8373323626a5d01360d2a923b09b09
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298207"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793249"
 ---
 # <a name="enable-speech-in-web-chat"></a>Web チャットで音声認識を有効にする
 Web チャット コントロールで音声インターフェイスを有効にすることができます。 ユーザーは、Web チャット コントロールのマイクを使って音声インターフェイスと対話します。
@@ -49,7 +49,7 @@ Web チャットで音声認識機能を有効にするには、Web チャット
      ```
 4. ブラウザーで `http://localhost:8000/samples?parameters` を参照します。 たとえば、`http://localhost:8000/samples?s=YOURDIRECTLINESECRET` は、Direct Line シークレットを使用してボットを呼び出します。 クエリ文字列に設定できるパラメーターを次の表に示します。
 
-   | パラメーター | 説明 |
+   | パラメーター | [説明] |
    |-----------|-------------|
    | s | Direct Line シークレット。 Direct Line シークレットを取得する方法については、「[Connect a bot to Direct Line (ボットを Direct Line に接続する)](bot-service-channel-connect-directline.md)」をご覧ください。 |
    | t | Direct Line トークン。 このトークンを生成する方法については、「[Generate a Direct Line token (Direct Line トークンを生成する)](rest-api/bot-framework-rest-direct-line-3-0-authentication.md)」をご覧ください。 |
@@ -108,7 +108,7 @@ ISpeechRecognizer を実装した独自のカスタム音声認識や、ISpeechS
 
 [!code-js[Pass speech options to Web Chat (JavaScript)](./includes/code/bot-service-channel-connect-webchat-speech.js#PassSpeechOptionsToWebChat)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、Web チャットとの音声対話を有効にすることができました。次に、ボットで音声メッセージを作成し、マイクの状態を調整する方法を確認しましょう。
 * [メッセージへの音声の追加 (C#)](dotnet/bot-builder-dotnet-text-to-speech.md)
 * [メッセージへの音声の追加 (Node.js)](nodejs/bot-builder-nodejs-text-to-speech.md)

@@ -1,5 +1,5 @@
 ---
-title: Bot Service を使用して Bot Channels Registration を作成する | Microsoft Docs
+title: Bot Service を使用して Bot Channels Registration を作成する - Bot Service
 description: 既存のボットを Bot Service に登録する方法について説明します。
 ms.author: kamrani
 manager: kamrani
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 78de3676332561aafd4b24f755962b614cb9a27d
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 4471507ff64e69ca2d438d55ccf8ba7e08fbcdfd
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491570"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794727"
 ---
 # <a name="register-a-bot-with-azure-bot-service"></a>ボットを Azure Bot Service に登録する
 

@@ -1,5 +1,5 @@
 ---
-title: メッセージを作成する | Microsoft Docs
+title: メッセージを作成する - Bot Service
 description: Bot Framework SDK for Node.js を使用したメッセージの作成方法を学習します。
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7e2f48a3450154de9e2465f9d0d992ace4f3996f
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 1837b302b8d0b1d05e16d4d979b5807fa3e2d268
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299806"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790847"
 ---
 # <a name="create-messages"></a>メッセージを作成する
 
@@ -77,7 +77,7 @@ session.send(customMessage);
 
 メッセージ プロパティは、オブジェクトのメソッドを通じて設定および取得されます。 さまざまな**メッセージ** プロパティを設定/取得するために呼び出すことができるメソッドの一覧を次の表に示します。
 
-| 方法 | 説明 |
+| 方法 | [説明] |
 | ---- | ---- | 
 | [`addAttachment(attachment:AttachmentType)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addattachment) | メッセージに添付ファイルを追加します|
 | [`addEntity(obj:Object)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addentity) | メッセージにエンティティを追加します。 |

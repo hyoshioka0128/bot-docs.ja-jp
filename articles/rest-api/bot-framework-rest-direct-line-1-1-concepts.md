@@ -1,5 +1,5 @@
 ---
-title: Bot Framework Direct Line API 1.1 の主要な概念 | Microsoft Docs
+title: Bot Framework Direct Line API 1.1 の主要な概念 - Bot Service
 description: Bot Framework Direct Line API 1.1 の主要な概念を理解します。
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 63475546472d2305ef665fd4ab29c6f2df2b08eb
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 165079f862a11fc8d226a54bede7d497885a104a
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299636"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789708"
 ---
 # <a name="key-concepts-in-direct-line-api-11"></a>Direct Line API 1.1 の主要な概念
 
@@ -29,7 +29,7 @@ Direct Line API 1.1 の要求は、<a href="https://dev.botframework.com/" targe
 
 Direct Line の会話はクライアントによって明示的に開かれ、ボットとクライアントが参加し、有効な資格情報を持っている限り続きます。 詳細については、「[会話の開始](bot-framework-rest-direct-line-1-1-start-conversation.md)」を参照してください。
 
-## <a name="sending-messages"></a>メッセージの送信
+## <a name="sending-messages"></a>メッセージを送信する
 
 Direct Line API 1.1 を使用すると、クライアントは `HTTP POST` 要求を発行することでメッセージを送信できます。 クライアントは、要求ごとに 1 つのメッセージを送信できます。 詳細については、「[ボットにアクティビティを送信する](bot-framework-rest-direct-line-1-1-send-message.md)」を参照してください。
 
@@ -37,7 +37,7 @@ Direct Line API 1.1 を使用すると、クライアントは `HTTP POST` 要�
 
 クライアントは Direct Line API 1.1 を使用し、`HTTP GET` 要求でポーリングしてメッセージを受信することができます。 各要求に応じて、クライアントは `MessageSet` の一部としてボットから複数のメッセージを受信することができます。 詳細については、「[Receive messages from the bot](bot-framework-rest-direct-line-1-1-receive-messages.md)」(ボットからメッセージを受信する) を参照してください。
 
-## <a name="developer-resources"></a>開発者リソース
+## <a name="developer-resources"></a>開発者向けリソース
 
 ### <a name="client-library"></a>クライアント ライブラリ
 

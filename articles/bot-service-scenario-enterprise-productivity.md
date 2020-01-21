@@ -1,5 +1,5 @@
 ---
-title: Enterprise Productivity ボットのシナリオ | Microsoft Docs
+title: Enterprise Productivity ボットのシナリオ - Bot Service
 description: Bot Framework による Enterprise Productivity ボットのシナリオについて説明します。
 author: BrianRandell
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3ae87b52864ae1a9a4b7b439529e5093d6d3be8e
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 3d3f40e5a24b349aff64791d35929017c5c0adfb
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167077"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794852"
 ---
 # <a name="enterprise-productivity-bot-scenario"></a>Enterprise Productivity ボットのシナリオ
 
@@ -58,7 +58,7 @@ Dynamics CRM は、顧客エンゲージメント プラットフォームです
 ### <a name="application-insights"></a>Application Insights
 Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報を得ることができます。 すぐに使用できる、多機能なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードによって、ボットの可用性が保たれ、期待どおりに動作していることを確認できます。 問題の発生をすばやく確認し、根本原因を分析して、問題個所を特定し、修正することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次に、Information ボットのシナリオについて学習します。
 
 > [!div class="nextstepaction"]

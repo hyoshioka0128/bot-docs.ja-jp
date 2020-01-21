@@ -1,5 +1,5 @@
 ---
-title: メッセージへの入力ヒントの追加 | Microsoft Docs
+title: メッセージへの入力ヒントの追加 (v3 C#) - Bot Service
 description: Bot Framework SDK for .NET を使用してメッセージに入力ヒントを追加する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d9d98c217afcf3eb1759284bcb0d46d9001bf383
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 27d8ed5255eee04603ea1f9da3786930c05329e9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298461"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795249"
 ---
 # <a name="add-input-hints-to-messages"></a>メッセージへの入力ヒントの追加
 
@@ -21,7 +21,7 @@ ms.locfileid: "70298461"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-input-hints.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-send-input-hints.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-send-input-hints.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-input-hints.md)
 
 メッセージの入力ヒントを指定すれば、メッセージがクライアントに配信された後、ボットがユーザー入力を受け付けるか、期待するか、無視するかを示すことができます。 多くのチャネルでは、これによってクライアントが適宜、ユーザー入力コントロールの状態を設定できます。 たとえば、ボットがユーザーの入力を無視していることをメッセージの入力ヒントが示している場合、クライアントはユーザーが入力を提供できないよう、マイクを閉じて入力ボックスを無効にすることができます。

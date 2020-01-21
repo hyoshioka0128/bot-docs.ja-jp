@@ -1,5 +1,5 @@
 ---
-title: Cortana スキルのテスト | Microsoft Docs
+title: Cortana スキルのテスト - Bot Service
 description: Cortana スキルを呼び出すことで Cortana ボットをテストする方法について説明します。
 keywords: Bot Framework SDK, ボットを登録する, Cortana
 author: v-ducvo
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/01/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 996063bef2e139292187f125318f63745373e7bb
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 62ed0fb7cb05072024617d65266cf457c554d4c7
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70166941"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792771"
 ---
 # <a name="test-a-cortana-skill"></a>Cortana スキルのテスト
 
@@ -54,7 +54,7 @@ Cortana をチャネルとして追加するには、「[Connect a bot to Cortan
 [エミュレーター](~/bot-service-debug-emulator.md)を使用してボットをテストするには、次の操作を行います。
 
 1. ボットを実行します。
-2. エミュレーターを開き、必要な情報を入力します。 ボットの **AppID** と **AppPassword** を見つけるには、「[MicrosoftAppID and MicrosoftAppPassword (MicrosoftAppID と MicrosoftAppPassword)](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」を参照してください。 
+2. エミュレーターを開き、必要な情報を入力します。 自分のボットの **AppID** と **AppPassword** を見つける方法については、「[MicrosoftAppID and MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」(MicrosoftAppID と MicrosoftAppPassword) を参照してください。 
 3. **[接続]** をクリックして、エミュレーターをボットに接続します。
 4. メッセージを入力し、ボットが動作していることを確認します。
 
@@ -70,7 +70,7 @@ Cortana に、呼び出しフレーズを話しかけることで、Cortana ス�
 
 3. Cortana が呼び出しフレーズを認識できた場合、ボットによって Cortana のキャンバスが起動されます。 
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
 Cortana スキルの起動に失敗した場合は、次のことを確認してください。
 * Bot Framework ポータルでボットを登録するときに使用したのと同じ Microsoft アカウントで Cortana にサインインしていることを確認します。
@@ -81,7 +81,7 @@ Cortana スキルの起動に失敗した場合は、次のことを確認して
 追加のトラブルシューティングのヒントと、Cortana のダッシュボードでスキルのデバッグを有効にする方法については、[Cortana スキルのデバッグの有効化][Cortana-TestBestPractice]に関するページを参照してください。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Cortana スキルをテストして期待どおりに動作することを確認したら、ベータ テスト担当者のグループにデプロイするか、一般に公開することができます。 詳細については、「[Publishing Cortana Skills][Cortana-Publish]」 (Cortana スキルの公開) を参照してください。
 

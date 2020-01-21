@@ -1,5 +1,5 @@
 ---
-title: Bot Framework SDK for Node.js の主要概念 | Microsoft Docs
+title: Bot Framework SDK for Node.js の主要概念 - Bot Service
 description: Bot Framework SDK for Node.js で利用可能な会話型ボットを構築およびデプロイするための主要概念とツールについて説明します。
 author: DeniseMak
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 81a4f184f2011e6a09c645e61e1d8c3dfabdebaa
-ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
+ms.openlocfilehash: d88fa567d25358dba33b776082da69b675f93892
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74415149"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790964"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-nodejs"></a>Bot Framework SDK for Node.js の主要概念
 
@@ -21,7 +21,7 @@ ms.locfileid: "74415149"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-concepts.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-concepts.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-concepts.md)
 
 この記事では、Bot Framework SDK for Node.js の主要な概念について説明します。 Bot Framework の概要については、[Bot Framework の概要](../overview-introduction-bot-framework.md)に関するページを参照してください。
 
@@ -33,7 +33,9 @@ Bot Framework Connector は、ご利用のボットを複数の "*チャネル*"
 Bot Framework SDK for Node.js には [UniversalBot][UniversalBot] クラスおよび [ChatConnector][ChatConnector] クラスが用意されており、これらのクラスを使用することで、ボットにおけるメッセージの送受信が Bot Framework Connector を経由して行われるように構成することができます。 `UniversalBot` クラスでは、ご利用のボットの頭脳が形成されます。 このクラスの役割は、ご利用のボットで行われるユーザーとの会話をすべて管理することにあります。 `ChatConnector` クラスでは、ご利用のボットを Bot Framework Connector サービスに接続することができます。
 これらのクラスの使用例については、「[Bot Framework SDK for Node.js を使用したボットの作成](bot-builder-nodejs-quickstart.md)」をご覧ください。
 
-Connector ではボットからチャネルに送信されるメッセージの正規化も行われます。このため、プラットフォームに依存しない方法でボットを開発することができます。 メッセージを正規化するには、メッセージを Bot Framework のスキーマから、チャネルのスキーマに変換する必要があります。 フレームワークのスキーマのすべての側面がチャネルによってサポートされているわけではない場合は、そのチャネルでサポートされている形式にメッセージを変換する試みが Connector によって行われます。 たとえば、カードとアクション ボタンを含むメッセージがボットから SMS チャネルに送信される場合、Connector によってカードがイメージとしてレンダリングされ、アクションがリンクとしてメッセージのテキストに取り込まれます。 [Channel Inspector][ChannelInspector] は、Connector によってメッセージが各種のチャネル上でどのようにレンダリングされるかを示す Web ツールです。
+Connector ではボットからチャネルに送信されるメッセージの正規化も行われます。このため、プラットフォームに依存しない方法でボットを開発することができます。 メッセージを正規化するには、メッセージを Bot Framework のスキーマから、チャネルのスキーマに変換する必要があります。 フレームワークのスキーマのすべての側面がチャネルによってサポートされているわけではない場合は、そのチャネルでサポートされている形式にメッセージを変換する試みが Connector によって行われます。 たとえば、カードとアクション ボタンを含むメッセージがボットから SMS チャネルに送信される場合、Connector によってカードがイメージとしてレンダリングされ、アクションがリンクとしてメッセージのテキストに取り込まれます。 
+
+[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 `ChatConnector` では、ご利用のボット内で API エンドポイントを設定する必要があります。 Node.js SDK の場合、この設定は、通常、`restify` Node.js モジュールをインストールすることによって行われます。 また、[ConsoleConnector][ConsoleConnector] (API エンドポイントは不要) を使用すると、コンソール向けのボッドを作成することができます。
 
@@ -46,7 +48,7 @@ Connector ではボットからチャネルに送信されるメッセージの�
 ## <a name="dialogs"></a>ダイアログ
 ダイアログは、ご利用のボット内で会話ロジックを整理するのに役立つと共に、[会話フローを設計する](../bot-service-design-conversation-flow.md)上での基礎となります。 ダイアログの概要については、[ダイアログを使用した会話の管理](bot-builder-nodejs-dialog-manage-conversation.md)に関するページを参照してください。
 
-## <a name="actions"></a>Actions
+## <a name="actions"></a>アクション
 会話フロー中に任意のタイミングで発生するキャンセル要求やヘルプ要求などの割り込みを処理できるようにご自分のボットを設計する必要があります。 Bot Framework SDK for Node.js では、キャンセルやその他のダイアログの呼び出しのようなアクションをトリガーするグローバル メッセージ ハンドラーが提供されています。 [triggerAction][triggerAction] ハンドラーの使用方法を示す例については、「[ユーザー アクションを処理する](bot-builder-nodejs-dialog-actions.md)」を参照してください。
 <!--[Handling cancel](bot-builder-nodejs-manage-conversation-flow.md#handling-cancel), [Confirming interruptions](bot-builder-nodejs-manage-conversation-flow.md#confirming-interruptions) and-->
 
@@ -74,7 +76,7 @@ Bot Builder では、LUIS を使用して、ご利用のボットに自然言語
 
 * [Microsoft LUIS チュートリアル][LUISVideo] (ビデオ)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [ダイアログの概要](bot-builder-nodejs-dialog-overview.md)
 
@@ -85,7 +87,7 @@ Bot Builder では、LUIS を使用して、ご利用のボットに自然言語
 [ChatConnector]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.chatconnector.html
 [ConsoleConnector]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.consoleconnector.html
 
-[ChannelInspector]: ../bot-service-channel-inspector.md
+[ChannelInspector]: ../bot-service-channels-reference.md
 
 [Session]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html
 [SessionSend]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#send

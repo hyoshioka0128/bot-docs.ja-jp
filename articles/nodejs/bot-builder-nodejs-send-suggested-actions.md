@@ -1,5 +1,5 @@
 ---
-title: メッセージへの推奨されるアクションの追加 | Microsoft Docs
+title: メッセージへの推奨されるアクションの追加 (v3 JS) - Bot Service
 description: Bot Framework SDK for Node.js を使用してメッセージ内で推奨されるアクションを送信する方法について説明します。
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 02/19/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 384256e23500911b807658b56cb3225bf4cee65f
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: ebad14abfdef2e274562b17ca1945d709a2c8d54
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299734"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790387"
 ---
 # <a name="add-suggested-actions-to-messages"></a>メッセージへの推奨されるアクションの追加
 
@@ -21,7 +21,7 @@ ms.locfileid: "70299734"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-suggested-actions.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-send-suggested-actions.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-send-suggested-actions.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-suggested-actions.md)
 
 [!INCLUDE [Introduction to suggested actions](../includes/snippet-suggested-actions-intro.md)]

@@ -1,5 +1,5 @@
 ---
-title: QnA ボットへのテレメトリの追加 | Microsoft Docs
+title: QnA ボットへのテレメトリの追加 - Bot Service
 description: 新しいテレメトリ機能を QnA Maker 対応ボットに統合する方法について説明します。
 keywords: テレメトリ, appinsights, Application Insights, ボットの監視, QnA Maker
 author: WashingtonKayaker
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27ce4315af7703e23b9a63308abb47300d9a29bd
-ms.sourcegitcommit: 08f9dc91152e0d4565368f72f547cdea1885af89
+ms.openlocfilehash: d73bd8c26dde8826b145108268417a24840ed83e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528562"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791244"
 ---
 # <a name="add-telemetry-to-your-qnamaker-bot"></a>QnAMaker ボットへのテレメトリの追加
 

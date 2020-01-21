@@ -1,5 +1,5 @@
 ---
-title: 既存の v3 JavaScript ボットを新しい v4 プロジェクトに移行する |Microsoft Docs
+title: 既存の v3 JavaScript ボットを新しい v4 プロジェクトに移行する - Bot Service
 description: 既存の v3 JavaScript ボットを取得し、新しいプロジェクトを使用して、これを v4 SDK に移行します。
 keywords: JavaScript, ボットの移行, ダイアログ, v3 ボット
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2dac81ea653729043294ed3ebe6037b6cd8b67eb
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: f377aacbd809b79ecb0d558384a10da8eca5a772
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026390"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791084"
 ---
 # <a name="migrate-a-javascript-v3-bot-to-a-v4-bot"></a>Javascript v3 ボットを v4 ボットに移行する
 
@@ -161,7 +161,7 @@ v4 では、ダイアログ オブジェクトとプロンプト オブジェク
 
 以下のファイルを作成します。
 
-| ファイル名 | 説明 |
+| ファイル名 | [説明] |
 |:---|:---|
 | **./dialogs/flights.js** | `hotels` ダイアログの移行済みのロジックが含まれます。 |
 | **./dialogs/hotels.js** | `flights` ダイアログの移行済みのロジックが含まれます。 |

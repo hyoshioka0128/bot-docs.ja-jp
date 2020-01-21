@@ -1,5 +1,5 @@
 ---
-title: v4 ボットで JavaScript v3 ユーザー状態を使用する | Microsoft Docs
+title: v4 ボットで JavaScript v3 ユーザー状態を使用する - Bot Service
 description: v4 ボットで v3 ユーザー状態を使用する方法の例
 keywords: JavaScript, ボットの移行, v3 ボット
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/14/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4697ecf47464114de68ec6c0d872b45ff1ee5e54
-ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
+ms.openlocfilehash: ad3f9a1cc9ce3f06bad71615e244a791025904d9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71278981"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791064"
 ---
 <!-- This article is on hold -->
 
@@ -132,7 +132,7 @@ ms.locfileid: "71278981"
 
 Azure へのボットのデプロイについて詳しくは、「[ボットを Azure にデプロイする][40]」で、詳細なデプロイ手順を参照してください。
 
-## <a name="further-reading"></a>参考資料
+## <a name="further-reading"></a>関連項目
 
 - [Azure Bot Service のドキュメント][21]
 - [ボットの状態][7]

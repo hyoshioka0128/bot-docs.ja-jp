@@ -1,5 +1,5 @@
 ---
-title: 支払いを要求する | Microsoft Docs
+title: 支払いの要求 (v3 C#) - Bot Service
 description: Bot Framework SDK for .NET を使用して支払い要求を送信する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ee7711ab15da9fbbb42d857b216a6099e44880e4
-ms.sourcegitcommit: 378dbffd3960a1fa063ffb314878ccd64fb8fb49
+ms.openlocfilehash: 026b6ad3b6b9037a09b2727838e7499562b83fba
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71094436"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797997"
 ---
 # <a name="request-payment"></a>支払いの要求
 
@@ -22,7 +22,7 @@ ms.locfileid: "71094436"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-request-payment.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-request-payment.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-request-payment.md)
 
 ボットでユーザーがアイテムを購入できるようになっている場合、[リッチ カード](bot-builder-dotnet-add-rich-card-attachments.md)に特殊な種類のボタンを含めて、支払いを要求することができます。 この記事では、Bot Framework SDK for .NET を使用して支払い要求を送信する方法について説明します。
 
@@ -35,7 +35,7 @@ Bot Framework SDK for .NET を使用して支払い要求を送信するには�
 ボットの **Web.config** ファイルを更新して、`MicrosoftAppId` と `MicrosoftAppPassword` を、[登録](~/bot-service-quickstart-registration.md)プロセス中にボットのために生成されたアプリ ID とパスワードの値に設定します。 
 
 > [!NOTE]
-> ボットの **AppID** と **AppPassword** を見つけるには、「[MicrosoftAppID と MicrosoftAppPassword](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」を参照してください。
+> 自分のボットの **AppID** と **AppPassword** を見つける方法については、「[MicrosoftAppID and MicrosoftAppPassword](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」(MicrosoftAppID と MicrosoftAppPassword) を参照してください。
 
 ### <a name="create-and-configure-merchant-account"></a>マーチャント アカウントを作成して構成する
 
@@ -119,7 +119,7 @@ Bot Framework SDK for .NET を使用して支払い要求を送信するには�
 
 [!INCLUDE [Test a payment bot](../includes/snippet-payment-test-bot.md)]
 
-<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/sample-payments" target="_blank">支払いボット</a> サンプルでは、**Web.config** の `LiveMode` 構成設定によって、エミュレートされた支払いトークンと実際の支払いトークンのどちらを支払いの完了コールバックに含めるかが判断されます。 `LiveMode` が `false` に設定されている場合、ボットがテスト モードであることを示すためにボットの支払い送信要求にヘッダーが追加され、[支払いの完了] コールバックに課金できないエミュレートされた支払いトークンが含まれます。 `LiveMode` が `true` に設定されている場合、ボットがテスト モードであることを示すヘッダーはボットの支払い送信要求から省略され、支払いの完了コールバックには、ボットが支払い処理のために Stripe に送信する実際の支払いトークンが含まれます。 これは、指定された支払い方法への課金が発生する実際のトランザクションになります。 
+<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/sample-payments" target="_blank">支払いボット</a> サンプルでは、**Web.config** の `LiveMode` 構成設定によって、エミュレートされた支払いトークンと実際の支払いトークンのどちらを支払いの完了コールバックに含めるかが判断されます。 `LiveMode` が `false` に設定されている場合は、ボットがテスト モードにあることを示すヘッダーがボットの送信支払い要求に追加され、[支払いの完了] コールバックには、課金できないエミュレートされた支払いトークンが含まれます。 `LiveMode` が `true` に設定されている場合、ボットがテスト モードであることを示すヘッダーはボットの支払い送信要求から省略され、支払いの完了コールバックには、ボットが支払い処理のために Stripe に送信する実際の支払いトークンが含まれます。 これは、指定された支払い方法への課金が発生する実際のトランザクションになります。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

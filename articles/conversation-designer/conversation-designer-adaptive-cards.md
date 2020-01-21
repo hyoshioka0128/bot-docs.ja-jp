@@ -1,5 +1,5 @@
 ---
-title: アダプティブ カードの構成 | Microsoft Docs
+title: アダプティブ カードの構成 - Bot Service
 description: アダプティブ カードを構成する方法について説明します。
 author: vkannan
 ms.author: kamrani
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ROBOTS: NoIndex, NoFollow
-ms.openlocfilehash: cb03703b7d301a77d64577ef8e56da3dc7a4e0af
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 2d7c898a555dde53f01cf09b6ab54abf2c91960d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298557"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795921"
 ---
 # <a name="configure-adaptive-cards"></a>アダプティブ カードの構成
 > [!IMPORTANT]
-> Conversation Designer は、一部のお客様はまだご利用いただけません。 Conversation Designer の可用性の詳細については、今年中に提供される予定です。
+> Conversation Designer は、一部のお客様はまだご利用いただけません。 Conversation Designer の使用可能性については、今年中に詳細をお知らせする予定です。
 
 <a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>は、高機能な UI カードを定義する新しいスキーマで、Microsoft Bot Framework のチャネルなどのさまざまなエンドポイントで使用できます。 
 

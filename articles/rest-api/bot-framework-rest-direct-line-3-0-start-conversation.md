@@ -1,5 +1,5 @@
 ---
-title: 会話を開始する | Microsoft Docs
+title: 会話の開始 - Bot Service
 description: Direct Line API v3.0 を使用して会話を開始する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 7cc77133b6b2a212b7fde2e0b9d8c854e2bbab9c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: bc3679c48f67ffc5fadfbc387ee41c69ad96884f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299544"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789292"
 ---
-# <a name="start-a-conversation"></a>会話を開始する
+# <a name="start-a-conversation"></a>会話の開始
 
-Direct Line 会話は、クライアントによって明示的に開かれ、ボットとクライアントが参加し、有効な資格情報がある限り実行されます。 会話が開いている間は、ボットとクライアントの両方がメッセージを送信できます。 複数のクライアントが特定の会話に接続でき、各クライアントは、複数のユーザーの代理として参加できます。
+Direct Line の会話はクライアントによって明示的に開かれ、ボットとクライアントが参加し、有効な資格情報を持っている限り続きます。 会話が開いている間は、ボットとクライアントの両方がメッセージを送信できます。 複数のクライアントが特定の会話に接続でき、各クライアントは、複数のユーザーの代理として参加できます。
 
 ## <a name="open-a-new-conversation"></a>新しい会話を開く
 
@@ -59,11 +59,11 @@ HTTP/1.1 201 Created
 > [!TIP]
 > WebSocket stream URL に接続されるまで 60 秒の猶予があります。 この時間内に接続を確立できない場合は、[会話に再接続して](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)新しいストリーム URL を生成する必要があります。
 
-## <a name="start-conversation-versus-generate-token"></a>会話の開始とトークンの生成
+## <a name="start-conversation-versus-generate-token"></a>会話の開始とトークンの生成の比較
 
 会話の開始操作 (`POST /v3/directline/conversations`) と[トークンの生成](bot-framework-rest-direct-line-3-0-authentication.md#generate-token)操作 (`POST /v3/directline/tokens/generate`) は、どちらの操作も、1 つの会話にアクセスするために使用できる `token` を返すという点で類似しています。 ただし、会話の開始操作は、会話の開始、ボットとの接触、および WebSocket stream URL の作成も行いますが、トークンの生成操作はこれらの操作を行いません。 
 
-会話をすぐに開始するつもりの場合は、会話の開始操作を使用します。 トークンをクライアントに配布し、クライアントからの会話の開始を求める場合は、[トークンの生成](bot-framework-rest-direct-line-3-0-authentication.md#generate-token)操作を使用してください。 
+会話をすぐに開始するつもりの場合は、会話の開始操作を使用してください。 トークンをクライアントに配布し、クライアントからの会話の開始を求める場合は、[トークンの生成](bot-framework-rest-direct-line-3-0-authentication.md#generate-token)操作を使用してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

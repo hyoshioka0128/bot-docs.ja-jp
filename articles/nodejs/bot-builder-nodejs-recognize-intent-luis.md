@@ -1,5 +1,5 @@
 ---
-title: LUIS を使用して意図とエンティティを認識する | Microsoft Docs
+title: LUIS を使用して意図とエンティティを認識する (v3 JS) - Bot Service
 description: ボットと LUIS を統合し、Bot Framework SDK for Node.js を使用してダイアログをトリガーすることで、ユーザーの意図を検出して適切に応答します。
 author: DeniseMak
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d3cdbc2c9a2c620860f55cc2c31f3ce3ba5695e1
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 49f76f4615184a38e381fdf3e2084057ee5338c9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299770"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790746"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>LUIS を使用して意図とエンティティを認識する 
 
@@ -77,7 +77,7 @@ LUIS アプリは次の 4 つの意図で始まります:Cancel、Greeting、Hel
    * Note.Create
    * Note.Delete
    * なし
-   * [Help]
+   * ヘルプ
    * Greeting
    * Cancel
 
@@ -561,7 +561,7 @@ Azure Portal で、 **[Test in Web Chat]\(Web チャットでのテスト\)** �
 > 意図またはエンティティがボットによって必ずしも正しく認識されない場合は、発話の例をさらに追加して、LUIS アプリをトレーニングすることで、そのパフォーマンスを向上させます。 お使いのボットのコードを変更せずに、ご自身の LUIS アプリを再トレーニングできます。 [発話の例の追加](/azure/cognitive-services/LUIS/add-example-utterances)に関するページ、および[ご自身の LUIS アプリのトレーニングとテスト](/azure/cognitive-services/LUIS/train-test)に関するページをご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ボットを試してみると、認識エンジンで現在アクティブなダイアログの中断をトリガーできることがわかります。 中断を許可して処理することは、ユーザーが実際に行うことを考慮に入れた柔軟な設計です。 認識された意図に関連付けることができる各種アクションについて詳しく学習します。
 

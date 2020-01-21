@@ -1,5 +1,5 @@
 ---
-title: ボットからメッセージを受信する | Microsoft Docs
+title: ボットからメッセージを受信する - Bot Service
 description: Direct Line API v1.1 を使用して、ボットからメッセージを受信する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,17 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 6f9a132b538a278b0990271864a70e77ea7dc56c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: c88d3f363bf4bcc40fa7a21aa1fcdd0b764abe1e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299623"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789698"
 ---
 # <a name="receive-messages-from-the-bot"></a>ボットからメッセージを受信する
 
 > [!IMPORTANT]
-> この記事では、Direct Line API 1.1 を使用して、ボットからメッセージを受信する方法について説明します。 クライアント アプリケーションとボット間の新しい接続を作成する場合は、[Direct Line API 3.0](bot-framework-rest-direct-line-3-0-receive-activities.md) を使用してください。
+> この記事では、Direct Line API 1.1 を使用して、ボットからメッセージを受信する方法について説明します。 クライアント アプリケーションとボットの間の新しい接続を作成する場合は、代わりに [Direct Line API 3.0](bot-framework-rest-direct-line-3-0-receive-activities.md) を使用します。
 
 クライアントは、メッセージを受信するには、Direct Line 1.1 プロトコルを使用して `HTTP GET` インターフェイスをポーリングする必要があります。 
 

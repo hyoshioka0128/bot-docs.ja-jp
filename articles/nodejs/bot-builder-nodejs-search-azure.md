@@ -1,5 +1,5 @@
 ---
-title: Azure Search を使用してデータドリブン エクスペリエンスを作成する | Microsoft Docs
+title: Azure Search を使用してデータドリブン エクスペリエンスを作成する (v3 JS) - Bot Service
 description: Azure Search を使用してデータドリブン エクスペリエンスを作成し、ユーザーが Bot Framework SDK for Node.js および Azure Search を使用してボット内の大量のコンテンツ間を移動できるように支援する方法について説明します。
 author: matthewshim-ms
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0a5ebd10e076b44708f13de0b8485bffff3419af
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 44d84cf84362105bfd1f97a7993d4b18d73d7eae
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299753"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790641"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Azure Search を使用してデータドリブン エクスペリエンスを作成する 
 
@@ -21,13 +21,13 @@ ms.locfileid: "70299753"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-search-azure.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-search-azure.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-search-azure.md)
 
 ボットに [Azure Search][search] を追加すると、ユーザーが大量のコンテンツ間を移動するのが容易になり、ボットのユーザーのためのデータドリブン探索エクスペリエンスを作成できます。
 
 Azure Search は、キーワード検索、組み込みの言語機能、カスタム スコアリング、ファセット ナビゲーションなど多くの機能を提供する Azure サービスです。 Azure Search はまた、Azure SQL DB、DocumentDB、Blob Storage、Table Storage など、さまざまなソースのコンテンツのインデックスを作成することもできます。 これは他のデータ ソースの "プッシュ" インデックス作成をサポートしており、PDF、Office ドキュメント、および非構造化データが含まれたその他の形式を開くことができます。 収集されると、これらのコンテンツは Azure Search によってインデックス化され、ボットが照会できるようになります。
 
-## <a name="install-dependencies"></a>依存関係をインストールする
+## <a name="install-dependencies"></a>依存関係のインストール
 
 コマンド プロンプトから、ボットのプロジェクト ディレクトリに移動し、ノード パッケージ マネージャー (NPM) を使用して次のモジュールをインストールします。
 

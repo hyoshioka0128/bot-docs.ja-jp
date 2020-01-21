@@ -1,5 +1,5 @@
 ---
-title: Bot Connector API を使用したメッセージの作成 | Microsoft Docs
+title: Bot Connector API を使用したメッセージの作成 - Bot Service
 description: Bot Connector API 内の、一般的に使用されるメッセージ プロパティについて説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 727a319ef479a1f8954151d0e7dcaefaf3d249a1
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: f3f084f65c1fb4fc84a6c8c75ce36b56487ebd0d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876159"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789965"
 ---
 # <a name="create-messages"></a>メッセージを作成する
 
@@ -20,15 +20,17 @@ ms.locfileid: "70876159"
 
 ## <a name="message-text-and-formatting"></a>メッセージ テキストと書式設定
 
-メッセージ テキストは **plain**、**markdown**、または **xml** を使用して書式設定できます。 `textFormat` プロパティの既定の書式設定は **markdown** で、Markdown 書式設定標準を使用してテキストを解釈します。 テキスト書式のサポートのレベルは、チャネルによって異なります。 使用する機能が対象チャネルでサポートされているかどうかを確認するには、[Channel Inspector][ChannelInspector] を使用して機能をプレビューします。 
+メッセージ テキストは **plain**、**markdown**、または **xml** を使用して書式設定できます。 `textFormat` プロパティの既定の書式設定は **markdown** で、Markdown 書式設定標準を使用してテキストを解釈します。 テキスト書式のサポートのレベルは、チャネルによって異なります。 
+
+[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 [Activity][] オブジェクトの `textFormat` プロパティを使用して、テキストの書式を指定することができます。 たとえば、プレーン テキストのみを含む基本的なメッセージを作成するには、`Activity` オブジェクトの `textFormat` プロパティを **plain** に設定し、`text` プロパティをメッセージの内容に設定し、`locale` プロパティを送信者のロケールに設定します。 
 
-## <a name="attachments"></a>[添付ファイル]
+## <a name="attachments"></a>[Attachments]
 
 [Activity][] オブジェクトの `attachments` プロパティは、単純なメディア添付ファイル (画像、オーディオ、ビデオ、ファイル) やリッチ カードの送信に使用できます。 詳細については、「[メッセージへのメディア添付ファイルの追加](bot-framework-rest-connector-add-media-attachments.md)」および「[メッセージへのリッチ カードの追加](bot-framework-rest-connector-add-rich-cards.md)」を参照してください。
 
-## <a name="entities"></a>エンティティ
+## <a name="entities"></a>[エンティティ]
 
 [Activity][] オブジェクトの `entities` プロパティは、拡張可能な <a href="http://schema.org/" target="_blank">schema.org</a> オブジェクトの配列であり、チャネルとボットの間で共通のコンテキスト メタデータを交換するために使用します。
 
@@ -54,7 +56,7 @@ ms.locfileid: "70876159"
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [Channel Inspector を使用して機能をプレビューする][ChannelInspector]
+- [チャネル リファレンス][ChannelInspector]
 - [アクティビティの概要](https://aka.ms/botSpecs-activitySchema)
 - [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
 - [メッセージへのメディア添付ファイルの追加](bot-framework-rest-connector-add-media-attachments.md)
@@ -64,7 +66,7 @@ ms.locfileid: "70876159"
 - [メッセージへの推奨されるアクションの追加](bot-framework-rest-connector-add-suggested-actions.md)
 - [チャネル固有の機能の実装](bot-framework-rest-connector-channeldata.md)
 
-[ChannelInspector]: ../bot-service-channel-inspector.md
+[ChannelInspector]: ../bot-service-channels-reference.md
 [textFormating]: ../bot-service-channel-inspector.md#text-formatting
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object

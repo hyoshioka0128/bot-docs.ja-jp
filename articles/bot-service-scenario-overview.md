@@ -1,5 +1,5 @@
 ---
-title: Bot Service シナリオの概要 | Microsoft Docs
+title: Bot Service シナリオの概要 - Bot Service
 description: Bot Service で構築した強力なボットをうまく活用する主なシナリオについて説明します。
 author: BrianRandell
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c4a0af8bfd6496b82ddcc9219e948395d87e4ff3
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 6786a25d56bbf37262760ca5285e32aa860c5959
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167352"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793449"
 ---
 # <a name="bot-scenarios"></a>ボット シナリオ
 
@@ -46,7 +46,7 @@ ms.locfileid: "70167352"
 
 この単純なボットと無料の If This Then That (IFTTT) サービスを組み合わせると、Philips Hue の照明を制御することができます。 IoT デバイスである Philips Hue は、公開されている API を使ってローカルで制御できます。 ただし、この API は広くアクセスできるようにローカル ネットワークの外部に公開されてはいません。 しかし、IFTTT は "[Friend of Hue](http://www2.meethue.com/friends-of-hue/ifttt/)" であり、照明のオンやオフ、照明の色や光の強度を変更など、たくさんの制御コマンドが公開されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これでシナリオの概要が理解できたので、それぞれのシナリオを詳しく確認してください。
 
 > [!div class="nextstepaction"]

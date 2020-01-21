@@ -1,5 +1,5 @@
 ---
-title: メッセージを送受信する | Microsoft Docs
+title: メッセージを送受信する - Bot Service
 description: Bot Connector サービスを使用してメッセージを送受信する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 5e0f35b7fe62c93f4f4e17b5343960fa2b617ef9
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: dc86478de7d73b15bd0d816c5da4e140b3e4de40
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876094"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789894"
 ---
 # <a name="send-and-receive-messages"></a>メッセージを送受信する
 
@@ -26,12 +26,12 @@ Bot Connector サービスを使用すると、ボットで Skype、電子メー
 
 | プロパティ | 値 |
 |----|----|
-| conversation | ユーザーのメッセージの `conversation` プロパティのコンテンツにこのプロパティを設定します。 |
+| メッセージ交換 (conversation) | ユーザーのメッセージの `conversation` プロパティのコンテンツにこのプロパティを設定します。 |
 | from | ユーザーのメッセージの `recipient` プロパティのコンテンツにこのプロパティを設定します。 |
 | locale | 指定した場合、ユーザーのメッセージの `locale` プロパティのコンテンツにこのプロパティを設定します。 |
 | recipient | ユーザーのメッセージの `from` プロパティのコンテンツにこのプロパティを設定します。 |
 | replyToId | ユーザーのメッセージの `id` プロパティのコンテンツにこのプロパティを設定します。 |
-| type | このプロパティは **message** に設定します |
+| 型 | このプロパティは **message** に設定します |
 
 次に、ユーザーに伝える情報を指定するプロパティを設定します。 たとえば、メッセージに表示するテキストを指定するには `text` プロパティを設定します。ボットが話すテキストを指定するには `speak` プロパティを設定します。メディアの添付ファイルや、メッセージに含めるリッチ カードを指定するには `attachments` プロパティを設定します。 一般的に使用されるメッセージのプロパティについては、「[Create messages](bot-framework-rest-connector-create-messages.md)」(メッセージの作成) を参照してください。
 
@@ -92,7 +92,7 @@ POST /v3/conversations/{conversationId}/activities
 > [!NOTE]
 > Bot Framework では、ボットで送信できるメッセージ数の制限を指定していません。 しかし、ほとんどのチャネルでは、ボットが短時間で多数のメッセージを送信しないように、調整制限を強制します。 さらに、ボットで立て続けに複数のメッセージを送信する場合は、チャネルでは適切な順序でメッセージがレンダリングされない可能性があります。
 
-## <a name="start-a-conversation"></a>会話を開始する
+## <a name="start-a-conversation"></a>会話の開始
 
 ボットで 1 人または複数のユーザーと会話を開始する必要がある場合があります。 チャネル上でユーザーとの会話を開始するには、ボットがそのアカウント情報と、そのチャネル上のユーザーのアカウント情報を知っている必要があります。 
 

@@ -1,5 +1,5 @@
 ---
-title: アクティビティの概要 | Microsoft Docs
+title: アクティビティの概要 - Bot Service
 description: Bot Framework SDK for .NET 内で使用できるさまざまなアクティビティの種類について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: cce7537124810504c9b92d86ad0ef7bd3b3ac5e9
-ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
+ms.openlocfilehash: 9aa9edf7d0bd20d1fa615ccbba5fc655a8dc40f1
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71278987"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797268"
 ---
 # <a name="activities-overview"></a>アクティビティの概要
 
@@ -25,7 +25,7 @@ ms.locfileid: "71278987"
 
 次のアクティビティの種類は、Bot Framework SDK for .NET でサポートされています。
 
-| Activity.Type | インターフェイス | 説明 |
+| Activity.Type | インターフェイス | [説明] |
 |------|------|------|
 | [message](#message) | IMessageActivity | ボットとユーザー間の通信を表します。 |
 | [conversationUpdate](#conversationupdate) | IConversationUpdateActivity | ボットが会話に追加されたこと、他のメンバーが会話に追加された、または会話から削除されたこと、会話のメタデータが変更されたことを示します。 |
@@ -70,7 +70,7 @@ ms.locfileid: "71278987"
 
 ボットは **endOfConversation** アクティビティを受信して、ユーザーが会話を終了したことを示します。 ボットは **endOfConversation** アクティビティを送信して、ユーザーが会話を終了したことを示すことがあります。 
 
-## <a name="event"></a>event
+## <a name="event"></a>イベント
 
 ボットは、外部プロセスまたは外部サービスから、ボットに情報を通信することを望むが、その情報をユーザーには表示しないことを示す、**event** アクティビティを受信する場合があります。 通常、**event** アクティビティの送信者は、ボットがいかなる方法でも受信確認することを望みません。
 

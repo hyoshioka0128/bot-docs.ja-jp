@@ -1,5 +1,5 @@
 ---
-title: Azure Table Storage を使用したカスタム状態データの管理 | Microsoft Docs
+title: Azure Table Storage を使用したカスタム状態データの管理 (v3 JS) - Bot Service
 description: Bot Framework SDK for Node.js で Azure Table Storage を使用して状態データを保存および取得する方法について取り上げます。
 author: DucVo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3433e0c4218dcb9b5e991325a4e5508fc0422997
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 6eb4645437210f98cf43270a50b1654faf30ef25
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299673"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790347"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-nodejs"></a>Node.js 用 Azure Table Storage を使用したカスタム状態データの管理
 
@@ -32,7 +32,7 @@ ms.locfileid: "70299673"
 
 - [Node.js](https://nodejs.org/en/)。
 - [Bot Framework Emulator](~/bot-service-debug-emulator.md)。
-- Node.js ボットが必要。 ない場合は、[ボットを作成](bot-builder-nodejs-quickstart.md)します。 
+- Node.js ボットが必要です。 ない場合は、[ボットを作成](bot-builder-nodejs-quickstart.md)します。 
 - [Storage Explorer](http://storageexplorer.com/)。
 
 ## <a name="create-azure-account"></a>Azure アカウントを作成する
@@ -72,7 +72,7 @@ npm install --save botbuilder-azure
    ```
    `storageName` 値と `storageKay` 値は、Azure Table の **[アクセス キー]** メニューで確認できます。 Azure Table に `tableName` が存在しない場合は、作成されます。
 
-3. `botbuilder-azure` モジュールを使用して、Azure Table に接続するための新しいオブジェクトを 2 つ作成します。 最初に、接続構成設定を渡して、`AzureTableClient` のインスタンスを作成します。 次に、`AzureTableClient` オブジェクトを渡して `AzureBotStorage` のインスタンスを作成します。 例:
+3. `botbuilder-azure` モジュールを使用して、Azure Table に接続するための新しいオブジェクトを 2 つ作成します。 最初に、接続構成設定を渡して、`AzureTableClient` のインスタンスを作成します。 次に、`AzureTableClient` オブジェクトを渡して `AzureBotStorage` のインスタンスを作成します。 次に例を示します。
 
    ```javascript
    var azureTableClient = new azure.AzureTableClient(tableName, storageName, storageKey);
@@ -80,7 +80,7 @@ npm install --save botbuilder-azure
    var tableStorage = new azure.AzureBotStorage({gzipData: false}, azureTableClient);
    ```
 
-4. インメモリ ストレージではなくカスタム データベースを使用し、セッション情報をデータベースに追加するよう指定します。 例:
+4. インメモリ ストレージではなくカスタム データベースを使用し、セッション情報をデータベースに追加するよう指定します。 次に例を示します。
 
    ```javascript
    var bot = new builder.UniversalBot(connector, function (session) {
@@ -111,7 +111,7 @@ node app.js
 
 この時点では、ボットはローカルで実行されています。 エミュレーターを起動し、エミュレーターからボットに接続します。
 
-1. エミュレーターのアドレス バーに「<strong>http://localhost:port-number/api/messages</strong>」と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 <strong>[Microsoft App ID]\(Microsoft アプリ ID\)</strong> フィールドと <strong>[Microsoft App Password]\(Microsoft アプリ パスワード\)</strong> フィールドは、この時点では空白のままでかまいません。 この情報は、後ほど、[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
+1. エミュレーターのアドレス バーに「<strong>http://localhost:port-number/api/messages</strong>」と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 <strong>[Microsoft アプリ ID]</strong> フィールドと <strong>[Microsoft アプリ パスワード]</strong> フィールドは、この時点では空白のままで構いません。 この情報は、後ほど、[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
 2. **[接続]** をクリックします。
 3. ボットにメッセージを送信して、テストします。 通常どおりにボットと対話してください。 対話が終わったら、**Storage Explorer** に移動し、保存された状態データを表示します。
 
@@ -136,4 +136,4 @@ node app.js
 ボットの状態データを完全に制御できるようになったので、次は状態データを使用して会話フローの管理を強化する方法を調べます。
 
 > [!div class="nextstepaction"]
-> [会話フローの管理](bot-builder-nodejs-dialog-manage-conversation-flow.md)
+> [会話フローを管理する](bot-builder-nodejs-dialog-manage-conversation-flow.md)

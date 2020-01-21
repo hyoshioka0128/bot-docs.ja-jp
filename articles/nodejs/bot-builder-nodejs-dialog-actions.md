@@ -1,5 +1,5 @@
 ---
-title: ユーザー アクションを処理する | Microsoft Docs
+title: ユーザー アクションを処理する - Bot Service
 description: Bot Framework SDK for Node.js を使用して、特定のキーワードを含むユーザー入力をボットが聞き取って処理できるようにすることで、ユーザー アクションを処理する方法について説明します。
 author: DucVo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 56f5c66b03fe5ae8f0abeb66470a7c31997829ba
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 43a0737a11942cb3e8c032b98eda37154a47d340
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299891"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790934"
 ---
 # <a name="handle-user-actions"></a>ユーザー アクションを処理する
 
@@ -21,7 +21,7 @@ ms.locfileid: "70299891"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-global-handlers.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-dialog-actions.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-dialog-actions.md)
 
 ユーザーは通常、「ヘルプ」、「キャンセル」、「やり直し」などのキーワードを使用して、ボット内の特定の機能にアクセスしようとします。 ユーザーは会話の途中で、ボットが別の応答を期待しているときにこれを行います。 **アクション**を実装することによって、そのような要求をより適切に処理するようにボットを設計できます。 ハンドラーは「ヘルプ」、「キャンセル」、「やり直し」などの指定されたキーワードのユーザー入力を検証し、適切に応答します。 
 
@@ -31,7 +31,7 @@ ms.locfileid: "70299891"
 
 ダイアログにアタッチできるアクションの種類を次の表に一覧で示します。 各アクション名のリンクをクリックすると、そのアクションについて詳しく説明したセクションに移動します。
 
-| Action | Scope (スコープ) | 説明 |
+| アクション | スコープ | [説明] |
 |------|------| ---- |
 | [triggerAction](#bind-a-triggeraction) | グローバル | ダイアログ スタックをクリアし、それ自体をスタックの底にプッシュするアクションをダイアログにバインドします。 この既定の動作を上書きするには、`onSelectAction` オプションを使用します。 |
 | [customAction](#bind-a-customaction) | グローバル | ダイアログ スタックに影響を与えずに情報を処理したり、アクションを実行したりできるカスタム アクションをボットにバインドします。 このアクションの機能をカスタマイズするには、`onSelectAction` オプションを使用します。 |
@@ -271,7 +271,7 @@ bot.dialog('orderDinner', [
 
 このアクションがトリガーされると、ユーザーに "Are you sure?"(本当にキャンセルしますか?) と確認します。 ユーザーは、アクションを本当に実行する場合は "Yes"、アクションを取り消して元の処理を続ける場合は "No" と答える必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 **アクション**を使用して、ユーザーの要求を予測し、ボットでそれらの要求を適切に扱えるようにすることができます。 これらのアクションの多くは、現在の会話のフローを中断させます。 ユーザーが会話フローを中断および再開できるようにするには、中断する前にユーザー状態を保存する必要があります。ユーザー状態を保存、および状態データを管理する方法について理解を深めます。
 

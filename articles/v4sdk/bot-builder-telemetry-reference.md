@@ -1,5 +1,5 @@
 ---
-title: Bot Framework Service テレメトリによって生成されるイベント | Microsoft Docs
+title: Bot Framework Service テレメトリによって生成されるイベント - Bot Service
 description: 新しいテレメトリ機能によってトリガーされるイベントについて説明します。
 keywords: テレメトリ, appinsights, ボットの監視
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dbb58a6a287124d0b393a4fc5a617e89840d1542
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: f4de4c0f6e4c90461a46d471806cb290b183935e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299160"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792032"
 ---
 # <a name="events-generated-by-the-bot-framework-service-telemetry"></a>Bot Framework Service テレメトリによって生成されるイベント
 

@@ -1,5 +1,5 @@
 ---
-title: 新しい .NET Core プロジェクトで既存のボットを移行する | Microsoft Docs
+title: 新しい .NET Core プロジェクトで既存のボットを移行する - Bot Service
 description: 既存の .NET v3 ボットを取得し、新しい .NET Core プロジェクトを使用して、これを .NET v4 SDK に移行します。
 keywords: bot の移行, formflow, ダイアログ, v3 ボット
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 06/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 23646cf47b49e73eec9c3ce9a4deb1e053892fa1
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 776ba2013e7f66abc36cbf4810a7520a8da8e496
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037265"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791104"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-core-v4-bot"></a>.NET v3 ボットを .NET Core v4 ボットに移行する
 
@@ -163,7 +163,7 @@ scorables はもう存在しないので、`CancelScorable` クラスをコピ�
 
 ダイアログ内の制御フローとメッセージングは同じ方法で処理されなくなったので、各ダイアログを変換するときにこれを変更する必要があります。
 
-| Operation | v3 コード | v4 コード |
+| 操作 | v3 コード | v4 コード |
 | :--- | :--- | :--- |
 | ダイアログの開始を処理する | `IDialog.StartAsync` を実装する | これをウォーターフォール ダイアログの最初のステップにするか、`Dialog.BeginDialogAsync` を実装する |
 | ダイアログの継続を処理する | `IDialogContext.Wait` を呼び出す | ウォーターフォール ダイアログにステップを追加するか、`Dialog.ContinueDialogAsync` を実装する |

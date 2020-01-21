@@ -1,5 +1,5 @@
 ---
-title: チャネル固有の機能の実装 | Microsoft Docs
+title: チャネル固有の機能の実装 - Bot Service
 description: Bot Framework SDK for .NET を使用してチャネル固有の機能を実装する方法について説明します。
 keywords: チャネル固有, 電子メール, Slack, Facebook, Telegram, Kik, カスタム チャネル
 author: RobStand
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c15a603cc78a456d3067d8877a24d647eaf94d03
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 3ceb73213db64e8d5b4db0ff5c63f1cc389c52fd
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299526"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791291"
 ---
 # <a name="implement-channel-specific-functionality"></a>チャネル固有の機能の実装
 

@@ -1,5 +1,5 @@
 ---
-title: Information ボットのシナリオ | Microsoft Docs
+title: Information ボットのシナリオ - Bot Service
 description: Bot Framework による Information ボットのシナリオについて説明します。
 author: BrianRandell
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f62f58de5e15092e34c1e612ef0b54bc2e4b5886
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 4cb1865eae0f87efb6a1ecaa1a7a05e730e9e65c
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167376"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794235"
 ---
 # <a name="information-bot-scenario"></a>Information ボットのシナリオ
 
@@ -33,12 +33,12 @@ ms.locfileid: "70167376"
 4. Cognitive Services が、QnA Maker で構築された FAQ ボットを返します。
 5. 従業員が有効なクエリを定義します。
 6. ボットが、アプリケーション データに関する情報を返す Azure Search にクエリを送信します。
-7. Application Insights が、ランタイム テレメトリを収集して、ボットのパフォーマンスと使用方法により開発をサポートします。
+7. Application Insights がランタイム テレメトリを収集して、ボットのパフォーマンスと使用状況の情報によって開発をサポートします。
 
 ## <a name="sample-bot"></a>サンプル ボット
-C# で記述されたサンプル ボットは Microsoft Azure で動作し、Azure Search によってインデックス付けされた SQL データベース インスタンス内のデータを操作します。 ボットは、尋ねることができる質問のリストを、Cognitive Services: QnA Maker を使用して質問 (回答) をフレーズ化する方法に関する情報と共に公開します。 ボットのユーザーはその後、インデックス付けされているデータベースの広い領域または特定の領域で Azure Search によってデータを参照するクエリを入力できます。 このサンプルは、顧客と注文情報の単純なデータベースを提供します。 Application Insights はボットの使用状況を追跡し、ボットの例外の監視に役立ちます。 誰が情報にアクセスできるかを制限できるよう、このボットは Azure AD アプリとして発行されます。
+C# で記述されたサンプル ボットは Microsoft Azure で動作し、Azure Search によってインデックス付けされた SQL データベース インスタンス内のデータを操作します。 ボットは、たずねることができる質問のリストを、Cognitive Services: QnA Maker を使用して質問 (回答) をフレーズ化する方法に関する情報と共に公開します。 ボットのユーザーはその後、インデックス付けされているデータベースの広い領域または特定の領域で Azure Search によってデータを参照するクエリを入力できます。 このサンプルは、顧客と注文情報の単純なデータベースを提供します。 Application Insights はボットの使用状況を追跡し、ボットの例外の監視に役立ちます。 誰が情報にアクセスできるかを制限できるよう、このボットは Azure AD アプリとして発行されます。
 
-このサンプル ボットは、[Bot Framework の一般的なシナリオのサンプル](https://aka.ms/abs-scenarios)からダウンロードするか、ソース コードを複製できます。
+このサンプル ボットのソース コードは、「[Samples for Common Bot Framework Scenarios (Bot Framework の一般的なシナリオのサンプル)](https://aka.ms/abs-scenarios)」からダウンロードするか複製することができます。
 
 ## <a name="components-youll-use"></a>使用するコンポーネント
 Information ボットでは、次のコンポーネントを使用します。
@@ -59,7 +59,7 @@ Azure Search はアプリ向けのクラウド検索サービスであり、迅�
 ### <a name="application-insights"></a>Application Insights
 Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報を得ることができます。 すぐに使用できる、多機能なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードによって、ボットの可用性が保たれ、期待どおりに動作していることを確認できます。 問題の発生をすばやく確認し、根本原因を分析して、問題個所を特定し、修正することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次に、モノのインターネット (IoT) ボットのシナリオを理解します。
 
 > [!div class="nextstepaction"]

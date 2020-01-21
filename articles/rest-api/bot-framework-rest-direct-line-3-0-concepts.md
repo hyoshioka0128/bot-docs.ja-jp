@@ -1,5 +1,5 @@
 ---
-title: Bot Framework Direct Line API 3.0 の主要な概念 | Microsoft Docs
+title: Bot Framework Direct Line API 3.0 の主要な概念 - Bot Service
 description: Bot Framework Direct Line API 3.0 の主要な概念を理解します。
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/06/2019
-ms.openlocfilehash: 6727530ec6267a63e28e103bdfc12183ebed8016
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 83273ade9aa79266c20287682ea3c151b1b0f8a5
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299595"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789444"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Direct Line API 3.0 の主要な概念
 
@@ -26,7 +26,7 @@ Direct Line API 3.0 の要求は、<a href="https://dev.botframework.com/" targe
 
 Direct Line の会話はクライアントによって明示的に開かれ、ボットとクライアントが参加し、有効な資格情報を持っている限り続きます。 詳細については、「[会話の開始](bot-framework-rest-direct-line-3-0-start-conversation.md)」を参照してください。
 
-## <a name="sending-messages"></a>メッセージの送信
+## <a name="sending-messages"></a>メッセージを送信する
 
 Direct Line API 3.0 を使用すると、クライアントは `HTTP POST` 要求を発行することでメッセージを送信できます。 クライアントは、要求ごとに 1 つのメッセージを送信できます。 詳しくは、「[ボットにアクティビティを送信する](bot-framework-rest-direct-line-3-0-send-activity.md)」をご覧ください。
 
@@ -34,7 +34,7 @@ Direct Line API 3.0 を使用すると、クライアントは `HTTP POST` 要�
 
 Direct Line API 3.0 を使用すると、クライアントは、`WebSocket` ストリームを通して、または `HTTP GET` 要求を発行してボットからメッセージを受信できます。 これらの手法のいずれかを使用することによって、クライアントは、`ActivitySet` の一部としてボットから一度に複数のメッセージを受信できます。 詳細については、「[ボットからアクティビティを受信する](bot-framework-rest-direct-line-3-0-receive-activities.md)」を参照してください。
 
-## <a name="developer-resources"></a>開発者リソース
+## <a name="developer-resources"></a>開発者向けリソース
 
 ### <a name="client-libraries"></a>クライアント ライブラリ
 
@@ -50,7 +50,7 @@ Bot Framework では、C# と Node.js からの Direct Line API 3.0 へのアク
 
 <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples" target="_blank">BotBuilder-Samples</a> GitHub リポジトリには、C# と Node.js で Direct Line API 3.0 を使用する方法を示す複数のサンプルが含まれています。
 
-| サンプル | 言語 | 説明 |
+| サンプル | 言語 | [説明] |
 |----|----|----|
 | <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLine" target="_blank">Direct Line Bot のサンプル</a> | C# | Direct Line API を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
 | <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLineWebSockets" target="_blank">Direct Line Bot のサンプル (クライアント WebSocket を使用)</a> | C# | Direct Line API と WebSocket を使用して相互に通信するサンプル ボットとカスタム クライアント。 |

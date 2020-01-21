@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/03/2019
-ms.openlocfilehash: 8cc058b32e6cdb64d25f2177ef809a5763902379
-ms.sourcegitcommit: a5935cfa353071cee069632c83a34c20d1ff6cf3
+ms.openlocfilehash: ed7395475378e95793592f88826fe4fc849797b8
+ms.sourcegitcommit: 86495b597e55c94309a0c73fc1945a3393ddcbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2019
-ms.locfileid: "75201785"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75756484"
 ---
 # <a name="categorized-activities-by-channel"></a>チャネル別に分類されたアクティビティ
 
@@ -251,14 +251,18 @@ Web チャットを使用して任意の種類のアクティビティとペイ�
 
 ## <a name="action-support-by-channel"></a>チャネル別のアクションのサポート
 
-次の表に、チャネルでサポートされているカード アクションと推奨されるアクションの合計を示します。
+次の表は、それぞれのチャネルでサポートされるカード アクションと推奨されるアクションの最大数を示しています。  :x: は、そのアクションが、当該のチャネルでは一切サポートされないことを意味します。
 
- \                      | Cortana  | Direct Line | Direct Line (Web チャット) | Email | Facebook | GroupMe |   Kik   | Line  | Teams | Slack | Skype | Skype Business | Telegram | Twilio  
-:---------------------- | :-----:  | :---------: | :--------------------: |:----: | :------: | :-----: | :-----: | :---: | :---: | :---: | :---: | :------------: | :------: | :----:  
-Suggested Actions (推奨されるアクション)       |    :x:     |     100     |          100           |   :x:   |    10    |    :x:    |   20    |  13   |   :x:   |  100  |  10   |       :x:        |    100   |   :x:     
-カード アクション            |   100    |     100     |          100           |   :x:   |     3    |    :x:    |   20    |  99   |   3   |  100  |   3   |       :x:        |     :x:    |   :x:     
+| \                 | Cortana | Direct Line | Direct Line (Web チャット) | Email | Facebook | GroupMe |   Kik   | Line  | Teams | Slack | Skype | Skype Business | Telegram | Twilio | 
+| :---------------- | :-----: | :---------: | :--------------------: |:----: | :------: | :-----: | :-----: | :---: | :---: | :---: | :---: | :------------: | :------: | :----: |
+| Suggested Actions (推奨されるアクション) |   :x:   |     100     |          100           |  :x:  |    10    |   :x:   |   20    |  13   |  :x:  |  100  |  10   |      :x:       |    100   |   :x:  |  
+| カード アクション      |   100   |     100     |          100           |  :x:  |     3    |   :x:   |   20    |  99   |   3   |  100  |   3   |      :x:       |    :x:   |   :x:  |  
 
 上の表に示されている数値の詳細については、[こちら](https://aka.ms/channelactions)に記載されているチャネル サポート コードを参照してください。 
+
+"_推奨されるアクション_" の詳細については、「[入力にボタンを使用する](https://aka.ms/howto-add-buttons)」の記事を参照してください。
+
+"_カード アクション_" の詳細については、「_メッセージにメディアを追加する_」の記事の「[ヒーロー カードを送信する](https://aka.ms/howto-add-media#send-a-hero-card)」セクションを参照してください。
 
 ## <a name="card-support-by-channel"></a>チャネル別のカードのサポート
 
@@ -274,7 +278,7 @@ Suggested Actions (推奨されるアクション)       |    :x:     |     100 
 |Skype|❌|✔|✔|✔|✔|✔|✔|✔|
 |Slack|🔶|✔|🌐|🌐|✔|✔|🌐|🌐|
 |Telegram|⚠🔶|✔|🌐|✔|✔|✔|✔|✔|
-|Twilio|🔶|✔|❌|✔|✔|🌐|✔|❌|
+|Twilio|🔶|🌐|❌|🌐|🌐|🌐|🌐|❌|
 |Web チャット|✔|✔|✔|✔|✔|✔|✔|✔|
 
 *注意事項: Direct Line チャネルは技術的にすべてのカードをサポートしていますが、それらを実装するかどうかの判断はクライアントに任されます*

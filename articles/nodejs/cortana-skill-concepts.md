@@ -1,5 +1,5 @@
 ---
-title: Node.js を使用して Cortana スキルを構築する | Microsoft Docs
+title: Node.js を使用して Cortana スキルを構築する - Bot Service
 description: Bot Framework SDK for Node.js で Cortana スキルを構築するための主要概念について説明します。
 keywords: Bot Framework, Cortana スキル, 音声, Node.js, Bot Builder, SDK, 主な概念, 主要概念
 author: DeniseMak
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6aca29556fe877866d4beee8487ce0f1537334e6
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 477b20b090ae20ee9c4d723710a9fa11fff356fd
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866743"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790337"
 ---
 # <a name="key-concepts-for-building-a-bot-for-cortana-skills-using-nodejs"></a>Node.js を使用して Cortana スキル用のボットを構築するための主要概念
  
@@ -41,13 +41,13 @@ Cortana は、テキストによる会話だけでなく、音声メッセージ
 システムで発話を着地させることができなければ、ユーザーは混乱します。 たとえば、ボットが "次は何ですか" とたずねた場合、以下の会話は多少の混乱を招きます。
 
 > **Cortana**: プロフィールの詳細を確認しますか?  
-> **User**:いいえ。  
-> **Cortana**: 次の手順
+> **[ユーザー]** :いいえ。  
+> **Cortana**: 次の操作
 
 ボットが "わかりました" と確認の言葉を加えると、ユーザーはより明確に理解できます。
 
 > **Cortana**: プロフィールの詳細を確認しますか?  
-> **User**:いいえ。  
+> **[ユーザー]** :いいえ。  
 > **Cortana**: **わかりました。** 次は何ですか?
 
 着地の度合いは、最も弱いものから最も強いものの順に、以下のようになります。
@@ -60,16 +60,16 @@ Cortana は、テキストによる会話だけでなく、音声メッセージ
 
 ### <a name="acknowledgement-and-next-relevant-contribution"></a>確認と、次を示唆する発言
 
-> **User**:5 月に出張する必要があります。  
+> **[ユーザー]** :5 月に出張する必要があります。  
 > **Cortana**: **わかりました**。 5 月の何日に出張しますか?  
-> **User**:えっと、12 日から 15 日までです。  
+> **[ユーザー]** :えっと、12 日から 15 日までです。  
 > **Cortana**: **わかりました**。 どの都市に出張しますか?  
 
 ### <a name="grounding-by-demonstration"></a>デモンストレーションによる着地
 
-> **User**:5 月に出張する必要があります。  
+> **[ユーザー]** :5 月に出張する必要があります。  
 > **Cortana**: では、5 月**何日**に出張しますか。  
-> **User**:そうですね、12 日から 15 日までです。  
+> **[ユーザー]** :そうですね、12 日から 15 日までです。  
 > **Cortana**: **では**、どの都市に出張しますか?  
     
 ### <a name="closure"></a>クロージャ

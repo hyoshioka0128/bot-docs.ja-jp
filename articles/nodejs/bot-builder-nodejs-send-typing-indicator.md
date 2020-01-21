@@ -1,5 +1,5 @@
 ---
-title: 入力インジケーターの送信 | Microsoft Docs
+title: 入力インジケーターの送信 - Bot Service
 description: Bot Framework SDK for Node.js を使用して、ボットが要求を処理中であることをユーザーに伝えるために "しばらくお待ちください" というインジケーターを追加する方法を説明します。
 author: DeniseMak
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b7bef8e17584d94d6821e8b936abae9ef20088e2
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 5f4e67818288c5dc1a5fbb78261dea11c8b3a4c5
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299703"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790377"
 ---
 # <a name="send-a-typing-indicator"></a>入力インジケーターの送信 
 

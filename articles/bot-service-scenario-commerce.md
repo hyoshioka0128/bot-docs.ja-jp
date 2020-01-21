@@ -1,5 +1,5 @@
 ---
-title: コマース ボットのシナリオ | Microsoft Docs
+title: コマース ボットのシナリオ - Bot Service
 description: Bot Framework によるコマース ボットのシナリオについて説明します。
 author: BrianRandell
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9e2eac132922ad90437c88404cbfb97f6f495945
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 8bc6f6e0c027e9b949997046133020b74ef18afe
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167083"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794754"
 ---
 # <a name="commerce-bot-scenario"></a>コマース ボットのシナリオ
 
@@ -31,12 +31,12 @@ ms.locfileid: "70167083"
 4. Cognitive Services が自然言語の要求を処理します。
 5. 自然な会話を使用して質問を改善できるユーザーが応答をレビューします。
 6. ユーザーが結果に満足すれば、Application Bot がユーザーの予約を更新します。
-7. Application Insights が、ランタイム テレメトリを収集して、ボットのパフォーマンスと使用方法により開発をサポートします。
+7. Application Insights がランタイム テレメトリを収集して、ボットのパフォーマンスと使用状況の情報によって開発をサポートします。
 
 ## <a name="sample-bot"></a>サンプル ボット
 サンプルのコマース ボットは、架空のホテルのコンシェルジュ サービスに基づいて設計されています。 このボットは C# で記述されています。顧客は、チェーンの会員サービス モバイル アプリからホテルの Azure AD B2C を認証した後、ボットにアクセスします。 チェーンの予約情報は、SQL Database に格納されます。 顧客は、「プール付きの部屋に泊まるには、いくらかかりますか」というような自然な言葉で質問できます。 次にボットは、どのホテルか、ゲストの宿泊期間はどのくらいかといったコンテキストを尋ねます。 さらに、Language Understanding (LUIS) サービスにより、「プール付きの部屋」のような単純な語句からも簡単にコンテキストを取得できます。 ボットは、ゲストに回答を返すとともに、日数や部屋の種類を提示して、プール付きの部屋を予約することを提案します。 必要なデータがすべてそろうと、ボットは予約を行います。 ゲストは、音声で同じ要求を行うこともできます。
 
-このサンプル ボットは、[Bot Framework の一般的なシナリオのサンプル](https://aka.ms/abs-scenarios)からダウンロードするか、ソース コードを複製できます。
+このサンプル ボットのソース コードは、「[Samples for Common Bot Framework Scenarios (Bot Framework の一般的なシナリオのサンプル)](https://aka.ms/abs-scenarios)」からダウンロードするか複製することができます。
 
 ## <a name="components-youll-use"></a>使用するコンポーネント
 コマース ボットでは、次のコンポーネントを使用します。
@@ -53,7 +53,7 @@ Cognitive Services ファミリ テクノロジのメンバーである Language
 ### <a name="application-insights"></a>Application Insights
 Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報を得ることができます。 すぐに使用できる、多機能なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードによって、ボットの可用性が保たれ、期待どおりに動作していることを確認できます。 問題の発生をすばやく確認し、根本原因を分析して、問題個所を特定し、修正することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次に、Cortana スキル ボットのシナリオについて説明します。
 
 > [!div class="nextstepaction"]

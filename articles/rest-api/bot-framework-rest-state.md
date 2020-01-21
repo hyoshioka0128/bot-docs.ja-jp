@@ -1,5 +1,5 @@
 ---
-title: 状態データの管理 | Microsoft Docs
+title: 状態データの管理 - Bot Service
 description: Bot State サービスを使用して、状態データを格納および取得する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: c0e7fa30b21cdb5f4315c4dc931fca45e8865804
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 1453ad74725e0084f0b5f45fa7d20475dbee2fa6
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757123"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789214"
 ---
 # <a name="manage-state-data"></a>状態データの管理
 

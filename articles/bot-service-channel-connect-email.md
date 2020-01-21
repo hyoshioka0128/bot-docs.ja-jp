@@ -1,5 +1,5 @@
 ---
-title: ボットを Office 365 の電子メールに接続する | Microsoft Docs
+title: ボットを Office 365 の電子メールに接続する - Bot Service
 description: Office 365 で電子メールを送受信するようにボットを構成する方法について説明します。
 keywords: Office 365, ボット チャネル, 電子メール, 電子メールの資格情報, Azure Portal, カスタム電子メール
 author: kamrani
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/15/2019
-ms.openlocfilehash: 3ad7829af9dc24ca9e10ebab352b4513b3bcad28
-ms.sourcegitcommit: 78da125eafe93b3c6d254708b82bdd01de7c3afb
+ms.openlocfilehash: 8ca2735dac838982af3ba97221e07d80155153b7
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464287"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792093"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>ボットを Office 365 の電子メールに接続する
 
@@ -77,16 +77,20 @@ AAD に代わる任意のベンダーを使用するフェデレーション認�
 
 お客様のボットが、受信電子メール メッセージへの応答として 15 秒内に 200 OK の HTTP 状態コードを返さない場合、電子メール チャネルはメッセージを再送信しようとするため、お客様のボットは同じ電子メール メッセージ アクティビティを数回受け取る可能性があります。 詳細については、「**How bots work (ボットのしくみ)** 」の「[HTTP details (HTTP の詳細)](v4sdk/bot-builder-basics.md#http-details)」セクション、および[タイムアウト エラーのトラブルシューティング](https://github.com/daveta/analytics/blob/master/troubleshooting_timeout.md)の方法に関する記事を参照してください。
 
+> [!NOTE]
+> ご使用の Office 365 アカウントで MFA が有効になっている場合は、まず所定のアカウントの MFA を無効にしてから、アカウントのメール チャネルの構成を行ってください。 そうでない場合、接続に失敗します。 
+
 ## <a name="additional-resources"></a>その他のリソース
 
 <!-- Put whole list in monikers, even though it's just the second item that needs to be different. -->
 ::: moniker range="azure-bot-service-3.0"
 * ボットを[チャネル](~/bot-service-manage-channels.md)に接続する
 * Bot Framework SDK for .NET を使用して[チャネル固有の機能を実装する](dotnet/bot-builder-dotnet-channeldata.md)
-* [Channel Inspector](bot-service-channel-inspector.md) を使用して、チャネルがボット アプリケーションの特定の機能を提供する方法を確認する
+* [チャネルのリファレンス](bot-service-channels-reference.md)記事を読み、各チャネルでサポートされる機能についての詳しい情報を入手する
 ::: moniker-end
 ::: moniker range="azure-bot-service-4.0"
 * ボットを[チャネル](~/bot-service-manage-channels.md)に接続する
 * Bot Framework SDK for .NET を使用して[チャネル固有の機能を実装する](~/v4sdk/bot-builder-channeldata.md)
-* [Channel Inspector](bot-service-channel-inspector.md) を使用して、チャネルがボット アプリケーションの特定の機能を提供する方法を確認する
+* [チャネルのリファレンス](bot-service-channels-reference.md)記事を読み、各チャネルでサポートされる機能についての詳しい情報を入手する
 ::: moniker-end
+

@@ -1,5 +1,5 @@
 ---
-title: メッセージをボットに送信する | Microsoft Docs
+title: ボットにメッセージを送信する - Bot Service
 description: Direct Line API v1.1 を利用してボットにメッセージを送信する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 461ea04e0865991c3a6d643db7511e58d516ec41
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e6504c1d6cd8cbcf3eab4fadaa62485deba14efa
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299616"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789718"
 ---
 # <a name="send-a-message-to-the-bot"></a>メッセージをボットに送信する
 
@@ -44,7 +44,7 @@ Authorization: Bearer RCurR_XV9ZA.cwA.BKA.iaJrC8xpy8qbOF5xnR2vtCX7CZj0LdjAPGfiCp
 
 ### <a name="response"></a>Response
 
-メッセージがボットに配信されると、サービスは、ボットの状態コードを反映する HTTP 状態コードで応答します。 ボットでエラーが生成されると、クライアントからのメッセージ送信要求への応答として、HTTP 500 応答 ("内部サーバー エラー") が返されます。 POST が正常に実行されると、サービスから HTTP 204 状態コードが返されます。 応答の本文でデータは返されません。 クライアントのメッセージと、ボットからのメッセージは、[ポーリング](bot-framework-rest-direct-line-1-1-receive-messages.md)で取得できます。 
+メッセージがボットに配信されると、サービスは、ボットの状態コードを反映する HTTP 状態コードで応答します。 ボットでエラーが生成されると、クライアントからのメッセージ送信要求への応答として、HTTP 500 応答 ("内部サーバー エラー") が返されます。 POST が正常に実行されると、サービスから HTTP 204 状態コードが返されます。 応答の本文で返されるデータはありません。 クライアントのメッセージと、ボットからのメッセージは、[ポーリング](bot-framework-rest-direct-line-1-1-receive-messages.md)で取得できます。 
 
 ```http
 HTTP/1.1 204 No Content

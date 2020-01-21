@@ -1,5 +1,5 @@
 ---
-title: ボットを Web チャット チャンネルに接続する | Microsoft Docs
+title: ボットを Web チャット チャンネルに接続する - Bot Service
 description: Web チャット チャンネルに接続されたボットに、Web ページの Web チャット コントロールを使用する方法について説明します。
 keywords: web チャット, ボット チャンネル, web ページ, 秘密鍵, iframe, HTML
 author: RobStand
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
-ms.openlocfilehash: 55bf98c3665558d55c92585f4d9915ac91554a79
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: a77f621d46b9ce69d92b83a9f6ada0c9fbf6286e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491282"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791753"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>ボットを Web チャットに接続する
 

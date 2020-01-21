@@ -1,5 +1,5 @@
 ---
-title: Bot Connector サービスでのボットの作成 | Microsoft Docs
+title: Bot Connector サービスでのボットの作成 - Bot Service
 description: Bot Connector サービスを使用してボットを作成します。
 author: RobStand
 ms.author: kamrani
@@ -7,17 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 751a5d8430bb675e8ad5e10d02f94ee5642672cb
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: f517385fd6d194772004b44b2d8407f2515dc17d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037475"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789904"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Bot Connector サービスでのボットの作成
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-quickstart.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-quickstart.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-quickstart.md)
 > - [Bot Service](../bot-service-quickstart.md)
 > - [REST](../rest-api/bot-framework-rest-connector-quickstart.md)
 
@@ -191,7 +191,7 @@ Content-Type: application/json
 }
 ```   
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Bot Framework からアクセス トークンを取得し、Bot Connector サービスを使用してユーザーとメッセージを交換しました。 [Bot Framework エミュレーター](../bot-service-debug-emulator.md)を使用すると、お使いのボットのテストおよびデバッグを行うことができます。 ご自身のボットを他のユーザーと共有したい場合は、そのボットが 1 つまたは複数のチャネルで実行されるように[構成](../bot-service-manage-channels.md)する必要があります。
 

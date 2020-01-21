@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4305a38a917c7e2bb1b7cd92f3bd007c1ed77d49
-ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
+ms.openlocfilehash: 3df1e44b5643f0dae98e659d76b8e30224081782
+ms.sourcegitcommit: 86495b597e55c94309a0c73fc1945a3393ddcbbf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/08/2020
-ms.locfileid: "75736834"
+ms.locfileid: "75756377"
 ---
 # <a name="create-a-bot-with-the-bot-framework-sdk-for-python"></a>Bot Framework SDK for Python を使用したボットの作成
 
@@ -48,19 +48,19 @@ cookiecutter https://github.com/microsoft/botbuilder-python/releases/download/Te
 
 ![名前と説明の設定](../media/python/quickstart/set-name-description.png)
 
-最後の行にあるアドレスの最後の 4桁 (通常は 3978) をコピーします。これは、次の手順で使用します。 これで、ボットを開始する準備ができました。
+最後の行にあるアドレスの最後の 4 桁 (通常は 3978) をコピーします。これは、次の手順で使用します。 これで、ボットを開始する準備ができました。
 
 ## <a name="start-you-bot"></a>ボットの開始
 1. ターミナルから、ボットを保存した `echo-bot` フォルダーに移動します。 `pip install -r requirements.txt` を実行して、ボットを実行するために必要なパッケージをインストールします。
 
-2. パッケージが実行されたら、`python app.py` を実行してボットを開始します。 次のスクリーンショットに示されている最後の行が表示されたら、ボットのテストを行う準備ができていることがわかります。
+2. パッケージがインストールされたら、`python app.py` を実行してボットを開始します。 次のスクリーンショットに示されている最後の行が表示されたら、ボットのテストを行う準備ができていることがわかります。
 
 ![ローカルで実行されているボット](../media/python/quickstart/bot-running-locally.png)
 
 ## <a name="start-the-emulator-and-connect-your-bot"></a>エミュレーターの起動とボットの接続
 1. エミュレーターを起動し、 **[Open Bot]\(ボットを開く\)** ボタンをクリックします。
 
-2. ボタンをクリックすると、ボックス ウィンドウが開きます。ここで、ボットを実行するために必要な値を設定します。 前に保存した数字を使用し、次に示すように **[Bot URL]\(ボット URL\)** を `http://localhost:<saved number>/api/messages` に設定します。
+2. このボタンをクリックすると、ボックス ウィンドウが開きます。ここで、ボットを実行するために必要な値を設定します。 前に保存した数字を使用し、次に示すように **[Bot URL]\(ボット URL\)** を `http://localhost:<saved number>/api/messages` に設定します。
 
 ![ボットを開く画面](../media/python/quickstart/open-bot.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 認証 |Microsoft Docs
+title: 認証 - Bot Service
 description: Direct Line API v3.0 で API 要求を認証する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
-ms.openlocfilehash: 37e02a34e7b8ecc4d501ed7330b6f374548fd5a0
-ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
+ms.openlocfilehash: 59a97acffe26b0bb896ec75dd5ca03fa43eafd67
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076568"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789522"
 ---
-# <a name="authentication"></a>Authentication
+# <a name="authentication"></a>認証
 
 クライアントは、Direct Line API 3.0 に対する要求を、[Bot Framework Portal](../bot-service-channel-connect-directline.md) の Direct Line チャネル構成ページから取得する**シークレット**を使用するか、ランタイム時に取得する**トークン**を使用して認証できます。 シークレットまたはトークンは、次の書式で各要求の `Authorization` ヘッダー内に指定する必要があります。 
 
@@ -78,7 +78,7 @@ Authorization: Bearer RCurR_XV9ZA.cwA.BKA.iaJrC8xpy8qbOF5xnR2vtCX7CZj0LdjAPGfiCp
 }
 ```
 
-| パラメーター | Type | 説明 |
+| パラメーター | 種類 | [説明] |
 | :--- | :--- | :--- |
 | `user.id` | string | 省略可能。 トークン内でエンコードするためのチャネル固有のユーザー ID。 Direct Line ユーザーの場合、`dl_` で始まる必要があります。 会話ごとに一意のユーザー ID を作成できます。セキュリティを強化するために、この ID は推測できないものにします。 |
 | `user.name` | string | 省略可能。 トークン内でエンコードするためのユーザーの表示用フレンドリ名。 |

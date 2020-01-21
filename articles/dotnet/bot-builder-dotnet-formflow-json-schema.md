@@ -1,5 +1,5 @@
 ---
-title: JSON スキーマと FormFlow を使用したフォームの定義 | Microsoft Docs
+title: JSON スキーマと FormFlow を使用したフォームの定義 - Bot Service
 description: Bot Framework SDK for .NET で JSON スキーマと FormFlow を使用してフォームを定義する方法を説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a29f376afa4a9d3027960407f688cbef76b35473
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: cd884c49507b4d7edc84f4bbd79396fe36073a82
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298807"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796505"
 ---
 # <a name="define-a-form-using-json-schema"></a>JSON スキーマによるフォームの定義
 
@@ -27,13 +27,13 @@ JSON スキーマは <a href="http://www.newtonsoft.com/json/help/html/T_Newtons
 
 FormFlow は、以下の標準 <a href="http://json-schema.org/documentation.html" target="_blank">JSON スキーマ</a> キーワードをサポートしています。
 
-| Keyword | 説明 | 
+| Keyword | [説明] | 
 |----|----|
-| type | フィールドに入るデータの型を定義します。 |
+| 型 | フィールドに入るデータの型を定義します。 |
 | enum | フィールドの有効な値を定義します。 |
 | minimum | フィールドで許可される最小の数値を定義します (「[NumericAttribute][numericAttribute]」で説明)。 |
 | maximum | フィールドで許可される最大の数値を定義します (「[NumericAttribute][numericAttribute]」で説明)。 |
-| 必須 | どれが必須フィールドであるかを定義します。 |
+| required | どれが必須フィールドであるかを定義します。 |
 | pattern | 文字列値を検証します (「[PatternAttribute][patternAttribute]」で説明)。 |
 
 ## <a name="extensions-to-json-schema"></a>JSON スキーマの拡張
@@ -45,7 +45,7 @@ FormFlow では、いくつかの追加プロパティをサポートするよ�
 | プロパティ | 値 |
 |----|----|
 | OnCompletion | フォームを完了処理するための C# スクリプト (引数 `(IDialogContext context, JObject state)` を使用)。 |
-| 参照 | スクリプトに含める参照。 たとえば、「 `[assemblyReference, ...]` 」のように入力します。 パスは、絶対パスか、現在のディレクトリから見た相対パスにする必要があります。 既定では、スクリプトには `Microsoft.Bot.Builder.dll` が含まれます。 |
+| References | スクリプトに含める参照。 たとえば、「 `[assemblyReference, ...]` 」のように入力します。 パスは、絶対パスか、現在のディレクトリから見た相対パスにする必要があります。 既定では、スクリプトには `Microsoft.Bot.Builder.dll` が含まれます。 |
 | インポートする | スクリプトに含めるインポート。 たとえば、「 `[import, ...]` 」のように入力します。 既定では、スクリプトには `Microsoft.Bot.Builder`、`Microsoft.Bot.Builder.Dialogs`、`Microsoft.Bot.Builder.FormFlow`、`Microsoft.Bot.Builder.FormFlow.Advanced`、`System.Collections.Generic`、`System.Linq` の名前空間が含まれます。 |
 
 ### <a name="additional-properties-at-the-root-of-the-schema-or-as-peers-of-the-type-property"></a>スキーマのルートに置かれる、または type プロパティのピアとなる追加プロパティ
@@ -63,19 +63,19 @@ JSON スキーマでテンプレートおよびプロンプトを指定するに
 
 ### <a name="additional-properties-as-peers-of-the-type-property"></a>type プロパティのピアとなる追加プロパティ
 
-|   プロパティ   |          目次           |                                                   説明                                                    |
+|   プロパティ   |          内容           |                                                   [説明]                                                    |
 |--------------|-----------------------------|------------------------------------------------------------------------------------------------------------------|
-|   DateTime   |            bool             |                                  フィールドが `DateTime` フィールドかどうかを示します。                                  |
+|   DateTime   |            [bool]             |                                  フィールドが `DateTime` フィールドかどうかを示します。                                  |
 |   Describe   |      文字列またはオブジェクト       |                  フィールドの説明 (「[DescribeAttribute][describeAttribute]」で説明)。                  |
 |    Terms     |       `[string,...]`        |                  フィールド値を照合するための正規表現 (TermsAttribute で説明)。                  |
-|  MaxPhrase   |             int             |                  `Language.GenerateTerms(string, int)` で用語を処理して、展開します。                   |
+|  MaxPhrase   |             INT             |                  `Language.GenerateTerms(string, int)` で用語を処理して、展開します。                   |
 |    値    | `{ string: {Describe:string |                                  object, Terms:[string, ...], MaxPhrase}, ...}`                                  |
 |    アクティブ    |           script            | フィールド、メッセージ、確認がアクティブかどうかをテストするための C# スクリプト (引数 `(JObject state)->bool` を使用)。  |
 |   検証   |           script            |      フィールド値を検証するための C# スクリプト (引数 `(JObject state, object value)->ValidateResult` を使用)。      |
-|    Define    |           script            |        フィールドを動的に定義するための C# スクリプト (引数 `(JObject state, Field<JObject> field)` を使用)。        |
-|     次へ     |           script            | フィールドに入力した後の次のステップを判別するための C# スクリプト (引数 `(object value, JObject state)` を使用)。 |
-|    実装する前    |          `[confirm          |                                                  message, ...]`                                                  |
-|    実装した後     |          `[confirm          |                                                  message, ...]`                                                  |
+|    定義    |           script            |        フィールドを動的に定義するための C# スクリプト (引数 `(JObject state, Field<JObject> field)` を使用)。        |
+|     Next     |           script            | フィールドに入力した後の次のステップを判別するための C# スクリプト (引数 `(object value, JObject state)` を使用)。 |
+|    [指定日付より前]    |          `[confirm          |                                                  message, ...]`                                                  |
+|    After     |          `[confirm          |                                                  message, ...]`                                                  |
 | 依存関係 |        [string, ...]        |                           このフィールド、メッセージ、確認が依存するフィールド。                           |
 
 **Before** プロパティか **After** プロパティの値の中で `{Confirm:script|[string, ...], ...templateArgs}` を使用すると、引数 `(JObject state)` を使用する C# スクリプトか、オプションのテンプレート引数でランダムに選択される一連のパターンのどちらかを使用して、確認を定義できます。
@@ -86,10 +86,10 @@ JSON スキーマでテンプレートおよびプロンプトを指定するに
 
 前述のプロパティの中には、プロパティ値としてスクリプトが含まれるものもあります。 スクリプトは、メソッドの本体に普通に見出せるような、C# コードの任意のスニペットとすることができます。 **References** プロパティまたは **Imports** プロパティ (あるいはその両方) を使用して、参照を追加できます。 特別なグローバル変数には以下が含まれます。
 
-| 変数 | 説明 |
+| 変数 | [説明] |
 |----|----|
 | choice | スクリプトが実行する内部ディスパッチ。 |
-| state | すべてのスクリプトにバインドされる `JObject` フォーム状態。 |
+| 状態 | すべてのスクリプトにバインドされる `JObject` フォーム状態。 |
 | ifield | メッセージ/確認プロンプト ビルダー以外のすべてのスクリプトで、現在のフィールドに関する論理的な判断ができるようにする `IField<JObject>`。 |
 | value | **Validate** で検証するオブジェクト値。 |
 | フィールド | **Define** でフィールドを動的に更新できるようにするための.`Field<JObject>`。 |

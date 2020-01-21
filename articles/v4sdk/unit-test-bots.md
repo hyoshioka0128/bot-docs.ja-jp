@@ -1,5 +1,5 @@
 ---
-title: ボットの単体テスト | Microsoft Docs
+title: ボットの単体テスト - Bot Service
 description: テスト フレームワークを使用してボットの単体テストを実行する方法について説明します。
 keywords: ボット, ボットのテスト, ボットのテスト フレームワーク
 author: gabog
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1e9d079b46c1cc4cc8c49e234b58540aeb4b2e7c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: da99aa82c235bc8f530c9c2ad8d3ea1fa592b001
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298984"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798129"
 ---
 # <a name="how-to-unit-test-bots"></a>ボットの単体テストを実行する方法
 
@@ -123,14 +123,14 @@ var reply = await testClient.SendActivityAsync<IMessageActivity>("hi");
 Assert.Equal("Where would you like to travel to?", reply.Text);
 ```
 
-一部のシナリオでは、ボットが 1 つのアクティビティへの応答で複数のメッセージを送信することがあります。この場合、`DialogTestClient` は応答をキューに入れ、ユーザーは `GetNextReply<IActivity>` メソッドを使用して、応答キューから次のメッセージをポップできます。
+一部のシナリオでは、ボットは 1 つのアクティビティへの応答で複数のメッセージを送信することがあります。この場合、`DialogTestClient` は応答をキューに入れ、ユーザーは `GetNextReply<IActivity>` メソッドを使用して、応答キューから次のメッセージをポップできます。
 
 ```csharp
 reply = testClient.GetNextReply<IMessageActivity>();
 Assert.Equal("All set, I have booked your flight to Seattle for tomorrow", reply.Text);
 ```
 
-応答キューにこれ以上メッセージがなくなると、`GetNextReply<IActivity>` は null 値を返します。
+応答キューにこれ以上のメッセージがなくなると、`GetNextReply<IActivity>` は null 値を返します。
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -239,7 +239,7 @@ async destinationStep(stepContext) {
 
 `BookingDialog` や `DateResolverDialog` のような一部のダイアログは、呼び出し元のダイアログに値を返します。 `DialogTestClient` オブジェクトは、ダイアログによって返された結果を分析およびアサートするために使用できる `DialogTurnResult` プロパティを公開します。
 
-例:
+次に例を示します。
 
 ```csharp
 var sut = new BookingDialog();
@@ -262,7 +262,7 @@ Assert.Equal("2019-06-21", bookingResults?.TravelDate);
 
 `BookingDialog` や `DateResolverDialog` のような一部のダイアログは、呼び出し元のダイアログに値を返します。 `DialogTestClient` オブジェクトは、ダイアログによって返された結果を分析およびアサートするために使用できる `dialogTurnResult` プロパティを公開します。
 
-例:
+次に例を示します。
 
 ```javascript
 const sut = new BookingDialog();
@@ -948,7 +948,7 @@ const mockRecognizer = new MockFlightBookingRecognizer(mockLuisResult);
 
 ---
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 - [CoreBot テスト サンプル (C#)](https://aka.ms/cs-core-test-sample)
 - [CoreBot テスト サンプル (JavaScript)](https://aka.ms/js-core-test-sample)

@@ -1,5 +1,5 @@
 ---
-title: Bot Framework SDK for Python のサンプル ボット | Microsoft Docs
+title: Bot Framework SDK for Python のサンプル ボット - Bot Service
 description: Bot Framework SDK for Python を使用してボット開発を開始する際に役立つサンプル ボットについて説明します。
 author: jonathanfingold
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4b89af18c69abccd02b7cc9d5ba63c2573845ddb
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: bece71dd91ae9d3217c5263c9c30113690585b2d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299660"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790283"
 ---
 # <a name="python-samples-for-bot-framework-sdk"></a>Bot Framework SDK における Python のサンプル
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]

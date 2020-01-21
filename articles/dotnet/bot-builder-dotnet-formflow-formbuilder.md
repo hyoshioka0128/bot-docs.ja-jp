@@ -1,5 +1,5 @@
 ---
-title: FormBuilder によるフォームのカスタマイズ | Microsoft Docs
+title: FormBuilder によるフォームのカスタマイズ - Bot Service
 description: Bot Framework SDK for .NET の FormBuilder を使用して、会話のフローとコンテンツを動的に変更およびカスタマイズする方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b738296d3d796cdccd40e0d3bda503b9d6349bff
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 1f3af516aa119ef8fcb56075ef0f024ecba0cc52
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297994"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795975"
 ---
 # <a name="customize-a-form-using-formbuilder"></a>FormBuilder によるフォームのカスタマイズ
 

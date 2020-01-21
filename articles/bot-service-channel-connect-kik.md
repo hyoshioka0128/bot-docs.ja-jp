@@ -1,5 +1,5 @@
 ---
-title: ボットを Kik に接続する | Microsoft Docs
+title: ボットを Kik に接続する - Bot Service
 description: ボットの Kik への接続を構成する方法について説明します。
 keywords: ボットの接続, ボットのチャネル, Kik ボット, 資格情報, 構成, 携帯電話
 author: RobStand
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 9024de58fd40fc3ef9f3c064a23b5e0811c20a89
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 640c430786bbba6ec78d6ce3b1c02d8955a54b09
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298360"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791987"
 ---
 # <a name="connect-a-bot-to-kik"></a>ボットを Kik に接続する
 
@@ -49,7 +49,7 @@ Kik を携帯電話にインストールしていない場合は、携帯電話�
 
 **[Submit Kik Credentials]\(KiK 資格情報の送信\)** をクリックします。
 
-## <a name="enable-the-bot"></a>ボットの有効化
+## <a name="enable-the-bot"></a>ボットを有効にする
 
 **[Enable this bot on Kik]\(このボットを Kik で有効にする\)** をオンにします。 次に、 **[I'm done configuring Kik]\(Kik の構成が終了しました\)** をクリックします。
 

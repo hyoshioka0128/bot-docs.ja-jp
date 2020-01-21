@@ -1,5 +1,5 @@
 ---
-title: ウォーターフォールを使用した会話のステップの定義 | Microsoft Docs
+title: ウォーターフォールを使用した会話のステップの定義 - Bot Service
 description: Bot Framework SDK for Node.js でウォーターフォールを使用して会話のステップを定義する方法について説明します。
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2a5ade5e6407537e72b520a22d74bc2c3943fce4
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 3445c9d092c11952eb3c7a21e471d453653237a4
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299843"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790914"
 ---
 # <a name="define-conversation-steps-with-waterfalls"></a>ウォーターフォールを使用した会話のステップの定義
 
@@ -21,7 +21,7 @@ ms.locfileid: "70299843"
 
 会話とは、ユーザーとボットの間で交換される一連のメッセージのことです。 ボットの目的が一連のステップでユーザーを誘導することにある場合は、ウォーターフォールを使用して会話のステップを定義できます。
 
-[ウォーターフォール](bot-builder-nodejs-dialog-overview.md)はダイアログ特有の実装であり、ユーザーから情報を収集したり、一連のタスクをユーザーに案内したりするときに最も一般的に使用されます。 タスクは、最初の関数の結果が次の関数の入力として渡される、関数の配列として実装されます。 各関数は、通常、プロセス全体の 1 つのステップを表します。 各ステップで、ボットはユーザーに入力を要求し、応答を待って、その結果を次のステップに渡します。
+[ウォーターフォール](bot-builder-nodejs-dialog-overview.md)はダイアログ特有の実装であり、ユーザーから情報を収集したり、一連のタスクをユーザーに案内したりするときに最も一般的に使用されます。 タスクは、最初の関数の結果が次の関数の入力として渡される、関数の配列として実装されます。 各関数は、通常は、プロセス全体の 1 つのステップを表します。 各ステップで、ボットはユーザーに入力を要求し、応答を待って、その結果を次のステップに渡します。
 
 この記事は、ウォーターフォールのしくみと、ウォーターフォールを使用して[会話フローを管理する](bot-builder-nodejs-dialog-manage-conversation.md)方法を理解するのに役立ちます。
 
@@ -165,7 +165,7 @@ bot.dialog('ensureProfile', [
 
 * `session.endDialog`:呼び出し元のダイアログに返すデータがない場合は、このメソッドを使用してウォーターフォールを終了します。
 
-* `session.endDialogWithResult`:呼び出し元のダイアログに返すデータがある場合は、このメソッドを使用してウォーターフォールを終了します。 返される `response` 引数は、JSON オブジェクトまたは任意の JavaScript プリミティブ データ型です。 例:
+* `session.endDialogWithResult`:呼び出し元のダイアログに返すデータがある場合は、このメソッドを使用してウォーターフォールを終了します。 返される `response` 引数は、JSON オブジェクトまたは任意の JavaScript プリミティブ データ型です。 次に例を示します。
   ```javascript
   session.endDialogWithResult({
     response: { name: session.dialogData.name, company: session.dialogData.company }
@@ -174,7 +174,7 @@ bot.dialog('ensureProfile', [
 
 * `session.endConversation`:ウォーターフォールの終了が会話の終了を表す場合は、このメソッドを使用してウォーターフォールを終了します。
 
-これらの 3 つのメソッドのいずれかを使用してウォーターフォールを終了する代わりに、`endConversationAction` トリガーをダイアログにアタッチすることができます。 例:
+これらの 3 つのメソッドのいずれかを使用してウォーターフォールを終了する代わりに、`endConversationAction` トリガーをダイアログにアタッチすることができます。 次に例を示します。
 
 ```javascript
 bot.dialog('dinnerOrder', [
@@ -197,7 +197,7 @@ bot.dialog('dinnerOrder', [
 );
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ウォーターフォールを使用すると、"*プロンプト*" を使用してユーザーから情報を収集できます。 ユーザーに入力を要求する方法について詳しく見ていきましょう。
 

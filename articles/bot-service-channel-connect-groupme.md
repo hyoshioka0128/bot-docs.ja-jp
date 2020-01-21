@@ -1,5 +1,5 @@
 ---
-title: ボットを GroupMe に接続する | Microsoft Docs
+title: ボットを GroupMe に接続する - Bot Service
 description: ボットの GroupMe への接続を構成する方法について説明します。
 keywords: ボット チャネル, GroupMe, GroupMe の作成, 資格情報
 author: RobStand
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 67bcd518f8c6ae7a1e383c611108c15b51bd0292
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: ae2f2e289d6c0b4e90041fc2ad60452b1996d53d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298733"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791981"
 ---
 # <a name="connect-a-bot-to-groupme"></a>ボットを GroupMe に接続する
 
@@ -45,6 +45,6 @@ GroupMe アカウントを持っていない場合は、[新しいアカウン�
 
 1. dev.botframework.com で、先ほどコピーした **client_id** 値を **[クライアント ID]** フィールドに貼り付けます。
 2. **[アクセス トークン]** 値を **[アクセス トークン]** フィールドにコピーします。
-2. **[Save]** をクリックします。
+2. **[保存]** をクリックします。
 
 ![資格情報を入力する](~/media/channels/GM-StepClientIDToken.png)

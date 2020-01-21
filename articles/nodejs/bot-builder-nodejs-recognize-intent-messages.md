@@ -1,5 +1,5 @@
 ---
-title: メッセージの内容から意図を認識する | Microsoft Docs
+title: メッセージの内容から意図を認識する - Bot Service
 description: 正規表現を使用するか、メッセージの内容をチェックすることによってユーザーの意図を認識する方法について説明します。
 author: DeniseMak
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 370ba1fc756ecea8fd745067109fdb13b6e825a9
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: cab45fa2eca7fad94ce8a66e2a17495a529935c3
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026309"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790685"
 ---
 # <a name="recognize-user-intent-from-message-content"></a>メッセージの内容からユーザーの意図を認識する
 
@@ -62,7 +62,7 @@ ms.locfileid: "70026309"
 
 Bot Framework SDK には、[IDisambiguateRouteHandler][IDisambiguateRouteHandler] を実装することによってカスタムのあいまいさ排除ロジックをボットで提供する方法を示す[サンプル][DisambiguationSample]が含まれています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 正規表現を使用してメッセージの内容を検査するロジックは、ボットの会話フローが拡張可能である場合は特に、複雑になる可能性があります。 ユーザーからのより多様なテキストおよび音声入力をボットが処理できるよう、[LUIS][LUIS] のような意図認識サービスを使用して、自然言語の理解をボットに追加することができます。
 

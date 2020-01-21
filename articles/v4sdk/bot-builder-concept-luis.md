@@ -1,5 +1,5 @@
 ---
-title: Language Understanding | Microsoft Docs
+title: Language Understanding - Bot Service
 description: Microsoft Cognitive Services を使って、ボットをより便利で魅力的にするために、人工知能を追加する方法について説明します。
 keywords: LUIS, 意図, 認識エンジン, ディスパッチ ツール, QnA, QnA Maker
 author: ivorb
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.date: 09/19/2018
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 83d6a4b43cdd3132730ee78079260d2a2d79b228
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 00d2d55c5738712ef91cdee1468deedb3e09c66e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299484"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75799076"
 ---
 # <a name="language-understanding"></a>Language Understanding
 
@@ -23,14 +23,14 @@ ms.locfileid: "70299484"
 
 ボットでは、構造化されたガイドのあるスタイルから、自由形式で制約のないスタイルまで、さまざまな会話のスタイルを使用できます。 ボットは、ユーザーの発言に基づいて、会話フローで次に行うことを判断する必要があります。制約のない会話では、ユーザーの応答の幅はさらに広がります。
 
-| ガイド | オープン |
+| ガイド | [ファイル] |
 |------|------|
 | 私は旅行ボットです。 次のオプションから 1 つ選択してください: フライトを検索する、ホテルを検索する、レンタカーを検索する。 | 旅行の予約のお手伝いができます。 何がしたいですか? |
 | 他に必要なことはありますか? [はい] または [いいえ] をクリックしてください。 | 他に必要なことはありますか? |
 
 ユーザーとボットとの対話は、自由形式であることが多く、ボットは文脈から自然に言語を理解する必要があります。 この記事では、ユーザーが望むことを判断し、文章内の概念やエンティティを識別し、最終的には適切なアクションでボットが応答できるようにするために、Language Understanding (LUIS) がどのように役立つかについて説明します。
 
-## <a name="recognize-intent"></a>意図を認識する
+## <a name="recognize-intent"></a>意図の認識
 
 [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/home) は、ボットが適切に応答できるように、ユーザーの発言内容からその**意図** (したいこと) を判断することに役立ちます。 特に、ユーザーがボットに話しかけたことが、予測可能な構造または特定のパターンに従っていない場合に、LUIS は役立ちます。 ボットにユーザーが話しかけたり応答を入力したりする会話型ユーザー インターフェイスがある場合は、*発話* (ユーザーからの音声またはテキストの入力) のバリエーションは無限にあります。
 

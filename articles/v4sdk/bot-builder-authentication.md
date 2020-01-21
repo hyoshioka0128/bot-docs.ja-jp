@@ -1,5 +1,5 @@
 ---
-title: Azure Bot Service を介してボットに認証を追加する | Microsoft Docs
+title: Azure Bot Service を介してボットに認証を追加する - Bot Service
 description: Azure Bot Service の認証機能を使用して SSO をボットに追加する方法について説明します。
 ms.author: kamrani
 manager: kamrani
@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/04/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4881de8f18cebb7a760061586296b948cf621929
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 75dc417f5ac3738b2b96a026860d8377f8ff9c25
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491551"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791321"
 ---
 <!-- 
 

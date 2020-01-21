@@ -1,5 +1,5 @@
 ---
-title: ストレージに直接書き込む | Microsoft Docs
+title: ストレージに直接書き込む - Bot Service
 description: Bot Framework SDK for .NET でストレージに直接書き込む方法について説明します。
 keywords: ストレージ, 読み取りと書き込み, メモリ ストレージ, eTag
 author: DeniseMak
@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3de06fb5aa3ae09f4730cf7b0d4e0a587d568b8c
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 2f16b34715b78635b1dd5028f4955bad0269973b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491708"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798235"
 ---
 # <a name="write-directly-to-storage"></a>ストレージに直接書き込む
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-ミドルウェアまたはコンテキスト オブジェクトを使用せずに、ストレージ オブジェクトに対して直接読み取りや書き込みを行うことができます。 ボットが会話の保持に使用するデータ、またはボットの会話フロー外にあるソースのデータについては、この方法が適切な可能性があります。 このデータ ストレージ モデルでは、データは、状態マネージャーを使用せずに、ストレージから直接データを読み取られます。 この記事のコード例では、**メモリ ストレージ**、**Cosmos DB**、**Blob Storage**、および **Azure Blob Transcript Store** を使用してストレージに対するデータの読み取りや書き込みを行う方法を示します。 
+ミドルウェアまたはコンテキスト オブジェクトを使用せずに、ストレージ オブジェクトに対して直接読み取りや書き込みを行うことができます。 ボットが会話の保持に使用するデータ、またはボットの会話フロー外にあるソースのデータについては、この方法が適切な可能性があります。 このデータ ストレージ モデルでは、データは、状態マネージャーを使用せずに、ストレージから直接データを読み取られます。 この記事のコード例では、**メモリ ストレージ**、**Cosmos DB**、**Blob Storage**、**Azure Table Storage**、**Azure Blob Transcript Store** を使用してストレージに対するデータの読み取りや書き込みを行う方法を示します。 
 
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
@@ -32,7 +32,7 @@ ms.locfileid: "75491708"
 
 ## <a name="memory-storage"></a>メモリ ストレージ
 
-Bot Framework SDK を使用すると、メモリ内ストレージを使用してユーザー入力を格納することができます。 メモリ ストレージはテストにのみ使用され、実稼働を目的としたものではありません。 データベース ストレージなどの永続的なストレージ類は運用環境のボットに最適です。 ボットを発行する前に、ストレージを Cosmos DB または Blob Storage に設定してください。
+Bot Framework SDK を使用すると、メモリ内ストレージを使用してユーザー入力を格納することができます。 メモリ ストレージはテストにのみ使用され、実稼働を目的としたものではありません。 メモリ内ストレージは揮発性で一時的なものです。ボットの再起動ごとにデータがクリアされます。 データベース ストレージなどの永続的なストレージ類は運用環境のボットに最適です。 ボットを発行する前に、ストレージを **Cosmos DB**、**Blob Storage**、[**Azure Table Storage**](~/nodejs/bot-builder-nodejs-state-azure-table-storage.md) のいずれかに設定してください。
 
 #### <a name="build-a-basic-bot"></a>基本のボットを作成する
 
@@ -1027,4 +1027,3 @@ store_items = await self.storage.read(["Note"])
 
 > [!div class="nextstepaction"]
 > [会話とユーザーのプロパティを使用して状態を保存する](bot-builder-howto-v4-state.md)
-

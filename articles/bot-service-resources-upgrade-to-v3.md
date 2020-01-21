@@ -1,5 +1,5 @@
 ---
-title: ボットを Bot Framework API v3 にアップグレードする | Microsoft Docs
+title: ボットを Bot Framework API v3 にアップグレードする - Bot Service
 description: ボットを Bot Framework API v3 にアップグレードする方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: a9fa1fe134f8ac7716796f4e9090acb60915afe8
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 6f08da5acbf8ac050d5dbf6a1a0290c3e6288013
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298593"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790994"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>ボットを Bot Framework API v3 にアップグレードする
 
@@ -33,7 +33,7 @@ If the **App ID** field is already populated, complete these steps:
 -->
 
 1. **[Manage Microsoft App ID and password]\(Microsoft アプリ ID とパスワードの管理\)** をクリックします。  
-![構成](./media/upgrade/manage-app-id.png)
+![Configuration](./media/upgrade/manage-app-id.png)
 
 2. **[Generate New Password]\(新しいパスワードを生成\)** をクリックします。  
 ![新しいパスワードを生成](./media/upgrade/generate-new-password.png)
@@ -66,7 +66,7 @@ If the **App ID** field is empty, complete these steps:
    ![Save changes](~/media/upgrade/save-changes.png)
 -->
 
-## <a id="update-code"></a>手順 2: ボット コードをバージョン 4.0 に更新する
+## <a id="update-code"></a> ステップ 2:ボット コードをバージョン 4.0 に更新する
 
 V1 のボットは互換性がなくなりました。 お使いのボットを更新するには、V3 で新しいボットを作成する必要があります。 使用中の古いコードを保持する必要がある場合は、そのコードを手動で移行する必要があります。
 
@@ -101,7 +101,7 @@ The following sections describe the key differences between API v1 and API v3. A
 
 ### <a name="message-is-now-activity"></a>Message が Activity に
 
-API v3 では、`Message` オブジェクトが `Activity` オブジェクトに置き換えられました。 最も一般的な種類のアクティビティは**メッセージ**ですが、さまざまな種類の情報をボットまたはチャネルに伝達するのに使用できるアクティビティの種類が他にもあります。 メッセージの詳細については、「[メッセージの作成](~/dotnet/bot-builder-dotnet-create-messages.md)」と「[アクティビティを送受信する](~/dotnet/bot-builder-dotnet-connector.md)」を参照してください。
+API v3 では、`Message` オブジェクトが `Activity` オブジェクトに置き換えられました。 最も一般的なアクティビティの種類は**メッセージ**ですが、ボットまたはチャネルにさまざまな種類の情報を通信するために使用できる他のアクティビティの種類も存在します。 メッセージの詳細については、「[メッセージの作成](~/dotnet/bot-builder-dotnet-create-messages.md)」と「[アクティビティを送受信する](~/dotnet/bot-builder-dotnet-connector.md)」を参照してください。
 
 ### <a name="activity-types--events"></a>アクティビティの種類とイベント
 
@@ -162,7 +162,7 @@ Bot Framework API v3 では、認証プロパティを以下のキーで **Web.C
 - `MicrosoftAppID`
 - `MicrosoftAppPassword`
 
-## <a id="step-3"></a> 手順 3:自分の更新ボットを Azure にデプロイする。
+## <a id="step-3"></a> ステップ 3:自分の更新ボットを Azure にデプロイする。
 
 ご自身のボット コードを API v3 にアップグレードしたら、こちらの[手順](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0)に従って、そのボットを Azure にデプロイします。 V1 はサポートされていないため、Azure サービスにデプロイされたすべてのボットで V3 API が自動的に使用されます。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Bot Framework コマンド ライン インターフェイス (CLI) のリファレンス | Microsoft Docs
+title: Azure Bot Framework コマンド ライン インターフェイス (CLI) のリファレンス - Bot Service
 description: Bot Framework コマンド ライン インターフェイス (CLI) について説明します。
 keywords: Bot Framework コマンド ライン インターフェイス, Bot Framework CLI
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 10/25/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5123b61859c2fb00886458e462941cb5e6e1f896
-ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
+ms.openlocfilehash: 6ae0edc8e2717d7e96ae8681cd832f7cb6cde66c
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74410468"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791348"
 ---
 # <a name="bot-framework-cli-reference"></a>Bot Framework CLI リファレンス
 
@@ -26,7 +26,7 @@ ms.locfileid: "74410468"
 npm install -g @microsoft/botframework-cli
 ```
 
-## <a name="commands"></a>command
+## <a name="commands"></a>コマンド
 
 * [`bf chatdown`](#bf-chatdown)
 * [`bf chatdown:convert`](#bf-chatdownconvert)

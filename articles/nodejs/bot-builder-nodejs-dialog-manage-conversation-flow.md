@@ -1,5 +1,5 @@
 ---
-title: ダイアログを使用して会話フローを管理する | Microsoft Docs
+title: ダイアログで会話フローを管理する - Bot Service
 description: Bot Framework SDK for Node.js のダイアログを使用してボットとユーザー間の会話を管理する方法について説明します。
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 08edd665b5aedef6dd05c34e3b30d1f11effa19d
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: cd16586ec6e412d37f34bbe8784fdc86e837d9b7
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299878"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791134"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>ダイアログを使用して会話フローを管理する
 
@@ -21,7 +21,7 @@ ms.locfileid: "70299878"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-manage-conversation-flow.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
 会話フローの管理は、ボットを構築する上で最も重要なタスクです。 ボットは、主要なタスクを的確に実行し、中断を適切に処理できなければなりません。 Bot Framework SDK for Node.js を使用することで、ダイアログを使用して会話フローを管理することができます。
 
@@ -88,16 +88,16 @@ var bot = new builder.UniversalBot(connector, [..waterfall steps..]).set('storag
 
 次のスクリーン ショットは、[Bot Framework Emulator](../bot-service-debug-emulator.md) で実行されているこのボットの結果を示しています。
 
-![ウォーターフォールで会話フローを管理する](../media/bot-builder-nodejs-dialog-manage-conversation/waterfall-results.png)
+![ウォーターフォールを使用して会話フローを管理する](../media/bot-builder-nodejs-dialog-manage-conversation/waterfall-results.png)
 
 ### <a name="prompt-user-for-input"></a>ユーザーに入力を要求する
 
 この例の各ステップでは、プロンプトを使用して、ユーザー入力を要求しています。 プロンプトは、ユーザー入力を要求し、応答を待ってから、ウォーターフォールの次のステップへの応答を返す特殊な種類のダイアログです。 ボットで使用できるさまざまな種類のプロンプトについては、[ユーザーに入力を要求する](bot-builder-nodejs-dialog-prompt.md)を参照してください。
 
-この例では、ボットは `Prompts.text()` を使用して、ユーザーからの自由形式の応答をテキスト形式で要求します。 ユーザーは任意のテキストで応答することができ、ボットは応答を処理する方法を決定する必要があります。 `Prompts.time()` は [Chrono](https://github.com/wanasit/chrono) ライブラリを使用して文字列から日付と時刻の情報を解析します。 これにより、ボットは日付と時刻を指定するための自然言語をより理解することができます。 例: "2017 年 6 月 6 日の午後 9 時"、"今日の午後 7 時 30 分"、"次の月曜日の午後 6 時" といった具合です。
+この例では、ボットは `Prompts.text()` を使用して、ユーザーからの自由形式の応答をテキスト形式で要求します。 ユーザーは任意のテキストで応答することができ、ボットは応答を処理する方法を決定する必要があります。 `Prompts.time()` は [Chrono](https://github.com/wanasit/chrono) ライブラリを使用して文字列から日付と時刻の情報を解析します。 これにより、ボットは日付と時刻を指定するための自然言語をより理解することができます。 次に例を示します。"2017 年 6 月 6 日の午後 9 時"、"今日の午後 7 時 30 分"、"次の月曜日の午後 6 時" といった具合です。
 
 > [!TIP] 
-> ユーザーが入力した時刻は、ボットがホストされているサーバーのタイム ゾーンに基づいて UTC 時間に変換されます。 サーバーは、ユーザーとは別のタイム ゾーンに配置されている場合があるため、必ずタイム ゾーンを考慮してください。 日付と時刻をユーザーのローカル時刻に変換するには、所属するタイム ゾーンをユーザーに確認することを検討してください。
+> ユーザーが入力した時刻は、ボットがホストされているサーバーのタイム ゾーンに基づいて UTC 時間に変換されます。 サーバーは、ユーザーとは別のタイム ゾーンに配置されている場合があるため、必ずタイム ゾーンを考慮してください。 日付と時刻をユーザーのローカル時刻に変換するには、ユーザーが属しているタイム ゾーンを確認することを検討してください。
 
 ## <a name="manage-a-conversation-flow-with-multiple-dialogs"></a>複数のダイアログで会話フローを管理する
 
@@ -379,7 +379,7 @@ bot.dialog('dinnerOrder', [
 
 `session.endConversation` または `endConversationAction` で会話を終了すると、ダイアログ スタックがクリアされ、ユーザーは強制的に最初からやり直しとなるので、ユーザーが本当に終了したいかどうかを確認するために、`confirmPrompt` を含める必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、性質上連続する会話の管理方法について説明しています。 会話内でダイアログを繰り返したり、ループ パターンを使用する場合はどうすればよいでしょうか? スタックのダイアログ ボックスを置き換えることでそれを実行する方法を見てみましょう。
 

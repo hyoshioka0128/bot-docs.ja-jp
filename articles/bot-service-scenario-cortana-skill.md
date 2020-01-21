@@ -1,5 +1,5 @@
 ---
-title: Cortana スキル ボットのシナリオ | Microsoft Docs
+title: Cortana スキル ボットのシナリオ - Bot Service
 description: Bot Framework による Cortana スキル ボットのシナリオについて説明します。
 author: BrianRandell
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d6ba5b414ff7e600fac1e5d4ebce27363340f42f
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: ebf63a7bfceb6f70084a7897508c328a017aa5f0
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167055"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794792"
 ---
 # <a name="cortana-skills-bot-scenario"></a>Cortana スキル ボットのシナリオ
 
@@ -32,12 +32,12 @@ Cortana は、ユーザーのパーソナル アシスタントです。 ユー�
 3. このボットは Cortana と統合されているため、ユーザーの予定表にアクセスし、ロジックをこの要求に適用します。
 4. ボットは、その情報を使用して自動車整備店に対して、有効な予定を照会できます。
 5. コンテキストの選択肢が表示されたら、ユーザーは予定を予約できます。
-6. Application Insights が、ボットのパフォーマンスと使用法について開発に役立つランタイム テレメトリを収集します。
+6. Application Insights がランタイム テレメトリを収集して、ボットのパフォーマンスと使用状況の情報によって開発をサポートします。
 
 ## <a name="sample-bot"></a>サンプル ボット
 Cortana スキル ボットは、個々人のコンテキストで動作します。 Cortana を使用すると、ご自分の位置情報を基に、ご自分の音声を使って "ボブの出張整備" に車のメンテナンスに来るように依頼できます。 ボットは、Cortana を介して公開される個人情報を使用して、ユーザーがボットに話しかけているときの場所を基に位置情報を確認できます。
 
-このサンプル ボットのソース コードは、[Bot Framework の一般的なシナリオのサンプル](https://aka.ms/abs-scenarios)からダウンロードまたは複製できます。
+このサンプル ボットのソース コードは、「[Samples for Common Bot Framework Scenarios (Bot Framework の一般的なシナリオのサンプル)](https://aka.ms/abs-scenarios)」からダウンロードするか複製することができます。
 
 ## <a name="components-youll-use"></a>使用するコンポーネント
 Cortana ボットでは、次のコンポーネントを使用します。
@@ -50,7 +50,7 @@ Cortana ボットでは、次のコンポーネントを使用します。
 ### <a name="application-insights"></a>Application Insights
 Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報を得ることができます。 すぐに使用できる、多機能なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードによって、ボットの可用性が保たれ、期待どおりに動作していることを確認できます。 問題の発生をすばやく確認し、根本原因を分析して、問題個所を特定し、修正することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次に、Enterprise Productivity ボットのシナリオについて説明します。
 
 > [!div class="nextstepaction"]

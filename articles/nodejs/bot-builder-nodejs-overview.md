@@ -1,5 +1,5 @@
 ---
-title: Bot Framework SDK for Node.js | Microsoft Docs
+title: Bot Framework SDK for Node.js - Bot Service
 description: 強力で使いやすいボット構築フレームワーク、Bot Framework SDK for Node.js について説明します。
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 20b0f852c4e5cddced42e9e710bb5d62663945a7
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 047293c00e8ade5445f75218be6d4dfbe332934c
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299787"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790827"
 ---
 # <a name="bot-framework-sdk-for-nodejs"></a>Bot Framework SDK for Node.js
 
@@ -21,7 +21,7 @@ ms.locfileid: "70299787"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-overview.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-overview.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-overview.md)
 > - [REST](../rest-api/bot-framework-rest-overview.md)
 
 Bot Framework SDK for Node.js は、強力で使いやすいフレームワークであり、Node.js 開発者がボットを作成するための手慣れた方法を提供しています。
@@ -36,7 +36,7 @@ Bot Framework SDK for Node.js は、強力で使いやすいフレームワー�
 - <a href="http://luis.ai" target="_blank">LUIS</a>などの強力な AI フレームワークの組み込みサポート。
 - 必要に応じて、ヘルプ、ナビゲーション、明確化、確認を提供してユーザーとの会話を進めるようにする組み込みの認識エンジンやイベント ハンドラ。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 初めてボットを作成する場合は、プロジェクトの設定、SDK のインストール、初めてのボットを実行の手順を詳しく説明した内容を参照して、[Node.js で初めてのボットを作成](bot-builder-nodejs-quickstart.md)してください。 
 
@@ -48,7 +48,7 @@ Bot Framework SDK for Node.js に慣れていない方は、「[主要な概念]
 
 「[Bot Framework SDK for Node.js サンプル](bot-builder-nodejs-samples.md)」では、Bot Framework SDK for Node.js 内の機能を活用する方法を示す、タスクに焦点をおいたボットを説明します。 サンプルを利用することで、豊富な機能を備えた優れたボットの作成が迅速に開始できるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [主要な概念](bot-builder-nodejs-concepts.md)
 

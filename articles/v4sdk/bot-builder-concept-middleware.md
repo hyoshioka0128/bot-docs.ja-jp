@@ -1,5 +1,5 @@
 ---
-title: ミドルウェア | Microsoft Docs
+title: ミドルウェア - Bot Service
 description: ミドルウェアと、ボット SDK 内でのその用途について理解します。
 keywords: ミドルウェア, ミドルウェア パイプライン, 短絡, ミドルウェアの用途
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 42082f90db8079e7bc0152b2947705a9c1f15115
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: ff735f3a382369da2e4d96d8128cd21f6abd0c15
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299461"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798737"
 ---
 # <a name="middleware"></a>ミドルウェア
 
@@ -40,7 +40,7 @@ SDK は受信および送信アクティビティを記録できるログ記録�
 ## <a name="the-bot-middleware-pipeline"></a>ボットのミドルウェア パイプライン
 アダプターはアクティビティごとに、追加された順にミドルウェアを呼び出します。 アダプターはターンのコンテキスト オブジェクトと _next_ デリゲートを渡し、ミドルウェアはデリゲートを呼び出してパイプライン内の次のミドルウェアに制御を渡します。 ミドルウェアには、_next_ デリゲートが戻った後、メソッドを完了する前に処理を行う機会もあります。 パイプラインの次のミドルウェア オブジェクトとの関係上、各ミドルウェア オブジェクトには最初で最後の行動チャンスがあると考えることができます。
 
-例:
+次に例を示します。
 
 - 1 番目のミドルウェア オブジェクトのターン ハンドラーは、_next_ を呼び出す前にコードを実行します。
   - 2 番目のミドルウェア オブジェクトのターン ハンドラーは、_next_ を呼び出す前にコードを実行します。

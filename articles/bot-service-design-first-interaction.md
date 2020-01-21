@@ -1,5 +1,5 @@
 ---
-title: 最初のボットとユーザーとの対話の設計 | Microsoft Docs
+title: 最初のボットとユーザーとの対話の設計 - Bot Service
 description: 最初のユーザー エクスペリエンスを優れたものにするための要素と、優れたボットの設計方法について説明します。
 keywords: 第一印象, 最初, 言語対メニュー
 author: matvelloso
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: d0ef3b7cbac1ea2d8486c2f38d1ab762471878c6
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 46b3cbfc84379a695e1ac3066bddd90a50947956
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297082"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792367"
 ---
 # <a name="design-a-bots-first-user-interaction"></a>最初のボットとユーザーとの対話の設計
 
@@ -50,6 +50,6 @@ ms.locfileid: "70297082"
 > [!TIP]
 > ボットがユーザーから個人データを収集する場合は、その旨を伝え、データがどのように利用されるかを説明することが重要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ユーザーとボットの間の最初の対話を設計するためのいくつかの基本原則を理解した後は、[会話のフローの設計](~/bot-service-design-conversation-flow.md)について学習しましょう。

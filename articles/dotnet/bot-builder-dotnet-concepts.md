@@ -1,5 +1,5 @@
 ---
-title: Bot Framework SDK for .NET の主要概念 | Microsoft Docs
+title: Bot Framework SDK for .NET の主要概念 - Bot Service
 description: Bot Framework SDK for .NET で利用可能な会話型ボットを構築および展開するための主要概念とツールについて説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0b0493d9975e58dda0f2195c03d887e4681ca0bf
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 027006f2ad3d6aff1094142a41d791ba0e5d8922
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298387"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789823"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-net"></a>Bot Framework SDK for .NET の主要概念
 
@@ -21,7 +21,7 @@ ms.locfileid: "70298387"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-concepts.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-concepts.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-concepts.md)
 
 この記事では、Bot Framework SDK for .NET の主要な概念について説明します。
 
@@ -57,11 +57,11 @@ Bot Framework SDK for .NET を使用して状態を管理する方法の詳細�
 
 Bot Framework SDK for .NET ライブラリでは、厳密に型指定されたパスカルケースの名前付け規則が使用されます。 ただし、ネットワーク経由でやり取りされる JSON メッセージは、キャメルケースの名前付け規則を使用します。 たとえば、C# プロパティ **ReplyToId** は、ネットワーク経由で転送される JSON メッセージでは **replyToId** としてシリアル化されます。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 ボットのエンドポイントは、Bot Framework Connector サービスから呼び出す必要があります。 このトピックの詳細については、「[Secure your bot](bot-builder-dotnet-security.md)」(ボットをセキュリティで保護する) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、すべてのボットの背後にある概念について学びました。 テンプレートを使用すると、[Visual Studio で簡単にボットを構築](bot-builder-dotnet-quickstart.md)できます。 次に、個々の主要概念について詳細に説明します。まずダイアログから始めます。
 

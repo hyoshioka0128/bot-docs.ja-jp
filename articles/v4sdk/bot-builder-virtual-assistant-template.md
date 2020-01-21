@@ -1,5 +1,5 @@
 ---
-title: 仮想アシスタント テンプレートの概要 | Microsoft Docs
+title: 仮想アシスタント テンプレートの概要 - Bot Service
 description: 仮想アシスタント テンプレートの詳細について説明します
 author: darrenj
 ms.author: darrenj
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 82385510894213a386c3f38836c85aad44306a23
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: fdbed58a4093f70b57d65e8f89ee76b305777a1a
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167063"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791174"
 ---
 # <a name="virtual-assistant---template-outline"></a>仮想アシスタント - テンプレートの概要
 
@@ -22,14 +22,14 @@ ms.locfileid: "70167063"
 
 仮想アシスタント テンプレートでは、Microsoft が会話エクスペリエンスの構築を通じて特定した多数のベスト プラクティスがまとめられています。これを使うと、Bot Framework 開発者にとって非常に有益であると Microsoft が判断したコンポーネントの統合が自動化されます。 このセクションでは、テンプレートの仕様を説明するうえで役に立つ、重要な決定のバックグランドについて取り上げます。
 
-機能      | 説明 |
+機能      | [説明] |
 ------------ | -------------
 はじめに | 会話の開始時に流れる、[アダプティブ カード]()の紹介メッセージ
 入力インジケーター  | 会話中の自動ビジュアル入力インジケーター。長時間実行される操作で繰り返されます
 基本 LUIS モデル  | **キャンセル**、**ヘルプ**、**エスカレート**など、一般的な意図をサポートします
 基本のダイアログ | 基本的なーザー情報と、キャンセルおよびヘルプ意図の中断ロジックをキャプチャするためのダイアログ フロー
 基本の応答  | 基本の意図とダイアログのテキストおよび音声の応答
-FAQ | ナレッジ ベースから一般的な質問に回答するための [QnA Maker](https://www.qnamaker.ai) との統合 
+よく寄せられる質問 | ナレッジ ベースから一般的な質問に回答するための [QnA Maker](https://www.qnamaker.ai) との統合 
 おしゃべり | 一般的なクエリに対する標準的な回答を提供するためのプロフェッショナルなおしゃべりモデル ([詳細](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base))
 ディスパッチャー | 指定の発話を LUIS で処理するか QnA Maker で処理するかを特定する、統合された[ディスパッチ](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) モデル。
 言語のサポート | 英語、フランス語、イタリア語、ドイツ語、スペイン語、および中国語で使用できます
@@ -58,7 +58,7 @@ Cancel       |"*キャンセル*"、"*気にしないで*"|
 エスカレート     |"*ユーザーと話すことができますか*"|
 FinishTask   |"*完了*"、"*すべて終了*"|
 GoBack       |"*戻る*"|
-[Help]         |"*助けていただけますか*"|
+ヘルプ         |"*助けていただけますか*"|
 Repeat       |"*もう一度言ってください*"|
 SelectAny    |"*そのいずれか*"|
 SelectItem   |"*最初の項目*"|

@@ -1,5 +1,5 @@
 ---
-title: フォームの内容をローカライズする | Microsoft Docs
+title: フォームの内容をローカライズする - Bot Service
 description: FormFlow と Bot Framework SDK for .NET を使用してフォームの内容をローカライズする方法を説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 795232b401284becd940daed6bf7da8642c12efd
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: accffd89fa6bba8e8bb43aad573cf8df4b3723b0
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297950"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796847"
 ---
 # <a name="localize-form-content"></a>フォームの内容をローカライズする
 

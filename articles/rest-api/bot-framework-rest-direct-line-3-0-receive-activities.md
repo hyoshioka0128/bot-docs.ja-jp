@@ -1,5 +1,5 @@
 ---
-title: ボットからアクティビティを受信する | Microsoft Docs
+title: ボットからアクティビティを受信する - Bot Service
 description: Direct Line API v3.0 を使用して、ボットからアクティビティを受信する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/13/2019
-ms.openlocfilehash: 1e5c48dd3782100f9393c3498baa2b0a7c728cb3
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: bfe40a33747dfd6724f6a5efe2104ffde01781bc
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876145"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789373"
 ---
 # <a name="receive-activities-from-the-bot"></a>ボットからアクティビティを受信する
 
@@ -35,7 +35,7 @@ WebSocket と HTTP GET は、どちらも、すべての[アクティビティ�
 | endOfConversation | HTTP GET と WebSocket |
 | その他のすべてのアクティビティの種類 | HTTP GET と WebSocket |
 
-## <a id="connect-via-websocket"> </a>WebSocket ストリーム経由でアクティビティを受信する
+## <a id="connect-via-websocket"></a>WebSocket ストリーム経由でアクティビティを受信する
 
 クライアントが[会話の開始](bot-framework-rest-direct-line-3-0-start-conversation.md)要求を送信してボットとの会話を開くと、サービスの応答には、クライアントが後で WebSocket 経由で接続するために使用できる `streamUrl` プロパティが含まれます。 ストリーム URL は事前に承認されているため、WebSocket 経由で接続するクライアントの要求には、`Authorization` ヘッダーは必要ありません。
 
@@ -175,4 +175,4 @@ HTTP/1.1 200 OK
 - [会話の開始](bot-framework-rest-direct-line-3-0-start-conversation.md)
 - [会話への再接続](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)
 - [ボットへのアクティビティの送信](bot-framework-rest-direct-line-3-0-send-activity.md)
-- [会話の終了](bot-framework-rest-direct-line-3-0-end-conversation.md)
+- [会話を終了する](bot-framework-rest-direct-line-3-0-end-conversation.md)

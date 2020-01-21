@@ -1,5 +1,5 @@
 ---
-title: メッセージをインターセプトする | Microsoft Docs
+title: メッセージをインターセプトする (v3 JS) - Bot Service
 description: Bot Framework SDK for Node.js を使用して、情報交換をインターセプトして処理することで、ログやその他のレコードを作成する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2ca85c598d5515e8a785326ba12fd872ffce741f
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 32934a8cb857b9ff3f2b4f2058a58fcce12cfc3d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299822"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790884"
 ---
 # <a name="intercept-messages"></a>メッセージをインターセプトする
 
@@ -21,7 +21,7 @@ ms.locfileid: "70299822"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-middleware.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-intercept-messages.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-intercept-messages.md)
 
 [!INCLUDE [Introduction to message logging](../includes/snippet-message-logging-intro.md)]
 

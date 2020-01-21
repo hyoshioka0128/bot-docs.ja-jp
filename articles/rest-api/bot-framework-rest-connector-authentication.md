@@ -1,5 +1,5 @@
 ---
-title: 認証の要求 | Microsoft Docs
+title: 要求を認証する - Bot Service
 description: Bot Connector API および Bot State API で API 要求を認証する方法を説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: cc2421c5693d123f8dd76b238c37d6e4198b5dd8
-ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
+ms.openlocfilehash: 60a246d60f3b74b037f793a306d58df1a5398141
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74410446"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790790"
 ---
-# <a name="authentication"></a>Authentication
+# <a name="authentication"></a>認証
 
 ご利用のボットと Bot Connector サービスとの通信は、セキュリティ保護されたチャネル (SSL/TLS) で HTTP を使用して行われます。 ご利用のボットから Connector サービスに要求を送信するときは、Connector サービスでボットの ID を検証するために使用できる情報を含める必要があります。 同様に、Connector サービスからご利用のボットに送信される要求には、ボットでサービスの ID を検証するために使用できる情報が含まれている必要があります。 この記事では、ボットと Bot Connector サービスの間で行われるサービス レベルの認証について、そのテクノロジと要件を説明します。 利用する認証コードを独自に記述する場合、ボットと Bot Connector サービスの間でメッセージを交換できるようにするには、この記事で説明するセキュリティ プロシージャを実装する必要があります。
 
@@ -31,7 +31,7 @@ ms.locfileid: "74410446"
 
 ボットと Bot Connector の間で信頼を確立するために、次の 4 つの認証テクノロジが使用されます。
 
-| テクノロジ | 説明 |
+| テクノロジ | [説明] |
 |----|----|
 | **SSL/TLS** | SSL/TLS は、すべてのサービス間接続に対して使用されます。 `X.509v3` 証明書が、すべての HTTPS サービスの ID を確立するために使用されます。 **クライアントでは、サービスが信頼でき、有効であることを確認するために、必ずサービス証明書を調べる必要があります** (この手法では、クライアント証明書は使用されません)。 |
 | **OAuth 2.0** | OAuth 2.0 では、Azure Active Directory (Azure AD) v2 アカウント ログイン サービスを使用して、ボットがメッセージを送信するために使用できるセキュリティ トークンを生成します。 このトークンはサービス間トークンであり、ユーザー ログインは不要です。 |
@@ -146,7 +146,7 @@ Bot Connector サービスからご利用のボットに要求が送信される
 
 ![Bot Connector からご利用のボットへの呼び出しを認証する](../media/connector/auth_bot_connector_to_bot.png)
 
-### <a id="openid-metadata-document"></a>手順 2: OpenID メタデータ ドキュメントを取得する
+### <a id="openid-metadata-document"></a> ステップ 2:OpenID メタデータ ドキュメントを取得する
 
 OpenID メタデータ ドキュメントでは、Bot Connector サービスの有効な署名キーの一覧を含むもう 1 つのドキュメントの場所が指定されます。 OpenID メタデータ ドキュメントを取得するには、次の要求を HTTPS 経由で発行します。
 
@@ -173,9 +173,9 @@ GET https://login.botframework.com/v1/.well-known/openidconfiguration
 }
 ```
 
-### <a id="connector-to-bot-step-3"></a> 手順 3:有効な署名キーの一覧を取得する
+### <a id="connector-to-bot-step-3"></a> ステップ 3:有効な署名キーの一覧を取得する
 
-有効な署名キーの一覧を取得するには、OpenID メタデータ ドキュメントで `jwks_uri` プロパティによって指定されている URL に、HTTPS 経由で `GET` 要求を発行します。 例:
+有効な署名キーの一覧を取得するには、OpenID メタデータ ドキュメントで `jwks_uri` プロパティによって指定されている URL に、HTTPS 経由で `GET` 要求を発行します。 次に例を示します。
 
 ```http
 GET https://login.botframework.com/v1/.well-known/keys
@@ -266,9 +266,9 @@ GET https://login.microsoftonline.com/botframework.com/v2.0/.well-known/openid-c
 }
 ```
 
-### <a id="emulator-to-bot-step-3"></a> 手順 3:有効な署名キーの一覧を取得する
+### <a id="emulator-to-bot-step-3"></a> ステップ 3:有効な署名キーの一覧を取得する
 
-有効な署名キーの一覧を取得するには、OpenID メタデータ ドキュメントで `jwks_uri` プロパティによって指定されている URL に、HTTPS 経由で `GET` 要求を発行します。 例:
+有効な署名キーの一覧を取得するには、OpenID メタデータ ドキュメントで `jwks_uri` プロパティによって指定されている URL に、HTTPS 経由で `GET` 要求を発行します。 次に例を示します。
 
 ```http
 GET https://login.microsoftonline.com/common/discovery/v2.0/keys 

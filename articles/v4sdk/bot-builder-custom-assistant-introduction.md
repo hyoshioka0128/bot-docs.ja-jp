@@ -1,5 +1,5 @@
 ---
-title: カスタム アシスタントの概要 | Microsoft Docs
+title: カスタム アシスタントの概要 - Bot Service
 description: 独自のカスタム アシスタントを作成する方法について説明します
 author: darrenj
 ms.author: darrenj
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 276ee900a30e9f164cdf697d8f429acd59b2d286
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 1b3cb313a06f8f834aa7d212db43eafb2a621af5
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441517"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798622"
 ---
 # <a name="custom-assistant-overview"></a>カスタム アシスタントの概要
 
@@ -84,7 +84,7 @@ Microsoft のカスタム アシスタント アーキテクチャは柔軟性�
 
 - エンタープライズ: 音声とテキストに対応した従業員アシスタント機能を組織のデバイスや既存の会話キャンバス (Teams、Web チャット、Slack など) に統合して、予定表の管理や、空いている会議室の検索、特定のスキルを持った人員の検索、人事関連業務の実行など、さまざまな機能を従業員に提供できます。 
 
-## <a name="getting-started"></a>Getting Started (概要)
+## <a name="getting-started"></a>作業の開始
 
 現在、初期プレビューを進めており、オープンソースのリポジトリを通じて初期のお客様やパートナーと緊密に連携しながら、初期段階のエクスペリエンスを開発し、数か月以内にリリースすることを目指しています。 ご希望のシナリオを登録し、ソリューションの利用を申し込むには、[こちらのフォーム](https://aka.ms/customassistantpreviewform)に必要事項を入力してください。後ほど、Microsoft からご連絡を差し上げます。
 

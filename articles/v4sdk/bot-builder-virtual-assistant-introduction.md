@@ -1,5 +1,5 @@
 ---
-title: 仮想アシスタントの概要 | Microsoft Docs
+title: 仮想アシスタントの概要 - Bot Service
 description: 独自の仮想アシスタントを作成する方法について説明します
 author: darrenj
 ms.author: darrenj
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 65a55550dff284ad44fd85cfe9223107cb8f4baf
-ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
+ms.openlocfilehash: 4f817ff4911229d8bc36d2c50348bf0320d09e47
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74415135"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791860"
 ---
 # <a name="virtual-assistant-overview"></a>仮想アシスタントの概要
 
@@ -31,7 +31,7 @@ Microsoft では、製品の機能をお客様が制御できるようにする�
 
 ![仮想アシスタントの図](./media/enterprise-template/customassistantdiagram.jpg)
 
-## <a name="getting-started"></a>Getting Started (概要)
+## <a name="getting-started"></a>作業の開始
 
 詳細については、[仮想アシスタントとスキル](https://aka.ms/bf-solutions-docs)に関するドキュメントをご覧ください。
 
@@ -41,7 +41,7 @@ Microsoft では、製品の機能をお客様が制御できるようにする�
 
 仮想アシスタント テンプレートには、複数言語の基本的な会話の意図、ディスパッチ、QnA、会話インサイトなど、以前の Enterprise Template 機能が組み込まれています。 現時点では、次のアシスタント関連機能が提供されており、追加の機能も計画されてします。今後、お客様やパートナーと緊密に連携しながら、ロードマップを公開していく予定です。
 
-機能 | 説明 |
+機能 | [説明] |
 ------------ | -------------
 オンボード | サンプルのオンボード フローでは、ユーザーへのあいさつや初期情報の収集が可能です。
 イベント処理アーキテクチャ | 仮想アシスタントのコンテキスト内にあるイベントを使用して、アシスタントをホストしているクライアント アプリケーション (Web ブラウザー、自動車用デバイス、スピーカーなどのアプリ) から、ユーザーやデバイス イベントの情報をやり取りしたり、イベントを受信してデバイス操作を実行したりできます。
@@ -104,7 +104,7 @@ Microsoft の仮想アシスタント アーキテクチャは柔軟性に優れ
 
 ソース コードは仮想アシスタントと共に GitHub ですべて公開されているので、開発者は各スキルのすべての要素 (言語モデル、ダイアログ、統合コード、言語生成) を自由にカスタマイズできます。
 
-## <a name="getting-started"></a>Getting Started (概要)
+## <a name="getting-started"></a>作業の開始
 
 ご自身の仮想アシスタントを作成してデプロイする方法については、[チュートリアル](https://aka.ms/bfs-tutorials)をご覧ください。
 

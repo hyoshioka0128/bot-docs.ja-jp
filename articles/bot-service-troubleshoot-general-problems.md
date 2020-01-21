@@ -1,5 +1,5 @@
 ---
-title: ボットのトラブルシューティング | Microsoft Docs
+title: ボットのトラブルシューティング - Bot Service
 description: よく寄せられる技術的な質問を使用して、ボット開発における一般的な問題のトラブルシューティングを行います。
 author: DeniseMak
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 09/17/2019
-ms.openlocfilehash: d958f2a9f85af4a42dab241264115050f1972d4d
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 255c0d5761460a631542e671976c13e61b45da23
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75490843"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795731"
 ---
 # <a name="troubleshooting-general-problems"></a>一般的な問題のトラブルシューティング
 以下のよく寄せられる質問は、一般的なボット開発や運用上の問題のトラブルシューティングに役立ちます。

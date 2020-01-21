@@ -1,5 +1,5 @@
 ---
-title: .NET を使用して Cortana スキルを構築する | Microsoft Docs
+title: .NET を使用して Cortana スキルを構築する - Bot Service
 description: Bot Framework SDK for .NET で Cortana スキルを構築するための主要概念について説明します。
 keywords: Bot Framework, Cortana スキル, 音声, .NET, SDK, 主な概念, 主要概念
 author: DeniseMak
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c0dd854cf2f8eb1f4cbe13c8d562425616e8cf40
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: ecdbf3e573c091893d0f2da8d2c7acb0c6348810
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167343"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796691"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Cortana スキルを使用した音声認識ボットの作成
 
@@ -22,7 +22,7 @@ ms.locfileid: "70167343"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-cortana-skill.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-cortana-skill.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-cortana-skill.md)
 
 
 Bot Framework SDK for .NET で音声認識ボットを作成できます。そのためには、これを Cortana スキルとして Cortana チャネルに接続します。 
@@ -59,7 +59,7 @@ reply.Speak = "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesi
 **InputHint** プロパティは、ボットが入力を期待しているかどうかを Cortana に示すために役立ちます。 既定値は、プロンプトの場合は **ExpectingInput**、他の種類の応答の場合は **AcceptingInput** です。
 
 
-| 値 | 説明 |
+| 値 | [説明] |
 |------|------|
 | **AcceptingInput** | ボットは受動的に入力を受け入れる準備ができていますが、応答を待機しているわけではありません。 ユーザーがマイク ボタンを押したままにすると、Cortana はユーザーからの入力を受け入れます。|
 | **ExpectingInput** | ボットがユーザーからの応答をアクティブに必要としていることを示します。 Cortana はユーザーがマイクに話すのをリッスンします。  |
@@ -81,7 +81,7 @@ reply.InputHint = InputHints.ExpectingInput;
 
 音声応答に加え、Cortana ではカードの添付ファイルも表示できます。 Cortana は、次のリッチ カードをサポートしています。
 
-| カードの種類 | 説明 |
+| カードの種類 | [説明] |
 |----|----|
 | [HeroCard][heroCard] | 通常 1 つの大きなイメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
 | [ThumbnailCard][thumbnailCard] | 通常 1 つのサムネイル イメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
@@ -322,7 +322,7 @@ Cortana に向かって[呼び出し名][InvocationNameGuidelines]を話しか�
         }
     }
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ボットをローカルで実行する場合、またはクラウドにデプロイする場合、ボットを Cortana から呼び出せます。 Cortana スキルを試すために必要な手順については、「[Test a Cortana skill](../bot-service-debug-cortana-skill.md)」(Cortana スキルのテスト) を参照してください。
 

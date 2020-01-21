@@ -1,5 +1,5 @@
 ---
-title: Bot Framework SDK for .NET を使用したメッセージの作成 | Microsoft Docs
+title: Bot Framework SDK for .NET を使用したメッセージの作成 - Bot Service
 description: Bot Framework SDK for .NET 内の、一般的に使用されるメッセージ プロパティについて説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: bb75e49e50a479e0141000ef49d75559148fe43a
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 8f043afc1b4faad3f7edc66c7ef1d788c42d8403
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297301"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794673"
 ---
 # <a name="create-messages"></a>メッセージを作成する
 
@@ -33,11 +33,11 @@ ms.locfileid: "70297301"
 
 メッセージの `TextFormat` プロパティを使用して、テキストの書式を指定することができます。 `TextFormat` プロパティは、**plain**、**markdown**、**xml** のいずれかに設定できます。 `TextFormat` の既定値は **markdown** です。 
 
-## <a name="attachments"></a>[添付ファイル]
+## <a name="attachments"></a>[Attachments]
 
 メッセージ アクティビティの `Attachments` プロパティは、単純なメディア添付ファイル (画像、オーディオ、ビデオ、ファイル) やリッチ カードの送受信に使用できます。 詳細については、「[メッセージへのメディア添付ファイルの追加](bot-builder-dotnet-add-media-attachments.md)」および「[メッセージへのリッチ カードの追加](bot-builder-dotnet-add-rich-card-attachments.md)」を参照してください。
 
-## <a name="entities"></a>エンティティ
+## <a name="entities"></a>[エンティティ]
 
 メッセージの `Entities` プロパティは、拡張可能な <a href="http://schema.org/" target="_blank">schema.org</a> オブジェクトの配列であり、チャネルとボットの間で共通のコンテキスト メタデータを交換するために使用します。
 
@@ -45,7 +45,7 @@ ms.locfileid: "70297301"
 
 多くのチャネルは、ボットまたはユーザーが会話のコンテキスト内で誰かを "メンション" する能力をサポートしています。 メッセージでユーザーをメンションするには、メッセージの `Entities` プロパティに `Mention` オブジェクトを設定します。 `Mention` オブジェクトには、次のプロパティが含まれています。 
 
-| プロパティ | Description | 
+| プロパティ | [説明] | 
 |----|----|
 | 種類 | エンティティの種類 ("mention") | 
 | Mentioned | どのユーザーがメンションされたかを示す `ChannelAccount` オブジェクト | 
@@ -56,7 +56,7 @@ ms.locfileid: "70297301"
 [!code-csharp[set Mention](../includes/code/dotnet-create-messages.cs#setMention)]
 
 > [!TIP]
-> ユーザーの意図を判断しようとするとき、ボットはメッセージの中で自らがメンションされている部分を無視したい場合があります。 `GetMentions` メソッドを呼び出し、応答で返された `Mention` オブジェクトを評価します。
+> ユーザーの意図を判断しようとするとき、ボットはメッセージの中でメンションされている部分を無視したい場合があります。 `GetMentions` メソッドを呼び出し、応答で返された `Mention` オブジェクトを評価します。
 
 ### <a name="place-objects"></a>場所オブジェクト
 
@@ -64,20 +64,20 @@ ms.locfileid: "70297301"
 
 `Place` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | Description | 
+| プロパティ | [説明] | 
 |----|----|
 | 種類 | エンティティの種類 ("Place") |
 | Address | 説明または `PostalAddress` オブジェクト (将来) | 
 | ジオ (主要地域) | GeoCoordinates | 
 | HasMap | 地図の URL または `Map` オブジェクト (将来) |
-| 名前 | 場所の名前 |
+| Name | 場所の名前 |
 
 `GeoCoordinates` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | Description | 
+| プロパティ | [説明] | 
 |----|----|
 | 種類 | エンティティの種類 ("GeoCoordinates") |
-| 名前 | 場所の名前 |
+| Name | 場所の名前 |
 | Longitude | 場所の経度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
 | Latitude | 場所の緯度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
 | Elevation | 場所の標高 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
@@ -110,7 +110,7 @@ ms.locfileid: "70297301"
 
 メッセージ アクティビティの `SuggestedActions` プロパティは、ユーザーが入力を提供するためにタップできるボタンを表示するために使用できます。 (タップされた後でも表示されたままとなり、ユーザーがアクセスできる) リッチ カード内に表示されるボタンとは異なり、推奨される操作ウィンドウ内に表示されるボタンは、ユーザーが選択を行った後は表示されなくなります。 詳細については、「[メッセージへの推奨されるアクションの追加](bot-builder-dotnet-add-suggested-actions.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ボットとユーザーは互いにメッセージを送信できます。 メッセージが複雑な場合、ボットはメッセージでリッチ カードをユーザーに送信できます。 リッチ カードは、ほとんどのボットで一般的に必要とされる表示と対話のシナリオの多くをカバーします。
 

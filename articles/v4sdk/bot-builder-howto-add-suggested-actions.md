@@ -1,5 +1,5 @@
 ---
-title: 入力にボタンを使用する | Microsoft Docs
+title: 入力にボタンを使用する - Bot Service
 description: Bot Framework SDK for JavaScript を使用してメッセージ内で推奨されるアクションを送信する方法について説明します。
 keywords: 推奨されるアクション, ボタン, 追加の入力
 author: Kaiqb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b121a60b72551dd473a880d47868a61763e5afa0
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 7a8ec7dbe7d8079967d66d9461b67fb3d2152d94
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491493"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798413"
 ---
 # <a name="use-button-for-input"></a>入力にボタンを使用する
 

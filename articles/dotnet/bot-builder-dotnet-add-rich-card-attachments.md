@@ -1,5 +1,5 @@
 ---
-title: メッセージにリッチ カード添付ファイルを追加する | Microsoft Docs
+title: メッセージにリッチ カード添付ファイルを追加する (v3 C#) - Bot Service
 description: Bot Framework SDK for .NET を使用してメッセージにリッチなカードを追加する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 37c652e101f5501295b243386ba9b675c578624f
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e30ac144d4e960672f3d129935a657c42ed1aa6d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298405"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796515"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
 
@@ -21,7 +21,7 @@ ms.locfileid: "70298405"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-rich-card-attachments.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-send-rich-cards.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-send-rich-cards.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-rich-cards.md)
 
 ユーザーとボットの間のメッセージ交換には、リストまたはカルーセルとしてレンダリングされる 1 つまたは複数のリッチ カードを含めることができます。 
@@ -35,7 +35,7 @@ ms.locfileid: "70298405"
 
 Bot Framework では、現在 8 種類のリッチ カードがサポートされています。 
 
-| カードの種類 | 説明 |
+| カードの種類 | [説明] |
 |----|----|
 | <a href="/adaptive-cards/get-started/bots">アダプティブ カード</a> | テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。 [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。  |
 | [アニメーション カード][animationCard] | アニメーション GIF または短い動画を再生できるカード。 |
@@ -53,7 +53,7 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 リッチ カード内のイベントを処理するには、`CardAction` オブジェクトを定義して、ユーザーがボタンをクリックするか、またはカードのセクションをタップしたときのアクションを指定します。 各 `CardAction` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | 種類 | 説明 | 
+| プロパティ | 種類 | [説明] | 
 |----|----|----|
 | 種類 | string | アクションの種類 (下の表に示されている値のいずれか) |
 | タイトル | string | ボタンのタイトル |
@@ -95,7 +95,7 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 ## <a name="add-a-receipt-card-to-a-message"></a>メッセージに受信確認カードを追加する
 
-受信確認カードを使用すると、ボットからユーザーに受信確認を提供できるようになります。 通常は、受信確認に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。 
+受信確認カードを使用すると、ボットからユーザーに受信確認を提供できるようになります。 通常は、領収書に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。 
 
 次のコード例では、受信確認カードが含まれている応答メッセージを作成する方法を示します。 
 
@@ -103,7 +103,7 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 ## <a name="add-a-sign-in-card-to-a-message"></a>メッセージにサインイン カードを追加する
 
-サインイン カードを使用すると、ボットでユーザーのサインインを要求できるようになります。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つまたは複数のボタンが含まれます。 
+サインイン カードを使用すると、ボットでユーザーのサインインを要求できるようになります。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つ以上のボタンが含まれます。 
 
 次のコード例では、サインイン カードが含まれている応答メッセージを作成する方法を示します。
 
@@ -111,9 +111,9 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 ## <a id="adaptive-card"></a> メッセージにアダプティブ カードを追加する
 
-アダプティブ カードには、テキスト、音声、イメージ、ボタン、および入力フィールドの任意の組み合わせを含めることができます。 アダプティブ カードは、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>で指定された JSON 形式を使用して作成されます。これにより、カードのコンテンツと形式の完全な制御が可能になります。 
+アダプティブ カードには、テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができます。 アダプティブ カードは、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>で指定された JSON 形式を使用して作成され、カードのコンテンツと形式をフル コントロールできます。 
 
-.NET を使用してアダプティブ カードを作成するには、`AdaptiveCards` NuGet パッケージをインストールします。 次に、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a> サイト内の情報を活用して、アダプティブ カードのスキーマを理解し、アダプティブ カードの要素について調べてください。また、さまざまな構成や複雑さを備えたカードの作成に使用できる JSON のサンプルもご覧ください。 さらに、対話型のビジュアライザーを使用すると、アダプティブ カード ペイロードを設計し、カードの出力をプレビューできます。
+.NET を使用してアダプティブ カードを作成するには、`AdaptiveCards` NuGet パッケージをインストールします。 次に、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a> サイト内の情報を活用して、アダプティブ カードのスキーマを理解し、アダプティブ カードの要素について調べてください。また、さまざまな構成や複雑さを備えたカードの作成に使用できる JSON のサンプルもご覧ください。 さらに、Interactive Visualizer を使用して、アダプティブ カードのペイロードを設計し、カードの出力をプレビューできます。
 
 次のコード例では、カレンダー アラーム用のアダプティブ カードが含まれるメッセージを作成する方法を示します。 
 
@@ -125,7 +125,7 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [Channel Inspector を使用して機能をプレビューする][inspector]
+- [チャネル リファレンス](../bot-service-channels-reference.md)
 - <a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>
 - [アクティビティの概要](bot-builder-dotnet-activities.md)
 - [メッセージの作成](bot-builder-dotnet-create-messages.md)
@@ -147,4 +147,4 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 [videoCard]: /dotnet/api/microsoft.bot.connector.videocard
 
-[inspector]: ../bot-service-channel-inspector.md
+[inspector]: ../bot-service-channels-reference.md

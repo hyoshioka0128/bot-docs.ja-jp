@@ -1,5 +1,5 @@
 ---
-title: Bot Framework のスキルの概要 | Microsoft Docs
+title: Bot Framework のスキルの概要 - Bot Service
 description: Bot Framework のスキルの詳細について説明します
 author: darrenj
 ms.author: darrenj
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 10/09/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9bb149773fe1b2cdd09da0165a4fff4e647f419d
-ms.sourcegitcommit: 5d81c5b25ea56e04f09d05916ee947d631009172
+ms.openlocfilehash: 7d7c4271fd03100c24ba7dd774dea93909bdd8a0
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72236434"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791234"
 ---
 # <a name="virtual-assistant---skills-overview"></a>仮想アシスタント - スキルの概要
 
@@ -38,7 +38,7 @@ ms.locfileid: "72236434"
 
 ![スキルのシナリオ](./media/enterprise-template/skills-at-build.png)
 
-| 名前 | 説明 |
+| Name | [説明] |
 | ---- | ----------- |
 |[カレンダー スキル](https://aka.ms/bf-calendar-skill)|カレンダー機能をご自身のアシスタントに追加します。 Microsoft Graph および Google を使用。|
 |[メール スキル](https://aka.ms/bf-email-skill)|メール機能をご自身のアシスタントに追加します。 Microsoft Graph および Google を使用。|
@@ -47,6 +47,6 @@ ms.locfileid: "72236434"
 |[自動車スキル](https://aka.ms/bf-auto-skill)|自動車機能のコントロールを示す業界垂直スキル。|
 |[試験段階スキル](https://aka.ms/bf-experimental-skills)|ニュース、レストラン予約、および天気。|
 
-## <a name="getting-started"></a>Getting Started (概要)
+## <a name="getting-started"></a>作業の開始
 
 既存のスキルを利用して独自のスキルを構築する方法については、[チュートリアル](https://aka.ms/bfs-tutorials)をご覧ください。

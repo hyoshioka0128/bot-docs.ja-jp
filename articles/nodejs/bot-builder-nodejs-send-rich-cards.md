@@ -1,5 +1,5 @@
 ---
-title: メッセージにリッチ カード添付ファイルを追加する | Microsoft Docs
+title: メッセージにリッチ カード添付ファイルを追加する (v3 JS) - Bot Service
 description: Bot Framework SDK for Node.js を使用して魅力的な対話型リッチ カードを送信する方法について説明します。
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9b56539146909be1231611319703c3e9cf2ef5c2
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 246052bc971be3198fb5f3cd04f7d94e39c6b5d1
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299715"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790465"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
 
@@ -22,7 +22,7 @@ ms.locfileid: "70299715"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-rich-card-attachments.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-send-rich-cards.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-send-rich-cards.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-rich-cards.md)
 
 Skype、Facebook などの複数のチャネルで、ユーザーがクリックすることでアクションが開始される対話型ボタンを使用して、グラフィカルなリッチ カードをユーザーに送信できます。 SDK には、カードを作成および送信するときに使用できる、メッセージとカード ビルダー クラスが複数用意されています。 これらのカードは、チャネルにネイティブなスキーマを使用して、Bot Framework Connector サービスによってレンダリングされ、クロスプラットフォーム通信がサポートされます。 チャネルで SMS などのカードがサポートされていない場合、Bot Framework では、ユーザーに対して妥当なエクスペリエンスが提供されるように最善が尽くされます。 
@@ -30,7 +30,7 @@ Skype、Facebook などの複数のチャネルで、ユーザーがクリック
 ## <a name="types-of-rich-cards"></a>リッチ カードの種類 
 Bot Framework では、現在 8 種類のリッチ カードがサポートされています。 
 
-| カードの種類 | 説明 |
+| カードの種類 | [説明] |
 |------|------|
 | <a href="/adaptive-cards/get-started/bots">アダプティブ カード</a> | テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。  [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。 |
 | [アニメーション カード][animationCard] | アニメーション GIF または短い動画を再生できるカード。 |
@@ -156,7 +156,7 @@ Bot Framework では、ボットからの複数のメッセージが順不同で
 
 アダプティブ カードには、テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができます。 アダプティブ カードは、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>で指定された JSON 形式を使用して作成され、カードのコンテンツと形式をフル コントロールできます。 
 
-Node.js を使用してアダプティブ カードを作成するには、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a> サイト内の情報を活用して、アダプティブ カードのスキーマを理解し、アダプティブ カードの要素について調べてください。また、さまざまな構成や複雑さを備えたカードの作成に使用できる JSON のサンプルもご覧ください。 さらに、対話型のビジュアライザーを使用すると、アダプティブ カード ペイロードを設計し、カードの出力をプレビューできます。
+Node.js を使用してアダプティブ カードを作成するには、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a> サイト内の情報を活用して、アダプティブ カードのスキーマを理解し、アダプティブ カードの要素について調べてください。また、さまざまな構成や複雑さを備えたカードの作成に使用できる JSON のサンプルもご覧ください。 さらに、Interactive Visualizer を使用して、アダプティブ カードのペイロードを設計し、カードの出力をプレビューできます。
 
 次のコード例では、カレンダー アラーム用のアダプティブ カードが含まれるメッセージを作成する方法を示します。 
 
@@ -168,7 +168,7 @@ Node.js を使用してアダプティブ カードを作成するには、<a hr
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Channel Inspector を使用して機能をプレビューする][inspector]
+* [チャネル リファレンス][inspector]
 * <a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>
 * [AnimationCard][animationCard]
 * [AudioCard][audioCard]
@@ -198,4 +198,4 @@ Node.js を使用してアダプティブ カードを作成するには、<a hr
 
 [videoCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.videocard.html
 
-[inspector]: ../bot-service-channel-inspector.md
+[inspector]: ../bot-service-channels-reference.md

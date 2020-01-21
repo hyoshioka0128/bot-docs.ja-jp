@@ -1,5 +1,5 @@
 ---
-title: ボットを WeChat に接続する | Microsoft Docs
+title: ボットを WeChat に接続する - Bot Service
 description: ボットから WeChat への接続を構成する方法について説明します。
 keywords: WeChat, Tencent, ボット チャネル, WeChat アプリ, WeChat ボット, アプリ ID, アプリ シークレット, 資格情報
 author: seaen
@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: egorn
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: aee02ba1707f08fbcb4479b37edd065fd28efd8f
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 9abba3093ce819f7ebc07bb03e342da797971f25
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73443090"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791793"
 ---
 # <a name="connect-a-bot-to-wechat"></a>ボットを WeChat に接続する
 

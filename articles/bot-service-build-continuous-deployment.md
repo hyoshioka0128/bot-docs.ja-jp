@@ -1,5 +1,5 @@
 ---
-title: Bot Service の継続的配置を構成する | Microsoft Docs
+title: Bot Service の継続的デプロイを構成する - Bot Service
 description: Bot Service のソース管理からの継続的デプロイを設定する方法について説明します。
 keywords: 継続的配置, 公開, デプロイ, Azure portal
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5ef5901f778d34983e5725e983d39f14b6fa0014
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 7662e5e2d933d7a4500da8eadc0d914f9978800d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491300"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789194"
 ---
 # <a name="set-up-continuous-deployment"></a>Azure App Service での GIT による継続的なデプロイ
 

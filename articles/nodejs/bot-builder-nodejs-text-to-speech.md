@@ -1,5 +1,5 @@
 ---
-title: メッセージに音声を追加する | Microsoft Docs
+title: メッセージに音声を追加する (v3 JS) - Bot Service
 description: Bot Framework SDK for Node.js を使用してメッセージに音声を追加する方法について説明します。
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 14bda9e14f0f812cf528a6b9fdf01175e7eb21ae
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: a5e97aa859f8b200fecb6df213bce1f9d9c1f912
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866650"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790357"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
 
@@ -21,7 +21,7 @@ ms.locfileid: "68866650"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-text-to-speech.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-text-to-speech.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-text-to-speech.md)
 > - [REST](../rest-api/bot-framework-rest-connector-text-to-speech.md)
 
 Cortana などの音声対応チャネルのボットを作成している場合は、ボットが読み上げるテキストを指定するメッセージを構成できます。 また、[入力ヒント](bot-builder-nodejs-send-input-hints.md)を指定して、ボットがユーザー入力を受け入れるか、期待するか、無視するかを示し、クライアントのマイクの状態に影響を与えることを試すこともできます。
@@ -42,7 +42,7 @@ Bot Framework SDK for Node.js を使用すると、音声対応チャネルで�
 
 `session.say(displayText: string, speechText: string, options?: object)`
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 |----|----|
 | `displayText` | 表示されるテキスト。 |
 | `speechText` | 読み上げるテキスト (プレーンテキストまたは <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">SSML</a> 形式)。 |

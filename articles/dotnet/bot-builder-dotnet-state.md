@@ -1,5 +1,5 @@
 ---
-title: 状態データの管理 | Microsoft Docs
+title: 状態データの管理 (v3 C#) - Bot Service
 description: Bot Framework SDK for .NET を使用して状態データを保存および取得する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9dc2519e74147d1147e2d5f2cb7fba883bd1269c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 0856805c285f47f1f219e49d36daf4892af2dcc7
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298789"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797862"
 ---
 # <a name="manage-state-data"></a>状態データの管理
 
@@ -21,13 +21,13 @@ ms.locfileid: "70298789"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-state.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-state.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-state.md)
 
 [!INCLUDE [State concept overview](../includes/snippet-dotnet-concept-state.md)]
 
 ## <a name="in-memory-data-storage"></a>インメモリ データ ストレージ
 
-メモリ内データ ストレージはテスト専用です。 このストレージは揮発性であり、一時的なものです。 ボットが再起動されるたびにデータが消去されます。 テストのためにインメモリ ストレージを使用するには、以下を行う必要があります。 
+メモリ内データ ストレージはテスト専用です。 このストレージは揮発性であり、一時的なものです。 ボットの再起動ごとにデータがクリアされます。 テストのためにインメモリ ストレージを使用するには、以下を行う必要があります。 
 
 次の NuGet パッケージをインストールします。 
 - Microsoft.Bot.Builder.Azure
@@ -61,7 +61,7 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 
 ```
 
-このメソッドを使用して独自のカスタム データ ストレージを設定することも、*Azure 拡張機能*のいずれかを使用することもできます。
+この方法を使用して、独自のカスタム データ ストレージを設定できます。また、*Azure 拡張機能*のいずれかを使用することもできます。
 
 ## <a name="manage-custom-data-storage"></a>カスタム データ ストレージを管理する
 
@@ -83,9 +83,9 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 | `GetConversationData` | 会話 | 指定されたチャネル上の会話の、以前に保存された状態データを取得します。 |
 | `GetPrivateConversationData` | ユーザーおよび会話 | 指定されたチャネル上の会話内のユーザーの、以前に保存された状態データを取得します。 |
 | `SetUserData` | User | 指定されたチャネル上のユーザーの状態データを保存します。 |
-| `SetConversationData` | 会話 | 指定されたチャネル上の会話の状態データを保存します。 <br/><br/>**メモ**:`SetConversationData` メソッドを使用して保存されたデータは `DeleteStateForUser` メソッドでは削除されないため、このメソッドを使用してユーザーの個人を特定できる情報 (PII) を保存しないでください。 |
+| `SetConversationData` | 会話 | 指定されたチャネル上の会話の状態データを保存します。 <br/><br/>**注**:`SetConversationData` メソッドを使用して保存されたデータは `DeleteStateForUser` メソッドでは削除されないため、このメソッドを使用してユーザーの個人を特定できる情報 (PII) を保存しないでください。 |
 | `SetPrivateConversationData` | ユーザーおよび会話 | 指定されたチャネル上の会話内のユーザーの状態データを保存します。 |
-| `DeleteStateForUser` | User | `SetUserData` メソッドまたは `SetPrivateConversationData` メソッドを使用して以前に保存されたユーザーの状態データを削除します。 <br/><br/>**メモ**:ボットでは、ユーザーの連絡先リストからボットが削除されたことを示す [deleteUserData](bot-builder-dotnet-activities.md#deleteuserdata) 型のアクティビティまたは [contactRelationUpdate](bot-builder-dotnet-activities.md#contactrelationupdate) 型のアクティビティを受信したら、このメソッドを呼び出す必要があります。 |
+| `DeleteStateForUser` | User | `SetUserData` メソッドまたは `SetPrivateConversationData` メソッドを使用して以前に保存されたユーザーの状態データを削除します。 <br/><br/>**注**:ボットでは、ユーザーの連絡先リストからボットが削除されたことを示す [deleteUserData](bot-builder-dotnet-activities.md#deleteuserdata) 型のアクティビティまたは [contactRelationUpdate](bot-builder-dotnet-activities.md#contactrelationupdate) 型のアクティビティを受信したら、このメソッドを呼び出す必要があります。 |
 
 ボットが "**Set...Data**" メソッドのいずれかを使用して状態データを保存すると、ボットが同じコンテキストで受信する今後のメッセージにそのデータが含まれるようになります。データには、対応する "**Get...Data**" メソッドを使用してアクセスできます。
 
@@ -93,11 +93,11 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 
 各 [Activity][Activity] オブジェクトには、状態データの管理に使用するプロパティが含まれています。
 
-| プロパティ | 説明 | ユース ケース |
+| プロパティ | [説明] | 使用事例 |
 |----|----|----|
 | `From` | チャネル上のユーザーを一意に識別する | ユーザーに関連する状態データの保存と取得 |
 | `Conversation` | 会話を一意に識別する | 会話に関連する状態データの保存と取得 |
-| `From` と `Conversation` | ユーザーと会話を一意に識別する | 特定の会話のコンテキスト内の特定のユーザーに関連する状態データの保存と取得 |
+| `From` および `Conversation` | ユーザーと会話を一意に識別する | 特定の会話のコンテキスト内の特定のユーザーに関連する状態データの保存と取得 |
 
 > [!NOTE]
 > Bot Framework 状態データ ストアを使用するのではなく、独自のデータベースに状態データを保存する場合でも、これらのプロパティ値をキーとして使用できます。

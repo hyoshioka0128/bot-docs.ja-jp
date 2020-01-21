@@ -1,5 +1,5 @@
 ---
-title: NodeJS SDK v3 と v4 の違い | Microsoft Docs
+title: NodeJS SDK v3 と v4 の違い - Bot Service
 description: NodeJS SDK v3 と v4 の違いについて説明します。
 keywords: ボットの移行、ダイアログ、状態
 author: mmiele
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/28/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 77f97d8a2467572ed596cc5033ad0f76435200e4
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 5d614fc34f3daa9deddb2ccedbe58bdef2ba067a
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491405"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791044"
 ---
 # <a name="differences-between-the-v3-and-v4-javascript-sdk"></a>JavaScript SDK v3 とv4 の違い
 

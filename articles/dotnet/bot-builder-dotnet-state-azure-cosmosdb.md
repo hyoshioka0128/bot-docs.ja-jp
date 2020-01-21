@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB を使用してカスタム状態データを管理する | Microsoft Docs
+title: Azure Cosmos DB によるカスタム状態データの管理 (v3 C#) - Bot Service
 description: Bot Framework SDK for .NET で Azure Cosmos DB を使用して状態データを保存および取得する方法を説明します
 author: kamrani
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2495e0506072609e47f4014f1027ed5033fb4bf7
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 5057b05d598e8ff985a1d0daf5d18fef6c0ffc95
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297774"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797943"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-net"></a>.NET 用の Azure Cosmos DB を使用してカスタム状態データを管理する
 
@@ -108,7 +108,7 @@ Global.asax.cs ファイルを保存します。 以上で、エミュレータ�
 Visual Studio でボットを実行すると、追加したコードによって Azure 内にカスタム **botdata** テーブルが作成されます。
 
 ## <a name="connect-your-bot-to-the-emulator"></a>ボットをエミュレーターに接続する
-この時点では、ボットはローカルで実行されています。 次に、エミュレーターを起動し、ボットをエミュレーターに接続します。
+この時点では、ボットはローカルで実行されています。 次に、エミュレーターを起動し、エミュレーターのボットに接続します。
 1. アドレス バーに http://localhost:port-number/api/messages と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 <strong>[Microsoft アプリ ID]</strong> フィールドと <strong>[Microsoft アプリ パスワード]</strong> フィールドは、この時点では空白のままで構いません。 この情報は、後ほど、[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
 2. **[接続]** をクリックします。 
 3. エミュレーターでいくつかのメッセージを入力して、ボットをテストします。 
@@ -116,7 +116,7 @@ Visual Studio でボットを実行すると、追加したコードによって
 ## <a name="view-state-data-on-azure-portal"></a>Azure Portal で状態データを表示する
 状態データを表示するには、Azure Portal にサインインし、データベースに移動します。 **[データ エクスプローラー (プレビュー)]** をクリックして、ボットの状態情報が保存されていることを確認します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Cosmos DB を使用してボットのデータの保存と管理を行いました。 次に、ダイアログを使用して会話フローをモデル化する方法について学びます。
 
 > [!div class="nextstepaction"]

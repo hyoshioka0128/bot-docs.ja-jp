@@ -1,5 +1,5 @@
 ---
-title: 添付ファイルを送受信する | Microsoft Docs
+title: 添付ファイルを送受信する - Bot Service
 description: Bot Framework SDK for Node.js を使用して添付ファイルを含むメッセージを送受信する方法について説明します。
 author: DeniseMak
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c830ed61a70b3b92451988ea73f223da3e55bbc7
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 182fb3ab327b55d8976a607871bb2380a88f8b30
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299726"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790560"
 ---
 # <a name="send-and-receive-attachments"></a>添付ファイルを送受信する
 
@@ -21,7 +21,7 @@ ms.locfileid: "70299726"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-media-attachments.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-media-attachments.md)
 
 ユーザーとボットの間のメッセージ交換には、イメージ、ビデオ、オーディオ、ファイルなどのメディア添付ファイルを含めることができます。 送信できる添付ファイルの種類はチャネルによって異なりますが、以下に基本的な種類を示します。
@@ -61,7 +61,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
 ```
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Channel Inspector を使用して機能をプレビューする][inspector]
+* [チャネル リファレンス][inspector]
 * [IMessage][IMessage]
 * [リッチ カードを送信する][SendRichCard]
 * [session.send][SessionSend]
@@ -70,4 +70,4 @@ var bot = new builder.UniversalBot(connector, function (session) {
 [SendRichCard]: bot-builder-nodejs-send-rich-cards.md
 [SessionSend]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#send
 [IAttachment]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iattachment.html
-[inspector]: ../bot-service-channel-inspector.md
+[inspector]: ../bot-service-channels-reference.md

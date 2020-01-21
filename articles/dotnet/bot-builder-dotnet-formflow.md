@@ -1,5 +1,5 @@
 ---
-title: FormFlow の基本的機能 | Microsoft Docs
+title: FormFlow の基本的機能 - Bot Service
 description: Bot Framework SDK for .NET 内で FormFlow を使用して会話フローを導く方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4e9aa1b7bffd55518bd4ef03512d873ac48b49a7
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: bf22566229d9a502b42a8b516138a1427b5d6845
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297858"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797201"
 ---
 # <a name="basic-features-of-formflow"></a>FormFlow の基本的機能
 
@@ -31,7 +31,7 @@ FormFlow を使用してボットを作成するには、ボットがユーザ�
 
 - 整数 (sbyte、byte、short、ushort、int、uint、long、ulong)
 - 浮動小数点 (float、double)
-- string
+- String
 - DateTime
 - Enumeration
 - 列挙型のリスト
@@ -309,7 +309,7 @@ FormFlow の基本的機能で十分な場合もありますが、FormFlow の�
 
 [!INCLUDE [Sample code](../includes/snippet-dotnet-formflow-samples.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 FormFlow により、ダイアログの開発が簡素化されます。 FormFlow の高度な機能を使用すると、FormFlow オブジェクトの動作をカスタマイズできます。
 

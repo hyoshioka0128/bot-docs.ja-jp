@@ -1,5 +1,5 @@
 ---
-title: テキスト メッセージを送受信する | Microsoft Docs
+title: テキスト メッセージを送受信する - Bot Service
 description: Bot Framework SDK 内でテキスト メッセージを送受信する方法について説明します。
 keywords: メッセージの送信, メッセージ アクティビティ, 単純なテキスト メッセージ, メッセージ, テキスト メッセージ, メッセージの受信
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d8aa120e37d13cc5710915d2362fdeed5b9d10bf
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: b8a4915bd58075cfa1172bdf78878f2f6c9826f0
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491488"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798288"
 ---
 # <a name="send-and-receive-text-message"></a>テキスト メッセージを送受信する
 

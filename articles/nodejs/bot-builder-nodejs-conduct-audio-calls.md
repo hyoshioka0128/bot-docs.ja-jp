@@ -1,5 +1,5 @@
 ---
-title: 音声通話を行う | Microsoft Docs
+title: 音声通話を行う - Bot Service
 description: Node.js を使用して、ボットの Skype と音声通話を行う方法について説明します。
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3934450f8fe2f971dc18d5a62cbcc74a97bd5869
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 25f1941c732363f849f1d82c149d80094c16860f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299903"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790954"
 ---
 # <a name="support-audio-calls-with-skype"></a>Skype での音声通話のサポート
 
@@ -52,7 +52,7 @@ bot.dialog('/', function (session) {
 ```
 
 > [!NOTE]
-> ボットの **AppID** と **AppPassword** の確認方法については、「[MicrosoftAppID and MicrosoftAppPassword](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」(MicrosoftAppID と MicrosoftAppPassword) を参照してください。
+> 自分のボットの **AppID** と **AppPassword** を見つける方法については、「[MicrosoftAppID and MicrosoftAppPassword](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」(MicrosoftAppID と MicrosoftAppPassword) を参照してください。
 
 現在、エミュレーターは通話ボットのテストをサポートしていません。 ボットをテストするには、ボットの発行に必要な手順のほとんどを実行する必要があります。  また、Skype クライアントを使用してボットと対話する必要があります。 
 

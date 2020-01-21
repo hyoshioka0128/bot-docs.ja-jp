@@ -1,5 +1,5 @@
 ---
-title: ボットに自然言語の理解を追加する | Microsoft Docs
+title: ボットに自然言語の理解を追加する - Bot Service
 description: 自然言語理解のための LUIS を Bot Framework SDK と共に使用する方法について説明します。
 keywords: Language Understanding, LUIS, 意図, 認識エンジン, エンティティ, ミドルウェア
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3b7847fcc97f4a95587f7fa45f91ade93b0c1e38
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: eda82d8b929282fe322c0b28cc4683396ae26dbc
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491726"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798207"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 

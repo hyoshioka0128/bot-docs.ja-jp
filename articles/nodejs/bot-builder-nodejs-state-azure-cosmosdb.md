@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB を使用してカスタム状態データを管理する | Microsoft Docs
+title: Azure Cosmos DB によるカスタム状態データの管理 (v3 JS) - Bot Service
 description: Bot Framework SDK for Node.js で Azure Cosmos DB を使用して状態データを保存および取得する方法を説明します。
 author: DucVo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dcf4b4cbeb9e0827f0baa4d1a799355bd422a9de
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e878972dab75813f7a977244d4bce06f3d6a72a2
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299691"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790367"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-nodejs"></a>Node.js 用の Azure Cosmos DB によるカスタム状態データの管理
 
@@ -34,7 +34,7 @@ ms.locfileid: "70299691"
 - [Bot Framework Emulator](~/bot-service-debug-emulator.md)
 - Node.js ボットが必要です。 ない場合は、[ボットを作成](bot-builder-nodejs-quickstart.md)します。 
 
-## <a name="create-azure-account"></a>Azure アカウントの作成
+## <a name="create-azure-account"></a>Azure アカウントを作成する
 Azure アカウントを持っていない場合は、[こちら](https://azure.microsoft.com/free/)をクリックして、無料アカウントにサインアップしてください。
 
 ## <a name="set-up-the-azure-cosmos-db-database"></a>Azure Cosmos DB データベースを設定する
@@ -44,7 +44,7 @@ Azure アカウントを持っていない場合は、[こちら](https://azure.
 4. フィールドに入力します。 **[API]** フィールドで、 **[SQL (DocumentDB)]** を選択します。 すべてのフィールドに入力した後、画面下部にある **[作成]** ボタンをクリックして、新しいデータベースをデプロイします。 
 5. 新しいデータベースがデプロイされたら、その新しいデータベースに移動します。 **[アクセス キー]** をクリックして、キーと接続文字列を検索します。 ボットはこの情報を使用して、状態データを保存するストレージ サービスを呼び出します。
 
-## <a name="install-botbuilder-azure-module"></a>botbuilder-azure モジュールのインストール
+## <a name="install-botbuilder-azure-module"></a>botbuilder-azure モジュールをインストールする
 
 コマンド プロンプトから `botbuilder-azure` モジュールをインストールするには、ボットのディレクトリに移動し、次の npm コマンドを実行します。
 
@@ -52,7 +52,7 @@ Azure アカウントを持っていない場合は、[こちら](https://azure.
 npm install --save botbuilder-azure
 ```
 
-## <a name="modify-your-bot-code"></a>ボット コードの変更
+## <a name="modify-your-bot-code"></a>ボットのコードを変更する
 
 **Azure Cosmos DB** データベースを使用するには、次のコード行をボットの **app.js** ファイルに追加します。
 
@@ -62,7 +62,7 @@ npm install --save botbuilder-azure
    var azure = require('botbuilder-azure'); 
    ```
 
-2. Azure に接続するための接続文字列設定を構成します。
+2. Azure に接続するための接続設定を構成します。
    ```javascript
    var documentDbOptions = {
        host: 'Your-Azure-DocumentDB-URI', 
@@ -73,14 +73,14 @@ npm install --save botbuilder-azure
    ```
    `host` 値と `masterKey` 値は、データベースの **[キー]** メニューで確認できます。 `database` エントリと `collection` エントリが Azure データベースにない場合、自動的に作成されます。
 
-3. `botbuilder-azure` モジュールを使用して、Azure データベースに接続するための新しいオブジェクトを 2 つ作成します。 最初に、(上記の `documentDbOptions` として定義されている) 接続構成設定を渡して、`DocumentDBClient` のインスタンスを作成します。 次に、`DocumentDBClient` オブジェクトを渡して `AzureBotStorage` のインスタンスを作成します。 例:
+3. `botbuilder-azure` モジュールを使用して、Azure データベースに接続するための新しいオブジェクトを 2 つ作成します。 最初に、(上記の `documentDbOptions` として定義されている) 接続構成設定を渡して、`DocumentDBClient` のインスタンスを作成します。 次に、`DocumentDBClient` オブジェクトを渡して `AzureBotStorage` のインスタンスを作成します。 次に例を示します。
    ```javascript
    var docDbClient = new azure.DocumentDbClient(documentDbOptions);
 
    var cosmosStorage = new azure.AzureBotStorage({ gzipData: false }, docDbClient);
    ```
 
-4. インメモリ ストレージではなく、カスタム データベースを使用するよう指定します。 例:
+4. インメモリ ストレージではなく、カスタム データベースを使用するよう指定します。 次に例を示します。
 
    ```javascript
    var bot = new builder.UniversalBot(connector, function (session) {
@@ -103,11 +103,11 @@ node app.js
 
 この時点では、ボットはローカルで実行されています。 エミュレーターを起動し、エミュレーターからボットに接続します。
 
-1. エミュレーターのアドレス バーに「<strong>http://localhost:port-number/api/messages</strong>」と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 <strong>[Microsoft App ID]\(Microsoft アプリ ID\)</strong> フィールドと <strong>[Microsoft App Password]\(Microsoft アプリ パスワード\)</strong> フィールドは、この時点では空白のままでかまいません。 この情報は、後ほど、[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
+1. エミュレーターのアドレス バーに「<strong>http://localhost:port-number/api/messages</strong>」と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 <strong>[Microsoft アプリ ID]</strong> フィールドと <strong>[Microsoft アプリ パスワード]</strong> フィールドは、この時点では空白のままで構いません。 この情報は、後ほど、[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
 2. **[接続]** をクリックします。
 3. ボットにメッセージを送信して、テストします。 通常どおりにボットと対話してください。 対話が終わったら、**Storage Explorer** に移動し、保存された状態データを表示します。
 
-## <a name="view-state-data-on-azure-portal"></a>Azure Portal での状態データの表示
+## <a name="view-state-data-on-azure-portal"></a>Azure Portal で状態データを表示する
 
 状態データを表示するには、Azure Portal にサインインし、データベースに移動します。 **[データ エクスプローラー (プレビュー)]** をクリックし、ボットの状態の情報が保存されていることを確認します。
 
@@ -116,4 +116,4 @@ node app.js
 ボットの状態データを完全に制御できるようになったので、次は状態データを使用して会話フローの管理を強化する方法を調べます。
 
 > [!div class="nextstepaction"]
-> [会話フローの管理](bot-builder-nodejs-dialog-manage-conversation-flow.md)
+> [会話フローを管理する](bot-builder-nodejs-dialog-manage-conversation-flow.md)

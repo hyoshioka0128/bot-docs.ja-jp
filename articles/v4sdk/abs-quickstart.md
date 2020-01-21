@@ -1,18 +1,18 @@
 ---
-title: Bot Service を使用してボットを作成する | Microsoft Docs
+title: Azure Bot Service を使用してボットを作成する - Bot Service
 description: 統合された専用のボット開発環境である Bot Service を使用してボットを作成する方法について説明します。
 keywords: クイック スタート, ボットの作成, bot service, web app bot
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/22/2019
-ms.openlocfilehash: fd3a20822827a8d4500a1e91bbb9e998b05475dd
-ms.sourcegitcommit: a4a437a1d44137375ea044dcc11bccc8d004e3db
+ms.date: 01/09/2020
+ms.openlocfilehash: 9190c2eefbfe290ea43531630473772addb1b60a
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479511"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798889"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Azure Bot Service を使用してボットを作成する
 
@@ -41,7 +41,7 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
 3. **[Bot Service]** ブレードで、画像の下の表に示すように、ボットに関する必要な情報を入力します。  <br/>
  ![Web App Bot の作成ブレード](../media/azure-bot-quickstarts/sdk-create-bot-service-blade.png)
 
- | Setting | 推奨値 | 説明 |
+ | 設定 | 推奨値 | [説明] |
  | ---- | ---- | ---- |
  | **ボット名** | ボットの表示名 | チャンネルとディレクトリに表示されるボットの表示名。 この名前はいつでも変更できます。 |
  | **サブスクリプション** | 該当するサブスクリプション | 使用する Azure サブスクリプションを選択します。 |
@@ -51,7 +51,7 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
  | **アプリ名** | 一意の名前 | ボットの一意の URL 名。 たとえば、ボットに *myawesomebot* という名前を付けた場合、ボットの URL は `http://myawesomebot.azurewebsites.net` になります。 名前には、英数字とアンダースコアのみを使用する必要があります。 このフィールドは 35 文字に制限されています。 ボットの作成後にアプリ名を変更することはできません。 |
  | **Bot template\(ボット テンプレート\)** | エコー ボット | **[SDK v4]** を選択します。 このクイック スタートでは C# または Node.js のいずれかを選択して、 **[選択]** をクリックします。  
  | **App Service プラン/場所** | ご利用の App Service プラン  | [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)の場所を選択します。 一覧に示されたどの場所を選択してもかまいませんが、多くの場合、ボット サービスと同じ場所を選択するのが最良です。 |
- | **LUIS アカウント** _Basic Bot テンプレートでのみ使用可能_ | LUIS Azure リソース名 | [LUIS リソースを Azure リソースに移行](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)した後、Azure リソース名を入力して、この LUIS アプリケーションをその Azure リソースに関連付けます。 
+ | **LUIS アカウント** "_Basic Bot テンプレートでのみ使用可能_" | LUIS Azure リソース名 | [LUIS リソースを Azure リソースに移行](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)した後、Azure リソース名を入力して、この LUIS アプリケーションをその Azure リソースに関連付けます。 
  | **Application Insights** | On | [Application Insights](/bot-framework/bot-service-manage-analytics) を**オン**にするか、**オフ**にするかを決定します。 **[オン]** を選択した場合は、リージョンの場所も指定する必要があります。 一覧に示されたどの場所を選択してもかまいませんが、多くの場合、ボット サービスと同じ場所を選択するのが最良です。 |
  | **Microsoft App ID and password\(Microsoft アプリ ID とパスワード\)** | アプリ ID とパスワードの自動作成 | Microsoft アプリ ID とパスワードを手動で入力する必要がある場合は、このオプションを使用します。 それ以外の場合は、ボット作成プロセスで新しい Microsoft アプリ ID とパスワードが自動的に作成されます。 ボット サービス用に手動でアプリケーションの登録を作成する場合は、サポートされるアカウントの種類が [任意の組織のディレクトリ内のアカウント] または [任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)] に確実に設定されているようにしてください。 |
 
@@ -85,5 +85,5 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
 1. 指示に従ってコードをダウンロードし、フォルダーを解凍します。
     1. [!INCLUDE [download keys snippet](../includes/snippet-abs-key-download.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 コードをダウンロードしたら、お使いのコンピューターでボットをローカルで引き続き開発できます。 ボットをテストし、ボット コードを Azure portal にアップロードする準備ができたら、[継続的デプロイの設定](../bot-service-build-continuous-deployment.md)に関するトピックに記載されている手順に従って、変更後にコードを自動更新します。

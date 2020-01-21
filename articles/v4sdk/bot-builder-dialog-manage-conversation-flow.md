@@ -1,5 +1,5 @@
 ---
-title: 連続して行われる会話フローの実装 | Microsoft Docs
+title: 連続して行われる会話フローの実装 - Bot Service
 description: Bot Framework SDK でダイアログを使用して単純な会話フローを管理する方法について説明します。
 keywords: 単純な会話フロー, 連続して行われる会話フロー, ダイアログ, プロンプト, ウォーターフォール, ダイアログ セット
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f1e186140c146a87c1186bccb3329604b615468c
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 9ee6e9445871445008f6ab406f3250af0226c0dd
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491858"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798511"
 ---
 # <a name="implement-sequential-conversation-flow"></a>連続して行われる会話フローの実装
 
@@ -83,7 +83,7 @@ ms.locfileid: "75491858"
 
 **Dialogs\UserProfileDialog.cs**
 
-最後のステップで、前のウォーターフォール ステップで呼び出されたダイアログによって返された `stepContext.Result` を確認します。 戻り値が true の場合は、ユーザー プロファイル アクセサーを使用して、ユーザー プロファイルを取得し、更新します。 ユーザー プロファイルを取得するには、`GetAsync` メソッドを呼び出して、`userProfile.Transport`、`userProfile.Name`、`userProfile.Age` の各プロパティの値を設定します。 最後に、ダイアログを終了する `EndDialogAsync` を呼び出す前に、ユーザーの情報をまとめます。 ダイアログを終了すると、そのダイアログはダイアログ スタックから取り出され、ダイアログの親に省略可能な結果が返されます。 この親は、終了したばかりのダイアログを開始したダイアログまたはメソッドです。
+最後のステップで、前のウォーターフォール ステップで呼び出されたダイアログによって返された `stepContext.Result` を確認します。 戻り値が true の場合は、ユーザー プロファイル アクセサーを使用して、ユーザー プロファイルを取得し、更新します。 ユーザー プロファイルを取得するには、`GetAsync` メソッドを呼び出して、`userProfile.Transport`、`userProfile.Name`、`userProfile.Age`、`userProfile.Picture` の各プロパティの値を設定します。 最後に、ダイアログを終了する `EndDialogAsync` を呼び出す前に、ユーザーの情報をまとめます。 ダイアログを終了すると、そのダイアログはダイアログ スタックから取り出され、ダイアログの親に省略可能な結果が返されます。 この親は、終了したばかりのダイアログを開始したダイアログまたはメソッドです。
 
 [!code-csharp[SummaryStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=137-179&highlight=5-11,41-42)]
 
@@ -121,7 +121,7 @@ ms.locfileid: "75491858"
 
 **dialogs/userProfileDialog.js**
 
-最後のステップで、前のウォーターフォール ステップで呼び出されたダイアログによって返された `step.result` を確認します。 戻り値が true の場合は、ユーザー プロファイル アクセサーを使用して、ユーザー プロファイルを取得し、更新します。 ユーザー プロファイルを取得するには、`get` メソッドを呼び出して、`userProfile.transport`、`userProfile.name`、`userProfile.age` の各プロパティの値を設定します。 最後に、ダイアログを終了する `endDialog` を呼び出す前に、ユーザーの情報をまとめます。 ダイアログを終了すると、そのダイアログはダイアログ スタックから取り出され、ダイアログの親に省略可能な結果が返されます。 この親は、終了したばかりのダイアログを開始したダイアログまたはメソッドです。
+最後のステップで、前のウォーターフォール ステップで呼び出されたダイアログによって返された `step.result` を確認します。 戻り値が true の場合は、ユーザー プロファイル アクセサーを使用して、ユーザー プロファイルを取得し、更新します。 ユーザー プロファイルを取得するには、`get` メソッドを呼び出して、`userProfile.transport`、`userProfile.name`、`userProfile.age`、`userProfile.picture` の各プロパティの値を設定します。 最後に、ダイアログを終了する `endDialog` を呼び出す前に、ユーザーの情報をまとめます。 ダイアログを終了すると、そのダイアログはダイアログ スタックから取り出され、ダイアログの親に省略可能な結果が返されます。 この親は、終了したばかりのダイアログを開始したダイアログまたはメソッドです。
 
 [!code-javascript[summary step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=137-167&highlight=3-9,29-30)]
 
@@ -274,6 +274,34 @@ ms.locfileid: "75491858"
 - end dialog メソッドを使用して、収集したデータを戻り値として親コンテキストに提供する。 これは、ボットのターン ハンドラーでもダイアログ スタック上の前のアクティブ ダイアログでもかまいません。 プロンプト クラスはこのように設計されています。
 - 適切なサービスへの要求を生成する。 お使いのボットが大規模なサービスへのフロントエンドとして動作している場合にうまく機能することがあります。
 
+### <a name="definition-of-a-prompt-validator-method"></a>プロンプト検証コントロールのメソッドの定義
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp) 
+
+**UserProfileDialog.cs**
+
+以下に示したのは、`AgePromptValidatorAsync` メソッドの定義に使用される検証コントロールのコード例です。 `promptContext.Recognized.Value` には、解析済みの値が格納されます。数値のプロンプトの場合、この値は整数になります。 `promptContext.Recognized.Succeeded` は、プロンプトがユーザーの入力を解析できたかどうかを示します。 その値が受け入れられなかった場合、検証コントロールは false を返し、プロンプト ダイアログで、ユーザーに再度プロンプトを表示する必要があります。それ以外の場合は、true を返して入力を受け取り、プロンプト ダイアログから復帰します。 検証コントロールの値は、実際のシナリオに応じて変更することができます。 
+
+[!code-csharp[prompt validator method](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=181-185)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**dialogs\userProfileDialog.js**
+
+以下に示したのは、`agePromptValidator` メソッドの定義に使用される検証コントロールのコード例です。 `promptContext.recognized.value` には、解析済みの値が格納されます。数値のプロンプトの場合、この値は整数になります。 `promptContext.recognized.succeeded` は、プロンプトがユーザーの入力を解析できたかどうかを示します。 その値が受け入れられなかった場合、検証コントロールは false を返し、プロンプト ダイアログで、ユーザーに再度プロンプトを表示する必要があります。それ以外の場合は、true を返して入力を受け取り、プロンプト ダイアログから復帰します。 検証コントロールの値は、実際のシナリオに応じて変更することができます。 
+
+[!code-javascript[prompt validator method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=169-172)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs/user_profile_dialog.py**
+
+以下に示したのは、`age_prompt_validator` メソッドの定義に使用される検証コントロールのコード例です。 `prompt_context.recognized.value` には、解析済みの値が格納されます。数値のプロンプトの場合、この値は整数になります。 `prompt_context.recognized.succeeded` は、プロンプトがユーザーの入力を解析できたかどうかを示します。 その値が受け入れられなかった場合、検証コントロールは false を返し、プロンプト ダイアログで、ユーザーに再度プロンプトを表示する必要があります。それ以外の場合は、true を返して入力を受け取り、プロンプト ダイアログから復帰します。 検証コントロールの値は、実際のシナリオに応じて変更することができます。 
+
+[!code-python[prompt validator method](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=207-212)]
+
+---
+
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
@@ -291,3 +319,4 @@ ms.locfileid: "75491858"
 [cs-sample]: https://aka.ms/cs-multi-prompts-sample
 [js-sample]: https://aka.ms/js-multi-prompts-sample
 [python-sample]: https://aka.ms/python-multi-prompts-sample
+

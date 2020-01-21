@@ -1,5 +1,5 @@
 ---
-title: プロアクティブ メッセージを送信する | Microsoft Docs
+title: プロアクティブ メッセージを送信する (v3 C#) - Bot Service
 description: Bot Framework SDK for .NET を使用してプロアクティブ メッセージを送信する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c601db171f253b83bfa2d354f79018f03287bcf6
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: a6dd39b76d12262097013095be67b8e401846cbc
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297341"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795473"
 ---
 # <a name="send-proactive-messages"></a>プロアクティブ メッセージを送信する
 
@@ -21,7 +21,7 @@ ms.locfileid: "70297341"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-proactive-messages.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-proactive-messages.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-proactive-messages.md)
 
 [!INCLUDE [Introduction to proactive messages - part 1](../includes/snippet-proactive-messages-intro-1.md)]
 
@@ -114,7 +114,7 @@ public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitabl
 }
 ```
 
-メッセージを送信するとき、ボットは新しいダイアログを作成し、ダイアログ スタックの先頭に追加します。 新しいダイアログは、会話を制御し、プロアクティブ メッセージを配信して、終了してから、スタック内の前のダイアログ ボックスに制御を返します。 
+メッセージを送信するときが来たら、ボットは、新しいダイアログを作成して、ダイアログ スタックの先頭に追加します。 新しいダイアログが会話を制御し、プロアクティブ メッセージを配信した後、スタック内の前のダイアログに制御を戻します。 
 
 ```cs
 // This will interrupt the conversation and send the user to SurveyDialog, then wait until that's done 

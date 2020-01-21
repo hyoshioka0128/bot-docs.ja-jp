@@ -1,5 +1,5 @@
 ---
-title: ボットを Web サイトに埋め込む | Microsoft Docs
+title: ボットを Web サイトに埋め込む - Bot Service
 description: Web サイトに埋め込まれるボットを設計する方法について説明します。
 author: matvelloso
 ms.author: mateusv
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 96ccbe453574f15ceda8ae8b4ec1eb44492de738
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 48b483ad16a5af837869879c5f87d0e249f0788d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298168"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792194"
 ---
 # <a name="embed-a-bot-in-a-website"></a>ボットを Web サイトに埋め込む
 

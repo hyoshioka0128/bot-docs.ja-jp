@@ -1,5 +1,5 @@
 ---
-title: ダイアログの置換 | Microsoft Docs
+title: ダイアログの置換 - Bot Service
 description: Bot Framework SDK for Node.js を使用して会話フローの入力と管理を再確認するためのダイアログを置換する方法を説明します。
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 92782463a4f7d0de6d0fa30693542eea051366bd
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 79083626f60564d8fa6a500cf7c45805e4488e22
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299837"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790906"
 ---
 # <a name="replace-dialogs"></a>ダイアログの置換
 
@@ -163,7 +163,7 @@ bot.dialog('orderDinner', [
 
 2 番目のトリガーは [`cancelAction`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#cancelaction) です。これにより、ユーザーは「取り消し」と入力して送信することで、注文操作を中止できます。 このトリガーでは、メイン メニューは自動的には表示されませんが、代わりに「"メイン メニュー" を入力して続行」と言うことで、次の操作をユーザーに示すメッセージが送信されます。
 
-### <a name="dialog-loops"></a>ダイアログのループ
+### <a name="dialog-loops"></a>ダイアログをループさせる
 
 上記の例でユーザーが選択できる項目は注文ごとに 1 つだけです。 つまり、ユーザーがメニューから 2 つの項目を注文したい場合は、最初の項目についてすべての注文操作を完了してから、2 つ目の項目に対して、注文操作をもう一度最初から最後まで繰り返さなければなりません。 
 
@@ -332,7 +332,7 @@ bot.dialog("addDinnerItem", [
 
 このように `session.cancelDialog` メソッドを使用すると、お使いのボットに必要なすべての会話フローを実装することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 おわかりのように、スタックでダイアログを置換するには、さまざまな種類の**アクション**を使用してそのタスクを実行します。 アクションによって、会話フローを柔軟に管理できるようになります。 **アクション**、およびユーザー アクションをより効果的に処理する方法について見ていきましょう。
 

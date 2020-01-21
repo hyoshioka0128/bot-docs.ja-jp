@@ -1,5 +1,5 @@
 ---
-title: メッセージに音声を追加する | Microsoft Docs
+title: メッセージに音声を追加する - Bot Service
 description: Bot Connector サービスを使用してメッセージに音声を追加する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,17 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 7b649f0ae434df79ebb5ad715e0917c470b66c60
-ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
+ms.openlocfilehash: 6cab3dbff6d2d7a4ba79edb88b138ae77beee956
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74415128"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789833"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-text-to-speech.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-text-to-speech.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-text-to-speech.md)
 > - [REST](../rest-api/bot-framework-rest-connector-text-to-speech.md)
 
 Cortana などの音声対応チャネルのボットを作成している場合は、ボットが読み上げるテキストを指定するメッセージを構成できます。 また、[入力ヒント](bot-framework-rest-connector-add-input-hints.md)を指定して、ボットがユーザー入力を受け入れるか、期待するか、無視するかを示し、クライアントのマイクの状態に影響を与えることを試すこともできます。

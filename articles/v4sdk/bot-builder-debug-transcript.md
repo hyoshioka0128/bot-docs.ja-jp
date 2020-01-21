@@ -1,5 +1,5 @@
 ---
-title: トランスクリプト ファイルを使用してボットをデバッグする | Microsoft Docs
+title: トランスクリプト ファイルを使用してお使いのボットをデバッグする - Bot Service
 description: トランスクリプト ファイルを使用して、ボットのデバッグに役立てる方法について説明します。
 keywords: デバッグ, FAQ, トランスクリプト ファイル, エミュレーター
 author: DanDev33
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservices: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 20d3ff54ed7c1ece0678c4b98bea920f8becdaf3
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 6d1f3aafb805eba6ebf09fc7b15f29df4437d11c
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299375"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798602"
 ---
 # <a name="debug-your-bot-using-transcript-files"></a>トランスクリプト ファイルを使用してボットをデバッグする
 
@@ -67,7 +67,7 @@ Bot Framework Emulator を使用してボット トランスクリプト ファ�
 
 ご自身のボットのコードとユーザー操作は、さまざまなツールを使ってテストおよびデバッグすることができます。トランスクリプト ファイルと Bot Framework Emulator の併用はその 1 つに過ぎません。 お使いのボットのテストおよびデバッグに使用できる他の方法については、以下に示す他のリソースを参照してください。
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 その他のテストおよびデバッグ情報については、以下を参照してください。
 

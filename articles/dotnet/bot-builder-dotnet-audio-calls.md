@@ -1,5 +1,5 @@
 ---
-title: Skype で音声通話を行う | Microsoft Docs
+title: Skype で音声通話を行う - Bot Service
 description: Bot Framework SDK for .NET を使用して、Skype で音声通話を行う方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4a6d634f1b199358830674042cc289742c7efc10
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 3d21bcbea0fb6d164b1eafad855f1db854df1876
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298424"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793628"
 ---
 # <a name="conduct-audio-calls-with-skype"></a>Skype で音声通話を行う
 

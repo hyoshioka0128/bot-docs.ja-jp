@@ -1,5 +1,5 @@
 ---
-title: API リファレンス - Direct Line API 1.1 | Microsoft Docs
+title: API リファレンス - Direct Line API 1.1 - Bot Service
 description: Direct Line API 1.1 のヘッダー、HTTP 状態コード、スキーマ、操作、およびオブジェクトについて説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,17 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 7db0ccb84b2c5172348eeac667f78f3abaf95f94
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 6cb2d9cd933952e363631d64f527b4c12d5f3b40
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299653"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791392"
 ---
 # <a name="api-reference---direct-line-api-11"></a>API リファレンス - Direct Line API 1.1
 
 > [!IMPORTANT]
-> この記事には、Direct Line API 1.1 に関するリファレンス情報が含まれています。 クライアント アプリケーションとボット間の新しい接続を作成する場合は、[Direct Line API 3.0](bot-framework-rest-direct-line-3-0-api-reference.md) を使用してください。
+> この記事には、Direct Line API 1.1 に関するリファレンス情報が含まれています。 クライアント アプリケーションとボットの間の新しい接続を作成する場合は、代わりに [Direct Line API 3.0](bot-framework-rest-direct-line-3-0-api-reference.md) を使用します。
 
 Direct Line API 1.1 を使用することで、クライアント アプリケーションとボットの通信を有効にできます。 Direct Line API 1.1 では、HTTPS で業界標準の REST および JSON を使用します。
 
@@ -27,7 +27,7 @@ Direct Line API 1.1 にアクセスするには、すべての API 要求用の�
 
 `https://directline.botframework.com`
 
-## <a name="headers"></a>headers
+## <a name="headers"></a>ヘッダー
 
 標準 HTTP 要求ヘッダーに加えて、Direct Line API 要求には、要求を発行しているクライアントを認証するシークレットまたはトークンを指定する `Authorization` ヘッダーを含める必要があります。 `Authorization` ヘッダーは、"Bearer" スキームまたは "BotConnector" スキームを使用して指定できます。 
 
@@ -58,10 +58,10 @@ Authorization: BotConnector SECRET_OR_TOKEN
 | 500 | Direct Line サービス内で内部サーバー エラーが発生しました |
 | 502 | ボット内でエラーが発生しました。ボットが利用できないか、ボットからエラーが返されました。  **これは一般的なエラー コードです。** |
 
-## <a name="token-operations"></a>トークンの操作 
+## <a name="token-operations"></a>トークン操作 
 クライアントが 1 つの会話にアクセスするために使用できるトークンを作成または更新するには、次の操作を使用します。
 
-| Operation | 説明 |
+| 操作 | [説明] |
 |----|----|
 | [トークンの生成](#generate-token) | 新しい会話用のトークンを生成します。 | 
 | [トークンの更新](#refresh-token) | トークンを更新します。 | 
@@ -91,7 +91,7 @@ GET /api/tokens/{conversationId}/renew
 ## <a name="conversation-operations"></a>会話操作 
 ボットとの会話を開いてクライアントとボット間でメッセージを交換するには、次の操作を使用します。
 
-| Operation | 説明 |
+| 操作 | [説明] |
 |----|----|
 | [会話の開始](#start-conversation) | ボットと新しい会話を開きます。 | 
 | [Get Messages](#get-messages) | ボットからメッセージを受信します。 |
@@ -154,7 +154,7 @@ Direct Line 1.1 スキーマは、次のオブジェクトを含む Bot Framewor
 
 クライアントがボットに送信するメッセージ、またはボットから受信するメッセージを定義します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | 種類 | [説明] |
 |----|----|----|
 | **id** | string | メッセージを一意に識別する ID (Direct Line によって割り当てられます)。 | 
 | **conversationId** | string | 会話を識別する ID。  | 
@@ -196,7 +196,7 @@ Direct Line 1.1 スキーマは、次のオブジェクトを含む Bot Framewor
 ### <a name="messageset-object"></a>MessageSet オブジェクト 
 メッセージのセットを定義します。<br/><br/>
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | 種類 | [説明] |
 |----|----|----|
 | **messages** | [Message](#message-object)[] | **Message** オブジェクトの配列。 |
 | **watermark** | string | セット内のメッセージの最大ウォーターマーク。 クライアントは、`watermark` を使用して、[ボットからメッセージを取得](bot-framework-rest-direct-line-1-1-receive-messages.md)したときに認識した最新のメッセージを示すことができます。 |
@@ -204,24 +204,24 @@ Direct Line 1.1 スキーマは、次のオブジェクトを含む Bot Framewor
 ### <a name="attachment-object"></a>Attachment オブジェクト
 イメージ以外の添付ファイルを定義します。<br/><br/> 
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | 種類 | [説明] |
 |----|----|----|
 | **contentType** | string | 添付ファイル内のコンテンツのメディアの種類。 |
-| **URL** | string | 添付ファイルのコンテンツの URL。 |
+| **url** | string | 添付ファイルのコンテンツの URL。 |
 
 ### <a name="conversation-object"></a>Conversation オブジェクト
 Direct Line 会話を定義します。<br/><br/>
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | 種類 | [説明] |
 |----|----|----|
 | **conversationId** | string | 指定されたトークンが有効な会話を一意に識別する ID。 |
 | **token** | string | 指定された会話で有効なトークン。 |
 | **expires_in** | number | トークンの有効期限が切れるまでの秒数。 |
 
-### <a name="error-object"></a>Error オブジェクト
+### <a name="error-object"></a>エラー オブジェクト
 エラーを定義します。<br/><br/> 
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | 種類 | [説明] |
 |----|----|----|
 | **code** | string | エラー コード。 次のいずれかの値です:**MissingProperty**、**MalformedData**、**NotFound**、**ServiceError**、**Internal**、**InvalidRange**、**NotSupported**、**NotAllowed**、**BadCertificate**。 |
 | **message** | string | エラーの説明。 |
@@ -231,7 +231,7 @@ Direct Line 会話を定義します。<br/><br/>
 標準化されたメッセージ エラー ペイロード。<br/><br/> 
 
 
-|        プロパティ        |          種類          |                                 説明                                 |
+|        プロパティ        |          種類          |                                 [説明]                                 |
 |------------------------|------------------------|-----------------------------------------------------------------------------|
 | <strong>error</strong> | [Error](#error-object) | エラーに関する情報を含む <strong>Error</strong> オブジェクト。 |
 

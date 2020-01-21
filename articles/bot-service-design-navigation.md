@@ -1,5 +1,5 @@
 ---
-title: ボット ナビゲーションを設計する | Microsoft Docs
+title: ボット ナビゲーションの設計 - Bot Service
 description: ボットに優れたナビゲーション構造を設計する方法、および最も一般的なナビゲーション設計エラーを回避する方法について説明します。
 keywords: ナビゲーション, 概要, 頑固なボット, 鈍いボット, 不可解なボット, 当たり前のことを言うボット, 忘れられないボット
 author: matvelloso
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 7d1bfe669ebafa7e4a2104f384265760720d663c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 596d11bacd55c73011176abf76e07e9b05ecc229
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298124"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792340"
 ---
 # <a name="design-bot-navigation"></a>ボット ナビゲーションを設計する
 
@@ -35,7 +35,7 @@ ms.locfileid: "70298124"
 
 頑固なボットは、ユーザーが方向転換を試みても、会話の現在のコースを是が非でも維持しようとします。 
 
-次のシナリオで考えてみましょう。 
+以下のシナリオについて考えてみます。 
 
 ![ボット](~/media/bot-service-design-navigation/stubborn-bot-new.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "70298124"
 
 鈍いボットは、ユーザーが特定の機能にアクセスしようとしていることを解釈できないときに、無意味な方法で応答します。 ユーザーは、適切な応答を期待して、"ヘルプ"、"キャンセル" のような一般的なキーワード コマンドを試みる場合があります。
 
-次のシナリオで考えてみましょう。 
+以下のシナリオについて考えてみます。 
 
 ![ボット](~/media/bot-service-design-navigation/clueless-bot.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "70298124"
 
 不可解なボットは、ユーザーの入力をすぐには確認しません。 
 
-次のシナリオで考えてみましょう。 
+以下のシナリオについて考えてみます。 
 
 ![ボット](~/media/bot-service-design-navigation/mysterious-bot.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "70298124"
 
 当たり前のことを言うボットは、当たり前すぎて役に立たない、頼みもしない情報を提示します。 
 
-次のシナリオで考えてみましょう。
+以下のシナリオについて考えてみます。
 
 ![ボット](~/media/bot-service-design-navigation/captainobvious-bot.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "70298124"
 
 忘れられないボットは、過去の会話の情報を現在の会話に不適切に組み込みます。 
 
-次のシナリオで考えてみましょう。
+以下のシナリオについて考えてみます。
 
 ![ボット](~/media/bot-service-design-navigation/rememberall-bot.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "70298124"
 
 会話の現在のトピックを維持することで、混乱とストレスの可能性が減り、ユーザーが引き続きボットと関わる可能性が大きくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 会話インターフェイスの設計が不十分なことによって陥りがちな落とし穴を回避するようにボットを設計することで、優れたユーザー エクスペリエンスへの重要な一歩を踏み出すことになります。 
 

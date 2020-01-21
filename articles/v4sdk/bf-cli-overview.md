@@ -1,5 +1,5 @@
 ---
-title: Azure Bot Framework コマンド ライン インターフェイス (CLI) の概要 | Microsoft Docs
+title: Azure Bot Framework コマンド ライン インターフェイス (CLI) の概要 - Bot Service
 description: Bot Framework コマンド ライン インターフェイス (CLI) について説明します。
 keywords: Bot Framework コマンド ライン インターフェイス, Bot Framework CLI
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4780d5258af7d2c93fafece361326fd2b0f8df77
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 8b885b19ed22c4d91163b59abe4e253018531b59
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73443190"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791429"
 ---
 <!--TODO:
 - [?] Add to TOC: Reference/Bot Framework CLI/Reference
@@ -42,7 +42,7 @@ npm i -g @microsoft/botframework-cli
 
 現在、次のコマンドを使用できます。
 
-| 古いツール | BF コマンド セット | 説明 |
+| 古いツール | BF コマンド セット | [説明] |
 | :--- | :--- | :--- |
 | ChatDown | [`bf chatdown`](bf-cli-reference.md#bf-chatdown) | チャット ダイアログ ( **.chat**) ファイルを操作するためのコマンドです。 |
 | NA | [`bf config`](bf-cli-reference.md#bf-config) | CLI 内のさまざまな設定を構成します。 |
@@ -55,7 +55,7 @@ npm i -g @microsoft/botframework-cli
 
 以前のツールと新しいツールのマッピングの参照については、[移植マップ](https://github.com/microsoft/botframework-cli/blob/master/PortingMap.md)に関するページを参照してください。
 
-_注:以前の CLI ツールは今後のリリースでは非推奨となる予定であり、これらのツールのサポートは将来終了します。この領域の新しい投資、バグ修正、新機能はすべて、BF CLI のみを対象とします。_
+_注意事項: 以前の CLI ツールは今後のリリースでは非推奨となる予定であり、これらのツールのサポートは将来終了します。この領域の新しい投資、バグ修正、新機能はすべて、BF CLI のみを対象とします。_
 
 ## <a name="overview"></a>概要
 
@@ -89,5 +89,5 @@ BF CLI には、**匿名** の使用パターンに基づいてツールを改�
 - イシューの報告と機能の要求は、[こちら](https://github.com/microsoft/botframework-cli/issues)で行うことができます。
 - 既知の問題については[こちら](https://github.com/microsoft/botframework-cli/labels/known-issues)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [BF CLI のリファレンス](bf-cli-reference.md)

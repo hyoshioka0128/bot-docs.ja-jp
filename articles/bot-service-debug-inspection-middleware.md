@@ -1,5 +1,5 @@
 ---
-title: 検査ミドルウェアを使用してボットをデバッグする | Microsoft Docs
+title: 検査ミドルウェアを使用してボットをデバッグする - Bot Service
 description: 検査ミドルウェアを使用してボットをデバッグする方法について説明します
 author: zxyanliu
 ms.author: v-liyan
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: 3bb0dea0b66acfdffd75904770cc88572e377258
-ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
+ms.openlocfilehash: 9218ed5019294d2fc18d63b0fe4abe853af83e2b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75736824"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792604"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>検査ミドルウェアを使用してボットをデバッグする
 この記事では、検査ミドルウェアを使用してボットをデバッグする方法について説明します。 この機能を使用すると、Bot Framework Emulator で、ボットの現在の状態を確認でき、さらにボットとの間のトラフィックをデバッグできます。 トレース メッセージを使用してエミュレーターにデータを送信し、会話のある特定のターンでのボットの状態を調べることができます。 

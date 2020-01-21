@@ -1,5 +1,5 @@
 ---
-title: ボットの管理 | Microsoft Docs
+title: ボットの管理 - Bot Service
 description: ボット サービス ポータルを通じてボットを管理する方法について説明します。
 keywords: Azure portal, ボット管理, Web チャットでのテスト, MicrosoftAppID, MicrosoftAppPassword, アプリケーション設定
 author: v-ducvo
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 8/13/2019
-ms.openlocfilehash: 2aea5c5feb144f5e9b1cb7f2947f409f827fb009
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: 9a62a6d2bc1d47862d8ab25250dd3839d3e21d56
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890494"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794157"
 ---
 # <a name="manage-a-bot"></a>ボットの管理
 
@@ -33,14 +33,14 @@ ms.locfileid: "69890494"
 
 ![ボットの管理](~/media/azure-manage-a-bot/bot-management.png)
 
-| オプション |  説明 |
+| オプション |  [説明] |
 | ---- | ---- |
 | **ビルド** | [ビルド] タブには、ボットを変更するためのオプションが用意されています。 このオプションは、**登録のみのボット**では使用できません。 |
-| **Test in Web Chat (Web チャットでのテスト)** | 統合 Web チャット コントロールを使用すると、ボットを簡単にテストできます。 |
+| **Web チャットでのテスト** | 統合 Web チャット コントロールを使用すると、ボットを簡単にテストできます。 |
 | **Analytics** | ボットに対する分析が有効になっている場合、Application Insights によって収集されたボットの分析データを表示できます。 |
 | **Channels** | ボットがユーザーとの通信に使用するチャネルを構成します。 |
-| **設定** | 表示名、分析、メッセージング エンドポイントなどのさまざまなボット プロファイル設定を管理します。 |
-| **Speech priming (音声認識の準備)** | LUIS アプリと Bing Speech サービスとの接続を管理します。 |
+| **[設定]** | 表示名、分析、メッセージング エンドポイントなどのさまざまなボット プロファイル設定を管理します。 |
+| **音声認識の標準** | LUIS アプリと Bing Speech サービスとの接続を管理します。 |
 | **Bot Service pricing (Bot Service の価格)** | ボット サービスの価格レベルを管理します。 |
 
 ## <a name="app-service-settings"></a>アプリ サービスの設定
@@ -56,7 +56,7 @@ ms.locfileid: "69890494"
 > [!NOTE]
 > **[Bot Channels Registration]\(ボット チャネル登録\)** ボット サービスには *MicrosoftAppID* が付属しますが、この種類のサービスに関連付けられているアプリ サービスがないため、*MicrosoftAppPassword* を確認するための **[アプリケーションの設定]** ブレードは表示されません。 パスワードを取得するには、最初にパスワードの生成を行う必要があります。 **[Bot Channels Registration]\(ボット チャネル登録\)** のパスワードを生成するには、「[Bot Channels Registration password (ボット チャネル登録のパスワード)](bot-service-quickstart-registration.md#get-registration-password)」を参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure portal の [ボット サービス] ブレードを探索した後は、オンライン コード エディターを使用してボットをカスタマイズする方法について学習しましょう。
 > [!div class="nextstepaction"]
 > [オンライン コード エディターの使用](bot-service-build-online-code-editor.md)

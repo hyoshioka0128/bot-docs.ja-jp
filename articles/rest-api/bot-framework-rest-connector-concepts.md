@@ -1,5 +1,5 @@
 ---
-title: Bot Connector サービスと Bot State サービスでの主要な概念 | Microsoft Docs
+title: Bot Connector と Bot State サービスでの主要な概念 - Bot Service
 description: Bot Framework の Bot Connector サービスおよび Bot State サービスでの主要な概念について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/16/2019
-ms.openlocfilehash: 25adbcda6b1f33f5379f9231291c5a511e9c1d04
-ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
+ms.openlocfilehash: 3290c12c35cd2095c6436b6a6239d9a7e3f5628b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039745"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789948"
 ---
 # <a name="key-concepts"></a>主要な概念
 

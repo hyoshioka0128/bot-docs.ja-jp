@@ -1,5 +1,5 @@
 ---
-title: ダイアログを使用して会話フローを管理する | Microsoft Docs
+title: ダイアログで会話フローを管理する - Bot Service
 description: ダイアログと Bot Framework SDK for .NET を使用して会話をモデル化し、会話フローを管理する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9e183c375e16a951ed77819ab982790944ac0c13
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 16c0835216fc32e3a62241ebc19ffb616227ce43
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298823"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75788859"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>ダイアログを使用して会話フローを管理する
 
@@ -21,7 +21,7 @@ ms.locfileid: "70298823"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-manage-conversation-flow.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
 [!INCLUDE [Dialog flow example](../includes/snippet-dotnet-manage-conversation-flow-intro.md)]
 

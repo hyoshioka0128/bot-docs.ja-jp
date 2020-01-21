@@ -1,5 +1,5 @@
 ---
-title: ユーザーへのウェルカム メッセージの送信 | Microsoft Docs
+title: ユーザーへのウェルカム メッセージの送信 - Bot Service
 description: ボットでユーザーへの歓迎メッセージを表示する方法について説明します。
 keywords: 概要, 開発, ユーザー エクスペリエンス, ようこそ, パーソナライズされたエクスペリエンス, C#, JS, ウェルカム メッセージ, ボット, あいさつ, グリーティング
 author: DanDev33
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d3c369772736bddc96cab8b9e15e4005bd05bc3c
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: b9e863e261aa8a5dab0eafeff1e9e39fe97659cb
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491684"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791281"
 ---
 # <a name="send-welcome-message-to-users"></a>ユーザーへのウェルカム メッセージの送信
 
@@ -109,10 +109,10 @@ ms.locfileid: "75491684"
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-ここでプロパティ アクセサーを作成します。このアクセサーにより、OnMessageActivityAsync メソッド内で WelcomeUserState のハンドルが提供されます。
-次に、GetAsync メソッドを呼び出して、適切に範囲指定されたキーを取得します。 その後、ユーザー入力イテレーションが終了するたびに、`SaveChangesAsync` メソッドを使用して、ユーザー状態データを保存します。
+ここで、`WelcomeUserState` へのハンドルを返すプロパティ アクセサーを `OnMessageActivityAsync` メソッド内に作成します。
+次に、`GetAsync` メソッドを呼び出して、適切に範囲指定されたキーを取得します。 その後、ユーザー入力イテレーションが終了するたびに、`SaveChangesAsync` メソッドを使用して、ユーザー状態データを保存します。
 
-**WelcomeUserBot.cs**  
+**Bots\WelcomeUserBot.cs**  
 [!code-csharp[Get state](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-71)]
 [!code-csharp[Save state](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range= 103-105)]
 

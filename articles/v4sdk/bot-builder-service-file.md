@@ -1,5 +1,5 @@
 ---
-title: Bot Framework SDK for JavaScript を使用してボットを作成する | Microsoft Docs
+title: Bot Framework SDK for JavaScript を使用してボットを作成する - File - Bot Service
 description: Bot Framework SDK for JavaScript を使用してボットをすばやく作成します。
 keywords: クイック スタート, Bot Framework SDK, 使用の開始
 author: jonathanfingold
@@ -9,13 +9,15 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e870e34e4f7143378813e5cbcc2d0c0b3d892609
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 26f54b3a3f76f39a33bc43a6a3d2f5fb66bd0ea2
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299170"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791254"
 ---
+# <a name="sample-bot-file"></a>サンプル .bot ファイル
+
 ```
 {
     "name": "BasicBot",

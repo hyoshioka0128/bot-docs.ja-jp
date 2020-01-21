@@ -1,5 +1,5 @@
 ---
-title: ユーザーに入力を求めるプロンプト | Microsoft Docs
+title: ユーザーに入力を求めるプロンプト - Bot Service
 description: Bot Framework SDK for Node.js でプロンプトを使用してユーザー入力を収集する方法について説明します。
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f0b9e7457c63ee1be8b2d3063d098e4186b1db3a
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 723f81d5ef76eb92df74d1946532fe475c617c59
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299861"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791094"
 ---
 # <a name="prompt-for-user-input"></a>ユーザーに入力を求めるプロンプト
 
@@ -161,7 +161,7 @@ bot.dialog('createAlarm', [
 
 `ListStyle` 列挙値は次のとおりです。
 
-| Index | 名前 | 説明 |
+| インデックス | Name | [説明] |
 | ---- | ---- | ---- |
 | 0 | なし | 一覧は表示されません。 これは、一覧がプロンプトの一部として含まれる場合に使用されます。 |
 | 1 | インライン | 選択肢は、次の形式のインラインリストとして表示されます。"1. 赤、2. 緑、3. 青" |
@@ -234,7 +234,7 @@ bot.dialog('getSalesData', [
 builder.Prompts.attachment(session, "Upload a picture for me to transform.");
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ウォーターフォールとプロンプトを使用してユーザーから情報を収集する方法がわかったので、次に会話フローをさらに管理するために役立つ情報を確認できます。
 

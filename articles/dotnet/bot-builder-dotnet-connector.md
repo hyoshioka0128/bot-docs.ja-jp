@@ -1,5 +1,5 @@
 ---
-title: アクティビティを送受信する | Microsoft Docs
+title: アクティビティを送受信する - Bot Service
 description: Bot Framework SDK for .NET を介してコネクタ サービスを使用することで、さまざまなチャネルとの間でユーザーと情報を交換する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f5a869196e99d4e5f8709c6d54ced94abea2f883
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: c361067c7c51a4230d6b3da127a932fcb93cd2fe
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297242"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796667"
 ---
 # <a name="send-and-receive-activities"></a>アクティビティを送受信する
 
@@ -67,9 +67,9 @@ Connector では、[Activity](bot-builder-dotnet-activities.md) オブジェク�
 > [!NOTE]
 > Bot Framework では、ボットで送信できるメッセージ数の制限を指定していません。 しかし、ほとんどのチャネルでは、ボットが短時間で多数のメッセージを送信しないように、調整制限を強制します。 さらに、ボットで立て続けに複数のメッセージを送信する場合は、チャネルでは適切な順序でメッセージがレンダリングされない可能性があります。
 
-## <a name="start-a-conversation"></a>会話を開始する
+## <a name="start-a-conversation"></a>会話の開始
 
-ご利用のボットで 1 人または複数のユーザーと会話を開始する必要がある場合があります。 `ConversationAccount` オブジェクトを取得するために、`CreateDirectConversation` メソッド (単一ユーザーとのプライベート会話の場合) または `CreateConversation` メソッド (複数のユーザーとのグループ会話の場合) のいずれかを呼び出すことで、会話を開始することができます。 次に、メッセージを作成し、`SendToConversation` メソッドを呼び出すことによって送信します。 `CreateDirectConversation` メソッドまたは `CreateConversation` メソッドのいずれかを使用するには、まず (前のメッセージから保持している場合、キャッシュから取得できる) ターゲット チャネルのサービス URL を使用することによって、[コネクタ クライアントを作成](#create-a-connector-client)する必要があります。 
+ボットで 1 人または複数のユーザーと会話を開始する必要がある場合があります。 `ConversationAccount` オブジェクトを取得するために、`CreateDirectConversation` メソッド (単一ユーザーとのプライベート会話の場合) または `CreateConversation` メソッド (複数のユーザーとのグループ会話の場合) のいずれかを呼び出すことで、会話を開始することができます。 次に、メッセージを作成し、`SendToConversation` メソッドを呼び出すことによって送信します。 `CreateDirectConversation` メソッドまたは `CreateConversation` メソッドのいずれかを使用するには、まず (前のメッセージから保持している場合、キャッシュから取得できる) ターゲット チャネルのサービス URL を使用することによって、[コネクタ クライアントを作成](#create-a-connector-client)する必要があります。 
 
 > [!NOTE]
 > すべてのチャネルが、グループ会話をサポートするわけではありません。 チャネルがグループ会話をサポートするかどうかを判断するには、チャネルのドキュメントを参照してください。

@@ -1,5 +1,5 @@
 ---
-title: メッセージへのメディア添付ファイルの追加 | Microsoft Docs
+title: メッセージへのメディア添付ファイルの追加 - Bot Service
 description: Bot Connector サービスを使用してメッセージにメディア添付ファイルを追加する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,29 +7,28 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 10/25/2018
-ms.openlocfilehash: be56700664e7626c247bb77899dc89f3cac32469
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 35a4a1846aadddb7505015872f830132cf625841
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037214"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790171"
 ---
 # <a name="add-media-attachments-to-messages"></a>メッセージへのメディア添付ファイルの追加
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-media-attachments.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-media-attachments.md)
 
 通常、ボットとチャネルが交換するのはテキスト文字列ですが、添付ファイルの交換もサポートされる一部のチャネルでは、ボットはよりリッチなメッセージをユーザーに送信できます。 たとえば、ボットは、メディア添付ファイル (画像、動画、オーディオ、ファイルなど) と[リッチ カード](bot-framework-rest-connector-add-rich-cards.md)を送信できます。 この記事では、Bot Connector サービスを使用してメッセージにメディア添付ファイルを追加する方法について説明します。
 
-> [!TIP]
-> チャネルでサポートされている添付ファイルの種類と数、およびチャネルによって添付ファイルがどのようにレンダリングされるかを確認するには、[Channel Inspector][ChannelInspector] に関するページを参照してください。
+[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 ## <a name="add-a-media-attachment"></a>メディア添付ファイルの追加  
 
 メディア添付ファイルをメッセージに追加するには、[Attachment][] オブジェクトを作成し、`name` プロパティを設定します。さらに、`contentUrl` プロパティをメディア ファイルの URL に設定し、`contentType` プロパティを適切なメディアの種類 (たとえば、**image/png**、**audio/wav**、**video/mp4**) に設定します。 次に、メッセージを表す [Activity][] オブジェクト内で、`Attachment` オブジェクトを `attachments` 配列内に指定します。
 
-次の例に、テキストと 1 つの画像添付ファイルを含むメッセージを送信する要求を示します。 この要求の例で、`https://smba.trafficmanager.net/apis` はベース URI を示しています。ご利用のボットによって発行される要求に対するベース URI は、これとは異なる場合があります。 ベース URI の設定の詳細については、「[API Reference (API リファレンス)](bot-framework-rest-connector-api-reference.md#base-uri)」を参照してください。
+次の例に、テキストと 1 つの画像添付ファイルを含むメッセージを送信する要求を示します。 この要求の例で、`https://smba.trafficmanager.net/apis` はベース URI を示しています。ご利用のボットによって発行される要求に対するベース URI は、これとは異なる場合があります。 ベース URI の設定の詳細については、[API リファレンス](bot-framework-rest-connector-api-reference.md#base-uri)に関する記事をご覧ください。
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723
@@ -161,7 +160,7 @@ Content-Type: application/json
 
 `activity.name` フィールドにはメディア イベント名 **media/pause** が表示されます。 すべてのメディア イベント名の一覧については、次の表を参照してください。
 
-| Event | 説明 |
+| Event | [説明] |
 | ---- | ---- |
 | **media/next** | クライアントが次のメディアまでスキップしました |
 | **media/pause** | クライアントがメディアの再生を一時停止しました |

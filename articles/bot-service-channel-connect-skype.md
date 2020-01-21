@@ -1,5 +1,5 @@
 ---
-title: ボットを Skype に接続する | Microsoft Docs
+title: ボットを Skype に接続する - Bot Service
 description: Skype インターフェイスを介してアクセスするようにボットを構成する方法について説明します。
 keywords: skype, ボット チャネル, skype の構成, 公開, チャネルへの接続
 author: v-ducvo
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 10/11/2018
-ms.openlocfilehash: a34591e6af9657411739e04ab6dc547e4c692419
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 5fb665bf8f6857f42b977a5f0126ce2e0426586d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297659"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791897"
 ---
 # <a name="connect-a-bot-to-skype"></a>ボットを Skype に接続する
 
@@ -37,7 +37,7 @@ Skype チャネルを追加するには、[Azure portal](https://portal.azure.co
 
 このセクションでは、ボットが Skype でメッセージを送受信する方法を構成します。
 
-## <a name="calling"></a>Calling (通話)
+## <a name="calling"></a>呼び出し
 
 このセクションでは、ボットでの Skype の通話機能を構成します。 ボットで**呼び出し**を有効にするかどうか、および有効にする場合は IVR 機能またはリアルタイム メディア機能を使用するかどうかを指定できます。
 
@@ -56,6 +56,6 @@ Skype チャネルを追加するには、[Azure portal](https://portal.azure.co
 
 構成が完了したら、 **[保存]** をクリックして**サービス利用規約**に同意します。 ボットに Skype チャネルが追加されました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Skype for Business](bot-service-channel-connect-skypeforbusiness.md)

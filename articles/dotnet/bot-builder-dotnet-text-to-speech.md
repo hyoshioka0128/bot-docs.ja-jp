@@ -1,5 +1,5 @@
 ---
-title: メッセージに音声を追加する | Microsoft Docs
+title: メッセージに音声を追加する (v3 C#) - Bot Service
 description: Bot Framework SDK for .NET を使用してメッセージに音声を追加する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6d47fe41821b0ea8a61555b8139f2969f204d8dd
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: a03d1c58bc91cd7966b59e2b62eb1c6ac46c094f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297314"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797889"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
 
@@ -21,7 +21,7 @@ ms.locfileid: "70297314"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-text-to-speech.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-text-to-speech.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-text-to-speech.md)
 > - [REST](../rest-api/bot-framework-rest-connector-text-to-speech.md)
 
 Cortana などの音声対応チャネルのボットを作成している場合は、ボットが読み上げるテキストを指定するメッセージを構成できます。 また、[入力ヒント](bot-builder-dotnet-add-input-hints.md)を指定して、ボットがユーザー入力を受け入れるか、期待するか、無視するかを示し、クライアントのマイクの状態に影響を与えることを試すこともできます。

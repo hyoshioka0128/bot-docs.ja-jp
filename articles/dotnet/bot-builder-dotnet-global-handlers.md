@@ -1,5 +1,5 @@
 ---
-title: グローバル メッセージ ハンドラーの実装 | Microsoft Docs
+title: グローバル メッセージ ハンドラーの実装 - Bot Service
 description: Bot Framework SDK for .NET を使用して、特定のキーワードを含むユーザー入力をボットがリッスンして処理する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8e997b33e48964b5723d6cd1fef0b1e6542b4ba3
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 5097c2c9e82932f118e77af64d7fadab92a56b17
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297231"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75788832"
 ---
 # <a name="implement-global-message-handlers"></a>グローバル メッセージ ハンドラーの実装
 
@@ -91,10 +91,10 @@ protected override async Task PostAsync(IActivity item, string state, Cancellati
 
 ## <a name="sample-code"></a>サンプル コード
 
-Bot Framework SDK for .NET を使用してグローバル メッセージ ハンドラーを実装する方法を示す完全なサンプルについては、GitHub の「<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GlobalMessageHandlers" target="_blank">Global Message Handlers sample (グローバル メッセージ ハンドラーのサンプル)</a>」を参照してください。
+Bot Framework SDK for .NET を使用してグローバル メッセージ ハンドラーを実装する方法を示す完全なサンプルについては、GitHub の「<a href="https://github.com/microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-GlobalMessageHandlers" target="_blank">Global Message Handlers sample (グローバル メッセージ ハンドラーのサンプル)</a>」を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - [会話フローの設計と制御](../bot-service-design-conversation-flow.md)
 - <a href="/dotnet/api/?view=botbuilder-3.12.2.4" target="_blank">Bot Framework SDK for .NET リファレンス</a>
-- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GlobalMessageHandlers" target="_blank">グローバル メッセージ ハンドラーのサンプル (GitHub)</a>
+- <a href="https://github.com/microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-GlobalMessageHandlers" target="_blank">グローバル メッセージ ハンドラーのサンプル (GitHub)</a>

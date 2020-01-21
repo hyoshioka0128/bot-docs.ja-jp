@@ -1,5 +1,5 @@
 ---
-title: ユーザー エクスペリエンスを設計する | Microsoft Docs
+title: ユーザー エクスペリエンスの設計 - Bot Service
 description: リッチ ユーザー コントロール、自然言語の理解、および音声を使用して、魅力的なユーザー エクスペリエンスを提供するようにボットを設計する方法について説明します。
 keywords: 概要, 設計, ユーザー エクスペリエンス, UX, リッチ ユーザー コントロール
 author: matvelloso
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 09/20/2018
-ms.openlocfilehash: 75907c07887fdf7ba21e4bb5d25bca488a70697d
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 54b797c10ba69684c64c7d9f6c7e144d603084ca
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298570"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793520"
 ---
 # <a name="design-the-user-experience"></a>ユーザー エクスペリエンスを設計する
 
@@ -31,7 +31,7 @@ ms.locfileid: "70298570"
 
 Microsoft Bot Service のカードはプログラミング可能なオブジェクトで、さまざまなチャネルで認識されるリッチ ユーザー コントロールの標準化されたコレクションが格納されています。 次の表は、使用可能なカードの一覧です。また、各種カードの用途のベスト プラクティスも提案しています。
 
-| カードの種類 | 例 | 説明 |
+| カードの種類 | 例 | [説明] |
 | ---- | ---- | ---- |
 | AdaptiveCard | ![アダプティブ カードの画像](./media/adaptive-card.png) | JSON オブジェクトとしてレンダリングされるオープン カード交換形式。 通常はクロスチャネルのカード展開に使用されます。 カードは各ホスト チャネルの外患に適合します。 |
 | AnimationCard | ![アニメーション カードの画像](./media/animation-card1.png) | アニメーション GIF または短い動画を再生できるカード。 |
@@ -39,7 +39,7 @@ Microsoft Bot Service のカードはプログラミング可能なオブジェ�
 | HeroCard | ![ヒーロー カードの画像](./media/hero-card1.png) | 1 つの大きな画像、1 つまたは複数のボタン、およびテキストが含まれるカード。 通常は、ユーザーへの選択肢をビジュアルで強調表示するときに使用されます。 |
 | ThumbnailCard | ![サムネイル カードの画像](./media/thumbnail-card.png) | 1 つのサムネイル画像、1 つまたは複数のボタン、およびテキストが含まれるカード。 通常は、ユーザーの選択肢を表すボタンをビジュアルで強調表示するときに使用されます。 |
 | ReceiptCard | ![領収書カードの画像](./media/receipt-card1.png) | ボットからユーザーに領収書を提供できるようにするカード。 通常は、領収書に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。 |
-| SignInCard | ![サインイン カードの画像](./media/sign-in-card.png) | ボットでユーザーのサインインを要求できるようにするカード。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つまたは複数のボタンが含まれます。 |
+| SignInCard | ![サインイン カードの画像](./media/sign-in-card.png) | ボットでユーザーのサインインを要求できるようにするカード。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つ以上のボタンが含まれます。 |
 | SuggestedAction | ![推奨されるアクション カードの画像](./media/suggested-actions.png) | ユーザーの選択肢を表す一連のカード アクションをユーザーに示します。 推奨されるアクションのいずれかが選択されると、このカードは消えます。 |
 | VideoCard | ![動画カードの画像](./media/video-card.png) | 動画を再生できるカード。 通常は、URL を開いて、使用可能な動画をストリーミングするときに使用されます。 |
 | CardCarousel | ![カード カルーセルの画像](./media/card-carousel.png) | 水平方向にスクロール可能なカード コレクション。これにより、一連の選択肢をユーザーが容易に表示できます。|

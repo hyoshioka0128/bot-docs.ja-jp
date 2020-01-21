@@ -1,5 +1,5 @@
 ---
-title: 状態データの管理 | Microsoft Docs
+title: 状態データの管理 (v3 JS) - Bot Service
 description: Bot Framework SDK for Node.js を使用して、状態データを保存および取得する方法について説明します。
 author: DucVo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4c93ba1b37166c784d6cdf687e926026f474de85
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 40293ff3756687f270847dd9045a04a19363ad1b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299686"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790327"
 ---
 # <a name="manage-state-data"></a>状態データの管理
 
@@ -21,7 +21,7 @@ ms.locfileid: "70299686"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-state.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-state.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-state.md)
 
 [!INCLUDE [State concept overview](../includes/snippet-dotnet-concept-state.md)]
 
@@ -49,7 +49,7 @@ var bot = new builder.UniversalBot(connector, [..waterfall steps..])
 
 1. [Cosmos DB を使用して状態データを管理する](bot-builder-nodejs-state-azure-cosmosdb.md)
 
-2. [テーブル ストレージを使用して状態データを管理する](bot-builder-nodejs-state-azure-table-storage.md)
+2. [Table Storage を使用して状態データを管理する](bot-builder-nodejs-state-azure-table-storage.md)
 
 これらの [Azure 拡張機能](https://www.npmjs.com/package/botbuilder-azure)オプションのどちらを使用しても、Bot Framework SDK for Node.js によるデータの設定と保持のメカニズムがメモリ内データ ストレージであることに変わりはありません。
 
@@ -57,7 +57,7 @@ var bot = new builder.UniversalBot(connector, [..waterfall steps..])
 
 Bot Framework SDK for Node.js では、`session` オブジェクトにより、状態データを格納するための以下のプロパティが公開されます。
 
-| プロパティ | スコープ | 説明 |
+| プロパティ | スコープ | [説明] |
 | ---- | ---- | ---- |
 | [`userData`][userDataURL] | User | 指定されたチャネルのユーザー用に保存されるデータが含まれます。 このデータは複数の会話間で保持されます。 |
 | [`privateConversationData`][privateConversationDataURL] | 会話 | 指定されたチャネルでの特定の会話のコンテキスト内のユーザー用に保存されるデータが含まれます。 このデータは現在のユーザー専用であり、現在の会話でのみ保持されます。 会話が終了したときや `endConversation` が明示的に呼び出されたときに、プロパティがクリアされます。 |
@@ -192,7 +192,7 @@ session.dialogData = {};
 
 データ コンテナーを `null` に設定したり、`session` オブジェクトから削除したりしないでください。そのようにすると、次回、コンテナーにアクセスしようとしたときにエラーが発生します。 また、以前に保持された対応するデータをすべてクリアする場合は、メモリ内のコンテナーを手動でクリアしてから `session.save();` を手動で呼び出すことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これでユーザーの状態データを管理する方法について理解できました。次は、状態データを使用して会話フローの管理を強化する方法を見てみましょう。
 

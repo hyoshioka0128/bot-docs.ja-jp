@@ -1,5 +1,5 @@
 ---
-title: ボットを Skype for Business に接続する | Microsoft Docs
+title: ボットを Skype for Business に接続する - Bot Service
 description: ボットを Skype for Business テナントに接続する方法について説明します。
 keywords: skype for business、ボット チャネル
 author: RobStand
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 95b611f9499b65571eaf334d0c434b621c1b8589
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: a8b9c430f3cfbdb158c9462da094f6b1c764c474
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441615"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791887"
 ---
 # <a name="connect-a-bot-to-skype-for-business-preview"></a>ボットを Skype for Business に接続する (プレビュー)
 

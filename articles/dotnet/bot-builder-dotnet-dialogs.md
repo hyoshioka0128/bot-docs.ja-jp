@@ -1,5 +1,5 @@
 ---
-title: ダイアログの概要 | Microsoft Docs
+title: ダイアログの概要 (v3 C#) - Bot Service
 description: Bot Framework SDK for .NET 内でダイアログを使用して会話をモデル化し、会話フローを管理する方法を説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: fe45d873369b28a0081df28d2d3971e5b77ca4f9
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e7c852245bdf09ada446a873bd1c974b85417672
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298368"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793356"
 ---
 # <a name="dialogs-in-the-bot-framework-sdk-for-net"></a>Bot Framework SDK for .NET のダイアログ
 
@@ -21,7 +21,7 @@ ms.locfileid: "70298368"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-dialogs.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-dialog-overview.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-dialog-overview.md)
 
 Bot Framework SDK for .NET を使用してボットを作成する場合、ダイアログを使用して会話をモデル化し、[会話フロー](../bot-service-design-conversation-flow.md)を管理できます。 各ダイアログは、`IDialog` を実装する C# クラスに独自の状態をカプセル化する抽象化です。 ダイアログは、他のダイアログと組み合わせて最大限に再利用することができます。ダイアログ コンテキストは、任意の時点における会話内のアクティブな[ダイアログのスタック](../bot-service-design-conversation-flow.md#dialog-stack)を保持します。 
 
@@ -109,7 +109,7 @@ Bot Builder では非同期通信の処理に C# の機能を使用するため�
 `IDialogStack.Call<R>` と `IDialogStack.Done<R>` を使用すると、アクティブ ダイアログのスタックを明示的に管理できます。一方、これらの fluent [Chain][chain] メソッドを使用すると、アクティブ ダイアログのスタックを暗黙的に管理することができます。
 
 
-|           方法            |  Type   |                                 メモ                                  |
+|           方法            |  種類   |                                 メモ                                  |
 |-----------------------------|---------|------------------------------------------------------------------------|
 |     Chain.Select<T, R>      |  LINQ   |           LINQ クエリ構文の "select" と "let" をサポートします。            |
 |  Chain.SelectMany<T, C, R>  |  LINQ   |            LINQ クエリ構文の連続する "from" をサポートします。            |
@@ -120,9 +120,9 @@ Bot Builder では非同期通信の処理に C# の機能を使用するため�
 |  Chain.ContinueWith<T, R>   | Chains  |                      ダイアログの単純なチェーン。                       |
 |       Chain.Unwrap<T>       | Chains  |                  ダイアログに入れ子になっているダイアログをラップ解除します。                   |
 | Chain.DefaultIfException<T> | Chains  | 前の結果の例外を受け入れ、default(T) を返します。 |
-|        Chain.Loop<T>        | [Branch]\(ブランチ\)  |                   ダイアログのチェーン全体をループします。                   |
-|        Chain.Fold<T>        | [Branch]\(ブランチ\)  |   ダイアログの列挙の結果を 1 つの結果に折りたたみます。   |
-|     Chain.Switch<T, R>      | [Branch]\(ブランチ\)  |            異なるダイアログ チェーンへの分岐をサポートします。            |
+|        Chain.Loop<T>        | [Branch]\(ブランチ)  |                   ダイアログのチェーン全体をループします。                   |
+|        Chain.Fold<T>        | [Branch]\(ブランチ)  |   ダイアログの列挙の結果を 1 つの結果に折りたたみます。   |
+|     Chain.Switch<T, R>      | [Branch]\(ブランチ)  |            異なるダイアログ チェーンへの分岐をサポートします。            |
 |     Chain.PostToUser<T>     | Message |                      ユーザーにメッセージを送信します。                      |
 |     Chain.WaitToBot<T>      | Message |                    ボットへのメッセージを待ちます。                     |
 |    Chain.PostToChain<T>     | Message |              ユーザーからのメッセージでチェーンを開始します。              |
@@ -149,7 +149,7 @@ Bot Builder では非同期通信の処理に C# の機能を使用するため�
 
 [!code-csharp[Chain.Switch](../includes/code/dotnet-dialogs.cs#chain5)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ダイアログは、ボットとユーザーの間の会話フローを管理します。 ダイアログは、ユーザーと対話する方法を定義します。 ボットは、スタックで構成された多くのダイアログを使用して、ユーザーとの会話を誘導することができます。 次のセクションでは、スタックのダイアログを作成および破棄するのに応じて拡大縮小するダイアログ スタックを見てみましょう。
 

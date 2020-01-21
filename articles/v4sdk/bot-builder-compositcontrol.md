@@ -1,5 +1,5 @@
 ---
-title: ダイアログの再利用 | Microsoft Docs
+title: ダイアログの再利用 - Bot Service
 description: Bot Framework SDK でコンポーネント ダイアログを使用して、ご自身のボット ロジックをモジュール化する方法について説明します。
 keywords: 複合コントロール、モジュラー ボット ロジック
 author: v-ducvo
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c273b0c157abd40dd139739411b19656565fa7c7
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 2e40e6a9a8da2e884be0469fb00f0da5f011f22d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491526"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798896"
 ---
 # <a name="reuse-dialogs"></a>ダイアログの再利用
 
@@ -75,15 +75,15 @@ ms.locfileid: "75491526"
 
 ここでは `UserProfileDialog` クラスによって `ComponentDialog` が拡張されます。
 
-[!code-javascript[Class](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=24)]
+[!code-javascript[Class](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=28)]
 
 コンストラクター内で、`AddDialog` メソッドによって、ダイアログとプロンプトがコンポーネント ダイアログに追加されます。 このメソッドを使用して追加した最初の項目が初期ダイアログとして設定されますが、これは、`InitialDialogId` プロパティを明示的に設定することで変更できます。 コンポーネント ダイアログを開始すると、その _initial dialog_ が開始されます。
 
-[!code-javascript[Constructor](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-45)]
+[!code-javascript[Constructor](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=29-51)]
 
 これは、ウォーターフォール ダイアログの最初のステップの実装です。
 
-[!code-javascript[First step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=64-71)]
+[!code-javascript[First step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=70-77)]
 
 ウォーターフォール ダイアログの実装の詳細については、[連続して行われる会話フローを実装する](bot-builder-dialog-manage-complex-conversation-flow.md)方法をご覧ください。
 
@@ -129,7 +129,7 @@ ms.locfileid: "75491526"
 
 サンプルでは、これはボットの `OnMessageActivityAsync` メソッドから呼び出される `RunAsync` メソッドを使用して行います。
 
-[!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=42-48)]
+[!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=42-48&highlight=6)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -137,7 +137,7 @@ ms.locfileid: "75491526"
 
 サンプルでは、`run` メソッドをユーザー プロファイル ダイアログに追加しました。
 
-[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=53-62)]
+[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=59-68)]
 
 **bots/dialogBot.js**
 

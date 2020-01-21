@@ -1,5 +1,5 @@
 ---
-title: JavaScript v3 から v4 への移行のクイック リファレンス | Microsoft Docs
+title: JavaScript v3 から v4 への移行のクイック リファレンス - Bot Service
 description: JavaScript Bot Framework SDK の v3 と v4 の主な相違点を概説します。
 keywords: JavaScript, ボットの移行, ダイアログ, v3 ボット
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2935c187b9c9687d4fbf207c2d78a135d3c8959f
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: ea71cfa7adb9ba4f38b3f0ec79641cf28b0f64f3
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933780"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791074"
 ---
 # <a name="javascript-migration-quick-reference"></a>JavaScript 移行クイック リファレンス
 

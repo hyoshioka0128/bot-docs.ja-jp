@@ -1,5 +1,5 @@
 ---
-title: チャネル固有の機能の実装 | Microsoft Docs
+title: REST API を使用してチャネル固有の機能を実装する - Bot Service
 description: Bot Connector API を使用してチャネル固有の機能を実装する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 8f437b2e807035a6ae0d6ec655c1edf17aacf12e
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 4716ff913940b09fa24f199492de9e19cf009b71
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876139"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790012"
 ---
 # <a name="implement-channel-specific-functionality"></a>チャネル固有の機能の実装
 
@@ -22,7 +22,7 @@ ms.locfileid: "70876139"
 
 | チャネル | 機能 |
 |----|----|
-| 電子メール | 本文、件名、および重要度のメタデータを含む電子メールを送受信します |
+| Email | 本文、件名、および重要度のメタデータを含む電子メールを送受信します |
 | Slack | 完全に忠実な Slack メッセージを送信します |
 | Facebook | Facebook 通知をネイティブで送信します |
 | Telegram | 音声メモ、ステッカーの共有など、Telegram 固有のアクションを実行します |
@@ -137,7 +137,7 @@ ms.locfileid: "70876139"
 
 Facebook 通知を作成するには、`Activity` オブジェクトの `channelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |----|----|
 | notification_type | 通知の種類 (例: **REGULAR**、**SILENT_PUSH**、**NO_PUSH**)。
 | attachment | 画像、動画、またはその他のマルチメディアの種類を指定する添付ファイル、または受信確認などのテンプレート化された添付ファイル。 |
@@ -164,7 +164,7 @@ Facebook 通知を作成するには、`Activity` オブジェクトの `channel
 
 音声メモやステッカーの共有など、Telegram 固有のアクションが実装されているメッセージを作成するには、`Activity` オブジェクトの `channelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |----|----|
 | method | 呼び出す Telegram Bot API メソッド。 |
 | parameters | 指定されたメソッドのパラメーター。 |
@@ -238,7 +238,7 @@ Facebook 通知を作成するには、`Activity` オブジェクトの `channel
 
 ネイティブ Kik メッセージを作成するには、`Activity` オブジェクトの `channelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |----|----|
 | messages | Kik メッセージの配列。 Kik メッセージ形式の詳細については、<a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Kik メッセージ形式</a>に関するページをご覧ください。 |
 
@@ -273,6 +273,6 @@ Facebook 通知を作成するには、`Activity` オブジェクトの `channel
 - [メッセージの作成](bot-framework-rest-connector-create-messages.md)
 - [メッセージを送受信する](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Bot Framework のアクティビティ スキーマ](https://aka.ms/botSpecs-activitySchema)
-- [Channel Inspector を使用して機能をプレビューする](../bot-service-channel-inspector.md)
+- [チャネル リファレンス](../bot-service-channels-reference.md)
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object

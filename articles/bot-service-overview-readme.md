@@ -1,5 +1,5 @@
 ---
-title: Bot Service のしくみ | Microsoft Docs
+title: Bot Service のしくみ - Bot Service
 description: Bot Service の特徴と機能について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 74c48c779a41a6a2cbdf4f1c559c7136e7a94ca1
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 1a49b9c3653af1a9fa56724a1562d34eb1834f43
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405810"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794629"
 ---
 # <a name="how-bot-service-works"></a>Bot Service のしくみ
 
@@ -58,7 +58,7 @@ Bot Framework SDK と Visual Studio 2017 などの IDE を使用して、ロー�
 
 Bot Service を使用してボットを作成するプロセスの間、ボットの名前を指定し、ボットのホスティング プランを設定し、価格レベルを選択し、その他の設定を構成します。 ボットが作成された後は、ボットの設定を変更したり、1 つ以上のチャネルで実行するためにボットを構成したり、Web チャットでボットをテストしたりできます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bot Service でのボットの作成](bot-service-quickstart.md)

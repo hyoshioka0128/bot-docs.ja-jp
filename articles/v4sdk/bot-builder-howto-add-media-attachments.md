@@ -1,5 +1,5 @@
 ---
-title: メッセージにメディアを追加する | Microsoft Docs
+title: メッセージにメディアを追加する - Bot Service
 description: Bot Framework SDK を使用してメッセージにメディアを追加する方法について説明します。
 keywords: メディア, メッセージ, イメージ, オーディオ, ビデオ, ファイル, MessageFactory, リッチ カード, メッセージ, アダプティブ カード, ヒーロー カード, 推奨されるアクション
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 202b6c3fa96d6bbc6902387d55599f4b91f9da0d
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 539959af08f04923ef817634c01a4118d213b15d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491828"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798474"
 ---
 # <a name="add-media-to-messages"></a>メッセージにメディアを追加する
 

@@ -1,5 +1,5 @@
 ---
-title: アクティビティの処理 | Microsoft Docs
+title: アクティビティの処理 - Bot Service
 description: ボット SDK でのアクティビティ処理について説明します。
 keywords: ボット アダプター, カスタム ミドルウェア, ショート サーキット, フォールバック, イベント ハンドラー
 author: jonathanfingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 315bebddeda21301d29fa003ce9c8f43e1677000
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 2896dcf1d99ace250ec73f5ecfc2b3857afb0c83
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68970718"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798825"
 ---
 # <a name="activity-processing"></a>アクティビティの処理
 
@@ -28,7 +28,7 @@ ms.locfileid: "68970718"
 
 ボット アダプターでは、認証プロセスのカプセル化、および Bot Connector Service との間でのアクティビティの送受信が行われます。 ご利用のボットでアクティビティが受信されると、アダプターによって次のことが行われます。そのアクティビティに関するすべての情報がラップされ、そのターン用の[コンテキスト オブジェクト](#turn-context)が作成され、それがご利用のボットのアプリケーション ロジックに渡され、ご利用のボットによって生成された応答がユーザーのチャネルに返送されます。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 アプリケーションによって受け取られた各受信アクティビティは、アクティビティからの情報および REST 要求からの `Authentication` ヘッダーを使用して、アダプターによって認証されます。 ユーザーへの送信アクティビティを認証する場合、アダプターではコネクタ オブジェクトおよびご利用のアプリケーションの資格情報が使用されます。
 
@@ -80,7 +80,7 @@ Bot Connector Service 認証では、JWT (JSON Web Token)`Bearer` トークン�
 
 コンテキスト オブジェクトに登録されたハンドラーは、アダプターが[ミドルウェア パイプライン](~/v4sdk/bot-builder-concept-middleware.md#the-bot-middleware-pipeline)を管理する場合とよく似た方法で処理されます。 具体的には、ハンドラーはそれらが追加された順に呼び出され、_next_ デリゲートを呼び出すと、次に登録されているイベント ハンドラーに制御が渡されます。 次のデリゲートがハンドラーによって呼び出されない場合、後続のイベント ハンドラーは呼び出されません。イベントは[ショート サーキット](~/v4sdk/bot-builder-concept-middleware.md#short-circuiting)状態となり、アダプターからチャネルに応答は送信されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ミドルウェア](~/v4sdk/bot-builder-concept-middleware.md)

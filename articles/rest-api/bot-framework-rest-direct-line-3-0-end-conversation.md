@@ -1,5 +1,5 @@
 ---
-title: 会話を終了する | Microsoft Docs
+title: 会話を終了する - Bot Service
 description: Direct Line API v3.0 を使用して会話を終了する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 3006672ba8459ebec7d754a7ec31679debdba4aa
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 4b8a3046ee53d90fe2abdc97a3c931a4f67c051f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876162"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789434"
 ---
 # <a name="end-a-conversation"></a>会話を終了する
 

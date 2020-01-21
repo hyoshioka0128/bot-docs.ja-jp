@@ -1,5 +1,5 @@
 ---
-title: LUIS を使用して意図とエンティティを認識する | Microsoft Docs
+title: LUIS を使用して意図とエンティティを認識する (v3 C#) - Bot Service
 description: Bot Framework SDK for .NET の LUIS ダイアログを使用して、ボットが自然言語を理解できるようにする方法について説明します。
 author: DeniseMak
 ms.author: kamrani
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7e7eb36d0cb3cdbf18037f05b4960b240cb70d8d
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: f34fd8a868f8de68b016b5f12c6cc1569a46d951
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167400"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75788889"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>LUIS を使用して意図とエンティティを認識する 
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-この記事では、メモ作成ボットの例を使用して、自然言語入力に対してボットが適切に応答するのに Language Understanding ([LUIS][LUIS]) がどのように役立つかを示します。 ボットではユーザーの**意図**を識別することで、ユーザーが何をしたいかを検出します。 この意図は音声またはテキスト入力 (または**発話**) から決定されます。 意図は、ボットが実行するアクションに発話をマップします。 たとえば、ノート記録ボットは `Notes.Create` 意図を認識して、ノートを作成するための機能を呼び出します。 ボットは、発話の中の重要な言葉である**エンティティ**を抽出する必要もあります。 メモ作成ボットの例では、`Notes.Title` エンティティによって各メモのタイトルが識別されます。
+この記事では、メモ作成ボットの例を使用して、自然言語入力に対してボットが適切に応答するのに Language Understanding ([LUIS][LUIS]) がどのように役立つかを示します。 ボットではユーザーの**意図**を識別することで、ユーザーが何をしたいかを検出します。 この意図は音声またはテキスト入力 (または**発話**) から決定されます。 意図は、ボットが実行するアクションに発話をマップします。 たとえば、ノート記録ボットは `Notes.Create` 意図を認識して、ノートを作成するための機能を呼び出します。 ボットでは、発話の中の重要な言葉である**エンティティ**を抽出する必要もあります。 メモ作成ボットの例では、`Notes.Title` エンティティによって各メモのタイトルが識別されます。
 
 ## <a name="create-a-language-understanding-bot-with-bot-service"></a>Bot Service での Language Understanding ボットの作成
 
@@ -77,7 +77,7 @@ LUIS アプリは次の 4 つの意図で始まります:Cancel、Greeting、Hel
    * Note.Create
    * Note.Delete
    * なし
-   * [Help]
+   * ヘルプ
    * Greeting
    * Cancel 
 
@@ -199,7 +199,7 @@ using System.Collections.Generic;
         public const string DefaultNoteTitle = "default";
 ```
 
-### <a name="handle-the-notecreate-intent"></a>Note.Create 意図の処理
+### <a name="handle-the-notecreate-intent"></a>Note.Create 意図を処理する
 Note.Create 意図を処理するには、次のコードを `BasicLuisDialog` クラスに追加します。
 
 ```cs
@@ -317,7 +317,7 @@ Note.Create 意図を処理するには、次のコードを `BasicLuisDialog` �
         }
 ```
 
-### <a name="handle-the-notedelete-intent"></a>Note.Delete 意図の処理
+### <a name="handle-the-notedelete-intent"></a>Note.Delete 意図を処理する
 次のコードを `BasicLuisDialog` クラスに貼り付けます。
 
 ```cs
@@ -375,7 +375,7 @@ Azure Portal で、 **[Test in Web Chat]\(Web チャットでのテスト\)** �
 > * [ボットをビルド](./bot-builder-dotnet-luis-dialogs.md#build-the-bot)したこと。
 > * ボットのコードは、LUIS アプリ内のすべての意図のハンドラーを定義します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ボットを試してみると、LUIS の意図によってタスクが呼び出されるしくみが分かります。 ただし、この単純な例では、現在アクティブなダイアログの中断はできません。 "help" や "cancel" のような中断を許可して処理することは、ユーザーが実際に行うことを考慮に入れた柔軟な設計です。 スコアラブル ダイアログを使用してダイアログで中断を処理できるようにする方法を理解します。
 

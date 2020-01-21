@@ -1,5 +1,5 @@
 ---
-title: ナレッジ ボットを設計する | Microsoft Docs
+title: ナレッジ ボットを設計する - Bot Service
 description: ユーザーの入力またはクエリへの応答として情報を発見して返すナレッジ ボットを設計するさまざまな方法について説明します。
 author: matvelloso
 ms.author: mateusv
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: c263876dc06229c4716cc1ddc3d83d0d0c6b11a4
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 988bf816d66bfb6d4140b6be4a708ae6082e1077
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298674"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792103"
 ---
 # <a name="design-knowledge-bots"></a>ナレッジ ボットを設計する
 
@@ -20,7 +20,7 @@ ms.locfileid: "70298674"
 
 ナレッジ ボットの設計のユース ケースに関係なく、基本的な目的は常に同じで、SQL データベースのリレーショナル データ、非リレーショナル ストアの JSON データ、ドキュメント ストアの PDF など、データの本体を利用してユーザーが要求した情報を探して返すことです。 
 
-## <a name="search"></a>Search
+## <a name="search"></a>検索
 
 検索機能はボットの貴重なツールです。 
 

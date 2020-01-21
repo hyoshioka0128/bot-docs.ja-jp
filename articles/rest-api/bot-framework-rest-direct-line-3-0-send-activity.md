@@ -1,5 +1,5 @@
 ---
-title: ボットにアクティビティを送信する | Microsoft Docs
+title: ボットにアクティビティを送信する - Bot Service
 description: Direct Line API v3.0 を利用してボットにアクティビティを送信する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 5c7ac61da6c2e0d09fb2f8dc4cd0bf3961bcfc4f
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 90eeb3157cf53f1ee87d1ac08313c6d659e6c1d9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70875995"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789319"
 ---
 # <a name="send-an-activity-to-the-bot"></a>ボットにアクティビティを送信する
 
@@ -65,7 +65,7 @@ HTTP/1.1 200 OK
 
 ### <a name="total-time-for-the-send-activity-requestresponse"></a>アクティビティ送信要求/応答の合計時間
 
-Direct Line 会話にメッセージを投稿するための合計時間は次を足したものになります。
+Direct Line 会話にメッセージを POST するための合計時間は次を足したものになります。
 
 - HTTP 要求がクライアントから Direct Line サービスに至るための移動時間
 - Direct Line 内の内部処理時間 (通常、120 ミリ秒未満)
@@ -75,7 +75,7 @@ Direct Line 会話にメッセージを投稿するための合計時間は次�
 
 ## <a name="send-attachments-to-the-bot"></a>ボットに添付ファイルを送信する
 
-クライアントでは、画像や文書など、添付ファイルをボットに送信しなければならない状況があります。 `POST /v3/directline/conversations/{conversationId}/activities` を利用して送信される [Activity][] オブジェクト内で添付ファイルの [URL を指定する](#send-by-url)か、`POST /v3/directline/conversations/{conversationId}/upload` を利用して[添付ファイルをアップロードする](#upload-attachments)ことで、クライアントでは添付ファイルを送信できます。
+状況によっては、クライアントから画像や文書などの添付ファイルをボットに送信しなければならないことがあります。 `POST /v3/directline/conversations/{conversationId}/activities` を利用して送信される [Activity][] オブジェクト内で添付ファイルの [URL を指定する](#send-by-url)か、`POST /v3/directline/conversations/{conversationId}/upload` を利用して[添付ファイルをアップロードする](#upload-attachments)ことで、クライアントでは添付ファイルを送信できます。
 
 ## <a id="send-by-url"></a> URL で添付ファイルを送信する
 
@@ -136,7 +136,7 @@ HTTP/1.1 200 OK
 
 `Content-Type` ヘッダー値 `application/vnd.microsoft.activity` を指定するパートを追加することで、要求内に `Activity` オブジェクトを含めることができます。 要求にアクティビティが含まれる場合、ペイロードの他のパートで指定される添付ファイルが添付ファイルとして送信前にそのアクティビティに追加されます。 要求にアクティビティが含まれない場合、指定の添付ファイルが送信されるコンテナーとして空のアクティビティが作成されます。
 
-次のスニペットは、添付ファイル (複数) 送信要求と応答の例を示しています。 この例では、要求により、テキストと 1 つの画像添付ファイルが含まれるメッセージが送信されます。 要求にさらにパートを追加して、このメッセージに複数の添付ファイルを含めることができます。
+次のスニペットは、(複数の) 添付ファイル送信要求と応答の例を示しています。 この例では、要求により、テキストと 1 つの画像添付ファイルが含まれるメッセージが送信されます。 要求にさらにパートを追加して、このメッセージに複数の添付ファイルを含めることができます。
 
 #### <a name="request"></a>Request
 

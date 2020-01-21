@@ -1,5 +1,5 @@
 ---
-title: ボット設計の原則 | Microsoft Docs
+title: ボット設計の原則 - Bot Service
 description: 適切な会話ボットとは何か、また、ユーザーが満足し、ご自身のニーズにも合ったボットを計画および設計する方法について説明します。
 keywords: ベスト プラクティス, ボットの設計
 author: matvelloso
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: ca343ccb400a652a382ae1a8c279010ff7456bf1
-ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
+ms.openlocfilehash: d3c9cb1f0b3bbbcf14995398213f0be67e00e8de
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71278947"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793476"
 ---
 # <a name="principles-of-bot-design"></a>ボット設計の原則
 
@@ -54,6 +54,6 @@ Bot Framework を使用すると、開発者が、さまざまなビジネス上
 
 ご自身のボットに対する適切な設計アプローチがわからない場合は、一歩引いて、自分自身に問いかけてみましょう。アプリまたは Web サイトだったら、その問題をどのように解決しますか。 多くの場合、その答えはボットの設計にも適用できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ボット設計のいくつかの基本原則を理解した後は、ユーザーとボットの間の[最初の対話を設計](~/bot-service-design-first-interaction.md)するための基本原則について学習します。

@@ -1,5 +1,5 @@
 ---
-title: デバッグのガイドライン | Microsoft Docs
+title: デバッグのガイドライン - Bot Service
 description: ご利用のボットをデバッグする方法について説明します。
 keywords: ボットのデバッグ, botframework デバッグ
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a04e1acc37c488fcd7530b7df2dd8668d4cfdcc2
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: d10f60bb4291cbd53eb526423e5bdcd711afa8f2
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299193"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791184"
 ---
 # <a name="debugging-guidelines"></a>デバッグのガイドライン
 
@@ -77,7 +77,7 @@ For example [QnA maker](bot-builder-howto-qna.md) is designed to handle certain 
 
 _send activity_ メソッドとそのハンドラーにより、独自の問題が発生します。 _on send activities_ ハンドラー内から _send activity_ を単に呼び出すと、スレッドの無限フォークが発生します。 この問題を回避する方法はいくつかあります。たとえば、メッセージを送信情報に追加します。また、コンソールやファイルなどの別の場所に書き出してボットのクラッシュを回避します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ボットの単体テストを実行する方法](unit-test-bots.md)

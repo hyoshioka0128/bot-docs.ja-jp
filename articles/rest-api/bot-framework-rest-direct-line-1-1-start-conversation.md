@@ -1,5 +1,5 @@
 ---
-title: 会話を開始する | Microsoft Docs
+title: Direct Line API 1.1 を使用して会話を開始する - Bot Service
 description: Direct Line API v1.1 を使用して会話を開始する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,17 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 16ad7b817ccde2139b703e858e57bee2abf36fb8
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 6aa107dc54f6a960aabc4f03b5e9acb49a9c6cb0
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299603"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789593"
 ---
 # <a name="start-a-conversation"></a>会話の開始
 
 > [!IMPORTANT]
-> この記事では、Direct Line API 1.1 を使用して会話を開始する方法について説明します。 クライアント アプリケーションとボットの間の新しい接続を作成する場合は、[Direct Line API 3.0](bot-framework-rest-direct-line-3-0-start-conversation.md) を使用してください。
+> この記事では、Direct Line API 1.1 を使用して会話を開始する方法について説明します。 クライアント アプリケーションとボットの間の新しい接続を作成する場合は、代わりに [Direct Line API 3.0](bot-framework-rest-direct-line-3-0-start-conversation.md) を使用します。
 
 Direct Line の会話はクライアントによって明示的に開かれ、ボットとクライアントが参加し、有効な資格情報を持っている限り続きます。 会話が開いている間は、ボットとクライアントの両方がメッセージを送信できます。 複数のクライアントが特定の会話に接続でき、各クライアントは、複数のユーザーの代理として参加できます。
 

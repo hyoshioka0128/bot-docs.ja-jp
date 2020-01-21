@@ -1,5 +1,5 @@
 ---
-title: モノのインターネット ボットのシナリオ | Microsoft Docs
+title: モノのインターネット (IoT) ボットのシナリオ - Bot Service
 description: Bot Framework によるモノのインターネット ボットのシナリオについて説明します。
 author: BrianRandell
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 53a99c4313604d55da6554e927109f0f2f74104c
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 1089296005b060185617e4bf0280cb81198b32a2
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167364"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795052"
 ---
 # <a name="internet-of-things-iot-bot-scenario"></a>モノのインターネット (IoT) ボットのシナリオ
 
@@ -31,12 +31,12 @@ ms.locfileid: "70167364"
 2. ユーザーが IoT デバイスを介して音声でボットに照明をつけるよう要求します。
 3. この要求が、IoT デバイス ネットワークへのアクセスが許可されているサードパーティ サービスに伝達されます。
 4. コマンドの実行結果がユーザーに返されます。
-5. Application Insights が、ボットのパフォーマンスと使用法について開発に役立つランタイム テレメトリを収集します。
+5. Application Insights がランタイム テレメトリを収集して、ボットのパフォーマンスと使用状況の情報によって開発をサポートします。
 
 ## <a name="sample-bot"></a>サンプル ボット
 IoT ボットを使用すると、Skype や Slack のようなチャネルから手軽にチャット コマンドを使用して Hue を制御できるようになります。 リモート アクセスを容易にするには、Hue と連携するために事前定義された IFTTT アプレットを呼び出します。
 
-このサンプル ボットのソース コードは、[Bot Framework の一般的なシナリオのサンプル](https://aka.ms/abs-scenarios)からダウンロードまたは複製できます。
+このサンプル ボットのソース コードは、「[Samples for Common Bot Framework Scenarios (Bot Framework の一般的なシナリオのサンプル)](https://aka.ms/abs-scenarios)」からダウンロードするか複製することができます。
 
 ## <a name="components-youll-use"></a>使用するコンポーネント
 モノのインターネット (IoT) ボットでは、次のコンポーネントを使用します。
@@ -51,4 +51,4 @@ Philips Hue に接続されている電球とブリッジによって、照明�
 IFTTT は無料の Web ベース サービスで、ユーザーはこれを使ってアプレットと呼ばれる単純な条件付きステートメントのチェーンを作成できます。 ボットからアプレットをトリガーし、自分の代わりに作業させることができます。 照明のオンとオフ、シーンの変更などに使用可能な事前定義済みの Hue アプレットが数多くあります。
 
 ### <a name="application-insights"></a>Application Insights
-Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報を得ることができます。 すぐに使用できる、多機能なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードによって、ボットの可用性が保たれ、期待どおりに動作していることを確認できます。 問題が発生しているかどうかをすばやく確認し、根本原因分析を行って、問題を検出し、修正できます。
+Application Insights では、アプリケーション パフォーマンス管理 (APM) と瞬時の分析によって、行動につながる分析情報を得ることができます。 すぐに使用できる、多機能なパフォーマンス監視、強力なアラート機能、使いやすいダッシュボードによって、ボットの可用性が保たれ、期待どおりに動作していることを確認できます。 問題の発生をすばやく確認し、根本原因を分析して、問題個所を特定し、修正することができます。

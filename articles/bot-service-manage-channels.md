@@ -1,5 +1,5 @@
 ---
-title: 1 つまたは複数のチャネルで実行するようにボットを構成する | Microsoft Docs
+title: 1 つまたは複数のチャネルで実行するようにボットを構成する - Bot Service
 description: Bot Framework Portal を使用して、1 つまたは複数のチャネルで実行するようにボットを構成する方法について説明します。
 keywords: ボット チャネル, 構成, cortana, facebook messenger, kik, slack, skype, azure portal
 author: ivorb
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 09/22/2018
-ms.openlocfilehash: cb951e9fd2bad6e68552a025ff3188fecd1783b2
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 226d31b255d18b39ed1e3817b76d65a9bdd951bc
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297607"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794103"
 ---
 # <a name="connect-a-bot-to-channels"></a>ボットをチャネルに接続する
 

@@ -1,5 +1,5 @@
 ---
-title: Bot Service テンプレート | Microsoft Docs
+title: Bot Service テンプレート - Bot Service
 description: Bot Service でボットを作成するときに使用できるさまざまなテンプレートについて説明します。
 author: robstand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f1cfa6de6dbc0b1dc6ed0408f405a91493741a93
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 82afb54b7f4a148aee35be15fac761e2f89aed69
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297635"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793083"
 ---
 # <a name="bot-service-templates"></a>Bot Service テンプレート
 
@@ -44,11 +44,11 @@ Language Understanding テンプレートを使用してボットを作成する
 質疑応答テンプレートでボットを作成するときは、<a href="https://qnamaker.ai">QnA Maker</a> にサインインして、新しい QnA サービスを作成する必要があります。 この QnA サービスによって、ナレッジ ベース ID とサブスクリプション キーが与えられます。それらを使用して、**QnAKnowldegebasedId** と **QnASubscriptionKey** の[アプリ設定](bot-service-manage-settings.md)の値を更新することができます。 これらの値が設定されたら、ご利用のボットで、QnA サービスのナレッジ ベースにあるすべての質問に回答することができます。
 
 ## <a name="proactive-bot"></a>プロアクティブ ボット
-ユーザーにプロアクティブ メッセージを送信できるボットを作成するには、**プロアクティブ テンプレート**を選択します。 通常、ボットからユーザーに送信される各メッセージは、ユーザーの前の入力に直接関連します。 しかし、場合によっては、ユーザーの最新メッセージに直接関連しないユーザー情報をボットから送信する必要があります。 この種のメッセージは**プロアクティブ メッセージ**と呼ばれます。 プロアクティブ メッセージはさまざまなシナリオで役立ちます。 たとえば、ボットでタイマーやリマインダーを設定する場合、その時刻になったときにユーザーに通知する必要があります。 あるいは、ボットで外部イベントに関する通知が受信された場合に、その情報をユーザーに伝える必要があります。 
+ユーザーにプロアクティブ メッセージを送信できるボットを作成するには、**プロアクティブ テンプレート**を選択します。 通常、ボットがユーザーに送信する各メッセージは、ユーザーの前の入力に直接関連しています。 しかし、場合によっては、ユーザーの最新メッセージに直接関連しないユーザー情報をボットから送信する必要があります。 この種のメッセージは、**プロアクティブ メッセージ**と呼ばれます。 プロアクティブ メッセージは、さまざまなシナリオで役立ちます。 たとえば、ボットでタイマーやリマインダーを設定する場合、その時刻になったときにユーザーに通知する必要があります。 あるいは、ボットで外部イベントに関する通知が受信された場合に、その情報をユーザーに伝える必要があります。 
 
 プロアクティブ テンプレートを使用してボットを作成するときは、いくつかの Azure リソースが自動的に作成され、ご利用のリソース グループに追加されます。 既定では、非常にシンプルなプロアクティブ メッセージング シナリオを有効にするように、これらの Azure リソースが既に構成されています。 
 
-| リソース | 説明 |
+| リソース | [説明] |
 |----|----|
 | Azure Storage | キューを作成するために使用されます。 |
 | Azure Function App | キューにメッセージがある場合は常にトリガーされる `queueTrigger` Azure 関数です。 [ダイレクト ライン](https://docs.microsoft.com/bot-framework/rest-api/bot-framework-rest-direct-line-3-0-concepts)を使用して、Bot Service と通信します。 この関数ではボット バインドを使用して、トリガーのペイロードの一部としてメッセージが送信されます。 この関数例では、キューからユーザーのメッセージがそのまま転送されます。
@@ -60,7 +60,7 @@ Language Understanding テンプレートを使用してボットを作成する
 
 ユーザーが Bot Framework サーバーを介してボットにメッセージを送信する (手順 1) ときに、プロセスが開始されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これでさまざまなテンプレートについて理解できました。次は、ボット内で使用する Cognitive Services について説明します。
 
 > [!div class="nextstepaction"]

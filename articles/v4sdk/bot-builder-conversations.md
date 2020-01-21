@@ -1,5 +1,5 @@
 ---
-title: Bot Framework SDK 内での会話 | Microsoft Docs
+title: Bot Framework SDK 内での会話 - Bot Service
 description: Bot Framework SDK 内での会話について説明します。
 keywords: 会話フロー, 意図の認識, 1 ターン, 複数ターン, ボットの会話
 author: jonathanfingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ea5cf37ec788f68e8eea32ee6610f59ec286193c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e4c4f11999b9ab4b932e373db7eb27c6547cb537
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299392"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798683"
 ---
 # <a name="conversation-flow"></a>会話フロー
 [!INCLUDE[applies-to](../includes/applies-to.md)]
@@ -87,15 +87,15 @@ Bot Framework SDK では、メッセージを処理して意図を判断する "
 
 ボットがより複雑になると、一連の会話フローがスタック内で発生することも想像できます。たとえば、ボットが新規注文フローを呼び出し、次に商品検索フローを呼び出します。 その後、ユーザーは商品を選択して確認し、商品検索フローを完了し、注文を完了します。
 
-しかし、会話がそのような直線的で論理的な経路をたどることはまれです。 ユーザーは "スタック" でコミュニケーションを取るわけではなく、頻繁に心変わりする傾向があります。 次の例を考えてみます。
+しかし、会話がそのような直線的で論理的な経路をたどることはまれです。 ユーザーは "スタック" でコミュニケーションを取るわけではなく、頻繁に心変わりする傾向があります。 次の例を確認してください。
 
 ![予期していないことをユーザーが言う](./media/concept-conversation/interruption.png)
 
 ボットがフローのスタックを論理的に構築していたとしても、ユーザーは現在のトピックとまったく違う何かをしようと思う、または現在のトピックに関係ない質問をしようと思うかもしれません。 例では、ユーザーはフローが期待するはい/いいえの応答を返す代わりに質問をします。 フローはどのように応答すべきでしょうか?
 
-* まず質問に答えるよう、ユーザーに主張します。
+* まず質問に答えるよう、ユーザーに求める。
 * ユーザーの以前の行動をすべて無視し、フロー スタック全体をリセットし、ユーザーの質問に答えようとすることによって最初から始めます。
-* ユーザーの質問に答えようとし、そのはい/いいえの質問に戻って、そこから再開することを試みます。
+* ユーザーの質問に答えた後、はい/いいえの質問に戻り、そこから再開する。
 
 この質問に対する正解はありません。なぜなら、シナリオの詳細や、ボットの応答に対するユーザーの妥当な期待によって、最良の解決策が変わってくるからです。 会話フローを管理するには、[ダイアログを使用する](bot-builder-dialog-manage-conversation-flow.md)方法と[割り込みを処理する](bot-builder-howto-handle-user-interrupt.md)方法に関するページを参照してください。
 
@@ -124,7 +124,7 @@ Bot Framework SDK には、自然言語の "質問と回答" 機能をボット�
 * ボットは会話を開始できません。ただし、会話 ID を取得した後であれば、その会話を再開できます。
 * すべてのチャネルが、グループ会話をサポートするわけではありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ダイアログを使用して単純な会話フローを管理する](bot-builder-dialog-manage-conversation-flow.md)

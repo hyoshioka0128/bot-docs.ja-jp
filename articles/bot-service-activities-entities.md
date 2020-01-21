@@ -1,5 +1,5 @@
 ---
-title: エンティティとアクティビティの種類 | Microsoft Docs
+title: エンティティとアクティビティの種類 - Bot Service
 description: エンティティとアクティビティの種類。
 keywords: メンション エンティティ, アクティビティの種類, エンティティの使用
 author: ivorb
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 03/01/2018
-ms.openlocfilehash: e1eae45702a1eee94714f96425050948310c7520
-ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
+ms.openlocfilehash: cd11cc1fbbacb7e555da4e00337d6fd4b79a4df6
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693115"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789079"
 ---
 # <a name="entities-and-activity-types"></a>エンティティとアクティビティの種類
 
@@ -21,7 +21,7 @@ ms.locfileid: "71693115"
 
 [!include[Entity boilerplate](includes/snippet-entity-boilerplate.md)]
 
-## <a name="entities"></a>エンティティ
+## <a name="entities"></a>[エンティティ]
 
 メッセージの "*エンティティ*" プロパティは、拡張可能な <a href="http://schema.org/" target="_blank">schema.org</a> オブジェクトの配列であり、チャネルとボットの間で共通のコンテキスト メタデータを交換するために使用します。
 
@@ -31,7 +31,7 @@ ms.locfileid: "71693115"
 メッセージでユーザーをメンションするには、メッセージのエンティティ プロパティに *mention* オブジェクトを設定します。
 メンション オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |----|----|
 | 種類 | エンティティの種類 ("mention") |
 | Mentioned | メンションされたユーザーを示すチャネル アカウント オブジェクト | 
@@ -69,20 +69,20 @@ entity = [mention];
 
 place オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |----|----|
 | 種類 | エンティティの種類 ("Place") |
 | Address | 説明または住所オブジェクト (将来) |
 | ジオ (主要地域) | GeoCoordinates |
 | HasMap | 地図の URL または地図オブジェクト (将来) |
-| 名前 | 場所の名前 |
+| Name | 場所の名前 |
 
 geoCoordinates オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |----|----|
 | 種類 | エンティティの種類 ("GeoCoordinates") |
-| 名前 | 場所の名前 |
+| Name | 場所の名前 |
 | Longitude | 場所の経度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 | Latitude | 場所の緯度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 | Elevation | 場所の標高 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |

@@ -1,5 +1,5 @@
 ---
-title: API リファレンス - Direct Line API 3.0 | Microsoft Docs
+title: API リファレンス - Direct Line API 3.0 - Bot Service
 description: Direct Line API 3.0 のヘッダー、HTTP 状態コード、スキーマ、操作、およびオブジェクトについて説明します。
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 618b2ffe99114679aa5592b816adf6e1b82be83e
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 24dfb2e1ef95dcc53e037fc3c30c4a7c74b114ad
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167181"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789583"
 ---
 # <a name="api-reference---direct-line-api-30"></a>API リファレンス - Direct Line API 3.0
 
@@ -24,7 +24,7 @@ Direct Line API 3.0 にアクセスするには、すべての API 要求用の�
 
 `https://directline.botframework.com`
 
-## <a name="headers"></a>headers
+## <a name="headers"></a>ヘッダー
 
 標準 HTTP 要求ヘッダーに加えて、Direct Line API 要求には、要求を発行しているクライアントを認証するシークレットまたはトークンを指定する `Authorization` ヘッダーを含める必要があります。 `Authorization` ヘッダーは次の形式を使用して指定します。
 
@@ -54,7 +54,7 @@ Authorization: Bearer SECRET_OR_TOKEN
 > [!NOTE]
 > HTTP 状態コード 101 は WebSocket 接続パス内で使用されます (ただし、多くの場合は WebSocket クライアントによって処理されます)。
 
-### <a name="errors"></a>Errors
+### <a name="errors"></a>エラー
 
 4xx 範囲または 5xx 範囲の HTTP 状態コードを指定する応答では、エラーの情報を提供する [ErrorResponse][] オブジェクトが応答の本文に含まれます。 4xx 範囲のエラー応答を受け取った場合、要求を再送信する前に、**ErrorResponse** オブジェクトを検査してエラーの原因を識別し、問題を解決してください。
 
@@ -90,7 +90,7 @@ HTTP/1.1 502 Bad Gateway
 
 クライアントが 1 つの会話にアクセスするために使用できるトークンを作成または更新するには、次の操作を使用します。
 
-| Operation | 説明 |
+| 操作 | [説明] |
 |----|----|
 | [トークンの生成](#generate-token) | 新しい会話用のトークンを生成します。 |
 | [トークンの更新](#refresh-token) | トークンを更新します。 |
@@ -125,7 +125,7 @@ POST /v3/directline/tokens/refresh
 
 ボットとの会話を開いてクライアントとボット間でアクティビティを交換するには、次の操作を使用します。
 
-| Operation | 説明 |
+| 操作 | [説明] |
 |----|----|
 | [会話の開始](#start-conversation) | ボットと新しい会話を開きます。 |
 | [会話情報の取得](#get-conversation-information) | 既存の会話に関する情報を取得します。 この操作を実行すると、クライアントが会話に[再接続](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)するために使用できる、新しい WebSocket ストリーム URL が生成されます。 |
@@ -170,7 +170,7 @@ GET /v3/directline/conversations/{conversationId}/activities?watermark={watermar
 | | |
 |----|----|
 | **要求本文** | 該当なし |
-| **戻り値** | [ActivitySet](#activityset-object) オブジェクト。 応答には、`ActivitySet` オブジェクトのプロパティとして `watermark` が含まれます。 クライアントは、アクティビティが返らなくなるまで `watermark` 値を進めることで、すべてのアクティビティを取得する必要があります。 |
+| **戻り値** | [ActivitySet](#activityset-object) オブジェクト。 応答には、`ActivitySet` オブジェクトのプロパティとして `watermark` が含まれます。 クライアントは、アクティビティが返らなくなるまで `watermark` 値を進めることで、入手できるアクティビティをすべて取得する必要があります。 |
 
 ### <a name="send-an-activity"></a>アクティビティの送信
 
@@ -209,7 +209,7 @@ Direct Line 3.0 スキーマには、[Bot Framework スキーマ](bot-framework-
 
 アクティビティのセットを定義します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 |----|----|----|
 | **アクティビティ** | [Activity][][] | **Activity** オブジェクトの配列です。 |
 | **watermark** | string | セット内のアクティビティの最大ウォーターマークです。 クライアントは、[ボットからアクティビティを取得する](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get)際、または[新しい WebSocket ストリーム URL を生成する](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)際に、`watermark` 値を使用して、直近に認識したメッセージを示すことができます。 |
@@ -218,7 +218,7 @@ Direct Line 3.0 スキーマには、[Bot Framework スキーマ](bot-framework-
 
 Direct Line 会話を定義します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 |----|----|----|
 | **conversationId** | string | 指定されたトークンが有効な会話を一意に識別する ID。 |
 | **eTag** | string | HTTP ETag (エンティティ タグ)。 |
@@ -231,7 +231,7 @@ Direct Line 会話を定義します。
 
 トークンを作成するためのパラメーター。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 |----|----|----|
 | **eTag** | string | HTTP ETag (エンティティ タグ)。 |
 | **trustedOrigins** | string[] | トークン内に埋め込む信頼された発行元。 |

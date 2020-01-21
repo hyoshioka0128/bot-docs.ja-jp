@@ -1,5 +1,5 @@
 ---
-title: メッセージへのメディア添付ファイルの追加 | Microsoft Docs
+title: メッセージへのメディア添付ファイルの追加 (v3 C#) - Bot Service
 description: Bot Framework SDK for .NET を使用してメッセージにメディア添付ファイルを追加する方法について説明します。
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 19f3db74aef7aeffcd754e0bea753fa73b7ea285
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: ad6a1228b8fc54f8f626c07c7ed43375c249c456
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298444"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796020"
 ---
 # <a name="add-media-attachments-to-messages"></a>メッセージへのメディア添付ファイルの追加
 
@@ -21,7 +21,7 @@ ms.locfileid: "70298444"
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-media-attachments.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-media-attachments.md)
 
 ユーザーとボットの間のメッセージ交換には、メディア添付ファイル (イメージ、ビデオ、オーディオ、ファイルなど) を含めることができます。 
@@ -41,13 +41,12 @@ ms.locfileid: "70298444"
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [Channel Inspector を使用して機能をプレビューする][inspector]
+- [チャネル リファレンス][inspector]
 - [アクティビティの概要](bot-builder-dotnet-activities.md)
 - [メッセージの作成](bot-builder-dotnet-create-messages.md)
 - [メッセージへのリッチ カードの追加](bot-builder-dotnet-add-rich-card-attachments.md)
 - <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity クラス</a>
 - <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment クラス</a>
 
-[inspector]: ../bot-service-channel-inspector.md
-
+[inspector]: ../bot-service-channels-reference.md
 

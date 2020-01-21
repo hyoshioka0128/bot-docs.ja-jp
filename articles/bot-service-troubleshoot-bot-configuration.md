@@ -1,5 +1,5 @@
 ---
-title: ボット構成の問題のトラブルシューティング | Microsoft Docs
+title: ボット構成の問題のトラブルシューティング - Bot Service
 description: デプロイされたボットでの構成の問題を解決する方法。
 keywords: トラブルシューティング, 構成, Web チャット, 問題。
 author: jonathanFingold
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 4/30/2019
-ms.openlocfilehash: 6f24a2e5c4fbc2bf88d99ba4225506e25c4262a8
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 6d5cb95c529a9a49f07681678f11a54c8f9e55b3
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491595"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795721"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>ボット構成の問題のトラブルシューティング
 
@@ -46,9 +46,14 @@ ms.locfileid: "75491595"
 
 ボットが Web チャットでは想定どおりに機能し、他のチャネルでは失敗する場合、次の理由が考えられます。
 
-- [チャネル構成の問題](#channel-configuration-issues)
-- [チャネル固有の動作](#channel-specific-behavior)
-- [チャネルの停止](#channel-outage)
+- [ボット構成の問題のトラブルシューティング](#troubleshoot-bot-configuration-issues)
+  - [Web チャットでのテスト](#test-in-web-chat)
+  - [ボットが Web チャットで機能しない](#bot-does-not-work-in-web-chat)
+  - [ボットが Web チャットでは機能するが他のチャネルでは機能しない](#bot-works-in-web-chat-but-not-in-other-channels)
+    - [チャネル構成の問題](#channel-configuration-issues)
+    - [チャネル固有の動作](#channel-specific-behavior)
+    - [チャネルの停止](#channel-outage)
+  - [その他のリソース](#additional-resources)
 
 ### <a name="channel-configuration-issues"></a>チャネル構成の問題
 
@@ -71,7 +76,7 @@ Bot Framework でサポートされているチャネルの構成手順につい
 
 ### <a name="channel-specific-behavior"></a>チャネル固有の動作
 
-一部の機能の実装はチャネルによって異なります。 たとえば、すべてのチャネルでアダプティブ カードがサポートされているわけではありません。 ほとんどのチャネルはボタンをサポートしていますが、チャネル固有の方法でレンダリングされています。 一部のメッセージの種類が、チャネルによって動作が異なる場合は、[チャネル リファレンス](bot-service-channels-reference.md)を調べます。
+一部の機能の実装はチャネルによって異なります。 たとえば、すべてのチャネルでアダプティブ カードがサポートされているわけではありません。 ほとんどのチャネルはボタンをサポートしていますが、チャネル固有の方法でレンダリングされています。 一部のメッセージの種類が、チャネルによって動作が異なる場合は、[チャネル リファレンス](bot-service-channels-reference.md)記事を調べます。
 
 個々のチャネルに役立つその他のリンクを次に示します。
 

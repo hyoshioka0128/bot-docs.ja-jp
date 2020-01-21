@@ -1,5 +1,5 @@
 ---
-title: Cognitive Services | Microsoft Docs
+title: Cognitive Services - Bot Service
 description: Microsoft Cognitive Services を使って、ボットをより便利で魅力的にするために、人工知能を追加する方法について説明します。
 keywords: 言語の理解, ナレッジ抽出, 音声認識, Web 検索
 author: RobStand
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/17/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7dbbe8492761360941eca5e724a7339e28968769
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 6243d74aabd7fe67b1c7b8bfcebc8bd04511d8b5
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167010"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792954"
 ---
 # <a name="cognitive-services"></a>Cognitive Services
 

@@ -1,5 +1,5 @@
 ---
-title: プロアクティブ メッセージを送信する | Microsoft Docs
+title: プロアクティブ メッセージを送信する (v3 JS) - Bot Service
 description: Bot Framework SDK for Node.js を使用して、現在の会話フローをプロアクティブ メッセージで中断する方法について説明します
 author: v-ducvo
 ms.author: kamrani
@@ -8,19 +8,19 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 58a6678561d048d0257dc81d37d4db4cbca9b382
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e23d74c5f1dfb36625db99fc906185159d3362a9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299793"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790837"
 ---
 # <a name="send-proactive-messages"></a>プロアクティブ メッセージを送信する
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-proactive-messages.md)
-> - [Node.JS](../nodejs/bot-builder-nodejs-proactive-messages.md)
+> - [Node.js](../nodejs/bot-builder-nodejs-proactive-messages.md)
 
 [!INCLUDE [Introduction to proactive messages - part 1](../includes/snippet-proactive-messages-intro-1.md)]
 

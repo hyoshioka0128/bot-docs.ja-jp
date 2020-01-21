@@ -1,5 +1,5 @@
 ---
-title: ボットの分析 | Microsoft Docs
+title: ボットの分析 - Bot Service
 description: Bot Framework での分析を利用してボットを向上させるためのデータの収集と分析の使用方法について説明します。
 keywords: ボットの分析, アプリケーション分析情報, トラフィック, 待ち時間, 統合, AppInsights
 author: JonathanFingold
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/04/2018
-ms.openlocfilehash: 324050c625f5d9666811f63191d783643816104c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 88f8c629bd907bf6f9af3ef189bfb6e329b36b02
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298690"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793608"
 ---
 # <a name="bot-analytics"></a>ボットの分析
 

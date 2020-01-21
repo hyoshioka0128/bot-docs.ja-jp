@@ -1,5 +1,5 @@
 ---
-title: Bot Framework SDK の移行の概要 | Microsoft Docs
+title: Bot Framework SDK の移行の概要 - Bot Service
 description: SDK の変更点と v3 から v4 への移行方法の概要を説明します。
 keywords: ボットの移行
 author: mmiele
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 06/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 25c7fcb994e0fae348014c1eba393451dc0d9e15
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 15cffbcbce7581692e7f993e22f353cb435379b9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491397"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798058"
 ---
 # <a name="migration-overview"></a>移行の概要
 
