@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: d49ec4b742d644371458cc732fe60c605878ff27
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 246e9ecace56126d625d5f9e2571e8d27ba780e8
+ms.sourcegitcommit: df2b8d4e29ebfbb9e8a10091bb580389fe4c34cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791719"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76255995"
 ---
 # <a name="configure-net-bot-for-extension"></a>拡張機能のための .NET ボットの構成
 
@@ -76,13 +76,6 @@ ms.locfileid: "75791719"
     これらの値は、**appid** と、サービス登録グループに関連付けられた **appSecret** です。
 
 6. ボットを Azure App Service に**発行**します。
-7. ブラウザーで、 https://<your_app_service>.azurewebsites.net/.bot に移動します。 すべて正しければ、ページは JSON コンテンツ `{"k":true,"ib":true,"ob":true,"initialized":true}` を返します。 これは、**すべてが正常に動作している**場合に取得される情報です。ここでは、次のようになります。
-
-    - **k** によって、Direct Line App Service Extension (ASE) がその構成から拡張キーを読み取れるかどうかを決定します。 
-    - **initialized** によって、Direct Line ASE が拡張キーを使用して Azure Bot Service からボット メタデータをダウンロードできるかどうかを決定します。
-    - **ib** によって、Direct Line ASE がボットとの受信接続を確立できるかどうかを決定します。
-    - **ob** によって、Direct Line ASE がボットとの送信接続を確立できるかどうかを決定します。 
-
 
 ### <a name="gather-your-direct-line-extension-keys"></a>Direct Line 拡張機能キーを収集する
 
@@ -109,6 +102,15 @@ ms.locfileid: "75791719"
 
 1. *[構成]* セクション内で、 **[全般設定]** セクションをクリックし、 **[Web ソケット]** を有効にします。
 1. **[保存]** をクリックして設定を保存します。 これにより、Azure App Service が再起動されます。
+
+## <a name="confirm-direct-line-app-extension-and-the-bot-are-initialized"></a>Direct Line アプリ拡張機能とボットが初期化されていることを確認します
+
+1. ブラウザーで、 https://<your_app_service>.azurewebsites.net/.bot に移動します。 すべて正しければ、ページは JSON コンテンツ `{"k":true,"ib":true,"ob":true,"initialized":true}` を返します。 これは、**すべてが正常に動作している**場合に取得される情報です。ここでは、次のようになります。
+
+    - **k** によって、Direct Line App Service 拡張機能 (ASE) がその構成から App Service 拡張機能のキーを読み取れるかどうかを決定します。 
+    - **initialized** によって、Direct Line ASE が App Service 拡張機能キーを使用して Azure Bot Service からボット メタデータをダウンロードできるかどうかを決定します。
+    - **ib** によって、Direct Line ASE がボットとの受信接続を確立できるかどうかを決定します。
+    - **ob** によって、Direct Line ASE がボットとの送信接続を確立できるかどうかを決定します。 
 
 ## <a name="additional-information"></a>関連情報 
 
@@ -139,7 +141,7 @@ SDK v4.7 にアップグレード済みである場合は、「Direct Line App S
         app.UseStaticFiles();
 
         // Allow bot to use named pipes.
-        app.UseNamedPiped();
+        app.UseNamedPipes();
 
         app.UseMvc();
     }

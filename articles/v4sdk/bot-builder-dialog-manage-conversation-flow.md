@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9ee6e9445871445008f6ab406f3250af0226c0dd
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 874d22eef5a387df9be8b1cee72935812bf9879b
+ms.sourcegitcommit: df2b8d4e29ebfbb9e8a10091bb580389fe4c34cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798511"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76256015"
 ---
 # <a name="implement-sequential-conversation-flow"></a>連続して行われる会話フローの実装
 
@@ -42,7 +42,7 @@ ms.locfileid: "75798511"
 | 名前をユーザーに聞きます | テキスト プロンプト |
 | 年齢を指定するかどうかをユーザーに聞きます | 確認プロンプト |
 | "はい" と回答した場合は、年齢を聞きます | 0 より大きく 150 未満の年齢のみを受け入れる検証を含む数値プロンプト |
-| Microsoft Teams を使用していない場合は、プロファイル画像用 | 添付ファイルがないことを許可する検証を含む添付ファイル プロンプト |
+| Microsoft Teams を使用していない場合は、プロファイル画像を依頼します | 添付ファイルがないことを許可する検証を含む添付ファイル プロンプト |
 | 収集された情報が正しいかどうかを聞きます | 再利用確認プロンプト |
 
 最後に、"はい" と答えたら、収集された情報を表示します。それ以外の場合は、ユーザー情報が保持されないことをユーザーに通知します。

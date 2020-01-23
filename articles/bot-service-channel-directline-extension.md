@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/09/2019
-ms.openlocfilehash: c4c54e50450ae81098992c880e23a049229fa09f
-ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
+ms.openlocfilehash: 2145709c9cc458ec5dd9f4fbf1145ddbad893a04
+ms.sourcegitcommit: df2b8d4e29ebfbb9e8a10091bb580389fe4c34cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039757"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76256005"
 ---
 # <a name="direct-line-app-service-extension"></a>Direct Line App Service 拡張機能
 
@@ -34,11 +34,12 @@ Direct Line App Service 拡張機能は、新しい一連のストリーミン�
 Direct Line App Service 拡張機能は、世界中のすべてのデータ センターで Azure App Service のすべてのインスタンスにプレインストールされています。 その維持管理は Microsoft が行っており、お客様が追加のデプロイ作業を行う必要はありません。 これは、既定では Azure App Service で無効になっていますが、簡単に有効にして、ホストされているボットに接続できます。
 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
-|名前|説明|
+|Name|[説明]|
 |---|---|
-|[拡張機能のための .NET ボットの構成](bot-service-channel-directline-extension-net-bot.md)|**名前付きパイプ**を使って機能するようにボットを更新し、ボットがホストされている **Azure App Service** リソースで Direct Line App Service 拡張機能を有効にします。  |
+|[拡張機能のための .NET ボットの構成](bot-service-channel-directline-extension-net-bot.md)|**名前付きパイプ**を使って機能するように .NET ボットを更新し、ボットがホストされている **Azure App Service** リソースで Direct Line App Service 拡張機能を有効にします。  |
+|[拡張機能のための Node.js ボットの構成](bot-service-channel-directline-extension-node-bot.md)|**名前付きパイプ**を使って機能するように .Node.js ボットを更新し、ボットがホストされている **Azure App Service** リソースで Direct Line App Service 拡張機能を有効にします。  |
 |[拡張機能を使用した .NET クライアントの作成](bot-service-channel-directline-extension-net-client.md)|Direct Line App Service 拡張機能に接続する .NET クライアントを C# で作成します|
 |[WebChat で拡張機能を使用する](bot-service-channel-directline-extension-webchat-client.md)|WebChat を Direct Line App Service 拡張機能と共に使用します。|
 |[VNET 内で拡張機能を使用する](bot-service-channel-directline-extension-vnet.md)|Azure Virtual Network (VNET) で Direct Line App Service 拡張機能を使用します|
