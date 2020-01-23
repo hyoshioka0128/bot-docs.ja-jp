@@ -450,7 +450,7 @@ Bot Framework スキーマには、ボットがユーザーとの通信に使用
 | **autostart** | boolean | カードが表示されたときにアニメーションを自動的に再生するかどうかを示すフラグ。 アニメーションを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **buttons** | [CardAction](#cardaction-object)[] | ユーザーが 1 つ以上のアクションを実行できるようにする **CardAction** オブジェクトの配列。 指定できるボタンの数はチャネルが決定します。 |
 | **duration** | string | メディア コンテンツの長さ ([ISO 8601 の期間の形式](https://www.iso.org/iso-8601-date-and-time-format.html))。 |
-| **画像** | [ThumbnailUrl](#thumbnailurl-object) | カードに表示する画像を指定する **ThumbnailUrl** オブジェクト。 |
+| **image** | [ThumbnailUrl](#thumbnailurl-object) | カードに表示する画像を指定する **ThumbnailUrl** オブジェクト。 |
 | **media** | [MediaUrl](#mediaurl-object)[] | **Mediaurl** オブジェクトの配列。 このフィールドに複数の URL が含まれている場合、各 URL は同じコンテンツの代替形式です。|
 | **shareable** | boolean | アニメーションを他のユーザーと共有できるかどうかを示すフラグ。 アニメーションを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **subtitle** | string | カードのタイトルの下に表示するサブタイトル。 |
@@ -495,7 +495,7 @@ Bot Framework スキーマには、ボットがユーザーとの通信に使用
 |----|----|----|
 | **name** | string | 添付ファイルの名前。 |
 | **type** | string | 添付ファイルのコンテンツの種類。 |
-| **ビュー** | [AttachmentView](#attachmentview-object)[] | 添付ファイルの利用可能なビューを表す **AttachmentView** オブジェクトの配列。 |
+| **views** | [AttachmentView](#attachmentview-object)[] | 添付ファイルの利用可能なビューを表す **AttachmentView** オブジェクトの配列。 |
 
 [スキーマの表に戻る](#schema)
 
@@ -521,7 +521,7 @@ Bot Framework スキーマには、ボットがユーザーとの通信に使用
 | **autostart** | boolean | カードが表示されたときにオーディオを自動的に再生するかどうかを示すフラグ。 オーディオを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **buttons** | [CardAction](#cardaction-object)[] | ユーザーが 1 つ以上のアクションを実行できるようにする **CardAction** オブジェクトの配列。 指定できるボタンの数はチャネルが決定します。 |
 | **duration** | string | メディア コンテンツの長さ ([ISO 8601 の期間の形式](https://www.iso.org/iso-8601-date-and-time-format.html))。 |
-| **画像** | [ThumbnailUrl](#thumbnailurl-object) | カードに表示する画像を指定する **ThumbnailUrl** オブジェクト。 |
+| **image** | [ThumbnailUrl](#thumbnailurl-object) | カードに表示する画像を指定する **ThumbnailUrl** オブジェクト。 |
 | **media** | [MediaUrl](#mediaurl-object)[] | **Mediaurl** オブジェクトの配列。  このフィールドに複数の URL が含まれている場合、各 URL は同じコンテンツの代替形式です。 |
 | **shareable** | boolean | オーディオ ファイルを他のユーザーと共有できるかどうかを示すフラグ。 オーディオを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **subtitle** | string | カードのタイトルの下に表示するサブタイトル。 |
@@ -539,7 +539,7 @@ Bot Framework スキーマには、ボットがユーザーとの通信に使用
 |----|----|----|
 | **channelData** | string | このアクションに関連付けられているチャネル固有のデータ。 |
 | **displayText** | string | ボタンがクリックされた場合にチャット フィードに表示するテキスト。 |
-| **画像** | string | テキスト ラベルの横にあるボタンに表示される画像の URL。 |
+| **image** | string | テキスト ラベルの横にあるボタンに表示される画像の URL。 |
 | **text** | string | アクションのテキスト。 |
 | **title** | string | ボタンに表示されるテキスト説明です。 |
 | **type** | string | 実行するアクションの種類。 有効な値の一覧については、「[メッセージへのリッチ カード添付ファイルの追加](bot-framework-rest-connector-add-rich-cards.md)」を参照してください。 |
@@ -648,7 +648,7 @@ Bot Framework スキーマには、ボットがユーザーとの通信に使用
 
 | プロパティ | 種類 | [説明] |
 |----|----|----|
-| **会話** | [ConversationMembers](#conversationmembers-object)[] | 各会話のメンバー。 |
+| **conversations** | [ConversationMembers](#conversationmembers-object)[] | 各会話のメンバー。 |
 | **continuationToken** | string | その後の[会話を取得する](#get-conversations)の呼び出しで使用できる継続トークン。 |
 
 [スキーマの表に戻る](#schema)
@@ -827,7 +827,7 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 
 | プロパティ | 種類 | [説明] |
 |----|----|----|
-| **画像** | [CardImage](#cardimage-object) | 品目の隣に表示するサムネイル画像を指定する **CardImage** オブジェクト。  |
+| **image** | [CardImage](#cardimage-object) | 品目の隣に表示するサムネイル画像を指定する **CardImage** オブジェクト。  |
 | **price** | string | すべての購入単位の合計価格を指定する通貨形式の文字列。 |
 | **quantity** | string | 購入単位数を指定する数値の文字列。 |
 | **subtitle** | string | 品目のタイトルの下に表示されるサブタイトル。 |
@@ -855,7 +855,7 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 |----|----|----|
 | **entities** | object | 各プロパティの値が [Entity](#entity-object) オブジェクトであるオブジェクト。 |
 | **id** | string | このアクションの ID。 |
-| **状態** | string | このアクションの状態。 使用できる値: **start**、**continue**、**done**。 |
+| **state** | string | このアクションの状態。 使用できる値: **start**、**continue**、**done**。 |
 
 [スキーマの表に戻る](#schema)
 
@@ -939,7 +939,7 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 | **autostart** | boolean | カードが表示されたときにビデオを自動的に再生するかどうかを示すフラグ。 ビデオを自動的に再生するには、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **buttons** | [CardAction](#cardaction-object)[] | ユーザーが 1 つ以上のアクションを実行できるようにする **CardAction** オブジェクトの配列。 指定できるボタンの数はチャネルが決定します。 |
 | **duration** | string | メディア コンテンツの長さ ([ISO 8601 の期間の形式](https://www.iso.org/iso-8601-date-and-time-format.html))。 |
-| **画像** | [ThumbnailUrl](#thumbnailurl-object) | カードに表示する画像を指定する **ThumbnailUrl** オブジェクト。 |
+| **image** | [ThumbnailUrl](#thumbnailurl-object) | カードに表示する画像を指定する **ThumbnailUrl** オブジェクト。 |
 | **media** | [MediaUrl](#mediaurl-object)[] | **MediaUrl** の配列。  このフィールドに複数の URL が含まれている場合、各 URL は同じコンテンツの代替形式です。 |
 | **shareable** | boolean | ビデオを他のユーザーと共有できるかどうかを示すフラグ。 ビデオを共有できる場合、このプロパティを **true** に設定します。それ以外の場合、**false** に設定します。 既定値は **true** です。 |
 | **subtitle** | string | カードのタイトルの下に表示するサブタイトル。 |
