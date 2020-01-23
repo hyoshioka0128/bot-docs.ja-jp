@@ -924,7 +924,7 @@ World Geodetic System (WSG84) 座標を使用して地理的な場所を定義�
 
 | プロパティ | 種類 | [説明] |
 |----|----|----|
-| **アクティビティ** | array | [Activity](#activity-object) オブジェクトの配列です。 それぞれが一意の ID とタイムスタンプを持つ必要があります。 |
+| **activities** | array | [Activity](#activity-object) オブジェクトの配列です。 それぞれが一意の ID とタイムスタンプを持つ必要があります。 |
 
 [スキーマの表に戻る](#schema)
 
