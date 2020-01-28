@@ -94,7 +94,7 @@ GET /api/tokens/{conversationId}/renew
 | 操作 | [説明] |
 |----|----|
 | [会話の開始](#start-conversation) | ボットと新しい会話を開きます。 | 
-| [Get Messages](#get-messages) | ボットからメッセージを受信します。 |
+| [メッセージの取得](#get-messages) | ボットからメッセージを受信します。 |
 | [メッセージの送信](#send-a-message) | メッセージをボットに送信します。 | 
 | [ファイルのアップロードと送信](#upload-send-files) | ファイルを添付ファイルとしてアップロードして送信します。 |
 
