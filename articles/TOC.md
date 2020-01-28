@@ -21,6 +21,7 @@
 ## [ユーザー認証](v4sdk/bot-builder-concept-authentication.md)
 ## [ボット リソースの管理](v4sdk/bot-file-basics.md)
 ## [Microsoft Teams のボットのしくみ](v4sdk/bot-builder-basics-teams.md)
+## [スキルについて](v4sdk/skills-conceptual.md)
 <!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Bot Service テンプレート](bot-service-concept-templates.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
@@ -52,6 +53,13 @@
 ### [ストレージに直接書き込む](v4sdk/bot-builder-howto-v4-storage.md)
 ### [ボットへの認証の追加](v4sdk/bot-builder-authentication.md)
 ### [ボットのカスタム ストレージの実装](v4sdk/bot-builder-custom-storage.md)
+### スキル
+#### [スキルを実装する](v4sdk/skill-implement-skill.md)
+#### [スキル コンシューマーを実装する](v4sdk/skill-implement-consumer.md)
+<!--
+#### [Add claims validation](v4sdk/skill-add-claims-validation.md)
+#### [Manage multiple skills](#)
+-->
 ### [ボットへのテレメトリの追加](v4sdk/bot-builder-telemetry.md)
 ### [QnA ボットへのテレメトリの追加](v4sdk/bot-builder-telemetry-QnAMaker.md)
 ### [ボットのテレメトリ データを分析する](v4sdk/bot-builder-telemetry-analytics-queries.md)
