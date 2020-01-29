@@ -15,5 +15,5 @@ az webapp deployment source config-zip --resource-group "<resource-group-name>" 
 | オプション   | 説明 |
 |:---------|:------------|
 | resource-group | ご利用のボットを含む Azure リソース グループの名前。 (これは、ボットのアプリ登録を作成するときに使用または作成したリソース グループになります。) |
-| 名前 | 前に使用した Web アプリの名前。 |
+| name | 前に使用した Web アプリの名前。 |
 | src  | 作成した zip ファイルへのパス。 |
