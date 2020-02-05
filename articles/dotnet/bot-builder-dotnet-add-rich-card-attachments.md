@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e30ac144d4e960672f3d129935a657c42ed1aa6d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: db1c7a1188715a1f23ed0b0cd60538fdaebbe840
+ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75796515"
+ms.lasthandoff: 01/25/2020
+ms.locfileid: "76752794"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
 
@@ -24,20 +24,20 @@ ms.locfileid: "75796515"
 > - [Node.js](../nodejs/bot-builder-nodejs-send-rich-cards.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-rich-cards.md)
 
-ユーザーとボットの間のメッセージ交換には、リストまたはカルーセルとしてレンダリングされる 1 つまたは複数のリッチ カードを含めることができます。 
+ユーザーとボットの間のメッセージ交換には、リストまたはカルーセルとしてレンダリングされる 1 つまたは複数のリッチ カードを含めることができます。
 
-<a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> オブジェクトの `Attachments` プロパティには、メッセージ内のリッチ カードやメディア添付ファイルを表す <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment</a> オブジェクトの配列が格納されます。 
+[Activity](https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html) オブジェクトの `Attachments` プロパティには、メッセージ内のリッチ カードやメディア添付ファイルを表す [Attachment](https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4) オブジェクトの配列が格納されます。
 
 > [!NOTE]
 > メッセージにメディア添付ファイルを追加する方法については、「[Add media attachments to messages](bot-builder-dotnet-add-media-attachments.md)」 (メッセージにメディア添付ファイルを追加する) を参照してください。
 
 ## <a name="types-of-rich-cards"></a>リッチ カードの種類
 
-Bot Framework では、現在 8 種類のリッチ カードがサポートされています。 
+Bot Framework では、現在 8 種類のリッチ カードがサポートされています。
 
 | カードの種類 | [説明] |
 |----|----|
-| <a href="/adaptive-cards/get-started/bots">アダプティブ カード</a> | テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。 [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。  |
+| [アダプティブ カード](/adaptive-cards/get-started/bots) | テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。  [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。 |
 | [アニメーション カード][animationCard] | アニメーション GIF または短い動画を再生できるカード。 |
 | [オーディオ カード][audioCard] | オーディオ ファイルを再生できるカード。 |
 | [ヒーロー カード][heroCard] | 通常 1 つの大きなイメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
@@ -47,25 +47,28 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 | [ビデオ カード][videoCard] | 動画を再生できるカード。 |
 
 > [!TIP]
-> 複数のリッチ カードをリスト形式で表示するには、アクティビティの `AttachmentLayout` プロパティを "list" に設定します。 複数のリッチ カードをカルーセル形式で表示するには、アクティビティの `AttachmentLayout` プロパティを "carousel" に設定します。 カルーセル形式がチャネルでサポートされていない場合、`AttachmentLayout` プロパティに "carousel" が指定されていたとしても、リッチ カードはリスト形式で表示されます。
+> 複数のリッチ カードをリスト形式で表示するには、アクティビティの `AttachmentLayout` プロパティを "list" に設定します。
+> 複数のリッチ カードをカルーセル形式で表示するには、アクティビティの `AttachmentLayout` プロパティを "carousel" に設定します。
+> カルーセル形式がチャネルでサポートされていない場合、`AttachmentLayout` プロパティに "carousel" が指定されていたとしても、リッチ カードはリスト形式で表示されます。
 
 ## <a name="process-events-within-rich-cards"></a>リッチ カード内のイベントを処理する
 
 リッチ カード内のイベントを処理するには、`CardAction` オブジェクトを定義して、ユーザーがボタンをクリックするか、またはカードのセクションをタップしたときのアクションを指定します。 各 `CardAction` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | 種類 | [説明] | 
+| プロパティ | Type | [説明] |
 |----|----|----|
-| 種類 | string | アクションの種類 (下の表に示されている値のいずれか) |
+| Type | string | アクションの種類 (下の表に示されている値のいずれか) |
 | タイトル | string | ボタンのタイトル |
 | Image | string | ボタン用のイメージ URL |
-| 値 | string | 指定された種類のアクションを実行するために必要な値 |
+| Value | string | 指定された種類のアクションを実行するために必要な値 |
 
 > [!NOTE]
-> アダプティブ カード内のボタンは、`CardAction` オブジェクトではなく、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>によって定義されているスキーマを使用して作成されます。 アダプティブ カードにボタンを追加する方法の例については、「[Add an Adaptive Card to a message](#adaptive-card)」(メッセージにアダプティブ カードを追加する) を参照してください。
+> アダプティブ カード内のボタンは、`CardAction` オブジェクトではなく、[アダプティブ カード](http://adaptivecards.io)によって定義されているスキーマを使用して作成されます。
+> アダプティブ カードにボタンを追加する方法の例については、「[Add an Adaptive Card to a message](#adaptive-card)」(メッセージにアダプティブ カードを追加する) を参照してください。
 
 次の表では、`CardAction.Type` において有効な値を一覧すると共に、種類ごとに `CardAction.Value` の想定される内容を説明します。
 
-| CardAction.Type | CardAction.Value | 
+| CardAction.Type | CardAction.Value |
 |----|----|
 | openUrl | 組み込みのブラウザーで開かれる URL |
 | imBack | (ボタンをクリックまたはカードをタップしたユーザーから) ボットに送信されるメッセージのテキスト。 会話の参加者すべてが、会話をホストしているクライアント アプリケーションを介して、このメッセージ (ユーザーからボットへの) を表示することができます。 |
@@ -79,31 +82,33 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 ## <a name="add-a-hero-card-to-a-message"></a>メッセージにヒーロー カードを追加する
 
-通常 1 つの大きなイメージ、1 つまたは複数のボタン、およびテキストが含まれるヒーロー カード。 
+通常 1 つの大きなイメージ、1 つまたは複数のボタン、およびテキストが含まれるヒーロー カード。
 
-次のコード例では、カルーセル形式でレンダリングされた 3 つのヒーロー カードが含まれる応答メッセージを作成する方法を示します。 
+次のコード例では、カルーセル形式でレンダリングされた 3 つのヒーロー カードが含まれる応答メッセージを作成する方法を示します。
 
 [!code-csharp[Add HeroCard attachment](../includes/code/dotnet-add-attachments.cs#addHeroCardAttachment)]
 
 ## <a name="add-a-thumbnail-card-to-a-message"></a>メッセージにサムネイル カードを追加する
 
-通常 1 つのサムネイル イメージ、1 つまたは複数のボタン、およびテキストが含まれるサムネイル カード。 
+通常 1 つのサムネイル イメージ、1 つまたは複数のボタン、およびテキストが含まれるサムネイル カード。
 
-次のコード例では、リスト形式でレンダリングされた 2 つのサムネイル カードが含まれる応答メッセージを作成する方法を示します。 
+次のコード例では、リスト形式でレンダリングされた 2 つのサムネイル カードが含まれる応答メッセージを作成する方法を示します。
 
 [!code-csharp[Add ThumbnailCard attachment](../includes/code/dotnet-add-attachments.cs#addThumbnailCardAttachment)]
 
 ## <a name="add-a-receipt-card-to-a-message"></a>メッセージに受信確認カードを追加する
 
-受信確認カードを使用すると、ボットからユーザーに受信確認を提供できるようになります。 通常は、領収書に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。 
+受信確認カードを使用すると、ボットからユーザーに受信確認を提供できるようになります。
+通常は、領収書に含める項目の一覧、税金と合計の情報、およびその他のテキストが含まれます。
 
-次のコード例では、受信確認カードが含まれている応答メッセージを作成する方法を示します。 
+次のコード例では、受信確認カードが含まれている応答メッセージを作成する方法を示します。
 
 [!code-csharp[Add ReceiptCard attachment](../includes/code/dotnet-add-attachments.cs#addReceiptCardAttachment)]
 
 ## <a name="add-a-sign-in-card-to-a-message"></a>メッセージにサインイン カードを追加する
 
-サインイン カードを使用すると、ボットでユーザーのサインインを要求できるようになります。 通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つ以上のボタンが含まれます。 
+サインイン カードを使用すると、ボットでユーザーのサインインを要求できるようになります。
+通常は、テキストと、ユーザーがクリックしてサインイン プロセスを開始できる 1 つ以上のボタンが含まれます。
 
 次のコード例では、サインイン カードが含まれている応答メッセージを作成する方法を示します。
 
@@ -111,11 +116,12 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 ## <a id="adaptive-card"></a> メッセージにアダプティブ カードを追加する
 
-アダプティブ カードには、テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができます。 アダプティブ カードは、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>で指定された JSON 形式を使用して作成され、カードのコンテンツと形式をフル コントロールできます。 
+アダプティブ カードには、テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができます。
+アダプティブ カードは、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>で指定された JSON 形式を使用して作成され、カードのコンテンツと形式をフル コントロールできます。
 
 .NET を使用してアダプティブ カードを作成するには、`AdaptiveCards` NuGet パッケージをインストールします。 次に、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a> サイト内の情報を活用して、アダプティブ カードのスキーマを理解し、アダプティブ カードの要素について調べてください。また、さまざまな構成や複雑さを備えたカードの作成に使用できる JSON のサンプルもご覧ください。 さらに、Interactive Visualizer を使用して、アダプティブ カードのペイロードを設計し、カードの出力をプレビューできます。
 
-次のコード例では、カレンダー アラーム用のアダプティブ カードが含まれるメッセージを作成する方法を示します。 
+次のコード例では、カレンダー アラーム用のアダプティブ カードが含まれるメッセージを作成する方法を示します。
 
 [!code-csharp[Add Adaptive Card attachment](../includes/code/dotnet-add-attachments.cs#addAdaptiveCardAttachment)]
 
@@ -134,17 +140,11 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 - <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment クラス</a>
 
 [animationCard]: /dotnet/api/microsoft.bot.connector.animationcard
-
-[audioCard]: /dotnet/api/microsoft.bot.connector.audiocard 
-
-[heroCard]: /dotnet/api/microsoft.bot.connector.herocard 
-
-[thumbnailCard]: /dotnet/api/microsoft.bot.connector.thumbnailcard 
-
-[receiptCard]: /dotnet/api/microsoft.bot.connector.receiptcard 
-
-[signinCard]: /dotnet/api/microsoft.bot.connector.signincard 
-
+[audioCard]: /dotnet/api/microsoft.bot.connector.audiocard
+[heroCard]: /dotnet/api/microsoft.bot.connector.herocard
+[thumbnailCard]: /dotnet/api/microsoft.bot.connector.thumbnailcard
+[receiptCard]: /dotnet/api/microsoft.bot.connector.receiptcard
+[signinCard]: /dotnet/api/microsoft.bot.connector.signincard
 [videoCard]: /dotnet/api/microsoft.bot.connector.videocard
 
 [inspector]: ../bot-service-channels-reference.md

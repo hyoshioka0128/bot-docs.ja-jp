@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 01/24/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 12863035f0fbe361d75d12021a5bdca5f740b1aa
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 77222da10d69e6ad9a029a3548da66bd1a1806a2
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798386"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895673"
 ---
 # <a name="send-proactive-notifications-to-users"></a>ユーザーへのプロアクティブな通知の送信
 
@@ -87,7 +87,7 @@ ms.locfileid: "75798386"
 ボットの通知ページが要求されるたびに、通知コントローラーは、ディクショナリから会話の参照を取得します。
 次に、コントローラーは `ContinueConversationAsync` メソッドと `BotCallback` メソッドを使用して、プロアクティブ メッセージを送信します。
 
-[!code-csharp[Notify logic](~/../botbuilder-samples/samples/csharp_dotnetcore/16.proactive-messages/Controllers/NotifyController.cs?range=17-60&highlight=28,40-43)]
+[!code-csharp[Notify logic](~/../botbuilder-samples/samples/csharp_dotnetcore/16.proactive-messages/Controllers/NotifyController.cs?range=17-62&highlight=28,40-44)]
 
 プロアクティブ メッセージを送信するには、アダプターにボット用のアプリ ID が必要です。 ボットのアプリ ID は、運用環境で使用できます。 ローカル テスト環境では、任意の GUID を使用できます。 ボットにアプリ ID 割り当てられていない場合は、通知コントローラーによってプレースホルダー ID が自己生成され、これが呼び出しに使用されます。
 
@@ -99,15 +99,14 @@ ms.locfileid: "75798386"
 次に、サーバーは `continueConversation` メソッドを使用して、プロアクティブ メッセージを送信します。
 `continueConversation` のパラメーターは、このターンのボットのターン ハンドラーとして機能する関数です。
 
-[!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=68-80&highlight=4-6)]
-
+[!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=68-82&highlight=4-8)]
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 ボットの通知ページが要求されるたびに、サーバーは、ディクショナリから会話の参照を取得します。
 次に、サーバーは `_send_proactive_message` を使用して、プロアクティブ メッセージを送信します。
 
-**app.py** [!code-python[Notify logic](~/../botbuilder-python/samples/python/16.proactive-messages/app.py?range=104-110&highlight=3-7)]
+[!code-python[Notify logic](~/../botbuilder-python/samples/python/16.proactive-messages/app.py?range=97-105&highlight=5-9)]
 
 ---
 
@@ -122,19 +121,19 @@ ms.locfileid: "75798386"
 
 この記事のサンプル以外の追加サンプルについては、[GitHub](https://github.com/Microsoft/BotBuilder-Samples/) の C# および JS で入手できます。
 
-### <a name="avoiding-401-unauthorized-errors"></a>401 "未承認" エラーの防止 
+### <a name="avoiding-401-unauthorized-errors"></a>401 "未承認" エラーの防止
 
 BotAuthentication によって受信要求が認証されている場合、既定では、BotBuilder SDK は、信頼されたホスト名の一覧に `serviceUrl` を追加します。 これらはメモリ内キャッシュに保持されています。 お使いのボットを再起動すると、再起動したボットにもう一度情報を伝達しない限り、プロアクティブ メッセージを待っているユーザーがそのメッセージを受信できません。
 
-これを回避するには、次を使用して、信頼されたホスト名の一覧に `serviceUrl` を手動で追加する必要があります。 
+これを回避するには、次を使用して、信頼されたホスト名の一覧に `serviceUrl` を手動で追加する必要があります。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-```csharp 
-MicrosoftAppCredentials.TrustServiceUrl(serviceUrl); 
-``` 
+```csharp
+MicrosoftAppCredentials.TrustServiceUrl(serviceUrl);
+```
 
-プロアクティブなメッセージングについては、`serviceUrl` はプロアクティブ メッセージの受信者が使用しているチャネルの URL で、`Activity.ServiceUrl` にあります。 
+プロアクティブなメッセージングについては、`serviceUrl` はプロアクティブ メッセージの受信者が使用しているチャネルの URL で、`Activity.ServiceUrl` にあります。
 
 上記のコードを、プロアクティブ メッセージを送信するコードの直前に追加します。 [プロアクティブ メッセージ サンプル](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/16.proactive-messages)では、`NotifyController.cs` 内で `await turnContext.SendActivityAsync("proactive hello");` の直前に配置します。
 
