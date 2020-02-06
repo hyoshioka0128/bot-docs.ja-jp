@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fca68b09632c89cd027d012a92fe99e186324f70
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 14ce46852e31d347572cbc979fdcd76087452290
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798376"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895722"
 ---
 # <a name="handle-user-interruptions"></a>ユーザーによる割り込みを処理する
 
@@ -31,7 +31,7 @@ ms.locfileid: "75798376"
 
 この記事のサンプルでは、ダイアログを使用してユーザーからフライト情報を取得する航空券予約ボットをモデル化します。 ボットとの会話中、ユーザーはいつでも _help_ コマンドまたは _cancel_ コマンドを発行できます。 ここでは 2 種類の中断を処理します。
 
-- **ターン レベル**: ターン レベルで処理をバイパスしますが、スタック上のダイアログはそのままで、提供された情報は保持されます。 次のターンで、中断された場所から再開されます。 
+- **ターン レベル**: ターン レベルで処理をバイパスしますが、スタック上のダイアログはそのままで、提供された情報は保持されます。 次のターンで、中断された場所から再開されます。
 - **ダイアログ レベル**: 処理が完全にキャンセルされるため、ボットは最初からやり直すことができます。
 
 ## <a name="define-and-implement-the-interruption-logic"></a>中断ロジックを定義して実装する
@@ -76,12 +76,12 @@ ms.locfileid: "75798376"
 
 ユーザーが「cancel」と入力すると、内部ダイアログ コンテキストで `cancelAllDialogs` が呼び出され、そのダイアログ スタックがクリアされ処理が終了します。この場合、取り消し済み状態になり、結果値は返されません。 `MainDialog` (後で説明します) の場合は、予約ダイアログが終了し、null を返したように見えます。これはユーザーが予約を確認しないことを選択した場合の処理と似ています。
 
-[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js??range=20-39)]
-
+[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=20-39)]
 
 ## <a name="pythontabpython"></a>[Python](#tab/python)
 
-ダイアログを使用するには、`botbuilder-dialogs` パッケージをインストールし、サンプルの `requirements.txt` ファイルに `botbuilder-dialogs>=4.5.0` などの適切な参照が含まれていることを確認します。 パッケージのインストールの詳細については、サンプル リポジトリの [README](https://github.com/microsoft/botbuilder-python) ファイルを参照してください。
+ダイアログを使用するには、`botbuilder-dialogs` パッケージをインストールし、サンプルの `requirements.txt` ファイルに `botbuilder-dialogs>=4.5.0` などの適切な参照が含まれていることを確認します。
+パッケージのインストールの詳細については、サンプル リポジトリの [README](https://github.com/microsoft/botbuilder-python) ファイルを参照してください。
 > [!NOTE]
 > `pip install botbuilder-dialogs` を実行すると、`botbuilder-core`、`botbulder-connector`、および `botbuilder-schema` もインストールされます。
 
@@ -175,7 +175,7 @@ ms.locfileid: "75798376"
 
 このサンプルでは、アダプターの `on_error` ハンドラーは、お使いのボットのターン ロジックによってスローされたすべての例外を受け取ります。 例外がスローされると、ハンドラーは、ボットが無効な状態になることでエラー ループに陥らないように、現在の会話の会話状態を削除します。
 
-[!code-python[adapter_with_error_handler](~/../botbuilder-python/samples/python/13.core-bot/adapter_with_error_handler.py?range=15-54)]
+[!code-python[adapter_with_error_handler](~/../botbuilder-python/samples/python/13.core-bot/adapter_with_error_handler.py?range=16-56)]
 
 ---
 
@@ -201,7 +201,7 @@ ms.locfileid: "75798376"
 
 最後に、`index.js` で、ボットが作成されます。
 
-[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=75-78)]
+[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=78-81)]
 
 参照用に、上記のボットを作成するときに呼び出しで使用されるクラスの定義を次に示します。
 
@@ -213,7 +213,7 @@ ms.locfileid: "75798376"
 
 **app.py** 最後に、`app.py` で、ボットが作成されます。
 
-[!code-python[create bot](~/../botbuilder-python/samples/python/13.core-bot/app.py?range=44-48)]
+[!code-python[create bot](~/../botbuilder-python/samples/python/13.core-bot/app.py?range=45-49)]
 
 参照用に、ボットを作成するための呼び出しで使用されるクラスの定義を次に示します。
 

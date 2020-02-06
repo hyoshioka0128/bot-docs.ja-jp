@@ -7,33 +7,35 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 01/24/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: eda82d8b929282fe322c0b28cc4683396ae26dbc
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 8d681d8ce30ed5f5bce0a424ffb0b1ecfe865155
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798207"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895774"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
-ユーザーの真意を会話と文脈から理解する能力は難しいタスクかもしれませんが、より自然な会話の印象をボットに与えることができます。 そうした能力は LUIS と呼ばれる Language Understanding によって実現され、ボットがユーザーのメッセージの意図を認識できるように、ユーザーがより自然な言葉を使用できるように、また、会話フローがより適切に管理されるようになります。 このトピックでは、LUIS を航空券予約アプリケーションに追加して、ユーザー入力に含まれるさまざまな意図やエンティティを認識する手順について説明します。 
+ユーザーの真意を会話と文脈から理解する能力は難しいタスクかもしれませんが、より自然な会話の印象をボットに与えることができます。 そうした能力は LUIS と呼ばれる Language Understanding によって実現され、ボットがユーザーのメッセージの意図を認識できるように、ユーザーがより自然な言葉を使用できるように、また、会話フローがより適切に管理されるようになります。 このトピックでは、LUIS を航空券予約アプリケーションに追加して、ユーザー入力に含まれるさまざまな意図やエンティティを認識する手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
+
 - [LUIS](https://www.luis.ai) アカウント
-- この記事のコードは、**コア ボット** サンプルをベースにしています。 サンプルのコピー ( **[C#](https://aka.ms/cs-core-sample)** 、 **[JavaScript](https://aka.ms/js-core-sample)** 、または **[Python](https://aka.ms/python-core-sample)** ) が必要になります。 
+- この記事のコードは、**コア ボット** サンプルをベースにしています。 サンプルのコピー ( **[C#](https://aka.ms/cs-core-sample)** 、 **[JavaScript](https://aka.ms/js-core-sample)** 、または **[Python](https://aka.ms/python-core-sample)** ) が必要になります。
 - [ボットの基本](bot-builder-basics.md)、[自然言語処理](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis)、および[ボット リソースの管理](bot-file-basics.md)に関する知識。
 
 ## <a name="about-this-sample"></a>このサンプルについて
 
-このコア ボットのコード サンプルは、空港の航空券予約アプリケーションの例を示しています。 これは LUIS サービスを使用してユーザー入力を認識し、認識した最上位の LUIS の意図を返します。 
+このコア ボットのコード サンプルは、空港の航空券予約アプリケーションの例を示しています。 これは LUIS サービスを使用してユーザー入力を認識し、認識した最上位の LUIS の意図を返します。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 ユーザー入力の処理が完了するたびに、`DialogBot` では `UserState` と `ConversationState` の両方の現在の状態が保存されます。 必要な情報がすべて収集されると、コード サンプルによりデモの航空券予約が作成されます。 この記事では、このサンプルの LUIS 部分について説明します。 ただし、サンプルの一般的なフローは次のようになります。
 
-- 新しいユーザーが接続され、ようこそカードを表示すると、`OnMembersAddedAsync` が呼び出されます。 
+- 新しいユーザーが接続され、ようこそカードを表示すると、`OnMembersAddedAsync` が呼び出されます。
 - ユーザー入力を受け取るたびに、`OnMessageActivityAsync` が呼び出されます。
 
 ![LUIS サンプル ロジック フロー](./media/how-to-luis/luis-logic-flow.png)
@@ -45,9 +47,10 @@ ms.locfileid: "75798207"
 - `Destination` 到着地
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ユーザー入力の処理が完了するたびに、`dialogBot` では `userState` と `conversationState` の両方の現在の状態が保存されます。 必要な情報がすべて収集されると、コード サンプルによりデモの航空券予約が作成されます。 この記事では、このサンプルの LUIS 部分について説明します。 ただし、サンプルの一般的なフローは次のようになります。
 
-- 新しいユーザーが接続され、ようこそカードを表示すると、`onMembersAdded` が呼び出されます。 
+- 新しいユーザーが接続され、ようこそカードを表示すると、`onMembersAdded` が呼び出されます。
 - ユーザー入力を受け取るたびに、`OnMessage` が呼び出されます。
 
 ![LUIS サンプルの javascript ロジック フロー](./media/how-to-luis/luis-logic-flow-js.png)
@@ -61,9 +64,10 @@ ms.locfileid: "75798207"
 - `travelDate` 航空券の予約日。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
+
 ユーザー入力の処理が完了するたびに、`DialogBot` では `user_state` と `conversation_state` の両方の現在の状態が保存されます。 必要な情報がすべて収集されると、コード サンプルによりデモの航空券予約が作成されます。 この記事では、このサンプルの LUIS 部分について説明します。 ただし、サンプルの一般的なフローは次のようになります。
 
-- 新しいユーザーが接続され、ようこそカードを表示すると、`on_members_added_activity` が呼び出されます。 
+- 新しいユーザーが接続され、ようこそカードを表示すると、`on_members_added_activity` が呼び出されます。
 - ユーザー入力を受け取るたびに、`on_message_activity` が呼び出されます。
 
 ![LUIS サンプル Python ロジック フロー](./media/how-to-luis/luis-logic-flow-python.png)
@@ -79,24 +83,29 @@ ms.locfileid: "75798207"
 ダイアログ、状態などのサンプルの他の側面については、[ダイアログ プロンプトを使用したユーザー入力の収集](bot-builder-prompts.md)に関するページ、「[ユーザーおよび会話データを保存する](bot-builder-howto-v4-state.md)」を参照してください。
 
 ## <a name="create-a-luis-app-in-the-luis-portal"></a>LUIS ポータルでの LUIS アプリの作成
+
 LUIS ポータルにサインインして、ご自身のバージョンのサンプル LUIS アプリを作成します。 アプリケーションは、 **[マイ アプリ]** で作成および管理できます。
 
-1. **[Import new app]\(新しいアプリのインポート\)** を選択します。 
-1. **[Choose App file (JSON format)...]\(アプリ ファイル (JSON 形式) を選択...\)** をクリックします。 
+1. **[Import new app]\(新しいアプリのインポート\)** を選択します。
+1. **[Choose App file (JSON format)...]\(アプリ ファイル (JSON 形式) を選択...\)** をクリックします。
 1. サンプルの `CognitiveModels` フォルダーにある `FlightBooking.json` ファイルを選択します。 **[オプション名]** に、「**FlightBooking**」と入力します。 このファイルには、次の 3 つの意図が含まれています:"Book Flight"、"Cancel"、および "None"。 これらの意図を使って、ユーザーがどのようなつもりでボットに送メッセージを信しているのかを把握します。
 1. アプリを[トレーニング](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-train)します。
 1. アプリを*運用*環境に[発行](https://docs.microsoft.com/azure/cognitive-services/LUIS/publishapp)します。
 
 ### <a name="why-use-entities"></a>エンティティを使用する理由
+
 LUIS エンティティを使うと、標準の意図とは異なる物事やイベントを、お使いのボットがインテリジェントに解釈できるようになります。 これにより、ユーザーから追加情報を収集できるようになり、お使いのボットが、よりインテリジェントに応答したり、ユーザーにその追加情報をたずねる特定の質問をスキップしたりできます。 FlightBooking.json ファイルには、3 つの LUIS の意図である "Book Flight"、"Cancel"、および "None" の定義と共に、"From.Airport" や "To.Airport" などのエンティティのセットも含まれています。 これらのエンティティにより、ユーザーが新しい旅行の予約を要求したときに、LUIS は、そのユーザーの元の入力に含まれる追加情報を検出し、返すことができます。
 
 エンティティ情報が LUIS の結果にどのように表示されるかについては、「[意図とエンティティが含まれる発話テキストからデータを抽出する](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-data-extraction)」を参照してください。
 
 ## <a name="obtain-values-to-connect-to-your-luis-app"></a>LUIS アプリに接続するための値を取得する
+
 LUIS アプリには、その発行後、ボットからアクセスできるようになります。 ボット内から LUIS アプリにアクセスするためには、いくつかの値を記録する必要があります。 その情報は、LUIS ポータルを使用して取得できます。
 
 ### <a name="retrieve-application-information-from-the-luisai-portal"></a>LUIS.ai ポータルからアプリケーション情報を取得する
-設定ファイル (`appsettings.json` または `.env`) は、すべてのサービス参照を 1 か所にまとめる場所として機能します。 取得した情報は、次のセクションでこのファイルに追加されます。 
+
+設定ファイル (`appsettings.json` または `.env`) は、すべてのサービス参照を 1 か所にまとめる場所として機能します。 取得した情報は、次のセクションでこのファイルに追加されます。
+
 1. 発行済みの LUIS アプリを [luis.ai](https://www.luis.ai) から選択します。
 1. 発行済み LUIS アプリを開いた状態で **[管理]** タブを選択します。![LUIS アプリの管理](./media/how-to-luis/manage-luis-app.png)
 1. 左側の **[アプリケーション情報]** タブで、 _[アプリケーション ID]_ に表示される値を <YOUR_APP_ID> として記録します。
@@ -135,13 +144,13 @@ NuGet パッケージ **Microsoft.Bot.Builder.AI.Luis** がプロジェクトに
 
 LUIS サービスに接続するために、ボットは、上記で追加した情報を appsetting.json ファイルからプルします。 `FlightBookingRecognizer` クラスには、appsetting.json ファイルからのユーザーの設定に関するコードが含まれています。このクラスは、`RecognizeAsync` メソッドを呼び出すことで LUIS サービスにクエリを実行します。
 
-**FlightBookingRecognizer.cs**  
+**FlightBookingRecognizer.cs**
 
-[!code-csharp[luisHelper](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/FlightBookingRecognizer.cs?range=12-39)]
+[!code-csharp[luisHelper](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/FlightBookingRecognizer.cs?range=12-48)]
 
 `FlightBookingEx.cs` には、*From*、*To*、および *TravelDate* を抽出するロジックが含まれています。これは、`MainDialog.cs` から `FlightBookingRecognizer.RecognizeAsync<FlightBooking>` を呼び出したときに LUIS の結果を格納するために使用される部分クラス `FlightBooking.cs` を拡張します。
 
-**CognitiveModels\FlightBookingEx.cs**  
+**CognitiveModels\FlightBookingEx.cs**
 
 [!code-csharp[luis helper](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/CognitiveModels/FlightBookingEx.cs?range=8-35)]
 
@@ -153,7 +162,7 @@ LUIS サービスに接続するために、ボットは、上記で追加した
 
 **dialogs/flightBookingRecognizer.js**
 
-[!code-javascript[luis helper](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/dialogs/flightBookingRecognizer.js?range=6-64)]
+[!code-javascript[luis helper](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/dialogs/flightBookingRecognizer.js?range=6-70)]
 
 From、To、および TravelDate を抽出するロジックは、`flightBookingRecognizer.js` 内のヘルパー メソッドとして実装されています。 これらのメソッドは、`mainDialog.js` から `flightBookingRecognizer.executeLuisQuery()` を呼び出した後に使用されます
 
@@ -165,7 +174,7 @@ LUIS サービスに接続するために、ボットは、上記で追加した
 
 **flight_booking_recognizer.py**
 
-[!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/flight_booking_recognizer.py?range=8-32)]
+[!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/flight_booking_recognizer.py?range=10-34)]
 
 *From*、*To*、および *travel_date* を抽出するロジックは、`luis_helper.py` 内の `LuisHelper` クラスのヘルパー メソッドとして実装されています。 これらのメソッドは、`main_dialog.py` から `LuisHelper.execute_luis_query()` を呼び出した後に使用されます
 
@@ -185,7 +194,7 @@ LUIS サービスに接続するために、ボットは、上記で追加した
 
 ![LUIS の予約の入力](./media/how-to-luis/luis-user-travel-input.png)
 
-LUIS から返された最上位の意図が "Book flight" に解決されると、お使いのボットは、旅行の予約を作成するための情報が十分に確保されるまで質問を続けます。 予約を作成できたら、その予約情報をユーザーに返します。 
+LUIS から返された最上位の意図が "Book flight" に解決されると、お使いのボットは、旅行の予約を作成するための情報が十分に確保されるまで質問を続けます。 予約を作成できたら、その予約情報をユーザーに返します。
 
 ![LUIS の予約の結果](./media/how-to-luis/luis-travel-result.png)
 

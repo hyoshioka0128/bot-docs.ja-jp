@@ -7,14 +7,15 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 64df798d363318c2368ea20f57a502c8cd26918c
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: e51d4bcc7059e1130932ca6a8b956dd3b097ef8c
+ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75790093"
+ms.lasthandoff: 01/25/2020
+ms.locfileid: "76752904"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
+
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-rich-card-attachments.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-rich-cards.md)
@@ -27,8 +28,9 @@ ms.locfileid: "75790093"
 
 ## <a name="types-of-rich-cards"></a>リッチ カードの種類
 
-リッチ カードは、タイトル、説明、リンク、およびイメージから構成されます。 メッセージには、リスト形式またはカルーセル形式で表示される複数のリッチ カードを含めることができます。
-Bot Framework では、現在 8 種類のリッチ カードがサポートされています。 
+リッチ カードは、タイトル、説明、リンク、およびイメージから構成されます。
+メッセージには、リスト形式またはカルーセル形式で表示される複数のリッチ カードを含めることができます。
+Bot Framework では、現在 8 種類のリッチ カードがサポートされています。
 
 | カードの種類 | [説明] |
 |----|----|
@@ -47,22 +49,23 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 リッチ カード内のイベントを処理するには、[CardAction][] オブジェクトを使用して、ユーザーがボタンをクリックするか、カードのセクションをタップしたときのアクションを指定します。 各 `CardAction` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | 種類 | [説明] | 
+| プロパティ | Type | [説明] |
 |----|----|----|
 | channelData | string | このアクションに関連付けられているチャネル固有のデータ |
-| displayText | string | ボタンがクリックされた場合にチャット フィードに表示するテキスト | 
-| text | string | アクションのテキスト | 
+| displayText | string | ボタンがクリックされた場合にチャット フィードに表示するテキスト |
+| text | string | アクションのテキスト |
 | 型 | string | アクションの種類 (下の表に示されている値のいずれか) |
 | title | string | ボタンのタイトル |
 | image | string | ボタン用のイメージ URL |
 | value | string | 指定された種類のアクションを実行するために必要な値 |
 
 > [!NOTE]
-> アダプティブ カード内のボタンは、`CardAction` オブジェクトではなく、アダプティブ カードによって定義されているスキーマを使用して作成されます。 アダプティブ カードにボタンを追加する方法の例については、「[Add an Adaptive Card to a message](#add-an-adaptive-card-to-a-message)」(メッセージにアダプティブ カードを追加する) を参照してください。
+> アダプティブ カード内のボタンは、`CardAction` オブジェクトではなく、アダプティブ カードによって定義されているスキーマを使用して作成されます。
+> アダプティブ カードにボタンを追加する方法の例については、「[Add an Adaptive Card to a message](#add-an-adaptive-card-to-a-message)」(メッセージにアダプティブ カードを追加する) を参照してください。
 
 次の表では、`CardAction` オブジェクトの `type` プロパティの有効値と、各種類の `value` プロパティの期待されるコンテンツを説明します。
 
-| 型 | value | 
+| 型 | value |
 |----|----|
 | openUrl | 組み込みのブラウザーで開かれる URL |
 | imBack | (ボタンをクリックまたはカードをタップしたユーザーから) ボットに送信されるメッセージのテキスト。 会話の参加者すべてが、会話をホストしているクライアント アプリケーションを介して、このメッセージ (ユーザーからボットへの) を表示することができます。 |
@@ -84,12 +87,14 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 一部のチャネルでは、メッセージ内の `attachments` 配列に複数のリッチ カードを追加できます。 この機能は、複数のオプションをユーザーに提供するシナリオで役立ちます。 たとえば、ユーザーがホテルの部屋を予約できるボットの場合は、利用可能な部屋の種類を示すリッチ カードの一覧をユーザーに表示できます。 各カードには、部屋の種類に対応する写真とアメニティの一覧を含めることができ、ユーザーは、カードをタップするかボタンをクリックすることで部屋の種類を選択できます。
 
 > [!TIP]
-> 複数のリッチ カードをリスト形式で表示するには、[Activity][] オブジェクトの `attachmentLayout` プロパティを "list" に設定します。 複数のリッチ カードをカルーセル形式で表示するには、`Activity` オブジェクトの `attachmentLayout` プロパティを "carousel" に設定します。 カルーセル形式がチャネルでサポートされていない場合、`attachmentLayout` プロパティに "carousel" が指定されていたとしても、リッチ カードはリスト形式で表示されます。
+> 複数のリッチ カードをリスト形式で表示するには、[Activity][] オブジェクトの `attachmentLayout` プロパティを "list" に設定します。
+> 複数のリッチ カードをカルーセル形式で表示するには、`Activity` オブジェクトの `attachmentLayout` プロパティを "carousel" に設定します。
+> カルーセル形式がチャネルでサポートされていない場合、`attachmentLayout` プロパティに "carousel" が指定されていたとしても、リッチ カードはリスト形式で表示されます。
 
 次の例に、1 つのヒーロー カード添付ファイルを含むメッセージを送信する要求を示します。 この要求の例で、`https://smba.trafficmanager.net/apis` はベース URI を示しています。ご利用のボットによって発行される要求に対するベース URI は、これとは異なる場合があります。 ベース URI の設定の詳細については、[API リファレンス](bot-framework-rest-connector-api-reference.md#base-uri)に関する記事をご覧ください。
 
 ```http
-POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723 
+POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723
 Authorization: Bearer ACCESS_TOKEN
 Content-Type: application/json
 ```
@@ -148,7 +153,8 @@ Content-Type: application/json
 
 ## <a name="add-an-adaptive-card-to-a-message"></a>メッセージにアダプティブ カードを追加する
 
-アダプティブ カードには、テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができます。 アダプティブ カードは、[アダプティブ カード](http://adaptivecards.io)で指定された JSON 形式を使用して作成され、カードのコンテンツと形式をフル コントロールできます。 
+アダプティブ カードには、テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができます。
+アダプティブ カードは、[アダプティブ カード](http://adaptivecards.io)で指定された JSON 形式を使用して作成され、カードのコンテンツと形式をフル コントロールできます。
 
 [アダプティブ カード](http://adaptivecards.io) サイト内の情報を活用して、アダプティブ カードのスキーマを理解し、アダプティブ カードの要素について調べてください。また、さまざまな構成や複雑さを備えたカードの作成に使用できる JSON のサンプルもご覧ください。 さらに、Interactive Visualizer を使用して、アダプティブ カードのペイロードを設計し、カードの出力をプレビューできます。 作業の割り当てに使用される単一のアダプティブ カードの例を次に示します。
 
@@ -273,7 +279,6 @@ Content-Type: application/json
 
 ![アダプティブ カードのカレンダー アラーム](../media/adaptive-card-reminder.png)
 
-
 ## <a name="additional-resources"></a>その他のリソース
 
 - [メッセージの作成](bot-framework-rest-connector-create-messages.md)
@@ -293,4 +298,3 @@ Content-Type: application/json
 [ReceiptCard]: bot-framework-rest-connector-api-reference.md#receiptcard-object
 [SigninCard]: bot-framework-rest-connector-api-reference.md#signincard-object
 [VideoCard]: bot-framework-rest-connector-api-reference.md#videocard-object
-

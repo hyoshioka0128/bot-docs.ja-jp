@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d908b807ca356494dcc808f5bacdb15520938eb0
-ms.sourcegitcommit: caaf394017dbdb1cfaba32e2d0a1e32c5ab71792
+ms.openlocfilehash: 3377c4b3dd93793ca430439d16c6f1d2c635cdbf
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75798244"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895750"
 ---
 # <a name="save-user-and-conversation-data"></a>ユーザーおよび会話データを保存する
 
@@ -103,7 +103,7 @@ ms.locfileid: "75798244"
 
 次に、`UserState` オブジェクトと `ConversationState` オブジェクトの作成に使用する `MemoryStorage` を登録します。 ユーザーおよび会話状態のオブジェクトはスタートアップ時に `app.py` に作成され、依存関係がボット コンストラクターに挿入されます。
 
-**app.py** [!code-python[state](~/../botbuilder-python/samples/python/45.state-management/app.py?range=63-69)]
+**app.py** [!code-python[state](~/../botbuilder-python/samples/python/45.state-management/app.py?range=67-70)]
 
 **bots/state_management_bot.py** [!code-python[state](~/../botbuilder-python/samples/python/45.state-management/bots/state_management_bot.py?range=14-30)]
 

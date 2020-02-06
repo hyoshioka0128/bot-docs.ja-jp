@@ -69,7 +69,7 @@
 ## テスト
 ### [ボットの単体テスト](v4sdk/unit-test-bots.md)
 ### [ボットへのトレース アクティビティの追加](v4sdk/using-trace-activities.md)
-## [デバッグ](debug/TOC.md)
+## [Debug](debug/TOC.md)
 ## 配置
 ### [ボットを Azure にデプロイする](bot-builder-deploy-az-cli.md)
 ### [継続的デプロイを設定する](bot-service-build-continuous-deployment.md)
@@ -78,6 +78,7 @@
 # リファレンス
 ## [.NET SDK v4](https://aka.ms/botframework-v4-cs-sdk)
 ## [JavaScript SDK v4](https://aka.ms/bot-jssdk-v4)
+## [Python SDK v4](https://aka.ms/botframework-v4-python-sdk)
 ## [REST](rest-api/TOC.md)
 ## [.NET SDK v3](https://aka.ms/botframework-v3-cs-sdk)
 ## [Node.js SDK v3](https://aka.ms/bot-jssdk-v3)

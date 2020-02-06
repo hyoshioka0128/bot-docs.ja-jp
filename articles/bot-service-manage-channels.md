@@ -27,7 +27,7 @@ Bot Framework サービスを使用すると、ボットがチャネルに送信
 
 1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
 2. 構成するボットを選択します。
-3. [ボット サービス] ブレードの **[Bot management]\(ボット管理\)** で、 **[チャネル]** をクリックします。
+3. [Bot Service] ブレードの **[Bot management]\(ボット管理\)** で、 **[チャネル]** をクリックします。
 4. ボットに追加するチャネルのアイコンをクリックします。
 
 ![チャネルに接続する](./media/channels/connect-to-channels.png)

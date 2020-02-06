@@ -49,15 +49,18 @@ GitHub を使用する継続的デプロイを有効にするには、Azure port
 
 **AzureAppService** の承認後、Azure portal の**[Deployment Center]**に戻ります。
 
+
 1. **[Continue]\(続行\)** をクリックします。 
 
 1. **[App Service build service]\(App Service のビルド サービス\)** を選択します。
+
 
 1. **[Continue]\(続行\)** をクリックします。
 
 1. **[Organization]** 、 **[Repository]** 、および **[Branch]** を選択します。
 
 1. **[Continue]\(続行\)** をクリックし、 **[Finish]\(完了\)** をクリックして設定を完了します。
+
 
 この時点で、GitHub での継続的デプロイは設定されています。 ソース コード リポジトリにコミットするたびに、変更が Azure Bot Service に自動的にデプロイされます。
 
