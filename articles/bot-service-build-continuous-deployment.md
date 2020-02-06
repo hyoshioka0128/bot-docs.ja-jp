@@ -47,17 +47,20 @@ GitHub を使用する継続的デプロイを有効にするには、Azure port
 
 ![Azure Github のアクセス許可](~/media/azure-bot-build/azure-deployment-github.png)
 
-**AzureAppService** の承認後、Azure portal の**デプロイ センター**に戻ります。
+**AzureAppService** の承認後、Azure portal の**[Deployment Center]**に戻ります。
 
-1. **[Continue]** をクリックします。 
 
-1. **[App Service のビルド サービス]** を選択します。
+1. **[Continue]\(続行\)** をクリックします。 
 
-1. **[Continue]** をクリックします。
+1. **[App Service build service]\(App Service のビルド サービス\)** を選択します。
+
+
+1. **[Continue]\(続行\)** をクリックします。
 
 1. **[Organization]** 、 **[Repository]** 、および **[Branch]** を選択します。
 
-1. **[Continue]** をクリックし、 **[Finish]** をクリックして設定を完了します。
+1. **[Continue]\(続行\)** をクリックし、 **[Finish]\(完了\)** をクリックして設定を完了します。
+
 
 この時点で、GitHub での継続的デプロイは設定されています。 ソース コード リポジトリにコミットするたびに、変更が Azure Bot Service に自動的にデプロイされます。
 
@@ -66,7 +69,7 @@ GitHub を使用する継続的デプロイを有効にするには、Azure port
 ボットが継続的デプロイ用に構成されている間は、オンライン コード エディターを使ってボットを変更することはきません。 オンライン コード エディターを使いたい場合は、継続的デプロイを一時的に無効にできます。
 
 継続的デプロイを無効にするには、次の手順のようにします。
-1. [Azure portal](https://portal.azure.com) 上で、ボットの **[All App service settings]\(すべての App Service の設定\)** ブレードに移動し、 **[デプロイ センター]** をクリックします。 
+1. [Azure portal](https://portal.azure.com) 上で、ボットの **[All App service settings]\(すべての App Service の設定\)** ブレードに移動し、 **[Deployment Center]** をクリックします。 
 1. **[Disconnect]\(切断\)** をクリックして、継続的デプロイを無効化にします。 継続的デプロイを再度有効にするには、上記の該当するセクションの手順を繰り返します。
 
 ## <a name="additional-resources"></a>その他のリソース
