@@ -39,7 +39,7 @@ ms.locfileid: "75789194"
 ## <a name="continuous-deployment-using-github"></a>GitHub を使用した継続的デプロイ
 GitHub を使用する継続的デプロイを有効にするには、Azure portal でご自身のボットの **App Service** ページに移動します。
 
-**[デプロイ センター]**  >  **[GitHub]**  >  **[承認]** をクリックします。
+**[Deployment Center]**  >  **[GitHub]**  >  **[Authorize]** をクリックします。
 
 ![継続的デプロイ](~/media/azure-bot-build/azure-deployment.png)
 
