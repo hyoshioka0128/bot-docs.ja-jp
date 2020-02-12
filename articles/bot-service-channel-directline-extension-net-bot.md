@@ -8,18 +8,18 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 01/16/2020
-ms.openlocfilehash: 04868384268049befd3da7b39582614524542ce9
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: c49a632696ea0708f817f733aff7b2743600ccb6
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895631"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071700"
 ---
 # <a name="configure-net-bot-for-extension"></a>拡張機能のための .NET ボットの構成
 
 [!INCLUDE[applies-to-v4](includes/applies-to.md)]
 
-この記事では、**名前付きパイプ**を使って機能するようにボットを更新する方法、およびボットがホストされている **Azure App Service** リソースで Direct Line App Service 拡張機能を有効にする方法について説明します。  
+この記事では、**名前付きパイプ**を使って機能するようにボットを更新する方法、およびボットがホストされている **Azure App Service** リソースで Direct Line App Service 拡張機能を有効にする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,8 +46,6 @@ ms.locfileid: "76895631"
 
     ```csharp
 
-    using Microsoft.Bot.Builder.StreamingExtensions;
-
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
         if (env.IsDevelopment())
@@ -62,8 +60,8 @@ ms.locfileid: "76895631"
         app.UseDefaultFiles();
         app.UseStaticFiles();
 
-        // Allow bot to use named pipes.
-        app.UseBotFrameworkNamedPipe();
+        // Allow the bot to use named pipes.
+        app.UseNamedPipes();
 
         app.UseMvc();
     }
@@ -106,9 +104,10 @@ ms.locfileid: "76895631"
 
 ## <a name="confirm-direct-line-app-extension-and-the-bot-are-initialized"></a>Direct Line アプリ拡張機能とボットが初期化されていることを確認します
 
-ブラウザーで、 https://<your_app_service>.azurewebsites.net/.bot に移動します。 すべて正しければ、ページは JSON コンテンツ `{"k":true,"ib":true,"ob":true,"initialized":true}` を返します。 これは、**すべてが正常に動作している**場合に取得される情報です。ここでは、次のようになります。
+ブラウザーで、 https://<your_app_service>.azurewebsites.net/.bot に移動します。
+すべて正しければ、ページは JSON コンテンツ `{"k":true,"ib":true,"ob":true,"initialized":true}` を返します。 これは、**すべてが正常に動作している**場合に取得される情報です。ここでは、次のようになります。
 
-- **k** によって、Direct Line App Service 拡張機能 (ASE) がその構成から App Service 拡張機能のキーを読み取れるかどうかを決定します。 
+- **k** によって、Direct Line App Service 拡張機能 (ASE) がその構成から App Service 拡張機能のキーを読み取れるかどうかを決定します。
 - **initialized** によって、Direct Line ASE が App Service 拡張機能キーを使用して Azure Bot Service からボット メタデータをダウンロードできるかどうかを決定します。
 - **ib** によって、Direct Line ASE がボットとの受信接続を確立できるかどうかを決定します。
 - **ob** によって、Direct Line ASE がボットとの送信接続を確立できるかどうかを決定します。
