@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 96669a1f461975978291fe20a15b5c196f475694
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: a4437910cc0de3772ed8959f54f1643bc62abf41
+ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791204"
+ms.lasthandoff: 01/25/2020
+ms.locfileid: "76752894"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>チュートリアル:ボットで QnA Maker を使用して質問に回答する
 
@@ -75,6 +75,7 @@ Authorization: EndpointKey <qna-maker-resource-key>
 ボットでナレッジ ベースを使用できる状態になりました。
 
 ## <a name="add-knowledge-base-information-to-your-bot"></a>ナレッジ ベースの情報をボットに追加する
+
 Bot Framework v4.3 以降、Azure では、ダウンロードされたボットのソース コードの一部として .bot ファイルが提供されなくなりました。 次の手順に従って、CSharp、JavaScript、または Python のボットをナレッジ ベースに接続します。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
@@ -126,10 +127,11 @@ class DefaultConfig:
 
 ---
 
-| フィールド | 値 |
+| フィールド | Value |
 |:----|:----|
-
-| QnAKnowledgebaseId | QnA Maker ポータルで自動的に生成されたナレッジ ベース ID。 | | QnAAuthKey (Python の QnAEndpointKey)  | QnA Maker ポータルで自動的に生成されたエンドポイント キー。 | | QnAEndpointHostName | QnA Maker ポータルで生成されたホスト URL。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。 |
+| QnAKnowledgebaseId | QnA Maker ポータルで自動的に生成されたナレッジ ベース ID。 |
+| QnAAuthKey (Python では QnAEndpointKey)  | QnA Maker ポータルで自動的に生成されエンドポイント キー。 |
+| QnAEndpointHostName | QnA Maker ポータルで生成されたホスト URL。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。 |
 
 編集結果を保存します。
 
