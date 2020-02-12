@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: b9e863e261aa8a5dab0eafeff1e9e39fe97659cb
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 02/07/2020
 ms.locfileid: "75791281"
 ---
 # <a name="send-welcome-message-to-users"></a>ユーザーへのウェルカム メッセージの送信

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/09/2019
-ms.openlocfilehash: d4e29d1349d441d8208800cb534e02320f326bb1
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 3147e202a615e29d51f1e3fa3a9d5d70ed54fe83
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791907"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071740"
 ---
 # <a name="connect-a-bot-to-slack"></a>ボットを Slack に接続する
 
@@ -42,7 +42,7 @@ Slack メッセージング アプリは、次の 2 とおりの方法で構成�
 
 1. **[OAuth & Permissions]\(OAuth とアクセス許可\)** タブを選択します。
 2. **[Add a new Redirect URL]\(新しいリダイレクト URL の追加\)** をクリックします。
-3. 「 https://slack.botframework.com 」と入力します。
+3. 「[https://slack.botframework.com](https://slack.botframework.com)」を入力します。
 4. **[追加]** をクリックします。
 5. **[Save URLs]\(URL の保存\)** をクリックします。
 
