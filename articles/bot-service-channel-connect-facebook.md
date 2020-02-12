@@ -6,13 +6,13 @@ manager: kamrani
 ms.topic: article
 ms.author: kamrani
 ms.service: bot-service
-ms.date: 10/28/2019
-ms.openlocfilehash: c4c2d9fbc048524f7301aabb79e6524a6cd19021
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.date: 01/16/2020
+ms.openlocfilehash: 1361c135d9cb359ad9296e5658e0fc7db4ed3b27
+ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75792140"
+ms.lasthandoff: 01/25/2020
+ms.locfileid: "76752844"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Facebook にボットを接続する
 
@@ -89,7 +89,7 @@ Facebook Messenger を使用して通信するようにボットを構成する�
 
 ボットから Facebook Messenger にメッセージやその他のイベントを送信するには、Webhook 統合を有効にする必要があります。 この時点では、Facebook 設定の手順は保留のままにしておき、後で戻ってきます。
 
-1. ブラウザーで新しいウィンドウを開き、[Azure portal](https://portal.azure.com/) に移動します。 
+1. ブラウザーで新しいウィンドウを開き、[Azure portal](https://portal.azure.com/) に移動します。
 
 1. リソースの一覧でボット リソースの登録をクリックし、関連するブレードで **[チャネル]** をクリックします。
 
@@ -101,7 +101,6 @@ Facebook Messenger を使用して通信するようにボットを構成する�
 
 1. **[保存]** ボタンをクリックします。
 
-
 1. Facebook の設定に戻りましょう。 右側のウィンドウで下にスクロールし、 **[Webhook]** セクションで **[Subscribe To Events]\(イベントのサブスクライブ\)** ボタンをクリックします。 これは、メッセージング イベントを Facebook Messenger からボットに転送するためです。
 
     ![Webhook を有効にする](media/channels/fb-messenger-bot-webhooks.PNG)
@@ -111,6 +110,7 @@ Facebook Messenger を使用して通信するようにボットを構成する�
     ![Webhook を構成する](media/channels/fb-messenger-bot-config-webhooks.png)
 
 1. **[確認して保存]** ボタンをクリックします。
+
 1. Webhook をサブスクライブする Facebook ページを選択します。 **[サブスクライブ]** ボタンをクリックします。
 
     ![Webhook ページを構成する](media/channels/fb-messenger-bot-config-webhooks-page.PNG)
@@ -132,12 +132,12 @@ Facebook には、基本アプリ設定ページの [Privacy Policy URL]\(プラ
 ## <a name="connect-a-bot-to-facebook-workplace"></a>Facebook Workplace にボットを接続する
 
 > [!NOTE]
-> 2019 年 12 月 16 日、Workplace by Facebook ではカスタム統合のセキュリティ モデルを変更しました。  Microsoft Bot Framework v4 を使用して構築された従来の統合は、2020 年 2 月 28 日より前に、以下の手順に従って、Bot Framework Facebook アダプターを使用するよう更新する必要があります。  
+> 2019 年 12 月 16 日に、Workplace by Facebook ではカスタム統合のセキュリティ モデルが変更されました。 Microsoft Bot Framework v4 を使用して構築された従来の統合は、2020 年 2 月 28 日より前に、以下の手順に従って、Bot Framework Facebook アダプターを使用するよう更新する必要があります。
 >
 > Workplace データへの制限付きアクセス (低秘密度のアクセス許可) を使用した統合については、Facebook が認める 2020 年 12 月 31 日までの継続使用の対象と見なされます。ただしその統合が、セキュリティ RFI を実施して合格し、なおかつ、2020 年 1 月 15 日より前に [Direct Support](https://my.workplace.com/work/admin/direct_support) 経由で開発者からアプリの継続使用を要請する連絡があった場合に限られます。
-> 
+>
 > Bot Framework アダプターは、[JavaScript (Node.js)](https://aka.ms/botframework-workplace-adapter) および [C# (.NET)](https://aka.ms/bf-workplace-csharp) のボット向けに提供されています。
- 
+
 Facebook Workplace は、従業員が簡単に接続して共同作業できる Facebook のビジネス指向バージョンです。 これには、ライブ動画、ニュース フィード、グループ、Messenger、リアクション、検索、およびトレンドの投稿が含まれています。 また、以下もサポートします。
 
 - 分析と統合。 企業が Workplace を既存の IT システムと統合するために使用する分析、統合、シングルサインオン、および ID プロバイダーを備えたダッシュボード。
@@ -188,9 +188,11 @@ Facebook Workplace については、[Workplace ヘルプ センター](https://
 前に Facebook Workplace からコピーした **Facebook アプリ ID**、**Facebook アプリ シークレット**、**ページ アクセス トークン**の各値を使用して、自分のボットの appsettings.json を更新する必要があります。 従来のページ ID ではなく、その **[About]\(詳細\)** ページの統合名の後に続く番号を使用します。 [JavaScript (Node.js)](https://aka.ms/botframework-workplace-adapter) または [C# (.NET)](https://aka.ms/bf-workplace-csharp) で、これらの手順に従ってボットのソース コードを更新してください。
 
 ### <a name="submit-for-review"></a>確認用に送信する
+
 詳細については、「**Facebook Messenger にボットを接続する**」セクションと [Workplace の開発者向けドキュメント](https://developers.facebook.com/docs/workplace)を参照してください。
 
 ### <a name="make-the-app-public-and-publish-the-page"></a>アプリを発行してページを発行する
+
 詳細については、「**Facebook Messenger にボットを接続する**」セクションを参照してください。
 
 ### <a name="setting-the-api-version"></a>API バージョンを設定する
@@ -201,24 +203,25 @@ Facebook Workplace については、[Workplace ヘルプ センター](https://
 
 ## <a name="connect-a-bot-to-facebook-using-the-facebook-adapter"></a>Facebook アダプターを使用してボットを Facebook に接続する
 
-Facebook にボットを接続するには、Azure Bot Service で用意されているチャネルを使用するほかに、Facebook アダプターを使用する方法があります。 この記事では、アダプターを使用してボットを Facebook に接続する方法について説明します。  この記事では、Facebook に接続するよう EchoBot サンプルに変更を加える手順を解説します。
+ボットを Facebook Workplace に接続するには、Bot Framework Facebook アダプターを使用します。 Facebook Messenger に接続するには、Facebook チャネルまたは Facebook アダプターを使用します。
+Facebook アダプターは、[JavaScript (Node.js)](https://aka.ms/botframework-workplace-adapter) および [C# (.NET)](https://aka.ms/bf-workplace-csharp) のボット向けに提供されています。
 
-> [!NOTE]
-> 以下の手順では、Facebook アダプターの C# 実装について説明しています。 JS アダプター (BotKit ライブラリに含まれます) の使用手順については、[BotKit Facebook のドキュメント](https://botkit.ai/docs/v4/platforms/facebook.html)を参照してください。
+この記事では、アダプターを使用してボットを Facebook に接続する方法について説明します。  この記事では、Facebook に接続するよう EchoBot サンプルに変更を加える手順を解説します。
+
+以下の手順では、Facebook アダプターの C# 実装について説明しています。 JavaScript アダプター (BotKit ライブラリに含まれます) の使用手順については、[BotKit Facebook のドキュメント](https://botkit.ai/docs/v4/platforms/facebook.html)を参照してください。
 
 ### <a name="prerequisites"></a>前提条件
 
-* [EchoBot サンプル コード](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/02.echo-bot)
-
-* Facebook for Developers アカウント。 アカウントをお持ちでない場合は、[こちらで作成](https://developers.facebook.com)できます。
+- [EchoBot サンプル コード](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/02.echo-bot)
+- Facebook for Developers アカウント。 アカウントをお持ちでない場合は、[こちらで作成](https://developers.facebook.com)できます。
 
 ### <a name="create-a-facebook-app-page-and-gather-credentials"></a>Facebook アプリとページを作成し、資格情報を収集する
 
-1. [https://developers.facebook.com](https://developers.facebook.com) にログインします。 メイン メニューの **[My Apps]\(マイ アプリ\)** をクリックし、ドロップ ダウン メニューの **[Create App]\(アプリの作成\)** をクリックします。 
+1. [https://developers.facebook.com](https://developers.facebook.com) にログインします。 メイン メニューの **[My Apps]\(マイ アプリ\)** をクリックし、ドロップ ダウン メニューの **[Create App]\(アプリの作成\)** をクリックします。
 
 ![アプリを作成する](media/bot-service-channel-connect-facebook/create-app-button.png)
 
-2. 表示されたポップアップ ウィンドウで新しいアプリの名前を入力し、 **[Create App ID]\(アプリ ID の作成\)** をクリックします。 
+1. 表示されたポップアップ ウィンドウで新しいアプリの名前を入力し、 **[Create App ID]\(アプリ ID の作成\)** をクリックします。
 
 ![アプリの名前を定義する](media/bot-service-channel-connect-facebook/app-name.png)
 
@@ -226,17 +229,17 @@ Facebook にボットを接続するには、Azure Bot Service で用意され�
 
 1. アプリの作成後、設定可能な製品が一覧表示されます。 **Messenger** 製品の横にある **[Set Up]\(設定\)** ボタンをクリックします。
 
-2. 次に、新しいアプリを Facebook ページに関連付ける必要があります (使用したい既存のページがない場合は、 **[Access Tokens]\(アクセス トークン\)** セクションの **[Create New Page]\(ページの新規作成\)** をクリックして作成できます)。 **[Add or Remove Pages]\(ページの追加または削除\)** をクリックして、アプリの関連付け先のページを選択し、 **[Next]\(次へ\)** をクリックします。 **[Manage and access Page conversations on Messenger]\(Messenger におけるページの会話に対する管理とアクセス\)** 設定を有効のままにして、 **[Done]\(完了\)** をクリックします。
+1. 次に、新しいアプリを Facebook ページに関連付ける必要があります (使用したい既存のページがない場合は、 **[Access Tokens]\(アクセス トークン\)** セクションの **[Create New Page]\(ページの新規作成\)** をクリックして作成できます)。 **[Add or Remove Pages]\(ページの追加または削除\)** をクリックして、アプリの関連付け先のページを選択し、 **[Next]\(次へ\)** をクリックします。 **[Manage and access Page conversations on Messenger]\(Messenger におけるページの会話に対する管理とアクセス\)** 設定を有効のままにして、 **[Done]\(完了\)** をクリックします。
 
 ![Messenger を設定する](media/bot-service-channel-connect-facebook/app-page-permissions.png)
 
-3. 自分のページを関連付けたら、 **[Generate Token]\(トークンの生成\)** ボタンをクリックして、ページ アクセス トークンを生成します。  このトークンを書き留めてください。後続の手順でボット アプリケーションを構成する際に必要になります。
+1. 自分のページを関連付けたら、 **[Generate Token]\(トークンの生成\)** ボタンをクリックして、ページ アクセス トークンを生成します。  このトークンを書き留めてください。後続の手順でボット アプリケーションを構成する際に必要になります。
 
 #### <a name="obtain-your-app-secret"></a>アプリ シークレットを取得する
 
 1. 左側のメニューの **[Settings]\(設定\)** をクリックし、 **[Basic]\(基本\)** をクリックして、自分のアプリの基本設定ページに移動します。
 
-2. 基本設定ページで、 **[App Secret]\(アプリ シークレット\)** の横にある **[Show]\(表示\)** ボタンをクリックします。  このシークレットを書き留めてください。後続の手順で自分のボット アプリケーションを構成する際に必要になります。 
+1. 基本設定ページで、 **[App Secret]\(アプリ シークレット\)** の横にある **[Show]\(表示\)** ボタンをクリックします。  このシークレットを書き留めてください。後続の手順で自分のボット アプリケーションを構成する際に必要になります。
 
 ### <a name="wiring-up-the-facebook-adapter-in-your-bot"></a>ボットに Facebook アダプターを接続する
 
@@ -334,18 +337,17 @@ public void ConfigureServices(IServiceCollection services)
 この手順を実行するために、[ボットを Azure にデプロイ](https://aka.ms/bot-builder-deploy-az-cli)し、そのデプロイしたボットの URL を書き留めてください。
 
 > [!NOTE]
-> ボットを Azure にデプロイする準備が整っていない場合や、Facebook アダプターを使用している状態でボットをデバッグしたい場合は、[ngrok](https://www.ngrok.com) (Bot Framework エミュレーターを過去に使用したことがある場合は、既にインストールされている可能性があります) などのツールを使用して、ローカルで実行されているボットにトンネル接続し、そのパブリック アクセス用の URL を取得してください。 
-> 
+> ボットを Azure にデプロイする準備が整っていない場合や、Facebook アダプターを使用している状態でボットをデバッグしたい場合は、[ngrok](https://www.ngrok.com) (Bot Framework エミュレーターを過去に使用したことがある場合は、既にインストールされている可能性があります) などのツールを使用して、ローカルで実行されているボットにトンネル接続し、そのパブリック アクセス用の URL を取得してください。
+>
 > ngrok トンネルを作成して自分のボットへの URL を取得したい場合は、ターミナル ウィンドウで次のコマンドを使用します (これは、ローカル ボットがポート 3978 で実行されていることを想定しています。それとは異なるポートでボットが実行されている場合は、コマンド内のポート番号を変更してください)。
-> 
-> ```
+>
+> ```cmd
 > ngrok.exe http 3978 -host-header="localhost:3978"
 > ```
 
 #### <a name="add-facebook-app-settings-to-your-bots-configuration-file"></a>ボットの構成ファイルに Facebook アプリの設定を追加する
 
 次に示す設定を自分のボット プロジェクトの appSettings.json ファイルに追加します。 **FacebookAppSecret** と **FacebookAccessToken** は、Facebook アプリを作成、構成するときに収集した値を使用して設定してください。 **FacebookVerifyToken** は自分で生成したランダム文字列である必要があります。これは、自分のボットのエンドポイントが Facebook によって呼び出されたときに、その正当性を保証する目的で使用されます。
-
 
 ```json
   "FacebookVerifyToken": "",
@@ -361,22 +363,22 @@ public void ConfigureServices(IServiceCollection services)
 
 1. 自分のアプリのダッシュボード内で、左側のメニューの **[Messenger]** をクリックし、 **[Settings]\(設定\)** をクリックします。
 
-2. **[Webhooks]\(Webhook\)** セクションで、 **[Add Callback URL]\(コールバック URL の追加\)** をクリックします。
+1. **[Webhooks]\(Webhook\)** セクションで、 **[Add Callback URL]\(コールバック URL の追加\)** をクリックします。
 
-3. **[Callback URL]\(コールバック URL\)** ボックスに、自分のボットの URL と、新しく作成したコントローラーで指定した `api/facebook` エンドポイントを入力します。 たとえば、「 `https://yourboturl.com/api/facebook` 」のように入力します。 先ほど作成して自分のボット アプリケーションの appSettings.json ファイルで使用した確認トークンを、 **[Verify Token]\(トークンの確認\)** ボックスに入力します。
+1. **[Callback URL]\(コールバック URL\)** ボックスに、自分のボットの URL と、新しく作成したコントローラーで指定した `api/facebook` エンドポイントを入力します。 たとえば、「 `https://yourboturl.com/api/facebook` 」のように入力します。 先ほど作成して自分のボット アプリケーションの appSettings.json ファイルで使用した確認トークンを、 **[Verify Token]\(トークンの確認\)** ボックスに入力します。
 
-![コールバック URL を編集する](media/bot-service-channel-connect-facebook/edit-callback-url.png)
+    ![コールバック URL を編集する](media/bot-service-channel-connect-facebook/edit-callback-url.png)
 
-4. **[Verify and Save]\(確認して保存\)** をクリックします。 自分のボットが実行中であることを確認します。Facebook がお客様のアプリケーションのエンドポイントに対して要求を行い、**確認トークン**を使用してそれを検証します。
+1. **[Verify and Save]\(確認して保存\)** をクリックします。 自分のボットが実行中であることを確認します。Facebook がお客様のアプリケーションのエンドポイントに対して要求を行い、**確認トークン**を使用してそれを検証します。
 
-5. コールバック URL が検証されると **[Add Subscriptions]\(サブスクリプションの追加\)** ボタンが表示されるので、それをクリックします。  ポップアップ ウィンドウで次のサブスクリプションを選択して、 **[Save]\(保存\)** をクリックします。
+1. コールバック URL が検証されると **[Add Subscriptions]\(サブスクリプションの追加\)** ボタンが表示されるので、それをクリックします。  ポップアップ ウィンドウで次のサブスクリプションを選択して、 **[Save]\(保存\)** をクリックします。
 
-* **messages**
-* **messaging_postbacks**
-* **messaging_optins**
-* **messaging_deliveries**
+    - **messages**
+    - **messaging_postbacks**
+    - **messaging_optins**
+    - **messaging_deliveries**
 
-![Webhook のサブスクリプション](media/bot-service-channel-connect-facebook/webhook-subscriptions.png)
+    ![Webhook のサブスクリプション](media/bot-service-channel-connect-facebook/webhook-subscriptions.png)
 
 ### <a name="test-your-bot-with-adapter-in-facebook"></a>Facebook のアダプターを使用してボットをテストする
 
@@ -384,22 +386,22 @@ public void ConfigureServices(IServiceCollection services)
 
 1. 自分の Facebook ページに移動します。
 
-2. **[Add a Button]\(ボタンの追加\)** をクリックします。
+1. **[Add a Button]\(ボタンの追加\)** をクリックします。
 
-![ボタンの追加](media/bot-service-channel-connect-facebook/add-button.png)
+    ![ボタンの追加](media/bot-service-channel-connect-facebook/add-button.png)
 
-3. **[Contact You]\(連絡する\)** と **[Send Message]\(メッセージを送信する\)** を選択して、 **[Next]\(次へ\)** をクリックします。
+1. **[Contact You]\(連絡する\)** と **[Send Message]\(メッセージを送信する\)** を選択して、 **[Next]\(次へ\)** をクリックします。
 
-![ボタンの追加](media/bot-service-channel-connect-facebook/button-settings.png)
+    ![ボタンの追加](media/bot-service-channel-connect-facebook/button-settings.png)
 
-4. **"Where would you like this button to send people to? (このボタンをクリックした人をどこに誘導しますか)"** と聞かれたら、 **[Messenger]** を選択し、 **[Finish]\(完了\)** をクリックします。
+1. **"Where would you like this button to send people to? (このボタンをクリックした人をどこに誘導しますか)"** と聞かれたら、 **[Messenger]** を選択し、 **[Finish]\(完了\)** をクリックします。
 
-![ボタンの追加](media/bot-service-channel-connect-facebook/button-settings-2.png)
+    ![ボタンの追加](media/bot-service-channel-connect-facebook/button-settings-2.png)
 
-5. 新しい **[Send Message]\(メッセージの送信\)** ボタンが Facebook ページに表示されるので、そこにマウス ポインターを合わせ、ポップアップ メニューから **[Test Button]\(ボタンのテスト\)** をクリックします。  これにより、自分のアプリとの間で Facebook Messenger を介した新しい会話が開始され、自分のボットへのメッセージ送信をテストすることができます。 ボットはメッセージを受信すると、そのメッセージのテキストをエコーする形でメッセージを返します。
+1. 新しい **[Send Message]\(メッセージの送信\)** ボタンが Facebook ページに表示されるので、そこにマウス ポインターを合わせ、ポップアップ メニューから **[Test Button]\(ボタンのテスト\)** をクリックします。  これにより、自分のアプリとの間で Facebook Messenger を介した新しい会話が開始され、自分のボットへのメッセージ送信をテストすることができます。 ボットはメッセージを受信すると、そのメッセージのテキストをエコーする形でメッセージを返します。
 
 この機能のテストには、[Facebook アダプターのサンプル ボット](https://aka.ms/csharp-61-facebook-adapter-sample)を使用することもできます。上記の手順で説明したのと同じ値を appSettings.json ファイルに設定してください。
 
 ## <a name="see-also"></a>参照
 
-- **サンプル コード**。 <a href="https://aka.ms/facebook-events" target="_blank">Facebook-events</a> のサンプル ボットを使用して、Facebook Messenger とのボット通信を探索します。
+- **サンプル コード**。 [Facebook-events](https://aka.ms/facebook-events) のサンプル ボットを使用して、Facebook Messenger とのボット通信を探索します。

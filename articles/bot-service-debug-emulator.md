@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: c7e6dd48df1c80d7a15e06d3fbb874961d3e6aec
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 4828888d2b90cda6854f4195a6bc60f60538820c
+ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75792866"
+ms.lasthandoff: 01/25/2020
+ms.locfileid: "76752834"
 ---
 # <a name="debug-with-the-emulator"></a>エミュレーターを使用したデバッグ
 
@@ -110,6 +110,13 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 ### <a name="use-bot-credentials"></a>ボットの資格情報を使用
 
 ボットを開いたときに、ボットが資格情報を使用して実行されている場合は、**Microsoft アプリ ID** および **Microsoft アプリ パスワード**を設定します。 Azure Bot Service でボットを作成した場合、資格情報はそのボットの App Service ( **[設定] -> [構成]** セクションの下) で使用できます。 値がわからない場合は、ローカルで実行されているボットの構成ファイルからそれを削除してから、ボットをエミュレーターで実行できます。 ボットがこれらの設定で実行されていない場合は、その設定でエミュレーターを実行する必要もありません。 
+
+AD ID プロバイダー アプリケーションを作成する場合は次の点に注意してください。
+
+- サポートされるアカウントの種類がシングル テナントに設定されている場合に、Microsoft アカウントではなく個人用サブスクリプションを使用すると、エミュレーターに次のエラーが表示されます。*The bot's Microsoft App ID or Microsoft App Password is incorrect.\(ボットの Microsoft アプリ ID または Microsoft アプリ パスワードが正しくありません。\)* 
+- この場合、サポートされているアカウントの種類を *[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人用の Microsoft アカウント (Skype、Xbox など)\)* に設定する必要があります。
+
+詳細については、「[Azure AD ID プロバイダー アプリケーションを作成する](bot-builder-tutorial-authentication.md#create-an-azure-ad-identity-provider-application)」を参照してください。
 
 ## <a name="view-detailed-message-activity-with-the-inspector"></a>インスペクターを利用してメッセージ アクティビティの詳細を表示する
 

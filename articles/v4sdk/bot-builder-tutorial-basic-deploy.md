@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 01/28/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fadc7410925d337a518129736c9374035fe2114d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: f4df5e10b545d1c2cf0137400e571d8a45aa465a
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791214"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895780"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>チュートリアル:基本的なボットを作成してデプロイする
 
@@ -51,6 +51,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 [!INCLUDE [deploy prerequisite](~/includes/deploy/snippet-prerequisite.md)]
 
 ### <a name="prepare-for-deployment"></a>展開を準備する
+
+> [!TIP]
+> この手順では ZIP ファイルを使用してボットをデプロイします。 C# では、ビルド時のソリューション構成が**デバッグ**に設定されていると、この手順が失敗する場合があります。
+> 続行する前に、Visual Studio でソリューション構成が**リリース**に設定されていることを確認し、ソリューションのクリーン リビルドを実行してください。
+
 [!INCLUDE [deploy prepare intro](~/includes/deploy/snippet-prepare-deploy-intro.md)]
 
 #### <a name="1-login-to-azure"></a>1.Azure にログインする

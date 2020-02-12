@@ -7,14 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/22/2019
+ms.date: 01/27/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0d57ff8bf62625ceef6fc2c0f75c492b32dd2014
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: bea377055010077d964f639518556e12e212f1ad
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791194"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895708"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -284,7 +284,7 @@ npm install --save dotenv
 
 ### <a name="manually-update-your-env-file"></a>.env ファイルを手動で更新する
 
-すべてのサービス アプリが作成されたら、それぞれの情報を ".env" ファイルに追加する必要があります。 初期 [JavaScript サンプル][js-sample] コードには、空の .env ファイルが含まれています。 
+すべてのサービス アプリが作成されたら、それぞれの情報を ".env" ファイルに追加する必要があります。 初期 [JavaScript サンプル][js-sample] コードには、空の .env ファイルが含まれています。
 
 **.env**  
 [!code-file[EmptyEnv](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/.env?range=1-10)]
@@ -321,13 +321,14 @@ pip install botbuilder-ai
 ```
 
 ### <a name="manually-update-your-configpy-file"></a>config.py ファイルを手動で更新する
-すべてのサービス アプリが作成されたら、それぞれの情報を "config.py" ファイルに追加する必要があります。 この最初の [Python サンプル][python-sample] コードには、空の config.py ファイルが含まれています。 
+すべてのサービス アプリが作成されたら、それぞれの情報を "config.py" ファイルに追加する必要があります。 この最初の [Python サンプル][python-sample] コードには、空の config.py ファイルが含まれています。
 
 **config.py**
 
 [!code-python[config.py](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/config.py?range=10-24)]
 
 次に示すエンティティごとに、前の手順で記録した値を追加します。
+
 ```python
 APP_ID = os.environ.get("MicrosoftAppId", "")
 APP_PASSWORD = os.environ.get("MicrosoftAppPassword", "")
@@ -341,13 +342,14 @@ LUIS_API_KEY = os.environ.get("LuisAPIKey", "<your-luis-endpoint-key>")
 # LUIS endpoint host name, ie "westus.api.cognitive.microsoft.com"
 LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-region>")
 ```
+
 すべての変更が完了したら、このファイルを保存します。
 
 ---
 
 ### <a name="connect-to-the-services-from-your-bot"></a>ボットからサービスに接続する
 
-Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使いのボットによって、前に指定した設定ファイル (`appsettings.json` ファイルまたは `.env` ファイルのいずれか) から情報がプルされます。
+Dispatch、LUIS、および QnA Maker サービスに接続するために、ボットは設定ファイルから情報をプルします。
 
 ## <a name="ctabcs"></a>[C#](#tab/cs)
 
@@ -355,7 +357,7 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 
 **BotServices.cs**
 
-[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=16-31)]
+[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-45)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
@@ -366,11 +368,12 @@ Dispatch、LUIS、QnA Maker の各サービスに接続するために、お使�
 [!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-26)]
 
 ## <a name="pythontabpython"></a>[Python](#tab/python)
+
 **dispatch_bot.py** では、ディスパッチ ボットを _QnAMaker_ および _LuisRecognizer_ サービスに接続するために、構成ファイル _config.py_ 内に含まれている情報が使用されます。 コンストラクターでは、ご自身で指定した値が、これらのサービスへの接続に使用されます。
 
 **bots/dispatch_bot.py**
 
-[!code-python[ReadConfigurationInfo](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=14-30)]
+[!code-python[ReadConfigurationInfo](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=14-34)]
 
 ---
 

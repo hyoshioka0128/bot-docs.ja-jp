@@ -1,32 +1,32 @@
 ---
 title: ボットを Webex Teams に接続する | Microsoft Docs
-description: Slack アダプターを介してボットから Webex への接続を構成する方法について説明します。
+description: Webex アダプターを介してボットから Webex への接続を構成する方法について説明します。
 keywords: ボット アダプター, Webex, Webex ボット
 author: garypretty
 manager: kamrani
 ms.topic: article
 ms.author: gapretty
 ms.service: bot-service
-ms.date: 12/04/2019
-ms.openlocfilehash: 590a4e3d4f2331580bb1fd823bdcd7a00f5efaab
-ms.sourcegitcommit: 86495b597e55c94309a0c73fc1945a3393ddcbbf
+ms.date: 01/21/2020
+ms.openlocfilehash: 2bf7d99d221a2e48c938c66fb7bef5c1e143f47f
+ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75757306"
+ms.lasthandoff: 01/25/2020
+ms.locfileid: "76752804"
 ---
 # <a name="connect-a-bot-to-webex-teams-using-the-webex-adapter"></a>Webex アダプターを使用して Webex Teams にボットを接続する
 
 この記事では、SDK で提供されるアダプターを使用して、Webex にボットを接続する方法について説明します。  この記事では、Webex アプリに接続するよう EchoBot サンプルに変更を加える手順を解説します。
 
 > [!NOTE]
-> 以下の手順では、Slack アダプターの C# 実装について説明しています。 JS アダプター (BotKit ライブラリに含まれます) の使用手順については、[BotKit Slack のドキュメント](https://botkit.ai/docs/v4/platforms/webex.html)を参照してください。
+> 以下の手順では、Webex アダプターの C# 実装について説明しています。 JavaScript 実装 (BotKit ライブラリに含まれます) の使用手順については、[BotKit Webex のドキュメント](https://botkit.ai/docs/v4/platforms/webex.html)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [EchoBot サンプル コード](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/02.echo-bot)
 
-* [https://developer.webex.com/my-apps](https://developer.webex.com/my-apps) でログインしてアプリケーションを作成または管理するのに十分なアクセス許可で、Webex チームにアクセスします。 Webex チームへのアクセス権がない場合は、 https://www.webex.com で無料のアカウントを作成できます。
+* [https://developer.webex.com/my-apps](https://developer.webex.com/my-apps) でログインしてアプリケーションを作成または管理するのに十分なアクセス許可で、Webex チームにアクセスします。 Webex チームへのアクセス権がない場合は、[www.webex.com](https://www.webex.com) で無料のアカウントを作成できます。
 
 ## <a name="create-a-webex-bot-app"></a>Webex ボット アプリを作成する
 
@@ -36,13 +36,13 @@ ms.locfileid: "75757306"
 
 3. 次の画面で、ボットの適切な名前、ユーザー名、説明を入力し、アイコンを選ぶか、ご自身の画像をアップロードします。
 
-![ボットを設定する](~/media/bot-service-adapter-connect-webex/create-bot.png)
+    ![ボットを設定する](~/media/bot-service-adapter-connect-webex/create-bot.png)
 
-[Add bot]\(ボットの追加\) ボタンをクリックします。
+    [Add bot]\(ボットの追加\) ボタンをクリックします。
 
 4. 次のページで、新しい Webex アプリのアクセス トークンが提供されるので、そのトークンを書き留めてください。ボットを構成する際に必要になります。
 
-![ボットを設定する](~/media/bot-service-adapter-connect-webex/create-bot-settings.png)
+    ![ボットを設定する](~/media/bot-service-adapter-connect-webex/create-bot-settings.png)
 
 ## <a name="wiring-up-the-webex-adapter-in-your-bot"></a>ボットに Webex アダプターを接続する
 
@@ -111,7 +111,7 @@ public class WebexController : ControllerBase
 自分の Startup.cs ファイル内の ***ConfigureServices*** メソッドに次の行を追加します。これによって Webex アダプターが登録され、新しいコントローラー クラスで利用できるようになります。  次の手順で説明する構成設定が、アダプターによって自動的に使用されます。
 
 ```csharp
-services.AddSingleton<SlackAdapter, WebexAdapterWithErrorHandler>();
+services.AddSingleton<WebexAdapter, WebexAdapterWithErrorHandler>();
 ```
 
 追加後の ***ConfigureServices*** メソッドは次のようになります。
@@ -124,7 +124,7 @@ public void ConfigureServices(IServiceCollection services)
     // Create the default Bot Framework Adapter (used for Azure Bot Service channels and emulator).
     services.AddSingleton<IBotFrameworkHttpAdapter, BotFrameworkAdapterWithErrorHandler>();
 
-    // Create the Slack Adapter
+    // Create the Webex Adapter
     services.AddSingleton<WebexAdapter, WebexAdapterWithErrorHandler>();
 
     // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
@@ -136,12 +136,12 @@ public void ConfigureServices(IServiceCollection services)
 
 1. 自分のボット プロジェクトの appSettings.json ファイルに次の 4 つの設定を追加します。
 
-```json
-  "WebexAccessToken": "",
-  "WebexPublicAddress": "",
-  "WebexSecret": "",
-  "WebexWebhookName": ""
-```
+    ```json
+      "WebexAccessToken": "",
+      "WebexPublicAddress": "",
+      "WebexSecret": "",
+      "WebexWebhookName": ""
+    ```
 
 2. Webex ボット アクセス トークン内の **WebexAccessToken** 設定に、前の手順で自分の Webex ボット アプリを作成する際に生成したものを入力します。 現時点では、他の 3 つの設定は空のままにしておいてください。これらに必要な情報は後続の手順で収集します。
 
@@ -153,31 +153,31 @@ public void ConfigureServices(IServiceCollection services)
 
 1. この手順を実行するために、[ボットを Azure にデプロイ](https://aka.ms/bot-builder-deploy-az-cli)し、そのデプロイしたボットへの URL を書き留めてください。 Webex メッセージングのエンドポイントは、自分のボットの URL です。これは、デプロイされているアプリケーション (または ngrok エンドポイント) の URL に "/api/webex" を追加したものになります (例: `https://yourbotapp.azurewebsites.net/api/webex`)。
 
-> [!NOTE]
-> 自分のボットを Azure にデプロイする準備が整っていない場合や、Webex アダプターを使用している状態でボットをデバッグしたい場合は、[ngrok](https://www.ngrok.com) (Bot Framework エミュレーターを過去に使用したことがある場合は、既にインストールされている可能性があります) などのツールを使用して、ローカルで実行されているボットにトンネル接続し、そのパブリック アクセス用の URL を取得してください。 
-> 
-> ngrok トンネルを作成して自分のボットへの URL を取得したい場合は、ターミナル ウィンドウで次のコマンドを使用します (これは、ローカル ボットがポート 3978 で実行されていることを想定しています。それとは異なるポートでボットが実行されている場合は、コマンド内のポート番号を変更してください)。
-> 
-> ```
-> ngrok.exe http 3978 -host-header="localhost:3978"
-> ```
+    > [!NOTE]
+    > 自分のボットを Azure にデプロイする準備が整っていない場合や、Webex アダプターを使用している状態でボットをデバッグしたい場合は、[ngrok](https://www.ngrok.com) (Bot Framework エミュレーターを過去に使用したことがある場合は、既にインストールされている可能性があります) などのツールを使用して、ローカルで実行されているボットにトンネル接続し、そのパブリック アクセス用の URL を取得してください。
+    >
+    > ngrok トンネルを作成して自分のボットへの URL を取得したい場合は、ターミナル ウィンドウで次のコマンドを使用します (これは、ローカル ボットがポート 3978 で実行されていることを想定しています。それとは異なるポートでボットが実行されている場合は、コマンド内のポート番号を変更してください)。
+    >
+    > ```cmd
+    > ngrok.exe http 3978 -host-header="localhost:3978"
+    > ```
 
 2. [https://developer.webex.com/docs/api/v1/webhooks](https://developer.webex.com/docs/api/v1/webhooks) に移動します。
 
-3. "Update a Webhook" という説明が記載されている PUT メソッドのリンク "https://api.ciscospark.com/v1/webhooks/{webhookId} " をクリックします。 エンドポイントに要求を送信するためのフォームが展開されます。
+3. "Update a Webhook" という説明が記載されている PUT メソッドのリンク `https://api.ciscospark.com/v1/webhooks/{webhookId}` をクリックします。 エンドポイントに要求を送信するためのフォームが展開されます。
 
-![ボットを設定する](~/media/bot-service-adapter-connect-webex/webex-webhook-put-endpoint.png)
+    ![ボットを設定する](~/media/bot-service-adapter-connect-webex/webex-webhook-put-endpoint.png)
 
 4. フォームに次の詳細を入力します。
 
-* 名前 (Webhook の名前を入力します。例: "Messages Webhook")
-* ターゲット URL (自分のボットの Webex エンドポイントへの完全な URL を入力します。例: https://yourbotapp.azurewebsites.net/api/webex) )
-* シークレット (ここには、Webhook をセキュリティで保護するための任意のシークレットを入力してください)
-* 状態 (既定の設定である "active" のままにしておきます)
+    * 名前 (Webhook の名前を入力します。例: "Messages Webhook")
+    * ターゲット URL (自分のボットの Webex エンドポイントへの完全な URL を入力します。例: `https://yourbotapp.azurewebsites.net/api/webex`)
+    * シークレット (ここには、Webhook をセキュリティで保護するための任意のシークレットを入力してください)
+    * 状態 (既定の設定である "active" のままにしておきます)
 
-![ボットを設定する](~/media/bot-service-adapter-connect-webex/webex-webhook-form.png)
+    ![ボットを設定する](~/media/bot-service-adapter-connect-webex/webex-webhook-form.png)
 
-5. [Run]\(実行\) ボタンをクリックすると、Webhook が作成され、成功のメッセージが表示されます。
+5. **[Run]** をクリックすると、Webhook が作成され、成功のメッセージが表示されます。
 
 ### <a name="complete-the-remaining-settings-in-your-bot-application"></a>ボット アプリケーションの残りの設定を完了する
 

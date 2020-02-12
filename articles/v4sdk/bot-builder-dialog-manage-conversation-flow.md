@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 07/05/2019
+ms.date: 01/28/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 874d22eef5a387df9be8b1cee72935812bf9879b
-ms.sourcegitcommit: df2b8d4e29ebfbb9e8a10091bb580389fe4c34cc
+ms.openlocfilehash: 51068b61776d55fba0f96561463902820b1c14cd
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76256015"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895745"
 ---
 # <a name="implement-sequential-conversation-flow"></a>連続して行われる会話フローの実装
 
@@ -149,7 +149,7 @@ ms.locfileid: "76256015"
 
 `UserProfileDialog` コンストラクターで、ウォーターフォール ステップ、プロンプト、およびウォーターフォール ダイアログを作成し、ダイアログ セットに追加します。 プロンプトは、それが使用されるダイアログ セットに追加する必要があります。
 
-[!code-python[Constructor snippet](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=25-57)]
+[!code-python[Constructor snippet](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=26-57)]
 
 次に、ダイアログで使用されるステップを実装します。 プロンプトを使用するには、そのプロンプトをご自身のダイアログのステップから呼び出し、`step_context.result` を使用して、次のステップでプロンプトの結果を取得します。 バックグラウンドでは、プロンプトは 2 つのステップから成るダイアログです。 最初のステップでプロンプトは入力を要求します。そして 2 番目のステップで有効な値を返すか、最初からやり直して、有効な入力を受信するまでユーザーに再入力を要求します。
 
@@ -197,11 +197,15 @@ ms.locfileid: "76256015"
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-`onMessage` ハンドラーでは、ダイアログの開始または続行にヘルパー メソッドが使用されます。 `onDialog` では、ボットの状態管理オブジェクトを使用して、ストレージに対するすべての状態変更を保持します `onDialog` メソッドは、`onMessage` など、他の定義済みハンドラーの実行後、最後に呼び出されます。 このようにして、メッセージ ハンドラーが完了した後で、かつターン自体が完了する前の状態を保存します。
+`onMessage` メソッドは、ダイアログの `run` メソッドを呼び出してダイアログを開始または続行するリスナーを登録します。
+
+これとは別に、ボットは `ActivityHandler.run` メソッドをオーバーライドして会話とユーザーの状態をストレージに保存します。 このようにして、メッセージ ハンドラーが完了した後で、かつターン自体が完了する前の状態を保存します。
 
 **bots/dialogBot.js**
 
-[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-38&highlight=11-13)]
+[!code-javascript[message listener](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-31&highlight=5)]
+
+[!code-javascript[override](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=34-43&highlight=7-9)]
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -235,12 +239,11 @@ ms.locfileid: "76256015"
 
 [!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/index.js?range=19-59)]
 
-
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 `app.py` でボット用のサービスを登録します。
 
-[!code-python[configure services](~/../botbuilder-python/samples/python/05.multi-turn-prompt/app.py?range=27-75)]
+[!code-python[configure services](~/../botbuilder-python/samples/python/05.multi-turn-prompt/app.py?range=27-76)]
 
 ---
 
@@ -276,7 +279,7 @@ ms.locfileid: "76256015"
 
 ### <a name="definition-of-a-prompt-validator-method"></a>プロンプト検証コントロールのメソッドの定義
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp) 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 **UserProfileDialog.cs**
 
@@ -296,7 +299,7 @@ ms.locfileid: "76256015"
 
 **dialogs/user_profile_dialog.py**
 
-以下に示したのは、`age_prompt_validator` メソッドの定義に使用される検証コントロールのコード例です。 `prompt_context.recognized.value` には、解析済みの値が格納されます。数値のプロンプトの場合、この値は整数になります。 `prompt_context.recognized.succeeded` は、プロンプトがユーザーの入力を解析できたかどうかを示します。 その値が受け入れられなかった場合、検証コントロールは false を返し、プロンプト ダイアログで、ユーザーに再度プロンプトを表示する必要があります。それ以外の場合は、true を返して入力を受け取り、プロンプト ダイアログから復帰します。 検証コントロールの値は、実際のシナリオに応じて変更することができます。 
+以下に示したのは、`age_prompt_validator` メソッドの定義に使用される検証コントロールのコード例です。 `prompt_context.recognized.value` には、解析済みの値が格納されます。数値のプロンプトの場合、この値は整数になります。 `prompt_context.recognized.succeeded` は、プロンプトがユーザーの入力を解析できたかどうかを示します。 その値が受け入れられなかった場合、検証コントロールは false を返し、プロンプト ダイアログで、ユーザーに再度プロンプトを表示する必要があります。それ以外の場合は、true を返して入力を受け取り、プロンプト ダイアログから復帰します。 検証コントロールの値は、実際のシナリオに応じて変更することができます。
 
 [!code-python[prompt validator method](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=207-212)]
 
@@ -319,4 +322,3 @@ ms.locfileid: "76256015"
 [cs-sample]: https://aka.ms/cs-multi-prompts-sample
 [js-sample]: https://aka.ms/js-multi-prompts-sample
 [python-sample]: https://aka.ms/python-multi-prompts-sample
-

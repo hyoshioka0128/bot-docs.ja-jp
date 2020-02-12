@@ -8,12 +8,12 @@ ms.service: bot-service
 ROBOTS: NOINDEX
 ms.date: 11/14/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e5b04a9b0d5d4c4974b5aaf051d7a01bdb9302f6
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: aab49803939a42974a59b66f47a1f004019421b4
+ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75788879"
+ms.lasthandoff: 01/25/2020
+ms.locfileid: "76752784"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
 
@@ -75,12 +75,12 @@ OAuth コントローラーのホスティングやトークンのライフサ�
 
 ### <a name="register-an-application-in-azure-ad"></a>アプリケーションを Azure AD に登録する
 
-Microsoft Graph API に接続するためにご自身のボットが使用できる Azure AD アプリケーションが必要です。
+ご自身のボットが Microsoft Graph API に接続するために ID プロバイダーとして使用できる Azure AD アプリケーションが必要です。
 
 このボットには Azure AD v1 または v2 エンドポイントを使用できます。
 v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の比較](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare)に関する記事と、[Azure AD v2.0 エンドポイントの概要](https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview)に関する記事を参照してください。
 
-#### <a name="to-create-an-azure-ad-application"></a>Azure AD アプリケーションを作成するには
+#### <a name="create-an-azure-ad-identity-provider-application"></a>Azure AD ID プロバイダー アプリケーションを作成する 
 
 次の手順を使用して、新しい Azure AD アプリケーションを作成します。 作成するアプリには v1 または v2 エンドポイントを使用できます。
 
@@ -94,7 +94,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 1. 必須のフィールドに入力してアプリ登録を作成します。
 
    1. アプリケーションに名前を付けます。
-   1. ご自分のアプリケーションについて、 **[サポートされているアカウントの種類]** を選択します。 (このサンプルは、これらのオプションのどれを使用しても動作します。)
+   1. ご自分のアプリケーションについて、 **[サポートされているアカウントの種類]** を選択します。
    1. **[リダイレクト URI]** で
        1. **[Web]** を選択します。
        1. URL を `https://token.botframework.com/.auth/web/redirect` に設定します。
@@ -103,6 +103,9 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
       - アプリが作成された後、その **[概要]** ページが Azure によって表示されます。
       - **[アプリケーション (クライアント) ID]** の値を記録します。 この値は、後で Azure AD アプリケーションをご自身のボットに登録するときに、"_クライアント ID_" として使用します。
       - さらに、 **[ディレクトリ (テナント) ID]** の値を記録します。 これも、このアプリケーションを自分のボットに登録するために使用します。
+ 
+    > [!NOTE]
+    > サポートされるアカウントの種類がシングル テナントに設定されている場合に、Microsoft アカウントではなく個人用サブスクリプションを使用すると、エミュレーターに次のエラーが表示されます。*The bot's Microsoft App ID or Microsoft App Password is incorrect.\(ボットの Microsoft アプリ ID または Microsoft アプリ パスワードが正しくありません。\)* この場合、サポートされているアカウントの種類を *[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人用の Microsoft アカウント (Skype、Xbox など)\)* に設定する必要があります。
 
 1. ナビゲーション ウィンドウで **[証明書とシークレット]** をクリックして、自分のアプリケーションのシークレットを作成します。
 

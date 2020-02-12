@@ -7,13 +7,13 @@ manager: kamrani
 ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
-ms.date: 07/25/2019
-ms.openlocfilehash: 246e9ecace56126d625d5f9e2571e8d27ba780e8
-ms.sourcegitcommit: df2b8d4e29ebfbb9e8a10091bb580389fe4c34cc
+ms.date: 01/16/2020
+ms.openlocfilehash: 04868384268049befd3da7b39582614524542ce9
+ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76255995"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895631"
 ---
 # <a name="configure-net-bot-for-extension"></a>拡張機能のための .NET ボットの構成
 
@@ -31,14 +31,15 @@ ms.locfileid: "76255995"
 
 ## <a name="update-net-bot-to-use-direct-line-app-service-extension"></a>Direct Line App Service 拡張機能を使用するように .NET ボットを更新する
 
->!注 `Microsoft.Bot.Builder.StreamingExtensions` はプレビュー パッケージであり、更新されません。 SDK v4.7 には、[ストリーミング コード](https://github.com/microsoft/botbuilder-dotnet/tree/master/libraries/Microsoft.Bot.Builder/Streaming)が含まれているため、ストリーミング パッケージを別途自分でインストールする必要はありません。 SDK v4.7 にアップグレードした場合、この機能を有効にするためには、このセクションの手順に変更が必要となります。それらの手順については、[追加情報](bot-service-channel-directline-extension-net-bot.md#additional-information)を参照してください。 
+> [!NOTE]
+> `Microsoft.Bot.Builder.StreamingExtensions` はプレビュー パッケージであり、更新されません。 SDK v4.7 には、[ストリーミング コード](https://github.com/microsoft/botbuilder-dotnet/tree/master/libraries/Microsoft.Bot.Builder/Streaming)が含まれているため、ストリーミング パッケージを別途自分でインストールする必要はありません。
 
 1. Visual Studio でボット プロジェクトを開きます。
 2. **Streaming Extension NuGet** パッケージをプロジェクトに追加します。
     1. プロジェクトで、 **[依存関係]** を右クリックし、 **[NuGet パッケージの管理]** を選択します。
     2. *[参照]* タブで **[プレリリースを含める]** をクリックして、プレビュー パッケージを表示します。
     3. **Microsoft.Bot.Builder.StreamingExtensions** パッケージを選択します。
-    4. **[インストール]** をクリックしてパッケージをインストールし、使用許諾契約書を読んで同意します。 
+    4. **[インストール]** をクリックしてパッケージをインストールし、使用許諾契約書を読んで同意します。
 3. アプリが **Bot Framework NamedPipe** を使用することを許可します。
     - `Startup.cs` ファイルを開きます。
     - ``Configure`` メソッドで、``UseBotFrameworkNamedPipe`` にコードを追加します。
@@ -82,9 +83,9 @@ ms.locfileid: "76255995"
 1. ブラウザーで [Azure portal](https://portal.azure.com/) に移動します。
 1. Azure portal で、目的の **Azure Bot Service** リソースを見つけます。
 1. **[チャネル]** をクリックして、ボットのチャネルを構成します。
-1. **Direct Line** チャネルがまだ有効になっていない場合は、クリックして有効にします。 
+1. **Direct Line** チャネルがまだ有効になっていない場合は、クリックして有効にします。
 1. 既に有効になっている場合は、[Connect to channels]\(チャネルに接続\) テーブルの Direct Line 行で **[編集]** リンクをクリックします。
-1. App Service 拡張機能キーのセクションまで下にスクロールします。 
+1. App Service 拡張機能キーのセクションまで下にスクロールします。
 1. **[表示] リンク**をクリックしていずれかのキーを表示し、その値をコピーします。
 
 ![App Service 拡張機能キー](./media/channels/direct-line-extension-extension-keys.png)
@@ -95,7 +96,7 @@ ms.locfileid: "76255995"
 1. Azure portal で、ボットをホストしている、またはホストする予定の Web アプリの **Azure App Service** リソース ページを見つけます
 1. **[Configuration]\(構成\)** をクリックします。 *[アプリケーションの設定]* セクションで、次の新しい設定を追加します。
 
-    |Name|値|
+    |Name|Value|
     |---|---|
     |DirectLineExtensionKey|<App_Service_Extension_Key_From_Section_1>|
     |DIRECTLINE_EXTENSION_VERSION|latest|
@@ -105,46 +106,9 @@ ms.locfileid: "76255995"
 
 ## <a name="confirm-direct-line-app-extension-and-the-bot-are-initialized"></a>Direct Line アプリ拡張機能とボットが初期化されていることを確認します
 
-1. ブラウザーで、 https://<your_app_service>.azurewebsites.net/.bot に移動します。 すべて正しければ、ページは JSON コンテンツ `{"k":true,"ib":true,"ob":true,"initialized":true}` を返します。 これは、**すべてが正常に動作している**場合に取得される情報です。ここでは、次のようになります。
+ブラウザーで、 https://<your_app_service>.azurewebsites.net/.bot に移動します。 すべて正しければ、ページは JSON コンテンツ `{"k":true,"ib":true,"ob":true,"initialized":true}` を返します。 これは、**すべてが正常に動作している**場合に取得される情報です。ここでは、次のようになります。
 
-    - **k** によって、Direct Line App Service 拡張機能 (ASE) がその構成から App Service 拡張機能のキーを読み取れるかどうかを決定します。 
-    - **initialized** によって、Direct Line ASE が App Service 拡張機能キーを使用して Azure Bot Service からボット メタデータをダウンロードできるかどうかを決定します。
-    - **ib** によって、Direct Line ASE がボットとの受信接続を確立できるかどうかを決定します。
-    - **ob** によって、Direct Line ASE がボットとの送信接続を確立できるかどうかを決定します。 
-
-## <a name="additional-information"></a>関連情報 
-
-SDK v4.7 にアップグレード済みである場合は、「Direct Line App Service 拡張機能を使用するように .NET ボットを更新する」セクションの手順を次のように変更する必要があります。 
-- **手順 2.** をスキップします。プレビュー パッケージをインストールする必要はありません。 
-- **手順 3.** で、次の手順を実行します。  
-
-アプリが **UseNamedPipes** を使用することを許可します。
-- `Startup.cs` ファイルを開きます。
-- ``Configure`` メソッドで、``UseNamedPipes`` にコードを追加します。
-
-    ```csharp
-
-    using Microsoft.Bot.Builder.StreamingExtensions;
-
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-    {
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-        }
-        else
-        {
-            app.UseHsts();
-        }
-
-        app.UseDefaultFiles();
-        app.UseStaticFiles();
-
-        // Allow bot to use named pipes.
-        app.UseNamedPipes();
-
-        app.UseMvc();
-    }
-
-    ```
-
+- **k** によって、Direct Line App Service 拡張機能 (ASE) がその構成から App Service 拡張機能のキーを読み取れるかどうかを決定します。 
+- **initialized** によって、Direct Line ASE が App Service 拡張機能キーを使用して Azure Bot Service からボット メタデータをダウンロードできるかどうかを決定します。
+- **ib** によって、Direct Line ASE がボットとの受信接続を確立できるかどうかを決定します。
+- **ob** によって、Direct Line ASE がボットとの送信接続を確立できるかどうかを決定します。

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 30e04ad9e2b4b896cf941cdb440279ad9865837e
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: c562f9889fddbc205a341f5fda3b652dd1fb7c75
+ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798798"
+ms.lasthandoff: 01/25/2020
+ms.locfileid: "76752924"
 ---
 # <a name="user-authentication-within-a-conversation"></a>会話内のユーザー認証
 
@@ -41,7 +41,11 @@ Bot Framework トークン サービスの役割は次のとおりです。
 
 - 幅広い外部サービスとの OAuth プロトコルの使用を容易にすること。
 - 特定のボット、チャネル、会話、ユーザーのトークンを安全に格納すること。
-- トークンの更新の試行など、トークンのライフサイクルを管理すること。
+- ユーザー トークンを取得すること。
+    > [!TIP]
+    > ボットのユーザー トークンが期限切れになっている場合は、ボットが次のことを行います。
+    >    - ユーザーをログアウトする
+    >    - サインイン フローをもう一度開始する
 
 たとえば、ユーザーの最新のメールを確認できるボットでは、Microsoft Graph API を使用して、Azure Active Directory のユーザー トークンを取得します。 ボットの開発者は、デザイン時に (Azure portal を使用して) Azure Active Directory アプリケーションを Bot Framework トークン サービスに登録してから、ボットの OAuth 接続設定 (名前は `GraphConnection`) を構成します。 ユーザーがボットを操作する際のワークフローは次のとおりです。
 
