@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
-ms.openlocfilehash: 59a97acffe26b0bb896ec75dd5ca03fa43eafd67
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 4ae5e5a7972caa0376f2b11dfaab0be4b1e9e924
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789522"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071780"
 ---
 # <a name="authentication"></a>認証
 
-クライアントは、Direct Line API 3.0 に対する要求を、[Bot Framework Portal](../bot-service-channel-connect-directline.md) の Direct Line チャネル構成ページから取得する**シークレット**を使用するか、ランタイム時に取得する**トークン**を使用して認証できます。 シークレットまたはトークンは、次の書式で各要求の `Authorization` ヘッダー内に指定する必要があります。 
+クライアントは、Direct Line API 3.0 に対する要求を、[Bot Framework Portal](../bot-service-channel-connect-directline.md) の Direct Line チャネル構成ページから取得する**シークレット**を使用するか、ランタイム時に取得する**トークン**を使用して認証できます。 シークレットまたはトークンは、次の書式で各要求の `Authorization` ヘッダー内に指定する必要があります。
 
 ```http
 Authorization: Bearer SECRET_OR_TOKEN
@@ -24,7 +24,7 @@ Authorization: Bearer SECRET_OR_TOKEN
 
 ## <a name="secrets-and-tokens"></a>シークレットとトークン
 
-Direct Line **シークレット**は、関連付けられているボットに属するすべての会話にアクセスするために使用できるマスター キーです。 **シークレット**は、**トークン**を取得するために使用することもできます。 シークレットには有効期限がありません。 
+Direct Line **シークレット**は、関連付けられているボットに属するすべての会話にアクセスするために使用できるマスター キーです。 **シークレット**は、**トークン**を取得するために使用することもできます。 シークレットには有効期限がありません。
 
 Direct Line **トークン**は、1 つの会話にアクセスするために使用できるキーです。 トークンには有効期限がありますが、更新できます。
 
@@ -36,17 +36,17 @@ Direct Line **トークン**は、1 つの会話にアクセスするために�
 サービス間アプリケーションを作成する場合は、Direct Line API 要求の `Authorization` ヘッダー内に**シークレット**を指定することが最も簡単な方法です。 クライアントが Web ブラウザーまたはモバイル アプリで実行されるアプリケーションを記述する場合は、シークレットをトークン (1 つの会話でのみ機能し、更新されない限り有効期限が切れます) と交換し、その**トークン**を、Direct Line API 要求の `Authorization` ヘッダー内に指定できます。 自分にとって最適なセキュリティ モデルを選択してください。
 
 > [!NOTE]
-> Direct Line クライアント資格情報は、ボットの資格情報とは異なります。 これにより、キーを個別に変更でき、ボットのパスワードを公開せずにクライアント トークンを共有できます。 
+> Direct Line クライアント資格情報は、ボットの資格情報とは異なります。 これにより、キーを個別に変更でき、ボットのパスワードを公開せずにクライアント トークンを共有できます。
 
 ## <a name="get-a-direct-line-secret"></a>Direct Line シークレットを取得する
 
-<a href="https://dev.botframework.com/" target="_blank">Bot Framework Portal</a> で、ボット用の Direct Line チャネル構成ページを使用して、[Direct Line シークレットを取得](../bot-service-channel-connect-directline.md)できます。
+[Azure portal](https://portal.azure.com) で、ボット用の Direct Line チャネル構成ページを使用して、[Direct Line シークレットを取得](../bot-service-channel-connect-directline.md)できます。
 
 ![Direct Line 構成](../media/direct-line-configure.png)
 
 ## <a id="generate-token"></a> Direct Line トークンを生成する
 
-1 つの会話にアクセスするために使用できる Direct Line トークンを生成するには、まず <a href="https://dev.botframework.com/" target="_blank">Bot Framework Portal</a> の Direct Line チャネル構成ページから Direct Line シークレットを取得します。 その後、次の要求を発行して、Direct Line シークレットを Direct Line トークンと交換します。
+1 つの会話にアクセスするために使用できる Direct Line トークンを生成するには、まず [Azure portal](https://portal.azure.com) の Direct Line チャネル構成ページから Direct Line シークレットを取得します。 その後、次の要求を発行して、Direct Line シークレットを Direct Line トークンと交換します。
 
 ```http
 POST https://directline.botframework.com/v3/directline/tokens/generate
@@ -78,7 +78,7 @@ Authorization: Bearer RCurR_XV9ZA.cwA.BKA.iaJrC8xpy8qbOF5xnR2vtCX7CZj0LdjAPGfiCp
 }
 ```
 
-| パラメーター | 種類 | [説明] |
+| パラメーター | Type | 説明 |
 | :--- | :--- | :--- |
 | `user.id` | string | 省略可能。 トークン内でエンコードするためのチャネル固有のユーザー ID。 Direct Line ユーザーの場合、`dl_` で始まる必要があります。 会話ごとに一意のユーザー ID を作成できます。セキュリティを強化するために、この ID は推測できないものにします。 |
 | `user.name` | string | 省略可能。 トークン内でエンコードするためのユーザーの表示用フレンドリ名。 |
@@ -103,13 +103,13 @@ HTTP/1.1 200 OK
 
 ### <a name="generate-token-versus-start-conversation"></a>トークンの生成と会話の開始
 
-トークンの生成操作 (`POST /v3/directline/tokens/generate`) と[会話の開始](bot-framework-rest-direct-line-3-0-start-conversation.md)操作 (`POST /v3/directline/conversations`) は、どちらの操作も、1 つの会話にアクセスするために使用できる `token` を返すという点で類似しています。 ただし、会話の開始操作とは異なり、トークンの生成操作では、会話は開始されず、ボットへの接触は行われず、WebSocket のストリーミング URL は作成されません。 
+トークンの生成操作 (`POST /v3/directline/tokens/generate`) と[会話の開始](bot-framework-rest-direct-line-3-0-start-conversation.md)操作 (`POST /v3/directline/conversations`) は、どちらの操作も、1 つの会話にアクセスするために使用できる `token` を返すという点で類似しています。 ただし、会話の開始操作とは異なり、トークンの生成操作では、会話は開始されず、ボットへの接触は行われず、WebSocket のストリーミング URL は作成されません。
 
 トークンをクライアントに配布し、クライアントに会話を開始してほしい場合は、トークンの生成操作を使用します。 会話をすぐに開始するつもりの場合は、[会話の開始](bot-framework-rest-direct-line-3-0-start-conversation.md)操作を使用します。
 
 ## <a id="refresh-token"></a> Direct Line トークンを更新する
 
-Direct Line トークンは、有効期限が切れていない限り、無制限に更新できます。 期限が切れたトークンは更新できません。 Direct Line トークンを更新するには、次の要求を発行します。 
+Direct Line トークンは、有効期限が切れていない限り、無制限に更新できます。 期限が切れたトークンは更新できません。 Direct Line トークンを更新するには、次の要求を発行します。
 
 ```http
 POST https://directline.botframework.com/v3/directline/tokens/refresh
@@ -160,17 +160,23 @@ HTTP/1.1 200 OK
 
 [Web チャット](../bot-service-channel-connect-webchat.md)で *Azure Bot Service 認証*を使用する場合、注意する必要がある重要なセキュリティの考慮事項がいくつかあります。
 
-1. **偽装**。 ここでの偽装とは、攻撃者がボットに自分を別人であると思い込ませることです。 Web チャットでは、攻撃者が自分の Web チャット インスタンスの**ユーザー ID を変えて**、他の誰かになりすます可能性があります。 これを防ぐために、推奨事項として、ボット開発者は**ユーザー ID を推測できないようにする**必要があります。 **強化された認証**オプションを有効にすると、Azure Bot Service ではすべてのユーザー ID の変更を検出して、拒否できます。 この場合、Direct Line からボットへのメッセージのユーザー ID (`Activity.From.Id`) は、Web チャットを初期化したときに使用したものと必ず同じになります。 この機能では、ユーザー ID は `dl_` で始まる必要があることに注意してください。
+1. **偽装**。 ここでの偽装とは、攻撃者がボットに自分を別人であると思い込ませることです。 Web チャットでは、攻撃者が自分の Web チャット インスタンスの**ユーザー ID を変えて**、他の誰かになりすます可能性があります。 これを防ぐために、推奨事項として、ボット開発者は**ユーザー ID を推測できないようにする**必要があります。
+
+    **強化された認証**オプションを有効にすると、Azure Bot Service ではすべてのユーザー ID の変更を検出して、拒否できます。 この場合、Direct Line からボットへのメッセージのユーザー ID (`Activity.From.Id`) は、Web チャットを初期化したときに使用したものと必ず同じになります。 この機能では、ユーザー ID は `dl_` で始まる必要があることに注意してください。
+
+    > [!NOTE]
+    > トークンのシークレットを交換するときに *User.Id* が指定されている場合、その *User.Id* はトークンに埋め込まれます。 Direct Line は、ボットに送信されたメッセージの ID がアクティビティの *From.Id* であることを確認します。クライアントが、別の *From.Id* を持つメッセージを Direct Line に送信すると、そのメッセージがボットに転送される前に、**トークンの ID** に変更されます。 そのため、チャネル シークレットがユーザー ID で初期化された後は、別のユーザー ID を使用することはできません。
+
 1. **ユーザー ID**。 次の 2 つのユーザー ID を取り扱う点に注意する必要があります。
 
     1. チャネルのユーザーの ID。
     1. ボットがやり取りする ID プロバイダーのユーザーの ID。
-  
+
     ボットで、チャネルのユーザー A に ID プロバイダー P にサインインするよう要求する場合、サインイン プロセスでは、P にサインインするのはユーザー A であることを保証する必要があります。別のユーザー B がサインインを許可される場合、ユーザー A は、ボットを通じてユーザー B のリソースにアクセスできるようになります。 Web チャットでは、次に説明するように、確実に適切なユーザーがサインインするために 2 つのメカニズムが用意されています。
 
     1. 以前は、サインインの最後に、ランダムに生成された 6 桁のコード (別名マジック コード) がユーザーに表示されました。 ユーザーは、サインイン プロセスを完了するために、サインインを開始したやり取りにおいて、このコードを入力する必要があります。 このメカニズムでは、ユーザー エクスペリエンスが悪化する傾向があります。 また、フィッシング攻撃を受けやすくなります。 悪意のあるユーザーが、別のユーザーになりすましてサインインし、フィッシング詐欺を通じてマジック コードを入手できます。
 
-    2. 前の方法で問題が発生したため、Azure Bot Service では、マジック コードが不要になりました。 Azure Bot Service では、サインイン プロセスは必ず Web チャット自体と**同じブラウザー セッション**でのみ完了します。 
+    2. 前の方法で問題が発生したため、Azure Bot Service では、マジック コードが不要になりました。 Azure Bot Service では、サインイン プロセスは必ず Web チャット自体と**同じブラウザー セッション**でのみ完了します。
     ボット開発者がこの保護を有効にするには、**ボットの Web チャット クライアントをホストできる信頼されたドメインの一覧**を含む **Direct Line トークン**を使用して、Web チャットを開始する必要があります。 以前は、ドキュメントに記載されていないオプション パラメーターを Direct Line トークン API に渡すことでのみ、このトークンを取得できました。 現在は、強化された認証オプションを使用して、Direct Line 構成ページで信頼されたドメイン (origin) の一覧を静的に指定できます。
 
     「[Azure Bot Service を介してボットに認証を追加する](../v4sdk/bot-builder-authentication.md)」も参照してください。
@@ -214,7 +220,7 @@ public class HomeController : Controller
         var config = new ChatConfig()
         {
             Token = token,
-            UserId = userId  
+            UserId = userId
         };
 
         return View(config);
@@ -257,14 +263,14 @@ router.get('/config', function(req, res) {
 
     request.post(options, (error, response, body) => {
         if (!error && response.statusCode < 300) {
-            res.json({ 
+            res.json({
                     token: body.token,
                     userId: userId
                 });
         }
         else {
             res.status(500).send('Call to retrieve token from Direct Line failed');
-        } 
+        }
     });
 });
 

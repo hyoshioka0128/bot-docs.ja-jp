@@ -7,22 +7,21 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/06/2019
+ms.date: 01/30/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f1d4acd6b39ce4e7b1a3b72aee2bc12f0b60ee84
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: 01fb0b919169d27809360f1ccaccb863906df013
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895765"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071846"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>ブランチとループを使用して高度な会話フローを作成する
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-ダイアログ ライブラリを使用して、単純な会話フローと複雑な会話フローを管理できます。
-この記事では、分岐およびループする複雑な会話を管理する方法について説明します。
-また、ダイアログのさまざまな部分の間で引数を渡す方法についても説明します。
+ダイアログ ライブラリを使用して、複雑な会話フローを作成できます。
+この記事では、分岐およびループする複雑な会話を管理する方法と、ダイアログのさまざまな部分の間で引数を渡す方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,322 +31,224 @@ ms.locfileid: "76895765"
 ## <a name="about-this-sample"></a>このサンプルについて
 
 このボットのサンプルでは、ユーザーがサインアップし、一覧から最大 2 つの会社をレビューできます。
+ボットは 3 つのコンポーネント ダイアログを使用して、会話フローを管理します。
+各コンポーネント ダイアログには、ウォーターフォール ダイアログと、ユーザー入力を収集するために必要なプロンプトが含まれています。
+これらのダイアログについては、以下のセクションで詳しく説明します。
+会話状態を使用してダイアログを管理し、ユーザー状態を使用してユーザーおよびユーザーがレビューする会社に関する情報を保存します。
 
-`DialogAndWelcomeBot` によって `DialogBot` が拡張され、さまざまなアクティビティのハンドラーと、ボットのターン ハンドラーが定義されます。 `DialogBot` ではダイアログが実行されます。
+ボットはアクティビティ ハンドラーから派生します。 多くのサンプル ボットと同様に、ユーザーに歓迎の意を示し、ダイアログを使用してユーザーからのメッセージを処理し、ターンが終わる前にユーザーと会話状態を保存します。
 
-- _run_ メソッドは `DialogBot` によって使用され、ダイアログを開始します。
-- `MainDialog` は他の 2 つのダイアログの親で、ダイアログで特定の時間に呼び出されます。 これらのダイアログについては、この記事全体を通して詳しく説明します。
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-ダイアログは `MainDialog`、`TopLevelDialog`、`ReviewSelectionDialog` のコンポーネント ダイアログに分割され、連携して次の処理を実行します。
-
-- ユーザーの名前と年齢を聞いて、ユーザーの年齢に基づいて "_分岐_" します。
-  - ユーザーが若すぎる場合、そのユーザーには会社のレビューを求めません。
-  - ユーザーが十分な年齢に達している場合は、ユーザーのレビュー結果の収集を開始します。
-    - ユーザーは、レビューする会社を選択できます。
-    - ユーザーが会社を選択すると、"_ループ_" して、2 つ目の会社を選択できるようにします。
-- 最後に、ユーザーが参加してくれたことに対してお礼を述べます。
-
-複雑な会話の管理には、ウォーターフォール ダイアログと、プロンプトをいくつか使用します。
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+ダイアログを使用するには、**Microsoft.Bot.Builder.Dialogs** NuGet パッケージをインストールします。
 
 ![複雑なボットのフロー](./media/complex-conversation-flow.png)
 
-ダイアログを使用するには、ご自身のプロジェクトで **Microsoft.Bot.Builder.Dialogs** NuGet パッケージをインストールする必要があります。
-
-**Startup.cs**
-
-`Startup` でボット用のサービスを登録します。 これらのサービスは、依存関係の挿入を通じてコードの他の部分で使用できます。
-
-- ボット用の基本サービス: 資格情報プロバイダー、アダプター、およびボット実装。
-- 状態を管理するためのサービス: ストレージ、ユーザー状態、および会話の状態。
-- ボットで使用されるダイアログ。
-
-[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=22-36)]
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-![複雑なボットのフロー](./media/complex-conversation-flow-js.png)
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ダイアログを使用するには、ご自身のプロジェクトで **botbuilder-dialogs** npm パッケージをインストールする必要があります。
 
-**index.js**
+![複雑なボットのフロー](./media/complex-conversation-flow-js.png)
 
-次に示す、ボット用の必要なサービスを作成します。
+### <a name="pythontabpython"></a>[Python](#tab/python)
 
-- 基本サービス: アダプターおよびボット実装
-- 状態管理: ストレージ、ユーザー状態、および会話状態。
-- ダイアログ: ボットは、会話を管理するためにこれらを使用します
-
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=26-65)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
+ダイアログを使用するには、ご自身のプロジェクトで `pip install botbuilder-dialogs` を実行して **botbuilder-dialogs** PyPI パッケージをインストールする必要があります。
 
 ![複雑なボットのフロー](./media/complex-conversation-flow-python.png)
 
-ダイアログを使用するには、プロジェクトで `pip install botbuilder-dialogs` を実行して **botbuilder-dialogs** pypi パッケージをインストールする必要があります。
+---
 
-**app.py**
+## <a name="define-the-user-profile"></a>ユーザー プロファイルを定義する
 
-コードの他の部分が必要とするボット用サービスを作成します。
+ユーザー プロファイルには、ダイアログによって収集された情報、ユーザーの名前、年齢、およびレビュー対象として選択された会社が含まれます。
+
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**UserProfile.cs**
+
+[!code-csharp[UserProfile class](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/UserProfile.cs?range=8-16)]
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**userProfile.js**
+
+[!code-javascript[UserProfile class](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/userProfile.js?range=4-12)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**data_models/user_profile.py**
+
+[!code-python[UserProfile class](~/../botbuilder-python/samples/python/43.complex-dialog/data_models/user_profile.py?range=7-13)]
+
+---
+
+## <a name="create-the-dialogs"></a>ダイアログを作成する
+
+このボットには、次の 3 つのダイアログが含まれています。
+
+- メイン ダイアログでは、プロセス全体が開始され、収集された情報が要約されます。
+- 最上位レベルのダイアログでは、ユーザー情報が収集され、ユーザーの年齢に基づく分岐ロジックが含まれます。
+- review-selection ダイアログでは、ユーザーはレビューする会社を繰り返し選択できます。 ループ ロジックを使用してこれを行います。
+
+### <a name="the-main-dialog"></a>メイン ダイアログ
+
+メイン ダイアログには、次の 2 つのステップがあります。
+
+1. 最上位レベルのダイアログを開始します。
+1. 最上位レベルのダイアログによって収集されたユーザー プロファイルを取得して要約し、その情報をユーザー状態に保存して、メイン ダイアログの終了を通知します。
+
+#### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Dialogs\MainDialog.cs**
+
+[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/MainDialog.cs?range=31-50)]
+
+#### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**dialogs/mainDialog.js**
+
+[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/mainDialog.js?range=43-55)]
+
+#### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs\main_dialog.py**
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/main_dialog.py?range=29-50)]
+
+---
+
+### <a name="the-top-level-dialog"></a>最上位レベルのダイアログ
+
+最上位レベルのダイアログには、次の 4 つのステップがあります。
+
+1. ユーザー名の入力を求めます。
+1. ユーザーの年齢の入力を求めます。
+1. ユーザーの年齢に基づいて、review-selection ダイアログを開始するか、次のステップに進みます。
+1. 最後に、ユーザーが参加してくれたことに対してお礼を述べ、収集した情報を返します。
+
+最初のステップでは、ダイアログ状態の一部として空のユーザー プロファイルが作成されます。 ダイアログは空のプロファイルで開始され、その進行とともにプロファイルに情報が追加されます。 終了すると、最後のステップで、収集された情報が返されます。
+
+3 番目 (選択の開始) のステップでは、ユーザーの年齢に基づいて会話フローが分岐します。
+
+#### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Dialogs\TopLevelDialog.cs**
+
+[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/TopLevelDialog.cs?range=39-96&highlight=30-42)]
+
+#### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**dialogs/topLevelDialog.js**
+
+[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/topLevelDialog.js?range=32-76&highlight=25-33)]
+
+#### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs\top_level_dialog.py**
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=43-95&highlight=29-38)]
+
+---
+
+### <a name="the-review-selection-dialog"></a>review-selection ダイアログ
+
+review-selection ダイアログには、次の 2 つのステップがあります。
+
+1. ユーザーに対して、レビューする会社を選択するか、`done` を選択して完了するよう求めます。
+   - ダイアログが初期情報を使用して開始された場合、その情報はウォーターフォール ステップ コンテキストの _options_ プロパティを通じて使用可能になります。 review-selection ダイアログは、自動的に再起動することができ、これを使用して、レビューする会社をユーザーが複数選択できるようにします。
+   - レビューする会社をユーザーが既に選択している場合、その会社は使用可能な選択肢から削除されます。
+   - ユーザーがループを早期に終了できるように `done` の選択肢が追加されます。
+1. 必要に応じて、このダイアログを繰り返すか終了します。
+   - レビューする会社をユーザーが選択した場合は、それを一覧に追加します。
+   - ユーザーが 2 つの会社を選択した場合、または終了を選択した場合は、ダイアログを終了し、収集された一覧を返します。
+   - それ以外の場合は、ダイアログを再起動し、それを一覧の内容で初期化します。
+
+#### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Dialogs\ReviewSelectionDialog.cs**
+
+[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/ReviewSelectionDialog.cs?range=42-106&highlight=55-64)]
+
+#### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**dialogs/reviewSelectionDialog.js**
+
+[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=33-78&highlight=39-45)]
+
+#### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs/review_selection_dialog.py**
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=42-99&highlight=51-58)]
+
+---
+
+## <a name="run-the-dialogs"></a>ダイアログを実行する
+
+_dialog bot_ クラスは、アクティビティ ハンドラーを拡張します。また、ダイアログを実行するためのロジックを含んでいます。
+_dialog and welcome bot_ クラスは、ダイアログ ボットを拡張し、ユーザーが会話に参加したときに歓迎の意も示します。
+
+ボットのターン ハンドラーによって、3 つのダイアログで定義された会話フローが繰り返されます。
+ユーザーからメッセージを受信すると、次の操作を行います。
+
+1. メイン ダイアログを実行します。
+   - ダイアログ スタックが空の場合は、メイン ダイアログが開始されます。
+   - それ以外の場合は、ダイアログはまだ処理中であり、アクティブなダイアログが継続されます。
+1. 状態を保存します。これにより、ユーザー、会話、およびダイアログの状態に対するすべての更新が保持されます。
+
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Bots\DialogBot.cs**
+
+[!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogBot.cs?range=33-48&highlight=5-7,14-15)]
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**bots/dialogBot.js**
+
+[!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=24-32&highlight=4-5)]
+[!code-javascript[run](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=35-44&highlight=7-9)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bots/dialog_bot.py**
+
+[!code-python[Overrides](~/../botbuilder-python/samples/python/43.complex-dialog/bots/dialog_bot.py?range=29-41&highlight=4-6,9-13)]
+
+---
+
+## <a name="register-services-for-the-bot"></a>ボット用のサービスを登録する
+
+必要に応じてサービスを作成および登録します。
 
 - ボット用の基本サービス: アダプターおよびボット実装。
 - 状態を管理するためのサービス: ストレージ、ユーザー状態、および会話の状態。
-- ボットで使用されるダイアログ。
+- ボットが使用するルート ダイアログ。
 
-[!code-python[ConfigureServices](~/../botbuilder-python/samples/python/43.complex-dialog/app.py?range=29-94)]
+### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Startup.cs**
+
+[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=18-37)]
+
+### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**index.js**
+
+[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=26-43)]
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**app.py**
+
+[!code-python[ConfigureServices](~/../botbuilder-python/samples/python/43.complex-dialog/app.py?range=29-32)]
+[!code-python[ConfigureServices](~/../botbuilder-python/samples/python/43.complex-dialog/app.py?range=70-77)]
 
 ---
 
 > [!NOTE]
 > メモリ ストレージはテストにのみ使用され、実稼働を目的としたものではありません。
 > 運用環境のボットでは、必ず永続タイプのストレージを使用してください。
-
-## <a name="define-a-class-in-which-to-store-the-collected-information"></a>収集した情報を格納するクラスを定義する
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-**UserProfile.cs**
-
-[!code-csharp[UserProfile class](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/UserProfile.cs?range=8-16)]
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-**userProfile.js**
-
-[!code-javascript[UserProfile class](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/userProfile.js?range=4-12)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-**data_models/user_profile.py**
-
-[!code-python[UserProfile class](~/../botbuilder-python/samples/python/43.complex-dialog/data_models/user_profile.py?range=7-13)]
-
-
----
-
-## <a name="create-the-dialogs-to-use"></a>使用するダイアログを作成する
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-**Dialogs\MainDialog.cs**
-
-コンポーネント ダイアログ `MainDialog` の定義が完了しました。これにはメイン ステップがいくつか含まれ、ダイアログとプロンプトの動作がこれにより指示されます。 最初のステップでは `TopLevelDialog` が呼び出されます。これについては以下で説明します。
-
-[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/MainDialog.cs?range=31-50&highlight=3)]
-
-**Dialogs\TopLevelDialog.cs**
-
-最初の最上位レベルのダイアログには 4 つのステップがあります。
-
-1. ユーザー名の入力を求めます。
-1. ユーザーの年齢の入力を求めます。
-1. ユーザーの年齢に基づいて分岐します。
-1. 最後に、ユーザーが参加してくれたことに対してお礼を述べ、収集した情報を返します。
-
-最初のステップで、ユーザーのプロファイルをクリアします。これによりダイアログは空のプロファイルで毎回開始されます。 最後のステップでは終了時に情報が返されるため、`AcknowledgementStepAsync` は、その情報をユーザー状態に保存し、最後のステップで使用できるようにメイン ダイアログに返すことで終了します。
-
-[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/TopLevelDialog.cs?range=39-96&highlight=3-4,47-49,56-57)]
-
-**Dialogs\ReviewSelectionDialog.cs**
-
-review-selection ダイアログは最上位レベルのダイアログの `StartSelectionStepAsync` から開始され、2 つのステップがあります。
-
-1. ユーザーに対して、レビューする会社を選択するか、`done` を選択して完了するよう求めます。
-1. 必要に応じて、このダイアログを繰り返すか終了します。
-
-この設計では、スタック上で、最上位レベルのダイアログが必ず review-selection ダイアログに先行するため、review-selection ダイアログは、最上位レベル ダイアログの子と見なすことができます。
-
-[!code-csharp[step implementations](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/ReviewSelectionDialog.cs?range=42-106)]
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-**dialogs/mainDialog.js**
-
-コンポーネント ダイアログ `MainDialog` の定義が完了しました。これにはメイン ステップがいくつか含まれ、ダイアログとプロンプトの動作がこれにより指示されます。 最初のステップでは `TopLevelDialog` が呼び出されます。これについては以下で説明します。
-
-[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/mainDialog.js?range=43-55&highlight=2)]
-
-**dialogs/topLevelDialog.js**
-
-最初の最上位レベルのダイアログには 4 つのステップがあります。
-
-1. ユーザー名の入力を求めます。
-1. ユーザーの年齢の入力を求めます。
-1. ユーザーの年齢に基づいて分岐します。
-1. 最後に、ユーザーが参加してくれたことに対してお礼を述べ、収集した情報を返します。
-
-最初のステップで、ユーザーのプロファイルをクリアします。これによりダイアログは空のプロファイルで毎回開始されます。 最後のステップでは終了時に情報が返されるため、`acknowledgementStep` は、その情報をユーザー状態に保存し、最後のステップで使用できるようにメイン ダイアログに返すことで終了します。
-
-[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/topLevelDialog.js?range=32-76&highlight=2-3,37-39,43-44)]
-
-**dialogs/reviewSelectionDialog.js**
-
-review-selection ダイアログは最上位レベルのダイアログの `startSelectionStep` から開始され、2 つのステップがあります。
-
-1. ユーザーに対して、レビューする会社を選択するか、`done` を選択して完了するよう求めます。
-1. 必要に応じて、このダイアログを繰り返すか終了します。
-
-この設計では、スタック上で、最上位レベルのダイアログが必ず review-selection ダイアログに先行するため、review-selection ダイアログは、最上位レベル ダイアログの子と見なすことができます。
-
-[!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=33-78)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-**dialogs\main_dialog.py**
-
-コンポーネント ダイアログ `MainDialog` の定義が完了しました。これにはメイン ステップがいくつか含まれ、ダイアログとプロンプトの動作がこれにより指示されます。 最初のステップでは `TopLevelDialog` が呼び出されます。これについては以下で説明します。
-
-[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/main_dialog.py?range=29-50&highlight=4)]
-
-**dialogs\top_level_dialog.py**
-
-最初の最上位レベルのダイアログには 4 つのステップがあります。
-
-1. ユーザー名の入力を求めます。
-1. ユーザーの年齢の入力を求めます。
-1. ユーザーの年齢に基づいて分岐します。
-1. 最後に、ユーザーが参加してくれたことに対してお礼を述べ、収集した情報を返します。
-
-最初のステップで、ユーザーのプロファイルをクリアします。これによりダイアログは空のプロファイルで毎回開始されます。 最後のステップでは終了時に情報が返されるため、`acknowledgementStep` は、その情報をユーザー状態に保存し、最後のステップで使用できるようにメイン ダイアログに返すことで終了します。
-
-[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=43-95&highlight=2-3,43-44,52)]
-
-**dialogs/review_selection_dialog.py**
-
-review-selection ダイアログは最上位レベルのダイアログの `startSelectionStep` から開始され、2 つのステップがあります。
-
-1. ユーザーに対して、レビューする会社を選択するか、`done` を選択して完了するよう求めます。
-1. 必要に応じて、このダイアログを繰り返すか終了します。
-
-この設計では、スタック上で、最上位レベルのダイアログが必ず review-selection ダイアログに先行するため、review-selection ダイアログは、最上位レベル ダイアログの子と見なすことができます。
-
-[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=42-99)]
-
----
-
-## <a name="implement-the-code-to-manage-the-dialog"></a>ダイアログを管理するコードを実装する
-
-ボットのターン ハンドラーによって、これらのダイアログで定義された 1 つの会話フローが繰り返されます。
-ユーザーからメッセージを受信したらに、次の操作を行います。
-
-1. アクティブなダイアログがあれば、続行します。
-   - アクティブなダイアログがない場合は、ユーザー プロファイルをクリアし、最上位レベルのダイアログを開始します。
-   - アクティブなダイアログが完了した場合は、返された情報を収集して保存し、ステータス メッセージを表示します。
-   - それ以外の場合、アクティブなダイアログはまだプロセスの途中です。その時点で何も行う必要はありません。
-1. 会話状態を保存します。これにより、ダイアログの状態に対するすべての更新が保持されます。
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-<!-- **DialogExtensions.cs**
-
-In this sample, we've defined a `Run` helper method that we will use to create and access the dialog context.
-Since component dialog defines an inner dialog set, we have to create an outer dialog set that's visible to the message handler code, and use that to create a dialog context.
-
-- `dialog` is the main component dialog for the bot.
-- `turnContext` is the current turn context for the bot.
-
-[!code-csharp[Run method](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/DialogExtensions.cs?range=13-24)]
-
--->
-
-**Bots\DialogBot.cs**
-
-メッセージ ハンドラーでは、ダイアログ管理のために `RunAsync` メソッドが呼び出されます。ターンの途中に発生した可能性のある会話およびユーザー状態に対する変更を保存するために、ターン ハンドラーをオーバーライドしました。 基本 `OnTurnAsync` によって `OnMessageActivityAsync` メソッドが呼び出されます。これにより、そのターンの最後に保存呼び出しが確実に行われます。
-
-[!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogBot.cs?range=33-48&highlight=5-7)]
-
-**Bots\DialogAndWelcome.cs**
-
-`DialogAndWelcomeBot` によって上記の `DialogBot` が拡張され、ユーザーが会話に参加したときにウェルカム メッセージが示されます。これは `Startup.cs` で作成されます。
-
-[!code-csharp[On members added](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogAndWelcome.cs?range=21-38)]
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-**dialogs/mainDialog.js**
-
-このサンプルの `run` メソッドの定義が完了しました。このメソッドは、ダイアログ コンテキストの作成およびアクセスに使用します。
-コンポーネント ダイアログによって内部ダイアログ セットが定義されているため、メッセージ ハンドラー コードに表示される外部ダイアログ セットを作成し、それを使用してダイアログ コンテキストを作成する必要があります。
-
-- `turnContext` は、ボットの現在のターン コンテキストです。
-- `accessor` は、ダイアログの状態を管理するために作成したアクセサーです。
-
-[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/mainDialog.js?range=32-41)]
-
-**bots/dialogBot.js**
-
-メッセージ ハンドラーでは、ダイアログ管理のために `run` ヘルパー メソッドが呼び出されます。ターンの途中に発生した可能性のある会話およびユーザー状態に対する変更を保存するために、ターン ハンドラーを実装しています。 `next` を呼び出すことで、基本実装によって `onDialog` メソッドが呼び出されます。これにより、そのターンの最後に保存呼び出しが確実に行われます。
-
-[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=24-41)]
-
-**bots/dialogAndWelcomeBot.js**
-
-`DialogAndWelcomeBot` によって上記の `DialogBot` が拡張され、ユーザーが会話に参加したときにウェルカム メッセージが示されます。これは `index.js` で作成されます。
-
-[!code-javascript[On members added](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogAndWelcomeBot.js?range=10-21)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-**bots/dialog_bot.py**
-
-メッセージ ハンドラーでは、ダイアログ管理のために `run_dialog` メソッドが呼び出されます。ターンの途中に発生した可能性のある会話およびユーザー状態に対する変更を保存するために、ターン ハンドラーをオーバーライドしました。 基本 `on_turn` によって `on_message_activity` メソッドが呼び出されます。これにより、そのターンの最後に保存呼び出しが確実に行われます。
-
-[!code-python[Overrides](~/../botbuilder-python/samples/python/43.complex-dialog/bots/dialog_bot.py?range=29-41&highlight=32-34)]
-
-**bots/dialog_and_welcome_bot.py**
-
-`DialogAndWelcomeBot` によって上記の `DialogBot` が拡張され、ユーザーが会話に参加したときにウェルカム メッセージが示されます。これは `config.py` で作成されます。
-
-[!code-python[on_members_added](~/../botbuilder-python/samples/python/43.complex-dialog/bots/dialog_and_welcome_bot.py?range=28-39)]
-
----
-
-## <a name="branch-and-loop"></a>分岐とループ
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-**Dialogs\TopLevelDialog.cs**
-
-"_最上位レベル_" ダイアログのステップの分岐ロジック サンプルを次に示します。
-
-[!code-csharp[branching logic](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/TopLevelDialog.cs?range=68-80)]
-
-**Dialogs\ReviewSelectionDialog.cs**
-
-"_選択内容の確認_" ダイアログのステップのループ ロジック サンプルを次に示します。
-
-[!code-csharp[looping logic](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Dialogs/ReviewSelectionDialog.cs?range=96-105)]
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-**dialogs/topLevelDialog.js**
-
-"_最上位レベル_" ダイアログのステップの分岐ロジック サンプルを次に示します。
-
-[!code-javascript[branching logic](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/topLevelDialog.js?range=56-64)]
-
-**dialogs/reviewSelectionDialog.js**
-
-"_選択内容の確認_" ダイアログのステップのループ ロジック サンプルを次に示します。
-
-[!code-javascript[looping logic](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=71-77)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-**dialogs/top_level_dialog.py**
-
-"_最上位レベル_" ダイアログのステップの分岐ロジック サンプルを次に示します。
-
-[!code-python[branching logic](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=71-80)]
-
-**dialogs/review_selection_dialog.py**
-
-"_選択内容の確認_" ダイアログのステップのループ ロジック サンプルを次に示します。
-
-[!code-python[looping logic](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=93-98)]
-
----
 
 ## <a name="to-test-the-bot"></a>ボットをテストする
 

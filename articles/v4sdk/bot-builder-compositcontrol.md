@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/05/2019
+ms.date: 01/30/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2e40e6a9a8da2e884be0469fb00f0da5f011f22d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 2398f4e3bc61ff51a108bd399e6a60976956e714
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798896"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071830"
 ---
 # <a name="reuse-dialogs"></a>ダイアログの再利用
 
@@ -89,7 +89,7 @@ ms.locfileid: "75798896"
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-ダイアログを使用するには、ターミナルから `pip install botbuilder-dialogs` と `pip install botbuilder-ai` を実行して **botbuilder-dialogs** および **botbuilder-ai** pypi パッケージをインストールします。
+ダイアログを使用するには、ターミナルから `pip install botbuilder-dialogs` と `pip install botbuilder-ai` を実行して **botbuilder-dialogs** および **botbuilder-ai** PyPI パッケージをインストールします。
 
 **dialogs/user_profile_dialog.py**
 
@@ -151,11 +151,11 @@ ms.locfileid: "75798896"
 
 サンプルでは、`run_dialog` メソッドをユーザー プロファイル ダイアログに追加しました。
 
-[!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
+[!code-python[DialogHelper.run_dialog](~/../botbuilder-python/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
 
 ボットの `on_message_activity` メソッドから呼び出される `run_dialog` メソッド。
 
-**bots/dialog_bot.py** [!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=46-51)]
+**bots/dialog_bot.py** [!code-python[om_message_activity](~/../botbuilder-python/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=46-51&highlight=2-6)]
 
 ---
 

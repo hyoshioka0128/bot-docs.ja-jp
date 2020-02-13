@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b8a4915bd58075cfa1172bdf78878f2f6c9826f0
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 9dc5bfeab8bc56e81888be5e9463be167fcd2b18
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798288"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071810"
 ---
 # <a name="send-and-receive-text-message"></a>テキスト メッセージを送受信する
 
@@ -81,6 +81,79 @@ let text = turnContext.activity.text;
 
 ```python
 response = context.activity.text
+```
+
+---
+
+## <a name="send-a-typing-indicator"></a>入力インジケーターの送信
+ユーザーはメッセージに対するタイムリーな応答を期待しています。 ボットがユーザーからの指示を受け取ったということをユーザーに表示することなく、サーバーの呼び出しやクエリの実行などの実行時間の長いタスクを実行すると、ユーザーはしびれを切らして追加のメッセージを送信したり、単にボットが壊れていると推測する可能性があります。
+
+Web チャットおよび Direct Line チャネルのボットは、メッセージが受信され、処理中であることをユーザに示す入力表示の送信をサポートできます。 ボットは 15 秒以内にターンを終了させる必要があることに注意してください。そうしないと、Connector サービスがタイムアウトになります。 より長いプロセスについては、[プロアクティブ メッセージ](bot-builder-howto-proactive-message.md)の送信に関する詳細を参照してください。 
+
+次の例は、入力表示を送信する方法を示しています。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+{
+    if (string.Equals(turnContext.Activity.Text, "wait", System.StringComparison.InvariantCultureIgnoreCase))
+    {
+        await turnContext.SendActivitiesAsync(
+            new Activity[] {
+                new Activity { Type = ActivityTypes.Typing },
+                new Activity { Type = "delay", Value= 3000 },
+                MessageFactory.Text("Finished typing", "Finished typing"),
+            },
+            cancellationToken);
+    }
+    else
+    {
+        var replyText = $"Echo: {turnContext.Activity.Text}. Say 'wait' to watch me type.";
+        await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
+    }
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+this.onMessage(async (context, next) => {
+    if (context.activity.text === 'wait') {
+        await context.sendActivities([
+            { type: ActivityTypes.Typing },
+            { type: 'delay', value: 3000 },
+            { type: ActivityTypes.Message, text: 'Finished typing' }
+        ]);
+    } else {
+        await context.sendActivity(`You said '${ context.activity.text }'. Say "wait" to watch me type.`);
+    }
+    await next();
+});
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```python
+async def on_message_activity(self, turn_context: TurnContext):
+    if turn_context.activity.text == "wait":
+        return await turn_context.send_activities([
+            Activity(
+                type=ActivityTypes.typing
+            ),
+            Activity(
+                type="delay",
+                value=3000
+            ),
+            Activity(
+                type=ActivityTypes.message,
+                text="Finished Typing"
+            )
+        ])
+    else:
+        return await turn_context.send_activity(
+            f"You said {turn_context.activity.text}.  Say 'wait' to watch me type."
+        )
 ```
 
 ---

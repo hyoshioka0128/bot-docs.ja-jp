@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: f517385fd6d194772004b44b2d8407f2515dc17d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: f5ac5397d2ef13eb08d92d9cf560fddf582165c4
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789904"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071880"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Bot Connector サービスでのボットの作成
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "75789904"
 > - [Bot Service](../bot-service-quickstart.md)
 > - [REST](../rest-api/bot-framework-rest-connector-quickstart.md)
 
-Bot Connector サービスを使用すると、お使いのボットで、業界標準の HTTPS 経由 REST および JSON を使用して、<a href="https://dev.botframework.com/" target="_blank">Bot Framework Portal</a> で構成されたチャネルとメッセージ交換できます。 このチュートリアルでは、Bot Framework からアクセス トークンを取得し、Bot Connector サービスを使用してユーザーとメッセージを交換する手順について説明します。
+Bot Connector サービスを使用すると、お使いのボットで、業界標準の HTTPS 経由の REST および JSON を使用して、[Azure portal](https://portal.azure.com) で構成されたチャネルとメッセージを交換できます。 このチュートリアルでは、Bot Framework からアクセス トークンを取得し、Bot Connector サービスを使用してユーザーとメッセージを交換する手順について説明します。
 
 ## <a id="get-token"></a> アクセス トークンを取得する
 

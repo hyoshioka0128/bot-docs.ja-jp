@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/28/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 51068b61776d55fba0f96561463902820b1c14cd
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: a9ba4f47cfea6cdfcbb947df887397717c012eaa
+ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895745"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77035494"
 ---
 # <a name="implement-sequential-conversation-flow"></a>連続して行われる会話フローの実装
 
@@ -137,7 +137,7 @@ ms.locfileid: "76895745"
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-ダイアログを使用するには、ターミナルから `pip install botbuilder-dialogs` と `pip install botbuilder-ai` を実行して **botbuilder-dialogs** および **botbuilder-ai** pypi パッケージをインストールします。
+ダイアログを使用するには、ターミナルから `pip install botbuilder-dialogs` と `pip install botbuilder-ai` を実行して **botbuilder-dialogs** および **botbuilder-ai** PyPI パッケージをインストールします。
 
 ボットは `UserProfileDialog` を介してユーザーと対話します。 ボットの `DialogBot` クラスを作成するときに、`UserProfileDialog` をメイン ダイアログとして設定します。 その後、ボットは `run_dialog` ヘルパー メソッドを使用して、ダイアログにアクセスします。
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/27/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bea377055010077d964f639518556e12e212f1ad
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: f5cf5d6628d5186404816b7f7862f2e58293f5e5
+ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895708"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77035474"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -72,7 +72,7 @@ ms.locfileid: "76895708"
 
 ディスパッチ モデルを作成するには、ご自身の LUIS アプリと QnA ナレッジ ベースを作成し、発行しておく必要があります。 この記事では、`\CognitiveModels` フォルダーの "_ディスパッチによる NLP_" サンプルに含まれる次のモデルを公開します。
 
-| Name | [説明] |
+| Name | 説明 |
 |------|------|
 | HomeAutomation | 関連付けられているエンティティ データによってホーム オートメーションの意図を認識する LUIS アプリ。|
 | Weather | 場所データによって天気関連の意図を認識する LUIS アプリ。|
@@ -312,7 +312,7 @@ LuisAPIHostName=<your-dispatch-app-region>
 
 ### <a name="installing-packages"></a>パッケージのインストール
 
-このアプリを初めて実行する前に、pypi パッケージをいくつかインストールする必要があります。
+このアプリを初めて実行する前に、PyPI パッケージをいくつかインストールする必要があります。
 
 ```powershell
 pip install azure

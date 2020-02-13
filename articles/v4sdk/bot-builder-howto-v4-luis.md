@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/24/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8d681d8ce30ed5f5bce0a424ffb0b1ecfe865155
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: 8aeff2ec5fb816139f082d931aa1431edc5e145c
+ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895774"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77035484"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 
@@ -84,7 +84,7 @@ ms.locfileid: "76895774"
 
 ## <a name="create-a-luis-app-in-the-luis-portal"></a>LUIS ポータルでの LUIS アプリの作成
 
-LUIS ポータルにサインインして、ご自身のバージョンのサンプル LUIS アプリを作成します。 アプリケーションは、 **[マイ アプリ]** で作成および管理できます。
+LUIS ポータルにサインインして、ご自身のバージョンのサンプル LUIS アプリを作成します。 アプリケーションは、 **[My Apps]** で作成および管理できます。
 
 1. **[Import new app]\(新しいアプリのインポート\)** を選択します。
 1. **[Choose App file (JSON format)...]\(アプリ ファイル (JSON 形式) を選択...\)** をクリックします。
@@ -168,7 +168,7 @@ From、To、および TravelDate を抽出するロジックは、`flightBooking
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-お使いのプロジェクトに対して **botbuilder ai** pypi パッケージがインストールされていることを確認します。
+お使いのプロジェクトに対して **botbuilder-ai** PyPI パッケージがインストールされていることを確認します。
 
 LUIS サービスに接続するために、ボットは、上記で追加した `config.py` ファイルの情報を使用します。 `FlightBookingRecognizer` クラスには、`config.py` ファイルからユーザーの設定をインポートするコードが含まれています。また、`recognize()` メソッドを呼び出すことで LUIS サービスにクエリを実行します。
 

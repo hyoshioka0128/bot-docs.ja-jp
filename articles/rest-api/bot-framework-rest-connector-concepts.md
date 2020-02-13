@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/16/2019
-ms.openlocfilehash: 3290c12c35cd2095c6436b6a6239d9a7e3f5628b
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 15f30ff5d4db24d222a1a9df3ac98e24e576b238
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789948"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071890"
 ---
 # <a name="key-concepts"></a>主要な概念
 
@@ -20,7 +20,7 @@ Bot Connector サービスを使用すると、Skype、電子メール、Slack �
 
 ## <a name="bot-connector-service"></a>Bot Connector サービス
 
-Bot Connector サービスを使用すると、<a href="https://dev.botframework.com/" target="_blank">Bot Framework Portal</a> 内で構成されているチャネルとご利用のボットとの間でメッセージのやり取りができるようになります。 このサービスでは、HTTPS 経由で業界標準の REST および JSON が使用され、JWT ベアラー トークンによる認証が有効にされます。 Bot Connector サービスを使用する方法の詳細については、「[Authentication](bot-framework-rest-connector-authentication.md)」(認証) と、このセクションの残りの記事を参照してください。
+Bot Connector サービスを使用すると、[Azure portal](https://portal.azure.com) で構成されているチャネルとご利用のボットとの間でメッセージのやり取りができるようになります。 このサービスでは、HTTPS 経由で業界標準の REST および JSON が使用され、JWT ベアラー トークンによる認証が有効にされます。 Bot Connector サービスを使用する方法の詳細については、「[Authentication](bot-framework-rest-connector-authentication.md)」(認証) と、このセクションの残りの記事を参照してください。
 
 ### <a name="activity"></a>アクティビティ
 

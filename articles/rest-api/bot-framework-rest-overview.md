@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: f0ee10d86c09d374f2cfedef551a28bf9107180b
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 2c42b39f838177dcc0e07b53357ab1395500e010
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789204"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071800"
 ---
 # <a name="bot-framework-rest-apis"></a>Bot Framework REST API
 > [!div class="op_single_selector"]
@@ -20,7 +20,7 @@ ms.locfileid: "75789204"
 > - [Node.js](../nodejs/bot-builder-nodejs-overview.md)
 > - [REST](../rest-api/bot-framework-rest-overview.md)
 
-Bot Framework REST API を使用すると、<a href="https://dev.botframework.com/" target="_blank">Bot Framework Portal</a> で構成されたチャネルを使ってメッセージをやり取りするボットを作成し、状態データを格納および取得し、固有のクライアント アプリケーションをボットに接続することが可能になります。 すべての Bot Framework サービスが、HTTPS 経由で業界標準の REST および JSON を使用します。
+Bot Framework REST API を使用すると、[Azure portal](https://portal.azure.com) で構成されたチャネルを使ってメッセージをやり取りするボットを作成し、状態データを格納および取得し、固有のクライアント アプリケーションをボットに接続することが可能になります。 すべての Bot Framework サービスが、HTTPS 経由で業界標準の REST および JSON を使用します。
 
 ## <a name="build-a-bot"></a>ボットを作成する
 

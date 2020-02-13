@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/06/2019
-ms.openlocfilehash: 83273ade9aa79266c20287682ea3c151b1b0f8a5
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: cb3d156d71d6c5e28303cdf26de8692b13f42c86
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789444"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071769"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Direct Line API 3.0 の主要な概念
 
@@ -20,7 +20,7 @@ Direct Line API を使用すると、ボットと独自のクライアント ア
 
 ## <a name="authentication"></a>認証
 
-Direct Line API 3.0 の要求は、<a href="https://dev.botframework.com/" target="_blank">Bot Framework ポータル</a>の Direct Line チャネル構成ページから取得する**シークレット**を使用するか、実行時に取得する**トークン**を使用して認証できます。 詳細については、[認証](bot-framework-rest-direct-line-3-0-authentication.md)に関するページをご覧ください。
+Direct Line API 3.0 の要求は、[Azure portal](https://portal.azure.com) の Direct Line チャネル構成ページから取得する**シークレット**を使用するか、実行時に取得する**トークン**を使用して認証できます。 詳細については、[認証](bot-framework-rest-direct-line-3-0-authentication.md)に関するページをご覧ください。
 
 ## <a name="starting-a-conversation"></a>会話の開始
 
@@ -50,7 +50,7 @@ Bot Framework では、C# と Node.js からの Direct Line API 3.0 へのアク
 
 <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples" target="_blank">BotBuilder-Samples</a> GitHub リポジトリには、C# と Node.js で Direct Line API 3.0 を使用する方法を示す複数のサンプルが含まれています。
 
-| サンプル | 言語 | [説明] |
+| サンプル | Language | 説明 |
 |----|----|----|
 | <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLine" target="_blank">Direct Line Bot のサンプル</a> | C# | Direct Line API を使用して相互に通信するサンプル ボットとカスタム クライアント。 |
 | <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-DirectLineWebSockets" target="_blank">Direct Line Bot のサンプル (クライアント WebSocket を使用)</a> | C# | Direct Line API と WebSocket を使用して相互に通信するサンプル ボットとカスタム クライアント。 |

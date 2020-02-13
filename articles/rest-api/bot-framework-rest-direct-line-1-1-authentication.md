@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 27da3fbe5b122e23e0284c8396f75a5ac73da13b
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: cc852b1298a306b5c9f6e381b48597510dcb1e72
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789762"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071870"
 ---
 # <a name="authentication"></a>認証
 
@@ -46,13 +46,13 @@ Direct Line **トークン**は、1 つの会話にアクセスするために�
 
 ## <a name="get-a-direct-line-secret"></a>Direct Line シークレットを取得する
 
-<a href="https://dev.botframework.com/" target="_blank">Bot Framework Portal</a> で、ボット用の Direct Line チャネル構成ページを使用して、[Direct Line シークレットを取得](../bot-service-channel-connect-directline.md)できます。
+[Azure portal](https://portal.azure.com) で、ボット用の Direct Line チャネル構成ページを使用して、[Direct Line シークレットを取得](../bot-service-channel-connect-directline.md)できます。
 
 ![Direct Line 構成](../media/direct-line-configure.png)
 
 ## <a id="generate-token"></a> Direct Line トークンを生成する
 
-1 つの会話にアクセスするために使用できる Direct Line トークンを生成するには、まず <a href="https://dev.botframework.com/" target="_blank">Bot Framework Portal</a> の Direct Line チャネル構成ページから Direct Line シークレットを取得します。 その後、次の要求を発行して、Direct Line シークレットを Direct Line トークンと交換します。
+1 つの会話にアクセスするために使用できる Direct Line トークンを生成するには、まず [Azure portal](https://portal.azure.com) の Direct Line チャネル構成ページから Direct Line シークレットを取得します。 その後、次の要求を発行して、Direct Line シークレットを Direct Line トークンと交換します。
 
 ```http
 POST https://directline.botframework.com/api/tokens/conversation

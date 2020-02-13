@@ -7,14 +7,14 @@ ms.author: johtaylo
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 01/27/2020
+ms.date: 01/31/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e104fefa53c0df1150bd90768be51a9d29abdf64
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: d6ea339d008c54c8a60dc20dd9c5252b31e06142
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895790"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071860"
 ---
 # <a name="how-bots-work"></a>ボットのしくみ
 
@@ -80,9 +80,9 @@ JavaScript の `ActivityHandler` では、イベント エミッタ/リスナー
 たとえば、`onMessage` メソッドを使用してメッセージ アクティビティのイベント リスナーを登録します。 リスナーは複数登録できます。 ボットがメッセージ アクティビティを受信すると、アクティビティ ハンドラーがそのアクティビティを認識し、各 `onMessage` アクティビティ リスナーを登録された順に送信します。
 
 ボットを構築すると、メッセージの処理とメッセージへの応答を行うボット ロジックが `onMessage` リスナーに格納されます。 同様に、会話に追加されたメンバーを処理するロジックは、会話にメンバーが追加されると必ず呼び出される `onMembersAdded` リスナーに格納されます。
-
 これらのリスナーを追加するには、以下の「[ボット ロジック](#bot-logic)」セクションで示すように、ご自身のボットにリスナーを登録します。 各リスナーにボット ロジックを組み込み、**最後に必ず `next()` を呼び出します**。 `next()` を呼び出すことで、次のリスナーが確実に実行されます。
-状態を更新するリスナーでは、リスナーが終了する前に必ず[状態を保存](bot-builder-concept-state.md)してください。
+
+ターンが終了する前に必ず[状態を保存](bot-builder-concept-state.md)してください。 これを行うには、アクティビティ ハンドラーの `run` メソッドをオーバーライドし、親の `run` メソッドが完了した後に状態を保存します。
 
 基本ターン ハンドラーのオーバーライドが必要になる状況はめったにないため、この操作を行う場合は気を付けてください。
 `onDialog` という名前の特殊なハンドラーがあります。 `onDialog` ハンドラーは、ハンドラーの残りの部分の実行後、最後に実行され、特定のアクティビティの種類には関連付けられていません。 上記のすべてのハンドラーと同様、必ず `next()` を呼び出して、プロセスの残りの部分を終了してください。
@@ -163,7 +163,7 @@ Yeoman ジェネレーターにより、[restify](http://restify.com/) Web ア�
 
 `ActivityHandler` で定義されているハンドラーを次に示します。
 
-| Event | Handler | [説明] |
+| Event | Handler | 説明 |
 | :-- | :-- | :-- |
 | 任意のアクティビティの種類を受信した | `OnTurnAsync` | 受信したアクティビティの種類に基づいて、他のハンドラーのいずれかを呼び出します。 |
 | メッセージ アクティビティを受信した | `OnMessageActivityAsync` | これをオーバーライドして `message` アクティビティを処理します。 |
@@ -211,7 +211,7 @@ public class MyBot : ActivityHandler
 
 各種類のイベントのリスナーを登録するには、次のメソッドを使用します。
 
-| Event | 登録メソッド | [説明] |
+| Event | 登録メソッド | 説明 |
 | :-- | :-- | :-- |
 | 任意のアクティビティの種類を受信した | `onTurn` | アクティビティを受信した場合のリスナーを登録します。 |
 | メッセージ アクティビティを受信した | `onMessage` | `message` アクティビティを受信した場合のリスナーを登録します。 |
@@ -259,7 +259,7 @@ module.exports.MyBot = MyBot;
 
 `ActivityHandler` で定義されているハンドラーを次に示します。
 
-| Event | Handler | [説明] |
+| Event | Handler | 説明 |
 | :-- | :-- | :-- |
 | 任意のアクティビティの種類を受信した | `on_turn` | 受信したアクティビティの種類に基づいて、他のハンドラーのいずれかを呼び出します。 |
 | メッセージ アクティビティを受信した | `on_message_activity` | これをオーバーライドして `message` アクティビティを処理します。 |

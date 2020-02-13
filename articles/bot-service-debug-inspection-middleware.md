@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: 0c5c4b9062fedd0ce8235a533fcb3014cbe16725
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: 142ffed02c9849511840a094cd91ee5953caf6af
+ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895808"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77035404"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>検査ミドルウェアを使用してボットをデバッグする
 この記事では、検査ミドルウェアを使用してボットをデバッグする方法について説明します。 この機能を使用すると、Bot Framework Emulator で、ボットの現在の状態を確認でき、さらにボットとの間のトラフィックをデバッグできます。 トレース メッセージを使用してエミュレーターにデータを送信し、会話のある特定のターンでのボットの状態を調べることができます。 
@@ -67,7 +67,7 @@ npm install --save botbuilder@latest
 [!code-javascript [inspection bot sample](~/../botbuilder-samples/samples/javascript_nodejs/47.inspection/bot.js?range=6-50)]
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
-ボットのコードを更新する前に、ターミナルで次のコマンドを実行して、必要な pypi パッケージをインストールします。
+ボットのコードを更新する前に、ターミナルで次のコマンドを実行して、必要な PyPI パッケージをインストールします。
 ```cmd
 pip install aiohttp
 pip install botbuilder-core>=4.7.0

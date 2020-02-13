@@ -7,36 +7,23 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 02/03/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 539959af08f04923ef817634c01a4118d213b15d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 56d9b0485cb6e9073cb577d8494c18ab42cd39af
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798474"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071821"
 ---
 # <a name="add-media-to-messages"></a>メッセージにメディアを追加する
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-<!-- To be done when samples repo location is final:
-
-1) Assure to fix the .openpublishing.publish.config.json following entry:
-    {
-             "path_to_root":"botbuilder-python",
-             "url":"https://github.com/microsoft/botbuilder-python",
-             "branch":"master",
-             "branch_mapping":{}
-    }
-2) Assure that the references to Python code snippets reflect the samples repo location is correct. 
-3) Create aka links to GitHub samples.
-
--->
-
 ユーザーとボットの間のメッセージ交換には、イメージ、ビデオ、オーディオ、ファイルなどのメディア添付ファイルを含めることができます。 Bot Framework SDK では、ユーザーにリッチ メッセージを送信するタスクがサポートされています。 チャネル (Facebook、Skype、Slack など) がサポートするリッチ メッセージの種類を確認するには、チャネルのドキュメントで制限事項に関する情報を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
+
 - [ボットの基本](bot-builder-basics.md)に関する知識。
 - この記事のコードは、次のサンプルに基づいています。
 
@@ -109,7 +96,7 @@ ms.locfileid: "75798474"
 
 ### <a name="pythontabpython"></a>[Python](#tab/python)
 
-返信メッセージを作成するには、テキストを定義し、添付ファイルを設定します。 添付ファイルを返信に割り当てる場合、添付ファイルの種類ごとに同じ操作を行いますが、次のスニペットに示すように、添付ファイルの設定と定義はそれぞれ異なります。 
+返信メッセージを作成するには、テキストを定義し、添付ファイルを設定します。 添付ファイルを返信に割り当てる場合、添付ファイルの種類ごとに同じ操作を行いますが、次のスニペットに示すように、添付ファイルの設定と定義はそれぞれ異なります。
 
 ここで示すソース コードは、[添付ファイルの処理](https://aka.ms/bot-media-attachments-python-sample-code)のサンプルに基づいています。
 
@@ -140,7 +127,7 @@ ms.locfileid: "75798474"
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-ヒーロー カードとボタンを使用してメッセージを作成するには、`HeroCard` をメッセージに添付します。 
+ヒーロー カードとボタンを使用してメッセージを作成するには、`HeroCard` をメッセージに添付します。
 
 ここで示すソース コードは、[添付ファイルの処理](https://aka.ms/bot-attachments-sample-code)のサンプルに基づいています。
 
@@ -149,7 +136,7 @@ ms.locfileid: "75798474"
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-ヒーロー カードとボタンを使用してメッセージを作成するには、`HeroCard` をメッセージに添付します。 
+ヒーロー カードとボタンを使用してメッセージを作成するには、`HeroCard` をメッセージに添付します。
 
 ここで示すソース コードは、[JS の添付ファイルの処理](https://aka.ms/bot-attachments-sample-code-js)のサンプルに基づいています。
 
@@ -172,7 +159,7 @@ ms.locfileid: "75798474"
 
 正常に機能させるために、カード上のクリック可能な各アイテムにアクションの種類を割り当てます。 この表では、使用できるアクションの種類と、関連付けられている value プロパティに含める内容を一覧にまとめ、説明しています。
 
-| 種類 | [説明] | 値 |
+| Type | 説明 | Value |
 | :---- | :---- | :---- |
 | openUrl | 組み込みのブラウザーで URL を開きます。 | 開く URL。 |
 | imBack | ボットにメッセージを送信し、目に見える応答をチャットに投稿します。 | 送信するメッセージのテキスト。 |
@@ -212,64 +199,22 @@ ms.locfileid: "75798474"
 
 使用可能なすべてのカードの例については、[Python カードのサンプル](https://aka.ms/bot-cards-python-sample-code)をご覧ください。
 
-**dialogs/main_dialog.py**
+**dialogs/main_dialog.py** [!code-python[hero cards](~/../botbuilder-samples/samples/python/06.using-cards/dialogs/main_dialog.py?range=163-179)]
 
-<!-- replaced with this when it works: 
-[!code-python[hero cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=163-179)] -->
-
-```python
-def create_hero_card(self) -> Attachment:
-  card = HeroCard(
-      title="",
-      images=[
-          CardImage(
-              url="https://sec.ch9.ms/ch9/7ff5/e07cfef0-aa3b-40bb-9baa-7c9ef8ff7ff5/buildreactionbotframework_960.jpg"
-          )
-      ],
-      buttons=[
-          CardAction(
-              type=ActionTypes.open_url,
-              title="Get Started",
-              value="https://docs.microsoft.com/en-us/azure/bot-service/",
-          )
-      ],
-  )
-  return CardFactory.hero_card(card)
-```
-
-**dialogs/main_dialog.py**
-
-<!-- replaced with this when it works: 
-  [!code-python[sign in cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=245-256)] -->
-
-```python
-def create_signin_card(self) -> Attachment:
-  card = SigninCard(
-      text="BotFramework Sign-in Card",
-      buttons=[
-          CardAction(
-              type=ActionTypes.signin,
-              title="Sign-in",
-              value="https://login.microsoftonline.com",
-          )
-      ],
-  )
-  return CardFactory.signin_card(card)
-```
+**dialogs/main_dialog.py** [!code-python[hero cards](~/../botbuilder-samples/samples/python/06.using-cards/dialogs/main_dialog.py?range=245-256)]
 
 ---
 
 ## <a name="send-an-adaptive-card"></a>アダプティブ カードを送信する
-ユーザーとの通信に、テキスト、画像、動画、オーディオ、ファイルなど、多彩なメッセージを送信するために、アダプティブ カードと MessageFactory が使用されます。 ただし、これには違いがいくつかあります。 
+ユーザーとの通信に、テキスト、画像、動画、オーディオ、ファイルなど、多彩なメッセージを送信するために、アダプティブ カードと MessageFactory が使用されます。 ただし、これには違いがいくつかあります。
 
-まず、アダプティブ カードをサポートするのは一部のチャネルのみで、サポートしていないチャネルでは、アダプティブ カードが部分的にしかサポートされない可能性があります。 たとえば、Facebook でアダプティブ カードを送信する場合、テキストと画像は適切に機能しますが、ボタンは機能しません。 MessageFactory は、作成手順を自動化するための、Bot Framework SDK 内の単なるヘルパー クラスであり、ほとんどのチャネルでサポートされています。 
+まず、アダプティブ カードをサポートするのは一部のチャネルのみで、サポートしていないチャネルでは、アダプティブ カードが部分的にしかサポートされない可能性があります。 たとえば、Facebook でアダプティブ カードを送信する場合、テキストと画像は適切に機能しますが、ボタンは機能しません。 MessageFactory は、作成手順を自動化するための、Bot Framework SDK 内の単なるヘルパー クラスであり、ほとんどのチャネルでサポートされています。
 
-また、アダプティブ カードではカード形式でメッセージが配信され、チャネルによって、カードのレイアウトが決まります。 MessageFactory によって配信されるメッセージの形式はチャネルによって異なり、アダプティブ カードが添付ファイルに含まれていない限り、必ずしもカード形式であるとは限りません。 
+また、アダプティブ カードではカード形式でメッセージが配信され、チャネルによって、カードのレイアウトが決まります。 MessageFactory によって配信されるメッセージの形式はチャネルによって異なり、アダプティブ カードが添付ファイルに含まれていない限り、必ずしもカード形式であるとは限りません。
 
 チャネルでのアダプティブ カードのサポートに関する最新情報については、<a href="http://adaptivecards.io/designer/">アダプティブ カード デザイナー</a>に関するページをご覧ください。
 
-アダプティブ カードを使用するには、必ず `AdaptiveCards` NuGet パッケージを追加してください。 
-
+アダプティブ カードを使用するには、必ず `AdaptiveCards` NuGet パッケージを追加してください。
 
 > [!NOTE]
 > ご自分のボットで使用されるチャネルにおいてこの機能をテストして、それらのチャネルでアダプティブ カードがサポートされているかどうかを判断する必要があります。
@@ -296,10 +241,7 @@ def create_signin_card(self) -> Attachment:
 
 カードは次のように作成されます。
 
-**dialogs/mainDialog.js**  
-
-[!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=6)]
-
+**dialogs/mainDialog.js** [!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=6)]
 [!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=170-172)]
 
 ### <a name="pythontabpython"></a>[Python](#tab/python)
@@ -310,15 +252,7 @@ def create_signin_card(self) -> Attachment:
 
 カードは次のように作成されます。
 
-**bots/main_dialog.py**
-
-<!-- replaced with this when it works:  
-[!code-python[adaptive cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=127-128)] -->
-
-```python
-def create_adaptive_card(self) -> Attachment:
-  return CardFactory.adaptive_card(ADAPTIVE_CARD_CONTENT)
-```
+**bots/main_dialog.py** [!code-python[hero cards](~/../botbuilder-samples/samples/python/06.using-cards/dialogs/main_dialog.py?range=127-128)]
 
 ---
 
@@ -360,36 +294,13 @@ def create_adaptive_card(self) -> Attachment:
 
 ここで示すソース コードは、[Python カードのサンプル](https://aka.ms/bot-cards-python-sample-code)に基づいています。
 
-最初に、添付ファイルを作成します。
+カードのカルーセルを送信するには、添付ファイルを配列として、またレイアウトの種類を `Carousel` として定義して、返信します。
 
-**dialogs/main_dialog.py**
-
-<!-- replaced with this when it works:  
-[!code-python[hero cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=104-112)] -->
-
-```python
-reply.attachment_layout = AttachmentLayoutTypes.carousel
-reply.attachments.append(self.create_adaptive_card())
-reply.attachments.append(self.create_animation_card())
-reply.attachments.append(self.create_audio_card())
-reply.attachments.append(self.create_hero_card())
-reply.attachments.append(self.create_receipt_card())
-reply.attachments.append(self.create_signin_card())
-reply.attachments.append(self.create_thumbnail_card())
-reply.attachments.append(self.create_video_card())
-```
+**dialogs/main_dialog.py** [!code-python[hero cards](~/../botbuilder-samples/samples/python/06.using-cards/dialogs/main_dialog.py?range=104-112)]
 
 添付ファイルが追加されたら、返信を送信できます。
 
-**dialogs/main_dialog.py**
-
-<!-- replaced with this when it works:  
-[!code-python[hero cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/main_dialog.py?range=114-115)] -->
-
-```python
-# Send the card(s) to the user as an attachment to the activity
-  await step_context.context.send_activity(reply)
-```
+**dialogs/main_dialog.py** [!code-python[hero cards](~/../botbuilder-samples/samples/python/06.using-cards/dialogs/main_dialog.py?range=114-115)]
 
 ---
 
@@ -438,71 +349,84 @@ reply.attachments.append(self.create_video_card())
 入力フィールドには "text" というラベルが付いているので、アダプティブ カードではコメント テキスト データが Value.[text] として添付されます。
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 検証コントロールでは、Newtonsoft.json を使用して最初にこれを JObject に変換し、次に比較のためにトリミングされたテキスト文字列を作成します。 そのため、次のコードを
-  ```csharp
-  using Newtonsoft.Json.Linq;
-  ```
+
+```csharp
+using System;
+using System.Linq;
+using Newtonsoft.Json.Linq;
+```
+
 MainDialog.cs に追加して、Newtonsoft.Json の最新の安定した nuget パッケージをインストールします。
-検証コントロールのコードでは、コード コメントにロジック フローを追加しました。 この ChoiceValidator () コードは、06.using-cards サンプルにある、MainDialog の宣言用の閉じ括弧の public の直後に配置されています。
+検証コントロールのコードでは、コード コメントにロジック フローを追加しました。
+この ChoiceValidator () コードは、06.using-cards サンプルにある、MainDialog の宣言用の閉じ括弧の public の直後に配置されています。
 
 ```csharp
 private async Task ChoiceValidator(
-  PromptValidatorContext promptContext,
-  CancellationToken cancellationToken)
-  {
+    PromptValidatorContext promptContext,
+    CancellationToken cancellationToken)
+{
     // Retrieves Adaptive Card comment text as JObject.
     // looks for JObject field "text" and converts that input into a trimmed text string.
     var jobject = promptContext.Context.Activity.Value as JObject;
     var jtoken = jobject?["text"];
     var text = jtoken?.Value().Trim();
+
     // Logic: 1. if succeeded = true, just return promptContext
     //        2. if false, see if JObject contained Adaptive Card input.
     //               No = (bad input) return promptContext
     //               Yes = update Value field with JObject text string, return "true".
     if (!promptContext.Recognized.Succeeded && text != null)
     {
-       var choice = promptContext.Options.Choices.FirstOrDefault(
-       c => c.Value.Equals(text, StringComparison.InvariantCultureIgnoreCase));
-       if (choice != null)
-       {
-           promptContext.Recognized.Value = new FoundChoice
+        var choice = promptContext.Options.Choices.FirstOrDefault(
+        c => c.Value.Equals(text, StringComparison.InvariantCultureIgnoreCase));
+        if (choice != null)
+        {
+            promptContext.Recognized.Value = new FoundChoice
             {
-               Value = choice.Value,
-             };
+                Value = choice.Value,
+            };
             return true;
-       }
+        }
     }
     return promptContext.Recognized.Succeeded;
-  }
+}
 ```
 
 今度は、上記の MainDialog 宣言内で、次の内容を、
-  ```csharp
-  // Define the main dialog and its related components.
-  AddDialog(new ChoicePrompt(nameof(ChoicePrompt)));
-  ```
+
+```csharp
+// Define the main dialog and its related components.
+AddDialog(new ChoicePrompt(nameof(ChoicePrompt)));
+```
+
 を次のように変更します。
-  ```csharp
-  // Define the main dialog and its related components.
-  AddDialog(new ChoicePrompt(nameof(ChoicePrompt), ChoiceValidator));
-  ```
+
+```csharp
+// Define the main dialog and its related components.
+AddDialog(new ChoicePrompt(nameof(ChoicePrompt), ChoiceValidator));
+```
+
 これにより、新しい ChoicePrompt が作成されるたびに、検証コントロールが呼び出されてアダプティブ カード入力が検索されます。
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 mainDialog.js を開き、実行メソッド _async run(turnContext, accessor)_ を見つけます。このメソッドでは着信アクティビティが処理されます。
 呼び出し _dialogSet.add(this);_ のすぐ後に、次のコードを追加します。
+
 ```JavaScript
-  // The following check looks for a non-existant text input
-  // plus Adaptive Card input in _activity.value.text
-  // If both conditions exist, the Activity Card text 
-  // is copied into the text input field.
-  if(turnContext._activity.text == null
-      && turnContext._activity.value.text != null)
-   {
-      this.logger.log('replacing null text with Activity Card text input');
-      turnContext._activity.text = turnContext._activity.value.text;
-   }
+// The following check looks for a non-existant text input
+// plus Adaptive Card input in _activity.value.text
+// If both conditions exist, the Activity Card text
+// is copied into the text input field.
+if(turnContext._activity.text == null
+    && turnContext._activity.value.text != null) {
+    this.logger.log('replacing null text with Activity Card text input');
+    turnContext._activity.text = turnContext._activity.value.text;
+  }
 ```
+
 このチェックで、クライアントからの存在しないテキストの入力が見つかった場合、アダプティブ カードからの入力があるかどうかが調べられます。
 アダプティブ カードの入力が \_activity.value.text に存在する場合は、これが通常のテキスト入力フィールドにコピーされます。
 

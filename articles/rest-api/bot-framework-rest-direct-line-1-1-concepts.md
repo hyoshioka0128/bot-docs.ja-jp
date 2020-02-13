@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 165079f862a11fc8d226a54bede7d497885a104a
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 227e6e27594db8c51aa8808709cabd47cade4084
+ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789708"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77071764"
 ---
 # <a name="key-concepts-in-direct-line-api-11"></a>Direct Line API 1.1 の主要な概念
 
@@ -23,7 +23,7 @@ Direct Line API を使用すると、ボットと独自のクライアント ア
 
 ## <a name="authentication"></a>認証
 
-Direct Line API 1.1 の要求は、<a href="https://dev.botframework.com/" target="_blank">Bot Framework ポータル</a>の Direct Line チャネル構成ページから取得する**シークレット**を使用するか、実行時に取得する**トークン**を使用して認証できます。  詳細については、[認証](bot-framework-rest-direct-line-1-1-authentication.md)に関するページをご覧ください。
+Direct Line API 1.1 の要求は、[Azure portal](https://portal.azure.com) の Direct Line チャネル構成ページから取得する**シークレット**を使用するか、実行時に取得する**トークン**を使用して認証できます。  詳細については、[認証](bot-framework-rest-direct-line-1-1-authentication.md)に関するページをご覧ください。
 
 ## <a name="starting-a-conversation"></a>会話の開始
 
