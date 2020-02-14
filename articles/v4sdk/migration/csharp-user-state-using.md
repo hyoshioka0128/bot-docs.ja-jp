@@ -133,7 +133,7 @@ ms.locfileid: "75798085"
 ### <a name="connect-to-the-bot-using-bot-framework-emulator"></a>Bot Framework Emulator を使用したボットへの接続
 
 - Bot Framework Emulator を起動します。
-- [ファイル] -> [Open Bot]\(ボットを開く\) を選択します。
+- [File] -> [Open Bot]\(ボットを開く\) を選択します。
 - ボットの URL として `http://localhost:3978/api/messages` を入力します。
 
 
