@@ -198,12 +198,12 @@ Web チャット React コンポーネント (`<ReactWebChat>`) または `rende
 | `username`                 | ユーザー名を指定します。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | `webSpeechPonyFillFactory` | テキスト読み上げおよび音声テキスト変換用に Web Speech オブジェクトを指定します。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 ## <a name="browser-compatibility"></a>ブラウザーとの互換性
-Web チャットは、Chrome、Edge、FireFox などの最近のブラウザーの最新の 2 つのバージョンをサポートしています。
+Web チャットは、Chrome、Microsoft Edge、FireFox などの最近のブラウザーの最新の 2 つのバージョンをサポートしています。
 Internet Explorer 11 で Web チャットが必要な場合は、[ES5 バンドルのデモ](https://microsoft.github.io/BotFramework-WebChat/01.b.getting-started-es5-bundle)を参照してください。
 
 ただし、次の点に注意してください。
 - Web チャットは、Internet Explorer 11 より前のバージョンをサポートしていません。
-- ES5 以外のサンプルに示されているカスタマイズは、Internet Explorer ではサポートされていません。 IE11 は最新ではないブラウザーであるため、ES6 はサポートされていません。矢印関数と最新の promise を使用する多くのサンプルは、手動で ES5 に変換する必要があります。  アプリのカスタマイズを大幅に行う必要がある場合は、Google Chrome や Edge などの最新のブラウザー用にアプリを開発することを強くお勧めします。
+- ES5 以外のサンプルに示されているカスタマイズは、Internet Explorer ではサポートされていません。 IE11 は最新ではないブラウザーであるため、ES6 はサポートされていません。矢印関数と最新の promise を使用する多くのサンプルは、手動で ES5 に変換する必要があります。  アプリのカスタマイズを大幅に行う必要がある場合は、Google Chrome や Microsoft Edge などの最新のブラウザー用にアプリを開発することを強くお勧めします。
 - Web チャットは、IE11 (ES5) のサンプルをサポートする予定はありません。
    - 他のサンプルを IE11 で動作するように手動で書き換えるお客様は、[`babel`](https://babeljs.io/docs/en/next/babel-standalone.html) のようなポリフィルやトランスパイラーを使用した ES6+ から ES5 へのコードの変換を検討することをお勧めします。
 
