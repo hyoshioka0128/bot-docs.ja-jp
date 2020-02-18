@@ -145,9 +145,9 @@ ngrok http 3978
 1. Azure の Bot Channels Registration に移動します。 左側メニューの **[Settings]** をクリックし、ngrok IP を使用して **[Messaging endpoint]\(メッセージング エンドポイント\)** を設定します。 必要な場合、IP アドレスの後に **/api/messages** を追加します。 (たとえば、 https://e58549b6.ngrok.io/api/messages) 。 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** をオンにして、 **[Save]** を選択します。
 ![endpoint](./media/bot-debug-inspection-middleware/bot-debug-channels-setting-ngrok.png)
 > [!TIP]
-> **[Save]** が有効になっていない場合は、 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** をオフにして **[Save]** をクリックしてから、再び **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** をオンにして **[Save]** をクリックできます。 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** がオンになっており、エンドポイントの構成が保存されていることを確認する必要があります。 
+> **[Save]** が有効になっていない場合は、 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** をオフにして **[Save]** をクリックしてから、再び **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** をオンにして **[Save]** をクリックします。 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** がオンになっており、エンドポイントの構成が保存されていることを確認する必要があります。 
 
-2. ボットのリソース グループにアクセスし、 **[Deployment]** をクリックして、以前正常にデプロイされた Bot Channels Registration を選択します。 左側で **[入力]** をクリックして、**appId** と **appSecret** を取得します。 **appId** と **appSecret** を使用して、ボットの **.env** ファイル (C# ボットを使用している場合は **appsettings.json** ファイル) を更新します。 
+2. ボットのリソース グループにアクセスし、 **[Deployment]** をクリックして、以前正常にデプロイされた Bot Channels Registration を選択します。 左側で **[Inputs]** をクリックして、**appId** と **appSecret** を取得します。 **appId** と **appSecret** を使用して、ボットの **.env** ファイル (C# ボットを使用している場合は **appsettings.json** ファイル) を更新します。 
 ![入力の取得](./media/bot-debug-inspection-middleware/bot-debug-get-inputs-id-secret.png)
 
 3. エミュレーターを開始し、 **[Open Bot]\(ボットを開く\)** をクリックし、 **[Bot URL]\(ボットの URL\)** に「 http://localhost:3978/api/messages 」を入力します。 **[Microsoft App ID]\(Microsoft アプリ ID\)** と **[Microsoft App password]\(Microsoft アプリ パスワード\)** に、ボットの **.env** (**appsettings.json**) ファイルに追加したのと同じ **appId** と **appSecret** を入力します。 次いで **[Connect]** をクリックします。 
