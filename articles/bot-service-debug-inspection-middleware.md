@@ -29,7 +29,7 @@ Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-b
 ## <a name="update-your-emulator-to-the-latest-version"></a>エミュレーターを最新バージョンに更新する 
 ボット検査ミドルウェアを使用してボットをデバッグする前に、エミュレーターをバージョン 4.5 以降に更新する必要があります。 [最新バージョン](https://github.com/Microsoft/BotFramework-Emulator/releases)で更新プログラムを確認してください。 
 
-エミュレーターのバージョンを確認するには、メニューで **[ヘルプ]**  ->  **[バージョン情報]** の順に選択します。 お使いのエミュレーターの現在のバージョンが表示されます。 
+エミュレーターのバージョンを確認するには、メニューで **[Help]**  ->  **[About]** の順に選択します。 お使いのエミュレーターの現在のバージョンが表示されます。 
 
 ![現在のバージョン](./media/bot-debug-inspection-middleware/bot-debug-check-emulator-version.png) 
 
@@ -110,9 +110,9 @@ python app.py
 
 ---
 
-2. エミュレーターを開きます。 **[Open Bot]\(ボットを開く\)** をクリックします。 [Bot URL]\(ボットの URL\) に「 http://localhost:3978/api/messages 」を入力し、**MicrosoftAppId** と **MicrosoftAppPassword** の値を入力します。 JavaScript ボットの場合、これらの値はボットの **.env** ファイルにあります。 C# ボットの場合、これらの値は **appsettings.json** ファイルにあります。 **[接続]** をクリックします。 
+2. エミュレーターを開きます。 **[Open Bot]\(ボットを開く\)** をクリックします。 [Bot URL]\(ボットの URL\) に「 http://localhost:3978/api/messages 」を入力し、**MicrosoftAppId** と **MicrosoftAppPassword** の値を入力します。 JavaScript ボットの場合、これらの値はボットの **.env** ファイルにあります。 C# ボットの場合、これらの値は **appsettings.json** ファイルにあります。 **[Connect]** をクリックします。 
 
-3. 次に、別のエミュレーターを開きます。 この 2 つ目のエミュレーターは、デバッガーとして機能します。 前の手順で説明した指示に従います。 **[Open in debug mode]\(デバッグ モードで開く\)** をオンにし、 **[接続]** をクリックします。 
+3. 次に、別のエミュレーターを開きます。 この 2 つ目のエミュレーターは、デバッガーとして機能します。 前の手順で説明した指示に従います。 **[Open in debug mode]\(デバッグ モードで開く\)** をオンにし、 **[Connect]** をクリックします。 
 
 4. この時点で、デバッグ エミュレーターに UUID (`/INSPECT attach <identifier>`) が表示されます。 UUID をコピーし、最初のエミュレーターのチャット ボックスに貼り付けます。 
 
@@ -142,20 +142,20 @@ ngrok http 3978
 ### <a name="update-channel-registrations-for-your-bot"></a>ボットのチャネル登録を更新する
 ローカル ボットが ngrok に接続されたので、ローカル ボットを Azure の Bot Channels Registration に構成できます。
 
-1. Azure の Bot Channels Registration に移動します。 左側メニューの **[設定]** をクリックし、ngrok IP を使用して **[Messaging endpoint]\(メッセージング エンドポイント\)** を設定します。 必要な場合、IP アドレスの後に **/api/messages** を追加します。 (たとえば、 https://e58549b6.ngrok.io/api/messages) 。 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** をオンにして、 **[保存]** を選択します。
+1. Azure の Bot Channels Registration に移動します。 左側メニューの **[設定]** をクリックし、ngrok IP を使用して **[Messaging endpoint]\(メッセージング エンドポイント\)** を設定します。 必要な場合、IP アドレスの後に **/api/messages** を追加します。 (たとえば、 https://e58549b6.ngrok.io/api/messages) 。 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** をオンにして、 **[Save]** を選択します。
 ![endpoint](./media/bot-debug-inspection-middleware/bot-debug-channels-setting-ngrok.png)
 > [!TIP]
-> **[保存]** が有効になっていない場合は、 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** をオフにして **[保存]** をクリックしてから、再び **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** をオンにして **[保存]** をクリックできます。 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** がオンになっており、エンドポイントの構成が保存されていることを確認する必要があります。 
+> **[Save]** が有効になっていない場合は、 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** をオフにして **[Save]** をクリックしてから、再び **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** をオンにして **[Save]** をクリックします。 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** がオンになっており、エンドポイントの構成が保存されていることを確認する必要があります。 
 
-2. ボットのリソース グループにアクセスし、 **[デプロイ]** をクリックして、以前正常にデプロイされた Bot Channels Registration を選択します。 左側で **[入力]** をクリックして、**appId** と **appSecret** を取得します。 **appId** と **appSecret** を使用して、ボットの **.env** ファイル (C# ボットを使用している場合は **appsettings.json** ファイル) を更新します。 
+2. ボットのリソース グループにアクセスし、 **[Deployment]** をクリックして、以前正常にデプロイされた Bot Channels Registration を選択します。 左側で **[Inputs]** をクリックして、**appId** と **appSecret** を取得します。 **appId** と **appSecret** を使用して、ボットの **.env** ファイル (C# ボットを使用している場合は **appsettings.json** ファイル) を更新します。 
 ![入力の取得](./media/bot-debug-inspection-middleware/bot-debug-get-inputs-id-secret.png)
 
-3. エミュレーターを開始し、 **[Open Bot]\(ボットを開く\)** をクリックし、 **[Bot URL]\(ボットの URL\)** に「 http://localhost:3978/api/messages 」を入力します。 **[Microsoft App ID]\(Microsoft アプリ ID\)** と **[Microsoft App password]\(Microsoft アプリ パスワード\)** に、ボットの **.env** (**appsettings.json**) ファイルに追加したのと同じ **appId** と **appSecret** を入力します。 次いで **[接続]** をクリックします。 
+3. エミュレーターを開始し、 **[Open Bot]\(ボットを開く\)** をクリックし、 **[Bot URL]\(ボットの URL\)** に「 http://localhost:3978/api/messages 」を入力します。 **[Microsoft App ID]\(Microsoft アプリ ID\)** と **[Microsoft App password]\(Microsoft アプリ パスワード\)** に、ボットの **.env** (**appsettings.json**) ファイルに追加したのと同じ **appId** と **appSecret** を入力します。 次いで **[Connect]** をクリックします。 
 
 4. これで、実行中のボットが Azure の Bot Channels Registration に接続されました。 Web チャットをテストするには、 **[Test in Web Chat]\(Web チャットでのテスト\)** をクリックし、チャット ボックスでメッセージを送信します。 
 ![Web チャットのテスト](./media/bot-debug-inspection-middleware/bot-debug-test-webchat.png)
 
-5. 次に、エミュレーターでデバッグ モードを有効にします。 エミュレーターで、 **[デバッグ]**  ->  **[デバッグの開始]** を選択します。 **[Bot URL]\(ボットの URL\)** に ngrok の IP アドレスを入力します。 **/api/messages** を忘れずに追加してください (たとえば、 https://e58549b6.ngrok.io/api/messages) 。 **[Microsoft App ID]\(Microsoft アプリ ID\)** に **appId** を入力し、 **[Microsoft App password]\(Microsoft アプリ パスワード\)** に **appSecret** を入力します。 また、 **[Open in debug mode]\(デバッグ モードで開く\)** がオンになっていることも確認します。 **[接続]** をクリックします。 
+5. 次に、エミュレーターでデバッグ モードを有効にします。 エミュレーターで、 **[デバッグ]**  ->  **[デバッグの開始]** を選択します。 **[Bot URL]\(ボットの URL\)** に ngrok の IP アドレスを入力します。 **/api/messages** を忘れずに追加してください (たとえば、 https://e58549b6.ngrok.io/api/messages) 。 **[Microsoft App ID]\(Microsoft アプリ ID\)** に **appId** を入力し、 **[Microsoft App password]\(Microsoft アプリ パスワード\)** に **appSecret** を入力します。 また、 **[Open in debug mode]\(デバッグ モードで開く\)** がオンになっていることも確認します。 **[Connect]** をクリックします。 
 
 6. デバッグ モードが有効になっていると、UUID がエミュレーターで生成されます。 UUID は、エミュレーターでデバッグ モードを開始するたびに生成される一意の ID です。 UUID をコピーして **[Test in Web Chat]\(Web チャットでのテスト\)** チャット ボックス、またはお使いのチャネルのチャット ボックスに貼り付けます。 チャット ボックスに、"セッションに接続しました。すべてのトラフィックは検査のためにレプリケートされています (Attached to session, all traffic is being replicated for inspection)" というメッセージが表示されます。 
 
