@@ -26,7 +26,7 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 ボットを Bot Framework Emulator に接続する前に、ボットをローカルで実行する必要があります。 ボットを実行するには、Visual Studio または Visual Studio Code を使用するか、コマンド ラインを使用できます。 コマンド ラインを使用してボットを実行するには、次の操作を行います。
 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 * コマンド プロンプトにアクセスし、ボットのプロジェクト ディレクトリに移動します。
 * 次のコマンドを実行して、ボットを起動します。 
@@ -38,7 +38,7 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
     ![C# ポート番号](media/bot-service-debug-emulator/csharp_port_number.png)
 
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 * コマンド プロンプトにアクセスし、ボットのプロジェクト ディレクトリに移動します。
 * 次のコマンドを実行して、ボットを起動します。
@@ -49,7 +49,7 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 
     ![JS ポート番号](media/bot-service-debug-emulator/js_port_number.png)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 * コマンド プロンプトにアクセスし、ボットのプロジェクト ディレクトリに移動します。
 * 次のコマンドを実行して、ボットを起動します。
     ```
@@ -109,7 +109,7 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 
 ### <a name="use-bot-credentials"></a>ボットの資格情報を使用
 
-ボットを開いたときに、ボットが資格情報を使用して実行されている場合は、**Microsoft アプリ ID** および **Microsoft アプリ パスワード**を設定します。 Azure Bot Service でボットを作成した場合、資格情報はそのボットの App Service ( **[Settings] -> [Configuration]** セクションの下) で使用できます。 値がわからない場合は、ローカルで実行されているボットの構成ファイルからそれを削除してから、ボットをエミュレーターで実行できます。 ボットがこれらの設定で実行されていない場合は、その設定でエミュレーターを実行する必要もありません。 
+ボットを開いたときに、ボットが資格情報を使用して実行されている場合は、**Microsoft アプリ ID** および **Microsoft アプリ パスワード**を設定します。 Azure Bot Service でボットを作成した場合、資格情報はそのボットの App Service ( **[設定] -> [構成]** セクションの下) で使用できます。 値がわからない場合は、ローカルで実行されているボットの構成ファイルからそれを削除してから、ボットをエミュレーターで実行できます。 ボットがこれらの設定で実行されていない場合は、その設定でエミュレーターを実行する必要もありません。 
 
 AD ID プロバイダー アプリケーションを作成する場合は次の点に注意してください。
 
@@ -187,7 +187,7 @@ See [above](#add-services) to learn more about services you can manage using the
 
 ### <a name="login-to-azure"></a>Azure にログインする
 Emulator を使って、ご自身の Azure アカウントにログインできます。 これは、ご自身のボットが依存するサービスを追加および管理するときに特に役に立ちます。 次の手順に従って、Azure にログインします。
-- [File]、[Sign in with Azure]\(Azure を使ってサインインする\) の順にクリックします ![Azure ログイン](media/emulator-v4/emulator-azure-login.png)
+- [ファイル]、[Sign in with Azure]\(Azure を使ってサインインする\) の順にクリックします ![Azure ログイン](media/emulator-v4/emulator-azure-login.png)
 - ようこそ画面で、[Sign in with your Azure account]\(Azure アカウントを使ってサインインする\) をクリックします。Emulator アプリケーションを再起動しても、その Emulator でのサインイン状態が継続されるようにするように設定することもできます。
 ![Azure ログイン](media/emulator-v4/emulator-azure-login-success.png)
 
