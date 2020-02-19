@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: kamrani
-ms.openlocfilehash: 1caf469a7ec37e932ae2b7ffde85d0dbf24938a3
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: b5a6296e65ab05cd8a5af24872d31e5ef356dcf7
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933476"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441506"
 ---
 # <a name="about-direct-line"></a>Direct Line の概要
 
@@ -29,7 +29,7 @@ Direct Line は、次の 3 つのフォームでご利用いただけます。
 |                            | Direct Line | Direct Line App Service 拡張機能 | Direct Line Speech |
 |----------------------------|-------------|-----------------------------------|--------------------|
 | 可用性とライセンス    | 一般公開 | パブリック プレビュー、SLA なし  | GA |
-| 音声認識およびテキスト読み上げのパフォーマンス | Standard | Standard | 高性能 |
+| 音声認識およびテキスト読み上げのパフォーマンス | Standard | Standard | 高パフォーマンス |
 | 従来の Web ブラウザーのサポート | はい | 一般提供時 | はい |
 | Bot Framework SDK のサポート | すべての v3、v4 | v4.63 以降必須 | v4.63 以降必須 |
 | クライアント SDK のサポート    | JS、C# | JS、C# | C++、C#、Unity、JS|
@@ -37,6 +37,6 @@ Direct Line は、次の 3 つのフォームでご利用いただけます。
 | VNet | いいえ | プレビュー | いいえ |
 
 
-## <a name="addtional-resources"></a>その他のリソース
+## <a name="additional-resources"></a>その他のリソース
 - [ボットを Direct Line に接続する](bot-service-channel-connect-directline.md)
 - [ボットを Direct Line Speech に接続する](bot-service-channel-connect-directlinespeech.md)

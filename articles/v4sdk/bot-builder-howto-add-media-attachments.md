@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 02/03/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 56d9b0485cb6e9073cb577d8494c18ab42cd39af
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: 0afc97e5a4b94b42456bc4c751c3208c1510c1a5
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071821"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441713"
 ---
 # <a name="add-media-to-messages"></a>メッセージにメディアを追加する
 
@@ -39,7 +39,7 @@ ms.locfileid: "77071821"
 
 使用可能なカードの例については、[ユーザー エクスペリエンスの設計](../bot-service-design-user-experience.md)に関する記事をご覧ください。
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 `Activity` オブジェクトの `Attachments` プロパティには、メッセージに添付するメディア添付ファイルやリッチ カードを表す `Attachment` オブジェクトが格納されます。 メディア添付ファイルをメッセージに追加するには、(`CreateReply()` を使用してアクティビティ外で作成された) `reply` アクティビティ用の `Attachment` オブジェクトを作成し、`ContentType`、`ContentUrl`、`Name` の各プロパティを設定します。
 
@@ -65,7 +65,7 @@ ms.locfileid: "77071821"
 **Bots/AttachmentsBot.cs**  
 [!code-csharp[online attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=217-226)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ここで示すソース コードは、[JS の添付ファイルの処理](https://aka.ms/bot-attachments-sample-code-js)のサンプルに基づいています。
 
@@ -94,7 +94,7 @@ ms.locfileid: "77071821"
 **bots/attachmentsBot.js**  
 [!code-javascript[internet attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=184-191)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 返信メッセージを作成するには、テキストを定義し、添付ファイルを設定します。 添付ファイルを返信に割り当てる場合、添付ファイルの種類ごとに同じ操作を行いますが、次のスニペットに示すように、添付ファイルの設定と定義はそれぞれ異なります。
 
@@ -103,19 +103,19 @@ ms.locfileid: "77071821"
 次のコードでは、インラインの添付ファイル用の返信が設定されます。
 
 **bots/attachments_bot.py**  
-[!code-python[attachments](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=112-113)]
+[!code-python[attachments](~/../botbuilder-samples/samples/python/15.handling-attachments/bots/attachments_bot.py?range=112-113)]
 
 イメージやビデオのような単一のコンテンツを送信する場合、メディアを送信する方法は複数あります。 まず、インラインの添付ファイルとして送信できます。
 
-**bots/attachments_bot.py** [!code-python[inline attachments](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=153-170)]
+**bots/attachments_bot.py** [!code-python[inline attachments](~/../botbuilder-samples/samples/python/15.handling-attachments/bots/attachments_bot.py?range=153-170)]
 
 次は、アップロードされた添付ファイルです。
 
-**bots/attachments_bot.py** [!code-python[upload attachments](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=172-207)]
+**bots/attachments_bot.py** [!code-python[upload attachments](~/../botbuilder-samples/samples/python/15.handling-attachments/bots/attachments_bot.py?range=172-207)]
 
 最後は、URL に含まれるインターネットの添付ファイルです。
 
-**bots/attachments_bot.py** [!code-python[internet attachments](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=209-218)]
+**bots/attachments_bot.py** [!code-python[internet attachments](~/../botbuilder-samples/samples/python/15.handling-attachments/bots/attachments_bot.py?range=209-218)]
 
 ---
 
@@ -125,7 +125,7 @@ ms.locfileid: "77071821"
 
 シンプルなイメージ添付ファイルまたはビデオ添付ファイルだけでなく、**ヒーロー カード**を添付することもできます。これにより、1 つのオブジェクトに含まれるイメージとボタンを結合してユーザーに送信することができます。 Markdown はほとんどのテキスト フィールドでサポートされていますが、サポート状況はチャネルごとに異なる場合があります。
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 ヒーロー カードとボタンを使用してメッセージを作成するには、`HeroCard` をメッセージに添付します。
 
@@ -134,7 +134,7 @@ ms.locfileid: "77071821"
 **Bots/AttachmentsBot.cs**  
 [!code-csharp[Hero card](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=39-58)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ヒーロー カードとボタンを使用してメッセージを作成するには、`HeroCard` をメッセージに添付します。
 
@@ -143,13 +143,13 @@ ms.locfileid: "77071821"
 **bots/attachmentsBot.js**  
 [!code-javascript[hero card](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=147-165)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 ヒーロー カードとボタンを使用してメッセージを作成するには、`HeroCard` をメッセージに添付します。
 
 ここで示すソース コードは、[添付ファイルの処理](https://aka.ms/bot-media-attachments-python-sample-code)のサンプルに基づいています。
 
-**bots/attachments_bot.py** [!code-python[hero card](~/../botbuilder-python/samples/python/15.handling-attachments/bots/attachments_bot.py?range=125-148)]
+**bots/attachments_bot.py** [!code-python[hero card](~/../botbuilder-samples/samples/python/15.handling-attachments/bots/attachments_bot.py?range=125-148)]
 
 ---
 
@@ -175,7 +175,7 @@ ms.locfileid: "77071821"
 
 次のコードでは、さまざまなリッチ カード イベントを使用する例を示します。
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 使用可能なすべてのカードの例については、[C# カードのサンプル](https://aka.ms/bot-cards-sample-code)をご覧ください。
 
@@ -185,7 +185,7 @@ ms.locfileid: "77071821"
 **Cards.cs**  
 [!code-csharp[cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=91-100)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用可能なすべてのカードの例については、[JS カードのサンプル](https://aka.ms/bot-cards-js-sample-code)をご覧ください。
 
@@ -195,7 +195,7 @@ ms.locfileid: "77071821"
 **dialogs/mainDialog.js**  
 [!code-javascript[sign in cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=259-265)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 使用可能なすべてのカードの例については、[Python カードのサンプル](https://aka.ms/bot-cards-python-sample-code)をご覧ください。
 
@@ -219,7 +219,7 @@ ms.locfileid: "77071821"
 > [!NOTE]
 > ご自分のボットで使用されるチャネルにおいてこの機能をテストして、それらのチャネルでアダプティブ カードがサポートされているかどうかを判断する必要があります。
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 アダプティブ カードを使用するには、必ず `AdaptiveCards` NuGet パッケージを追加してください。
 
@@ -228,7 +228,7 @@ ms.locfileid: "77071821"
 **Cards.cs**  
 [!code-csharp[adaptive cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=13-25)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 アダプティブ カードを使用するには、必ず `adaptivecards` npm パッケージを追加してください。
 
@@ -244,11 +244,11 @@ ms.locfileid: "77071821"
 **dialogs/mainDialog.js** [!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=6)]
 [!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=170-172)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 ここで示すソース コードは、[カード使用](https://aka.ms/bot-cards-python-sample-code)のサンプルに基づいています。
 
-**dialogs/resources/adaptive_card_example.py** [!code-python[adaptive cards](~/../botbuilder-python/samples/python/06.using-cards/dialogs/resources/adaptive_card_example.py)]
+**dialogs/resources/adaptive_card_example.py** [!code-python[adaptive cards](~/../botbuilder-samples/samples/python/06.using-cards/dialogs/resources/adaptive_card_example.py)]
 
 カードは次のように作成されます。
 
@@ -260,7 +260,7 @@ ms.locfileid: "77071821"
 
 また、メッセージには複数の添付ファイルをカルーセル レイアウトで含めることもできます。このレイアウトでは、添付ファイルが左右に並べて配置され、ユーザーは全体をスクロールすることができます。
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 ここで示すソース コードは、[カード サンプル](https://aka.ms/bot-cards-sample-code)に基づいています。
 
@@ -279,7 +279,7 @@ ms.locfileid: "77071821"
 **Dialogs/MainDialog.cs**  
 [!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=117-118)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ここで示すソース コードは、[JS カード サンプル](https://aka.ms/bot-cards-js-sample-code)に基づいています。
 
@@ -290,7 +290,7 @@ ms.locfileid: "77071821"
 
 [!code-javascript[carousel of cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=113-116)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 ここで示すソース コードは、[Python カードのサンプル](https://aka.ms/bot-cards-python-sample-code)に基づいています。
 
@@ -348,7 +348,7 @@ ms.locfileid: "77071821"
 
 入力フィールドには "text" というラベルが付いているので、アダプティブ カードではコメント テキスト データが Value.[text] として添付されます。
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 検証コントロールでは、Newtonsoft.json を使用して最初にこれを JObject に変換し、次に比較のためにトリミングされたテキスト文字列を作成します。 そのため、次のコードを
 
@@ -410,7 +410,7 @@ AddDialog(new ChoicePrompt(nameof(ChoicePrompt), ChoiceValidator));
 
 これにより、新しい ChoicePrompt が作成されるたびに、検証コントロールが呼び出されてアダプティブ カード入力が検索されます。
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 mainDialog.js を開き、実行メソッド _async run(turnContext, accessor)_ を見つけます。このメソッドでは着信アクティビティが処理されます。
 呼び出し _dialogSet.add(this);_ のすぐ後に、次のコードを追加します。
@@ -430,7 +430,7 @@ if(turnContext._activity.text == null
 このチェックで、クライアントからの存在しないテキストの入力が見つかった場合、アダプティブ カードからの入力があるかどうかが調べられます。
 アダプティブ カードの入力が \_activity.value.text に存在する場合は、これが通常のテキスト入力フィールドにコピーされます。
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 ここで示すソース コードは、[推奨されるアクション](https://aka.ms/SuggestedActionsPython)のサンプルに基づいています。
 

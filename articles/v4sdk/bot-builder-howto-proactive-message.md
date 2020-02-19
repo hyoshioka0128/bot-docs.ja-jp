@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/24/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 77222da10d69e6ad9a029a3548da66bd1a1806a2
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: 704a37569f5ed9017cd4a09618a4efe75469f4a4
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895673"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441629"
 ---
 # <a name="send-proactive-notifications-to-users"></a>ユーザーへのプロアクティブな通知の送信
 
@@ -46,13 +46,13 @@ ms.locfileid: "76895673"
 
 エミュレーターがボットに接続するとき、ボットは 2 つの会話更新アクティビティを受け取ります。 次に示すように、ボットの会話更新アクティビティ ハンドラーで、会話の参照が取得され、ディクショナリに格納されます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 **Bots\ProactiveBot.cs**
 
 [!code-csharp[OnConversationUpdateActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/16.proactive-messages/Bots/ProactiveBot.cs?range=26-37&highlight=3-4,9)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **bots/proactiveBot.js**
 
@@ -60,11 +60,11 @@ ms.locfileid: "76895673"
 
 [!code-javascript[onConversationUpdateActivity](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/bots/proactiveBot.js?range=41-44&highlight=2-3)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-**bots/proactive_bot.py** [!code-python[on_conversation_update_activity](~/../botbuilder-python/samples/python/16.proactive-messages/bots/proactive_bot.py?range=14-16&highlight=2)]
+**bots/proactive_bot.py** [!code-python[on_conversation_update_activity](~/../botbuilder-samples/samples/python/16.proactive-messages/bots/proactive_bot.py?range=14-16&highlight=2)]
 
-[!code-python[on_conversation_update_activity](~/../botbuilder-python/samples/python/16.proactive-messages/bots/proactive_bot.py?range=35-45)]
+[!code-python[on_conversation_update_activity](~/../botbuilder-samples/samples/python/16.proactive-messages/bots/proactive_bot.py?range=35-45)]
 
 ---
 
@@ -80,7 +80,7 @@ ms.locfileid: "76895673"
 1. アダプターの _continue conversation_ メソッドを呼び出して、使用するターン ハンドラー デリゲートと会話の参照を指定します。 会話続行メソッドによって、参照されている会話に対してターン コンテキストが生成され、指定したターン ハンドラー デリゲートが呼び出されます。
 1. デリゲートで、ターン コンテキストを使用して、プロアクティブ メッセージを送信します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 **Controllers\NotifyController .cs**
 
@@ -91,7 +91,7 @@ ms.locfileid: "76895673"
 
 プロアクティブ メッセージを送信するには、アダプターにボット用のアプリ ID が必要です。 ボットのアプリ ID は、運用環境で使用できます。 ローカル テスト環境では、任意の GUID を使用できます。 ボットにアプリ ID 割り当てられていない場合は、通知コントローラーによってプレースホルダー ID が自己生成され、これが呼び出しに使用されます。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
@@ -101,12 +101,12 @@ ms.locfileid: "76895673"
 
 [!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=68-82&highlight=4-8)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ボットの通知ページが要求されるたびに、サーバーは、ディクショナリから会話の参照を取得します。
 次に、サーバーは `_send_proactive_message` を使用して、プロアクティブ メッセージを送信します。
 
-[!code-python[Notify logic](~/../botbuilder-python/samples/python/16.proactive-messages/app.py?range=97-105&highlight=5-9)]
+[!code-python[Notify logic](~/../botbuilder-samples/samples/python/16.proactive-messages/app.py?range=97-105&highlight=5-9)]
 
 ---
 
@@ -127,7 +127,7 @@ BotAuthentication によって受信要求が認証されている場合、既�
 
 これを回避するには、次を使用して、信頼されたホスト名の一覧に `serviceUrl` を手動で追加する必要があります。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 MicrosoftAppCredentials.TrustServiceUrl(serviceUrl);
@@ -137,7 +137,7 @@ MicrosoftAppCredentials.TrustServiceUrl(serviceUrl);
 
 上記のコードを、プロアクティブ メッセージを送信するコードの直前に追加します。 [プロアクティブ メッセージ サンプル](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/16.proactive-messages)では、`NotifyController.cs` 内で `await turnContext.SendActivityAsync("proactive hello");` の直前に配置します。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 MicrosoftAppCredentials.trustServiceUrl(serviceUrl);
@@ -147,7 +147,7 @@ MicrosoftAppCredentials.trustServiceUrl(serviceUrl);
 
 上記のコードを、プロアクティブ メッセージを送信するコードの直前に追加します。 [プロアクティブ メッセージ サンプル](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/16.proactive-messages)では、`index.js` 内で `await turnContext.sendActivity('proactive hello');` の直前に配置します。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 MicrosoftAppCredentials.trustServiceUrl(serviceUrl)
