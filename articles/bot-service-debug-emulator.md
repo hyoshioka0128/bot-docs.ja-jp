@@ -74,7 +74,7 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 #### <a name="using-sign-in-verification-code"></a>サインイン確認コードを使用する
 
 1. エミュレーターを起動します。
-1. エミュレーターで、左下の歯車アイコンをクリックするか、右上の **[エミュレーター設定]** タブをクリックします。
+1. エミュレーターで、左下の歯車アイコンをクリックするか、右上の **[Emulator Settings]** タブをクリックします。
 1. **[Use a sign-in verification code for OAuthCards]\(OAuthCard のサインイン確認コードを使用する\)** ボックスをオンにします。
 1. **[Bypass ngrok for local address]\(ローカル アドレスに対して ngrok をバイパスする\)** ボックスをオンにします。
 1. **[Save]\(保存\)** ボタンをクリックします。
@@ -88,7 +88,7 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 #### <a name="using-authentication-tokens"></a>認証トークンを使用する
 
 1. エミュレーターを起動します。
-1. エミュレーターで、左下の歯車アイコンをクリックするか、右上の **[エミュレーター設定]** タブをクリックします。
+1. エミュレーターで、左下の歯車アイコンをクリックするか、右上の **[Emulator Settings]** タブをクリックします。
 1. **[Use version1.0 authentication tokens]\(バージョン1.0 認証トークンを使用する\)** ボックスをオンにします。
 1. **ngrok** ツールへのローカル パスを入力します。 ツールの詳細については、「[ngrok](https://ngrok.com/)」を参照してください。
 1. **[Run ngrok when the Emulator starts up]\(エミュレーターの起動時に ngrok を実行する\)** ボックスをオンに ます。
@@ -109,7 +109,7 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 
 ### <a name="use-bot-credentials"></a>ボットの資格情報を使用
 
-ボットを開いたときに、ボットが資格情報を使用して実行されている場合は、**Microsoft アプリ ID** および **Microsoft アプリ パスワード**を設定します。 Azure Bot Service でボットを作成した場合、資格情報はそのボットの App Service ( **[設定] -> [構成]** セクションの下) で使用できます。 値がわからない場合は、ローカルで実行されているボットの構成ファイルからそれを削除してから、ボットをエミュレーターで実行できます。 ボットがこれらの設定で実行されていない場合は、その設定でエミュレーターを実行する必要もありません。 
+ボットを開いたときに、ボットが資格情報を使用して実行されている場合は、**Microsoft アプリ ID** および **Microsoft アプリ パスワード**を設定します。 Azure Bot Service でボットを作成した場合、資格情報はそのボットの App Service ( **[Settings] -> [Configuration]** セクションの下) で使用できます。 値がわからない場合は、ローカルで実行されているボットの構成ファイルからそれを削除してから、ボットをエミュレーターで実行できます。 ボットがこれらの設定で実行されていない場合は、その設定でエミュレーターを実行する必要もありません。 
 
 AD ID プロバイダー アプリケーションを作成する場合は次の点に注意してください。
 
@@ -160,7 +160,7 @@ When either service is connected, you can go back to a live chat window and veri
 
 ## <a name="inspect-services"></a>サービスの検査
 
-新しい v4 エミュレーターでは、LUIS と QnA から JSON 応答を検査することもできます。 ボットと言語サービスが接続されているとき、右下の LOG ウィンドウにある **[トレース]** を選択できます。 この新しいツールには、エミュレーターから直接、言語サービスを更新するための機能もあります。 
+新しい v4 エミュレーターでは、LUIS と QnA から JSON 応答を検査することもできます。 ボットと言語サービスが接続されているとき、右下の LOG ウィンドウにある **[trace]** を選択できます。 この新しいツールには、エミュレーターから直接、言語サービスを更新するための機能もあります。 
 
 ![LUIS インスペクター](media/emulator-v4/emulator-luis-inspector.png)
 
@@ -187,7 +187,7 @@ See [above](#add-services) to learn more about services you can manage using the
 
 ### <a name="login-to-azure"></a>Azure にログインする
 Emulator を使って、ご自身の Azure アカウントにログインできます。 これは、ご自身のボットが依存するサービスを追加および管理するときに特に役に立ちます。 次の手順に従って、Azure にログインします。
-- [ファイル]、[Sign in with Azure]\(Azure を使ってサインインする\) の順にクリックします ![Azure ログイン](media/emulator-v4/emulator-azure-login.png)
+- [File]、[Sign in with Azure]\(Azure を使ってサインインする\) の順にクリックします ![Azure ログイン](media/emulator-v4/emulator-azure-login.png)
 - ようこそ画面で、[Sign in with your Azure account]\(Azure アカウントを使ってサインインする\) をクリックします。Emulator アプリケーションを再起動しても、その Emulator でのサインイン状態が継続されるようにするように設定することもできます。
 ![Azure ログイン](media/emulator-v4/emulator-azure-login-success.png)
 
