@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/27/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f5cf5d6628d5186404816b7f7862f2e58293f5e5
-ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
+ms.openlocfilehash: 32394b9812340467e9ae584c55fd047b973be1bc
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77035474"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441662"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -34,7 +34,7 @@ ms.locfileid: "77035474"
 
 このサンプルは、LUIS および QnA Maker アプリの定義済みセットに基づいています。
 
-## <a name="ctabcs"></a>[C#](#tab/cs)
+## <a name="c"></a>[C#](#tab/cs)
 
 ![コード サンプル ロジック フロー](./media/tutorial-dispatch/dispatch-logic-flow.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "77035474"
 - `ProcessWeatherAsync` -天気クエリ。
 - `ProcessHomeAutomationAsync` -家庭用照明コマンド。
 
-## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+## <a name="javascript"></a>[JavaScript](#tab/js)
 
 ![コード サンプル ロジック フロー](./media/tutorial-dispatch/dispatch-logic-flow-js.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "77035474"
 - `processWeather` -天気クエリ。
 - `processHomeAutomation` -家庭用照明コマンド。
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 ![コード サンプル ロジック フロー](./media/tutorial-dispatch/dispatch-logic-flow-python.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "77035474"
 
 ディスパッチ モデルを作成するには、ご自身の LUIS アプリと QnA ナレッジ ベースを作成し、発行しておく必要があります。 この記事では、`\CognitiveModels` フォルダーの "_ディスパッチによる NLP_" サンプルに含まれる次のモデルを公開します。
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|------|
 | HomeAutomation | 関連付けられているエンティティ データによってホーム オートメーションの意図を認識する LUIS アプリ。|
 | Weather | 場所データによって天気関連の意図を認識する LUIS アプリ。|
@@ -228,7 +228,7 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
 
 これらの値は、C# の場合は **appsettings.json** ファイルで使用され、javascript の場合は **.env** ファイルで使用されます。
 
-## <a name="ctabcs"></a>[C#](#tab/cs)
+## <a name="c"></a>[C#](#tab/cs)
 
 ### <a name="installing-packages"></a>パッケージのインストール
 
@@ -265,7 +265,7 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
 
 すべての変更が完了したら、このファイルを保存します。
 
-## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+## <a name="javascript"></a>[JavaScript](#tab/js)
 
 ### <a name="installing-packages"></a>パッケージのインストール
 
@@ -308,7 +308,7 @@ LuisAPIHostName=<your-dispatch-app-region>
 
 すべての変更が完了したら、このファイルを保存します。
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 ### <a name="installing-packages"></a>パッケージのインストール
 
@@ -325,7 +325,7 @@ pip install botbuilder-ai
 
 **config.py**
 
-[!code-python[config.py](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/config.py?range=10-24)]
+[!code-python[config.py](~/../botbuilder-samples/samples/python/14.nlp-with-dispatch/config.py?range=10-24)]
 
 次に示すエンティティごとに、前の手順で記録した値を追加します。
 
@@ -351,7 +351,7 @@ LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-regio
 
 Dispatch、LUIS、および QnA Maker サービスに接続するために、ボットは設定ファイルから情報をプルします。
 
-## <a name="ctabcs"></a>[C#](#tab/cs)
+## <a name="c"></a>[C#](#tab/cs)
 
 **BotServices.cs** では、ご自身のディスパッチ ボットと `Dispatch` サービスおよび `SampleQnA` サービスとの接続に、構成ファイル _appsettings.json_ に含まれている情報が使用されます。 コンストラクターでは、ご自身で指定した値が、これらのサービスへの接続に使用されます。
 
@@ -359,7 +359,7 @@ Dispatch、LUIS、および QnA Maker サービスに接続するために、ボ
 
 [!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-45)]
 
-## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+## <a name="javascript"></a>[JavaScript](#tab/js)
 
 **dispatchBot.js** では、ご自身のディスパッチ ボットと _LuisRecognizer(dispatch)_ サービスおよび _QnAMaker_ サービスとの接続に、構成ファイル _.env_ に含まれている情報が使用されます。 コンストラクターでは、ご自身で指定した値が、これらのサービスへの接続に使用されます。
 
@@ -367,13 +367,13 @@ Dispatch、LUIS、および QnA Maker サービスに接続するために、ボ
 
 [!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-26)]
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 **dispatch_bot.py** では、ディスパッチ ボットを _QnAMaker_ および _LuisRecognizer_ サービスに接続するために、構成ファイル _config.py_ 内に含まれている情報が使用されます。 コンストラクターでは、ご自身で指定した値が、これらのサービスへの接続に使用されます。
 
 **bots/dispatch_bot.py**
 
-[!code-python[ReadConfigurationInfo](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=14-34)]
+[!code-python[ReadConfigurationInfo](~/../botbuilder-samples/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=14-34)]
 
 ---
 
@@ -384,7 +384,7 @@ Dispatch、LUIS、および QnA Maker サービスに接続するために、ボ
 
 ボット ロジックでは、ユーザーからの入力ごとに、結合されたディスパッチ モデルに対してユーザー入力が確認され、返された最上位の意図が検索されます。その後、その情報を使用して、その入力に適したサービスが呼び出されます。
 
-## <a name="ctabcs"></a>[C#](#tab/cs)
+## <a name="c"></a>[C#](#tab/cs)
 
 **DispatchBot.cs** ファイルでは、`OnMessageActivityAsync` メソッドが呼び出されるたびに、受信ユーザー メッセージをディスパッチ モデルに対して確認します。 その後、ディスパッチ モデルの `topIntent` と `recognizerResult` を適切なメソッドに渡して、サービスを呼び出し、結果を返します。
 
@@ -392,25 +392,25 @@ Dispatch、LUIS、および QnA Maker サービスに接続するために、ボ
 
 [!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=26-36)]
 
-## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+## <a name="javascript"></a>[JavaScript](#tab/js)
 
 **dispatchBot.js** の `onMessage` メソッドでは、ディスパッチ モデルに対してユーザー入力メッセージを確認し、_topIntent_ を検索します。次に、_dispatchToTopIntentAsync_ を呼び出して、これを渡します。
 
 [!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=31-44)]
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 **dispatch_bot.py** ファイルでは、`on_message_activity` メソッドが呼び出されるたびに、受信ユーザー メッセージをディスパッチ モデルに対して確認します。 その後、ディスパッチ モデルの `top_intent` と `recognize_result` を適切なメソッドに渡して、サービスを呼び出し、結果を返します。
 
 **bots/dispatch_bot.py**
 
-[!code-python[on_message](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=46-54)]
+[!code-python[on_message](~/../botbuilder-samples/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=46-54)]
 
 ---
 
 ### <a name="work-with-the-recognition-results"></a>認識結果を操作する
 
-## <a name="ctabcs"></a>[C#](#tab/cs)
+## <a name="c"></a>[C#](#tab/cs)
 
 モデルによって結果が生成されるとき、どのサービスが発話を最も適切に処理できるかが示されます。 このボットのコードでは、要求を対応するサービスにルーティングし、呼び出されたサービスからの応答を要約します。 Dispatch から返された "_意図_" によっては、このコードでは、返された意図を使用して、適切な LUIS モデルまたは QnA サービスへのルーティングが行われます。
 
@@ -422,7 +422,7 @@ Dispatch、LUIS、および QnA Maker サービスに接続するために、ボ
 
 `q_sample-qna` メソッドが呼び出されると、turnContext 内に含まれるユーザー入力が、ナレッジ ベースからの応答の生成と、ユーザーへの結果の表示に使用されます。
 
-## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+## <a name="javascript"></a>[JavaScript](#tab/js)
 
 モデルによって結果が生成されるとき、どのサービスが発話を最も適切に処理できるかが示されます。 このサンプルのコードでは、対応するサービスへの要求のルーティング方法を示すために、認識された _topIntent_ が使用されます。
 
@@ -433,13 +433,13 @@ Dispatch、LUIS、および QnA Maker サービスに接続するために、ボ
 
 `q_sample-qna` メソッドが呼び出されると、turnContext 内に含まれるユーザー入力が、ナレッジ ベースからの応答の生成と、ユーザーへの結果の表示に使用されます。
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 モデルによって結果が生成されるとき、どのサービスが発話を最も適切に処理できるかが示されます。 このサンプルのコードでは、対応するサービスへの要求のルーティング方法を示すために、認識された最上位の "_意図_" が使用されます。
 
 **bots\dispatch_bot.py**
 
-[!code-python[dispatch top intent](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=56-70)]
+[!code-python[dispatch top intent](~/../botbuilder-samples/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=56-70)]
 
 `_process_home_automation` または `_process_weather` のいずれかのメソッドが呼び出されると、_recognizer_result.properties["luisResult"]_ 内のディスパッチ モデルから結果が渡されます。 その後、指定されたメソッドによって、ユーザー フィードバックが提供されます。このフィードバックには、ディスパッチ モデルの最上位の意図と、検出された意図およびエンティティの一覧がランク付けされて示されています。
 

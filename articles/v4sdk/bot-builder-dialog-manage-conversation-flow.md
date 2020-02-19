@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/28/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a9ba4f47cfea6cdfcbb947df887397717c012eaa
-ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
+ms.openlocfilehash: 7a25f0fd283e8e09f5ca27e7a29e96e9f55888ff
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77035494"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441721"
 ---
 # <a name="implement-sequential-conversation-flow"></a>連続して行われる会話フローの実装
 
@@ -49,7 +49,7 @@ ms.locfileid: "77035494"
 
 ## <a name="create-the-main-dialog"></a>メイン ダイアログを作成する
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ダイアログを使用するには、**Microsoft.Bot.Builder.Dialogs** NuGet パッケージをインストールします。
 
@@ -87,7 +87,7 @@ ms.locfileid: "77035494"
 
 [!code-csharp[SummaryStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=137-179&highlight=5-11,41-42)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ダイアログを使用するには、ご自身のプロジェクトで **botbuilder-dialogs** npm パッケージをインストールする必要があります。
 
@@ -135,7 +135,7 @@ ms.locfileid: "77035494"
 
 [!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=59-68)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ダイアログを使用するには、ターミナルから `pip install botbuilder-dialogs` と `pip install botbuilder-ai` を実行して **botbuilder-dialogs** および **botbuilder-ai** PyPI パッケージをインストールします。
 
@@ -149,29 +149,29 @@ ms.locfileid: "77035494"
 
 `UserProfileDialog` コンストラクターで、ウォーターフォール ステップ、プロンプト、およびウォーターフォール ダイアログを作成し、ダイアログ セットに追加します。 プロンプトは、それが使用されるダイアログ セットに追加する必要があります。
 
-[!code-python[Constructor snippet](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=26-57)]
+[!code-python[Constructor snippet](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=26-57)]
 
 次に、ダイアログで使用されるステップを実装します。 プロンプトを使用するには、そのプロンプトをご自身のダイアログのステップから呼び出し、`step_context.result` を使用して、次のステップでプロンプトの結果を取得します。 バックグラウンドでは、プロンプトは 2 つのステップから成るダイアログです。 最初のステップでプロンプトは入力を要求します。そして 2 番目のステップで有効な値を返すか、最初からやり直して、有効な入力を受信するまでユーザーに再入力を要求します。
 
 ウォーターフォール ステップからは常に null 以外の `DialogTurnResult` を返す必要があります。 そうしないと、ご自身のダイアログは設計どおりに機能しません。 ここでは、ウォーターフォール ダイアログの `name_step` に対する実装を示します。
 
-[!code-python[name step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=73-79)]
+[!code-python[name step](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=73-79)]
 
 `age_step` で、ユーザー入力を検証できない場合の再試行プロンプトを指定します。入力を検証できない原因は、その入力がプロンプトで解析できない形式であるか、上記のコンストラクターで指定した検証基準を満たしていないかのいずれかです。 この場合、再試行プロンプトが指定されていないと、プロンプトは最初のプロンプト テキストを使用して、再びユーザーに入力を求めます。
 
-[!code-python[age step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=100-116)]
+[!code-python[age step](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=100-116)]
 
 **data_models\user_profile.py**
 
 ユーザーの移動手段、名前、および年齢は `UserProfile` クラスのインスタンスに保存されています。
 
-[!code-python[user profile](~/../botbuilder-python/samples/python/05.multi-turn-prompt/data_models/user_profile.py?range=7-16)]
+[!code-python[user profile](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/data_models/user_profile.py?range=7-16)]
 
 **dialogs\user_profile_dialog.py**
 
 最後のステップで、前のウォーターフォール ステップで呼び出されたダイアログによって返された `step_context.result` を確認します。 戻り値が true の場合は、ユーザー プロファイル アクセサーを使用して、ユーザー プロファイルを取得し、更新します。 ユーザー プロファイルを取得するには、`get` メソッドを呼び出して、`user_profile.transport`、`user_profile.name`、`user_profile.age` の各プロパティの値を設定します。 最後に、ダイアログを終了する `end_dialog` を呼び出す前に、ユーザーの情報をまとめます。 ダイアログを終了すると、そのダイアログはダイアログ スタックから取り出され、ダイアログの親に省略可能な結果が返されます。 この親は、終了したばかりのダイアログを開始したダイアログまたはメソッドです。
 
-[!code-python[summary step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=166-204)]
+[!code-python[summary step](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=166-204)]
 
 **拡張メソッドを作成してウォーターフォール ダイアログを実行する**
 
@@ -181,13 +181,13 @@ ms.locfileid: "77035494"
 
 ダイアログ コンテキストを使用すると、文字列 ID を使用してダイアログを開始したり、現在のダイアログ (複数のステップが含まれるウォーターフォール ダイアログなど) を続行したりすることができます。 ダイアログ コンテキストは、ボットのすべてのダイアログおよびウォーターフォール ステップに渡されます。
 
-[!code-python[run method](~/../botbuilder-python/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
+[!code-python[run method](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
 
 ---
 
 ## <a name="run-the-dialog"></a>ダイアログを実行する
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 **Bots\DialogBot.cs**
 
@@ -195,7 +195,7 @@ ms.locfileid: "77035494"
 
 [!code-csharp[overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=33-48&highlight=5-7)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `onMessage` メソッドは、ダイアログの `run` メソッドを呼び出してダイアログを開始または続行するリスナーを登録します。
 
@@ -207,11 +207,11 @@ ms.locfileid: "77035494"
 
 [!code-javascript[override](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=34-43&highlight=7-9)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 `on_message_activity` ハンドラーでは、ダイアログの開始または続行にヘルパー メソッドが使用されます。 `on_turn` では、ボットの状態管理オブジェクトを使用して、ストレージに対するすべての状態変更を保持します `on_message_activity` メソッドは、`on_turn` など、他の定義済みハンドラーの実行後、最後に呼び出されます。 このようにして、メッセージ ハンドラーが完了した後で、かつターン自体が完了する前の状態を保存します。
 
-**bots\dialog_bot.py** [!code-python[overrides](~/../botbuilder-python/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=39-51&highlight=4-6)]
+**bots\dialog_bot.py** [!code-python[overrides](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=39-51&highlight=4-6)]
 
 ---
 
@@ -223,7 +223,7 @@ ms.locfileid: "77035494"
 - 状態を管理するためのサービス: ストレージ、ユーザー状態、および会話の状態。
 - ボットで使用されるダイアログ。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 **Startup.cs**
 
@@ -231,7 +231,7 @@ ms.locfileid: "77035494"
 
 [!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Startup.cs?range=17-39)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
@@ -239,11 +239,11 @@ ms.locfileid: "77035494"
 
 [!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/index.js?range=19-59)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 `app.py` でボット用のサービスを登録します。
 
-[!code-python[configure services](~/../botbuilder-python/samples/python/05.multi-turn-prompt/app.py?range=27-76)]
+[!code-python[configure services](~/../botbuilder-samples/samples/python/05.multi-turn-prompt/app.py?range=27-76)]
 
 ---
 
@@ -279,7 +279,7 @@ ms.locfileid: "77035494"
 
 ### <a name="definition-of-a-prompt-validator-method"></a>プロンプト検証コントロールのメソッドの定義
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 **UserProfileDialog.cs**
 
@@ -287,7 +287,7 @@ ms.locfileid: "77035494"
 
 [!code-csharp[prompt validator method](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=181-185)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **dialogs\userProfileDialog.js**
 
@@ -295,7 +295,7 @@ ms.locfileid: "77035494"
 
 [!code-javascript[prompt validator method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=169-172)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 **dialogs/user_profile_dialog.py**
 

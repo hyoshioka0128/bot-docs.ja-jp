@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/24/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8aeff2ec5fb816139f082d931aa1431edc5e145c
-ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
+ms.openlocfilehash: 8ef33478f71afa18568a18cfad67b7f65c50d955
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77035484"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441682"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 
@@ -31,7 +31,7 @@ ms.locfileid: "77035484"
 
 このコア ボットのコード サンプルは、空港の航空券予約アプリケーションの例を示しています。 これは LUIS サービスを使用してユーザー入力を認識し、認識した最上位の LUIS の意図を返します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ユーザー入力の処理が完了するたびに、`DialogBot` では `UserState` と `ConversationState` の両方の現在の状態が保存されます。 必要な情報がすべて収集されると、コード サンプルによりデモの航空券予約が作成されます。 この記事では、このサンプルの LUIS 部分について説明します。 ただし、サンプルの一般的なフローは次のようになります。
 
@@ -46,7 +46,7 @@ ms.locfileid: "77035484"
 - `TravelDate` 航空券の予約日
 - `Destination` 到着地
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ユーザー入力の処理が完了するたびに、`dialogBot` では `userState` と `conversationState` の両方の現在の状態が保存されます。 必要な情報がすべて収集されると、コード サンプルによりデモの航空券予約が作成されます。 この記事では、このサンプルの LUIS 部分について説明します。 ただし、サンプルの一般的なフローは次のようになります。
 
@@ -63,7 +63,7 @@ ms.locfileid: "77035484"
 - `origin` 出発地。
 - `travelDate` 航空券の予約日。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ユーザー入力の処理が完了するたびに、`DialogBot` では `user_state` と `conversation_state` の両方の現在の状態が保存されます。 必要な情報がすべて収集されると、コード サンプルによりデモの航空券予約が作成されます。 この記事では、このサンプルの LUIS 部分について説明します。 ただし、サンプルの一般的なフローは次のようになります。
 
@@ -114,31 +114,31 @@ LUIS アプリには、その発行後、ボットからアクセスできるよ
 
 ### <a name="update-the-settings-file"></a>設定ファイルを更新する
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 LUIS アプリにアクセスするために必要な情報 (アプリケーション ID、オーサリング キー、リージョンなど) を `appsettings.json` ファイルに追加します。 これらは、発行済みの LUIS アプリから先ほど保存した値です。 API ホスト名は `<your region>.api.cognitive.microsoft.com` 形式にする必要があることに注意してください。
 
 **appsetting.json**  
 [!code-json[appsettings](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/appsettings.json?range=1-7)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 LUIS アプリにアクセスするために必要な情報 (アプリケーション ID、オーサリング キー、リージョンなど) を `.env` ファイルに追加します。 これらは、発行済みの LUIS アプリから先ほど保存した値です。 API ホスト名は `<your region>.api.cognitive.microsoft.com` 形式にする必要があることに注意してください。
 
 **.env**  
 [!code[env](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/.env?range=1-5)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 LUIS アプリにアクセスするために必要な情報 (アプリケーション ID、オーサリング キー、リージョンなど) を `config.py` ファイルに追加します。 これらは、発行済みの LUIS アプリから先ほど保存した値です。 API ホスト名は `<your region>.api.cognitive.microsoft.com` 形式にする必要があることに注意してください。
 
-**config.py** [!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/config.py?range=14-19)]
+**config.py** [!code-python[config.py](~/../botbuilder-samples/samples/python/13.core-bot/config.py?range=14-19)]
 
 ---
 
 ## <a name="configure-your-bot-to-use-your-luis-app"></a>LUIS アプリを使用するためのボットの構成
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 NuGet パッケージ **Microsoft.Bot.Builder.AI.Luis** がプロジェクトにインストールされていることを確認します。
 
@@ -154,7 +154,7 @@ LUIS サービスに接続するために、ボットは、上記で追加した
 
 [!code-csharp[luis helper](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/CognitiveModels/FlightBookingEx.cs?range=8-35)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 LUIS を使用するには、ご自身のプロジェクトでは、**botbuilder ai** npm パッケージをインストールする必要があります。
 
@@ -166,7 +166,7 @@ LUIS サービスに接続するために、ボットは、上記で追加した
 
 From、To、および TravelDate を抽出するロジックは、`flightBookingRecognizer.js` 内のヘルパー メソッドとして実装されています。 これらのメソッドは、`mainDialog.js` から `flightBookingRecognizer.executeLuisQuery()` を呼び出した後に使用されます
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 お使いのプロジェクトに対して **botbuilder-ai** PyPI パッケージがインストールされていることを確認します。
 
@@ -174,11 +174,11 @@ LUIS サービスに接続するために、ボットは、上記で追加した
 
 **flight_booking_recognizer.py**
 
-[!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/flight_booking_recognizer.py?range=10-34)]
+[!code-python[config.py](~/../botbuilder-samples/samples/python/13.core-bot/flight_booking_recognizer.py?range=10-34)]
 
 *From*、*To*、および *travel_date* を抽出するロジックは、`luis_helper.py` 内の `LuisHelper` クラスのヘルパー メソッドとして実装されています。 これらのメソッドは、`main_dialog.py` から `LuisHelper.execute_luis_query()` を呼び出した後に使用されます
 
-**helpers/luis_helper.py** [!code-python[luis helper](~/../botbuilder-python/samples/python/13.core-bot/helpers/luis_helper.py?range=30-102)]
+**helpers/luis_helper.py** [!code-python[luis helper](~/../botbuilder-samples/samples/python/13.core-bot/helpers/luis_helper.py?range=30-102)]
 
 ---
 

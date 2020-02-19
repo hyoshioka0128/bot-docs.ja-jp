@@ -35,7 +35,7 @@ Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-b
 
 ## <a name="update-your-bots-code"></a>ボットのコードを更新する
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 **Startup** ファイルで検査状態を設定します。 検査ミドルウェアをアダプターに追加します。 検査状態は、依存関係の挿入によって提供されます。 以下のコード更新をご覧になるか、こちらの検査サンプルを参照してください:[C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection)。 
 
 **Startup.cs**  
@@ -47,7 +47,7 @@ Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-b
 **EchoBot.cs**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 ボットのコードを更新する前に、ターミナルで次のコマンドを実行して、パッケージを最新バージョンに更新する必要があります。 
 ```cmd
 npm install --save botbuilder@latest 
@@ -66,7 +66,7 @@ npm install --save botbuilder@latest
 
 [!code-javascript [inspection bot sample](~/../botbuilder-samples/samples/javascript_nodejs/47.inspection/bot.js?range=6-50)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 ボットのコードを更新する前に、ターミナルで次のコマンドを実行して、必要な PyPI パッケージをインストールします。
 ```cmd
 pip install aiohttp
@@ -91,19 +91,19 @@ pip install botbuilder-core>=4.7.0
 
 1. ターミナルでボットのディレクトリに移動し、次のコマンドを実行してボットをローカルで実行します。 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cmd
 dotnet run
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```cmd
 npm start 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 ```cmd
 python app.py
 ```
