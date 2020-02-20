@@ -80,13 +80,13 @@ ms.locfileid: "77441662"
 
 ### <a name="create-luis-apps"></a>LUIS アプリを作成する
 
-1. [LUIS Web ポータル](https://www.luis.ai/)にログインします。 _[マイ アプリ]_ セクションの _[Import new app]\(新しいアプリのインポート\)_ タブを選択します。 次のダイアログ ボックスが表示されます。
+1. [LUIS Web ポータル](https://www.luis.ai/)にログインします。 _[My Apps]_ セクションの _[Import new app]\(新しいアプリのインポート\)_ タブを選択します。 次のダイアログ ボックスが表示されます。
 
     ![LUIS JSON ファイルをインポートする](./media/tutorial-dispatch/import-new-luis-app.png)
 
 2. _[Choose app file]\(アプリ ファイルの選択\)_ ボタンを選択し、ご自身のサンプル コードの CognitiveModel フォルダーに移動して、"HomeAutomation.json" ファイルを選択します。 省略可能な名前のフィールドは空白のままにします。
 
-3. _[完了]_ を選択します。
+3. _[Done]_ を選択します。
 
 4. LUIS で Home Automation アプリが開いたら、 _[Train]\(トレーニング\)_ ボタンを選択します。 これで、'home-automation.json' ファイルでインポートした一連の発話を使用してアプリがトレーニングされます。
 
@@ -96,7 +96,7 @@ ms.locfileid: "77441662"
 
 6. '運用' 環境を選択し、 _[Publish]\(公開\)_ ボタンを選択します。
 
-7. 新しい LUIS アプリが公開されたら、 _[MANAGE]\(管理\)_ タブを選択します。[アプリケーション情報] ページから、`Application ID` の値として "_app-id-for-app_" を、また `Display name` の値として "_name-of-app_" を記録しておきます。 [キーとエンドポイント] ページから、`Authoring Key` の値として "_your-luis-authoring-key_" を、また `Region` の値として "_your-region_" を記録しておきます。 これらの値は、お使いの appsetting.json ファイル内で後で使用されます。
+7. 新しい LUIS アプリが公開されたら、 _[MANAGE]\(管理\)_ タブを選択します。[Application Information] ページから、`Application ID` の値として "_app-id-for-app_" を、また `Display name` の値として "_name-of-app_" を記録しておきます。 [Key and Endpoints] ページから、`Authoring Key` の値として "_your-luis-authoring-key_" を、また `Region` の値として "_your-region_" を記録しておきます。 これらの値は、お使いの appsetting.json ファイル内で後で使用されます。
 
 8. 完了したら、"Weather.json" ファイルに対して上記の手順を繰り返して、ご自身の LUIS **Home Automation** アプリと LUIS **Weather** アプリの両方を "_トレーニング_" し、"_公開_" します。
 
@@ -116,7 +116,7 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
 
     ![コグニティブ サービス キーを選択する](./media/tutorial-dispatch/select-cognitive-service-keys.png)
 
-1. 左側のメニューで、 _[リソース管理]_ セクションの下にあるキー アイコンを選択します。
+1. 左側のメニューで、 _[Resource Management]_ セクションの下にあるキー アイコンを選択します。
 
     ![コグニティブ サービス キー 1 を選択する](./media/tutorial-dispatch/select-cognitive-service-key1.png)
 
@@ -136,7 +136,7 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
 
     ![QnA の作成手順 3](./media/tutorial-dispatch/create-qna-step-3.png)
 
-1. 手順 4 では、 _[+ ファイルの追加]_ オプションを選択し、ご自身のサンプル コードの CognitiveModel フォルダーに移動して、"QnAMaker.tsv" ファイルを選択します。 ナレッジ ベースには _Chit-chat_ の性格を追加する選択がもう 1 つありますが、この例にはこのオプションが含まれていません。
+1. 手順 4 では、 _[+ Add File]_ オプションを選択し、ご自身のサンプル コードの CognitiveModel フォルダーに移動して、"QnAMaker.tsv" ファイルを選択します。 ナレッジ ベースには _Chit-chat_ の性格を追加する選択がもう 1 つありますが、この例にはこのオプションが含まれていません。
 
     ![QnA の作成手順 4](./media/tutorial-dispatch/create-qna-step-4.png)
 
@@ -164,8 +164,8 @@ LUIS アプリおよび QnA Maker アプリにディスパッチする新しい�
 
 |アプリ|情報の場所|
 |--|--|
-|LUIS|**アプリ ID** - アプリごとに [LUIS ポータル](https://www.luis.ai)に表示されます ([管理] -> [アプリケーション情報])。<br>**作成キー** - LUIS ポータルの右上隅に表示されます。自分の [ユーザー]、[設定] の順に選択します。|
-|QnA Maker| **アプリ ID** - アプリを公開した後、[設定] ページ上の [QnA Maker ポータル](https://http://qnamaker.ai)に表示されます。 これは、knowledgebase の後にくる POST コマンドの最初の部分にある ID です。 アプリ ID を検査する場所の例として、`POST /knowledgebases/<APP-ID>/generateAnswer` が挙げられます。<br>**作成キー** - Azure portal で QnA Maker リソースの **[キー]** の下にあります。 複数のキーのうち、必要なのは 1 つだけです。|
+|LUIS|**アプリ ID** - アプリごとに [LUIS ポータル](https://www.luis.ai)に表示されます ([Manage] -> [Application Information])。<br>**作成キー** - LUIS ポータルの右上隅に表示されます。自分の [User]、[SETTINGS] の順に選択します。|
+|QnA Maker| **アプリ ID** - アプリを公開した後、[Settings] ページ上の [QnA Maker ポータル](https://http://qnamaker.ai)に表示されます。 これは、knowledgebase の後にくる POST コマンドの最初の部分にある ID です。 アプリ ID を検査する場所の例として、`POST /knowledgebases/<APP-ID>/generateAnswer` が挙げられます。<br>**作成キー** - Azure portal で QnA Maker リソースの **[キー]** の下にあります。 複数のキーのうち、必要なのは 1 つだけです。|
 
 作成キーは、発行されたアプリケーションから予測スコアまたは信頼スコアを取得するためには使用されません。 この操作にはエンドポイント キーが必要です。 **[エンドポイント キー](#service-endpoint-keys)** は、このチュートリアルで後ほど取り上げて使用します。
 
@@ -223,8 +223,8 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
 
 |アプリ|クエリ エンドポイント キーの場所|
 |--|--|
-|LUIS|LUIS ポータルで各 LUIS アプリの [管理] セクションで、 **[Keys and Endpoint settings]\(キーとエンドポイントの設定\)** を選択して、各アプリに関連付けられているキーを見つけます。 このチュートリアルを行う場合、エンドポイント キーは `<your-luis-authoring-key>` と同じキーです。 作成キーでは、1000 回のエンドポイント ヒットが許可され、その後有効期限が切れます。|
-|QnA Maker|QnA Maker ポータルのナレッジ ベースの [管理] 設定で、**Authorization** ヘッダー用の [Postman]\(Postman\) 設定に表示されているキー値を、テキスト `EndpointKey` なしで使用します。|
+|LUIS|LUIS ポータルで各 LUIS アプリの [Manage] セクションで、 **[Keys and Endpoint settings]\(キーとエンドポイントの設定\)** を選択して、各アプリに関連付けられているキーを見つけます。 このチュートリアルを行う場合、エンドポイント キーは `<your-luis-authoring-key>` と同じキーです。 作成キーでは、1000 回のエンドポイント ヒットが許可され、その後有効期限が切れます。|
+|QnA Maker|QnA Maker ポータルのナレッジ ベースの [Manage] 設定で、**Authorization** ヘッダー用の [Postman]\(Postman\) 設定に表示されているキー値を、テキスト `EndpointKey` なしで使用します。|
 
 これらの値は、C# の場合は **appsettings.json** ファイルで使用され、javascript の場合は **.env** ファイルで使用されます。
 
@@ -456,7 +456,7 @@ Dispatch、LUIS、および QnA Maker サービスに接続するために、ボ
 1. ご利用の Bot Framework Emulator を開き、[`Create a new bot configuration`] を選択します。 `.bot` ファイルを使用すると、ボット エミュレーター内の "_インスペクター_" を使用して、LUIS および QnA Maker から返された JSON を確認できます。
 1. **[New bot configuration]\(新しいボット構成\)** ダイアログ ボックスで、ご自身のボット名とエンドポイント URL (`http://localhost:3978/api/messages` など) を入力します。 ご自身のボット サンプル コード プロジェクトのルートにファイルを保存します。
 1. ボット ファイルを開き、ご自身の LUIS アプリおよび QnA Maker アプリのセクションを追加します。 [このサンプル ファイル](https://github.com/microsoft/botbuilder-tools/blob/master/packages/MSBot/docs/sample-bot-file.json)を設定用のテンプレートとして使用します。 変更を保存します。
-1. **[マイ ボット]** リストでボット名を選択して、実行中のボットにアクセスします。 参考のために、ご自身のボット用に作成されたサービスに含まれる質問とコマンドの一部を次に示します。
+1. **[My Bots]** リストでボット名を選択して、実行中のボットにアクセスします。 参考のために、ご自身のボット用に作成されたサービスに含まれる質問とコマンドの一部を次に示します。
 
     - QnA Maker
       - `hi`, `good morning`
@@ -566,18 +566,18 @@ dispatch add -t file -f <file path> --intentName <target intent name, ie l_Gener
 LUIS リソースを削除するには:
 
 1. [luis.ai](https://www.luis.ai) ポータルにサインインします。
-1. _[マイ アプリ]_ ページに移動します。
+1. _[My Apps]_ ページに移動します。
 1. このサンプルによって作成されたアプリを選択します。
    - `Home Automation`
    - `Weather`
    - `NLP-With-Dispatch-BotDispatch`
-1. _[削除]_ をクリックし、 _[OK]_ をクリックして確認します。
+1. _[Delete]_ をクリックし、 _[OK]_ をクリックして確認します。
 
 QnA Maker リソースを削除するには:
 
 1. [qnamaker.ai](https://www.qnamaker.ai/) ポータルにサインインします。
 1. _[My knowledge bases]\(マイ ナレッジ ベース\)_ ページに移動します。
-1. `Sample QnA` ナレッジ ベースの削除ボタンをクリックし、 _[削除]_ をクリックして確認します。
+1. `Sample QnA` ナレッジ ベースの削除ボタンをクリックし、 _[Delete]_ をクリックして確認します。
 
 ### <a name="best-practice"></a>ベスト プラクティス
 
