@@ -80,7 +80,7 @@ ms.locfileid: "77441662"
 
 ### <a name="create-luis-apps"></a>LUIS アプリを作成する
 
-1. [LUIS Web ポータル](https://www.luis.ai/)にログインします。 _[My Apps]_ セクションの _[Import new app]\(新しいアプリのインポート\)_ タブを選択します。 次のダイアログ ボックスが表示されます。
+1. [LUIS Web ポータル](https://www.luis.ai/)にログインします。 _[My apps]_ セクションの _[Import new app]\(新しいアプリのインポート\)_ タブを選択します。 次のダイアログ ボックスが表示されます。
 
     ![LUIS JSON ファイルをインポートする](./media/tutorial-dispatch/import-new-luis-app.png)
 
