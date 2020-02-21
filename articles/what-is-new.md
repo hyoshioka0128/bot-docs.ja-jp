@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f223766f0dcc4145fa058dcd447d4e3967db93d3
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 5b8b9e23168bdf45180c354edcfba99801d653e3
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791004"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441537"
 ---
 # <a name="whats-new-december-2019"></a>2019 年 12 月の新機能
 

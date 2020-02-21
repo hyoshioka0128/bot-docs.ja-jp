@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7662e5e2d933d7a4500da8eadc0d914f9978800d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 142be4087cccf39862833dc0308ec19dffc0342e
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789194"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441566"
 ---
 # <a name="set-up-continuous-deployment"></a>Azure App Service での GIT による継続的なデプロイ
 
@@ -47,20 +47,17 @@ GitHub を使用する継続的デプロイを有効にするには、Azure port
 
 ![Azure Github のアクセス許可](~/media/azure-bot-build/azure-deployment-github.png)
 
-**AzureAppService** の承認後、Azure portal の**[Deployment Center]**に戻ります。
+**AzureAppService** の承認後、Azure portal の**デプロイ センター**に戻ります。
 
+1. **[Continue]** をクリックします。 
 
-1. **[Continue]\(続行\)** をクリックします。 
+1. **[App Service のビルド サービス]** を選択します。
 
-1. **[App Service build service]\(App Service のビルド サービス\)** を選択します。
-
-
-1. **[Continue]\(続行\)** をクリックします。
+1. **[Continue]** をクリックします。
 
 1. **[Organization]** 、 **[Repository]** 、および **[Branch]** を選択します。
 
-1. **[Continue]\(続行\)** をクリックし、 **[Finish]\(完了\)** をクリックして設定を完了します。
-
+1. **[Continue]** をクリックし、 **[Finish]** をクリックして設定を完了します。
 
 この時点で、GitHub での継続的デプロイは設定されています。 ソース コード リポジトリにコミットするたびに、変更が Azure Bot Service に自動的にデプロイされます。
 
@@ -69,7 +66,7 @@ GitHub を使用する継続的デプロイを有効にするには、Azure port
 ボットが継続的デプロイ用に構成されている間は、オンライン コード エディターを使ってボットを変更することはきません。 オンライン コード エディターを使いたい場合は、継続的デプロイを一時的に無効にできます。
 
 継続的デプロイを無効にするには、次の手順のようにします。
-1. [Azure portal](https://portal.azure.com) 上で、ボットの **[All App service settings]\(すべての App Service の設定\)** ブレードに移動し、 **[Deployment Center]** をクリックします。 
+1. [Azure portal](https://portal.azure.com) 上で、ボットの **[All App service settings]\(すべての App Service の設定\)** ブレードに移動し、 **[デプロイ センター]** をクリックします。 
 1. **[Disconnect]\(切断\)** をクリックして、継続的デプロイを無効化にします。 継続的デプロイを再度有効にするには、上記の該当するセクションの手順を繰り返します。
 
 ## <a name="additional-resources"></a>その他のリソース

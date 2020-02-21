@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 11/28/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 91a0ba8d2e13d8f17213ac9669eca374e27e3863
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 95ce084b68da41d9d9f434348c4539c9f67a2c78
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791054"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441525"
 ---
 # <a name="whats-new-november-2019"></a>2019 年 11 月の新機能
 
@@ -124,7 +124,7 @@ Botkit は、Microsoft Bot Framework に含まれ、[MIT のオープン ソー�
 
 [Bot Framework ソリューション リポジトリ](https://github.com/Microsoft/AI#readme)は、一連のテンプレート、ソリューション アクセラレータ、スキルのホームであり、高度なアシスタント的会話エクスペリエンスの構築に役立ちます。
 
-| Name | [説明] |  
+| 名前 | 説明 |  
 |:------------|:------------| 
 |[**仮想アシスタント**](https://github.com/Microsoft/AI/tree/master/docs#virtual-assistant) | お客様の間で、自社のブランドに合わせてカスタマイズし、顧客に合わせてパーソナライズして、幅広いキャンバスやデバイスで使用できる会話アシスタントを提供したい、という声が高まっています。 <br/><br/> Enterprise Template により、基本的な会話の意図、ディスパッチ統合、QnA Maker、Application Insights、自動デプロイなど、新しいボット プロジェクトの作成が大幅に簡素化されます。|
 |[**スキル**](https://github.com/Microsoft/AI/blob/master/docs/overview/skills.md)| 開発者が会話エクスペリエンスを作成するには、"スキル" と呼ばれる再利用可能な会話機能を結合します。 スキル自体がボットであり、リモートで呼び出されます。また、新しいスキルの作成を容易にするためのスキル開発者向けテンプレート (.NET、TS) もあります。 

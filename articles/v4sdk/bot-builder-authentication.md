@@ -5,14 +5,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/04/2019
+ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 75dc417f5ac3738b2b96a026860d8377f8ff9c25
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: e1cdfbb96e14175f764b481f9634c2d7c93f0c29
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791321"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441646"
 ---
 <!-- 
 
@@ -240,7 +240,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 このプロセスを完了するには、ボットのアプリ ID とパスワードが必要になります。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 <!-- TODO: Add guidance (once we have it) on how not to hard-code IDs and ABS auth. -->
 
@@ -254,7 +254,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
     [!code-json[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/appsettings.json)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 1. 使用する github リポジトリから [**ボット認証**][js-auth-sample]または[**ボット認証 MSGraph**][js-msgraph-sample] を複製します。
 1. **.env** を更新します。
@@ -266,7 +266,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
     [!code-txt[.env](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/.env)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. Github リポジトリから[**ボット認証**][python-auth-sample]サンプルを複製します。
 1. **config.py** を更新します。
@@ -276,7 +276,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
       お使いのボット シークレットに含まれる文字によっては、パスワードを XML でエスケープすることが必要な場合があります。 たとえば、アンパサンド (&) は `&amp;` のようにエンコードする必要があります。
 
-    [!code-python[config](~/../botbuilder-python/samples/python/18.bot-authentication/config.py)]
+    [!code-python[config](~/../botbuilder-samples/samples/python/18.bot-authentication/config.py)]
 
 ---
 
@@ -335,7 +335,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 ### <a name="use-an-oauth-prompt-to-sign-the-user-in-and-get-a-token"></a>OAuth プロンプトを使用してユーザーをサインインさせて、トークンを取得する
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ![ボット アーキテクチャ](media/how-to-auth/architecture.png)
 
@@ -358,7 +358,7 @@ OAuth プロンプトを、コンストラクター内の **MainDialog** に追�
 
 [!code-csharp[Get the OAuthPrompt result](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/MainDialog.cs?range=54-56)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ![ボット アーキテクチャ](media/how-to-auth/architecture-js.png)
 
@@ -379,8 +379,7 @@ OAuth プロンプトを、コンストラクター内の **MainDialog** に追�
 
 [!code-javascript[Get OAuthPrompt result](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=62-63)]
 
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ![ボット アーキテクチャ](media/how-to-auth/architecture-python.png)
 
@@ -388,18 +387,18 @@ OAuth プロンプトを、コンストラクター内の **MainDialog** に追�
 
 OAuth プロンプトを、コンストラクター内の **MainDialog** に追加します。 ここでは、接続名の値は **config.py** ファイルから取得されました。
 
-[!code-python[Add OAuthPrompt](~/../botbuilder-python/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=34-44)]
+[!code-python[Add OAuthPrompt](~/../botbuilder-samples/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=34-44)]
 
 ダイアログ ステップ内で、`begin_dialog` を使用して OAuth プロンプトを起動します。これによりユーザーのサインインが求められます。
 
 - ユーザーがサインイン済みの場合は、ユーザーに問い合わせることなく、トークン応答イベントが生成されます。
 - それ以外の場合は、ユーザーのサインインが求められます。 ユーザーがサインインを試みた後、Azure Bot Service によってトークン応答イベントが送信されます。
 
-[!code-python[Add OAuthPrompt](~/../botbuilder-python/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=49)]
+[!code-python[Add OAuthPrompt](~/../botbuilder-samples/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=49)]
 
 次のダイアログ ステップ内で、前のステップの結果としてトークンが存在することを確認します。 null でない場合、ユーザーは正常にサインインしています。
 
-[!code-python[Add OAuthPrompt](~/../botbuilder-python/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=54-65)]
+[!code-python[Add OAuthPrompt](~/../botbuilder-samples/samples/python/18.bot-authentication/dialogs/main_dialog.py?range=54-65)]
 
 ---
 
@@ -407,7 +406,7 @@ OAuth プロンプトを、コンストラクター内の **MainDialog** に追�
 
 OAuth プロンプトを起動すると、そのプロンプトは、ユーザーのトークン取得元となるトークン応答イベントを待ちます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 **Bots\AuthBot.cs**
 
@@ -415,7 +414,7 @@ OAuth プロンプトを起動すると、そのプロンプトは、ユーザ�
 
 [!code-csharp[OnTokenResponseEventAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Bots/AuthBot.cs?range=32-38)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **bots/authBot.js**
 
@@ -423,13 +422,13 @@ OAuth プロンプトを起動すると、そのプロンプトは、ユーザ�
 
 [!code-javascript[onTokenResponseEvent](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/bots/authBot.js?range=29-31)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 **bots/auth_bot.py**
 
 **AuthBot** は、トークン応答イベント アクティビティを明示的に処理します。 ここではアクティブなダイアログを続行します。これにより OAuth プロンプトでイベントを処理し、トークンを取得できます。
 
-[!code-python[on_token_response_event](~/../botbuilder-python/samples/python/18.bot-authentication/bots/auth_bot.py?range=38-44)]
+[!code-python[on_token_response_event](~/../botbuilder-samples/samples/python/18.bot-authentication/bots/auth_bot.py?range=38-44)]
 
 ---
 
@@ -437,58 +436,55 @@ OAuth プロンプトを起動すると、そのプロンプトは、ユーザ�
 
 接続のタイムアウトに依存するのではなく、ユーザーが明示的にサインアウトまたはログアウトできるようにすることをお勧めします。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-**Dialogs\LogoutDialog.cs**
+**Dialogs\LogoutDialog.cs** [!code-csharp[Allow logout](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/LogoutDialog.cs?range=44-61&highlight=11)]
 
-[!code-csharp[Allow logout](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/LogoutDialog.cs?range=44-61&highlight=11)]
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+**dialogs/logoutDialog.js** [!code-javascript[Allow logout](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/logoutDialog.js?range=31-42&highlight=7)]
 
-**dialogs/logoutDialog.js**
+# <a name="python"></a>[Python](#tab/python)
 
-[!code-javascript[Allow logout](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/logoutDialog.js?range=31-42&highlight=7)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-**dialogs/logout_dialog.py**
-
-[!code-python[allow logout](~/../botbuilder-python/samples/python/18.bot-authentication/dialogs/logout_dialog.py?range=27-34&highlight=6)]
+**dialogs/logout_dialog.py** [!code-python[allow logout](~/../botbuilder-samples/samples/python/18.bot-authentication/dialogs/logout_dialog.py?range=27-34&highlight=6)]
 
 ---
 
 ### <a name="adding-teams-authentication"></a>Teams 認証の追加
 
 Teams は、OAuth に関して他のチャネルとは多少異なる動作をするため、認証を適切に実装するにはいくつかの変更が必要です。 Teams Authentication Bot サンプルからコードを追加します ([C#][cs-teams-auth-sample]/[JavaScript][js-teams-auth-sample])。
- 
-他のチャネルと Teams の違いの 1 つは、Teams がボットに*イベント* アクティビティではなく*呼び出し*アクティビティを送信することです。 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)  
+他のチャネルと Teams の違いの 1 つは、Teams がボットに*イベント* アクティビティではなく*呼び出し*アクティビティを送信することです。
+
+# <a name="c"></a>[C#](#tab/csharp)
+
 **Bots/TeamsBot.cs**  
 [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight=1)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)   
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **bots/teamsBot.js**  
 [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=16-25&highlight=1)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 現在、Microsoft Teams は、認証とボットとの統合方法が若干異なります。 認証については、[Teams のドキュメント](https://aka.ms/teams-docs)を参照してください。
 
 ---
 
-*OAuth プロンプト*を使用する場合は、この呼び出しアクティビティをダイアログに転送する必要があります。 ここでは、`TeamsActivityHandler` でこれを行います。 次のコードをメイン ダイアログ ファイルに追加します。 
+*OAuth プロンプト*を使用する場合は、この呼び出しアクティビティをダイアログに転送する必要があります。 ここでは、`TeamsActivityHandler` でこれを行います。 次のコードをメイン ダイアログ ファイルに追加します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)  
+# <a name="c"></a>[C#](#tab/csharp)
+
 **Bots/DialogBot.cs**  
 [!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=19)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)  
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
 **Bots/dialogBot.js**  
 [!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=6)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 現在、Microsoft Teams は、認証とボットとの統合方法が若干異なります。 認証については、[Teams のドキュメント](https://aka.ms/teams-docs)を参照してください。
 

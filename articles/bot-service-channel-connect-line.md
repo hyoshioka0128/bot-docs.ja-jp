@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 1/7/2019
-ms.openlocfilehash: 092a8327f4a4828642a413201dc0c9483b779345
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 7898546aeb517fcf1ea4af50e35851a3f09ba633
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791951"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441555"
 ---
 # <a name="connect-a-bot-to-line"></a>ボットを LINE に接続する
 

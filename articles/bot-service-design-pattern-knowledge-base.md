@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 988bf816d66bfb6d4140b6be4a708ae6082e1077
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 8d911538b2ee06d255efdba6329c9fd9519056bf
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75792103"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441285"
 ---
 # <a name="design-knowledge-bots"></a>ナレッジ ボットを設計する
 

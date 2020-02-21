@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/06/2019
+ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3377c4b3dd93793ca430439d16c6f1d2c635cdbf
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: 6265c75abeaf9faf1b21f2702bdc4db9842733c9
+ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895750"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441613"
 ---
 # <a name="save-user-and-conversation-data"></a>ユーザーおよび会話データを保存する
 
@@ -28,17 +28,18 @@ ms.locfileid: "76895750"
 - この記事のコードは、**状態管理ボット** サンプルをベースにしています。 サンプルのコピー ([CSharp](https://aka.ms/statebot-sample-cs)、[JavaScript](https://aka.ms/statebot-sample-js)、または [Python](https://aka.ms/bot-state-python-sample-code)) が必要になります。
 
 ## <a name="about-this-sample"></a>このサンプルについて
+
 このサンプルでは、ユーザー入力を受け取ったときに、保存済み会話状態を確認して、ユーザーが以前に名前を入力するように求められたかどうかを確かめます。 求められていない場合は、ユーザーの名前が要求され、入力した内容はユーザー状態に格納されます。 この場合、ユーザー状態に格納されている名前は、ユーザーとの対話に使用され、その入力データは、受信時刻および入力チャネル ID と共にユーザーに返されます。 時刻とチャネル ID の値はユーザーの会話データから取得され、会話状態に保存されます。 次の図は、ボット、ユーザー プロファイル、および会話データ クラスの間の関係を示しています。
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 ![状態ボットのサンプル](media/StateBotSample-Overview.png)
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ![状態ボットのサンプル](media/StateBotSample-JS-Overview.png)
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 ![状態ボットのサンプル](media/StateBotSample-Python-Overview.png)
 
@@ -46,41 +47,43 @@ ms.locfileid: "76895750"
 
 ## <a name="define-classes"></a>クラスの定義
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 状態管理を設定するには、まず、ユーザーと会話状態で管理する情報を含むクラスを定義します。 この記事で使用している例では、次のクラスを定義しています。
 
-- **UserProfile.cs** では、ボットによって収集されるユーザー情報を表す `UserProfile` クラスを定義します。 
+- **UserProfile.cs** では、ボットによって収集されるユーザー情報を表す `UserProfile` クラスを定義します。
 - **ConversationData.cs** では、ユーザー情報を収集しているときに、会話状態を制御する `ConversationData` クラスを定義します。
 
-次のコード例は、`UserProfile` クラスの定義を示しています。
+次のコード例は、`UserProfile` と `ConversationData` クラスの定義を示しています。
 
 **UserProfile.cs**  
 [!code-csharp[UserProfile](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/UserProfile.cs?range=7-11)]
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+**ConversationData.cs**  
+[!code-csharp[ConversationData](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/ConversationData.cs?range=6-17)]
 
-最初の手順で、`UserState` と `ConversationState` の定義が含まれる botbuilder サービスを要求します。
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**index.js**  
-[!code-javascript[BotService](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/index.js?range=7-9)]
+JavaScript では、この手順は必要ありません。
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 状態管理を設定するには、まず、ユーザーと会話状態で管理する情報を含むクラスを定義します。 この記事で使用している例では、次のクラスを定義しています。
 
-- **user-profile.py** には、ボットによって収集されたユーザー情報を格納する `UserProfile` クラスが含まれています。
+- **user_profile.py** には、ボットによって収集されたユーザー情報を格納する `UserProfile` クラスが含まれています。
 - **conversation_data.py** には、ユーザー情報の収集中に会話状態を制御する `ConversationData` クラスが含まれています。
 
-次のコード例は、`ConversationData` クラスの定義を示しています。 
+次のコード例は、`UserProfile` と `ConversationData` クラスの定義を示しています。
 
-[!code-python[conversation_data](~/../botbuilder-python/samples/python/45.state-management/data_models/conversation_data.py?range=5-14)]
+**user_profile.py** [!code-python[user_profile](~/../botbuilder-samples/samples/python/45.state-management/data_models/user_profile.py?range=5-7)]
+
+**conversation_data.py** [!code-python[conversation_data](~/../botbuilder-samples/samples/python/45.state-management/data_models/conversation_data.py?range=5-14)]
 
 ---
 
 ## <a name="create-conversation-and-user-state-objects"></a>会話およびユーザー状態オブジェクトの作成
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 次に、`UserState` オブジェクトと `ConversationState` オブジェクトの作成に使用する `MemoryStorage` を登録します。 ユーザーおよび会話状態オブジェクトは `Startup` で作成され、依存関係がボット コンストラクターに挿入されます。 ボット用のサービスとして他に資格情報プロバイダー、アダプター、およびボット実装が登録されています。
 
@@ -88,50 +91,48 @@ ms.locfileid: "76895750"
 [!code-csharp[ConfigureServices](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Startup.cs?range=26-29)]
 [!code-csharp[ConfigureServices](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Startup.cs?range=51-57)]
 
-**Bots/StateManagementBot.cs**
+**Bots/StateManagementBot.cs** [!code-csharp[Bot constructor](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Bots/StateManagementBot.cs?range=15-22)]
 
-[!code-csharp[StateManagement](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Bots/StateManagementBot.cs?range=15-22)]
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-次に、`UserState` オブジェクトと `ConversationState` オブジェクトの作成に使用する `MemoryStorage` を登録します。
+次に、`UserState` オブジェクトと `ConversationState` オブジェクトの作成に使用する `MemoryStorage` を登録します。 これらは **index.js** で作成され、ボットの作成時に使用されます。
 
 **index.js**  
-[!code-javascript[DefineMemoryStore](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/index.js?range=33-39)]
+[!code-javascript[index.js](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/index.js?range=33-39)]
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+**bots/stateManagementBot.js**  
+[!code-javascript[bot constructor](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=10-12)]
+[!code-javascript[bot constructor](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=17-19)]
 
-次に、`UserState` オブジェクトと `ConversationState` オブジェクトの作成に使用する `MemoryStorage` を登録します。 ユーザーおよび会話状態のオブジェクトはスタートアップ時に `app.py` に作成され、依存関係がボット コンストラクターに挿入されます。
+## <a name="python"></a>[Python](#tab/python)
 
-**app.py** [!code-python[state](~/../botbuilder-python/samples/python/45.state-management/app.py?range=67-70)]
+次に、`UserState` オブジェクトと `ConversationState` オブジェクトの作成に使用する `MemoryStorage` を登録します。 これらは **app.py** で作成され、ボットの作成時に使用されます。
 
-**bots/state_management_bot.py** [!code-python[state](~/../botbuilder-python/samples/python/45.state-management/bots/state_management_bot.py?range=14-30)]
+**app.py** [!code-python[app.py](~/../botbuilder-samples/samples/python/45.state-management/app.py?range=67-70)]
+
+**bots/state_management_bot.py** [!code-python[bot constructor](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=13-25)]
 
 ---
 
 ## <a name="add-state-property-accessors"></a>状態プロパティ アクセサーの追加
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 ここで、`BotState` オブジェクトにハンドルを提供する `CreateProperty` メソッドを使用して、プロパティ アクセサーを作成します。 各状態プロパティ アクセサーを使用すると、関連付けられている状態プロパティの値を取得または設定できます。 状態プロパティを使用する前に、各アクセサーを使用してストレージからプロパティを読み込んだうえで状態キャッシュから取得します。 状態プロパティに関連付けられている適切に範囲指定されたキーを取得するために、`GetAsync` メソッドを呼び出します。
 
-**Bots/StateManagementBot.cs**
+**Bots/StateManagementBot.cs** [!code-csharp[Create accessors](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Bots/StateManagementBot.cs?range=42,45)]
 
-[!code-csharp[StateAccessors](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Bots/StateManagementBot.cs?range=38-46)]
-
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `UserState` および `ConversationState` 用の状態プロパティ アクセサーを作成します。 各状態プロパティ アクセサーを使用すると、関連付けられている状態プロパティの値を取得または設定できます。 各アクセサーを使用して、関連付けられているプロパティをストレージから読み込んで、現在の状態をキャッシュから取得します。
 
-**bots/stateManagementBot.js**
+**bots/stateManagementBot.js** [!code-javascript[Create accessors](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=13-15)]
 
-[!code-javascript[BotService](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=6-19)]
-
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 `UserProfile` および `ConversationData` 用の状態プロパティ アクセサーを作成します。 各状態プロパティ アクセサーを使用すると、関連付けられている状態プロパティの値を取得または設定できます。 各アクセサーを使用して、関連付けられているプロパティをストレージから読み込んで、現在の状態をキャッシュから取得します。
 
-**bots/state_management_bot.py** [!code-python[state_accessors](~/../botbuilder-python/samples/python/45.state-management/bots/state_management_bot.py?range=24-30)]
+**bots/state_management_bot.py** [!code-python[Create accessors](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=27-30)]
 
 ---
 
@@ -139,50 +140,41 @@ ms.locfileid: "76895750"
 
 前のセクションでは、状態プロパティ アクセサーをボットに追加するための、初期化時の手順について説明しました。 これらのアクセサーを実行時に使用すると、状態情報を読み書きできます。 次のサンプル コードでは次のロジック フローを使用します。
 
-
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 - userProfile.Name が空で、conversationData.PromptedUserForName が _true_ の場合は、指定したユーザー名を取得して、それをユーザー状態に格納します。
 - userProfile.Name が空で、conversationData.PromptedUserForName が _false_ の場合は、ユーザーの名前を確認します。
 - userProfile.Name が前に格納されていた場合は、メッセージ時間とチャネル ID をユーザー入力から取得し、すべてのデータをユーザーにエコー バックして、取得したデータを会話状態内に格納します。
 
-**Bots/StateManagementBot.cs**
-
-[!code-csharp[OnMessageActivityAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=38-85)]
+**Bots/StateManagementBot.cs** [!code-csharp[OnMessageActivityAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=38-85)]
 
 ターン ハンドラーを終了する前に、状態管理オブジェクトの _SaveChangesAsync()_ メソッドを使用して、すべての状態変更をストレージに書き戻します。
 
-**Bots/StateManagementBot.cs**
+**Bots/StateManagementBot.cs** [!code-csharp[OnTurnAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=24-31)]
 
-[!code-csharp[OnTurnAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=24-31)]
-
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 - userProfile.Name が空で、conversationData.PromptedUserForName が _true_ の場合は、指定したユーザー名を取得して、それをユーザー状態に格納します。
 - userProfile.Name が空で、conversationData.PromptedUserForName が _false_ の場合は、ユーザーの名前を確認します。
 - userProfile.Name が前に格納されていた場合は、メッセージ時間とチャネル ID をユーザー入力から取得し、すべてのデータをユーザーにエコー バックして、取得したデータを会話状態内に格納します。
 
-**bots/stateManagementBot.js**
-
-[!code-javascript[OnMessage](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=21-58)]
+**bots/stateManagementBot.js** [!code-javascript[OnMessage](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=21-58)]
 
 各ダイアログ ターンを終了する前に、状態管理オブジェクトの _saveChanges()_ メソッドを使用して、状態をストレージに書き込むことですべての変更を保持します。
 
-**bots/stateManagementBot.js**
+**bots/stateManagementBot.js** [!code-javascript[OnDialog](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=72-81)]
 
-[!code-javascript[OnDialog](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=60-67)]
-
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 - `user_profile.name` が空で、`conversation_data.prompted_for_user_name` が *true* の場合、ボットは、ユーザーによって指定された名前を取得し、ユーザーの状態内に格納します。
 - `user_profile.name` が空で、`conversation_data.prompted_for_user_name` が *false* の場合、ボットはユーザーの名前を要求します。
 - `user_profile.name` が前に格納されていた場合、ボットは、**メッセージ時間**と**チャネル ID** をユーザー入力から取得し、データをユーザーにエコー バックして、取得したデータを会話状態内に格納します。
 
-**bots/state_management_bot.py** [!code-python[state_message_activity](~/../botbuilder-python/samples/python/45.state-management/bots/state_management_bot.py?range=47-89)]
+**bots/state_management_bot.py** [!code-python[state_message_activity](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=47-89)]
 
 各ダイアログ ターンを終了する前に、ボットは、状態管理オブジェクトの `save_changes` メソッドを使用し、ストレージに状態情報を書き込んですべての変更を保持します。
 
-**bots/state_management_bot.py** [!code-python[state_storage](~/../botbuilder-python/samples/python/45.state-management/bots/state_management_bot.py?range=32-36)]
+**bots/state_management_bot.py** [!code-python[state_storage](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=32-36)]
 
 ---
 
