@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 227e6e27594db8c51aa8808709cabd47cade4084
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: d519bd6fa363cf47afa1609aa1930f4635e9e745
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071764"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77520021"
 ---
 # <a name="key-concepts-in-direct-line-api-11"></a>Direct Line API 1.1 の主要な概念
 
@@ -44,7 +44,3 @@ Direct Line API 1.1 を使用すると、クライアントは `HTTP POST` 要�
 Bot Framework では、C# からの Direct Line API 1.1 へのアクセスを容易にするクライアント ライブラリが提供されています。 Visual Studio プロジェクト内でクライアント ライブラリを使用するには、`Microsoft.Bot.Connector.DirectLine` <a href="https://www.nuget.org/packages/Microsoft.Bot.Connector.DirectLine/1.1.1" target="_blank">v1.x NuGet パッケージ</a>をインストールしてください。 
 
 C# のクライアント ライブラリを使用する代わりに、<a href="https://docs.botframework.com/restapi/directline/swagger.json" target="_blank">Direct Line API 1.1 Swagger ファイル</a>を使用して好みの言語で独自のクライアント ライブラリを生成できます。
-
-### <a name="web-chat-control"></a>Web チャット コントロール 
-
-Bot Framework では、Direct Line によって強化されたボットをクライアント アプリケーションに埋め込めるようにするコントロールが提供されています。 詳細については、<a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">Microsoft Bot Framework WebChat コントロール</a>に関するページを参照してください。

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/10/2020
-ms.openlocfilehash: a1762e79ab1524f05818d546d04c2e8a1df5fcdd
-ms.sourcegitcommit: caaf394017dbdb1cfaba32e2d0a1e32c5ab71792
+ms.openlocfilehash: b6688c99226653bb95290d583028e0e5275c973f
+ms.sourcegitcommit: 4ddee4f90a07813ce570fdd04c8c354b048e22f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75869832"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77479330"
 ---
 # <a name="analyze-your-bots-telemetry-data"></a>ボットのテレメトリ データを分析する 
 
@@ -541,7 +541,7 @@ LUIS インストルメンテーションでは、次のカスタム ディメ�
 | -------------- | ----------------------- | ------------------------------------------------------- |
 | 意図         | LUIS で検出された意図    | pointOfInterestSkill                                    |
 | intentScore    | LUIS 認識スコア  | 0.98                                                    |
-| [エンティティ]       | LUIS で検出されたエンティティ  | FoodOfGrocery = [["コーヒー"]]、KEYWORD= ["コーヒー ショップ"] |
+| エンティティ       | LUIS で検出されたエンティティ  | FoodOfGrocery = [["コーヒー"]]、KEYWORD= ["コーヒー ショップ"] |
 | 質問       | LUIS で検出された質問  | コーヒー ショップを探してください                                      |
 | sentimentLabel | LUIS で検出されたセンチメント | ポジティブ                                                |
 
@@ -564,6 +564,6 @@ QnAMaker インストルメンテーションでは、次のカスタム ディ�
 
 * ログ クエリの記述に関するチュートリアルについて「[Azure Monitor でログ クエリの使用を開始する](https://aka.ms/azure-monitor-log-queries-get-started)」を確認する
 * [Azure Monitor からのデータを視覚化する](https://aka.ms/azure-monitor-visualize-data)
-* [ボットにテレメトリを追加する](https://aka.ms/AddBotTelemetry)方法を確認する
+* [ボットにテレメトリを追加する](https://aka.ms/add-bot-telemetry)方法を確認する
 * [Azure Monitor のログ クエリ](https://aka.ms/azure-monitor-log-queries)の詳細について確認する
 * [Log Analytics データのダッシュボードを作成して共有する](https://aka.ms/log-analytics-create-share-dashboards)
