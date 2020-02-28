@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a4437910cc0de3772ed8959f54f1643bc62abf41
-ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
+ms.openlocfilehash: bb79739e2199556fe6ce3fdd58f2fc34165f36e2
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2020
-ms.locfileid: "76752894"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77519981"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>チュートリアル:ボットで QnA Maker を使用して質問に回答する
 
@@ -36,7 +36,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * [前のチュートリアル](bot-builder-tutorial-basic-deploy.md)で作成したボット。 そのボットに質問と回答の機能を追加します。
 * [QnA Maker](https://qnamaker.ai/) についてある程度理解していると役に立ちます。 QnA Maker ポータルを使用して、ボットで使用できるように、ナレッジ ベースを作成、トレーニング、公開します。
-* Azure Bot Service を使用した [QnA ボット作成](https://aka.ms/azure-create-qna)に関する知識。
+* Azure Bot Service を使用した [QnA ボットの作成](https://aka.ms/azure-create-qna)に関する知識。
 
 前のチュートリアルに対する前提条件が既に揃っている場合もあります。
 
@@ -78,7 +78,7 @@ Authorization: EndpointKey <qna-maker-resource-key>
 
 Bot Framework v4.3 以降、Azure では、ダウンロードされたボットのソース コードの一部として .bot ファイルが提供されなくなりました。 次の手順に従って、CSharp、JavaScript、または Python のボットをナレッジ ベースに接続します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 次の値を appsetting.json ファイルに追加します。
 
@@ -94,7 +94,7 @@ Bot Framework v4.3 以降、Azure では、ダウンロードされたボット�
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 次の値をご自身の .env ファイルに追加します。
 
@@ -108,7 +108,7 @@ QnAAuthKey="qna-maker-resource-key"
 QnAEndpointHostName="your-hostname" // This is a URL ending in /qnamaker
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 次の値を `config.py` ファイルに追加します。
 
@@ -139,7 +139,7 @@ class DefaultConfig:
 
 自分のナレッジ ベースのサービス情報を読み込むように、初期化コードを更新します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 1. **Microsoft.Bot.Builder.AI.QnA** NuGet パッケージをプロジェクトに追加します。
 
@@ -231,7 +231,7 @@ class DefaultConfig:
    }
    ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 1. ターミナルまたはコマンド プロンプトを開いて、プロジェクトのルート ディレクトリに移動します。
 1. **botbuilder-ai** npm パッケージをプロジェクトに追加します。
@@ -302,7 +302,7 @@ class DefaultConfig:
     });
     ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. サンプル リポジトリの README ファイルで説明されているようにパッケージをインストールしたことを確認します。
 1. 次に示すように、`botbuilder-ai` 参照を `requirements.txt` ファイルに追加します。
