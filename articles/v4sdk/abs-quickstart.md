@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/09/2020
-ms.openlocfilehash: 9190c2eefbfe290ea43531630473772addb1b60a
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: ad49ab4e1843f6ac06907f785bc3a64c63a85cf0
+ms.sourcegitcommit: 4ddee4f90a07813ce570fdd04c8c354b048e22f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798889"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77479340"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Azure Bot Service を使用してボットを作成する
 
@@ -53,7 +53,7 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
  | **App Service プラン/場所** | ご利用の App Service プラン  | [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)の場所を選択します。 一覧に示されたどの場所を選択してもかまいませんが、多くの場合、ボット サービスと同じ場所を選択するのが最良です。 |
  | **LUIS アカウント** "_Basic Bot テンプレートでのみ使用可能_" | LUIS Azure リソース名 | [LUIS リソースを Azure リソースに移行](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)した後、Azure リソース名を入力して、この LUIS アプリケーションをその Azure リソースに関連付けます。 
  | **Application Insights** | On | [Application Insights](/bot-framework/bot-service-manage-analytics) を**オン**にするか、**オフ**にするかを決定します。 **[オン]** を選択した場合は、リージョンの場所も指定する必要があります。 一覧に示されたどの場所を選択してもかまいませんが、多くの場合、ボット サービスと同じ場所を選択するのが最良です。 |
- | **Microsoft App ID and password\(Microsoft アプリ ID とパスワード\)** | アプリ ID とパスワードの自動作成 | Microsoft アプリ ID とパスワードを手動で入力する必要がある場合は、このオプションを使用します。 それ以外の場合は、ボット作成プロセスで新しい Microsoft アプリ ID とパスワードが自動的に作成されます。 ボット サービス用に手動でアプリケーションの登録を作成する場合は、サポートされるアカウントの種類が [任意の組織のディレクトリ内のアカウント] または [任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)] に確実に設定されているようにしてください。 |
+ | **Microsoft App ID and password\(Microsoft アプリ ID とパスワード\)** | アプリ ID とパスワードの自動作成 | Microsoft アプリ ID とパスワードを手動で入力する必要がある場合は、このオプションを使用します。 それ以外の場合は、ボット作成プロセスで新しい Microsoft アプリ ID とパスワードが自動的に作成されます。 ボット サービス用に手動でアプリの登録を作成する場合は、サポートされるアカウントの種類を [任意の組織のディレクトリ内のアカウント] または [任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)] に必ず設定してください。 |
 
 4. **[作成]** をクリックしてサービスを作成し、ボットをクラウドにデプロイします。 このプロセスには数分かかることがあります。
 

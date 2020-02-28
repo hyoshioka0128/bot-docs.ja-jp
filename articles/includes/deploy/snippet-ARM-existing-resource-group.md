@@ -1,36 +1,48 @@
 ---
-ms.openlocfilehash: 029275eae6f7b0b4448613ede898575eb491a56f
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: 2559f424e9f50a760837494f87e4f33731ffb358
+ms.sourcegitcommit: 4ddee4f90a07813ce570fdd04c8c354b048e22f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386071"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77479294"
 ---
-既存のリソース グループを使用する場合は、既存の App Service プランを使用するか、新しい App Service プランを作成できます。 両方のオプションの手順を以下に示します。 
+この手順では、ボットのデプロイ ステージを設定するボット アプリケーション サービスを作成します。 既存のリソース グループを使用する場合は、既存のアプリ サービス プランを使用するか、新しいものを作成できます。 両方のオプションの手順を以下に示します。
 
-**オプション 1:既存の App Service プラン** 
+結果として得られる JSON 出力から、次の手順で**登録サブスクリプション ID** の値として使用するために、**ID** フィールドの値をコピーします。
 
-この場合、既存の App Service プランが使用されますが、Web アプリと Bot Channels Registration は新しく作成されます。 
+> [!NOTE]
+> この手順は完了するまでに数分かかることがあります。
+
+**オプション 1: 既存の App Service プラン**
+
+この場合、既存の App Service プランが使用されますが、Web アプリと Bot Channels Registration は新しく作成されます。
 
 > [!NOTE]
 > 次のコマンドにより、ボットの ID と表示名が設定されます。 `botId` パラメーターはグローバルに一意である必要があり、不変のボット ID として使用されます。 ボットの表示名は変更可能です。
 
 ```cmd
-az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<location>"
+az group deployment create --resource-group "<name-of-resource-group>" --template-file "<path-to-template-with-preexisting-rg.json>" --parameters appId="<app-id-from-previous-step>" appSecret="<password-from-previous-step>" botId="<id or bot-app-service-name>" newWebAppName="<bot-app-service-name>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<region-location-name>" --name "<bot-app-service-name>"
 ```
 
-**オプション 2:新しい App Service プラン**
+**オプション 2: 新しい App Service プラン**
 
-この場合は、App Service プラン、Web アプリ、および Bot Channels Registration が作成されます。 
+この場合は、App Service プラン、Web アプリ、および Bot Channels Registration が作成されます。
 
 ```cmd
-az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" newAppServicePlanName="<name-of-app-service-plan>" appServicePlanLocation="<location>"
+az group deployment create --resource-group "<name-of-resource-group>" --template-file "<path-to-template-with-preexisting-rg.json>" --parameters appId="<app-id-from-previous-step>" appSecret="<password-from-previous-step>" botId="<id or bot-app-service-name>" newWebAppName="<bot-app-service-name>" newAppServicePlanName="<name-of-app-service-plan>" appServicePlanLocation="<region-location-name>" --name "<bot-app-service-name>"
 ```
 
 | オプション   | 説明 |
 |:---------|:------------|
-| name | デプロイのフレンドリ名。 |
+| name | ボット チャンネル登録に使用する表示名。 既定値は `botId` パラメーターの値です。|
 | resource-group | Azure リソース グループの名前。 |
-| template-file | ARM テンプレートへのパス。 プロジェクトの `deploymentTemplates` フォルダーで指定された `template-with-preexisting-rg.json` ファイルを使用できます。 |
+| template-file | ARM テンプレートへのパス。 通常、`template-with-preexisting-rg.json` ファイルはプロジェクトの `deploymentTemplates` フォルダーにあります。 これは、既存のテンプレート ファイルのパスです。 パスは、絶対パス、または現在のディレクトリに対する相対パスのどちらでもかまいません。 すべてのボット テンプレートにより、ARM テンプレート ファイルが生成されます。|
 | location |場所。 値のソース: `az account list-locations` `az configure --defaults location=<location>` を使用して、既定の場所を構成できます。 |
-| parameters | デプロイ パラメーターの値を提供します。 `az ad app create` コマンドを実行して取得した `appId` 値。 `appSecret` は、前の手順で指定したパスワードです。 `botId` パラメーターはグローバルに一意である必要があり、不変のボット ID として使用されます。 これは、変更可能なボットの表示名を構成するときにも使用されます。 `newWebAppName` は、作成する Web アプリの名前です。 `newAppServicePlanName` は App Service プランの名前です。 `newAppServicePlanLocation` は、App Service プランの場所です。 |
+| parameters | key=value のペアの一覧として指定されるデプロイ パラメーター。 次のパラメーター値を入力します。
+
+- `appId` - 前の手順で生成された "*アプリ ID*" の値。
+- `appSecret` - 前の手順で指定したパスワード。
+- `botId` - 作成するボット チャンネル登録リソースの名前。 名前はグローバルに一意である必要があります。 これは、不変のボット ID として使用されます。 また、変更可能な既定の表示名としても使用されます。
+- `newWebAppName` - ボット アプリケーション サービスの名前。
+- `newAppServicePlanName` - 作成するアプリケーション サービス プラン リソースの名前。
+- `newAppServicePlanLocation` - アプリケーション サービス プランの場所。

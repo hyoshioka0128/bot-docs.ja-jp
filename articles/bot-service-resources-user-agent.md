@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: e6b0df6384b6ecc1ffa8922e574c6b161db8369e
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 4eea881d7dee4816c2c8a5d28ffc37662063d340
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75794130"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77519941"
 ---
 # <a name="bot-framework-user-agent-requests"></a>Bot Framework の User-Agent 要求
 
-このメッセージを読み取っている場合は、おそらく Microsoft Bot Framework サービスからの要求を受信しています。 このガイドでは、この要求の性質を理解し、必要な場合には停止する手順について説明します。
+このメッセージを読んでいる場合は、Microsoft Bot Framework サービスからの要求を受信している可能性があります。 このガイドでは、この要求の性質を理解し、必要な場合には停止する手順について説明します。
 
 上記のサービスからの要求を受信している場合、User-Agent ヘッダーは次の文字列のような書式になっています。
 

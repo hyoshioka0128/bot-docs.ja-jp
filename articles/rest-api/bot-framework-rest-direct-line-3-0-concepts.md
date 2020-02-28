@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/06/2019
-ms.openlocfilehash: cb3d156d71d6c5e28303cdf26de8692b13f42c86
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: 5d86cd325c296aceba6f52e81841028d6da79c4a
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071769"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77520011"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Direct Line API 3.0 の主要な概念
 
-Direct Line API を使用すると、ボットと独自のクライアント アプリケーション間の通信を有効にできます。 この記事では、Direct Line API 3.0 の主要概念を紹介し、関連する開発者リソースに関する情報を提供します。
+Direct Line API を使用すると、ボットと独自のクライアント アプリケーション間の通信を有効にできます。 この記事では、Direct Line API 3.0 の主要概念を紹介し、関連する開発者リソースに関する情報を提供します。 SDK、REST API、または Web チャットを使用してクライアントを構築できます。 
 
 ## <a name="authentication"></a>認証
 

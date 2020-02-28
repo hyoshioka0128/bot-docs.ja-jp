@@ -7,25 +7,23 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 4b8a3046ee53d90fe2abdc97a3c931a4f67c051f
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 67c74bc3f51328370e4d6ba207855b20e4d79497
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789434"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77520001"
 ---
 # <a name="end-a-conversation"></a>会話を終了する
 
 **endOfConversation** [アクティビティ](https://aka.ms/botSpecs-activitySchema)は、チャネルまたはボットが会話を終了したことを意味します。 
 
 > [!NOTE] 
-> **endOfConversation** イベントを送信するチャネルはごく少数に限られており、Cortana チャネルだけがこのイベントを受け入れます。 Direct Line などの他のチャネルはこの機能を実装しておらず、代わりにアクティビティを破棄または転送します。endOfConversation アクティビティへの対応は、チャネルごとに決定されます。 DirectLine クライアントを設計している場合は、既に終了した会話にボットがアクティビティを送信したときにエラーを生成するなど、クライアントが適切に動作するよう更新します。
+> **endOfConversation** イベントを送信するチャネルはごく少数に限られており、Cortana チャネルだけがこのイベントを受け入れます。 Direct Line などの他のチャネルはこの機能を実装しておらず、代わりにアクティビティを破棄または転送します。endOfConversation アクティビティへの対応は、チャネルごとに決定されます。
 
 ## <a name="send-an-endofconversation-activity"></a>endOfConversation アクティビティを送信する
 
-**endOfConversation** アクティビティは、ボットとクライアント間の通信を終了します。 **endOfConversation** アクティビティが送信された後もまだ、クライアントは `HTTP GET` を使って[メッセージを取得](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get)できますが、クライアントもボットも、会話にそれ以上メッセージを送信することはできません。 
-
-会話を終了するには、POST 要求を発行して **endOfConversation** アクティビティを送信するだけです。
+Cortana チャンネルでの会話の終了を要求するには、チャンネルのメッセージング エンドポイントに会話の終了アクティビティを POST します。
 
 ### <a name="request"></a>Request
 

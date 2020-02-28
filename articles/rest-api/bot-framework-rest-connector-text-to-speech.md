@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 12/13/2017
-ms.openlocfilehash: 6cab3dbff6d2d7a4ba79edb88b138ae77beee956
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.date: 02/20/2020
+ms.openlocfilehash: f5bf6cf254b4c095ce9f49619bb39ef5b48fa5ed
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789833"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77519931"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
 > [!div class="op_single_selector"]
@@ -20,14 +20,16 @@ ms.locfileid: "75789833"
 > - [Node.js](../nodejs/bot-builder-nodejs-text-to-speech.md)
 > - [REST](../rest-api/bot-framework-rest-connector-text-to-speech.md)
 
-Cortana などの音声対応チャネルのボットを作成している場合は、ボットが読み上げるテキストを指定するメッセージを構成できます。 また、[入力ヒント](bot-framework-rest-connector-add-input-hints.md)を指定して、ボットがユーザー入力を受け入れるか、期待するか、無視するかを示し、クライアントのマイクの状態に影響を与えることを試すこともできます。
+Cortana などの音声対応チャネルのボットを作成している場合は、ボットが読み上げるテキストを指定するメッセージを構成できます。 また、[入力ヒント](bot-framework-rest-connector-add-input-hints.md)を指定して、ボットがユーザー入力を受け入れるか、期待するか、無視するかを示し、クライアントのマイクの状態に影響を与えることを試すこともできます。 
+
+クライアント アプリケーションが [Direct Line Speech チャンネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)を介してボットと通信できるように、そのボットを構成できます。
 
 ## <a name="specify-text-to-be-spoken-by-your-bot"></a>ボットが読み上げるテキストを指定する
 
-音声対応チャネル上でボットが読み上げるテキストを指定するには、メッセージを表す[Activity][Activity] オブジェクト内の `speak` プロパティを設定します。 `speak` プロパティは、プレーンテキスト文字列か、または声、速さ、音量、発音、ピッチなどのボットの音声のさまざまな特性を制御できる XML ベースのマークアップ言語である<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">音声合成マークアップ言語 (SSML)</a> として書式設定された文字列のどちらかに設定できます。 
+音声対応チャネル上でボットが読み上げるテキストを指定するには、メッセージを表す[Activity][Activity] オブジェクト内の `speak` プロパティを設定します。 `speak` プロパティは、プレーンテキスト文字列か、または声、速さ、音量、発音、ピッチなどのボットの音声のさまざまな特性を制御できる XML ベースのマークアップ言語である<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">音声合成マークアップ言語 (SSML)</a> として書式設定された文字列のどちらかに設定できます。 チャンネルがサポートされていない場合、メッセージはテキストとして配信されます。
 
 
-次の要求では、表示されるテキストと読み上げられるテキストを指定し、ボットが[ユーザー入力を想定している](bot-framework-rest-connector-add-input-hints.md)ことを示すメッセージを送信します。 ここでは、<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">SSML</a> 形式を使用した `speak` プロパティを指定して、単語 "sure" を適度な強調の量で読み上げる必要があることを示しています。 この要求の例で、`https://smba.trafficmanager.net/apis` はベース URI を示しています。ご利用のボットによって発行される要求に対するベース URI は、これとは異なる場合があります。 ベース URI の設定の詳細については、[API リファレンス](bot-framework-rest-connector-api-reference.md#base-uri)に関する記事をご覧ください。
+次の要求では、表示されるテキストと読み上げられるテキストを指定し、ボットが[ユーザー入力を想定している](bot-framework-rest-connector-add-input-hints.md)ことを示すメッセージを送信します。 ここでは、<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">SSML</a> 形式を使用した `speak` プロパティを指定して、単語 "sure" を適度な強調の量で読み上げる必要があることを示しています。 この要求の例で、Direct Line はベース URI を示しています。ご利用のボットによって発行される要求に対するベース URI は、これとは異なる場合があります。 ベース URI の設定の詳細については、[API リファレンス](bot-framework-rest-connector-api-reference.md#base-uri)に関する記事をご覧ください。
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723
@@ -59,7 +61,7 @@ Content-Type: application/json
 
 ## <a name="input-hints"></a>入力ヒント
 
-音声対応チャネルでメッセージを送信する場合、ボットがユーザー入力を受け付けるか、期待するか、無視するかを示すための入力ヒントを含めることによっても、クライアントのマイクの状態に影響を与えることを試すことができます。 詳細については、「[メッセージへの入力ヒントの追加](bot-framework-rest-connector-add-input-hints.md)」を参照してください。
+音声対応チャンネルでメッセージを送信する場合、入力ヒントを含めて、ボットがユーザー入力を受け入れているか、期待しているか、無視しているかを示すことで、クライアントのマイクの意図した状態を表すことができます。 詳細については、「[メッセージへの入力ヒントの追加](bot-framework-rest-connector-add-input-hints.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

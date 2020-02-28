@@ -6,14 +6,18 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 12/13/2017
-ms.openlocfilehash: 1453ad74725e0084f0b5f45fa7d20475dbee2fa6
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.date: 02/20/2020
+ms.openlocfilehash: 1dc6fa1a9223e61daaa52cf475095fc08e0356d7
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789214"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77519961"
 ---
 # <a name="manage-state-data"></a>状態データの管理
 
-Microsoft Bot Framework State サービスは 2018 年 3 月 30 日時点で廃止されています。 以前は、Azure Bot Service または Bot Builder SDK で構築されたボットには、ボットの状態データを格納するために Microsoft によってホストされたこのサービスへの既定の接続がありました。 ボットは、独自の状態ストレージを使用するように更新する必要があります。
+ボットは通常、ストレージを使用して、会話内のユーザーの場所、またはボットとの関係に関連する詳細を追跡します。 Bot Framework SDK では、ボット開発者のためにユーザーおよび会話状態を自動的に管理します。 
+
+当初、Bot Framework には、このデータを格納するための状態サービスが付属していましたが、最新のボット (および Bot Framework SDK の最近のすべてのリリース) では、この一元管理サービスではなく、ボット開発者によって直接制御されているストレージを使用します。 
+
+一元的な Bot Framework State サービスは 2018 年 3 月 30 日時点で廃止されています。 詳細については、「[お知らせ: Bot Framework State サービスは廃止されました - 知っておくべきこと](https://blog.botframework.com/2018/04/02/reminder-the-bot-framework-state-service-has-been-retired-what-you-need-to-know/)」を参照してください。

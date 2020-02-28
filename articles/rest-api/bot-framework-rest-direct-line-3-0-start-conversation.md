@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: bc3679c48f67ffc5fadfbc387ee41c69ad96884f
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: db6fc2049cbf5fe44ac4f8713c17b2081019fd82
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789292"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77519921"
 ---
 # <a name="start-a-conversation"></a>会話の開始
 
@@ -20,7 +20,7 @@ Direct Line の会話はクライアントによって明示的に開かれ、�
 
 ## <a name="open-a-new-conversation"></a>新しい会話を開く
 
-ボットとの新しい会話を開くには、次の要求を発行します。
+クライアントから新しい会話を開始するには、/v3/directline/conversations エンドポイントに POST を発行します。
 
 ```http
 POST https://directline.botframework.com/v3/directline/conversations
@@ -63,7 +63,7 @@ HTTP/1.1 201 Created
 
 会話の開始操作 (`POST /v3/directline/conversations`) と[トークンの生成](bot-framework-rest-direct-line-3-0-authentication.md#generate-token)操作 (`POST /v3/directline/tokens/generate`) は、どちらの操作も、1 つの会話にアクセスするために使用できる `token` を返すという点で類似しています。 ただし、会話の開始操作は、会話の開始、ボットとの接触、および WebSocket stream URL の作成も行いますが、トークンの生成操作はこれらの操作を行いません。 
 
-会話をすぐに開始するつもりの場合は、会話の開始操作を使用してください。 トークンをクライアントに配布し、クライアントからの会話の開始を求める場合は、[トークンの生成](bot-framework-rest-direct-line-3-0-authentication.md#generate-token)操作を使用してください。 
+クライアントですぐに会話を開始する場合は、会話の開始操作を使用します。 トークンをクライアントに配布し、クライアントからの会話の開始を求める場合は、[トークンの生成](bot-framework-rest-direct-line-3-0-authentication.md#generate-token)操作を使用してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

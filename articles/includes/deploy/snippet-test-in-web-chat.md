@@ -1,17 +1,17 @@
 ---
-ms.openlocfilehash: 4db6a47644ca1808949021016197d2d2fda1ed6b
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: d90bc0c0ecbef356ec4f917199dcc1e6471d2aed
+ms.sourcegitcommit: 4ddee4f90a07813ce570fdd04c8c354b048e22f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386075"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77479293"
 ---
 1. ブラウザーで [Azure portal](https://ms.portal.azure.com) に移動します。
 2. 左側のパネルで **[リソース グループ]** をクリックします。
 3. 右側のパネルでグループを検索します。
 4. グループ名をクリックします。
-5. Bot Channel Registration のリンクをクリックします。
-6. **[Bot Channel Registration]** パネルで、 **[Test in Web Chat]\(Web チャットでのテスト\)** をクリックします。
+5. ボット チャンネル登録のリンクをクリックします。
+6. **[ボット チャンネル登録]** パネルで、 **[Web チャットでテスト]** をクリックします。
 あるいは、右側のパネルで **[テスト]** ボックスをクリックします。
 
-チャネル登録の詳細については、「[ボットを Bot Service に登録する](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0)」を参照してください。
+ボット チャンネル登録の詳細については、[Bot Service へのボットの登録](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0)に関する記事を参照してください。

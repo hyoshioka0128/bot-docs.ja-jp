@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/7/2019
-ms.openlocfilehash: c65957a6bb86e4bbfb7cc41cd740d35b2effe695
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: a7c52ec4a6ab8d1744e2c4d9a94ec2ca5623329a
+ms.sourcegitcommit: 4ddee4f90a07813ce570fdd04c8c354b048e22f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75790984"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77479220"
 ---
 # <a name="connect-a-bot-to-direct-line"></a>ボットを Direct Line に接続する
 
-Direct Line チャネルを使用することによって、独自のクライアント アプリケーションとボットの通信を有効にできます。 
+Direct Line チャネルを使用することによって、独自のクライアント アプリケーションとボットの通信を有効にできます。
 
 ## <a name="add-the-direct-line-channel"></a>Direct Line チャネルを追加する
 
@@ -52,3 +52,8 @@ Direct Line チャネルを追加するには、[Azure portal](https://portal.az
 > クライアント アプリケーションとボットの間の新しい接続を作成する場合は、Direct Line API 3.0 を使います。
 
 終わったら、 **[完了]** をクリックしてサイトの構成を保存します。 ボットに接続するクライアント アプリケーションごとに、このプロセスを [[Add new site]\(新しいサイトの追加\)](#add-new-site) から繰り返すことができます。
+
+**拡張認証が有効になっている**場合は、信頼されている配信元が使用される次の動作を確認できます。
+
+- 信頼されている配信元を構成 UI ページの一部として構成した場合、これらは**常に**唯一のセットとして使用されます。 トークンの生成や会話の開始時に、信頼されている配信元を送信しない場合、または追加で送信する場合は、無視されます (つまり、それらはリストに**追加されず**、クロス検証もされません)。
+- 信頼されている配信元を構成 UI の一部として構成していない場合は、API 呼び出しの一部として送信した値が使用されます。

@@ -1,20 +1,35 @@
 ---
-ms.openlocfilehash: fd279af81e0c94ac22f54429cb8ae330e5d60661
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: 4cee4c59fc7baa4d9aa18b573f7aebce8e99d1bb
+ms.sourcegitcommit: 4ddee4f90a07813ce570fdd04c8c354b048e22f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70385998"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77479290"
 ---
-Azure で新しいリソース グループを作成し、ARM テンプレートを使用して、そこで指定されたリソースを作成します。 この場合は、App Service プラン、Web アプリ、Bot Channels Registration が提供されます。
+この手順では、ボットのデプロイ ステージを設定するボット アプリケーション サービスを作成します。 ARM テンプレート、新しいサービス プラン、新しいリソース グループを使用します。
+
+結果として得られる JSON 出力から、次の手順で**登録サブスクリプション ID** の値として使用するために、**ID** フィールドの数値をコピーします。
+
+> [!NOTE]
+> この手順は完了するまでに数分かかることがあります。
 
 ```cmd
-az deployment create --name "<name-of-deployment>" --template-file "template-with-new-rg.json" --location "location-name" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" botSku=F0 newAppServicePlanName="<name-of-app-service-plan>" newWebAppName="<name-of-web-app>" groupName="<new-group-name>" groupLocation="<location>" newAppServicePlanLocation="<location>"
+az deployment create --template-file "<path-to-template-with-new-rg.json" --location <region-location-name> --parameters appId="<app-id-from-previous-step>" appSecret="<password-from-previous-step>" botId="<id or bot-app-service-name>" botSku=F0 newAppServicePlanName="<new-service-plan-name>" newWebAppName="<bot-app-service-name>" groupName="<new-group-name>" groupLocation="<region-location-name>" newAppServicePlanLocation="<region-location-name>" --name "<bot-app-service-name>"
 ```
 
 | オプション   | 説明 |
 |:---------|:------------|
-| name | デプロイのフレンドリ名。 |
-| template-file | ARM テンプレートへのパス。 プロジェクトの `deploymentTemplates` フォルダーに用意されている `template-with-new-rg.json` ファイルを使用できます。 |
+| name | ボット チャンネル登録に使用する表示名。 既定値は `botId` パラメーターの値です。|
+| template-file | ARM テンプレートへのパス。 通常、`template-with-new-rg.json` ファイルはボット プロジェクトの `deploymentTemplates` フォルダーにあります。 これは、既存のテンプレート ファイルのパスです。 パスは、絶対パス、または現在のディレクトリに対する相対パスのどちらでもかまいません。 すべてのボット テンプレートにより、ARM テンプレート ファイルが生成されます。|
 | location |場所。 値のソース: `az account list-locations` `az configure --defaults location=<location>` を使用して、既定の場所を構成できます。 |
-| parameters | デプロイ パラメーターの値を提供します。 `az ad app create` コマンドを実行して取得した `appId` 値。 `appSecret` は、前の手順で指定したパスワードです。 `botId` パラメーターはグローバルに一意である必要があり、不変のボット ID として使用されます。 これは、変更可能なボットの表示名を構成するときにも使用されます。 `botSku` は価格レベルです。F0 (無料) または S1 (Standard) を指定できます。 `newAppServicePlanName` は App Service プランの名前です。 `newWebAppName` は、作成する Web アプリの名前です。 `groupName` は、作成する Azure リソース グループの名前です。 `groupLocation` は、Azure リソース グループの場所です。 `newAppServicePlanLocation` は、App Service プランの場所です。 |
+| parameters | key=value のペアの一覧として指定されるデプロイ パラメーター。 次のパラメーター値を入力します。
+
+- `appId` - 前の手順で生成された "*アプリ ID*" の値。
+- `appSecret` - 前の手順で指定したパスワード。
+- `botId` - 作成するボット チャンネル登録リソースの名前。 名前はグローバルに一意である必要があります。 これは、不変のボット ID として使用されます。 また、変更可能な既定の表示名としても使用されます。
+- `botSku` - 価格レベル。F0 (無料) または S1 (Standard) を指定できます。
+- `newAppServicePlanName` - 新しいアプリケーション サービス プランの名前。
+- `newWebAppName` - ボット アプリケーション サービスの名前。
+- `groupName` - 新しいリソース グループの名前。
+- `groupLocation` - Azure リソース グループの場所。
+- `newAppServicePlanLocation` - アプリケーション サービス プランの場所。

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/22/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5dc2dc7327f739c8aee5fecd799aa562a6a98035
-ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
+ms.openlocfilehash: 9211f3f1df98ef5972571c1c36ecdeefc27639bf
+ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2020
-ms.locfileid: "76753736"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77519991"
 ---
 # <a name="implement-a-skill-consumer"></a>スキル コンシューマーを実装する
 
@@ -49,15 +49,15 @@ ms.locfileid: "76753736"
 - スキル ハンドラー。スキルからアクティビティを受信するために使用されます。
 - スキル会話 ID ファクトリ。ユーザー/ルート間の会話リファレンスの参照とルート/スキル間の会話リファレンスの間で変換を行うために、スキル クライアントとスキル ハンドラーで使用されます。
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 ![スキル コンシューマーのクラス ダイアグラム](./media/skills-simple-root-cs.png)
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 ![スキル コンシューマーのクラス ダイアグラム](./media/skills-simple-root-js.png)
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 ![スキル コンシューマーのクラス ダイアグラム](./media/skills-simple-root-python-2.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "76753736"
    - スキルのアプリ ID。
    - スキルのメッセージング エンドポイント。
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\appsettings.json**
 
@@ -88,7 +88,7 @@ ms.locfileid: "76753736"
 
 [!code-csharp[configuration file](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/appsettings.json)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **echo-skill-bot/.env**
 
@@ -96,7 +96,7 @@ ms.locfileid: "76753736"
 
 [!code-javascript[configuration file](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/.env)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple_root_bot/config.py**
 
@@ -110,20 +110,20 @@ ms.locfileid: "76753736"
 
 このサンプルでは、構成ファイル内の各スキルの情報を、"_スキル_" オブジェクトのコレクションに読み込みます。
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\SkillsConfiguration.cs**
 
 [!code-csharp[skills configuration](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/SkillsConfiguration.cs?range=14-38)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/skillsConfiguration.js**
 
 [!code-javascript[skills configuration](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/skillsConfiguration.js?range=7-33)]
 
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple-root-bot/config.py**
 
@@ -140,19 +140,19 @@ ms.locfileid: "76753736"
 - 1 つの特定のスキルを使用するようにルート ボットが設計されている。
 - ルート ボットとスキルの間で一度にアクティブになる会話は 1 つだけである。
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\SkillConversationIdFactory.cs**
 
 [!code-csharp[Conversation ID factory](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/SkillConversationIdFactory.cs?range=17-40)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/skillConversationIdFactory.js**
 
 [!code-javascript[Conversation ID factory](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/skillConversationIdFactory.js?range=10-29)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple-root-bot/skill_conversation_id_factory.py**
 
@@ -173,13 +173,13 @@ ms.locfileid: "76753736"
 スキル コンシューマーは、スキル ハンドラーを使用してスキルからアクティビティを受信します。
 ハンドラーは、このために会話 ID ファクトリ、認証構成、および資格情報プロバイダーを使用するほか、ルート ボットのアダプターとアクティビティ ハンドラーへの依存関係を持ちます。
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\Startup.cs**
 
 [!code-csharp[skill client and handler](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Startup.cs?range=42-43)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/index.js**
 
@@ -187,7 +187,7 @@ ms.locfileid: "76753736"
 
 [!code-javascript[skill handler](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/index.js?range=132)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple-root-bot/app.py**
 
@@ -215,7 +215,7 @@ ms.locfileid: "76753736"
 - 必要に応じて、未完了のスキルをユーザーまたはスキル コンシューマーがキャンセルできるようにするロジックを追加します。
 - 応答がスキル コンシューマーの別のインスタンスに返される可能性があるため、スキルを呼び出す前に状態を保存します。 (負荷分散など)
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\Bots\RootBot.cs**
 
@@ -226,13 +226,13 @@ ms.locfileid: "76753736"
 
 次のサンプルでは、アクティビティをスキルに転送するためのヘルパー メソッドが使用されています。 このメソッドは、スキルを呼び出す前に会話状態を保存し、HTTP 要求が成功したかどうかを確認します。
 
-[!code-csharp[Send to skill](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Bots/RootBot.cs?range=125-139)]
+[!code-csharp[Send to skill](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Bots/RootBot.cs?range=134-148)]
 
-ルート ボットには、ユーザーからのメッセージとスキルからの `endOfConversation` アクティビティを処理するロジックが組み込まれています。
+注目すべき点として、ルート ボットには、アクティビティのスキルへの転送、ユーザーの要求でのスキルの開始、およびスキルが完了したときのスキルの停止を行うためのロジックが含まれています。
 
-[!code-csharp[message/end-of-conversation handlers](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Bots/RootBot.cs?range=57-112)]
+[!code-csharp[message/end-of-conversation handlers](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Bots/RootBot.cs?range=57-121)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/rootBot.js**
 
@@ -243,13 +243,13 @@ ms.locfileid: "76753736"
 
 次のサンプルでは、アクティビティをスキルに転送するためのヘルパー メソッドが使用されています。 このメソッドは、スキルを呼び出す前に会話状態を保存し、HTTP 要求が成功したかどうかを確認します。
 
-[!code-javascript[Send to skill](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/rootBot.js?range=108-120)]
+[!code-javascript[Send to skill](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/rootBot.js?range=119-131)]
 
-ルート ボットには、ユーザーからのメッセージとスキルからの `endOfConversation` アクティビティを処理するロジックが組み込まれています。
+注目すべき点として、ルート ボットには、アクティビティのスキルへの転送、ユーザーの要求でのスキルの開始、およびスキルが完了したときのスキルの停止を行うためのロジックが含まれています。
 
-[!code-javascript[message/end-of-conversation handlers](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/rootBot.js?range=33-85)]
+[!code-javascript[message/end-of-conversation handlers](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/rootBot.js?range=32-94)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple-root-bot/bots/root_bot.py**
 
@@ -260,14 +260,13 @@ ms.locfileid: "76753736"
 
 次のサンプルでは、アクティビティをスキルに転送するためのヘルパー メソッドが使用されています。 このメソッドは、スキルを呼び出す前に会話状態を保存し、HTTP 要求が成功したかどうかを確認します。
 
-[!code-python[Send to skill](~/../botbuilder-samples/samples/python/80.skills-simple-bot-to-bot/simple-root-bot/bots/root_bot.py?range=104-117)]
+[!code-python[Send to skill](~/../botbuilder-samples/samples/python/80.skills-simple-bot-to-bot/simple-root-bot/bots/root_bot.py?range=111-124)]
 
-ルート ボットには、ユーザーからのメッセージとスキルからの `endOfConversation` アクティビティを処理するロジックが組み込まれています。
+注目すべき点として、ルート ボットには、アクティビティのスキルへの転送、ユーザーの要求でのスキルの開始、およびスキルが完了したときのスキルの停止を行うためのロジックが含まれています。
 
-[!code-python[Handled activities](~/../botbuilder-samples/samples/python/80.skills-simple-bot-to-bot/simple-root-bot/bots/root_bot.py?range=39-93)]
+[!code-python[Handled activities](~/../botbuilder-samples/samples/python/80.skills-simple-bot-to-bot/simple-root-bot/bots/root_bot.py?range=39-100)]
 
 ---
-
 
 ## <a name="on-turn-error-handler"></a>オン ターン エラー ハンドラー
 
@@ -275,7 +274,7 @@ ms.locfileid: "76753736"
 
 スキル コンシューマーで会話状態をクリアする前に、アクティブなスキルに "_会話終了_" アクティビティを送信することをお勧めします。 これにより、スキル コンシューマーが会話を解放する前に、コンシューマ/スキル間の会話に関連するリソースをスキルが解放できるようになります。
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\AdapterWithErrorHandler.cs**
 
@@ -283,14 +282,14 @@ ms.locfileid: "76753736"
 
 [!code-csharp[On turn error](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/AdapterWithErrorHandler.cs?range=40-120)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/index.js**
 
 
 [!code-javascript[On turn error](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/index.js?range=34-87)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **app.py**
 
@@ -303,20 +302,20 @@ ms.locfileid: "76753736"
 ボットでは、受信したスキル アクティビティをルート ボットのスキル ハンドラーに転送するエンドポイントが定義されます。
 
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\Controllers\SkillController.cs**
 
 [!code-csharp[skill endpoint](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Controllers/SkillController.cs?range=15-23)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/index.js**
 
 
 [!code-javascript[skill endpoint](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/index.js?range=133-134)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple-root-bot/app.py**
 
@@ -328,13 +327,13 @@ ms.locfileid: "76753736"
 
 要求検証を含む認証構成オブジェクトを、すべての追加オブジェクトと共に組み込みます。
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **SimpleRootBot\Startup.cs**
 
 [!code-csharp[services](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Startup.cs?range=22-53)]
 
-### <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/index.js**
 
@@ -342,7 +341,7 @@ ms.locfileid: "76753736"
 
 [!code-javascript[services](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/index.js?range=95-134)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **simple-root-bot/app.py**
 
