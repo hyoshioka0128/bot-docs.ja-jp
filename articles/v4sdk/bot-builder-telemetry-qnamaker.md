@@ -194,7 +194,7 @@ QnA Maker サービスでは、組み込みのテレメトリ ログ記録が利
 
 1. [Azure portal](https://portal.azure.com/) に移動します
 
-2. __[Monitor] (監視) > [アプリケーション]__ をクリックして Application Insights に移動します。
+2. __[モニター] > [アプリケーション]__ をクリックして Application Insights に移動します。
 
 3. Application Insights を開いたら、次に示すように、ナビゲーション バーにある _[Logs (Analytics)]\(ログ (分析)\)_ をクリックします。
 
