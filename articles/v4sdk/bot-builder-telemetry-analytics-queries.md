@@ -541,7 +541,7 @@ LUIS インストルメンテーションでは、次のカスタム ディメ�
 | -------------- | ----------------------- | ------------------------------------------------------- |
 | intent         | LUIS で検出された意図    | pointOfInterestSkill                                    |
 | intentScore    | LUIS 認識スコア  | 0.98                                                    |
-| エンティティ       | LUIS で検出されたエンティティ  | FoodOfGrocery = [["コーヒー"]]、KEYWORD= ["コーヒー ショップ"] |
+| Entities       | LUIS で検出されたエンティティ  | FoodOfGrocery = [["コーヒー"]]、KEYWORD= ["コーヒー ショップ"] |
 | Question       | LUIS で検出された質問  | コーヒー ショップを探してください                                      |
 | sentimentLabel | LUIS で検出されたセンチメント | ポジティブ                                                |
 
