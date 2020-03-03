@@ -34,7 +34,7 @@ Visual Studio で、**Echo Bot (Bot Framework v4)** テンプレートを使用�
 
 1. エミュレーターの [Welcome] タブにある **[Create a new bot configuration]** リンクをクリックします。 
 2. ボット用のフィールドに入力します。 ボットのウェルカム ページ アドレス (通常は http://localhost:3978) ) を使用し、このアドレスにルーティング情報 '/api/messages' を追加します。
-3. 次に、 **[Save and connect]** をクリックします。
+3. 次に、 **[保存および接続]** をクリックします。
 
 ## <a name="interact-with-your-bot"></a>ボットでのやり取り
 
