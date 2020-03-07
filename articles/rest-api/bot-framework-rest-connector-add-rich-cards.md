@@ -54,7 +54,7 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 | channelData | string | このアクションに関連付けられているチャネル固有のデータ |
 | displayText | string | ボタンがクリックされた場合にチャット フィードに表示するテキスト |
 | text | string | アクションのテキスト |
-| 型 | string | アクションの種類 (下の表に示されている値のいずれか) |
+| type | string | アクションの種類 (下の表に示されている値のいずれか) |
 | title | string | ボタンのタイトル |
 | image | string | ボタン用のイメージ URL |
 | value | string | 指定された種類のアクションを実行するために必要な値 |
