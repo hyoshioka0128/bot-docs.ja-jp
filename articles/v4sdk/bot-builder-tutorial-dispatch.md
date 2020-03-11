@@ -112,7 +112,7 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
 
 ![コグニティブ サービスを選択する](./media/tutorial-dispatch/select-qna-cognitive-service.png)
 
-1. ご利用の Azure portal 内で、QnA Maker コグニティブ サービスを選択します。
+1. ご利用の Azure portal 内で、QnA Maker cognitive service を選択します。
 
     ![コグニティブ サービス キーを選択する](./media/tutorial-dispatch/select-cognitive-service-keys.png)
 
