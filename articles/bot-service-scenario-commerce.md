@@ -41,13 +41,13 @@ ms.locfileid: "77441541"
 ## <a name="components-youll-use"></a>使用するコンポーネント
 コマース ボットでは、次のコンポーネントを使用します。
 -   認証用の Azure AD
--   コグニティブ サービス:LUIS
+-   Cognitive Services:LUIS
 -   Application Insights
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。 また、Azure AD は世界中の数多くの組織が使用する卓越した ID 管理ソリューションとすばやく簡単に統合できるため、ボット開発者はボットの構築に集中することができます。 Azure AD では、Google、Facebook、Microsoft アカウントなどの外部 ID を使用して個人を識別できる B2C コネクタがサポートされています。 Azure AD を使うと、ユーザーの資格情報管理が不要になり、ボットのソリューションに集中できるようになります。ボットのユーザーとアプリケーションによって公開されている正しいデータを関連付けることができるのは皆さんであることを把握しているからです。
 
-### <a name="cognitive-services-luis"></a>コグニティブ サービス:LUIS
+### <a name="cognitive-services-luis"></a>Cognitive Services:LUIS
 Cognitive Services ファミリ テクノロジのメンバーである Language Understanding (LUIS) を使うと、アプリに機械学習の力を追加することができます。 現時点で、LUIS はいくつかの言語をサポートしており、それを使って人がやりたいことをボットに解釈させることができます。 LUIS を統合する際は、意図を明示し、ボットが解釈するエンティティを定義します。 続いて、発話の例を使ってトレーニングを行い、ボットがこれらの意図やエンティティを解釈できるようにします。 この統合は、ボットができるだけ柔軟に特定の会話ニーズに対応できるように、フレーズ リストや正規表現機能を使用して調整することができます。
 
 ### <a name="application-insights"></a>Application Insights
