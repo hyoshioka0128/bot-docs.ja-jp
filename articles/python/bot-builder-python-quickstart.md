@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c8208fb387584e38c5ec0a0851cc7a49236c37f7
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: c56d5607ca3c7841ad8a480ce23c7c2d21805968
+ms.sourcegitcommit: 2109d9da53fdf65966f33ed1fa628a40ec851d35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441655"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78280163"
 ---
 # <a name="create-a-bot-with-the-bot-framework-sdk-for-python"></a>Bot Framework SDK for Python を使用したボットの作成
 
@@ -50,7 +50,7 @@ cookiecutter https://github.com/microsoft/botbuilder-python/releases/download/Te
 
 最後の行にあるアドレスの最後の 4 桁 (通常は 3978) をコピーします。これは、次の手順で使用します。 これで、ボットを開始する準備ができました。
 
-## <a name="start-you-bot"></a>ボットの開始
+## <a name="start-your-bot"></a>ボットの起動
 1. ターミナルから、ボットを保存した `echo-bot` フォルダーに移動します。 `pip install -r requirements.txt` を実行して、ボットを実行するために必要なパッケージをインストールします。
 
 2. パッケージがインストールされたら、`python app.py` を実行してボットを開始します。 次のスクリーンショットに示されている最後の行が表示されたら、ボットのテストを行う準備ができていることがわかります。
