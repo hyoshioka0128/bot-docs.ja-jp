@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6265c75abeaf9faf1b21f2702bdc4db9842733c9
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: 91835d17437ba8323bfb381bccc0b27396484dcf
+ms.sourcegitcommit: 2109d9da53fdf65966f33ed1fa628a40ec851d35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441613"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78280154"
 ---
 # <a name="save-user-and-conversation-data"></a>ユーザーおよび会話データを保存する
 
@@ -75,9 +75,11 @@ JavaScript では、この手順は必要ありません。
 
 次のコード例は、`UserProfile` と `ConversationData` クラスの定義を示しています。
 
-**user_profile.py** [!code-python[user_profile](~/../botbuilder-samples/samples/python/45.state-management/data_models/user_profile.py?range=5-7)]
+**user_profile.py**  
+[!code-python[user_profile](~/../botbuilder-samples/samples/python/45.state-management/data_models/user_profile.py?range=5-7)]
 
-**conversation_data.py** [!code-python[conversation_data](~/../botbuilder-samples/samples/python/45.state-management/data_models/conversation_data.py?range=5-14)]
+**conversation_data.py**  
+[!code-python[conversation_data](~/../botbuilder-samples/samples/python/45.state-management/data_models/conversation_data.py?range=5-14)]
 
 ---
 
@@ -108,9 +110,11 @@ JavaScript では、この手順は必要ありません。
 
 次に、`UserState` オブジェクトと `ConversationState` オブジェクトの作成に使用する `MemoryStorage` を登録します。 これらは **app.py** で作成され、ボットの作成時に使用されます。
 
-**app.py** [!code-python[app.py](~/../botbuilder-samples/samples/python/45.state-management/app.py?range=67-70)]
+**app.py**  
+[!code-python[app.py](~/../botbuilder-samples/samples/python/45.state-management/app.py?range=67-70)]
 
-**bots/state_management_bot.py** [!code-python[bot constructor](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=13-25)]
+**bots/state_management_bot.py**  
+[!code-python[bot constructor](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=13-25)]
 
 ---
 
@@ -126,13 +130,15 @@ JavaScript では、この手順は必要ありません。
 
 `UserState` および `ConversationState` 用の状態プロパティ アクセサーを作成します。 各状態プロパティ アクセサーを使用すると、関連付けられている状態プロパティの値を取得または設定できます。 各アクセサーを使用して、関連付けられているプロパティをストレージから読み込んで、現在の状態をキャッシュから取得します。
 
-**bots/stateManagementBot.js** [!code-javascript[Create accessors](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=13-15)]
+**bots/stateManagementBot.js**  
+[!code-javascript[Create accessors](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=13-15)]
 
 ## <a name="python"></a>[Python](#tab/python)
 
 `UserProfile` および `ConversationData` 用の状態プロパティ アクセサーを作成します。 各状態プロパティ アクセサーを使用すると、関連付けられている状態プロパティの値を取得または設定できます。 各アクセサーを使用して、関連付けられているプロパティをストレージから読み込んで、現在の状態をキャッシュから取得します。
 
-**bots/state_management_bot.py** [!code-python[Create accessors](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=27-30)]
+**bots/state_management_bot.py**  
+[!code-python[Create accessors](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=27-30)]
 
 ---
 
@@ -158,11 +164,13 @@ JavaScript では、この手順は必要ありません。
 - userProfile.Name が空で、conversationData.PromptedUserForName が _false_ の場合は、ユーザーの名前を確認します。
 - userProfile.Name が前に格納されていた場合は、メッセージ時間とチャネル ID をユーザー入力から取得し、すべてのデータをユーザーにエコー バックして、取得したデータを会話状態内に格納します。
 
-**bots/stateManagementBot.js** [!code-javascript[OnMessage](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=21-58)]
+**bots/stateManagementBot.js**  
+[!code-javascript[OnMessage](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=21-58)]
 
 各ダイアログ ターンを終了する前に、状態管理オブジェクトの _saveChanges()_ メソッドを使用して、状態をストレージに書き込むことですべての変更を保持します。
 
-**bots/stateManagementBot.js** [!code-javascript[OnDialog](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=72-81)]
+**bots/stateManagementBot.js**  
+[!code-javascript[OnDialog](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=72-81)]
 
 ## <a name="python"></a>[Python](#tab/python)
 
@@ -170,11 +178,13 @@ JavaScript では、この手順は必要ありません。
 - `user_profile.name` が空で、`conversation_data.prompted_for_user_name` が *false* の場合、ボットはユーザーの名前を要求します。
 - `user_profile.name` が前に格納されていた場合、ボットは、**メッセージ時間**と**チャネル ID** をユーザー入力から取得し、データをユーザーにエコー バックして、取得したデータを会話状態内に格納します。
 
-**bots/state_management_bot.py** [!code-python[state_message_activity](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=47-89)]
+**bots/state_management_bot.py**  
+[!code-python[state_message_activity](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=47-89)]
 
 各ダイアログ ターンを終了する前に、ボットは、状態管理オブジェクトの `save_changes` メソッドを使用し、ストレージに状態情報を書き込んですべての変更を保持します。
 
-**bots/state_management_bot.py** [!code-python[state_storage](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=32-36)]
+**bots/state_management_bot.py**  
+[!code-python[state_storage](~/../botbuilder-samples/samples/python/45.state-management/bots/state_management_bot.py?range=32-36)]
 
 ---
 

@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 1b1de46c2b97ca369a6fcc19fd27bafc22838989
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: aaba2a9de9f35d7615b3a7e5ff077554ef03a2df
+ms.sourcegitcommit: 2109d9da53fdf65966f33ed1fa628a40ec851d35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441495"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78280123"
 ---
 # <a name="use-webchat-with-the-direct-line-app-service-extension"></a>WebChat を Direct Line App Service 拡張機能と共に使用します。
 
@@ -28,7 +28,7 @@ DirectLineJS のプレビュー バージョンはこちらにあります。 ht
 
 ## <a name="integrate-webchat-client"></a>WebChat クライアントを統合する
 
-一般に、このアプローチは以前と同じです。 ただし、双方向の **WebSocket** トラフィックをサポートする **WebChat** の新しいバージョンが作成されています。これは、 https://directline.botframework.com/ に接続する代わりに、ホストされているボットに直接接続します。
+一般に、このアプローチは以前と同じです。 ただし、双方向の **WebSocket** トラフィックをサポートする **WebChat** の新しいバージョンが作成されています。これは、[https://directline.botframework.com/](https://directline.botframework.com/) に接続する代わりに、ホストされているボットに直接接続します。
 ボットの Direct Line URL は `https://<your_app_service>.azurewebsites.net/.bot/` になります。ここで、`/.bot/` 拡張機能は App Service の Direct Line **エンドポイント**です。
 独自のドメイン名を構成できる場合でも、Direct Line REST API にアクセスするために `/.bot/` パスを追加する必要があります。
 
