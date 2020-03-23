@@ -68,7 +68,7 @@ Host: <your-hostname>  // NOTE - this is a URL ending in /qnamaker.
 Authorization: EndpointKey <qna-maker-resource-key>
 ```
 
-ホスト名の完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。
+ホスト名の完全な URL 文字列は、"https://< >.azure.net/qnamaker" のようになります。
 
 これらの値は、次のステップで、`appsettings.json` ファイルまたは `.env` ファイル内で使用されます。
 
@@ -131,7 +131,7 @@ class DefaultConfig:
 |:----|:----|
 | QnAKnowledgebaseId | QnA Maker ポータルで自動的に生成されたナレッジ ベース ID。 |
 | QnAAuthKey (Python では QnAEndpointKey)  | QnA Maker ポータルで自動的に生成されエンドポイント キー。 |
-| QnAEndpointHostName | QnA Maker ポータルで生成されたホスト URL。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。 |
+| QnAEndpointHostName | QnA Maker ポータルで生成されたホスト URL。 `https://` で始まって `/qnamaker` で終わる完全な URL を使用します。 完全な URL 文字列は、"https://< >.azure.net/qnamaker" のようになります。 |
 
 編集結果を保存します。
 
