@@ -75,9 +75,9 @@ Yeoman により、作成するボットに関する情報の入力が求めら�
 ## <a name="start-the-emulator-and-connect-your-bot"></a>エミュレーターの起動とボットの接続
 
 1. Bot Framework Emulator を起動します。
-2. エミュレーターの [ようこそ] タブにある **[新しいボット構成を作成する]** リンクをクリックします。 
+2. エミュレーターの [Welcome] タブにある **[Create a new bot configuration]** リンクをクリックします。 
 3. ボット用のフィールドに入力します。 ボットのウェルカム ページ アドレス (通常は http://localhost:3978) ) を使用し、このアドレスにルーティング情報 '/api/messages' を追加します。
-4. 次に、 **[保存および接続]** をクリックします。
+4. 次に、 **[Save and connect]** をクリックします。
 
 メッセージをボットに送信します。ボットはメッセージで応答します。
 ![実行中のエミュレーター](../media/emulator-v4/js-quickstart.png)
