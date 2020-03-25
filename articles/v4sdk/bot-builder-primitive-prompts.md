@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a3742837f15038c0e81d1b1405eeff96ba9efdf1
-ms.sourcegitcommit: 2109d9da53fdf65966f33ed1fa628a40ec851d35
+ms.openlocfilehash: 65aafe3eac9b9b6f023d77c8442bb3a37823789d
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78280173"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117554"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>ユーザー入力を収集するために独自のプロンプトを作成する
 
@@ -81,9 +81,11 @@ ms.locfileid: "78280173"
 
 ユーザーおよび会話状態オブジェクトを **index.js** で作成し、ボット コンストラクターでそれらを使用します。
 
-**index.js** [!code-javascript[index.js](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=33-39)]
+**index.js**  
+[!code-javascript[index.js](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=33-39)]
 
-**bots/customPromptBot.js** [!code-javascript[constructor](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=20-22)]
+**bots/customPromptBot.js**  
+[!code-javascript[constructor](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=20-22)]
 [!code-javascript[constructor](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=27-29)]
 
 ## <a name="python"></a>[Python](#tab/python)
@@ -104,7 +106,8 @@ ms.locfileid: "78280173"
 
 ユーザー プロファイルと会話フローのプロパティのプロパティ アクセサーを作成し、`GetAsync` を呼び出して、状態からプロパティ値を取得します。
 
-**Bots/CustomPromptBot.cs** [!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=30-37)]
+**Bots/CustomPromptBot.cs**  
+[!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=30-37)]
 
 ターンを終了する前に、`SaveChangesAsync` を呼び出して、状態の変更をストレージに書き込みます。
 
@@ -114,7 +117,8 @@ ms.locfileid: "78280173"
 
 ユーザー プロファイルと会話フローのプロパティのプロパティ アクセサーを作成し、`get` を呼び出して、状態からプロパティ値を取得します。
 
-**bots/customPromptBot.js** [!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-33)]
+**bots/customPromptBot.js**  
+[!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-33)]
 
 ターンを終了する前に、`saveChanges` を呼び出して、状態の変更をストレージに書き込みます。
 

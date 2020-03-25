@@ -1,15 +1,15 @@
 ---
-ms.openlocfilehash: f6d12b0031ec14e8c7c6e8bee876e7abb96c01f6
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 77635aab0e1535a2d44ef24c3e33094b13f4a15a
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174632"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117832"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - [Visual Studio Code](https://www.visualstudio.com/downloads)
-- [Node.JS](https://nodejs.org/)
+- [Node.js](https://nodejs.org/)
 - [Yeoman](http://yeoman.io/) (ジェネレーターを使用してボットを作成します)
 - [git](https://git-scm.com/)
 - [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme)
@@ -58,10 +58,13 @@ ms.locfileid: "70174632"
 
 Yeoman により、作成するボットに関する情報の入力が求められます。 このチュートリアルでは、既定値を使います。
 
-- ボットの名前を入力します。 (my-chat-bot)
-- 説明を入力します。 (Microsoft Bot Framework の主要な機能を示します)
-- ボットの言語を選択します。 (JavaScript)
-- 使用するテンプレートを選択します。 (エコー ボット - https://aka.ms/generator-botbuilder-templates)
+```text
+? What's the name of your bot? my-chat-bot
+? What will your bot do? Demonstrate the core capabilities of the Microsoft Bot Framework
+? What programming language do you want to use? JavaScript
+? Which template would you like to start with? Echo Bot - https://aka.ms/bot-template-echo
+? Looking good.  Shall I go ahead and create your new bot? (Y/n)
+```
 
 テンプレートのおかげで、プロジェクトには、このクイック スタートでボットを作成するのに必要なすべてのコードが含まれています。 実際には、追加のコードを記述する必要はありません。
 

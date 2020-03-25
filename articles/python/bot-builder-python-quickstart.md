@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c56d5607ca3c7841ad8a480ce23c7c2d21805968
-ms.sourcegitcommit: 2109d9da53fdf65966f33ed1fa628a40ec851d35
+ms.openlocfilehash: eb03a40f0044866679d0967fe7eaac30b5bc3143
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78280163"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117710"
 ---
 # <a name="create-a-bot-with-the-bot-framework-sdk-for-python"></a>Bot Framework SDK for Python を使用したボットの作成
 
@@ -42,7 +42,7 @@ ms.locfileid: "78280163"
 cookiecutter https://github.com/microsoft/botbuilder-python/releases/download/Templates/echo.zip
 ```
 
-このコマンドは、Python の [echo テンプレート](https://github.com/microsoft/botbuilder-python/tree/master/generators/app/templates/echo)に基づいてエコー ボットを作成します。
+このコマンドは、Python の [echo テンプレート](https://github.com/microsoft/BotBuilder-Samples/tree/master/generators/python/app/templates/echo)に基づいてエコー ボットを作成します。
 
 3. ボットの "*名前*" と "*説明*" を入力するよう求められます。 次に示すように、ボットに `echo-bot` という名前を付け、説明を `A bot that echoes back user response.` に設定します。
 

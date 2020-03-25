@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 02/19/2020
-ms.openlocfilehash: d7e667724250d3307a53cf41dc671db788c347bc
-ms.sourcegitcommit: 54d3febefaf0072172b17bd8e4ec456264dfbd42
+ms.openlocfilehash: aac5f7ff6868d79ef398cbe51fc9e5a6d0f424a1
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77521406"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117535"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework についてよく寄せられる質問
 
@@ -248,7 +248,7 @@ Bot Framework SDK for .NET を使用することで、`Autofac` 依存関係挿�
 
 ## <a name="what-are-the-possible-machine-readable-resolutions-of-the-luis-built-in-date-time-duration-and-set-entities"></a>LUIS の組み込みの日付、時刻、期間、およびセット エンティティのコンピューターで読み取り可能な解決策として何が考えられますか。
 
-例の一覧については、LUIS ドキュメントの[作成済みエンティティに関するセクション][LUISPreBuiltEntities]を参照してください。
+例の一覧については、LUIS ドキュメントの[作成済みエンティティ](/azure/cognitive-services/LUIS/luis-reference-prebuilt-entities)に関するセクションを参照してください。
 
 ## <a name="how-can-i-use-more-than-the-maximum-number-of-luis-intents"></a>最大数を超える LUIS の意図を使用するにはどうすればよいですか。
 
@@ -266,7 +266,7 @@ Bot Framework SDK for Node.js と Bot Framework SDK for .NET の両方で、単�
 
 * [Language Understanding (LUIS) の概要 - Microsoft Cognitive Services](https://www.youtube.com/watch?v=jWeLajon9M8) (ビデオ)
 * [Language Understanding (LUIS) の高度な学習セッション](https://www.youtube.com/watch?v=39L0Gv2EcSk) (ビデオ)
-* [LUIS のドキュメント](/azure/cognitive-services/LUIS/Home)
+* [LUIS のドキュメント](/azure/cognitive-services/luis/)
 * [Language Understanding のフォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) 
 
 

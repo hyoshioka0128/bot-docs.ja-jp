@@ -6,44 +6,44 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 04/30/2019
-ms.openlocfilehash: eda2e2887eddce7c113ff69871162a6b67cc398e
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.date: 02/25/2020
+ms.openlocfilehash: 5a430e9ca14bb9dfdfc7916b77912d88e2c0253e
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75796925"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117683"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Bot Framework 認証のトラブルシューティング
 
-このガイドは、一連のシナリオを評価してどこに問題があるかを判断することで、ボットの認証問題をトラブルシューティングするのに役立ちます。 
+このガイドは、一連のシナリオを評価してどこに問題があるかを判断することで、ボットの認証問題をトラブルシューティングするのに役立ちます。
 
 > [!NOTE]
-> このガイドのすべての手順を完了するには、[Bot Framework Emulator][Emulator] をダウンロードして使用する必要があります。さらに、<a href="https://portal.azure.com" target="_blank">Azure portal</a> でボットの登録設定にアクセスできる必要があります。
+> このガイドのすべての手順を完了するには、[Bot Framework Emulator][Emulator] をダウンロードして使用する必要があります。さらに、[Azure portal](https://portal.azure.com) でボットの登録設定にアクセスできる必要があります。
 
-## <a id="PW"></a> アプリ ID とパスワード
+## <a name="app-id-and-password"></a><a id="PW"></a> アプリ ID とパスワード
 
-ボットのセキュリティは、Bot Framework にボットを登録するときに取得する **Microsoft アプリ ID** と **Microsoft アプリ パスワード**によって構成されます。 これらの値は、通常、ボットの構成ファイル内に指定され、Microsoft アカウント サービスからアクセス トークンを取得するために使用されます。 
+ボットのセキュリティは、Bot Framework にボットを登録するときに取得する **Microsoft アプリ ID** と **Microsoft アプリ パスワード**によって構成されます。 これらの値は、通常、ボットの構成ファイル内に指定され、Microsoft アカウント サービスからアクセス トークンを取得するために使用されます。
 
-まだ行っていない場合は、[ボットを Azure にデプロイ](~/bot-builder-howto-deploy-azure.md)し、認証のために使用できる **Microsoft アプリ ID** と **Microsoft アプリ パスワード**を取得してください。 
+まだ行っていない場合は、[ボットを Azure にデプロイ](~/bot-builder-howto-deploy-azure.md)し、認証のために使用できる **Microsoft アプリ ID** と **Microsoft アプリ パスワード**を取得してください。
 
 > [!NOTE]
 > デプロイ済みのボットの **AppID** と **AppPassword** を見つける方法については、「[MicrosoftAppID と MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword)」をご覧ください。
 
 ## <a name="step-1-disable-security-and-test-on-localhost"></a>手順 1:セキュリティを無効にし、localhost 上でテストする
 
-この手順では、セキュリティが無効なときに、ボットが localhost 上でアクセス可能であり、機能することを確認します。 
+この手順では、セキュリティが無効なときに、ボットが localhost 上でアクセス可能であり、機能することを確認します。
 
 > [!WARNING]
 > ボットのセキュリティを無効にすると、不明な攻撃者がユーザーを偽装する可能性があります。 次の手順は、保護されているデバッグ環境で作業中の場合のみ実装してください。
 
-### <a id="disable-security-localhost"></a>セキュリティを無効にする
+### <a name="disable-security"></a><a id="disable-security-localhost"></a>セキュリティを無効にする
 
-ボットのセキュリティを無効にするには、その構成設定を編集して、アプリ ID とパスワードを削除します。 
+ボットのセキュリティを無効にするには、その構成設定を編集して、アプリ ID とパスワードを削除します。
 
 ::: moniker range="azure-bot-service-3.0"
 
-Bot Framework SDK for .NET を使用している場合は、Web.config ファイル内の次の設定を編集します。 
+Bot Framework SDK for .NET を使用している場合は、Web.config ファイル内の次の設定を編集します。
 
 ```xml
 <appSettings>
@@ -68,8 +68,8 @@ var connector = new builder.ChatConnector({
 Bot Framework SDK for .NET を使用している場合は、`appsettings.json` ファイル内の次の設定を編集します。
 
 ```json
-  "MicrosoftAppId": "<your app ID>",
-  "MicrosoftAppPassword": "<your app password>"
+  "MicrosoftAppId": "",
+  "MicrosoftAppPassword": ""
 ```
 
 Bot Framework SDK for Node.js を使用している場合は、次の値を編集します (または該当する環境変数を更新します)。
@@ -83,16 +83,16 @@ const adapter = new BotFrameworkAdapter({
 
 ::: moniker-end
 
-### <a name="test-your-bot-on-localhost"></a>ボットを localhost 上でテストする 
+### <a name="test-your-bot-on-localhost"></a>ボットを localhost 上でテストする
 
 次に、Bot Framework Emulator を使用して、ボットを localhost 上でテストします。
 
 1. ボットを localhost 上で起動します。
 2. Bot Framework Emulator を起動します。
 3. エミュレーターを使用してボットに接続します。
-    - エミュレーターのアドレス バーに「`http://localhost:port-number/api/messages`」と入力します。**port-number** は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 
+    - エミュレーターのアドレス バーに「`http://localhost:port-number/api/messages`」と入力します。**port-number** は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。
     - **[Microsoft アプリ ID]** フィールドと **[Microsoft アプリ パスワード]** フィールドの両方が空白であることを確認します。
-    - **[接続]** をクリックします。
+    - **[Connect]** をクリックします。
 4. ボットへの接続をテストするには、エミュレーターにテキストを入力し、Enter キーを押します。
 
 ボットが入力に応答し、エラーがチャット ウィンドウに表示されなければ、セキュリティが無効なときにボットはアクセス可能であり、機能することが確認されました。 [手順 2](#step-2) に進んでください。
@@ -104,7 +104,7 @@ const adapter = new BotFrameworkAdapter({
 * エミュレーター設定で、 **[Microsoft アプリ ID]** フィールドと **[Microsoft アプリ パスワード]** フィールドの値が指定されている。 どちらのフィールドも、空にする必要があります。
 * ボットのセキュリティが無効になっていない。 ボットのアプリ ID とパスワードの値が、両方とも指定されていないことを[確認](#disable-security-localhost)します。
 
-## <a id="step-2"></a> ステップ 2:ボットのアプリ ID とパスワードを確認する
+## <a name="step-2-verify-your-bots-app-id-and-password"></a><a id="step-2"></a> ステップ 2:ボットのアプリ ID とパスワードを確認する
 
 この手順では、ボットが認証のために使用するアプリ ID とパスワードが有効であることを確認します (これらの値がわからない場合は、今すぐ[取得](#PW)してください)。 
 
@@ -134,11 +134,11 @@ curl -k -X POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/t
 
 要求に対してエラーを受信した場合は、その応答をしらべて、エラーの原因を識別します。 応答でアプリ ID またはパスワードが無効であることが示された場合は、Bot Framework Portal から[正しい値を取得](#PW)し、新しい値で要求を再発行し、それらが有効であることを確認します。 
 
-## 手順 3:セキュリティを有効にし、localhost 上でテストする<a id="step-3"></a>
+## <a name="step-3-enable-security-and-test-on-localhost"></a>手順 3:セキュリティを有効にし、localhost 上でテストする<a id="step-3"></a>
 
 この時点で、セキュリティが無効なときに、ボットが localhost 上でアクセス可能であり、機能すること、およびボットが認証のために使用するアプリ ID とパスワードが有効であることが確認されています。 この手順では、セキュリティが有効なときに、ボットが localhost 上でアクセス可能であり、機能することを確認します。
 
-### <a id="enable-security-localhost"></a> セキュリティ チェックを有効にする
+### <a name="enable-security"></a><a id="enable-security-localhost"></a> セキュリティ チェックを有効にする
 
 ボットのセキュリティは、ボットが localhost 上でのみ実行される場合でも、Microsoft のサービスに依存します。 ボットのセキュリティを有効にするには、その構成設定を編集して、[手順 2](#step-2) で確認したアプリ ID とパスワードの値を入力します。  さらに、パッケージが最新の状態であること (具体的には `System.IdentityModel.Tokens.Jwt` と `Microsoft.IdentityModel.Tokens`) を確認します。
 
@@ -173,7 +173,7 @@ var connector = new builder.ChatConnector({
     - エミュレーターのアドレス バーに「`http://localhost:port-number/api/messages`」と入力します。**port-number** は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 
     - ボットのアプリ ID を **[Microsoft アプリ ID]** フィールドに入力します。
     - ボットのパスワードを **[Microsoft アプリ パスワード]** フィールドに入力します。
-    - **[接続]** をクリックします。
+    - **[Connect]** をクリックします。
 4. ボットへの接続をテストするには、エミュレーターにテキストを入力し、Enter キーを押します。
 
 ボットが入力に応答し、エラーがチャット ウィンドウに表示されなければ、セキュリティが有効なときに、ボットがアクセス可能であり、機能することが確認されました。  [手順 4](#step-4) に進んでください。
@@ -185,7 +185,7 @@ var connector = new builder.ChatConnector({
 * エミュレーター設定で、 **[Microsoft アプリ ID]** フィールドと **[Microsoft アプリ パスワード]** に有効な値が含まれていない。 両方のフィールドには、[手順 2](#step-2) で確認した該当する値を入力する必要があります。
 * ボットのセキュリティが有効になっていない。 ボットの構成設定にアプリ ID とパスワードの両方の値が指定されていることを[確認](#enable-security-localhost)します。
 
-## 手順 4:ボットをクラウドでテストする<a id="step-4"></a>
+## <a name="step-4-test-your-bot-in-the-cloud"></a>手順 4:ボットをクラウドでテストする<a id="step-4"></a>
 
 この時点で、セキュリティが無効なときに、ボットが localhost 上でアクセス可能であり、機能すること、ボットのアプリ ID とパスワードが有効であること、およびセキュリティが有効なときに、ボットが localhost 上でアクセス可能であり、機能することを確認しています。 この手順では、ボットをクラウドにデプロイし、セキュリティが有効なクラウドでボットがアクセス可能であり、機能することを確認します。 
 
