@@ -18,7 +18,10 @@
 ## [状態の管理](v4sdk/bot-builder-concept-state.md)
 ## [ダイアログ ライブラリ](v4sdk/bot-builder-concept-dialog.md)
 ## [ミドルウェア](v4sdk/bot-builder-concept-middleware.md)
-## [ユーザー認証](v4sdk/bot-builder-concept-authentication.md)
+## 認証
+### [ボット認証](v4sdk/bot-builder-concept-authentication.md)
+### [ID プロバイダー](v4sdk/bot-builder-concept-identity-providers.md)
+### [シングル サインオン](v4sdk/bot-builder-concept-sso.md)
 ## [ボット リソースの管理](v4sdk/bot-file-basics.md)
 ## [Microsoft Teams のボットのしくみ](v4sdk/bot-builder-basics-teams.md)
 ## [スキルについて](v4sdk/skills-conceptual.md)
@@ -31,15 +34,15 @@
 ### [Enterprise Productivity ボット](bot-service-scenario-enterprise-productivity.md)
 ### [Information ボット](bot-service-scenario-informational.md)
 ### [モノのインターネット ボット](bot-service-scenario-internet-things.md)
-# 操作方法 
+# 操作方法
 ## [Design (デザイン)](design/TOC.md)
 ## 開発
 <!-- ## [Best practice for welcoming the user](v4sdk/bot-builder-welcome-user.md) -->
 ### [テキスト メッセージを送受信する](v4sdk/bot-builder-howto-send-messages.md)
 ### [メッセージにメディアを追加する](v4sdk/bot-builder-howto-add-media-attachments.md)
 ### [ユーザー アクションをガイドするボタンを追加する](v4sdk/bot-builder-howto-add-suggested-actions.md)
-### [ユーザーと会話データを保存する](v4sdk/bot-builder-howto-v4-state.md) 
-### [ユーザーに入力を求める](v4sdk/bot-builder-primitive-prompts.md) 
+### [ユーザーと会話データを保存する](v4sdk/bot-builder-howto-v4-state.md)
+### [ユーザーに入力を求める](v4sdk/bot-builder-primitive-prompts.md)
 ### [ユーザーへのウェルカム メッセージの送信](v4sdk/bot-builder-send-welcome-message.md)
 ### [ユーザーへのプロアクティブな通知の送信](v4sdk/bot-builder-howto-proactive-message.md)
 ### [連続して行われる会話フローの実装](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
@@ -51,7 +54,7 @@
 <!--#### [Implement a greeting dialog](v4sdk/bot-builder-dialogs-greeting.md)--TODO: Add once there's a sample.-->
 ### [ユーザーによる割り込みの処理](v4sdk/bot-builder-howto-handle-user-interrupt.md)
 ### [ストレージに直接書き込む](v4sdk/bot-builder-howto-v4-storage.md)
-### [ボットへの認証の追加](v4sdk/bot-builder-authentication.md)
+### [ボットに認証を追加する](v4sdk/bot-builder-authentication.md)
 ### [ボットのカスタム ストレージの実装](v4sdk/bot-builder-custom-storage.md)
 ### スキル
 #### [スキルを実装する](v4sdk/skill-implement-skill.md)
