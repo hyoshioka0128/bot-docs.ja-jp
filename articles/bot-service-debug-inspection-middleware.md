@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: 142ffed02c9849511840a094cd91ee5953caf6af
-ms.sourcegitcommit: f3628f48d3471a48773e5d256a75e8fe39717bb6
+ms.openlocfilehash: 0d48d40efc9f28482c01b42132ab335e433e326f
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77035404"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117571"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>検査ミドルウェアを使用してボットをデバッグする
 この記事では、検査ミドルウェアを使用してボットをデバッグする方法について説明します。 この機能を使用すると、Bot Framework Emulator で、ボットの現在の状態を確認でき、さらにボットとの間のトラフィックをデバッグできます。 トレース メッセージを使用してエミュレーターにデータを送信し、会話のある特定のターンでのボットの状態を調べることができます。 
@@ -36,13 +36,15 @@ Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-b
 ## <a name="update-your-bots-code"></a>ボットのコードを更新する
 
 # <a name="c"></a>[C#](#tab/csharp)
-**Startup** ファイルで検査状態を設定します。 検査ミドルウェアをアダプターに追加します。 検査状態は、依存関係の挿入によって提供されます。 以下のコード更新をご覧になるか、こちらの検査サンプルを参照してください:[C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection)。 
+検査状態を設定し、**Startup.cs** ファイル内のアダプターに検査ミドルウェアを追加します。 検査状態は、依存関係の挿入によって提供されます。 以下のコード更新をご覧になるか、こちらの検査サンプルを参照してください:[C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection)。 
 
 **Startup.cs**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
 
 **AdapterWithInspection.cs**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-37)]
+
+**EchoBot.cs** ファイル内のボット クラスを更新します。
 
 **EchoBot.cs**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
@@ -64,7 +66,7 @@ npm install --save botbuilder@latest
 
 **bot.js** ファイル内のボット クラスを更新します。 
 
-[!code-javascript [inspection bot sample](~/../botbuilder-samples/samples/javascript_nodejs/47.inspection/bot.js?range=6-50)]
+[!code-javascript [inspection bot sample](~/../botbuilder-samples/samples/javascript_nodejs/47.inspection/bot.js?range=6-52)]
 
 # <a name="python"></a>[Python](#tab/python)
 ボットのコードを更新する前に、ターミナルで次のコマンドを実行して、必要な PyPI パッケージをインストールします。

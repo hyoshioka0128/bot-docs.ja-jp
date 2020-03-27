@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bff3aadddf1d4f5dd1126f64da1429dbc0a2967a
-ms.sourcegitcommit: 2109d9da53fdf65966f33ed1fa628a40ec851d35
+ms.openlocfilehash: 553265332f174aec6e9043320bd31188b068f492
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78280155"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117726"
 ---
 # <a name="send-welcome-message-to-users"></a>ユーザーへのウェルカム メッセージの送信
 
@@ -83,25 +83,31 @@ ms.locfileid: "78280155"
 
 ユーザー状態オブジェクトはスタートアップ時に作成され、依存関係がボット コンストラクターに挿入されます。
 
-**Startup.cs** [!code-csharp[define state](~/../botBuilder-samples/samples/csharp_dotnetcore/03.welcome-user/Startup.cs?range=30-34)]
+**Startup.cs**  
+[!code-csharp[define state](~/../botBuilder-samples/samples/csharp_dotnetcore/03.welcome-user/Startup.cs?range=30-34)]
 
-**Bots\WelcomeUserBot.cs** [!code-csharp[consume state](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=41-47)]
+**Bots\WelcomeUserBot.cs**  
+[!code-csharp[consume state](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=41-47)]
 
 ### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 起動時に、ユーザーの状態が `index.js` で定義され、ボット コンストラクターによって使用されます。
 
-**index.js** [!code-javascript[define state](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/index.js?range=51-55)]
+**index.js**  
+[!code-javascript[define state](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/index.js?range=51-55)]
 
-**bots/welcomeBot.js** [!code-javascript[consume state](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomeBot.js?range=16-22)]
+**bots/welcomeBot.js**  
+[!code-javascript[consume state](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomeBot.js?range=16-22)]
 
 ### <a name="python"></a>[Python](#tab/python)
 
 起動時に、ユーザーの状態が `app.py` で定義され、ボット コンストラクターによって使用されます。
 
-**app.py** [!code-python[define state](~/../botbuilder-samples/samples/python/03.welcome-user/app.py?range=61-66)]
+**app.py**  
+[!code-python[define state](~/../botbuilder-samples/samples/python/03.welcome-user/app.py?range=61-66)]
 
-**bots/welcome-user-bot.py** [!code-python[consume state](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=23-29)]
+**bots/welcome-user-bot.py**  
+[!code-python[consume state](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=23-29)]
 
 ---
 
@@ -112,21 +118,24 @@ ms.locfileid: "78280155"
 ここで、`WelcomeUserState` へのハンドルを返すプロパティ アクセサーを `OnMessageActivityAsync` メソッド内に作成します。
 次に、`GetAsync` メソッドを呼び出して、適切に範囲指定されたキーを取得します。 その後、ユーザー入力イテレーションが終了するたびに、`SaveChangesAsync` メソッドを使用して、ユーザー状態データを保存します。
 
-**Bots\WelcomeUserBot.cs** [!code-csharp[Get state](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-71)]
+**Bots\WelcomeUserBot.cs**  
+[!code-csharp[Get state](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-71)]
 [!code-csharp[Save state](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range= 103-105)]
 
 ### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ここでプロパティ アクセサーを作成します。このアクセサーにより、userState 内で保持されている welcomedUserProperty のハンドルが提供されます。
 
-**bots/welcomeBot.js** [!code-javascript[Get state](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=24-27)]
+**bots/welcomeBot.js**  
+[!code-javascript[Get state](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=24-27)]
 [!code-javascript[Save state](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=89-97)]
 
 ### <a name="python"></a>[Python](#tab/python)
 
 このサンプルでは、ボット コンストラクターで、会話状態のプロパティ アクセサー `user_state_accessor`が作成されます。
 
-**bots/welcome-user-bot.py** [!code-python[constructor](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=31)]
+**bots/welcome-user-bot.py**  
+[!code-python[constructor](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=31)]
 
 これは、`on_message_activity` ハンドラーでプロパティ アクセサーを使用し、`on_turn` ハンドラーをオーバーライドしてターン終了前に状態を保存します。
 
@@ -149,7 +158,8 @@ ms.locfileid: "78280155"
 
 この JavaScript コードは、ユーザーが追加されたときに最初のウェルカム メッセージを送信します。 これは、会話アクティビティをチェックし、会話に新しいメンバーが追加されたことを確認することで実行されます。
 
-**bots/welcomeBot.js** [!code-javascript[onMembersAdded](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=63-86)]
+**bots/welcomeBot.js**  
+[!code-javascript[onMembersAdded](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=63-86)]
 
 ### <a name="python"></a>[Python](#tab/python)
 
@@ -166,21 +176,24 @@ ms.locfileid: "78280155"
 
 ユーザーの入力に有用な情報が実際に含まれている場合を考慮することも重要です。これはチャネルごとに異なる可能性があります。 ユーザーが使用可能なすべてのチャネルで良好なエクスペリエンスを得られるようにするために、状態フラグ _didBotWelcomeUser_ を確認し、これが "false" の場合、最初のユーザー入力は処理しません。 代わりに、ユーザーに最初のウェルカム メッセージを表示します。 ブール値 _welcomedUserProperty_ が "true" に設定され、UserState に格納されると、すべての追加メッセージ アクティビティからのこのユーザーの入力が、コードによって処理されます。
 
-**Bots\WelcomeUserBot.cs** [!code-csharp[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-84)]
+**Bots\WelcomeUserBot.cs**  
+[!code-csharp[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-84)]
 [!code-csharp[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=101-105)]
 
 ### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ユーザーの入力に有用な情報が実際に含まれている場合を考慮することも重要です。これはチャネルごとに異なる可能性があります。 ユーザーが使用可能なすべてのチャネルで良好なエクスペリエンスを得られるようにするために、didBotWelcomedUser プロパティを確認し、これが存在しない場合は、"false" に設定し、最初のユーザー入力を処理しません。 代わりに、ユーザーに最初のウェルカム メッセージを表示します。 その後、ブール値 didBotWelcomeUser が "true" に設定され、すべての追加メッセージ アクティビティからのユーザー入力が、コードによって処理されます。
 
-**bots/welcomeBot.js** [!code-javascript[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=24-39)]
+**bots/welcomeBot.js**  
+[!code-javascript[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=24-39)]
 [!code-javascript[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=57-61)]
 
 ### <a name="python"></a>[Python](#tab/python)
 
 ユーザーの入力に有用な情報が実際に含まれている場合を考慮することも重要です。これはチャネルごとに異なる可能性があります。 ユーザーが使用可能なすべてのチャネルで良好なエクスペリエンスを得られるようにするために、`on_message_activity` は `did_welcome_user` プロパティを確認します。 初回は、*false* に設定し、ユーザー入力を処理しません。 代わりに、ユーザーに最初のウェルカム メッセージを表示します。 次に、`did_welcome_user` を *true* に設定し、すべての追加メッセージ アクティビティからのユーザー入力を処理します。
 
-**bots/welcome-user-bot.py** [!code-python[DidBotWelcomeUser](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=85-95)]
+**bots/welcome-user-bot.py**  
+[!code-python[DidBotWelcomeUser](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=85-95)]
 
 ---
 
@@ -192,19 +205,22 @@ ms.locfileid: "78280155"
 
 "Intro" または "help" の入力により関数 `SendIntroCardAsync` が呼び出され、情報ヒーロー カードがユーザーに示されます。 そのコードについては、この記事の次のセクションで説明します。
 
-**Bots\WelcomeUserBot.cs** [!code-csharp[SwitchOnUtterance](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=85-100)]
+**Bots\WelcomeUserBot.cs**  
+[!code-csharp[SwitchOnUtterance](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=85-100)]
 
 ### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 "Intro" または "help" の入力では CardFactory が使用され、概要アダプティブ カードがユーザーに示されます。 そのコードについては、この記事の次のセクションで説明します。
 
-**bots/welcomeBot.js** [!code-javascript[SwitchOnUtterance](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=40-56)]
+**bots/welcomeBot.js**  
+[!code-javascript[SwitchOnUtterance](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=40-56)]
 
 ### <a name="python"></a>[Python](#tab/python)
 
 ユーザーが *intro* または *help* を入力すると、ボットが `__send_intro_card` を呼び出して、概要アダプティブ カードがユーザーに示されます。
 
-**bots/welcome-user-bot.py** [!code-python[SwitchOnUtterance](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=101-106&highlight=97-106)]
+**bots/welcome-user-bot.py**  
+[!code-python[SwitchOnUtterance](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=101-106&highlight=97-106)]
 
 ---
 
@@ -214,15 +230,18 @@ ms.locfileid: "78280155"
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
-**Bots\WelcomeUserBot.cs** [!code-csharp[SendHeroCardGreeting](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=107-125)]
+**Bots\WelcomeUserBot.cs**  
+[!code-csharp[SendHeroCardGreeting](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=107-125)]
 
 ### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**bots/welcomeBot.js** [!code-javascript[SendIntroCard](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=99-124)]
+**bots/welcomeBot.js**  
+[!code-javascript[SendIntroCard](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=99-124)]
 
 ### <a name="python"></a>[Python](#tab/python)
 
-**bots/welcome-user-bot.py** [!code-python[SendIntroCard](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=108-143)]
+**bots/welcome-user-bot.py**  
+[!code-python[SendIntroCard](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=108-143)]
 
 ---
 

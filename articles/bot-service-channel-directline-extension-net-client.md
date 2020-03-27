@@ -8,26 +8,27 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 0ed4bbeb9a882bcf8e4dd75364211f1a3538479b
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: d990700ab06a4bfae34cffcbc1a6846f66ec1d77
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75793222"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117617"
 ---
 # <a name="create-net-client-to-connect-to-direct-line-app-service-extension"></a>Direct Line App Service 拡張機能に接続する .NET クライアントを作成する
 
 この記事では、Direct Line App Service 拡張機能に接続する .NET クライアントを C# で作成する方法について説明します。
+また、「[拡張機能のための .NET ボットの構成](bot-service-channel-directline-extension-net-bot.md)」という関連記事もお読みください。
 
 ## <a name="gather-your-direct-line-extension-keys"></a>Direct Line 拡張機能キーを収集する
 
 1. ブラウザーで [Azure portal](https://portal.azure.com/) に移動します。
 1. Azure portal で、目的の **Azure Bot Service** リソースを見つけます。
 1. **[チャネル]** をクリックして、ボットのチャネルを構成します。
-1. **Direct Line** チャネルがまだ有効になっていない場合は、クリックして有効にします。 
+1. **Direct Line** チャネルがまだ有効になっていない場合は、クリックして有効にします。
 1. 既に有効になっている場合は、[Connect to channels]\(チャネルに接続\) テーブルの Direct Line 行で **[編集]** リンクをクリックします。
 1. [サイト] セクションまでスクロールします。 通常、削除または名前を変更していない限り、既定のサイトがあります。
-1. **[表示] リンク**をクリックしていずれかのキーを表示し、その値をコピーします。
+1. **[表示] リンク**をクリックしていずれかのキーを表示し、その値をコピーして保存します。 次のセクションでこの値を使用します。
 
     ![App Service 拡張機能キー](./media/channels/direct-line-extension-extension-keys-net-client.png)
 
@@ -68,6 +69,10 @@ Direct Line App Service 拡張機能との対話は、従来の Direct Line と�
         new DirectLineClientCredentials(secret));
     var conversation = await tokenClient.Tokens.GenerateTokenForNewConversationAsync();
     ```
+
+    次に注意してください。
+    - エンドポイント値は、ボットを Azure にデプロイしたときに取得したボットの URL です。  詳細については、「[拡張機能のための .NET ボットの構成](bot-service-channel-directline-extension-net-bot.md)」を参照してください。
+    - *YOUR_BOT_SECRET* として表示されるシークレット値は、前に " *[サイト] セクション*" から保存した値です。
 
 1. トークンの生成から会話の参照を取得したら、この会話 ID を使用して、`DirectLineClient` の新しい `StreamingConversations` プロパティで WebSocket を開くことができます。 これを行うには、ボットが `ActivitySets` をクライアントに送信するときに呼び出されるコールバックを作成する必要があります。
 

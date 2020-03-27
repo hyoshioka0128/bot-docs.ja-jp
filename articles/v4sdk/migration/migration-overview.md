@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 06/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 15cffbcbce7581692e7f993e22f353cb435379b9
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 0746a277f465979639db5c8a26aaddfee9386ac2
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798058"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117694"
 ---
 # <a name="migration-overview"></a>移行の概要
 
@@ -30,6 +30,8 @@ Bot Framework SDK v4 は、旧バージョンの SDK のお客様のフィード
 Bot Framework SDK v3 は廃止されますが、既存の V3 ボット ワークロードは中断することなく引き続き実行されます。 詳細については、次を参照してください。「[Bot Framework SDK バージョン 3 のライフタイム サポート](https://docs.microsoft.com/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0#bot-framework-sdk-version-3-lifetime-support)」。
 
 V3 ボットから V4 への移行を開始することを強くお勧めします。 この移行をサポートするために、Microsoft では関連ドキュメントを作成しました。また、標準チャネルを介して移行イニシアチブに対する拡張サポートを提供する予定です。
+
+V3 ボットから V4 ボットにすぐに移行できない場合でも、V4 SDK で利用可能な追加機能を利用することができます。 V3 ボットをスキルに変換し、V4 SDK に基づくスキル コンシューマー ボットを作成して、V3 ボットにメッセージを渡すことができます。 詳細については、「[V3 ボットをスキルに変換する](convert-to-skill-overview.md)」を参照してください。
 
 ## <a name="advantages"></a>長所
 
@@ -95,7 +97,7 @@ Bot Framework SDK v4 では、v3 と同じ基になる Bot Framework Service が
 
 次のワークシートは、移行ワークロードの見積もりに役立ちます。 「**発生回数**」列の *count* は実際の数値に置き換えてください。 「**T シャツ**」列に、次のような値を入力します。*Small*、*Medium*、*Large* (見積りに基づく)。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 | 手順 | V3 | V4 | 発生回数 | 複雑さ | T シャツ |
 | -- | -- | -- | -- | -- | -- |
@@ -112,7 +114,7 @@ Bot Framework SDK v4 では、v3 と同じ基になる Bot Framework Service が
 現在のダイアログが完了したことを通知する | IDialogContext.Done | ステップ コンテキストの EndDialogAsync メソッドを待機して制御を戻します。 | count | Medium |  
 ダイアログを失敗にする | IDialogContext.Fail | キャッチされた例外をボットの別のレベルでスローするか、Cancelled の状態でステップを終了するか、ステップまたはダイアログ コンテキストの CancelAllDialogsAsync を呼び出します。 | count | Small |  
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 | 手順 | V3 | V4 | 発生回数 | 複雑さ | T シャツ |
 | -- | -- | -- | -- | -- | -- |
@@ -131,7 +133,7 @@ Bot Framework SDK v4 では、v3 と同じ基になる Bot Framework Service が
 
 ---
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Bot Framework SDK v4 と v3 は、基になる REST API を共有しています。 ただし、v4 は、より柔軟にボットを制御できるように、以前のバージョンの SDK をリファクターしたものです。
 
@@ -158,7 +160,7 @@ Bot Framework SDK v4 と v3 は、基になる REST API を共有しています
 
 詳細については、「[.NET v3 ボットを .NET Core v4 ボットに移行する](conversion-core.md)」を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **Bot Framework JavaScript SDK v4** では、ボットの作成方法についていくつかの基本的な変更が加えられています。 これらの変更の結果、特に、ボット オブジェクトの作成、ダイアログの定義、イベント処理ロジックのコーディング関連で、JavaScript でボットを開発するための構文が変更されています。 Bot Framework SDK v4 と v3 は、基になる REST API を共有しています。 ただし、v4 は、より柔軟にボットを制御できるように、以前のバージョンの SDK をリファクターしたものです。特に、
 
@@ -182,24 +184,24 @@ Bot Framework SDK v4 と v3 は、基になる REST API を共有しています
 
 次のその他のリソースは、移行中に役立つ詳細情報を提供します。  
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+### <a name="c"></a>[C#](#tab/csharp)
 
 <!-- _Mini-TOC with explainer for .NET topics_ -->
 次のトピックでは、.NET v3 と v4 の Bot Framework SDK の違い、2 つのバージョンの主な変更点、v3 から v4 にボットを移行する手順が説明されています。
 
-| トピック | [説明] |
+| トピック | 説明 |
 | :--- | :--- |
 | [.NET SDK v3 と v4 の違い](migration-about.md) |v3 と v4 SDK の一般的な違い |
 | [.NET 移行クイック リファレンス](net-migration-quickreference.md) |v3 と v4 SDK の主な変更点 |
 | [.NET v3 ボットを Framework v4 ボットに移行する](conversion-framework.md) |同じプロジェクトの種類を使用して v3 ボットを v4 ボットに移行する |
 | [.NET v3 ボットを Core v4 ボットに移行する](conversion-core.md) | 新しい .NET Core プロジェクトで v3 から v4 に移行する|
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 <!-- _Mini-TOC with explainer for JavaScript topics_ -->
 次のトピックでは、JavaScript v3 と v4 の Bot Framework SDK の違い、2 つのバージョンの主な変更点、v3 から v4 にボットを移行する手順が説明されています。
 
-| トピック | [説明] |
+| トピック | 説明 |
 | :--- | :--- |
 | [JavaScript SDK v3 とv4 の違い](migration-about-javascript.md) | v3 と v4 SDK の一般的な違い |
 | [JavaScript 移行クイック リファレンス](javascript-migration-quickreference.md)| v3 と v4 SDK の主な変更点|
@@ -211,7 +213,7 @@ Bot Framework SDK v4 と v3 は、基になる REST API を共有しています
 
 以下は、Bot Framework SDK V4 の学習やプロジェクトの開始に使用できるコード サンプルです。
 
-| サンプル | [説明] |
+| サンプル | 説明 |
 | :--- | :--- |
 | [Bot Framework V3 から V4 への移行サンプル](https://github.com/microsoft/BotBuilder-Samples/tree/master/MigrationV3V4) <img width="200">| Bot Framework V3 SDK から V4 SDK への移行サンプル |
 | [Bot Builder .NET のサンプル](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore) | Bot Builder の C#.NET Core サンプル |
@@ -228,7 +230,7 @@ Bot Framework SDK v4 と v3 は、基になる REST API を共有しています
 
 詳細と背景情報については、次のリソースを参照してください。
 
-| トピック | [説明] |
+| トピック | 説明 |
 | :--- | :--- |
 | [Bot Framework の新機能](https://docs.microsoft.com/azure/bot-service/what-is-new?view=azure-bot-service-4.0) | Bot Framework と Azure Bot Service の主な機能と機能強化|
 |[ボットのしくみ](../bot-builder-basics.md)|ボットの内部メカニズム|

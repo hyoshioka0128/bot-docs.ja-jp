@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/09/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e4f11b6a1e8bcfce06e1518db7865d6b65ec3d62
-ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
+ms.openlocfilehash: e512dbf7c7f31a0f2674fc1ea0e4ce825096c314
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2020
-ms.locfileid: "76753776"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117705"
 ---
 # <a name="about-skills"></a>スキルについて
 
@@ -25,10 +25,10 @@ Bot Framework SDK のバージョン 4.7 以降では、別のボット (スキ�
 スキルは、他のさまざまなボットで使用されて再利用を促進します。これにより、ユーザー向けに作成したボットを、独自のスキルやサードパーティのスキルを使用して拡張できます。
 
 <!-- Terminology -->
-- "_スキル_" は別のボットに対して一連のタスクを実行できるボットであり、マニフェストを使用してそのインターフェイスが記述されます。
+- "_スキル_" は、別のボットに対して一連のタスクを実行できるボットです。
   設計によっては、スキルを一般的なユーザー向けボットとして機能させることもできます。
 - "_スキル コンシューマー_" は、1 つ以上のスキルを呼び出すことができるボットです。 スキルに関しては、"_ルート ボット_" がユーザー向けボットとスキル コンシューマーを兼ねています。
-- "_スキル マニフェスト_" は、スキルが実行できるアクティビティ、スキルの入力パラメーターと出力パラメーター、およびスキルのエンドポイントが記述された JSON ファイルです。
+- "_スキル マニフェスト_" は、スキルが実行できるアクション、その入力と出力パラメーター、およびスキルのエンドポイントが記述された JSON ファイルです。
   - スキルのソース コードにアクセスできない開発者は、マニフェストの情報を使用してスキル コンシューマーを設計できます。 サンプルのスキル マニフェストについては、「[スキルを実装する](./skill-implement-skill.md)」を参照してください。
   - "_スキル マニフェスト スキーマ_" は、スキル マニフェストのスキーマが記述された JSON ファイルです。 現在のバージョンは [skill-manifest-2.0.0.json](https://github.com/microsoft/botframework-sdk/blob/master/schemas/skills/skill-manifest-2.0.0.json) です。
 
@@ -39,12 +39,13 @@ Bot Framework SDK のバージョン 4.7 以降では、別のボット (スキ�
 
 - スキルは、Bot Framework アダプターとカスタム アダプターの両方と連携できます。
 - スキルは Microsoft Teams チャネルと連携でき、そのときに `invoke` アクティビティが多用されます。
-- スキルはユーザー認証をサポートしますが、ユーザー認証はスキルでローカルに行われ、別のボットに転送することはできません。
+- スキルはユーザー認証をサポートしますが、ユーザー認証はスキルまたはスキル コンシューマーに対してローカルであり、別のボットに転送できません。
 - スキル コンシューマーは複数のスキルを使用できます。
 - スキル コンシューマーは複数のスキルを並行して実行できます。
+- スキル コンシューマーは、スキルの言語や SDK バージョンに関係なく、スキルを使用できます。
 - Bot Connector サービスでボット間認証が提供されますが、エミュレーターを使用してルート ボットをローカルにテストすることができます。
+- スキルは、スキル コンシューマーにもなり得ます。 複数のスキルを使用して接続すると、ネットワークの待機時間が増加し、エラーが発生する可能性が高くなります。 このようなボットはより複雑であり、デバッグがいっそう困難になることがあります。
 <!--TBD: - Skills support proactive messaging. -->
-<!--TBD: - A skill can also be a skill consumer. -->
 
 ## <a name="architecture"></a>Architecture
 
@@ -170,7 +171,7 @@ Supports: Bot Framework adapter, custom adapters, MS Teams channel (what Teams c
 
 スキルごとに、"_Bot Framework スキル_" オブジェクトをスキル コンシューマーの構成ファイルに追加します。 各オブジェクトには ID、アプリ ID、およびスキルのエンドポイントが設定されます。
 
-| プロパティ | [説明]
+| プロパティ | 説明
 | :--- | :--- |
 | _ID_ | スキルの ID またはキー (スキル コンシューマーに固有)。 |
 | _App ID_ | スキルが Azure に登録されたときにボット リソースに割り当てられた `appId`。 |
@@ -208,6 +209,24 @@ Supports: Bot Framework adapter, custom adapters, MS Teams channel (what Teams c
   - スキルが終了する理由を確認するには、アクティビティの _code_ パラメーターを確認します (スキルでエラーが発生したことを示している可能性があります)。
 - `endOfConversation` アクティビティをスキルに送信して、コンシューマーからスキルをキャンセルする。
 
+#### <a name="invoking-a-skill-from-a-dialog"></a>ダイアログからのスキルの呼び出し
+
+[ダイアログ ライブラリ](bot-builder-concept-dialog.md)を使用している場合は、"_スキル ダイアログ_" を使用してスキルを管理できます。 スキル ダイアログはアクティブなダイアログである間、関連付けられているスキルにアクティビティを転送します。
+<!--Language-specific Notes:
+- C#: SkillDialog, SkillDialogOptions, SkillDialogArgs
+  - public SkillDialog(SkillDialogOptions dialogOptions, string dialogId = null)
+- JS: SkillDialog, SkillDialogOptions, BeginSkillDialogOptions
+  - public constructor(dialogOptions: SkillDialogOptions, dialogId?: string)
+- Py (WIP): SkillDialog, SkillDialogOptions, SkillDialogArgs
+  - def __init__(self, dialog_options: SkillDialogOptions, conversation_state: ConversationState)
+-->
+
+- スキル ダイアログを作成するときに、_dialog options_ パラメーターを使用して、ダイアログでスキルを管理するために必要なすべての情報 (コンシューマーのアプリ ID とコールバック URL、使用する会話 ID ファクトリ、スキルのプロパティなど) を指定します。
+  - 複数のスキルをダイアログとして管理する場合は、スキルごとに個別のスキル ダイアログを作成する必要があります。
+  - 多くの場合、コンポーネント ダイアログにスキル ダイアログを追加します。
+- スキル ダイアログを開始するには、ダイアログ コンテキストの _begin_ メソッドを使用して、スキル ダイアログの ID を指定します。 _options_ パラメーターを使用して、コンシューマーが最初のアクティビティとしてスキルに送信するアクティビティを指定します。
+- 他のダイアログの場合と同じように、スキル ダイアログを取り消したり、中断したりできます。 例については、[ユーザーによる割り込みを処理する](bot-builder-howto-handle-user-interrupt.md)方法を参照してください。
+
 ## <a name="skill-bots"></a>スキル ボット
 
 小さな変更を加えることで、どのボットもスキルとして使用できます。 スキル ボットには次の機能があります。
@@ -218,6 +237,10 @@ Supports: Bot Framework adapter, custom adapters, MS Teams channel (what Teams c
 - `endOfConversation` アクティビティを通じて、スキルの完了またはキャンセルを通知します。
   - アクティビティの _value_ プロパティに戻り値 (存在する場合) を提供します。
   - アクティビティの _code_ プロパティにエラー コードを提供します (存在する場合)。
+
+### <a name="skill-activities"></a>スキル アクティビティ
+
+ 一部のスキルでは、さまざまなタスクや "_アクティビティ_" を実行できます。 たとえば、To Do スキルで、個別の会話としてアクセスできるアクティビティの作成、更新、表示、削除を許可できます。 <!--TODO Flesh this out-->
 
 ### <a name="skill-manifest"></a>スキル マニフェスト
 

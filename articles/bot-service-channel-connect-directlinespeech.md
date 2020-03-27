@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: travisw
-ms.openlocfilehash: 55bb6b63f35b2cb064229ed0a827af422ca83882
-ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
+ms.openlocfilehash: d8831930934bef15c06679236efb7f4e7962b1aa
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73592230"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117519"
 ---
 # <a name="connect-a-bot-to-direct-line-speech"></a>ボットを Direct Line Speech に接続する
 
@@ -22,7 +22,7 @@ ms.locfileid: "73592230"
 
 クライアント アプリケーションが Direct Line Speech チャネルを介してボットと通信できるように、そのボットを構成できます。
 
-ご自身のボットを構築した後、Direct Line Speech でそれをオンボードすると、[Speech SDK](https://aka.ms/speech/sdk) を使用して、クライアント アプリケーションとの間に待機時間が短く信頼できる接続を確立できます。 これらの接続は、音声で入出力する会話エクスペリエンス用に最適化されています。 Direct Line Speech、およびクライアント アプリケーションの構築方法の詳細については、[カスタムの音声優先仮想アシスタント](https://aka.ms/bots/speech/va)に関するページをご覧ください。 
+ご自身のボットを構築した後、Direct Line Speech でそれをオンボードすると、[Speech SDK](https://aka.ms/speech/sdk) を使用して、クライアント アプリケーションとの間に待機時間が短く信頼できる接続を確立できます。 これらの接続は、音声で入出力する会話エクスペリエンス用に最適化されています。 Direct Line Speech、およびクライアント アプリケーションの構築方法の詳細については、[カスタム音声優先仮想アシスタント](https://aka.ms/bots/speech/va)に関するページをご覧ください。
 
 ## <a name="add-the-direct-line-speech-channel"></a>Direct Line Speech チャネルを追加する
 
@@ -34,9 +34,20 @@ ms.locfileid: "73592230"
 
     ![Direct Line Speech チャネルの選択](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-connectspeechchannel.png "Direct Line Speech の接続")
 
-1. Direct Line Speech チャネルには、Cognitive Services リソースが必要です。 既存のリソースを使用するか、[手順](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に従って新しい Cognitive Services リソースを作成できます。 
+1. 次の図に示すように、Direct Line Speech を構成します。
 
-    ![Direct Line Speech チャネルの選択](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-cognitivesericesaccount-selection.png "Cogntive Services リソースの選択")
+    ![Direct Line Speech チャネルの選択](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-cognitivesericesaccount-selection.png "Cognitive Services リソースの選択")
+
+    Direct Line Speech チャネルには、Cognitive Services リソース (具体的には、**音声**コグニティブ サービス リソース) が必要です。 既存のリソースを使用することも、新しいものを作成することもできます。 新しい音声リソースを作成するには、次の手順に従います。
+
+    - [Azure portal の[リソースの作成]](https://ms.portal.azure.com/#create/hub) にアクセスします。
+    - *Speech* を検索し、ドロップダウン リストから選択します。 次のように表示されます。
+
+        ![音声コグニティブ リソースを作成する](media/voice-first-virtual-assistants/create-speech-cognitive-resource.PNG "音声コグニティブ リソースを作成する")
+
+    - ウィザードの手順に従います。
+
+    詳細については、[Cognitive Services リソースの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関する記事を参照してください。
 
 1. 使用条件を確認したら、`Save` をクリックして、チャネルの選択内容を確定します。
 
@@ -46,7 +57,7 @@ ms.locfileid: "73592230"
 
 Direct Line Speech チャネルがご自身のボットに作成されたら、待機時間が短い最適な対話を実現するために、Bot Framework Protocol ストリーミング拡張機能のサポートを有効にする必要があります。
 
-1. [Azure portal](https://portal.azure.com) でご自身のボットのブレードを開きます (まだ開いていない場合)。 
+1. [Azure portal](https://portal.azure.com) でご自身のボットのブレードを開きます (まだ開いていない場合)。
 
 1. ( **[チャネル]** のすぐ下にある) **[Bot Management]\(ボット管理\)** カテゴリの **[設定]** をクリックします。 **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** チェック ボックスをオンにします。
 

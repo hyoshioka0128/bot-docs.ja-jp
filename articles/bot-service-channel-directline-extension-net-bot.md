@@ -8,18 +8,19 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 01/16/2020
-ms.openlocfilehash: c49a632696ea0708f817f733aff7b2743600ccb6
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: 7f46d5f2b5012db914568e5ae613c18405dfa113
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071700"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117630"
 ---
 # <a name="configure-net-bot-for-extension"></a>拡張機能のための .NET ボットの構成
 
 [!INCLUDE[applies-to-v4](includes/applies-to.md)]
 
-この記事では、**名前付きパイプ**を使って機能するようにボットを更新する方法、およびボットがホストされている **Azure App Service** リソースで Direct Line App Service 拡張機能を有効にする方法について説明します。
+この記事では、**名前付きパイプ**を使って機能するようにボットを更新する方法、およびボットがホストされている **Azure App Service** リソースで Direct Line App Service 拡張機能を有効にする方法について説明します。 こちらの関連記事「[Direct Line App Service 拡張機能に接続する .NET クライアントを作成する](bot-service-channel-directline-extension-net-client.md)」もお読みください。
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -84,7 +85,7 @@ ms.locfileid: "77071700"
 1. **Direct Line** チャネルがまだ有効になっていない場合は、クリックして有効にします。
 1. 既に有効になっている場合は、[Connect to channels]\(チャネルに接続\) テーブルの Direct Line 行で **[編集]** リンクをクリックします。
 1. App Service 拡張機能キーのセクションまで下にスクロールします。
-1. **[表示] リンク**をクリックしていずれかのキーを表示し、その値をコピーします。
+1. **[表示] リンク**をクリックしていずれかのキーを表示し、その値をコピーして保存します。 この値は次のセクションで使用します。
 
 ![App Service 拡張機能キー](./media/channels/direct-line-extension-extension-keys.png)
 
@@ -94,10 +95,12 @@ ms.locfileid: "77071700"
 1. Azure portal で、ボットをホストしている、またはホストする予定の Web アプリの **Azure App Service** リソース ページを見つけます
 1. **[Configuration]\(構成\)** をクリックします。 *[アプリケーションの設定]* セクションで、次の新しい設定を追加します。
 
-    |Name|Value|
+    |名前|Value|
     |---|---|
-    |DirectLineExtensionKey|<App_Service_Extension_Key_From_Section_1>|
+    |DirectLineExtensionKey|<App_Service_Extension_Key>|
     |DIRECTLINE_EXTENSION_VERSION|latest|
+
+    ここで、*App_Service_Extension_Key* は、以前に保存した値です。
 
 1. *[構成]* セクション内で、 **[全般設定]** セクションをクリックし、 **[Web ソケット]** を有効にします。
 1. **[保存]** をクリックして設定を保存します。 これにより、Azure App Service が再起動されます。
@@ -111,3 +114,8 @@ ms.locfileid: "77071700"
 - **initialized** によって、Direct Line ASE が App Service 拡張機能キーを使用して Azure Bot Service からボット メタデータをダウンロードできるかどうかを決定します。
 - **ib** によって、Direct Line ASE がボットとの受信接続を確立できるかどうかを決定します。
 - **ob** によって、Direct Line ASE がボットとの送信接続を確立できるかどうかを決定します。
+
+## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [.NET クライアントを作成する](./bot-service-channel-directline-extension-net-client.md)

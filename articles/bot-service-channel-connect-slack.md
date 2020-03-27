@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/09/2019
-ms.openlocfilehash: 3147e202a615e29d51f1e3fa3a9d5d70ed54fe83
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: 74d7e666ff7a47fa9635a0b8e28f5d99edcaaa45
+ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071740"
+ms.lasthandoff: 03/22/2020
+ms.locfileid: "80117661"
 ---
 # <a name="connect-a-bot-to-slack"></a>ボットを Slack に接続する
 
@@ -21,45 +21,56 @@ Slack メッセージング アプリは、次の 2 とおりの方法で構成�
 - Azure Bot Service ポータルを使用してボットを接続する
 - Slack アダプターを使用する
 
-## <a name="azure-bot-service-portaltababs"></a>[Azure Bot Service ポータル](#tab/abs)
+## <a name="azure-bot-service-portal"></a>[Azure Bot Service ポータル](#tab/abs)
 ## <a name="create-a-slack-application-for-your-bot"></a>ボット用の Slack アプリケーションを作成する
 
-[Slack](https://slack.com/signin) にログインし、[[create a Slack application]\(Slack アプリケーションの作成\)](https://api.slack.com/apps) チャネルに移動します。
+1. ブラウザーで [Slack](https://slack.com/signin) にログインします。
+1. [[create a Slack application]\(Slack アプリケーションの作成\)](https://api.slack.com/apps) チャネルに移動します。
 
 ![ボットを設定する](~/media/channels/slack-NewApp.png)
 
 ## <a name="create-an-app-and-assign-a-development-slack-team"></a>アプリを作成して開発 Slack チームを割り当てる
 
-アプリ名を入力し、開発 Slack チームを選択します。 まだ開発 Slack チームのメンバーになっていない場合は、[作成または参加](https://slack.com/)します。
+1. **[Create new app]\(新しいアプリの作成\)** ボタンをクリックします。
+1. アプリ名を入力し、開発 Slack チームを選択します。
+まだ開発 Slack チームのメンバーになっていない場合は、[作成または参加](https://slack.com/)します。
 
 ![アプリを作成する](~/media/channels/slack-CreateApp.png)
 
-**[Create app (アプリの作成)]** をクリックします。 Slack でアプリが作成されて、クライアント ID とクライアント シークレットが生成されます。
+1. **[Create App]\(アプリの作成\)** ボタンをクリックします。 Slack でアプリが作成されて、**クライアント ID** と**クライアント シークレット**が生成されます。
 
 ## <a name="add-a-new-redirect-url"></a>新しいリダイレクト URL を追加する
 
-次に、新しいリダイレクト URL を追加します。
-
-1. **[OAuth & Permissions]\(OAuth とアクセス許可\)** タブを選択します。
-2. **[Add a new Redirect URL]\(新しいリダイレクト URL の追加\)** をクリックします。
-3. 「[https://slack.botframework.com](https://slack.botframework.com)」を入力します。
+1. 左側のパネルで、 **[OAuth & Permissions]\(OAuth とアクセス許可\)** のリンクをクリックします。
+2. 右側のパネルで、 **[Add a new Redirect URL]\(新しいリダイレクト URL を追加する\)** ボタンをクリックします。
+3. 次の値 `https://slack.botframework.com` を入力します。
 4. **[追加]** をクリックします。
-5. **[Save URLs]\(URL の保存\)** をクリックします。
+5. **[Save URL]\(URL の保存\)** ボタンをクリックします。
 
 ![リダイレクト URL を追加する](~/media/channels/slack-RedirectURL.png)
 
-## <a name="create-a-slack-bot-user"></a>Slack ボット ユーザーを作成する
+## <a name="add-bot-token-scopes"></a>ボット トークン スコープを追加する
+<!-- Replaces add user -->
+1. 左側のパネルで、 **[OAuth & Permissions]\(OAuth とアクセス許可\)** のリンクをクリックします。
+1. 右側のパネルで、下にスクロールして **[Scopes]\(スコープ\)** に移動します。
+1. **[Bot Token Scopes]\(ボット トークン スコープ\)** セクションで、 **[Add an OAuth Scope]\(OAuth スコープの追加\)** ボタンをクリックします。
+1. 図にも示すように、必ず次のスコープを選択してください。
 
-ボット ユーザーを追加すると、ボットにユーザー名を割り当てて、ボットを常にオンラインとして表示するかどうかを選択できます。
+    - `app_mentions:read`
+    - `channels:history`
+    - `channels:read`
+    - `chat:write`
+    - `groups:history`
+    - `groups:read`
+    - `im:history`
+    - `mpim:history`
 
-1. **[Bot Users]\(ボット ユーザー\)** タブを選択します。
-2. **[Add a Bot User]\(ボット ユーザーの追加\)** をクリックします。
+    ![Slack のボット スコープ](media/channels/slack-bot-scopes.PNG)
 
-![ボットを作成する](~/media/channels/slack-CreateBot.png)
+1. 左側のパネルで、 **[App Home]\(アプリのホーム\)** リンクを選択します。
+1. 右側のパネルで、下にスクロールし、 **[Always Show My Bot as Online]\(ボットを常にオンラインとして表示する\)** をオンにします。
 
-**[Add Bot User]\(ボット ユーザーの追加\)** をクリックして設定を検証し、 **[Always Show My Bot as Online]\(ボットを常にオンラインとして表示する\)** をクリックして **[On]\(オン\)** に設定した後、 **[Save Changes]\(変更の保存\)** をクリックします。
-
-![ボットを作成する](~/media/channels/slack-CreateApp-AddBotUser.png)
+    ![Slack のボットの表示](media/channels/slack-bot-display.PNG)
 
 ## <a name="subscribe-to-bot-events"></a>ボットのイベントをサブスクライブする
 
@@ -76,12 +87,13 @@ Slack メッセージング アプリは、次の 2 とおりの方法で構成�
 
 4. **[Subscribe to Bot Events]\(ボット イベントのサブスクライブ\)** で、 **[Add Bot User Event]\(ボット ユーザー イベントの追加\)** をクリックします。
 5. イベントの一覧で、次の 6 つのイベント タイプを選択します。
-    * `member_joined_channel`
-    * `member_left_channel`
-    * `message.channels`
-    * `message.groups`
-    * `message.im`
-    * `message.mpim`
+
+    - `member_joined_channel`
+    - `member_left_channel`
+    - `message.channels`
+    - `message.groups`
+    - `message.im`
+    - `message.mpim`
 
    ![イベントをサブスクライブする: 中](~/media/channels/slack-SubscribeEvents-b.png)
 
@@ -137,7 +149,7 @@ Slack ボットの構成に必要なクライアント ID、クライアント �
 
 承認されたユーザーは、この変更した HTML で提供される **[Add to Slack]\(Slack に追加\)** ボタンをクリックして、Slack からボットにアクセスできます。
 
-## <a name="slack-adaptertabadapter"></a>[Slack アダプター](#tab/adapter)
+## <a name="slack-adapter"></a>[Slack アダプター](#tab/adapter)
 ## <a name="connect-a-bot-to-slack-using-the-slack-adapter"></a>Slack アダプターを使用してボットを Slack に接続する
 
 Slack にボットを接続するには、Azure Bot Service で用意されているチャネルを使用するほかに、Slack アダプターを使用する方法があります。 この記事では、アダプターを使用してボットを Slack に接続する方法について説明します。  この記事では、Slack アプリに接続するよう EchoBot サンプルに変更を加える手順を解説します。
@@ -283,10 +295,10 @@ public void ConfigureServices(IServiceCollection services)
 この手順を実行するために、[ボットを Azure にデプロイ](https://aka.ms/bot-builder-deploy-az-cli)し、そのデプロイしたボットへの URL を書き留めてください。
 
 > [!NOTE]
-> 自分のボットを Azure にデプロイする準備が整っていない場合や、Slack アダプターを使用している状態でボットをデバッグしたい場合は、[ngrok](https://www.ngrok.com) (Bot Framework エミュレーターを過去に使用したことがある場合は、既にインストールされている可能性があります) などのツールを使用して、ローカルで実行されているボットにトンネル接続し、そのパブリック アクセス用の URL を取得してください。 
-> 
+> 自分のボットを Azure にデプロイする準備が整っていない場合や、Slack アダプターを使用している状態でボットをデバッグしたい場合は、[ngrok](https://www.ngrok.com) (Bot Framework エミュレーターを過去に使用したことがある場合は、既にインストールされている可能性があります) などのツールを使用して、ローカルで実行されているボットにトンネル接続し、そのパブリック アクセス用の URL を取得してください。
+>
 > ngrok トンネルを作成して自分のボットへの URL を取得したい場合は、ターミナル ウィンドウで次のコマンドを使用します (これは、ローカル ボットがポート 3978 で実行されていることを想定しています。それとは異なるポートでボットが実行されている場合は、コマンド内のポート番号を変更してください)。
-> 
+>
 > ```
 > ngrok.exe http 3978 -host-header="localhost:3978"
 > ```
