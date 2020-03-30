@@ -165,7 +165,7 @@ Bot ASP.Net と Node からは、検査可能なログがサーバー レベル�
 
      このウィンドウを開いたままにしておきます。
 
-#### <a name="set-up-browser-to-restart-your-bot-service"></a>ボット サービスを再起動するようにブラウザーを設定する
+#### <a name="set-up-browser-to-restart-your-bot-service"></a>Bot Service を再起動するようにブラウザーを設定する
 
 1. 別のブラウザーを使用して、Azure Portal でボットを開きます。
 1. **[アプリ サービスの設定]/[All App service settings]\(すべてのアプリ サービス設定\)** ページを開き、すべてのサービス設定を確認します。
