@@ -110,7 +110,7 @@ LUIS アプリには、その発行後、ボットからアクセスできるよ
 1. 発行済み LUIS アプリを開いた状態で **[MANAGE]** タブを選択します。![LUIS アプリの管理](./media/how-to-luis/manage-luis-app.png)
 1. 左側の **[Application Information]** タブで、 _[Application ID]_ に表示される値を <YOUR_APP_ID> として記録します。
 1. 左側の **[Keys and Endpoints]\(キーとエンドポイント\)** タブを選択し、 _[Authoring Key]_ に表示される値を <YOUR_AUTHORING_KEY> として記録します。
-1. 下へスクロールしてページの最後まで移動し、"_リージョン_" に表示される値を <YOUR_REGION> として記録します。
+1. 下へスクロールしてページの最後まで移動し、"_Region_" に表示される値を <YOUR_REGION> として記録します。
 
 ### <a name="update-the-settings-file"></a>設定ファイルを更新する
 
