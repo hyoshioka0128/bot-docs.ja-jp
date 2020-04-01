@@ -29,7 +29,7 @@ Azure Bot Service は、ボットを開発するための Bot Framework SDK や�
 
 - [Azure](https://portal.azure.com) アカウント
 
-### <a name="create-a-new-bot-service"></a>新しいボット サービスを作成する
+### <a name="create-a-new-bot-service"></a>新しい Bot Service を作成する
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 1. Azure portal の左上隅にある **[新しいリソースの作成]** リンクをクリックし、 **[AI + Machine Learning]**  >  **[Web App Bot]\(Web アプリ ボット\)** を選択します。 
