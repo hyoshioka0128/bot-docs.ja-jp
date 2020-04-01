@@ -67,13 +67,13 @@ QnA Maker は、データに基づく会話の質疑応答レイヤーを提供�
 ## <a name="obtain-values-to-connect-your-bot-to-the-knowledge-base"></a>ボットをナレッジ ベースに接続するための値を取得する
 
 1. [QnA Maker](https://www.qnamaker.ai/) サイトで、目的のナレッジ ベースを選択します。
-1. ナレッジ ベースを開いた状態で **[設定]** を選択します。 "_サービス名_" に表示されている値を記録します。 この値は、QnA Maker ポータル インターフェイスを使用するときに、対象となる自分のナレッジ ベースを見つけるのに役立ちます。 この値を使用して、ボット アプリをこのナレッジ ベースに接続するわけではありません。
-1. 下へスクロールして **[デプロイの詳細]** を見つけ、Postman サンプル HTTP 要求にある次の値を記録します。
+1. ナレッジ ベースを開いた状態で **[Settings]** を選択します。 "_サービス名_" に表示されている値を記録します。 この値は、QnA Maker ポータル インターフェイスを使用するときに、対象となる自分のナレッジ ベースを見つけるのに役立ちます。 この値を使用して、ボット アプリをこのナレッジ ベースに接続するわけではありません。
+1. 下へスクロールして **[Deployment details]** を見つけ、Postman サンプル HTTP 要求にある次の値を記録します。
    - POST /knowledgebases/\<knowledge-base-id>/generateAnswer
    - Host: \<your-hostname> // Full URL ending with /qnamaker
    - Authorization:EndpointKey \<your-endpoint-key>
 
-ホスト名の完全な URL 文字列は、"https:// < >.azure.net/qnamaker" のようになります。 この 3 つの値によって、アプリが Azure QnA サービスを介して QnA Maker ナレッジ ベースに接続する際に必要な情報が提供されます。  
+ホスト名の完全な URL 文字列は、"https://< >.azure.net/qnamaker" のようになります。 この 3 つの値によって、アプリが Azure QnA サービスを介して QnA Maker ナレッジ ベースに接続する際に必要な情報が提供されます。  
 
 ## <a name="update-the-settings-file"></a>設定ファイルを更新する
 
