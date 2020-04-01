@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1b3cb313a06f8f834aa7d212db43eafb2a621af5
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 6bde9f24f42a7558d93c333d12e03e9c87d7c4b2
+ms.sourcegitcommit: 64b25f796f89e8bb6fa53d3c824b73b8ce4d6ed8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798622"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80250021"
 ---
 # <a name="custom-assistant-overview"></a>カスタム アシスタントの概要
 
@@ -86,5 +86,5 @@ Microsoft のカスタム アシスタント アーキテクチャは柔軟性�
 
 ## <a name="getting-started"></a>作業の開始
 
-現在、初期プレビューを進めており、オープンソースのリポジトリを通じて初期のお客様やパートナーと緊密に連携しながら、初期段階のエクスペリエンスを開発し、数か月以内にリリースすることを目指しています。 ご希望のシナリオを登録し、ソリューションの利用を申し込むには、[こちらのフォーム](https://aka.ms/customassistantpreviewform)に必要事項を入力してください。後ほど、Microsoft からご連絡を差し上げます。
+現在、初期プレビューを進めており、オープンソースのリポジトリを通じて初期のお客様やパートナーと緊密に連携しながら、初期段階のエクスペリエンスを開発し、数か月以内にリリースすることを目指しています。 ご希望のシナリオを登録し、ソリューションの利用を申し込むには、[こちらのフォーム](https://aka.ms/va-scenario-submission-form)に必要事項を入力してください。後ほど、Microsoft からご連絡を差し上げます。
 

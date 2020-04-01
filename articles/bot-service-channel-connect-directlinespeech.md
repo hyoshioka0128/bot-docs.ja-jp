@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: travisw
-ms.openlocfilehash: d8831930934bef15c06679236efb7f4e7962b1aa
-ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
+ms.openlocfilehash: 3202c8271ffbdb09be10087861449c36f61cfac5
+ms.sourcegitcommit: 64b25f796f89e8bb6fa53d3c824b73b8ce4d6ed8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2020
-ms.locfileid: "80117519"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80250131"
 ---
 # <a name="connect-a-bot-to-direct-line-speech"></a>ボットを Direct Line Speech に接続する
 
@@ -22,7 +22,7 @@ ms.locfileid: "80117519"
 
 クライアント アプリケーションが Direct Line Speech チャネルを介してボットと通信できるように、そのボットを構成できます。
 
-ご自身のボットを構築した後、Direct Line Speech でそれをオンボードすると、[Speech SDK](https://aka.ms/speech/sdk) を使用して、クライアント アプリケーションとの間に待機時間が短く信頼できる接続を確立できます。 これらの接続は、音声で入出力する会話エクスペリエンス用に最適化されています。 Direct Line Speech、およびクライアント アプリケーションの構築方法の詳細については、[カスタム音声優先仮想アシスタント](https://aka.ms/bots/speech/va)に関するページをご覧ください。
+ご自身のボットを構築した後、Direct Line Speech でそれをオンボードすると、[Speech SDK](https://aka.ms/speech-service-docs) を使用して、クライアント アプリケーションとの間に待機時間が短く信頼できる接続を確立できます。 これらの接続は、音声で入出力する会話エクスペリエンス用に最適化されています。 Direct Line Speech、およびクライアント アプリケーションの構築方法の詳細については、[カスタム音声優先仮想アシスタント](https://aka.ms/cognitive-services-voice-assistants)に関するページをご覧ください。
 
 ## <a name="add-the-direct-line-speech-channel"></a>Direct Line Speech チャネルを追加する
 

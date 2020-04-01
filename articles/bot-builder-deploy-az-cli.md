@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: conceptual
 ms.service: bot-service
-ms.date: 08/06/2019
+ms.date: 03/23/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f2b3a73d12e2b7932f72c870ee0a3bdcf1cbaa3a
-ms.sourcegitcommit: 4ddee4f90a07813ce570fdd04c8c354b048e22f3
+ms.openlocfilehash: 9e4c67f644e9797f3e210546a91d09f5161aa100
+ms.sourcegitcommit: 126c4f8f8c7a3581e7521dc3af9a937493e6b1df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77479292"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80499822"
 ---
 # <a name="deploy-your-bot"></a>ボットをデプロイする
 
@@ -38,56 +38,50 @@ ms.locfileid: "77479292"
 
 [!INCLUDE [deploy az subscription](~/includes/deploy/snippet-az-set-subscription.md)]
 
-
 ### <a name="3-create-the-application-registration"></a>3.アプリケーションの登録を作成する
 
 [!INCLUDE [deploy create app registration](~/includes/deploy/snippet-create-app-registration.md)]
-
 
 ### <a name="4-create-the-bot-application-service"></a>4.ボット アプリケーションサービスを作成する
 
 ボット アプリケーション サービスを作成するときに、新規または既存のリソース グループにボットをデプロイできます。 自分にとって最適なオプションを選択してください。
 
-ボット プロジェクトの ARM デプロイ テンプレート ディレクトリ `DeploymentTemplates` の正しいパスが分かっていることを確認してください。これは、`template-file` にその値を割り当てるために必要です。
-
-
-> [!NOTE]
+> [!IMPORTANT]
 > Python ボットは、Windows サービス/ボットを含むリソース グループにはデプロイできません。  複数の Python ボットを同じリソース グループにデプロイできますが、別のリソース グループに他のサービス (LUIS、QnA など) を作成します。
 
+ボット プロジェクトの ARM デプロイ テンプレート ディレクトリ `DeploymentTemplates` の正しいパスが分かっていることを確認してください。これは、`template-file` にその値を割り当てるために必要です。
 
 #### <a name="deploy-via-arm-template-with-new-resource-group"></a>**ARM テンプレートを使用したデプロイ (**新しい**リソース グループを使用)**
 
 <!-- ##### Create Azure resources -->
-[!INCLUDE [ARM with new resourece group](~/includes/deploy/snippet-ARM-new-resource-group.md)]
+[!INCLUDE [ARM with new resource group](~/includes/deploy/snippet-ARM-new-resource-group.md)]
 
 
 #### <a name="deploy-via-arm-template-with-existing--resource-group"></a>**ARM テンプレートを使用したデプロイ (**既存の**リソース グループを使用)**
 
-[!INCLUDE [ARM with existing resourece group](~/includes/deploy/snippet-ARM-existing-resource-group.md)]
+[!INCLUDE [ARM with existing resource group](~/includes/deploy/snippet-ARM-existing-resource-group.md)]
 
 ---
 
 ### <a name="5-prepare-your-code-for-deployment"></a>5.デプロイ用のコードを準備する
 
+[!INCLUDE [Work around for .NET Core 3.1 SDK](~/includes/deploy/samples-workaround-3-1.md)]
+
 #### <a name="51-retrieve-or-create-necessary-iiskudu-files"></a>5.1 必要な IIS/Kudu ファイルを取得または作成する
 
 [!INCLUDE [retrieve or create IIS/Kudu files](~/includes/deploy/snippet-IIS-Kudu-files.md)]
-
 
 #### <a name="52-zip-up-the-code-directory-manually"></a>5.2 コード ディレクトリを手動で zip 圧縮する
 
 [!INCLUDE [zip up code](~/includes/deploy/snippet-zip-code.md)]
 
-
 ## <a name="deploy-code-to-azure"></a>コードを Azure にデプロイする
 
 [!INCLUDE [deploy code to Azure](~/includes/deploy/snippet-deploy-code-to-az.md)]
 
-
 ## <a name="test-in-web-chat"></a>Web チャットでのテスト
 
 [!INCLUDE [test in web chat](~/includes/deploy/snippet-test-in-web-chat.md)]
-
 
 ## <a name="additional-information"></a>関連情報
 

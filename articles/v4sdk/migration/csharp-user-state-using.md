@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/21/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 51aef13bee896feeb901040cef641f7b1011dbd5
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 11daf828bf8847130f49ecfe020416595b2798ce
+ms.sourcegitcommit: 64b25f796f89e8bb6fa53d3c824b73b8ce4d6ed8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798085"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80250111"
 ---
 # <a name="using-net-v3-user-state-in-a-v4-bot"></a>v4 ボットで .NET v3 ユーザー状態を使用する
 
@@ -144,7 +144,7 @@ ms.locfileid: "75798085"
 - [ストレージに直接書き込む][8]
 - [会話とユーザー状態を管理する][9]
 
-[3]: https://aka.ms/botframework-emulator
+[3]: https://aka.ms/botframework-emulator-github
 [5]: https://github.com/microsoft/botframework-emulator
 [6]: https://github.com/Microsoft/BotFramework-Emulator/releases
 [7]: https://docs.microsoft.com/azure/bot-service/bot-builder-storage-concept

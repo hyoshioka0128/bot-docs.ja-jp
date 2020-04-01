@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: kamrani
 ms.service: bot-service
 ms.date: 01/16/2020
-ms.openlocfilehash: 1361c135d9cb359ad9296e5658e0fc7db4ed3b27
-ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
+ms.openlocfilehash: 84544f5c4082f88991718c5d84dc2aead05f5eb2
+ms.sourcegitcommit: 64b25f796f89e8bb6fa53d3c824b73b8ce4d6ed8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2020
-ms.locfileid: "76752844"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80250141"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Facebook にボットを接続する
 
@@ -136,7 +136,7 @@ Facebook には、基本アプリ設定ページの [Privacy Policy URL]\(プラ
 >
 > Workplace データへの制限付きアクセス (低秘密度のアクセス許可) を使用した統合については、Facebook が認める 2020 年 12 月 31 日までの継続使用の対象と見なされます。ただしその統合が、セキュリティ RFI を実施して合格し、なおかつ、2020 年 1 月 15 日より前に [Direct Support](https://my.workplace.com/work/admin/direct_support) 経由で開発者からアプリの継続使用を要請する連絡があった場合に限られます。
 >
-> Bot Framework アダプターは、[JavaScript (Node.js)](https://aka.ms/botframework-workplace-adapter) および [C# (.NET)](https://aka.ms/bf-workplace-csharp) のボット向けに提供されています。
+> Bot Framework アダプターは、[JavaScript (Node.js)](https://aka.ms/npm-botbuilder-adapter-facebook) および [C# (.NET)](https://aka.ms/botbuilder-dotnet-facebook-adapter) のボット向けに提供されています。
 
 Facebook Workplace は、従業員が簡単に接続して共同作業できる Facebook のビジネス指向バージョンです。 これには、ライブ動画、ニュース フィード、グループ、Messenger、リアクション、検索、およびトレンドの投稿が含まれています。 また、以下もサポートします。
 
@@ -181,11 +181,11 @@ Facebook Workplace については、[Workplace ヘルプ センター](https://
 
 ### <a name="update-your-bot-code-with-facebook-adapter"></a>Facebook アダプターでボットのコードを更新する
 
-自分のボットのソース コードを更新して、Workplace by Facebook と通信するためのアダプターを追加する必要があります。 アダプターは、[JavaScript (Node.js)](https://aka.ms/botframework-workplace-adapter) および [C# (.NET)](https://aka.ms/bf-workplace-csharp) のボット向けに提供されています。
+自分のボットのソース コードを更新して、Workplace by Facebook と通信するためのアダプターを追加する必要があります。 アダプターは、[JavaScript (Node.js)](https://aka.ms/npm-botbuilder-adapter-facebook) および [C# (.NET)](https://aka.ms/botbuilder-dotnet-facebook-adapter) のボット向けに提供されています。
 
 ### <a name="provide-facebook-credentials"></a>Facebook の資格情報を入力する
 
-前に Facebook Workplace からコピーした **Facebook アプリ ID**、**Facebook アプリ シークレット**、**ページ アクセス トークン**の各値を使用して、自分のボットの appsettings.json を更新する必要があります。 従来のページ ID ではなく、その **[About]\(詳細\)** ページの統合名の後に続く番号を使用します。 [JavaScript (Node.js)](https://aka.ms/botframework-workplace-adapter) または [C# (.NET)](https://aka.ms/bf-workplace-csharp) で、これらの手順に従ってボットのソース コードを更新してください。
+前に Facebook Workplace からコピーした **Facebook アプリ ID**、**Facebook アプリ シークレット**、**ページ アクセス トークン**の各値を使用して、自分のボットの appsettings.json を更新する必要があります。 従来のページ ID ではなく、その **[About]\(詳細\)** ページの統合名の後に続く番号を使用します。 [JavaScript (Node.js)](https://aka.ms/npm-botbuilder-adapter-facebook) または [C# (.NET)](https://aka.ms/botbuilder-dotnet-facebook-adapter) で、これらの手順に従ってボットのソース コードを更新してください。
 
 ### <a name="submit-for-review"></a>確認用に送信する
 
@@ -204,7 +204,7 @@ Facebook Workplace については、[Workplace ヘルプ センター](https://
 ## <a name="connect-a-bot-to-facebook-using-the-facebook-adapter"></a>Facebook アダプターを使用してボットを Facebook に接続する
 
 ボットを Facebook Workplace に接続するには、Bot Framework Facebook アダプターを使用します。 Facebook Messenger に接続するには、Facebook チャネルまたは Facebook アダプターを使用します。
-Facebook アダプターは、[JavaScript (Node.js)](https://aka.ms/botframework-workplace-adapter) および [C# (.NET)](https://aka.ms/bf-workplace-csharp) のボット向けに提供されています。
+Facebook アダプターは、[JavaScript (Node.js)](https://aka.ms/npm-botbuilder-adapter-facebook) および [C# (.NET)](https://aka.ms/botbuilder-dotnet-facebook-adapter) のボット向けに提供されています。
 
 この記事では、アダプターを使用してボットを Facebook に接続する方法について説明します。  この記事では、Facebook に接続するよう EchoBot サンプルに変更を加える手順を解説します。
 
@@ -402,6 +402,6 @@ public void ConfigureServices(IServiceCollection services)
 
 この機能のテストには、[Facebook アダプターのサンプル ボット](https://aka.ms/csharp-61-facebook-adapter-sample)を使用することもできます。上記の手順で説明したのと同じ値を appSettings.json ファイルに設定してください。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - **サンプル コード**。 [Facebook-events](https://aka.ms/facebook-events) のサンプル ボットを使用して、Facebook Messenger とのボット通信を探索します。

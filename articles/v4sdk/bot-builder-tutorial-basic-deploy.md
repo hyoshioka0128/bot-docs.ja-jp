@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 01/28/2020
+ms.date: 03/23/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f4df5e10b545d1c2cf0137400e571d8a45aa465a
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: 3b4e3652f7799fb09219b8536bd98a78e0952223
+ms.sourcegitcommit: 126c4f8f8c7a3581e7521dc3af9a937493e6b1df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895780"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80499908"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>チュートリアル:基本的なボットを作成してデプロイする
 
@@ -29,17 +29,17 @@ ms.locfileid: "76895780"
 > * それをローカル環境で実行して操作する
 > * ボットを公開する
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [dotnet quickstart](~/includes/quickstart-dotnet.md)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 [!INCLUDE [javascript quickstart](~/includes/quickstart-javascript.md)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 [!INCLUDE [python quickstart](~/includes/quickstart-python.md)]
 
@@ -48,6 +48,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 ## <a name="deploy-your-bot"></a>ボットをデプロイする
 
 ### <a name="prerequisites"></a>前提条件
+
 [!INCLUDE [deploy prerequisite](~/includes/deploy/snippet-prerequisite.md)]
 
 ### <a name="prepare-for-deployment"></a>展開を準備する
@@ -59,15 +60,19 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 [!INCLUDE [deploy prepare intro](~/includes/deploy/snippet-prepare-deploy-intro.md)]
 
 #### <a name="1-login-to-azure"></a>1.Azure にログインする
+
 [!INCLUDE [deploy az login](~/includes/deploy/snippet-az-login.md)]
 
 #### <a name="2-set-the-subscription"></a>2.サブスクリプションを設定する
+
 [!INCLUDE [deploy az subscription](~/includes/deploy/snippet-az-set-subscription.md)]
 
 #### <a name="3-create-an-app-registration"></a>3.アプリ登録を作成する
+
 [!INCLUDE [deploy create app registration](~/includes/deploy/snippet-create-app-registration.md)]
 
 #### <a name="4-deploy-via-arm-template"></a>4.ARM テンプレートを使用してデプロイする
+
 ご自身のボットは、新しいリソース グループまたは既存のリソース グループにデプロイできます。 自分にとって最適なオプションを選択してください。
 
 > [!NOTE]
@@ -75,22 +80,31 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 >
 
 ##### <a name="deploy-via-arm-template-with-new-resource-group"></a>**新しいリソース グループでの ARM テンプレートを使用したデプロイ**
+
 [!INCLUDE [ARM with new resourece group](~/includes/deploy/snippet-ARM-new-resource-group.md)]
 
 ##### <a name="deploy-via-arm-template-with-existing-resource-group"></a>**既存のリソース グループでの ARM テンプレートを使用したデプロイ**
+
 [!INCLUDE [ARM with existing resourece group](~/includes/deploy/snippet-ARM-existing-resource-group.md)]
 
 #### <a name="5-prepare-your-code-for-deployment"></a>5.デプロイ用のコードを準備する
+
+[!INCLUDE [Work around for .NET Core 3.1 SDK](~/includes/deploy/samples-workaround-3-1.md)]
+
 ##### <a name="retrieve-or-create-necessary-iiskudu-files"></a>**必要な IIS/Kudu ファイルを取得または作成する**
+
 [!INCLUDE [retrieve or create IIS/Kudu files](~/includes/deploy/snippet-IIS-Kudu-files.md)]
 
 ##### <a name="zip-up-the-code-directory-manually"></a>**コード ディレクトリを手動で zip 圧縮する**
+
 [!INCLUDE [zip up code](~/includes/deploy/snippet-zip-code.md)]
 
 ### <a name="deploy-code-to-azure"></a>コードを Azure にデプロイする
+
 [!INCLUDE [deploy code to Azure](~/includes/deploy/snippet-deploy-code-to-az.md)]
 
 ### <a name="test-in-web-chat"></a>Web チャットでのテスト
+
 [!INCLUDE [test in web chat](~/includes/deploy/snippet-test-in-web-chat.md)]
 
 ## <a name="additional-resources"></a>その他のリソース
@@ -98,5 +112,6 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 [!INCLUDE [additional resources snippet](~/includes/deploy/snippet-additional-resources.md)]
 
 ## <a name="next-steps"></a>次のステップ
+
 > [!div class="nextstepaction"]
 > [ボットで QnA Maker を使用して質問に回答する](bot-builder-tutorial-add-qna.md)
