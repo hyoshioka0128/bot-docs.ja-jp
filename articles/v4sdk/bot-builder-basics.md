@@ -64,7 +64,7 @@ ms.locfileid: "77071860"
 
 アクティビティを受信したボットは、それを自身の "*アクティビティ ハンドラー*" に渡します。 実際には "*ターン ハンドラー*" と呼ばれる基本ハンドラーが 1 つあり、 すべてのアクティビティがそこを介してルーティングされます。 その後、ターン ハンドラーは、受信したアクティビティの種類に関係なく、個別のアクティビティ ハンドラーを呼び出します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 たとえば、ボットがメッセージ アクティビティを受信すると、ターン ハンドラーはその受信アクティビティを確認して、`OnMessageActivityAsync` アクティビティ ハンドラーに送信します。
 
@@ -74,7 +74,7 @@ ms.locfileid: "77071860"
 
 基本ターン ハンドラーのオーバーライドが必要になる場合もあります。たとえば、ターンの最後に[状態を保存](bot-builder-concept-state.md)するような状況です。 これを行う場合は、最初に必ず `await base.OnTurnAsync(turnContext, cancellationToken);` を呼び出して、`OnTurnAsync` の基本実装がご自身の追加コードの前に実行されていることを確認します。 この実装は特に、`OnMessageActivityAsync` などの残りのアクティビティ ハンドラーを呼び出す役割を果たします。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript の `ActivityHandler` では、イベント エミッタ/リスナー パターンが使用されます。
 たとえば、`onMessage` メソッドを使用してメッセージ アクティビティのイベント リスナーを登録します。 リスナーは複数登録できます。 ボットがメッセージ アクティビティを受信すると、アクティビティ ハンドラーがそのアクティビティを認識し、各 `onMessage` アクティビティ リスナーを登録された順に送信します。
@@ -87,7 +87,7 @@ JavaScript の `ActivityHandler` では、イベント エミッタ/リスナー
 基本ターン ハンドラーのオーバーライドが必要になる状況はめったにないため、この操作を行う場合は気を付けてください。
 `onDialog` という名前の特殊なハンドラーがあります。 `onDialog` ハンドラーは、ハンドラーの残りの部分の実行後、最後に実行され、特定のアクティビティの種類には関連付けられていません。 上記のすべてのハンドラーと同様、必ず `next()` を呼び出して、プロセスの残りの部分を終了してください。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 たとえば、ボットがメッセージ アクティビティを受信すると、ターン ハンドラーはその受信アクティビティを確認して、`on_message_activity` アクティビティ ハンドラーに送信します。
 
@@ -107,13 +107,13 @@ JavaScript の `ActivityHandler` では、イベント エミッタ/リスナー
 
 ## <a name="bot-structure"></a>ボットの構造
 
-次のセクションでは、[**C#**](../dotnet/bot-builder-dotnet-sdk-quickstart.md) または [**JavaScript**](../javascript/bot-builder-javascript-quickstart.md) 用に提供されたテンプレートを使用して簡単に作成できる EchoBot の "_主要部_" について説明します。
+次のセクションでは、[**CSharp**](../dotnet/bot-builder-dotnet-sdk-quickstart.md) または [**JavaScript**](../javascript/bot-builder-javascript-quickstart.md) 用に提供されたテンプレートを使用して簡単に作成できる EchoBot の "_主要部_" について説明します。
 
 <!--Need to add section calling out the controller in code, and explaining it further-->
 
 ボットは Web アプリケーションで、各言語のテンプレートが用意されています。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 VSIX テンプレートによって生成されるのは [ASP.NET MVC Core](https://dotnet.microsoft.com/apps/aspnet/mvc) Web アプリです。 [ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/index?view=aspnetcore-2.1&tabs=aspnetcore2x) の基礎に関する記事を見ると、**Program.cs** や **Startup.cs** などのファイルにあるのと同様のコードが確認できます。 これらのファイルはすべての Web アプリに必須で、ボット固有のものではありません。
 
@@ -121,7 +121,7 @@ VSIX テンプレートによって生成されるのは [ASP.NET MVC Core](http
 
 **appsettings.json** ファイルでは、アプリ ID、パスワードなど、お使いのボットの構成情報が指定されます。 特定のテクノロジを使用している場合、または運用環境でこのボットを使用している場合は、ご自身の特定のキーまたは URL をこの構成に追加する必要があります。 ただし、このエコー ボットについては、今のところ、ここでは何も行う必要はありません。アプリ ID およびパスワードは、現時点では未定義のままにしておくことができます。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 <!-- TODO: Update this aka link to point to samples/javascript_nodejs/02.echobot (instead of samples/javascript_nodejs/02.a.echobot) once work-in-progress is merged into master. -->
 
@@ -139,7 +139,7 @@ Yeoman ジェネレーターにより、[restify](http://restify.com/) Web ア�
 
 `npm install dotenv`
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ### <a name="requirementstxt"></a>requirements.txt
 
@@ -157,7 +157,7 @@ Yeoman ジェネレーターにより、[restify](http://restify.com/) Web ア�
 
 ボット ロジックは 1 つ以上のチャネルからの受信アクティビティを処理し、応答の送信アクティビティを生成します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 主なボット ロジックはボット コードで定義され、ここでは `Bots/EchoBot.cs` と呼ばれます。 `EchoBot` は `ActivityHandler` から派生し、これは `IBot` インターフェイスから派生しています。 `ActivityHandler` ではさまざまなハンドラーがさまざまな種類のアクティビティに対して定義されます。たとえば、ここでは `OnMessageActivityAsync` および `OnMembersAddedAsync` の 2 つが定義されます。 これらのメソッドは保護されていますが、`ActivityHandler` から派生しているため、上書きできます。
 
@@ -205,7 +205,7 @@ public class MyBot : ActivityHandler
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 主なボット ロジックはボット コードで定義され、ここでは `bots\echoBot.js` と呼ばれます。 `EchoBot` は `ActivityHandler` から派生しています。 `ActivityHandler` ではさまざまなイベントがさまざまな種類のアクティビティに対して定義されます。ご自身のボットの動作を変更するには、`onMessage`、`onConversationUpdate` などのイベント リスナーをここで登録します。
 
@@ -253,7 +253,7 @@ class MyBot extends ActivityHandler {
 module.exports.MyBot = MyBot;
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 主なボット ロジックはボット コードで定義され、ここでは `bots/echo_bot.py` と呼ばれます。 `EchoBot` は `ActivityHandler` から派生し、これは `Bot` インターフェイスから派生しています。 `ActivityHandler` ではさまざまなハンドラーがさまざまな種類のアクティビティに対して定義されます。たとえば、ここでは `on_message_activity` および `on_members_added` の 2 つが定義されます。 これらのメソッドは保護されていますが、`ActivityHandler` から派生しているため、上書きできます。
 
@@ -302,7 +302,7 @@ class MyBot(ActivityHandler):
 
 ### <a name="access-the-bot-from-your-app"></a>アプリからボットへのアクセス
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 #### <a name="set-up-services"></a>サービスのセットアップ
 
@@ -364,7 +364,7 @@ public class BotController : ControllerBase
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 #### <a name="indexjs"></a>index.js
 
@@ -438,7 +438,7 @@ server.post('/api/messages', (req, res) => {
 });
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 #### <a name="apppy"></a>app.py
 
