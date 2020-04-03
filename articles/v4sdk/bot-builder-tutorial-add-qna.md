@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: tutorial
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 03/23/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bb79739e2199556fe6ce3fdd58f2fc34165f36e2
-ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
+ms.openlocfilehash: 17d88db4e291458bc87d959c90759e0c44bcc283
+ms.sourcegitcommit: 126c4f8f8c7a3581e7521dc3af9a937493e6b1df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77519981"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80499895"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>チュートリアル:ボットで QnA Maker を使用して質問に回答する
 
@@ -30,7 +30,7 @@ QnA Maker サービスとナレッジ ベースを使用して、質問と回答
 > * ナレッジ ベースに対してクエリを実行するようにボットを更新する
 > * ボットを再公開する
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -98,7 +98,7 @@ Bot Framework v4.3 以降、Azure では、ダウンロードされたボット�
 
 次の値をご自身の .env ファイルに追加します。
 
-```
+```text
 MicrosoftAppId=""
 MicrosoftAppPassword=""
 ScmType=None
@@ -127,7 +127,7 @@ class DefaultConfig:
 
 ---
 
-| フィールド | Value |
+| フィールド | 値 |
 |:----|:----|
 | QnAKnowledgebaseId | QnA Maker ポータルで自動的に生成されたナレッジ ベース ID。 |
 | QnAAuthKey (Python では QnAEndpointKey)  | QnA Maker ポータルで自動的に生成されエンドポイント キー。 |
@@ -235,6 +235,7 @@ class DefaultConfig:
 
 1. ターミナルまたはコマンド プロンプトを開いて、プロジェクトのルート ディレクトリに移動します。
 1. **botbuilder-ai** npm パッケージをプロジェクトに追加します。
+
    ```shell
    npm i botbuilder-ai
    ```
@@ -242,6 +243,7 @@ class DefaultConfig:
 1. **Index.js** で、// アダプターの作成セクションに続けて、次のコードを追加して QnA Maker サービスを生成するために必要な .env ファイル構成情報を読み取ります。
 
    **index.js**
+
    ```javascript
    // Map knowledge base endpoint values from .env file into the required format for `QnAMaker`.
    const configuration = {
@@ -255,6 +257,7 @@ class DefaultConfig:
 1. QnA サービス構成情報を渡すようにボットの構造を更新します。
 
    **index.js**
+
    ```javascript
    // Create the main dialog.
    const myBot = new MyBot(configuration, {});
@@ -263,6 +266,7 @@ class DefaultConfig:
 1. **bot.js** ファイルに、QnAMaker に必要なこれを追加します。
 
    **bot.js**
+
    ```javascript
    const { QnAMaker } = require('botbuilder-ai');
    ```
@@ -270,6 +274,7 @@ class DefaultConfig:
 1. QnAMaker コネクタを作成するのに必要な渡された構成パラメーターを受けとって、これらのパラメーターが指定されていない場合にエラーをスローするようにコンストラクターを変更します。
 
    **bot.js**
+
    ```javascript
       class MyBot extends ActivityHandler {
          constructor(configuration, qnaOptions) {
@@ -386,9 +391,13 @@ class DefaultConfig:
 ![QnA サンプルをテストする](./media/qna-test-bot.png)
 
 ## <a name="republish-your-bot"></a>ボットを再公開する
-これで、ボットを Azure に再公開できる状態になりました。 プロジェクト フォルダーを zip 圧縮してから、コマンドを実行してボットを Azure にデプロイする必要があります。 詳細については、[ボットのデプロイ](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&tabs=csharp)に関する記事を参照してください。 
 
-### <a name="zip-your-project-folder"></a>プロジェクト フォルダーを zip 圧縮する 
+これで、ボットを Azure に再公開できる状態になりました。 プロジェクト フォルダーを zip 圧縮してから、コマンドを実行してボットを Azure にデプロイする必要があります。 詳細については、[ボットのデプロイ](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&tabs=csharp)に関する記事を参照してください。
+
+[!INCLUDE [Work around for .NET Core 3.1 SDK](~/includes/deploy/samples-workaround-3-1.md)]
+
+### <a name="zip-your-project-folder"></a>プロジェクト フォルダーを zip 圧縮する
+
 [!INCLUDE [zip up code](~/includes/deploy/snippet-zip-code.md)]
 
 <!-- > [!IMPORTANT]
@@ -402,6 +411,7 @@ class DefaultConfig:
 > If your root folder location is incorrect, the **bot will fail to run in the Azure portal**. -->
 
 ### <a name="deploy-your-code-to-azure"></a>コードを Azure にデプロイする
+
 [!INCLUDE [deploy code to Azure](~/includes/deploy/snippet-deploy-code-to-az.md)]
 
 <!-- # [C#](#tab/csharp)

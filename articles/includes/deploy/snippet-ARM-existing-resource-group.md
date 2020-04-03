@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2559f424e9f50a760837494f87e4f33731ffb358
-ms.sourcegitcommit: 4ddee4f90a07813ce570fdd04c8c354b048e22f3
+ms.openlocfilehash: 27c6079030e6a1da73646c6c325a78614960fa07
+ms.sourcegitcommit: 126c4f8f8c7a3581e7521dc3af9a937493e6b1df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77479294"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80499852"
 ---
 この手順では、ボットのデプロイ ステージを設定するボット アプリケーション サービスを作成します。 既存のリソース グループを使用する場合は、既存のアプリ サービス プランを使用するか、新しいものを作成できます。 両方のオプションの手順を以下に示します。
 
@@ -17,8 +17,7 @@ ms.locfileid: "77479294"
 
 この場合、既存の App Service プランが使用されますが、Web アプリと Bot Channels Registration は新しく作成されます。
 
-> [!NOTE]
-> 次のコマンドにより、ボットの ID と表示名が設定されます。 `botId` パラメーターはグローバルに一意である必要があり、不変のボット ID として使用されます。 ボットの表示名は変更可能です。
+次のコマンドにより、ボットの ID と表示名が設定されます。 `botId` パラメーターはグローバルに一意である必要があり、不変のボット ID として使用されます。 ボットの表示名は変更可能です。
 
 ```cmd
 az group deployment create --resource-group "<name-of-resource-group>" --template-file "<path-to-template-with-preexisting-rg.json>" --parameters appId="<app-id-from-previous-step>" appSecret="<password-from-previous-step>" botId="<id or bot-app-service-name>" newWebAppName="<bot-app-service-name>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<region-location-name>" --name "<bot-app-service-name>"

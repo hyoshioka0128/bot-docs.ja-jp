@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: 835ff68dced16ccba2535e378b0b02e0de21e1fb
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 999c664f78d11e67647f9efa28bc7f059c43882b
+ms.sourcegitcommit: 64b25f796f89e8bb6fa53d3c824b73b8ce4d6ed8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75792910"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80250121"
 ---
 # <a name="debug-a-bot"></a>ボットをデバッグする
 
@@ -80,7 +80,7 @@ Visual Studio (VS) では、ブレークポイントを設定し、デバッグ 
 
 ::: moniker range="azure-bot-service-3.0"
 
-## <a id="debug-csharp-serverless"></a> 従量課金プランの C\# Functions ボットをデバッグする
+## <a name="debug-a-consumption-plan-c-functions-bot"></a><a id="debug-csharp-serverless"></a> 従量課金プランの C\# Functions ボットをデバッグする
 
 Bot Service での従量課金プランのサーバーレス C\# 環境は、Node エンジンとよく似たランタイム ホストを必要とするため、一般的な C\# アプリケーションより、Node.js との方が共通点があります。 Azure では、ランタイムはクラウド内のホスティング環境の一部ですが、その環境をデスクトップ上にローカルにレプリケートする必要があります。 
 
@@ -107,7 +107,7 @@ Visual Studio 2017 でブレークポイントを使用してコードをデバ�
 最初に、コマンド プロンプトを開き、リポジトリで **project.json** ファイルがあるフォルダーに移動します。 次に、`dotnet restore` コマンドを実行して、ボットで参照されているさまざまなパッケージを復元します。
 
 > [!NOTE]
-> Visual Studio 2017 では、Visual Studio による依存関係の処理方法が変更されています。 Visual Studio 2015 では **project.json** を使って依存関係を処理しますが、Visual Studio 2017 では Visual Studio に読み込みときに **.csproj** モデルを使います。 Visual Studio 2017 を使っている場合は、リポジトリ内の **/messages** フォルダーに<a href="https://aka.ms/bf-debug-project">この **.csproj** ファイルをダウンロード</a>した後で、`dotnet restore` コマンドを実行します。
+> Visual Studio 2017 では、Visual Studio による依存関係の処理方法が変更されています。 Visual Studio 2015 では **project.json** を使って依存関係を処理しますが、Visual Studio 2017 では Visual Studio に読み込みときに **.csproj** モデルを使います。 Visual Studio 2017 を使っている場合は、リポジトリ内の **/messages** フォルダーにこの [ **.csproj** ファイル](https://aka.ms/v3-dotnet-debug-csproj)をダウンロードしてから、`dotnet restore` コマンドを実行します。
 
 ![コマンド プロンプト](~/media/bot-service-debug-bot/csharp-azureservice-debug-envconfig.png)
 

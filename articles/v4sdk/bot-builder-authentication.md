@@ -7,14 +7,14 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 67dcc948995fa76be6c99e2d6720ff1ae9735856
-ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
+ms.openlocfilehash: b17adabf6eaf845fa8cfc5f36956c89654f59550
+ms.sourcegitcommit: 64b25f796f89e8bb6fa53d3c824b73b8ce4d6ed8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2020
-ms.locfileid: "80117750"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80250081"
 ---
-<!-- 
+<!--
 
 Related TODO:
 - Check code in [Web Chat channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
@@ -34,87 +34,111 @@ Related TODO:
 
 - "The scope of the connection setting needs to have both openid and a resource in the Azure AD graph, such as Mail.Read." Unclear if I need to take some action at this point to make happen. Kind of out of context. I'm registering an AAD application in the portal, there's no connection setting
 - Does the bot need all of these scopes for the samples? (e.g. "Read all users' basic profiles")
+
 -->
 
-# <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
+# <a name="add-authentication-to-a-bot"></a>ボットに認証を追加する
 
 [!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
-Azure Bot Service および v4 SDK には新しいボット認証機能が追加されています。これにより、Azure AD (Azure Active Directory)、GitHub、Uber などの各種 ID プロバイダーにユーザーを認証するボットを容易に開発できます。 これらの機能は、一部のクライアント用の "_マジック コード検証_" を排除することで、ユーザー エクスペリエンスを向上させることができます。
+Azure Bot Service v4 SDK を使用すると、認証を必要とするオンライン リソースにアクセス可能なボットの開発が容易になります。 ボットで認証トークンを管理する必要はありません。 Azure で OAuth2 を使用して各ユーザーの資格情報に基づいてトークンが生成されます。 ボットでは、Azure によって生成されたトークンを使用して、それらのリソースにアクセスします。 この方法では、ユーザーはセキュリティで保護されたリソースにアクセスするための ID とパスワードをボットに提供する必要はありません。信頼できる ID プロバイダーにのみ提供します。
 
-これ以前は、ボットにおいて、OAuth コントローラーとログイン リンクを含め、ターゲット クライアントの ID とシークレットを保存し、ユーザー トークン管理を実行する必要がありました。 ボットはユーザーに対して Web サイトにサインインするように求め、これによりユーザーの本人確認に使用される "_マジック コード_" が生成されました。
-
-OAuth コントローラーのホスティングやトークンのライフサイクルの管理は、すべて Azure Bot Service によって実行できるようになったため、ボット開発者がこれらを行う必要はなくなりました。
-
-機能は、次のとおりです。
-
-- チャネルの機能向上によって新しい WebChat や DirectLineJS ライブラリなどの新しい認証機能がサポートされ、6 桁のマジック コード検証の必要性を排除。
-- Azure Portal で各種 OAuth アイデンティティ プロバイダーへの接続設定を追加、削除、および構成する機能の向上。
-- Azure AD (v1 と v2 の両エンドポイント) や GitHub など、すぐに利用できる各種アイデンティティ プロバイダーのサポート。
-- C# および Node.js の Bot Framework SDK の更新により、トークンの取得、OAuthCard の作成、TokenResponse イベントの処理が可能に。
-- Azure AD に対して認証されるボットを作成する方法のサンプル。
-
-Azure Bot Service で認証が処理されるしくみの詳細については、「[会話内のユーザー認証](bot-builder-concept-authentication.md)」を参照してください。
-
-この記事の手順を応用して、このような機能を既存のボットに追加することができます。 以下のサンプル ボットは、新しい認証機能を示しています。
+Bot Framework での認証の処理方法の概要については、「[ボット認証](bot-builder-concept-authentication.md)」を参照してください。
 
 > [!NOTE]
-> 認証機能は BotBuilder v3 でも使用できます。 ただし、この記事では v4 サンプル コードのみを扱います。
+> 認証は、BotBuilder v3 でも機能します。 ただし、この記事では v4 サンプル コードのみを扱います。
 
-### <a name="about-this-sample"></a>このサンプルについて
+この記事では、2 つのサンプルを参照します。 1 つは、認証トークンを取得する方法を示しています。 もう 1 つはより複雑で、ユーザーに代わって [Microsoft Graph](https://developer.microsoft.com/en-us/graph) にアクセスする方法を示しています。 どちらの場合も、ID プロバイダーとして Azure Active Directory (AD) v1 または Azure AD v2 を使用して、ボットの OAuth トークンを取得できます。
+この記事では、次の方法について説明します。
 
-Azure ボット リソースを作成する必要があります。また、以下のものが必要です。
+- [Azure ボット アプリケーションを作成する](#create-the-azure-bot-application)
+- [Azure AD ID アプリケーションを作成する](#create-the-azure-ad-identity-application)
+- [Azure AD OAuth アプリケーションをボットに登録する](#register-the-azure-ad-oauth-application-with-the-bot)
+- [ボット コードを準備する](#prepare-the-bot-code)
 
-1. 自分のボットを外部のリソース (Office 365 など) にアクセスできるようにするための Azure AD アプリ登録。
-1. 別個のボット リソース。 そのボット リソースによって、ご自身のボットの資格情報が登録されます。ご自身のボット コードをローカルで実行している場合でも、これらの資格情報は認証機能のテストに必要です。
-
-> [!IMPORTANT]
-> Azure でボットを登録すると必ず、Azure AD アプリが割り当てられますが、 このアプリで保護されるのは、チャネルからボットへのアクセスです。 ユーザーに代わってボットが認証できるようにするアプリケーションごとに、追加の AAD アプリが必要です。
-
-この記事では、Azure AD v1 または v2 トークンを使用して Microsoft Graph に接続するサンプル ボットを作成します。 また、関連付けられている Azure AD アプリを作成して登録する方法についても説明します。 このプロセスの一環として、[Microsoft/BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples) GitHub リポジトリのコードを使用します。 この記事では、次のプロセスについて説明します。
-
-- **ボット リソースの作成**
-- **Azure AD アプリケーションの作成**
-- **ボットへの Azure AD アプリケーションの登録**
-- **ボットのサンプル コードの準備**
-
-手順が終了すると、電子メールのチェックと送信、自分とその上司の情報の表示など、Azure AD アプリケーションに対するいくつかの単純なタスクに応答できるボットが完成します。このボットはローカルで実行されています。 これを行うために、ボットでは Azure AD アプリケーションからのトークンを Microsoft.Graph ライブラリに対して使用します。 OAuth サインイン機能をテストするためにご自身のボットを公開する必要はありませんが、ボットには有効な Azure アプリ ID とパスワードが必要になります。
+この記事を完了すると、いくつかの単純なタスクに応答できるボットが完成します。 Microsoft Graph の例では、電子メールのチェックと送信、上司の情報の表示を行います。 OAuth の機能をテストするためにボットを公開する必要はありませんが、ボットには有効な Azure アプリ ID とパスワードが必要になります。
 
 ### <a name="web-chat-and-direct-line-considerations"></a>Web チャットと Direct Line に関する考慮事項
 
 <!-- Summarized from: https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features/ -->
 
 > [!IMPORTANT]
-> こちらの重要な[セキュリティに関する考慮事項](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md#security-considerations)に留意してください。
+> Web チャットで Azure Bot Service 認証を使用する場合、注意する必要がある重要なセキュリティの考慮事項がいくつかあります。 詳細については、REST 認証に関する記事の「[セキュリティに関する考慮事項](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md#security-considerations)」セクションを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - [ボットの基本][concept-basics]、[状態の管理][concept-state]、[ダイアログ ライブラリ][concept-dialogs]、[連続して行われる会話フローを実装][simple-dialog]する方法、[ダイアログを再利用][component-dialogs]する方法に関する知識。
 - Azure と OAuth 2.0 開発の知識。
-- Visual Studio 2017 以降、Node.js、npm、git。
-- 次のいずれかのサンプル。
+- .NET 用の Visual Studio 2017 以降。
+- Javascript 用の Node.js。
+- Python の場合は Python 3.6 または3.7。
+- 次に示すサンプルのいずれか。
 
 | サンプル | BotBuilder のバージョン | 対象 |
 |:---|:---:|:---|
 | [**CSharp**][cs-auth-sample]、[**JavaScript**][js-auth-sample]、または [**Python**][python-auth-sample] の**ボット認証** | v4 | OAuthCard サポート |
 | [**CSharp**][cs-msgraph-sample]、[**JavaScript**][js-msgraph-sample]、または [**Python**](https://aka.ms/bot-auth-msgraph-python-sample-code) の**ボット認証 MSGraph**| v4 |  OAuth 2 を使用した Microsoft Graph API サポート |
 
-## <a name="create-your-bot-resource-on-azure"></a>Azure でご自身のボット リソースを作成する
+### <a name="about-the-samples"></a>サンプルについて
 
-[Azure portal](https://portal.azure.com/) を使用して、**ボット リソース**を作成します。
+この記事で参照しているサンプルを実行するには、次のものが必要です。
 
-詳細については、「[Azure Bot Service を使用してボットを作成する](./abs-quickstart.md)」を参照してください。
+1. Azure でボット リソースを登録するための Azure Active Directory (AD) アプリケーション。 このアプリケーションを使用すると、ボットはMicrosoft Graph などのセキュリティで保護された外部リソースにアクセスできます。 また、ユーザーは Web チャットなどの複数のチャネルを介してボットと通信できます。
+1. ID プロバイダーとして機能する個別の Azure AD アプリケーション。 このアプリケーションは、ボットとセキュリティで保護されたリソースの間で OAuth 接続を確立するために必要な資格情報を提供します。 この記事では、ID プロバイダーとして Active Directory を使用することに注意してください。 他にも多くのプロバイダーがサポートされています。
 
-## <a name="create-and-register-an-azure-ad-application"></a>Azure AD アプリケーションを作成して登録する
+> [!IMPORTANT]
+> Azure でボットを登録すると必ず、Azure AD アプリケーションが割り当てられますが、 このアプリケーションで保護されるのは、チャネルからボットへのアクセスです。 ユーザーに代わってボットがアクセスする外部のセキュリティで保護されたリソースごとに、追加の Azure AD アプリケーションが必要です。
 
-Microsoft Graph API に接続するためにご自身のボットが使用できる Azure AD アプリケーションが必要です。
+## <a name="create-the-azure-bot-application"></a>Azure ボット アプリケーションを作成する
 
-このボットには Azure AD v1 または v2 エンドポイントを使用できます。
-v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の比較](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare)に関する記事と、[Azure AD v2.0 エンドポイントの概要](https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview)に関する記事を参照してください。
+このセクションでは、ボット リソースを Azure に登録してボット コードをホストする方法について説明します。
 
-### <a name="create-your-azure-ad-application"></a>Azure AD アプリケーションを作成する
+1. ブラウザーで [Azure portal](https://portal.azure.com/) に移動します。
+1. 左側のウィンドウで、新しいリソースの作成を選択します。
+1. 右側のパネルで、*bot*という単語を含むリソースの種類を検索し、 **[Bot Channels Registration]** を選択します。
+1. **Create** をクリックしてください。
+1. **[Bot Channels Registration]** パネルで、必要な情報を入力します。 次の図で例を示します。
 
-次の手順を使用して、新しい Azure AD アプリケーションを作成します。 作成するアプリには v1 または v2 エンドポイントを使用できます。
+    ![Bot Channels Registration](./media/how-to-auth/bot-channels-registratiopn.PNG)
+
+
+1. **[アプリ ID とパスワードの自動作成]** をクリックして **[新規作成]** を選択します。
+1. **[App Registration Portal でアプリ ID を作成する]** をクリックします。 これにより、新しいページが開きます。
+1. **[アプリの登録]** ページで、左上にある **[新規登録]** をクリックします。
+1. 登録するボット アプリケーションの名前を入力します。 この記事では、*TestingBotAuth*という名前を使用しますが、各ボットに一意の名前を付ける必要があります。
+1. **[Supported account types]\(サポートされているアカウントの種類\)** では、 *[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人用 Microsoft アカウント (Skype、Xbox など)\)* を選択します。
+1. **[登録]** をクリックします。 完了すると、Azure にアプリ登録の概要ページが表示されます。
+1. **アプリケーション (クライアント) ID** をコピーしてファイルに保存します。
+1. 左側のパネルで、 **[Certificate & secrets]\(証明書とシークレット\)** をクリックします。
+    1. *[クライアント シークレット]* で、 **[新しいクライアント シークレット]** をクリックします。
+    1. 必要に応じてこのアプリのために作成する他のシークレットと、このシークレットを区別するために、説明を追加します。
+    1. **[期限]** を **[無期限]** に設定します。
+    1. **[追加]** をクリックします。
+    1. 新しいクライアン トシークレットをコピーしてファイルに保存します。
+        > [!WARNING]
+        > ボットを設定するのに十分な期間だけ、このシークレットを記録しておきます。
+        > 正当な理由がない限りコピーを保存しないでください。この場合は、安全な場所に保管します。
+1. *[Bot Channel Registration]* ウィンドウで、 **[Microsoft アプリ ID]** ボックスの**アプリ ID** と **[パスワード]** ボックスの**クライアント シークレット**をそれぞれコピーします。
+1. **[OK]** をクリックします。
+1. 最後に、 **[作成]** をクリックします。
+
+Azure での登録が完了すると、Bot Channels Registration とボット アプリ サービスが選択したリソース グループに含まれます。
+
+## <a name="azure-ad-identity-service"></a>Azure AD ID サービス
+
+Azure Active Directory (Azure AD) は、OAuth 2.0 などの業界標準プロトコルを使用して、ユーザーを安全にサインインさせるアプリケーションを構築できるクラウド ID サービスです。
+
+次の 2 つの ID サービスのいずれかを使用できます。
+
+1. Azure AD 開発者プラットフォーム (v1.0)。 **Azure AD v1**エンドポイントとも呼ばれ、Microsoft の職場または学校アカウントを使用してユーザーを安全にサインインさせるアプリを構築できます。
+詳細については、「[開発者向け Azure Active Directory (v1.0) の概要](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-overview)」を参照してください。
+1. Microsoft ID プラットフォーム (v2.0)。 **Azure AD v2** エンドポイントとも呼ばれ、Azure AD プラットフォーム (v1.0) の進化版です。 これにより、すべての Microsoft ID プロバイダーにサインインして、Microsoft API (Microsoft Graph など) や開発者が構築した他の API を呼び出すためにトークンを取得するアプリケーションを構築できます。 詳細については、「[Microsoft ID プラットフォーム (v2.0) の概要](https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview)」を参照してください。
+
+v1 と v2 エンドポイントの違いについては、「[Microsoft ID プラットフォーム (v2.0) に更新する理由](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare)」を参照してください。 完全な情報については、[Microsoft ID プラットフォーム (旧称: 開発者向け Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/develop/) に関する記事を参照してください。
+
+### <a name="create-the-azure-ad-identity-application"></a>Azure AD ID アプリケーションを作成する
+
+このセクションでは、OAuth2 を使用してボットを認証する Azure AD ID アプリケーションを作成する方法について説明します。 Azure AD v1 または Azure AD v2 エンドポイントを使用できます。
 
 > [!TIP]
 > アプリケーションによって要求されたアクセス許可を委任することに同意できる、テナントで Azure AD プリケーションを作成し、登録する必要があります。
@@ -164,13 +188,15 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 これで、Azure AD アプリケーションが構成されました。
 
-### <a name="register-your-azure-ad-application-with-your-bot"></a>Azure AD アプリケーションをボットに登録する
+### <a name="register-the-azure-ad-oauth-application-with-the-bot"></a>Azure AD OAuth アプリケーションをボットに登録する
 
-次に、作成した Azure AD アプリケーションをボットに登録します。
+次のステップでは、作成した Azure AD アプリケーションをボットに登録します。
+
+# <a name="azure-ad-v1"></a>[Azure AD v1](#tab/aadv1)
 
 #### <a name="azure-ad-v1"></a>Azure AD v1
 
-1. [Azure Portal](https://portal.azure.com/) で、ボットのリソース ページに移動します。
+1. [Azure Portal][azure-portal] で、ボットのリソース ページに移動します。
 1. **[設定]** をクリックします。
 1. ページ下部付近の **[OAuth Connection Settings]\(OAuth 接続設定\)** で、 **[設定の追加]** をクリックします。
 1. 次のようにフォームに入力します。
@@ -181,11 +207,11 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
     1. **[クライアント シークレット]** に、作成したシークレットを入力して、Azure AD アプリへのアクセスをボットに許可します。
     1. **[付与タイプ]** に、`authorization_code` と入力します。
     1. **[ログイン URL]** に、`https://login.microsoftonline.com` と入力します。
-    1. **[テナント ID]** に、AAD アプリを作成したときに選択したサポートされるアカウントの種類に基づいて、AAD アプリ用に以前記録した**ディレクトリ (テナント) ID** を入力するか、「**common**」と入力します。 割り当てる値を決定するには、次の条件に従います。
+    **[テナント ID]** に、AAD アプリを作成したときに選択したサポートされるアカウントの種類に基づいて、Azure AD アプリ用に前に記録した**ディレクトリ (テナント) ID** を入力するか、「**common**」と入力します。 割り当てる値を決定するには、次の条件に従います。
 
-        - AAD アプリの作成時に、 *[Accounts in this organizational directory only (Microsoft only - Single tenant)]\(この組織のディレクトリ内のアカウントのみ (Microsoft のみ - シングル テナント)\)* または *[Accounts in any organizational directory(Microsoft AAD directory - Multi tenant)]\(任意の組織のディレクトリ内のアカウント (Microsoft AAD ディレクトリ - マルチテナント)\)* を選択した場合、AAD アプリ用に以前記録した**テナント ID** を入力します。
+        - Azure AD アプリの作成時に、 *[Accounts in this organizational directory only (Microsoft only - Single tenant)]\(この組織ディレクトリ内のアカウントのみ (Microsoft のみ - シングル テナント)\)* または *[Accounts in any organizational directory (Microsoft Azure AD directory - Multi tenant)]\(任意の組織ディレクトリ内のアカウント (Microsoft Azure AD ディレクトリ - マルチテナント)\)* を選択した場合、AAD アプリ用に前に記録した**テナント ID** を入力します。
 
-        - ただし、 *[Accounts in any organizational directory (Any AAD directory - Multi tenant and personal Microsoft accounts e.g. Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウント (任意の AAD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox、Outlook.com など)\)* を選択した場合、テナント ID の代わりに「**common**」という語を入力します。 それ以外の場合、AAD アプリは ID が選択されているテナントを通じて検証され、個人の MS アカウントは除外されます。
+        - ただし、 *[Accounts in any organizational directory (Any Azure AD directory - Multi tenant and personal Microsoft accounts e.g. Skype, Xbox, Outlook.com)]\(任意の組織ディレクトリ内のアカウント (任意の Azure ADディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox、Outlook.com など)\)* を選択した場合、テナント ID の代わりに「**common**」という語を入力します。 そうしないと、Azure AD アプリは ID が選択されているテナントを通じて検証され、個人の MS アカウントは除外されます。
 
        これは、認証可能なユーザーに関連付けられるテナントになります。
 
@@ -194,12 +220,11 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 1. **[保存]** をクリックします。
 
-> [!NOTE]
-> これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。
+# <a name="azure-ad-v2"></a>[Azure AD v2](#tab/aadv2)
 
 #### <a name="azure-ad-v2"></a>Azure AD v2
 
-1. [Azure Portal](https://portal.azure.com/) で、ボットの [Bot Channels Registration]\(ボット チャネル登録\) ページに移動します。
+1. [Azure Portal][azure-portal] で、ボットの [Bot Channels Registration]\(ボット チャネル登録\) ページに移動します。
 1. **[設定]** をクリックします。
 1. ページ下部付近の **[OAuth Connection Settings]\(OAuth 接続設定\)** で、 **[設定の追加]** をクリックします。
 1. 次のようにフォームに入力します。
@@ -208,23 +233,26 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
     1. **[サービス プロバイダー]** で、 **[Azure Active Directory v2]** を選択します。 これを選択すると、Azure AD に固有のフィールドが表示されます。
     1. **[クライアント ID]** に、Azure AD v1 アプリケーションの設定時に記録したアプリケーション (クライアント) ID を入力します。
     1. **[クライアント シークレット]** に、作成したシークレットを入力して、Azure AD アプリへのアクセスをボットに許可します。
-    1. **[テナント ID]** に、AAD アプリを作成したときに選択したサポートされるアカウントの種類に基づいて、AAD アプリ用に以前記録した**ディレクトリ (テナント) ID** を入力するか、「**common**」と入力します。 割り当てる値を決定するには、次の条件に従います。
+    1. **[テナント ID]** に、Azure AD アプリを作成したときに選択したサポートされるアカウントの種類に基づいて、AAD アプリ用に前に記録した**ディレクトリ (テナント) ID** を入力するか、「**common**」と入力します。 割り当てる値を決定するには、次の条件に従います。
 
-        - AAD アプリの作成時に、 *[Accounts in this organizational directory only (Microsoft only - Single tenant)]\(この組織のディレクトリ内のアカウントのみ (Microsoft のみ - シングル テナント)\)* または *[Accounts in any organizational directory(Microsoft AAD directory - Multi tenant)]\(任意の組織のディレクトリ内のアカウント (Microsoft AAD ディレクトリ - マルチテナント)\)* を選択した場合、AAD アプリ用に以前記録した**テナント ID** を入力します。
+        - Azure AD アプリの作成時に、 *[Accounts in this organizational directory only (Microsoft only - Single tenant)]\(この組織ディレクトリ内のアカウントのみ (Microsoft のみ - シングル テナント)\)* または *[Accounts in any organizational directory(Microsoft Azure AD directory - Multi tenant)]\(任意の組織ディレクトリ内のアカウント (Microsoft Azure AD ディレクトリ - マルチテナント)\)* を選択した場合、AAD アプリ用に前に記録した**テナント ID** を入力します。
 
-        - ただし、 *[Accounts in any organizational directory (Any AAD directory - Multi tenant and personal Microsoft accounts e.g. Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウント (任意の AAD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox、Outlook.com など)\)* を選択した場合、テナント ID の代わりに「**common**」という語を入力します。 それ以外の場合、AAD アプリは ID が選択されているテナントを通じて検証され、個人の MS アカウントは除外されます。
+        - ただし、 *[Accounts in any organizational directory (Any Azure AD directory - Multi tenant and personal Microsoft accounts e.g. Skype, Xbox, Outlook.com)]\(任意の組織ディレクトリ内のアカウント (任意の Azure ADディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox、Outlook.com など)\)* を選択した場合、テナント ID の代わりに「**common**」という語を入力します。 そうしないと、Azure AD アプリは ID が選択されているテナントを通じて検証され、個人の MS アカウントは除外されます。
 
        これは、認証可能なユーザーに関連付けられるテナントになります。
 
     1. **[スコープ]** には、アプリケーション登録から選択したアクセス許可の名前を入力します。`Mail.Read Mail.Send openid profile User.Read User.ReadBasic.All`
 
         > [!NOTE]
-        > Azure AD v2 の場合、 **[スコープ]** はスペースで区切った値のリストであり、大文字と小文字が区別されます。
+        > Azure AD v2 の場合、 **[スコープ]** フィールドはスペースで区切った値のリストであり、大文字と小文字が区別されます。
 
 1. **[保存]** をクリックします。
 
+---
+
 > [!NOTE]
 > これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。
+> また、 **[Token Exchange URL]\(トークン交換 URL\)** は、Azure AD v2 でのみ SSO に使用されるため、空白のままにしておく必要があります。
 
 ### <a name="test-your-connection"></a>接続をテストする
 
@@ -283,7 +311,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 **Microsoft アプリ ID** と **Microsoft アプリ パスワード**の値を取得する方法がわからない場合は、[こちらの説明に従って](../bot-service-quickstart-registration.md#get-registration-password)新しいパスワードを作成できます。
 
 > [!NOTE]
-> ここで、このボット コードを Azure サブスクリプションに発行 (プロジェクトを右クリックして **[発行]** を選択) することもできますが、この記事では不要です。 Azure Portal でボットを構成するときに使用したアプリケーションとホスティング プランを使用する発行構成を設定する必要があります。
+> ここで、このボット コードを Azure サブスクリプションに発行 (プロジェクトを右クリックして **[発行]** を選択) することもできますが、この記事では不要です。 Azure portal でボットを構成するときに使用したアプリケーションとホスティング プランを使用する発行構成を設定する必要があります。
 
 ## <a name="test-the-bot-using-the-emulator"></a>エミュレーターを使ってボットをテストする
 
@@ -294,7 +322,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 ### <a name="testing"></a>テスト
 
-認証メカニズムを構成したら、実際のボット サンプル テストを実行できます。  
+認証メカニズムを構成したら、実際のボット サンプル テストを実行できます。
 
 1. お使いのマシン上でローカルでボット サンプルを実行します。
 1. エミュレーターを起動します。
@@ -339,6 +367,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 ![ボット アーキテクチャ](media/how-to-auth/architecture.png)
 
+<!-- Submit changes for line break issues -->
 <!-- The two authentication samples have nearly identical architecture. Using 18.bot-authentication for the sample code. -->
 
 **Dialogs\MainDialog.cs**
@@ -438,17 +467,20 @@ OAuth プロンプトを起動すると、そのプロンプトは、ユーザ�
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-**Dialogs\LogoutDialog.cs**  
+**Dialogs\LogoutDialog.cs**
+
 [!code-csharp[Allow logout](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/LogoutDialog.cs?range=44-61&highlight=11)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**dialogs/logoutDialog.js**  
+**dialogs/logoutDialog.js**
+
 [!code-javascript[Allow logout](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/logoutDialog.js?range=31-42&highlight=7)]
 
 # <a name="python"></a>[Python](#tab/python)
 
-**dialogs/logout_dialog.py**  
+**dialogs/logout_dialog.py**
+
 [!code-python[allow logout](~/../botbuilder-samples/samples/python/18.bot-authentication/dialogs/logout_dialog.py?range=27-34&highlight=6)]
 
 ---
@@ -461,12 +493,14 @@ Teams は、OAuth に関して他のチャネルとは多少異なる動作を�
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-**Bots/TeamsBot.cs**  
+**Bots/TeamsBot.cs**
+
 [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight=1)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**bots/teamsBot.js**  
+**bots/teamsBot.js**
+
 [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=16-25&highlight=1)]
 
 # <a name="python"></a>[Python](#tab/python)
@@ -479,12 +513,14 @@ Teams は、OAuth に関して他のチャネルとは多少異なる動作を�
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-**Bots/DialogBot.cs**  
+**Bots/DialogBot.cs**
+
 [!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=19)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**Bots/dialogBot.js**  
+**Bots/dialogBot.js**
+
 [!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=6)]
 
 # <a name="python"></a>[Python](#tab/python)
@@ -507,7 +543,7 @@ Teams は、OAuth に関して他のチャネルとは多少異なる動作を�
 
 <!-- Footnote-style links -->
 
-[Azure portal]: https://ms.portal.azure.com
+[azure-portal]: https://ms.portal.azure.com
 [azure-aad-blade]: https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview
 [aad-registration-blade]: https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview
 
