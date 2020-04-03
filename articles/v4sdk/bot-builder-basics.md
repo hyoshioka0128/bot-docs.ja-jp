@@ -107,7 +107,7 @@ JavaScript の `ActivityHandler` では、イベント エミッタ/リスナー
 
 ## <a name="bot-structure"></a>ボットの構造
 
-次のセクションでは、[**CSharp**](../dotnet/bot-builder-dotnet-sdk-quickstart.md) または [**JavaScript**](../javascript/bot-builder-javascript-quickstart.md) 用に提供されたテンプレートを使用して簡単に作成できる EchoBot の "_主要部_" について説明します。
+次のセクションでは、[**C#**](../dotnet/bot-builder-dotnet-sdk-quickstart.md) または [**JavaScript**](../javascript/bot-builder-javascript-quickstart.md) 用に提供されたテンプレートを使用して簡単に作成できる EchoBot の "_主要部_" について説明します。
 
 <!--Need to add section calling out the controller in code, and explaining it further-->
 
@@ -540,4 +540,4 @@ def messages():
 
 - ボットにおける状態の役割を理解するには、「[状態の管理](bot-builder-concept-state.md)」を参照してください。
 
-- Microsoft Teams のボット開発の主要な概念を理解するには、「[How Microsoft Teams bots work](bot-builder-basics-teams.md)」(Microsoft Teams のボットのしくみ) を参照してください
+- Microsoft Teams のボット開発の主要な概念を理解するには、「[Microsoft Teams のボットのしくみ](bot-builder-basics-teams.md)」を参照してください
