@@ -27,7 +27,7 @@ ms.locfileid: "75798501"
 ## <a name="prerequisites"></a>前提条件
 
 - [状態の管理][concept-state]、[ダイアログ ライブラリ][concept-dialogs]、[会話を管理する][simple-flow]方法、および[ダイアログ プロンプトを使用してユーザー入力を収集する][prompting]方法に関する知識。
-- ??? サンプルのコピー ([**CSharp**][cs-sample] または [**JavaScript**][js-sample])。
+- ??? サンプルのコピー ([**C#**][cs-sample] または [**JavaScript**][js-sample])。
 
 ## <a name="task-as-in-to-do-x-do-these-things"></a>\<task> [as in to do X, do these things]
 
