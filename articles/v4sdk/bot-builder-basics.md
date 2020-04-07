@@ -107,7 +107,7 @@ JavaScript の `ActivityHandler` では、イベント エミッタ/リスナー
 
 ## <a name="bot-structure"></a>ボットの構造
 
-次のセクションでは、[**C#**](../dotnet/bot-builder-dotnet-sdk-quickstart.md) または [**JavaScript**](../javascript/bot-builder-javascript-quickstart.md) 用に提供されたテンプレートを使用して簡単に作成できる EchoBot の "_主要部_" について説明します。
+次のセクションでは、[**C#** ](../dotnet/bot-builder-dotnet-sdk-quickstart.md) または [**JavaScript**](../javascript/bot-builder-javascript-quickstart.md) 用に提供されたテンプレートを使用して簡単に作成できる EchoBot の "_主要部_" について説明します。
 
 <!--Need to add section calling out the controller in code, and explaining it further-->
 
