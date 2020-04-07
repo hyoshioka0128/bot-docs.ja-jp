@@ -12,7 +12,7 @@ ms.locfileid: "68230822"
 |----------------|-------------|
 | Web アプリ ボット | Azure App Service にデプロイされる Azure Bot Service ボット。|
 | [App Service](https://docs.microsoft.com/azure/app-service/)| Web アプリケーションをビルドおよびホストできます。|
-| [[App Service プラン]](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)| Web アプリを実行するための一連のコンピューティング リソースを定義します。|
+| [App Service プラン](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)| Web アプリを実行するための一連のコンピューティング リソースを定義します。|
 
 Azure portal から自分のボットを作成する場合、[テレメトリ用の Application Insights](~/v4sdk/bot-builder-telemetry.md) など、追加のリソースをプロビジョニングできます。
 
