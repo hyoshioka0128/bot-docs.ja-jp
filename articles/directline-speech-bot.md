@@ -131,7 +131,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
  
 
-手順 4:必要に応じて、アクティビティの [読み上げ] フィールドを設定して、ユーザーに読み上げられるものをカスタマイズする 
+## 手順 4:必要に応じて、アクティビティの [読み上げ] フィールドを設定して、ユーザーに読み上げられるものをカスタマイズする 
 
 既定では、ユーザーに Direct Line Speech を介して送信されるすべてのメッセージが読み上げられます。  
 
