@@ -132,7 +132,7 @@ Teams アクティビティ ハンドラー クラスには、すべての会話
 | task/fetch                      | `handleTeamsTaskModuleFetch`        | Teams のタスク モジュールのフェッチです。 |
 | task/submit                     | `handleTeamsTaskModuleSubmit`       | Teams のタスク モジュールの送信です。 |
 
-上記の呼び出しアクティビティは、Teams の会話ボット用です。 また、Bot Framework SDK もメッセージングの拡張機能固有の呼び出しをサポートします。 詳細については、「[What are messaging extensions](https://aka.ms/azure-bot-what-are-messaging-extensions)」(メッセージングの拡張機能とは) を参照してください
+上記の呼び出しアクティビティは、Teams の会話ボット用です。また、Bot Framework SDK もメッセージングの拡張機能固有の呼び出しをサポートします。詳細については、「[メッセージングの拡張機能とは](https://aka.ms/azure-bot-what-are-messaging-extensions)」を参照してください
 
 ---
 
