@@ -167,3 +167,4 @@ protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivi
 - ボイスが有効なボットを作成して使用する完全な例については、「[チュートリアル: Speech SDK を使用して音声でボットを有効にする](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk)」を参照してください。
 
 - アクティビティの操作の詳細については、「[ボットのしくみ](https://docs.microsoft.com/azure/bot-service/bot-builder-basics)」および「[テキスト メッセージを送受信する方法](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-send-messages?view=azure-bot-service-4.0)」に関する記事を参照してください。 
+
