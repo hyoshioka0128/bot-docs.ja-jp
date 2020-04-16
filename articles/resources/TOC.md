@@ -17,7 +17,7 @@
 # [Bot Framework のカード スキーマ](https://aka.ms/botSpecs-cardSchema)
 # [Bot Framework のトランスクリプト スキーマ](https://aka.ms/botSpecs-transcripts)
 # [Bot Service のコンプライアンス](../v4sdk/bot-service-compliance.md)
-# トラブルシューティング
+# [トラブルシューティング]
 ## [一般的な問題のトラブルシューティング](../bot-service-troubleshoot-general-problems.md)
 ## [ボット構成の問題のトラブルシューティング](../bot-service-troubleshoot-bot-configuration.md)
 ## [HTTP 500 エラーのトラブルシューティング](../bot-service-troubleshoot-500-errors.md)

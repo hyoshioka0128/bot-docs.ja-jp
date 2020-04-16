@@ -15,14 +15,14 @@
 ## [プロアクティブ メッセージの送信](bot-builder-dotnet-proactive-messages.md)
 # ダイアログ
 ## [ダイアログの概要](bot-builder-dotnet-dialogs.md)
-## [会話フローの管理](bot-builder-dotnet-manage-conversation-flow.md)
+## [会話フローを管理する](bot-builder-dotnet-manage-conversation-flow.md)
 ## [スコアラブル ダイアログ](bot-builder-dotnet-scorable-dialogs.md)
 # FormFlow
 ## [FormFlow の基本的機能](bot-builder-dotnet-formflow.md)
 ## [FormFlow の高度な機能](bot-builder-dotnet-formflow-advanced.md)
 ## [FormBuilder](bot-builder-dotnet-formflow-formbuilder.md)
 ## [パターン言語](bot-builder-dotnet-formflow-pattern-language.md)
-## [ローカライズ](bot-builder-dotnet-formflow-localize.md)
+## [ローカリゼーション](bot-builder-dotnet-formflow-localize.md)
 ## [JSON スキーマ](bot-builder-dotnet-formflow-json-schema.md)
 # チャンネル
 ## [チャネル固有の機能の実装](bot-builder-dotnet-channeldata.md)
@@ -40,6 +40,6 @@
 ## [Cosmos DB を使用した状態データの管理](bot-builder-dotnet-state-azure-cosmosdb.md)
 ## [Table Storage を使用して状態データを管理する](bot-builder-dotnet-state-azure-table-storage.md)
 # [LUIS を使用した意図の認識](bot-builder-dotnet-luis-dialogs.md)
-# [支払いを要求する](bot-builder-dotnet-request-payment.md)
+# [支払いの要求](bot-builder-dotnet-request-payment.md)
 # [Azure Search の追加](bot-builder-dotnet-search-azure.md)
 # [ボットのセキュリティ保護](bot-builder-dotnet-security.md)
