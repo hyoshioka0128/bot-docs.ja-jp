@@ -9,10 +9,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
 ms.openlocfilehash: a77f621d46b9ce69d92b83a9f6ada0c9fbf6286e
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75791753"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>ボットを Web チャットに接続する
@@ -108,7 +108,7 @@ Authorization: BotConnector YOUR_SECRET_HERE
 </html>
 ```
 
-### <a id="option-2"></a>方法 2 - シークレットを使用して、Web チャット コントロールを Web サイトに埋め込む
+### <a name="option-2---embed-the-web-chat-control-in-your-website-using-the-secret"></a><a id="option-2"></a>方法 2 - シークレットを使用して、Web チャット コントロールを Web サイトに埋め込む
 
 自分のボットを他の開発者が Web サイトに簡単に埋め込むことができるようにする場合は、この方法を使用します。 
 

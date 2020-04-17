@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 48b483ad16a5af837869879c5f87d0e249f0788d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 200ad4fc9528a24390edff8ee54b26d344547e04
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75792194"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80647486"
 ---
 # <a name="embed-a-bot-in-a-website"></a>ボットを Web サイトに埋め込む
 
@@ -23,6 +23,10 @@ ms.locfileid: "75792194"
 Microsoft では、Skype Web コントロールとオープン ソース Web コントロールの 2 つの異なる方法で、ボットを Web サイトに統合できます。
 
 ## <a name="skype-web-control"></a>Skype Web コントロール
+
+>[!NOTE]
+> 2019 年 10 月 31 日をもって、Skype チャネルは新しいボット公開要求を受け付けなくなりました。 つまり、Skype チャンネルを使ってボットの開発を続けることはできますが、ボットのユーザー数は 100 人に制限されます。 ボットをより多くのユーザーに公開することはできません。 現在の Skype ボットは引き続き中断なく実行されます。 [Skype で一部の機能が利用できなくなった理由](https://support.skype.com/faq/fa12091/why-are-some-features-not-available-in-skype-anymore)についてご確認ください。
+
 
 [Skype Web コントロール](https://aka.ms/bot-skype-web-control)は、基本的には、Web 対応コントロールの Skype クライアントです。 組み込みの Skype 認証により、ボットでユーザーを認証および認識できます。開発者がカスタム コードを記述する必要はありません。 Skype では、Web クライアントで使用されている Microsoft アカウントが自動的に認識されます。 
 

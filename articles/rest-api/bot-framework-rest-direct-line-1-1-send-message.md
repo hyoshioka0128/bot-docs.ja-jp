@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ms.openlocfilehash: e6504c1d6cd8cbcf3eab4fadaa62485deba14efa
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75789718"
 ---
 # <a name="send-a-message-to-the-bot"></a>メッセージをボットに送信する
@@ -65,15 +65,15 @@ Direct Line 会話にメッセージを POST するための合計時間は次�
 
 状況によっては、クライアントから画像や文書などの添付ファイルをボットに送信しなければならないことがあります。 `POST /api/conversations/{conversationId}/messages` を利用して送信される [Message](bot-framework-rest-direct-line-1-1-api-reference.md#message-object) オブジェクト内で添付ファイルの [URL を指定する](#send-by-url)か、`POST /api/conversations/{conversationId}/upload` を利用して[添付ファイルをアップロードする](#upload-attachments)ことで、クライアントから添付ファイルを送信できます。
 
-## <a id="send-by-url"></a> URL で添付ファイルを送信する
+## <a name="send-attachments-by-url"></a><a id="send-by-url"></a> URL で添付ファイルを送信する
 
 `POST /api/conversations/{conversationId}/messages` を利用して [Message](bot-framework-rest-direct-line-1-1-api-reference.md#message-object) オブジェクトの一部として 1 つ以上の添付ファイルを送信するには、メッセージの `images` 配列または `attachments` 配列 (あるいはその両方) に添付ファイル URL を指定します。
 
-## <a id="upload-attachments"></a> アップロードで添付ファイルを送信する
+## <a name="send-attachments-by-upload"></a><a id="upload-attachments"></a> アップロードで添付ファイルを送信する
 
 クライアントから送信する画像や文書がデバイスにあるものの、それらのファイルに対応する URL がないことがしばしばあります。 そのような場合、クライアントでは、アップロードでボットに添付ファイルを送信する `POST /api/conversations/{conversationId}/upload` 要求を発行できます。 要求の形式とコンテンツは、クライアントから [1 つの添付ファイルを送信する](#upload-one-attachment)か、[複数の添付ファイルを送信する](#upload-multiple-attachments)かによって変わります。
 
-### <a id="upload-one-attachment"></a> アップロードで 1 つの添付ファイルを送信する
+### <a name="send-a-single-attachment-by-upload"></a><a id="upload-one-attachment"></a> アップロードで 1 つの添付ファイルを送信する
 
 アップロードで 1 つの添付ファイルを送信するには、次のような要求を発行します。 
 
@@ -112,7 +112,7 @@ HTTP/1.1 204 No Content
 [other headers]
 ```
 
-### <a id="upload-multiple-attachments"></a> アップロードで複数の添付ファイルを送信する
+### <a name="send-multiple-attachments-by-upload"></a><a id="upload-multiple-attachments"></a> アップロードで複数の添付ファイルを送信する
 
 アップロードで複数の添付ファイルを送信するには、`/api/conversations/{conversationId}/upload` エンドポイントに対して、マルチパート要求の `POST` を実行します。 要求の `Content-Type` ヘッダーを `multipart/form-data` に設定し、パートごとに `Content-Type` ヘッダーと `Content-Disposition` ヘッダーを含めて各添付ファイルの種類とファイル名を指定します。 要求 URI で、`userId` パラメーターを、メッセージを送信するユーザーの ID に設定します。 
 

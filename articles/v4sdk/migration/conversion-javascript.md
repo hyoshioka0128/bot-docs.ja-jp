@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: f377aacbd809b79ecb0d558384a10da8eca5a772
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75791084"
 ---
 # <a name="migrate-a-javascript-v3-bot-to-a-v4-bot"></a>Javascript v3 ボットを v4 ボットに移行する
@@ -161,7 +161,7 @@ v4 では、ダイアログ オブジェクトとプロンプト オブジェク
 
 以下のファイルを作成します。
 
-| ファイル名 | [説明] |
+| ファイル名 | 説明 |
 |:---|:---|
 | **./dialogs/flights.js** | `hotels` ダイアログの移行済みのロジックが含まれます。 |
 | **./dialogs/hotels.js** | `flights` ダイアログの移行済みのロジックが含まれます。 |

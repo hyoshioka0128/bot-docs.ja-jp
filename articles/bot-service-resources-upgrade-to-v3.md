@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ms.openlocfilehash: 6f08da5acbf8ac050d5dbf6a1a0290c3e6288013
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75790994"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>ボットを Bot Framework API v3 にアップグレードする
@@ -66,7 +66,7 @@ If the **App ID** field is empty, complete these steps:
    ![Save changes](~/media/upgrade/save-changes.png)
 -->
 
-## <a id="update-code"></a> ステップ 2:ボット コードをバージョン 4.0 に更新する
+## <a name="step-2-update-your-bot-code-to-version-40"></a><a id="update-code"></a> ステップ 2:ボット コードをバージョン 4.0 に更新する
 
 V1 のボットは互換性がなくなりました。 お使いのボットを更新するには、V3 で新しいボットを作成する必要があります。 使用中の古いコードを保持する必要がある場合は、そのコードを手動で移行する必要があります。
 
@@ -162,7 +162,7 @@ Bot Framework API v3 では、認証プロパティを以下のキーで **Web.C
 - `MicrosoftAppID`
 - `MicrosoftAppPassword`
 
-## <a id="step-3"></a> ステップ 3:自分の更新ボットを Azure にデプロイする。
+## <a name="step-3-deploy-your-update-bot-to-azure"></a><a id="step-3"></a> ステップ 3:自分の更新ボットを Azure にデプロイする。
 
 ご自身のボット コードを API v3 にアップグレードしたら、こちらの[手順](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0)に従って、そのボットを Azure にデプロイします。 V1 はサポートされていないため、Azure サービスにデプロイされたすべてのボットで V3 API が自動的に使用されます。
 

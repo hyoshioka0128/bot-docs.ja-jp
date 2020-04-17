@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 723f81d5ef76eb92df74d1946532fe475c617c59
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75791094"
 ---
 # <a name="prompt-for-user-input"></a>ユーザーに入力を求めるプロンプト
@@ -161,7 +161,7 @@ bot.dialog('createAlarm', [
 
 `ListStyle` 列挙値は次のとおりです。
 
-| インデックス | Name | [説明] |
+| インデックス | 名前 | 説明 |
 | ---- | ---- | ---- |
 | 0 | なし | 一覧は表示されません。 これは、一覧がプロンプトの一部として含まれる場合に使用されます。 |
 | 1 | インライン | 選択肢は、次の形式のインラインリストとして表示されます。"1. 赤、2. 緑、3. 青" |

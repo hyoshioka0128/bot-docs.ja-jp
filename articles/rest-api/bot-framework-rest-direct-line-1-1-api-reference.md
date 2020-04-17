@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ms.openlocfilehash: 6cb2d9cd933952e363631d64f527b4c12d5f3b40
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75791392"
 ---
 # <a name="api-reference---direct-line-api-11"></a>API リファレンス - Direct Line API 1.1
@@ -61,7 +61,7 @@ Authorization: BotConnector SECRET_OR_TOKEN
 ## <a name="token-operations"></a>トークン操作 
 クライアントが 1 つの会話にアクセスするために使用できるトークンを作成または更新するには、次の操作を使用します。
 
-| 操作 | [説明] |
+| Operation | 説明 |
 |----|----|
 | [トークンの生成](#generate-token) | 新しい会話用のトークンを生成します。 | 
 | [トークンの更新](#refresh-token) | トークンを更新します。 | 
@@ -91,7 +91,7 @@ GET /api/tokens/{conversationId}/renew
 ## <a name="conversation-operations"></a>会話操作 
 ボットとの会話を開いてクライアントとボット間でメッセージを交換するには、次の操作を使用します。
 
-| 操作 | [説明] |
+| Operation | 説明 |
 |----|----|
 | [会話の開始](#start-conversation) | ボットと新しい会話を開きます。 | 
 | [メッセージの取得](#get-messages) | ボットからメッセージを受信します。 |
@@ -132,7 +132,7 @@ POST /api/conversations/{conversationId}/messages
 | **要求本文** | [Message](#message-object) オブジェクト |
 | **戻り値** | 応答の本文で返されるデータはありません。 サービスは、メッセージが正常に送信された場合は、HTTP 204 状態コードで応答します。 クライアントは、[Get Messages](#get-messages) 操作を使用して、送信済みのメッセージを (ボットがクライアントに送信しているメッセージと共に) 取得できます。 |
 
-### <a id="upload-send-files"></a> ファイルのアップロードと送信
+### <a name="upload-and-send-files"></a><a id="upload-send-files"></a> ファイルのアップロードと送信
 ファイルを添付ファイルとしてアップロードして送信します。 添付ファイルを送信しているユーザーの ID を指定するには、要求 URI 内に `userId` パラメーターを設定します。
 ```http 
 POST /api/conversations/{conversationId}/upload?userId={userId}
@@ -154,7 +154,7 @@ Direct Line 1.1 スキーマは、次のオブジェクトを含む Bot Framewor
 
 クライアントがボットに送信するメッセージ、またはボットから受信するメッセージを定義します。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 |----|----|----|
 | **id** | string | メッセージを一意に識別する ID (Direct Line によって割り当てられます)。 | 
 | **conversationId** | string | 会話を識別する ID。  | 
@@ -196,7 +196,7 @@ Direct Line 1.1 スキーマは、次のオブジェクトを含む Bot Framewor
 ### <a name="messageset-object"></a>MessageSet オブジェクト 
 メッセージのセットを定義します。<br/><br/>
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 |----|----|----|
 | **messages** | [Message](#message-object)[] | **Message** オブジェクトの配列。 |
 | **watermark** | string | セット内のメッセージの最大ウォーターマーク。 クライアントは、`watermark` を使用して、[ボットからメッセージを取得](bot-framework-rest-direct-line-1-1-receive-messages.md)したときに認識した最新のメッセージを示すことができます。 |
@@ -204,7 +204,7 @@ Direct Line 1.1 スキーマは、次のオブジェクトを含む Bot Framewor
 ### <a name="attachment-object"></a>Attachment オブジェクト
 イメージ以外の添付ファイルを定義します。<br/><br/> 
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 |----|----|----|
 | **contentType** | string | 添付ファイル内のコンテンツのメディアの種類。 |
 | **url** | string | 添付ファイルのコンテンツの URL。 |
@@ -212,7 +212,7 @@ Direct Line 1.1 スキーマは、次のオブジェクトを含む Bot Framewor
 ### <a name="conversation-object"></a>Conversation オブジェクト
 Direct Line 会話を定義します。<br/><br/>
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 |----|----|----|
 | **conversationId** | string | 指定されたトークンが有効な会話を一意に識別する ID。 |
 | **token** | string | 指定された会話で有効なトークン。 |
@@ -221,7 +221,7 @@ Direct Line 会話を定義します。<br/><br/>
 ### <a name="error-object"></a>エラー オブジェクト
 エラーを定義します。<br/><br/> 
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 |----|----|----|
 | **code** | string | エラー コード。 次のいずれかの値です:**MissingProperty**、**MalformedData**、**NotFound**、**ServiceError**、**Internal**、**InvalidRange**、**NotSupported**、**NotAllowed**、**BadCertificate**。 |
 | **message** | string | エラーの説明。 |
@@ -231,7 +231,7 @@ Direct Line 会話を定義します。<br/><br/>
 標準化されたメッセージ エラー ペイロード。<br/><br/> 
 
 
-|        プロパティ        |          種類          |                                 [説明]                                 |
+|        プロパティ        |          Type          |                                 説明                                 |
 |------------------------|------------------------|-----------------------------------------------------------------------------|
 | <strong>error</strong> | [Error](#error-object) | エラーに関する情報を含む <strong>Error</strong> オブジェクト。 |
 

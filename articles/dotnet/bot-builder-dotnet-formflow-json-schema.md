@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: cd884c49507b4d7edc84f4bbd79396fe36073a82
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75796505"
 ---
 # <a name="define-a-form-using-json-schema"></a>JSON スキーマによるフォームの定義
@@ -27,9 +27,9 @@ JSON スキーマは <a href="http://www.newtonsoft.com/json/help/html/T_Newtons
 
 FormFlow は、以下の標準 <a href="http://json-schema.org/documentation.html" target="_blank">JSON スキーマ</a> キーワードをサポートしています。
 
-| Keyword | [説明] | 
+| Keyword | 説明 | 
 |----|----|
-| 型 | フィールドに入るデータの型を定義します。 |
+| type | フィールドに入るデータの型を定義します。 |
 | enum | フィールドの有効な値を定義します。 |
 | minimum | フィールドで許可される最小の数値を定義します (「[NumericAttribute][numericAttribute]」で説明)。 |
 | maximum | フィールドで許可される最大の数値を定義します (「[NumericAttribute][numericAttribute]」で説明)。 |
@@ -63,11 +63,11 @@ JSON スキーマでテンプレートおよびプロンプトを指定するに
 
 ### <a name="additional-properties-as-peers-of-the-type-property"></a>type プロパティのピアとなる追加プロパティ
 
-|   プロパティ   |          内容           |                                                   [説明]                                                    |
+|   プロパティ   |          内容           |                                                   説明                                                    |
 |--------------|-----------------------------|------------------------------------------------------------------------------------------------------------------|
 |   DateTime   |            [bool]             |                                  フィールドが `DateTime` フィールドかどうかを示します。                                  |
 |   Describe   |      文字列またはオブジェクト       |                  フィールドの説明 (「[DescribeAttribute][describeAttribute]」で説明)。                  |
-|    Terms     |       `[string,...]`        |                  フィールド値を照合するための正規表現 (TermsAttribute で説明)。                  |
+|    用語     |       `[string,...]`        |                  フィールド値を照合するための正規表現 (TermsAttribute で説明)。                  |
 |  MaxPhrase   |             INT             |                  `Language.GenerateTerms(string, int)` で用語を処理して、展開します。                   |
 |    値    | `{ string: {Describe:string |                                  object, Terms:[string, ...], MaxPhrase}, ...}`                                  |
 |    アクティブ    |           script            | フィールド、メッセージ、確認がアクティブかどうかをテストするための C# スクリプト (引数 `(JObject state)->bool` を使用)。  |
@@ -86,10 +86,10 @@ JSON スキーマでテンプレートおよびプロンプトを指定するに
 
 前述のプロパティの中には、プロパティ値としてスクリプトが含まれるものもあります。 スクリプトは、メソッドの本体に普通に見出せるような、C# コードの任意のスニペットとすることができます。 **References** プロパティまたは **Imports** プロパティ (あるいはその両方) を使用して、参照を追加できます。 特別なグローバル変数には以下が含まれます。
 
-| 変数 | [説明] |
+| 変数 | 説明 |
 |----|----|
 | choice | スクリプトが実行する内部ディスパッチ。 |
-| 状態 | すべてのスクリプトにバインドされる `JObject` フォーム状態。 |
+| state | すべてのスクリプトにバインドされる `JObject` フォーム状態。 |
 | ifield | メッセージ/確認プロンプト ビルダー以外のすべてのスクリプトで、現在のフィールドに関する論理的な判断ができるようにする `IField<JObject>`。 |
 | value | **Validate** で検証するオブジェクト値。 |
 | フィールド | **Define** でフィールドを動的に更新できるようにするための.`Field<JObject>`。 |

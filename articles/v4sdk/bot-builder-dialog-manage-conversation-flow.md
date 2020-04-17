@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 01/28/2020
+ms.date: 03/26/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7a25f0fd283e8e09f5ca27e7a29e96e9f55888ff
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: fe7e7e6f4fa1e2fa43fb3a5ff61dfe93fbda09f2
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441721"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81395605"
 ---
 # <a name="implement-sequential-conversation-flow"></a>連続して行われる会話フローの実装
 
@@ -63,17 +63,17 @@ ms.locfileid: "77441721"
 
 `UserProfileDialog` コンストラクターで、ウォーターフォール ステップ、プロンプト、およびウォーターフォール ダイアログを作成し、ダイアログ セットに追加します。 プロンプトは、それが使用されるダイアログ セットに追加する必要があります。
 
-[!code-csharp[Constructor snippet](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=21-48)]
+[!code-csharp[Constructor snippet](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=20-47)]
 
 次に、ダイアログで使用されるステップを実装します。 プロンプトを使用するには、そのプロンプトをご自身のダイアログのステップから呼び出し、`stepContext.Result` を使用して、次のステップでプロンプトの結果を取得します。 バックグラウンドでは、プロンプトは 2 つのステップから成るダイアログです。 最初のステップでプロンプトは入力を要求します。そして 2 番目のステップで有効な値を返すか、最初からやり直して、有効な入力を受信するまでユーザーに再入力を要求します。
 
 ウォーターフォール ステップからは常に null 以外の `DialogTurnResult` を返す必要があります。 そうしないと、ご自身のダイアログは設計どおりに機能しません。 ここでは、ウォーターフォール ダイアログの `NameStepAsync` に対する実装を示します。
 
-[!code-csharp[Name step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=62-67)]
+[!code-csharp[Name step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=61-66)]
 
 `AgeStepAsync` で、ユーザー入力を検証できない場合の再試行プロンプトを指定します。入力を検証できない原因は、その入力がプロンプトで解析できない形式であるか、検証基準を満たしていないかのいずれかです。 この状況で、再試行プロンプトが指定されていないと、プロンプトは最初のプロンプト テキストを使用して、ユーザーに再入力を求めます。
 
-[!code-csharp[Age step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=80-99&highlight=10)]
+[!code-csharp[Age step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=79-98&highlight=10)]
 
 **UserProfile.cs**
 
@@ -85,7 +85,7 @@ ms.locfileid: "77441721"
 
 最後のステップで、前のウォーターフォール ステップで呼び出されたダイアログによって返された `stepContext.Result` を確認します。 戻り値が true の場合は、ユーザー プロファイル アクセサーを使用して、ユーザー プロファイルを取得し、更新します。 ユーザー プロファイルを取得するには、`GetAsync` メソッドを呼び出して、`userProfile.Transport`、`userProfile.Name`、`userProfile.Age`、`userProfile.Picture` の各プロパティの値を設定します。 最後に、ダイアログを終了する `EndDialogAsync` を呼び出す前に、ユーザーの情報をまとめます。 ダイアログを終了すると、そのダイアログはダイアログ スタックから取り出され、ダイアログの親に省略可能な結果が返されます。 この親は、終了したばかりのダイアログを開始したダイアログまたはメソッドです。
 
-[!code-csharp[SummaryStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=137-179&highlight=5-11,41-42)]
+[!code-csharp[SummaryStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=136-178&highlight=5-11,41-42)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -229,7 +229,7 @@ ms.locfileid: "77441721"
 
 `Startup` でボット用のサービスを登録します。 これらのサービスは、依存関係の挿入を通じてコードの他の部分で使用できます。
 
-[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Startup.cs?range=17-39)]
+[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Startup.cs?range=15-37)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -283,17 +283,17 @@ ms.locfileid: "77441721"
 
 **UserProfileDialog.cs**
 
-以下に示したのは、`AgePromptValidatorAsync` メソッドの定義に使用される検証コントロールのコード例です。 `promptContext.Recognized.Value` には、解析済みの値が格納されます。数値のプロンプトの場合、この値は整数になります。 `promptContext.Recognized.Succeeded` は、プロンプトがユーザーの入力を解析できたかどうかを示します。 その値が受け入れられなかった場合、検証コントロールは false を返し、プロンプト ダイアログで、ユーザーに再度プロンプトを表示する必要があります。それ以外の場合は、true を返して入力を受け取り、プロンプト ダイアログから復帰します。 検証コントロールの値は、実際のシナリオに応じて変更することができます。 
+以下に示したのは、`AgePromptValidatorAsync` メソッドの定義に使用される検証コントロールのコード例です。 `promptContext.Recognized.Value` には、解析済みの値が格納されます。数値のプロンプトの場合、この値は整数になります。 `promptContext.Recognized.Succeeded` は、プロンプトがユーザーの入力を解析できたかどうかを示します。 その値が受け入れられなかった場合、検証コントロールは false を返し、プロンプト ダイアログで、ユーザーに再度プロンプトを表示する必要があります。それ以外の場合は、true を返して入力を受け取り、プロンプト ダイアログから復帰します。 検証コントロールの値は、実際のシナリオに応じて変更することができます。
 
-[!code-csharp[prompt validator method](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=181-185)]
+[!code-csharp[prompt validator method](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=180-184)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **dialogs\userProfileDialog.js**
 
-以下に示したのは、`agePromptValidator` メソッドの定義に使用される検証コントロールのコード例です。 `promptContext.recognized.value` には、解析済みの値が格納されます。数値のプロンプトの場合、この値は整数になります。 `promptContext.recognized.succeeded` は、プロンプトがユーザーの入力を解析できたかどうかを示します。 その値が受け入れられなかった場合、検証コントロールは false を返し、プロンプト ダイアログで、ユーザーに再度プロンプトを表示する必要があります。それ以外の場合は、true を返して入力を受け取り、プロンプト ダイアログから復帰します。 検証コントロールの値は、実際のシナリオに応じて変更することができます。 
+以下に示したのは、`agePromptValidator` メソッドの定義に使用される検証コントロールのコード例です。 `promptContext.recognized.value` には、解析済みの値が格納されます。数値のプロンプトの場合、この値は整数になります。 `promptContext.recognized.succeeded` は、プロンプトがユーザーの入力を解析できたかどうかを示します。 その値が受け入れられなかった場合、検証コントロールは false を返し、プロンプト ダイアログで、ユーザーに再度プロンプトを表示する必要があります。それ以外の場合は、true を返して入力を受け取り、プロンプト ダイアログから復帰します。 検証コントロールの値は、実際のシナリオに応じて変更することができます。
 
-[!code-javascript[prompt validator method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=169-172)]
+[!code-javascript[age prompt validator](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=169-172)]
 
 # <a name="python"></a>[Python](#tab/python)
 

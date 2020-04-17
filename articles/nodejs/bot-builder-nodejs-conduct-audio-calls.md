@@ -8,16 +8,19 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 25f1941c732363f849f1d82c149d80094c16860f
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: e93dda29545b8bfd2b83d6c92bf5d3d0e1cdafc2
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75790954"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648401"
 ---
 # <a name="support-audio-calls-with-skype"></a>Skype での音声通話のサポート
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
+>[!NOTE]
+> 2019 年 10 月 31 日をもって、Skype チャネルは新しいボット公開要求を受け付けなくなりました。 つまり、Skype チャンネルを使ってボットの開発を続けることはできますが、ボットのユーザー数は 100 人に制限されます。 ボットをより多くのユーザーに公開することはできません。 現在の Skype ボットは引き続き中断なく実行されます。 [Skype で一部の機能が利用できなくなった理由](https://support.skype.com/faq/fa12091/why-are-some-features-not-available-in-skype-anymore)についてご確認ください。
 
 Skype は、通話ボットという高度な機能をサポートしています。  有効にすると、ボットに音声通話を発信し、インタラクティブ ボイス レスポンス (IVR) を使用してボットと対話できます。  Bot Builder SDK for Node.js SDK には、開発者がチャット ボットに通話機能を追加するために利用できる特殊な [Calling SDK][calling_sdk] が含まれています。   
 

@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 07/31/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: d73bd8c26dde8826b145108268417a24840ed83e
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75791244"
 ---
 # <a name="add-telemetry-to-your-qnamaker-bot"></a>QnAMaker ボットへのテレメトリの追加
@@ -194,7 +194,7 @@ QnA Maker サービスでは、組み込みのテレメトリ ログ記録が利
 
 1. [Azure portal](https://portal.azure.com/) に移動します
 
-2. __[モニター] > [アプリケーション]__ をクリックして Application Insights に移動します。
+2. __[Monitor] (監視) > [アプリケーション]__ をクリックして Application Insights に移動します。
 
 3. Application Insights を開いたら、次に示すように、ナビゲーション バーにある _[Logs (Analytics)]\(ログ (分析)\)_ をクリックします。
 

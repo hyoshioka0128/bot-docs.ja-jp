@@ -9,10 +9,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/22/2019
 ms.openlocfilehash: 5d7823697262e37619ca6c82bf9582449ea4bdde
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75789671"
 ---
 # <a name="connect-a-bot-to-cortana"></a>ボットを Cortana に接続する
@@ -27,10 +27,10 @@ Cortana チャンネルを追加するには、[Azure portal](https://portal.azu
 
 ボットを Cortana チャンネルに接続すると、登録フォームにボットの基本情報が自動的に入力されます。 この情報を入念に確認してください。 このフォームは次のフィールドで構成されます。
 
-| フィールド | [説明] |
+| フィールド | 説明 |
 |------|------|
 | **[スキル] アイコン** | スキルが呼び出されたときに Cortana のキャンバスに表示されるアイコン。 これは、スキルを発見可能な場所 (Microsoft Store など) でも使用されます (最大 32 KB、PNG のみ)。|
-| **[表示名]** | Cortana スキルの名前は、ビジュアル UI の上部に表示されます (最大 30 文字)。 |
+| **表示名** | Cortana スキルの名前は、ビジュアル UI の上部に表示されます (最大 30 文字)。 |
 | **呼び出し名** | スキルを呼び出すときにユーザーが呼びかける名前です。 3 つ以下の単語で構成され、発音が簡単なものにする必要があります。 この名前の選択方法の詳細については、「[Invocation Name Guidelines][invocation]」(呼び出し名ガイドライン) をご覧ください。|
 
 ![既定の設定](~/media/channels/cortana-defaultsettings.png)

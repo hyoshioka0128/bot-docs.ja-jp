@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ms.openlocfilehash: e51d4bcc7059e1130932ca6a8b956dd3b097ef8c
-ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "76752904"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
@@ -32,7 +32,7 @@ ms.locfileid: "76752904"
 メッセージには、リスト形式またはカルーセル形式で表示される複数のリッチ カードを含めることができます。
 Bot Framework では、現在 8 種類のリッチ カードがサポートされています。
 
-| カードの種類 | [説明] |
+| カードの種類 | 説明 |
 |----|----|
 | [AdaptiveCard](/adaptive-cards/get-started/bots) | テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。 [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。 |
 | [AnimationCard][] | アニメーション GIF または短い動画を再生できるカード。 |
@@ -49,7 +49,7 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 リッチ カード内のイベントを処理するには、[CardAction][] オブジェクトを使用して、ユーザーがボタンをクリックするか、カードのセクションをタップしたときのアクションを指定します。 各 `CardAction` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | Type | [説明] |
+| プロパティ | Type | 説明 |
 |----|----|----|
 | channelData | string | このアクションに関連付けられているチャネル固有のデータ |
 | displayText | string | ボタンがクリックされた場合にチャット フィードに表示するテキスト |

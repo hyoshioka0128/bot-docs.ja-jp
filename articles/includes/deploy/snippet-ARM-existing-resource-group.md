@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 27c6079030e6a1da73646c6c325a78614960fa07
-ms.sourcegitcommit: 126c4f8f8c7a3581e7521dc3af9a937493e6b1df
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "80499852"
 ---
 この手順では、ボットのデプロイ ステージを設定するボット アプリケーション サービスを作成します。 既存のリソース グループを使用する場合は、既存のアプリ サービス プランを使用するか、新しいものを作成できます。 両方のオプションの手順を以下に示します。

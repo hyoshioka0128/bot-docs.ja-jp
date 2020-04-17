@@ -9,10 +9,10 @@ ms.author: gapretty
 ms.service: bot-service
 ms.date: 01/21/2020
 ms.openlocfilehash: 2bf7d99d221a2e48c938c66fb7bef5c1e143f47f
-ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "76752804"
 ---
 # <a name="connect-a-bot-to-webex-teams-using-the-webex-adapter"></a>Webex アダプターを使用して Webex Teams にボットを接続する

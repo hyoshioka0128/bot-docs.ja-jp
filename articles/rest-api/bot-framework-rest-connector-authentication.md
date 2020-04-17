@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ms.openlocfilehash: 60a246d60f3b74b037f793a306d58df1a5398141
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75790790"
 ---
 # <a name="authentication"></a>認証
@@ -31,7 +31,7 @@ ms.locfileid: "75790790"
 
 ボットと Bot Connector の間で信頼を確立するために、次の 4 つの認証テクノロジが使用されます。
 
-| テクノロジ | [説明] |
+| テクノロジ | 説明 |
 |----|----|
 | **SSL/TLS** | SSL/TLS は、すべてのサービス間接続に対して使用されます。 `X.509v3` 証明書が、すべての HTTPS サービスの ID を確立するために使用されます。 **クライアントでは、サービスが信頼でき、有効であることを確認するために、必ずサービス証明書を調べる必要があります** (この手法では、クライアント証明書は使用されません)。 |
 | **OAuth 2.0** | OAuth 2.0 では、Azure Active Directory (Azure AD) v2 アカウント ログイン サービスを使用して、ボットがメッセージを送信するために使用できるセキュリティ トークンを生成します。 このトークンはサービス間トークンであり、ユーザー ログインは不要です。 |
@@ -40,7 +40,7 @@ ms.locfileid: "75790790"
 
 この記事では、標準的な HTTPS と JSON を通してこれらのテクノロジを使用する方法を説明します。 特殊な SDK は不要ですが、OpenID 用のヘルパーなどは役立つことがあります。
 
-## <a id="bot-to-connector"></a>使用しているボットから Bot Connector サービスへの認証要求
+## <a name="authenticate-requests-from-your-bot-to-the-bot-connector-service"></a><a id="bot-to-connector"></a>使用しているボットから Bot Connector サービスへの認証要求
 
 Bot Connector サービスと通信するには、次の形式を使用して、各 API 要求の `Authorization` ヘッダーでアクセス トークンを指定する必要があります。 
 
@@ -138,7 +138,7 @@ payload:
 > [!NOTE]
 > 実際の場面では、フィールドは異なる可能性があります。 すべての JWT トークンを上記で指定されているように作成し、検証します。
 
-## <a id="connector-to-bot"></a> Bot Connector サービスからご利用のボットへの要求を認証する
+## <a name="authenticate-requests-from-the-bot-connector-service-to-your-bot"></a><a id="connector-to-bot"></a> Bot Connector サービスからご利用のボットへの要求を認証する
 
 Bot Connector サービスからご利用のボットに要求が送信されるときは、署名付きの JWT トークンが要求の `Authorization` ヘッダーで指定されます。 署名付き JWT トークンの認証を検証することにより、Bot Connector サービスからの呼び出しをご利用のボットで認証できます。 
 
@@ -146,7 +146,7 @@ Bot Connector サービスからご利用のボットに要求が送信される
 
 ![Bot Connector からご利用のボットへの呼び出しを認証する](../media/connector/auth_bot_connector_to_bot.png)
 
-### <a id="openid-metadata-document"></a> ステップ 2:OpenID メタデータ ドキュメントを取得する
+### <a name="step-2-get-the-openid-metadata-document"></a><a id="openid-metadata-document"></a> ステップ 2:OpenID メタデータ ドキュメントを取得する
 
 OpenID メタデータ ドキュメントでは、Bot Connector サービスの有効な署名キーの一覧を含むもう 1 つのドキュメントの場所が指定されます。 OpenID メタデータ ドキュメントを取得するには、次の要求を HTTPS 経由で発行します。
 
@@ -173,7 +173,7 @@ GET https://login.botframework.com/v1/.well-known/openidconfiguration
 }
 ```
 
-### <a id="connector-to-bot-step-3"></a> ステップ 3:有効な署名キーの一覧を取得する
+### <a name="step-3-get-the-list-of-valid-signing-keys"></a><a id="connector-to-bot-step-3"></a> ステップ 3:有効な署名キーの一覧を取得する
 
 有効な署名キーの一覧を取得するには、OpenID メタデータ ドキュメントで `jwks_uri` プロパティによって指定されている URL に、HTTPS 経由で `GET` 要求を発行します。 次に例を示します。
 
@@ -232,7 +232,7 @@ payload:
 > [!NOTE]
 > 実際の場面では、フィールドは異なる可能性があります。 すべての JWT トークンを上記で指定されているように作成し、検証します。
 
-## <a id="emulator-to-bot"></a> Bot Framework Emulator からご利用のボットへの要求を認証する
+## <a name="authenticate-requests-from-the-bot-framework-emulator-to-your-bot"></a><a id="emulator-to-bot"></a> Bot Framework Emulator からご利用のボットへの要求を認証する
 
 > [!WARNING]
 > 2017 年の冬に、Bot Framework セキュリティ プロトコルの v3.2 が登場しました。 この新しいバージョンでは、Bot Framework Eumaltor とご利用のボットの間で交換されるトークンに、新しい "issuer" 値が追加されます。 この変更に備えるために、v3.1 と v3.2 の両方について issuer 値を確認する方法を以下の手順に示します。 
@@ -266,7 +266,7 @@ GET https://login.microsoftonline.com/botframework.com/v2.0/.well-known/openid-c
 }
 ```
 
-### <a id="emulator-to-bot-step-3"></a> ステップ 3:有効な署名キーの一覧を取得する
+### <a name="step-3-get-the-list-of-valid-signing-keys"></a><a id="emulator-to-bot-step-3"></a> ステップ 3:有効な署名キーの一覧を取得する
 
 有効な署名キーの一覧を取得するには、OpenID メタデータ ドキュメントで `jwks_uri` プロパティによって指定されている URL に、HTTPS 経由で `GET` 要求を発行します。 次に例を示します。
 
@@ -327,7 +327,7 @@ payload:
 > [!WARNING]
 > セキュリティ プロトコル v3.0 に対するサポートは、**2017 年 7 月 31 日**で終了します。 独自の認証コード (お使いのボットの作成に Bot Framework SDK を使用していないもの) を作成してある場合は、以下に示す v3.1 の値を使用するようにアプリケーションを更新することにより、セキュリティ プロトコル v3.1 にアップグレードする必要があります。 
 
-### <a name="bot-to-connector-authenticationbot-to-connector"></a>[ボットからコネクタへの認証](#bot-to-connector)
+### <a name="bot-to-connector-authentication"></a>[ボットからコネクタへの認証](#bot-to-connector)
 
 #### <a name="oauth-login-url"></a>OAuth ログイン URL
 
@@ -341,7 +341,7 @@ payload:
 |----|----|
 | v3.1 および v3.2 |  `https://api.botframework.com/.default` |
 
-### <a name="connector-to-bot-authenticationconnector-to-bot"></a>[コネクタからボットへの認証](#connector-to-bot)
+### <a name="connector-to-bot-authentication"></a>[コネクタからボットへの認証](#connector-to-bot)
 
 #### <a name="openid-metadata-document"></a>OpenID メタデータ ドキュメント
 
@@ -355,7 +355,7 @@ payload:
 |----|----|
 | v3.1 および v3.2 | `https://api.botframework.com` |
 
-### <a name="emulator-to-bot-authenticationemulator-to-bot"></a>[エミュレーターからボットへの認証](#emulator-to-bot)
+### <a name="emulator-to-bot-authentication"></a>[エミュレーターからボットへの認証](#emulator-to-bot)
 
 #### <a name="oauth-login-url"></a>OAuth ログイン URL
 

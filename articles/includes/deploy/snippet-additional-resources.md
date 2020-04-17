@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 2c06c67099f44fe1df2eb0099a514a697ef0d1c9
-ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "68230822"
 ---
 ボットをデプロイするときに、通常これらのリソースが Azure portal 上で作成されます。

@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 101de0274c0daf4cbeb003703e299e0598f12a8a
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "70297295"
 ---
 # <a name="global-message-handlers-using-scorables"></a>scorable を使用したグローバル メッセージ ハンドラー

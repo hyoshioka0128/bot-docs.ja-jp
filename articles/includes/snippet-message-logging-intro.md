@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 12ead266dea859c84450e08ae12ed98d4952d698
-ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "70297382"
 ---
 Bot Framework SDK の**ミドルウェア**機能を利用すると、ユーザーとボットの間で交換されるあらゆるメッセージをボットでインターセプトできます。 インターセプトされるメッセージごとに、指定したデータ ストアにメッセージを保存し、会話ログを作成する、何らかの方法でメッセージを調べ、コードで指定される措置を講じるなどを選択できます。 

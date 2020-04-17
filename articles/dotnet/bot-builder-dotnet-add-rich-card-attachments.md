@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: db1c7a1188715a1f23ed0b0cd60538fdaebbe840
-ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "76752794"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
@@ -35,7 +35,7 @@ ms.locfileid: "76752794"
 
 Bot Framework では、現在 8 種類のリッチ カードがサポートされています。
 
-| カードの種類 | [説明] |
+| カードの種類 | 説明 |
 |----|----|
 | [アダプティブ カード](/adaptive-cards/get-started/bots) | テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。  [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。 |
 | [アニメーション カード][animationCard] | アニメーション GIF または短い動画を再生できるカード。 |
@@ -55,12 +55,12 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 リッチ カード内のイベントを処理するには、`CardAction` オブジェクトを定義して、ユーザーがボタンをクリックするか、またはカードのセクションをタップしたときのアクションを指定します。 各 `CardAction` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | Type | [説明] |
+| プロパティ | Type | 説明 |
 |----|----|----|
 | Type | string | アクションの種類 (下の表に示されている値のいずれか) |
 | タイトル | string | ボタンのタイトル |
 | Image | string | ボタン用のイメージ URL |
-| Value | string | 指定された種類のアクションを実行するために必要な値 |
+| 値 | string | 指定された種類のアクションを実行するために必要な値 |
 
 > [!NOTE]
 > アダプティブ カード内のボタンは、`CardAction` オブジェクトではなく、[アダプティブ カード](http://adaptivecards.io)によって定義されているスキーマを使用して作成されます。
@@ -114,7 +114,7 @@ Bot Framework では、現在 8 種類のリッチ カードがサポートさ�
 
 [!code-csharp[Add SignInCard attachment](../includes/code/dotnet-add-attachments.cs#addSignInCardAttachment)]
 
-## <a id="adaptive-card"></a> メッセージにアダプティブ カードを追加する
+## <a name="add-an-adaptive-card-to-a-message"></a><a id="adaptive-card"></a> メッセージにアダプティブ カードを追加する
 
 アダプティブ カードには、テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができます。
 アダプティブ カードは、<a href="http://adaptivecards.io" target="_blank">アダプティブ カード</a>で指定された JSON 形式を使用して作成され、カードのコンテンツと形式をフル コントロールできます。

@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 0856805c285f47f1f219e49d36daf4892af2dcc7
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75797862"
 ---
 # <a name="manage-state-data"></a>状態データの管理
@@ -77,7 +77,7 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 
 次の表に、状態データの管理に使用できるメソッドを示します。
 
-| 方法 | スコープ | 目的 |                                                
+| Method | スコープ | 目的 |                                                
 |----|----|----|
 | `GetUserData` | User | 指定されたチャネル上のユーザーの、以前に保存された状態データを取得します。 |
 | `GetConversationData` | 会話 | 指定されたチャネル上の会話の、以前に保存された状態データを取得します。 |
@@ -93,7 +93,7 @@ GlobalConfiguration.Configure(WebApiConfig.Register);
 
 各 [Activity][Activity] オブジェクトには、状態データの管理に使用するプロパティが含まれています。
 
-| プロパティ | [説明] | 使用事例 |
+| プロパティ | 説明 | 使用事例 |
 |----|----|----|
 | `From` | チャネル上のユーザーを一意に識別する | ユーザーに関連する状態データの保存と取得 |
 | `Conversation` | 会話を一意に識別する | 会話に関連する状態データの保存と取得 |

@@ -9,10 +9,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 03/01/2018
 ms.openlocfilehash: cd11cc1fbbacb7e555da4e00337d6fd4b79a4df6
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75789079"
 ---
 # <a name="entities-and-activity-types"></a>エンティティとアクティビティの種類
@@ -39,13 +39,13 @@ ms.locfileid: "75789079"
 
 このコード例は、メンション エンティティをエンティティ コレクションに追加する方法を示しています。
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# <a name="c"></a>[C#](#tab/cs)
 [!code-csharp[set Mention](includes/code/dotnet-create-messages.cs#setMention)]
 
 > [!TIP]
 > ユーザーの意図を判断しようとするとき、ボットはメッセージの中でメンションされている部分を無視したい場合があります。 `GetMentions` メソッドを呼び出し、応答で返された `Mention` オブジェクトを評価します。
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascript"></a>[JavaScript](#tab/js)
 ```javascript
 var entity = context.activity.entities;
 
@@ -73,26 +73,26 @@ place オブジェクトには、次のプロパティが含まれています�
 |----|----|
 | Type | エンティティの種類 ("Place") |
 | Address | 説明または住所オブジェクト (将来) |
-| Geo | 地理座標 |
+| ジオ (主要地域) | 地理座標 |
 | HasMap | 地図の URL または地図オブジェクト (将来) |
-| Name | 場所の名前 |
+| 名前 | 場所の名前 |
 
 geoCoordinates オブジェクトには、次のプロパティが含まれています。
 
 | プロパティ | 説明 |
 |----|----|
 | Type | エンティティの種類 ("GeoCoordinates") |
-| Name | 場所の名前 |
+| 名前 | 場所の名前 |
 | Longitude | 場所の経度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 | Latitude | 場所の緯度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 | Elevation | 場所の標高 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 
 このコード例では、場所エンティティをエンティティ コレクションに追加する方法を示します。
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# <a name="c"></a>[C#](#tab/cs)
 [!code-csharp[set GeoCoordinates](includes/code/dotnet-create-messages.cs#setGeoCoord)]
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascript"></a>[JavaScript](#tab/js)
 ```javascript
 var entity = context.activity.entities;
 
@@ -112,7 +112,7 @@ entity = [place];
 
 ### <a name="consume-entities"></a>エンティティの使用
 
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# <a name="c"></a>[C#](#tab/cs)
 
 エンティティを使用するには、`dynamic` キーワードまたは厳密に型指定されたクラスを使用します。
 
@@ -124,7 +124,7 @@ entity = [place];
 
 [!code-csharp[examine entity using typed class](includes/code/dotnet-create-messages.cs#examineEntity2)]
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 このコード例では、メッセージの `entity` プロパティ内でエンティティを処理する方法を示します。
 

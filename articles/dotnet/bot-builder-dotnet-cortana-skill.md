@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: ecdbf3e573c091893d0f2da8d2c7acb0c6348810
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75796691"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Cortana スキルを使用した音声認識ボットの作成
@@ -59,7 +59,7 @@ reply.Speak = "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesi
 **InputHint** プロパティは、ボットが入力を期待しているかどうかを Cortana に示すために役立ちます。 既定値は、プロンプトの場合は **ExpectingInput**、他の種類の応答の場合は **AcceptingInput** です。
 
 
-| 値 | [説明] |
+| 値 | 説明 |
 |------|------|
 | **AcceptingInput** | ボットは受動的に入力を受け入れる準備ができていますが、応答を待機しているわけではありません。 ユーザーがマイク ボタンを押したままにすると、Cortana はユーザーからの入力を受け入れます。|
 | **ExpectingInput** | ボットがユーザーからの応答をアクティブに必要としていることを示します。 Cortana はユーザーがマイクに話すのをリッスンします。  |
@@ -81,7 +81,7 @@ reply.InputHint = InputHints.ExpectingInput;
 
 音声応答に加え、Cortana ではカードの添付ファイルも表示できます。 Cortana は、次のリッチ カードをサポートしています。
 
-| カードの種類 | [説明] |
+| カードの種類 | 説明 |
 |----|----|
 | [HeroCard][heroCard] | 通常 1 つの大きなイメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |
 | [ThumbnailCard][thumbnailCard] | 通常 1 つのサムネイル イメージ、1 つまたは複数のボタン、およびテキストが含まれるカード。 |

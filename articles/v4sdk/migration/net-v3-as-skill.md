@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 02/19/2020
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: 2cf0398986203e131cf456344440cef3c2b90955
-ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "80117767"
 ---
 # <a name="convert-a-net-v3-bot-to-a-skill"></a>.NET v3 ボットをスキルに変換する
@@ -48,7 +48,7 @@ JavaScript v3 ボットをスキルに変換するには、「[JavaScript v3 ボ
 
 ボット間認証を行うには、参加するボットのそれぞれに有効なアプリ ID とパスワードが必要です。
 
-1. 必要に応じて、これらのボットのボット チャンネル登録を作成します。
+1. 必要に応じて、これらのボットのボットチャンネル登録を作成します。
 1. それぞれのアプリ ID とパスワードを記録します。
 
 ## <a name="conversion-process"></a>変換処理
@@ -138,7 +138,7 @@ JavaScript v3 ボットをスキルに変換するには、「[JavaScript v3 ボ
    [!code-xml[app settings](~/../botbuilder-samples/MigrationV3V4/CSharp/Skills/V3PizzaBot/Web.config?range=11-16)]
 
 1. 以下を行うためのヘルパー メソッドを持つ `ConversationHelper` クラスを追加します。
-   - スキルが終了したときに `endOfConversation` アクティビティを送信する。 これにより、アクティビティの `Value` プロパティで注文情報が返され、会話が終了した理由を反映するように `Code` プロパティを設定できます。
+   - スキルが終了したときに `endOfConversation` アクティビティを送信する。 これにより、アクティビティの `Value` プロパティで注文情報を返し、会話が終了した理由を反映するように `Code` プロパティを設定できます。
    - 会話状態をクリアし、関連付けられているリソースをすべて解放します。
 
    **V3PizzaBot\\ConversationHelper.cs**

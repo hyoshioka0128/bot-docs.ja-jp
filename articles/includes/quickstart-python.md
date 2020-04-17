@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 9a2618533dfefe86be1a15fb5d88740182e04b6d
-ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75752433"
 ---
 ## <a name="prerequisites"></a>前提条件

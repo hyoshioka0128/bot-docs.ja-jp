@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 026b6ad3b6b9037a09b2727838e7499562b83fba
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75797997"
 ---
 # <a name="request-payment"></a>支払いの要求
@@ -60,7 +60,7 @@ Bot Framework SDK for .NET を使用して支払い要求を送信するには�
 
 この記事の次のいくつかのセクションでは、**支払いボット** サンプルのコンテキストでの支払いプロセスの 3 つの部分について説明します。
 
-## <a id="request-payment"></a> 支払いの要求
+## <a name="requesting-payment"></a><a id="request-payment"></a> 支払いの要求
 
 ボットは、"支払い" の `CardAction.Type` を指定するボタンが含まれた[リッチ カード添付ファイル](bot-builder-dotnet-add-rich-card-attachments.md)を含むメッセージを送信して、ユーザーに支払いを要求できます。 **支払いボット** サンプルからのこのコード スニペットは、ユーザーが支払いプロセスを開始するためにクリック (またはタップ) できる **[Buy]** ボタンが含まれた Hero カードを含むメッセージを作成します。 
 
@@ -75,7 +75,7 @@ Bot Framework SDK for .NET を使用して支払い要求を送信するには�
 > [!IMPORTANT]
 > **[Buy]** ボタンにアクセスできるユーザーはすべて、そのボタンを使用して支払いプロセスを開始できます。 グループ会話のコンテキスト内では、特定のユーザーだけが使用するボタンを指定することはできません。 
 
-## <a id="user-experience"></a> ユーザー エクスペリエンス
+## <a name="user-experience"></a><a id="user-experience"></a> ユーザー エクスペリエンス
 
 **[Buy]** ボタンをクリックすると、ユーザーは支払いの Web エクスペリエンスに移動し、Microsoft アカウントを通して、支払い、配送、連絡先に関する必要な情報すべてを指定できます。 
 
@@ -95,7 +95,7 @@ Bot Framework SDK for .NET を使用して支払い要求を送信するには�
 > [!NOTE]
 > `invoke` は、Microsoft Bot Framework で使用するために予約されている特殊なアクティビティの種類です。 `invoke` アクティビティを送信した側は、ボットがコールバックを確認するために HTTP 応答を送信するものと予期します。
 
-## <a id="process-callbacks"></a> コールバックの処理
+## <a name="processing-callbacks"></a><a id="process-callbacks"></a> コールバックの処理
 
 [!INCLUDE [Process callbacks overview](../includes/snippet-payment-process-callbacks-overview.md)]
 

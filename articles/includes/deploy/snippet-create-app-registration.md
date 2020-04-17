@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: a0d110e4975fd3fed943080c5bf4bc71739e877b
-ms.sourcegitcommit: 4ddee4f90a07813ce570fdd04c8c354b048e22f3
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "77479289"
 ---
 この手順では、Azure Active Directory アプリケーションを作成します。これにより、次のことが可能になります。

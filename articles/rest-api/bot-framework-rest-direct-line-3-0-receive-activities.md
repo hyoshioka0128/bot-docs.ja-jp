@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 06/13/2019
 ms.openlocfilehash: bfe40a33747dfd6724f6a5efe2104ffde01781bc
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75789373"
 ---
 # <a name="receive-activities-from-the-bot"></a>ボットからアクティビティを受信する
@@ -35,7 +35,7 @@ WebSocket と HTTP GET は、どちらも、すべての[アクティビティ�
 | endOfConversation | HTTP GET と WebSocket |
 | その他のすべてのアクティビティの種類 | HTTP GET と WebSocket |
 
-## <a id="connect-via-websocket"></a>WebSocket ストリーム経由でアクティビティを受信する
+## <a name="receive-activities-via-websocket-stream"></a><a id="connect-via-websocket"></a>WebSocket ストリーム経由でアクティビティを受信する
 
 クライアントが[会話の開始](bot-framework-rest-direct-line-3-0-start-conversation.md)要求を送信してボットとの会話を開くと、サービスの応答には、クライアントが後で WebSocket 経由で接続するために使用できる `streamUrl` プロパティが含まれます。 ストリーム URL は事前に承認されているため、WebSocket 経由で接続するクライアントの要求には、`Authorization` ヘッダーは必要ありません。
 
@@ -98,7 +98,7 @@ Direct Line サービスが、特定の条件下で WebSocket 接続を強制的
 
 WebSocket ストリームにはライブ更新とごく最近のメッセージが含まれています (これは WebSocket 経由で接続するための呼び出しが発行されたためです) が、最新の `POST` の前に `/v3/directline/conversations/{id}` に送信されたメッセージは含まれていません。 会話内でこれまでに送信されたメッセージを取得するには、次に説明する `HTTP GET` を使用します。
 
-## <a id="http-get"></a> HTTP GET を使用してアクティビティを取得する
+## <a name="retrieve-activities-with-http-get"></a><a id="http-get"></a> HTTP GET を使用してアクティビティを取得する
 
 WebSocket を使用できないクライアントは、`HTTP GET` を使用してアクティビティを取得できます。
 

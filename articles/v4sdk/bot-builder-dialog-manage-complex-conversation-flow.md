@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 01/30/2020
+ms.date: 03/26/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f8854469b131b11d53c90047d438af4e26b06f97
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: ebeb600d43386e93f01255bdc9cb29c4fbd7d283
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441630"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81395621"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>ブランチとループを使用して高度な会話フローを作成する
 
@@ -229,7 +229,7 @@ _dialog and welcome bot_ クラスは、ダイアログ ボットを拡張し、
 
 **Startup.cs**
 
-[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=18-37)]
+[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=16-35)]
 
 ### <a name="javascript"></a>[JavaScript](#tab/javascript)
 

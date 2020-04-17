@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ms.openlocfilehash: 8570873a63a539b4f7c96053aec2ab1a1f615eb9
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75792130"
 ---
 # <a name="integrate-your-bot-with-a-web-browser"></a>ボットを Web ブラウザーと統合する
@@ -58,7 +58,7 @@ Office 365 でユーザーの予定表を読み取る機能、またはユーザ
 7. ユーザーはボットに戻り、"マジック ナンバー" をチャットに貼り付けます。 
    ユーザーによって提供された "マジック ナンバー" と、予期される値が一致することで、現在のユーザーが、前にハイパーリンクをクリックして Web サイトのフローを開始したユーザーと同じであることが確認されます。 
 
-### <a id="verify-identity"></a> "マジック ナンバー" を使用したユーザー ID の確認
+### <a name="verifying-user-identity-using-the-magic-number"></a><a id="verify-identity"></a> "マジック ナンバー" を使用したユーザー ID の確認
 
 ボットから Web サイトへのフロー中に "マジック ナンバー" が生成されることで (上記の[手順 5](#generate-magic-number))、Web サイトのフローを開始したユーザーが、本当に意図されたユーザーであることを後で確認できます。 たとえば、ボットによって、複数のユーザーが参加しているグループ チャットが実行されている場合に、参加ユーザーの 1 人がハイパーリンクをクリックして Web サイトのフローを開始したとします。 "マジック ナンバー" 検証プロセスがないと、ボットでは、どのユーザーがフローを完了したかを判断できません。 認証された 1 人のユーザーが、別のユーザーのセッションにアクセス トークンを挿入する可能性もあります。 
 
@@ -70,7 +70,7 @@ Office 365 でユーザーの予定表を読み取る機能、またはユーザ
 > [!NOTE]
 > "マジック ナンバー" 検証プロセスの必要性は、チャネルによって独自の埋め込み Web ビューが構築されているときは非推奨です。
 
-### <a id="website-signal-to-bot"></a>Web サイトがボットに "シグナル" で通知する方法
+### <a name="how-does-the-website-signal-the-bot"></a><a id="website-signal-to-bot"></a>Web サイトがボットに "シグナル" で通知する方法
 
 ボットによって、ユーザーがクリックして Web サイトのフローを開始する[ハイパーリンクが生成](#generate-hyperlink)されるとき、そのハイパーリンクには、通常、チャネル内の会話 ID、チャネル ID、ユーザー ID などの現在の会話のコンテキストに関する、ターゲット URL 上の querystring パラメーター経由の情報が含まれています。 その後、Web サイトでは、この情報を使って、そのユーザーまたは会話に関する状態変数が、Bot Framework SDK または REST API を使用して読み書きされます。 Web サイトのフローが完了したことを、Web サイトがボットに "シグナル" で通知する方法の例については、上記の[手順 6](#signal-to-bot) を参照してください。
 

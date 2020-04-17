@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: da99aa82c235bc8f530c9c2ad8d3ea1fa592b001
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75798129"
 ---
 # <a name="how-to-unit-test-bots"></a>ボットの単体テストを実行する方法
@@ -30,11 +30,11 @@ ms.locfileid: "75798129"
 
 ## <a name="prerequisites"></a>前提条件
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 このトピックで使用されている [CoreBot テスト](https://aka.ms/cs-core-test-sample) サンプルは、[Microsoft.Bot.Builder.Testing](https://www.nuget.org/packages/Microsoft.Bot.Builder.Testing/) パッケージ、[XUnit](https://xunit.net/)、および [Moq](https://github.com/moq/moq) を参照して単体テストを作成します。
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 このトピックで使用されている [CoreBot テスト](https://aka.ms/js-core-test-sample) サンプルは、[botbuilder-testing](https://www.npmjs.com/package/botbuilder-testing) パッケージおよび [Mocha](https://mochajs.org/) を参照して単体テストを作成し、[Mocha テスト エクスプローラー](https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-mocha-test-adapter)を使用して VS Code でテスト結果を視覚化します。
 
@@ -48,7 +48,7 @@ Corebot サンプルでは、ダイアログの単体テストは `DialogTestCli
 
 次の例は、`DialogTestClient` から派生したテストを示しています。
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 var sut = new BookingDialog();
@@ -75,7 +75,7 @@ Assert.Equal("All set, I have booked your flight to Seattle for tomorrow", reply
 
 `DialogTestClient` クラスは、`Microsoft.Bot.Builder.Testing` 名前空間に定義されており、[Microsoft.Bot.Builder.Testing](https://www.nuget.org/packages/Microsoft.Bot.Builder.Testing/) NuGet パッケージに含まれています。
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const sut = new BookingDialog();
@@ -114,7 +114,7 @@ assert.strictEqual(reply.text, 'All set, I have booked your flight to Seattle fo
 
 ### <a name="sending-and-receiving-messages"></a>メッセージの送受信
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 `SendActivityAsync<IActivity>` メソッドは、テキストの発話や `IActivity` をダイアログに送信することを可能にして、受信する最初のメッセージを返します。 `<T>` パラメーターは、キャストせずにアサートできるように、厳密に型指定された応答のインスタンスを返すために使用されます。
 
@@ -132,7 +132,7 @@ Assert.Equal("All set, I have booked your flight to Seattle for tomorrow", reply
 
 応答キューにこれ以上のメッセージがなくなると、`GetNextReply<IActivity>` は null 値を返します。
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `sendActivity` メソッドは、テキストの発話や `Activity` をダイアログに送信することを可能にして、受信する最初のメッセージを返します。
 
@@ -154,7 +154,7 @@ assert.strictEqual(reply.text, 'All set, I have booked your flight to Seattle fo
 
 ### <a name="asserting-activities"></a>アクティビティのアサート
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 CoreBot サンプルのコードは、単に返されたアクティビティの `Text` プロパティをアサートします。 より複雑なボットでは `Speak`、`InputHint`、`ChannelData` などのような他のプロパティをアサートすることもできます。
 
@@ -166,7 +166,7 @@ Assert.Equal(InputHints.IgnoringInput, reply.InputHint);
 
 これは、前述のように各プロパティを個別に確認することで実行できます。アクティビティをアサートするための独自のヘルパー ユーティリティを作成したり、[FluentAssertions](https://fluentassertions.com/) のような他のフレームワークを使用してカスタム アサーションを作成し、テスト コードを簡素化したりすることもできます。
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 CoreBot サンプルのコードは、単に返されたアクティビティの `text` プロパティをアサートします。 より複雑なボットでは `speak`、`inputHint`、`channelData` などのような他のプロパティをアサートすることもできます。
 
@@ -186,7 +186,7 @@ assert.strictEqual(reply.inputHint, InputHints.IgnoringInput);
 
 これは、次のようにテストで実装できます。
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 var inputDialogParams = new BookingDetails()
@@ -210,7 +210,7 @@ private async Task<DialogTurnResult> DestinationStepAsync(WaterfallStepContext s
 }
 ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const inputDialogParams = {
@@ -235,7 +235,7 @@ async destinationStep(stepContext) {
 
 ### <a name="asserting-dialog-turn-results"></a>ダイアログ ターンの結果のアサート
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 `BookingDialog` や `DateResolverDialog` のような一部のダイアログは、呼び出し元のダイアログに値を返します。 `DialogTestClient` オブジェクトは、ダイアログによって返された結果を分析およびアサートするために使用できる `DialogTurnResult` プロパティを公開します。
 
@@ -258,7 +258,7 @@ Assert.Equal("2019-06-21", bookingResults?.TravelDate);
 
 `DialogTurnResult` プロパティを使用して、ウォーターフォールのステップによって返された中間結果を検査およびアサートすることもできます。
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `BookingDialog` や `DateResolverDialog` のような一部のダイアログは、呼び出し元のダイアログに値を返します。 `DialogTestClient` オブジェクトは、ダイアログによって返された結果を分析およびアサートするために使用できる `dialogTurnResult` プロパティを公開します。
 
@@ -287,7 +287,7 @@ assert.strictEqual('2019-06-21', bookingResults.travelDate);
 
 時々、テストをデバッグせずに、単体テストのトランスクリプトを読み取ってテストの実行を分析することが必要になることがあります。
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 [Microsoft.Bot.Builder.Testing](https://www.nuget.org/packages/Microsoft.Bot.Builder.Testing/) パッケージには、ダイアログで送受信されたメッセージをコンソールに記録する `XUnitDialogTestLogger` が含まれています。
 
@@ -322,7 +322,7 @@ public class BookingDialogTests
 
 XUnit を使用しているときのコンソールへのテスト出力の送信に関する追加情報については、XUnit ドキュメントの「[出力のキャプチャ](https://xunit.net/docs/capturing-output.html)」を参照してください。
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 [botbuilder-testing](https://www.npmjs.com/package/botbuilder-testing) パッケージには、ダイアログで送受信されたメッセージをコンソールに記録する `DialogTestLogger` が含まれています。
 
@@ -348,7 +348,7 @@ const client = new DialogTestClient('msteams', sut, testData.initialData, [new D
 
 データ ドリブン テストでは、テストを書き直さずに、これらのすべての変更をテストできます。
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 CoreBot サンプルでは、XUnit からの `Theory` テストを使用してテストをパラメーター化します。
 
@@ -543,7 +543,7 @@ public async Task DialogFlowUseCases(TestDataObject testData)
 
 ![BookingDialogTests](media/how-to-unit-test/cs/BookingDialogTestsResults.png)
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ### <a name="simple-data-driven-tests"></a>単純なデータ ドリブン テスト
 
@@ -722,7 +722,7 @@ describe('DialogFlowUseCases', () => {
 
 たとえば、`MainDialog` で `BookingDialog` をインスタンス化する代わりに、次のようにします。
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 public MainDialog()
@@ -734,7 +734,7 @@ public MainDialog()
 }
 ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 constructor() {
@@ -749,7 +749,7 @@ constructor() {
 
 `BookingDialog` のインスタンスをコンストラクター パラメーターとして渡します。
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 public MainDialog(BookingDialog bookingDialog)
@@ -761,7 +761,7 @@ public MainDialog(BookingDialog bookingDialog)
 }
 ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 constructor(bookingDialog) {
@@ -776,7 +776,7 @@ constructor(bookingDialog) {
 
 これにより、`BookingDialog` インスタンスをモック オブジェクトに置き換えて、実際の `BookingDialog` クラスを呼び出さずに `MainDialog` の単体テストを作成できます。
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 // Create the mock object
@@ -788,7 +788,7 @@ var sut = new MainDialog(mockDialog.Object);
 var testClient = new DialogTestClient(Channels.Test, sut);
 ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // Create the mock object
@@ -806,7 +806,7 @@ const testClient = new DialogTestClient('test', sut);
 
 前述のように、`MainDialog` は `BookingDialog` を呼び出して `BookingDetails` オブジェクトを取得します。 次のように、`BookingDialog` のモック インスタンスを実装して構成します。
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 // Create the mock object for BookingDialog.
@@ -836,7 +836,7 @@ var sut = new MainDialog(mockDialog.Object);
 
 この例では、[Moq](https://github.com/moq/moq) を使用してモック ダイアログを作成し、`Setup` メソッドと `Returns` メソッドを使用してその動作を構成しました。
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 class MockBookingDialog extends BookingDialog {
@@ -874,7 +874,7 @@ const sut = new MainDialog(new MockBookingDialog());
 
 単純なシナリオでは、次のようにコードを使用してモック LUIS 結果を実装できます。
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 var mockRecognizer = new Mock<IRecognizer>();
@@ -894,7 +894,7 @@ mockRecognizer
     });
 ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 
@@ -921,7 +921,7 @@ const mockRecognizer = new MockFlightBookingRecognizer(mockLuisResult);
 
 しかし、LUIS の結果は複雑な場合があります。その場合は、JSON ファイルに目的の結果をキャプチャし、それをリソースとしてプロジェクトに追加して、LUIS 結果に逆シリアル化した方が簡単です。 たとえば次のようになります。
 
-## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 var mockRecognizer = new Mock<IRecognizer>();
@@ -937,7 +937,7 @@ mockRecognizer
     });
 ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // Create a mock result from a json file

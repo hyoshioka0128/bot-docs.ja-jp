@@ -9,10 +9,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/20/2020
 ms.openlocfilehash: 775ffd3a72f69ad721eacbe31b27ddbe5b1fa5e5
-ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "77519971"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>ボット構成の問題のトラブルシューティング
@@ -52,7 +52,7 @@ ms.locfileid: "77519971"
 ボットが Web チャットでは想定どおりに機能し、他のチャネルでは失敗する場合、次の理由が考えられます。
 
 - [ボット構成の問題のトラブルシューティング](#troubleshoot-bot-configuration-issues)
-  - [Web チャットでのテスト](#test-in-web-chat)
+  - [Test in Web Chat](#test-in-web-chat)
   - [ボットが Web チャットで機能しない](#bot-does-not-work-in-web-chat)
   - [ボットが Web チャットでは機能するが他のチャネルでは機能しない](#bot-works-in-web-chat-but-not-in-other-channels)
     - [チャネル構成の問題](#channel-configuration-issues)

@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 10/25/2018
 ms.openlocfilehash: 35a4a1846aadddb7505015872f830132cf625841
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75790171"
 ---
 # <a name="add-media-attachments-to-messages"></a>メッセージへのメディア添付ファイルの追加
@@ -160,7 +160,7 @@ Content-Type: application/json
 
 `activity.name` フィールドにはメディア イベント名 **media/pause** が表示されます。 すべてのメディア イベント名の一覧については、次の表を参照してください。
 
-| Event | [説明] |
+| Event | 説明 |
 | ---- | ---- |
 | **media/next** | クライアントが次のメディアまでスキップしました |
 | **media/pause** | クライアントがメディアの再生を一時停止しました |

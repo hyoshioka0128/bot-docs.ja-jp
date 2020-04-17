@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 1837b302b8d0b1d05e16d4d979b5807fa3e2d268
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75790847"
 ---
 # <a name="create-messages"></a>メッセージを作成する
@@ -77,7 +77,7 @@ session.send(customMessage);
 
 メッセージ プロパティは、オブジェクトのメソッドを通じて設定および取得されます。 さまざまな**メッセージ** プロパティを設定/取得するために呼び出すことができるメソッドの一覧を次の表に示します。
 
-| 方法 | [説明] |
+| Method | 説明 |
 | ---- | ---- | 
 | [`addAttachment(attachment:AttachmentType)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addattachment) | メッセージに添付ファイルを追加します|
 | [`addEntity(obj:Object)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addentity) | メッセージにエンティティを追加します。 |

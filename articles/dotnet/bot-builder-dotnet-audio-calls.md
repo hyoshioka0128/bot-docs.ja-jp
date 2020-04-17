@@ -8,16 +8,19 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3d21bcbea0fb6d164b1eafad855f1db854df1876
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 68092ec4f69894d4e58aa66cf3bfbff39eab989c
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75793628"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648097"
 ---
 # <a name="conduct-audio-calls-with-skype"></a>Skype で音声通話を行う
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
+
+>[!NOTE]
+> 2019 年 10 月 31 日をもって、Skype チャネルは新しいボット公開要求を受け付けなくなりました。 つまり、Skype チャンネルを使ってボットの開発を続けることはできますが、ボットのユーザー数は 100 人に制限されます。 ボットをより多くのユーザーに公開することはできません。 現在の Skype ボットは引き続き中断なく実行されます。 [Skype で一部の機能が利用できなくなった理由](https://support.skype.com/faq/fa12091/why-are-some-features-not-available-in-skype-anymore)についてご確認ください。
 
 [!INCLUDE [Introduction to conducting audio calls](../includes/snippet-audio-call-intro.md)]
 

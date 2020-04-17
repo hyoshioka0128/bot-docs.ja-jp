@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: f3a10198fc43b696017446116e5a1e8aa64fc058
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75790944"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Cortana スキルを使用した音声認識ボットの作成
@@ -45,7 +45,7 @@ Bot Framework を使用して Cortana スキルを作成する場合、Cortana �
 
 ```session.say(displayText: string, speechText: string, options?: object)```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 |------|------|
 | **displayText** | Cortana の UI に表示されるテキスト メッセージ。|
 | **speechText** | Cortana がユーザーに読み上げるテキストまたは SSML。 |
@@ -54,7 +54,7 @@ Bot Framework を使用して Cortana スキルを作成する場合、Cortana �
 **inputHint** プロパティは、ボットが入力を必要とするかどうかを Cortana に示すのに役立ちます。 組み込みプロンプトを使用する場合、この値は自動的に既定値の **expectingInput** に設定されます。
 
 
-| 値 | [説明] |
+| 値 | 説明 |
 |------|------|
 | **acceptingInput** | ボットは受動的に入力を受け入れる準備ができていますが、応答を待機しているわけではありません。 ユーザーがマイク ボタンを押したままにすると、Cortana はユーザーからの入力を受け入れます。|
 | **expectingInput** | ボットがユーザーからの応答をアクティブに必要としていることを示します。 Cortana はユーザーがマイクに話すのをリッスンします。  |

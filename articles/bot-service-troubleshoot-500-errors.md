@@ -9,10 +9,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/19/2019
 ms.openlocfilehash: 23d11a6199b6e031e93f6a2025f30247bb3e625d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75795362"
 ---
 # <a name="troubleshoot-http-500-errors"></a>HTTP 500 エラーのトラブルシューティング

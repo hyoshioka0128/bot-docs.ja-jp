@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 5620fd3a0e26cf7b56772e6bc8f47b8ceac596cd
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75796671"
 ---
 # <a name="advanced-features-of-formflow"></a>FormFlow の高度な機能
@@ -67,7 +67,7 @@ For sandwich toppings you have selected Avocado, Banana Peppers, Cucumbers, Gree
 
 以下の C# 属性をクラスに追加して、FormFlow ダイアログの動作をカスタマイズすることができます。
 
-| Attribute | 目的 |
+| 属性 | 目的 |
 |----|----| 
 | [Describe][describeAttribute] | テンプレートやカードにフィールドや値を表示する方法を変更します |
 | [数値][numericAttribute] | 数値フィールドの許容値を制限します |

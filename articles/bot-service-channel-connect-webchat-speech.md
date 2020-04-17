@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 72a247fe0e8373323626a5d01360d2a923b09b09
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75793249"
 ---
 # <a name="enable-speech-in-web-chat"></a>Web チャットで音声認識を有効にする
@@ -49,7 +49,7 @@ Web チャットで音声認識機能を有効にするには、Web チャット
      ```
 4. ブラウザーで `http://localhost:8000/samples?parameters` を参照します。 たとえば、`http://localhost:8000/samples?s=YOURDIRECTLINESECRET` は、Direct Line シークレットを使用してボットを呼び出します。 クエリ文字列に設定できるパラメーターを次の表に示します。
 
-   | パラメーター | [説明] |
+   | パラメーター | 説明 |
    |-----------|-------------|
    | s | Direct Line シークレット。 Direct Line シークレットを取得する方法については、「[Connect a bot to Direct Line (ボットを Direct Line に接続する)](bot-service-channel-connect-directline.md)」をご覧ください。 |
    | t | Direct Line トークン。 このトークンを生成する方法については、「[Generate a Direct Line token (Direct Line トークンを生成する)](rest-api/bot-framework-rest-direct-line-3-0-authentication.md)」をご覧ください。 |

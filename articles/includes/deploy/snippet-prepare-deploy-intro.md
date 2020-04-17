@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: f2eb746a1ca5df60883b11944e278cedc1a04367
-ms.sourcegitcommit: 126c4f8f8c7a3581e7521dc3af9a937493e6b1df
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "80499855"
 ---
 [Visual Studio テンプレート](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0)、[Yeoman テンプレート](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0)、または [Cookiecutter テンプレート](https://docs.microsoft.com/azure/bot-service/python/bot-builder-python-quickstart?view=azure-bot-service-4.0)を使用してボットを作成すると、生成されるソース コードには、ARM テンプレートを含む `deploymentTemplates` フォルダーが含まれます。 ここで説明するデプロイ プロセスでは、ARM テンプレートのいずれかを使用して、Azure CLI を使ってボットに必要なリソースを Azure でプロビジョニングします。

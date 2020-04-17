@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: 65b7b3c3da9fb04d1d086c5304439b53bbc30cf7
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75791144"
 ---
 # <a name="manage-bot-resources"></a>ボット リソースの管理
@@ -41,7 +41,7 @@ msbot secret --bot <name-of-bot-file> --secret "<bot-file-secret>" --clear
 - 暗号化解除された .bot ファイルを開き、値をコピーして appsettings.json または .env ファイルに追加します。
 - appsettings.json または .env ファイルから設定を読み取るようにコードを更新します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 `ConfigureServices` メソッドの場合、ASP.NET Core によって提供される次のような構成オブジェクトを使用します。 
 
@@ -51,7 +51,7 @@ var appId = Configuration.GetSection("MicrosoftAppId").Value;
 var appPassword = Configuration.GetSection("MicrosoftAppPassword").Value;
 options.CredentialProvider = new SimpleCredentialProvider(appId, appPassword);
 ```
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 JavaScript の場合、次のような `process.env` オブジェクトから .env 変数の参照を解除します。
    
@@ -75,7 +75,7 @@ const adapter = new BotFrameworkAdapter({
 - "_ダウンロードした_" appsettings.json または .env ファイルを開きそこから設定を "_ローカル_" の appsettings.json または .env ファイルにコピーします。 必ず botSecret および botFilePath エントリをローカルの appsettings.json または .env ファイルから削除してください。
 - appsettings.json または .env ファイルから設定を読み取るようにコードを更新します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 `ConfigureServices` メソッドの場合、ASP.NET Core によって提供される次のような構成オブジェクトを使用します。 
 
 **Startup.cs**
@@ -84,7 +84,7 @@ var appId = Configuration.GetSection("MicrosoftAppId").Value;
 var appPassword = Configuration.GetSection("MicrosoftAppPassword").Value;
 options.CredentialProvider = new SimpleCredentialProvider(appId, appPassword);
 ```
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascript"></a>[JavaScript](#tab/js)
 JavaScript の場合、次のような `process.env` オブジェクトから .env 変数の参照を解除します。
    
 **index.js**
@@ -112,7 +112,7 @@ const adapter = new BotFrameworkAdapter({
 }
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 上記の設定を C# コードで読み取るには、ASP、NET Core によって提供される構成オブジェクトを使用します。**Startup.cs**
 ```csharp
@@ -121,7 +121,7 @@ var appPassword = Configuration.GetSection("MicrosoftAppPassword").Value;
 options.CredentialProvider = new SimpleCredentialProvider(appId, appPassword);
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# <a name="javascript"></a>[JavaScript](#tab/js)
 JavaScript の場合、`process.env` オブジェクト (**index.js** など) から .env 変数の参照を解除します。
 ```js
 const adapter = new BotFrameworkAdapter({

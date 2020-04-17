@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: bf22566229d9a502b42a8b516138a1427b5d6845
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75797201"
 ---
 # <a name="basic-features-of-formflow"></a>FormFlow の基本的機能
@@ -25,7 +25,7 @@ FormFlow では、指定したガイドラインに基づいて、ガイド付�
 
 この記事では、FormFlow の基本的機能を使用してユーザーから情報を収集するボットを作成する方法について説明します。
 
-## <a id="forms-and-fields"></a>フォームとフィールド
+## <a name="forms-and-fields"></a><a id="forms-and-fields"></a>フォームとフィールド
 
 FormFlow を使用してボットを作成するには、ボットがユーザーから収集する必要がある情報を指定する必要があります。 たとえば、ボットの目的がユーザーのサンドイッチ注文を受けることである場合、ボットが注文を完了するために必要なデータのフィールドが含まれたフォームを定義する必要があります。 フォームを定義するには、ボットがユーザーから収集するデータを表す 1 つ以上のパブリック プロパティを含む C# クラスを作成します。 各プロパティは、次のいずれかのデータ型である必要があります。
 
@@ -47,7 +47,7 @@ FormFlow を使用してボットを作成するには、ボットがユーザ�
 
 ユーザーのサンドイッチの注文を受けるように設計された簡単なサンドイッチ ボットのこの例について考えてみましょう。 
 
-### <a id="create-class"></a>フォームを作成する
+### <a name="create-the-form"></a><a id="create-class"></a>フォームを作成する
 
 `SandwichOrder` クラスではフォームを定義し、列挙型ではサンドイッチを作るためのオプションを定義します。 このクラスには、[FormBuilder][formBuilder] を使用してフォームを作成し、簡単なウェルカム メッセージを定義する静的 `BuildForm` メソッドも含まれています。 
 

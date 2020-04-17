@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ms.openlocfilehash: 4716ff913940b09fa24f199492de9e19cf009b71
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75790012"
 ---
 # <a name="implement-channel-specific-functionality"></a>チャネル固有の機能の実装
@@ -137,7 +137,7 @@ ms.locfileid: "75790012"
 
 Facebook 通知を作成するには、`Activity` オブジェクトの `channelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |----|----|
 | notification_type | 通知の種類 (例: **REGULAR**、**SILENT_PUSH**、**NO_PUSH**)。
 | attachment | 画像、動画、またはその他のマルチメディアの種類を指定する添付ファイル、または受信確認などのテンプレート化された添付ファイル。 |
@@ -164,7 +164,7 @@ Facebook 通知を作成するには、`Activity` オブジェクトの `channel
 
 音声メモやステッカーの共有など、Telegram 固有のアクションが実装されているメッセージを作成するには、`Activity` オブジェクトの `channelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |----|----|
 | method | 呼び出す Telegram Bot API メソッド。 |
 | parameters | 指定されたメソッドのパラメーター。 |
@@ -238,7 +238,7 @@ Facebook 通知を作成するには、`Activity` オブジェクトの `channel
 
 ネイティブ Kik メッセージを作成するには、`Activity` オブジェクトの `channelData` プロパティを JSON オブジェクトに設定し、次のプロパティを指定します。 
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |----|----|
 | messages | Kik メッセージの配列。 Kik メッセージ形式の詳細については、<a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Kik メッセージ形式</a>に関するページをご覧ください。 |
 

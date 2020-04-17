@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ms.openlocfilehash: f3f084f65c1fb4fc84a6c8c75ce36b56487ebd0d
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75789965"
 ---
 # <a name="create-messages"></a>メッセージを作成する
@@ -30,7 +30,7 @@ ms.locfileid: "75789965"
 
 [Activity][] オブジェクトの `attachments` プロパティは、単純なメディア添付ファイル (画像、オーディオ、ビデオ、ファイル) やリッチ カードの送信に使用できます。 詳細については、「[メッセージへのメディア添付ファイルの追加](bot-framework-rest-connector-add-media-attachments.md)」および「[メッセージへのリッチ カードの追加](bot-framework-rest-connector-add-rich-cards.md)」を参照してください。
 
-## <a name="entities"></a>[エンティティ]
+## <a name="entities"></a>エンティティ
 
 [Activity][] オブジェクトの `entities` プロパティは、拡張可能な <a href="http://schema.org/" target="_blank">schema.org</a> オブジェクトの配列であり、チャネルとボットの間で共通のコンテキスト メタデータを交換するために使用します。
 

@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 06/17/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: 776ba2013e7f66abc36cbf4810a7520a8da8e496
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75791104"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-core-v4-bot"></a>.NET v3 ボットを .NET Core v4 ボットに移行する
@@ -163,7 +163,7 @@ scorables はもう存在しないので、`CancelScorable` クラスをコピ�
 
 ダイアログ内の制御フローとメッセージングは同じ方法で処理されなくなったので、各ダイアログを変換するときにこれを変更する必要があります。
 
-| 操作 | v3 コード | v4 コード |
+| Operation | v3 コード | v4 コード |
 | :--- | :--- | :--- |
 | ダイアログの開始を処理する | `IDialog.StartAsync` を実装する | これをウォーターフォール ダイアログの最初のステップにするか、`Dialog.BeginDialogAsync` を実装する |
 | ダイアログの継続を処理する | `IDialogContext.Wait` を呼び出す | ウォーターフォール ダイアログにステップを追加するか、`Dialog.ContinueDialogAsync` を実装する |

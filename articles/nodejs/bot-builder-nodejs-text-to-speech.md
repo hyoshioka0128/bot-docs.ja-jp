@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: a5e97aa859f8b200fecb6df213bce1f9d9c1f912
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75790357"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
@@ -30,19 +30,19 @@ Cortana などの音声対応チャネルのボットを作成している場合
 
 Bot Framework SDK for Node.js を使用すると、音声対応チャネルでボットが読み上げるテキストを指定する方法は複数あります。 `IMessage.speak` プロパティを設定し、`session.send()` メソッド、`session.say()` メソッド (表示テキスト、音声テキスト、オプションを指定するパラメーターを渡す)、または組み込みプロンプト (オプション `speak` と `retrySpeak` を指定する) を使用してメッセージを送信することができます。
 
-### <a id="message-speak"></a> IMessage.speak
+### <a name="imessagespeak"></a><a id="message-speak"></a> IMessage.speak
 
 `session.send()` メソッドを使用して送信されるメッセージを作成している場合は、`speak` プロパティを設定して、ボットが読み上げるテキストを指定します。 次のコード例では、読み上げるテキストを指定し、ボットが[ユーザー入力を受け付けている](bot-builder-nodejs-send-input-hints.md)ことを示すメッセージを作成します。
 
 [!code-javascript[IMessage.speak](../includes/code/node-text-to-speech.js#IMessageSpeak)]
 
-### <a id="session-say"></a> session.say()
+### <a name="sessionsay"></a><a id="session-say"></a> session.say()
 
 `session.send()` の使用に代わって `session.say()` メソッドを呼び出して、表示するテキストとその他のオプションだけでなく、読み上げるテキストも指定するメッセージを作成し、送信できます。 メソッドの定義は次のとおりです。
 
 `session.say(displayText: string, speechText: string, options?: object)`
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 |----|----|
 | `displayText` | 表示されるテキスト。 |
 | `speechText` | 読み上げるテキスト (プレーンテキストまたは <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">SSML</a> 形式)。 |
@@ -52,13 +52,13 @@ Bot Framework SDK for Node.js を使用すると、音声対応チャネルで�
 
 [!code-javascript[Session.say()](../includes/code/node-text-to-speech.js#SessionSay)]
 
-### <a id="prompt-options"></a> プロンプト オプション
+### <a name="prompt-options"></a><a id="prompt-options"></a> プロンプト オプション
 
 任意の組み込みプロンプトを使用すると、オプション `speak` と `retrySpeak` を設定し、ボットで読み上げるテキストを指定できます。 次のコード例では、表示するテキスト、最初に読み上げるテキスト、ユーザーの入力をしばらく待ってから読み上げるテキストを指定するプロンプトを作成します。 これは、ボットが[ユーザー入力を期待している](bot-builder-nodejs-send-input-hints.md)ことを示しており、[SSML](#ssml) 書式設定を使用して、単語 "sure" を適度な強調で発音するように指定します。
 
 [!code-javascript[Prompt](../includes/code/node-text-to-speech.js#Prompt)]
 
-## <a id="ssml"></a> 音声合成マークアップ言語 (SSML)
+## <a name="speech-synthesis-markup-language-ssml"></a><a id="ssml"></a> 音声合成マークアップ言語 (SSML)
 
 ボットで読み上げるテキストを指定するには、プレーンテキスト文字列または音声合成マークアップ言語 (SSML) として書式設定された文字列のいずれかを使用できます。SSML は XML ベースのマークアップ言語であり、声、速度、音量、発音、声の高さなどボットの音声のさまざまな特性を制御できます。 SSML の詳細については、「<a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language Reference (音声合成マークアップ言語リファレンス)</a>」を参照してください。
 

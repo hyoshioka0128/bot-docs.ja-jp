@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: 9dc5bfeab8bc56e81888be5e9463be167fcd2b18
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "77071810"
 ---
 # <a name="send-and-receive-text-message"></a>テキスト メッセージを送受信する
@@ -30,7 +30,7 @@ Markdown はほとんどのテキスト フィールドでサポートされて�
 
 単純なテキスト メッセージを送信するには送信する文字列をアクティビティとして指定します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ボットのアクティビティ ハンドラーで、ターン コンテキスト オブジェクトの `SendActivityAsync` メソッドを使用し、メッセージ応答を 1 つ送信します。 オブジェクトの `SendActivitiesAsync` メソッドを使用して一度に複数の応答を送信することもできます。
 
@@ -38,7 +38,7 @@ Markdown はほとんどのテキスト フィールドでサポートされて�
 await turnContext.SendActivityAsync($"Welcome!");
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ボットのアクティビティ ハンドラーで、ターン コンテキスト オブジェクトの `sendActivity` メソッドを使用し、メッセージ応答を 1 つ送信します。 オブジェクトの `sendActivities` メソッドを使用して一度に複数の応答を送信することもできます。
 
@@ -46,7 +46,7 @@ await turnContext.SendActivityAsync($"Welcome!");
 await context.sendActivity("Welcome!");
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ボットのアクティビティ ハンドラーで、ターン コンテキスト オブジェクトの `send_activity` メソッドを使用し、メッセージ応答を 1 つ送信します。
 
@@ -59,7 +59,7 @@ await turn_context.send_activity("Welcome!")
 
 単純なテキスト メッセージを受信するには、"*アクティビティ*" オブジェクトの "*テキスト*" プロパティを使用します。 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ボットのアクティビティ ハンドラーで、次のコードを使用してメッセージを受信します。 
 
@@ -67,7 +67,7 @@ await turn_context.send_activity("Welcome!")
 var responseMessage = turnContext.Activity.Text;
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ボットのアクティビティ ハンドラーで、次のコードを使用してメッセージを受信します。
 
@@ -75,7 +75,7 @@ var responseMessage = turnContext.Activity.Text;
 let text = turnContext.activity.text;
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ボットのアクティビティ ハンドラーで、次のコードを使用してメッセージを受信します。
 
@@ -92,7 +92,7 @@ Web チャットおよび Direct Line チャネルのボットは、メッセー
 
 次の例は、入力表示を送信する方法を示しています。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
@@ -115,7 +115,7 @@ protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivi
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 this.onMessage(async (context, next) => {
@@ -132,7 +132,7 @@ this.onMessage(async (context, next) => {
 });
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 async def on_message_activity(self, turn_context: TurnContext):

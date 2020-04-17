@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: b4b8d6763c79cea6fc06666145dc851283bd8a63
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75790633"
 ---
 # <a name="request-payment"></a>支払いの要求
@@ -61,7 +61,7 @@ Bot Framework SDK for Node.js を使用して支払い要求を送信するに�
 
 この記事の次のいくつかのセクションでは、**支払いボット** サンプルのコンテキストでの支払いプロセスの 3 つの部分について説明します。
 
-## <a id="request-payment"></a> 支払いの要求
+## <a name="requesting-payment"></a><a id="request-payment"></a> 支払いの要求
 
 ボットは、"支払い" の `type` を指定するボタンが含まれた[リッチ カード](bot-builder-nodejs-send-rich-cards.md)を含むメッセージを送信することによって、ユーザーに支払いを要求できます。 **支払いボット** サンプルからのこのコード スニペットは、ユーザーが支払いプロセスを開始するためにクリック (またはタップ) できる **[Buy]** ボタンが含まれた Hero カードを含むメッセージを作成します。 
 
@@ -76,7 +76,7 @@ Bot Framework SDK for Node.js を使用して支払い要求を送信するに�
 > [!IMPORTANT]
 > **[Buy]** ボタンにアクセスできるユーザーはすべて、そのボタンを使用して支払いプロセスを開始できます。 グループ会話のコンテキスト内では、特定のユーザーだけが使用するボタンを指定することはできません。 
 
-## <a id="user-experience"></a> ユーザー エクスペリエンス
+## <a name="user-experience"></a><a id="user-experience"></a> ユーザー エクスペリエンス
 
 ユーザーは **[購入]** ボタンをクリックすると、その Microsoft アカウントを使用して必要なすべての支払い、配送、および連絡先情報を指定するための支払いの Web エクスペリエンスに移動します。 
 
@@ -96,7 +96,7 @@ Bot Framework SDK for Node.js を使用して支払い要求を送信するに�
 > [!NOTE]
 > `invoke` は、Microsoft Bot Framework で使用するために予約されている特殊なイベントの種類です。 `invoke` イベントの送信者は、ボットが HTTP 応答を送信することによってコールバックを確認することを想定します。
 
-## <a id="process-callbacks"></a> コールバックの処理
+## <a name="processing-callbacks"></a><a id="process-callbacks"></a> コールバックの処理
 
 [!INCLUDE [Process callbacks overview](../includes/snippet-payment-process-callbacks-overview.md)]
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ms.openlocfilehash: 24dfb2e1ef95dcc53e037fc3c30c4a7c74b114ad
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75789583"
 ---
 # <a name="api-reference---direct-line-api-30"></a>API リファレンス - Direct Line API 3.0
@@ -90,7 +90,7 @@ HTTP/1.1 502 Bad Gateway
 
 クライアントが 1 つの会話にアクセスするために使用できるトークンを作成または更新するには、次の操作を使用します。
 
-| 操作 | [説明] |
+| Operation | 説明 |
 |----|----|
 | [トークンの生成](#generate-token) | 新しい会話用のトークンを生成します。 |
 | [トークンの更新](#refresh-token) | トークンを更新します。 |
@@ -125,7 +125,7 @@ POST /v3/directline/tokens/refresh
 
 ボットとの会話を開いてクライアントとボット間でアクティビティを交換するには、次の操作を使用します。
 
-| 操作 | [説明] |
+| Operation | 説明 |
 |----|----|
 | [会話の開始](#start-conversation) | ボットと新しい会話を開きます。 |
 | [会話情報の取得](#get-conversation-information) | 既存の会話に関する情報を取得します。 この操作を実行すると、クライアントが会話に[再接続](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)するために使用できる、新しい WebSocket ストリーム URL が生成されます。 |
@@ -209,16 +209,16 @@ Direct Line 3.0 スキーマには、[Bot Framework スキーマ](bot-framework-
 
 アクティビティのセットを定義します。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 |----|----|----|
-| **アクティビティ** | [Activity][][] | **Activity** オブジェクトの配列です。 |
+| **activities** | [Activity][][] | **Activity** オブジェクトの配列です。 |
 | **watermark** | string | セット内のアクティビティの最大ウォーターマークです。 クライアントは、[ボットからアクティビティを取得する](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get)際、または[新しい WebSocket ストリーム URL を生成する](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)際に、`watermark` 値を使用して、直近に認識したメッセージを示すことができます。 |
 
 ### <a name="conversation-object"></a>Conversation オブジェクト
 
 Direct Line 会話を定義します。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 |----|----|----|
 | **conversationId** | string | 指定されたトークンが有効な会話を一意に識別する ID。 |
 | **eTag** | string | HTTP ETag (エンティティ タグ)。 |
@@ -231,7 +231,7 @@ Direct Line 会話を定義します。
 
 トークンを作成するためのパラメーター。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 |----|----|----|
 | **eTag** | string | HTTP ETag (エンティティ タグ)。 |
 | **trustedOrigins** | string[] | トークン内に埋め込む信頼された発行元。 |

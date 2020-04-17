@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: 8b885b19ed22c4d91163b59abe4e253018531b59
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75791429"
 ---
 <!--TODO:
@@ -42,7 +42,7 @@ npm i -g @microsoft/botframework-cli
 
 現在、次のコマンドを使用できます。
 
-| 古いツール | BF コマンド セット | [説明] |
+| 古いツール | BF コマンド セット | 説明 |
 | :--- | :--- | :--- |
 | ChatDown | [`bf chatdown`](bf-cli-reference.md#bf-chatdown) | チャット ダイアログ ( **.chat**) ファイルを操作するためのコマンドです。 |
 | NA | [`bf config`](bf-cli-reference.md#bf-config) | CLI 内のさまざまな設定を構成します。 |

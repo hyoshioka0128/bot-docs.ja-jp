@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 392eb8bb197105739222c37f695cfd785515b323
-ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "80117836"
 ---
 一部のチャネルには、メッセージのテキストと添付ファイルを使用するだけでは実装できない機能が用意されています。 チャネル固有の機能を実装するには、アクティビティ オブジェクトの "_チャネル データ_" プロパティを使用して、ネイティブのメタデータをチャネルに渡します。 たとえば、お使いのボットでチャネル データ プロパティを使用して、ステッカーを送信するように Telegram に指示したり、電子メールを送信するように Office365 に指示したりできます。

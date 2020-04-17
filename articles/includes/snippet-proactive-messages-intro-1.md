@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: c6abff25dcccce4c18ad0083ef24b69495222c9f
-ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "70297349"
 ---
 通常、ボットがユーザーに送信する各メッセージは、ユーザーの前の入力に直接関連しています。

@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: f8569aa3d4e2e227e7b348675429e5f347b13329
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75791024"
 ---
 # <a name="net-migration-quick-reference"></a>.NET 移行クイック リファレンス

@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 5057b05d598e8ff985a1d0daf5d18fef6c0ffc95
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75797943"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-net"></a>.NET 用の Azure Cosmos DB を使用してカスタム状態データを管理する
@@ -110,7 +110,7 @@ Visual Studio でボットを実行すると、追加したコードによって
 ## <a name="connect-your-bot-to-the-emulator"></a>ボットをエミュレーターに接続する
 この時点では、ボットはローカルで実行されています。 次に、エミュレーターを起動し、エミュレーターのボットに接続します。
 1. アドレス バーに http://localhost:port-number/api/messages と入力します。port-number は、アプリケーションを実行しているブラウザーに示されているポート番号と同じにします。 <strong>[Microsoft アプリ ID]</strong> フィールドと <strong>[Microsoft アプリ パスワード]</strong> フィールドは、この時点では空白のままで構いません。 この情報は、後ほど、[ボットを登録](~/bot-service-quickstart-registration.md)するときに取得します。
-2. **[接続]** をクリックします。 
+2. **[Connect]** をクリックします。 
 3. エミュレーターでいくつかのメッセージを入力して、ボットをテストします。 
 
 ## <a name="view-state-data-on-azure-portal"></a>Azure Portal で状態データを表示する

@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: a03d1c58bc91cd7966b59e2b62eb1c6ac46c094f
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75797889"
 ---
 # <a name="add-speech-to-messages"></a>メッセージに音声を追加する
@@ -30,25 +30,25 @@ Cortana などの音声対応チャネルのボットを作成している場合
 
 Bot Framework SDK for .NET を使用すると、音声対応チャネルでボットが読み上げるテキストを指定する方法は複数あります。 [メッセージ][IMessageActivity]の `Speak` プロパティを設定することや、`IDialogContext.SayAsync()` メソッドを呼び出すこと、組み込みプロンプトを使用してメッセージを送信する場合はプロンプト オプション `speak` および `retrySpeak` を指定することができます。
 
-### <a id="message-speak"></a> IMessageActivity.Speak
+### <a name="imessageactivityspeak"></a><a id="message-speak"></a> IMessageActivity.Speak
 
 [メッセージ][IMessageActivity]を作成して個々のプロパティを設定している場合は、メッセージの `Speak` プロパティを設定してボットが読み上げるテキストを指定できます。 次のコード例では、表示するテキストと読み上げるテキストを指定し、ボットが[ユーザー入力](bot-builder-dotnet-add-input-hints.md)を受け入れていることを示すメッセージを作成します。
 
 [!code-csharp[Set speak property](../includes/code/dotnet-text-to-speech.cs#Speak1)]
 
-### <a id="say-async"></a> IDialogContext.SayAsync()
+### <a name="idialogcontextsayasync"></a><a id="say-async"></a> IDialogContext.SayAsync()
 
 [ダイアログ](bot-builder-dotnet-dialogs.md)を使用している場合、表示するテキストとその他のオプションに加え、読み上げるテキストを指定するメッセージを作成して送信するために `SayAsync()` メソッドを呼び出すことができます。 次のコード例では、表示するテキストと読み上げるテキストを指定するメッセージを作成します。
 
 [!code-csharp[Call SayAsync()](../includes/code/dotnet-text-to-speech.cs#Speak2)]
 
-### <a id="prompt-options"></a> プロンプト オプション
+### <a name="prompt-options"></a><a id="prompt-options"></a> プロンプト オプション
 
 任意の組み込みプロンプトを使用すると、オプション `speak` と `retrySpeak` を設定し、ボットで読み上げるテキストを指定できます。 次のコード例では、表示するテキスト、最初に読み上げるテキスト、ユーザーの入力をしばらく待ってから読み上げるテキストを指定するプロンプトを作成します。 これには [SSML](#ssml) 形式を使用し、単語 "sure" を適度な強調で読み上げる必要があることを示します。
 
 [!code-csharp[Set Prompt options](../includes/code/dotnet-text-to-speech.cs#Speak3)]
 
-## <a id="ssml"></a> 音声合成マークアップ言語 (SSML)
+## <a name="speech-synthesis-markup-language-ssml"></a><a id="ssml"></a> 音声合成マークアップ言語 (SSML)
 
 ボットが読み上げるテキストを指定するには、それに音声合成マークアップ言語 (SSML) として書式設定された文字列を設定します。 SSML は、声、速さ、音量、発音、ピッチなどのボットの音声のさまざまな特性を制御できる XML ベースのマークアップ言語です (したがって、有効な XML である必要があります)。 SSML の詳細については、「<a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language Reference (音声合成マークアップ言語リファレンス)</a>」を参照してください。
 

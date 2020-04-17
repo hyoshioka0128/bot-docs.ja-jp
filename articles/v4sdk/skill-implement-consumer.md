@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 01/22/2020
+ms.date: 03/19/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9211f3f1df98ef5972571c1c36ecdeefc27639bf
-ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
+ms.openlocfilehash: f49780dcef56b3517798435ce4ad77be75d6d2ad
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77519991"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648198"
 ---
 # <a name="implement-a-skill-consumer"></a>スキル コンシューマーを実装する
 
@@ -243,11 +243,11 @@ ms.locfileid: "77519991"
 
 次のサンプルでは、アクティビティをスキルに転送するためのヘルパー メソッドが使用されています。 このメソッドは、スキルを呼び出す前に会話状態を保存し、HTTP 要求が成功したかどうかを確認します。
 
-[!code-javascript[Send to skill](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/rootBot.js?range=119-131)]
+[!code-javascript[Send to skill](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/rootBot.js?range=117-129)]
 
 注目すべき点として、ルート ボットには、アクティビティのスキルへの転送、ユーザーの要求でのスキルの開始、およびスキルが完了したときのスキルの停止を行うためのロジックが含まれています。
 
-[!code-javascript[message/end-of-conversation handlers](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/rootBot.js?range=32-94)]
+[!code-javascript[message/end-of-conversation handlers](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/rootBot.js?range=32-92)]
 
 ### <a name="python"></a>[Python](#tab/python)
 
@@ -285,7 +285,6 @@ ms.locfileid: "77519991"
 ### <a name="javascript"></a>[JavaScript](#tab/js)
 
 **simple-root-bot/index.js**
-
 
 [!code-javascript[On turn error](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/simple-root-bot/index.js?range=34-87)]
 
@@ -331,7 +330,7 @@ ms.locfileid: "77519991"
 
 **SimpleRootBot\Startup.cs**
 
-[!code-csharp[services](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Startup.cs?range=22-53)]
+[!code-csharp[services](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/SimpleRootBot/Startup.cs?range=21-53)]
 
 ### <a name="javascript"></a>[JavaScript](#tab/js)
 

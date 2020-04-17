@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ms.openlocfilehash: cc852b1298a306b5c9f6e381b48597510dcb1e72
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "77071870"
 ---
 # <a name="authentication"></a>認証
@@ -50,7 +50,7 @@ Direct Line **トークン**は、1 つの会話にアクセスするために�
 
 ![Direct Line 構成](../media/direct-line-configure.png)
 
-## <a id="generate-token"></a> Direct Line トークンを生成する
+## <a name="generate-a-direct-line-token"></a><a id="generate-token"></a> Direct Line トークンを生成する
 
 1 つの会話にアクセスするために使用できる Direct Line トークンを生成するには、まず [Azure portal](https://portal.azure.com) の Direct Line チャネル構成ページから Direct Line シークレットを取得します。 その後、次の要求を発行して、Direct Line シークレットを Direct Line トークンと交換します。
 
@@ -87,7 +87,7 @@ HTTP/1.1 200 OK
 
 トークンをクライアントに配布し、クライアントに会話を開始してほしい場合は、トークンの生成操作を使用します。 会話をすぐに開始するつもりの場合は、[会話の開始](bot-framework-rest-direct-line-1-1-start-conversation.md)操作を使用します。
 
-## <a id="refresh-token"></a> Direct Line トークンを更新する
+## <a name="refresh-a-direct-line-token"></a><a id="refresh-token"></a> Direct Line トークンを更新する
 
 Direct Line トークンは、生成されてから 30 分間有効であり、期限が切れていない限り、時間制限なしに更新できます。 期限が切れたトークンは更新できません。 Direct Line トークンを更新するには、次の要求を発行します。
 

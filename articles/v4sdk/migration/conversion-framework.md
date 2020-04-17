@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 11/23/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: 4629e1573170d2843037a1189b6885cd194db591
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75791114"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-framework-v4-bot"></a>.NET v3 ボットを .NET Framework v4 ボットに移行する
@@ -154,7 +154,7 @@ v4 SDK に移行するために、元のダイアログに多くの変更を加�
 
 ダイアログ内の制御フローとメッセージングは同じ方法で処理されなくなったので、各ダイアログを変換するときにこれを変更する必要があります。
 
-| 操作 | v3 コード | v4 コード |
+| Operation | v3 コード | v4 コード |
 | :--- | :--- | :--- |
 | ダイアログの開始を処理する | `IDialog.StartAsync` を実装する | これをウォーターフォール ダイアログの最初のステップにするか、`Dialog.BeginDialogAsync` を実装する |
 | ダイアログの継続を処理する | `IDialogContext.Wait` を呼び出す | ウォーターフォール ダイアログにステップを追加するか、`Dialog.ContinueDialogAsync` を実装する |

@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 8f043afc1b4faad3f7edc66c7ef1d788c42d8403
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75794673"
 ---
 # <a name="create-messages"></a>メッセージを作成する
@@ -37,7 +37,7 @@ ms.locfileid: "75794673"
 
 メッセージ アクティビティの `Attachments` プロパティは、単純なメディア添付ファイル (画像、オーディオ、ビデオ、ファイル) やリッチ カードの送受信に使用できます。 詳細については、「[メッセージへのメディア添付ファイルの追加](bot-builder-dotnet-add-media-attachments.md)」および「[メッセージへのリッチ カードの追加](bot-builder-dotnet-add-rich-card-attachments.md)」を参照してください。
 
-## <a name="entities"></a>[エンティティ]
+## <a name="entities"></a>エンティティ
 
 メッセージの `Entities` プロパティは、拡張可能な <a href="http://schema.org/" target="_blank">schema.org</a> オブジェクトの配列であり、チャネルとボットの間で共通のコンテキスト メタデータを交換するために使用します。
 
@@ -45,9 +45,9 @@ ms.locfileid: "75794673"
 
 多くのチャネルは、ボットまたはユーザーが会話のコンテキスト内で誰かを "メンション" する能力をサポートしています。 メッセージでユーザーをメンションするには、メッセージの `Entities` プロパティに `Mention` オブジェクトを設定します。 `Mention` オブジェクトには、次のプロパティが含まれています。 
 
-| プロパティ | [説明] | 
+| プロパティ | 説明 | 
 |----|----|
-| 種類 | エンティティの種類 ("mention") | 
+| Type | エンティティの種類 ("mention") | 
 | Mentioned | どのユーザーがメンションされたかを示す `ChannelAccount` オブジェクト | 
 | Text | メンション自体を表す `Activity.Text` プロパティ内のテキスト (空または null 値の可能性があります) |
 
@@ -64,20 +64,20 @@ ms.locfileid: "75794673"
 
 `Place` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | [説明] | 
+| プロパティ | 説明 | 
 |----|----|
-| 種類 | エンティティの種類 ("Place") |
+| Type | エンティティの種類 ("Place") |
 | Address | 説明または `PostalAddress` オブジェクト (将来) | 
-| ジオ (主要地域) | GeoCoordinates | 
+| ジオ (主要地域) | 地理座標 | 
 | HasMap | 地図の URL または `Map` オブジェクト (将来) |
-| Name | 場所の名前 |
+| 名前 | 場所の名前 |
 
 `GeoCoordinates` オブジェクトには、次のプロパティが含まれています。
 
-| プロパティ | [説明] | 
+| プロパティ | 説明 | 
 |----|----|
-| 種類 | エンティティの種類 ("GeoCoordinates") |
-| Name | 場所の名前 |
+| Type | エンティティの種類 ("GeoCoordinates") |
+| 名前 | 場所の名前 |
 | Longitude | 場所の経度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
 | Latitude | 場所の緯度 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
 | Elevation | 場所の標高 (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 

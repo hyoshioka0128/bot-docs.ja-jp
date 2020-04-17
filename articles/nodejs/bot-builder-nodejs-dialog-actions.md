@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 43a0737a11942cb3e8c032b98eda37154a47d340
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75790934"
 ---
 # <a name="handle-user-actions"></a>ユーザー アクションを処理する
@@ -31,7 +31,7 @@ ms.locfileid: "75790934"
 
 ダイアログにアタッチできるアクションの種類を次の表に一覧で示します。 各アクション名のリンクをクリックすると、そのアクションについて詳しく説明したセクションに移動します。
 
-| アクション | スコープ | [説明] |
+| アクション | Scope | 説明 |
 |------|------| ---- |
 | [triggerAction](#bind-a-triggeraction) | グローバル | ダイアログ スタックをクリアし、それ自体をスタックの底にプッシュするアクションをダイアログにバインドします。 この既定の動作を上書きするには、`onSelectAction` オプションを使用します。 |
 | [customAction](#bind-a-customaction) | グローバル | ダイアログ スタックに影響を与えずに情報を処理したり、アクションを実行したりできるカスタム アクションをボットにバインドします。 このアクションの機能をカスタマイズするには、`onSelectAction` オプションを使用します。 |

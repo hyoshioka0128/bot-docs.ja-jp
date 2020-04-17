@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.date: 11/28/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: 5d614fc34f3daa9deddb2ccedbe58bdef2ba067a
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75791044"
 ---
 # <a name="differences-between-the-v3-and-v4-javascript-sdk"></a>JavaScript SDK v3 とv4 の違い
@@ -45,7 +45,7 @@ Bot Framework SDK のバージョン 4 では、バージョン 3 と同じ基�
 
 メッセージを処理するときは、ターン コンテキストを使用して受信アクティビティに関する情報を取得し、アクティビティをユーザーに送信します。
 
-|アクティビティ |[説明] |
+|アクティビティ |説明 |
 |:---|:---|
 | 受信アクティビティを取得する | ターン コンテキストの `Activity` プロパティを取得します。 |
 | アクティビティを作成してユーザーに送信する | ターン コンテキストの `SendActivity` メソッドを呼び出します。<br/> 詳細については、[テキスト メッセージの送受信](../../rest-api/bot-framework-rest-direct-line-1-1-receive-messages.md)と[メッセージへのメディアの追加](../bot-builder-howto-add-media-attachments.md)に関する記事を参照してください。 |
@@ -81,7 +81,7 @@ v4 では、ボットの状態データを管理する、`UserState`、`Conversa
 
 状態プロパティ アクセサーを使用してプロパティを取得および更新し、状態管理オブジェクトを使用して変更をストレージに書き込みます。 コンカレンシーの問題を考慮する必要があることを理解しているという前提で、一般的なタスクを実行する方法を次に示します。
 
-| タスク|[説明] |
+| タスク|説明 |
 |:---|:---|
 | 状態プロパティ アクセサーを作成する | `BotState` オブジェクトの `createProperty` メソッドを呼び出します。 <br/>`BotState` は、会話状態、個人的な会話状態、ユーザー状態を表す抽象基底クラスです。 |
 | プロパティの現在の値を取得する | `StatePropertyAccessor.get(TurnContext)` を呼び出します。<br/>以前に値が設定されていない場合は、出荷時の既定のパラメーターを使用して値が生成されます。 |
@@ -108,7 +108,7 @@ v3 では `Dialog` クラスを使用して柔軟にダイアログを実装で�
 
 ダイアログを定義する方法について、いくつかのオプションを使用できるようになりました。
 
-|ダイアログの種類| [説明] |
+|ダイアログの種類| 説明 |
 |:---|:---|
 | `ComponentDialog` クラスから派生したコンポーネント ダイアログ | 外部コンテキストとの名前の競合なしにダイアログ コードをカプセル化できます。 「[ダイアログの再利用](../bot-builder-concept-dialog.md)」をご覧ください。|
 | `WaterfallDialog` クラスのインスタンスであるウォーターフォール ダイアログ | さまざまな種類のユーザー入力を要求して検証するプロンプト ダイアログと適切に連携するように設計されています。 ウォーターフォールによりプロセスの大部分が自動化されますが、ダイアログ コードに特定の形式が適用されます。[連続して行われる会話フロー](../bot-builder-dialog-manage-conversation-flow.md)に関する記事を参照してください。 |
@@ -124,7 +124,7 @@ v3 では `Dialog` クラスを使用して柔軟にダイアログを実装で�
 
 v3 での一般的な操作と、ウォーターフォール ダイアログ内でそれらを実行する方法を次に示します。 ウォーターフォール ダイアログの各ステップでは、`DialogTurnResult` 値を返す必要があります。 そうしないと、ウォーターフォールが早期に終了する可能性があります。
 
-| 操作 | v3 | v4 |
+| Operation | v3 | v4 |
 |:---|:---|:---|
 | ダイアログの開始を処理する | `session.beginDialog` を呼び出し、ダイアログの ID で渡します | `DialogContext.beginDialog` を呼び出します |
 | アクティビティを送信する | `session.send` を呼び出します。 | `TurnContext.sendActivity` を呼び出します。<br/>ステップ コンテキストの `Context` プロパティを使用して、ターン コンテキスト (`step.context.sendActivity`) を取得します。  |
@@ -163,7 +163,7 @@ v4 コードに関するその他の注意事項を次に示します。
 
 詳細と背景情報については、次のリソースを参照してください。
 
-| トピック | [説明] |
+| トピック | 説明 |
 | :--- | :--- |
 |[JavaScript SDK v3 のボットを v4 に移行する](https://docs.microsoft.com/azure/bot-service/migration/conversion-javascript?view=azure-bot-service-4.0)| JavaScript v3 ボットの v4 への移植|
 | [Bot Framework の新機能](https://docs.microsoft.com/azure/bot-service/what-is-new?view=azure-bot-service-4.0) | Bot Framework と Azure Bot Service の主な機能と機能強化|

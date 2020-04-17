@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 01/27/2020
+ms.date: 03/19/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 057e4fdf1846d2480d1a50f679bf66c269f0fe26
-ms.sourcegitcommit: 36d6f06ffafad891f6efe4ff7ba921de8a306a94
+ms.openlocfilehash: f5ec4d8b336f35eb0e66cdb16e4b8eb36317b08a
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895828"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648227"
 ---
 # <a name="implement-a-skill"></a>スキルを実装する
 
@@ -45,15 +45,15 @@ ms.locfileid: "76895828"
 
 この記事では、ボットとアダプターにサポート ロジックが組み込まれているスキルに焦点を当てます。
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 ![スキルのクラス ダイアグラム](./media/skills-simple-skill-cs.png)
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ![スキルのクラス ダイアグラム](./media/skills-simple-skill-js.png)
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 ![スキルのクラス ダイアグラム](./media/skills-simple-skill-python.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "76895828"
 "_許可される呼び出し元_" の配列 (AllowedCallers) では、スキルにアクセスできるスキル コンシューマーを制限できます。
 すべてのスキル コンシューマーからの呼び出しを受け入れるには、この配列を空のままにします。
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **EchoSkillBot\appsettings.json**
 
@@ -82,7 +82,7 @@ ms.locfileid: "76895828"
 
 [!code-csharp[configuration file](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/EchoSkillBot/appsettings.json)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **echo-skill-bot/.env**
 
@@ -90,7 +90,7 @@ ms.locfileid: "76895828"
 
 [!code-javascript[configuration file](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/echo-skill-bot/.env)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 スキルのアプリ ID とパスワードを config.py ファイルに追加します。
 
@@ -115,23 +115,23 @@ ms.locfileid: "76895828"
 ただし、スキルが終了したときは `endOfConversation` アクティビティを送信する必要があります。そうしないと、スキル コンシューマーからスキルにユーザー アクティビティが転送され続けます。
 必要に応じて、アクティビティの _value_ プロパティに戻り値を入れ、アクティビティの _code_ プロパティを使用してスキルが終了する理由を示します。
 
-#### <a name="ctabcs"></a>[C#](#tab/cs)
+#### <a name="c"></a>[C#](#tab/cs)
 
 **EchoSkillBot\Bots\EchoBot.cs**
 
-[!code-csharp[Message handler](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/EchoSkillBot/Bots/EchoBot.cs?range=14-29)]
+[!code-csharp[Message handler](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/EchoSkillBot/Bots/EchoBot.cs?range=13-28)]
 
-#### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+#### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **echo-skill-bot/bot.js**
 
 [!code-javascript[Message handler](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/echo-skill-bot/bot.js?range=10-26)]
 
-#### <a name="pythontabpython"></a>[Python](#tab/python)
+#### <a name="python"></a>[Python](#tab/python)
 
 **echo-skill-bot/bots/echo_bot.py**
 
-[!code-python[Message handler](~/../botbuilder-samples/samples/python/80.skills-simple-bot-to-bot/echo-skill-bot/bots/echo_bot.py?range=10-27)]
+[!code-python[Message handler](~/../botbuilder-samples/samples/python/80.skills-simple-bot-to-bot/echo-skill-bot/bots/echo_bot.py?range=10-26)]
 
 ---
 
@@ -141,13 +141,13 @@ ms.locfileid: "76895828"
 
 このスキルのロジックはターンごとに変わりません。 会話リソースを割り当てるスキルを実装する場合は、会話終了ハンドラーにリソース クリーンアップ コードを追加します。
 
-#### <a name="ctabcs"></a>[C#](#tab/cs)
+#### <a name="c"></a>[C#](#tab/cs)
 
 **EchoSkillBot\Bots\EchoBot.cs**
 
-[!code-csharp[End-of-conversation handler](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/EchoSkillBot/Bots/EchoBot.cs?range=31-37)]
+[!code-csharp[End-of-conversation handler](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/EchoSkillBot/Bots/EchoBot.cs?range=30-36)]
 
-#### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+#### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **echo-skill-bot/bot.js**
 
@@ -155,7 +155,7 @@ ms.locfileid: "76895828"
 
 [!code-javascript[End-of-conversation handler](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/echo-skill-bot/bot.js?range=28-35)]
 
-#### <a name="pythontabpython"></a>[Python](#tab/python)
+#### <a name="python"></a>[Python](#tab/python)
 
 **echo-skill-bot/bots/echo_bot.py**
 
@@ -174,7 +174,7 @@ ms.locfileid: "76895828"
 
 <!--TODO Need a link for more information about claims and claims-based validation.-->
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 `ClaimsValidator` クラスから要求検証コントロールを派生させます。 これにより、受信した要求を拒否するための `UnauthorizedAccessException` がスローされます。 構成ファイルの値が空の配列であると、`IConfiguration.Get` メソッドから null が返されるので注意してください。
 
@@ -182,7 +182,7 @@ ms.locfileid: "76895828"
 
 [!code-csharp[Claims validator](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/EchoSkillBot/Authentication/AllowedCallersClaimsValidator.cs?range=22-52&highlight=24-27)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 受信した要求を拒否するためにエラーをスローする要求検証メソッドを定義します。
 
@@ -190,7 +190,7 @@ ms.locfileid: "76895828"
 
 [!code-javascript[Claims validator](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/echo-skill-bot/authentication/allowedCallersClaimsValidator.js?range=6-27&highlight=18-20)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 受信した要求を拒否するためにエラーをスローする要求検証メソッドを定義します。
 
@@ -204,19 +204,19 @@ ms.locfileid: "76895828"
 
 エラーが発生した場合は、スキルのアダプターは、スキルの会話状態をクリアするとともに、スキル コンシューマーに `endOfConversation` アクティビティを送信する必要があります。 アクティビティの _code_ プロパティを使用して、エラーのためにスキルが終了したことを通知します。
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **EchoSkillBot\SkillAdapterWithErrorHandler.cs**
 
 [!code-csharp[Error handler](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/EchoSkillBot/SkillAdapterWithErrorHandler.cs?range=20-59&highlight=19-24)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **echo-skill-bot/index.js**
 
 [!code-javascript[Error handler](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/echo-skill-bot/index.js?range=41-69&highlight=21-28)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **echo-skill-bot/app.py**
 
@@ -230,25 +230,24 @@ ms.locfileid: "76895828"
 
 次のサンプルでは、要求検証を認証構成に追加し、前のセクションで説明した "_エラー ハンドラー付きスキル アダプター_" を使用しています。
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **EchoSkillBot\Startup.cs**
 
 [!code-csharp[Configuration](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/EchoSkillBot/Startup.cs?range=28-32)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **echo-skill-bot/index.js**
 
 [!code-javascript[configuration](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/echo-skill-bot/index.js?range=34-38)]
 
 <!--C# & JS snippets checked 1/14-->
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **app.py**
 
 [!code-python[configuration](~/../botbuilder-samples/samples/python/80.skills-simple-bot-to-bot/echo-skill-bot/app.py?range=22-34)]
-
 
 ---
 
@@ -257,19 +256,19 @@ ms.locfileid: "76895828"
 "_スキル マニフェスト_" は、スキルが実行できるアクティビティ、その入力パラメーターと出力パラメーター、およびスキルのエンドポイントが記述された JSON ファイルです。
 マニフェストには、別のボットからスキルにアクセスするために必要な情報が含まれています。
 
-### <a name="ctabcs"></a>[C#](#tab/cs)
+### <a name="c"></a>[C#](#tab/cs)
 
 **EchoSkillBot\wwwroot\manifest\echoskillbot-manifest-1.0.json**
 
 [!code-json[Manifest](~/../botbuilder-samples/samples/csharp_dotnetcore/80.skills-simple-bot-to-bot/EchoSkillBot/wwwroot/manifest/echoskillbot-manifest-1.0.json)]
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **echo-skill-bot/manifest/echoskillbot-manifest-1.0.json**
 
 [!code-json[Manifest](~/../botbuilder-samples/samples/javascript_nodejs/80.skills-simple-bot-to-bot/echo-skill-bot/manifest/echoskillbot-manifest-1.0.json)]
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 **echo_skill_bot/wwwroot/manifest/echoskillbot-manifest-1.0.json**
 
