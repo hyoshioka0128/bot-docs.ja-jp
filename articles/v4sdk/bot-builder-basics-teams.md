@@ -55,12 +55,12 @@ Teams アクティビティ ハンドラー クラスには、すべての会話
 
 | Event | Handler | 説明 |
 | :-- | :-- | :-- |
-| channelCreated | `OnTeamsChannelCreatedAsync` | 作成された Teams チャネルを処理するには、これをオーバーライドします。 詳細については、「[Channel created](https://aka.ms/azure-bot-subscribe-to-conversation-events#channel-created)」(作成されたチャネル) を参照してください。 |
-| channelDeleted | `OnTeamsChannelDeletedAsync` | 削除された Teams チャネルを処理するには、これをオーバーライドします。 詳細については、「[Channel deleted](https://aka.ms/azure-bot-subscribe-to-conversation-events#channel-deleted)」(削除されたチャネル) を参照してください。 |
-| channelRenamed | `OnTeamsChannelRenamedAsync` | 名前が変更された Teams チャネルを処理するには、これをオーバーライドします。 詳細については、「[Channel renamed](https://aka.ms/azure-bot-subscribe-to-conversation-events#channel-renamed)」(名前が変更されたチャネル) を参照してください。 |
-| teamRenamed | `OnTeamsTeamRenamedAsync` | `return Task.CompletedTask;` 名前が変更された Teams のチームを処理するには、これをオーバーライドします。 詳細については、「[Team renamed](https://aka.ms/azure-bot-subscribe-to-conversation-events#team-renamed)」(名前が変更されたチーム) を参照してください。 |
-| MembersAdded | `OnTeamsMembersAddedAsync` | `ActivityHandler` で `OnMembersAddedAsync` メソッドを呼び出します。 これをオーバーライドして、チームに参加するメンバーを処理します。 詳細については、「[Team member added](https://aka.ms/azure-bot-subscribe-to-conversation-events#Team-Member-Added)」(追加されたチーム メンバー) を参照してください。|
-| MembersRemoved | `OnTeamsMembersRemovedAsync` | `ActivityHandler` で `OnMembersRemovedAsync` メソッドを呼び出します。 これをオーバーライドして、チームから削除するメンバーを処理します。 詳細については、「[Team member removed](https://aka.ms/azure-bot-subscribe-to-conversation-events#Team-Member-Removed)」(削除されたチームメンバー) を参照してください。|
+| channelCreated | `OnTeamsChannelCreatedAsync` | 作成された Teams チャネルを処理するには、これをオーバーライドします。 詳細については、「[チャネルの作成](https://aka.ms/azure-bot-subscribe-to-conversation-events#channel-created)」を参照してください。 |
+| channelDeleted | `OnTeamsChannelDeletedAsync` | 削除された Teams チャネルを処理するには、これをオーバーライドします。 詳細については、「[チャネルの削除](https://aka.ms/azure-bot-subscribe-to-conversation-events#channel-deleted)」を参照してください。 |
+| channelRenamed | `OnTeamsChannelRenamedAsync` | 名前が変更された Teams チャネルを処理するには、これをオーバーライドします。 詳細については、「[チャネル名の変更](https://aka.ms/azure-bot-subscribe-to-conversation-events#channel-renamed)」を参照してください。 |
+| teamRenamed | `OnTeamsTeamRenamedAsync` | `return Task.CompletedTask;` 名前が変更された Teams のチームを処理するには、これをオーバーライドします。 詳細については、「[チームの名前変更](https://aka.ms/azure-bot-subscribe-to-conversation-events#team-renamed)」を参照してください。 |
+| MembersAdded | `OnTeamsMembersAddedAsync` | `ActivityHandler` で `OnMembersAddedAsync` メソッドを呼び出します。 これをオーバーライドして、チームに参加するメンバーを処理します。 詳細については、「[チームメンバーの追加](https://aka.ms/azure-bot-subscribe-to-conversation-events#Team-Member-Added)」を参照してください。|
+| MembersRemoved | `OnTeamsMembersRemovedAsync` | `ActivityHandler` で `OnMembersRemovedAsync` メソッドを呼び出します。 これをオーバーライドして、チームから削除するメンバーを処理します。 詳細については、「[チームメンバーの削除](https://aka.ms/azure-bot-subscribe-to-conversation-events#Team-Member-Removed)」を参照してください。|
 
 
 <!--
@@ -99,12 +99,12 @@ Teams アクティビティ ハンドラー クラスには、すべての会話
 
 | Event | Handler | 説明 |
 | :-- | :-- | :-- |
-| channelCreated | `OnTeamsChannelCreatedEvent` | 作成された Teams チャネルを処理するには、これをオーバーライドします。 詳細については、「[Channel created](https://aka.ms/azure-bot-subscribe-to-conversation-events#channel-created)」(作成されたチャネル) を参照してください。 |
-| channelDeleted | `OnTeamsChannelDeletedEvent` | 削除された Teams チャネルを処理するには、これをオーバーライドします。 詳細については、「[Channel deleted](https://aka.ms/azure-bot-subscribe-to-conversation-events#channel-deleted)」(削除されたチャネル) を参照してください。|
-| channelRenamed | `OnTeamsChannelRenamedEvent` | 名前が変更された Teams チャネルを処理するには、これをオーバーライドします。 詳細については、「[Channel renamed](https://aka.ms/azure-bot-subscribe-to-conversation-events#channel-renamed)」(名前が変更されたチャネル) を参照してください。 |
-| teamRenamed | `OnTeamsTeamRenamedEvent` | `return Task.CompletedTask;` 名前が変更された Teams のチームを処理するには、これをオーバーライドします。 詳細については、「[Team renamed](https://aka.ms/azure-bot-subscribe-to-conversation-events#team-renamed)」(名前が変更されたチーム) を参照してください。 |
-| MembersAdded | `OnTeamsMembersAddedEvent` | `ActivityHandler` で `OnMembersAddedEvent` メソッドを呼び出します。 これをオーバーライドして、チームに参加するメンバーを処理します。 詳細については、「[Team member added](https://aka.ms/azure-bot-subscribe-to-conversation-events#Team-Member-Added)」(追加されたチーム メンバー) を参照してください。 |
-| MembersRemoved | `OnTeamsMembersRemovedEvent` | `ActivityHandler` で `OnMembersRemovedEvent` メソッドを呼び出します。 これをオーバーライドして、チームから削除するメンバーを処理します。 詳細については、「[Team member removed](https://aka.ms/azure-bot-subscribe-to-conversation-events#Team-Member-Removed)」(削除されたチームメンバー) を参照してください。 |
+| channelCreated | `OnTeamsChannelCreatedEvent` | 作成された Teams チャネルを処理するには、これをオーバーライドします。 詳細については、「[チャネルの作成](https://aka.ms/azure-bot-subscribe-to-conversation-events#channel-created)」を参照してください。 |
+| channelDeleted | `OnTeamsChannelDeletedEvent` | 削除された Teams チャネルを処理するには、これをオーバーライドします。 詳細については、「[チャネルの削除](https://aka.ms/azure-bot-subscribe-to-conversation-events#channel-deleted)」を参照してください。|
+| channelRenamed | `OnTeamsChannelRenamedEvent` | 名前が変更された Teams チャネルを処理するには、これをオーバーライドします。 詳細については、「[チャネル名の変更](https://aka.ms/azure-bot-subscribe-to-conversation-events#channel-renamed)」を参照してください。 |
+| teamRenamed | `OnTeamsTeamRenamedEvent` | `return Task.CompletedTask;` 名前が変更された Teams のチームを処理するには、これをオーバーライドします。 詳細については、「[チームの名前変更](https://aka.ms/azure-bot-subscribe-to-conversation-events#team-renamed)」を参照してください。 |
+| MembersAdded | `OnTeamsMembersAddedEvent` | `ActivityHandler` で `OnMembersAddedEvent` メソッドを呼び出します。 これをオーバーライドして、チームに参加するメンバーを処理します。 詳細については、「[チームメンバーの追加](https://aka.ms/azure-bot-subscribe-to-conversation-events#Team-Member-Added)」を参照してください。 |
+| MembersRemoved | `OnTeamsMembersRemovedEvent` | `ActivityHandler` で `OnMembersRemovedEvent` メソッドを呼び出します。 これをオーバーライドして、チームから削除するメンバーを処理します。 詳細については、「[チームメンバーの削除](https://aka.ms/azure-bot-subscribe-to-conversation-events#Team-Member-Removed)」を参照してください。 |
 
 <!--
 | Event | Handler | Description |
