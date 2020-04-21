@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6bde9f24f42a7558d93c333d12e03e9c87d7c4b2
-ms.sourcegitcommit: 64b25f796f89e8bb6fa53d3c824b73b8ce4d6ed8
+ms.openlocfilehash: a55fff4036e6e57c4dcc4fb100422a6ec169fb33
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80250021"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648306"
 ---
 # <a name="custom-assistant-overview"></a>カスタム アシスタントの概要
 
@@ -39,7 +39,7 @@ Microsoft では、製品の機能をお客様が制御できるようにする�
 
 ## <a name="your-assistant-anywhere"></a>あらゆるチャネルから利用できるアシスタント
 
-カスタム アシスタントは Microsoft Conversational AI プラットフォームを利用しているので、あらゆる Bot Framework [チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)を通じて利用することができます (Web チャット、FaceBook Messenger、Skype など)。さらに、[Direct Line](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0) チャネルを通じて、デスクトップやモバイル アプリ (自動車、スピーカー、アラーム時計などのデバイスを含む) に機能を組み込むこともできます。
+カスタム アシスタントは Microsoft Conversational AI プラットフォームを利用しているので、あらゆる Bot Framework [チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)を通じて利用することができます (Web チャット、Facebook Messenger など)。さらに、[Direct Line](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0) チャネルを通じて、デスクトップやモバイル アプリ (自動車、スピーカー、アラーム時計などのデバイスを含む) に機能を組み込むこともできます。
 
 ## <a name="built-on-enterprise-grade-technology"></a>エンタープライズ グレードのテクノロジに基づいて構築
 

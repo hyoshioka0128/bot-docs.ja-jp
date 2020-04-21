@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c361067c7c51a4230d6b3da127a932fcb93cd2fe
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 25fb8c82854b239889779571e741e2d876c627c0
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75796667"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648144"
 ---
 # <a name="send-and-receive-activities"></a>アクティビティを送受信する
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Bot Framework Connector では、ボットで Skype、電子メール、Slack などの複数のチャネルとの間で通信できるようにする単一の REST API が用意されています。 これにより、ボットからチャネルおよびチャネルからボットにメッセージを返信することで、ボットとユーザー間の通信が容易になります。 
+Bot Framework Connector では、ボットが電子メールや Slack などの複数のチャネルにまたがって通信できるようにする単一の REST API が用意されています。 これにより、ボットからチャネルおよびチャネルからボットにメッセージを返信することで、ボットとユーザー間の通信が容易になります。 
 
 この記事では、ボットとチャネル上のユーザーとの間で情報を交換するために、Bot Framework SDK for .NET を介して Connector を使用する方法について説明します。 
 
@@ -37,7 +37,7 @@ Bot Framework Connector では、ボットで Skype、電子メール、Slack �
 >
 > ボットで会話を開始する必要がある場合、(そのシナリオには受信する `Activity` オブジェクトがないため) 指定したチャネル用にキャッシュされたエンドポイントを使用できますが、通常はキャッシュされたエンドポイントを更新する必要があることが多いです。 
 
-## <a id="create-reply"></a> 返信を作成する
+## <a name="create-a-reply"></a><a id="create-reply"></a> 返信を作成する
 
 Connector では、[Activity](bot-builder-dotnet-activities.md) オブジェクトを使用して、ボットとチャネル (ユーザー) 間で情報をやり取りします。 すべてのアクティビティに、メッセージを作成したユーザーに関する情報 (`From` プロパティ)、メッセージのコンテキスト、メッセージの受信者 (`Recipient` プロパティ) と共に、適切な送信先にメッセージをルーティングするために使用される情報が含まれます。
 

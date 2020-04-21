@@ -1,19 +1,19 @@
 ---
 title: 1 つまたは複数のチャネルで実行するようにボットを構成する - Bot Service
 description: Bot Framework Portal を使用して、1 つまたは複数のチャネルで実行するようにボットを構成する方法について説明します。
-keywords: ボット チャネル, 構成, cortana, facebook messenger, kik, slack, skype, azure portal
+keywords: ボット チャネル, 構成, cortana, facebook messenger, kik, slack, azure portal
 author: ivorb
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 09/22/2018
-ms.openlocfilehash: 226d31b255d18b39ed1e3817b76d65a9bdd951bc
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 4d25bfaf81d87d4b4d147a046bf5e482f295cacd
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75794103"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80647511"
 ---
 # <a name="connect-a-bot-to-channels"></a>ボットをチャネルに接続する
 
@@ -30,7 +30,7 @@ Bot Framework サービスを使用すると、ボットがチャネルに送信
 3. [Bot Service] ブレードの **[Bot management]\(ボット管理\)** で、 **[チャネル]** をクリックします。
 4. ボットに追加するチャネルのアイコンをクリックします。
 
-![チャネルに接続する](./media/channels/connect-to-channels.png)
+    ![チャネルに接続する](./media/channels/connect-to-channels.png)
 
 チャネルを構成すると、そのチャネル上のユーザーがボットを使用できるようになります。
 

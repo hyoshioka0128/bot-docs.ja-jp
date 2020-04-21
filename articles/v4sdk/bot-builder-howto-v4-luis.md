@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/24/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8ef33478f71afa18568a18cfad67b7f65c50d955
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: f1ac92f24bff862ece8ab3092659fce51e11409d
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441682"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648249"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>ボットに自然言語の理解を追加する
 
@@ -104,13 +104,15 @@ LUIS アプリには、その発行後、ボットからアクセスできるよ
 
 ### <a name="retrieve-application-information-from-the-luisai-portal"></a>LUIS.ai ポータルからアプリケーション情報を取得する
 
-設定ファイル (`appsettings.json` または `.env`) は、すべてのサービス参照を 1 か所にまとめる場所として機能します。 取得した情報は、次のセクションでこのファイルに追加されます。
+設定ファイル (`appsettings.json`、`.env`、または `config.py`) は、すべてのサービス参照を 1 か所にまとめる場所として機能します。 取得した情報は、次のセクションでこのファイルに追加されます。
 
 1. 発行済みの LUIS アプリを [luis.ai](https://www.luis.ai) から選択します。
-1. 発行済み LUIS アプリを開いた状態で **[MANAGE]** タブを選択します。![LUIS アプリの管理](./media/how-to-luis/manage-luis-app.png)
-1. 左側の **[Application Information]** タブで、 _[Application ID]_ に表示される値を <YOUR_APP_ID> として記録します。
-1. 左側の **[Keys and Endpoints]\(キーとエンドポイント\)** タブを選択し、 _[Authoring Key]_ に表示される値を <YOUR_AUTHORING_KEY> として記録します。
-1. 下へスクロールしてページの最後まで移動し、"_Region_" に表示される値を <YOUR_REGION> として記録します。
+1. 発行済み LUIS アプリを開いた状態で **[MANAGE]** タブを選択します。
+1. 左側の **[Application Information]\(アプリケーション情報\)** タブを選択します。 _[Application ID]\(アプリケーション ID\)_ に表示される値を < YOUR_APP_ID > として記録します。
+    ![LUIS アプリの管理 - アプリケーション情報](./media/how-to-luis/manage-luis-app-app-info.png)
+1. 左側の **[Azure Resources]\(Azure リソース\)** タブを選択します。 _[Region]\(リージョン\)_ に表示される値を < YOUR_REGION > として、 _[Primary key]\(主キー\)_ に表示される値を< YOUR_AUTHORING_KEY > として記録します。
+    ![LUIS アプリの管理 - アプリケーション情報](./media/how-to-luis/manage-luis-app-azure-resources.png)
+    
 
 ### <a name="update-the-settings-file"></a>設定ファイルを更新する
 
@@ -118,21 +120,25 @@ LUIS アプリには、その発行後、ボットからアクセスできるよ
 
 LUIS アプリにアクセスするために必要な情報 (アプリケーション ID、オーサリング キー、リージョンなど) を `appsettings.json` ファイルに追加します。 これらは、発行済みの LUIS アプリから先ほど保存した値です。 API ホスト名は `<your region>.api.cognitive.microsoft.com` 形式にする必要があることに注意してください。
 
-**appsetting.json**  
+**appsetting.json**
+
 [!code-json[appsettings](~/../BotBuilder-Samples/samples/csharp_dotnetcore/13.core-bot/appsettings.json?range=1-7)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 LUIS アプリにアクセスするために必要な情報 (アプリケーション ID、オーサリング キー、リージョンなど) を `.env` ファイルに追加します。 これらは、発行済みの LUIS アプリから先ほど保存した値です。 API ホスト名は `<your region>.api.cognitive.microsoft.com` 形式にする必要があることに注意してください。
 
-**.env**  
+**.env**
+
 [!code[env](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/.env?range=1-5)]
 
 # <a name="python"></a>[Python](#tab/python)
 
 LUIS アプリにアクセスするために必要な情報 (アプリケーション ID、オーサリング キー、リージョンなど) を `config.py` ファイルに追加します。 これらは、発行済みの LUIS アプリから先ほど保存した値です。 API ホスト名は `<your region>.api.cognitive.microsoft.com` 形式にする必要があることに注意してください。
 
-**config.py** [!code-python[config.py](~/../botbuilder-samples/samples/python/13.core-bot/config.py?range=14-19)]
+**config.py**
+
+[!code-python[config.py](~/../botbuilder-samples/samples/python/13.core-bot/config.py?range=14-19)]
 
 ---
 
@@ -178,7 +184,9 @@ LUIS サービスに接続するために、ボットは、上記で追加した
 
 *From*、*To*、および *travel_date* を抽出するロジックは、`luis_helper.py` 内の `LuisHelper` クラスのヘルパー メソッドとして実装されています。 これらのメソッドは、`main_dialog.py` から `LuisHelper.execute_luis_query()` を呼び出した後に使用されます
 
-**helpers/luis_helper.py** [!code-python[luis helper](~/../botbuilder-samples/samples/python/13.core-bot/helpers/luis_helper.py?range=30-102)]
+**helpers/luis_helper.py**
+
+[!code-python[luis helper](~/../botbuilder-samples/samples/python/13.core-bot/helpers/luis_helper.py?range=30-102)]
 
 ---
 
@@ -198,7 +206,7 @@ LUIS から返された最上位の意図が "Book flight" に解決されると
 
 ![LUIS の予約の結果](./media/how-to-luis/luis-travel-result.png)
 
-この時点で、コードのボット ロジックはリセットされ、引き続き追加の予約を作成できます。 
+この時点で、コードのボット ロジックはリセットされ、引き続き追加の予約を作成できます。
 
 ## <a name="next-steps"></a>次のステップ
 

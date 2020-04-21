@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: cd2997bc4795a922d25f6c4b4f5fef3d7dd4f366
-ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
+ms.openlocfilehash: 127b41a420e9ebd2fa01961f6bf92830ec38e3ba
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2020
-ms.locfileid: "76752914"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648385"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>メッセージにリッチ カード添付ファイルを追加する
 
@@ -24,14 +24,14 @@ ms.locfileid: "76752914"
 > - [Node.js](../nodejs/bot-builder-nodejs-send-rich-cards.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-rich-cards.md)
 
-Skype、Facebook などの複数のチャネルで、ユーザーがクリックすることでアクションが開始される対話型ボタンを使用して、グラフィカルなリッチ カードをユーザーに送信できます。
+Facebook などの複数のチャネルで、ユーザーがクリックすることでアクションが開始される対話型ボタンを使用して、グラフィカルなリッチ カードをユーザーに送信できます。
 SDK には、カードを作成および送信するときに使用できる、メッセージとカード ビルダー クラスが複数用意されています。 これらのカードは、チャネルにネイティブなスキーマを使用して、Bot Framework Connector サービスによってレンダリングされ、クロスプラットフォーム通信がサポートされます。 チャネルで SMS などのカードがサポートされていない場合、Bot Framework では、ユーザーに対して妥当なエクスペリエンスが提供されるように最善が尽くされます。
 
 ## <a name="types-of-rich-cards"></a>リッチ カードの種類
 
 Bot Framework では、現在 8 種類のリッチ カードがサポートされています。
 
-| カードの種類 | [説明] |
+| カードの種類 | 説明 |
 |------|------|
 | [アダプティブ カード](/adaptive-cards/get-started/bots) | テキスト、音声、画像、ボタン、および入力フィールドの任意の組み合わせを含めることができる、カスタマイズ可能なカード。  [チャネルごとのサポート](/adaptive-cards/get-started/bots#channel-status)に関するページをご覧ください。 |
 | [アニメーション カード][animationCard] | アニメーション GIF または短い動画を再生できるカード。 |

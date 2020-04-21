@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 01/16/2020
-ms.openlocfilehash: 7f46d5f2b5012db914568e5ae613c18405dfa113
-ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
+ms.openlocfilehash: e695a35b1f98a2ec8cfe5cbb24c13cf5cf18a648
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2020
-ms.locfileid: "80117630"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81395695"
 ---
 # <a name="configure-net-bot-for-extension"></a>拡張機能のための .NET ボットの構成
 
@@ -32,18 +32,11 @@ ms.locfileid: "80117630"
 
 ## <a name="update-net-bot-to-use-direct-line-app-service-extension"></a>Direct Line App Service 拡張機能を使用するように .NET ボットを更新する
 
-> [!NOTE]
-> `Microsoft.Bot.Builder.StreamingExtensions` はプレビュー パッケージであり、更新されません。 SDK v4.7 には、[ストリーミング コード](https://github.com/microsoft/botbuilder-dotnet/tree/master/libraries/Microsoft.Bot.Builder/Streaming)が含まれているため、ストリーミング パッケージを別途自分でインストールする必要はありません。
-
 1. Visual Studio でボット プロジェクトを開きます。
-2. **Streaming Extension NuGet** パッケージをプロジェクトに追加します。
-    1. プロジェクトで、 **[依存関係]** を右クリックし、 **[NuGet パッケージの管理]** を選択します。
-    2. *[参照]* タブで **[プレリリースを含める]** をクリックして、プレビュー パッケージを表示します。
-    3. **Microsoft.Bot.Builder.StreamingExtensions** パッケージを選択します。
-    4. **[インストール]** をクリックしてパッケージをインストールし、使用許諾契約書を読んで同意します。
+2. プロジェクトが Bot Builder SDK のバージョン4.8 以降を使用していることを確認します。
 3. アプリが **Bot Framework NamedPipe** を使用することを許可します。
     - `Startup.cs` ファイルを開きます。
-    - ``Configure`` メソッドで、``UseBotFrameworkNamedPipe`` にコードを追加します。
+    - ``Configure`` メソッドで、``UseNamedPipes`` にコードを追加します。
 
     ```csharp
 
@@ -62,7 +55,7 @@ ms.locfileid: "80117630"
         app.UseStaticFiles();
 
         // Allow the bot to use named pipes.
-        app.UseNamedPipes();
+        app.UseNamedPipes(System.Environment.GetEnvironmentVariable("APPSETTING_WEBSITE_SITE_NAME") + ".directline");
 
         app.UseMvc();
     }
@@ -95,7 +88,7 @@ ms.locfileid: "80117630"
 1. Azure portal で、ボットをホストしている、またはホストする予定の Web アプリの **Azure App Service** リソース ページを見つけます
 1. **[Configuration]\(構成\)** をクリックします。 *[アプリケーションの設定]* セクションで、次の新しい設定を追加します。
 
-    |名前|Value|
+    |名前|値|
     |---|---|
     |DirectLineExtensionKey|<App_Service_Extension_Key>|
     |DIRECTLINE_EXTENSION_VERSION|latest|
@@ -108,9 +101,10 @@ ms.locfileid: "80117630"
 ## <a name="confirm-direct-line-app-extension-and-the-bot-are-initialized"></a>Direct Line アプリ拡張機能とボットが初期化されていることを確認します
 
 ブラウザーで、 https://<your_app_service>.azurewebsites.net/.bot に移動します。
-すべて正しければ、ページは JSON コンテンツ `{"k":true,"ib":true,"ob":true,"initialized":true}` を返します。 これは、**すべてが正常に動作している**場合に取得される情報です。ここでは、次のようになります。
+すべて正しければ、ページは JSON コンテンツ `{"v":"123","k":true,"ib":true,"ob":true,"initialized":true}` を返します。 これは、**すべてが正常に動作している**場合に取得される情報です。ここでは、次のようになります。
 
-- **k** によって、Direct Line App Service 拡張機能 (ASE) がその構成から App Service 拡張機能のキーを読み取れるかどうかを決定します。
+- **v** によって、Direct Line App Service 拡張機能 (ASE) のビルドバージョンが表示されます。
+- **k** によって、Direct Line ASE がその構成から App Service 拡張機能のキーを読み取れるかどうかを決定します。
 - **initialized** によって、Direct Line ASE が App Service 拡張機能キーを使用して Azure Bot Service からボット メタデータをダウンロードできるかどうかを決定します。
 - **ib** によって、Direct Line ASE がボットとの受信接続を確立できるかどうかを決定します。
 - **ob** によって、Direct Line ASE がボットとの送信接続を確立できるかどうかを決定します。

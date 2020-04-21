@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: 4828888d2b90cda6854f4195a6bc60f60538820c
-ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
+ms.openlocfilehash: 8e5b094f7dcd870352de197feb04eb5976daea1f
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2020
-ms.locfileid: "76752834"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80647634"
 ---
 # <a name="debug-with-the-emulator"></a>エミュレーターを使用したデバッグ
 
@@ -114,7 +114,7 @@ Bot Framework Emulator は、ローカルでもリモートでも、ボットを
 AD ID プロバイダー アプリケーションを作成する場合は次の点に注意してください。
 
 - サポートされるアカウントの種類がシングル テナントに設定されている場合に、Microsoft アカウントではなく個人用サブスクリプションを使用すると、エミュレーターに次のエラーが表示されます。*The bot's Microsoft App ID or Microsoft App Password is incorrect.\(ボットの Microsoft アプリ ID または Microsoft アプリ パスワードが正しくありません。\)* 
-- この場合、サポートされているアカウントの種類を *[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人用の Microsoft アカウント (Skype、Xbox など)\)* に設定する必要があります。
+- この場合、サポートされているアカウントの種類を *[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人用の Microsoft アカウント (Xbox など)\)* に設定する必要があります。
 
 詳細については、「[Azure AD ID プロバイダー アプリケーションを作成する](bot-builder-tutorial-authentication.md#create-an-azure-ad-identity-provider-application)」を参照してください。
 

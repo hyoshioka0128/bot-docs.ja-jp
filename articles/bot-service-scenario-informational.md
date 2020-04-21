@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 5e2e696b7f5643779b3cd9badb0351d79b6732df
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "77441266"
 ---
 # <a name="information-bot-scenario"></a>Information ボットのシナリオ
@@ -36,21 +36,21 @@ ms.locfileid: "77441266"
 7. Application Insights がランタイム テレメトリを収集して、ボットのパフォーマンスと使用状況の情報によって開発をサポートします。
 
 ## <a name="sample-bot"></a>サンプル ボット
-C# で記述されたサンプル ボットは Microsoft Azure で動作し、Azure Search によってインデックス付けされた SQL データベース インスタンス内のデータを操作します。 ボットは、たずねることができる質問のリストを、Cognitive Services: QnA Maker を使用して質問 (回答) をフレーズ化する方法に関する情報と共に公開します。 ボットのユーザーはその後、インデックス付けされているデータベースの広い領域または特定の領域で Azure Search によってデータを参照するクエリを入力できます。 このサンプルは、顧客と注文情報の単純なデータベースを提供します。 Application Insights はボットの使用状況を追跡し、ボットの例外の監視に役立ちます。 誰が情報にアクセスできるかを制限できるよう、このボットは Azure AD アプリとして発行されます。
+C# で記述されたサンプル ボットは Microsoft Azure で動作し、Azure Search によってインデックス付けされた SQL データベース インスタンス内のデータを操作します。 ボットは、たずねることができる質問のリストを、次の Cognitive Services を使用して質問 (回答) をフレーズ化する方法に関する情報と共に公開します:QnA Maker。 ボットのユーザーはその後、インデックス付けされているデータベースの広い領域または特定の領域で Azure Search によってデータを参照するクエリを入力できます。 このサンプルは、顧客と注文情報の単純なデータベースを提供します。 Application Insights はボットの使用状況を追跡し、ボットの例外の監視に役立ちます。 誰が情報にアクセスできるかを制限できるよう、このボットは Azure AD アプリとして発行されます。
 
 このサンプル ボットのソース コードは、「[Samples for Common Bot Framework Scenarios (Bot Framework の一般的なシナリオのサンプル)](https://aka.ms/abs-scenarios)」からダウンロードするか複製することができます。
 
 ## <a name="components-youll-use"></a>使用するコンポーネント
 Information ボットでは、次のコンポーネントを使用します。
 -   認証用の Azure AD
--   コグニティブ サービス:QnA Maker
+-   Cognitive Services:QnA Maker
 -   Azure Search
 -   Application Insights
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。 また、Azure AD は世界中の数多くの組織が使用する卓越した ID 管理ソリューションとすばやく簡単に統合できるため、ボット開発者はボットの構築に集中することができます。 独自の複雑な認証および承認システムを実装しなくても、Azure AD アプリを定義することによって、ボットおよびボットが公開するデータにだれがアクセスできるかを制御できます。
 
-### <a name="cognitive-services-qna-maker"></a>コグニティブ サービス:QnA Maker
+### <a name="cognitive-services-qna-maker"></a>Cognitive Services:QnA Maker
 Cognitive Services QnA Maker は、ユーザーがボットからクエリできる FAQ データ ソースを提供するために役立ちます。 さまざまなシステムに格納された膨大な量の情報にアプローチする際、情報のソースとセットをユーザーが絞り込めるようにすることは有用です。 単一の SQL データベースに膨大な量の情報が含まれていて、自由形式の検索を適用するとあまりにも多くの情報が返される可能性があります。 最初に QnA Maker を使用してボット ユーザーのためのロードマップを定義し、Azure Search によって取得できるインテリジェントな質問の作成方法を習得させることができます。
 
 ### <a name="azure-search"></a>Azure Search

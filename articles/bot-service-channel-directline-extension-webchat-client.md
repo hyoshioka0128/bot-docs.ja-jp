@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: aaba2a9de9f35d7615b3a7e5ff077554ef03a2df
-ms.sourcegitcommit: 2109d9da53fdf65966f33ed1fa628a40ec851d35
+ms.openlocfilehash: a3cb2e438d2b042f66d97ef90b162cf172aeb3f3
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78280123"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81395645"
 ---
 # <a name="use-webchat-with-the-direct-line-app-service-extension"></a>WebChat を Direct Line App Service 拡張機能と共に使用します。
 
@@ -27,6 +27,9 @@ ms.locfileid: "78280123"
 DirectLineJS のプレビュー バージョンはこちらにあります。 https://github.com/Jeffders/DirectLineAppServiceExtensionPreview/tree/master/libraries
 
 ## <a name="integrate-webchat-client"></a>WebChat クライアントを統合する
+
+> [!NOTE]
+> DirectLine App Service 拡張機能を介して送信されたアダプティブ カードには、他のバージョンの DirectLine チャネルを介して送信されたものと同じ処理が行われません。 このため、DirectLine App Service 拡張機能から WebChat に送信されたアダプティブ カードの JSON 表現は、カードの作成時にボットによってフィールドが省略されている場合、チャネルによって既定値が追加されることはありません。
 
 一般に、このアプローチは以前と同じです。 ただし、双方向の **WebSocket** トラフィックをサポートする **WebChat** の新しいバージョンが作成されています。これは、[https://directline.botframework.com/](https://directline.botframework.com/) に接続する代わりに、ホストされているボットに直接接続します。
 ボットの Direct Line URL は `https://<your_app_service>.azurewebsites.net/.bot/` になります。ここで、`/.bot/` 拡張機能は App Service の Direct Line **エンドポイント**です。

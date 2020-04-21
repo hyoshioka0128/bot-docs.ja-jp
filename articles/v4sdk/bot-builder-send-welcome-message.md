@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 553265332f174aec6e9043320bd31188b068f492
-ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
+ms.openlocfilehash: 6c01c983c6ddca34297374772b80636f05381e3a
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2020
-ms.locfileid: "80117726"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648238"
 ---
 # <a name="send-welcome-message-to-users"></a>ユーザーへのウェルカム メッセージの送信
 
@@ -84,7 +84,7 @@ ms.locfileid: "80117726"
 ユーザー状態オブジェクトはスタートアップ時に作成され、依存関係がボット コンストラクターに挿入されます。
 
 **Startup.cs**  
-[!code-csharp[define state](~/../botBuilder-samples/samples/csharp_dotnetcore/03.welcome-user/Startup.cs?range=30-34)]
+[!code-csharp[define state](~/../botBuilder-samples/samples/csharp_dotnetcore/03.welcome-user/Startup.cs?range=23-27)]
 
 **Bots\WelcomeUserBot.cs**  
 [!code-csharp[consume state](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=41-47)]
@@ -103,11 +103,9 @@ ms.locfileid: "80117726"
 
 起動時に、ユーザーの状態が `app.py` で定義され、ボット コンストラクターによって使用されます。
 
-**app.py**  
-[!code-python[define state](~/../botbuilder-samples/samples/python/03.welcome-user/app.py?range=61-66)]
+**app.py** [!code-python[define state](~/../botbuilder-samples/samples/python/03.welcome-user/app.py?range=61-66)]
 
-**bots/welcome-user-bot.py**  
-[!code-python[consume state](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=23-29)]
+**bots/welcome-user-bot.py** [!code-python[consume state](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=23-29)]
 
 ---
 
@@ -134,8 +132,7 @@ ms.locfileid: "80117726"
 
 このサンプルでは、ボット コンストラクターで、会話状態のプロパティ アクセサー `user_state_accessor`が作成されます。
 
-**bots/welcome-user-bot.py**  
-[!code-python[constructor](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=31)]
+**bots/welcome-user-bot.py** [!code-python[constructor](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=31)]
 
 これは、`on_message_activity` ハンドラーでプロパティ アクセサーを使用し、`on_turn` ハンドラーをオーバーライドしてターン終了前に状態を保存します。
 
@@ -150,8 +147,7 @@ ms.locfileid: "80117726"
 
 **WelcomeUserBot** では、`OnMembersAddedAsync()` を使用してアクティビティ更新をチェックし、会話に新しいユーザーが追加されたかどうかを確認して、そのユーザーに最初の 3 つのウェルカム メッセージ `WelcomeMessage`、`InfoMessage`、および `PatternMessage` を送信します。 このインタラクションの完全なコードを以下に示します。
 
-**Bots\WelcomeUserBot.cs**  
-[!code-csharp[Define messages](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=20-39)]
+**Bots\WelcomeUserBot.cs** [!code-csharp[Define messages](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=20-39)]
 [!code-csharp[Send messages](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=55-66)]
 
 ### <a name="javascript"></a>[JavaScript](#tab/javascript)
@@ -165,8 +161,7 @@ ms.locfileid: "80117726"
 
 `on_members_added_activity` は、新しいユーザーが追加されたかどうかを確認してから、3 つのウェルカム メッセージ ("*ウェルカム メッセージ*"、"*情報メッセージ*"、および "*パターン メッセージ*") を送信します。
 
-**bots/welcome-user-bot.py**  
-[!code-python[on_members_added_activity](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=45-74)]
+**bots/welcome-user-bot.py** [!code-python[on_members_added_activity](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=45-74)]
 
 ---
 
@@ -192,8 +187,7 @@ ms.locfileid: "80117726"
 
 ユーザーの入力に有用な情報が実際に含まれている場合を考慮することも重要です。これはチャネルごとに異なる可能性があります。 ユーザーが使用可能なすべてのチャネルで良好なエクスペリエンスを得られるようにするために、`on_message_activity` は `did_welcome_user` プロパティを確認します。 初回は、*false* に設定し、ユーザー入力を処理しません。 代わりに、ユーザーに最初のウェルカム メッセージを表示します。 次に、`did_welcome_user` を *true* に設定し、すべての追加メッセージ アクティビティからのユーザー入力を処理します。
 
-**bots/welcome-user-bot.py**  
-[!code-python[DidBotWelcomeUser](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=85-95)]
+**bots/welcome-user-bot.py** [!code-python[DidBotWelcomeUser](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=85-95)]
 
 ---
 
@@ -219,8 +213,7 @@ ms.locfileid: "80117726"
 
 ユーザーが *intro* または *help* を入力すると、ボットが `__send_intro_card` を呼び出して、概要アダプティブ カードがユーザーに示されます。
 
-**bots/welcome-user-bot.py**  
-[!code-python[SwitchOnUtterance](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=101-106&highlight=97-106)]
+**bots/welcome-user-bot.py** [!code-python[SwitchOnUtterance](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=101-106&highlight=97-106)]
 
 ---
 
@@ -240,8 +233,7 @@ ms.locfileid: "80117726"
 
 ### <a name="python"></a>[Python](#tab/python)
 
-**bots/welcome-user-bot.py**  
-[!code-python[SendIntroCard](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=108-143)]
+**bots/welcome-user-bot.py** [!code-python[SendIntroCard](~/../botbuilder-samples/samples/python/03.welcome-user/bots/welcome_user_bot.py?range=108-143)]
 
 ---
 
@@ -266,3 +258,5 @@ ms.locfileid: "80117726"
 
 > [!div class="nextstepaction"]
 > [ユーザー入力の収集](bot-builder-prompts.md)
+
+

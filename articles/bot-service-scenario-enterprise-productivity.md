@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b4c61d703c3d0a6b5b9191bf8b39a99da3d9be9a
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: 8d4199e20336e44611e09bbd430dbb4d20427402
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441518"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80647786"
 ---
 # <a name="enterprise-productivity-bot-scenario"></a>Enterprise Productivity ボットのシナリオ
 
@@ -37,7 +37,7 @@ Enterprise ボットは、Office 365 カレンダーやその他のサービス�
 このサンプル ボットのソース コードは、「[Samples for Common Bot Framework Scenarios (Bot Framework の一般的なシナリオのサンプル)](https://aka.ms/abs-scenarios)」からダウンロードするか複製することができます。
 
 ## <a name="sample-bot"></a>サンプル ボット
-ボットにはさまざまなチャネルからアクセスできるため、デスクで会社のポータルから使用したり、外出先で Skype から使用したりすることができます。必要なのは、認証を受けることだけです。 Azure AD の統合により、Enterprise Productivity ボットは、ボットにアクセスできるユーザーであれば Azure AD によって認証されていることを把握しています。 そこから、特定の顧客との次回の予定を確認するようにボットに依頼することができます。 ボットは、Graph API を介して Office 365 に対してクエリを実行することでこの情報を取得します。 その後、今後 7 日以内に予定があれば、ボットは CRM に対してクエリを実行し、顧客の最近の案件を探します。 ボットは、案件が見つからなかったと応答するか、オープン中またはクローズ済みの案件の数を返します。 そこから、種類ごとの案件の一覧を作成し、個別の案件の詳細を表示するようにボットに依頼することができます。
+ボットにはさまざまなチャネルからアクセスできるため、外出先で会社のポータルからデスク上のボットを使用できます。必要なのは、認証を受けることだけです。 Azure AD の統合により、Enterprise Productivity ボットは、ボットにアクセスできるユーザーであれば Azure AD によって認証されていることを把握しています。 そこから、特定の顧客との次回の予定を確認するようにボットに依頼することができます。 ボットは、Graph API を介して Office 365 に対してクエリを実行することでこの情報を取得します。 その後、今後 7 日以内に予定があれば、ボットは CRM に対してクエリを実行し、顧客の最近の案件を探します。 ボットは、案件が見つからなかったと応答するか、オープン中またはクローズ済みの案件の数を返します。 そこから、種類ごとの案件の一覧を作成し、個別の案件の詳細を表示するようにボットに依頼することができます。
 
 ## <a name="components-youll-use"></a>使用するコンポーネント
 Enterprise Productivity ボットは、次のコンポーネントを使用します。

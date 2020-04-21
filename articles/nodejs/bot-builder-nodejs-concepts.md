@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d88fa567d25358dba33b776082da69b675f93892
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: abc1600bdc53ad5fa2cdfdeaf031666c414c8943
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75790964"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648412"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-nodejs"></a>Bot Framework SDK for Node.js の主要概念
 
@@ -26,7 +26,7 @@ ms.locfileid: "75790964"
 この記事では、Bot Framework SDK for Node.js の主要な概念について説明します。 Bot Framework の概要については、[Bot Framework の概要](../overview-introduction-bot-framework.md)に関するページを参照してください。
 
 ## <a name="connector"></a>コネクタ
-Bot Framework Connector は、ご利用のボットを複数の "*チャネル*" ([Teams](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-create)、Skype、Facebook、Slack、SMS などのクライアント) に接続するサービスです。 
+Bot Framework Connector は、ご利用のボットを複数の "*チャネル*" ([Teams](https://docs.microsoft.com/microsoftteams/platform/concepts/bots/bots-create)、Facebook、Slack、SMS などのクライアント) に接続するサービスです。 
 
 この Connector では、ボットからチャネルへのメッセージおよびチャネルからボットへのメッセージが中継されて、ボットとユーザー間の通信が容易になります。 ご利用のボットのロジックは、ユーザーからのメッセージを Connector サービスを経由して受信する Web サービスとしてホストされます。ご利用のボットの応答は HTTPS POST を使用して Connector に送信されます。 
 
@@ -48,7 +48,7 @@ Connector ではボットからチャネルに送信されるメッセージの�
 ## <a name="dialogs"></a>ダイアログ
 ダイアログは、ご利用のボット内で会話ロジックを整理するのに役立つと共に、[会話フローを設計する](../bot-service-design-conversation-flow.md)上での基礎となります。 ダイアログの概要については、[ダイアログを使用した会話の管理](bot-builder-nodejs-dialog-manage-conversation.md)に関するページを参照してください。
 
-## <a name="actions"></a>アクション
+## <a name="actions"></a>Actions
 会話フロー中に任意のタイミングで発生するキャンセル要求やヘルプ要求などの割り込みを処理できるようにご自分のボットを設計する必要があります。 Bot Framework SDK for Node.js では、キャンセルやその他のダイアログの呼び出しのようなアクションをトリガーするグローバル メッセージ ハンドラーが提供されています。 [triggerAction][triggerAction] ハンドラーの使用方法を示す例については、「[ユーザー アクションを処理する](bot-builder-nodejs-dialog-actions.md)」を参照してください。
 <!--[Handling cancel](bot-builder-nodejs-manage-conversation-flow.md#handling-cancel), [Confirming interruptions](bot-builder-nodejs-manage-conversation-flow.md#confirming-interruptions) and-->
 

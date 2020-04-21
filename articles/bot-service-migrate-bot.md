@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 3/22/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5a13aa3a5d97adde294389d103ddb22bb0964aaa
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: f6700613c59e1ef1ed573baeb031f676c7f78fe5
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75793564"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80647283"
 ---
 # <a name="migrate-your-bot-to-azure"></a>ボットを Azure に移行する
 
 [Bot Framework Portal](http://dev.botframework.com) で作成された **Azure Bot Service (プレビュー)** ボットはすべて、Azure の新しい Bot Service に移行する必要があります。 このサービスは 2017 年 12 月に一般公開 (GA) となりました。 
 
-以下にのみ接続されている登録ボットは移行する "*必要がない*" ことにご注意ください: **Teams**、**Skype**、**Cortana**。 たとえば、**Facebook** と **Skype** に接続されている登録ボットは移行する*必要があります*が、**Skype** と **Cortana** に接続されている登録ボットは移行する*必要はありません*。
+以下にのみ接続されている登録ボットは移行する "*必要がない*" ことにご注意ください: **Microsoft Teams** および **Cortana**。 たとえば、**Facebook** と **Slack** に接続されている登録ボットは移行する*必要があります*が、**Facebook** と **Cortana** に接続されている登録ボットは移行する*必要はありません*。
 
 > [!IMPORTANT]
 > Node.js で作成された Functions ボットを移行する前に、**Azure Functions Pack** を利用して **node_modules** モジュールをまとめてパッケージ化する必要があります。 パッケージ化により、移行中のパフォーマンスがよくなり、移行後も Functions ボットがより効率的に実行されます。 モジュールをパッケージ化する方法については、「[Package a Functions bot with Funcpack](#package-a-functions-bot-with-funcpack)」(Funcpack で Functions ボットをパッケージ化する) を参照してください。

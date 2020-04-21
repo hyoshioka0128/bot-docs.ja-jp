@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 01/24/2020
+ms.date: 03/25/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0cad95ccb7b83334e514d604da086172320867d8
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: f8c79d41cca1f800de470ca1dc6193022b2a4986
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441703"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648162"
 ---
 # <a name="handle-user-interruptions"></a>ユーザーによる割り込みを処理する
 
@@ -29,9 +29,9 @@ ms.locfileid: "77441703"
 
 ## <a name="about-this-sample"></a>このサンプルについて
 
-この記事のサンプルでは、ダイアログを使用してユーザーからフライト情報を取得する航空券予約ボットをモデル化します。 ボットとの会話中、ユーザーはいつでも _help_ コマンドまたは _cancel_ コマンドを発行できます。 ここでは 2 種類の中断を処理します。
+この記事のサンプルでは、ダイアログを使用してユーザーからフライト情報を取得する航空券予約ボットをモデル化します。 ボットとの会話中、ユーザーはいつでも _help_ コマンドまたは _cancel_ コマンドを発行できます。 処理される中断には以下の 2 種類があります。
 
-- **ターン レベル**: ターン レベルで処理をバイパスしますが、スタック上のダイアログはそのままで、提供された情報は保持されます。 次のターンで、中断された場所から再開されます。
+- **ターン レベル**: ターン レベルで処理をバイパスしますが、スタック上のダイアログはそのままで、提供された情報は保持されます。 次のターンで、会話が中断された場所から再開されます。
 - **ダイアログ レベル**: 処理が完全にキャンセルされるため、ボットは最初からやり直すことができます。
 
 ## <a name="define-and-implement-the-interruption-logic"></a>中断ロジックを定義して実装する
@@ -44,7 +44,7 @@ ms.locfileid: "77441703"
 
 **Dialogs\CancelAndHelpDialog.cs**
 
-最初に、ユーザーによる中断を処理する `CancelAndHelpDialog` クラスを実装します。
+ユーザーによる中断を処理する `CancelAndHelpDialog` クラスを実装します。 キャンセル可能なダイアログ、`BookingDialog` および `DateResolverDialog` は、このクラスから派生します。
 
 [!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=12)]
 
@@ -52,7 +52,7 @@ ms.locfileid: "77441703"
 
 [!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=22-31)]
 
-ユーザーが「help」と入力すると、`InterrupAsync` メソッドはメッセージを送信し、`DialogTurnResult (DialogTurnStatus.Waiting)` を呼び出します。これは、上部のダイアログがユーザーからの応答を待っていることを示します。 この方法では、ターンについてのみ会話フローが中断され、次のターンでは、中断された場所から再開されます。
+ユーザーが「help」と入力すると、`InterrupAsync` メソッドはメッセージを送信し、`DialogTurnResult (DialogTurnStatus.Waiting)` を呼び出します。これは、上部のダイアログがユーザーからの応答を待っていることを示します。 この方法では、ターンについてのみ会話フローが中断され、次のターンでは、会話が中断された場所から再開されます。
 
 ユーザーが「cancel」と入力すると、内部ダイアログ コンテキストで `CancelAllDialogsAsync` が呼び出され、そのダイアログ スタックがクリアされ処理が終了します。この場合、取り消し済み状態になり、結果値は返されません。 `MainDialog` (後で説明します) の場合は、予約ダイアログが終了し、null を返したように見えます。これはユーザーが予約を確認しないことを選択した場合の処理と似ています。
 
@@ -64,7 +64,7 @@ ms.locfileid: "77441703"
 
 **dialogs/cancelAndHelpDialog.js**
 
-最初に、ユーザーによる中断を処理する `CancelAndHelpDialog` クラスを実装します。
+ユーザーによる中断を処理する `CancelAndHelpDialog` クラスを実装します。 キャンセル可能なダイアログ、`BookingDialog` および `DateResolverDialog` は、このクラスを拡張します。
 
 [!code-javascript[Class signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=11)]
 
@@ -72,7 +72,7 @@ ms.locfileid: "77441703"
 
 [!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=12-18)]
 
-ユーザーが「help」と入力すると、`interrupt` メソッドはメッセージを送信し、`{ status: DialogTurnStatus.waiting }` オブジェクトを返します。これは、上部のダイアログがユーザーからの応答を待っていることを示します。 この方法では、ターンについてのみ会話フローが中断され、次のターンでは、中断された場所から再開されます。
+ユーザーが「help」と入力すると、`interrupt` メソッドはメッセージを送信し、`{ status: DialogTurnStatus.waiting }` オブジェクトを返します。これは、上部のダイアログがユーザーからの応答を待っていることを示します。 この方法では、ターンについてのみ会話フローが中断され、次のターンでは、会話が中断された場所から再開されます。
 
 ユーザーが「cancel」と入力すると、内部ダイアログ コンテキストで `cancelAllDialogs` が呼び出され、そのダイアログ スタックがクリアされ処理が終了します。この場合、取り消し済み状態になり、結果値は返されません。 `MainDialog` (後で説明します) の場合は、予約ダイアログが終了し、null を返したように見えます。これはユーザーが予約を確認しないことを選択した場合の処理と似ています。
 
@@ -87,7 +87,7 @@ ms.locfileid: "77441703"
 
 **dialogs/cancel-and-help-dialog.py**
 
-最初に、ユーザーによる中断を処理する `CancelAndHelpDialog` クラスを実装します。
+ユーザーによる中断を処理する `CancelAndHelpDialog` クラスを実装します。 キャンセル可能なダイアログ、`BookingDialog` および `DateResolverDialog` は、このクラスから派生します。
 
 [!code-python[class signature](~/../botbuilder-samples/samples/python/13.core-bot/dialogs/cancel_and_help_dialog.py?range=14)]
 
@@ -95,7 +95,7 @@ ms.locfileid: "77441703"
 
 [!code-python[dialog](~/../botbuilder-samples/samples/python/13.core-bot/dialogs/cancel_and_help_dialog.py?range=18-23)]
 
-ユーザーが「*help*」または「 *?* 」と入力すると、`interrupt` メソッドがメッセージを送信し、`DialogTurnResult(DialogTurnStatus.Waiting)` を呼び出します。これは、スタックの上のダイアログがユーザーからの応答を待っていることを示します。 この方法では、ターンについてのみ会話フローが中断され、次のターンでは、中断された場所から再開されます。
+ユーザーが「*help*」または「 *?* 」と入力すると、`interrupt` メソッドがメッセージを送信し、`DialogTurnResult(DialogTurnStatus.Waiting)` を呼び出します。これは、スタックの上のダイアログがユーザーからの応答を待っていることを示します。 この方法では、ターンについてのみ会話フローが中断され、次のターンでは、会話が中断された場所から再開されます。
 
 ユーザーが「*cancel*」または「*quit*」と入力すると、内部ダイアログ コンテキストで `cancel_all_dialogs()` が呼び出され、そのダイアログ スタックがクリアされ処理が終了します。この場合、取り消し済み状態になり、結果値は返されません。 `MainDialog` (後で説明します) の場合は、予約ダイアログが終了し、null を返したように見えます。これはユーザーが予約を確認しないことを選択した場合の処理と似ています。
 
@@ -105,7 +105,7 @@ ms.locfileid: "77441703"
 
 ## <a name="check-for-interruptions-each-turn"></a>ターンごとに中断を確認する
 
-中断処理クラスの動作方法については説明しました。次は 1 つ戻って、ボットがユーザーから新しいメッセージを受け取ったときの動作を見てみましょう。
+中断を処理するクラスが実装されたら、このボットがユーザーから新しいメッセージを受信したときの動作を確認します。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -151,7 +151,7 @@ ms.locfileid: "77441703"
 
 ## <a name="handle-unexpected-errors"></a>予期しないエラーを処理する
 
-次に、発生する可能性があるハンドルされない例外を処理します。
+アダプターのエラー ハンドラーでは、ボットでキャッチされなかったすべての例外が処理されます。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -193,7 +193,7 @@ ms.locfileid: "77441703"
 
 [!code-csharp[MainDialog signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=17)]
 [!code-csharp[DialogAndWelcomeBot signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Bots/DialogAndWelcomeBot.cs?range=16)]
-[!code-csharp[DialogBot signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Bots/DialogBot.cs?range=18)]
+[!code-csharp[DialogBot signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Bots/DialogBot.cs?range=18-19)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: dev
 ms.date: 01/15/2020
-ms.openlocfilehash: 025b3db49f82643d0942518ff87810714389b54c
-ms.sourcegitcommit: df2b8d4e29ebfbb9e8a10091bb580389fe4c34cc
+ms.openlocfilehash: 68961133eef80b22939bd4ad251a22f10f874c2c
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76256443"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81395665"
 ---
 # <a name="configure-nodejs-bot-for-extension"></a>拡張機能のための Node.js ボットの構成
 
@@ -41,8 +41,10 @@ ms.locfileid: "76256443"
     
     adapter.useNamedPipe(async (context) => {
         await myBot.run(context);
-    });
-    ```
+        },
+        process.env.APPSETTING_WEBSITE_SITE_NAME + '.directline'
+    );
+    ```   
 
 1. `index.js` ファイルを保存します。
 1. 既定の `Web.Config` ファイルを更新して、Direct Line App Service 拡張機能に必要な `AspNetCore` ハンドラーをサービス要求に追加します。
@@ -87,7 +89,7 @@ ms.locfileid: "76256443"
 1. Azure portal で、ボットをホストしている、またはホストする予定の Web アプリの **Azure App Service** リソース ページを見つけます
 1. **[Configuration]\(構成\)** をクリックします。 *[アプリケーションの設定]* セクションで、次の新しい設定を追加します。
 
-    |Name|値|
+    |名前|値|
     |---|---|
     |DirectLineExtensionKey|<App_Service_Extension_Key_From_Section_1>|
     |DIRECTLINE_EXTENSION_VERSION|latest|
@@ -97,9 +99,10 @@ ms.locfileid: "76256443"
 
 ### <a name="confirm-direct-line-app-extension-and-the-bot-are-initialized"></a>Direct Line アプリ拡張機能とボットが初期化されていることを確認します
 
-1. ブラウザーで、 https://<your_app_service>.azurewebsites.net/.bot に移動します。 すべて正しければ、ページは JSON コンテンツ `{"k":true,"ib":true,"ob":true,"initialized":true}` を返します。 これは、**すべてが正常に動作している**場合に取得される情報です。ここでは、次のようになります。
+1. ブラウザーで、 https://<your_app_service>.azurewebsites.net/.bot に移動します。 すべて正しければ、ページは JSON コンテンツ `{"v":"123","k":true,"ib":true,"ob":true,"initialized":true}` を返します。 これは、**すべてが正常に動作している**場合に取得される情報です。ここでは、次のようになります。
 
-    - **k** によって、Direct Line App Service 拡張機能 (ASE) がその構成から App Service 拡張機能のキーを読み取れるかどうかを決定します。 
+    - **v** によって、Direct Line App Service 拡張機能 (ASE) のビルドバージョンが表示されます。
+    - **k** によって、Direct Line ASE がその構成から App Service 拡張機能のキーを読み取れるかどうかを決定します。 
     - **initialized** によって、Direct Line ASE が App Service 拡張機能キーを使用して Azure Bot Service からボット メタデータをダウンロードできるかどうかを決定します。
     - **ib** によって、Direct Line ASE がボットとの受信接続を確立できるかどうかを決定します。
     - **ob** によって、Direct Line ASE がボットとの送信接続を確立できるかどうかを決定します。 

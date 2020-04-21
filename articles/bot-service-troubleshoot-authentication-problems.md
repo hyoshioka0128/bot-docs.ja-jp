@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 02/25/2020
-ms.openlocfilehash: 5a430e9ca14bb9dfdfc7916b77912d88e2c0253e
-ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
+ms.openlocfilehash: e9f7cd8e7959d9ba2e395eb73d565ac790b3a585
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2020
-ms.locfileid: "80117683"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80647685"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Bot Framework 認証のトラブルシューティング
 
@@ -215,7 +215,7 @@ Bot Framework では、ボットはインターネットからアクセス可能
 * Bot Framework Portal でボット用の **[設定]** ページに指定された**メッセージング エンドポイント**が `https` で始まっていない、または Bot Framework で信頼されていない。 ボットは、有効なチェーンで信頼された証明書を持っている必要があります。
 * ボットの構成にアプリ ID またはパスワードが不足しているか、値が正しくない。 ボットの構成設定で、アプリ ID とパスワードの両方に有効な値が指定されていることを[確認](#enable-security-localhost)します。
 
-ボットが入力に適切に応答すれば、セキュリティが有効なクラウドでボットがアクセス可能であり、機能することが確認されました。 この時点で、ボットは、セキュリティで保護された状態で、Skype、Facebook Messenger、Direct Line などの[チャネルに接続する](~/bot-service-manage-channels.md)準備が整いました。
+ボットが入力に適切に応答すれば、セキュリティが有効なクラウドでボットがアクセス可能であり、機能することが確認されました。 この時点で、ボットは、セキュリティで保護された状態で、Facebook Messenger、Direct Line などの[チャネルに接続する](~/bot-service-manage-channels.md)準備が整いました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

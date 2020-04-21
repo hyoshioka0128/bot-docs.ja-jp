@@ -1,6 +1,6 @@
 ---
-title: ダイアログの再利用 - Bot Service
-description: Bot Framework SDK でコンポーネント ダイアログを使用して、ご自身のボット ロジックをモジュール化する方法について説明します。
+title: ダイアログの複雑さを管理する | Microsoft Docs
+description: Bot Framework SDK でコンポーネント ダイアログを使用して、ダイアログの複雑さをモジュール化する方法について説明します。
 keywords: 複合コントロール、モジュラー ボット ロジック
 author: v-ducvo
 ms.author: kamrani
@@ -9,18 +9,21 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/30/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0d7045f48caeb6a1bcf82993d8d7fcb7e326dde3
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: dbf56827aa2a371f6d5d6f9eefecf2524779d57c
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441738"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81395622"
 ---
-# <a name="reuse-dialogs"></a>ダイアログの再利用
+# <a name="manage-dialog-complexity"></a>ダイアログの複雑さを管理する
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-コンポーネント ダイアログを使用すると、大規模なダイアログ セットをより管理しやすい要素に分割して、特定のシナリオを処理する独立したダイアログを作成できます。 各要素には独自のダイアログ セットがあり、その要素外にあるダイアログ セットとの名前の競合を回避しています。
+コンポーネント ダイアログを使用すると、大規模なダイアログ セットをより管理しやすい要素に分割して、特定のシナリオを処理する独立したダイアログを作成できます。 各要素には独自のダイアログ セットがあり、その要素外にあるダイアログ セットとの名前の競合を回避しています。 コンポーネント ダイアログは、次のことができるという点で再利用可能です。
+- ボット内の別の `ComponentDialog` または `DialogSet` へ追加
+- パッケージの一部としてエクスポート
+- 他のボット内で使用 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,15 +58,15 @@ ms.locfileid: "77441738"
 
 ここでは `UserProfileDialog` クラスは、`ComponentDialog` クラスから派生しています。
 
-[!code-csharp[Class](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=17)]
+[!code-csharp[Class](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=16)]
 
 コンストラクター内で、`AddDialog` メソッドによって、ダイアログとプロンプトがコンポーネント ダイアログに追加されます。 このメソッドを使用して追加した最初の項目が初期ダイアログとして設定されますが、これは、`InitialDialogId` プロパティを明示的に設定することで変更できます。 コンポーネント ダイアログを開始すると、その _initial dialog_ が開始されます。
 
-[!code-csharp[Constructor](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=21-48)]
+[!code-csharp[Constructor](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=20-47)]
 
 これは、ウォーターフォール ダイアログの最初のステップの実装です。
 
-[!code-csharp[First step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=50-60)]
+[!code-csharp[First step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=61-66)]
 
 ウォーターフォール ダイアログの実装の詳細については、[連続して行われる会話フローを実装する](bot-builder-dialog-manage-complex-conversation-flow.md)方法をご覧ください。
 
@@ -178,22 +181,22 @@ ms.locfileid: "77441738"
 ボットで入れ子になったコンポーネント ダイアログを管理するときは、この点に注意してください。
 
 ## <a name="next-steps"></a>次のステップ
-
-ボットを強化して、"ヘルプ"、"キャンセル" など、会話の通常のフローを中断する可能性がある追加入力に対応できるようにします。
+分岐とループを行う複雑な会話を作成する方法について説明します。
 
 > [!div class="nextstepaction"]
-> [ユーザーによる割り込みの処理](bot-builder-howto-handle-user-interrupt.md)
+> [ユーザーによる割り込みの処理](bot-builder-dialog-manage-complex-conversation-flow.md)
 
 <!-- Footnote-style links -->
 
+<!--concepts-->
 [concept-basics]: bot-builder-basics.md
 [concept-state]: bot-builder-concept-state.md
 [concept-dialogs]: bot-builder-concept-dialog.md
-
+<!--how to-->
 [simple-flow]: bot-builder-dialog-manage-conversation-flow.md
 [prompting]: bot-builder-prompts.md
 [component-dialogs]: bot-builder-compositcontrol.md
-
+<!--samples-->
 [cs-sample]: https://aka.ms/cs-multi-prompts-sample
 [js-sample]: https://aka.ms/js-multi-prompts-sample
 [python-sample]: https://aka.ms/python-multi-prompts-sample

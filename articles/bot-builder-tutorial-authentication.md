@@ -8,12 +8,12 @@ ms.service: bot-service
 ROBOTS: NOINDEX
 ms.date: 11/14/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: aab49803939a42974a59b66f47a1f004019421b4
-ms.sourcegitcommit: 4e1af50bd46debfdf9dcbab9a5d1b1633b541e27
+ms.openlocfilehash: e7ae8eea8dcf7f7f66d406f120f15ec89cfb8f4f
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2020
-ms.locfileid: "76752784"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80647243"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Azure Bot Service を介してボットに認証を追加する
 
@@ -38,7 +38,7 @@ OAuth コントローラーのホスティングやトークンのライフサ�
 
 この記事の手順を応用して、このような機能を既存のボットに追加することができます。 以下は、新しい認証機能の例を示すサンプル ボットです
 
-| サンプル | BotBuilder のバージョン | [説明] |
+| サンプル | BotBuilder のバージョン | 説明 |
 |:---|:---:|:---|
 | [AadV1Bot](https://aka.ms/AadV1Bot) | v3 | Azure AD v1 エンドポイントを使用して、v3 C# SDK での OAuthCard サポートの例を示します |
 | [AadV2Bot](https://aka.ms/AadV2Bot) | v3 |  Azure AD v2 エンドポイントを使用して、v3 C# SDK での OAuthCard サポートの例を示します |
@@ -105,7 +105,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
       - さらに、 **[ディレクトリ (テナント) ID]** の値を記録します。 これも、このアプリケーションを自分のボットに登録するために使用します。
  
     > [!NOTE]
-    > サポートされるアカウントの種類がシングル テナントに設定されている場合に、Microsoft アカウントではなく個人用サブスクリプションを使用すると、エミュレーターに次のエラーが表示されます。*The bot's Microsoft App ID or Microsoft App Password is incorrect.\(ボットの Microsoft アプリ ID または Microsoft アプリ パスワードが正しくありません。\)* この場合、サポートされているアカウントの種類を *[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人用の Microsoft アカウント (Skype、Xbox など)\)* に設定する必要があります。
+    > サポートされるアカウントの種類がシングル テナントに設定されている場合に、Microsoft アカウントではなく個人用サブスクリプションを使用すると、エミュレーターに次のエラーが表示されます。*The bot's Microsoft App ID or Microsoft App Password is incorrect.\(ボットの Microsoft アプリ ID または Microsoft アプリ パスワードが正しくありません。\)* この場合、サポートされているアカウントの種類を *[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人用の Microsoft アカウント (Xbox など)\)* に設定する必要があります。
 
 1. ナビゲーション ウィンドウで **[証明書とシークレット]** をクリックして、自分のアプリケーションのシークレットを作成します。
 
@@ -143,7 +143,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 
 次に、作成した Azure AD アプリケーションをボットに登録します。
 
-# <a name="azure-ad-v1tabaadv1"></a>[Azure AD v1](#tab/aadv1)
+# <a name="azure-ad-v1"></a>[Azure AD v1](#tab/aadv1)
 
 1. [Azure Portal](https://portal.azure.com/) で、ボットのリソース ページに移動します。
 1. **[設定]** をクリックします。
@@ -168,7 +168,7 @@ v1 と v2 の各エンドポイントの違いについては、[v1 と v2 の�
 > [!NOTE]
 > これらの値によって、アプリケーションは Microsoft Graph API 経由で Office 365 データにアクセスできます。
 
-# <a name="azure-ad-v2tabaadv2"></a>[Azure AD v2](#tab/aadv2)
+# <a name="azure-ad-v2"></a>[Azure AD v2](#tab/aadv2)
 
 1. [Azure Portal](https://portal.azure.com/) で、ボットの [Bot Channels Registration]\(ボット チャネル登録\) ページに移動します。
 1. **[設定]** をクリックします。

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4471507ff64e69ca2d438d55ccf8ba7e08fbcdfd
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: b60d8a08650de3e4f7501173acb9f1cbbf06e43d
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75794727"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80647268"
 ---
 # <a name="register-a-bot-with-azure-bot-service"></a>ボットを Azure Bot Service に登録する
 
 このトピックでは、**Azure Bot Service** リソースを作成してボットを登録する方法について説明します。 これは、他の場所でホストされているボットを Azure で使用できるようにし、Azure Bot Service チャネルに接続する場合に必要です。
 
-これにより、ユーザーがどこにいても、Cortana、Skype、Messenger、およびその他の多数のサービスを通じてそのユーザーと対話するボットを作成、接続、および管理できます。
+これにより、ユーザーがどこにいても、Cortana、Messenger、およびその他の多数のサービスを通じてそのユーザーと対話するボットを作成、接続、および管理できます。
 
 > [!IMPORTANT] 
 > ボットを登録する必要があるのは、ボットが Azure でホストされていない場合だけです。 Azure portal を使用して[ボットを作成](v4sdk/abs-quickstart.md)した場合、ボットはこのサービスに既に登録されています。
@@ -38,13 +38,13 @@ ms.locfileid: "75794727"
 
    ![登録ボットの作成ブレード](media/azure-bot-quickstarts/registration-create-bot-service-blade.png)
 
-   |設定 |推奨値|[説明]|
+   |設定 |推奨値|説明|
    |---|---|--|
    |**ボット名** <img width="300px">|ボットの表示名|チャンネルとディレクトリに表示されるボットの表示名。 この名前はいつでも変更できます。|
    |**サブスクリプション**|該当するサブスクリプション|使用する Azure サブスクリプションを選択します。|
    |**リソース グループ**|myResourceGroup|新しい[リソース グループ](/azure/azure-resource-manager/resource-group-overview#resource-groups)を作成することも、既存のグループを選択することもできます。|
-   |**Location**|米国西部|ボットがデプロイされている場所の近く、またはボットがアクセスする他のサービスの近くの場所を選択します。|
-   |**[価格レベル]**|F0|価格レベルを選択します。 価格レベルはいつでも更新できます。 詳細については、[Bot Service の価格](https://azure.microsoft.com/pricing/details/bot-service/)に関するページをご覧ください。|
+   |**場所**|米国西部|ボットがデプロイされている場所の近く、またはボットがアクセスする他のサービスの近くの場所を選択します。|
+   |**価格レベル**|F0|価格レベルを選択します。 価格レベルはいつでも更新できます。 詳細については、[Bot Service の価格](https://azure.microsoft.com/pricing/details/bot-service/)に関するページをご覧ください。|
    |**[Messaging endpoint]\(メッセージング エンドポイント\)**|URL|ボットのメッセージング エンドポイントの URL を入力します。|
    |**Application Insights**|On| [Application Insights](bot-service-manage-analytics.md) を**オン**にするか、**オフ**にするかを決定します。 **[オン]** を選択した場合は、リージョンの場所も指定する必要があります。 |
    |**Microsoft App ID and password\(Microsoft アプリ ID とパスワード\)**| アプリ ID とパスワードの自動作成 |Microsoft アプリ ID とパスワードを手動で入力する必要がある場合は、このオプションを使用します。 次のセクションの「[アプリの手動登録](#manual-app-registration)」を参照してください。 それ以外の場合、登録プロセスで新しい Microsoft アプリ ID とパスワードが作成されます。 |
@@ -87,7 +87,7 @@ ms.locfileid: "75794727"
 [FAQ の「アプリの登録」](bot-service-resources-bot-framework-faq.md#app-registration)をご覧ください。
 
 > [!IMPORTANT]
-> *[Supports account types]\(アカウントの種類のサポート\)* セクションで、2 つのマルチテナント タイプのいずれかを選択する必要があります。つまり、アプリ作成時に、 *[Accounts in any organizational directory (Any Azure AD - Multitenant)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD - マルチテナント)\)* または *[Accounts in any organizational directory (Any Azure AD - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox, Outlook.com)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox、Outlook.com など)\)* を選択します。そうしないと、ボットは動作しません。 詳細については、「[Azure portal を使用した新規アプリケーションの登録](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)」を参照してください。
+> *[Supports account types]\(アカウントの種類のサポート\)* セクションで、2 つのマルチテナント タイプのいずれかを選択する必要があります。つまり、アプリ作成時に、 *[任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント)]* または *[任意の組織ディレクトリ内のアカウント (任意の Azure AD - マルチテナント) と個人の Microsoft アカウント (Xbox、Outlook.com など)]* を選択します。そうしないと、ボットは動作しません。 詳細については、「[Azure portal を使用した新規アプリケーションの登録](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)」を参照してください。
 
 ## <a name="update-the-bot"></a>ボットを更新する
 

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/15/2019
-ms.openlocfilehash: 52b39c8f0d524785a0ef81d262dd1b7380b0b6e2
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: a2b1274f93ba2ce5960e8c2ca705a54b0498a825
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75794717"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80647328"
 ---
 # <a name="about-azure-bot-service"></a>Azure Bot Service について
 
@@ -52,7 +52,7 @@ Azure Bot Service および Bot Framework は、このプロセスを容易に�
 
 Azure Bot Service および Bot Framework の一環として、ボットの機能の拡張に使用できる追加コンポーネントが用意されています。
 
-| 機能 | [説明] | Link |
+| 機能 | 説明 | Link |
 | --- | --- | --- |
 | 自然言語処理を追加する | ボットによる自然言語の解釈、スペル ミスの理解、音声の使用、ユーザーの意図の認識を可能にします。 | [LUIS](~/v4sdk/bot-builder-howto-v4-luis.md) の使用方法 
 | 質問に答える | ナレッジ ベースを追加して、より自然な会話方法でユーザーの質問に答えます。 | [QnA Maker](~/v4sdk/bot-builder-howto-qna.md) の使用方法 
@@ -81,7 +81,7 @@ Azure Bot Service および Bot Framework の一環として、ボットの機�
 ボットを Web 上で使用する準備が整ったら、ボットを [Azure](bot-builder-howto-deploy-azure.md) に発行するか、独自の Web サービスまたはデータ センターに発行します。 パブリック インターネット上のアドレスを取得することが、ボットをサイト上やチャット チャネル内で稼働させる第一歩です。
 
 ### <a name="connect"></a>接続する          
-ボットを、Facebook、Messenger、Kik、Skype、Slack、Microsoft Teams、Telegram、SMS 送信、Twilio、Cortana、Skype などのチャネルに接続できます。 Bot Framework は、こうしたさまざまなプラットフォームすべてとの間でメッセージを送受信するために必要な作業のほとんどを行います。ボット アプリケーションでは、接続されているチャネルの数や種類に関係なく、統一され、正規化されたメッセージのストリームを受信します。 チャネルの追加については、[チャネル](bot-service-manage-channels.md)に関するトピックをご覧ください。
+ボットを、Facebook、Messenger、Kik、Slack、Microsoft Teams、Telegram、SMS 送信、Twilio、Cortana などのチャネルに接続します。 Bot Framework は、こうしたさまざまなプラットフォームすべてとの間でメッセージを送受信するために必要な作業のほとんどを行います。ボット アプリケーションでは、接続されているチャネルの数や種類に関係なく、統一され、正規化されたメッセージのストリームを受信します。 チャネルの追加については、[チャネル](bot-service-manage-channels.md)に関するトピックをご覧ください。
 
 ### <a name="evaluate"></a>Evaluate 
 Azure portal で収集されたデータを使用し、ボットの機能とパフォーマンスを強化する機会を特定します。 トラフィック、待ち時間、統合などのサービス レベルのデータやインストルメンテーション データを取得できます。 Analytics では、ユーザー、メッセージ、チャネル データに関する会話レベルのレポートも提供されます。 詳しくは、[分析情報の収集方法](bot-service-manage-analytics.md)に関するページをご覧ください。

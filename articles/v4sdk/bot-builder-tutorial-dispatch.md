@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/27/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 32394b9812340467e9ae584c55fd047b973be1bc
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: 48cc24fd3e78d39388bb600477f3d23e03a89fd9
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441662"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81395655"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>複数の LUIS および QnA モデルを使用する
 
@@ -253,7 +253,7 @@ QnA Maker で使用される [2 つの異なる種類のキー](https://docs.mic
 ```json
 "MicrosoftAppId": "",
 "MicrosoftAppPassword": "",
-  
+
 "QnAKnowledgebaseId": "<knowledge-base-id>",
 "QnAEndpointKey": "<qna-maker-resource-key>",
 "QnAEndpointHostName": "<your-hostname>",
@@ -286,8 +286,7 @@ npm install --save dotenv
 
 すべてのサービス アプリが作成されたら、それぞれの情報を ".env" ファイルに追加する必要があります。 初期 [JavaScript サンプル][js-sample] コードには、空の .env ファイルが含まれています。
 
-**.env**  
-[!code-file[EmptyEnv](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/.env?range=1-10)]
+**.env** [!code-file[EmptyEnv](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/.env?range=1-10)]
 
 次に示すように、ご自身のサービス接続の値を追加します。
 
@@ -357,7 +356,7 @@ Dispatch、LUIS、および QnA Maker サービスに接続するために、ボ
 
 **BotServices.cs**
 
-[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-45)]
+[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=10-47)]
 
 ## <a name="javascript"></a>[JavaScript](#tab/js)
 
@@ -426,8 +425,7 @@ Dispatch、LUIS、および QnA Maker サービスに接続するために、ボ
 
 モデルによって結果が生成されるとき、どのサービスが発話を最も適切に処理できるかが示されます。 このサンプルのコードでは、対応するサービスへの要求のルーティング方法を示すために、認識された _topIntent_ が使用されます。
 
-**bots/dispatchBot.js**  
-[!code-javascript[dispatchToTopIntentAsync](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=61-77)]
+**bots/dispatchBot.js** [!code-javascript[dispatchToTopIntentAsync](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=61-77)]
 
 `processHomeAutomation` または `processWeather` のいずれかのメソッドが呼び出されると、_recognizerResult.luisResult_ 内のディスパッチ モデルから結果が渡されます。 その後、指定されたメソッドによって、ユーザー フィードバックが提供されます。このフィードバックには、ディスパッチ モデルの最上位の意図と、検出された意図およびエンティティの一覧がランク付けされて示されています。
 
@@ -452,7 +450,7 @@ Dispatch、LUIS、および QnA Maker サービスに接続するために、ボ
 
 ## <a name="test-your-bot"></a>ボットをテストする
 
-1. ご自身の開発環境を使用して、サンプル コードを開始します。 ご自身のアプリによって開かれたブラウザー ウィンドウのアドレス バーに表示されている次の _localhost_ アドレスをメモしてください: "https://localhost:<Port_Number>" 
+1. ご自身の開発環境を使用して、サンプル コードを開始します。 ご自身のアプリによって開かれたブラウザー ウィンドウのアドレス バーに表示されている次の _localhost_ アドレスをメモしてください: "https://localhost:<Port_Number>"
 1. ご利用の Bot Framework Emulator を開き、[`Create a new bot configuration`] を選択します。 `.bot` ファイルを使用すると、ボット エミュレーター内の "_インスペクター_" を使用して、LUIS および QnA Maker から返された JSON を確認できます。
 1. **[New bot configuration]\(新しいボット構成\)** ダイアログ ボックスで、ご自身のボット名とエンドポイント URL (`http://localhost:3978/api/messages` など) を入力します。 ご自身のボット サンプル コード プロジェクトのルートにファイルを保存します。
 1. ボット ファイルを開き、ご自身の LUIS アプリおよび QnA Maker アプリのセクションを追加します。 [このサンプル ファイル](https://github.com/microsoft/botbuilder-tools/blob/master/packages/MSBot/docs/sample-bot-file.json)を設定用のテンプレートとして使用します。 変更を保存します。
@@ -549,7 +547,7 @@ Either of the above two actions will reduce the number of times that your bot re
 
 このサンプルは、事前構成済みの LUIS モデルが基になっています。 このモデルの更新または新しい LUIS モデルの作成に役立つ追加情報については、[こちら](https://aka.ms/create-luis-model#updating-your-cognitive-models)をご覧ください。
 
-基になるモデル (QnA または LUIS) を更新した後、`dispatch refresh` を実行して Dispatch LUIS アプリを更新します。 `dispatch refresh` は基本的に `dispatch create` と同じコマンドですが、新しい LUIS アプリ ID は作成されません。 
+基になるモデル (QnA または LUIS) を更新した後、`dispatch refresh` を実行して Dispatch LUIS アプリを更新します。 `dispatch refresh` は基本的に `dispatch create` と同じコマンドですが、新しい LUIS アプリ ID は作成されません。
 
 LUIS で直接追加された発話は、`dispatch refresh` の実行時に保持されないことに注意してください。 これらの追加の発話を Dispatch アプリで保持するには、テキスト ファイルでそれらの発話を (1 行に 1 発話ずつ) 追加し、次のコマンドを実行してファイルを Dispatch に追加します。
 

@@ -7,18 +7,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: dc86478de7d73b15bd0d816c5da4e140b3e4de40
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 849475745372a42269d4c28dab09b4f617bac5a2
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789894"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648359"
 ---
 # <a name="send-and-receive-messages"></a>メッセージを送受信する
 
-Bot Connector サービスを使用すると、ボットで Skype、電子メール、Slack などの複数のチャネル間で通信できます。 これにより、ボットからチャネルへ、またチャネルからボットへと[アクティビティ](https://aka.ms/botSpecs-activitySchema)をリレーすることで、ボットとユーザー間の通信が容易になります。 すべてのアクティビティに、メッセージを作成したユーザーに関する情報、メッセージのコンテキスト、メッセージの受信者と共に、適切な送信先にメッセージをルーティングするために使用される情報が含まれます。 この記事では、Bot Connector サービスを使用して、チャネル上のボットとユーザーの間で **message** アクティビティを交換する方法について説明します。 
+Bot Connector サービスを使用すると、ボットで電子メールや Slack などの複数のチャネル間で通信できます。 これにより、ボットからチャネルへ、またチャネルからボットへと[アクティビティ](https://aka.ms/botSpecs-activitySchema)をリレーすることで、ボットとユーザー間の通信が容易になります。 すべてのアクティビティに、メッセージを作成したユーザーに関する情報、メッセージのコンテキスト、メッセージの受信者と共に、適切な送信先にメッセージをルーティングするために使用される情報が含まれます。 この記事では、Bot Connector サービスを使用して、チャネル上のボットとユーザーの間で **message** アクティビティを交換する方法について説明します。 
 
-## <a id="create-reply"></a> メッセージに応答する
+## <a name="reply-to-a-message"></a><a id="create-reply"></a> メッセージに応答する
 
 ### <a name="create-a-reply"></a>応答を作成する 
 
@@ -75,7 +75,7 @@ Content-Type: application/json
 }
 ```
 
-## <a id="send-message"></a> (非応答) メッセージを送信する
+## <a name="send-a-non-reply-message"></a><a id="send-message"></a> (非応答) メッセージを送信する
 
 ボットが送信するメッセージの多くは、ユーザーから受信したメッセージへの応答に含まれます。 ただし、ボットが、ユーザーからのメッセージに対する直接の返信ではない会話にメッセージを送信する必要がある場合もあります。 たとえば、ボットから新しいトピックの会話を開始する場合や、会話の最後にさようならのメッセージを送信する場合があります。 
 

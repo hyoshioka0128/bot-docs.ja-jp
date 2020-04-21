@@ -9,10 +9,10 @@ ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 182fb3ab327b55d8976a607871bb2380a88f8b30
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/16/2020
 ms.locfileid: "75790560"
 ---
 # <a name="send-and-receive-attachments"></a>添付ファイルを送受信する
@@ -27,7 +27,7 @@ ms.locfileid: "75790560"
 ユーザーとボットの間のメッセージ交換には、イメージ、ビデオ、オーディオ、ファイルなどのメディア添付ファイルを含めることができます。 送信できる添付ファイルの種類はチャネルによって異なりますが、以下に基本的な種類を示します。
 
 * **メディアおよびファイル**:**contentType** に [IAttachment オブジェクト][IAttachment]の MIME の種類を設定し、ファイルへのリンクを **contentUrl** に渡すことで、イメージ、オーディオ、ビデオなどのファイルを送信することができます。
-* **カード**: <!-- and custom keyboards --> **contentType** に目的のカードの種類を設定し、カードの JSON を渡すことで、視覚的に優れた一連のカードを送信することができます。 **HeroCard** などのリッチ カード ビルダー クラスを使用する場合、添付ファイルは自動的に追加されます。 この例については、「[リッチ カードを送信する](bot-builder-nodejs-send-rich-cards.md)」をご覧ください。
+* **カード**:視覚的に優れた一連のカードを送信できます。 <!-- and custom keyboards --> **contentType** に目的のカードの種類を設定し、カードの JSON を渡すことで、視覚的に優れた一連のカードを送信することができます。 **HeroCard** などのリッチ カード ビルダー クラスを使用する場合、添付ファイルは自動的に追加されます。 この例については、「[リッチ カードを送信する](bot-builder-nodejs-send-rich-cards.md)」をご覧ください。
 
 ## <a name="add-a-media-attachment"></a>メディア添付ファイルの追加
 メッセージ オブジェクトは、[IMessage][IMessage] のインスタンスである必要があります。これは、イメージなどの添付ファイルを含めたい場合、ユーザーにオブジェクトとしてメッセージを送信する際にとても便利です。 JSON オブジェクト形式でメッセージを送信するには、[session.send()][SessionSend] メソッドを使用します。 

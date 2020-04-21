@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: bot-service
 ms.date: 03/23/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 17d88db4e291458bc87d959c90759e0c44bcc283
-ms.sourcegitcommit: 126c4f8f8c7a3581e7521dc3af9a937493e6b1df
+ms.openlocfilehash: f51fad7d75de3f82839406d33d43211dc0d35d72
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80499895"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648184"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>チュートリアル:ボットで QnA Maker を使用して質問に回答する
 
@@ -151,15 +151,12 @@ class DefaultConfig:
 
    NuGet の詳細については、[NuGet のドキュメント](https://docs.microsoft.com/nuget/#pivot=start&panel=start-all)を参照してください。
 
-1. **Microsoft.Extensions.Configuration** NuGet パッケージをプロジェクトに追加します。
-
 1. **Startup.cs** ファイルに、次の名前空間参照を追加します。
 
    **Startup.cs**
 
    ```csharp
    using Microsoft.Bot.Builder.AI.QnA;
-   using Microsoft.Extensions.Configuration;
    ```
 
 1. _ConfigureServices_ メソッドを変更し、**appsettings.json** ファイルに定義されるナレッジ ベースに接続された QnAMakerEndpoint を作成します。
@@ -179,7 +176,7 @@ class DefaultConfig:
 
 1. **EchoBot.cs** ファイルに、次の名前空間参照を追加します。
 
-   **EchoBot.cs**
+   **Bots\\EchoBot.cs**
 
    ```csharp
    using System.Linq;
@@ -343,7 +340,7 @@ class DefaultConfig:
    from botbuilder.schema import ChannelAccount
    ```
 
-1. `config.py` ファイルに指定されている構成パラメーターを 使用して  オブジェクトをインスタンス化するための `config.py`init 関数を追加します。  
+1. `qna-maker` オブジェクトをインスタンス化するための __init__ 関数を追加します。 `config.py` ファイルに指定されている構成パラメーターを使用します。  
 
    **bot.py**
 

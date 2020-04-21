@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 01/31/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d6ea339d008c54c8a60dc20dd9c5252b31e06142
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: af08588929fc6d1717de261c6e6588c201e96af0
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071860"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648345"
 ---
 # <a name="how-bots-work"></a>ボットのしくみ
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-ボットとは、テキスト、グラフィックス (カード、画像など)、または音声を使用してユーザーが会話形式で対話するアプリです。 ユーザーとボットとの間で行われるすべての対話では、"*アクティビティ*" が発生します。 Facebook、Skype、Slack など、ボットに接続されたユーザーのアプリ ("*チャネル*") とボットとの間でやり取りされる情報は、Azure Bot Service のコンポーネントである Bot Framework Service によって送信されます。 それらによって送信されるアクティビティには、それぞれのチャネルによって付加的な情報が追加される場合があります。 ボットを作成する前に、ユーザーと通信するためにアクティビティ オブジェクトがボットでどのように使用されているかを理解しておくことが大切です。 まずは、単純なエコー ボットを実行するときにやり取りされるアクティビティを見てみましょう。
+ボットとは、テキスト、グラフィックス (カード、画像など)、または音声を使用してユーザーが会話形式で対話するアプリです。 ユーザーとボットとの間で行われるすべての対話では、"*アクティビティ*" が発生します。 Facebook、Skype など、ボットに接続されたユーザーのアプリ ("*チャネル*") とボットとの間でやり取りされる情報は、Azure Bot Service のコンポーネントである Bot Framework Service によって送信されます。 それらによって送信されるアクティビティには、それぞれのチャネルによって付加的な情報が追加される場合があります。 ボットを作成する前に、ユーザーと通信するためにアクティビティ オブジェクトがボットでどのように使用されているかを理解しておくことが大切です。 まずは、単純なエコー ボットを実行するときにやり取りされるアクティビティを見てみましょう。
 
 ![アクティビティの図](media/bot-builder-activity.png)
 
@@ -534,7 +534,7 @@ def messages():
 
 ## <a name="manage-bot-resources"></a>ボット リソースの管理
 
-アプリ ID、パスワード、キーまたはシークレットなどのボット リソースは、適切に管理する必要があります。これを行う方法の詳細について、「[ボット リソースの管理](bot-file-basics.md)」を参照してください。
+アプリ ID、パスワード、キーまたはシークレットなどのボット リソースは、適切に管理する必要があります。 これを行う方法の詳細について、「[ボットのリソースを管理](bot-file-basics.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

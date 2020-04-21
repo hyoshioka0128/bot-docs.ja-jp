@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 4eea881d7dee4816c2c8a5d28ffc37662063d340
-ms.sourcegitcommit: 308e6df385b9bac9c8d60f8b75eabc813b823c38
+ms.openlocfilehash: f30cf7b8d86195595575260dfd2fbcd8c14c1a15
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77519941"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648049"
 ---
 # <a name="bot-framework-user-agent-requests"></a>Bot Framework の User-Agent 要求
 
@@ -28,7 +28,7 @@ ms.locfileid: "77519941"
 
 ## <a name="why-is-microsoft-contacting-my-service"></a>Microsoft が皆さんのサービスにアクセスする理由
 
-Bot Framework は、Skype や Facebook Messenger などのチャット サービスを利用しているユーザーとボットをつなぐものです。ボットは、インターネットにアクセスすることができるエンドポイントで実行され、REST API を使用できる Web サーバーです。 ボットに対する HTTP 呼び出し (Webhook 呼び出しとも呼ばれます) は、Bot Framework 開発者ポータルに登録されているボット開発者が指定した URL にのみ送信されます。
+Bot Framework は、Facebook Messenger などのチャット サービスを利用しているユーザーとボットをつなぐものです。ボットは、インターネットにアクセスできるエンドポイントで実行され、REST API を使用できる Web サーバーです。 ボットに対する HTTP 呼び出し (Webhook 呼び出しとも呼ばれます) は、Bot Framework 開発者ポータルに登録されているボット開発者が指定した URL にのみ送信されます。
 
 皆さんの Web サービスが Bot Framework サービスからの未承諾要求を受信している場合、ある開発者がボットの Webhook コールバックとして誤ってまたは故意に皆さんの URL を入力した可能性があります。
 

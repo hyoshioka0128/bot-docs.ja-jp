@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
-ms.openlocfilehash: 4ae5e5a7972caa0376f2b11dfaab0be4b1e9e924
-ms.sourcegitcommit: d24fe2178832261ac83477219e42606f839dc64d
+ms.openlocfilehash: de65f9f45249180197de16909e166360e5a230cf
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77071780"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81395595"
 ---
 # <a name="authentication"></a>認証
 
@@ -29,7 +29,7 @@ Direct Line **シークレット**は、関連付けられているボットに�
 Direct Line **トークン**は、1 つの会話にアクセスするために使用できるキーです。 トークンには有効期限がありますが、更新できます。
 
 **シークレット** キーまたは**トークン**を使用するタイミングや、どちらを使用するかの決定は、セキュリティに関する考慮事項に基づいて行う必要があります。
-シークレット キーの公開は、計画的に注意して行えば、許容される場合があります。 実際のところ、クライアントが正当であるかどうかを Direct Line で判断することを許可するため、これは既定の動作です。
+シークレット キーの公開は、計画的に注意して行えば、許容される場合があります。 実際には、これが既定の動作です。これにより、クライアントが正当であるかどうかを Direct Line で判断できるためです。
 ただし、一般に、ユーザー データを保持しようとしている場合は、セキュリティが問題になります。
 詳細については、「[セキュリティに関する考慮事項](#security-considerations)」セクションを参照してください。
 
@@ -44,7 +44,7 @@ Direct Line **トークン**は、1 つの会話にアクセスするために�
 
 ![Direct Line 構成](../media/direct-line-configure.png)
 
-## <a id="generate-token"></a> Direct Line トークンを生成する
+## <a name="generate-a-direct-line-token"></a><a id="generate-token"></a> Direct Line トークンを生成する
 
 1 つの会話にアクセスするために使用できる Direct Line トークンを生成するには、まず [Azure portal](https://portal.azure.com) の Direct Line チャネル構成ページから Direct Line シークレットを取得します。 その後、次の要求を発行して、Direct Line シークレットを Direct Line トークンと交換します。
 
@@ -107,7 +107,7 @@ HTTP/1.1 200 OK
 
 トークンをクライアントに配布し、クライアントに会話を開始してほしい場合は、トークンの生成操作を使用します。 会話をすぐに開始するつもりの場合は、[会話の開始](bot-framework-rest-direct-line-3-0-start-conversation.md)操作を使用します。
 
-## <a id="refresh-token"></a> Direct Line トークンを更新する
+## <a name="refresh-a-direct-line-token"></a><a id="refresh-token"></a> Direct Line トークンを更新する
 
 Direct Line トークンは、有効期限が切れていない限り、無制限に更新できます。 期限が切れたトークンは更新できません。 Direct Line トークンを更新するには、次の要求を発行します。
 

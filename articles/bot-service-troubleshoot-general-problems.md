@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 02/20/2020
-ms.openlocfilehash: 6df2b5322233d905b2896ea93b77ba03516e6162
-ms.sourcegitcommit: 54d3febefaf0072172b17bd8e4ec456264dfbd42
+ms.openlocfilehash: 5a4cf92cf7d51cf6d871be8ab632e7e2b6b30303
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77521495"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80647599"
 ---
 # <a name="troubleshooting-general-problems"></a>一般的な問題のトラブルシューティング
 以下のよく寄せられる質問は、一般的なボット開発や運用上の問題のトラブルシューティングに役立ちます。
@@ -85,7 +85,7 @@ Bot Framework の識別子について詳しくは、Bot Framework の[識別子
 
 ## <a name="how-can-i-get-access-to-the-user-id"></a>ユーザー ID にアクセスするにはどうすればよいですか。
 
-Bot Framework チャンネルでは、ユーザーが送信した Activity の `from.Id` フィールドにユーザーの ID が示されます。 SMS および電子メールのメッセージでは、このプロパティで生のユーザー ID が示されます。 Skype などのチャンネルでは `from.Id` プロパティを隠すため、ユーザーの Skype ID とは異なる、ユーザーに対して一意の ID が含まれます。 既存のアカウントに接続する必要がある場合は、サインイン カードを使用して独自の OAuth フローを実装し、ユーザー ID を独自のサービスのユーザー ID に接続できます。
+Bot Framework チャンネルでは、ユーザーが送信した Activity の `from.Id` フィールドにユーザーの ID が示されます。 SMS および電子メールのメッセージでは、このプロパティで生のユーザー ID が示されます。 一部のチャンネルでは `from.Id` プロパティを隠すため、そのチャンネルのユーザー ID とは異なる、ユーザーに対して一意の ID が含まれます。 既存のアカウントに接続する必要がある場合は、サインイン カードを使用して独自の OAuth フローを実装し、ユーザー ID を独自のサービスのユーザー ID に接続できます。
 
 ## <a name="why-are-my-facebook-user-names-not-showing-anymore"></a>自分の Facebook のユーザー名が表示されなくなったのはなぜですか。
 
@@ -106,7 +106,7 @@ Azure Active Directory の認証については、認証の追加に関する記
 
 SMS や電子メールなどの一部のチャネルでは、対象範囲外のアドレスが提供されます。 このような場合は、ユーザーからのメッセージに `from.Id` プロパティの生のユーザー ID が含まれます。
 
-Skype、Facebook、Slack などの他のチャネルでは、ボットで事前にユーザーの ID を予測できない方法で、対象範囲内のアドレスまたはテナント アドレスが提供されます。 このような場合は、ログイン リンクまたは共有シークレットを使用してユーザーを認証し、ボットを使用する権限があるかどうかを判断する必要があります。
+Facebook、Slack などの他のチャネルでは、ボットで事前にユーザーの ID を予測できない方法で、対象範囲内のアドレスまたはテナント アドレスが提供されます。 このような場合は、ログイン リンクまたは共有シークレットを使用してユーザーを認証し、ボットを使用する権限があるかどうかを判断する必要があります。
 
 ## <a name="why-does-my-direct-line-11-conversation-start-over-after-every-message"></a>ダイレクト ライン 1.1 の会話がすべてのメッセージの後、やり直されるのはなぜですか。
 

@@ -3,16 +3,16 @@ ms.topic: conceptual
 ms.author: kamrani
 ms.service: bot-service
 title: Bot レビュー ガイドライン
-ms.openlocfilehash: 1493c1bbc37f336a5c816618d32293f4bb97582c
-ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
+ms.openlocfilehash: 24477b5ca04ab71d61064d3f8a6689e10b623f28
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74410454"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648039"
 ---
 # <a name="bot-review-guidelines"></a>Bot レビュー ガイドライン
 
-Microsoft チャネルのボット、ボットレット、Web アプリ、アドイン、またはスキル ("アプリの統合") を作成するために才能と時間をご投資いただき、ありがとうございます。 アプリの統合を Skype や Microsoft Teams などの Microsoft チャネルに発行するために、まず満たす必要がある最小限の要件を以下に示します。 各チャネルには、以下に詳細に示された要件に加え、特定の要件がある場合があります。 該当する場合、各チャネルの構成ページにチャネル固有の条件があり、そのチャネルにボットを発行するには、まずチャネルのサービスへのサインアップが必要になることがあります。
+Microsoft チャネルのボット、ボットレット、Web アプリ、アドイン、またはスキル ("アプリの統合") を作成するために才能と時間をご投資いただき、ありがとうございます。 アプリの統合を Microsoft Teams などの Microsoft チャネルに発行するために、まず満たす必要がある最小限の要件を以下に示します。 各チャネルには、以下に詳細に示された要件に加え、特定の要件がある場合があります。 該当する場合、各チャネルの構成ページにチャネル固有の条件があり、そのチャネルにボットを発行するには、まずチャネルのサービスへのサインアップが必要になることがあります。
 
 ## <a name="app-integration-policies"></a>アプリの統合ポリシー
 ### <a name="1-value-representation-security-and-usability"></a>1.値、表現、セキュリティ、および使用可能性
@@ -45,7 +45,7 @@ Iubenda – [プライバシー ポリシー ジェネレーター](http://www.i
 - アプリの統合は、あらかじめユーザーによる明確な同意を得ることなく、その主な目的に関係のない個人情報を収集、格納、送信することはできません。 個人情報を処理するにあたり、法律で必要とされるすべての同意をユーザーから得る必要があります。 
 - Microsoft からの明確な許可なしに、13 歳未満の子供を対象としたアプリの統合を発行することはできません (Children’s Online Privacy Protection Act の定義による)。
 
-### <a name="3--financial-transactions"></a>手順 3.財務トランザクション
+### <a name="3--financial-transactions"></a>3.財務トランザクション
 - 支払いに対応しているアプリの統合には、以下のことが当てはまります。 
   - アプリの統合は、ユーザー インターフェイス経由で財務インストルメントの詳細を転送しない可能性があります。
   - チャネルまたはサード パーティのプラットフォームの制限により、アプリの統合は (a) [Microsoft 販売者センター](https://seller.microsoft.com/)経由で Microsoft 販売者センターの契約条件に従って支払いをサポートするか、または (b) セキュリティで保護されたその他の支払いサービスへのリンクを送信することができます。

@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 02/19/2020
-ms.openlocfilehash: aac5f7ff6868d79ef398cbe51fc9e5a6d0f424a1
-ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
+ms.openlocfilehash: c1e95370a58fa1f020bbc170c83ee732b10e92b9
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2020
-ms.locfileid: "80117535"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81395675"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework についてよく寄せられる質問
 
@@ -75,14 +75,14 @@ V3 ボットから V4 への移行を開始することを強くお勧めしま�
 ### <a name="v3-status-summary"></a>V3 ステータスの概要
 
 #### <a name="abs-service"></a>ABS サービス
-1.  ABS サービス サイドでは、V3 ボットの実行が引き続きサポートされ、サポート終了の予定はなく、実行中のボットが中断されることはありません。 
-2.  チャネルは V3 との互換性を維持し、中断またはサポート終了の予定はありません。
-3.  新しい V3 ボットの作成はポータルで無効になっていますが、V3 ボットを ABS にデプロイするのではなく独立して (たとえば、webapp サービスとして) デプロイしたい上級ユーザーは、そのようにデプロイできます。
+1.    ABS サービス サイドでは、V3 ボットの実行が引き続きサポートされ、サポート終了の予定はなく、実行中のボットが中断されることはありません。 
+2.    チャネルは V3 との互換性を維持し、中断またはサポート終了の予定はありません。
+3.    新しい V3 ボットの作成はポータルで無効になっていますが、V3 ボットを ABS にデプロイするのではなく独立して (たとえば、webapp サービスとして) デプロイしたい上級ユーザーは、そのようにデプロイできます。
 
 #### <a name="sdk-and-tools"></a>SDK とツール
-1.  SDK サイドから V3 に投資することはなく、当面の間、重要なセキュリティ修正を SDK ブランチに適用するのみとなります (例外: V4 ボットからレガシ V3 ボットを呼び出せるよう、スキル コネクタの追加を計画しています)。
-2.  SDK およびツールの開発は V4 のみで行われており、V3 に対する作業は実施も計画もされていません (Microsoft は既に "その段階" に達しています)。
-3.  これは、ユーザーが各自の V3 ボットを管理するために古いツールを実行することを妨げるものではありません。 
+1.    SDK サイドから V3 に投資することはなく、当面の間、重要なセキュリティ修正を SDK ブランチに適用するのみとなります (例外: V4 ボットからレガシ V3 ボットを呼び出せるよう、スキル コネクタの追加を計画しています)。
+2.    SDK およびツールの開発は V4 のみで行われており、V3 に対する作業は実施も計画もされていません (Microsoft は既に "その段階" に達しています)。
+3.    これは、ユーザーが各自の V3 ボットを管理するために古いツールを実行することを妨げるものではありません。 
 
 
 ## <a name="how-can-i-migrate-azure-bot-service-from-one-region-to-another"></a>Azure Bot Service をあるリージョンから別のリージョンに移行するにはどうすればよいですか?
@@ -144,17 +144,19 @@ options.ChannelProvider = new ConfigurationChannelProvider();
 ユーザーは、ディレクトリ内のボットの連絡先カードを使用して、不正な動作をするボットを報告できます。 開発者がサービスに参加するには、Microsoft サービス利用規約に従う必要があります。
 
 ### <a name="which-specific-urls-do-i-need-to-whitelist-in-my-corporate-firewall-to-access-bot-framework-services"></a>Bot Framework サービスにアクセスするために、会社のファイアウォールでホワイトリストに登録する必要がある URL を教えてください。
+
 お客様のボットからインターネットへの送信トラフィックをブロックしているファイアウォールがある場合は、そのファイアウォールで次の URL をホワイトリストに登録する必要があります。
-- login.botframework.com (Bot 認証)
-- login.microsoftonline.com (Bot 認証)
-- westus.api.cognitive.microsoft.com (Luis.ai の NLP 統合用)
-- state.botframework.com (プロトタイプ作成用のボット状態ストレージ)
-- cortanabfchanneleastus.azurewebsites.net (Cortana チャンネル)
-- cortanabfchannelwestus.azurewebsites.net (Cortana チャンネル)
-- *.botframework.com (チャンネル)
+
+- `login.botframework.com` (ボット認証)
+- `login.microsoftonline.com` (ボット認証)
+- `westus.api.cognitive.microsoft.com` (Luis.ai NLP 統合の場合)
+- `cortanabfchanneleastus.azurewebsites.net` (Cortana チャンネル)
+- `cortanabfchannelwestus.azurewebsites.net` (Cortana チャンネル)
+- `*.botframework.com` (チャンネル)
+- `state.botframework.com` (下位互換性)
 - 特定の Bot Framework チャンネルのその他の URL
 
-> [!NOTE] 
+> [!NOTE]
 > アスタリスクを使用して URL をホワイトリストに登録するのを避けたい場合は、`<channel>.botframework.com` を使用できます。 `<channel>` は、ボットが使用するあらゆるチャネルに相当します (`directline.botframework.com`、`webchat.botframework.com`、`slack.botframework.com` など)。 ボットをテストする傍ら、ファイアウォール経由のトラフィックを監視して、他にブロックされているものがないか確認することも大切です。
 
 ### <a name="can-i-block-all-traffic-to-my-bot-except-traffic-from-the-bot-framework-service"></a>Bot Framework Service からのトラフィックを除く、自分のボットへのすべてのトラフィックをブロックできますか?
@@ -190,9 +192,9 @@ Bot Framework サービスは、どのボットも他のボットのパフォー
 
 ### <a name="how-does-rate-limiting-occur"></a>レート制限はどのように発生しますか?
 次の場合に発生する可能性があります。
--   ボットがメッセージを送信する頻度が高すぎる場合
--   ボットのクライアントがメッセージを送信する頻度が高すぎる場合
--   Direct Line クライアントが新しい Web ソケットを要求する頻度が高すぎる場合
+-    ボットがメッセージを送信する頻度が高すぎる場合
+-    ボットのクライアントがメッセージを送信する頻度が高すぎる場合
+-    Direct Line クライアントが新しい Web ソケットを要求する頻度が高すぎる場合
 
 ### <a name="what-are-the-rate-limits"></a>レート制限値を教えてください。
 サービスとユーザーを保護しながら、できるだけ緩やかなものにするために、レート制限値は継続的に調整されています。 しきい値が変更されることがあるため、現時点では数値を公開していません。 レート制限の影響を受けている場合は、[bf-reports@microsoft.com](mailto://bf-reports@microsoft.com) までお気軽にご連絡ください。
@@ -318,7 +320,7 @@ Direct Line は以下に適しています。
 3. *[名前]* フィールドにアプリケーション登録の表示名を入力し、サポートされているアカウントの種類を選択します。 この名前は、ボット ID と一致させる必要はありません。
 
     > [!IMPORTANT]
-    > *[サポートされているアカウントの種類]* で、 *[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]* ラジオ ボタンを選択します。 その他のオプションのいずれかを選択すると、**ボットが使用できなくなります**。
+    > *[サポートされているアカウントの種類]* で、 *[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Xbox、Outlook.com など)]* ラジオ ボタンを選択します。 その他のオプションのいずれかを選択すると、**ボットが使用できなくなります**。
 
     ![登録の詳細](media/app-registration/registration-details.png)
 
@@ -332,7 +334,7 @@ Bot Framework ポータルを介してボットを作成している場合、ア
 
 Azure portal でボットを作成している場合、アプリケーションの登録用のシークレットを生成する必要があります。 
 
-1. アプリケーション登録のブレードの左側のナビゲーション列にある **[Certificates & secrets]\(証明書およびシークレット\)** をクリックします。
+1. アプリケーション登録のブレードの左側のナビゲーション列にある **[Certificates & secrets]\(証明書とシークレット\)** をクリックします。
 2. そのブレードで、 **[New client secret]\(新しいクライアント シークレット\)** ボタンをクリックします。 ポップアップ表示されるダイアログ ボックスで、シークレットのオプションの説明を入力し、[有効期限] ラジオ ボタン グループから **[無期限]** を選択します。 
 
     ![新しいシークレット](media/app-registration/new-secret.png)

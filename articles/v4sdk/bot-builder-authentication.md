@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b17adabf6eaf845fa8cfc5f36956c89654f59550
-ms.sourcegitcommit: 64b25f796f89e8bb6fa53d3c824b73b8ce4d6ed8
+ms.openlocfilehash: daaaa0cdbadf5139bca674e053ff464606d071ce
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80250081"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648365"
 ---
 <!--
 
@@ -30,7 +30,7 @@ Related TODO:
 - This doc is a sample walkthrough, but there's no deeper documentation explaining how the Azure Bot Service is handling tokens. How does the OAuth flow work? Where is it storing my users' access tokens? What's the security and best practices around using it?
 
 "Minor issues":
-- AAD v2 steps tell you to add delegated permission scopes during registration, but this shouldn't be necessary in AAD v2 due to dynamic scopes. (Ming, "This is currently necessary because scopes are not exposed through our runtime API. We don’t currently have a way for the developer to specify which scope he wants at runtime.")
+- AAD v2 steps tell you to add delegated permission scopes during registration, but this shouldn't be necessary in AAD v2 due to dynamic scopes. (Ming, "This is currently necessary because scopes are not exposed through our runtime API. We don't currently have a way for the developer to specify which scope he wants at runtime.")
 
 - "The scope of the connection setting needs to have both openid and a resource in the Azure AD graph, such as Mail.Read." Unclear if I need to take some action at this point to make happen. Kind of out of context. I'm registering an AAD application in the portal, there's no connection setting
 - Does the bot need all of these scopes for the samples? (e.g. "Read all users' basic profiles")
@@ -210,8 +210,7 @@ v1 と v2 エンドポイントの違いについては、「[Microsoft ID プ�
     **[テナント ID]** に、AAD アプリを作成したときに選択したサポートされるアカウントの種類に基づいて、Azure AD アプリ用に前に記録した**ディレクトリ (テナント) ID** を入力するか、「**common**」と入力します。 割り当てる値を決定するには、次の条件に従います。
 
         - Azure AD アプリの作成時に、 *[Accounts in this organizational directory only (Microsoft only - Single tenant)]\(この組織ディレクトリ内のアカウントのみ (Microsoft のみ - シングル テナント)\)* または *[Accounts in any organizational directory (Microsoft Azure AD directory - Multi tenant)]\(任意の組織ディレクトリ内のアカウント (Microsoft Azure AD ディレクトリ - マルチテナント)\)* を選択した場合、AAD アプリ用に前に記録した**テナント ID** を入力します。
-
-        - ただし、 *[Accounts in any organizational directory (Any Azure AD directory - Multi tenant and personal Microsoft accounts e.g. Skype, Xbox, Outlook.com)]\(任意の組織ディレクトリ内のアカウント (任意の Azure ADディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox、Outlook.com など)\)* を選択した場合、テナント ID の代わりに「**common**」という語を入力します。 そうしないと、Azure AD アプリは ID が選択されているテナントを通じて検証され、個人の MS アカウントは除外されます。
+        - ただし、 *[Accounts in any organizational directory (Any AAD directory - Multi tenant and personal Microsoft accounts e.g. Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウント (任意の AAD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Xbox、Outlook.com など)\)* を選択した場合、テナント ID の代わりに「**common**」という語を入力します。 それ以外の場合、AAD アプリは ID が選択されているテナントを通じて検証され、個人の MS アカウントは除外されます。
 
        これは、認証可能なユーザーに関連付けられるテナントになります。
 
@@ -236,8 +235,7 @@ v1 と v2 エンドポイントの違いについては、「[Microsoft ID プ�
     1. **[テナント ID]** に、Azure AD アプリを作成したときに選択したサポートされるアカウントの種類に基づいて、AAD アプリ用に前に記録した**ディレクトリ (テナント) ID** を入力するか、「**common**」と入力します。 割り当てる値を決定するには、次の条件に従います。
 
         - Azure AD アプリの作成時に、 *[Accounts in this organizational directory only (Microsoft only - Single tenant)]\(この組織ディレクトリ内のアカウントのみ (Microsoft のみ - シングル テナント)\)* または *[Accounts in any organizational directory(Microsoft Azure AD directory - Multi tenant)]\(任意の組織ディレクトリ内のアカウント (Microsoft Azure AD ディレクトリ - マルチテナント)\)* を選択した場合、AAD アプリ用に前に記録した**テナント ID** を入力します。
-
-        - ただし、 *[Accounts in any organizational directory (Any Azure AD directory - Multi tenant and personal Microsoft accounts e.g. Skype, Xbox, Outlook.com)]\(任意の組織ディレクトリ内のアカウント (任意の Azure ADディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox、Outlook.com など)\)* を選択した場合、テナント ID の代わりに「**common**」という語を入力します。 そうしないと、Azure AD アプリは ID が選択されているテナントを通じて検証され、個人の MS アカウントは除外されます。
+        - ただし、 *[Accounts in any organizational directory (Any AAD directory - Multi tenant and personal Microsoft accounts e.g. Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウント (任意の AAD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Xbox、Outlook.com など)\)* を選択した場合、テナント ID の代わりに「**common**」という語を入力します。 それ以外の場合、AAD アプリは ID が選択されているテナントを通じて検証され、個人の MS アカウントは除外されます。
 
        これは、認証可能なユーザーに関連付けられるテナントになります。
 

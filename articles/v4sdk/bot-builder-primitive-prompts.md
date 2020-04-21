@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/7/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 65aafe3eac9b9b6f023d77c8442bb3a37823789d
-ms.sourcegitcommit: 772b9278d95e4b6dd4afccf4a9803f11a4b09e42
+ms.openlocfilehash: 71dfb4fc5f74634ad49b72608326a27c3aa4a620
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2020
-ms.locfileid: "80117554"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648203"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>ユーザー入力を収集するために独自のプロンプトを作成する
 
@@ -71,11 +71,9 @@ ms.locfileid: "80117554"
 
 ユーザーおよび会話状態オブジェクトをスタートアップ時に作成し、ボット コンストラクターで依存関係挿入によりそれらを使用します。
 
-**Startup.cs**  
-[!code-csharp[Startup.cs](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Startup.cs?range=28-35)]
+**Startup.cs** [!code-csharp[Startup.cs](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Startup.cs?range=23-30)]
 
-**Bots/CustomPromptBot.cs**  
-[!code-csharp[constructor](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=21-28)]
+**Bots/CustomPromptBot.cs** [!code-csharp[constructor](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=21-28)]
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -92,11 +90,9 @@ ms.locfileid: "80117554"
 
 ユーザーおよび会話状態オブジェクトを **app.py** で作成し、ボット コンストラクターでそれらを使用します。
 
-**app.py**  
-[!code-python[app.py](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/app.py?range=67-73)]
+**app.py** [!code-python[app.py](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/app.py?range=67-73)]
 
-**bots/custom_prompt_bot.py**  
-[!code-python[constructor](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=29-41)]
+**bots/custom_prompt_bot.py** [!code-python[constructor](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=29-41)]
 
 ---
 
@@ -128,8 +124,7 @@ ms.locfileid: "80117554"
 
 コンストラクターで状態プロパティ アクセサーを作成し、目的の会話に対して、(上記で作成した) 状態管理オブジェクトを設定します。
 
-**bots/custom_prompt_bot.py**  
-[!code-python[on_message_activity](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=46-49)]
+**bots/custom_prompt_bot.py** [!code-python[on_message_activity](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=46-49)]
 
 ターンを終了する前に、`SaveChangesAsync` を呼び出して、状態の変更をストレージに書き込みます。
 
@@ -143,18 +138,15 @@ ms.locfileid: "80117554"
 
 ## <a name="c"></a>[C#](#tab/csharp)
 
-**Bots/CustomPromptBot.cs**  
-[!code-csharp[message handler](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=30-44)]
+**Bots/CustomPromptBot.cs** [!code-csharp[message handler](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=30-44)]
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**bots/customPromptBot.js**  
-[!code-javascript[message handler](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-39)]
+**bots/customPromptBot.js** [!code-javascript[message handler](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-39)]
 
 ## <a name="python"></a>[Python](#tab/python)
 
-**bots/custom_prompt_bot.py**  
-[!code-python[message handler](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=46-55)]
+**bots/custom_prompt_bot.py** [!code-python[message handler](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=46-55)]
 
 ---
 
@@ -172,18 +164,15 @@ ms.locfileid: "80117554"
 
 ## <a name="c"></a>[C#](#tab/csharp)
 
-**Bots/CustomPromptBot.cs**  
-[!code-csharp[FillOutUserProfileAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=46-103)]
+**Bots/CustomPromptBot.cs** [!code-csharp[FillOutUserProfileAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=46-103)]
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**bots/customPromptBot.js**  
-[!code-javascript[fillOutUserProfile](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=53-118)]
+**bots/customPromptBot.js** [!code-javascript[fillOutUserProfile](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=53-118)]
 
 ## <a name="python"></a>[Python](#tab/python)
 
-**bots/custom_prompt_bot.py**  
-[!code-python[_fill_out_user_profile](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=57-125)]
+**bots/custom_prompt_bot.py** [!code-python[_fill_out_user_profile](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=57-125)]
 
 ---
 
@@ -203,18 +192,15 @@ ms.locfileid: "80117554"
 
 ## <a name="c"></a>[C#](#tab/csharp)
 
-**Bots/CustomPromptBot.cs**  
-[!code-csharp[validation methods](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=105-203)]
+**Bots/CustomPromptBot.cs** [!code-csharp[validation methods](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=105-203)]
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**bots/customPromptBot.cs**  
-[!code-javascript[validation methods](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=120-190)]
+**bots/customPromptBot.cs** [!code-javascript[validation methods](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=120-190)]
 
 ## <a name="python"></a>[Python](#tab/python)
 
-**bots/custom_prompt_bot.py**  
-[!code-python[validation methods](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=127-189)]
+**bots/custom_prompt_bot.py** [!code-python[validation methods](~/../botbuilder-samples/samples/python/44.prompt-for-user-input/bots/custom_prompt_bot.py?range=127-189)]
 
 ---
 

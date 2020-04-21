@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 027006f2ad3d6aff1094142a41d791ba0e5d8922
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 52d6d847c7187372901271a32d852cc089acc27e
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75789823"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648158"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-net"></a>Bot Framework SDK for .NET の主要概念
 
@@ -27,7 +27,7 @@ ms.locfileid: "75789823"
 
 ## <a name="connector"></a>コネクタ
 
-[Bot Framework Connector](bot-builder-dotnet-connector.md) では、ボットで Skype、電子メール、Slack などの複数のチャンネルとの間で通信できるようにする単一の REST API が用意されています。 これにより、ボットからチャンネルおよびチャンネルからボットにメッセージを返信することで、ボットとユーザー間の通信が容易になります。 
+[Bot Framework Connector](bot-builder-dotnet-connector.md) では、ボットが電子メールや Slack などの複数のチャネルにまたがって通信できるようにする単一の REST API が用意されています。 これにより、ボットからチャンネルおよびチャンネルからボットにメッセージを返信することで、ボットとユーザー間の通信が容易になります。 
 
 Bot Framework SDK for .NET では、[Connector][connectorLibrary] ライブラリを使用してコネクタにアクセスできます。 
 

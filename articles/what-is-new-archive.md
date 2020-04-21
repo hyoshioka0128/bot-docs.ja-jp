@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 11/28/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 95ce084b68da41d9d9f434348c4539c9f67a2c78
-ms.sourcegitcommit: e5bf9a7fa7d82802e40df94267bffbac7db48af7
+ms.openlocfilehash: f3d33f9f3f19a32b7b01aa92b809b4e16cae76e1
+ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441525"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80648172"
 ---
 # <a name="whats-new-november-2019"></a>2019 年 11 月の新機能
 
@@ -131,7 +131,7 @@ Botkit は、Microsoft Bot Framework に含まれ、[MIT のオープン ソー�
 |[**分析**](https://github.com/Microsoft/AI/blob/master/docs/readme.md#analytics)| 会話型 AI 分析ソリューションでは、ご自身のボットの正常性と動作に関する主な分析情報を取得します。 利用可能なテレメトリ、Application Insights のサンプル クエリ、および Power BI ダッシュボードを確認することで、お使いのボットとユーザーとの幅広い会話を理解します。 |
 
 ## <a name="azure-bot-service"></a>Azure Bot Service
-Azure Bot Service を使用すると、データの完全な所有権と管理により、エンタープライズ レベルのインテリジェントなボットをホストできます。 開発者は自身のボットを登録して、Skype、Microsoft Teams、Cortana、Web チャットなどのユーザーに接続できます。 [Azure][27]  |  [ドキュメント][28] | [チャネルに接続][29] 
+Azure Bot Service を使用すると、データの完全な所有権と管理により、エンタープライズ レベルのインテリジェントなボットをホストできます。 開発者は自身のボットを登録して、Microsoft Teams、Cortana、Web チャットなどのユーザーに接続できます。 [Azure][27]  |  [ドキュメント][28] | [チャネルに接続][29] 
 
 * **Direct Line JS クライアント**: Azure Bot Service で Direct Line チャネルを使用する必要がある場合、Web チャット クライアントを使用していないときは、ご自身のカスタム アプリケーションで Direct Line JS クライアントを使用できます。 詳細については、[GitHub][30] にアクセスしてください。
 
@@ -148,7 +148,7 @@ Azure Bot Service を使用すると、データの完全な所有権と管理�
 <a name="Emulator-whats-new"></a>
 ### <a name="bot-inspector-new-in-preview"></a>Bot Inspector (新機能。 プレビュー段階)
 
-Bot Framework Emulator の新しい Bot Inspector 機能のベータ版がリリースされました。 これにより、Microsoft Teams、Slack、Cortana、Facebook Messenger、Skype などのチャネルで、ご自身の Bot Framework SDK v4 ボットをデバッグし、テストできます。会話がある場合は、ボットが受信したメッセージ データを検査できる Bot Framework Emulator に、メッセージがミラー化されます。 さらに、チャネルとボットの間の特定のターンに対するボット状態のスナップショットも表示されます。 詳細については、[Bot Inspector](https://github.com/Microsoft/BotFramework-Emulator/blob/master/content/CHANNELS.md) に関するページをご覧ください。
+Bot Framework Emulator の新しい Bot Inspector 機能のベータ版がリリースされました。 これにより、Microsoft Teams、Slack、Cortana、Facebook Messenger などのチャネルで、ご自身の Bot Framework SDK v4 ボットをデバッグし、テストできます。会話がある場合は、ボットが受信したメッセージ データを検査できる Bot Framework Emulator に、メッセージがミラー化されます。 さらに、チャネルとボットの間の特定のターンに対するボット状態のスナップショットも表示されます。 詳細については、[Bot Inspector](https://github.com/Microsoft/BotFramework-Emulator/blob/master/content/CHANNELS.md) に関するページをご覧ください。
 
 
 ## <a name="related-services"></a>関連サービス
