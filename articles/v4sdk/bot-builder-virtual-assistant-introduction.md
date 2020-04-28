@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4f817ff4911229d8bc36d2c50348bf0320d09e47
-ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
+ms.openlocfilehash: 38b7d497e3f46047d8d5d7233c806b9cc146249e
+ms.sourcegitcommit: 2412f96ad8f74dfa615c71f566c5befffb920658
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "75791860"
+ms.lasthandoff: 04/25/2020
+ms.locfileid: "82158794"
 ---
 # <a name="virtual-assistant-overview"></a>仮想アシスタントの概要
 
@@ -35,7 +35,7 @@ Microsoft では、製品の機能をお客様が制御できるようにする�
 
 詳細については、[仮想アシスタントとスキル](https://aka.ms/bf-solutions-docs)に関するドキュメントをご覧ください。
 
-## <a name="whats-in-the-box"></a>提供される機能 
+## <a name="whats-in-the-box"></a>提供される機能
 
 仮想アシスタント テンプレートでは、Microsoft が会話エクスペリエンスの構築を通じて特定した多数のベスト プラクティスがまとめられています。これを使うと、Bot Framework 開発者にとって非常に有益であると Microsoft が判断したコンポーネントの統合が自動化されます。 このセクションでは、テンプレートの仕様を説明するうえで役に立つ、重要な決定のバックグランドについて取り上げます。
 
@@ -55,6 +55,9 @@ To Do スキル | 現在プレビュー段階の To Do スキルには、一般�
 テスト ハーネス | Bot Framework Emulator に加え、Web チャット ベースのテスト ハーネスも提供されています。これにより、より複雑な認証シナリオをテストすることができます。 これは、デバイス統合を簡単にするためのメッセージ交換アプローチを採用した、シンプルなコンソール ベースのテスト ハーネスです。
 自動デプロイ | アシスタントに必要なすべての Azure リソースが自動的にデプロイされます (ボットの登録、Azure App Service、LUIS、QnAMaker、Content Moderator、CosmosDB、Azure Storage、Application Insights)。 また、すべてのスキルの LUIS や、QnA Maker、ディスパッチ モデルも作成され、トレーニングされて発行されるので、テストをすぐに実行できます。
 自動車用言語モデル | 電話、ナビゲーション、車内機能の制御など、主要な機能をカバーした自動車用言語モデルが、まもなく提供される予定です。
+
+>[!IMPORTANT]
+> _Cosmos DB ストレージ_ クラスは非推奨となりました。 "_Cosmos DB ストレージ_" で作成されたコンテナーは、`compatibilityMode` [フラグ](https://aka.ms/azure-dotnet-cosmosdb-partitionedstorage#L289) を追加して "_Cosmos DB パーティション分割ストレージ_" と共に使用できます。 詳細については、[Azure Cosmos DB でのパーティション分割](https://aka.ms/azure-cosmosdb-partitioning-overview)に関するページを参照してください。
 
 ## <a name="example-scenarios"></a>シナリオ例
 
@@ -100,7 +103,7 @@ Microsoft の仮想アシスタント アーキテクチャは柔軟性に優れ
 
 また、複数の言語をサポートする必要がある場合はさらに処理が複雑になり、独自のアシスタントを構築するために膨大な作業が必要になります。
 
-仮想アシスタント ソリューションの新しいスキル機能を使用すれば、構成作業を行うだけで、機能をカスタム アシスタントにプラグインすることができます。 
+仮想アシスタント ソリューションの新しいスキル機能を使用すれば、構成作業を行うだけで、機能をカスタム アシスタントにプラグインすることができます。
 
 ソース コードは仮想アシスタントと共に GitHub ですべて公開されているので、開発者は各スキルのすべての要素 (言語モデル、ダイアログ、統合コード、言語生成) を自由にカスタマイズできます。
 

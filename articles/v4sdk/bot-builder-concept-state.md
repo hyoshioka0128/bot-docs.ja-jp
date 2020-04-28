@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 04/03/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 05e06f65203566fd9176303b8680b5196368f7d3
-ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
+ms.openlocfilehash: adace7cc7a7c59ca7b2a820c99519bde783b375f
+ms.sourcegitcommit: 2412f96ad8f74dfa615c71f566c5befffb920658
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "75798727"
+ms.lasthandoff: 04/25/2020
+ms.locfileid: "82158839"
 ---
 # <a name="managing-state"></a>状態の管理
 
@@ -42,7 +42,10 @@ Bot Framework SDK には、ストレージ レイヤー用の実装がいくつ�
 
 - **メモリ ストレージ**により、テストを目的としたインメモリ ストレージが実装されます。 インメモリ データ ストレージは揮発性であり、一時的なものであるため、ローカル テストのみを対象としています。 ボットの再起動ごとにデータがクリアされます。
 - **Azure Blob Storage** は、Azure Blob Storage オブジェクト データベースに接続されます。
-- **Azure Cosmos DB ストレージ**は、Cosmos DB NoSQL データベースに接続されます。
+- **Azure Cosmos DB パーティション分割ストレージ**は、パーティション分割された Cosmos DB NoSQL データベースに接続されます。
+
+>[!IMPORTANT]
+> _Cosmos DB ストレージ_ クラスは非推奨となりました。 "_Cosmos DB ストレージ_" で作成されたコンテナーは、`compatibilityMode` [フラグ](https://aka.ms/azure-dotnet-cosmosdb-partitionedstorage#L289) を追加して "_Cosmos DB パーティション分割ストレージ_" と共に使用できます。 詳細については、[Azure Cosmos DB でのパーティション分割](https://aka.ms/azure-cosmosdb-partitioning-overview)に関するページを参照してください。
 
 他のストレージ オプションに接続する方法については、[ストレージへの直接書き込み](bot-builder-howto-v4-storage.md)に関するページをご覧ください。
 

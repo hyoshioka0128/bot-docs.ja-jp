@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 27c6079030e6a1da73646c6c325a78614960fa07
-ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
+ms.openlocfilehash: 0fba3baa39903740c56beff4b4ade7ebb9cb8962
+ms.sourcegitcommit: 2412f96ad8f74dfa615c71f566c5befffb920658
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80499852"
+ms.lasthandoff: 04/25/2020
+ms.locfileid: "82158815"
 ---
 この手順では、ボットのデプロイ ステージを設定するボット アプリケーション サービスを作成します。 既存のリソース グループを使用する場合は、既存のアプリ サービス プランを使用するか、新しいものを作成できます。 両方のオプションの手順を以下に示します。
 
@@ -15,7 +15,7 @@ ms.locfileid: "80499852"
 
 **オプション 1: 既存の App Service プラン**
 
-この場合、既存の App Service プランが使用されますが、Web アプリと Bot Channels Registration は新しく作成されます。
+この場合、既存の App Service プランが使用されますが、Web アプリとボット チャンネル登録は新しく作成されます。
 
 次のコマンドにより、ボットの ID と表示名が設定されます。 `botId` パラメーターはグローバルに一意である必要があり、不変のボット ID として使用されます。 ボットの表示名は変更可能です。
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 35f113bacb84aa9e712ffe112780f0d121c1423e
-ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
+ms.openlocfilehash: 44f3e532459529c02d4ce5ea06d762f28ab8796a
+ms.sourcegitcommit: 2412f96ad8f74dfa615c71f566c5befffb920658
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80117735"
+ms.lasthandoff: 04/25/2020
+ms.locfileid: "82158849"
 ---
 # <a name="write-directly-to-storage"></a>ストレージに直接書き込む
 
@@ -317,6 +317,9 @@ Bot Framework [Emulator](https://aka.ms/bot-framework-emulator-readme) をイン
 
 ## <a name="using-cosmos-db"></a>Cosmos DB の使用
 
+>[!IMPORTANT]
+> _Cosmos DB ストレージ_ クラスは非推奨となりました。 "_Cosmos DB ストレージ_" で作成されたコンテナーは、`compatibilityMode` [フラグ](https://aka.ms/azure-dotnet-cosmosdb-partitionedstorage#L289) を追加して "_Cosmos DB パーティション分割ストレージ_" と共に使用できます。 詳細については、[Azure Cosmos DB でのパーティション分割](https://aka.ms/azure-cosmosdb-partitioning-overview)に関するページを参照してください。
+
 メモリ ストレージを使用しているので、Azure Cosmos DB を使用するようにコードを更新します。 Cosmos DB は、Microsoft のグローバル分散型マルチモデル データベースです。 Azure Cosmos DB では、Azure のリージョンをいくつでもまたいでスループットとストレージを柔軟かつ個別にスケーリングすることができます。 このサービスは包括的なサービス レベル アグリーメント (SLA) により、スループット、待機時間、可用性、一貫性が保証されています。
 
 ### <a name="set-up"></a>設定
@@ -341,7 +344,7 @@ Bot Framework [Emulator](https://aka.ms/bot-framework-emulator-readme) をイン
 
 ### <a name="add-a-database"></a>データベースを追加する
 
-1. 新しく作成した Cosmos DB アカウント内の **[データ エクスプローラー]** ページに移動し、 **[コンテナーの作成]** ボタンの横にあるドロップダウン ボックスから **[データベースの作成]** を選択します。 ウィンドウの右側にパネルが表示され、新しいコンテナーの詳細を入力することができます。
+1. 新しく作成した Cosmos DB アカウント内の **[データ エクスプローラー]** ページに移動し、 **[コンテナーの作成]** ボタンの横にあるドロップダウン ボックスから **[データベースの作成]** を選択します。 ウィンドウの右側にパネルが表示され、新しいデータベースの詳細を入力することができます。
 
     ![Cosmos DB](./media/create-cosmosdb-database-resource.png)
 
@@ -368,18 +371,15 @@ Cosmos DB ストレージを追加するための構成データは短く簡単�
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
-**EchoBot.cs**
+構成ファイルに以下の情報を追加します。
 
-```csharp
-public class EchoBot : ActivityHandler
-{
-   private const string CosmosServiceEndpoint = "<your-cosmos-db-URI>";
-   private const string CosmosDBKey = "<your-authorization-key>";
-   private const string CosmosDBDatabaseId = "<your-database-id>";
-   private const string CosmosDBContainerId = "bot-storage";
-   ...
+**appsettings.json**
 
-}
+```json
+"CosmosDbEndpoint": "<your-cosmosdb-uri>",
+"CosmosDbAuthKey": "<your-authorization-key>",
+"CosmosDbDatabaseId": "<your-database-id>",
+"CosmosDbContainerId": "<your-container-id>"
 ```
 
 ### <a name="javascript"></a>[JavaScript](#tab/javascript)
@@ -389,21 +389,23 @@ public class EchoBot : ActivityHandler
 **.env**
 
 ```javascript
-DB_SERVICE_ENDPOINT="<your-cosmos-db-URI>"
-AUTH_KEY="<your-authorization-key>"
-DATABASE_ID="<your-database-id>"
-CONTAINER="bot-storage"
+CosmosDbEndpoint="<your-cosmos-db-uri>"
+CosmosDbAuthKey="<your-authorization-key>"
+CosmosDbDatabaseId="<your-database-id>"
+CosmosDbContainerId="<your-container-id>"
 ```
 
 ### <a name="python"></a>[Python](#tab/python)
 
-`bot.py` ファイルに以下の情報を追加します。
+構成ファイルに以下の情報を追加します。
+
+**config.py**
 
 ```python
-COSMOSDB_SERVICE_ENDPOINT = "<your-cosmos-db-URI>"
-COSMOSDB_KEY = "<your-authorization-key>"
-COSMOSDB_DATABASE_ID = "<your-database-id>"
-COSMOSDB_CONTAINER_ID = "bot-storage"
+COSMOS_DB_ENDPOINT = "<your-cosmos-db-uri>"
+COSMOS_DB_AUTH_KEY="<your-authorization-key>"
+COSMOS_DB_DATABASE_ID="<your-database-id>"
+COSMOS_DB_CONTAINER_ID="<your-container-id>"
 ```
 
 ---
@@ -421,8 +423,7 @@ Install-Package Microsoft.Bot.Builder.Azure
 ### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 npm を使用して、botbuilder-azure への参照をご自身のプロジェクトに追加できます。
->**注**: この npm パッケージは、お使いの開発用マシンにインストールされている Python に依存します。 Python をまだインストールしていない場合、お使いのマシン用のインストール リソースはこちらにあります: [Python.org](https://www.python.org/downloads/)
-
+>**注**: この npm パッケージは、お使いの開発用マシンにインストールされている Python に依存します。 Python をまだインストールしていない場合、お使いのマシン用のインストール リソースが [python.org](https://www.python.org/downloads/) にあります。
 ```powershell
 npm install --save botbuilder-azure
 ```
@@ -446,38 +447,33 @@ pip install botbuilder-azure
 ### <a name="implementation"></a>実装
 
 > [!NOTE]
-> バージョン 4.6 では、新しい Cosmos DB ストレージプロバイダー `CosmosDbPartitionedStorage` が導入されました。 元の `CosmosDbStorage` を使用する既存のボットは、`CosmosDbStorage` を使用し続ける必要があります。 以前のプロバイダーを使用しているボットは引き続き正常に動作します。 パーティション分割によってパフォーマンスが向上するため、新しいボットでは `CosmosDbPartitionedStorage` を使用する必要があります。
+> バージョン 4.6 では、新しい Cosmos DB ストレージ プロバイダーである "_Cosmos DB パーティション分割ストレージ_" クラスが導入され、元の "_Cosmos DB ストレージ_" クラスは非推奨となりました。 "_Cosmos DB ストレージ_" で作成されたコンテナーは、`compatibilityMode` [フラグ](https://aka.ms/azure-dotnet-cosmosdb-partitionedstorage#L289) を追加して "_Cosmos DB パーティション分割ストレージ_" と共に使用できます。
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
 次のサンプル コードは、上記の[メモリ ストレージ](#memory-storage)のサンプルと同じボット コードを使用して実行されます。
 次のコード スニペットは、ローカルのメモリ ストレージを置き換える "_myStorage_" に対する Cosmos DB ストレージの実装を示しています。 メモリ ストレージはコメント アウトされ、Cosmos DB への参照で置き換えられています。
 
-**EchoBot.cs**
+**Startup.cs**
 
 ```csharp
-
-using System;
-...
 using Microsoft.Bot.Builder.Azure;
-...
-public class EchoBot : ActivityHandler
-{
-   // Create local Memory Storage - commented out.
-   // private static readonly MemoryStorage _myStorage = new MemoryStorage();
+```
 
-   // Replaces Memory Storage with reference to Cosmos DB.
-   private static readonly CosmosDbStorage _myStorage = new CosmosDbPartitionedStorage(new CosmosDbPartitionedStorageOptions
-   {
-        CosmosDbEndpoint = CosmosServiceEndpoint,
-        AuthKey = CosmosDBKey,
-        DatabaseId = CosmosDBDatabaseId,
-        ContainerId = CosmosDBContainerId,
-   });
+`ConfigureServices` で、CosmosDB パーティション分割ストレージのストレージ インスタンスを作成します。
 
-   ...
-}
-
+```csharp
+// Use partitioned CosmosDB for storage, instead of in-memory storage.
+services.AddSingleton<IStorage>(
+    new CosmosDbPartitionedStorage(
+        new CosmosDbPartitionedStorageOptions
+        {
+            CosmosDbEndpoint = Configuration.GetValue<string>("CosmosDbEndpoint"),
+            AuthKey = Configuration.GetValue<string>("CosmosDbAuthKey"),
+            DatabaseId = Configuration.GetValue<string>("CosmosDbDatabaseId"),
+            ContainerId = Configuration.GetValue<string>("CosmosDbContainerId"),
+            CompatibilityMode = false,
+        }));
 ```
 
 ### <a name="javascript"></a>[JavaScript](#tab/javascript)
@@ -489,7 +485,7 @@ public class EchoBot : ActivityHandler
 **bot.js**
 
 ```javascript
-const { CosmosDbPartitionedStorage } = require("botbuilder-azure");
+const { CosmosDbPartitionedStorage } = require('botbuilder-azure');
 ```
 
 メモリ ストレージをコメント アウトし、Cosmos DB への参照で置き換えます。
@@ -497,33 +493,29 @@ const { CosmosDbPartitionedStorage } = require("botbuilder-azure");
 **bot.js**
 
 ```javascript
-// initialized to access values in .env file.
-const ENV_FILE = path.join(__dirname, '.env');
-require('dotenv').config({ path: ENV_FILE });
-
-// Create local Memory Storage - commented out.
-// var storage = new MemoryStorage();
-
-// Create access to CosmosDb Storage - this replaces local Memory Storage.
-var storage = new CosmosDbPartitionedStorage({
-    cosmosDbEndpoint: process.env.DB_SERVICE_ENDPOINT,
-    authKey: process.env.AUTH_KEY,
-    databaseId: process.env.DATABASE_ID,
-    containerId: process.env.CONTAINER
-})
-
+...
+const { CosmosDbPartitionedStorage } = require('botbuilder-azure');
+...
+const storage = new CosmosDbPartitionedStorage({
+    cosmosDbEndpoint: process.env.CosmosDbEndpoint,
+    authKey: process.env.CosmosDbAuthKey,
+    databaseId: process.env.CosmosDbDatabaseId,
+    containerId: process.env.CosmosDbContainerId,
+    compatibilityMode: false
+});
+...
 ```
 
 ### <a name="python"></a>[Python](#tab/python)
 
 次のサンプル コードは[メモリ ストレージ](#memory-storage)と似ていますが、わずかに変更されています。
 
-`botbuilder-azure` からの `CosmosDbStorage` が必要で、CosmosDBStorage オブジェクトを作成します。
+`botbuilder-azure` からの `CosmosDbPartitionedStorage` および `CosmosDbPartitionedConfig` が必要で、CosmosDBStorage オブジェクトを作成します。
 
 **bot.py**
 
 ```py
-from botbuilder.azure import CosmosDbStorage, CosmosDbConfig
+from botbuilder.azure import CosmosDbPartitionedStorage, CosmosDbPartitionedConfig
 ```
 
 `__init__` でメモリ ストレージをコメント アウトし、Cosmos DB への参照に置き換えます。  上で使用したエンドポイント、認証キー、データベース ID、コンテナー ID を使用します。
@@ -532,13 +524,14 @@ from botbuilder.azure import CosmosDbStorage, CosmosDbConfig
 
 ```py
 def __init__(self):
-    cosmos_config = CosmosDbConfig(
-        endpoint=COSMOSDB_SERVICE_ENDPOINT,
-        masterkey=COSMOSDB_KEY,
-        database=COSMOSDB_DATABASE_ID,
-        container=COSMOSDB_CONTAINER_ID
+    cosmos_config = CosmosDbPartitionedConfig(
+        cosmos_db_endpoint=COSMOSDB_SERVICE_ENDPOINT,
+        auth_key=COSMOSDB_KEY,
+        database_id=COSMOSDB_DATABASE_ID,
+        container_id=COSMOSDB_CONTAINER_ID,
+        compatibility_mode = False
     )
-    self.storage = CosmosDbStorage(cosmos_config)
+    self.storage = CosmosDbPartitionedStorage(cosmos_config)
 ```
 
 ---

@@ -7,13 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 03/18/2020
-ms.openlocfilehash: 7a30ddeaf5777a365485dcbbdb3e2f12a39545bb
-ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
+ms.date: 04/20/2020
+ms.openlocfilehash: 1c2ec05986311d39de7835b2ba3a466acfbc5833
+ms.sourcegitcommit: 2412f96ad8f74dfa615c71f566c5befffb920658
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80647811"
+ms.lasthandoff: 04/25/2020
+ms.locfileid: "82158859"
 ---
 # <a name="connect-a-bot-to-slack"></a>ボットを Slack に接続する
 
@@ -22,7 +22,7 @@ ms.locfileid: "80647811"
 次のいずれかの方法で、Slack チャネルをボットに接続できます。
 
 - Azure で Slack を構成する
-- Slack アダプターを使用する
+- Slack アダプターを使用します (現時点では C# SDK でのみ利用可能)。
 
 # <a name="configure-slack-in-azure"></a>[Azure で Slack を構成する](#tab/abs)
 

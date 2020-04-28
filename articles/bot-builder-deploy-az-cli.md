@@ -9,18 +9,23 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 03/23/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9e4c67f644e9797f3e210546a91d09f5161aa100
-ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
+ms.openlocfilehash: eb440684b57cf1e664214a9924095df2481a9944
+ms.sourcegitcommit: 2412f96ad8f74dfa615c71f566c5befffb920658
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80499822"
+ms.lasthandoff: 04/25/2020
+ms.locfileid: "82158816"
 ---
 # <a name="deploy-your-bot"></a>ボットをデプロイする
 
 [!INCLUDE [applies-to](./includes/applies-to.md)]
 
 この記事では、基本ボットを Azure にデプロイする方法を紹介します。 デプロイ用にボットを準備する方法、ボットを Azure にデプロイする方法、および Web チャットでボットをテストする方法について説明します。 ボットのデプロイに必要なものを完全に理解するために、手順を実行する前にこの記事を確認することをお勧めします。
+
+> [!IMPORTANT]
+> Azure CLI の更新されたバージョンを使用していることを確認します。
+> 最新リリースについては、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関する記事をご覧ください。
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,8 +69,6 @@ ms.locfileid: "80499822"
 ---
 
 ### <a name="5-prepare-your-code-for-deployment"></a>5.デプロイ用のコードを準備する
-
-[!INCLUDE [Work around for .NET Core 3.1 SDK](~/includes/deploy/samples-workaround-3-1.md)]
 
 #### <a name="51-retrieve-or-create-necessary-iiskudu-files"></a>5.1 必要な IIS/Kudu ファイルを取得または作成する
 

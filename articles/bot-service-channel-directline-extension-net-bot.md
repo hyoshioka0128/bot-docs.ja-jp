@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 01/16/2020
-ms.openlocfilehash: e695a35b1f98a2ec8cfe5cbb24c13cf5cf18a648
-ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
+ms.openlocfilehash: bda857cc3d0b79369760cf5f5bd396649943b8b7
+ms.sourcegitcommit: 2412f96ad8f74dfa615c71f566c5befffb920658
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81395695"
+ms.lasthandoff: 04/25/2020
+ms.locfileid: "82158799"
 ---
 # <a name="configure-net-bot-for-extension"></a>拡張機能のための .NET ボットの構成
 
@@ -31,6 +31,9 @@ ms.locfileid: "81395695"
 このセクションでは、ボットのチャネル構成からのキーと、ボットがホストされている **Azure App Service** リソースを使用して Direct Line App Service 機能拡張を有効にする方法について説明します。
 
 ## <a name="update-net-bot-to-use-direct-line-app-service-extension"></a>Direct Line App Service 拡張機能を使用するように .NET ボットを更新する
+
+> [!NOTE]   
+> `Microsoft.Bot.Builder.StreamingExtensions` プレビュー パッケージは非推奨になりました。 SDK v4.8 には、[ストリーミング コード](https://github.com/microsoft/botbuilder-dotnet/tree/master/libraries/Microsoft.Bot.Builder/Streaming)が含まれるようになりました。 以前にボットでプレビュー パッケージを使用していた場合は、次の手順を実行する前にそれらを削除する必要があります。 
 
 1. Visual Studio でボット プロジェクトを開きます。
 2. プロジェクトが Bot Builder SDK のバージョン4.8 以降を使用していることを確認します。
