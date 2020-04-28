@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: bot-service
 ms.date: 03/23/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f51fad7d75de3f82839406d33d43211dc0d35d72
-ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
+ms.openlocfilehash: 001dbe5d9e2f8ad79d21a51da64e7e85bdb77c1e
+ms.sourcegitcommit: 2412f96ad8f74dfa615c71f566c5befffb920658
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80648184"
+ms.lasthandoff: 04/25/2020
+ms.locfileid: "82158879"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>チュートリアル:ボットで QnA Maker を使用して質問に回答する
 
@@ -87,7 +87,7 @@ Bot Framework v4.3 以降、Azure では、ダウンロードされたボット�
   "MicrosoftAppId": "",
   "MicrosoftAppPassword": "",
   "ScmType": "None",
-  
+
   "QnAKnowledgebaseId": "knowledge-base-id",
   "QnAAuthKey": "qna-maker-resource-key",
   "QnAEndpointHostName": "your-hostname" // This is a URL ending in /qnamaker
@@ -340,7 +340,7 @@ class DefaultConfig:
    from botbuilder.schema import ChannelAccount
    ```
 
-1. `qna-maker` オブジェクトをインスタンス化するための __init__ 関数を追加します。 `config.py` ファイルに指定されている構成パラメーターを使用します。  
+1. `qna-maker` オブジェクトをインスタンス化するための __init__ 関数を追加します。 `config.py` ファイルに指定されている構成パラメーターを使用します。
 
    **bot.py**
 
@@ -391,17 +391,15 @@ class DefaultConfig:
 
 これで、ボットを Azure に再公開できる状態になりました。 プロジェクト フォルダーを zip 圧縮してから、コマンドを実行してボットを Azure にデプロイする必要があります。 詳細については、[ボットのデプロイ](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&tabs=csharp)に関する記事を参照してください。
 
-[!INCLUDE [Work around for .NET Core 3.1 SDK](~/includes/deploy/samples-workaround-3-1.md)]
-
 ### <a name="zip-your-project-folder"></a>プロジェクト フォルダーを zip 圧縮する
 
 [!INCLUDE [zip up code](~/includes/deploy/snippet-zip-code.md)]
 
 <!-- > [!IMPORTANT]
-> Before creating a zip of your project files, make sure that you are _in_ the correct folder. 
-> - For C# bots, it is the folder that has the .csproj file. 
-> - For JS bots, it is the folder that has the app.js or index.js file. 
-> - For Python bots, it is the folder that has the app.py file. 
+> Before creating a zip of your project files, make sure that you are _in_ the correct folder.
+> - For C# bots, it is the folder that has the .csproj file.
+> - For JS bots, it is the folder that has the app.js or index.js file.
+> - For Python bots, it is the folder that has the app.py file.
 >
 > Select all the files and zip them up while in that folder, then run the command while still in that folder.
 >

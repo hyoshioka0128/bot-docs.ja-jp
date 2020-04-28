@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 03/23/2020
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 851fc2fd9def0e36894b0b90bdbb029d3c931824
-ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
+ms.openlocfilehash: edb1d18273179939a333835b6ff27b7aed9f156b
+ms.sourcegitcommit: 2412f96ad8f74dfa615c71f566c5befffb920658
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80499812"
+ms.lasthandoff: 04/25/2020
+ms.locfileid: "82158780"
 ---
 # <a name="set-up-continuous-deployment"></a>Azure App Service での GIT による継続的なデプロイ
 
@@ -57,17 +57,6 @@ GitHub を使用する継続的デプロイを有効にするには、Azure port
         > ![Continue to build provider](~/media/azure-bot-build/azure-deployment-continue.png)
 
 1. **[ビルド プロバイダー]** ページで、使用するビルド プロバイダーを選択し、 **[続行]** をクリックします。
-
-    > [!IMPORTANT]
-    > Bot Framework 4.8 SDK のリリースでは、.NET Bot Framework サンプルで .NET Core 3.1 SDK を対象とするようになりました。
-    > すべての Azure データ センターがこのようなボットを構築するように構成されているわけではありません。
-    >
-    > Kudu を使用して .NET Core 3.1 アプリを構築できるセンターについては、[App Service の .NET Core](https://aspnetcoreon.azurewebsites.net/) のマップを参照してください。 (すべてのセンターで .NET Core 3.1 アプリを実行できます。)
-    >
-    > .NET Core 3.1 SDK を対象とするボットをデプロイするときに、Kudu を使用して .NET Core 3.1 アプリを構築できないセンターにデプロイする場合は、ビルド プロバイダーに **GitHub Actions (プレビュー)** または **Azure Pipelines (プレビュー)** を使用してください。
-
-    > [!div class="mx-imgBorder"]
-    > ![ビルド プロバイダーを選択する](~/media/azure-bot-build/azure-deployment-build-provider.png)
 
 1. **[構成]** ページで必要な情報を入力し、 **[続行]** をクリックします。 必要な情報は、選択したソース管理サービスとビルド プロバイダーによって異なります。
 
