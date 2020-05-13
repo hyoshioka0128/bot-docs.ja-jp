@@ -58,10 +58,12 @@
 ### [ボットのカスタム ストレージの実装](v4sdk/bot-builder-custom-storage.md)
 ### スキル
 #### [スキルを実装する](v4sdk/skill-implement-skill.md)
+#### [スキル内でダイアログを使用する](v4sdk/skill-actions-in-dialogs.md)
 #### [スキル コンシューマーを実装する](v4sdk/skill-implement-consumer.md)
+#### [ダイアログを使用してスキルを使用する](v4sdk/skill-use-skilldialog.md)
 <!--
+#### [Use middleware in a skill consumer](v4sdk/skill-middleware-in-consumer.md)
 #### [Add claims validation](v4sdk/skill-add-claims-validation.md)
-#### [Manage multiple skills](#)
 -->
 ### [ボットへのテレメトリの追加](v4sdk/bot-builder-telemetry.md)
 ### [QnA ボットへのテレメトリの追加](v4sdk/bot-builder-telemetry-QnAMaker.md)
