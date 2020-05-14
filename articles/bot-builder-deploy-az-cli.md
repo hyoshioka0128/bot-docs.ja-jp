@@ -31,7 +31,7 @@ ms.locfileid: "82158816"
 
 [!INCLUDE [deploy prerequisite](~/includes/deploy/snippet-prerequisite.md)]
 
-## <a name="prepare-for-deployment"></a>展開を準備する
+## <a name="prepare-for-deployment"></a>デプロイを準備する
 
 [!INCLUDE [deploy prepare intro](~/includes/deploy/snippet-prepare-deploy-intro.md)]
 
