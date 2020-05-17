@@ -8,7 +8,7 @@ ms.locfileid: "80647524"
 ---
 ### <a name="cortana"></a>Cortana
 
-Cortana には[ダッシュボード](https://aka.ms/cortana-publish)からボットが発行され、Cortana スキルを強化するために使用されます。 発行されたボットはレビューのために送信されます。 Cortana スキルはご自身で使用するために、または小規模なグループに展開できます。また、一般公開することも可能です。
+Cortana には[ダッシュボード](https://aka.ms/cortana-publish)からボットが発行され、Cortana スキルを強化するために使用されます。 発行されたボットはレビューのために送信されます。 Cortana スキルはご自身で使用するために、または小規模なグループにデプロイできます。また、一般公開することも可能です。
 
 ### <a name="skype"></a>Skype
 
