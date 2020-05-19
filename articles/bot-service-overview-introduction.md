@@ -32,7 +32,7 @@ Azure Bot Service および Bot Framework には以下が用意されていま�
 - ボット開発用の Bot Framework SDK
 - エンド ツー エンドのボット開発ワークフローに対応する Bot Framework ツール
 - ボットとチャネルの間でメッセージとイベントを送受信する Bot Framework Service (BFS)
-- Azure でのボットの展開とチャネルの構成
+- Azure でのボットのデプロイとチャネルの構成
 
 さらに、ボットでは次のような他の Azure サービスを使用できます。
 - インテリジェントなアプリケーションを構築するための Azure Cognitive Services 
