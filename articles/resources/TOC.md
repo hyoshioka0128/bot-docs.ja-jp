@@ -1,8 +1,8 @@
 # 仮想アシスタント
 ## [概要](../v4sdk/bot-builder-virtual-assistant-introduction.md)
 ## [テンプレートの概要](../v4sdk/bot-builder-virtual-assistant-template.md)
-# スキル 
-## [概要](../v4sdk/bot-builder-skills-overview.md)
+## [仮想アシスタントのスキル](../v4sdk/bot-builder-skills-overview.md)
+# [Power Virtual Agents のスキルを実装する](../v4sdk/skill-pva.md)
 # WebChat
 ## [概要](../v4sdk/bot-builder-webchat-overview.md)
 ## [カスタマイズ](../v4sdk/bot-builder-webchat-customization.md)
@@ -17,7 +17,7 @@
 # [Bot Framework のカード スキーマ](https://aka.ms/botSpecs-cardSchema)
 # [Bot Framework のトランスクリプト スキーマ](https://aka.ms/botSpecs-transcripts)
 # [Bot Service のコンプライアンス](../v4sdk/bot-service-compliance.md)
-# [トラブルシューティング]
+# トラブルシューティング
 ## [一般的な問題のトラブルシューティング](../bot-service-troubleshoot-general-problems.md)
 ## [ボット構成の問題のトラブルシューティング](../bot-service-troubleshoot-bot-configuration.md)
 ## [HTTP 500 エラーのトラブルシューティング](../bot-service-troubleshoot-500-errors.md)

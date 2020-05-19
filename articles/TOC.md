@@ -18,13 +18,26 @@
 ## [状態の管理](v4sdk/bot-builder-concept-state.md)
 ## [ダイアログ ライブラリ](v4sdk/bot-builder-concept-dialog.md)
 ## [ミドルウェア](v4sdk/bot-builder-concept-middleware.md)
+## アダプティブ ダイアログ
+### [アダプティブ ダイアログの概要](v4sdk/bot-builder-adaptive-dialog-Introduction.md)
+### [アダプティブ ダイアログのイベントとトリガー](v4sdk/bot-builder-concept-adaptive-dialog-Triggers.md)
+### [アダプティブ ダイアログのアクション](v4sdk/bot-builder-concept-adaptive-dialog-Actions.md)
+### [アダプティブ ダイアログを使用したユーザー入力の要求](v4sdk/bot-builder-concept-adaptive-dialog-Inputs.md)
+### [アダプティブ ダイアログの認識エンジン](v4sdk/bot-builder-concept-adaptive-dialog-recognizers.md)
+### [アダプティブ ダイアログでの言語の生成](v4sdk/bot-builder-concept-adaptive-dialog-generators.md)
+### [アダプティブ ダイアログでのメモリ スコープと状態の管理](v4sdk/bot-builder-concept-adaptive-dialog-memory-states.md)
 ## 認証
 ### [ボット認証](v4sdk/bot-builder-concept-authentication.md)
 ### [ID プロバイダー](v4sdk/bot-builder-concept-identity-providers.md)
 ### [シングル サインオン](v4sdk/bot-builder-concept-sso.md)
 ## [ボット リソースの管理](v4sdk/bot-file-basics.md)
 ## [Microsoft Teams のボットのしくみ](v4sdk/bot-builder-basics-teams.md)
-## [スキルについて](v4sdk/skills-conceptual.md)
+## スキル
+### [スキルについて](v4sdk/skills-conceptual.md)
+### [スキル ボットについて](v4sdk/skills-about-skill-bots.md)
+### [スキル コンシューマーについて](v4sdk/skills-about-skill-consumers.md)
+## [アダプティブ式](v4sdk/bot-builder-concept-adaptive-expressions.md)
+## [言語の生成](v4sdk/bot-builder-concept-language-generation.md)
 <!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Bot Service テンプレート](bot-service-concept-templates.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
@@ -53,11 +66,20 @@
 ### [ブランチとループを使用して高度な会話フローを作成する](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
 <!--#### [Implement a greeting dialog](v4sdk/bot-builder-dialogs-greeting.md)--TODO: Add once there's a sample.-->
 ### [ユーザーによる割り込みの処理](v4sdk/bot-builder-howto-handle-user-interrupt.md)
+### アダプティブ ダイアログ
+#### [アダプティブ ダイアログを使用してボットを作成する](v4sdk\bot-builder-dialogs-adaptive.md)
+#### [アダプティブ、コンポーネント、ウォーターフォール、およびカスタム ダイアログを使用してボットを作成する](v4sdk/bot-builder-mixed-dialogs.md)
 ### [ストレージに直接書き込む](v4sdk/bot-builder-howto-v4-storage.md)
-### [ボットに認証を追加する](v4sdk/bot-builder-authentication.md)
+### 認証
+#### [ボットに認証を追加する](v4sdk/bot-builder-authentication.md)
+#### [ボットにシングル サインオンを追加する](v4sdk/bot-builder-authentication-sso.md)
 ### [ボットのカスタム ストレージの実装](v4sdk/bot-builder-custom-storage.md)
+### 言語の生成
+#### [ボットでの言語生成テンプレートの使用](language-generation/bot-builder-howto-use-lg-templates.md)
 ### スキル
 #### [スキルを実装する](v4sdk/skill-implement-skill.md)
+#### [v2.1 スキル マニフェストを作成する](v4sdk/skills-write-manifest-2-1.md)
+#### [v2.0 スキル マニフェストを作成する](v4sdk/skills-write-manifest-2-0.md)
 #### [スキル内でダイアログを使用する](v4sdk/skill-actions-in-dialogs.md)
 #### [スキル コンシューマーを実装する](v4sdk/skill-implement-consumer.md)
 #### [ダイアログを使用してスキルを使用する](v4sdk/skill-use-skilldialog.md)
@@ -90,5 +112,16 @@
 ## BF CLI ツールのリファレンス
 ### [BF CLI の概要](v4sdk/bf-cli-overview.md)
 ### [BF CLI のリファレンス](v4sdk/bf-cli-reference.md)
+## アダプティブ式
+### [構築済みの関数](adaptive-expressions/adaptive-expressions-prebuilt-functions.md)
+### [API リファレンス](adaptive-expressions/adaptive-expressions-API-reference.md)
+## LG
+### [API リファレンス](language-generation/language-generation-API-reference.md)
+### [.lg ファイル形式](file-format/bot-builder-lg-file-format.md)
+### [構造化された応答テンプレート](language-generation/language-generation-structured-response-template.md)
+### [LG から挿入した関数](language-generation/functions-injected-from-language-generation.md)
+## ファイル形式
+### [.lu ファイル形式](file-format/bot-builder-lu-file-format.md)
+### [.qna ファイル形式](file-format/bot-builder-qna-file-format.md)
 ## [エンティティとアクティビティの種類](bot-service-activities-entities.md)
 # [リソース](resources/TOC.md)
