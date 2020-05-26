@@ -7,20 +7,17 @@ manager: kamrani
 ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
-ms.date: 07/09/2019
-ms.openlocfilehash: 542aee09459bd569ca2aa39fa755a219f46fc7cd
-ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
+ms.date: 05/19/2020
+ms.openlocfilehash: 9d2b39137d106bd049df72e7328a6a4aca296e6c
+ms.sourcegitcommit: e67f0b534bf84016a73eb8448deae75798a4d1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77441579"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83665913"
 ---
 # <a name="direct-line-app-service-extension"></a>Direct Line App Service 拡張機能
 
 [!INCLUDE[applies-to-v4](includes/applies-to.md)]
-
-> [!WARNING]
-> **Direct Line App Service 拡張機能**はパブリック **プレビュー**中です。  
 
 Direct Line App Service 拡張機能を使用すると、クライアントはボットが配置されているホストに直接接続できます。 これにより、ワークロードの分離が実現され、場合によってはパフォーマンスが向上します。 次の図は、全体のアーキテクチャを示しています。
 

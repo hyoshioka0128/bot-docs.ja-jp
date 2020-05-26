@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f9d351771bb19eede4b9f5e1bfd684c356b003bf
-ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
+ms.openlocfilehash: 326e02da1f3b9a323dc4221122f6c1a8ae5eb0c0
+ms.sourcegitcommit: eb0e5dec0ecd4e375d33825030b1ba46ff6e032c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "75797604"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83791334"
 ---
 # <a name="create-a-bot-with-the-bot-framework-sdk-for-javascript"></a>Bot Framework SDK for JavaScript を使用したボットの作成
 
@@ -22,9 +22,9 @@ ms.locfileid: "75797604"
 
 このクイック スタートでは、Yeoman Bot Builder ジェネレーターと Bot Framework SDK for JavaScript を使用して単一ボットを構築し、Bot Framework Emulator でテストする方法を説明します。
 
-[!INCLUDE [Azure vs local development](~/includes/snippet-quickstart-paths.md)]
+[!INCLUDE [Azure vs local development](../includes/snippet-quickstart-paths.md)]
 
-[!INCLUDE [javascript quickstart](~/includes/quickstart-javascript.md)]
+[!INCLUDE [javascript quickstart](../includes/quickstart-javascript.md)]
 
 ## <a name="additional-resources"></a>その他のリソース
 

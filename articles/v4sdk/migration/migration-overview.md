@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 06/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0746a277f465979639db5c8a26aaddfee9386ac2
-ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
+ms.openlocfilehash: e7b76ecfa20c6f6feb1207579fc4c0b520ad10d6
+ms.sourcegitcommit: eb0e5dec0ecd4e375d33825030b1ba46ff6e032c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80117694"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83791367"
 ---
 # <a name="migration-overview"></a>移行の概要
 
@@ -66,7 +66,7 @@ V3 ボットから V4 ボットにすぐに移行できない場合でも、V4 S
 - 予定
   - 宣言型の設計により、設計者に適したレベルの抽象化を実現できます
   - GUI ダイアログ デザイナー
-- Azure Bot Service 
+- Azure Bot Service
   - Direct Line Speech チャネル。 Bot Framework と Microsoft の Speech Services を統合します。 これにより、クライアントからボット アプリケーションへの双方向のストリーミング音声およびテキストを可能にするチャネルが実現します。
 
 ## <a name="whats-changed"></a>変更内容
@@ -101,35 +101,35 @@ Bot Framework SDK v4 では、v3 と同じ基になる Bot Framework Service が
 
 | 手順 | V3 | V4 | 発生回数 | 複雑さ | T シャツ |
 | -- | -- | -- | -- | -- | -- |
-受信アクティビティを取得する | IDialogContext.Activity | ITurnContext.Activity | count | Small  
+受信アクティビティを取得する | IDialogContext.Activity | ITurnContext.Activity | count | Small
 アクティビティを作成してユーザーに送信する | activity.CreateReply(“text”) IDialogContext.PostAsync | MessageFactory.Text(“text”) ITurnContext.SendActivityAsync | count | Small |
 状態管理 | UserData、ConversationData、PrivateConversationData context.UserData.SetValue context.UserData.TryGetValue botDataStore.LoadAsyn | プロパティ アクセサーを使用する UserState、ConversationState、PrivateConversationState | context.UserData.SetValue - count context.UserData.TryGetValue - count botDataStore.LoadAsyn - count | Medium から Large (使用できる[ユーザー状態の管理](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)に関する記事を参照してください) |
-ダイアログの開始を処理する | IDialog.StartAsync を実装します | これをウォーターフォール ダイアログの最初のステップにします。 | count | Small |  
-アクティビティを送信する | IDialogContext.PostAsync。 | ITurnContext.SendActivityAsync を呼び出します。 | count | Small |  
-ユーザーの応答を待機する | IAwaitable<IMessageActivity>パラメーターを使用し、IDialogContext.Wait を呼び出します | プロンプト ダイアログを開始する ITurnContext.PromptAsync を待機して制御を戻します。 次に、ウォーターフォールの次のステップで結果を取得します。 | count | Medium (フローに依存) |  
-ダイアログの継続を処理する | IDialogContext.Wait | ウォーターフォール ダイアログに手順を追加するか、Dialog.ContinueDialogAsync を実装します | count | Large |  
-ユーザーの次のメッセージまで処理が終了したことを伝える | IDialogContext.Wait | Dialog.EndOfTurn を返します。 | count | Medium |  
-子ダイアログを開始する | IDialogContext.Call | ステップ コンテキストの BeginDialogAsync メソッドを待機して制御を戻します。 子ダイアログから値が返された場合、ステップ コンテキストの Result プロパティを使用して、ウォーターフォールの次のステップでその値を使用できます。 | count | Medium |  
-現在のダイアログを新しいダイアログに置き換える | IDialogContext.Forward | ITurnContext.ReplaceDialogAsync を待機して制御を戻します。 | count | Large |  
-現在のダイアログが完了したことを通知する | IDialogContext.Done | ステップ コンテキストの EndDialogAsync メソッドを待機して制御を戻します。 | count | Medium |  
-ダイアログを失敗にする | IDialogContext.Fail | キャッチされた例外をボットの別のレベルでスローするか、Cancelled の状態でステップを終了するか、ステップまたはダイアログ コンテキストの CancelAllDialogsAsync を呼び出します。 | count | Small |  
+ダイアログの開始を処理する | IDialog.StartAsync を実装します | これをウォーターフォール ダイアログの最初のステップにします。 | count | Small |
+アクティビティを送信する | IDialogContext.PostAsync。 | ITurnContext.SendActivityAsync を呼び出します。 | count | Small |
+ユーザーの応答を待機する | IAwaitable<IMessageActivity>パラメーターを使用し、IDialogContext.Wait を呼び出します | プロンプト ダイアログを開始する ITurnContext.PromptAsync を待機して制御を戻します。 次に、ウォーターフォールの次のステップで結果を取得します。 | count | Medium (フローに依存) |
+ダイアログの継続を処理する | IDialogContext.Wait | ウォーターフォール ダイアログに手順を追加するか、Dialog.ContinueDialogAsync を実装します | count | Large |
+ユーザーの次のメッセージまで処理が終了したことを伝える | IDialogContext.Wait | Dialog.EndOfTurn を返します。 | count | Medium |
+子ダイアログを開始する | IDialogContext.Call | ステップ コンテキストの BeginDialogAsync メソッドを待機して制御を戻します。 子ダイアログから値が返された場合、ステップ コンテキストの Result プロパティを使用して、ウォーターフォールの次のステップでその値を使用できます。 | count | Medium |
+現在のダイアログを新しいダイアログに置き換える | IDialogContext.Forward | ITurnContext.ReplaceDialogAsync を待機して制御を戻します。 | count | Large |
+現在のダイアログが完了したことを通知する | IDialogContext.Done | ステップ コンテキストの EndDialogAsync メソッドを待機して制御を戻します。 | count | Medium |
+ダイアログを失敗にする | IDialogContext.Fail | キャッチされた例外をボットの別のレベルでスローするか、Cancelled の状態でステップを終了するか、ステップまたはダイアログ コンテキストの CancelAllDialogsAsync を呼び出します。 | count | Small |
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 | 手順 | V3 | V4 | 発生回数 | 複雑さ | T シャツ |
 | -- | -- | -- | -- | -- | -- |
-受信アクティビティを取得する | IMessage | TurnContext.activity | count | Small  
+受信アクティビティを取得する | IMessage | TurnContext.activity | count | Small
 アクティビティを作成してユーザーに送信する | Session.send('message') を呼び出します。 | TurnContext.sendActivity を呼び出します。 | count | Small |
 状態管理 | UserState および ConversationState UserState.get()、UserState.saveChanges()、ConversationState.get()、ConversationState.saveChanges() | プロパティ アクセサーを使用する UserState および ConversationState | count | Medium から Large (使用できる[ユーザー状態の管理](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management)に関する記事を参照してください) |
-ダイアログの開始を処理する | ダイアログの ID を渡して session.beginDialog を呼び出します。 | DialogContext.beginDialog を呼び出します。 | count | Small |  
-アクティビティを送信する | Session.send を呼び出します。 | TurnContext.sendActivity を呼び出します。 | count | Small |  
-ユーザーの応答を待機する | ウォーターフォール ステップ内からプロンプトを呼び出します。例: builder.Prompts.text(session, 'Please enter your destination')。 次のステップで応答を取得します。 | プロンプト ダイアログを開始する TurnContext.prompt を待機して制御を戻します。 次に、ウォーターフォールの次のステップで結果を取得します。 | count | Medium (フローに依存) |  
-ダイアログの継続を処理する | 自動 | ウォーターフォール ダイアログにステップを追加するか、Dialog.continueDialog を実装します。 | count | Large |  
-ユーザーの次のメッセージまで処理が終了したことを伝える | Session.endDialog | Dialog.EndOfTurn を返します。 | count | Medium |  
-子ダイアログを開始する | Session.beginDialog | ステップ コンテキストの beginDialog メソッドを待機して制御を戻します。 子ダイアログから値が返された場合、ステップ コンテキストの Result プロパティを使用して、ウォーターフォールの次のステップでその値を使用できます。 | count | Medium |  
-現在のダイアログを新しいダイアログに置き換える | Session.replaceDialog | ITurnContext.replaceDialog | count | Large |  
-現在のダイアログが完了したことを通知する | Session.endDialog | ステップ コンテキストの endDialog メソッドを待機して制御を戻します。 | count | Medium |  
-ダイアログを失敗にする | Session.pruneDialogStack | キャッチされた例外をボットの別のレベルでスローするか、Cancelled の状態でステップを終了するか、ステップまたはダイアログ コンテキストの cancelAllDialogs を呼び出します。 | count | Small |  
+ダイアログの開始を処理する | ダイアログの ID を渡して session.beginDialog を呼び出します。 | DialogContext.beginDialog を呼び出します。 | count | Small |
+アクティビティを送信する | Session.send を呼び出します。 | TurnContext.sendActivity を呼び出します。 | count | Small |
+ユーザーの応答を待機する | ウォーターフォール ステップ内からプロンプトを呼び出します。例: builder.Prompts.text(session, 'Please enter your destination')。 次のステップで応答を取得します。 | プロンプト ダイアログを開始する TurnContext.prompt を待機して制御を戻します。 次に、ウォーターフォールの次のステップで結果を取得します。 | count | Medium (フローに依存) |
+ダイアログの継続を処理する | 自動 | ウォーターフォール ダイアログにステップを追加するか、Dialog.continueDialog を実装します。 | count | Large |
+ユーザーの次のメッセージまで処理が終了したことを伝える | Session.endDialog | Dialog.EndOfTurn を返します。 | count | Medium |
+子ダイアログを開始する | Session.beginDialog | ステップ コンテキストの beginDialog メソッドを待機して制御を戻します。 子ダイアログから値が返された場合、ステップ コンテキストの Result プロパティを使用して、ウォーターフォールの次のステップでその値を使用できます。 | count | Medium |
+現在のダイアログを新しいダイアログに置き換える | Session.replaceDialog | ITurnContext.replaceDialog | count | Large |
+現在のダイアログが完了したことを通知する | Session.endDialog | ステップ コンテキストの endDialog メソッドを待機して制御を戻します。 | count | Medium |
+ダイアログを失敗にする | Session.pruneDialogStack | キャッチされた例外をボットの別のレベルでスローするか、Cancelled の状態でステップを終了するか、ステップまたはダイアログ コンテキストの cancelAllDialogs を呼び出します。 | count | Small |
 
 ---
 
@@ -137,7 +137,8 @@ Bot Framework SDK v4 では、v3 と同じ基になる Bot Framework Service が
 
 Bot Framework SDK v4 と v3 は、基になる REST API を共有しています。 ただし、v4 は、より柔軟にボットを制御できるように、以前のバージョンの SDK をリファクターしたものです。
 
-パフォーマンスが大幅に向上したため、.NET Core への移行をお勧めします。 ただし、既存の V3 ロボットには、.NET Core に相当するものがない外部ライブラリを使用しているものもあります。 この場合、Bot Framework SDK v4 は .NET Framework バージョン 4.6.1 以降で使用できます。 例については、[corebot](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_webapi) の場所にあります。
+パフォーマンスが大幅に向上したため、.NET Core への移行をお勧めします。
+ただし、既存の V3 ロボットには、.NET Core に相当するものがない外部ライブラリを使用しているものもあります。 この場合、Bot Framework SDK v4 は .NET Framework バージョン 4.6.1 以降で使用できます。 例については、[corebot](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_webapi) の場所にあります。
 
 プロジェクトを v3 から v4 に移行するときは、 **.NET Framework** に合わせて変換するか、 **.NET Core** 用の新しいプロジェクトに移植するといういずれかの選択肢を選択できます。
 
@@ -153,10 +154,14 @@ Bot Framework SDK v4 と v3 は、基になる REST API を共有しています
 #### <a name="net-core"></a>.NET Core
 
 - テンプレートを使用して新しいプロジェクトを作成する
+
+ [!INCLUDE [VSIX templates](~/includes/vsix-templates-versions.md)]
+
 - 必要に応じて追加の NuGet パッケージをインストールする
 - 自分のボットをカスタマイズし、Startup.cs ファイルを更新して、コントローラー クラスを更新する
 - ボット クラスを更新する
 - ご利用のダイアログとモデルをコピーして更新する
+
 
 詳細については、「[.NET v3 ボットを .NET Core v4 ボットに移行する](conversion-core.md)」を参照してください。
 
@@ -182,7 +187,7 @@ Bot Framework SDK v4 と v3 は、基になる REST API を共有しています
 
 ## <a name="additional-resources"></a>その他のリソース
 
-次のその他のリソースは、移行中に役立つ詳細情報を提供します。  
+次のその他のリソースは、移行中に役立つ詳細情報を提供します。
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
@@ -237,7 +242,7 @@ Bot Framework SDK v4 と v3 は、基になる REST API を共有しています
 |[状態の管理](../bot-builder-concept-state.md)|状態の管理を容易にすることができる抽象化|
 |[ダイアログ ライブラリ](../bot-builder-concept-dialog.md)| 会話を管理するための中心的な概念|
 |[テキスト メッセージを送受信する](../bot-builder-howto-send-messages.md)|ボットがユーザーと通信するための主な方法|
-|[メディアを送信する](../bot-builder-howto-add-media-attachments.md)|画像、ビデオ、オーディオ、ファイルなどのメディアの添付ファイル| 
+|[メディアを送信する](../bot-builder-howto-add-media-attachments.md)|画像、ビデオ、オーディオ、ファイルなどのメディアの添付ファイル|
 |[連続して行われる会話フロー](../bot-builder-dialog-manage-conversation-flow.md)| ボットがユーザーと対話する主な方法としての質問|
 |[ユーザーと会話データを保存する](../bot-builder-howto-v4-state.md)|ステートレスでの会話の追跡|
 |[複雑なフロー](../bot-builder-dialog-manage-complex-conversation-flow.md)|複雑な会話フローを管理します |

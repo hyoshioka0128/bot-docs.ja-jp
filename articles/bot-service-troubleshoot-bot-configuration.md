@@ -7,13 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 2/20/2020
-ms.openlocfilehash: 775ffd3a72f69ad721eacbe31b27ddbe5b1fa5e5
-ms.sourcegitcommit: 9d77f3aff9521d819e88efd0fbd19d469b9919e7
+ms.date: 5/17/2020
+ms.openlocfilehash: 53d718d607a7a911bb800fb8a5cedea2688858b9
+ms.sourcegitcommit: 70587e4f57420ea5a64344761af2e2141984234e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "77519971"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83555613"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>ボット構成の問題のトラブルシューティング
 
@@ -65,7 +65,7 @@ ms.locfileid: "77519971"
 ボットのユーザー名とパスワードなどのチャンネル構成パラメーターが正しく設定されていないか、外部から変更された可能性があります。 たとえば、ボットが特定のページの Facebook チャンネルで構成され、そのページが後で削除された場合などです。 最も簡単な解決策は、チャネルを削除し、チャネル構成を新たにやり直すことです。
 
 Bot Framework でサポートされているチャネルの構成手順については、以下のリンクを参照してください。
-
+- [Alexa](bot-service-channel-connect-alexa.md)
 - [Cortana](bot-service-channel-connect-cortana.md)
 - [Direct Line](bot-service-channel-connect-directline.md)
 - [Email](bot-service-channel-connect-email.md)
