@@ -32,7 +32,7 @@ ms.locfileid: "80250091"
 
 - Node.js バージョン 10.14.1 以降。
 
-    コンピューターにインストールされているバージョンを確認するには、端末で次のコマンドを実行します。
+    コンピューターにインストールされているバージョンを確認するには、ターミナルで次のコマンドを実行します。
 
     ```bash
     # determine node version
@@ -47,7 +47,7 @@ ms.locfileid: "80250091"
     git clone https://github.com/microsoft/botbuilder-samples.git
     ```
 
-1. 端末で、`BotBuilder-Samples/MigrationV3V4/Node/V4V3-user-state-adapter-sample-bot` に移動します。
+1. ターミナルで、`BotBuilder-Samples/MigrationV3V4/Node/V4V3-user-state-adapter-sample-bot` に移動します。
 
     ```bash
     cd BotBuilder-Samples/MigrationV3V4/Node/V4V3-user-state-adapter-sample-bot
