@@ -39,15 +39,15 @@ ms.locfileid: "80250111"
     git clone https://github.com/microsoft/botbuilder-samples.git
     ```
 
-1. 端末で、`MigrationV3V4/CSharp/V4StateBotFromV3Providers` に移動します。
+1. ターミナルで、`MigrationV3V4/CSharp/V4StateBotFromV3Providers` に移動します。
 
     ```bash
     cd BotBuilder-Samples/MigrationV3V4/CSharp/V4StateBotFromV3Providers
     ```
 
-1. 端末または Visual Studio からボットを実行し、オプション A または B を選択します。
+1. ターミナルまたは Visual Studio からボットを実行し、オプション A または B を選択します。
 
-    - 端末から
+    - ターミナルから
 
         ```bash
         # run the bot
