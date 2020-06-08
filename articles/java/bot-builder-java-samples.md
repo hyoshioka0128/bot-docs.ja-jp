@@ -21,7 +21,7 @@ ms.locfileid: "75797852"
 現在プレビュー段階にある Java SDK v4 を使用してボットを作成する際に役立つサンプルを使用できます。
 
 ## <a name="get-the-samples"></a>サンプルの入手
-サンプルを入手するには、Git を使用して [botbuilder-java](https://github.com/Microsoft/botbuilder-java) GitHub リポジトリを複製します。
+サンプルを入手するには、Git を使用して [botbuilder-java](https://github.com/Microsoft/botbuilder-java) GitHub リポジトリをクローンします。
 
 ```cmd
 git clone https://github.com/Microsoft/botbuilder-java.git
