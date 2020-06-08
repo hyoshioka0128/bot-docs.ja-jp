@@ -20,7 +20,7 @@ ms.locfileid: "75797322"
 
 Bot Builder サンプル リポジトリのサンプルでは、SDK for JavaScript で提供される機能の活用方法を示す、タスクに焦点を置いたボットについて説明します。 サンプルを利用することで、豊富な機能を備えた優れたボットの作成が迅速に開始できるようになります。 サンプル リストと追加の情報については、[readme](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md) ファイルを参照してください。
 
-サンプルを入手するには、Git を使用して [botbuilder-samples](https://github.com/Microsoft/botbuilder-samples) GitHub リポジトリを複製します。
+サンプルを入手するには、Git を使用して [botbuilder-samples](https://github.com/Microsoft/botbuilder-samples) GitHub リポジトリをクローンします。
 ```cmd
 git clone https://github.com/Microsoft/botbuilder-dotnet.git
 ```
