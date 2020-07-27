@@ -33,7 +33,7 @@ ms.locfileid: "75797933"
  - [Bot Builder Azure NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Bot.Builder.Azure/)
  - [Autofac Web Api2 NuGet パッケージ](https://www.nuget.org/packages/Autofac.WebApi2/)
  - [Bot Framework Emulator](https://emulator.botframework.com/)
- - [Azure 記憶域エクスプローラー](http://storageexplorer.com/)
+ - [Azure Storage Explorer](http://storageexplorer.com/)
  
 ## <a name="create-azure-account"></a>Azure アカウントを作成する
 Azure アカウントを持っていない場合は、[こちら](https://azure.microsoft.com/free/)をクリックして、無料アカウントにサインアップしてください。
