@@ -554,7 +554,7 @@ Bot Framework Emulator を起動して、ご自身のボットに接続します
 
 ### <a name="view-your-data"></a>データの表示
 
-ボットを実行して情報を保存した後は、Azure portal の **[データ エクスプローラー]** タブで、格納データを表示できます。
+ボットを実行して情報を保存した後は、Azure Portal の **[データ エクスプローラー]** タブで、格納データを表示できます。
 
 ![データ エクスプローラーの例](./media/data_explorer.PNG)
 
@@ -594,7 +594,7 @@ Azure Blob Storage は、Microsoft のクラウド用オブジェクト スト�
 
 上記のボットの Blob Storage の構成に必要な Blob Storage キーを検索します。
 
-1. Azure portal で、Blob Storage アカウントを開き、 **[設定]、[アクセス キー]** の順に選択します。
+1. Azure Portal で、Blob Storage アカウントを開き、 **[設定]、[アクセス キー]** の順に選択します。
 
     ![Blob Storage キーの検索](./media/find-blob-storage-keys.png)
 
@@ -739,7 +739,7 @@ def __init__(self):
 
 ### <a name="view-your-data"></a>データの表示
 
-ボットを実行して情報を保存したら、Azure portal の **[ストレージ エクスプローラー]** タブの下にその情報を表示できます。
+ボットを実行して情報を保存したら、Azure Portal の **[Storage Explorer]** タブの下にその情報を表示できます。
 
 ## <a name="blob-transcript-storage"></a>Blob トランスクリプト ストレージ
 
